@@ -1,12 +1,12 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
-
 export interface LoadingProps extends StandardProps {
   color?: string
   vertical?: boolean
-  type?: string
-  size?: string
-  textSize?: string
+  type?: 'spinner' | 'circular'
+  size?: string | number
+  textSize?: string | number
+  children?: React.ReactNode
 }
 
 declare const Loading: ComponentClass<LoadingProps>

@@ -1,7 +1,16 @@
 import { View, Button } from '@tarojs/components'
 import { useEffect } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
-import { Progress, Sticky, Icon, NavBar } from '@antmjs/vantui'
+import {
+  Progress,
+  Sticky,
+  Icon,
+  NavBar,
+  Image,
+  Row,
+  Col,
+  Loading,
+} from '@antmjs/vantui'
 
 import './index.less'
 
@@ -43,6 +52,27 @@ export default function Index() {
           <Button>kkk</Button>
         </Sticky>
       </View>
+      <Image
+        width={300}
+        height={300}
+        lazyLoad={true}
+        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+      />
+      <Image
+        width={300}
+        height={300}
+        fit="contain"
+        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+      />
+      <Row>
+        <Col span="8">span: 8</Col>
+        <Col span="8">span: 8</Col>
+        <Col span="8">span: 8</Col>
+      </Row>
+
+      <Loading type="circular" size={80}>
+        加载中...
+      </Loading>
     </View>
   )
 }
