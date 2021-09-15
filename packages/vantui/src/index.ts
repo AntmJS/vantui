@@ -1,0 +1,6 @@
+export { default as Button } from './components/button'
+export { default as Progress } from './components/progress'
+export { default as Sticky } from './components/sticky'
+export { default as Info } from './components/info'
+export { default as Icon } from './components/icon'
+export { default as NavBar } from './components/nav-bar'

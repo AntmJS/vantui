@@ -1,0 +1,168 @@
+/* stylelint-disable no-descending-specificity */
+@import '../var.less';
+@import '../theme.less';
+
+.van-field {
+  .theme(--cell-icon-size,  '@field-icon-size');
+
+  &__label {
+    .theme(color, '@field-label-color');
+
+    &--disabled {
+      .theme(color, '@field-disabled-text-color');
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+
+    &--textarea {
+      box-sizing: border-box;
+      padding: 6px 0;
+      line-height: 1.2em;
+      .theme(min-height, '@cell-line-height');
+    }
+  }
+
+  &__control:empty + &__control {
+    display: block;
+  }
+
+  &__control {
+    position: relative;
+    display: none;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+
+    .theme(color, '@field-input-text-color');
+    .theme(height, '@cell-line-height');
+    .theme(min-height, '@cell-line-height');
+
+    &:empty {
+      display: none;
+    }
+
+    &--textarea {
+      .theme(height, '@field-text-area-min-height');
+      .theme(min-height, '@field-text-area-min-height');
+    }
+
+    &--error {
+      .theme(color, '@field-input-error-text-color');
+    }
+
+    &--disabled {
+      background-color: transparent;
+      opacity: 1;
+      .theme(color, '@field-input-disabled-text-color');
+    }
+
+    &--center {
+      text-align: center;
+    }
+
+    &--right {
+      text-align: right;
+    }
+
+    &--custom {
+      display: flex;
+      align-items: center;
+
+      .theme(min-height, '@cell-line-height');
+    }
+  }
+
+  &__placeholder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+    .theme(color, '@field-placeholder-text-color');
+
+    &--error {
+      .theme(color, '@field-error-message-color');
+    }
+  }
+
+  &__icon-root {
+    display: flex;
+    align-items: center;
+    .theme(min-height, '@cell-line-height');
+  }
+
+  &__clear-root,
+  &__icon-container {
+    line-height: inherit;
+    vertical-align: middle;
+    .theme(padding, '0 @padding-xs');
+    .theme(margin-right, '-@padding-xs');
+  }
+
+  &__clear-root,
+  &__icon-container,
+  &__button {
+    flex-shrink: 0;
+  }
+
+  &__clear-root {
+    .theme(font-size, '@field-clear-icon-size');
+    .theme(color, '@field-clear-icon-color');
+  }
+
+  &__icon-container {
+    .theme(font-size, '@field-icon-size');
+    .theme(color, '@field-icon-container-color');
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__button {
+    .theme(padding-left, '@padding-xs');
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__error-message {
+    text-align: left;
+    .theme(font-size, '@field-error-message-text-font-size');
+    .theme(color, '@field-error-message-color');
+
+    &--center {
+      text-align: center;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__word-limit {
+    text-align: right;
+    .theme(margin-top, '@padding-base');
+    .theme(color, '@field-word-limit-color');
+    .theme(font-size, '@field-word-limit-font-size');
+    .theme(line-height, '@field-word-limit-line-height');
+  }
+
+  &__word-num {
+    display: inline;
+
+    &--full {
+      .theme(color, '@field-word-num-full-color');
+    }
+  }
+}

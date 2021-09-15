@@ -1,0 +1,141 @@
+{
+  "name": "vantui",
+  "private": true,
+  "author": "三少 <hi_sanshao@outlook.com>",
+  "description": "前端组件库",
+  "license": "MIT",
+  "keywords": [
+    "Taro",
+    "VantUI",
+    "React"
+  ],
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/AntmJS/vantui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AntmJS/vantui/issues/new"
+  },
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6.4",
+    "yarn": ">=1.22"
+  },
+  "browserslist": [
+    "Chrome >= 35",
+    "ChromeAndroid >= 35",
+    "iOS >= 8",
+    "Safari >= 8",
+    "Android >= 4.1",
+    "QQAndroid >= 4.1",
+    "UCAndroid >= 4.1"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "feat",
+          "fix",
+          "style",
+          "chore",
+          "typings",
+          "docs",
+          "refactor",
+          "test"
+        ]
+      ]
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog",
+      "types": {
+        "feat": {
+          "description": "新功能（feature）"
+        },
+        "fix": {
+          "description": "修补bug"
+        },
+        "style": {
+          "description": "格式（不影响代码运行的变动）"
+        },
+        "chore": {
+          "description": "构建过程或辅助工具的变动"
+        },
+        "typings": {
+          "description": "Typescript 类型错误"
+        },
+        "docs": {
+          "description": "文档（documentation）"
+        },
+        "refactor": {
+          "description": "重构（既不是新增功能，也不是修改bug的代码变动）"
+        },
+        "test": {
+          "description": "增加或修改测试用例"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "eslint": "npx eslint -c eslint.config.js '**/*.{js,jsx,ts,tsx}' && npx tsc -p tsconfig.json --skipLibCheck",
+    "stylelint": "npx stylelint --aei --config stylelint.config.js '**/*.{css,less}'",
+    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
+    "clear-all": "rimraf packages/*/node_modules",
+    "bootstrap:ci": "npx lerna bootstrap --npm-client=yarn",
+    "bootstrap:lerna": "npx lerna bootstrap",
+    "bootstrap": "npm-run-all clear-all bootstrap:lerna",
+    "build": "npx lerna run build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "release:lerna": "lerna version --exact --no-git-tag-version --force-publish",
+    "release:beta": "lerna publish --force-publish=* --exact --skip-temp-tag  --preid=beta --npm-tag=beta",
+    "release": "npm run release:lerna && npm run changelog && node ./pullRequest.js",
+    "test": "npx lerna run test"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@octokit/core": "^3.4.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-image": "^2.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/node": "^16.3.2",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "all-contributors-cli": "^6.20.0",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.27.0",
+    "execa": "^5.0.0",
+    "fs-extra": "^10.0.0",
+    "globby": "^11.0.3",
+    "husky": "^6.0.0",
+    "lerna": "^4.0.0",
+    "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.48.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-copy-watch": "^0.0.1",
+    "run-s": "^0.0.0",
+    "stylelint": "^13.13.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@antmjs/babel-preset": "^1.12.0",
+    "@antmjs/eslint": "^1.12.0",
+    "@antmjs/stylelint": "^1.12.0"
+  }
+}

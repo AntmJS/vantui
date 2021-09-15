@@ -1,0 +1,146 @@
+{
+  "name": "vantui-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Taro应用模版",
+  "templateInfo": {
+    "name": "default",
+    "typescript": true,
+    "css": "less"
+  },
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6.4",
+    "yarn": ">=1.22"
+  },
+  "appId": {
+    "weapp": {
+      "real": "",
+      "pre": "",
+      "dev": ""
+    },
+    "tt": {
+      "real": "",
+      "pre": "",
+      "dev": ""
+    }
+  },
+  "browserslist": [
+    "Chrome >= 35",
+    "ChromeAndroid >= 35",
+    "iOS >= 8",
+    "Safari >= 8",
+    "Android >= 4.1",
+    "QQAndroid >= 4.1",
+    "UCAndroid >= 4.1"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "feat",
+          "fix",
+          "style",
+          "chore",
+          "typings",
+          "docs",
+          "refactor",
+          "test"
+        ]
+      ]
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog",
+      "types": {
+        "feat": {
+          "description": "新功能（feature）"
+        },
+        "fix": {
+          "description": "修补bug"
+        },
+        "style": {
+          "description": "格式（不影响代码运行的变动）"
+        },
+        "chore": {
+          "description": "构建过程或辅助工具的变动"
+        },
+        "typings": {
+          "description": "Typescript 类型错误"
+        },
+        "docs": {
+          "description": "文档（documentation）"
+        },
+        "refactor": {
+          "description": "重构（既不是新增功能，也不是修改bug的代码变动）"
+        },
+        "test": {
+          "description": "增加或修改测试用例"
+        }
+      }
+    }
+  },
+  "author": "",
+  "scripts": {
+    "eslint": "npx eslint -c eslint.config.js '**/*.{js,jsx,ts,tsx}' && npx tsc -p tsconfig.json --skipLibCheck",
+    "stylelint": "npx stylelint --aei --config stylelint.config.js '**/*.{css,less}'",
+    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
+    "iconfont": "npx antm-icon --input-path https://at.alicdn.com/t/xxxx.css --output-path src/iconfont.less",
+    "watch:weapp": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type weapp --watch",
+    "watch:alipay": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type alipay --watch",
+    "watch:tt": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type tt --watch",
+    "watch:h5": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type h5 --watch",
+    "dev:weapp": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type weapp",
+    "dev:alipay": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type alipay",
+    "dev:tt": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type tt",
+    "dev:h5": "cross-env NODE_ENV=production API_ENV=dev PUBLIC_PATH=https://x.x.com/${API_ENV}/${pkgName}/${version}/ npx taro build --type h5",
+    "real:weapp": "cross-env NODE_ENV=production API_ENV=real npx taro build --type weapp",
+    "real:alipay": "cross-env NODE_ENV=production API_ENV=real npx taro build --type alipay",
+    "real:tt": "cross-env NODE_ENV=production API_ENV=real npx taro build --type tt",
+    "real:h5": "cross-env NODE_ENV=production API_ENV=real PUBLIC_PATH=https://x.x.com/${API_ENV}/${pkgName}/${version}/ npx taro build --type h5",
+    "build": "cross-env NODE_ENV=production npx taro build"
+  },
+  "dependencies": {
+    "@antmjs/mini-fix": "^1.12.0",
+    "@antmjs/vantui": "^0.0.0",
+    "@babel/runtime-corejs3": "^7.14.7",
+    "@tarojs/components": "3.3.3",
+    "@tarojs/react": "3.3.3",
+    "@tarojs/runtime": "3.3.3",
+    "@tarojs/taro": "3.3.3",
+    "core-js": "^3.15.2",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@antmjs/babel-preset": "^1.12.0",
+    "@antmjs/eslint": "^1.12.0",
+    "@antmjs/iconfont": "^1.12.0",
+    "@antmjs/plugin-mini-fix": "^1.12.0",
+    "@antmjs/stylelint": "^1.12.0",
+    "@babel/core": "^7.8.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@tarojs/cli": "^3.3.3",
+    "@tarojs/mini-runner": "3.3.3",
+    "@tarojs/webpack-runner": "3.3.3",
+    "@types/react": "^17.0.2",
+    "@types/webpack-env": "^1.13.6",
+    "babel-plugin-transform-taroapi": "^3.3.3",
+    "commitizen": "^4.2.4",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.30.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
+    "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "typescript": "^4.3.5"
+  }
+}

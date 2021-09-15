@@ -1,0 +1,180 @@
+@import '../var.less';
+@import '../theme.less';
+
+.van-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  -webkit-text-size-adjust: 100%;
+
+  .theme(height, '@button-default-height');
+  .theme(line-height, '@button-line-height');
+  .theme(font-size, '@button-default-font-size');
+  .theme(transition, 'opacity @animation-duration-fast');
+  .theme(border-radius, '@button-border-radius');
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: inherit;
+    border-radius: inherit; /* inherit parent's border radius */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: ' ';
+
+    .theme(background-color, '@black');
+    .theme(border-color, '@black');
+  }
+
+  // reset weapp default border
+  &::after {
+    border-width: 0;
+  }
+
+  &--active::before {
+    opacity: 0.15;
+  }
+
+  &--unclickable::after {
+    display: none;
+  }
+
+  &--default {
+    .theme(color, '@button-default-color');
+    .theme(background, '@button-default-background-color');
+    .theme(border, '@button-border-width solid @button-default-border-color');
+  }
+
+  &--primary {
+    .theme(color, '@button-primary-color');
+    .theme(background, '@button-primary-background-color');
+    .theme(border, '@button-border-width solid @button-primary-border-color');
+  }
+
+  &--info {
+    .theme(color, '@button-info-color');
+    .theme(background, '@button-info-background-color');
+    .theme(border, '@button-border-width solid @button-info-border-color');
+  }
+
+  &--danger {
+    .theme(color, '@button-danger-color');
+    .theme(background, '@button-danger-background-color');
+    .theme(border, '@button-border-width solid @button-danger-border-color');
+  }
+
+  &--warning {
+    .theme(color, '@button-warning-color');
+    .theme(background, '@button-warning-background-color');
+    .theme(border, '@button-border-width solid @button-warning-border-color');
+  }
+
+  &--plain {
+    .theme(background, '@button-plain-background-color');
+
+    &.van-button--primary {
+      .theme(color, '@button-primary-background-color');
+    }
+
+    &.van-button--info {
+      .theme(color, '@button-info-background-color');
+    }
+
+    &.van-button--danger {
+      .theme(color, '@button-danger-background-color');
+    }
+
+    &.van-button--warning {
+      .theme(color, '@button-warning-background-color');
+    }
+  }
+
+  &--large {
+    width: 100%;
+    .theme(height, '@button-large-height');
+  }
+
+  &--normal {
+    padding: 0 30px;
+    .theme(font-size, '@button-normal-font-size');
+  }
+
+  &--small {
+    .theme(min-width, '@button-small-min-width');
+    .theme(height, '@button-small-height');
+    .theme(padding, '0 @padding-xs');
+    .theme(font-size, '@button-small-font-size');
+  }
+
+  // mini图标默认宽度100px，文字不能超过4个
+  &--mini {
+    display: inline-block;
+    .theme(min-width, '@button-mini-min-width');
+    .theme(height, '@button-mini-height');
+    .theme(font-size, '@button-mini-font-size');
+
+    & + .van-button--mini {
+      margin-left: 10px;
+    }
+  }
+
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+
+  &--round {
+    .theme(border-radius, '@button-round-border-radius');
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+
+  &--disabled {
+    .theme(opacity, '@button-disabled-opacity');
+  }
+
+  &__text {
+    display: inline;
+  }
+
+  &__loading-text,
+  &__icon + &__text:not(:empty) {
+    margin-left: @padding-base;
+  }
+
+  &__icon {
+    min-width: 1em;
+    line-height: inherit !important;
+    vertical-align: top;
+  }
+
+  &--hairline {
+    padding-top: 2px; // add 2px padding for text vertical align middle
+    border-width: 0;
+
+    &::after {
+      border-color: inherit;
+      border-width: 2px;
+      .theme(border-radius, 'calc(@button-border-radius * 2)');
+    }
+
+    &.van-button--round::after {
+      .theme(border-radius, '@button-round-border-radius');
+    }
+
+    &.van-button--square::after {
+      border-radius: 0;
+    }
+  }
+}
