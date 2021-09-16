@@ -88,17 +88,17 @@ Uploader
 
 
 空镜
-Image
-Layout
+Image[完成]
+Layout[完成] 
 
 DropdownMenu
-Loading
+Loading[完成]
 Notify
 Cell
 SwipeCell
 
 Calendar
-Picker
+Picker[完成]
 DatetimePicker
 Grid
 Sidebar
