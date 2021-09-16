@@ -129,8 +129,8 @@ Icon[完成]
 
 Progress[完成]
 Skeleton[完成]
-CountDown
-Tag
+CountDown[完成]
+Tag[完成]
 Sticky[完成]
 Rate[完成]
 Search[完成]
