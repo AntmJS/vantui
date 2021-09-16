@@ -1,5 +1,5 @@
 import { View, Button } from '@tarojs/components'
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
   Progress,
@@ -10,9 +10,12 @@ import {
   Row,
   Col,
   Loading,
+  Picker,
 } from '@antmjs/vantui'
 
 import './index.less'
+
+const columns = ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
 
 export default function Index() {
   useEffect(function () {
@@ -27,6 +30,10 @@ export default function Index() {
   useDidHide(function () {
     console.info('index page hide.')
   })
+
+  const onChange = useCallback(function (a) {
+    console.info(a)
+  }, [])
 
   return (
     <View className="pages-index-index">
@@ -73,6 +80,8 @@ export default function Index() {
       <Loading type="circular" size={80}>
         加载中...
       </Loading>
+
+      <Picker title="标题" columns={columns} onChange={onChange} />
     </View>
   )
 }
