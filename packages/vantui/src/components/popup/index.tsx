@@ -3,24 +3,18 @@ import { View } from '@tarojs/components'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import * as utils from '../wxs/utils'
 import { PopupProps } from '../../../types/popup'
-import { isObj } from '../common/validator.js'
 import VanIcon from './../icon'
 import * as computed from './wxs'
+import { useTransition } from './../../mixins/transition'
+import VanOverlay from './../overlay'
 
-const getClassNames = (name: string) => ({
-  enter: `van-${name}-enter van-${name}-enter-active enter-class enter-active-class`,
-  'enter-to': `van-${name}-enter-to van-${name}-enter-active enter-to-class enter-active-class`,
-  leave: `van-${name}-leave van-${name}-leave-active leave-class leave-active-class`,
-  'leave-to': `van-${name}-leave-to van-${name}-leave-active leave-to-class leave-active-class`,
-})
 export default function Index(this: any, props: PopupProps) {
   const {
-    show = false,
-    duration = 300,
-    name = 'fade',
+    show,
+    duration,
+    name,
     round,
     closeable,
-    customStyle,
     overlayStyle,
     transition,
     zIndex = 100,
@@ -45,9 +39,6 @@ export default function Index(this: any, props: PopupProps) {
     className,
     ...others
   } = props
-  const transitionEnded = useRef(false)
-  const status = useRef('')
-
   const onClickCloseIcon = useCallback(() => {
     close?.()
   }, [close])
@@ -58,11 +49,32 @@ export default function Index(this: any, props: PopupProps) {
     }
   }, [clickOverlay, close, closeOnClickOverlay])
 
-  // const [type, setType] = useState('')
-  const [inited, setInited] = useState(false)
-  const [display, setDisplay] = useState(false)
-  const [currentDuration, setCurrentDuration] = useState(0)
-  const [classes, setClasses] = useState('')
+  const [_name, setName] = useState(name)
+  const [_duration, setDuration] = useState(0)
+  const originDuration = useRef<any>(null)
+
+  useEffect(() => {
+    setName(transition || position)
+    if (transition === 'none') {
+      setDuration(0)
+      originDuration.current = duration
+    } else if (originDuration.current != null) {
+      setDuration(originDuration.current)
+    }
+  }, [duration, position, transition])
+
+  const { inited, currentDuration, classes, display, onTransitionEnd } =
+    useTransition({
+      show,
+      duration: _duration,
+      name: _name,
+      beforeEnter,
+      beforeLeave,
+      afterEnter,
+      afterLeave,
+      enter,
+      leave,
+    })
 
   // observeShow(value, old) {
   //   if (value === old) {
@@ -71,112 +83,25 @@ export default function Index(this: any, props: PopupProps) {
   //   value ? this.enter() : this.leave()
   // },
 
-  const onTransitionEnd = useCallback(() => {
-    if (transitionEnded.current) {
-      return
-    }
-    transitionEnded.current = true
-    if (status.current === 'enter') {
-      afterEnter?.()
-    } else {
-      afterLeave?.()
-    }
-
-    if (!show && display) {
-      // this.setData({ display: false })
-      setDisplay(false)
-    }
-  }, [afterEnter, afterLeave, display, show])
-  const _enter = useCallback(() => {
-    // const { duration, name } = this.data
-    const classNames = getClassNames(name)
-    const currentDuration = isObj(duration) ? (duration as any).enter : duration
-    status.current = 'enter'
-    // this.$emit('before-enter')
-    beforeEnter?.()
-    requestAnimationFrame(() => {
-      if (status.current !== 'enter') {
-        return
-      }
-      enter?.()
-      setInited(true)
-      setDisplay(true)
-      setClasses(classNames.enter)
-      setCurrentDuration(currentDuration)
-      requestAnimationFrame(() => {
-        if (status.current !== 'enter') {
-          return
-        }
-        transitionEnded.current = false
-        setClasses(classNames['enter-to'])
-      })
-    })
-  }, [beforeEnter, duration, enter, name])
-  const _leave = useCallback(() => {
-    if (!display) {
-      return
-    }
-    // const { duration, name } = this.data
-    const classNames = getClassNames(name)
-    const currentDuration = isObj(duration) ? (duration as any).leave : duration
-    status.current = 'leave'
-    beforeLeave?.()
-    requestAnimationFrame(() => {
-      if (status.current !== 'leave') {
-        return
-      }
-      // this.$emit('leave')
-      leave?.()
-      setClasses(classNames.leave)
-      setCurrentDuration(currentDuration)
-
-      requestAnimationFrame(() => {
-        if (status.current !== 'leave') {
-          return
-        }
-        transitionEnded.current = false
-        setTimeout(() => onTransitionEnd(), currentDuration)
-        setClasses(classNames['leave-to'])
-      })
-    })
-  }, [beforeLeave, display, duration, leave, name, onTransitionEnd])
-
-  useEffect(() => {
-    show ? _enter() : _leave()
-  }, [_enter, _leave, show])
-
-  // useEffect(() => {
-  //   const updateData = {
-  //     name: transition || position,
-  //     duration: null,
-  //   }
-  //   if (transition === 'none') {
-  //     updateData.duration = 0
-  //     // setD
-  //     this.originDuration = duration
-  //   } else if (this.originDuration != null) {
-  //     updateData.duration = this.originDuration
-  //   }
-  //   this.setData(updateData)
-  // })
-
   return (
     <>
-      {/* {overlay && (
+      {overlay && (
         <VanOverlay
           show={show}
           zIndex={zIndex}
-          customStyle={overlayStyle}
+          style={overlayStyle}
           duration={duration}
           onClick={onClickOverlay}
           lockScroll={lockScroll}
-        ></VanOverlay>
-      )} */}
+        />
+      )}
       {inited && (
         <View
           className={
             'custom-class ' +
             classes +
+            ' ' +
+            className +
             ' ' +
             utils.bem('popup', [
               position,
@@ -191,9 +116,10 @@ export default function Index(this: any, props: PopupProps) {
             zIndex,
             currentDuration,
             display,
-            customStyle,
+            style,
           })}
           onTransitionEnd={onTransitionEnd}
+          {...others}
         >
           {children}
           {closeable && (

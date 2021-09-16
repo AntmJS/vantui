@@ -1,10 +1,14 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { TransitionProps } from './mixins/transition'
-export interface PopupProps extends TransitionProps, StandardProps {
+import { OverlayProps } from './overlay'
+
+export interface PopupProps
+  extends TransitionProps,
+    StandardProps,
+    OverlayProps {
   round?: boolean
   closeable?: boolean
-  customStyle?: string
   overlayStyle?: string
   transition?: string
   zIndex?: number
@@ -15,7 +19,6 @@ export interface PopupProps extends TransitionProps, StandardProps {
   position?: string
   safeAreaInsetBottom?: boolean
   safeAreaInsetTop?: boolean
-  lockScroll?: boolean
   children?: JSX.Element | JSX.Element[] | string
   clickOverlay?: (...arg: any[]) => any
   close?: (...arg: any[]) => any

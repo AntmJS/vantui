@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { TransitionProps } from '../../../types/mixins/transition'
-import { isObj } from '../common/validator.js'
+import { isObj } from './../components/common/validator'
+import { TransitionProps } from './../../types/mixins/transition'
 const getClassNames = (name: string) => ({
   enter: `van-${name}-enter van-${name}-enter-active enter-class enter-active-class`,
   'enter-to': `van-${name}-enter-to van-${name}-enter-active enter-to-class enter-active-class`,
@@ -98,10 +98,10 @@ export function useTransition({
   }, [_enter, _leave, show])
 
   return {
+    display,
     inited,
     currentDuration,
     classes,
-    _leave,
-    _enter,
+    onTransitionEnd,
   }
 }
