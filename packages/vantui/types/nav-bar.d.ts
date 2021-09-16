@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface NavBarProps extends StandardProps {
@@ -12,9 +12,9 @@ export interface NavBarProps extends StandardProps {
   border?: boolean
   zIndex?: number
   safeAreaInsetTop?: boolean
-  renderTitle?: () => any
-  renderLeft?: () => any
-  renderRight?: () => any
+  renderTitle?: ReactNode
+  renderLeft?: ReactNode
+  renderRight?: ReactNode
   onClickLeft?: () => any
   onClickRight?: () => any
 }

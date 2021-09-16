@@ -85,7 +85,6 @@ Collapse
 Circle
 
 Checkbox
-Field
 Radio
 Switch
 Uploader
@@ -124,16 +123,16 @@ TreeSelect
 Area
 
 三少
-Button -> 依赖loading
+Button[完成]
 Icon[完成]
 
 Progress[完成]
-Skeleton
+Skeleton[完成]
 CountDown
 Tag
 Sticky[完成]
-Rate
-Search
+Rate[完成]
+Search[完成]
 NavBar[完成]
 Tab
 TabBar

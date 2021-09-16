@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
   Progress,
@@ -13,11 +13,16 @@ import {
   Row,
   Col,
   Loading,
+  Rate,
+  Search,
+  Skeleton,
 } from '@antmjs/vantui'
 
 import './index.less'
 
 export default function Index() {
+  const [rate, setRate] = useState(2.5)
+  const [serachValue] = useState('ff')
   useEffect(function () {
     console.info('index page load.')
     return function () {
@@ -42,9 +47,33 @@ export default function Index() {
         leftArrow
       />
       <Progress percentage={50} strokeWidth={4} />
-      <Icon name="chat" size={40} dot info={null} />
-      <Icon name="chat" size={40} info="9" />
-      <Icon name="chat" size={40} info="99+" />
+      <View>
+        <Icon name="chat" size={40} dot info={null} />
+        <Icon name="chat" size={40} info="9" />
+        <Icon name="chat" size={40} info="99+" />
+      </View>
+      <View>
+        <Skeleton title avatar row={3} />
+      </View>
+      <View>
+        <Search
+          onSearch={(v) => {
+            console.log(v)
+          }}
+          value={serachValue}
+          placeholder="请输入搜索关键词"
+        />
+      </View>
+      <View style={{ background: '#fff' }}>
+        <Rate
+          icon="like"
+          allowHalf
+          voidColor="#eee"
+          voidIcon="like-o"
+          value={rate}
+          onChange={setRate}
+        />
+      </View>
       <Tabs active={0} swipeable swipe-threshold={5}>
         <Tab info={null} title="标签 1">
           内容 1
