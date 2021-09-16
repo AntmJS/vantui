@@ -93,7 +93,7 @@ export default function Index() {
         <Sticky
           container={() => Taro.createSelectorQuery().select('#container')}
         >
-          <Button plain type="primary">
+          <Button plain type="primary" loading>
             kkk
           </Button>
         </Sticky>

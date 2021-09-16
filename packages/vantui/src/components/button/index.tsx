@@ -1,8 +1,9 @@
 import type { ButtonProps } from '../../../types/button.d'
-// import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { Button, Block, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Icon from '../icon/index'
+import Loading from '../loading/index'
 import * as computed from './wxs'
 
 export default function Index(props: ButtonProps) {
@@ -18,8 +19,8 @@ export default function Index(props: ButtonProps) {
     hairline,
     color,
     customStyle,
-    // loadingSize = Taro.pxTransform(40),
-    // loadingType = 'circular',
+    loadingSize = Taro.pxTransform(40),
+    loadingType = 'circular',
     loadingText,
     icon,
     classPrefix = 'van-icon',
@@ -64,8 +65,8 @@ export default function Index(props: ButtonProps) {
     >
       {loading ? (
         <Block>
-          {/* <Loading
-            customClass="loading-class"
+          <Loading
+            className="loading-class"
             size={loadingSize}
             type={loadingType}
             color={computed.loadingColor({
@@ -73,7 +74,7 @@ export default function Index(props: ButtonProps) {
               color,
               plain,
             })}
-          ></Loading> */}
+          ></Loading>
           {loadingText && (
             <View className="van-button__loading-text">{loadingText}</View>
           )}
