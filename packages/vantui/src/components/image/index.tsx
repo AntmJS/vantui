@@ -29,6 +29,7 @@ export default function Index(props: ImageProps) {
     showError,
     showLoading,
     className,
+    style,
     ...others
   } = props
 
@@ -55,6 +56,7 @@ export default function Index(props: ImageProps) {
           height,
           radius,
         }),
+        style,
       ])}
       className={
         'custom-class ' +

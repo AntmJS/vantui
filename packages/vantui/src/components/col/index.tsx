@@ -4,7 +4,7 @@ import { ColProps } from '../../../types/col'
 import * as computed from './wxs'
 
 export default function Index(props: ColProps): JSX.Element {
-  const { span, offset, gutter, children, className, ...others } = props
+  const { span, offset, gutter, children, className, style, ...others } = props
 
   return (
     <View
@@ -16,9 +16,12 @@ export default function Index(props: ColProps): JSX.Element {
         ' ' +
         className
       }
-      style={computed.rootStyle({
-        gutter,
-      })}
+      style={utils.style([
+        computed.rootStyle({
+          gutter,
+        }),
+        style,
+      ])}
       {...others}
     >
       {children}

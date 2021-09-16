@@ -13,6 +13,7 @@ export default function Index(props: LoadingProps): JSX.Element {
     textSize,
     className,
     children,
+    style,
     ...others
   } = props
 
@@ -26,6 +27,7 @@ export default function Index(props: LoadingProps): JSX.Element {
         ' ' +
         className
       }
+      style={utils.style([style])}
       {...others}
     >
       {array12.map((_, index: number) => {
