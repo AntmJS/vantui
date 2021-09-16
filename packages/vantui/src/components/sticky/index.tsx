@@ -133,15 +133,20 @@ export default function Index(props: StickyProps) {
       {...others}
     >
       <View
-        className={utils.bem('sticky-wrap', {
-          fixed: state.fixed,
-        })}
-        style={computed.wrapStyle({
-          fixed: state.fixed,
-          offsetTop,
-          transform: state.transform,
-          zIndex,
-        })}
+        className={
+          utils.bem('sticky-wrap', {
+            fixed: state.fixed,
+          }) + ` ${className}`
+        }
+        style={utils.style([
+          computed.wrapStyle({
+            fixed: state.fixed,
+            offsetTop,
+            transform: state.transform,
+            zIndex,
+          }),
+          style,
+        ])}
       >
         {children}
       </View>
