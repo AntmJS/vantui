@@ -1,5 +1,6 @@
 import { View } from '@tarojs/components'
 import { TransitionPropsCom } from '../../../types/transition'
+import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 import { useTransition } from './../../mixins/transition'
 export default function Index(props: TransitionPropsCom) {
@@ -33,12 +34,14 @@ export default function Index(props: TransitionPropsCom) {
   return (
     <>
       <View
-        className={'van-transition custom-class ' + classes + ' ' + className}
-        style={computed.rootStyle({
-          currentDuration,
-          display,
+        className={'van-transition custom-class ' + classes + ` ${className}`}
+        style={utils.style([
+          computed.rootStyle({
+            currentDuration,
+            display,
+          }),
           style,
-        })}
+        ])}
         onTransitionEnd={onTransitionEnd}
         {...others}
       >

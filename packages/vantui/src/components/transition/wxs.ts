@@ -7,7 +7,7 @@ function rootStyle(data: any) {
       'transition-duration': data.currentDuration + 'ms',
     },
     data.display ? null : 'display: none',
-    data.customStyle,
+    data.style,
   ])
 }
 
