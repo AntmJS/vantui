@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import { isDef, isPlainObject, isPromise } from './validator'
-import { canIUseGroupSetData, canIUseNextTick } from './version'
+import { canIUseNextTick } from './version'
 export { isDef } from './validator'
 export function range(num: any, min: any, max: any) {
   return Math.min(Math.max(num, min), max)
@@ -75,13 +75,6 @@ export function getAllRect(context: any, selector: any) {
       .boundingClientRect()
       .exec((rect = []) => resolve(rect[0]))
   })
-}
-export function groupSetData(context: any, cb: any) {
-  if (canIUseGroupSetData()) {
-    context.groupSetData(cb)
-  } else {
-    cb()
-  }
 }
 export function toPromise(promiseLike: any) {
   if (isPromise(promiseLike)) {

@@ -1,11 +1,11 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { ButtonProps as TaroButtonProps } from '@tarojs/components'
 
 export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   icon?: string
   classPrefix?: string
   type?: 'default' | 'primary' | 'info' | 'warning' | 'danger'
-  size?: 'small' | 'normal' | 'around' | 'full'
+  size?: 'small' | 'normal' | 'large' | 'mini'
   block?: boolean
   round?: boolean
   square?: boolean
@@ -15,10 +15,9 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   loadingText?: string
   loadingSize?: string
   customStyle?: string
-  loadingType?: string
-  dataset?: any
+  loadingType?: 'spinner' | 'circular'
   color?: string
-  children: JSX.Element | string | JSX.Element[]
+  children: ReactNode
 }
 
 declare const Button: ComponentClass<ButtonProps>

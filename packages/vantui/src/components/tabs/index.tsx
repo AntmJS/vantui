@@ -1,52 +1,385 @@
-import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import {
+  useState,
+  isValidElement,
+  cloneElement,
+  useEffect,
+  useRef,
+} from 'react'
+import toArray from 'rc-util/lib/Children/toArray'
+import { View, ScrollView } from '@tarojs/components'
 import * as utils from '../wxs/utils'
-// import Sticky from '../sticky/index'
-// import Info from '../info/index'
+import { isDef } from '../common/validator'
+import Sticky from '../sticky/index'
+import { getRect, getAllRect, requestAnimationFrame } from '../common/utils'
+import Info from '../info/index'
 import { TabsProps } from '../../../types/tabs'
-// import * as computed from './wxs'
+import { TabProps } from '../../../types/tab'
+import * as computed from './wxs'
+
+const MIN_DISTANCE = 10
+function getDirection(x: number, y: number) {
+  if (x > y && x > MIN_DISTANCE) {
+    return 'horizontal'
+  }
+  if (y > x && y > MIN_DISTANCE) {
+    return 'vertical'
+  }
+  return ''
+}
+
+function parseTabList(children: React.ReactNode): any[] {
+  return toArray(children)
+    .map((node: React.ReactElement<TabProps>) => {
+      if (isValidElement(node)) {
+        const key = node.key !== undefined ? String(node.key) : undefined
+        return {
+          key,
+          ...node.props,
+          node,
+        }
+      }
+
+      return null
+    })
+    .filter((tab) => tab)
+}
 
 export default function Index(props: TabsProps) {
+  const ref = useRef({
+    skipInit: false,
+    direction: '',
+    deltaX: 0,
+    deltaY: 0,
+    offsetX: 0,
+    offsetY: 0,
+    startX: 0,
+    startY: 0,
+  })
+  const [state, setState]: any = useState({
+    tabs: [],
+    scrollLeft: 0,
+    scrollable: false,
+    currentIndex: 0,
+    container: undefined,
+    skipTransition: true,
+    scrollWithAnimation: false,
+    lineOffsetLeft: 0,
+  })
   const {
-    // swipeable,
-    // active = 0,
-    // lazyRender = true,
+    scrollLeft,
+    scrollable,
+    currentIndex,
+    container,
+    skipTransition,
+    scrollWithAnimation,
+    lineOffsetLeft,
+  } = state
 
+  const {
+    swipeable,
+    active = 0,
+    lazyRender = true,
     type = 'line',
-    // sticky,
-    // zIndex = 1,
-    // offsetTop = 0,
-    // container,
-    // scrollable,
-    // border,
-    // scrollWithAnimation,
-    // scrollLeft,
-    // color,
-    // ellipsis = true,
-    // lineOffsetLeft,
-    // lineHeight = -1,
-    // skipTransition,
-    // duration = 0.3,
-    // lineWidth = 40,
-    // currentIndex,
-    // titleActiveColor,
-    // titleInactiveColor,
-    // swipeThreshold = 5,
-    // tabs,
-    // animated,
-    // style,
-    // className,
-    // children,
-    // ...others
+    sticky,
+    zIndex = 1,
+    offsetTop = 0,
+    border,
+    color,
+    ellipsis = true,
+    lineHeight = -1,
+    duration = 0.3,
+    lineWidth = 40,
+    titleActiveColor,
+    titleInactiveColor,
+    swipeThreshold = 5,
+    animated,
+    renderNavleft,
+    renderNavright,
+    onScroll,
+    onClick,
+    onChange,
+    onDisabled,
+    style,
+    className,
+    children,
+    ...others
   } = props
+  const tabs = parseTabList(children)
+  const newChildren: any = tabs.map((tab, index) => {
+    return cloneElement(tab.node, {
+      key: tab.key,
+      active: currentIndex === index,
+      lazyRender,
+      animated,
+      index,
+    })
+  })
+
+  const trigger = function (
+    eventName: 'onClick' | 'onChange' | 'onDisabled',
+    child?: any,
+  ) {
+    const currentChild = child || newChildren[currentIndex]
+    if (!isDef(currentChild)) {
+      return
+    }
+    const func = {
+      onClick,
+      onChange,
+      onDisabled,
+    }
+    func[eventName]?.({
+      index: currentChild.props.index,
+      name: currentChild.props.name || currentChild.props.index,
+      title: currentChild.props.title,
+    })
+  }
+
+  const getCurrentName = function () {
+    const activeTab: any = newChildren[currentIndex]
+    if (activeTab) {
+      return activeTab.props.name || activeTab.props.index
+    }
+  }
+
+  const setCurrentIndex = function (cIndex: number) {
+    if (!isDef(cIndex) || cIndex >= newChildren.length || cIndex < 0) {
+      return
+    }
+
+    if (cIndex === currentIndex) {
+      return
+    }
+    const shouldEmitChange = currentIndex !== null
+    setState((pre: any) => {
+      return { ...pre, currentIndex: cIndex }
+    })
+    requestAnimationFrame(() => {
+      resize(cIndex)
+      scrollIntoView()
+    })
+    Taro.nextTick(() => {
+      // trigger('input')
+      if (shouldEmitChange) {
+        trigger('onChange')
+      }
+    })
+  }
+
+  const setCurrentIndexByName = function (name: any) {
+    const matched = newChildren.filter(
+      (child: any) => (child.props.name || child.props.index) === name,
+    )
+    if (matched.length) {
+      setCurrentIndex(matched[0]!.props.index)
+    }
+  }
+
+  const resize = function (index?: number) {
+    if (type !== 'line') {
+      return
+    }
+    index = index ?? currentIndex
+    Promise.all([
+      getAllRect(null, '.van-tab'),
+      getRect(null, '.van-tabs__line'),
+    ]).then(([rects = [], lineRect]: any) => {
+      const rect = rects[index!]
+      if (rect == null) {
+        return
+      }
+      let lineOffsetLeft = rects
+        .slice(0, index)
+        .reduce((prev: number, curr: any) => prev + curr.width, 0)
+      lineOffsetLeft += (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8)
+      setState((pre: any) => {
+        return { ...pre, lineOffsetLeft }
+      })
+      if (skipTransition) {
+        Taro.nextTick(() => {
+          setState((pre: any) => {
+            return { ...pre, skipTransition: false }
+          })
+        })
+      }
+    })
+  }
+
+  const onTap = function (event: any) {
+    const { index } = event.currentTarget.dataset
+    const child = newChildren[index]
+    if (child.props.disabled) {
+      trigger('onDisabled', child)
+    } else {
+      setCurrentIndex(index)
+      Taro.nextTick(() => {
+        trigger('onClick')
+      })
+    }
+  }
+
+  const scrollIntoView = function () {
+    if (!scrollable) {
+      return
+    }
+    Promise.all([
+      getAllRect(null, '.van-tab'),
+      getRect(null, '.van-tabs__nav'),
+    ]).then(([tabRects, navRect]: any) => {
+      const tabRect = tabRects[currentIndex]
+      const offsetLeft = tabRects
+        .slice(0, currentIndex)
+        .reduce((prev: number, curr: any) => prev + curr.width, 0)
+      setState((pre: any) => {
+        return {
+          ...pre,
+          scrollLeft: offsetLeft - (navRect.width - tabRect.width) / 2,
+        }
+      })
+      if (!scrollWithAnimation) {
+        Taro.nextTick(() => {
+          setState((pre: any) => {
+            return {
+              ...pre,
+              scrollWithAnimation: true,
+            }
+          })
+        })
+      }
+    })
+  }
+
+  const resetTouchStatus = function () {
+    ref.current.direction = ''
+    ref.current.deltaX = 0
+    ref.current.deltaY = 0
+    ref.current.offsetX = 0
+    ref.current.offsetY = 0
+  }
+  const touchStart = function (event: any) {
+    resetTouchStatus()
+    const touch = event.touches[0]
+    ref.current.startX = touch.clientX
+    ref.current.startY = touch.clientY
+  }
+  const touchMove = function (event: any) {
+    const touch = event.touches[0]
+    ref.current.deltaX = touch.clientX - ref.current.startX
+    ref.current.deltaY = touch.clientY - ref.current.startY
+    ref.current.offsetX = Math.abs(ref.current.deltaX)
+    ref.current.offsetY = Math.abs(ref.current.deltaY)
+    ref.current.direction =
+      ref.current.direction ||
+      getDirection(ref.current.offsetX, ref.current.offsetY)
+  }
+  const getAvaiableTab = function (direction: number) {
+    const step = direction > 0 ? -1 : 1
+    for (
+      let i = step;
+      currentIndex + i < tabs.length && currentIndex + i >= 0;
+      i += step
+    ) {
+      const index = currentIndex + i
+      if (
+        index >= 0 &&
+        index < tabs.length &&
+        tabs[index] &&
+        !tabs[index].disabled
+      ) {
+        return index
+      }
+    }
+    return -1
+  }
+
+  const onTouchStart = function (event: any) {
+    if (!swipeable) return
+    touchStart(event)
+  }
+
+  const onTouchMove = function (event: any) {
+    if (!swipeable) return
+    touchMove(event)
+  }
+
+  const onTouchEnd = function () {
+    if (!swipeable) return
+    const { direction, deltaX, offsetX } = ref.current
+    const minSwipeDistance = 50
+    if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
+      const index = getAvaiableTab(deltaX)
+      if (index !== -1) {
+        setCurrentIndex(index)
+      }
+    }
+  }
+
+  useEffect(function () {
+    requestAnimationFrame(() => {
+      setState((pre: any) => {
+        return {
+          ...pre,
+          container: Taro.createSelectorQuery().select('.van-tabs'),
+        }
+      })
+      if (!ref.current.skipInit) {
+        resize()
+        scrollIntoView()
+      }
+    })
+    Taro.nextTick(function () {
+      resize()
+      scrollIntoView()
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(
+    function () {
+      if (!ref.current.skipInit) {
+        ref.current.skipInit = true
+      }
+      if (active !== getCurrentName()) {
+        setCurrentIndexByName(active)
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [active],
+  )
+
+  useEffect(
+    function () {
+      resize()
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lineWidth],
+  )
+  useEffect(
+    function () {
+      setState((pre: any) => {
+        return {
+          ...pre,
+          scrollable: newChildren.length > swipeThreshold || !ellipsis,
+        }
+      })
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [swipeThreshold],
+  )
 
   return (
-    <View className={'custom-class ' + utils.bem('tabs', [type])}>
-      {/* <Sticky
+    <View
+      className={'custom-class ' + utils.bem('tabs', [type] + ` ${className}`)}
+      style={style}
+      {...others}
+    >
+      <Sticky
         disabled={!sticky}
         zIndex={zIndex}
         offsetTop={offsetTop}
         container={container}
-        onScroll={this.onTouchScroll}
+        onScroll={onScroll}
       >
         <View
           className={
@@ -57,7 +390,7 @@ export default function Index(props: TabsProps) {
             (type === 'line' && border ? 'van-hairline--top-bottom' : '')
           }
         >
-          {this.props.renderNavleft}
+          {renderNavleft?.()}
           <ScrollView
             scrollX={scrollable}
             scrollWithAnimation={scrollWithAnimation}
@@ -92,7 +425,7 @@ export default function Index(props: TabsProps) {
               {tabs.map((item: any, index: any) => {
                 return (
                   <View
-                    key={item.index}
+                    key={index}
                     data-index={index}
                     className={
                       computed.tabClass(index === currentIndex, ellipsis) +
@@ -114,7 +447,7 @@ export default function Index(props: TabsProps) {
                       swipeThreshold,
                       scrollable,
                     })}
-                    onTap={this.onTap}
+                    onClick={onTap}
                   >
                     <View
                       className={ellipsis ? 'van-ellipsis' : ''}
@@ -134,15 +467,15 @@ export default function Index(props: TabsProps) {
               })}
             </View>
           </ScrollView>
-          {this.props.renderNavright}
+          {renderNavright?.()}
         </View>
       </Sticky>
       <View
         className="van-tabs__content"
-        onTouchstart={this.onTouchStart}
-        onTouchmove={this.onTouchMove}
-        onTouchend={this.onTouchEnd}
-        onTouchcancel={this.onTouchEnd}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
       >
         <View
           className={
@@ -158,9 +491,9 @@ export default function Index(props: TabsProps) {
             animated,
           })}
         >
-          {children}
+          {newChildren}
         </View>
-      </View> */}
+      </View>
     </View>
   )
 }

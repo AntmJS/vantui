@@ -3,7 +3,7 @@ import { View, Block } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getRect, getSystemInfoSync } from '../common/utils'
 import { NavBarProps } from '../../../types/nav-bar'
-import VanIcon from '../icon/index'
+import Icon from '../icon/index'
 import * as computed from './wxs'
 
 export default function Index(props: NavBarProps) {
@@ -88,12 +88,12 @@ export default function Index(props: NavBarProps) {
             {leftArrow || leftText ? (
               <Block>
                 {leftArrow && (
-                  <VanIcon
+                  <Icon
                     size={64}
                     info={null}
                     name="arrow-left"
                     className="van-nav-bar__arrow"
-                  ></VanIcon>
+                  ></Icon>
                 )}
                 {leftText && (
                   <View
