@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface StickyProps extends StandardProps {
@@ -7,7 +7,7 @@ export interface StickyProps extends StandardProps {
   disabled?: boolean
   container?: () => any
   scrollTop?: number | null
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
   onScroll?: (data: { scrollTop?: number | null; isFixed?: boolean }) => any
 }
 

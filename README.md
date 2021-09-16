@@ -69,6 +69,10 @@ https://github.com/youzan/vant-weapp/commits/dev
 
 本仓库是从1.8.4的版本迁移出来，所以1.8.4以后的commit需要修复
 
+getRect getAllRect的第一个参数传null就行
+
+
+
 
 织夏：
 Toast
@@ -96,6 +100,7 @@ Loading
 Notify
 Cell
 SwipeCell
+Slider
 
 Calendar
 Picker
@@ -112,7 +117,6 @@ Dialog
 Overlay
 ShareSheet
 Steps
-Slider
 Stepper
 
 IndexBar
@@ -120,16 +124,16 @@ TreeSelect
 Area
 
 三少
-Button
-Icon
+Button -> 依赖loading
+Icon[完成]
 
-Progress
+Progress[完成]
 Skeleton
 CountDown
 Tag
-Sticky
+Sticky[完成]
 Rate
 Search
-NavBar
+NavBar[完成]
 Tab
 TabBar

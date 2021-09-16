@@ -1,7 +1,15 @@
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useEffect } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
-import { Progress, Sticky, Icon, NavBar } from '@antmjs/vantui'
+import {
+  Progress,
+  Sticky,
+  Icon,
+  NavBar,
+  Button,
+  Tabs,
+  Tab,
+} from '@antmjs/vantui'
 
 import './index.less'
 
@@ -30,9 +38,50 @@ export default function Index() {
         leftArrow
       />
       <Progress percentage={50} strokeWidth={4} />
-      <Icon name="chat" size={56} dot info={null} />
-      <Icon name="chat" size={56} info="9" />
-      <Icon name="chat" size={56} info="99+" />
+      <Icon name="chat" size={40} dot info={null} />
+      <Icon name="chat" size={40} info="9" />
+      <Icon name="chat" size={40} info="99+" />
+      <Tabs active={0} swipeable swipe-threshold={5}>
+        <Tab info={null} title="标签 1">
+          内容 1
+        </Tab>
+        <Tab info={null} title="标签 2">
+          内容 2
+        </Tab>
+        <Tab info={null} title="标签 3">
+          内容 3
+        </Tab>
+        <Tab info={null} title="标签 4">
+          内容 4
+        </Tab>
+        <Tab info={null} title="标签 1">
+          内容 1
+        </Tab>
+        <Tab info={null} title="标签 2">
+          内容 2
+        </Tab>
+        <Tab info={null} title="标签 3" disabled>
+          内容 3
+        </Tab>
+        <Tab info={null} title="标签 4">
+          内容 4
+        </Tab>
+      </Tabs>
+
+      {/* <Tabs active={0}>
+        <Tab info={null} title="标签 11">
+          内容 11
+        </Tab>
+        <Tab info={null} title="标签 22">
+          内容 22
+        </Tab>
+        <Tab info={null} title="标签 33">
+          内容 33
+        </Tab>
+        <Tab info={null} title="标签 44">
+          内容 44
+        </Tab>
+      </Tabs> */}
       <View
         id="container"
         style={{ marginTop: '200px', height: '200px', background: 'red' }}
@@ -40,7 +89,9 @@ export default function Index() {
         <Sticky
           container={() => Taro.createSelectorQuery().select('#container')}
         >
-          <Button>kkk</Button>
+          <Button plain type="primary">
+            kkk
+          </Button>
         </Sticky>
       </View>
     </View>
