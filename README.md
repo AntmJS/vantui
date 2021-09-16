@@ -128,12 +128,12 @@ Button[完成]
 Icon[完成]
 
 Progress[完成]
-Skeleton
+Skeleton[完成]
 CountDown
 Tag
 Sticky[完成]
 Rate[完成]
-Search
+Search[完成]
 NavBar[完成]
 Tab
 TabBar

@@ -15,6 +15,7 @@ import {
   Loading,
   Rate,
   Search,
+  Skeleton,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -50,6 +51,9 @@ export default function Index() {
         <Icon name="chat" size={40} dot info={null} />
         <Icon name="chat" size={40} info="9" />
         <Icon name="chat" size={40} info="99+" />
+      </View>
+      <View>
+        <Skeleton title avatar row={3} />
       </View>
       <View>
         <Search
