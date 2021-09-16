@@ -21,7 +21,7 @@ import './index.less'
 
 export default function Index() {
   const [rate, setRate] = useState(2.5)
-  const [serachValue, setSearchValue] = useState('ff')
+  const [serachValue] = useState('ff')
   useEffect(function () {
     console.info('index page load.')
     return function () {
