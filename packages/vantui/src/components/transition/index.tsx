@@ -5,12 +5,21 @@ import * as computed from './wxs'
 import { useTransition } from './../../mixins/transition'
 export default function Index(props: TransitionPropsCom) {
   const {
+<<<<<<< HEAD
     onBeforeEnter,
     onBeforeLeave,
     onAfterEnter,
     onAfterLeave,
     onEnter,
     onLeave,
+=======
+    beforeEnter,
+    beforeLeave,
+    afterEnter,
+    afterLeave,
+    enter,
+    leave,
+>>>>>>> main
     duration,
     name,
     show,
@@ -23,12 +32,21 @@ export default function Index(props: TransitionPropsCom) {
     show,
     duration: duration,
     name: name,
+<<<<<<< HEAD
     onBeforeEnter,
     onBeforeLeave,
     onAfterEnter,
     onAfterLeave,
     onEnter,
     onLeave,
+=======
+    beforeEnter,
+    beforeLeave,
+    afterEnter,
+    afterLeave,
+    enter,
+    leave,
+>>>>>>> main
   })
 
   return (

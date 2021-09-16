@@ -303,8 +303,13 @@ raf@^3.4.1:
 
 rc-util@^5.14.0:
   version "5.14.0"
+<<<<<<< HEAD
   resolved "https://registry.nlark.com/rc-util/download/rc-util-5.14.0.tgz?cache=0&sync_timestamp=1631611509279&other_urls=https%3A%2F%2Fregistry.nlark.com%2Frc-util%2Fdownload%2Frc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
   integrity sha1-UsZQ4nVwwsR/eTbH0y6uxSEkkqg=
+=======
+  resolved "https://registry.npmjs.org/rc-util/-/rc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
+  integrity sha512-2vy6/Z1BJUcwLjm/UEJb/htjUTQPigITUIemCcFEo1fQevAumc9sA32x2z5qyWoa9uhrXbiAjSDpPIUqyg65sA==
+>>>>>>> main
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"
@@ -367,8 +372,13 @@ scheduler@^0.20.2:
 
 shallowequal@^1.1.0:
   version "1.1.0"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/shallowequal/download/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha1-GI1SHelbkIdAT9TctosT3wrk5/g=
+=======
+  resolved "https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
+  integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
+>>>>>>> main
 
 split-on-first@^1.0.0:
   version "1.1.0"

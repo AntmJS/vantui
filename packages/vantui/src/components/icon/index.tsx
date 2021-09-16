@@ -1,7 +1,7 @@
 import { View, Image } from '@tarojs/components'
 import * as utils from '../wxs/utils'
-import { IconProps } from '../../../types/icon'
-import VanInfo from '../info/index'
+import Info from '../info/index'
+import { IconProps } from './../../../types/icon'
 import * as computed from './wxs'
 
 export default function Index(props: IconProps) {
@@ -36,7 +36,7 @@ export default function Index(props: IconProps) {
       {...others}
     >
       {(info !== null || dot) && (
-        <VanInfo dot={dot} info={info} className="van-icon__info"></VanInfo>
+        <Info dot={dot} info={info} className="van-icon__info"></Info>
       )}
       {computed.isImage(name) && (
         <Image src={name} mode="aspectFit" className="van-icon__image"></Image>

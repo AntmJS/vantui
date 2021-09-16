@@ -30,28 +30,46 @@ export function useTransition({
     }
     transitionEnded.current = true
     if (status.current === 'enter') {
+<<<<<<< HEAD
       onAfterEnter?.()
     } else {
       onAfterLeave?.()
+=======
+      afterEnter?.()
+    } else {
+      afterLeave?.()
+>>>>>>> main
     }
 
     if (!show && display) {
       // this.setData({ display: false })
       setDisplay(false)
     }
+<<<<<<< HEAD
   }, [display, onAfterEnter, onAfterLeave, show])
+=======
+  }, [afterEnter, afterLeave, display, show])
+>>>>>>> main
   const _enter = useCallback(() => {
     // const { duration, name } = this.data
     const classNames = getClassNames(name)
     const currentDuration = isObj(duration) ? (duration as any).enter : duration
     status.current = 'enter'
     // this.$emit('before-enter')
+<<<<<<< HEAD
     onBeforeEnter?.()
+=======
+    beforeEnter?.()
+>>>>>>> main
     requestAnimationFrame(() => {
       if (status.current !== 'enter') {
         return
       }
+<<<<<<< HEAD
       onEnter?.()
+=======
+      enter?.()
+>>>>>>> main
       setInited(true)
       setDisplay(true)
       setClasses(classNames.enter)
@@ -64,7 +82,11 @@ export function useTransition({
         setClasses(classNames['enter-to'])
       })
     })
+<<<<<<< HEAD
   }, [duration, name, onBeforeEnter, onEnter])
+=======
+  }, [beforeEnter, duration, enter, name])
+>>>>>>> main
   const _leave = useCallback(() => {
     if (!display) {
       return
@@ -73,13 +95,21 @@ export function useTransition({
     const classNames = getClassNames(name)
     const currentDuration = isObj(duration) ? (duration as any).leave : duration
     status.current = 'leave'
+<<<<<<< HEAD
     onBeforeLeave?.()
+=======
+    beforeLeave?.()
+>>>>>>> main
     requestAnimationFrame(() => {
       if (status.current !== 'leave') {
         return
       }
       // this.$emit('leave')
+<<<<<<< HEAD
       onLeave?.()
+=======
+      leave?.()
+>>>>>>> main
       setClasses(classNames.leave)
       setCurrentDuration(currentDuration)
 
@@ -92,7 +122,11 @@ export function useTransition({
         setClasses(classNames['leave-to'])
       })
     })
+<<<<<<< HEAD
   }, [display, duration, name, onBeforeLeave, onLeave, onTransitionEnd])
+=======
+  }, [beforeLeave, display, duration, leave, name, onTransitionEnd])
+>>>>>>> main
   useEffect(() => {
     show ? _enter() : _leave()
   }, [_enter, _leave, show])

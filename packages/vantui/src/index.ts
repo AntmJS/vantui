@@ -7,5 +7,18 @@ export { default as NavBar } from './components/nav-bar'
 export { default as Popup } from './components/popup'
 export { default as Overlay } from './components/overlay'
 export { default as Transition } from './components/transition'
+<<<<<<< HEAD
 export { default as Steps } from './components/steps'
 export { default as Stepper } from './components/stepper'
+=======
+export { default as Tabs } from './components/tabs'
+export { default as Tab } from './components/tab'
+export { default as Image } from './components/image'
+export { default as Col } from './components/col'
+export { default as Row } from './components/row'
+export { default as Loading } from './components/loading'
+export { default as Rate } from './components/rate'
+export { default as Cell } from './components/cell'
+export { default as Search } from './components/search'
+export { default as Skeleton } from './components/skeleton'
+>>>>>>> main

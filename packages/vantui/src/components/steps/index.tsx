@@ -67,7 +67,7 @@ export default function Index(props: StepsProps) {
                             ? inactiveColor
                             : activeColor
                         }
-                        name={item.inactiveIcon || inactiveIcon}
+                        name={item.inactiveIcon || inactiveIcon || ''}
                         className="van-step__icon"
                       ></VanIcon>
                     ) : (
@@ -75,7 +75,9 @@ export default function Index(props: StepsProps) {
                         className="van-step__circle"
                         style={
                           'background-color: ' +
-                          (index < active ? activeColor : inactiveColor)
+                          (active !== undefined && index < active
+                            ? activeColor
+                            : inactiveColor)
                         }
                       ></View>
                     )}
@@ -93,7 +95,9 @@ export default function Index(props: StepsProps) {
                   className="van-step__line"
                   style={
                     'background-color: ' +
-                    (index < active ? activeColor : inactiveColor)
+                    (active !== undefined && index < active
+                      ? activeColor
+                      : inactiveColor)
                   }
                 ></View>
               )}
