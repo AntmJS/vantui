@@ -72,7 +72,6 @@ export default function Index(props: StickyProps) {
         Promise.all([getRect(null, ROOT_ELEMENT), getContainerRect()]).then(
           ([root, container]: any) => {
             if (root && container) {
-              console.log(container.height)
               if (offsetTop + root.height > container.height + container.top) {
                 setDataAfterDiff({
                   fixed: false,

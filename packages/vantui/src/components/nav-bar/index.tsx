@@ -106,11 +106,11 @@ export default function Index(props: NavBarProps) {
                 )}
               </Block>
             ) : (
-              renderLeft?.() ?? <></>
+              renderLeft
             )}
           </View>
           <View className="van-nav-bar__title title-class van-ellipsis">
-            {title ? <Block>{title}</Block> : renderTitle?.() ?? <></>}
+            {title ? <Block>{title}</Block> : renderTitle}
           </View>
           <View className="van-nav-bar__right" onClick={onClickRight}>
             {rightText ? (
@@ -122,7 +122,7 @@ export default function Index(props: NavBarProps) {
                 {rightText}
               </View>
             ) : (
-              renderRight?.() ?? <></>
+              renderRight
             )}
           </View>
         </View>

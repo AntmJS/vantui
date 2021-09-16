@@ -124,7 +124,7 @@ TreeSelect
 Area
 
 三少
-Button -> 依赖loading
+Button[完成]
 Icon[完成]
 
 Progress[完成]
@@ -132,7 +132,7 @@ Skeleton
 CountDown
 Tag
 Sticky[完成]
-Rate
+Rate[完成]
 Search
 NavBar[完成]
 Tab

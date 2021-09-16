@@ -390,7 +390,7 @@ export default function Index(props: TabsProps) {
             (type === 'line' && border ? 'van-hairline--top-bottom' : '')
           }
         >
-          {renderNavleft?.()}
+          {renderNavleft}
           <ScrollView
             scrollX={scrollable}
             scrollWithAnimation={scrollWithAnimation}
@@ -467,7 +467,7 @@ export default function Index(props: TabsProps) {
               })}
             </View>
           </ScrollView>
-          {renderNavright?.()}
+          {renderNavright}
         </View>
       </Sticky>
       <View
