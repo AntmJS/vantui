@@ -28,6 +28,7 @@ export default function Index(props: ImageProps) {
     fit,
     showError,
     showLoading,
+    className,
     ...others
   } = props
 
@@ -59,7 +60,9 @@ export default function Index(props: ImageProps) {
         'custom-class ' +
         utils.bem('image', {
           round,
-        })
+        }) +
+        ' ' +
+        className
       }
       onClick={others.onClick}
       {...others}

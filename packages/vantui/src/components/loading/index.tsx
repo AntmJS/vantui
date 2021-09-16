@@ -5,7 +5,16 @@ import * as computed from './wxs'
 const array12 = Array.from({ length: 1 })
 
 export default function Index(props: LoadingProps): JSX.Element {
-  const { vertical, type, color, size, textSize, children } = props
+  const {
+    vertical,
+    type,
+    color,
+    size,
+    textSize,
+    className,
+    children,
+    ...others
+  } = props
 
   return (
     <View
@@ -13,8 +22,11 @@ export default function Index(props: LoadingProps): JSX.Element {
         'custom-class ' +
         utils.bem('loading', {
           vertical,
-        })
+        }) +
+        ' ' +
+        className
       }
+      {...others}
     >
       {array12.map((_, index: number) => {
         return (
