@@ -11,8 +11,7 @@ import VanOverlay from './../overlay'
 export default function Index(this: any, props: PopupProps) {
   const {
     show,
-    duration,
-    name,
+    duration = 300,
     round,
     closeable,
     overlayStyle,
@@ -27,30 +26,30 @@ export default function Index(this: any, props: PopupProps) {
     safeAreaInsetTop = false,
     lockScroll = true,
     children,
-    clickOverlay,
-    beforeEnter,
-    beforeLeave,
-    afterEnter,
-    afterLeave,
-    enter,
-    leave,
-    close,
+    onClickOverlay,
+    onBeforeEnter,
+    onBeforeLeave,
+    onAfterEnter,
+    onAfterLeave,
+    onEnter,
+    onLeave,
+    onClose,
     style,
     className,
     ...others
   } = props
   const onClickCloseIcon = useCallback(() => {
-    close?.()
-  }, [close])
-  const onClickOverlay = useCallback(() => {
-    clickOverlay?.()
+    onClose?.()
+  }, [onClose])
+  const _onClickOverlay = useCallback(() => {
+    onClickOverlay?.()
     if (closeOnClickOverlay) {
-      close?.()
+      onClose?.()
     }
-  }, [clickOverlay, close, closeOnClickOverlay])
+  }, [closeOnClickOverlay, onClickOverlay, onClose])
 
-  const [_name, setName] = useState(name)
-  const [_duration, setDuration] = useState(0)
+  const [_name, setName] = useState<any>('')
+  const [_duration, setDuration] = useState(duration)
   const originDuration = useRef<any>(null)
 
   useEffect(() => {
@@ -62,18 +61,17 @@ export default function Index(this: any, props: PopupProps) {
       setDuration(originDuration.current)
     }
   }, [duration, position, transition])
-
   const { inited, currentDuration, classes, display, onTransitionEnd } =
     useTransition({
       show,
       duration: _duration,
       name: _name,
-      beforeEnter,
-      beforeLeave,
-      afterEnter,
-      afterLeave,
-      enter,
-      leave,
+      onBeforeEnter,
+      onBeforeLeave,
+      onAfterEnter,
+      onAfterLeave,
+      onEnter,
+      onLeave,
     })
 
   // observeShow(value, old) {
@@ -91,7 +89,7 @@ export default function Index(this: any, props: PopupProps) {
           zIndex={zIndex}
           style={overlayStyle}
           duration={duration}
-          onClick={onClickOverlay}
+          onClick={_onClickOverlay}
           lockScroll={lockScroll}
         />
       )}
@@ -101,8 +99,6 @@ export default function Index(this: any, props: PopupProps) {
             'custom-class ' +
             classes +
             ' ' +
-            className +
-            ' ' +
             utils.bem('popup', [
               position,
               {
@@ -110,14 +106,17 @@ export default function Index(this: any, props: PopupProps) {
                 safe: safeAreaInsetBottom,
                 safeTop: safeAreaInsetTop,
               },
-            ])
+            ]) +
+            `  ${className}`
           }
-          style={computed.popupStyle({
-            zIndex,
-            currentDuration,
-            display,
+          style={utils.style([
+            computed.popupStyle({
+              zIndex,
+              currentDuration,
+              display,
+            }),
             style,
-          })}
+          ])}
           onTransitionEnd={onTransitionEnd}
           {...others}
         >
@@ -131,7 +130,6 @@ export default function Index(this: any, props: PopupProps) {
                 closeIconPosition
               }
               onClick={onClickCloseIcon}
-              info={null}
             ></VanIcon>
           )}
         </View>

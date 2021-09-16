@@ -36,15 +36,6 @@
     "QQAndroid >= 4.1",
     "UCAndroid >= 4.1"
   ],
-  "scripts": {
-    "iconfont": "npx antm-icon --font-family antmuifont --input-path https://at.alicdn.com/t/font_2744513_7eeet2akdo.css --output-path src/style/components/iconfont.less",
-    "_clean": "npx rimraf dist",
-    "_real": "npx rollup -c ./rollup.config.js",
-    "watch": "npx rollup -c ./rollup.watch.config.js -w",
-    "build": "npx run-s _clean _real",
-    "test:watch": "",
-    "test": ""
-  },
   "peerDependencies": {
     "@tarojs/components": ">=3.3.0",
     "@tarojs/taro": ">=3.3.0",
@@ -57,7 +48,8 @@
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
     "lodash.flow": "^3.5.0",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "rc-util": "^5.14.0"
   },
   "devDependencies": {
     "@antmjs/iconfont": "1.9.4",

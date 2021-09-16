@@ -9,7 +9,6 @@ function popupStyle(data: any) {
       'transition-duration': data.currentDuration + 'ms',
     },
     data.display ? null : 'display: none',
-    data.customStyle,
   ])
 }
 export { popupStyle }

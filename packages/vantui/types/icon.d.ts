@@ -3,7 +3,7 @@ import { StandardProps } from '@tarojs/components'
 
 export interface IconProps extends StandardProps {
   dot?: boolean
-  info: null | string
+  info?: null | string
   size?: number
   color?: string
   customStyle?: string
