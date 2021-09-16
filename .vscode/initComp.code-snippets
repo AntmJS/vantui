@@ -1,0 +1,27 @@
+{
+  "initCom": {
+    "prefix": "initComp",
+    "body": [
+      "import { ComponentClass } from 'react'",
+      "import { StandardProps } from '@tarojs/components'",
+      "import { View } from '@tarojs/components'",
+      "import { useState } from 'react'",
+      "import * as utils from '../wxs/utils'",
+      "import { RadioProps } from '../../../types/radio'",
+      "import VanIcon from '../icon/index'",
+      "import * as computed from './wxs'",
+      "",
+      "export default function Index(props: RadioProps) {",
+      "const {",
+      "style,",
+      "className,",
+      "children,",
+      "...others",
+      "} = props",
+      "  return <View>$TM_FILENAME_BASE</View>",
+      "}",
+      ""
+    ],
+    "description": "创建component文件"
+  }
+}
