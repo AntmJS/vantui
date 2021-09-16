@@ -7,13 +7,6 @@
   resolved "https://registry.npmjs.org/@antmjs/iconfont/-/iconfont-1.9.4.tgz#afc0ba1a46ac57dc3fd53a32bd77a3d8fedceaf7"
   integrity sha512-BCfFno9w5NCwgM0x5adPJest7mJPjTzhGgSrLoF3p7dwDcjVokl1Cx1Jh1ZNlGHD9DGHTdvzUC9q/ExD/c5uAA==
 
-"@antmjs/unite@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.npmjs.org/@antmjs/unite/-/unite-1.12.0.tgz#277d13e7991ac22a79b170f36e42cf94cc5c0aa2"
-  integrity sha512-MsVZP6s/+f9Dnv5hYZDG4S6DKVJ7xhGODSAVR5YEdc9EpE/+/YYY124vKVLdvFKAdaE67FNJb6u/85SnvYgIRg==
-  dependencies:
-    "@babel/runtime-corejs3" "^7.14.7"
-
 "@babel/runtime-corejs3@^7.14.7":
   version "7.15.4"
   resolved "https://registry.npmjs.org/@babel/runtime-corejs3/-/runtime-corejs3-7.15.4.tgz#403139af262b9a6e8f9ba04a6fdcebf8de692bf1"
