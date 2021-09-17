@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
   Progress,
@@ -18,11 +18,14 @@ import {
   Skeleton,
   Tag,
   CountDown,
+  Picker,
   Tabbar,
   TabbarItem,
 } from '@antmjs/vantui'
 
 import './index.less'
+
+const columns = ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
 
 export default function Index() {
   const [rate, setRate] = useState(2.5)
@@ -39,6 +42,14 @@ export default function Index() {
   useDidHide(function () {
     console.info('index page hide.')
   })
+
+  const onChange = useCallback(function (a) {
+    console.info(a, 'picker onChange')
+  }, [])
+
+  const onConfirm = useCallback(function (a) {
+    console.info(a, 'picker onConfirm')
+  }, [])
 
   return (
     <View className="pages-index-index">
@@ -181,6 +192,13 @@ export default function Index() {
       <Loading type="circular" size={80}>
         加载中...
       </Loading>
+
+      <Picker
+        title="标题"
+        columns={columns}
+        onChange={onChange}
+        onConfirm={onConfirm}
+      />
       <Tabbar active={1}>
         <TabbarItem info={null} name={null} icon="home-o">
           标签
