@@ -95,7 +95,8 @@
     "release:lerna": "lerna version --exact --no-git-tag-version --force-publish",
     "release:beta": "lerna publish --force-publish=* --exact --skip-temp-tag  --preid=beta --npm-tag=beta",
     "release": "npm run release:lerna && npm run changelog && node ./pullRequest.js",
-    "test": "npx lerna run test"
+    "test": "npx lerna run test",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@commitlint/cli": "^12.1.4",
@@ -136,6 +137,7 @@
   "devDependencies": {
     "@antmjs/babel-preset": "^1.12.0",
     "@antmjs/eslint": "^1.12.0",
-    "@antmjs/stylelint": "^1.12.0"
+    "@antmjs/stylelint": "^1.12.0",
+    "husky": "^7.0.0"
   }
 }
