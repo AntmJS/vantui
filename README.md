@@ -114,13 +114,8 @@ Popup[完成]
 
 Overlay[完成]
 ShareSheet
-<<<<<<< HEAD
 Steps[完成]
 Stepper[完成]
-=======
-Steps
-Stepper
->>>>>>> main
 
 Slider
 IndexBar
