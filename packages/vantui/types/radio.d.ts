@@ -2,7 +2,6 @@ import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface RadioProps extends StandardProps {
-  parent?: any
   name?: string
   value?: null
   disabled?: boolean

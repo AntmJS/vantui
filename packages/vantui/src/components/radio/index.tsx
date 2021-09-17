@@ -1,12 +1,16 @@
 import { View } from '@tarojs/components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioProps } from '../../../types/radio'
 import VanIcon from '../icon/index'
 import { canIUseModel } from '../common/version.js'
 import * as computed from './wxs'
 
-export default function Index(props: RadioProps) {
+export default function Index(
+  props: RadioProps & {
+    parent?: any
+  },
+) {
   const [state, setState] = useState({
     direction: '',
     parentDisabled: false,
@@ -24,7 +28,6 @@ export default function Index(props: RadioProps) {
     shape = 'round',
     iconSize = 40,
     renderIcon,
-    onInput,
     onChange,
     style,
     className,
@@ -32,26 +35,23 @@ export default function Index(props: RadioProps) {
     ...others
   } = props
 
-  const updateFromParent = function () {
+  useEffect(() => {
     if (!parent) {
       return
     }
-    const { value, disabled, direction } = parent.data
+    const { disabled, direction } = parent.data
     setState((state) => {
       return {
         ...state,
-        value,
         direction,
         parentDisabled: disabled,
       }
     })
-  }
+  }, [parent])
+
   const emitChange = function (value: any) {
-    // const instance = parent || this
-    onInput?.(value)
     onChange?.(value)
     if (canIUseModel()) {
-      // instance.setData({ value })
       setState((state) => {
         return {
           ...state,

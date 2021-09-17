@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+// TESTCODE
 import { View, Text, Block } from '@tarojs/components'
 import { useState } from 'react'
 import * as utils from '../wxs/utils'

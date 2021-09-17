@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+// TESTCODE
 import { ComponentClass, useState } from 'react'
 import { StandardProps, View } from '@tarojs/components'
 

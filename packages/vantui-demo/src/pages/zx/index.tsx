@@ -15,7 +15,7 @@ import './index.less'
 export default function Index() {
   const [state, setState] = useState({
     collapseActiveValues: [],
-    radioActiveValue: '',
+    radioActiveValue: '1',
   })
 
   useEffect(function () {
@@ -40,11 +40,11 @@ export default function Index() {
     })
   }
 
-  const handleChangeRadio = function (event: any) {
+  const handleChangeRadio = function (value: string) {
     setState((state) => {
       return {
         ...state,
-        radioActiveValue: event.defail,
+        radioActiveValue: value,
       }
     })
   }
@@ -79,7 +79,7 @@ export default function Index() {
         <View>2</View>
         <View>3</View>
       </Collapse>
-      <RadioGroup value={state.radioActiveValue}>
+      <RadioGroup value={state.radioActiveValue} onChange={handleChangeRadio}>
         <Radio name="1">单选框 1</Radio>
         <Radio name="2">单选框 2</Radio>
       </RadioGroup>

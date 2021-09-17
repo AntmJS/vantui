@@ -10,7 +10,11 @@ const VanCell = function (props: any) {
   return <View>{props.children}</View>
 }
 
-export default function Index(props: CollapseItemProps) {
+export default function Index(
+  props: CollapseItemProps & {
+    parent?: any
+  },
+) {
   const ref = useRef({
     mounted: false,
   })

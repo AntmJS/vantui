@@ -1,4 +1,4 @@
-import { useState, cloneElement } from 'react'
+import { cloneElement } from 'react'
 import { View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
@@ -16,17 +16,12 @@ export default function Index(props: RadioGroupProps) {
     ...others
   } = props
 
-  const updateChildren = function () {
-    children?.forEach?.((child: any) => child.updateFromParent())
-  }
-
-  const newChildren: any = children.map((child: any, index: number) => {
+  const newChildren: any = children.map((child: any) => {
     return cloneElement(child, {
+      value,
+      onChange,
       parent: {
-        index,
-        updateChildren,
         data: {
-          value,
           disabled,
           direction,
         },
