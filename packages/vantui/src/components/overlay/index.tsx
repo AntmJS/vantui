@@ -11,26 +11,12 @@ export default function Index(props: OverlayProps) {
     lockScroll = true,
     duration = 300,
     children,
-    onClick,
+    ...others
   } = props
   const noop = useCallback((event) => {
     event.stopPropagation()
     event.preventDefault()
   }, [])
-  // className={
-  //   computed.rootClass({
-  //     classPrefix,
-  //     name,
-  //   }) + ` ${className}`
-  // }
-  // style={utils.style([
-  //   computed.rootStyle({
-  //     customStyle,
-  //     color,
-  //     size,
-  //   }),
-  //   style,
-  // ])}
   return lockScroll ? (
     <VanTransition
       show={show}
@@ -38,6 +24,7 @@ export default function Index(props: OverlayProps) {
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
       onTouchMove={noop}
+      {...others}
     >
       {children}
     </VanTransition>
@@ -47,7 +34,7 @@ export default function Index(props: OverlayProps) {
       className={'van-overlay' + `  ${className}`}
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
-      onClick={(e) => onClick?.(e)}
+      {...others}
     >
       {children}
     </VanTransition>
