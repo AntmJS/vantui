@@ -16,6 +16,8 @@ import {
   Rate,
   Search,
   Skeleton,
+  Tag,
+  CountDown,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -54,6 +56,35 @@ export default function Index() {
       </View>
       <View>
         <Skeleton title avatar row={3} />
+      </View>
+      <View>
+        <CountDown time={30 * 60 * 60 * 1000} />
+        <CountDown
+          millisecond
+          time={30 * 60 * 60 * 1000}
+          format="HH:mm:ss:SSS"
+        />
+      </View>
+      <View>
+        <Tag
+          round
+          type="primary"
+          closeable
+          onClose={(e) => {
+            console.log(e)
+          }}
+        >
+          标签
+        </Tag>
+        <Tag round type="success">
+          标签
+        </Tag>
+        <Tag round type="danger">
+          标签
+        </Tag>
+        <Tag round type="warning">
+          标签
+        </Tag>
       </View>
       <View>
         <Search
