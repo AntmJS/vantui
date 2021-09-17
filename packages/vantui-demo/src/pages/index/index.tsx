@@ -19,6 +19,8 @@ import {
   Tag,
   CountDown,
   Picker,
+  Tabbar,
+  TabbarItem,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -197,6 +199,20 @@ export default function Index() {
         onChange={onChange}
         onConfirm={onConfirm}
       />
+      <Tabbar active={1}>
+        <TabbarItem info={null} name={null} icon="home-o">
+          标签
+        </TabbarItem>
+        <TabbarItem info={null} name={null} icon="search" dot>
+          标签
+        </TabbarItem>
+        <TabbarItem name={null} icon="friends-o" info="5">
+          标签
+        </TabbarItem>
+        <TabbarItem name={null} icon="setting-o" info="20">
+          标签
+        </TabbarItem>
+      </Tabbar>
     </View>
   )
 }
