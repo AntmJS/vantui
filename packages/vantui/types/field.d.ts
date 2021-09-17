@@ -24,6 +24,30 @@ export interface FieldProps extends StandardProps {
   fixed?: boolean
   showConfirmBar?: boolean
   disableDefaultPadding?: boolean
+  size?: string
+  icon?: string
+  label?: string
+  error?: boolean
+  center?: boolean
+  isLink?: boolean
+  leftIcon?: string
+  rightIcon?: string
+  autosize?: null
+  required?: boolean
+  iconClass?: string
+  clickable?: boolean
+  inputAlign?: string
+  customStyle?: string
+  errorMessage?: string
+  arrowDirection?: string
+  showWordLimit?: boolean
+  errorMessageAlign?: string
+  readonly?: boolean
+  clearable?: boolean
+  clearTrigger?: string
+  border?: boolean
+  titleWidth?: string
+  clearIcon?: string
   renderLefticon?: ReactNode
   renderTitle?: ReactNode
   renderInput?: ReactNode
