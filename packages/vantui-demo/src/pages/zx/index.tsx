@@ -10,6 +10,8 @@ import {
   Collapse,
   Checkbox,
   CheckboxGroup,
+  Switch,
+  Uploader,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -20,6 +22,16 @@ export default function Index() {
     radioActiveValue: '1',
     singleCheckValue: true,
     multiCheckValue: [],
+    switchChecked: true,
+    fileList: [
+      {
+        url: 'https://img.yzcdn.cn/vant/leaf.jpg',
+      },
+      {
+        url: 'https://img.yzcdn.cn/vant/tree.jpg',
+        deletable: false,
+      },
+    ],
   })
 
   useEffect(function () {
@@ -67,6 +79,15 @@ export default function Index() {
       return {
         ...state,
         multiCheckValue: value,
+      }
+    })
+  }
+
+  const handleSwitchChecked = function (value: any) {
+    setState((state) => {
+      return {
+        ...state,
+        switchChecked: value,
       }
     })
   }
@@ -119,6 +140,8 @@ export default function Index() {
         <Checkbox name="2">复选框（多）2</Checkbox>
         <Checkbox name="3">复选框（多）3</Checkbox>
       </CheckboxGroup>
+      <Switch checked={state.switchChecked} onChange={handleSwitchChecked} />
+      <Uploader fileList={state.fileList} deletable={true} />
     </View>
   )
 }
