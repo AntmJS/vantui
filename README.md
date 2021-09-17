@@ -97,7 +97,7 @@ Layout[完成]
 DropdownMenu
 Loading[完成]
 Notify
-Cell
+Cell[完成]
 SwipeCell
 Slider
 
