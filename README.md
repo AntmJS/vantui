@@ -85,7 +85,6 @@ Collapse
 Circle
 
 Checkbox
-Field
 Radio
 Switch
 Uploader
