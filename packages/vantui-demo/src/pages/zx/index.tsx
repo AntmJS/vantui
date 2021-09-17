@@ -8,6 +8,8 @@ import {
   RadioGroup,
   NoticeBar,
   Collapse,
+  Checkbox,
+  CheckboxGroup,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -16,6 +18,8 @@ export default function Index() {
   const [state, setState] = useState({
     collapseActiveValues: [],
     radioActiveValue: '1',
+    singleCheckValue: true,
+    multiCheckValue: [],
   })
 
   useEffect(function () {
@@ -40,11 +44,29 @@ export default function Index() {
     })
   }
 
-  const handleChangeRadio = function (value: string) {
+  const handleChangeRadio = function (value: any) {
     setState((state) => {
       return {
         ...state,
         radioActiveValue: value,
+      }
+    })
+  }
+
+  const handleChangeSingleCheckValue = function (value: any) {
+    setState((state) => {
+      return {
+        ...state,
+        singleCheckValue: value,
+      }
+    })
+  }
+
+  const handleMultiCheckValue = function (value: any) {
+    setState((state) => {
+      return {
+        ...state,
+        multiCheckValue: value,
       }
     })
   }
@@ -83,6 +105,20 @@ export default function Index() {
         <Radio name="1">单选框 1</Radio>
         <Radio name="2">单选框 2</Radio>
       </RadioGroup>
+      <Checkbox
+        value={state.singleCheckValue}
+        onChange={handleChangeSingleCheckValue}
+      >
+        复选框（单）
+      </Checkbox>
+      <CheckboxGroup
+        value={state.multiCheckValue}
+        onChange={handleMultiCheckValue}
+      >
+        <Checkbox name="1">复选框（多）1</Checkbox>
+        <Checkbox name="2">复选框（多）2</Checkbox>
+        <Checkbox name="3">复选框（多）3</Checkbox>
+      </CheckboxGroup>
     </View>
   )
 }

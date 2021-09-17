@@ -2,14 +2,14 @@ import { cloneElement } from 'react'
 import { View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
-import VanIcon from '../icon/index'
-import { RadioGroupProps } from '../../../types/radio-group'
+import { CheckboxGroupProps } from '../../../types/checkbox-group'
 
-export default function Index(props: RadioGroupProps) {
+export default function Index(props: CheckboxGroupProps) {
   const {
-    value = null,
-    direction,
+    max,
+    value = [],
     disabled,
+    direction,
     onChange,
     style,
     className,
@@ -19,10 +19,12 @@ export default function Index(props: RadioGroupProps) {
 
   const newChildren: any = children.map((child: any) => {
     return cloneElement(child, {
-      value,
+      value: value.indexOf(child.props?.name) !== -1,
       onChange,
       parent: {
+        value,
         data: {
+          max,
           disabled,
           direction,
         },
@@ -32,7 +34,13 @@ export default function Index(props: RadioGroupProps) {
 
   return (
     <View
-      className={utils.bem('radio-group', [direction]) + ` ${className}`}
+      className={
+        utils.bem('checkbox-group', [
+          {
+            horizontal: direction === 'horizontal',
+          },
+        ]) + ` ${className}`
+      }
       style={style}
       {...others}
     >
