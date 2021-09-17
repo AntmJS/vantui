@@ -2,7 +2,6 @@ import { cloneElement } from 'react'
 import { View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
-import VanIcon from '../icon/index'
 import { RadioGroupProps } from '../../../types/radio-group'
 
 export default function Index(props: RadioGroupProps) {
