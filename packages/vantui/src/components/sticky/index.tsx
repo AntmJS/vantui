@@ -72,7 +72,6 @@ export default function Index(props: StickyProps) {
         Promise.all([getRect(null, ROOT_ELEMENT), getContainerRect()]).then(
           ([root, container]: any) => {
             if (root && container) {
-              console.log(container.height)
               if (offsetTop + root.height > container.height + container.top) {
                 setDataAfterDiff({
                   fixed: false,
@@ -134,15 +133,20 @@ export default function Index(props: StickyProps) {
       {...others}
     >
       <View
-        className={utils.bem('sticky-wrap', {
-          fixed: state.fixed,
-        })}
-        style={computed.wrapStyle({
-          fixed: state.fixed,
-          offsetTop,
-          transform: state.transform,
-          zIndex,
-        })}
+        className={
+          utils.bem('sticky-wrap', {
+            fixed: state.fixed,
+          }) + ` ${className}`
+        }
+        style={utils.style([
+          computed.wrapStyle({
+            fixed: state.fixed,
+            offsetTop,
+            transform: state.transform,
+            zIndex,
+          }),
+          style,
+        ])}
       >
         {children}
       </View>
