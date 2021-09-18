@@ -11,20 +11,20 @@ export default function Index(props: CollapseProps) {
     onOpen,
     onClose,
     onChange,
-    onInput,
     style,
     className,
     children,
     ...others
   } = props
 
-  const updateExpanded = function () {
-    children?.forEach?.((child: any) => {
-      child.updateExpanded()
-    })
-  }
+  // const updateExpanded = function () {
+  //   children?.forEach?.((child: any) => {
+  //     child.updateExpanded()
+  //   })
+  // }
 
   const handleSwitch = function (name: any, expanded: any) {
+    console.log('222: ', name, expanded)
     const changeItem = name
     if (!accordion) {
       name = expanded
@@ -39,14 +39,12 @@ export default function Index(props: CollapseProps) {
       onClose?.(changeItem)
     }
     onChange?.(name)
-    onInput?.(name)
   }
 
   const newChildren: any = children?.map((child: any, index: number) => {
     return cloneElement(child, {
       parent: {
         index,
-        updateExpanded,
         handleSwitch,
         data: {
           value,

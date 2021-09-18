@@ -57,7 +57,7 @@ export default function Index(props: NoticeBarProps) {
     return () => {
       timer && clearTimeout(timer)
     }
-  }, [])
+  }, [text, speed])
 
   const init = function () {
     requestAnimationFrame(() => {

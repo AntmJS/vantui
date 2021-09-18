@@ -7,11 +7,12 @@ import {
   Radio,
   RadioGroup,
   NoticeBar,
-  Collapse,
   Checkbox,
   CheckboxGroup,
   Switch,
   Uploader,
+  Collapse,
+  CollapseItem,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -47,13 +48,20 @@ export default function Index() {
     console.info('index page hide.')
   })
 
-  const handleChangeCollapse = function (event: any) {
+  const handleChangeCollapse = function (value: any) {
     setState((state) => {
       return {
         ...state,
-        collapseActiveValues: event.defail,
+        collapseActiveValues: value,
       }
     })
+  }
+
+  const handleOpenCollapse = function (value: any) {
+    console.log(`展开: ${value}`)
+  }
+  const handleCloseCollapse = function (value: any) {
+    console.log(`关闭: ${value}`)
   }
 
   const handleChangeRadio = function (value: any) {
@@ -108,8 +116,10 @@ export default function Index() {
       <Collapse
         value={state.collapseActiveValues}
         onChange={handleChangeCollapse}
+        onOpen={handleOpenCollapse}
+        onClose={handleCloseCollapse}
       >
-        {/* <CollapseItem title="有赞微商城" name="1">
+        <CollapseItem title="有赞微商城" name="1">
           提供多样店铺模板，快速搭建网上商城
         </CollapseItem>
         <CollapseItem title="有赞零售" name="2">
@@ -117,10 +127,7 @@ export default function Index() {
         </CollapseItem>
         <CollapseItem title="有赞美业" name="3" disabled>
           线上拓客，随时预约，贴心顺手的开单收银
-        </CollapseItem> */}
-        <View>1</View>
-        <View>2</View>
-        <View>3</View>
+        </CollapseItem>
       </Collapse>
       <RadioGroup value={state.radioActiveValue} onChange={handleChangeRadio}>
         <Radio name="1">单选框 1</Radio>

@@ -23,7 +23,7 @@ export default function Index(
 
   const {
     parent,
-    name = '',
+    name = null,
     title = '',
     value = '',
     icon,
@@ -44,6 +44,10 @@ export default function Index(
     ref.current.mounted = true
   }, [])
 
+  useEffect(() => {
+    updateExpanded()
+  }, [parent.data])
+
   const updateExpanded = function () {
     if (!parent) {
       return
@@ -54,8 +58,8 @@ export default function Index(
     const expanded = accordion
       ? value === currentName
       : (value || []).some((name: any) => name === currentName)
-    if (expanded !== expanded) {
-      setContentAnimate(null, expanded, ref.current.mounted)
+    if (expanded !== state.expanded) {
+      setContentAnimate(null, expanded, ref.current.mounted, setState)
     }
     setState((state) => {
       return {

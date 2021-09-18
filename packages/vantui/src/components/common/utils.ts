@@ -61,7 +61,10 @@ export function getRect(context: any, selector: any) {
     query
       .select(selector)
       .boundingClientRect()
-      .exec((rect: any = []) => resolve(rect[0]))
+      .exec((rect: any = []) => {
+        console.log('rect: ', rect)
+        return resolve(rect[0])
+      })
   })
 }
 export function getAllRect(context: any, selector: any) {
