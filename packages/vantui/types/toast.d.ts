@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface ToastProps extends StandardProps {
@@ -10,7 +10,7 @@ export interface ToastProps extends StandardProps {
   type?: string
   loadingType?: string
   position?: string
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
 }
 
 declare const Toast: ComponentClass<ToastProps>

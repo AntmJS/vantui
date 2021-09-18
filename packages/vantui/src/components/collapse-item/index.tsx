@@ -3,12 +3,8 @@ import { View, Block, Slot } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../../types/collapse-item'
+import VanCell from '../cell/index'
 import { setContentAnimate } from './animate.js'
-
-// TESTCODE
-const VanCell = function (props: any) {
-  return <View>{props.children}</View>
-}
 
 export default function Index(
   props: CollapseItemProps & {
@@ -27,9 +23,9 @@ export default function Index(
 
   const {
     parent,
-    name = null,
-    title = null,
-    value = null,
+    name = '',
+    title = '',
+    value = '',
     icon,
     label,
     disabled,
@@ -91,20 +87,18 @@ export default function Index(
     >
       <VanCell
         title={title}
-        titleClass="title-class"
         icon={icon}
         value={value}
         label={label}
         isLink={isLink}
         clickable={clickable}
         border={border && state.expanded}
-        className={utils.bem('collapse-item__title', {
-          disabled,
-          expanded: state.expanded,
-        })}
-        rightIconClass="van-cell__right-icon"
-        customClass="van-cell"
-        hoverClass="van-cell--hover"
+        className={
+          utils.bem('collapse-item__title', {
+            disabled,
+            expanded: state.expanded,
+          }) + ' van-cell'
+        }
         onClick={onClick}
         renderTitle={
           <Block>

@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface UploaderProps extends StandardProps {
@@ -25,7 +25,7 @@ export interface UploaderProps extends StandardProps {
   compressed?: boolean
   maxDuration?: number
   camera?: string
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
   onError?: (data: any) => any
   onDelete?: (data: any) => any
   onBeforeRead?: (data: any) => any

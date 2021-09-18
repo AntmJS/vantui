@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface DividerProps extends StandardProps {
@@ -9,7 +9,7 @@ export interface DividerProps extends StandardProps {
   borderColor?: string
   textColor?: string
   customStyle?: string
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
 }
 
 declare const Divider: ComponentClass<DividerProps>

@@ -42,7 +42,7 @@ export default function Index(props: CollapseProps) {
     onInput?.(name)
   }
 
-  const newChildren: any = children.map((child: any, index: number) => {
+  const newChildren: any = children?.map((child: any, index: number) => {
     return cloneElement(child, {
       parent: {
         index,

@@ -1,7 +1,10 @@
+// TESTCODE
+// eslint-disable-next-line
+// @ts-nocheck
 import Taro from '@tarojs/taro'
 import { pickExclude } from '../common/utils.js'
 import { isImageUrl, isVideoUrl } from '../common/validator.js'
-export function isImageFile(item) {
+export function isImageFile(item: any) {
   if (item.isImage != null) {
     return item.isImage
   }
@@ -13,7 +16,7 @@ export function isImageFile(item) {
   }
   return false
 }
-export function isVideoFile(item) {
+export function isVideoFile(item: any) {
   if (item.isVideo != null) {
     return item.isVideo
   }
@@ -25,8 +28,8 @@ export function isVideoFile(item) {
   }
   return false
 }
-function formatImage(res) {
-  return res.tempFiles.map((item) =>
+function formatImage(res: any) {
+  return res.tempFiles.map((item: any) =>
     Object.assign(Object.assign({}, pickExclude(item, ['path'])), {
       type: 'image',
       url: item.path,
@@ -34,7 +37,7 @@ function formatImage(res) {
     }),
   )
 }
-function formatVideo(res) {
+function formatVideo(res: any) {
   return [
     Object.assign(
       Object.assign(
@@ -45,8 +48,8 @@ function formatVideo(res) {
     ),
   ]
 }
-function formatMedia(res) {
-  return res.tempFiles.map((item) =>
+function formatMedia(res: any) {
+  return res.tempFiles.map((item: any) =>
     Object.assign(
       Object.assign(
         {},
@@ -61,8 +64,8 @@ function formatMedia(res) {
     ),
   )
 }
-function formatFile(res) {
-  return res.tempFiles.map((item) =>
+function formatFile(res: any) {
+  return res.tempFiles.map((item: any) =>
     Object.assign(Object.assign({}, pickExclude(item, ['path'])), {
       url: item.path,
     }),

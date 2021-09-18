@@ -1,4 +1,3 @@
-/* eslint-disable */
 const PRESETS = ['error', 'search', 'default', 'network']
 
 function imageUrl(image: string) {

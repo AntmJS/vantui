@@ -1,10 +1,10 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface EmptyProps extends StandardProps {
   description?: string
   image?: string
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
   renderImage?: () => any
   renderDescription?: () => any
 }

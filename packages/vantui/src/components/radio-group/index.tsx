@@ -10,13 +10,13 @@ export default function Index(props: RadioGroupProps) {
     direction,
     disabled,
     onChange,
+    children,
     style,
     className,
-    children,
     ...others
   } = props
 
-  const newChildren: any = children.map((child: any) => {
+  const newChildren: any = children?.map((child: any) => {
     return cloneElement(child, {
       value,
       onChange,

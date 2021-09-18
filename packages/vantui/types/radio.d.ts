@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface RadioProps extends StandardProps {
@@ -11,7 +11,7 @@ export interface RadioProps extends StandardProps {
   labelDisabled?: boolean
   shape?: string
   iconSize?: number
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
   renderIcon?: () => any
   onClickLabel?: () => any
   onInput?: (data: any) => any

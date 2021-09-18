@@ -12,16 +12,16 @@ const defaultOptions = {
   loadingType: 'circular',
   selector: '#van-toast',
 }
-let queue = []
+let queue: any = []
 let currentOptions = Object.assign({}, defaultOptions)
-function parseOptions(message) {
+function parseOptions(message: any) {
   return isObj(message) ? message : { message }
 }
 function getContext() {
   const pages = Taro.getCurrentPages()
   return pages[pages.length - 1]
 }
-function Toast(toastOptions) {
+function Toast(toastOptions: any) {
   const options = Object.assign(
     Object.assign({}, currentOptions),
     parseOptions(toastOptions),
@@ -46,23 +46,23 @@ function Toast(toastOptions) {
   if (options.duration != null && options.duration > 0) {
     toast.timer = setTimeout(() => {
       toast.clear()
-      queue = queue.filter((item) => item !== toast)
+      queue = queue.filter((item: any) => item !== toast)
     }, options.duration)
   }
   return toast
 }
-const createMethod = (type) => (options) =>
+const createMethod = (type: any) => (options: any) =>
   Toast(Object.assign({ type }, parseOptions(options)))
 Toast.loading = createMethod('loading')
 Toast.success = createMethod('success')
 Toast.fail = createMethod('fail')
 Toast.clear = () => {
-  queue.forEach((toast) => {
+  queue.forEach((toast: any) => {
     toast.clear()
   })
   queue = []
 }
-Toast.setDefaultOptions = (options) => {
+Toast.setDefaultOptions = (options: any) => {
   Object.assign(currentOptions, options)
 }
 Toast.resetDefaultOptions = () => {

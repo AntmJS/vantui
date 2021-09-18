@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface CollapseItemProps extends StandardProps {
@@ -11,7 +11,7 @@ export interface CollapseItemProps extends StandardProps {
   clickable?: boolean
   border?: boolean
   isLink?: boolean
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
   renderValue?: () => any
 }
 

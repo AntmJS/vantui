@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { style } from '../wxs/style'
 import { addUnit } from '../wxs/add-unit'
 

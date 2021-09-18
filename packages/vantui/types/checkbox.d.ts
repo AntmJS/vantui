@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface CheckboxProps extends StandardProps {
@@ -11,7 +11,7 @@ export interface CheckboxProps extends StandardProps {
   labelDisabled?: boolean
   shape?: string
   iconSize?: number
-  children?: JSX.Element | JSX.Element[] | string | any
+  children?: ReactNode
   renderIcon?: () => any
   onClickLabel?: () => any
   onChange?: (data: any) => any

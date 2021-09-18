@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface NoticeBarProps extends StandardProps {
@@ -14,7 +14,7 @@ export interface NoticeBarProps extends StandardProps {
   backgroundColor?: string
   background?: string
   wrapable?: boolean
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
   renderLefticon?: () => any
   renderRighticon?: () => any
   onClick?: () => any

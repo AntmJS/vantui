@@ -17,7 +17,7 @@ export default function Index(props: CheckboxGroupProps) {
     ...others
   } = props
 
-  const newChildren: any = children.map((child: any) => {
+  const newChildren: any = children?.map((child: any) => {
     return cloneElement(child, {
       value: value.indexOf(child.props?.name) !== -1,
       onChange,

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { style } from '../wxs/style'
 
 function rootStyle(data: any) {

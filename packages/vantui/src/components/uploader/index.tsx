@@ -81,7 +81,7 @@ export default function Index(props: UploaderProps) {
         maxCount: maxCount - state.lists.length,
       }),
     )
-      .then((res) => {
+      .then((res: any) => {
         _onBeforeRead(multiple ? res : res[0])
       })
       .catch((error) => {

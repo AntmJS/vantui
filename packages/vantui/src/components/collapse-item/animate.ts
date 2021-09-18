@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { canIUseAnimate } from '../common/version.js'
 import { getRect } from '../common/utils.js'
-function useAnimate(context, expanded, mounted, height) {
+function useAnimate(context: any, expanded: any, mounted: any, height: any) {
   const selector = '.van-collapse-item__wrapper'
   if (expanded) {
     context.animate(
@@ -30,7 +30,7 @@ function useAnimate(context, expanded, mounted, height) {
     },
   )
 }
-function useAnimation(context, expanded, mounted, height) {
+function useAnimation(context: any, expanded: any, mounted: any, height: any) {
   const animation = Taro.createAnimation({
     duration: 0,
     timingFunction: 'ease-in-out',
@@ -60,9 +60,9 @@ function useAnimation(context, expanded, mounted, height) {
     animation: animation.export(),
   })
 }
-export function setContentAnimate(context, expanded, mounted) {
+export function setContentAnimate(context: any, expanded: any, mounted: any) {
   getRect(context, '.van-collapse-item__content')
-    .then((rect) => rect.height)
+    .then((rect: any) => rect.height)
     .then((height) => {
       canIUseAnimate()
         ? useAnimate(context, expanded, mounted, height)
