@@ -119,7 +119,6 @@ export default function Index(
           renderIcon
         ) : (
           <VanIcon
-            info={null}
             name="success"
             size="0.8em"
             className={

@@ -1,10 +1,5 @@
 import { ComponentClass, ReactNode } from 'react'
-import {
-  StandardProps,
-  ITouchEvent,
-  CommonEventFunction,
-} from '@tarojs/components'
-import { TextareaProps } from '@tarojs/components/types/Textarea'
+import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface SearchProps extends StandardProps {
   value?: string | number

@@ -15,8 +15,8 @@ export interface NoticeBarProps extends StandardProps {
   background?: string
   wrapable?: boolean
   children?: ReactNode
-  renderLefticon?: () => any
-  renderRighticon?: () => any
+  renderLeftIcon?: () => any
+  renderRightIcon?: () => any
   onClick?: () => any
   onClose?: (data: any) => any
 }

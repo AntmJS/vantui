@@ -230,7 +230,6 @@ export default function Index(props: UploaderProps) {
                       onClick={onPreviewFile}
                     >
                       <VanIcon
-                        info={null}
                         name="description"
                         className="van-uploader__file-icon"
                       ></VanIcon>
@@ -244,7 +243,6 @@ export default function Index(props: UploaderProps) {
                     <View className="van-uploader__mask">
                       {item.status === 'failed' ? (
                         <VanIcon
-                          info={null}
                           name="close"
                           className="van-uploader__mask-icon"
                         ></VanIcon>
@@ -265,7 +263,6 @@ export default function Index(props: UploaderProps) {
                       onClick={deleteItem}
                     >
                       <VanIcon
-                        info={null}
                         name="cross"
                         className="van-uploader__preview-delete-icon"
                       ></VanIcon>
@@ -295,7 +292,6 @@ export default function Index(props: UploaderProps) {
                 onClick={startUpload}
               >
                 <VanIcon
-                  info={null}
                   name={uploadIcon}
                   className="van-uploader__upload-icon"
                 ></VanIcon>
