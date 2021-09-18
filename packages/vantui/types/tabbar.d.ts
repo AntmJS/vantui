@@ -11,7 +11,7 @@ export interface TabbarProps extends StandardProps {
   zIndex?: number
   safeAreaInsetBottom?: boolean
   children?: ReactNode
-  onChange?: (data?: string | number) => void
+  onChange?: (name?: string | number) => void
 }
 
 declare const Tabbar: ComponentClass<TabbarProps>

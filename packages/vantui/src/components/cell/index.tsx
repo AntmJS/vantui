@@ -1,4 +1,4 @@
-import { View, Block } from '@tarojs/components'
+import { View, Block, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { CellProps } from '../../../types/cell'
 import { jumpLink } from '../common/jumpLink'
@@ -28,14 +28,14 @@ export default function Index(props: CellProps) {
     renderIcon,
     renderTitle,
     renderLabel,
-    renderRighticon,
+    renderRightIcon,
     renderExtra,
     children,
     style,
     className,
     ...others
   } = props
-  const _click = function (event: any) {
+  const _click: (event: ITouchEvent) => void = function (event) {
     onClick?.(event)
     if (url && linkType) jumpLink(linkType, url)
   }
@@ -62,7 +62,6 @@ export default function Index(props: CellProps) {
     >
       {icon ? (
         <Icon
-          info={null}
           name={icon}
           className="van-cell__left-icon-wrap van-cell__left-icon"
         ></Icon>
@@ -76,7 +75,7 @@ export default function Index(props: CellProps) {
         })}
         className="van-cell__title title-class"
       >
-        {title ? <Block>{title}</Block> : renderTitle}
+        {title || title === 0 ? <Block>{title}</Block> : renderTitle}
         {(label || useLabelSlot) && (
           <View className="van-cell__label label-class">
             {useLabelSlot ? renderLabel : label && <Block>{label}</Block>}
@@ -88,12 +87,11 @@ export default function Index(props: CellProps) {
       </View>
       {isLink ? (
         <Icon
-          info={null}
           name={arrowDirection ? 'arrow' + '-' + arrowDirection : 'arrow'}
           className="van-cell__right-icon-wrap right-icon-class van-cell__right-icon"
         ></Icon>
       ) : (
-        renderRighticon
+        renderRightIcon
       )}
       {renderExtra}
     </View>

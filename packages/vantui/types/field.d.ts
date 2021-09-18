@@ -1,5 +1,10 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import {
+  StandardProps,
+  ITouchEvent,
+  CommonEventFunction,
+} from '@tarojs/components'
+import { TextareaProps } from '@tarojs/components/types/Textarea'
 
 export interface FieldProps extends StandardProps {
   value?: string | number
@@ -24,7 +29,7 @@ export interface FieldProps extends StandardProps {
   fixed?: boolean
   showConfirmBar?: boolean
   disableDefaultPadding?: boolean
-  size?: string
+  size?: 'large'
   icon?: string
   label?: string
   error?: boolean
@@ -32,14 +37,14 @@ export interface FieldProps extends StandardProps {
   isLink?: boolean
   leftIcon?: string
   rightIcon?: string
-  autosize?: null
+  autosize?: boolean | Normal.IAnyObject
   required?: boolean
   iconClass?: string
   clickable?: boolean
   inputAlign?: string
   customStyle?: string
   errorMessage?: string
-  arrowDirection?: string
+  arrowDirection?: 'left' | 'up' | 'down'
   showWordLimit?: boolean
   errorMessageAlign?: string
   readonly?: boolean
@@ -54,15 +59,16 @@ export interface FieldProps extends StandardProps {
   renderRighticon?: ReactNode
   renderIcon?: ReactNode
   renderButton?: ReactNode
-  onFocus?: (e: any) => void
-  onBlur?: (e: any) => void
-  onClear?: (e: any) => void
-  onConfirm?: (e: any) => void
-  onChange?: (value?: string | number) => void
-  onClickInput?: (e: any) => void
-  onClickIcon?: (e: any) => void
-  onLineChange?: (e: any) => void
-  onKeyboardHeightChange?: (e: any) => void
+  onInput?: (e: ITouchEvent) => void
+  onChange?: (e: ITouchEvent) => void
+  onConfirm?: (e: ITouchEvent) => void
+  onClickIcon?: () => void
+  onFocus?: (e: ITouchEvent) => void
+  onBlur?: (e: ITouchEvent) => void
+  onClear?: () => void
+  onClickInput?: () => void
+  onLineChange?: CommonEventFunction<TextareaProps.onLineChangeEventDetail>
+  onKeyboardHeightChange?: CommonEventFunction<TextareaProps.onKeyboardHeightChangeEventDetail>
 }
 
 declare const Field: ComponentClass<FieldProps>

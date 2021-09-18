@@ -1,5 +1,10 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import {
+  StandardProps,
+  ITouchEvent,
+  CommonEventFunction,
+} from '@tarojs/components'
+import { TextareaProps } from '@tarojs/components/types/Textarea'
 
 export interface SearchProps extends StandardProps {
   value?: string | number
@@ -28,13 +33,13 @@ export interface SearchProps extends StandardProps {
   renderLefticon?: ReactNode
   renderRighticon?: ReactNode
   renderAction?: ReactNode
-  onFocus?: (e: any) => void
-  onBlur?: (e: any) => void
-  onChange?: (value?: string | number) => void
-  onClear?: (e: any) => void
-  onClickInput?: (e: any) => void
-  onSearch?: (e: any) => void
+  onChange?: (e: ITouchEvent) => void
+  onSearch?: (e: ITouchEvent) => void
+  onFocus?: (e: ITouchEvent) => void
+  onBlur?: (e: ITouchEvent) => void
+  onClear?: () => void
   onCancel?: () => void
+  onClickInput?: () => void
 }
 
 declare const Search: ComponentClass<SearchProps>

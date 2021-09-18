@@ -3,12 +3,12 @@ import { StandardProps } from '@tarojs/components'
 
 export interface IconProps extends StandardProps {
   dot?: boolean
-  info?: null | string
+  info?: number | string
   size?: number | string
   color?: string
   customStyle?: string
   classPrefix?: string
-  name: string
+  name?: string
 }
 
 declare const Icon: ComponentClass<IconProps>

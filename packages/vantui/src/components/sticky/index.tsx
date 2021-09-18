@@ -23,8 +23,8 @@ export default function Index(props: StickyProps) {
     ...others
   } = props
   const ref: React.MutableRefObject<{
-    scrollTop?: null | number
-  }> = useRef({ scrollTop: null })
+    scrollTop?: number
+  }> = useRef({})
 
   const getContainerRect = useCallback(
     function () {
@@ -58,7 +58,7 @@ export default function Index(props: StickyProps) {
   )
 
   const onMyScroll = useCallback(
-    function (scrollTop?: number | null) {
+    function (scrollTop?: number) {
       if (disabled) {
         setDataAfterDiff({
           fixed: false,
@@ -95,7 +95,6 @@ export default function Index(props: StickyProps) {
         if (!isDef(root)) {
           return
         }
-        console.log(root.top)
         if (offsetTop >= root.top) {
           setDataAfterDiff({ fixed: true, height: root.height })
           // this.transform = 0
