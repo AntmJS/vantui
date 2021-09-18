@@ -3,11 +3,11 @@ import { StandardProps } from '@tarojs/components'
 
 export interface TabProps extends StandardProps {
   dot?: boolean
-  info: string | null
+  info?: string | number
   title?: string
   disabled?: boolean
   titleStyle?: string
-  name?: string | null
+  name?: string | number
   children: ReactNode
 }
 

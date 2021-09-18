@@ -18,7 +18,7 @@ export default function Index(
     name,
     iconPrefix = 'van-icon',
     dot,
-    info = null,
+    info,
     renderIconactive,
     renderIcon,
     index,
@@ -35,27 +35,27 @@ export default function Index(
 
   const _click = function () {
     if (onChange) {
-      const _active = name || index
+      const _active = name ?? index
       if (_active !== active) {
         onChange(_active)
       }
     }
 
-    onClick?.(name || index)
+    onClick?.(name ?? index)
   }
 
   return onChange ? (
     <View
       className={
         utils.bem('tabbar-item', {
-          active: active === (name || index),
+          active: active === (name ?? index),
         }) +
         ' custom-class' +
         ` ${className}`
       }
       style={utils.style([
         {
-          color: active === (name || index) ? activeColor : inactiveColor,
+          color: active === (name ?? index) ? activeColor : inactiveColor,
         },
         style,
       ])}
@@ -65,17 +65,18 @@ export default function Index(
       <View className="van-tabbar-item__icon">
         {icon ? (
           <Icon
-            info={null}
+            size={38}
+            info={info}
             name={icon}
             classPrefix={iconPrefix}
             className="van-tabbar-item__icon__inner"
           ></Icon>
         ) : (
           <Block>
-            {active === (name || index) ? renderIconactive : renderIcon}
+            {active === (name ?? index) ? renderIconactive : renderIcon}
           </Block>
         )}
-        <Info dot={dot} info={info} className="van-tabbar-item__info"></Info>
+        <Info dot={dot} className="van-tabbar-item__info"></Info>
       </View>
       <View className="van-tabbar-item__text">{children}</View>
     </View>

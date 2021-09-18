@@ -114,7 +114,7 @@ export default function Index(
             <Slot name="icon"></Slot>
           </Block>
         }
-        renderRighticon={
+        renderRightIcon={
           <Block>
             <Slot name="right-icon"></Slot>
           </Block>

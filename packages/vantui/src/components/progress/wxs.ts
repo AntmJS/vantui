@@ -21,6 +21,7 @@ function portionStyle(data: any) {
 function pivotStyle(data: any) {
   return utils.style({
     color: data.textColor,
+    visibility: data.right === 0 ? 'hidden' : 'visible',
     right: data.right + 'px',
     background: data.pivotColor
       ? data.pivotColor

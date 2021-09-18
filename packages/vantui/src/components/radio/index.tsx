@@ -124,7 +124,6 @@ export default function Index(
             customStyle={computed.iconCustomStyle({
               iconSize,
             })}
-            info={null}
           ></VanIcon>
         )}
       </View>

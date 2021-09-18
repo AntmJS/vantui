@@ -157,10 +157,9 @@ export default function Index(props: TabsProps) {
     })
     requestAnimationFrame(() => {
       resize(cIndex)
-      scrollIntoView()
+      scrollIntoView(cIndex)
     })
     Taro.nextTick(() => {
-      // trigger('input')
       if (shouldEmitChange) {
         trigger('onChange')
       }
@@ -219,17 +218,18 @@ export default function Index(props: TabsProps) {
     }
   }
 
-  const scrollIntoView = function () {
+  const scrollIntoView = function (index?: number) {
     if (!scrollable) {
       return
     }
+    index = index ?? currentIndex
     Promise.all([
       getAllRect(null, '.van-tab'),
       getRect(null, '.van-tabs__nav'),
     ]).then(([tabRects, navRect]: any) => {
-      const tabRect = tabRects[currentIndex]
+      const tabRect = tabRects[index!]
       const offsetLeft = tabRects
-        .slice(0, currentIndex)
+        .slice(0, index)
         .reduce((prev: number, curr: any) => prev + curr.width, 0)
       setState((pre: any) => {
         return {

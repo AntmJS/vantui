@@ -1,10 +1,19 @@
-import { ComponentClass, ReactNode } from 'react'
+import type { ForwardRefRenderFunction } from 'react'
+import { ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface ICountDownRef {
   start: () => void
   pause: () => void
   reset: () => void
+}
+
+export interface ITimeData {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+  milliseconds: number
 }
 
 export interface CountDownProps extends StandardProps {
@@ -14,11 +23,11 @@ export interface CountDownProps extends StandardProps {
   format?: string
   autoStart?: boolean
   children?: ReactNode
-  onChange?: (data: any) => void
+  onChange?: (timeData: ITimeData) => void
   onFinish?: () => void
-  cref?: React.MutableRefObject<ICountDownRef | undefined>
+  ref?: React.MutableRefObject<ICountDownRef | undefined>
 }
 
-declare const CountDown: ComponentClass<CountDownProps>
+declare const CountDown: ForwardRefRenderFunction<ICountDownRef, CountDownProps>
 
 export { CountDown }

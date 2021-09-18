@@ -58,6 +58,7 @@ function trackStyle(data: any) {
 
 function lineStyle(data: any) {
   return style({
+    visibility: data.lineOffsetLeft === 0 ? 'hidden' : 'visible',
     width: utils.addUnit(data.lineWidth),
     transform: 'translateX(' + data.lineOffsetLeft + 'px)',
     '-webkit-transform': 'translateX(' + data.lineOffsetLeft + 'px)',

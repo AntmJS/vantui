@@ -90,7 +90,6 @@ export default function Index(props: NavBarProps) {
                 {leftArrow && (
                   <Icon
                     size={64}
-                    info={null}
                     name="arrow-left"
                     className="van-nav-bar__arrow"
                   ></Icon>

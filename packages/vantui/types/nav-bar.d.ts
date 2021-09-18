@@ -1,5 +1,5 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface NavBarProps extends StandardProps {
   title?: string
@@ -15,8 +15,8 @@ export interface NavBarProps extends StandardProps {
   renderTitle?: ReactNode
   renderLeft?: ReactNode
   renderRight?: ReactNode
-  onClickLeft?: () => any
-  onClickRight?: () => any
+  onClickLeft?: (e: ITouchEvent) => void
+  onClickRight?: (e: ITouchEvent) => void
 }
 
 declare const NavBar: ComponentClass<NavBarProps>

@@ -27,21 +27,21 @@
   resolved "https://registry.npmjs.org/@stencil/core/-/core-2.4.0.tgz#17b45629c8986e35dcbce3f7dab7d64beede83f2"
   integrity sha512-gU6+Yyd6O0KrCSS/O6j8KKqmRo+/Dcs2fI0+APCpbAWK+nqhwDISpdnSEfGDCLMoAC08XOZCycBRk2K1VGnEcg==
 
-"@tarojs/api@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/api/-/api-3.3.7.tgz#a8c772cc032155c9fbfe8900a42d587a1aa72d68"
-  integrity sha512-vieCYlaZj0sdT5/ovIOBt/RBTtXVEA+Ek1MEkeqzH96ViC/KchCQfyQqtnvlyFbM02vKq2zJfW1b0chFyCToIQ==
+"@tarojs/api@3.3.8":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/api/download/@tarojs/api-3.3.8.tgz?cache=0&sync_timestamp=1631676214997&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40tarojs%2Fapi%2Fdownload%2F%40tarojs%2Fapi-3.3.8.tgz#c970f25178fc6976408ef79efe2a4f7f84f0d711"
+  integrity sha1-yXDyUXj8aXZAjvee/ipPf4Tw1xE=
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@tarojs/runtime" "3.3.7"
+    "@tarojs/runtime" "3.3.8"
 
-"@tarojs/components@^3.3.2":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/components/-/components-3.3.7.tgz#a6277cd1a496786a82ab7debbc7e14bcd47d6f50"
-  integrity sha512-14N1Yufnwqi4M68Utef6vPqSW3xCbaZXJT/WnLOoe8QaB24ElD9KOcSPaSz+sB9NH+LWGXJtPvxp0MdDiDaLSw==
+"@tarojs/components@^3.3.0":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/components/download/@tarojs/components-3.3.8.tgz#725cdf3d053f5564e5607838ee0136a0785b6c82"
+  integrity sha1-clzfPQU/VWTlYHg47gE2oHhbbII=
   dependencies:
     "@stencil/core" "2.4.0"
-    "@tarojs/taro" "3.3.7"
+    "@tarojs/taro" "3.3.8"
     better-scroll "^1.14.1"
     classnames "^2.2.5"
     intersection-observer "^0.7.0"
@@ -50,54 +50,54 @@
     swiper "6.8.0"
     weui "^1.1.2"
 
-"@tarojs/router@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/router/-/router-3.3.7.tgz#4a88b725dc46929bf1bf1a85796b2fb1e95998f1"
-  integrity sha512-JTV91eiBZtb0eao7cs+FXv4CQrwg8niLyjgJiCjogHDF6DhjzjM746sUdB2iu+V2yVVFlcCDD7txKxAFN8uf2g==
+"@tarojs/router@3.3.8":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/router/download/@tarojs/router-3.3.8.tgz?cache=0&sync_timestamp=1631676215751&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40tarojs%2Frouter%2Fdownload%2F%40tarojs%2Frouter-3.3.8.tgz#a35fe90cda43ee8b0b67597ae20ef6e0d149fa45"
+  integrity sha1-o1/pDNpD7osLZ1l64g724NFJ+kU=
   dependencies:
-    "@tarojs/runtime" "3.3.7"
+    "@tarojs/runtime" "3.3.8"
     history "^5.0.0"
     query-string "^6.13.8"
     universal-router "^8.3.0"
     url-parse "^1.4.7"
 
-"@tarojs/runtime@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/runtime/-/runtime-3.3.7.tgz#31d70d1fec713cac7c40a0bcdaedf02b49a92cff"
-  integrity sha512-HvNkHnN7RJCN3yXfNj95wMx02nlIeT3JTeMYKmiosWBaxVdXlIK9qmBjrO6MYb26k5dIjWwXue7HDOwLVOHDNw==
+"@tarojs/runtime@3.3.8":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/runtime/download/@tarojs/runtime-3.3.8.tgz?cache=0&sync_timestamp=1631676214388&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40tarojs%2Fruntime%2Fdownload%2F%40tarojs%2Fruntime-3.3.8.tgz#689a68fc8c10d675bd0a8e3a90b3df805cf96839"
+  integrity sha1-aJpo/IwQ1nW9Co46kLPfgFz5aDk=
   dependencies:
-    "@tarojs/shared" "3.3.7"
+    "@tarojs/shared" "3.3.8"
     inversify "5.1.1"
     lodash-es "4.17.15"
     reflect-metadata "^0.1.13"
 
-"@tarojs/shared@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/shared/-/shared-3.3.7.tgz#19446411d3f0cc5c422091f193ae33a0e101ea41"
-  integrity sha512-DzEhe+MwXNK83ePmQf2ckUiJywWgaq2BtB/QXzlINzfQ6ZTPOo9dMJjrIRZUgXviY2oEUSBWGH4NiPcFme0CeQ==
+"@tarojs/shared@3.3.8":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/shared/download/@tarojs/shared-3.3.8.tgz?cache=0&sync_timestamp=1631676210974&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40tarojs%2Fshared%2Fdownload%2F%40tarojs%2Fshared-3.3.8.tgz#963bc5d27d47ee66c33d0c9cda0f97bca9953268"
+  integrity sha1-ljvF0n1H7mbDPQyc2g+XvKmVMmg=
 
-"@tarojs/taro-h5@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/taro-h5/-/taro-h5-3.3.7.tgz#56afabc15a8f041ce5ef1e2ea2b3f66d9727a62f"
-  integrity sha512-yLoBL+Q0GNncjFW9UZRmQSaojX+ujnse0n+gCZ4i4BkLWE8JNo0wYpNlsdAoRuytSJsxyev+efKFy3XAqxNLVg==
+"@tarojs/taro-h5@3.3.8":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/taro-h5/download/@tarojs/taro-h5-3.3.8.tgz?cache=0&sync_timestamp=1631676218180&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40tarojs%2Ftaro-h5%2Fdownload%2F%40tarojs%2Ftaro-h5-3.3.8.tgz#576c9a43072a0dc14a9b66c2bd150528cfe23f1f"
+  integrity sha1-V2yaQwcqDcFKm2bCvRUFKM/iPx8=
   dependencies:
-    "@tarojs/api" "3.3.7"
-    "@tarojs/router" "3.3.7"
-    "@tarojs/runtime" "3.3.7"
+    "@tarojs/api" "3.3.8"
+    "@tarojs/router" "3.3.8"
+    "@tarojs/runtime" "3.3.8"
     base64-js "^1.3.0"
     jsonp-retry "^1.0.3"
     mobile-detect "^1.4.2"
     raf "^3.4.1"
     whatwg-fetch "^3.4.0"
 
-"@tarojs/taro@3.3.7", "@tarojs/taro@^3.3.2":
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/@tarojs/taro/-/taro-3.3.7.tgz#a7c182b51bbf7afa9686b6d6bc297bfba5f07fed"
-  integrity sha512-eb6vXMKliGzcWTwo4YOuXqQGCJJyB+oCCypjoDSg/burEDQkC8Qgy4gtqZxaZQHHFnBgWMH7dOwx3/tsUW4xqg==
+"@tarojs/taro@3.3.8", "@tarojs/taro@^3.3.0":
+  version "3.3.8"
+  resolved "https://registry.nlark.com/@tarojs/taro/download/@tarojs/taro-3.3.8.tgz?cache=0&sync_timestamp=1631676216530&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40tarojs%2Ftaro%2Fdownload%2F%40tarojs%2Ftaro-3.3.8.tgz#0ca814ac89f45115051e7fc64ea599d598e9acab"
+  integrity sha1-DKgUrIn0URUFHn/GTqWZ1ZjprKs=
   dependencies:
-    "@tarojs/api" "3.3.7"
-    "@tarojs/runtime" "3.3.7"
-    "@tarojs/taro-h5" "3.3.7"
+    "@tarojs/api" "3.3.8"
+    "@tarojs/runtime" "3.3.8"
+    "@tarojs/taro-h5" "3.3.8"
 
 "@types/lodash.flow@^3.5.6":
   version "3.5.6"

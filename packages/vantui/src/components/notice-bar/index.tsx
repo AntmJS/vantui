@@ -34,8 +34,8 @@ export default function Index(props: NoticeBarProps) {
     backgroundColor,
     background,
     wrapable,
-    renderLefticon,
-    renderRighticon,
+    renderLeftIcon,
+    renderRightIcon,
     onClick,
     onClose,
     style,
@@ -152,13 +152,12 @@ export default function Index(props: NoticeBarProps) {
       >
         {leftIcon ? (
           <VanIcon
-            info={null}
             size={16}
             name={leftIcon}
             className="van-notice-bar__left-icon"
           ></VanIcon>
         ) : (
-          renderLefticon
+          renderLeftIcon
         )}
         <View className="van-notice-bar__wrap">
           <View
@@ -174,21 +173,16 @@ export default function Index(props: NoticeBarProps) {
         </View>
         {mode === 'closeable' ? (
           <VanIcon
-            info={null}
             className="van-notice-bar__right-icon"
             name="cross"
             onClick={onClickIcon}
           />
         ) : mode === 'link' ? (
           <Navigator url={url} openType={openType}>
-            <VanIcon
-              info={null}
-              className="van-notice-bar__right-icon"
-              name="arrow"
-            />
+            <VanIcon className="van-notice-bar__right-icon" name="arrow" />
           </Navigator>
         ) : (
-          renderRighticon
+          renderRightIcon
         )}
       </View>
     )
