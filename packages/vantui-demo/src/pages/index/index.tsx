@@ -19,12 +19,13 @@ import {
   Tag,
   // CountDown,
   Picker,
-  Tabbar,
-  TabbarItem,
   CellGroup,
   Cell,
   // ICountDownRef,
   Field,
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -207,8 +208,8 @@ export default function Index() {
         <Sticky
           container={() => Taro.createSelectorQuery().select('#container')}
         >
-          <Button plain type="primary" loading>
-            kkk
+          <Button plain type="primary">
+            kkk收费的
           </Button>
         </Sticky>
       </View>
@@ -240,7 +241,14 @@ export default function Index() {
         onChange={onChange}
         onConfirm={onConfirm}
       />
-      <Tabbar active={1}>
+      <GoodsAction>
+        <GoodsActionIcon icon="chat-o" text="客服" />
+        <GoodsActionIcon icon="cart-o" text="购物车" info="5" />
+        <GoodsActionIcon icon="shop-o" text="店铺" />
+        <GoodsActionButton color="#7232dd" text="加入购物" type="warning" />
+        <GoodsActionButton plain color="#7232dd" text="立即购买" />
+      </GoodsAction>
+      {/* <Tabbar active={1}>
         <TabbarItem icon="home-o">标签</TabbarItem>
         <TabbarItem icon="search" dot>
           标签
@@ -251,7 +259,7 @@ export default function Index() {
         <TabbarItem icon="setting-o" info="20">
           标签
         </TabbarItem>
-      </Tabbar>
+      </Tabbar> */}
     </View>
   )
 }

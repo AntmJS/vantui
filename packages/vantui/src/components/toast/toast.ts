@@ -1,11 +1,12 @@
 import Taro from '@tarojs/taro'
 import { isObj } from '../common/validator.js'
+import { Toast as ToastConst } from '../common/zIndex'
 const defaultOptions = {
   type: 'text',
   mask: false,
   message: '',
   show: true,
-  zIndex: 1000,
+  zIndex: ToastConst,
   duration: 2000,
   position: 'middle',
   forbidClick: false,

@@ -53,7 +53,7 @@ export default function Index(props: SkeletonProps) {
             animate,
           },
         ]) +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={style}
       {...others}

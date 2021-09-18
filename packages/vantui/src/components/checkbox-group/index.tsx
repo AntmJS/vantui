@@ -39,7 +39,7 @@ export default function Index(props: CheckboxGroupProps) {
           {
             horizontal: direction === 'horizontal',
           },
-        ]) + ` ${className}`
+        ]) + ` ${className || ''}`
       }
       style={style}
       {...others}

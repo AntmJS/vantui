@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import { usePageScroll } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
+import { Sticky } from '../common/zIndex'
 import { isDef } from '../common/validator'
 import { StickyProps } from '../../../types/sticky'
 import * as computed from './wxs'
@@ -11,7 +12,7 @@ const ROOT_ELEMENT = '.van-sticky'
 export default function Index(props: StickyProps) {
   const [state, setState] = useState({ height: 0, fixed: false, transform: 0 })
   const {
-    zIndex = 50,
+    zIndex = Sticky,
     offsetTop = 0,
     scrollTop,
     disabled,
@@ -135,7 +136,7 @@ export default function Index(props: StickyProps) {
         className={
           utils.bem('sticky-wrap', {
             fixed: state.fixed,
-          }) + ` ${className}`
+          }) + ` ${className || ''}`
         }
         style={utils.style([
           computed.wrapStyle({

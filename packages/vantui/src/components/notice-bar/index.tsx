@@ -137,7 +137,7 @@ export default function Index(props: NoticeBarProps) {
             withicon: mode,
             wrapable,
           }) +
-          ` ${className}`
+          ` ${className || ''}`
         }
         style={utils.style([
           computed.rootStyle({

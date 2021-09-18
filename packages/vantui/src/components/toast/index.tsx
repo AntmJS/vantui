@@ -4,6 +4,7 @@
 import { View, Text, Block } from '@tarojs/components'
 import { useState } from 'react'
 import * as utils from '../wxs/utils'
+import { Toast } from '../common/zIndex'
 import { ToastProps } from '../../../types/toast'
 import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
@@ -13,7 +14,7 @@ import VanLoading from '../loading/index'
 export default function Index(props: ToastProps) {
   const {
     show,
-    zIndex = 1000,
+    zIndex = Toast,
     mask,
     forbidClick,
     type = 'text',

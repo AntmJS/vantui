@@ -31,7 +31,7 @@ export default function Index(props: RadioGroupProps) {
 
   return (
     <View
-      className={utils.bem('radio-group', [direction]) + ` ${className}`}
+      className={utils.bem('radio-group', [direction]) + ` ${className || ''}`}
       style={style}
       {...others}
     >

@@ -8,6 +8,7 @@ import {
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View, ScrollView } from '@tarojs/components'
+import { Tabs } from '../common/zIndex'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
 import Sticky from '../sticky/index'
@@ -82,7 +83,7 @@ export default function Index(props: TabsProps) {
     lazyRender = true,
     type = 'line',
     sticky,
-    zIndex = 1,
+    zIndex = Tabs,
     offsetTop = 0,
     border,
     color,
@@ -370,7 +371,9 @@ export default function Index(props: TabsProps) {
 
   return (
     <View
-      className={'custom-class ' + utils.bem('tabs', [type] + ` ${className}`)}
+      className={
+        'custom-class ' + utils.bem('tabs', [type] + ` ${className || ''}`)
+      }
       style={style}
       {...others}
     >

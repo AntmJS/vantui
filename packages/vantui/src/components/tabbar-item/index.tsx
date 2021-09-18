@@ -51,7 +51,7 @@ export default function Index(
           active: active === (name ?? index),
         }) +
         ' custom-class' +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={utils.style([
         {

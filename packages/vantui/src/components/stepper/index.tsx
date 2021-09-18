@@ -192,7 +192,7 @@ export default function Index(props: StepperProps) {
   return (
     <View
       className={
-        utils.bem('stepper', [theme]) + ' custom-class' + ` ${className}`
+        utils.bem('stepper', [theme]) + ' custom-class' + ` ${className || ''}`
       }
       {...others}
     >

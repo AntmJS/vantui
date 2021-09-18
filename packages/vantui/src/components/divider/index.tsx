@@ -29,7 +29,7 @@ export default function Index(props: DividerProps) {
           },
           contentPosition,
         ]) +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={utils.style([
         computed.rootStyle({
