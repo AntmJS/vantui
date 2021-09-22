@@ -21,7 +21,7 @@ export default function Index(props: DropdownMenuProps) {
     overlay = true,
     zIndex = 10,
     duration = 200,
-    direction,
+    direction = 'down',
     closeOnClickOverlay = true,
     closeOnClickOutside = true,
     className,
@@ -114,14 +114,15 @@ export default function Index(props: DropdownMenuProps) {
     function () {
       return getRect(null, '.van-dropdown-menu').then((rect: any) => {
         const { top = 0, bottom = 0 } = rect
+        console.info(bottom, 'bottom cc')
         const offset = direction === 'down' ? bottom : windowHeight - top
         const wrapperStyle: React.CSSProperties = {
           zIndex: zIndex,
         }
         if (direction === 'down') {
-          wrapperStyle.top = addUnit(offset)
+          wrapperStyle.top = addUnit(offset * 2)
         } else {
-          wrapperStyle.bottom = addUnit(offset)
+          wrapperStyle.bottom = addUnit(offset * 2)
         }
 
         return wrapperStyle

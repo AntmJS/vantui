@@ -116,7 +116,10 @@ export default function Index(
         !parentInstance
           ? void 0
           : parentInstance.getChildWrapperStyle().then((wrapperStyle: any) => {
-              if (wrapperStyle) wrapperStyle.position = 'unset'
+              if (wrapperStyle) {
+                wrapperStyle.width = '100vw'
+                wrapperStyle.height = '100vh'
+              }
               setParentState({
                 ...parentState,
                 wrapperStyle,
@@ -173,7 +176,7 @@ export default function Index(
           style={'position: absolute;' + popupStyle}
           overlayStyle="position: absolute;"
           overlay={parentInstance.overlay || false}
-          position={direction === 'down' ? 'top' : 'bottom'}
+          position={direction !== 'down' ? 'top' : 'bottom'}
           duration={transition ? duration : 0}
           closeOnClickOverlay={closeOnClickOverlay}
           onEnter={onOpen}
