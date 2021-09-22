@@ -1,7 +1,15 @@
 import { View, Button } from '@tarojs/components'
 import { useEffect, useState } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
-import { Popup, Steps, Stepper } from '@antmjs/vantui'
+import {
+  Popup,
+  Steps,
+  Stepper,
+  ActionSheet,
+  IndexBar,
+  IndexAnchor,
+  Cell,
+} from '@antmjs/vantui'
 
 import './index.less'
 
@@ -20,10 +28,65 @@ export default function Index() {
   })
 
   const [show, setShow] = useState(false)
+  const [showActionSheet, setShowActionSheet] = useState(false)
 
   return (
     <View className="pages-index-index">
+      <IndexBar indexList={['A', 'B', 'C', 'D', 'E', 'F', 'G']}>
+        <IndexAnchor index="A" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="B" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="C" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="D" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="E" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="F" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="G" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+      </IndexBar>
       <Button onClick={() => setShow(!show)}>点我</Button>
+      <Button onClick={() => setShowActionSheet(!showActionSheet)}>
+        点我2
+      </Button>
+      <ActionSheet
+        show={showActionSheet}
+        onClose={() => setShowActionSheet(false)}
+        cancelText="取消"
+        actions={[
+          {
+            name: '选项',
+          },
+          {
+            name: '选项',
+          },
+          {
+            name: '选项',
+            subname: '描述信息',
+            openType: 'share',
+          },
+        ]}
+      />
       <Stepper value={5} min={5} max={8} />
       <Steps
         active={2}
