@@ -5,7 +5,7 @@ import {
   Progress,
   Sticky,
   Icon,
-  NavBar,
+  MiniNavBar,
   Button,
   Tabs,
   Tab,
@@ -60,14 +60,7 @@ export default function Index() {
 
   return (
     <View className="pages-index-index">
-      <NavBar
-        fixed
-        border
-        title="标题"
-        leftText="返回"
-        rightText="按钮"
-        leftArrow
-      />
+      <MiniNavBar title="标题" homeUrl="/pages/demo2/index" />
       <Progress percentage={50} strokeWidth={4} />
       <View>
         <Icon name="chat" size={40} dot />
@@ -231,7 +224,7 @@ export default function Index() {
         <Col span="8">span: 8</Col>
       </Row>
 
-      <Loading type="circular" size={80}>
+      <Loading type="circular" size={40}>
         加载中...
       </Loading>
 
