@@ -13,6 +13,7 @@ import {
   Uploader,
   Collapse,
   CollapseItem,
+  Circle,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -113,6 +114,13 @@ export default function Index() {
         文本
       </Divider>
       <NoticeBar scrollable text="技术是开发它的人的共同灵魂。" />
+      <Circle
+        value={50}
+        size={100}
+        strokeWidth={8}
+        text="颜色定制"
+        color="#00ffff"
+      />
       <Collapse
         value={state.collapseActiveValues}
         onChange={handleChangeCollapse}
