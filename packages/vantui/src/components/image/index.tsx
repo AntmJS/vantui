@@ -87,11 +87,7 @@ export default function Index(props: ImageProps) {
           {useLoadingSlot ? (
             others.renderLoading
           ) : (
-            <VanIcon
-              info={null}
-              name="photo"
-              className="van-image__loading-icon"
-            ></VanIcon>
+            <VanIcon name="photo" className="van-image__loading-icon"></VanIcon>
           )}
         </View>
       )}
@@ -101,7 +97,6 @@ export default function Index(props: ImageProps) {
             others.renderError
           ) : (
             <VanIcon
-              info={null}
               name="photo-fail"
               className="van-image__error-icon"
             ></VanIcon>

@@ -34,7 +34,7 @@ export default function Index(props: TagProps) {
             round,
           },
         ]) +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={utils.style([
         computed.rootStyle({
@@ -48,12 +48,7 @@ export default function Index(props: TagProps) {
     >
       {children}
       {closeable && (
-        <Icon
-          info={null}
-          name="cross"
-          className="van-tag__close"
-          onClick={onClose}
-        ></Icon>
+        <Icon name="cross" className="van-tag__close" onClick={onClose}></Icon>
       )}
     </View>
   )

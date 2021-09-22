@@ -7,10 +7,10 @@ export interface SkeletonProps extends StandardProps {
   avatar?: boolean
   loading?: boolean
   animate?: boolean
-  avatarSize?: string
+  avatarSize?: string | number
   avatarShape?: 'square' | 'round'
-  titleWidth?: string | string[]
-  rowWidth?: string
+  titleWidth?: string | number
+  rowWidth?: string | string[]
   children?: ReactNode
 }
 

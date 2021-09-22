@@ -12,7 +12,7 @@ export default function Index(props: IconProps) {
     color,
     size,
     dot,
-    info = null,
+    info,
     style,
     className,
     ...others
@@ -23,7 +23,7 @@ export default function Index(props: IconProps) {
         computed.rootClass({
           classPrefix,
           name,
-        }) + ` ${className}`
+        }) + ` ${className || ''}`
       }
       style={utils.style([
         computed.rootStyle({
@@ -35,11 +35,11 @@ export default function Index(props: IconProps) {
       ])}
       {...others}
     >
-      {(info !== null || dot) && (
+      {(info || info === 0 || dot) && (
         <Info dot={dot} info={info} className="van-icon__info"></Info>
       )}
       {computed.isImage(name) && (
-        <Image src={name} mode="aspectFit" className="van-icon__image"></Image>
+        <Image src={name!} mode="aspectFit" className="van-icon__image"></Image>
       )}
     </View>
   )

@@ -9,9 +9,9 @@ export interface TabsProps extends Omit<StandardProps, 'onClick'> {
   titleInactiveColor?: string
   color?: string
   animated?: boolean
-  lineWidth?: number
-  lineHeight?: number
-  active?: number | null
+  lineWidth?: number | string
+  lineHeight?: number | string
+  active?: number | string
   type?: string
   ellipsis?: boolean
   duration?: number

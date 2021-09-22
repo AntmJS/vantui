@@ -4,10 +4,10 @@ import { StandardProps } from '@tarojs/components'
 export interface CellProps extends StandardProps {
   url?: string
   linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
-  title?: string
+  title?: string | number
   value?: string | number
   icon?: string
-  size?: string
+  size?: 'large'
   label?: string
   center?: boolean
   isLink?: boolean
@@ -15,14 +15,14 @@ export interface CellProps extends StandardProps {
   clickable?: boolean
   titleWidth?: string
   customStyle?: string
-  arrowDirection?: string
-  useLabelSlot?: boolean
+  arrowDirection?: 'left' | 'up' | 'down'
   border?: boolean
   titleStyle?: string
-  renderIcon?: ReactNode
+  useLabelSlot?: boolean
   renderTitle?: ReactNode
+  renderIcon?: ReactNode
   renderLabel?: ReactNode
-  renderRighticon?: ReactNode
+  renderRightIcon?: ReactNode
   renderExtra?: ReactNode
   children?: ReactNode | JSX.Element | JSX.Element[]
 }

@@ -10,7 +10,7 @@ export interface ProgressProps extends StandardProps {
   showPivot?: boolean
   color?: string
   textColor?: string
-  strokeWidth?: number
+  strokeWidth?: number | string
 }
 
 declare const Progress: ComponentClass<ProgressProps>

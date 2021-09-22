@@ -6,8 +6,8 @@ export interface GridItemProps extends StandardProps {
   iconColor?: string
   iconPrefix?: string
   dot?: boolean
-  info?: null
-  badge?: null
+  info?: string | number | undefined
+  badge?: string | number | undefined
   text?: string
   useSlot?: boolean
   children?: JSX.Element

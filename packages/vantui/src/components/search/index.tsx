@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Field from '../field'
 import { SearchProps } from '../../../types/search'
@@ -45,22 +45,23 @@ export default function Index(props: SearchProps) {
     ...others
   } = props
 
-  const _change = function (value?: any) {
-    setInnerValue(value)
+  const _change = function (e: ITouchEvent) {
+    setInnerValue(e.detail)
     useState
-    onChange?.(value)
+    onChange?.(e)
   }
 
-  const _cancel = function () {
+  const _cancel = function (e: ITouchEvent) {
     /**
      * 修复修改输入框值时，输入框失焦和赋值同时触发，赋值失效
      * https://github.com/youzan/@vant/weapp/issues/1768
      */
     setTimeout(() => {
+      e.detail = ''
       setInnerValue('')
 
       onCancel?.()
-      onChange?.('')
+      onChange?.(e)
     }, 200)
   }
 

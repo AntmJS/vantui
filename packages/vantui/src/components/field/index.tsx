@@ -74,19 +74,22 @@ export default function Index(props: FieldProps) {
     onBlur,
     onClear,
     onConfirm,
+    onInput,
     onClickInput,
     onClickIcon,
     onLineChange,
     onKeyboardHeightChange,
   } = props
 
-  const emitChange = function (value: any) {
+  const emitChange = function (event?: any) {
+    event = event || { detail: { value: '' } }
+    event.detail = event.detail.value
     setState((pre: any) => {
-      return { ...pre, innerValue: value }
+      return { ...pre, innerValue: event.detail }
     })
     Taro.nextTick(() => {
-      // this.$emit('input', this.value)
-      onChange?.(value)
+      onInput?.(event)
+      onChange?.(event)
     })
   }
 
@@ -107,17 +110,17 @@ export default function Index(props: FieldProps) {
   const _input = function (event: any) {
     const { value = '' } = event.detail || {}
     setShowClear(value)
-    emitChange(value)
+    emitChange(event)
   }
   const _focus = function (event: any) {
     ref.current.focused = true
     setShowClear(innerValue)
-    onFocus?.(event.detail)
+    onFocus?.(event)
   }
   const _blur = function (event: any) {
     ref.current.focused = false
     setShowClear(innerValue)
-    onBlur?.(event.detail)
+    onBlur?.(event)
   }
   const _clear = function () {
     setState((pre: any) => {
@@ -125,14 +128,14 @@ export default function Index(props: FieldProps) {
     })
     setShowClear('')
     Taro.nextTick(() => {
-      emitChange('')
-      onClear?.('')
+      emitChange()
+      onClear?.()
     })
   }
   const _confirm = function (event: any) {
     const { value = '' } = event.detail || {}
     setShowClear(value)
-    onConfirm?.(value)
+    onConfirm?.(event)
   }
   // setValue(value) {
   //   this.value = value
@@ -283,7 +286,6 @@ export default function Index(props: FieldProps) {
         )}
         {showClear && (
           <Icon
-            info={null}
             name={clearIcon}
             className="van-field__clear-root van-field__icon-root"
             onTouchStart={_clear}
@@ -292,7 +294,6 @@ export default function Index(props: FieldProps) {
         <View className="van-field__icon-container" onClick={onClickIcon}>
           {(rightIcon || icon) && (
             <Icon
-              info={null}
               name={(rightIcon || icon)!}
               className={
                 'van-field__icon-root ' + iconClass + ' right-icon-class'

@@ -1,5 +1,5 @@
 import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface RateProps extends StandardProps {
   value?: number
@@ -15,7 +15,7 @@ export interface RateProps extends StandardProps {
   count?: number
   gutter?: string | number
   touchable?: boolean
-  onChange?: (score: number) => any
+  onChange?: (e: ITouchEvent) => any
 }
 
 declare const Rate: ComponentClass<RateProps>

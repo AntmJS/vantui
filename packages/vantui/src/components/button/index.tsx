@@ -24,6 +24,7 @@ export default function Index(props: ButtonProps) {
     loadingText,
     icon,
     classPrefix = 'van-icon',
+    onClick,
     children,
     style,
     className,
@@ -50,7 +51,7 @@ export default function Index(props: ButtonProps) {
         ]) +
         ' ' +
         (hairline ? 'van-hairline--surround' : '') +
-        ` ${className}`
+        ` ${className || ''}`
       }
       hoverClass="van-button--active hover-class"
       style={utils.style([
@@ -61,6 +62,7 @@ export default function Index(props: ButtonProps) {
         }),
         style,
       ])}
+      onClick={disabled || loading ? undefined : onClick}
       {...others}
     >
       {loading ? (
@@ -83,7 +85,6 @@ export default function Index(props: ButtonProps) {
         <Block>
           {icon && (
             <Icon
-              info={null}
               size="1.2em"
               name={icon}
               classPrefix={classPrefix}

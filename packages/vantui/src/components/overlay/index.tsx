@@ -1,11 +1,12 @@
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
+import { Overlay } from '../common/zIndex'
 import { OverlayProps } from '../../../types/overlay'
 import VanTransition from './../transition'
 export default function Index(props: OverlayProps) {
   const {
     show,
-    zIndex = 1,
+    zIndex = Overlay,
     style,
     className,
     lockScroll = true,

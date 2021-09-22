@@ -1,17 +1,14 @@
 import Taro from '@tarojs/taro'
 import { useState, useEffect } from 'react'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Icon from '../icon/index'
 import { getAllRect } from '../common/utils'
 import { RateProps } from '../../../types/rate'
 
 export default function Index(props: RateProps) {
-  const [state, setState] = useState({
-    innerValue: 0,
-    innerCountArray: Array.from({ length: 5 }),
-  })
-  const { innerValue, innerCountArray } = state
+  const [countArray, setCountArray] = useState(Array.from({ length: 5 }))
+  const [innerValue, setInnerValue] = useState(0)
 
   const {
     count = 5,
@@ -33,38 +30,53 @@ export default function Index(props: RateProps) {
     ...others
   } = props
 
-  const onSelect = function (event: any) {
+  const onSelect = function (event: ITouchEvent) {
     const { score } = event.currentTarget.dataset
+    event.detail = score
     if (!disabled && !readonly) {
-      setState((pre: any) => {
-        return { ...pre, innerValue: score + 1 }
-      })
+      setInnerValue(score + 1)
       Taro.nextTick(() => {
-        onChange?.(score + 1)
+        onChange?.(event)
       })
     }
   }
-  const onTouchMove = function (event: any) {
+  // touchmove匹配到的节点找不到data-score，先注释掉
+  const onTouchMove = function (event: ITouchEvent) {
     if (!touchable) return
-    const { clientX } = event.touches[0]
-    getAllRect(null, '.van-rate__icon').then((list: any) => {
-      const target = list
-        .sort((cur: any, next: any) => cur.dataset.score - next.dataset.score)
-        .find((item: any) => clientX >= item.left && clientX <= item.right)
-      if (target != null) {
-        onSelect(
-          Object.assign(Object.assign({}, event), { currentTarget: target }),
-        )
-      }
-    })
+    const { clientX } = event?.touches?.[0] ?? {}
+    if (clientX) {
+      getAllRect(null, '.van-rate__icon').then((list: any) => {
+        const target = list
+          .sort((cur: any, next: any) => {
+            if (typeof cur.dataset.score !== 'number') {
+              const curScore = Number(cur.id.split('__')[1])
+              const nextScore = Number(next.id.split('__')[1])
+              return curScore - nextScore
+            } else {
+              return cur.dataset.score - next.dataset.score
+            }
+          })
+          .find((item: any) => clientX >= item.left && clientX <= item.right)
+        if (target != null) {
+          if (typeof target.dataset.score !== 'number') {
+            target.dataset.score = Number(target.id.split('__')[1])
+          }
+          if (target.dataset.score || target.dataset.score === 0) {
+            onSelect(
+              Object.assign(Object.assign({}, event), {
+                currentTarget: target,
+              }),
+            )
+          }
+        }
+      })
+    }
   }
 
   useEffect(
     function () {
       if (value !== innerValue) {
-        setState((pre: any) => {
-          return { ...pre, innerValue: value }
-        })
+        setInnerValue(value)
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,9 +85,7 @@ export default function Index(props: RateProps) {
 
   useEffect(
     function () {
-      setState((pre: any) => {
-        return { ...pre, innerCountArray: Array.from({ length: count }) }
-      })
+      setCountArray(Array.from({ length: count }))
     },
     [count],
   )
@@ -86,7 +96,7 @@ export default function Index(props: RateProps) {
       onTouchMove={onTouchMove}
       {...others}
     >
-      {innerCountArray.map((_item: any, index) => {
+      {countArray.map((_item: any, index) => {
         return (
           <View
             className={utils.bem('rate__item')}
@@ -96,7 +106,6 @@ export default function Index(props: RateProps) {
             })}
           >
             <Icon
-              info={null}
               name={index + 1 <= innerValue ? icon : voidIcon}
               className={
                 utils.bem('rate__icon', [
@@ -109,6 +118,7 @@ export default function Index(props: RateProps) {
               style={utils.style({
                 fontSize: utils.addUnit(size),
               })}
+              id={`rate__${index}`}
               data-score={index}
               color={
                 disabled
@@ -121,7 +131,6 @@ export default function Index(props: RateProps) {
             ></Icon>
             {allowHalf && (
               <Icon
-                info={null}
                 name={index + 0.5 <= innerValue ? icon : voidIcon}
                 className={
                   utils.bem('rate__icon', [
@@ -135,6 +144,7 @@ export default function Index(props: RateProps) {
                 style={utils.style({
                   fontSize: utils.addUnit(size),
                 })}
+                id={`rate__${index - 0.5}`}
                 data-score={index - 0.5}
                 color={
                   disabled
