@@ -7,7 +7,9 @@
   "keywords": [
     "Taro",
     "VantUI",
-    "React"
+    "React",
+    "antm",
+    "antmjs"
   ],
   "repository": {
     "type": "https",
