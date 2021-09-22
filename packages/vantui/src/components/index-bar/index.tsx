@@ -11,6 +11,7 @@ import {
 // import { throttle } from 'lodash'
 import Taro from '@tarojs/taro'
 import toArray from 'rc-util/lib/Children/toArray'
+import * as utils from '../wxs/utils'
 import { getRect, getAllRect, isDef } from '../common/utils.js'
 import { GREEN } from '../common/color.js'
 import { usePageScroll } from './../mixins/page-scroll'
@@ -50,6 +51,8 @@ export default function Index(props: IndexBarProps) {
     indexList = genIndexList(),
     onSelect,
     children,
+    className,
+    style,
   } = props
 
   const [activeAnchorIndex, setActiveAnchorIndex] = useState<any>(null)
@@ -332,7 +335,10 @@ export default function Index(props: IndexBarProps) {
   }, [_updateData])
 
   return (
-    <View className="van-index-bar">
+    <View
+      className={`van-index-bar ${className || ''}`}
+      style={utils.style([style])}
+    >
       {_children}
       {showSidebar && (
         <View

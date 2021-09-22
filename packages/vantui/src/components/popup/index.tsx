@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import * as utils from '../wxs/utils'
 import { PopupProps } from '../../../types/popup'
+import { Popup } from '../common/zIndex'
 import VanIcon from './../icon'
 import * as computed from './wxs'
 import { useTransition } from './../mixins/transition'
@@ -16,7 +17,7 @@ export default function Index(this: any, props: PopupProps) {
     closeable,
     overlayStyle,
     transition,
-    zIndex = 100,
+    zIndex = Popup,
     overlay = true,
     closeIcon = 'cross',
     closeIconPosition = 'topRight',
@@ -107,7 +108,7 @@ export default function Index(this: any, props: PopupProps) {
                 safeTop: safeAreaInsetTop,
               },
             ]) +
-            `  ${className}`
+            `  ${className || ''}`
           }
           style={utils.style([
             computed.popupStyle({

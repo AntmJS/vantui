@@ -35,7 +35,7 @@ export default function Index(
           active,
           inactive: !active,
         }) +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={utils.style([active || animated ? '' : 'display: none;', style])}
       {...others}

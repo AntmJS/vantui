@@ -6,9 +6,9 @@ export interface StickyProps extends StandardProps {
   offsetTop?: number
   disabled?: boolean
   container?: () => any
-  scrollTop?: number | null
+  scrollTop?: number
   children?: ReactNode
-  onScroll?: (data: { scrollTop?: number | null; isFixed?: boolean }) => any
+  onScroll?: (data: { scrollTop?: number; isFixed?: boolean }) => any
 }
 
 declare const Sticky: ComponentClass<StickyProps>

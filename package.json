@@ -95,9 +95,13 @@
     "release:lerna": "lerna version --exact --no-git-tag-version --force-publish",
     "release:beta": "lerna publish --force-publish=* --exact --skip-temp-tag  --preid=beta --npm-tag=beta",
     "release": "npm run release:lerna && npm run changelog && node ./pullRequest.js",
-    "test": "npx lerna run test"
+    "test": "npx lerna run test",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@antmjs/babel-preset": "^1.12.0",
+    "@antmjs/eslint": "^1.12.0",
+    "@antmjs/stylelint": "^1.12.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@octokit/core": "^3.4.0",
@@ -118,7 +122,7 @@
     "execa": "^5.0.0",
     "fs-extra": "^10.0.0",
     "globby": "^11.0.3",
-    "husky": "^6.0.0",
+    "husky": "^7.0.0",
     "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
     "npm-run-all": "^4.1.5",
@@ -132,10 +136,5 @@
     "run-s": "^0.0.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.3.5"
-  },
-  "devDependencies": {
-    "@antmjs/babel-preset": "^1.12.0",
-    "@antmjs/eslint": "^1.12.0",
-    "@antmjs/stylelint": "^1.12.0"
   }
 }

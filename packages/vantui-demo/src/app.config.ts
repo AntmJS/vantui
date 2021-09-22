@@ -1,5 +1,5 @@
 export default {
-  pages: ['pages/demo2/index', 'pages/index/index'],
+  pages: ['pages/index/index', 'pages/zx/index', 'pages/demo2/index'],
   window: {
     // 微信全局设置自定义导航栏
     // navigationStyle: 'custom',

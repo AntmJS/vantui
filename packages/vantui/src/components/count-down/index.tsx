@@ -1,13 +1,20 @@
-import { useEffect, useState, useRef } from 'react'
+import {
+  useEffect,
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useCallback,
+} from 'react'
 import { View, Block } from '@tarojs/components'
-import { CountDownProps } from '../../../types/count-down'
+import { CountDownProps, ICountDownRef } from '../../../types/count-down'
 import { isSameSecond, parseFormat, parseTimeData } from './util'
 
 function simpleTick(fn: any) {
   return setTimeout(fn, 30)
 }
-export default function Index(props: CountDownProps) {
-  const ref: React.MutableRefObject<{
+function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
+  const _ref: React.MutableRefObject<{
     tid: any
     counting: boolean
     endTime?: number
@@ -18,7 +25,6 @@ export default function Index(props: CountDownProps) {
   })
   const { formattedTime } = state
   const {
-    cref,
     time,
     format = 'HH:mm:ss',
     autoStart = true,
@@ -33,90 +39,105 @@ export default function Index(props: CountDownProps) {
   } = props
 
   // 暂停
-  const pause = function () {
-    ref.current.counting = false
-    clearTimeout(ref.current.tid)
-  }
+  const pause = useCallback(function () {
+    _ref.current.counting = false
+    clearTimeout(_ref.current.tid)
+  }, [])
 
-  const getRemain = function () {
-    return Math.max(ref.current.endTime! - Date.now(), 0)
-  }
-  const setRemain = function (remain?: number) {
-    ref.current.remain = remain
-    const timeData = parseTimeData(remain)
-    if (useSlot) {
-      onChange?.(timeData)
-    }
-    setState((pre: any) => {
-      return { ...pre, formattedTime: parseFormat(format, timeData) }
-    })
-    if (remain === 0) {
-      pause()
-      onFinish?.()
-    }
-  }
+  const getRemain = useCallback(function () {
+    return Math.max(_ref.current.endTime! - Date.now(), 0)
+  }, [])
+  const setRemain = useCallback(
+    function (remain?: number) {
+      _ref.current.remain = remain
+      const timeData = parseTimeData(remain)
+      if (useSlot) {
+        onChange?.(timeData)
+      }
+      setState((pre: any) => {
+        return { ...pre, formattedTime: parseFormat(format, timeData) }
+      })
+      if (remain === 0) {
+        pause()
+        onFinish?.()
+      }
+    },
+    [format, onChange, onFinish, pause, useSlot],
+  )
 
-  const microTick = function () {
-    ref.current.tid = simpleTick(() => {
-      setRemain(getRemain())
-      if (ref.current.remain !== 0) {
+  const microTick = useCallback(
+    function () {
+      _ref.current.tid = simpleTick(() => {
+        setRemain(getRemain())
+        if (_ref.current.remain !== 0) {
+          microTick()
+        }
+      })
+    },
+    [getRemain, setRemain],
+  )
+  const macroTick = useCallback(
+    function () {
+      _ref.current.tid = simpleTick(() => {
+        const remain = getRemain()
+        if (!isSameSecond(remain, _ref.current.remain) || remain === 0) {
+          setRemain(remain)
+        }
+        if (_ref.current.remain !== 0) {
+          macroTick()
+        }
+      })
+    },
+    [getRemain, setRemain],
+  )
+
+  const tick = useCallback(
+    function () {
+      if (millisecond) {
         microTick()
-      }
-    })
-  }
-  const macroTick = function () {
-    ref.current.tid = simpleTick(() => {
-      const remain = getRemain()
-      if (!isSameSecond(remain, ref.current.remain) || remain === 0) {
-        setRemain(remain)
-      }
-      if (ref.current.remain !== 0) {
+      } else {
         macroTick()
       }
-    })
-  }
-
-  const tick = function () {
-    if (millisecond) {
-      microTick()
-    } else {
-      macroTick()
-    }
-  }
+    },
+    [macroTick, microTick, millisecond],
+  )
   // 开始
-  const start = function () {
-    if (ref.current.counting) {
-      return
-    }
-    ref.current.counting = true
-    ref.current.endTime = Date.now() + ref.current.remain!
-    tick()
-  }
+  const start = useCallback(
+    function () {
+      if (_ref.current.counting) {
+        return
+      }
+      _ref.current.counting = true
+      _ref.current.endTime = Date.now() + _ref.current.remain!
+      tick()
+    },
+    [tick],
+  )
 
   // 重置
-  const reset = function () {
-    pause()
-    ref.current.remain = time
-    setRemain(ref.current.remain)
-    if (autoStart) {
-      start()
-    }
-  }
+  const reset = useCallback(
+    function () {
+      pause()
+      _ref.current.remain = time
+      setRemain(_ref.current.remain)
+      if (autoStart) {
+        start()
+      }
+    },
+    [autoStart, pause, setRemain, start, time],
+  )
 
-  const actionRef = useRef({
-    start: function () {
+  useImperativeHandle(ref, () => ({
+    start: () => {
       start()
     },
-    pause: function () {
+    pause: () => {
       pause()
     },
-    reset: function () {
+    reset: () => {
       reset()
     },
-  })
-  if (cref) {
-    cref.current = actionRef.current
-  }
+  }))
 
   useEffect(
     function () {
@@ -126,7 +147,7 @@ export default function Index(props: CountDownProps) {
     [time],
   )
 
-  const tid = ref.current.tid
+  const tid = _ref.current.tid
   useEffect(function () {
     return function () {
       tid && clearTimeout(tid)
@@ -140,3 +161,5 @@ export default function Index(props: CountDownProps) {
     </View>
   )
 }
+
+export default forwardRef(Index)

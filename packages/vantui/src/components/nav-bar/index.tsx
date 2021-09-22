@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { View, Block } from '@tarojs/components'
 import * as utils from '../wxs/utils'
+import { Navbar } from '../common/zIndex'
 import { getRect, getSystemInfoSync } from '../common/utils'
 import { NavBarProps } from '../../../types/nav-bar'
 import Icon from '../icon/index'
@@ -13,7 +14,7 @@ export default function Index(props: NavBarProps) {
     fixed,
     placeholder,
     border = true,
-    zIndex = 80,
+    zIndex = Navbar,
     safeAreaInsetTop = true,
     customStyle,
     leftArrow,
@@ -69,7 +70,7 @@ export default function Index(props: NavBarProps) {
           }) +
           ' custom-class ' +
           (border ? 'van-hairline--bottom' : '') +
-          ` ${className}`
+          ` ${className || ''}`
         }
         style={utils.style([
           computed.barStyle({
@@ -90,7 +91,6 @@ export default function Index(props: NavBarProps) {
                 {leftArrow && (
                   <Icon
                     size={64}
-                    info={null}
                     name="arrow-left"
                     className="van-nav-bar__arrow"
                   ></Icon>

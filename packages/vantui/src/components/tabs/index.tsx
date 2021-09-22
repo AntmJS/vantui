@@ -8,6 +8,7 @@ import {
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View, ScrollView } from '@tarojs/components'
+import { Tabs } from '../common/zIndex'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
 import Sticky from '../sticky/index'
@@ -82,7 +83,7 @@ export default function Index(props: TabsProps) {
     lazyRender = true,
     type = 'line',
     sticky,
-    zIndex = 1,
+    zIndex = Tabs,
     offsetTop = 0,
     border,
     color,
@@ -157,10 +158,9 @@ export default function Index(props: TabsProps) {
     })
     requestAnimationFrame(() => {
       resize(cIndex)
-      scrollIntoView()
+      scrollIntoView(cIndex)
     })
     Taro.nextTick(() => {
-      // trigger('input')
       if (shouldEmitChange) {
         trigger('onChange')
       }
@@ -219,17 +219,18 @@ export default function Index(props: TabsProps) {
     }
   }
 
-  const scrollIntoView = function () {
+  const scrollIntoView = function (index?: number) {
     if (!scrollable) {
       return
     }
+    index = index ?? currentIndex
     Promise.all([
       getAllRect(null, '.van-tab'),
       getRect(null, '.van-tabs__nav'),
     ]).then(([tabRects, navRect]: any) => {
-      const tabRect = tabRects[currentIndex]
+      const tabRect = tabRects[index!]
       const offsetLeft = tabRects
-        .slice(0, currentIndex)
+        .slice(0, index)
         .reduce((prev: number, curr: any) => prev + curr.width, 0)
       setState((pre: any) => {
         return {
@@ -370,7 +371,9 @@ export default function Index(props: TabsProps) {
 
   return (
     <View
-      className={'custom-class ' + utils.bem('tabs', [type] + ` ${className}`)}
+      className={
+        'custom-class ' + utils.bem('tabs', [type] + ` ${className || ''}`)
+      }
       style={style}
       {...others}
     >

@@ -62,8 +62,8 @@
   },
   "devDependencies": {
     "@antmjs/iconfont": "1.9.4",
-    "@tarojs/components": "^3.3.2",
-    "@tarojs/taro": "^3.3.2",
+    "@tarojs/components": "^3.3.0",
+    "@tarojs/taro": "^3.3.0",
     "@types/lodash.flow": "^3.5.6",
     "@types/react": "^17.0.17",
     "react": "^17.0.2",

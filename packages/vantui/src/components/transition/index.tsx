@@ -34,7 +34,9 @@ export default function Index(props: TransitionPropsCom) {
   return (
     <>
       <View
-        className={'van-transition custom-class ' + classes + ` ${className}`}
+        className={
+          'van-transition custom-class ' + classes + ` ${className || ''}`
+        }
         style={utils.style([
           computed.rootStyle({
             currentDuration,

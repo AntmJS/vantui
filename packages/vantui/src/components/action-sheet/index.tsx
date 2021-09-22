@@ -38,6 +38,8 @@ export default function Index(props: ActionSheetProps) {
     sendMessageImg,
     showMessageCard,
     appParameter,
+    className,
+    style,
   } = props
 
   const _onCancel = useCallback(() => {
@@ -90,10 +92,11 @@ export default function Index(props: ActionSheetProps) {
       round={round}
       zIndex={zIndex}
       overlay={overlay}
-      className="van-action-sheet"
+      className={`van-action-sheet ${className || ''}`}
       safeAreaInsetBottom={safeAreaInsetBottom}
       closeOnClickOverlay={closeOnClickOverlay}
       onClose={_onClickOverlay}
+      style={utils.style([style])}
     >
       <>
         {title && (

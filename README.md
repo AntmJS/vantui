@@ -25,7 +25,7 @@ src/style/index.less
 import { Button } from '@antmjs/vantui'
 ```
 
-yarn
+yarn && npx husky install
 
 npx lerna bootstrap
 
@@ -85,7 +85,6 @@ Collapse
 Circle
 
 Checkbox
-Field
 Radio
 Switch
 Uploader
@@ -123,16 +122,27 @@ Dialog
 Area
 
 三少
+
 Button[完成]
+
 Icon[完成]
 
 Progress[完成]
+
 Skeleton[完成]
+
 CountDown[完成]
+
 Tag[完成]
+
 Sticky[完成]
+
 Rate[完成]
+
 Search[完成]
+
 NavBar[完成]
-Tab
-TabBar
+
+Tab[完成]
+
+TabBar[完成]

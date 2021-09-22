@@ -7,7 +7,7 @@ export default function Index(props: InfoProps) {
 
   return (
     <>
-      {((info !== null && info !== '') || dot) && (
+      {(info || info === 0 || dot) && (
         <View
           className={
             'van-info ' +
