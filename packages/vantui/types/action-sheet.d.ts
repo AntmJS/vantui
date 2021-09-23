@@ -9,7 +9,6 @@ export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
   loading?: boolean
   disabled?: boolean
   getUserProfileDesc?: string
-  children?: ReactNode
 }
 export interface ActionSheetProps extends StandardProps, PopupProps {
   actions: ActionSheetItem[]

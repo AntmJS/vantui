@@ -1,11 +1,11 @@
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { ActionSheetProps, ActionSheetItem } from '../../../types/action-sheet'
-// import { button } from '../mixins/button.js'
 import VanLoading from '../loading/index'
 import VanPopup from '../popup/index'
 import VanIcon from '../icon/index'
+import Button from './../button'
 export default function Index(props: ActionSheetProps) {
   const {
     round = true,
@@ -106,8 +106,6 @@ export default function Index(props: ActionSheetProps) {
                 openType,
                 color,
                 className,
-                type,
-                size,
                 ...rest
               } = item
               return (
