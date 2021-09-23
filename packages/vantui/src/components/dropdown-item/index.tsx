@@ -173,9 +173,9 @@ export default function Index(
       >
         <VanPopup
           show={showPopup}
-          style={'position: absolute;' + popupStyle}
+          style={utils.style([{ position: 'absolute' }, popupStyle])}
           overlayStyle="position: absolute;"
-          overlay={parentInstance.overlay || false}
+          overlay={!!parentInstance.overlay}
           position={direction !== 'down' ? 'top' : 'bottom'}
           duration={transition ? duration : 0}
           closeOnClickOverlay={closeOnClickOverlay}
