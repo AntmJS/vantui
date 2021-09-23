@@ -72,6 +72,7 @@ export default function Index() {
       <ActionSheet
         show={showActionSheet}
         onClose={() => setShowActionSheet(false)}
+        onCancel={() => setShowActionSheet(false)}
         cancelText="取消"
         actions={[
           {

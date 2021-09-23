@@ -1,7 +1,7 @@
 import { View, Button } from '@tarojs/components'
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
-import { ActionSheetProps } from '../../../types/action-sheet'
+import { ActionSheetProps, ActionSheetItem } from '../../../types/action-sheet'
 // import { button } from '../mixins/button.js'
 import VanLoading from '../loading/index'
 import VanPopup from '../popup/index'
@@ -24,22 +24,9 @@ export default function Index(props: ActionSheetProps) {
     onCancel,
     onClose,
     onClickOverlay,
-    onContact,
-    onGetPhoneNumber,
-    onError,
-    onLaunchApp,
-    onOpenSetting,
     onGetUserInfo,
-    canIUseGetUserProfile,
-    lang,
-    sessionFrom,
-    sendMessageTitle,
-    sendMessagePath,
-    sendMessageImg,
-    showMessageCard,
-    appParameter,
     className,
-    style,
+    ...others
   } = props
 
   const _onCancel = useCallback(() => {
@@ -60,9 +47,9 @@ export default function Index(props: ActionSheetProps) {
         if (closeOnClickAction) {
           _onClose()
         }
-        if (item.openType === 'getUserInfo' && canIUseGetUserProfile) {
+        if (item.openType === 'getUserInfo') {
           Taro.getUserProfile({
-            desc: item.getUserProfileDesc || '  ',
+            desc: item?.getUserProfileDesc || '  ',
             complete: (userProfile) => {
               onGetUserInfo?.(userProfile)
             },
@@ -70,14 +57,7 @@ export default function Index(props: ActionSheetProps) {
         }
       }
     },
-    [
-      _onClose,
-      actions,
-      canIUseGetUserProfile,
-      closeOnClickAction,
-      onGetUserInfo,
-      onSelect,
-    ],
+    [_onClose, actions, closeOnClickAction, onGetUserInfo, onSelect],
   )
 
   const _onClickOverlay = useCallback(() => {
@@ -96,7 +76,7 @@ export default function Index(props: ActionSheetProps) {
       safeAreaInsetBottom={safeAreaInsetBottom}
       closeOnClickOverlay={closeOnClickOverlay}
       onClose={_onClickOverlay}
-      style={utils.style([style])}
+      {...others}
     >
       <>
         {title && (
@@ -117,48 +97,46 @@ export default function Index(props: ActionSheetProps) {
         )}
         {actions && actions.length && (
           <View>
-            {actions.map((item: any, index: any) => {
+            {actions.map((item: ActionSheetItem, index: number) => {
+              const {
+                name,
+                subname,
+                disabled,
+                loading,
+                openType,
+                color,
+                className,
+                type,
+                size,
+                ...rest
+              } = item
               return (
                 <Button
                   key={index}
                   openType={
-                    item.disabled ||
-                    item.loading ||
-                    (canIUseGetUserProfile && item.openType === 'getUserInfo')
+                    disabled || loading || openType === 'getUserInfo'
                       ? ''
-                      : item.openType
+                      : openType
                   }
-                  style={item.color ? 'color: ' + item.color : ''}
+                  style={color ? 'color: ' + color : ''}
                   className={
                     utils.bem('action-sheet__item', {
-                      disabled: item.disabled || item.loading,
+                      disabled: disabled || loading,
                     }) +
                     ' ' +
-                    (item.className || '')
+                    (className || '')
                   }
                   hoverClass="van-action-sheet__item--hover"
                   data-index={index}
-                  onClick={item.disabled || item.loading ? () => {} : _onSelect}
-                  onGetUserInfo={onGetUserInfo}
-                  onContact={onContact}
-                  onGetPhoneNumber={onGetPhoneNumber}
-                  onError={onError}
-                  onLaunchapp={onLaunchApp}
-                  onOpenSetting={onOpenSetting}
-                  lang={lang}
-                  sessionFrom={sessionFrom}
-                  sendMessageTitle={sendMessageTitle}
-                  sendMessagePath={sendMessagePath}
-                  sendMessageImg={sendMessageImg}
-                  showMessageCard={showMessageCard}
-                  appParameter={appParameter}
+                  onClick={disabled || loading ? () => {} : _onSelect}
+                  {...rest}
                 >
-                  {!item.loading ? (
+                  {!loading ? (
                     <>
-                      {item.name}
-                      {item.subname && (
+                      {name}
+                      {subname && (
                         <View className="van-action-sheet__subname">
-                          {item.subname}
+                          {subname}
                         </View>
                       )}
                     </>

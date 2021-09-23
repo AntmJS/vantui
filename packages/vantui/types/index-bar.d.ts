@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 export interface IndexBarProps extends StandardProps {
   sticky?: boolean
@@ -7,7 +7,7 @@ export interface IndexBarProps extends StandardProps {
   stickyOffsetTop?: number
   indexList?: any[]
   onSelect?: (...args: any[]) => any
-  children?: JSX.Element | JSX.Element[] | string
+  children?: ReactNode
 }
 declare const IndexBar: ComponentClass<IndexBarProps>
 export { IndexBar }

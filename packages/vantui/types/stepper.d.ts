@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface StepperProps extends StandardProps {
@@ -25,8 +25,8 @@ export interface StepperProps extends StandardProps {
   onOverlimit?: (...arg: any[]) => any
   onPlus?: (...arg: any[]) => any
   onMinus?: (...arg: any[]) => any
-  renderMinus?: JSX.Element | JSX.Element[] | string
-  renderPlus?: JSX.Element | JSX.Element[] | string
+  renderMinus?: ReactNode
+  renderPlus?: ReactNode
 }
 // Partial
 declare const Stepper: ComponentClass<StepperProps>
