@@ -1,10 +1,15 @@
-export { Button } from './button.d'
+export {
+  Button,
+  MiniLoginButton,
+  MiniUserButton,
+  MiniPhoneButton,
+} from './button.d'
 export { Icon } from './icon.d'
 export { Loading } from './loading.d'
 export { Info } from './info.d'
 export { Progress } from './progress.d'
 export { Sticky } from './sticky.d'
-export { NavBar } from './nav-bar.d'
+export { NavBar, MiniNavBar } from './nav-bar.d'
 export { Tabs } from './tabs.d'
 export { Popup } from './popup.d'
 export { Overlay } from './overlay.d'

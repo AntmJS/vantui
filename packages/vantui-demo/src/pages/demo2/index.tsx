@@ -1,6 +1,6 @@
 import { View, Button } from '@tarojs/components'
 import { useEffect, useState } from 'react'
-import { useDidHide, useDidShow } from '@tarojs/taro'
+import { useDidHide, useDidShow, navigateTo } from '@tarojs/taro'
 import {
   Popup,
   Steps,
@@ -120,7 +120,13 @@ export default function Index() {
       />
       <Popup show={show} position="bottom" onClose={() => setShow(false)}>
         <View>
-          <View>不是设计开发不贷款分不开的</View>
+          <View
+            onClick={() => {
+              navigateTo({ url: '/pages/index/index' })
+            }}
+          >
+            不是设计开发不贷款分不开的
+          </View>
           <View>不是设计开发不贷款分不开的</View>
           <View>不是设计开发不贷款分不开的</View>
           <View>不是设计开发不贷款分不开的</View>
