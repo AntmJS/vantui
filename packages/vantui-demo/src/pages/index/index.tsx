@@ -26,16 +26,22 @@ import {
   GoodsAction,
   GoodsActionIcon,
   GoodsActionButton,
+  DatetimePicker,
 } from '@antmjs/vantui'
 
 import './index.less'
 
 const columns = ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
+const minDate = new Date().getTime()
+const maxDate = new Date(2019, 10, 1).getTime()
 
 export default function Index() {
   const [rate, setRate] = useState(2.5)
   const [serachValue] = useState('ff')
+  const [currentDate, setCurrentDate] = useState<any>()
+
   useEffect(function () {
+    setCurrentDate(new Date().getTime())
     console.info('index page load.')
     return function () {
       console.info('index page unload.')
@@ -56,6 +62,10 @@ export default function Index() {
     console.info(a, 'picker onConfirm')
   }, [])
 
+  const onInput = function (e: any) {
+    console.info(e, 'DatetimePicker onInput')
+  }
+
   // const x = useRef<ICountDownRef | undefined>()
 
   return (
@@ -74,6 +84,13 @@ export default function Index() {
         <Icon name="chat" size={40} info="9" />
         <Icon name="chat" size={40} info="99+" />
       </View>
+      <DatetimePicker
+        type="datetime"
+        value={currentDate}
+        min-date={minDate}
+        max-date={maxDate}
+        onInput={onInput}
+      />
       <View>
         <Skeleton title avatar row={3} />
       </View>
