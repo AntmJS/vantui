@@ -108,7 +108,7 @@ export default function Index(this: any, props: PopupProps) {
                 safeTop: safeAreaInsetTop,
               },
             ]) +
-            `  ${className}`
+            `  ${className || ''}`
           }
           style={utils.style([
             computed.popupStyle({

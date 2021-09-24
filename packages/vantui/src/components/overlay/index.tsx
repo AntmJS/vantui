@@ -32,7 +32,7 @@ export default function Index(props: OverlayProps) {
   ) : (
     <VanTransition
       show={show}
-      className={'van-overlay' + `  ${className}`}
+      className={'van-overlay' + `  ${className || ''}`}
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
       {...others}
