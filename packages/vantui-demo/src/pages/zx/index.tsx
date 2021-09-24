@@ -7,11 +7,15 @@ import {
   Radio,
   RadioGroup,
   NoticeBar,
-  Collapse,
   Checkbox,
   CheckboxGroup,
   Switch,
   Uploader,
+  Collapse,
+  CollapseItem,
+  Circle,
+  Toast,
+  toast,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -47,13 +51,29 @@ export default function Index() {
     console.info('index page hide.')
   })
 
-  const handleChangeCollapse = function (event: any) {
+  const handleChangeCollapse = function (value: any) {
     setState((state) => {
       return {
         ...state,
-        collapseActiveValues: event.defail,
+        collapseActiveValues: value,
       }
     })
+  }
+
+  const handleOpenCollapse = function (value: any) {
+    console.log(`打开: ${value}`)
+    toast.loading({
+      duration: 0,
+      forbidClick: true,
+      message: '倒计时 3 秒',
+      selector: '#van-toast',
+    })
+    setTimeout(() => {
+      toast.clear()
+    }, 3000)
+  }
+  const handleCloseCollapse = function (value: any) {
+    console.log(`关闭: ${value}`)
   }
 
   const handleChangeRadio = function (value: any) {
@@ -105,11 +125,21 @@ export default function Index() {
         文本
       </Divider>
       <NoticeBar scrollable text="技术是开发它的人的共同灵魂。" />
+      <Circle
+        value={50}
+        size={100}
+        strokeWidth={8}
+        text="颜色定制"
+        color="#00ffff"
+      />
+      <Toast id="van-toast" />
       <Collapse
         value={state.collapseActiveValues}
         onChange={handleChangeCollapse}
+        onOpen={handleOpenCollapse}
+        onClose={handleCloseCollapse}
       >
-        {/* <CollapseItem title="有赞微商城" name="1">
+        <CollapseItem title="有赞微商城" name="1">
           提供多样店铺模板，快速搭建网上商城
         </CollapseItem>
         <CollapseItem title="有赞零售" name="2">
@@ -117,10 +147,7 @@ export default function Index() {
         </CollapseItem>
         <CollapseItem title="有赞美业" name="3" disabled>
           线上拓客，随时预约，贴心顺手的开单收银
-        </CollapseItem> */}
-        <View>1</View>
-        <View>2</View>
-        <View>3</View>
+        </CollapseItem>
       </Collapse>
       <RadioGroup value={state.radioActiveValue} onChange={handleChangeRadio}>
         <Radio name="1">单选框 1</Radio>

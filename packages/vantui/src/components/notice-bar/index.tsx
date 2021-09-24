@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { View, Navigator } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
@@ -8,18 +8,22 @@ import { getRect, requestAnimationFrame } from '../common/utils'
 import VanIcon from '../icon/index'
 import * as computed from './wxs'
 
-let animation: any = null
-let resetAnimation: any = null
-let timer: any = null
-let wrapWidth: any = undefined
-let contentWidth: any = undefined
-let duration: any = undefined
-
 export default function Index(props: NoticeBarProps) {
   const [state, setState] = useState({
     show: true,
     animationData: { actions: [] },
   })
+
+  const params: any = {
+    animation: null,
+    resetAnimation: null,
+    timer: null,
+    wrapWidth: undefined,
+    contentWidth: undefined,
+    duration: undefined,
+  }
+
+  const ref = useRef(params)
 
   const {
     text = '',
@@ -45,7 +49,7 @@ export default function Index(props: NoticeBarProps) {
   } = props
 
   Taro.useReady(() => {
-    resetAnimation = Taro.createAnimation({
+    ref.current.resetAnimation = Taro.createAnimation({
       duration: 0,
       timingFunction: 'linear',
     })
@@ -55,9 +59,9 @@ export default function Index(props: NoticeBarProps) {
     init()
 
     return () => {
-      timer && clearTimeout(timer)
+      ref.current.timer && clearTimeout(ref.current.timer)
     }
-  }, [])
+  }, [text, speed])
 
   const init = function () {
     requestAnimationFrame(() => {
@@ -78,11 +82,12 @@ export default function Index(props: NoticeBarProps) {
           return
         }
         if (scrollable || wrapRect.width < contentRect.width) {
-          wrapWidth = wrapRect.width
-          contentWidth = contentRect.width
-          duration = ((wrapRect.width + contentRect.width) / speed) * 1000
-          animation = Taro.createAnimation({
-            duration,
+          ref.current.wrapWidth = wrapRect.width
+          ref.current.contentWidth = contentRect.width
+          ref.current.duration =
+            ((wrapRect.width + contentRect.width) / speed) * 1000
+          ref.current.animation = Taro.createAnimation({
+            duration: ref.current.duration,
             timingFunction: 'linear',
             delay,
           })
@@ -93,31 +98,37 @@ export default function Index(props: NoticeBarProps) {
   }
 
   const scroll = function () {
-    timer && clearTimeout(timer)
-    timer = null
+    ref.current.timer && clearTimeout(ref.current.timer)
+    ref.current.timer = null
     setState((state) => {
       return {
         ...state,
-        animationData: resetAnimation.translateX(wrapWidth).step().export(),
+        animationData: ref.current.resetAnimation
+          .translateX(ref.current.wrapWidth)
+          .step()
+          .export(),
       }
     })
     requestAnimationFrame(() => {
       setState((state) => {
         return {
           ...state,
-          animationData: animation.translateX(-contentWidth).step().export(),
+          animationData: ref.current.animation
+            .translateX(-ref.current.contentWidth)
+            .step()
+            .export(),
         }
       })
     })
-    timer = setTimeout(() => {
+    ref.current.timer = setTimeout(() => {
       scroll()
-    }, duration)
+    }, ref.current.duration)
   }
 
   const onClickIcon = function (event: any) {
     if (mode === 'closeable') {
-      timer && clearTimeout(timer)
-      timer = null
+      ref.current.timer && clearTimeout(ref.current.timer)
+      ref.current.timer = null
       setState((state) => {
         return {
           ...state,
