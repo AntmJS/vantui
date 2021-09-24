@@ -34,7 +34,7 @@ export default function Index(props: TagProps) {
             round,
           },
         ]) +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={utils.style([
         computed.rootStyle({

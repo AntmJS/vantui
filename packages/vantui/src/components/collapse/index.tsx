@@ -59,7 +59,7 @@ export default function Index(props: CollapseProps) {
       className={
         'custom-class van-collapse ' +
         (border ? 'van-hairline--top-bottom' : '') +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={style}
       {...others}

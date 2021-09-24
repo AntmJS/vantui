@@ -24,7 +24,7 @@ export interface CellProps extends StandardProps {
   renderLabel?: ReactNode
   renderRightIcon?: ReactNode
   renderExtra?: ReactNode
-  children?: ReactNode
+  children?: ReactNode | JSX.Element | JSX.Element[]
 }
 
 declare const Cell: ComponentClass<CellProps>

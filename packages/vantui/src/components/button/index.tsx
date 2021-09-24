@@ -51,7 +51,7 @@ export default function Index(props: ButtonProps) {
         ]) +
         ' ' +
         (hairline ? 'van-hairline--surround' : '') +
-        ` ${className}`
+        ` ${className || ''}`
       }
       hoverClass="van-button--active hover-class"
       style={utils.style([

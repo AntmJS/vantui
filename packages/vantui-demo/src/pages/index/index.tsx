@@ -1,11 +1,11 @@
 import { View } from '@tarojs/components'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
   Progress,
   Sticky,
   Icon,
-  NavBar,
+  // MiniNavBar,
   Button,
   Tabs,
   Tab,
@@ -18,22 +18,45 @@ import {
   Skeleton,
   Tag,
   // CountDown,
+  // Tabbar,
+  // TabbarItem,
+  Notify,
+  Grid,
+  GridItem,
+  DropdownMenu,
+  DropdownItem,
+  // CountDown,
   Picker,
-  Tabbar,
-  TabbarItem,
   CellGroup,
   Cell,
   // ICountDownRef,
   Field,
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
+  // NavBar,
 } from '@antmjs/vantui'
 
 import './index.less'
 
+const option1 = [
+  { text: '全部商品', value: 0 },
+  { text: '新款商品', value: 1 },
+  { text: '活动商品', value: 2 },
+]
+const option2 = [
+  { text: '默认排序', value: 'a' },
+  { text: '好评排序', value: 'b' },
+  { text: '销量排序', value: 'c' },
+]
 const columns = ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
 
 export default function Index() {
   const [rate, setRate] = useState(2.5)
+  const NotifyInstance = useRef<any>(null)
   const [serachValue] = useState('ff')
+  const value1 = 0
+  const value2 = 'a'
   useEffect(function () {
     console.info('index page load.')
     return function () {
@@ -46,6 +69,13 @@ export default function Index() {
   useDidHide(function () {
     console.info('index page hide.')
   })
+  const NotifyShow = function () {
+    NotifyInstance.current.show({
+      message: '消息通知',
+      top: 20,
+      zIndex: 1000,
+    })
+  }
 
   const onChange = useCallback(function (a) {
     console.info(a, 'picker onChange')
@@ -59,15 +89,28 @@ export default function Index() {
 
   return (
     <View className="pages-index-index">
-      <NavBar
+      <Button onClick={NotifyShow}>Notify</Button>
+      <Notify ref={NotifyInstance} />
+      {/* <NavBar
         fixed
         border
         title="标题"
         leftText="返回"
         rightText="按钮"
         leftArrow
-      />
+      /> */}
+      {/* <MiniNavBar title="标题" homeUrl="/pages/demo2/index" /> */}
       <Progress percentage={50} strokeWidth={4} />
+      <Grid>
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+      </Grid>
+      <DropdownMenu>
+        <DropdownItem value={value1} options={option1} />
+        <DropdownItem value={value2} options={option2} />
+      </DropdownMenu>
       <View>
         <Icon name="chat" size={40} dot />
         <Icon name="chat" size={40} info="9" />
@@ -207,8 +250,8 @@ export default function Index() {
         <Sticky
           container={() => Taro.createSelectorQuery().select('#container')}
         >
-          <Button plain type="primary" loading>
-            kkk
+          <Button plain type="primary">
+            kkk收费的
           </Button>
         </Sticky>
       </View>
@@ -230,7 +273,7 @@ export default function Index() {
         <Col span="8">span: 8</Col>
       </Row>
 
-      <Loading type="circular" size={80}>
+      <Loading type="circular" size={40}>
         加载中...
       </Loading>
 
@@ -240,7 +283,14 @@ export default function Index() {
         onChange={onChange}
         onConfirm={onConfirm}
       />
-      <Tabbar active={1}>
+      <GoodsAction>
+        <GoodsActionIcon icon="chat-o" text="客服" />
+        <GoodsActionIcon icon="cart-o" text="购物车" info="5" />
+        <GoodsActionIcon icon="shop-o" text="店铺" />
+        <GoodsActionButton color="#7232dd" text="加入购物" type="warning" />
+        <GoodsActionButton plain color="#7232dd" text="立即购买" />
+      </GoodsAction>
+      {/* <Tabbar active={1}>
         <TabbarItem icon="home-o">标签</TabbarItem>
         <TabbarItem icon="search" dot>
           标签
@@ -251,7 +301,7 @@ export default function Index() {
         <TabbarItem icon="setting-o" info="20">
           标签
         </TabbarItem>
-      </Tabbar>
+      </Tabbar> */}
     </View>
   )
 }

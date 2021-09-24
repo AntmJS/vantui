@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { View, Block, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { CellProps } from '../../../types/cell'
@@ -35,10 +36,13 @@ export default function Index(props: CellProps) {
     className,
     ...others
   } = props
-  const _click: (event: ITouchEvent) => void = function (event) {
-    onClick?.(event)
-    if (url && linkType) jumpLink(linkType, url)
-  }
+  const _click: (event: ITouchEvent) => void = useCallback(
+    function (event) {
+      onClick?.(event)
+      if (url && linkType) jumpLink(linkType, url)
+    },
+    [linkType, onClick, url],
+  )
   return (
     <View
       className={
@@ -52,7 +56,7 @@ export default function Index(props: CellProps) {
             clickable: isLink || clickable,
           },
         ]) +
-        ` ${className}`
+        ` ${className || ''}`
       }
       hoverClass="van-cell--hover hover-class"
       hoverStayTime={70}
