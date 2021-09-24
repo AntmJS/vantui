@@ -32,7 +32,6 @@ export default function Index(props: GoodsActionProps) {
   } = props
 
   const tabs = parseTabList(children)
-  console.log(tabs)
   const newChildren: any = tabs.map((tab, index) => {
     return cloneElement(tab.node, {
       key: tab.key,
