@@ -108,6 +108,7 @@ export default function Index(props: TabsProps) {
   } = props
   const tabs = parseTabList(children)
   const newChildren: any = tabs.map((tab, index) => {
+    console.log(currentIndex, index)
     return cloneElement(tab.node, {
       key: tab.key,
       active: currentIndex === index,
@@ -185,29 +186,32 @@ export default function Index(props: TabsProps) {
       getAllRect(null, '.van-tab'),
       getRect(null, '.van-tabs__line'),
     ]).then(([rects = [], lineRect]: any) => {
-      const rect = rects[index!]
-      if (rect == null) {
-        return
-      }
-      let lineOffsetLeft = rects
-        .slice(0, index)
-        .reduce((prev: number, curr: any) => prev + curr.width, 0)
-      lineOffsetLeft += (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8)
-      setState((pre: any) => {
-        return { ...pre, lineOffsetLeft }
-      })
-      if (skipTransition) {
-        Taro.nextTick(() => {
-          setState((pre: any) => {
-            return { ...pre, skipTransition: false }
-          })
+      if (rects && lineRect) {
+        const rect = rects[index!]
+        if (rect == null) {
+          return
+        }
+        let lineOffsetLeft = rects
+          .slice(0, index)
+          .reduce((prev: number, curr: any) => prev + curr.width, 0)
+        lineOffsetLeft += (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8)
+        setState((pre: any) => {
+          return { ...pre, lineOffsetLeft }
         })
+        if (skipTransition) {
+          Taro.nextTick(() => {
+            setState((pre: any) => {
+              return { ...pre, skipTransition: false }
+            })
+          })
+        }
       }
     })
   }
 
   const onTap = function (event: any) {
-    const { index } = event.currentTarget.dataset
+    let { index } = event.currentTarget.dataset
+    index = parseInt(index)
     const child = newChildren[index]
     if (child.props.disabled) {
       trigger('onDisabled', child)
@@ -228,25 +232,27 @@ export default function Index(props: TabsProps) {
       getAllRect(null, '.van-tab'),
       getRect(null, '.van-tabs__nav'),
     ]).then(([tabRects, navRect]: any) => {
-      const tabRect = tabRects[index!]
-      const offsetLeft = tabRects
-        .slice(0, index)
-        .reduce((prev: number, curr: any) => prev + curr.width, 0)
-      setState((pre: any) => {
-        return {
-          ...pre,
-          scrollLeft: offsetLeft - (navRect.width - tabRect.width) / 2,
-        }
-      })
-      if (!scrollWithAnimation) {
-        Taro.nextTick(() => {
-          setState((pre: any) => {
-            return {
-              ...pre,
-              scrollWithAnimation: true,
-            }
-          })
+      if (tabRects && navRect) {
+        const tabRect = tabRects[index!]
+        const offsetLeft = tabRects
+          .slice(0, index)
+          .reduce((prev: number, curr: any) => prev + curr.width, 0)
+        setState((pre: any) => {
+          return {
+            ...pre,
+            scrollLeft: offsetLeft - (navRect.width - tabRect.width) / 2,
+          }
         })
+        if (!scrollWithAnimation) {
+          Taro.nextTick(() => {
+            setState((pre: any) => {
+              return {
+                ...pre,
+                scrollWithAnimation: true,
+              }
+            })
+          })
+        }
       }
     })
   }

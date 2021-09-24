@@ -1,8 +1,8 @@
 import { View, Block } from '@tarojs/components'
+import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { LoadingProps } from '../../../types/loading'
 import * as computed from './wxs'
-const array12 = Array.from({ length: 1 })
 
 export default function Index(props: LoadingProps): JSX.Element {
   const {
@@ -17,6 +17,8 @@ export default function Index(props: LoadingProps): JSX.Element {
     ...others
   } = props
 
+  const [array12] = useState(Array.from({ length: 12 }))
+
   return (
     <View
       className={
@@ -30,31 +32,26 @@ export default function Index(props: LoadingProps): JSX.Element {
       style={utils.style([style])}
       {...others}
     >
-      {array12.map((_, index: number) => {
-        return (
-          <View
-            key={`van-loading__${index}`}
-            className={'van-loading__spinner van-loading__spinner--' + type}
-            style={computed.spinnerStyle({
-              color,
-              size,
+      <View
+        className={'van-loading__spinner van-loading__spinner--' + type}
+        style={computed.spinnerStyle({
+          color,
+          size,
+        })}
+      >
+        {type === 'spinner' && (
+          <Block>
+            {array12.map((_, index: number) => {
+              return (
+                <View
+                  key={`van-loading__dot_${index}`}
+                  className="van-loading__dot"
+                ></View>
+              )
             })}
-          >
-            {type === 'spinner' && (
-              <Block>
-                {array12.map((_, index: number) => {
-                  return (
-                    <View
-                      key={`van-loading__dot_${index}`}
-                      className="van-loading__dot"
-                    ></View>
-                  )
-                })}
-              </Block>
-            )}
-          </View>
-        )
-      })}
+          </Block>
+        )}
+      </View>
       <View
         className="van-loading__text"
         style={computed.textStyle({

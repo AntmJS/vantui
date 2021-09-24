@@ -1,36 +1,36 @@
 import Taro from '@tarojs/taro'
-import { canIUseAnimate } from '../common/version.js'
+// import { canIUseAnimate } from '../common/version.js'
 import { getRect } from '../common/utils.js'
-function useAnimate(context: any, expanded: any, mounted: any, height: any) {
-  const selector = '.van-collapse-item__wrapper'
-  if (expanded) {
-    context.animate(
-      selector,
-      [
-        { height: 0, ease: 'ease-in-out', offset: 0 },
-        { height: `${height}px`, ease: 'ease-in-out', offset: 1 },
-        { height: `auto`, ease: 'ease-in-out', offset: 1 },
-      ],
-      mounted ? 300 : 0,
-      () => {
-        context.clearAnimation(selector)
-      },
-    )
-    return
-  }
-  context.animate(
-    selector,
-    [
-      { height: `${height}px`, ease: 'ease-in-out', offset: 0 },
-      { height: 0, ease: 'ease-in-out', offset: 1 },
-    ],
-    300,
-    () => {
-      context.clearAnimation(selector)
-    },
-  )
-}
-function useAnimation(context: any, expanded: any, mounted: any, height: any) {
+// function useAnimate(context: any, expanded: any, mounted: any, height: any) {
+//   const selector = '.van-collapse-item__wrapper'
+//   if (expanded) {
+//     context.animate(
+//       selector,
+//       [
+//         { height: 0, ease: 'ease-in-out', offset: 0 },
+//         { height: `${height}px`, ease: 'ease-in-out', offset: 1 },
+//         { height: `auto`, ease: 'ease-in-out', offset: 1 },
+//       ],
+//       mounted ? 300 : 0,
+//       () => {
+//         context.clearAnimation(selector)
+//       },
+//     )
+//     return
+//   }
+//   context.animate(
+//     selector,
+//     [
+//       { height: `${height}px`, ease: 'ease-in-out', offset: 0 },
+//       { height: 0, ease: 'ease-in-out', offset: 1 },
+//     ],
+//     300,
+//     () => {
+//       context.clearAnimation(selector)
+//     },
+//   )
+// }
+function useAnimation(expanded: any, mounted: any, height: any, setState: any) {
   const animation = Taro.createAnimation({
     duration: 0,
     timingFunction: 'ease-in-out',
@@ -48,24 +48,33 @@ function useAnimation(context: any, expanded: any, mounted: any, height: any) {
         .height('auto')
         .step()
     }
-    context.setData({
-      animation: animation.export(),
+    setState?.((state: any) => {
+      return {
+        ...state,
+        animation: animation.export(),
+      }
     })
     return
   }
   animation.height(height).top(0).step({ duration: 1 }).height(0).step({
     duration: 300,
   })
-  context.setData({
-    animation: animation.export(),
+  setState?.((state: any) => {
+    return {
+      ...state,
+      animation: animation.export(),
+    }
   })
 }
-export function setContentAnimate(context: any, expanded: any, mounted: any) {
+export function setContentAnimate(
+  context: any,
+  expanded: any,
+  mounted: any,
+  setState: any,
+) {
   getRect(context, '.van-collapse-item__content')
     .then((rect: any) => rect.height)
     .then((height) => {
-      canIUseAnimate()
-        ? useAnimate(context, expanded, mounted, height)
-        : useAnimation(context, expanded, mounted, height)
+      useAnimation(expanded, mounted, height, setState)
     })
 }
