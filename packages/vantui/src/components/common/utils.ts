@@ -62,7 +62,6 @@ export function getRect(context: any, selector: any) {
       .select(selector)
       .boundingClientRect()
       .exec((rect: any = []) => {
-        console.log('rect: ', rect)
         return resolve(rect[0])
       })
   })

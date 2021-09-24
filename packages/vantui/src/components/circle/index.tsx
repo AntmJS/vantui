@@ -53,20 +53,24 @@ export default function Index(props: CircleProps) {
     return () => {
       clearMockInterval()
     }
+    /* eslint-disable-next-line */
   }, [])
 
   useEffect(() => {
     reRender()
+    /* eslint-disable-next-line */
   }, [value])
 
   useEffect(() => {
     drawCircle(ref.current.currentValue)
+    /* eslint-disable-next-line */
   }, [size])
 
   useEffect(() => {
     setHoverColor().then(() => {
       drawCircle(ref.current.currentValue)
     })
+    /* eslint-disable-next-line */
   }, [color])
 
   const getContext = function () {

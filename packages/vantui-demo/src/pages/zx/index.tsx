@@ -14,6 +14,8 @@ import {
   Collapse,
   CollapseItem,
   Circle,
+  Toast,
+  toast,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -59,7 +61,16 @@ export default function Index() {
   }
 
   const handleOpenCollapse = function (value: any) {
-    console.log(`展开: ${value}`)
+    console.log(`打开: ${value}`)
+    toast.loading({
+      duration: 0,
+      forbidClick: true,
+      message: '倒计时 3 秒',
+      selector: '#van-toast',
+    })
+    setTimeout(() => {
+      toast.clear()
+    }, 3000)
   }
   const handleCloseCollapse = function (value: any) {
     console.log(`关闭: ${value}`)
@@ -121,6 +132,7 @@ export default function Index() {
         text="颜色定制"
         color="#00ffff"
       />
+      <Toast id="van-toast" />
       <Collapse
         value={state.collapseActiveValues}
         onChange={handleChangeCollapse}

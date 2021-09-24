@@ -42,10 +42,12 @@ export default function Index(
   useEffect(() => {
     updateExpanded()
     ref.current.mounted = true
+    /* eslint-disable-next-line */
   }, [])
 
   useEffect(() => {
     updateExpanded()
+    /* eslint-disable-next-line */
   }, [parent.data])
 
   const updateExpanded = function () {
