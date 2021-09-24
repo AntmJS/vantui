@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
   Progress,
@@ -18,6 +18,14 @@ import {
   Skeleton,
   Tag,
   // CountDown,
+  // Tabbar,
+  // TabbarItem,
+  Notify,
+  Grid,
+  GridItem,
+  DropdownMenu,
+  DropdownItem,
+  // CountDown,
   Picker,
   CellGroup,
   Cell,
@@ -26,15 +34,29 @@ import {
   GoodsAction,
   GoodsActionIcon,
   GoodsActionButton,
+  // NavBar,
 } from '@antmjs/vantui'
 
 import './index.less'
 
+const option1 = [
+  { text: '全部商品', value: 0 },
+  { text: '新款商品', value: 1 },
+  { text: '活动商品', value: 2 },
+]
+const option2 = [
+  { text: '默认排序', value: 'a' },
+  { text: '好评排序', value: 'b' },
+  { text: '销量排序', value: 'c' },
+]
 const columns = ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
 
 export default function Index() {
   const [rate, setRate] = useState(2.5)
+  const NotifyInstance = useRef<any>(null)
   const [serachValue] = useState('ff')
+  const value1 = 0
+  const value2 = 'a'
   useEffect(function () {
     console.info('index page load.')
     return function () {
@@ -47,6 +69,13 @@ export default function Index() {
   useDidHide(function () {
     console.info('index page hide.')
   })
+  const NotifyShow = function () {
+    NotifyInstance.current.show({
+      message: '消息通知',
+      top: 20,
+      zIndex: 1000,
+    })
+  }
 
   const onChange = useCallback(function (a) {
     console.info(a, 'picker onChange')
@@ -60,8 +89,28 @@ export default function Index() {
 
   return (
     <View className="pages-index-index">
+      <Button onClick={NotifyShow}>Notify</Button>
+      <Notify ref={NotifyInstance} />
+      {/* <NavBar
+        fixed
+        border
+        title="标题"
+        leftText="返回"
+        rightText="按钮"
+        leftArrow
+      /> */}
       {/* <MiniNavBar title="标题" homeUrl="/pages/demo2/index" /> */}
       <Progress percentage={50} strokeWidth={4} />
+      <Grid>
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+      </Grid>
+      <DropdownMenu>
+        <DropdownItem value={value1} options={option1} />
+        <DropdownItem value={value2} options={option2} />
+      </DropdownMenu>
       <View>
         <Icon name="chat" size={40} dot />
         <Icon name="chat" size={40} info="9" />
