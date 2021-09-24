@@ -5,7 +5,7 @@ import {
   Progress,
   Sticky,
   Icon,
-  MiniNavBar,
+  // MiniNavBar,
   Button,
   Tabs,
   Tab,
@@ -60,7 +60,7 @@ export default function Index() {
 
   return (
     <View className="pages-index-index">
-      <MiniNavBar title="标题" homeUrl="/pages/demo2/index" />
+      {/* <MiniNavBar title="标题" homeUrl="/pages/demo2/index" /> */}
       <Progress percentage={50} strokeWidth={4} />
       <View>
         <Icon name="chat" size={40} dot />
