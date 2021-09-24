@@ -1,11 +1,11 @@
-import { View } from '@tarojs/components'
+import { View, Button } from '@tarojs/components'
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { ActionSheetProps, ActionSheetItem } from '../../../types/action-sheet'
 import VanLoading from '../loading/index'
 import VanPopup from '../popup/index'
 import VanIcon from '../icon/index'
-import Button from './../button'
+// import Button from './../button'
 export default function Index(props: ActionSheetProps) {
   const {
     round = true,
@@ -24,7 +24,6 @@ export default function Index(props: ActionSheetProps) {
     onCancel,
     onClose,
     onClickOverlay,
-    onGetUserInfo,
     className,
     ...others
   } = props
@@ -47,17 +46,9 @@ export default function Index(props: ActionSheetProps) {
         if (closeOnClickAction) {
           _onClose()
         }
-        if (item.openType === 'getUserInfo') {
-          Taro.getUserProfile({
-            desc: item?.getUserProfileDesc || '  ',
-            complete: (userProfile) => {
-              onGetUserInfo?.(userProfile)
-            },
-          })
-        }
       }
     },
-    [_onClose, actions, closeOnClickAction, onGetUserInfo, onSelect],
+    [_onClose, actions, closeOnClickAction, onSelect],
   )
 
   const _onClickOverlay = useCallback(() => {
@@ -111,11 +102,7 @@ export default function Index(props: ActionSheetProps) {
               return (
                 <Button
                   key={index}
-                  openType={
-                    disabled || loading || openType === 'getUserInfo'
-                      ? ''
-                      : openType
-                  }
+                  openType={disabled || loading ? '' : openType}
                   style={color ? 'color: ' + color : ''}
                   className={
                     utils.bem('action-sheet__item', {

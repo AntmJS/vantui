@@ -1,14 +1,12 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { StandardProps, ButtonProps } from '@tarojs/components'
 import { PopupProps } from './popup'
-import { ButtonProps } from './button'
 export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
   name?: string
   subname?: string
   color?: string
   loading?: boolean
   disabled?: boolean
-  getUserProfileDesc?: string
 }
 export interface ActionSheetProps extends StandardProps, PopupProps {
   actions: ActionSheetItem[]
@@ -27,7 +25,6 @@ export interface ActionSheetProps extends StandardProps, PopupProps {
   onCancel?: (...args: any[]) => any
   onClose?: (...args: any[]) => any
   onClickOverlay?: (...args: any[]) => any
-  onGetUserInfo?: (...args: any[]) => any
 }
 declare const ActionSheet: ComponentClass<ActionSheetProps>
 export { ActionSheet }
