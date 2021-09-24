@@ -11,8 +11,6 @@ import {
 import { MiniNavBarProps } from '../../../types/nav-bar'
 import * as computed from './wxs'
 
-declare const getCurrentPages: any
-
 export default function Index(props: MiniNavBarProps) {
   const [state, setState] = useState({
     height: 40,
@@ -57,10 +55,10 @@ export default function Index(props: MiniNavBarProps) {
 
   useEffect(
     function () {
-      const pages = getCurrentPages()
+      const pages = Taro.getCurrentPages()
       if (pages.length >= 1) {
-        const ins = pages[pages.length - 1]
-        const url = ins.route || ins.__route__
+        const ins: any = pages[pages.length - 1]
+        const url = ins.route || ins.__route__ || ins['$taroPath']
         if (url !== homeUrl) {
           setHomeButton(true)
         }

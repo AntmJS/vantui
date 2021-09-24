@@ -108,6 +108,7 @@ export default function Index(props: TabsProps) {
   } = props
   const tabs = parseTabList(children)
   const newChildren: any = tabs.map((tab, index) => {
+    console.log(currentIndex, index)
     return cloneElement(tab.node, {
       key: tab.key,
       active: currentIndex === index,
@@ -209,7 +210,8 @@ export default function Index(props: TabsProps) {
   }
 
   const onTap = function (event: any) {
-    const { index } = event.currentTarget.dataset
+    let { index } = event.currentTarget.dataset
+    index = parseInt(index)
     const child = newChildren[index]
     if (child.props.disabled) {
       trigger('onDisabled', child)
