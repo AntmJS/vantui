@@ -1,5 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, useCallback, useRef } from 'react'
+import {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 import { View } from '@tarojs/components'
 import { PickerProps } from '../../../types/picker'
 import PickerColumn from '../picker-column/index'
@@ -7,7 +14,10 @@ import * as utils from '../wxs/utils'
 import Loading from '../loading/index'
 import * as computed from './wxs'
 
-export default function Index(props: PickerProps): JSX.Element {
+export default forwardRef(function Index(
+  props: PickerProps,
+  ref: React.ForwardedRef<any>,
+): JSX.Element {
   const {
     valueKey,
     toolbarPosition = 'top',
@@ -33,7 +43,7 @@ export default function Index(props: PickerProps): JSX.Element {
 
   useEffect(
     function () {
-      const simple = Boolean(columns.length && !columns[0].values)
+      const simple = Boolean(columns && columns.length && !columns[0].values)
       setSimple(simple)
       if (Array.isArray(children) && children.length) {
         setColumns().catch(() => {})
@@ -44,12 +54,12 @@ export default function Index(props: PickerProps): JSX.Element {
 
   const emit = useCallback(function (event: any) {
     const type = event?.currentTarget?.dataset?.type
-    if (typeof event === 'number') {
+    if (typeof event === 'number' || !type) {
       if (onChange) {
         onChange({
-          picker: children,
+          picker: children.current,
           value: simple ? getColumnValue(0) : getValues(),
-          index: simple ? getColumnIndex(0) : getIndexes(),
+          index: simple ? getColumnIndex(0) : event,
         })
       }
     } else if (type === 'canel') {
@@ -81,7 +91,7 @@ export default function Index(props: PickerProps): JSX.Element {
   const setColumns = useCallback(
     function () {
       const columns_ = simple ? [{ values: columns }] : columns
-      const stack = columns_.map((column, index) =>
+      const stack = (columns_ || []).map((column, index) =>
         setColumnValues(index, column.values),
       )
       return Promise.all(stack)
@@ -105,7 +115,9 @@ export default function Index(props: PickerProps): JSX.Element {
     }
     return column.set({ options }).then(() => {
       if (needReset) {
-        column.setIndex(0)
+        setTimeout(() => {
+          column.setIndex(0)
+        })
       }
     })
   },
@@ -123,11 +135,38 @@ export default function Index(props: PickerProps): JSX.Element {
 
   const onTouchMove = useCallback(function () {}, [])
 
+  useImperativeHandle(ref, () => {
+    return {
+      setColumnValues,
+      getIndexes,
+      getValues,
+      setColumns,
+      simple,
+      children,
+      setValues,
+    }
+  })
+
+  const setValues = function (values: any) {
+    const stack = values.map((value: any, index: number) =>
+      setColumnValue(index, value),
+    )
+    return Promise.all(stack)
+  }
+
+  const setColumnValue = function (index: any, value: any) {
+    const column = children.current[index] || {}
+    if (column == null) {
+      return Promise.reject(new Error('setColumnValue: 对应列不存在'))
+    }
+    return column.setValue(value)
+  }
+
   return (
     <View
       className={`van-picker custom-class ${className}`}
       style={utils.style([style])}
-      catchMove
+      // catchMove
       {...others}
     >
       {toolbarPosition === 'top' && showToolbar && (
@@ -174,6 +213,7 @@ export default function Index(props: PickerProps): JSX.Element {
               className="van-picker__column column-class"
               key={`van-picker__column_${index}column-class`}
               data-index={index}
+              index={index}
               valueKey={valueKey}
               initialOptions={item.values}
               defaultIndex={item.defaultIndex || defaultIndex}
@@ -226,4 +266,4 @@ export default function Index(props: PickerProps): JSX.Element {
       )}
     </View>
   )
-}
+})

@@ -7,8 +7,8 @@ import { GoodsActionIconProps } from '../../../types/goods-action-icon'
 
 export default function Index(
   props: GoodsActionIconProps & {
-    isFirst: boolean
-    isLast: boolean
+    isFirst?: boolean
+    isLast?: boolean
   },
 ) {
   const {

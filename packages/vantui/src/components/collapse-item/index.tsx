@@ -23,7 +23,7 @@ export default function Index(
 
   const {
     parent,
-    name = '',
+    name = null,
     title = '',
     value = '',
     icon,
@@ -42,7 +42,13 @@ export default function Index(
   useEffect(() => {
     updateExpanded()
     ref.current.mounted = true
+    /* eslint-disable-next-line */
   }, [])
+
+  useEffect(() => {
+    updateExpanded()
+    /* eslint-disable-next-line */
+  }, [parent.data])
 
   const updateExpanded = function () {
     if (!parent) {
@@ -54,8 +60,8 @@ export default function Index(
     const expanded = accordion
       ? value === currentName
       : (value || []).some((name: any) => name === currentName)
-    if (expanded !== expanded) {
-      setContentAnimate(null, expanded, ref.current.mounted)
+    if (expanded !== state.expanded) {
+      setContentAnimate(null, expanded, ref.current.mounted, setState)
     }
     setState((state) => {
       return {

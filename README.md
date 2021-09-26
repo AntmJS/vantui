@@ -99,13 +99,13 @@ Loadingp[完成]
 Notify[完成]
 Cell[完成]
 SwipeCell
-Slider
+Slider[完成]
 
 Calendar
 Picker[完成]
 DatetimePicker[完成]
 Grid[完成]
-Sidebar
+Sidebar[完成]
 
 
 蓝根
@@ -115,8 +115,8 @@ Overlay[完成]
 Steps[完成]
 Stepper[完成]
 IndexBar[完成]
+ShareSheet[完成]
 
-ShareSheet
 TreeSelect
 Dialog
 Area

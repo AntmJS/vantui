@@ -5,7 +5,7 @@ export interface PickerProps extends StandardProps {
   valueKey?: string
   toolbarPosition?: string
   defaultIndex?: number
-  columns: Array<any>
+  columns?: Array<any>
   title?: string
   cancelButtonText?: string
   confirmButtonText?: string
