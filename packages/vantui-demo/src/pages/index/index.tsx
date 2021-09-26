@@ -5,7 +5,7 @@ import {
   Progress,
   Sticky,
   Icon,
-  MiniNavBar,
+  // MiniNavBar,
   Button,
   Tabs,
   Tab,
@@ -26,6 +26,9 @@ import {
   GoodsAction,
   GoodsActionIcon,
   GoodsActionButton,
+  Slider,
+  Sidebar,
+  SidebarItem,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -56,11 +59,17 @@ export default function Index() {
     console.info(a, 'picker onConfirm')
   }, [])
 
+  const SliderOnChange = useCallback(function (e) {
+    console.info('SliderOnChange', e)
+  }, [])
+
   // const x = useRef<ICountDownRef | undefined>()
+
+  console.info(Sidebar)
 
   return (
     <View className="pages-index-index">
-      <MiniNavBar title="标题" homeUrl="/pages/demo2/index" />
+      {/* <MiniNavBar title="标题" homeUrl="/pages/demo2/index" /> */}
       <Progress percentage={50} strokeWidth={4} />
       <View>
         <Icon name="chat" size={40} dot />
@@ -70,6 +79,14 @@ export default function Index() {
       <View>
         <Skeleton title avatar row={3} />
       </View>
+      <Slider value={50} onChange={SliderOnChange} />
+
+      <Sidebar activeKey={1}>
+        <SidebarItem title="标签名" />
+        <SidebarItem title="标签名" />
+        <SidebarItem title="标签名" />
+      </Sidebar>
+
       {/* <View>
         <CountDown time={30 * 60 * 60 * 1000} ref={x} />
         <CountDown
