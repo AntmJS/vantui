@@ -8,6 +8,7 @@ import {
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View, Block } from '@tarojs/components'
+import { Tabbar } from '../common/zIndex'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
 import { TabbarProps } from '../../../types/tabbar'
@@ -44,7 +45,7 @@ export default function Index(props: TabbarProps) {
     border = true,
     fixed = true,
     safeAreaInsetBottom = true,
-    zIndex = 1,
+    zIndex = Tabbar,
     placeholder,
     onChange,
     style,
@@ -128,7 +129,7 @@ export default function Index(props: TabbarProps) {
             safe: safeAreaInsetBottom,
           }) +
           ' custom-class' +
-          ` ${className}`
+          ` ${className || ''}`
         }
         style={utils.style([zIndex ? 'z-index: ' + zIndex : '', style])}
         {...others}

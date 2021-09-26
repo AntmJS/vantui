@@ -21,6 +21,15 @@ export function getSystemInfoSync() {
   }
   return systemInfo
 }
+
+let menuInfo: any
+export function getMenuButtonBoundingClientRect() {
+  if (menuInfo == null) {
+    menuInfo = Taro.getMenuButtonBoundingClientRect()
+  }
+  return menuInfo
+}
+
 export function addUnit(value: any) {
   if (!isDef(value)) {
     return undefined

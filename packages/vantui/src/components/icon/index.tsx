@@ -23,7 +23,7 @@ export default function Index(props: IconProps) {
         computed.rootClass({
           classPrefix,
           name,
-        }) + ` ${className}`
+        }) + ` ${className || ''}`
       }
       style={utils.style([
         computed.rootStyle({

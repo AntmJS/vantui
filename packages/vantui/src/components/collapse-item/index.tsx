@@ -86,7 +86,7 @@ export default function Index(
       className={
         'van-collapse-item custom-class ' +
         (state.index !== 0 ? 'van-hairline--top' : '') +
-        ` ${className}`
+        ` ${className || ''}`
       }
       style={style}
       {...others}

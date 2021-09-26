@@ -1,0 +1,15 @@
+export const Toast = 1090
+export const Notify = 1090
+export const Popup = 1010
+export const Dialog = 1010
+export const ActionSheet = 1010
+export const ShareSheet = 1010
+export const Overlay = 1000
+export const FullScreen = 950
+export const DropdownMenu = 900
+export const Navbar = 805
+export const Tabbar = 805
+export const GoodsAction = 805
+export const Indexbar = 800
+export const Sticky = 800
+export const Tabs = 600

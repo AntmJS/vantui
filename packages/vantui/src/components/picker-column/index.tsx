@@ -1,10 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   useEffect,
   useState,
   useCallback,
   useImperativeHandle,
   forwardRef,
+  memo,
 } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -35,6 +35,10 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
   const [offset, setOffset] = useState(0)
   const [startOffset, setStartOffset] = useState(0)
 
+  const isDisabled = useCallback(function (option) {
+    return isObj(option) && option.disabled
+  }, [])
+
   const adjustIndex = useCallback(
     function (index: number): any {
       const initialOptions_ = initialOptions as Array<any>
@@ -51,7 +55,7 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
         }
       }
     },
-    [initialOptions],
+    [initialOptions, isDisabled],
   )
 
   const setIndex = useCallback(
@@ -59,30 +63,28 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
       index = adjustIndex(index) || 0
       const offset = -index * Number(itemHeight)
       if (index !== currentIndex) {
-        setCurrentIndex(currentIndex)
+        setCurrentIndex(index)
         setOffset(offset)
         if (onChange && userAction) onChange(index)
         return
       }
       return setOffset(offset)
     },
-    [adjustIndex, currentIndex, itemHeight],
+    [adjustIndex, currentIndex, itemHeight, onChange],
   )
 
   useEffect(
     function () {
-      setCurrentIndex((defaultIndex as number) || 0)
+      if (defaultIndex && !currentIndex) setCurrentIndex(defaultIndex || 0)
       setOptions(initialOptions || [])
       setTimeout(() => {
-        setIndex((defaultIndex as number) || 0)
+        if (defaultIndex && !currentIndex) {
+          setIndex(defaultIndex || 0)
+        }
       })
     },
-    [defaultIndex, initialOptions, setIndex],
+    [currentIndex, initialOptions, setIndex, defaultIndex],
   )
-
-  const isDisabled = useCallback(function (option) {
-    return isObj(option) && option.disabled
-  }, [])
 
   const onTouchMove = useCallback(
     function (event) {
@@ -96,12 +98,11 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
         ),
       )
     },
-    [startOffset, itemHeight, options],
+    [startOffset, itemHeight, options, startY],
   )
 
   const onTouchStart = useCallback(
     function (event) {
-      event.preventDefault()
       setStartY(event.touches[0].clientY)
       setStartOffset(offset)
       setDuration(0)
@@ -121,17 +122,23 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
         setIndex(index, true)
       }
     },
-    [startOffset, offset, itemHeight],
+    [startOffset, offset, itemHeight, options.length, setIndex],
   )
 
-  const onClickItem = useCallback(function (event) {
-    const { index } = event.currentTarget.dataset
-    setIndex(Number(index), true)
-  }, [])
+  const onClickItem = useCallback(
+    function (event) {
+      const { index } = event.currentTarget.dataset
+      setIndex(Number(index), true)
+    },
+    [setIndex],
+  )
 
-  const getCurrentIndex = useCallback(function () {
-    return currentIndex
-  }, [])
+  const getCurrentIndex = useCallback(
+    function () {
+      return currentIndex
+    },
+    [currentIndex],
+  )
 
   const getValue = useCallback(
     function () {
@@ -140,10 +147,32 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
     [options, currentIndex],
   )
 
+  const getOptionText = useCallback(
+    function (option) {
+      return isObj(option) && valueKey && valueKey in option
+        ? option[valueKey]
+        : option
+    },
+    [valueKey],
+  )
+
+  const setValue = useCallback(
+    function (value) {
+      for (let i = 0; i < options.length; i++) {
+        if (getOptionText(options[i]) === value) {
+          return setIndex(i)
+        }
+      }
+      return Promise.resolve()
+    },
+    [setIndex, getOptionText, options],
+  )
+
   useImperativeHandle(ref, () => {
     return {
       getCurrentIndex,
       getValue,
+      setValue,
     }
   })
 
@@ -197,4 +226,4 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
   )
 }
 
-export default forwardRef(Index)
+export default memo(forwardRef(Index))

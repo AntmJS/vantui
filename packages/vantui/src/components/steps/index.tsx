@@ -29,7 +29,9 @@ export default function Index(props: StepsProps) {
   return (
     <View
       className={
-        'custom-class ' + utils.bem('steps', [direction]) + ` ${className}`
+        'custom-class ' +
+        utils.bem('steps', [direction]) +
+        ` ${className || ''}`
       }
       {...others}
     >
