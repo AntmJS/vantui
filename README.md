@@ -99,13 +99,13 @@ Loadingp[完成]
 Notify[完成]
 Cell[完成]
 SwipeCell
-Slider
+Slider[完成]
 
 Calendar
 Picker[完成]
 DatetimePicker[完成]
 Grid[完成]
-Sidebar
+Sidebar[完成]
 
 
 蓝根
