@@ -1,7 +1,17 @@
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useEffect, useState } from 'react'
 import { useDidHide, useDidShow, navigateTo } from '@tarojs/taro'
-import { Popup, Steps, Stepper } from '@antmjs/vantui'
+import {
+  Popup,
+  Steps,
+  Stepper,
+  ActionSheet,
+  IndexBar,
+  IndexAnchor,
+  Cell,
+  Button,
+  ShareSheet,
+} from '@antmjs/vantui'
 
 import './index.less'
 
@@ -20,10 +30,89 @@ export default function Index() {
   })
 
   const [show, setShow] = useState(false)
-
+  const [showActionSheet, setShowActionSheet] = useState(false)
+  const [showShareSheet, setShowShareSheet] = useState(false)
   return (
     <View className="pages-index-index">
-      <Button onClick={() => setShow(!show)}>点我</Button>
+      <IndexBar indexList={['A', 'B', 'C', 'D', 'E', 'F', 'G']}>
+        <IndexAnchor index="A" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="B" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="C" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="D" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="E" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="F" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <IndexAnchor index="G" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+        <Cell title="文本" />
+      </IndexBar>
+      <Button block onClick={() => setShow(!show)}>
+        点我popup
+      </Button>
+      <Button block onClick={() => setShowActionSheet(!showActionSheet)}>
+        点我 actionSheet
+      </Button>
+      <Button block onClick={() => setShowShareSheet(!showActionSheet)}>
+        点我shareSheet
+      </Button>
+      <ActionSheet
+        show={showActionSheet}
+        onClose={() => setShowActionSheet(false)}
+        onCancel={() => setShowActionSheet(false)}
+        cancelText="取消"
+        actions={[
+          {
+            name: '选项',
+          },
+          {
+            name: '选项',
+          },
+          {
+            name: '选项',
+            subname: '描述信息',
+            openType: 'share',
+          },
+        ]}
+      />
+      <ShareSheet
+        onClose={() => setShowShareSheet(false)}
+        onCancel={() => setShowShareSheet(false)}
+        show={showShareSheet}
+        options={[
+          { name: '微信', icon: 'wechat' },
+          { name: '微博', icon: 'weibo' },
+          {
+            name: '复制链接',
+            icon: 'link',
+            description: '描述信息',
+          },
+          { name: '分享海报', icon: 'poster' },
+          { name: '二维码', icon: 'qrcode' },
+        ]}
+        title="立即分享给好友"
+        description="描述信息"
+      />
       <Stepper value={5} min={5} max={8} />
       <Steps
         active={2}

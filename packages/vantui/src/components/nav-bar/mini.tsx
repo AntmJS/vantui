@@ -58,7 +58,7 @@ export default function Index(props: MiniNavBarProps) {
       const pages = Taro.getCurrentPages()
       if (pages.length >= 1) {
         const ins: any = pages[pages.length - 1]
-        const url = ins.route || ins.__route__
+        const url = ins.route || ins.__route__ || ins['$taroPath']
         if (url !== homeUrl) {
           setHomeButton(true)
         }
