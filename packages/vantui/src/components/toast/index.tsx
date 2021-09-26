@@ -40,35 +40,16 @@ export default function Index(props: ToastProps) {
     selector: '#van-toast',
   })
 
-  const {
-    show = false,
-    zIndex = 1000,
-    mask = false,
-    forbidClick = false,
-    type = 'text',
-    position = 'middle',
-    message = '',
-    loadingType = 'circular',
-    selector = '#van-toast',
-    style,
-    className,
-    children,
-    ...others
-  } = props
+  /* eslint-disable-next-line */
+  const { style, className, children, ...others } = props
 
   useEffect(() => {
+    /* eslint-disable-next-line */
+    const { style, className, children, ...otherProps } = props
     setState((state) => {
       return {
         ...state,
-        show,
-        zIndex,
-        mask,
-        forbidClick,
-        type,
-        position,
-        message,
-        loadingType,
-        selector,
+        ...otherProps,
       }
     })
   }, [props])

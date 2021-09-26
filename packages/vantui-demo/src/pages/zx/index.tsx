@@ -62,6 +62,7 @@ export default function Index() {
 
   const handleOpenCollapse = function (value: any) {
     console.log(`打开: ${value}`)
+    // toast('测试')
     toast.loading({
       duration: 0,
       forbidClick: true,
