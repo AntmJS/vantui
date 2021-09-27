@@ -1,5 +1,6 @@
+import Taro from '@tarojs/taro'
 import { View, Text, Block } from '@tarojs/components'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { ToastProps } from '../../../types/toast'
 import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
@@ -7,16 +8,17 @@ import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
 import { isObj } from '../common/validator.js'
 import { on, off } from './events'
+import Toast from './toast'
 
 const defaultOptions = {
-  type: 'text',
-  mask: false,
-  message: '',
   show: true,
   zIndex: 1000,
   duration: 2000,
-  position: 'middle',
+  mask: false,
   forbidClick: false,
+  type: 'text',
+  position: 'middle',
+  message: '',
   loadingType: 'circular',
   selector: '#van-toast',
 }
@@ -31,6 +33,7 @@ export default function Index(props: ToastProps) {
   const [state, setState] = useState({
     show: false,
     zIndex: 1000,
+    duration: 2000,
     mask: false,
     forbidClick: false,
     type: 'text',
@@ -45,17 +48,17 @@ export default function Index(props: ToastProps) {
 
   useEffect(() => {
     /* eslint-disable-next-line */
-    const { style, className, children, ...otherProps } = props
+    const { style, className, children, ...others } = props
     setState((state) => {
       return {
         ...state,
-        ...otherProps,
+        ...others,
       }
     })
   }, [props])
 
   const noop = function () {}
-  const clear = function (toastOptions: any) {
+  const clear = useCallback((toastOptions: any) => {
     setState((state) => {
       return {
         ...state,
@@ -63,39 +66,40 @@ export default function Index(props: ToastProps) {
       }
     })
     toastOptions?.onClose?.()
-  }
-
-  useEffect(() => {
-    on('show', (toastOptions) => {
-      const options = Object.assign(
-        Object.assign({}, currentOptions),
-        parseOptions(toastOptions),
-      )
-
-      // queue.push(toastOptions)
-
-      setState((state) => {
-        return {
-          ...state,
-          ...options,
-        }
-      })
-
-      clearTimeout(timer)
-      if (options.duration != null && options.duration > 0) {
-        timer = setTimeout(() => {
-          clear(toastOptions)
-          // queue = queue.filter((item: any) => item.sel !== toast)
-        }, options.duration)
-      }
-    })
-
-    return () => {
-      off('show')
-    }
   }, [])
 
   useEffect(() => {
+    on('show', (toastOptions) => {
+      Taro.createSelectorQuery()
+        .select(toastOptions.selector)
+        .node()
+        .exec((res) => {
+          if (res?.[0]) {
+            const options = Object.assign(
+              Object.assign({}, currentOptions),
+              parseOptions(toastOptions),
+            )
+
+            // queue.push(toastOptions)
+
+            setState((state) => {
+              return {
+                ...state,
+                ...options,
+              }
+            })
+
+            clearTimeout(timer)
+            if (options.duration != null && options.duration > 0) {
+              timer = setTimeout(() => {
+                clear(toastOptions)
+                // queue = queue.filter((item: any) => item.sel !== toast)
+              }, options.duration)
+            }
+          }
+        })
+    })
+
     on('clear', (toastOptions) => {
       clear(toastOptions)
       // queue.forEach((toast: any) => {
@@ -104,29 +108,20 @@ export default function Index(props: ToastProps) {
       // queue = []
     })
 
-    return () => {
-      off('clear')
-    }
-  }, [])
-
-  useEffect(() => {
     on('setDefaultOptions', (options: any) => {
       currentOptions = Object.assign(currentOptions, options)
-
-      return () => {
-        off('setDefaultOptions')
-      }
     })
-  }, [])
 
-  useEffect(() => {
     on('resetDefaultOptions', () => {
       currentOptions = Object.assign({}, defaultOptions)
-
-      return () => {
-        off('resetDefaultOptions')
-      }
     })
+
+    return () => {
+      off('show')
+      off('clear')
+      off('setDefaultOptions')
+      off('resetDefaultOptions')
+    }
   }, [])
 
   return (
@@ -144,6 +139,7 @@ export default function Index(props: ToastProps) {
         className="van-toast__container"
       >
         <View
+          id="van-toast"
           className={
             'van-toast van-toast--' +
             (state.type === 'text' ? 'text' : 'icon') +
@@ -181,3 +177,11 @@ export default function Index(props: ToastProps) {
     </View>
   )
 }
+
+Index.show = Toast
+Index.loading = Toast.loading
+Index.success = Toast.success
+Index.fail = Toast.fail
+Index.clear = Toast.clear
+Index.setDefaultOptions = Toast.setDefaultOptions
+Index.resetDefaultOptions = Toast.resetDefaultOptions

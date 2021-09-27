@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Navigator } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
@@ -34,10 +34,10 @@ export default function Index(props: NoticeBarProps) {
     speed = 60,
     scrollable = null,
     leftIcon = '',
-    color,
-    backgroundColor,
+    color = '#ed6a0c',
+    backgroundColor = '#fffbe8',
     background,
-    wrapable,
+    wrapable = false,
     renderLeftIcon,
     renderRightIcon,
     onClick,
@@ -59,11 +59,41 @@ export default function Index(props: NoticeBarProps) {
     init()
 
     return () => {
+      /* eslint-disable-next-line */
       ref.current.timer && clearTimeout(ref.current.timer)
     }
+    /* eslint-disable-next-line */
   }, [text, speed])
 
-  const init = function () {
+  const scroll = useCallback(() => {
+    ref.current.timer && clearTimeout(ref.current.timer)
+    ref.current.timer = null
+    setState((state) => {
+      return {
+        ...state,
+        animationData: ref.current.resetAnimation
+          .translateX(ref.current.wrapWidth)
+          .step()
+          .export(),
+      }
+    })
+    requestAnimationFrame(() => {
+      setState((state) => {
+        return {
+          ...state,
+          animationData: ref.current.animation
+            .translateX(-ref.current.contentWidth)
+            .step()
+            .export(),
+        }
+      })
+    })
+    ref.current.timer = setTimeout(() => {
+      scroll()
+    }, ref.current.duration)
+  }, [])
+
+  const init = useCallback(() => {
     requestAnimationFrame(() => {
       Promise.all([
         getRect(null, '.van-notice-bar__content'),
@@ -95,49 +125,24 @@ export default function Index(props: NoticeBarProps) {
         }
       })
     })
-  }
+  }, [scrollable, speed, delay, scroll])
 
-  const scroll = function () {
-    ref.current.timer && clearTimeout(ref.current.timer)
-    ref.current.timer = null
-    setState((state) => {
-      return {
-        ...state,
-        animationData: ref.current.resetAnimation
-          .translateX(ref.current.wrapWidth)
-          .step()
-          .export(),
+  const onClickIcon = useCallback(
+    (event: any) => {
+      if (mode === 'closeable') {
+        ref.current.timer && clearTimeout(ref.current.timer)
+        ref.current.timer = null
+        setState((state) => {
+          return {
+            ...state,
+            show: false,
+          }
+        })
+        onClose?.(event.detail)
       }
-    })
-    requestAnimationFrame(() => {
-      setState((state) => {
-        return {
-          ...state,
-          animationData: ref.current.animation
-            .translateX(-ref.current.contentWidth)
-            .step()
-            .export(),
-        }
-      })
-    })
-    ref.current.timer = setTimeout(() => {
-      scroll()
-    }, ref.current.duration)
-  }
-
-  const onClickIcon = function (event: any) {
-    if (mode === 'closeable') {
-      ref.current.timer && clearTimeout(ref.current.timer)
-      ref.current.timer = null
-      setState((state) => {
-        return {
-          ...state,
-          show: false,
-        }
-      })
-      onClose?.(event.detail)
-    }
-  }
+    },
+    [mode, onClose],
+  )
 
   return (
     state.show && (

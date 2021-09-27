@@ -3,7 +3,7 @@ import { StandardProps } from '@tarojs/components'
 
 export interface NoticeBarProps extends StandardProps {
   text?: string
-  mode?: string
+  mode?: 'closeable' | 'link'
   url?: string
   openType?: any
   delay?: number
@@ -15,9 +15,9 @@ export interface NoticeBarProps extends StandardProps {
   background?: string
   wrapable?: boolean
   children?: ReactNode
-  renderLeftIcon?: () => any
-  renderRightIcon?: () => any
-  onClick?: () => any
+  renderLeftIcon?: ReactNode
+  renderRightIcon?: ReactNode
+  onClick?: (data: any) => any
   onClose?: (data: any) => any
 }
 

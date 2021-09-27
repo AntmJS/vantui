@@ -5,7 +5,7 @@ export interface CheckboxGroupProps extends StandardProps {
   max?: number
   value?: Array<boolean>
   disabled?: boolean
-  direction?: string
+  direction?: 'horizontal' | 'vertical'
   children?: Array<ReactNode>
   onChange?: (data: any) => any
 }

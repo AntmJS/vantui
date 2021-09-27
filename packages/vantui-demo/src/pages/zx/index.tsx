@@ -1,4 +1,4 @@
-import { View } from '@tarojs/components'
+import { Button, View } from '@tarojs/components'
 import { useEffect, useState } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
@@ -36,6 +36,7 @@ export default function Index() {
         deletable: false,
       },
     ],
+    circleValue: 20,
   })
 
   useEffect(function () {
@@ -64,14 +65,19 @@ export default function Index() {
     console.log(`打开: ${value}`)
     // toast('测试')
     toast.loading({
-      duration: 0,
+      duration: 1000,
       forbidClick: true,
       message: '倒计时 3 秒',
       selector: '#van-toast',
+      position: 'bottom',
     })
-    setTimeout(() => {
-      toast.clear()
-    }, 3000)
+    // setTimeout(() => {
+    //   toast.clear({
+    //     onClose() {
+    //       console.log('loading关闭')
+    //     },
+    //   })
+    // }, 3000)
   }
   const handleCloseCollapse = function (value: any) {
     console.log(`关闭: ${value}`)
@@ -113,28 +119,42 @@ export default function Index() {
     })
   }
 
+  const handleAddCircleValue = function () {
+    setState((state) => {
+      return {
+        ...state,
+        circleValue: state.circleValue + 10,
+      }
+    })
+  }
+
   return (
     <View className="pages-zx-index">
-      <Empty
-        image="https://img.yzcdn.cn/vant/custom-empty-image.png"
-        description="描述文字"
-      />
+      <Empty image="network" description="描述文字" />
       <Divider
+        dashed
         contentPosition="center"
-        customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;"
+        style="color: #1989fa; border-color: #1989fa; font-size: 18px;"
       >
         文本
       </Divider>
-      <NoticeBar scrollable text="技术是开发它的人的共同灵魂。" />
+      <Uploader fileList={state.fileList} deletable={true} />
+      <NoticeBar
+        scrollable
+        text="技术是开发它的人的共同灵魂。"
+        mode="closeable"
+      />
       <Circle
-        value={50}
+        value={state.circleValue}
         size={100}
         strokeWidth={8}
         text="颜色定制"
         color="#00ffff"
       />
+      <Button onClick={handleAddCircleValue}>增加</Button>
       <Toast id="van-toast" />
       <Collapse
+        accordion
         value={state.collapseActiveValues}
         onChange={handleChangeCollapse}
         onOpen={handleOpenCollapse}
@@ -151,7 +171,9 @@ export default function Index() {
         </CollapseItem>
       </Collapse>
       <RadioGroup value={state.radioActiveValue} onChange={handleChangeRadio}>
-        <Radio name="1">单选框 1</Radio>
+        <Radio name="1" shape="square">
+          单选框 1
+        </Radio>
         <Radio name="2">单选框 2</Radio>
       </RadioGroup>
       <Checkbox
@@ -164,12 +186,13 @@ export default function Index() {
         value={state.multiCheckValue}
         onChange={handleMultiCheckValue}
       >
-        <Checkbox name="1">复选框（多）1</Checkbox>
+        <Checkbox name="1" checkedColor="#07c160">
+          复选框（多）1
+        </Checkbox>
         <Checkbox name="2">复选框（多）2</Checkbox>
         <Checkbox name="3">复选框（多）3</Checkbox>
       </CheckboxGroup>
       <Switch checked={state.switchChecked} onChange={handleSwitchChecked} />
-      <Uploader fileList={state.fileList} deletable={true} />
     </View>
   )
 }

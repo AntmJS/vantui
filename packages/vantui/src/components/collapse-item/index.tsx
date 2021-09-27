@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Block, Slot } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
@@ -28,8 +28,8 @@ export default function Index(
     value = '',
     icon,
     label,
-    disabled,
-    clickable,
+    disabled = false,
+    clickable = false,
     border = true,
     isLink = true,
     renderValue,
@@ -50,7 +50,7 @@ export default function Index(
     /* eslint-disable-next-line */
   }, [parent.data])
 
-  const updateExpanded = function () {
+  const updateExpanded = useCallback(() => {
     if (!parent) {
       return
     }
@@ -70,16 +70,15 @@ export default function Index(
         expanded,
       }
     })
-  }
+  }, [parent, name, state.expanded])
 
-  const onClick = function () {
+  const onClick = useCallback(() => {
     if (disabled) {
       return
     }
-    const { expanded } = state
     const currentName = name == null ? parent?.index : name
-    parent?.handleSwitch(currentName, !expanded)
-  }
+    parent?.handleSwitch(currentName, !state.expanded)
+  }, [parent, disabled, name, state.expanded])
 
   return (
     <View

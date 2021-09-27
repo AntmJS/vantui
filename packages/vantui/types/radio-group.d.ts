@@ -3,7 +3,7 @@ import { StandardProps } from '@tarojs/components'
 
 export interface RadioGroupProps extends StandardProps {
   value?: any
-  direction?: string
+  direction?: 'vertical' | 'horizontal'
   disabled?: boolean
   children?: Array<ReactNode>
   onChange?: (data: any) => any

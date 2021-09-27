@@ -8,8 +8,8 @@ export interface SwitchProps extends StandardProps {
   activeColor?: string
   inactiveColor?: string
   size?: string
-  activeValue?: null
-  inactiveValue?: null
+  activeValue?: any
+  inactiveValue?: any
   onChange?: (data: any) => any
 }
 

@@ -7,8 +7,8 @@ import { RadioGroupProps } from '../../../types/radio-group'
 export default function Index(props: RadioGroupProps) {
   const {
     value = null,
-    direction,
-    disabled,
+    direction = 'vertical',
+    disabled = false,
     onChange,
     children,
     style,

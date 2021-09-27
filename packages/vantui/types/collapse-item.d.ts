@@ -2,9 +2,9 @@ import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface CollapseItemProps extends StandardProps {
-  name?: string
-  title?: string
-  value?: string
+  name?: string | number
+  title?: string | number
+  value?: string | number
   icon?: string
   label?: string
   disabled?: boolean
@@ -12,7 +12,7 @@ export interface CollapseItemProps extends StandardProps {
   border?: boolean
   isLink?: boolean
   children?: ReactNode
-  renderValue?: () => any
+  renderValue?: ReactNode
 }
 
 declare const CollapseItem: ComponentClass<CollapseItemProps>

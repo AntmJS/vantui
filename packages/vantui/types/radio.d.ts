@@ -9,12 +9,10 @@ export interface RadioProps extends StandardProps {
   checkedColor?: string
   labelPosition?: string
   labelDisabled?: boolean
-  shape?: string
+  shape?: 'round' | 'square'
   iconSize?: number
   children?: ReactNode
-  renderIcon?: () => any
-  onClickLabel?: () => any
-  onInput?: (data: any) => any
+  renderIcon?: ReactNode
   onChange?: (data: any) => any
 }
 

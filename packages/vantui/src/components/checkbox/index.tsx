@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
@@ -22,7 +22,7 @@ export default function Index(
     value,
     disabled,
     useIconSlot,
-    checkedColor,
+    checkedColor = '#1989fa',
     labelPosition = 'right',
     labelDisabled,
     shape = 'round',
@@ -49,42 +49,48 @@ export default function Index(
     })
   }, [parent])
 
-  const emitChange = function (value: any) {
-    if (parent) {
-      setParentValue(parent, value)
-    } else {
-      onChange?.(value)
-    }
-  }
-  const setParentValue = function (parent: any, value: any) {
-    const parentValue = parent.value.slice()
-    const { max } = parent.data
-    if (value) {
-      if (max && parentValue.length >= max) {
-        return
+  const setParentValue = useCallback(
+    (parent: any, value: any) => {
+      const parentValue = parent.value.slice()
+      const { max } = parent.data
+      if (value) {
+        if (max && parentValue.length >= max) {
+          return
+        }
+        if (parentValue.indexOf(name) === -1) {
+          parentValue.push(name)
+          onChange?.(parentValue)
+        }
+      } else {
+        const index = parentValue.indexOf(name)
+        if (index !== -1) {
+          parentValue.splice(index, 1)
+          onChange?.(parentValue)
+        }
       }
-      if (parentValue.indexOf(name) === -1) {
-        parentValue.push(name)
-        onChange?.(parentValue)
+    },
+    [name, onChange],
+  )
+  const emitChange = useCallback(
+    (value: any) => {
+      if (parent) {
+        setParentValue(parent, value)
+      } else {
+        onChange?.(value)
       }
-    } else {
-      const index = parentValue.indexOf(name)
-      if (index !== -1) {
-        parentValue.splice(index, 1)
-        onChange?.(parentValue)
-      }
-    }
-  }
-  const toggle = function () {
+    },
+    [parent, onChange, setParentValue],
+  )
+  const toggle = useCallback(() => {
     if (!disabled && !state.parentDisabled) {
       emitChange(!value)
     }
-  }
-  const onClickLabel = function () {
+  }, [disabled, emitChange, state.parentDisabled, value])
+  const onClickLabel = useCallback(() => {
     if (!disabled && !labelDisabled && !state.parentDisabled) {
       emitChange(!value)
     }
-  }
+  }, [disabled, emitChange, labelDisabled, state.parentDisabled, value])
 
   return (
     <View

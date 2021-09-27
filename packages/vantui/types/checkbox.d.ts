@@ -9,11 +9,10 @@ export interface CheckboxProps extends StandardProps {
   checkedColor?: string
   labelPosition?: string
   labelDisabled?: boolean
-  shape?: string
-  iconSize?: number
+  shape?: 'round' | 'square'
+  iconSize?: string | number
   children?: ReactNode
-  renderIcon?: () => any
-  onClickLabel?: () => any
+  renderIcon?: ReactNode
   onChange?: (data: any) => any
 }
 

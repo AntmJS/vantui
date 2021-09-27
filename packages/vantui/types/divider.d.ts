@@ -4,11 +4,10 @@ import { StandardProps } from '@tarojs/components'
 export interface DividerProps extends StandardProps {
   dashed?: boolean
   hairline?: boolean
-  contentPosition?: string
+  contentPosition?: 'left' | 'center' | 'right'
   fontSize?: string
   borderColor?: string
   textColor?: string
-  customStyle?: string
   children?: ReactNode
 }
 

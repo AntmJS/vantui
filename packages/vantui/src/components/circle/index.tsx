@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { View, Canvas, CoverView } from '@tarojs/components'
 
 import { CircleProps } from '../../../types/circle'
@@ -34,7 +34,7 @@ export default function Index(props: CircleProps) {
     size = 100,
     fill,
     layerColor = '#ffffff',
-    color = '#0000ff',
+    color = '#1989fa',
     type = '',
     strokeWidth = 4,
     clockwise = true,
@@ -73,7 +73,7 @@ export default function Index(props: CircleProps) {
     /* eslint-disable-next-line */
   }, [color])
 
-  const getContext = function () {
+  const getContext = useCallback(() => {
     if (type === '' || !canIUseCanvas2d()) {
       const ctx = Taro.createCanvasContext('van-circle')
       return Promise.resolve(ctx)
@@ -95,8 +95,8 @@ export default function Index(props: CircleProps) {
           resolve(adaptor(ctx))
         })
     })
-  }
-  const setHoverColor = function () {
+  }, [size, type])
+  const setHoverColor = useCallback(() => {
     if (isObj(color)) {
       return getContext().then((context: any) => {
         const LinearColor = context.createLinearGradient(size, 0, 0, 0)
@@ -114,50 +114,68 @@ export default function Index(props: CircleProps) {
       hoverColor: color,
     })
     return Promise.resolve()
-  }
-  const presetCanvas = function (
-    context: any,
-    strokeStyle: any,
-    beginAngle: any,
-    endAngle: any,
-    fill?: any,
-  ) {
-    const position = size / 2
-    const radius = position - strokeWidth / 2
-    context.setStrokeStyle(strokeStyle)
-    context.setLineWidth(strokeWidth)
-    context.setLineCap(lineCap)
-    context.beginPath()
-    context.arc(position, position, radius, beginAngle, endAngle, !clockwise)
-    context.stroke()
-    if (fill) {
-      context.setFillStyle(fill)
-      context.fill()
-    }
-  }
-  const renderLayerCircle = function (context: any) {
-    presetCanvas(context, layerColor, 0, PERIMETER, fill)
-  }
-  const renderHoverCircle = function (context: any, formatValue: any) {
-    // 结束角度
-    const progress = PERIMETER * (formatValue / 100)
-    const endAngle = clockwise
-      ? BEGIN_ANGLE + progress
-      : 3 * Math.PI - (BEGIN_ANGLE + progress)
-    presetCanvas(context, state.hoverColor, BEGIN_ANGLE, endAngle)
-  }
-  const drawCircle = function (currentValue: any) {
-    getContext().then((context: any) => {
-      context.clearRect(0, 0, size, size)
-      renderLayerCircle(context)
-      const formatValue = format(currentValue)
-      if (formatValue !== 0) {
-        renderHoverCircle(context, formatValue)
+  }, [color, size, getContext])
+  const presetCanvas = useCallback(
+    (
+      context: any,
+      strokeStyle: any,
+      beginAngle: any,
+      endAngle: any,
+      fill?: any,
+    ) => {
+      const position = size / 2
+      const radius = position - strokeWidth / 2
+      context.setStrokeStyle(strokeStyle)
+      context.setLineWidth(strokeWidth)
+      context.setLineCap(lineCap)
+      context.beginPath()
+      context.arc(position, position, radius, beginAngle, endAngle, !clockwise)
+      context.stroke()
+      if (fill) {
+        context.setFillStyle(fill)
+        context.fill()
       }
-      context.draw()
-    })
-  }
-  const reRender = function () {
+    },
+    [clockwise, lineCap, size, strokeWidth],
+  )
+  const renderLayerCircle = useCallback(
+    (context: any) => {
+      presetCanvas(context, layerColor, 0, PERIMETER, fill)
+    },
+    [fill, layerColor, presetCanvas],
+  )
+  const renderHoverCircle = useCallback(
+    (context: any, formatValue: any) => {
+      // 结束角度
+      const progress = PERIMETER * (formatValue / 100)
+      const endAngle = clockwise
+        ? BEGIN_ANGLE + progress
+        : 3 * Math.PI - (BEGIN_ANGLE + progress)
+      presetCanvas(context, state.hoverColor, BEGIN_ANGLE, endAngle)
+    },
+    [clockwise, presetCanvas, state.hoverColor],
+  )
+  const drawCircle = useCallback(
+    (currentValue: any) => {
+      getContext().then((context: any) => {
+        context.clearRect(0, 0, size, size)
+        renderLayerCircle(context)
+        const formatValue = format(currentValue)
+        if (formatValue !== 0) {
+          renderHoverCircle(context, formatValue)
+        }
+        context.draw()
+      })
+    },
+    [getContext, renderHoverCircle, renderLayerCircle, size],
+  )
+  const clearMockInterval = useCallback(() => {
+    if (ref.current.interval) {
+      clearTimeout(ref.current.interval)
+      ref.current.interval = null
+    }
+  }, [])
+  const reRender = useCallback(() => {
     if (speed <= 0 || speed > 1000) {
       drawCircle(value)
       return
@@ -182,13 +200,7 @@ export default function Index(props: CircleProps) {
       }, 1000 / speed)
     }
     run()
-  }
-  const clearMockInterval = function () {
-    if (ref.current.interval) {
-      clearTimeout(ref.current.interval)
-      ref.current.interval = null
-    }
-  }
+  }, [drawCircle, speed, value, clearMockInterval])
 
   return (
     <View className={`van-circle ${className}`} style={style} {...others}>

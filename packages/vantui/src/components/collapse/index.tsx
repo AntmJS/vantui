@@ -1,4 +1,4 @@
-import { cloneElement } from 'react'
+import { cloneElement, useCallback, useMemo } from 'react'
 import { View } from '@tarojs/components'
 
 import { CollapseProps } from '../../../types/collapse'
@@ -6,7 +6,7 @@ import { CollapseProps } from '../../../types/collapse'
 export default function Index(props: CollapseProps) {
   const {
     value,
-    accordion,
+    accordion = false,
     border = true,
     onOpen,
     onClose,
@@ -17,42 +17,40 @@ export default function Index(props: CollapseProps) {
     ...others
   } = props
 
-  // const updateExpanded = function () {
-  //   children?.forEach?.((child: any) => {
-  //     child.updateExpanded()
-  //   })
-  // }
+  const handleSwitch = useCallback(
+    (name: any, expanded: any) => {
+      const changeItem = name
+      if (!accordion) {
+        name = expanded
+          ? (value || []).concat(name)
+          : (value || []).filter((activeName) => activeName !== name)
+      } else {
+        name = expanded ? name : ''
+      }
+      if (expanded) {
+        onOpen?.(changeItem)
+      } else {
+        onClose?.(changeItem)
+      }
+      onChange?.(name)
+    },
+    [value, accordion, onOpen, onClose, onChange],
+  )
 
-  const handleSwitch = function (name: any, expanded: any) {
-    console.log('222: ', name, expanded)
-    const changeItem = name
-    if (!accordion) {
-      name = expanded
-        ? (value || []).concat(name)
-        : (value || []).filter((activeName) => activeName !== name)
-    } else {
-      name = expanded ? name : ''
-    }
-    if (expanded) {
-      onOpen?.(changeItem)
-    } else {
-      onClose?.(changeItem)
-    }
-    onChange?.(name)
-  }
-
-  const newChildren: any = children?.map((child: any, index: number) => {
-    return cloneElement(child, {
-      parent: {
-        index,
-        handleSwitch,
-        data: {
-          value,
-          accordion,
+  const newChildren: any = useMemo(() => {
+    return children?.map((child: any, index: number) => {
+      return cloneElement(child, {
+        parent: {
+          index,
+          handleSwitch,
+          data: {
+            value,
+            accordion,
+          },
         },
-      },
+      })
     })
-  })
+  }, [children, value, accordion, handleSwitch])
 
   return (
     <View
