@@ -15,7 +15,6 @@ import {
   CollapseItem,
   Circle,
   Toast,
-  toast,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -63,8 +62,8 @@ export default function Index() {
 
   const handleOpenCollapse = function (value: any) {
     console.log(`打开: ${value}`)
-    // toast('测试')
-    toast.loading({
+    // Toast.show('测试')
+    Toast.loading({
       duration: 1000,
       forbidClick: true,
       message: '倒计时 3 秒',

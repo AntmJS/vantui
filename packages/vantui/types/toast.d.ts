@@ -17,7 +17,13 @@ export interface ToastProps extends StandardProps {
 }
 
 interface toastProps {
-  loading?: (data: any) => any
+  show: (options: ToastProps | string) => any
+  loading: (options: ToastProps | string) => any
+  success: (options: ToastProps | string) => any
+  fail: (options: ToastProps | string) => any
+  clear: (options?: ToastProps) => void
+  setDefaultOptions: (options: ToastProps) => void
+  resetDefaultOptions: (options: any) => void
 }
 
 declare const Toast: ComponentClass<ToastProps> & toastProps
