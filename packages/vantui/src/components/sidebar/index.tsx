@@ -6,12 +6,15 @@ import {
   useEffect,
   useMemo,
   cloneElement,
+  useImperativeHandle,
+  forwardRef,
+  memo,
 } from 'react'
 import * as utils from '../wxs/utils'
 import { SidebarProps } from '../../../types/sidebar'
 
-export default function Index(props: SidebarProps) {
-  const { activeKey, className, children, style, ...others } = props
+function Index(props: SidebarProps, ref: React.ForwardedRef<any>) {
+  const { activeKey, onChange, className, children, style, ...others } = props
 
   const [currentActive, setcurrentActive] = useState<any>()
   const childrenInstance = useRef<Array<any>>([])
@@ -64,6 +67,14 @@ export default function Index(props: SidebarProps) {
     [children, currentActive, setAction, setChildren],
   )
 
+  useImperativeHandle(ref, () => {
+    return {
+      currentActive,
+      setAction,
+      onChange,
+    }
+  })
+
   return (
     <View
       style={utils.style([style])}
@@ -74,3 +85,5 @@ export default function Index(props: SidebarProps) {
     </View>
   )
 }
+
+export default memo(forwardRef(Index))

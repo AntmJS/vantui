@@ -16,6 +16,7 @@ export interface StepsProps extends StandardProps {
   inactiveColor?: string
   activeIcon?: string
   inactiveIcon?: string
+  onClickStep?: (data: number) => void
 }
 
 declare const Steps: ComponentClass<StepsProps>

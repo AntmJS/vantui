@@ -7,8 +7,8 @@ import { GoodsActionIconProps } from '../../../types/goods-action-icon'
 
 export default function Index(
   props: GoodsActionIconProps & {
-    isFirst: boolean
-    isLast: boolean
+    isFirst?: boolean
+    isLast?: boolean
   },
 ) {
   const {
@@ -25,7 +25,6 @@ export default function Index(
     className,
     ...others
   } = props
-
   const _click: (event: ITouchEvent) => void = useCallback(
     function (event) {
       onClick?.(event)
