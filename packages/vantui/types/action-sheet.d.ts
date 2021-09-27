@@ -21,10 +21,10 @@ export interface ActionSheetProps extends StandardProps, PopupProps {
   round?: boolean
   zIndex?: number
   children?: ReactNode
-  onSelect?: (...args: any[]) => any
-  onCancel?: (...args: any[]) => any
-  onClose?: (...args: any[]) => any
-  onClickOverlay?: (...args: any[]) => any
+  onSelect?: (item: ActionSheetItem) => void
+  onCancel?: () => void
+  onClose?: () => void
+  onClickOverlay?: () => void
 }
 declare const ActionSheet: ComponentClass<ActionSheetProps>
 export { ActionSheet }

@@ -28,6 +28,7 @@ export default function Index(props: ShareSheetProps) {
     onCancel,
     ...others
   } = props
+
   const _onClickOverlay = useCallback(() => {
     onClickOverlay?.()
   }, [onClickOverlay])

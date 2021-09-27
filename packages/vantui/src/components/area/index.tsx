@@ -1,13 +1,21 @@
-import { useCallback, useRef, useMemo, useEffect } from 'react'
+import {
+  useCallback,
+  useRef,
+  useMemo,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+  memo,
+} from 'react'
 // import { requestAnimationFrame } from '../common/utils'
 import * as computed from './wxs'
 import VanPicker from './../picker'
 import { AreaProps } from './../../../types/area'
 const EMPTY_CODE = '000000'
-export default function Index(props: AreaProps) {
+function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   const {
     value,
-    areaList = {},
+    areaList,
     columnsNum = 3,
     columnsPlaceholder = [],
     onCancel,
@@ -15,11 +23,10 @@ export default function Index(props: AreaProps) {
     onConfirm,
     title,
     loading,
-    // columns,
     itemHeight,
-    visibleItemCount,
-    cancelButtonText,
-    confirmButtonText,
+    visibleItemCount = 6,
+    cancelButtonText = '取消',
+    confirmButtonText = '确认',
     ...others
   } = props
   const pickerRef = useRef<any>(null)
@@ -56,14 +63,14 @@ export default function Index(props: AreaProps) {
   )
 
   const _getConfig = useCallback(
-    (type) => {
-      return (areaList && areaList[`${type}_list`]) || {}
+    (type: 'province' | 'city' | 'county') => {
+      return (areaList && (areaList as any)[`${type}_list`]) || ({} as any)
     },
     [areaList],
   )
 
   const _getList = useCallback(
-    (type: string, code?: any) => {
+    (type: 'province' | 'city' | 'county', code?: string) => {
       if (type !== 'province' && !code) {
         return []
       }
@@ -78,7 +85,9 @@ export default function Index(props: AreaProps) {
         if (code[0] === '9' && type === 'city') {
           code = '9'
         }
-        result = result.filter((item) => item.code.indexOf(code) === 0)
+        result = result.filter(
+          (item) => item.code.indexOf(code as string) === 0,
+        )
       }
       if (typeToColumnsPlaceholderRef.current?.[type] && result.length) {
         // set columns placeholder
@@ -208,48 +217,48 @@ export default function Index(props: AreaProps) {
     [_parseValues, _setValues, onChange],
   )
 
-  // const _getValues = useCallback(() => {
-  //   const picker = _getPicker()
-  //   if (!picker) {
-  //     return []
-  //   }
-  //   return _parseValues(
-  //     (picker.getValues() as any[]).filter((value) => !!value),
-  //   )
-  // }, [_getPicker, _parseValues])
+  const _getValues = useCallback(() => {
+    const picker = _getPicker()
+    if (!picker) {
+      return []
+    }
+    return _parseValues(
+      (picker.getValues() as any[]).filter((value) => !!value),
+    )
+  }, [_getPicker, _parseValues])
 
-  // const getDetail = useCallback(() => {
-  //   const values = _getValues()
-  //   const area = {
-  //     code: '',
-  //     country: '',
-  //     province: '',
-  //     city: '',
-  //     county: '',
-  //   }
-  //   if (!values.length) {
-  //     return area
-  //   }
-  //   const names = values.map((item) => item.name)
-  //   area.code = values[values.length - 1].code
-  //   if (area.code[0] === '9') {
-  //     area.country = names[1] || ''
-  //     area.province = names[2] || ''
-  //   } else {
-  //     area.province = names[0] || ''
-  //     area.city = names[1] || ''
-  //     area.county = names[2] || ''
-  //   }
-  //   return area
-  // }, [_getValues])
+  const getDetail = useCallback(() => {
+    const values = _getValues()
+    const area = {
+      code: '',
+      country: '',
+      province: '',
+      city: '',
+      county: '',
+    }
+    if (!values.length) {
+      return area
+    }
+    const names = values.map((item) => item.name)
+    area.code = values[values.length - 1].code
+    if (area.code[0] === '9') {
+      area.country = names[1] || ''
+      area.province = names[2] || ''
+    } else {
+      area.province = names[0] || ''
+      area.city = names[1] || ''
+      area.county = names[2] || ''
+    }
+    return area
+  }, [_getValues])
 
-  // const reset = useCallback(
-  //   (code) => {
-  //     codeRef.current = code || ''
-  //     return _setValues()
-  //   },
-  //   [_setValues],
-  // )
+  const reset = useCallback(
+    (code) => {
+      codeRef.current = code || ''
+      return _setValues()
+    },
+    [_setValues],
+  )
   useEffect(() => {
     typeToColumnsPlaceholderRef.current = {
       province: columnsPlaceholder[0] || '',
@@ -266,6 +275,12 @@ export default function Index(props: AreaProps) {
     _setValues()
   }, [_setValues, areaList, value])
 
+  useImperativeHandle(ref, () => {
+    return {
+      reset,
+      getDetail,
+    }
+  })
   // useEffect(() => {
   //   requestAnimationFrame(() => {
   //     _setValues()
@@ -295,3 +310,5 @@ export default function Index(props: AreaProps) {
     />
   )
 }
+
+export default memo(forwardRef(Index))

@@ -119,6 +119,13 @@ export default function Index() {
     })
   function asyncConfirm() {
     Dialog.confirm({
+      selector: '1',
+      title: '标题',
+      message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
+      beforeClose,
+    })
+    Dialog.confirm({
+      selector: '2',
       title: '标题',
       message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
       beforeClose,
@@ -170,6 +177,7 @@ export default function Index() {
         onClickItem={onClickItem}
       />
       <Dialog
+        id="name"
         title="标题"
         show={showDialog}
         showCancelButton
@@ -177,6 +185,7 @@ export default function Index() {
         // confirm-button-open-type="getUserInfo"
         onClose={() => setShowDialog(!showDialog)}
       ></Dialog>
+      <Dialog id="name234"></Dialog>
       <Area
         areaList={areaList}
         value={value}

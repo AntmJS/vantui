@@ -44,7 +44,7 @@ export default function Index(props: TreeSelectProps) {
       const index = event.detail
       const item = items[index]
       if (!item.disabled) {
-        onClickNav?.({ index })
+        onClickNav?.(index)
       }
     },
     [onClickNav, items],

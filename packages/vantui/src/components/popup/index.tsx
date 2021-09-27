@@ -39,9 +39,10 @@ export default function Index(this: any, props: PopupProps) {
     className,
     ...others
   } = props
-  const onClickCloseIcon = useCallback(() => {
+  const _onClickCloseIcon = useCallback(() => {
     onClose?.()
   }, [onClose])
+
   const _onClickOverlay = useCallback(() => {
     onClickOverlay?.()
     if (closeOnClickOverlay) {
@@ -129,7 +130,7 @@ export default function Index(this: any, props: PopupProps) {
                 'close-icon-class van-popup__close-icon van-popup__close-icon--' +
                 closeIconPosition
               }
-              onClick={onClickCloseIcon}
+              onClick={_onClickCloseIcon}
             ></VanIcon>
           )}
         </View>

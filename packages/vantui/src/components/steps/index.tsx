@@ -1,4 +1,5 @@
 import { View } from '@tarojs/components'
+import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { GREEN, GRAY_DARK } from '../common/color.js'
 import VanIcon from '../icon/index'
@@ -16,23 +17,27 @@ export function getStatus(index: number, active: any) {
 export default function Index(props: StepsProps) {
   const {
     steps = [],
-    active,
+    active = 0,
     direction = 'horizontal',
     activeColor = GREEN,
     inactiveColor = GRAY_DARK,
     activeIcon = 'checked',
     inactiveIcon,
     className,
-    onClick,
+    onClickStep,
     ...others
   } = props
+
+  const _onClick = useCallback(
+    (event) => {
+      const { index } = event.currentTarget.dataset
+      onClickStep?.(index)
+    },
+    [onClickStep],
+  )
   return (
     <View
-      className={
-        'custom-class ' +
-        utils.bem('steps', [direction]) +
-        ` ${className || ''}`
-      }
+      className={utils.bem('steps', [direction]) + ` ${className || ''}`}
       {...others}
     >
       <View className="van-step__wrapper">
@@ -40,7 +45,7 @@ export default function Index(props: StepsProps) {
           return (
             <View
               key={index}
-              onClick={onClick}
+              onClick={_onClick}
               data-index={index}
               className={
                 utils.bem('step', [direction, getStatus(index, active)]) +

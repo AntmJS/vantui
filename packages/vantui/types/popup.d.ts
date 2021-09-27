@@ -20,8 +20,8 @@ export interface PopupProps
   safeAreaInsetBottom?: boolean
   safeAreaInsetTop?: boolean
   children?: ReactNode
-  onClickOverlay?: (...arg: any[]) => any
-  onClose?: (...arg: any[]) => any
+  onClickOverlay?: () => void
+  onClose?: (data?: string) => void
 }
 
 declare const Popup: ComponentClass<PopupProps>

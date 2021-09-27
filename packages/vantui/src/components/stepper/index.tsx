@@ -45,11 +45,11 @@ export default function Index(props: StepperProps) {
     ...others
   } = props
   const [currentValue, setCurrentValue] = useState<any>(undefined)
-  const eventType = useRef('')
-  const longPressTimer = useRef<any>(0)
-  const isLongPress = useRef(false)
+  const eventTypeRef = useRef('')
+  const longPressTimerRef = useRef<any>(0)
+  const isLongPressRef = useRef(false)
   // filter illegal characters
-  const filter = useCallback(
+  const _filter = useCallback(
     (value) => {
       value = String(value).replace(/[^0-9.-]/g, '')
       if (integer && value.indexOf('.') !== -1) {
@@ -60,28 +60,28 @@ export default function Index(props: StepperProps) {
     [integer],
   )
   // limit value range
-  const format = useCallback(
+  const _format = useCallback(
     (value) => {
-      value = filter(value)
+      value = _filter(value)
       // format range
       value = value === '' ? 0 : +value
-      value = Math.max(Math.min(max, value), min)
+      value = Math.max(Math.min(+max, value), +min)
       // format decimal
       if (isDef(decimalLength)) {
         value = value.toFixed(decimalLength)
       }
       return value
     },
-    [decimalLength, filter, max, min],
+    [decimalLength, _filter, max, min],
   )
 
-  const check = useCallback(() => {
-    const val = format(currentValue)
+  const _check = useCallback(() => {
+    const val = _format(currentValue)
     if (!equal(val, currentValue)) {
       setCurrentValue(val)
     }
-  }, [currentValue, format])
-  const isDisabled = useCallback(
+  }, [currentValue, _format])
+  const _isDisabled = useCallback(
     (type) => {
       if (type === 'plus') {
         return disabled || disablePlus || currentValue >= max
@@ -90,7 +90,7 @@ export default function Index(props: StepperProps) {
     },
     [currentValue, disableMinus, disablePlus, disabled, max, min],
   )
-  const emitChange = useCallback(
+  const _emitChange = useCallback(
     (value) => {
       if (!asyncChange) {
         setCurrentValue(value)
@@ -106,15 +106,15 @@ export default function Index(props: StepperProps) {
       if (value === '') {
         return
       }
-      let formatted = filter(value)
+      let formatted = _filter(value)
       // limit max decimal length
       if (isDef(decimalLength) && formatted.indexOf('.') !== -1) {
         const pair = formatted.split('.')
         formatted = `${pair[0]}.${pair[1].slice(0, decimalLength)}`
       }
-      emitChange(formatted)
+      _emitChange(formatted)
     },
-    [decimalLength, emitChange, filter],
+    [decimalLength, _emitChange, _filter],
   )
 
   const _onFocus = useCallback(
@@ -125,35 +125,43 @@ export default function Index(props: StepperProps) {
   )
   const _onBlur = useCallback(
     (event) => {
-      const value = format(event.detail.value)
-      emitChange(value)
+      const value = _format(event.detail.value)
+      _emitChange(value)
       onBlur?.(Object.assign(Object.assign({}, event.detail), { value }))
     },
-    [emitChange, format, onBlur],
+    [_emitChange, _format, onBlur],
   )
   const _onChange = useCallback(() => {
-    if (isDisabled(eventType.current)) {
-      onOverlimit?.(eventType.current)
+    if (_isDisabled(eventTypeRef.current)) {
+      onOverlimit?.(eventTypeRef.current)
       return
     }
-    const diff = eventType.current === 'minus' ? -step : +step
-    const value = format(add(+currentValue, diff))
-    emitChange(value)
-    if (eventType.current === 'plus') {
+    const diff = eventTypeRef.current === 'minus' ? -step : +step
+    const value = _format(add(+currentValue, diff))
+    _emitChange(value)
+    if (eventTypeRef.current === 'plus') {
       onPlus?.()
     }
     // type?.()
-  }, [currentValue, emitChange, format, isDisabled, onOverlimit, onPlus, step])
-  const longPressStep = useCallback(() => {
-    longPressTimer.current = setTimeout(() => {
+  }, [
+    currentValue,
+    _emitChange,
+    _format,
+    _isDisabled,
+    onOverlimit,
+    onPlus,
+    step,
+  ])
+  const _longPressStep = useCallback(() => {
+    longPressTimerRef.current = setTimeout(() => {
       _onChange()
-      longPressStep()
+      _longPressStep()
     }, LONG_PRESS_INTERVAL)
   }, [_onChange])
   const _onTap = useCallback(
     (event) => {
       const { type } = event.currentTarget.dataset
-      eventType.current = type
+      eventTypeRef.current = type
       _onChange()
     },
     [_onChange],
@@ -163,32 +171,32 @@ export default function Index(props: StepperProps) {
       if (!longPress) {
         return
       }
-      clearTimeout(longPressTimer.current)
+      clearTimeout(longPressTimerRef.current)
       const { type } = event.currentTarget.dataset
-      eventType.current = type
-      isLongPress.current = false
-      longPressTimer.current = setTimeout(() => {
-        isLongPress.current = true
+      eventTypeRef.current = type
+      isLongPressRef.current = false
+      longPressTimerRef.current = setTimeout(() => {
+        isLongPressRef.current = true
         _onChange()
-        longPressStep()
+        _longPressStep()
       }, LONG_PRESS_START_TIME)
     },
-    [longPress, longPressStep, _onChange],
+    [longPress, _longPressStep, _onChange],
   )
   const _onTouchEnd = useCallback(() => {
     if (!longPress) {
       return
     }
-    clearTimeout(longPressTimer.current)
+    clearTimeout(longPressTimerRef.current)
   }, [longPress])
   useEffect(() => {
     if (!equal(value, currentValue)) {
-      setCurrentValue(format(value))
+      setCurrentValue(_format(value))
     }
-  }, [format, value])
+  }, [_format, value])
   useEffect(() => {
-    check()
-  }, [decimalLength, min, max, integer, check])
+    _check()
+  }, [decimalLength, min, max, integer, _check])
   return (
     <View
       className={utils.bem('stepper', [theme]) + ` ${className || ''}`}

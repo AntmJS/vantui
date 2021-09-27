@@ -9,7 +9,7 @@ export interface DialogProps
     Omit<ButtonProps, 'children'> {
   show?: boolean
   title?: string
-  width?: string | number | null
+  width?: string | number
   zIndex?: number
   theme?: string
   cancelButtonColor?: string

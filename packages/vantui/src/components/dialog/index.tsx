@@ -57,7 +57,7 @@ export default function Index(props: DialogProps) {
   const [show, setShow] = useState(_show)
 
   const _close = useCallback(
-    (action?: string) => {
+    (action: string) => {
       setShow(false)
 
       Taro.nextTick(() => {
@@ -134,32 +134,40 @@ export default function Index(props: DialogProps) {
   }, [props])
 
   useEffect(() => {
-    on('alert', (params: any = {}) => {
-      setOptions({
-        // ...options,
-        ...params,
-      })
-      setShow(!!params.show)
-    })
-    on('close', () => {
-      _close()
-    })
-
-    on('stopLoading', () => {
+    const alertFn = (params: DialogProps = {}) => {
+      if (!params?.selector || props.id === params.selector.replace(/^#/, '')) {
+        setOptions({
+          ...params,
+        })
+        setShow(!!params.show)
+      }
+    }
+    const stopLoadingFn = () => {
       _stopLoading()
-    })
+    }
+    const closeFn = () => {
+      _close('close')
+    }
+
+    on('alert', alertFn)
+    on('close', closeFn)
+    on('stopLoading', stopLoadingFn)
 
     return () => {
-      off('alert')
-      off('close')
-      off('stopLoading')
+      off('alert', alertFn)
+      off('close', closeFn)
+      off('stopLoading', stopLoadingFn)
     }
-  }, [_close, _stopLoading, options])
+  }, [_close, _stopLoading, options, props.id])
 
   useEffect(() => {
     return () => {
       off('confirm')
       off('cancel')
+      // 设计 咏于
+      off('alert')
+      off('close')
+      off('stopLoading')
     }
   }, [])
 
@@ -285,7 +293,6 @@ const _defaultOptions = {
   className: '',
   asyncClose: false,
   transition: 'scale',
-  customStyle: '',
   messageAlign: '',
   overlayStyle: '',
   confirmButtonText: '确认',
@@ -300,15 +307,17 @@ Index.defaultOptions = { ..._defaultOptions }
 
 Index.alert = function (options: DialogProps) {
   const p = new Promise<void>((resolve, reject) => {
-    on('confirm', () => {
-      off('confirm')
+    const confirmFn = () => {
+      off('confirm', confirmFn)
       resolve()
-    })
+    }
 
-    on('cancel', () => {
-      off('cancel')
+    const cancelFn = () => {
+      off('cancel', cancelFn)
       reject()
-    })
+    }
+    on('confirm', confirmFn)
+    on('cancel', cancelFn)
   })
 
   const innerOptions =
