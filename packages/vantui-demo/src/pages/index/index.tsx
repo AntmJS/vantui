@@ -34,6 +34,9 @@ import {
   GoodsAction,
   GoodsActionIcon,
   GoodsActionButton,
+  Slider,
+  Sidebar,
+  SidebarItem,
   DatetimePicker,
   // NavBar,
 } from '@antmjs/vantui'
@@ -91,11 +94,16 @@ export default function Index() {
     console.info(a, 'picker onConfirm')
   }, [])
 
+  const SliderOnChange = useCallback(function (e) {
+    console.info('SliderOnChange', e)
+  }, [])
   const onInput = function (e: any) {
     console.info(e, 'DatetimePicker onInput')
   }
 
   // const x = useRef<ICountDownRef | undefined>()
+
+  console.info(Sidebar)
 
   return (
     <View className="pages-index-index">
@@ -136,6 +144,14 @@ export default function Index() {
       <View>
         <Skeleton title avatar row={3} />
       </View>
+      <Slider value={50} onChange={SliderOnChange} />
+
+      <Sidebar activeKey={1}>
+        <SidebarItem title="标签名" />
+        <SidebarItem title="标签名" />
+        <SidebarItem title="标签名" />
+      </Sidebar>
+
       {/* <View>
         <CountDown time={30 * 60 * 60 * 1000} ref={x} />
         <CountDown
