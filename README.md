@@ -117,9 +117,9 @@ Stepper[完成]
 IndexBar[完成]
 ShareSheet[完成]
 
-TreeSelect
-Dialog
-Area
+TreeSelect[完成]
+Dialog[完成]
+Area[完成]
 
 三少
 

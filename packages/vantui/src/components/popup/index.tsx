@@ -97,7 +97,6 @@ export default function Index(this: any, props: PopupProps) {
       {inited && (
         <View
           className={
-            'custom-class ' +
             classes +
             ' ' +
             utils.bem('popup', [

@@ -27,7 +27,7 @@ export interface DialogProps
    * @deprecated use beforeClose instead
    */
   asyncClose?: boolean
-  onBeforeClose?: (action: any) => Promise<void> | void
+  beforeClose?: (action: string) => Promise<void | boolean> | void | boolean
   // businessId?: number
   // lang?: string
   // sessionFrom?: string
@@ -47,6 +47,16 @@ export interface DialogProps
   renderTitle?: ReactNode
 }
 
-declare const Dialog: ComponentClass<DialogProps>
+interface DialogCom {
+  alert(options: DialogProps): Promise<void>
+  confirm(options: DialogProps): Promise<void>
+  setDefaultOptions(options: DialogProps): void
+  resetDefaultOptions(): void
+  close(): void
+  stopLoading(): void
+}
+
+// & DialogCom
+declare const Dialog: ComponentClass<DialogProps> & DialogCom
 
 export { Dialog }

@@ -8,8 +8,13 @@ import VanGoodsAction from '../goods-action/index'
 import VanButton from '../button/index'
 import VanPopup from '../popup/index'
 import { DialogProps } from '../../../types/dialog'
+import { on, off, trigger } from './events'
 import * as utils from './../wxs/utils'
+// import dialog from './dialog'
+
 export default function Index(props: DialogProps) {
+  const [options, setOptions] = useState<DialogProps>({})
+
   const {
     show: _show,
     overlay = true,
@@ -39,21 +44,20 @@ export default function Index(props: DialogProps) {
     onClose,
     onConfirm,
     onCancel,
-    onBeforeClose,
+    beforeClose,
     asyncClose,
     children,
     style,
     className,
     ...others
-  } = props
+  } = options
 
   const [confirmLoading, setConfirmLoading] = useState(false)
   const [cancelLoading, setCancelLoading] = useState(false)
-
   const [show, setShow] = useState(_show)
 
   const _close = useCallback(
-    (action) => {
+    (action?: string) => {
       setShow(false)
 
       Taro.nextTick(() => {
@@ -75,48 +79,89 @@ export default function Index(props: DialogProps) {
     setConfirmLoading(false)
     setCancelLoading(false)
   }, [])
+
   const _handleAction = useCallback(
     (action) => {
       if (action === 'confirm') {
         onConfirm?.(action, { dialog: null })
+        trigger('confirm')
       } else if (action === 'cancel') {
         onCancel?.(action, { dialog: null })
+        trigger('cancel')
+      } else {
+        trigger('cancel')
       }
-
-      if (!asyncClose && !onBeforeClose) {
+      if (!asyncClose && !beforeClose) {
         _close(action)
         return
       }
       if (action === 'confirm') {
-        setConfirmLoading(false)
+        setConfirmLoading(true)
       } else {
-        setCancelLoading(false)
+        setCancelLoading(true)
       }
 
-      if (onBeforeClose) {
-        toPromise(onBeforeClose(action)).then((value: any) => {
+      if (beforeClose) {
+        toPromise(beforeClose(action)).then((value: boolean) => {
           if (value) {
             _close(action)
+            _stopLoading()
           } else {
             _stopLoading()
           }
         })
       }
     },
-    [_close, _stopLoading, asyncClose, onBeforeClose, onCancel, onConfirm],
+    [_close, _stopLoading, asyncClose, beforeClose, onCancel, onConfirm],
   )
+
   const _onConfirm = useCallback(() => {
     _handleAction('confirm')
   }, [_handleAction])
+
   const _onCancel = useCallback(() => {
     _handleAction('cancel')
   }, [_handleAction])
+
   useEffect(() => {
-    if (!_show) {
+    setOptions({
+      ...props,
+    })
+    if (!props.show) {
       _stopLoading()
     }
-    setShow(_show)
-  }, [_show, _stopLoading])
+    setShow(props.show)
+  }, [props])
+
+  useEffect(() => {
+    on('alert', (params: any = {}) => {
+      setOptions({
+        // ...options,
+        ...params,
+      })
+      setShow(!!params.show)
+    })
+    on('close', () => {
+      _close()
+    })
+
+    on('stopLoading', () => {
+      _stopLoading()
+    })
+
+    return () => {
+      off('alert')
+      off('close')
+      off('stopLoading')
+    }
+  }, [_close, _stopLoading, options])
+
+  useEffect(() => {
+    return () => {
+      off('confirm')
+      off('cancel')
+    }
+  }, [])
 
   return (
     <VanPopup
@@ -160,29 +205,30 @@ export default function Index(props: DialogProps) {
         <VanGoodsAction className="van-dialog__footer--round-button">
           {showCancelButton && (
             <VanGoodsActionButton
-              size="large"
               loading={cancelLoading}
               className="van-dialog__button van-hairline--right van-dialog__cancel"
               style={'color: ' + cancelButtonColor}
               onClick={_onCancel}
+              isFirst
+              isLast={false}
             >
               {cancelButtonText}
             </VanGoodsActionButton>
           )}
           {showConfirmButton && (
             <VanGoodsActionButton
-              size="large"
               className="van-dialog__button van-dialog__confirm"
-              loading={confirmLoading}
               style={'color: ' + confirmButtonColor}
+              loading={confirmLoading}
               openType={confirmButtonOpenType}
               sessionFrom={sessionFrom}
               sendMessageTitle={sendMessageTitle}
               sendMessagePath={sendMessagePath}
               sendMessageImg={sendMessageImg}
-              showMessageCard={showMessageCard}
               appParameter={appParameter}
               onClick={_onConfirm}
+              isLast
+              isFirst={!showCancelButton}
               {...others}
             >
               {confirmButtonText}
@@ -196,7 +242,7 @@ export default function Index(props: DialogProps) {
               size="large"
               loading={cancelLoading}
               className="van-dialog__button van-hairline--right van-dialog__cancel"
-              customStyle={'color: ' + cancelButtonColor}
+              style={'color: ' + cancelButtonColor}
               onClick={_onCancel}
             >
               {cancelButtonText}
@@ -225,4 +271,82 @@ export default function Index(props: DialogProps) {
       )}
     </VanPopup>
   )
+}
+
+const _defaultOptions = {
+  show: false,
+  title: '',
+  width: null,
+  theme: 'default',
+  message: '',
+  zIndex: 100,
+  overlay: true,
+  selector: '#van-dialog',
+  className: '',
+  asyncClose: false,
+  transition: 'scale',
+  customStyle: '',
+  messageAlign: '',
+  overlayStyle: '',
+  confirmButtonText: '确认',
+  cancelButtonText: '取消',
+  showConfirmButton: true,
+  showCancelButton: false,
+  closeOnClickOverlay: false,
+  confirmButtonOpenType: '',
+}
+
+Index.defaultOptions = { ..._defaultOptions }
+
+Index.alert = function (options: DialogProps) {
+  const p = new Promise<void>((resolve, reject) => {
+    on('confirm', () => {
+      off('confirm')
+      resolve()
+    })
+
+    on('cancel', () => {
+      off('cancel')
+      reject()
+    })
+  })
+
+  const innerOptions =
+    options?.theme === 'round-button'
+      ? {
+          confirmButtonColor: '#FFFFFF',
+          cancelButtonColor: '#FFFFFF',
+        }
+      : {}
+  trigger('alert', {
+    ...this.defaultOptions,
+    ...options,
+    ...innerOptions,
+    show: true,
+  })
+  return p
+}
+
+Index.confirm = function (options: DialogProps) {
+  return this.alert({
+    ...options,
+    showCancelButton: true,
+  })
+}
+Index.close = function () {
+  off('confirm')
+  off('cancel')
+  trigger('close')
+}
+Index.stopLoading = function () {
+  trigger('stopLoading')
+}
+Index.setDefaultOptions = function (options: DialogProps) {
+  ;(this as any).defaultOptions = {
+    ...this.defaultOptions,
+    ...options,
+  }
+}
+Index.resetDefaultOptions = function () {
+  ;(this as any).defaultOptions = { ..._defaultOptions }
 }

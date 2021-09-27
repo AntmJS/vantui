@@ -94,6 +94,50 @@ export default function Index() {
     console.log(params)
     // setValue(params.values)
   }
+
+  function dialogFn() {
+    Dialog.alert({
+      title: '标题',
+      message: '代码是写出来给人看的，附带能在机器上运行',
+      theme: 'round-button',
+    }).then(() => {
+      // on close
+      console.log('on close')
+    })
+  }
+
+  const beforeClose = (action: string): Promise<boolean> =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        if (action === 'confirm') {
+          resolve(true)
+        } else {
+          // 拦截取消操作
+          resolve(false)
+        }
+      }, 1000)
+    })
+  function asyncConfirm() {
+    Dialog.confirm({
+      title: '标题',
+      message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
+      beforeClose,
+    })
+  }
+
+  function dialogConfirm() {
+    Dialog.confirm({
+      title: '标题',
+      message: '代码是写出来给人看的，附带能在机器上运行',
+    })
+      .then(() => {
+        // on close
+        console.log('on Confirm')
+      })
+      .catch(() => {
+        console.log('on close')
+      })
+  }
   return (
     <View className="pages-index-index">
       <Button block onClick={() => setShow(!show)}>
@@ -108,6 +152,16 @@ export default function Index() {
       <Button block onClick={() => setShowDialog(!showActionSheet)}>
         点我dialog
       </Button>
+      <Button block onClick={dialogFn}>
+        点我dialogCancel
+      </Button>
+      <Button block onClick={dialogConfirm}>
+        点我dialogConfirm
+      </Button>
+      <Button block onClick={asyncConfirm}>
+        点我asyncConfirm
+      </Button>
+
       <TreeSelect
         items={treeSelectData}
         mainActiveIndex={mainActiveIndex}
@@ -119,11 +173,10 @@ export default function Index() {
         title="标题"
         show={showDialog}
         showCancelButton
+        message="hahhahahahahahahaah电视电话说得好"
         // confirm-button-open-type="getUserInfo"
         onClose={() => setShowDialog(!showDialog)}
-      >
-        <View>enonorbnoudbvodfbvdbvdfbvljdfblj</View>
-      </Dialog>
+      ></Dialog>
       <Area
         areaList={areaList}
         value={value}

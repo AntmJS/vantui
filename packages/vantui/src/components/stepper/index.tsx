@@ -191,9 +191,7 @@ export default function Index(props: StepperProps) {
   }, [decimalLength, min, max, integer, check])
   return (
     <View
-      className={
-        utils.bem('stepper', [theme]) + ' custom-class' + ` ${className || ''}`
-      }
+      className={utils.bem('stepper', [theme]) + ` ${className || ''}`}
       {...others}
     >
       {showMinus && (
