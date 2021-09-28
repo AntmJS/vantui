@@ -120,19 +120,19 @@ export default function Index() {
       {/* <MiniNavBar title="标题" homeUrl="/pages/demo2/index" /> */}
       <Progress percentage={50} strokeWidth={4} />
       <Grid>
-        <GridItem icon="photo-o" text="文字" />
-        <GridItem icon="photo-o" text="文字" />
-        <GridItem icon="photo-o" text="文字" />
-        <GridItem icon="photo-o" text="文字" />
+        <GridItem key={0} icon="photo-o" text="文字" />
+        <GridItem key={1} icon="photo-o" text="文字" />
+        <GridItem key={2} icon="photo-o" text="文字" />
+        <GridItem key={3} icon="photo-o" text="文字" />
       </Grid>
       <DropdownMenu>
-        <DropdownItem value={value1} options={option1} />
-        <DropdownItem value={value2} options={option2} />
+        <DropdownItem key={0} value={value1} options={option1} />
+        <DropdownItem key={1} value={value2} options={option2} />
       </DropdownMenu>
       <View>
-        <Icon name="chat" size={40} dot />
-        <Icon name="chat" size={40} info="9" />
-        <Icon name="chat" size={40} info="99+" />
+        <Icon key={0} name="chat" size={40} dot />
+        <Icon key={1} name="chat" size={40} info="9" />
+        <Icon key={2} name="chat" size={40} info="99+" />
       </View>
       <DatetimePicker
         type="datetime"
@@ -147,9 +147,9 @@ export default function Index() {
       <Slider value={50} onChange={SliderOnChange} />
 
       <Sidebar activeKey={1}>
-        <SidebarItem title="标签名" />
-        <SidebarItem title="标签名" />
-        <SidebarItem title="标签名" />
+        <SidebarItem key={0} title="标签名" />
+        <SidebarItem key={1} title="标签名" />
+        <SidebarItem key={2} title="标签名" />
       </Sidebar>
 
       {/* <View>
@@ -249,7 +249,7 @@ export default function Index() {
           }}
         />
       </View>
-      <Tabs active={0} swipeable swipe-threshold={5}>
+      {/* <Tabs active={0} swipeable swipe-threshold={5}>
         <Tab title="标签 1">内容 1</Tab>
         <Tab title="标签 2">内容 2</Tab>
         <Tab title="标签 3">内容 3</Tab>
@@ -260,22 +260,22 @@ export default function Index() {
           内容 3
         </Tab>
         <Tab title="标签 4">内容 4</Tab>
-      </Tabs>
+      </Tabs> */}
 
-      {/* <Tabs active={0}>
-        <Tab title="标签 11">
+      <Tabs active={0}>
+        <Tab key={0} title="标签 11">
           内容 11
         </Tab>
-        <Tab title="标签 22">
+        <Tab key={1} title="标签 22">
           内容 22
         </Tab>
-        <Tab title="标签 33">
+        <Tab key={2} title="标签 33">
           内容 33
         </Tab>
-        <Tab title="标签 44">
+        <Tab key={3} title="标签 44">
           内容 44
         </Tab>
-      </Tabs> */}
+      </Tabs>
       <View
         id="container"
         style={{ marginTop: '200px', height: '200px', background: 'red' }}
@@ -317,11 +317,16 @@ export default function Index() {
         onConfirm={onConfirm}
       />
       <GoodsAction>
-        <GoodsActionIcon icon="chat-o" text="客服" />
-        <GoodsActionIcon icon="cart-o" text="购物车" info="5" />
-        <GoodsActionIcon icon="shop-o" text="店铺" />
-        <GoodsActionButton color="#7232dd" text="加入购物" type="warning" />
-        <GoodsActionButton plain color="#7232dd" text="立即购买" />
+        <GoodsActionIcon key={0} icon="chat-o" text="客服" />
+        <GoodsActionIcon key={1} icon="cart-o" text="购物车" info="5" />
+        <GoodsActionIcon key={2} icon="shop-o" text="店铺" />
+        <GoodsActionButton
+          key={3}
+          color="#7232dd"
+          text="加入购物"
+          type="warning"
+        />
+        <GoodsActionButton key={4} plain color="#7232dd" text="立即购买" />
       </GoodsAction>
       {/* <Tabbar active={1}>
         <TabbarItem icon="home-o">标签</TabbarItem>

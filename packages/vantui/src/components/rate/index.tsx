@@ -32,7 +32,9 @@ export default function Index(props: RateProps) {
 
   const onSelect = function (event: ITouchEvent) {
     const { score } = event.currentTarget.dataset
-    event.detail = score
+    Object.defineProperty(event, 'detail', {
+      value: score,
+    })
     if (!disabled && !readonly) {
       setInnerValue(score + 1)
       Taro.nextTick(() => {
