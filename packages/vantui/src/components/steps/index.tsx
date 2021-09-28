@@ -1,4 +1,4 @@
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { GREEN, GRAY_DARK } from '../common/color.js'
@@ -29,9 +29,10 @@ export default function Index(props: StepsProps) {
   } = props
 
   const _onClick = useCallback(
-    (event) => {
+    (event: ITouchEvent) => {
       const { index } = event.currentTarget.dataset
-      onClickStep?.(index)
+      event.detail = index
+      onClickStep?.(event)
     },
     [onClickStep],
   )

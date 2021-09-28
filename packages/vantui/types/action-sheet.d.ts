@@ -1,5 +1,5 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps, ButtonProps } from '@tarojs/components'
+import { StandardProps, ButtonProps, ITouchEvent } from '@tarojs/components'
 import { PopupProps } from './popup'
 export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
   name?: string
@@ -21,7 +21,7 @@ export interface ActionSheetProps extends StandardProps, PopupProps {
   round?: boolean
   zIndex?: number
   children?: ReactNode
-  onSelect?: (item: ActionSheetItem) => void
+  onSelect?: (event: ITouchEvent & { detail: ActionSheetItem }) => void
   onCancel?: () => void
   onClose?: () => void
   onClickOverlay?: () => void

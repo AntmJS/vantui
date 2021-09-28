@@ -8,7 +8,7 @@ export default function Index(
   props: SidebarItemProps & {
     setChildren?: any
     index?: number
-    parentInstance?: any
+    setAction?: any
   },
 ) {
   const {
@@ -17,7 +17,7 @@ export default function Index(
     index,
     renderTitle,
     setChildren,
-    parentInstance,
+    setAction,
     onClick,
     onChange,
     info,
@@ -43,13 +43,13 @@ export default function Index(
 
   const onClick_ = useCallback(
     function () {
-      if (!parentInstance || disabled) return
-      parentInstance?.setAction(index).then(() => {
-        if (onChange) onChange(index)
-        if (onClick) onClick(index)
+      if (disabled) return
+      setAction(index).then(() => {
+        onChange?.(index)
+        onClick?.(index)
       })
     },
-    [disabled, index, onChange, onClick, parentInstance],
+    [disabled, index, onChange, onClick, setAction],
   )
 
   return (

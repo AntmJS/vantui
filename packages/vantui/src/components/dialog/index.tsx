@@ -57,11 +57,11 @@ export default function Index(props: DialogProps) {
   const [show, setShow] = useState(_show)
 
   const _close = useCallback(
-    (action: string) => {
+    (action: 'confirm' | 'cancel' | 'overlay' | 'close') => {
       setShow(false)
 
       Taro.nextTick(() => {
-        onClose?.(action)
+        onClose?.({ detail: action })
 
         // const { callback } = this.data
         // if (callback) {

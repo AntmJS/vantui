@@ -16,6 +16,7 @@ export interface DialogProps
   confirmButtonColor?: string
   onConfirm?: (action: string, dialog?: { dialog: any }) => void
   onCancel?: (action: string, dialog?: { dialog: any }) => void
+  onClose?: (event: { detail: string }) => void
   message?: string
   overlay?: boolean
   selector?: string

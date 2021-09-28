@@ -1,8 +1,6 @@
 import { View, ScrollView } from '@tarojs/components'
-import { useCallback, useState, useEffect, useRef } from 'react'
-
+import { useCallback, useState, useEffect } from 'react'
 import * as utils from '../wxs/utils'
-
 import VanSidebarItem from '../sidebar-item/index'
 import VanSidebar from '../sidebar/index'
 import VanIcon from '../icon/index'
@@ -21,7 +19,6 @@ export default function Index(props: TreeSelectProps) {
     renderContent,
   } = props
   const [subItems, setSubItems] = useState<any[]>([])
-  const sidebarRef = useRef<any>(null)
   const _onSelectItem = useCallback(
     (event) => {
       const { item } = event.currentTarget.dataset
@@ -33,18 +30,18 @@ export default function Index(props: TreeSelectProps) {
         ? (activeId as any[]).includes(item.id)
         : activeId === item.id
       if (!item.disabled && (!isOverMax || isSelected)) {
-        onClickItem?.(item)
+        event.detail = item
+        onClickItem?.(event)
       }
     },
     [activeId, max, onClickItem],
   )
 
   const _onClickNav = useCallback(
-    (event) => {
-      const index = event.detail
+    (index: number) => {
       const item = items[index]
       if (!item.disabled) {
-        onClickNav?.(index)
+        onClickNav?.({ detail: { index } })
       }
     },
     [onClickNav, items],
@@ -65,12 +62,10 @@ export default function Index(props: TreeSelectProps) {
           activeKey={mainActiveIndex}
           onChange={_onClickNav}
           className="van-tree-select__nav__inner"
-          ref={sidebarRef}
         >
           {items.map((item: any, index: number) => {
             return (
               <VanSidebarItem
-                parentInstance={sidebarRef.current}
                 key={index}
                 className="main-item-class"
                 // activeClass="main-active-class"
