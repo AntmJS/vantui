@@ -1,4 +1,4 @@
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioProps } from '../../../types/radio'
@@ -50,29 +50,37 @@ export default function Index(
   }, [parent])
 
   const emitChange = useCallback(
-    (value: any) => {
-      onChange?.(value)
+    (event: ITouchEvent) => {
+      onChange?.(event)
       if (canIUseModel()) {
         setState((state) => {
           return {
             ...state,
-            value,
+            value: event.detail,
           }
         })
       }
     },
     [onChange],
   )
-  const onClick = useCallback(() => {
-    if (!disabled && !state.parentDisabled) {
-      emitChange(name)
-    }
-  }, [disabled, emitChange, name, state.parentDisabled])
-  const onClickLabel = useCallback(() => {
-    if (!(disabled || state.parentDisabled) && !labelDisabled) {
-      emitChange(name)
-    }
-  }, [disabled, emitChange, labelDisabled, name, state.parentDisabled])
+  const onClick = useCallback(
+    (event: ITouchEvent) => {
+      if (!disabled && !state.parentDisabled) {
+        event.detail = name
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, name, state.parentDisabled],
+  )
+  const onClickLabel = useCallback(
+    (event: ITouchEvent) => {
+      if (!(disabled || state.parentDisabled) && !labelDisabled) {
+        event.detail = name
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, labelDisabled, name, state.parentDisabled],
+  )
 
   return (
     <View

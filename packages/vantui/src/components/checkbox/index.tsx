@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
@@ -50,8 +50,9 @@ export default function Index(
   }, [parent])
 
   const setParentValue = useCallback(
-    (parent: any, value: any) => {
+    (parent: any, event: ITouchEvent) => {
       const parentValue = parent.value.slice()
+      const value = event.detail
       const { max } = parent.data
       if (value) {
         if (max && parentValue.length >= max) {
@@ -59,38 +60,48 @@ export default function Index(
         }
         if (parentValue.indexOf(name) === -1) {
           parentValue.push(name)
-          onChange?.(parentValue)
+          event.detail = parentValue
+          onChange?.(event)
         }
       } else {
         const index = parentValue.indexOf(name)
         if (index !== -1) {
           parentValue.splice(index, 1)
-          onChange?.(parentValue)
+          event.detail = parentValue
+          onChange?.(event)
         }
       }
     },
     [name, onChange],
   )
   const emitChange = useCallback(
-    (value: any) => {
+    (event: ITouchEvent) => {
       if (parent) {
-        setParentValue(parent, value)
+        setParentValue(parent, event)
       } else {
-        onChange?.(value)
+        onChange?.(event)
       }
     },
     [parent, onChange, setParentValue],
   )
-  const toggle = useCallback(() => {
-    if (!disabled && !state.parentDisabled) {
-      emitChange(!value)
-    }
-  }, [disabled, emitChange, state.parentDisabled, value])
-  const onClickLabel = useCallback(() => {
-    if (!disabled && !labelDisabled && !state.parentDisabled) {
-      emitChange(!value)
-    }
-  }, [disabled, emitChange, labelDisabled, state.parentDisabled, value])
+  const toggle = useCallback(
+    (event: ITouchEvent) => {
+      if (!disabled && !state.parentDisabled) {
+        event.detail = !value
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, state.parentDisabled, value],
+  )
+  const onClickLabel = useCallback(
+    (event: ITouchEvent) => {
+      if (!disabled && !labelDisabled && !state.parentDisabled) {
+        event.detail = !value
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, labelDisabled, state.parentDisabled, value],
+  )
 
   return (
     <View

@@ -15,6 +15,7 @@ import {
   CollapseItem,
   Circle,
   Toast,
+  Notify,
 } from '@antmjs/vantui'
 
 import './index.less'
@@ -51,25 +52,25 @@ export default function Index() {
     console.info('index page hide.')
   })
 
-  const handleChangeCollapse = function (value: any) {
+  const handleChangeCollapse = function (event: any) {
     setState((state) => {
       return {
         ...state,
-        collapseActiveValues: value,
+        collapseActiveValues: event.detail,
       }
     })
   }
 
-  const handleOpenCollapse = function (value: any) {
-    console.log(`打开: ${value}`)
+  const handleOpenCollapse = function (event: any) {
+    console.log(`打开: `, event)
     // Toast.show('测试')
-    Toast.loading({
-      duration: 1000,
-      forbidClick: true,
-      message: '倒计时 3 秒',
-      selector: '#van-toast',
-      position: 'bottom',
-    })
+    // Toast.loading({
+    //   duration: 1000,
+    //   forbidClick: true,
+    //   message: '倒计时 3 秒',
+    //   selector: '#van-toast',
+    //   position: 'bottom',
+    // })
     // setTimeout(() => {
     //   toast.clear({
     //     onClose() {
@@ -77,43 +78,57 @@ export default function Index() {
     //     },
     //   })
     // }, 3000)
+    Notify.show({
+      message: '自定义节点选择器',
+      duration: 1000,
+      selector: '#custom-selector',
+      onClick() {
+        console.log('1: click')
+      },
+      onOpened() {
+        console.log('1: opened')
+      },
+      onClose() {
+        console.log('1: close')
+      },
+    })
   }
-  const handleCloseCollapse = function (value: any) {
-    console.log(`关闭: ${value}`)
+  const handleCloseCollapse = function (event: any) {
+    console.log(`关闭: `, event)
   }
 
-  const handleChangeRadio = function (value: any) {
+  const handleChangeRadio = function (event: any) {
     setState((state) => {
       return {
         ...state,
-        radioActiveValue: value,
+        radioActiveValue: event.detail,
       }
     })
   }
 
-  const handleChangeSingleCheckValue = function (value: any) {
+  const handleChangeSingleCheckValue = function (event: any) {
     setState((state) => {
       return {
         ...state,
-        singleCheckValue: value,
+        singleCheckValue: event.detail,
       }
     })
   }
 
-  const handleMultiCheckValue = function (value: any) {
+  const handleMultiCheckValue = function (event: any) {
     setState((state) => {
       return {
         ...state,
-        multiCheckValue: value,
+        multiCheckValue: event.detail,
       }
     })
   }
 
-  const handleSwitchChecked = function (value: any) {
+  const handleSwitchChecked = function (event: any) {
     setState((state) => {
       return {
         ...state,
-        switchChecked: value,
+        switchChecked: event.detail,
       }
     })
   }
@@ -152,8 +167,19 @@ export default function Index() {
       />
       <Button onClick={handleAddCircleValue}>增加</Button>
       <Toast id="van-toast" />
+      <Notify
+        id="custom-selector"
+        onClick={() => {
+          console.log('2: click')
+        }}
+        onOpened={() => {
+          console.log('2: opened')
+        }}
+        onClose={() => {
+          console.log('2: close')
+        }}
+      />
       <Collapse
-        accordion
         value={state.collapseActiveValues}
         onChange={handleChangeCollapse}
         onOpen={handleOpenCollapse}

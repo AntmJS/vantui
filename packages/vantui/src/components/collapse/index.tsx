@@ -1,5 +1,5 @@
 import { cloneElement, useCallback, useMemo } from 'react'
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 
 import { CollapseProps } from '../../../types/collapse'
 
@@ -18,7 +18,7 @@ export default function Index(props: CollapseProps) {
   } = props
 
   const handleSwitch = useCallback(
-    (name: any, expanded: any) => {
+    (event: ITouchEvent, name: any, expanded: any) => {
       const changeItem = name
       if (!accordion) {
         name = expanded
@@ -27,12 +27,14 @@ export default function Index(props: CollapseProps) {
       } else {
         name = expanded ? name : ''
       }
+      event.detail = changeItem
       if (expanded) {
-        onOpen?.(changeItem)
+        onOpen?.(event)
       } else {
-        onClose?.(changeItem)
+        onClose?.(event)
       }
-      onChange?.(name)
+      event.detail = name
+      onChange?.(event)
     },
     [value, accordion, onOpen, onClose, onChange],
   )

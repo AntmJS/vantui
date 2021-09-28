@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { SwitchProps } from '../../../types/switch'
@@ -22,14 +22,18 @@ export default function Index(props: SwitchProps) {
     ...others
   } = props
 
-  const onClick = useCallback(() => {
-    if (disabled || loading) {
-      return
-    }
+  const onClick = useCallback(
+    (event: ITouchEvent) => {
+      if (disabled || loading) {
+        return
+      }
 
-    const value = checked === activeValue ? inactiveValue : activeValue
-    onChange?.(value)
-  }, [activeValue, checked, disabled, inactiveValue, loading, onChange])
+      const value = checked === activeValue ? inactiveValue : activeValue
+      event.detail = value
+      onChange?.(event)
+    },
+    [activeValue, checked, disabled, inactiveValue, loading, onChange],
+  )
 
   return (
     <View

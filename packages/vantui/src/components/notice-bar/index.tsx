@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { View, Navigator } from '@tarojs/components'
+import { View, Navigator, ITouchEvent } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { NoticeBarProps } from '../../../types/notice-bar'
@@ -128,7 +128,7 @@ export default function Index(props: NoticeBarProps) {
   }, [scrollable, speed, delay, scroll])
 
   const onClickIcon = useCallback(
-    (event: any) => {
+    (event: ITouchEvent) => {
       if (mode === 'closeable') {
         ref.current.timer && clearTimeout(ref.current.timer)
         ref.current.timer = null

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { View, Block, Slot } from '@tarojs/components'
+import { View, Block, Slot, ITouchEvent } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../../types/collapse-item'
@@ -72,13 +72,16 @@ export default function Index(
     })
   }, [parent, name, state.expanded])
 
-  const onClick = useCallback(() => {
-    if (disabled) {
-      return
-    }
-    const currentName = name == null ? parent?.index : name
-    parent?.handleSwitch(currentName, !state.expanded)
-  }, [parent, disabled, name, state.expanded])
+  const onClick = useCallback(
+    (event: ITouchEvent) => {
+      if (disabled) {
+        return
+      }
+      const currentName = name == null ? parent?.index : name
+      parent?.handleSwitch(event, currentName, !state.expanded)
+    },
+    [parent, disabled, name, state.expanded],
+  )
 
   return (
     <View

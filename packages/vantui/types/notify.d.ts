@@ -1,28 +1,26 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 
-export interface INotifyRef {
-  show: (options: IShowProps) => void
-  hide: () => void
-}
-
-export interface IShowProps {
+export interface NotifyProps extends StandardProps {
+  selector?: string
   message?: string
   background?: string
-  type?: string // default danger
-  color?: string // default White
-  duration?: number // default 3000
-  zIndex?: number // 10
-  safeAreaInsetTop?: boolean // false
+  type?: string
+  color?: string
+  duration?: number
+  zIndex?: number
+  safeAreaInsetTop?: boolean
   top?: number
+  onClick?: (data: any) => void
   onOpened?: () => void
   onClose?: () => void
 }
 
-export interface NotifyProps extends IShowProps, StandardProps {
-  ref: React.ForwardedRef<INotifyRef>
+interface notifyProps {
+  show: (options: NotifyProps | string) => any
+  clear: (options?: NotifyProps) => any
 }
 
-declare const Notify: ComponentClass<NotifyProps>
+declare const Notify: ComponentClass<NotifyProps> & notifyProps
 
 export { Notify }

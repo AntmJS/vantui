@@ -1,5 +1,5 @@
 import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface SwitchProps extends StandardProps {
   checked?: boolean
@@ -10,7 +10,7 @@ export interface SwitchProps extends StandardProps {
   size?: string
   activeValue?: any
   inactiveValue?: any
-  onChange?: (data: any) => any
+  onChange?: (event: ITouchEvent) => any
 }
 
 declare const Switch: ComponentClass<SwitchProps>
