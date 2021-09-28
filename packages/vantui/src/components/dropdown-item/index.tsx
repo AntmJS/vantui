@@ -102,7 +102,7 @@ export default function Index(
   )
 
   const toggle = useCallback(
-    function (show: any, options = {}) {
+    function (show?: any, options = {}) {
       if (typeof show !== 'boolean') {
         show = !showPopup
       }

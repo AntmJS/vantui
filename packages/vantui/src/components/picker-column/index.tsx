@@ -15,7 +15,10 @@ import * as computed from './wxs'
 
 const DEFAULT_DURATION = 200
 
-function Index(props: PickerColumnProps, ref: any): JSX.Element {
+function Index(
+  props: PickerColumnProps & { index: number },
+  ref: any,
+): JSX.Element {
   const {
     valueKey,
     itemHeight = 88,
@@ -25,6 +28,7 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
     className,
     style,
     onChange,
+    index: curColIndex,
     ...others
   } = props
 
@@ -34,6 +38,7 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
   const [startY, setStartY] = useState(0)
   const [offset, setOffset] = useState(0)
   const [startOffset, setStartOffset] = useState(0)
+  const [canInit, setCanInit] = useState(true)
 
   const isDisabled = useCallback(function (option) {
     return isObj(option) && option.disabled
@@ -41,7 +46,7 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
 
   const adjustIndex = useCallback(
     function (index: number): any {
-      const initialOptions_ = initialOptions as Array<any>
+      const initialOptions_ = options as Array<any>
       const count = initialOptions_.length
       index = range(index, 0, count)
       for (let i = index; i < count; i++) {
@@ -55,7 +60,7 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
         }
       }
     },
-    [initialOptions, isDisabled],
+    [isDisabled, options],
   )
 
   const setIndex = useCallback(
@@ -65,25 +70,27 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
       if (index !== currentIndex) {
         setCurrentIndex(index)
         setOffset(offset)
-        if (onChange && userAction) onChange(index)
+        if (onChange && userAction) onChange(curColIndex)
         return
       }
       return setOffset(offset)
     },
-    [adjustIndex, currentIndex, itemHeight, onChange],
+    [adjustIndex, curColIndex, currentIndex, itemHeight, onChange],
   )
 
   useEffect(
     function () {
       if (defaultIndex && !currentIndex) setCurrentIndex(defaultIndex || 0)
-      setOptions(initialOptions || [])
+      if (canInit) {
+        setOptions(initialOptions || [])
+      }
       setTimeout(() => {
         if (defaultIndex && !currentIndex) {
           setIndex(defaultIndex || 0)
         }
       })
     },
-    [currentIndex, initialOptions, setIndex, defaultIndex],
+    [currentIndex, initialOptions, setIndex, defaultIndex, canInit],
   )
 
   const onTouchMove = useCallback(
@@ -119,7 +126,9 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
           0,
           options.length - 1,
         )
-        setIndex(index, true)
+        setTimeout(() => {
+          setIndex(index, true)
+        })
       }
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
@@ -128,7 +137,9 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
   const onClickItem = useCallback(
     function (event) {
       const { index } = event.currentTarget.dataset
-      setIndex(Number(index), true)
+      setTimeout(() => {
+        setIndex(Number(index), true)
+      })
     },
     [setIndex],
   )
@@ -173,9 +184,16 @@ function Index(props: PickerColumnProps, ref: any): JSX.Element {
       getCurrentIndex,
       getValue,
       setValue,
+      props,
+      setIndex,
+      set: (opt: any) =>
+        new Promise<void>((resolve) => {
+          setOptions(opt.options)
+          setCanInit(false)
+          resolve()
+        }),
     }
   })
-
   return (
     <View
       className={`van-picker-column custom-class ${className}`}

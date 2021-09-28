@@ -57,9 +57,9 @@ export default forwardRef(function Index(
     if (typeof event === 'number' || !type) {
       if (onChange) {
         onChange({
-          picker: children,
+          picker: children.current,
           value: simple ? getColumnValue(0) : getValues(),
-          index: simple ? getColumnIndex(0) : getIndexes(),
+          index: simple ? getColumnIndex(0) : event,
         })
       }
     } else if (type === 'canel') {
@@ -115,7 +115,9 @@ export default forwardRef(function Index(
     }
     return column.set({ options }).then(() => {
       if (needReset) {
-        column.setIndex(0)
+        setTimeout(() => {
+          column.setIndex(0)
+        })
       }
     })
   },
@@ -211,6 +213,7 @@ export default forwardRef(function Index(
               className="van-picker__column column-class"
               key={`van-picker__column_${index}column-class`}
               data-index={index}
+              index={index}
               valueKey={valueKey}
               initialOptions={item.values}
               defaultIndex={item.defaultIndex || defaultIndex}

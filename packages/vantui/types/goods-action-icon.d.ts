@@ -2,7 +2,7 @@ import { ComponentClass, ReactNode } from 'react'
 import { ButtonProps } from './button'
 
 export interface GoodsActionIconProps
-  extends Omit<ButtonProps, 'size' | 'square' | 'children'> {
+  extends Omit<ButtonProps, 'square' | 'children'> {
   url?: string
   linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
   text?: string

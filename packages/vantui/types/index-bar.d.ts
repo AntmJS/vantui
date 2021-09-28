@@ -5,8 +5,8 @@ export interface IndexBarProps extends StandardProps {
   zIndex?: number
   highlightColor?: string
   stickyOffsetTop?: number
-  indexList?: any[]
-  onSelect?: (...args: any[]) => any
+  indexList?: string[] | number[]
+  onSelect?: (data: string | number) => void
   children?: ReactNode
 }
 declare const IndexBar: ComponentClass<IndexBarProps>

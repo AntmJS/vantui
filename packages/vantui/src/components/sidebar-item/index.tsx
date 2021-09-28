@@ -6,9 +6,9 @@ import VanInfo from '../info/index'
 
 export default function Index(
   props: SidebarItemProps & {
-    setChildren: any
-    index: number
-    parentInstance: any
+    setChildren?: any
+    index?: number
+    parentInstance?: any
   },
 ) {
   const {
@@ -36,7 +36,7 @@ export default function Index(
 
   useEffect(
     function () {
-      setChildren(index, { setActive, selected })
+      setChildren?.(index, { setActive, selected })
     },
     [setActive, index, setChildren, selected],
   )
@@ -44,7 +44,7 @@ export default function Index(
   const onClick_ = useCallback(
     function () {
       if (!parentInstance || disabled) return
-      parentInstance.setAction(index).then(() => {
+      parentInstance?.setAction(index).then(() => {
         if (onChange) onChange(index)
         if (onClick) onClick(index)
       })

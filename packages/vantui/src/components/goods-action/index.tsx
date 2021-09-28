@@ -36,8 +36,14 @@ export default function Index(props: GoodsActionProps) {
     return cloneElement(tab.node, {
       key: tab.key,
       index,
-      isFirst: index === 3,
-      isLast: index === tabs.length - 1,
+      isFirst:
+        typeof tab.node.props?.isFirst === 'boolean'
+          ? tab.node.props?.isFirst
+          : index === 3,
+      isLast:
+        typeof tab.node.props?.isLast === 'boolean'
+          ? tab.node.props?.isLast
+          : tabs.length - 1,
     })
   })
 

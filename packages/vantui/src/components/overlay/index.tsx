@@ -14,7 +14,7 @@ export default function Index(props: OverlayProps) {
     children,
     ...others
   } = props
-  const noop = useCallback((event) => {
+  const _noop = useCallback((event) => {
     event.stopPropagation()
     event.preventDefault()
   }, [])
@@ -24,7 +24,7 @@ export default function Index(props: OverlayProps) {
       className={'van-overlay' + `  ${className}`}
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
-      onTouchMove={noop}
+      onTouchMove={_noop}
       {...others}
     >
       {children}

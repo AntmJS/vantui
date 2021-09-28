@@ -10,7 +10,7 @@ export interface ShareSheetOptionItem {
 export interface ShareSheetOption {
   showBorder?: boolean
   options: ShareSheetOptionItem[]
-  onSelect?: (...args: any[]) => any
+  onSelect?: (option: ShareSheetOptionItem, index: number) => void
 }
 export interface ShareSheetProps extends StandardProps {
   show?: boolean
@@ -21,10 +21,10 @@ export interface ShareSheetProps extends StandardProps {
   safeAreaInsetBottom?: boolean
   closeOnClickOverlay?: boolean
   duration?: number
-  onClickOverlay?: (...args: any[]) => any
-  onCancel?: (...args: any[]) => any
-  onSelect?: (...args: any[]) => any
-  onClose?: (...args: any[]) => any
+  onClickOverlay?: () => void
+  onCancel?: () => void
+  onSelect?: (data: ShareSheetOptionItem | ShareSheetOptionItem) => void
+  onClose?: () => void
   renderTitle?: ReactNode
   renderDescription?: ReactNode
   cancelText?: string
