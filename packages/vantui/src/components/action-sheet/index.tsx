@@ -1,4 +1,4 @@
-import { View, Button } from '@tarojs/components'
+import { View, Button, ITouchEvent } from '@tarojs/components'
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { ActionSheetProps, ActionSheetItem } from '../../../types/action-sheet'
@@ -37,12 +37,15 @@ export default function Index(props: ActionSheetProps) {
   }, [onClose])
 
   const _onSelect = useCallback(
-    (event) => {
+    (event: ITouchEvent) => {
       const { index } = event.currentTarget.dataset
       // const { actions, closeOnClickAction, canIUseGetUserProfile } = data
       const item = actions[index]
       if (item) {
-        onSelect?.(item)
+        Object.defineProperty(event, 'detail', {
+          value: item,
+        })
+        onSelect?.(event)
         if (closeOnClickAction) {
           _onClose()
         }

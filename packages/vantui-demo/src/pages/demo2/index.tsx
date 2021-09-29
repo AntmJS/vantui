@@ -1,6 +1,7 @@
 import { View } from '@tarojs/components'
 import { useEffect, useState } from 'react'
 import { useDidHide, useDidShow, navigateTo } from '@tarojs/taro'
+
 import {
   Popup,
   Steps,
@@ -57,6 +58,31 @@ const treeSelectData = [
       },
     ],
   },
+  {
+    // 导航名称
+    text: '河南',
+    // 导航名称右上角徽标，1.5.0 版本开始支持
+    badge: 3,
+    // 是否在导航名称右上角显示小红点，1.5.0 版本开始支持
+    dot: true,
+    // 禁用选项
+    disabled: false,
+    // 该导航下所有的可选项
+    children: [
+      {
+        // 名称
+        text: '信阳',
+        // id，作为匹配选中状态的标识
+        id: 100,
+        // 禁用选项
+        disabled: false,
+      },
+      {
+        text: '郑州',
+        id: 102,
+      },
+    ],
+  },
 ]
 export default function Index() {
   useEffect(function () {
@@ -81,13 +107,21 @@ export default function Index() {
 
   const [value] = useState('110101')
 
-  function onClickNav(detail: any) {
+  function onClickNav({ detail = {} }: any) {
+    console.log('onClickNavdetail', detail)
     setMainActiveIndex(detail.index || 0)
   }
 
-  function onClickItem(detail: any) {
+  function onClickItem({
+    detail,
+  }: {
+    detail: {
+      text: string
+      id: string | number
+      disabled?: boolean | undefined
+    }
+  }) {
     const _activeId = activeId === detail.id ? null : detail.id
-    // console.log(detail)
     setActiveId(_activeId)
   }
   function changeHandle(params: any) {
@@ -97,6 +131,7 @@ export default function Index() {
 
   function dialogFn() {
     Dialog.alert({
+      selector: 'name',
       title: '标题',
       message: '代码是写出来给人看的，附带能在机器上运行',
       theme: 'round-button',
@@ -119,21 +154,18 @@ export default function Index() {
     })
   function asyncConfirm() {
     Dialog.confirm({
-      selector: '1',
+      selector: 'name',
       title: '标题',
       message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
       beforeClose,
-    })
-    Dialog.confirm({
-      selector: '2',
-      title: '标题',
-      message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
-      beforeClose,
+    }).catch(() => {
+      console.log('asyncConfirm  on close')
     })
   }
 
   function dialogConfirm() {
     Dialog.confirm({
+      selector: 'name',
       title: '标题',
       message: '代码是写出来给人看的，附带能在机器上运行',
     })
@@ -156,6 +188,7 @@ export default function Index() {
       <Button block onClick={() => setShowShareSheet(!showActionSheet)}>
         点我shareSheet
       </Button>
+      <Stepper value={5} />
       <Button block onClick={() => setShowDialog(!showActionSheet)}>
         点我dialog
       </Button>
@@ -177,7 +210,7 @@ export default function Index() {
         onClickItem={onClickItem}
       />
       <Dialog
-        id="name"
+        id="name46"
         title="标题"
         show={showDialog}
         showCancelButton
@@ -185,7 +218,7 @@ export default function Index() {
         // confirm-button-open-type="getUserInfo"
         onClose={() => setShowDialog(!showDialog)}
       ></Dialog>
-      <Dialog id="name234"></Dialog>
+      <Dialog id="name"></Dialog>
       <Area
         areaList={areaList}
         value={value}
@@ -230,7 +263,6 @@ export default function Index() {
         title="立即分享给好友"
         description="描述信息"
       />
-      <Stepper value={5} min={5} max={8} />
       <Steps
         active={2}
         steps={[

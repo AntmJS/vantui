@@ -1,4 +1,4 @@
-import { View } from '@tarojs/components'
+import { ITouchEvent, View, ITouch } from '@tarojs/components'
 import {
   useCallback,
   useState,
@@ -27,18 +27,20 @@ const genIndexList = () => {
 
 function parseIndexAnchor(children: React.ReactNode): any[] {
   return toArray(children)
-    .map((node: React.ReactElement<{ index: number | string }>) => {
-      if (isValidElement(node)) {
-        const key = node.key !== undefined ? String(node.key) : undefined
-        return {
-          key,
-          ...node.props,
-          node,
+    .map(
+      (node: React.ReactElement<{ index: number | string }>, index: number) => {
+        if (isValidElement(node)) {
+          const key = node.key !== undefined ? String(node.key) : index
+          return {
+            key,
+            ...node.props,
+            node,
+          }
         }
-      }
 
-      return null
-    })
+        return null
+      },
+    )
     .filter((indexAnchor) => !!indexAnchor)
 }
 
@@ -82,7 +84,7 @@ export default function Index(props: IndexBarProps) {
       const data = changeData[index]
       // console.log()
       const defaultProps = {
-        key: anchor.key,
+        key: index,
       }
       const props = data
         ? {
@@ -149,8 +151,10 @@ export default function Index(props: IndexBarProps) {
     for (let i = child.length - 1; i >= 0; i--) {
       const rect = child[i]
       if (!rect) continue
-      const preAnchorHeight = i > 0 ? rect.height : 0
-      const reachTop = sticky ? preAnchorHeight + stickyOffsetTop : 0
+      const preAnchorHeight = i > 0 ? child[i - 1]?.height : 0
+      const reachTop = sticky
+        ? (preAnchorHeight as number) + stickyOffsetTop
+        : 0
       if (reachTop + scrollTopRef.current >= rect.top) {
         return i
       }
@@ -180,7 +184,6 @@ export default function Index(props: IndexBarProps) {
         isActiveAnchorSticky =
           (child[active]?.top || 0) <= stickyOffsetTop + scrollTopRef.current
       }
-      // console.log(isActiveAnchorSticky)
 
       realAnchor.current.forEach((item, index) => {
         if (index === active) {
@@ -213,6 +216,7 @@ export default function Index(props: IndexBarProps) {
         } else if (index === active - 1) {
           // const _children = _getChildren(children)
           const currentAnchor = item
+          // 自己距离顶部 的位置
           const currentOffsetTop = currentAnchor?.top || 0
           const targetOffsetTop =
             index === _children.length - 1
@@ -261,6 +265,7 @@ export default function Index(props: IndexBarProps) {
     },
     [_onScroll],
   )
+
   usePageScroll(scroller)
 
   const _scrollToAnchor = useCallback(
@@ -278,7 +283,7 @@ export default function Index(props: IndexBarProps) {
         (item) => item?.index === indexList[index],
       )
       if (currentItem) {
-        // 可以---
+        // 可以--
         _scrollIntoView(currentItem.top)
         onSelect?.(currentItem.index)
       }
@@ -288,16 +293,17 @@ export default function Index(props: IndexBarProps) {
 
   const _onClick = useCallback(
     (event) => {
-      _scrollToAnchor(event.target.dataset.index)
+      _scrollToAnchor(Number(event.target.dataset.index))
     },
     [_scrollToAnchor],
   )
 
   const _onTouchMove = useCallback(
-    (event) => {
+    (event: ITouchEvent) => {
       event.stopPropagation()
+      event.preventDefault()
       const sidebarLength = realAnchor.current.length || 0
-      const touch = event.touches[0]
+      const touch = event.touches[0] as ITouch
       const itemHeight = sidebarRef.current.height / sidebarLength
       let index = Math.floor(
         (touch.clientY - sidebarRef.current.top) / itemHeight,
@@ -326,7 +332,7 @@ export default function Index(props: IndexBarProps) {
         _setRect().then(() => {
           _onScroll()
         })
-      }, 0)
+      }, 100)
     })
   }, [_onScroll, _setRect])
 

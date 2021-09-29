@@ -33,17 +33,16 @@ export default function Index(props: GoodsActionProps) {
 
   const tabs = parseTabList(children)
   const newChildren: any = tabs.map((tab, index) => {
+    const isGAB = tab.node?.type?.displayName === 'GoodsActionButton'
+    const preIsGAB =
+      tabs[index - 1]?.node?.type?.displayName === 'GoodsActionButton'
+    const nextIsGAB =
+      tabs[index + 1]?.node?.type?.displayName === 'GoodsActionButton'
     return cloneElement(tab.node, {
-      key: tab.key,
+      key: index,
       index,
-      isFirst:
-        typeof tab.node.props?.isFirst === 'boolean'
-          ? tab.node.props?.isFirst
-          : index === 3,
-      isLast:
-        typeof tab.node.props?.isLast === 'boolean'
-          ? tab.node.props?.isLast
-          : tabs.length - 1,
+      isFirst: !preIsGAB && isGAB,
+      isLast: !nextIsGAB && isGAB,
     })
   })
 

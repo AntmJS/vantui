@@ -55,3 +55,5 @@ export default function Index(
     </VanButton>
   )
 }
+
+Index.displayName = 'GoodsActionButton'
