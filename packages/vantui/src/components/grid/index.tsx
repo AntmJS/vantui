@@ -51,6 +51,7 @@ export default function Index(props: GridProps) {
           res.push(
             cloneElement(child as JSX.Element, {
               setChildrenInstance,
+              key: index,
               index,
               parentInstance: {
                 columnNum,

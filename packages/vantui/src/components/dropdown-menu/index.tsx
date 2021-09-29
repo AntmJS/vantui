@@ -138,6 +138,7 @@ export default function Index(props: DropdownMenuProps) {
         others.children.forEach((child, index) => {
           res.push(
             cloneElement(child as JSX.Element, {
+              key: index,
               setChildrenInstance,
               index,
               parentInstance: {

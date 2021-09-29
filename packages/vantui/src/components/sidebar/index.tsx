@@ -52,6 +52,7 @@ function Index(props: SidebarProps, ref: React.ForwardedRef<any>) {
         children.forEach((child, index) => {
           res.push(
             cloneElement(child as JSX.Element, {
+              key: index,
               setChildren,
               index,
               parentInstance: {

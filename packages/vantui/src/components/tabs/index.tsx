@@ -109,7 +109,7 @@ export default function Index(props: TabsProps) {
   const tabs = parseTabList(children)
   const newChildren: any = tabs.map((tab, index) => {
     return cloneElement(tab.node, {
-      key: tab.key,
+      key: index,
       active: currentIndex === index,
       lazyRender,
       animated,

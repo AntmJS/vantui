@@ -34,7 +34,7 @@ export default function Index(props: GoodsActionProps) {
   const tabs = parseTabList(children)
   const newChildren: any = tabs.map((tab, index) => {
     return cloneElement(tab.node, {
-      key: tab.key,
+      key: index,
       index,
       isFirst:
         typeof tab.node.props?.isFirst === 'boolean'
