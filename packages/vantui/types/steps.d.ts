@@ -1,5 +1,5 @@
 import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface StepsProps extends StandardProps {
   icon?: string
@@ -11,12 +11,12 @@ export interface StepsProps extends StandardProps {
     inactiveIcon?: string
   }[]
   active?: number
-  direction?: string
+  direction?: 'horizontal' | 'vertical'
   activeColor?: string
   inactiveColor?: string
   activeIcon?: string
   inactiveIcon?: string
-  onClickStep?: (data: number) => void
+  onClickStep?: (event: ITouchEvent & { detail: number }) => void
 }
 
 declare const Steps: ComponentClass<StepsProps>

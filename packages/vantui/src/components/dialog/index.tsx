@@ -57,11 +57,11 @@ export default function Index(props: DialogProps) {
   const [show, setShow] = useState(_show)
 
   const _close = useCallback(
-    (action: string) => {
+    (action: 'confirm' | 'cancel' | 'overlay' | 'close') => {
       setShow(false)
 
       Taro.nextTick(() => {
-        onClose?.(action)
+        onClose?.({ detail: action })
 
         // const { callback } = this.data
         // if (callback) {
@@ -136,6 +136,10 @@ export default function Index(props: DialogProps) {
   useEffect(() => {
     const alertFn = (params: DialogProps = {}) => {
       if (!params?.selector || props.id === params.selector.replace(/^#/, '')) {
+        console.log(
+          !params?.selector,
+          (params?.selector ?? '').replace(/^#/, ''),
+        )
         setOptions({
           ...params,
         })
@@ -217,8 +221,6 @@ export default function Index(props: DialogProps) {
               className="van-dialog__button van-hairline--right van-dialog__cancel"
               style={'color: ' + cancelButtonColor}
               onClick={_onCancel}
-              isFirst
-              isLast={false}
             >
               {cancelButtonText}
             </VanGoodsActionButton>
@@ -235,8 +237,6 @@ export default function Index(props: DialogProps) {
               sendMessageImg={sendMessageImg}
               appParameter={appParameter}
               onClick={_onConfirm}
-              isLast
-              isFirst={!showCancelButton}
               {...others}
             >
               {confirmButtonText}
@@ -249,7 +249,7 @@ export default function Index(props: DialogProps) {
             <VanButton
               size="large"
               loading={cancelLoading}
-              className="van-dialog__button van-hairline--right van-dialog__cancel"
+              className="van-dialog__button van-dialog__cancel"
               style={'color: ' + cancelButtonColor}
               onClick={_onCancel}
             >
@@ -259,7 +259,9 @@ export default function Index(props: DialogProps) {
           {showConfirmButton && (
             <VanButton
               size="large"
-              className="van-dialog__button van-dialog__confirm"
+              className={`van-dialog__button van-dialog__confirm ${
+                showCancelButton ? 'van-hairline--left' : ''
+              }`}
               loading={confirmLoading}
               style={'color: ' + confirmButtonColor}
               openType={confirmButtonOpenType}
@@ -289,7 +291,6 @@ const _defaultOptions = {
   message: '',
   zIndex: 100,
   overlay: true,
-  selector: '#van-dialog',
   className: '',
   asyncClose: false,
   transition: 'scale',

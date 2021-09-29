@@ -13,6 +13,16 @@
     .theme(width, '@dialog-small-screen-width');
   }
 
+  // stylelint-disable-next-line
+  taro-button-core + taro-button-core {
+    margin-top: 0;
+  }
+
+  .van-hairline--left::after {
+    /* prettier-ignore */
+    border-left-width: 1PX !important;
+  }
+
   &__header {
     text-align: center;
     .theme(padding-top, '@dialog-header-padding-top');
