@@ -321,7 +321,9 @@ export default function Index() {
         <GoodsActionIcon icon="cart-o" text="购物车" info="5" />
         <GoodsActionIcon icon="shop-o" text="店铺" />
         <GoodsActionButton color="#7232dd" text="加入购物" type="warning" />
+        {/* <GoodsActionButton color="#7232dd" text="加入购物" type="warning" /> */}
         <GoodsActionButton plain color="#7232dd" text="立即购买" />
+        {/* <GoodsActionButton plain color="#7232dd" text="立即购买" /> */}
       </GoodsAction>
       {/* <Tabbar active={1}>
         <TabbarItem icon="home-o">标签</TabbarItem>

@@ -131,6 +131,7 @@ export default function Index() {
 
   function dialogFn() {
     Dialog.alert({
+      selector: 'name',
       title: '标题',
       message: '代码是写出来给人看的，附带能在机器上运行',
       theme: 'round-button',
@@ -153,21 +154,18 @@ export default function Index() {
     })
   function asyncConfirm() {
     Dialog.confirm({
-      selector: '1',
+      selector: 'name',
       title: '标题',
       message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
       beforeClose,
-    })
-    Dialog.confirm({
-      selector: '2',
-      title: '标题',
-      message: '代码是写出来给人看的，asyncConfirm附带能在机器上运行',
-      beforeClose,
+    }).catch(() => {
+      console.log('asyncConfirm  on close')
     })
   }
 
   function dialogConfirm() {
     Dialog.confirm({
+      selector: 'name',
       title: '标题',
       message: '代码是写出来给人看的，附带能在机器上运行',
     })
@@ -212,7 +210,7 @@ export default function Index() {
         onClickItem={onClickItem}
       />
       <Dialog
-        id="name"
+        id="name46"
         title="标题"
         show={showDialog}
         showCancelButton
@@ -220,7 +218,7 @@ export default function Index() {
         // confirm-button-open-type="getUserInfo"
         onClose={() => setShowDialog(!showDialog)}
       ></Dialog>
-      <Dialog id="name234"></Dialog>
+      <Dialog id="name"></Dialog>
       <Area
         areaList={areaList}
         value={value}

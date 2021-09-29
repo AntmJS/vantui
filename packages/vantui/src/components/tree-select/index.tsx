@@ -20,8 +20,7 @@ export default function Index(props: TreeSelectProps) {
   } = props
   const [subItems, setSubItems] = useState<any[]>([])
   const _onSelectItem = useCallback(
-    (event) => {
-      const { item } = event.currentTarget.dataset
+    (event, item) => {
       const isArray = Array.isArray(activeId)
       // 判断有没有超出右侧选择的最大数
       const isOverMax = isArray && (activeId as any[]).length >= max
@@ -30,7 +29,9 @@ export default function Index(props: TreeSelectProps) {
         ? (activeId as any[]).includes(item.id)
         : activeId === item.id
       if (!item.disabled && (!isOverMax || isSelected)) {
-        event.detail = item
+        Object.defineProperty(event, 'detail', {
+          value: item,
+        })
         onClickItem?.(event)
       }
     },
@@ -99,7 +100,9 @@ export default function Index(props: TreeSelectProps) {
                 (item.disabled ? 'content-disabled-class' : '')
               }
               data-item={item}
-              onClick={_onSelectItem}
+              onClick={(e) => {
+                _onSelectItem(e, item)
+              }}
             >
               {item.text}
               {computed.isActive(activeId, item.id) && (

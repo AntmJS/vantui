@@ -133,15 +133,15 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
 
   const _onCancel = useCallback(
     (event) => {
-      onCancel?.(event.detail)
+      onCancel?.(event)
     },
     [onCancel],
   )
 
   const _onConfirm = useCallback(
-    (event) => {
-      const { index } = event.detail
-      let { value } = event.detail
+    (detail) => {
+      const { index } = detail
+      let { value } = detail
       value = _parseValues(value)
       onConfirm?.({ value, index })
     },

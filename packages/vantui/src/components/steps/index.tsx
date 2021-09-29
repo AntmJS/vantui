@@ -31,7 +31,9 @@ export default function Index(props: StepsProps) {
   const _onClick = useCallback(
     (event: ITouchEvent) => {
       const { index } = event.currentTarget.dataset
-      event.detail = index
+      Object.defineProperty(event, 'detail', {
+        value: index,
+      })
       onClickStep?.(event)
     },
     [onClickStep],

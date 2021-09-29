@@ -42,7 +42,9 @@ export default function Index(props: ActionSheetProps) {
       // const { actions, closeOnClickAction, canIUseGetUserProfile } = data
       const item = actions[index]
       if (item) {
-        event.detail = item
+        Object.defineProperty(event, 'detail', {
+          value: item,
+        })
         onSelect?.(event)
         if (closeOnClickAction) {
           _onClose()
