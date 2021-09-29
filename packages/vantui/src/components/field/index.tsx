@@ -83,7 +83,9 @@ export default function Index(props: FieldProps) {
 
   const emitChange = function (event?: any) {
     event = event || { detail: { value: '' } }
-    event.detail = event.detail.value
+    Object.defineProperty(event, 'detail', {
+      value: event.detail.value,
+    })
     setState((pre: any) => {
       return { ...pre, innerValue: event.detail }
     })
@@ -115,11 +117,17 @@ export default function Index(props: FieldProps) {
   const _focus = function (event: any) {
     ref.current.focused = true
     setShowClear(innerValue)
+    Object.defineProperty(event, 'detail', {
+      value: event.detail.value,
+    })
     onFocus?.(event)
   }
   const _blur = function (event: any) {
     ref.current.focused = false
     setShowClear(innerValue)
+    Object.defineProperty(event, 'detail', {
+      value: event.detail.value,
+    })
     onBlur?.(event)
   }
   const _clear = function () {
@@ -135,6 +143,9 @@ export default function Index(props: FieldProps) {
   const _confirm = function (event: any) {
     const { value = '' } = event.detail || {}
     setShowClear(value)
+    Object.defineProperty(event, 'detail', {
+      value: event.detail.value,
+    })
     onConfirm?.(event)
   }
   // setValue(value) {

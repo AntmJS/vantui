@@ -212,7 +212,6 @@ export default function Index(props: StepperProps) {
       setCurrentValue(_format(value))
     }
   }, [_format, value])
-
   return (
     <View
       className={utils.bem('stepper', [theme]) + ` ${className || ''}`}

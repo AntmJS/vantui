@@ -5,7 +5,7 @@ import { ButtonProps } from './button'
 import { PopupProps } from './popup'
 export interface DialogProps
   extends StandardProps,
-    PopupProps,
+    Omit<PopupProps, 'onClose'>,
     Omit<ButtonProps, 'children'> {
   show?: boolean
   title?: string

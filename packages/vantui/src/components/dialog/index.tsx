@@ -166,7 +166,6 @@ export default function Index(props: DialogProps) {
 
   useEffect(() => {
     return () => {
-      console.log('组件卸载')
       off('confirm')
       off('cancel')
       // 设计 咏于
@@ -335,7 +334,6 @@ Index.alert = function (options: DialogProps) {
     ...innerOptions,
     show: true,
   })
-  console.log(`trigger('alert'`)
   return p
 }
 
