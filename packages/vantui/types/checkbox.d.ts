@@ -1,5 +1,5 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface CheckboxProps extends StandardProps {
   name?: string
@@ -9,12 +9,11 @@ export interface CheckboxProps extends StandardProps {
   checkedColor?: string
   labelPosition?: string
   labelDisabled?: boolean
-  shape?: string
-  iconSize?: number
+  shape?: 'round' | 'square'
+  iconSize?: string | number
   children?: ReactNode
-  renderIcon?: () => any
-  onClickLabel?: () => any
-  onChange?: (data: any) => any
+  renderIcon?: ReactNode
+  onChange?: (event: ITouchEvent) => any
 }
 
 declare const Checkbox: ComponentClass<CheckboxProps>

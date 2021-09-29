@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import { useState, useEffect, useRef } from 'react'
-import { View, Navigator } from '@tarojs/components'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { View, Navigator, ITouchEvent } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { NoticeBarProps } from '../../../types/notice-bar'
@@ -10,6 +10,7 @@ import * as computed from './wxs'
 
 export default function Index(props: NoticeBarProps) {
   const [state, setState] = useState({
+    ready: false,
     show: true,
     animationData: { actions: [] },
   })
@@ -34,10 +35,10 @@ export default function Index(props: NoticeBarProps) {
     speed = 60,
     scrollable = null,
     leftIcon = '',
-    color,
-    backgroundColor,
+    color = '#ed6a0c',
+    backgroundColor = '#fffbe8',
     background,
-    wrapable,
+    wrapable = false,
     renderLeftIcon,
     renderRightIcon,
     onClick,
@@ -53,17 +54,58 @@ export default function Index(props: NoticeBarProps) {
       duration: 0,
       timingFunction: 'linear',
     })
+
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
+      }
+    })
   })
 
   useEffect(() => {
-    init()
+    if (text && state.ready) {
+      init()
+    }
 
     return () => {
+      /* eslint-disable-next-line */
       ref.current.timer && clearTimeout(ref.current.timer)
     }
-  }, [text, speed])
+    /* eslint-disable-next-line */
+  }, [text, speed, state.ready])
 
-  const init = function () {
+  const scroll = useCallback(() => {
+    ref.current.timer && clearTimeout(ref.current.timer)
+    ref.current.timer = null
+    setState((state) => {
+      return {
+        ...state,
+        animationData: ref.current.resetAnimation
+          .translateX(ref.current.wrapWidth)
+          .step()
+          .export(),
+      }
+    })
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        setState((state) => {
+          return {
+            ...state,
+            animationData: ref.current.animation
+              .translateX(-ref.current.contentWidth)
+              .step()
+              .export(),
+          }
+        })
+      })
+    }, 10)
+    ref.current.timer = setTimeout(() => {
+      scroll()
+    }, ref.current.duration)
+  }, [])
+
+  const init = useCallback(() => {
     requestAnimationFrame(() => {
       Promise.all([
         getRect(null, '.van-notice-bar__content'),
@@ -95,60 +137,33 @@ export default function Index(props: NoticeBarProps) {
         }
       })
     })
-  }
+  }, [scrollable, speed, delay, scroll])
 
-  const scroll = function () {
-    ref.current.timer && clearTimeout(ref.current.timer)
-    ref.current.timer = null
-    setState((state) => {
-      return {
-        ...state,
-        animationData: ref.current.resetAnimation
-          .translateX(ref.current.wrapWidth)
-          .step()
-          .export(),
+  const onClickIcon = useCallback(
+    (event: ITouchEvent) => {
+      if (mode === 'closeable') {
+        ref.current.timer && clearTimeout(ref.current.timer)
+        ref.current.timer = null
+        setState((state) => {
+          return {
+            ...state,
+            show: false,
+          }
+        })
+        onClose?.(event)
       }
-    })
-    requestAnimationFrame(() => {
-      setState((state) => {
-        return {
-          ...state,
-          animationData: ref.current.animation
-            .translateX(-ref.current.contentWidth)
-            .step()
-            .export(),
-        }
-      })
-    })
-    ref.current.timer = setTimeout(() => {
-      scroll()
-    }, ref.current.duration)
-  }
-
-  const onClickIcon = function (event: any) {
-    if (mode === 'closeable') {
-      ref.current.timer && clearTimeout(ref.current.timer)
-      ref.current.timer = null
-      setState((state) => {
-        return {
-          ...state,
-          show: false,
-        }
-      })
-      onClose?.(event.detail)
-    }
-  }
+    },
+    [mode, onClose],
+  )
 
   return (
     state.show && (
       <View
         className={
-          'custom-class ' +
           utils.bem('notice-bar', {
             withicon: mode,
             wrapable,
-          }) +
-          ` ${className || ''}`
+          }) + ` ${className || ''}`
         }
         style={utils.style([
           computed.rootStyle({
@@ -173,7 +188,7 @@ export default function Index(props: NoticeBarProps) {
         <View className="van-notice-bar__wrap">
           <View
             className={
-              'van-notice-bar__content ' +
+              'van-notice-bar__content van-ellipsis ' +
               (scrollable === false && !wrapable ? 'van-ellipsis' : '')
             }
             animation={state.animationData}

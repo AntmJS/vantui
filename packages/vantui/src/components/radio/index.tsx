@@ -1,5 +1,5 @@
-import { View } from '@tarojs/components'
-import { useState, useEffect } from 'react'
+import { ITouchEvent, View } from '@tarojs/components'
+import { useState, useEffect, useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioProps } from '../../../types/radio'
 import VanIcon from '../icon/index'
@@ -24,7 +24,7 @@ export default function Index(
     useIconSlot,
     checkedColor,
     labelPosition = 'right',
-    labelDisabled,
+    labelDisabled = false,
     shape = 'round',
     iconSize = 40,
     renderIcon,
@@ -49,27 +49,44 @@ export default function Index(
     })
   }, [parent])
 
-  const emitChange = function (value: any) {
-    onChange?.(value)
-    if (canIUseModel()) {
-      setState((state) => {
-        return {
-          ...state,
-          value,
-        }
-      })
-    }
-  }
-  const onClick = function () {
-    if (!disabled && !state.parentDisabled) {
-      emitChange(name)
-    }
-  }
-  const onClickLabel = function () {
-    if (!(disabled || state.parentDisabled) && !labelDisabled) {
-      emitChange(name)
-    }
-  }
+  const emitChange = useCallback(
+    (event: ITouchEvent) => {
+      onChange?.(event)
+      if (canIUseModel()) {
+        setState((state) => {
+          return {
+            ...state,
+            value: event.detail,
+          }
+        })
+      }
+    },
+    [onChange],
+  )
+  const onClick = useCallback(
+    (event: ITouchEvent) => {
+      if (!disabled && !state.parentDisabled) {
+        Object.defineProperty(event, 'detail', {
+          value: name,
+          writable: true,
+        })
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, name, state.parentDisabled],
+  )
+  const onClickLabel = useCallback(
+    (event: ITouchEvent) => {
+      if (!(disabled || state.parentDisabled) && !labelDisabled) {
+        Object.defineProperty(event, 'detail', {
+          value: name,
+          writable: true,
+        })
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, labelDisabled, name, state.parentDisabled],
+  )
 
   return (
     <View

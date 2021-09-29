@@ -1,5 +1,5 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface RadioProps extends StandardProps {
   name?: string
@@ -9,13 +9,11 @@ export interface RadioProps extends StandardProps {
   checkedColor?: string
   labelPosition?: string
   labelDisabled?: boolean
-  shape?: string
+  shape?: 'round' | 'square'
   iconSize?: number
   children?: ReactNode
-  renderIcon?: () => any
-  onClickLabel?: () => any
-  onInput?: (data: any) => any
-  onChange?: (data: any) => any
+  renderIcon?: ReactNode
+  onChange?: (event: ITouchEvent) => any
 }
 
 declare const Radio: ComponentClass<RadioProps>

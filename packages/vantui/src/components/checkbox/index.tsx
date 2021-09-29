@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { View } from '@tarojs/components'
+import { useState, useEffect, useCallback } from 'react'
+import { ITouchEvent, View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
@@ -22,7 +22,7 @@ export default function Index(
     value,
     disabled,
     useIconSlot,
-    checkedColor,
+    checkedColor = '#1989fa',
     labelPosition = 'right',
     labelDisabled,
     shape = 'round',
@@ -49,42 +49,65 @@ export default function Index(
     })
   }, [parent])
 
-  const emitChange = function (value: any) {
-    if (parent) {
-      setParentValue(parent, value)
-    } else {
-      onChange?.(value)
-    }
-  }
-  const setParentValue = function (parent: any, value: any) {
-    const parentValue = parent.value.slice()
-    const { max } = parent.data
-    if (value) {
-      if (max && parentValue.length >= max) {
-        return
+  const setParentValue = useCallback(
+    (parent: any, event: ITouchEvent) => {
+      const parentValue = parent.value.slice()
+      const value = event.detail
+      const { max } = parent.data
+      if (value) {
+        if (max && parentValue.length >= max) {
+          return
+        }
+        if (parentValue.indexOf(name) === -1) {
+          parentValue.push(name)
+          event.detail = parentValue
+          onChange?.(event)
+        }
+      } else {
+        const index = parentValue.indexOf(name)
+        if (index !== -1) {
+          parentValue.splice(index, 1)
+          event.detail = parentValue
+          onChange?.(event)
+        }
       }
-      if (parentValue.indexOf(name) === -1) {
-        parentValue.push(name)
-        onChange?.(parentValue)
+    },
+    [name, onChange],
+  )
+  const emitChange = useCallback(
+    (event: ITouchEvent) => {
+      if (parent) {
+        setParentValue(parent, event)
+      } else {
+        onChange?.(event)
       }
-    } else {
-      const index = parentValue.indexOf(name)
-      if (index !== -1) {
-        parentValue.splice(index, 1)
-        onChange?.(parentValue)
+    },
+    [parent, onChange, setParentValue],
+  )
+  const toggle = useCallback(
+    (event: ITouchEvent) => {
+      if (!disabled && !state.parentDisabled) {
+        Object.defineProperty(event, 'detail', {
+          value: !value,
+          writable: true,
+        })
+        emitChange(event)
       }
-    }
-  }
-  const toggle = function () {
-    if (!disabled && !state.parentDisabled) {
-      emitChange(!value)
-    }
-  }
-  const onClickLabel = function () {
-    if (!disabled && !labelDisabled && !state.parentDisabled) {
-      emitChange(!value)
-    }
-  }
+    },
+    [disabled, emitChange, state.parentDisabled, value],
+  )
+  const onClickLabel = useCallback(
+    (event: ITouchEvent) => {
+      if (!disabled && !labelDisabled && !state.parentDisabled) {
+        Object.defineProperty(event, 'detail', {
+          value: !value,
+          writable: true,
+        })
+        emitChange(event)
+      }
+    },
+    [disabled, emitChange, labelDisabled, state.parentDisabled, value],
+  )
 
   return (
     <View
