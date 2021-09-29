@@ -11,7 +11,7 @@ export interface StepsProps extends StandardProps {
     inactiveIcon?: string
   }[]
   active?: number
-  direction?: string
+  direction?: 'horizontal' | 'vertical'
   activeColor?: string
   inactiveColor?: string
   activeIcon?: string

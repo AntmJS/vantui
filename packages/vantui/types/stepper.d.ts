@@ -20,7 +20,7 @@ export interface StepperProps extends StandardProps {
   disablePlus?: boolean
   disableMinus?: boolean
   longPress?: boolean
-  theme?: string
+  theme?: 'round'
   onFocus?: CommonEventFunction<InputProps.inputForceEventDetail>
   onChange?: (event: { detail: number | string }) => void
   onBlur?: CommonEventFunction<InputProps.inputForceEventDetail>
