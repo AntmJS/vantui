@@ -1,12 +1,12 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface RadioGroupProps extends StandardProps {
   value?: any
-  direction?: string
+  direction?: 'vertical' | 'horizontal'
   disabled?: boolean
   children?: Array<ReactNode>
-  onChange?: (data: any) => any
+  onChange?: (event: ITouchEvent) => any
 }
 
 declare const RadioGroup: ComponentClass<RadioGroupProps>

@@ -1,5 +1,6 @@
-import { View, Text, Block } from '@tarojs/components'
-import { useState, useEffect } from 'react'
+import Taro from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
+import { useState, useEffect, useCallback } from 'react'
 import { ToastProps } from '../../../types/toast'
 import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
@@ -7,16 +8,17 @@ import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
 import { isObj } from '../common/validator.js'
 import { on, off } from './events'
+import Toast from './toast'
 
 const defaultOptions = {
-  type: 'text',
-  mask: false,
-  message: '',
   show: true,
   zIndex: 1000,
   duration: 2000,
-  position: 'middle',
+  mask: false,
   forbidClick: false,
+  type: 'text',
+  position: 'middle',
+  message: '',
   loadingType: 'circular',
   selector: '#van-toast',
 }
@@ -31,6 +33,7 @@ export default function Index(props: ToastProps) {
   const [state, setState] = useState({
     show: false,
     zIndex: 1000,
+    duration: 2000,
     mask: false,
     forbidClick: false,
     type: 'text',
@@ -40,41 +43,22 @@ export default function Index(props: ToastProps) {
     selector: '#van-toast',
   })
 
-  const {
-    show = false,
-    zIndex = 1000,
-    mask = false,
-    forbidClick = false,
-    type = 'text',
-    position = 'middle',
-    message = '',
-    loadingType = 'circular',
-    selector = '#van-toast',
-    style,
-    className,
-    children,
-    ...others
-  } = props
+  /* eslint-disable-next-line */
+  const { style, className, children, ...others } = props
 
   useEffect(() => {
+    /* eslint-disable-next-line */
+    const { style, className, children, ...others } = props
     setState((state) => {
       return {
         ...state,
-        show,
-        zIndex,
-        mask,
-        forbidClick,
-        type,
-        position,
-        message,
-        loadingType,
-        selector,
+        ...others,
       }
     })
   }, [props])
 
   const noop = function () {}
-  const clear = function (toastOptions: any) {
+  const clear = useCallback((toastOptions: any) => {
     setState((state) => {
       return {
         ...state,
@@ -82,39 +66,50 @@ export default function Index(props: ToastProps) {
       }
     })
     toastOptions?.onClose?.()
-  }
-
-  useEffect(() => {
-    on('show', (toastOptions) => {
-      const options = Object.assign(
-        Object.assign({}, currentOptions),
-        parseOptions(toastOptions),
-      )
-
-      // queue.push(toastOptions)
-
-      setState((state) => {
-        return {
-          ...state,
-          ...options,
-        }
-      })
-
-      clearTimeout(timer)
-      if (options.duration != null && options.duration > 0) {
-        timer = setTimeout(() => {
-          clear(toastOptions)
-          // queue = queue.filter((item: any) => item.sel !== toast)
-        }, options.duration)
-      }
-    })
-
-    return () => {
-      off('show')
-    }
   }, [])
 
   useEffect(() => {
+    on('show', (toastOptions) => {
+      const action = () => {
+        const options = Object.assign(
+          Object.assign({}, currentOptions),
+          parseOptions(toastOptions),
+        )
+
+        // queue.push(toastOptions)
+
+        setState((state) => {
+          return {
+            ...state,
+            ...options,
+          }
+        })
+
+        clearTimeout(timer)
+        if (options.duration != null && options.duration > 0) {
+          timer = setTimeout(() => {
+            clear(toastOptions)
+            // queue = queue.filter((item: any) => item.sel !== toast)
+          }, options.duration)
+        }
+      }
+
+      const selector = toastOptions.selector || defaultOptions.selector
+      if (process.env.TARO_ENV === 'h5') {
+        if (document.querySelector(selector)) {
+          action()
+        }
+      } else {
+        const query = Taro.createSelectorQuery()
+        query.select(selector).node()
+        query.exec((res) => {
+          if (res?.[0]) {
+            action()
+          }
+        })
+      }
+    })
+
     on('clear', (toastOptions) => {
       clear(toastOptions)
       // queue.forEach((toast: any) => {
@@ -123,29 +118,21 @@ export default function Index(props: ToastProps) {
       // queue = []
     })
 
-    return () => {
-      off('clear')
-    }
-  }, [])
-
-  useEffect(() => {
     on('setDefaultOptions', (options: any) => {
       currentOptions = Object.assign(currentOptions, options)
-
-      return () => {
-        off('setDefaultOptions')
-      }
     })
-  }, [])
 
-  useEffect(() => {
     on('resetDefaultOptions', () => {
       currentOptions = Object.assign({}, defaultOptions)
-
-      return () => {
-        off('resetDefaultOptions')
-      }
     })
+
+    return () => {
+      off('show')
+      off('clear')
+      off('setDefaultOptions')
+      off('resetDefaultOptions')
+    }
+    /* eslint-disable-next-line */
   }, [])
 
   return (
@@ -163,6 +150,7 @@ export default function Index(props: ToastProps) {
         className="van-toast__container"
       >
         <View
+          id="van-toast"
           className={
             'van-toast van-toast--' +
             (state.type === 'text' ? 'text' : 'icon') +
@@ -175,7 +163,7 @@ export default function Index(props: ToastProps) {
           {state.type === 'text' ? (
             <Text>{state.message}</Text>
           ) : (
-            <Block>
+            <View className="van-toast__box">
               {state.type === 'loading' ? (
                 <VanLoading
                   color="white"
@@ -191,7 +179,7 @@ export default function Index(props: ToastProps) {
               {state.message && (
                 <Text className="van-toast__text">{state.message}</Text>
               )}
-            </Block>
+            </View>
           )}
           {/*  with icon  */}
           {children}
@@ -200,3 +188,11 @@ export default function Index(props: ToastProps) {
     </View>
   )
 }
+
+Index.show = Toast
+Index.loading = Toast.loading
+Index.success = Toast.success
+Index.fail = Toast.fail
+Index.clear = Toast.clear
+Index.setDefaultOptions = Toast.setDefaultOptions
+Index.resetDefaultOptions = Toast.resetDefaultOptions

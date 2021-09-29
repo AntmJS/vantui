@@ -1,9 +1,6 @@
 import { ComponentClass, ReactNode } from 'react'
-import {
-  StandardProps,
-  CommonEventFunction,
-  InputProps,
-} from '@tarojs/components'
+import { StandardProps, CommonEventFunction } from '@tarojs/components'
+import { InputProps } from '@tarojs/components/types/Input'
 
 export interface StepperProps extends StandardProps {
   name?: string
@@ -23,13 +20,11 @@ export interface StepperProps extends StandardProps {
   disablePlus?: boolean
   disableMinus?: boolean
   longPress?: boolean
-  theme?: string
-  onFocus?: (
-    data: CommonEventFunction<InputProps.inputForceEventDetail>,
-  ) => void
-  onChange?: (data: string | number) => void
-  onBlur?: (data: CommonEventFunction<InputProps.inputForceEventDetail>) => void
-  onOverlimit?: (data: string) => void
+  theme?: 'round'
+  onFocus?: CommonEventFunction<InputProps.inputForceEventDetail>
+  onChange?: (event: { detail: number | string }) => void
+  onBlur?: CommonEventFunction<InputProps.inputForceEventDetail>
+  onOverlimit?: () => void
   onPlus?: () => void
   onMinus?: () => void
   renderMinus?: ReactNode

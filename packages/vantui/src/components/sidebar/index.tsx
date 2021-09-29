@@ -1,22 +1,11 @@
 import { View } from '@tarojs/components'
-import {
-  useCallback,
-  useRef,
-  useState,
-  useEffect,
-  useMemo,
-  cloneElement,
-  useImperativeHandle,
-  forwardRef,
-  memo,
-} from 'react'
+import { useCallback, useRef, useEffect, useMemo, cloneElement } from 'react'
 import * as utils from '../wxs/utils'
 import { SidebarProps } from '../../../types/sidebar'
 
-function Index(props: SidebarProps, ref: React.ForwardedRef<any>) {
+export default function Index(props: SidebarProps) {
   const { activeKey, onChange, className, children, style, ...others } = props
 
-  const [currentActive, setcurrentActive] = useState<any>()
   const childrenInstance = useRef<Array<any>>([])
 
   const setAction = useCallback(function (activeKey) {
@@ -24,7 +13,7 @@ function Index(props: SidebarProps, ref: React.ForwardedRef<any>) {
     if (!childrenInstance_ || !childrenInstance_.length) {
       return Promise.resolve()
     }
-    setcurrentActive(activeKey)
+    // setcurrentActive(activeKey)
     childrenInstance_.forEach((item) => {
       item.setActive(false)
     })
@@ -55,26 +44,16 @@ function Index(props: SidebarProps, ref: React.ForwardedRef<any>) {
               key: index,
               setChildren,
               index,
-              parentInstance: {
-                currentActive,
-                setAction,
-              },
+              setAction,
+              onChange,
             }),
           )
         })
       }
       return res
     },
-    [children, currentActive, setAction, setChildren],
+    [children, onChange, setAction, setChildren],
   )
-
-  useImperativeHandle(ref, () => {
-    return {
-      currentActive,
-      setAction,
-      onChange,
-    }
-  })
 
   return (
     <View
@@ -86,5 +65,3 @@ function Index(props: SidebarProps, ref: React.ForwardedRef<any>) {
     </View>
   )
 }
-
-export default memo(forwardRef(Index))

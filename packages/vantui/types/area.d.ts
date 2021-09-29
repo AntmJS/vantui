@@ -15,7 +15,7 @@ export interface AreaProps
       [x: number | string]: string
     }
   }
-  columnsNum?: number
+  columnsNum?: string | number
   columnsPlaceholder?: string[]
 }
 declare const Area: ComponentClass<AreaProps>

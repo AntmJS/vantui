@@ -16,12 +16,12 @@ export interface PopupProps
   closeIcon?: string
   closeIconPosition?: string
   closeOnClickOverlay?: boolean
-  position?: string
+  position?: 'top' | 'bottom' | 'right' | 'left'
   safeAreaInsetBottom?: boolean
   safeAreaInsetTop?: boolean
   children?: ReactNode
   onClickOverlay?: () => void
-  onClose?: (data?: string) => void
+  onClose?: () => void
 }
 
 declare const Popup: ComponentClass<PopupProps>

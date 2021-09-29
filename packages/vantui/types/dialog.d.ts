@@ -5,24 +5,25 @@ import { ButtonProps } from './button'
 import { PopupProps } from './popup'
 export interface DialogProps
   extends StandardProps,
-    PopupProps,
+    Omit<PopupProps, 'onClose'>,
     Omit<ButtonProps, 'children'> {
   show?: boolean
   title?: string
   width?: string | number
   zIndex?: number
-  theme?: string
+  theme?: 'round-button'
   cancelButtonColor?: string
   confirmButtonColor?: string
   onConfirm?: (action: string, dialog?: { dialog: any }) => void
   onCancel?: (action: string, dialog?: { dialog: any }) => void
+  onClose?: (event: { detail: string }) => void
   message?: string
   overlay?: boolean
   selector?: string
   ariaLabel?: string
   className?: string
   customStyle?: string
-  transition?: string
+  transition?: 'fade' | 'none'
   /**
    * @deprecated use beforeClose instead
    */
@@ -37,7 +38,7 @@ export interface DialogProps
   // showMessageCard?: boolean
   // sendMessagePath?: string
   // sendMessageTitle?: string
-  messageAlign?: string
+  messageAlign?: 'left' | 'right'
   confirmButtonText?: string
   cancelButtonText?: string
   showConfirmButton?: boolean
