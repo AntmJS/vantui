@@ -16,8 +16,9 @@ export default function Index(props: RadioGroupProps) {
     ...others
   } = props
 
-  const newChildren: any = children?.map((child: any) => {
+  const newChildren: any = children?.map((child: any, index: number) => {
     return cloneElement(child, {
+      key: index,
       value,
       onChange,
       parent: {

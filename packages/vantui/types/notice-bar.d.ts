@@ -1,5 +1,5 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface NoticeBarProps extends StandardProps {
   text?: string
@@ -17,8 +17,8 @@ export interface NoticeBarProps extends StandardProps {
   children?: ReactNode
   renderLeftIcon?: ReactNode
   renderRightIcon?: ReactNode
-  onClick?: (data: any) => any
-  onClose?: (data: any) => any
+  onClick?: (event: ITouchEvent) => any
+  onClose?: (event: ITouchEvent) => any
 }
 
 declare const NoticeBar: ComponentClass<NoticeBarProps>

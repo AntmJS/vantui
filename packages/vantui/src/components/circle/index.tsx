@@ -17,6 +17,7 @@ const STEP = 1
 
 export default function Index(props: CircleProps) {
   const [state, setState] = useState({
+    ready: false,
     hoverColor: '#0000ff',
   })
 
@@ -44,34 +45,51 @@ export default function Index(props: CircleProps) {
     ...others
   } = props
 
-  useEffect(() => {
-    ref.current.currentValue = value
-    setHoverColor().then(() => {
-      drawCircle(ref.current.currentValue)
+  Taro.useReady(() => {
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
+      }
     })
+  })
+
+  useEffect(() => {
+    if (state.ready) {
+      ref.current.currentValue = value
+      setHoverColor().then(() => {
+        drawCircle(ref.current.currentValue)
+      })
+    }
 
     return () => {
       clearMockInterval()
     }
     /* eslint-disable-next-line */
-  }, [])
+  }, [state.ready])
 
   useEffect(() => {
-    reRender()
+    if (state.ready) {
+      reRender()
+    }
     /* eslint-disable-next-line */
-  }, [value])
+  }, [state.ready, value])
 
   useEffect(() => {
-    drawCircle(ref.current.currentValue)
-    /* eslint-disable-next-line */
-  }, [size])
-
-  useEffect(() => {
-    setHoverColor().then(() => {
+    if (state.ready) {
       drawCircle(ref.current.currentValue)
-    })
+    }
     /* eslint-disable-next-line */
-  }, [color])
+  }, [state.ready, size])
+
+  useEffect(() => {
+    if (state.ready) {
+      setHoverColor().then(() => {
+        drawCircle(ref.current.currentValue)
+      })
+    }
+    /* eslint-disable-next-line */
+  }, [state.ready, color])
 
   const getContext = useCallback(() => {
     if (type === '' || !canIUseCanvas2d()) {
@@ -105,13 +123,19 @@ export default function Index(props: CircleProps) {
           .map((key: any) =>
             LinearColor.addColorStop(parseFloat(key) / 100, color[key]),
           )
-        setState({
-          hoverColor: LinearColor,
+        setState((state) => {
+          return {
+            ...state,
+            hoverColor: LinearColor,
+          }
         })
       })
     }
-    setState({
-      hoverColor: color,
+    setState((state) => {
+      return {
+        ...state,
+        hoverColor: color,
+      }
     })
     return Promise.resolve()
   }, [color, size, getContext])
@@ -123,6 +147,7 @@ export default function Index(props: CircleProps) {
       endAngle: any,
       fill?: any,
     ) => {
+      console.log(context, strokeStyle, beginAngle, endAngle, fill)
       const position = size / 2
       const radius = position - strokeWidth / 2
       context.setStrokeStyle(strokeStyle)
@@ -214,6 +239,7 @@ export default function Index(props: CircleProps) {
       {!text ? (
         <View className="van-circle__text">{children}</View>
       ) : (
+        // <CoverView className="van-circle__text">{text}</CoverView>
         <CoverView className="van-circle__text">{text}</CoverView>
       )}
     </View>

@@ -10,6 +10,7 @@ import * as computed from './wxs'
 
 export default function Index(props: NoticeBarProps) {
   const [state, setState] = useState({
+    ready: false,
     show: true,
     animationData: { actions: [] },
   })
@@ -53,17 +54,26 @@ export default function Index(props: NoticeBarProps) {
       duration: 0,
       timingFunction: 'linear',
     })
+
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
+      }
+    })
   })
 
   useEffect(() => {
-    init()
+    if (text && state.ready) {
+      init()
+    }
 
     return () => {
       /* eslint-disable-next-line */
       ref.current.timer && clearTimeout(ref.current.timer)
     }
     /* eslint-disable-next-line */
-  }, [text, speed])
+  }, [text, speed, state.ready])
 
   const scroll = useCallback(() => {
     ref.current.timer && clearTimeout(ref.current.timer)
@@ -77,17 +87,19 @@ export default function Index(props: NoticeBarProps) {
           .export(),
       }
     })
-    requestAnimationFrame(() => {
-      setState((state) => {
-        return {
-          ...state,
-          animationData: ref.current.animation
-            .translateX(-ref.current.contentWidth)
-            .step()
-            .export(),
-        }
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        setState((state) => {
+          return {
+            ...state,
+            animationData: ref.current.animation
+              .translateX(-ref.current.contentWidth)
+              .step()
+              .export(),
+          }
+        })
       })
-    })
+    }, 10)
     ref.current.timer = setTimeout(() => {
       scroll()
     }, ref.current.duration)
@@ -138,7 +150,7 @@ export default function Index(props: NoticeBarProps) {
             show: false,
           }
         })
-        onClose?.(event.detail)
+        onClose?.(event)
       }
     },
     [mode, onClose],
@@ -148,12 +160,10 @@ export default function Index(props: NoticeBarProps) {
     state.show && (
       <View
         className={
-          'custom-class ' +
           utils.bem('notice-bar', {
             withicon: mode,
             wrapable,
-          }) +
-          ` ${className || ''}`
+          }) + ` ${className || ''}`
         }
         style={utils.style([
           computed.rootStyle({
@@ -178,7 +188,7 @@ export default function Index(props: NoticeBarProps) {
         <View className="van-notice-bar__wrap">
           <View
             className={
-              'van-notice-bar__content ' +
+              'van-notice-bar__content van-ellipsis ' +
               (scrollable === false && !wrapable ? 'van-ellipsis' : '')
             }
             animation={state.animationData}

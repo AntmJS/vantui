@@ -94,6 +94,7 @@ export default function Index(props: NotifyProps) {
       off('show')
       off('clear')
     }
+    /* eslint-disable-next-line */
   }, [])
 
   const hide = useCallback((notifyOptions: any) => {
@@ -130,7 +131,7 @@ export default function Index(props: NotifyProps) {
   )
   const onTap = useCallback(
     (event: ITouchEvent) => {
-      state.onClick?.(event.detail)
+      state.onClick?.(event)
     },
     [state],
   )

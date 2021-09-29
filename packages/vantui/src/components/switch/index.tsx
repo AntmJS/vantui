@@ -29,7 +29,9 @@ export default function Index(props: SwitchProps) {
       }
 
       const value = checked === activeValue ? inactiveValue : activeValue
-      event.detail = value
+      Object.defineProperty(event, 'detail', {
+        value: value,
+      })
       onChange?.(event)
     },
     [activeValue, checked, disabled, inactiveValue, loading, onChange],

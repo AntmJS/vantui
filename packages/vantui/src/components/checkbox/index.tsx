@@ -87,7 +87,10 @@ export default function Index(
   const toggle = useCallback(
     (event: ITouchEvent) => {
       if (!disabled && !state.parentDisabled) {
-        event.detail = !value
+        Object.defineProperty(event, 'detail', {
+          value: !value,
+          writable: true,
+        })
         emitChange(event)
       }
     },
@@ -96,7 +99,10 @@ export default function Index(
   const onClickLabel = useCallback(
     (event: ITouchEvent) => {
       if (!disabled && !labelDisabled && !state.parentDisabled) {
-        event.detail = !value
+        Object.defineProperty(event, 'detail', {
+          value: !value,
+          writable: true,
+        })
         emitChange(event)
       }
     },

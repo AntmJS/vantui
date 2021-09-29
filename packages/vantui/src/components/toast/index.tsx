@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View, Text, Block } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import { ToastProps } from '../../../types/toast'
 import VanTransition from '../transition/index'
@@ -70,34 +70,44 @@ export default function Index(props: ToastProps) {
 
   useEffect(() => {
     on('show', (toastOptions) => {
-      Taro.createSelectorQuery()
-        .select(toastOptions.selector)
-        .node()
-        .exec((res) => {
-          if (res?.[0]) {
-            const options = Object.assign(
-              Object.assign({}, currentOptions),
-              parseOptions(toastOptions),
-            )
+      const action = () => {
+        const options = Object.assign(
+          Object.assign({}, currentOptions),
+          parseOptions(toastOptions),
+        )
 
-            // queue.push(toastOptions)
+        // queue.push(toastOptions)
 
-            setState((state) => {
-              return {
-                ...state,
-                ...options,
-              }
-            })
-
-            clearTimeout(timer)
-            if (options.duration != null && options.duration > 0) {
-              timer = setTimeout(() => {
-                clear(toastOptions)
-                // queue = queue.filter((item: any) => item.sel !== toast)
-              }, options.duration)
-            }
+        setState((state) => {
+          return {
+            ...state,
+            ...options,
           }
         })
+
+        clearTimeout(timer)
+        if (options.duration != null && options.duration > 0) {
+          timer = setTimeout(() => {
+            clear(toastOptions)
+            // queue = queue.filter((item: any) => item.sel !== toast)
+          }, options.duration)
+        }
+      }
+
+      const selector = toastOptions.selector || defaultOptions.selector
+      if (process.env.TARO_ENV === 'h5') {
+        if (document.querySelector(selector)) {
+          action()
+        }
+      } else {
+        const query = Taro.createSelectorQuery()
+        query.select(selector).node()
+        query.exec((res) => {
+          if (res?.[0]) {
+            action()
+          }
+        })
+      }
     })
 
     on('clear', (toastOptions) => {
@@ -122,6 +132,7 @@ export default function Index(props: ToastProps) {
       off('setDefaultOptions')
       off('resetDefaultOptions')
     }
+    /* eslint-disable-next-line */
   }, [])
 
   return (
@@ -152,7 +163,7 @@ export default function Index(props: ToastProps) {
           {state.type === 'text' ? (
             <Text>{state.message}</Text>
           ) : (
-            <Block>
+            <View className="van-toast__box">
               {state.type === 'loading' ? (
                 <VanLoading
                   color="white"
@@ -168,7 +179,7 @@ export default function Index(props: ToastProps) {
               {state.message && (
                 <Text className="van-toast__text">{state.message}</Text>
               )}
-            </Block>
+            </View>
           )}
           {/*  with icon  */}
           {children}

@@ -12,6 +12,9 @@ export interface CollapseItemProps extends StandardProps {
   border?: boolean
   isLink?: boolean
   children?: ReactNode
+  renderTitle?: ReactNode
+  renderIcon?: ReactNode
+  renderRightIcon?: ReactNode
   renderValue?: ReactNode
 }
 

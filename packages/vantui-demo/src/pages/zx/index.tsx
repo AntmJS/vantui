@@ -53,6 +53,7 @@ export default function Index() {
   })
 
   const handleChangeCollapse = function (event: any) {
+    console.log('改变: ', event)
     setState((state) => {
       return {
         ...state,
@@ -64,15 +65,15 @@ export default function Index() {
   const handleOpenCollapse = function (event: any) {
     console.log(`打开: `, event)
     // Toast.show('测试')
-    // Toast.loading({
-    //   duration: 1000,
-    //   forbidClick: true,
-    //   message: '倒计时 3 秒',
-    //   selector: '#van-toast',
-    //   position: 'bottom',
-    // })
+    Toast.loading({
+      duration: 1000,
+      forbidClick: true,
+      message: '倒计时 3 秒',
+      selector: '#van-toast',
+      position: 'bottom',
+    })
     // setTimeout(() => {
-    //   toast.clear({
+    //   Toast.clear({
     //     onClose() {
     //       console.log('loading关闭')
     //     },

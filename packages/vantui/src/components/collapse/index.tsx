@@ -27,7 +27,10 @@ export default function Index(props: CollapseProps) {
       } else {
         name = expanded ? name : ''
       }
-      event.detail = changeItem
+      Object.defineProperty(event, 'detail', {
+        value: changeItem,
+        writable: true,
+      })
       if (expanded) {
         onOpen?.(event)
       } else {
@@ -42,6 +45,7 @@ export default function Index(props: CollapseProps) {
   const newChildren: any = useMemo(() => {
     return children?.map((child: any, index: number) => {
       return cloneElement(child, {
+        key: index,
         parent: {
           index,
           handleSwitch,
