@@ -83,6 +83,12 @@ export default function Index(this: any, props: PopupProps) {
   //   value ? this.enter() : this.leave()
   // },
 
+  const getClassName = useCallback((name) => {
+    return name.replace(/([A-Z])/g, (_: string, $1: string) => {
+      return '-' + $1.toLowerCase()
+    })
+  }, [])
+
   return (
     <>
       {overlay && (
@@ -128,7 +134,7 @@ export default function Index(this: any, props: PopupProps) {
               name={closeIcon}
               className={
                 'close-icon-class van-popup__close-icon van-popup__close-icon--' +
-                closeIconPosition
+                getClassName(closeIconPosition)
               }
               onClick={_onClickCloseIcon}
             ></VanIcon>

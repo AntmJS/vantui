@@ -1,4 +1,5 @@
-import { View } from '@tarojs/components'
+import { useCallback } from 'react'
+import { ITouchEvent, View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { SwitchProps } from '../../../types/switch'
@@ -7,11 +8,11 @@ import * as computed from './wxs'
 
 export default function Index(props: SwitchProps) {
   const {
-    checked = null,
-    loading,
-    disabled,
-    activeColor,
-    inactiveColor,
+    checked = false,
+    loading = false,
+    disabled = false,
+    activeColor = '#1989fa',
+    inactiveColor = '#ffffff',
     size = '60',
     activeValue = true,
     inactiveValue = false,
@@ -21,14 +22,20 @@ export default function Index(props: SwitchProps) {
     ...others
   } = props
 
-  const onClick = function () {
-    if (disabled || loading) {
-      return
-    }
+  const onClick = useCallback(
+    (event: ITouchEvent) => {
+      if (disabled || loading) {
+        return
+      }
 
-    const value = checked === activeValue ? inactiveValue : activeValue
-    onChange?.(value)
-  }
+      const value = checked === activeValue ? inactiveValue : activeValue
+      Object.defineProperty(event, 'detail', {
+        value: value,
+      })
+      onChange?.(event)
+    },
+    [activeValue, checked, disabled, inactiveValue, loading, onChange],
+  )
 
   return (
     <View

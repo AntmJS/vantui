@@ -3,10 +3,10 @@ import { StandardProps } from '@tarojs/components'
 
 export interface EmptyProps extends StandardProps {
   description?: string
-  image?: string
+  image?: 'error' | 'search' | 'default' | 'network' | string
   children?: ReactNode
-  renderImage?: () => any
-  renderDescription?: () => any
+  renderImage?: ReactNode
+  renderDescription?: ReactNode
 }
 
 declare const Empty: ComponentClass<EmptyProps>

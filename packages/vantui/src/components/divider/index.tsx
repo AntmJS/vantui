@@ -5,13 +5,12 @@ import * as computed from './wxs'
 
 export default function Index(props: DividerProps) {
   const {
-    dashed,
-    hairline,
+    dashed = false,
+    hairline = false,
     contentPosition,
     borderColor,
     textColor,
     fontSize,
-    customStyle,
     style,
     className,
     children,
@@ -36,7 +35,6 @@ export default function Index(props: DividerProps) {
           borderColor,
           textColor,
           fontSize,
-          customStyle,
         }),
         style,
       ])}

@@ -48,23 +48,28 @@ function useAnimation(expanded: any, mounted: any, height: any, setState: any) {
         .height('auto')
         .step()
     }
+    const animationclass = animation.export()
     setState?.((state: any) => {
       return {
         ...state,
-        animation: animation.export(),
+        animation: animationclass,
       }
     })
-    return
+  } else {
+    animation.height(height).top(0).step({ duration: 1 }).height(0).step({
+      duration: 300,
+    })
+    const animationclass = animation.export()
+    setState?.((state: any) => {
+      return {
+        ...state,
+        animation:
+          process.env.TARO_ENV === 'h5'
+            ? `${animationclass}--1`
+            : animationclass,
+      }
+    })
   }
-  animation.height(height).top(0).step({ duration: 1 }).height(0).step({
-    duration: 300,
-  })
-  setState?.((state: any) => {
-    return {
-      ...state,
-      animation: animation.export(),
-    }
-  })
 }
 export function setContentAnimate(
   context: any,

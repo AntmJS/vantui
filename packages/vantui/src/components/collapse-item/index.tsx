@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { View, Block, Slot } from '@tarojs/components'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { View, Block, ITouchEvent } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../../types/collapse-item'
@@ -28,10 +28,13 @@ export default function Index(
     value = '',
     icon,
     label,
-    disabled,
-    clickable,
+    disabled = false,
+    clickable = false,
     border = true,
     isLink = true,
+    renderTitle,
+    renderIcon,
+    renderRightIcon,
     renderValue,
     style,
     className,
@@ -50,7 +53,7 @@ export default function Index(
     /* eslint-disable-next-line */
   }, [parent.data])
 
-  const updateExpanded = function () {
+  const updateExpanded = useCallback(() => {
     if (!parent) {
       return
     }
@@ -70,16 +73,18 @@ export default function Index(
         expanded,
       }
     })
-  }
+  }, [parent, name, state.expanded])
 
-  const onClick = function () {
-    if (disabled) {
-      return
-    }
-    const { expanded } = state
-    const currentName = name == null ? parent?.index : name
-    parent?.handleSwitch(currentName, !expanded)
-  }
+  const onClick = useCallback(
+    (event: ITouchEvent) => {
+      if (disabled) {
+        return
+      }
+      const currentName = name == null ? parent?.index : name
+      parent?.handleSwitch(event, currentName, !state.expanded)
+    },
+    [parent, disabled, name, state.expanded],
+  )
 
   return (
     <View
@@ -106,27 +111,17 @@ export default function Index(
           }) + ' van-cell'
         }
         onClick={onClick}
-        renderTitle={
-          <Block>
-            <Slot name="title"></Slot>
-          </Block>
-        }
-        renderIcon={
-          <Block>
-            <Slot name="icon"></Slot>
-          </Block>
-        }
-        renderRightIcon={
-          <Block>
-            <Slot name="right-icon"></Slot>
-          </Block>
-        }
+        renderTitle={<Block>{renderTitle}</Block>}
+        renderIcon={<Block>{renderIcon}</Block>}
+        renderRightIcon={<Block>{renderRightIcon}</Block>}
       >
         {renderValue}
       </VanCell>
       <View
-        className={utils.bem('collapse-item__wrapper', {})}
-        style="height: 0;"
+        className={
+          utils.bem('collapse-item__wrapper', {}) +
+          ' van-collapse-item__animation-box'
+        }
         animation={state.animation}
       >
         <View className="van-collapse-item__content content-class">

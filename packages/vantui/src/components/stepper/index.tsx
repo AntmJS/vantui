@@ -40,11 +40,12 @@ export default function Index(props: StepperProps) {
     onBlur,
     onOverlimit,
     onPlus,
+    onMinus,
     renderMinus,
     renderPlus,
     ...others
   } = props
-  const [currentValue, setCurrentValue] = useState<any>(undefined)
+  const [currentValue, setCurrentValue] = useState<any>()
   const eventTypeRef = useRef('')
   const longPressTimerRef = useRef<any>(0)
   const isLongPressRef = useRef(false)
@@ -80,7 +81,8 @@ export default function Index(props: StepperProps) {
     if (!equal(val, currentValue)) {
       setCurrentValue(val)
     }
-  }, [currentValue, _format])
+  }, [_format, currentValue])
+
   const _isDisabled = useCallback(
     (type) => {
       if (type === 'plus') {
@@ -95,7 +97,7 @@ export default function Index(props: StepperProps) {
       if (!asyncChange) {
         setCurrentValue(value)
       }
-      onChange?.(value)
+      onChange?.({ detail: value })
     },
     [asyncChange, onChange],
   )
@@ -119,7 +121,7 @@ export default function Index(props: StepperProps) {
 
   const _onFocus = useCallback(
     (event) => {
-      onFocus?.(event.detail)
+      onFocus?.(event)
     },
     [onFocus],
   )
@@ -133,24 +135,35 @@ export default function Index(props: StepperProps) {
   )
   const _onChange = useCallback(() => {
     if (_isDisabled(eventTypeRef.current)) {
-      onOverlimit?.(eventTypeRef.current)
+      onOverlimit?.()
       return
     }
     const diff = eventTypeRef.current === 'minus' ? -step : +step
-    const value = _format(add(+currentValue, diff))
-    _emitChange(value)
+    // const value = _format(add(+currentValue, diff))
+    // _emitChange(value)
+    if (!asyncChange) {
+      setCurrentValue((p: string) => {
+        const value = _format(add(+p, diff))
+        onChange?.(value)
+        return value
+      })
+    }
+    // 不太美观----
+
     if (eventTypeRef.current === 'plus') {
       onPlus?.()
+    } else {
+      onMinus?.()
     }
-    // type?.()
   }, [
-    currentValue,
-    _emitChange,
-    _format,
     _isDisabled,
-    onOverlimit,
-    onPlus,
     step,
+    asyncChange,
+    onOverlimit,
+    _format,
+    onChange,
+    onPlus,
+    onMinus,
   ])
   const _longPressStep = useCallback(() => {
     longPressTimerRef.current = setTimeout(() => {
@@ -189,14 +202,16 @@ export default function Index(props: StepperProps) {
     }
     clearTimeout(longPressTimerRef.current)
   }, [longPress])
+
+  useEffect(() => {
+    _check()
+  }, [decimalLength, min, max, integer, _check])
+
   useEffect(() => {
     if (!equal(value, currentValue)) {
       setCurrentValue(_format(value))
     }
   }, [_format, value])
-  useEffect(() => {
-    _check()
-  }, [decimalLength, min, max, integer, _check])
   return (
     <View
       className={utils.bem('stepper', [theme]) + ` ${className || ''}`}
@@ -236,7 +251,6 @@ export default function Index(props: StepperProps) {
           inputWidth,
         })}
         value={currentValue}
-        // focus={focus}
         disabled={disabled || disableInput}
         onInput={_onInput}
         onFocus={_onFocus}

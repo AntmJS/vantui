@@ -156,14 +156,14 @@ export default function Index() {
       {/* <MiniNavBar title="标题" homeUrl="/pages/demo2/index" /> */}
       <Progress percentage={50} strokeWidth={4} />
       <Grid>
-        <GridItem key={0} icon="photo-o" text="文字" />
-        <GridItem key={1} icon="photo-o" text="文字" />
-        <GridItem key={2} icon="photo-o" text="文字" />
-        <GridItem key={3} icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
+        <GridItem icon="photo-o" text="文字" />
       </Grid>
       <DropdownMenu>
-        <DropdownItem key={0} value={value1} options={option1} />
-        <DropdownItem key={1} value={value2} options={option2} />
+        <DropdownItem value={value1} options={option1} />
+        <DropdownItem value={value2} options={option2} />
       </DropdownMenu>
       <View>
         <Icon key={0} name="chat" size={40} dot />
@@ -183,9 +183,9 @@ export default function Index() {
       <Slider value={50} onChange={SliderOnChange} />
 
       <Sidebar activeKey={1}>
-        <SidebarItem key={0} title="标签名" />
-        <SidebarItem key={1} title="标签名" />
-        <SidebarItem key={2} title="标签名" />
+        <SidebarItem title="标签名" />
+        <SidebarItem title="标签名" />
+        <SidebarItem title="标签名" />
       </Sidebar>
 
       {/* <View>
@@ -299,18 +299,10 @@ export default function Index() {
       </Tabs> */}
 
       <Tabs active={0}>
-        <Tab key={0} title="标签 11">
-          内容 11
-        </Tab>
-        <Tab key={1} title="标签 22">
-          内容 22
-        </Tab>
-        <Tab key={2} title="标签 33">
-          内容 33
-        </Tab>
-        <Tab key={3} title="标签 44">
-          内容 44
-        </Tab>
+        <Tab title="标签 11">内容 11</Tab>
+        <Tab title="标签 22">内容 22</Tab>
+        <Tab title="标签 33">内容 33</Tab>
+        <Tab title="标签 44">内容 44</Tab>
       </Tabs>
       <View
         id="container"
@@ -353,16 +345,13 @@ export default function Index() {
         onConfirm={onConfirm}
       />
       <GoodsAction>
-        <GoodsActionIcon key={0} icon="chat-o" text="客服" />
-        <GoodsActionIcon key={1} icon="cart-o" text="购物车" info="5" />
-        <GoodsActionIcon key={2} icon="shop-o" text="店铺" />
-        <GoodsActionButton
-          key={3}
-          color="#7232dd"
-          text="加入购物"
-          type="warning"
-        />
-        <GoodsActionButton key={4} plain color="#7232dd" text="立即购买" />
+        <GoodsActionIcon icon="chat-o" text="客服" />
+        <GoodsActionIcon icon="cart-o" text="购物车" info="5" />
+        <GoodsActionIcon icon="shop-o" text="店铺" />
+        <GoodsActionButton color="#7232dd" text="加入购物" type="warning" />
+        {/* <GoodsActionButton color="#7232dd" text="加入购物" type="warning" /> */}
+        <GoodsActionButton plain color="#7232dd" text="立即购买" />
+        {/* <GoodsActionButton plain color="#7232dd" text="立即购买" /> */}
       </GoodsAction>
       {/* <Tabbar active={1}>
         <TabbarItem icon="home-o">标签</TabbarItem>
