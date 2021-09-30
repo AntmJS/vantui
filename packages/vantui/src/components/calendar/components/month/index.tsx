@@ -17,7 +17,7 @@ type ICalenarMonthProps = {
   minDate?: number
   maxDate?: number
   showMark?: boolean
-  rowHeight?: number
+  rowHeight?: number | string
   currentDate?: string
   firstDayOfWeek?: number
   allowSameDay?: boolean
@@ -198,14 +198,15 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
     }
   })
 
-  if (days[27])
-    console.info(currentDate, 'currentDate-------', days[27].date.getTime())
-
   return (
     <View
       id={id}
       className={`van-calendar__month ${className}`}
-      style={computed.getMonthStyle(visible, date, rowHeight || 0)}
+      style={computed.getMonthStyle(
+        visible,
+        date,
+        rowHeight ? Number(rowHeight) : 0,
+      )}
     >
       {showMonthTitle && (
         <View className="van-calendar__month-title">

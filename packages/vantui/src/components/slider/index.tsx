@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { style } from '../wxs/style'
 import { SliderProps } from '../../../types/slider'
@@ -34,6 +34,9 @@ export default function Index(props: SliderProps) {
     onDragStart,
     onDragEnd,
     className = '',
+    renderButton,
+    renderLeftbutton,
+    renderRightbutton,
     ...others
   } = props
 
@@ -144,10 +147,10 @@ export default function Index(props: SliderProps) {
       if (drag) styleBar.transition = 'none'
       setBarStyle(styleBar)
       if (drag && onDrag) {
-        onDrag({ value })
+        onDrag({ detail: value } as ITouchEvent)
       }
       if (end && onChange) {
-        onChange(value)
+        onChange({ detail: value } as ITouchEvent)
       }
       if ((drag || end) && canIUseModel()) {
         setValue(value)
@@ -305,7 +308,11 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {useButtonSlot ? (
-              props.renderLeftbutton
+              renderLeftbutton ? (
+                renderLeftbutton(value_ as number)
+              ) : (
+                ''
+              )
             ) : (
               <View className={utils.bem('slider__button')}></View>
             )}
@@ -321,7 +328,11 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {useButtonSlot ? (
-              props.renderRightbutton
+              renderRightbutton ? (
+                renderRightbutton(value_ as number)
+              ) : (
+                ''
+              )
             ) : (
               <View className={utils.bem('slider__button')}></View>
             )}
@@ -336,7 +347,11 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {useButtonSlot ? (
-              props.renderButton
+              renderButton ? (
+                renderButton(value_ as number)
+              ) : (
+                ''
+              )
             ) : (
               <View className={utils.bem('slider__button')}></View>
             )}

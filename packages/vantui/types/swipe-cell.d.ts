@@ -1,5 +1,25 @@
 import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { StandardProps, ITouchEvent } from '@tarojs/components'
+
+type SwipeCellClick = {
+  detail: {
+    position: 'left' | 'right' | 'cell' | 'outside'
+  }
+}
+
+type SwipeCellOpen = {
+  detail: {
+    position: 'left' | 'right'
+    name: string
+  }
+}
+
+type SwipeCellClose = {
+  detail: {
+    position: 'left' | 'right'
+    name: string
+  }
+}
 
 export interface SwipeCellProps extends StandardProps {
   disabled?: boolean
@@ -9,12 +29,17 @@ export interface SwipeCellProps extends StandardProps {
   name?: string
   catchMove?: boolean
   wrapperStyle?: React.CSSProperties
-  onOpen?: (a: any) => void
-  onClick?: (a: any) => void
-  onClose?: (a: any) => void
+  onOpen?: (e: ITouchEvent & SwipeCellOpen) => void
+  onClick?: (e: ITouchEvent & SwipeCellClick) => void
+  onClose?: (e: ITouchEvent & SwipeCellClose) => void
   renderLeft?: React.ReactNode
   renderRight?: React.ReactNode
   children?: React.ReactNode
+}
+
+export type ISwiperCellInstance = {
+  open: (position: 'left' | 'right') => void
+  close: () => void
 }
 
 declare const SwipeCell: ComponentClass<SwipeCellProps>

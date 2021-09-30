@@ -1,10 +1,12 @@
-import { Block, View, ScrollView } from '@tarojs/components'
+import { Block, View, ScrollView, ITouchEvent } from '@tarojs/components'
 import {
   useState,
   useEffect,
   useCallback,
   useRef,
   useLayoutEffect,
+  forwardRef,
+  useImperativeHandle,
 } from 'react'
 import Taro from '@tarojs/taro'
 import * as utils from '../wxs/utils'
@@ -13,7 +15,7 @@ import { requestAnimationFrame } from '../common/utils.js'
 import VanToast from '../toast/index'
 import VanPopup from '../popup/index'
 import VanButton from '../button/index'
-import { CalendarProps } from '../../../types/calendar'
+import { CalendarProps, ICalendarInstance } from '../../../types/calendar'
 import {
   ROW_HEIGHT,
   getPrevDay,
@@ -41,7 +43,10 @@ const initialMaxDate = (() => {
   ).getTime()
 })()
 
-export default function Index(props: CalendarProps) {
+function Index(
+  props: CalendarProps,
+  ref: React.ForwardedRef<ICalendarInstance>,
+) {
   const {
     title = '日期选择',
     color,
@@ -228,7 +233,12 @@ export default function Index(props: CalendarProps) {
       const getTime = (date: any) =>
         date instanceof Date ? date.getTime() : date
       setCurrentDate(Array.isArray(date) ? date.map(getTime) : getTime(date))
-      if (onSelect) onSelect(copyDates(date))
+      const e = {
+        detail: {
+          value: copyDates(date),
+        },
+      } as ITouchEvent
+      if (onSelect) onSelect(e)
     },
     [onSelect],
   )
@@ -239,7 +249,6 @@ export default function Index(props: CalendarProps) {
         if (showRangePrompt) {
           Toast({
             duration: 0,
-            context: null,
             message: rangePrompt || `选择天数不能超过 ${maxRange} 天`,
           })
         }
@@ -275,7 +284,12 @@ export default function Index(props: CalendarProps) {
     function (dateArray) {
       const date = dateArray[0]
       if (date && unselect) {
-        if (onUnselect) onUnselect(copyDates(date))
+        const e = {
+          detail: {
+            value: copyDates(date) as Date,
+          },
+        } as ITouchEvent
+        if (onUnselect) onUnselect(e)
       }
     },
     [onUnselect],
@@ -327,7 +341,12 @@ export default function Index(props: CalendarProps) {
       if (type === 'range' && !checkRange(currentDate)) {
         return
       }
-      if (onConfirm) onConfirm(copyDates(currentDate))
+      const e = {
+        detail: {
+          value: copyDates(currentDate),
+        },
+      } as ITouchEvent
+      if (onConfirm) onConfirm(e)
     },
     [checkRange, currentDate, onConfirm, type],
   )
@@ -354,7 +373,6 @@ export default function Index(props: CalendarProps) {
     [initRect, poppable, scrollIntoViewFn, show],
   )
 
-  // 动态type重置初始值还会干扰点击日期选择
   useEffect(
     function () {
       reset()
@@ -362,6 +380,12 @@ export default function Index(props: CalendarProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [type],
   )
+
+  useImperativeHandle(ref, function () {
+    return {
+      reset,
+    }
+  })
 
   return (
     <Block>
@@ -535,3 +559,5 @@ export default function Index(props: CalendarProps) {
     </Block>
   )
 }
+
+export default forwardRef(Index)

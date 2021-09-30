@@ -140,10 +140,15 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
 
   const _onConfirm = useCallback(
     (detail) => {
-      const { index } = detail
+      // const { index } = detail
       let { value } = detail
       value = _parseValues(value)
-      onConfirm?.({ value, index })
+      onConfirm?.({
+        detail: {
+          value,
+          // index,
+        },
+      })
     },
     [_parseValues, onConfirm],
   )
@@ -207,11 +212,15 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       ;(_a = _setValues()) === null || _a === void 0
         ? void 0
         : _a.then(() => {
-            onChange?.({
-              picker: pickerRef.current,
-              values: _parseValues(value),
-              index,
+            const event_ = event || { detail: { value: '' } }
+            Object.defineProperty(event_, 'detail', {
+              value: {
+                picker: pickerRef.current,
+                values: _parseValues(value),
+                index,
+              },
             })
+            onChange?.(event_)
           })
     },
     [_parseValues, _setValues, onChange],

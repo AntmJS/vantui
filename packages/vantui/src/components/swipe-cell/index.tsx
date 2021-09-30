@@ -1,7 +1,13 @@
-import { View } from '@tarojs/components'
-import { useEffect, useState, useCallback } from 'react'
+import { ITouchEvent, View } from '@tarojs/components'
+import {
+  useEffect,
+  useState,
+  useCallback,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 import * as utils from '../wxs/utils'
-import { SwipeCellProps } from '../../../types/swipe-cell'
+import { SwipeCellProps, ISwiperCellInstance } from '../../../types/swipe-cell'
 import { range } from '../common/utils.js'
 
 const THRESHOLD = 0.3
@@ -17,7 +23,10 @@ function getDirection(x: number, y: number) {
   return ''
 }
 
-export default function Index(props: SwipeCellProps) {
+function Index(
+  props: SwipeCellProps,
+  ref: React.ForwardedRef<ISwiperCellInstance>,
+) {
   const [wrapperStyle, setWrapperStyle] = useState<React.CSSProperties>({})
   const [offset, setOffset] = useState<number>(0)
   const [instanceKey, setInstanceKey] = useState<any>({})
@@ -137,10 +146,13 @@ export default function Index(props: SwipeCellProps) {
       const offset = position === 'left' ? leftWidth : -rightWidth
       swipeMove(offset)
       if (onOpen) {
-        onOpen({
-          position,
-          name: name,
-        })
+        const e = {
+          detail: {
+            position,
+            name: name,
+          },
+        } as ITouchEvent
+        onOpen(e)
       }
     },
     [leftWidth, onOpen, rightWidth, swipeMove],
@@ -160,16 +172,19 @@ export default function Index(props: SwipeCellProps) {
   )
 
   const onClick_ = useCallback(
-    function (event: any) {
+    function (event) {
       const { key: position = 'outside' } = event.currentTarget.dataset
-      if (onClick) onClick(position)
+      Object.defineProperties(event, {
+        detail: {
+          value: {
+            position,
+          },
+        },
+      })
+      if (onClick) onClick(event)
       if (offset) return
       if (asyncClose && onClose) {
-        onClose({
-          position,
-          instance: null,
-          name: name,
-        })
+        onClose(event)
       } else {
         swipeMove(0)
       }
@@ -190,7 +205,6 @@ export default function Index(props: SwipeCellProps) {
     function (event) {
       if (disabled) return
       const touchState = touchMove(event)
-      // if (direction !== 'horizontal') return
       ARRAY.filter((item) => item.key !== instanceKey.key).forEach((item) =>
         item.close(),
       )
@@ -206,6 +220,13 @@ export default function Index(props: SwipeCellProps) {
     },
     [disabled, swipeLeaveTransition],
   )
+
+  useImperativeHandle(ref, function () {
+    return {
+      close,
+      open,
+    }
+  })
 
   return (
     <View
@@ -243,3 +264,5 @@ export default function Index(props: SwipeCellProps) {
     </View>
   )
 }
+
+export default forwardRef(Index)
