@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import { useState, useEffect } from 'react'
-import { View, Text, Block, Image, Video } from '@tarojs/components'
+import { useState, useEffect, useCallback } from 'react'
+import { View, Text, Image, Video, ITouchEvent } from '@tarojs/components'
 
 import { UploaderProps } from '../../../types/uploader'
 import VanLoading from '../loading/index'
@@ -20,9 +20,7 @@ export default function Index(props: UploaderProps) {
     multiple,
     uploadText,
     useBeforeRead,
-    afterRead = null,
-    beforeRead = null,
-    previewSize = 80,
+    previewSize = 160,
     name = '',
     accept = 'image',
     fileList = [],
@@ -34,6 +32,11 @@ export default function Index(props: UploaderProps) {
     previewFullImage = true,
     imageFit = 'scaleToFill',
     uploadIcon = 'photograph',
+    capture,
+    compressed,
+    maxDuration,
+    sizeType,
+    camera,
     onError,
     onDelete,
     onBeforeRead,
@@ -46,113 +49,158 @@ export default function Index(props: UploaderProps) {
     ...others
   } = props
 
-  useEffect(() => {
-    formatFileList()
-    /* eslint-disable-next-line */
-  }, [fileList])
-
-  const formatFileList = function () {
-    const lists = fileList.map((item: any) =>
-      Object.assign({}, item, {
-        isImage: isImageFile(item),
-        isVideo: isVideoFile(item),
-        deletable: isBoolean(item.deletable) ? item.deletable : true,
-      }),
-    )
-    setState((state) => {
+  const formatFileList = useCallback(
+    (fileList: any) => {
+      const lists = fileList.map((item: any) =>
+        Object.assign(Object.assign({}, item), {
+          isImage: isImageFile(item),
+          isVideo: isVideoFile(item),
+          deletable: isBoolean(item.deletable) ? item.deletable : true,
+        }),
+      )
+      setState((state) => {
+        return {
+          ...state,
+          lists,
+          isInCount: lists.length < maxCount,
+        }
+      })
+    },
+    [maxCount],
+  )
+  const getDetail = useCallback(
+    (index?: number) => {
       return {
-        ...state,
-        lists,
-        isInCount: lists.length < maxCount,
+        name: name,
+        index: index == null ? fileList.length : index,
       }
-    })
-  }
-  const getDetail = function (index?: number) {
-    return {
-      name: name,
-      index: index == null ? fileList.length : index,
-    }
-  }
-  const startUpload = function () {
-    if (disabled) return
-    chooseFile(
-      // eslint-disable-next-line
-      // @ts-ignore
-      Object.assign({}, props, state, {
-        maxCount: maxCount - state.lists.length,
-      }),
-    )
-      .then((res: any) => {
-        _onBeforeRead(multiple ? res : res[0])
-      })
-      .catch((error) => {
-        onError?.(error)
-      })
-  }
-  const _onBeforeRead = function (file: any) {
-    let res: any = true
-    if (typeof beforeRead === 'function') {
-      res = beforeRead(file, getDetail())
-    }
-    if (useBeforeRead) {
-      res = new Promise((resolve: any, reject) => {
-        onBeforeRead?.(
-          Object.assign(Object.assign({ file }, getDetail()), {
+    },
+    [fileList.length, name],
+  )
+  const _onAfterRead = useCallback(
+    (event: ITouchEvent) => {
+      const { file } = event.detail
+      const oversize = Array.isArray(file)
+        ? file.some((item) => item.size > maxSize)
+        : file.size > maxSize
+      if (oversize) {
+        event.detail = Object.assign({ file }, getDetail())
+        onOversize?.(event)
+        return
+      }
+      event.detail = Object.assign({ file }, getDetail())
+      onAfterRead?.(event)
+    },
+    [getDetail, maxSize, onAfterRead, onOversize],
+  )
+  const _onBeforeRead = useCallback(
+    (event: ITouchEvent) => {
+      const { file } = event.detail
+      let res: any = true
+      if (useBeforeRead) {
+        res = new Promise((resolve: any, reject: any) => {
+          const params = Object.assign(Object.assign({ file }, getDetail()), {
             callback: (ok: boolean) => {
               ok ? resolve() : reject()
             },
-          }),
-        )
+          })
+          event.detail = params
+          onBeforeRead?.(event)
+        })
+      }
+      if (!res) {
+        return
+      }
+      if (isPromise(res)) {
+        res.then((data: any) => {
+          event.detail = {
+            file: data || file,
+          }
+          return _onAfterRead(event)
+        })
+      } else {
+        event.detail = {
+          file,
+        }
+        _onAfterRead(event)
+      }
+    },
+    [_onAfterRead, getDetail, onBeforeRead, useBeforeRead],
+  )
+  const startUpload = useCallback(
+    (event: ITouchEvent) => {
+      if (disabled) return
+      chooseFile({
+        accept,
+        multiple,
+        capture,
+        compressed,
+        maxDuration,
+        sizeType,
+        camera,
+        maxCount: maxCount - state.lists.length,
       })
-    }
-    if (!res) {
-      return
-    }
-    if (isPromise(res)) {
-      res.then((data: any) => _onAfterRead(data || file))
-    } else {
-      _onAfterRead(file)
-    }
-  }
-  const _onAfterRead = function (file: any) {
-    const oversize = Array.isArray(file)
-      ? file.some((item) => item.size > maxSize)
-      : file.size > maxSize
-    if (oversize) {
-      onOversize?.(Object.assign({ file }, getDetail()))
-      return
-    }
-    if (typeof afterRead === 'function') {
-      afterRead(file, getDetail())
-    }
-    onAfterRead?.(Object.assign({ file }, getDetail()))
-  }
-  const deleteItem = function (event: any) {
-    const { index } = event.currentTarget.dataset
-    onDelete?.(
-      Object.assign(Object.assign({}, getDetail(index)), {
+        .then((res: any) => {
+          Object.defineProperty(event, 'detail', {
+            value: {
+              file: multiple ? res : res[0],
+            },
+            writable: true,
+          })
+          _onBeforeRead(event)
+        })
+        .catch((error) => {
+          onError?.(error)
+        })
+    },
+    [
+      _onBeforeRead,
+      disabled,
+      maxCount,
+      multiple,
+      onError,
+      state.lists.length,
+      accept,
+      camera,
+      capture,
+      compressed,
+      maxDuration,
+      sizeType,
+    ],
+  )
+  const deleteItem = useCallback(
+    (event: ITouchEvent) => {
+      const { index } = event.currentTarget.dataset
+      const params = Object.assign(Object.assign({}, getDetail(index)), {
         file: fileList[index],
-      }),
-    )
-  }
-  const onPreviewImage = function (event: any) {
+      })
+      Object.defineProperty(event, 'detail', {
+        value: params,
+      })
+      onDelete?.(event)
+    },
+    [fileList, getDetail, onDelete],
+  )
+  const onPreviewImage = useCallback(
+    (event: ITouchEvent) => {
+      if (!previewFullImage) return
+      const { index } = event.currentTarget.dataset
+      const item = state.lists[index]
+      Taro.previewImage({
+        urls: state.lists
+          .filter((item) => isImageFile(item))
+          .map((item) => item.url),
+        current: item.url,
+        fail() {
+          Taro.showToast({ title: '预览图片失败', icon: 'none' })
+        },
+      })
+    },
+    [previewFullImage, state.lists],
+  )
+  const onPreviewVideo = useCallback(() => {
     if (!previewFullImage) return
-    const { index } = event.currentTarget.dataset
-    const item = state.lists[index]
-    Taro.previewImage({
-      urls: state.lists
-        .filter((item) => isImageFile(item))
-        .map((item) => item.url),
-      current: item.url,
-      fail() {
-        Taro.showToast({ title: '预览图片失败', icon: 'none' })
-      },
-    })
-  }
-  const onPreviewVideo = function (event: any) {
-    if (!previewFullImage) return
-    const { index } = event.currentTarget.dataset
-    // TESTCODE
+    // const { index } = event.currentTarget.dataset
     // eslint-disable-next-line
     // @ts-ignore
     wx.previewMedia({
@@ -161,30 +209,47 @@ export default function Index(props: UploaderProps) {
         .map((item) =>
           Object.assign(Object.assign({}, item), { type: 'video' }),
         ),
-      current: index,
+      // current: index,
+      // success() {
+      //   Taro.showToast({ title: '预览视频成功', icon: 'none' })
+      // },
       fail() {
         Taro.showToast({ title: '预览视频失败', icon: 'none' })
       },
     })
-  }
-  const onPreviewFile = function (event: any) {
-    const { index } = event.currentTarget.dataset
-    Taro.openDocument({
-      filePath: state.lists[index].url,
-      showMenu: true,
-    })
-  }
-  const _onClickPreview = function (event: any) {
-    const { index } = event.currentTarget.dataset
-    const item = state.lists[index]
-    onClickPreview?.(Object.assign(Object.assign({}, item), getDetail(index)))
-  }
+  }, [previewFullImage, state.lists])
+  const onPreviewFile = useCallback(
+    (event: ITouchEvent) => {
+      const { index } = event.currentTarget.dataset
+      Taro.openDocument({
+        filePath: state.lists[index].url,
+        showMenu: true,
+      })
+    },
+    [state.lists],
+  )
+  const _onClickPreview = useCallback(
+    (event: ITouchEvent) => {
+      const { index } = event.currentTarget.dataset
+      const item = state.lists[index]
+      Object.defineProperty(event, 'detail', {
+        value: Object.assign(Object.assign({}, item), getDetail(index)),
+      })
+      onClickPreview?.(event)
+    },
+    [getDetail, onClickPreview, state.lists],
+  )
+
+  useEffect(() => {
+    formatFileList(fileList)
+    // eslint-disable-next-line
+  }, [fileList])
 
   return (
     <View className={`van-uploader ${className}`} style={style} {...others}>
       <View className="van-uploader__wrapper">
         {previewImage && (
-          <Block>
+          <View className="van-uploader__box">
             {state.lists.map((item: any, index) => {
               return (
                 <View
@@ -195,11 +260,10 @@ export default function Index(props: UploaderProps) {
                 >
                   {item.isImage ? (
                     <Image
-                      // TESTCODE
-                      // eslint-disable-next-line
-                      // @ts-ignore
                       mode={imageFit}
                       src={item.thumb || item.url}
+                      // eslint-disable-next-line
+                      // @ts-ignore
                       alt={item.name || '图片' + index}
                       className="van-uploader__preview-image"
                       style={computed.sizeStyle({
@@ -272,11 +336,11 @@ export default function Index(props: UploaderProps) {
                 </View>
               )
             })}
-          </Block>
+          </View>
         )}
         {/*  上传样式  */}
         {state.isInCount && (
-          <Block>
+          <View className="van-uploader__box">
             <View className="van-uploader__slot" onClick={startUpload}>
               {children}
             </View>
@@ -303,7 +367,7 @@ export default function Index(props: UploaderProps) {
                 )}
               </View>
             )}
-          </Block>
+          </View>
         )}
       </View>
     </View>

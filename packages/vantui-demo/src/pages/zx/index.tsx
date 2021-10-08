@@ -1,4 +1,4 @@
-import { Button, View } from '@tarojs/components'
+import { Button, View, ITouchEvent } from '@tarojs/components'
 import { useEffect, useState } from 'react'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import {
@@ -143,6 +143,44 @@ export default function Index() {
     })
   }
 
+  const handleDeleteImage = function (event: ITouchEvent) {
+    const _fileList = JSON.parse(JSON.stringify(state.fileList))
+    _fileList.splice(event.detail.index, 1)
+    setState((state) => {
+      return {
+        ...state,
+        fileList: _fileList,
+      }
+    })
+  }
+
+  const handleBeforeRead = function (event: any) {
+    const { file, callback = () => {} } = event.detail
+    if (file.url.indexOf('jpeg') < 0 && file.url.indexOf('png') < 0) {
+      Taro.showToast({ title: '请选择jpg或png图片上传', icon: 'none' })
+      callback(false)
+      return
+    }
+    callback(true)
+  }
+
+  const handleOverSize = function () {
+    Taro.showToast({ title: '文件超出大小限制', icon: 'none' })
+  }
+
+  const handleAfterRead = function (event: any) {
+    console.log(event)
+    const { file } = event.detail
+    console.log(JSON.stringify(file, null, 2))
+
+    setState((state) => {
+      return {
+        ...state,
+        fileList: state.fileList.concat(file),
+      }
+    })
+  }
+
   return (
     <View className="pages-zx-index">
       <Empty image="network" description="描述文字" />
@@ -153,7 +191,15 @@ export default function Index() {
       >
         文本
       </Divider>
-      <Uploader fileList={state.fileList} deletable={true} />
+      <Uploader
+        fileList={state.fileList}
+        deletable={true}
+        onDelete={handleDeleteImage}
+        useBeforeRead={true}
+        onBeforeRead={handleBeforeRead}
+        onOversize={handleOverSize}
+        onAfterRead={handleAfterRead}
+      />
       <NoticeBar
         scrollable
         text="技术是开发它的人的共同灵魂。"
