@@ -118,7 +118,8 @@ export default function Index() {
 
   const onConfirmCalendar = useCallback(
     function (e) {
-      setDate(formatDate(e))
+      console.info(e, 'onConfirmCalendar')
+      setDate(formatDate(e.detail.value))
       onDisplayFalse()
     },
     [onDisplayFalse],

@@ -210,11 +210,16 @@ function Index(
         contentObserver.current.disconnect()
       }
       const pages: any = Taro.getCurrentPages()
-      const curePage = pages[pages.length - 1]
+      let curePage = pages[pages.length - 1]
+
+      if (process.env.TARO_ENV === 'alipay') {
+        curePage = Taro
+      }
 
       const contentObserver_ = curePage.createIntersectionObserver({
         thresholds: [0.5, 0.8, 1],
         observeAll: true,
+        selectAll: true,
       })
       contentObserver.current = contentObserver_
       contentObserver.current.relativeTo('.van-calendar__body')

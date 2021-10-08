@@ -211,12 +211,17 @@ export default forwardRef(function Index(
     return column.setValue(value)
   }
 
+  const onTouchMove_ = useCallback(function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+  }, [])
+
   return (
     <View
       className={`van-picker custom-class ${className}`}
       style={utils.style([style])}
-      catchMove
       {...others}
+      onTouchMove={onTouchMove_}
     >
       {toolbarPosition === 'top' && showToolbar && (
         <View className="van-picker__toolbar toolbar-class">

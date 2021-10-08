@@ -44,6 +44,7 @@ export default function Index(props: TransitionPropsCom) {
         ])}
         onTransitionEnd={onTransitionEnd}
         {...others}
+        catchMove
       >
         {children}
       </View>

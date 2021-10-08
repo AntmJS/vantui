@@ -133,6 +133,7 @@ export default function Index(props: SliderProps) {
 
   const updateValue = useCallback(
     function (value: any, end?: any, drag?: boolean) {
+      console.info(value, end, drag, 'updateValueupdateValue')
       if (isRange(value)) {
         value = handleOverlap(value).map((val: any) => format(val))
       } else {
