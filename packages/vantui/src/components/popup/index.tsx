@@ -20,7 +20,7 @@ export default function Index(this: any, props: PopupProps) {
     zIndex = Popup,
     overlay = true,
     closeIcon = 'cross',
-    closeIconPosition = 'topRight',
+    closeIconPosition = 'top-right',
     closeOnClickOverlay = true,
     position = 'center',
     safeAreaInsetBottom = true,

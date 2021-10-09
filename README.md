@@ -95,13 +95,13 @@ Image[完成]
 Layout[完成]
 
 DropdownMenu[完成]
-Loadingp[完成]
+Loading[完成]
 Notify[完成]
 Cell[完成]
-SwipeCell
+SwipeCell[完成]
 Slider[完成]
 
-Calendar
+Calendar[完成]
 Picker[完成]
 DatetimePicker[完成]
 Grid[完成]

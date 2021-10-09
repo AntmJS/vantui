@@ -10,7 +10,7 @@ export interface GridItemProps extends StandardProps {
   badge?: string | number | undefined
   text?: string
   useSlot?: boolean
-  children?: JSX.Element
+  children?: React.ReactNode
 }
 
 declare const GridItem: ComponentClass<GridItemProps>

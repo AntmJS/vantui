@@ -285,7 +285,7 @@ export default function Index(props: IndexBarProps) {
       if (currentItem) {
         // 可以--
         _scrollIntoView(currentItem.top)
-        onSelect?.(currentItem.index)
+        onSelect?.({ detail: currentItem.index })
       }
     },
     [_scrollIntoView, indexList, onSelect],

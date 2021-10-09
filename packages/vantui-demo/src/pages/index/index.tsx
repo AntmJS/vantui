@@ -38,6 +38,8 @@ import {
   Sidebar,
   SidebarItem,
   DatetimePicker,
+  SwipeCell,
+  Calendar,
   // NavBar,
 } from '@antmjs/vantui'
 
@@ -103,12 +105,47 @@ export default function Index() {
 
   // const x = useRef<ICountDownRef | undefined>()
 
-  console.info(Sidebar)
+  const [date, setDate] = useState('')
+  const [calendarShow, setCalendarShow] = useState(false)
+
+  const onDisplay = useCallback(function () {
+    setCalendarShow(true)
+  }, [])
+
+  const onDisplayFalse = useCallback(function () {
+    setCalendarShow(false)
+  }, [])
+
+  const onConfirmCalendar = useCallback(
+    function (e) {
+      console.info(e, 'onConfirmCalendar')
+      setDate(formatDate(e.detail.value))
+      onDisplayFalse()
+    },
+    [onDisplayFalse],
+  )
+
+  const formatDate = (date: any) => {
+    date = new Date(date)
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+  }
 
   return (
     <View className="pages-index-index">
+      <Cell title="选择单个日期" value={date} onClick={onDisplay} />
+      <Calendar
+        show={calendarShow}
+        onClose={onDisplayFalse}
+        onConfirm={onConfirmCalendar}
+      />
       <Button onClick={NotifyShow}>Notify</Button>
       <Notify ref={NotifyInstance} />
+      <SwipeCell
+        leftWidth={65}
+        renderLeft={<View style={{ color: 'green', padding: 8 }}>选择</View>}
+      >
+        <Cell>内容</Cell>
+      </SwipeCell>
       {/* <NavBar
         fixed
         border
