@@ -1,6 +1,11 @@
 import React, { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { StandardProps, ITouchEvent } from '@tarojs/components'
 
+type SliderEvent = {
+  detail: {
+    value: number
+  }
+}
 export interface SliderProps extends StandardProps {
   range?: boolean
   disabled?: boolean
@@ -11,14 +16,14 @@ export interface SliderProps extends StandardProps {
   min?: number
   step?: number
   value?: number
-  barHeight?: number
-  onDrag?: (a: any) => void
-  onChange?: (a: any) => void
+  barHeight?: number | string
+  onDrag?: (e: ITouchEvent & SliderEvent) => void
+  onChange?: (e: ITouchEvent & SliderEvent) => void
   onDragStart?: () => void
   onDragEnd?: () => void
-  renderLeftbutton?: React.ReactNode
-  renderRightbutton?: React.ReactNode
-  renderButton?: React.ReactNode
+  renderLeftbutton?: (value: number) => React.ReactNode
+  renderRightbutton?: (value: number) => React.ReactNode
+  renderButton?: (value: number) => React.ReactNode
 }
 
 declare const Slider: ComponentClass<SliderProps>

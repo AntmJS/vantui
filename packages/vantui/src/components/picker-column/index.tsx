@@ -96,6 +96,7 @@ function Index(
   const onTouchMove = useCallback(
     function (event) {
       event.preventDefault()
+      event.stopPropagation()
       const deltaY = event.touches[0].clientY - startY
       setOffset(
         range(
@@ -204,10 +205,6 @@ function Index(
         }),
         style,
       ])}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-      onTouchCancel={onTouchEnd}
       {...others}
     >
       <View
@@ -217,6 +214,11 @@ function Index(
           visibleItemCount,
           duration,
         })}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
+        catchMove
       >
         {options.map((option: any, index: number) => {
           return (

@@ -1,6 +1,12 @@
 import React, { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 
+type DropdownMenuOption = {
+  text?: string
+  value: number | string
+  icon?: string
+}
+
 export interface DropdownMenuProps extends StandardProps {
   activeColor?: string
   overlay?: boolean
@@ -11,12 +17,12 @@ export interface DropdownMenuProps extends StandardProps {
   closeOnClickOutside?: boolean
   popupStyle?: React.CSSProperties
   wrapperStyle?: React.CSSProperties
-  onOpen?: (a?: any) => void
-  onOpened?: (a?: any) => void
-  onClose?: (a?: any) => void
-  onClosed?: (a?: any) => void
-  options?: Array<any>
-  children?: JSX.Element | JSX.Element[]
+  onOpen?: () => void
+  onOpened?: () => void
+  onClose?: () => void
+  onClosed?: () => void
+  options?: Array<DropdownMenuOption>
+  children?: React.ReactNode
   value?: string
   disabled?: boolean
 }
