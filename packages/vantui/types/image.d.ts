@@ -1,6 +1,8 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 
+type ImageFit = 'contain' | 'cover' | 'fill' | 'widthFix' | 'heightFix' | 'none'
+
 export interface ImageProps extends StandardProps {
   src: string
   round?: boolean
@@ -11,7 +13,7 @@ export interface ImageProps extends StandardProps {
   useErrorSlot?: boolean
   useLoadingSlot?: boolean
   showMenuByLongpress?: boolean
-  fit?: string
+  fit?: ImageFit
   showError?: boolean
   showLoading?: boolean
   renderLoading?: boolean
