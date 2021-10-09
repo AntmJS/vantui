@@ -14,8 +14,12 @@ export interface DialogProps
   theme?: 'round-button'
   cancelButtonColor?: string
   confirmButtonColor?: string
-  onConfirm?: (action: string, dialog?: { dialog: any }) => void
-  onCancel?: (action: string, dialog?: { dialog: any }) => void
+  onConfirm?: (event: {
+    detail: { action: string; dialog?: { dialog: any } }
+  }) => void
+  onCancel?: (event: {
+    detail: { action: string; dialog?: { dialog: any } }
+  }) => void
   onClose?: (event: { detail: string }) => void
   message?: string
   overlay?: boolean
@@ -29,15 +33,6 @@ export interface DialogProps
    */
   asyncClose?: boolean
   beforeClose?: (action: string) => Promise<void | boolean> | void | boolean
-  // businessId?: number
-  // lang?: string
-  // sessionFrom?: string
-  // overlayStyle?: string
-  // appParameter?: string
-  // sendMessageImg?: string
-  // showMessageCard?: boolean
-  // sendMessagePath?: string
-  // sendMessageTitle?: string
   messageAlign?: 'left' | 'right'
   confirmButtonText?: string
   cancelButtonText?: string
