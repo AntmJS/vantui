@@ -176,6 +176,7 @@ export default function Index(props: UploaderProps) {
       })
       Object.defineProperty(event, 'detail', {
         value: params,
+        writable: true,
       })
       onDelete?.(event)
     },
@@ -201,22 +202,24 @@ export default function Index(props: UploaderProps) {
   const onPreviewVideo = useCallback(() => {
     if (!previewFullImage) return
     // const { index } = event.currentTarget.dataset
-    // eslint-disable-next-line
-    // @ts-ignore
-    wx.previewMedia({
-      sources: state.lists
-        .filter((item) => isVideoFile(item))
-        .map((item) =>
-          Object.assign(Object.assign({}, item), { type: 'video' }),
-        ),
-      // current: index,
-      // success() {
-      //   Taro.showToast({ title: '预览视频成功', icon: 'none' })
-      // },
-      fail() {
-        Taro.showToast({ title: '预览视频失败', icon: 'none' })
-      },
-    })
+    if (process.env.TARO_ENV === 'weapp') {
+      // eslint-disable-next-line
+      // @ts-ignore
+      wx.previewMedia({
+        sources: state.lists
+          .filter((item) => isVideoFile(item))
+          .map((item) =>
+            Object.assign(Object.assign({}, item), { type: 'video' }),
+          ),
+        // current: index,
+        // success() {
+        //   Taro.showToast({ title: '预览视频成功', icon: 'none' })
+        // },
+        fail() {
+          Taro.showToast({ title: '预览视频失败', icon: 'none' })
+        },
+      })
+    }
   }, [previewFullImage, state.lists])
   const onPreviewFile = useCallback(
     (event: ITouchEvent) => {
@@ -234,6 +237,7 @@ export default function Index(props: UploaderProps) {
       const item = state.lists[index]
       Object.defineProperty(event, 'detail', {
         value: Object.assign(Object.assign({}, item), getDetail(index)),
+        writable: true,
       })
       onClickPreview?.(event)
     },

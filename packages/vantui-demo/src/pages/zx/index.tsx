@@ -192,6 +192,7 @@ export default function Index() {
         文本
       </Divider>
       <Uploader
+        multiple
         fileList={state.fileList}
         deletable={true}
         onDelete={handleDeleteImage}
