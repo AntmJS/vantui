@@ -8,7 +8,7 @@ import {
   useImperativeHandle,
 } from 'react'
 import { View } from '@tarojs/components'
-import { PickerProps } from '../../../types/picker'
+import { PickerProps, IPickerInstance } from '../../../types/picker'
 import PickerColumn from '../picker-column/index'
 import * as utils from '../wxs/utils'
 import Loading from '../loading/index'
@@ -16,7 +16,7 @@ import * as computed from './wxs'
 
 export default forwardRef(function Index(
   props: PickerProps,
-  ref: React.ForwardedRef<any>,
+  ref: React.ForwardedRef<IPickerInstance>,
 ): JSX.Element {
   const {
     valueKey,
@@ -43,7 +43,7 @@ export default forwardRef(function Index(
 
   useEffect(
     function () {
-      const simple = Boolean(columns && columns.length && !columns[0].values)
+      const simple = Boolean(columns && columns.length && !columns[0])
       setSimple(simple)
       if (Array.isArray(children) && children.length) {
         setColumns().catch(() => {})
@@ -52,29 +52,59 @@ export default forwardRef(function Index(
     [columns, children],
   )
 
-  const emit = useCallback(function (event: any) {
-    const type = event?.currentTarget?.dataset?.type
+  const emit = useCallback(function (event = {}) {
+    const type = event?.currentTarget?.dataset['type']
     if (typeof event === 'number' || !type) {
       if (onChange) {
-        onChange({
-          picker: children.current,
-          value: simple ? getColumnValue(0) : getValues(),
-          index: simple ? getColumnIndex(0) : event,
+        const event_ = {}
+        Object.defineProperties(event_, {
+          detail: {
+            picker: {
+              setColumnValue,
+              getColumnValue,
+              setColumnValues,
+              getColumnValues: (index: number) =>
+                children.current[index].options,
+              getIndexes,
+              setIndexes: (indexes: number[]) => {
+                const stack = indexes.map((optionIndex, columnIndex) =>
+                  setColumnIndex(columnIndex, optionIndex),
+                )
+                return Promise.all(stack)
+              },
+              setColumnIndex,
+              getColumnIndex,
+              getValues,
+              setColumns,
+              children,
+              setValues,
+              columns,
+            },
+            value: simple ? getColumnValue(0) : getValues(),
+            index: simple ? getColumnIndex(0) : event,
+          },
         })
+        onChange(event)
       }
     } else if (type === 'canel') {
       if (onCancel) {
-        onCancel({
-          value: simple ? getColumnValue(0) : getValues(),
-          index: simple ? getColumnIndex(0) : getIndexes(),
+        Object.defineProperties(event, {
+          detail: {
+            value: simple ? getColumnValue(0) : getValues(),
+            index: simple ? getColumnIndex(0) : getIndexes(),
+          },
         })
+        onCancel(event)
       }
     } else if (type === 'confirm') {
       if (onConfirm) {
-        onConfirm({
-          value: simple ? getColumnValue(0) : getValues(),
-          index: simple ? getColumnIndex(0) : getIndexes(),
+        Object.defineProperties(event, {
+          detail: {
+            value: simple ? getColumnValue(0) : getValues(),
+            index: simple ? getColumnIndex(0) : getIndexes(),
+          },
         })
+        onConfirm(event)
       }
     }
   }, [])
@@ -135,16 +165,35 @@ export default forwardRef(function Index(
 
   const onTouchMove = useCallback(function () {}, [])
 
+  const setColumnIndex = useCallback(function (index, optionIndex) {
+    const column = children.current[index]
+    if (column == null) {
+      return Promise.reject(new Error('setColumnIndex: 对应列不存在'))
+    }
+    return column.setIndex(optionIndex)
+  }, [])
+
   useImperativeHandle(ref, () => {
     return {
+      setColumnValue,
+      getColumnValue,
       setColumnValues,
+      getColumnValues: (index: number) => children.current[index].options,
       getIndexes,
+      setIndexes: (indexes: number[]) => {
+        const stack = indexes.map((optionIndex, columnIndex) =>
+          setColumnIndex(columnIndex, optionIndex),
+        )
+        return Promise.all(stack)
+      },
+      setColumnIndex,
+      getColumnIndex,
       getValues,
       setColumns,
-      simple,
       children,
       setValues,
-    }
+      columns,
+    } as any
   })
 
   const setValues = function (values: any) {
@@ -162,12 +211,17 @@ export default forwardRef(function Index(
     return column.setValue(value)
   }
 
+  const onTouchMove_ = useCallback(function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+  }, [])
+
   return (
     <View
       className={`van-picker custom-class ${className}`}
       style={utils.style([style])}
-      // catchMove
       {...others}
+      onTouchMove={onTouchMove_}
     >
       {toolbarPosition === 'top' && showToolbar && (
         <View className="van-picker__toolbar toolbar-class">

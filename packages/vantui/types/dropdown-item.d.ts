@@ -16,7 +16,7 @@ export interface DropdownItemProps extends StandardProps {
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
-  onChange?: () => void
+  onChange?: (value?: number | string) => void
   children?: JSX.Element | JSX.Element[]
 }
 
