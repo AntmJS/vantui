@@ -1,0 +1,28 @@
+{
+  "name": "vantui-doc",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npx vant-cli dev",
+    "test": "npx vant-cli test",
+    "build": "npx vant-cli build",
+    "release": "npx vant-cli release",
+    "test:coverage": "open test/coverage/index.html",
+    "build-site": "npx vant-cli build-site && gh-pages -d site"
+  },
+  "author": "sanshao",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vant/cli": "^3.9.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "vue": "^3.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 51",
+    "iOS >= 10"
+  ]
+}
