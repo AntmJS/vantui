@@ -140,7 +140,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
 
   const _onConfirm = useCallback(
     (event) => {
-      const { index } = event.detail
+      // const { index } = event.detail
       let { value } = event.detail
       value = _parseValues(value)
       onConfirm?.({

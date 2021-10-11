@@ -1,5 +1,6 @@
 import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ImageProps } from '@tarojs/components/types/Image'
 
 export interface UploaderProps extends StandardProps {
   disabled?: boolean
@@ -8,9 +9,9 @@ export interface UploaderProps extends StandardProps {
   useBeforeRead?: boolean
   afterRead?: any
   beforeRead?: any
-  previewSize?: number
-  name?: string
-  accept?: string
+  previewSize?: string | number
+  name?: string | number
+  accept?: 'all' | 'media' | 'image' | 'file' | 'video'
   fileList?: Array<any>
   maxSize?: number
   maxCount?: number
@@ -18,19 +19,19 @@ export interface UploaderProps extends StandardProps {
   showUpload?: boolean
   previewImage?: boolean
   previewFullImage?: boolean
-  imageFit?: string
+  imageFit?: keyof ImageProps.mode | undefined
   uploadIcon?: string
   sizeType?: Array<string>
-  capture?: Array<string>
+  capture?: string | Array<string>
   compressed?: boolean
   maxDuration?: number
-  camera?: string
+  camera?: 'back' | 'front'
   children?: ReactNode
-  onError?: (data: any) => any
-  onDelete?: (data: any) => any
-  onBeforeRead?: (data: any) => any
-  onAfterRead?: (data: any) => any
-  onOversize?: (data: any) => any
+  onError?: (error: any) => any
+  onDelete?: (event: ITouchEvent) => any
+  onBeforeRead?: (event: ITouchEvent) => any
+  onAfterRead?: (event: ITouchEvent) => any
+  onOversize?: (event: ITouchEvent) => any
   onClickPreview?: (data: any) => any
 }
 
