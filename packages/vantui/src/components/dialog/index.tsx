@@ -131,6 +131,7 @@ export default function Index(props: DialogProps) {
       _stopLoading()
     }
     setShow(props.show)
+    // eslint-disable-next-line
   }, [props])
 
   useEffect(() => {
