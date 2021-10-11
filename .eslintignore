@@ -26,6 +26,8 @@ node_modules
 packages/**/coverage
 packages/**/dist
 packages/vantui-doc/lib
+packages/vantui-doc/es
+packages/vantui-doc/dist
 packages/vantui-demo/weapp
 packages/vantui-demo/alipay
 packages/vantui-demo/swan
