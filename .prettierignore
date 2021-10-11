@@ -19,6 +19,7 @@ LICENSE
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/vantui-doc/lib
 packages/vantui/src/style/components/iconfont.less
 packages/vantui-demo/weapp
 packages/vantui-demo/alipay
