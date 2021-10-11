@@ -127,12 +127,13 @@ export default function Index(props: CircleProps) {
   }, [size, type])
   const setHoverColor = useCallback(() => {
     if (isObj(color)) {
+      const _color = color as Record<string, string>
       return getContext().then((context: any) => {
         const LinearColor = context.createLinearGradient(size, 0, 0, 0)
         Object.keys(color)
           .sort((a, b) => parseFloat(a) - parseFloat(b))
           .map((key: any) =>
-            LinearColor.addColorStop(parseFloat(key) / 100, color[key]),
+            LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
           )
         setState((state) => {
           return {
@@ -142,7 +143,7 @@ export default function Index(props: CircleProps) {
         })
       })
     }
-    setState((state) => {
+    setState((state: any) => {
       return {
         ...state,
         hoverColor: color,

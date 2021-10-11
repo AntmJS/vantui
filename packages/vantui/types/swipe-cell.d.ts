@@ -26,7 +26,7 @@ export interface SwipeCellProps extends StandardProps {
   leftWidth?: number
   rightWidth?: number
   asyncClose?: boolean
-  name?: string
+  name?: string | number
   catchMove?: boolean
   wrapperStyle?: React.CSSProperties
   onOpen?: (e: ITouchEvent & SwipeCellOpen) => void

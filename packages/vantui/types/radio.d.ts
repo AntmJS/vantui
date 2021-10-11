@@ -10,7 +10,7 @@ export interface RadioProps extends StandardProps {
   labelPosition?: string
   labelDisabled?: boolean
   shape?: 'round' | 'square'
-  iconSize?: number
+  iconSize?: number | string
   children?: ReactNode
   renderIcon?: ReactNode
   onChange?: (event: ITouchEvent) => any
