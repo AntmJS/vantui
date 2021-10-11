@@ -114,7 +114,6 @@ export default function Index(props: DropdownMenuProps) {
     function () {
       return getRect(null, '.van-dropdown-menu').then((rect: any) => {
         const { top = 0, bottom = 0 } = rect
-        console.info(bottom, 'bottom cc')
         const offset = direction === 'down' ? bottom : windowHeight - top
         const wrapperStyle: React.CSSProperties = {
           zIndex: zIndex,

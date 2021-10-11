@@ -20,11 +20,36 @@ module.exports = {
     ],
     nav: [
       {
-        title: '基本介绍',
+        title: '开发指南',
         items: [
           {
             path: 'home',
-            title: '简介',
+            title: '介绍',
+            hideSimulator: true,
+          },
+          {
+            path: 'quickstart',
+            title: '快速上手',
+            hideSimulator: true,
+          },
+          {
+            path: 'custom-style',
+            title: '样式覆盖',
+            hideSimulator: true,
+          },
+          {
+            path: 'theme',
+            title: '定制主题',
+            hideSimulator: true,
+          },
+        ],
+      },
+      {
+        title: '基础组件',
+        items: [
+          {
+            path: 'index',
+            title: '参考',
             hideSimulator: true,
           },
         ],
