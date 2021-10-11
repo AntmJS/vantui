@@ -40,9 +40,7 @@ export default function Index(props: NotifyProps) {
     zIndex: 110,
     safeAreaInsetTop: false,
     top: 0,
-    onClick: (data: any) => {
-      console.info(data)
-    },
+    onClick: (_data: any) => {},
     onOpened: () => {},
     onClose: () => {},
   })

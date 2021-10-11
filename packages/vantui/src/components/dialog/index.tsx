@@ -137,10 +137,6 @@ export default function Index(props: DialogProps) {
   useEffect(() => {
     const alertFn = (params: DialogProps = {}) => {
       if (!params?.selector || props.id === params.selector.replace(/^#/, '')) {
-        console.log(
-          !params?.selector,
-          (params?.selector ?? '').replace(/^#/, ''),
-        )
         setOptions({
           ...params,
         })

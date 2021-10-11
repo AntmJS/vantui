@@ -314,8 +314,6 @@ export default function Index(props: DatetimePickerProps) {
     })
   }
 
-  console.info(columns, 'columnscolumnscolumns')
-
   return (
     <VanPicker
       ref={PickRef}

@@ -50,7 +50,6 @@ export function getNextDay(date: any) {
 export function getToday() {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
-  console.info('getTodaygetToday', today)
   return today
 }
 export function calcDateNum(date: any) {
