@@ -1,8 +1,9 @@
 import Taro from '@tarojs/taro'
 export function jumpLink(
-  linkType: 'navigateTo' | 'reLaunch' | 'redirectTo',
   url: string,
+  linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo',
 ) {
+  linkType = linkType ?? 'navigateTo'
   if (url) {
     if (linkType === 'navigateTo' && Taro.getCurrentPages().length > 9) {
       Taro.redirectTo({ url })
