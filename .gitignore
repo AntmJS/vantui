@@ -13,6 +13,7 @@ package-lock.json
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/vantui-doc/site
 packages/vantui-demo/weapp
 packages/vantui-demo/alipay
 packages/vantui-demo/swan
