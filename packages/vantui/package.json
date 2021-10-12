@@ -3,6 +3,8 @@
   "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "common:react": "dist/h5.js",
+  "module:react": "dist/h5.esm.js",
   "typings": "types/index.d.ts",
   "author": "三少 <hi_sanshao@outlook.com>",
   "description": "一套适用于Taro3的vantui组件库",
