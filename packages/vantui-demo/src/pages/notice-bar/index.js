@@ -93,7 +93,7 @@ export default class Index extends React.Component {
           <NoticeBar
             scrollable
             text={shortText}
-            customClass="demo-margin-bottom"
+            className="demo-margin-bottom"
           ></NoticeBar>
           <NoticeBar
             scrollable={false}

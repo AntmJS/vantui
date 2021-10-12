@@ -82,7 +82,7 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock title="基础用法">
-          <Progress customClass="progress-position" percentage="0"></Progress>
+          <Progress className="progress-position" percentage="0"></Progress>
         </DemoBlock>
         <DemoBlock title="线条粗细">
           <Progress

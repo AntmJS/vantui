@@ -122,7 +122,7 @@ export default class Index extends React.Component {
       <Block>
         <DemoBlock title="基本用法" padding>
           <RadioGroup value={radio1} data-key="radio1" onChange={this.onChange}>
-            <Radio name="1" customClass="demo-radio">
+            <Radio name="1" className="demo-radio">
               单选框 1
             </Radio>
             <Radio name="2">单选框 2</Radio>

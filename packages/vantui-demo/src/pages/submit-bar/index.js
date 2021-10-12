@@ -93,7 +93,7 @@ export default class Index extends React.Component {
             price={3050}
             buttonText="提交订单"
             onSubmit={this.onClickButton}
-            customClass="van-submit-bar"
+            className="van-submit-bar"
             safeAreaInsetBottom={false}
           ></SubmitBar>
         </DemoBlock>

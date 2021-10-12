@@ -203,7 +203,7 @@ export default class Index extends React.Component {
               border={false}
               renderButton={
                 <Block>
-                  <Button size="small" type="primary" customClass="button">
+                  <Button size="small" type="primary" className="button">
                     发送验证码
                   </Button>
                 </Block>

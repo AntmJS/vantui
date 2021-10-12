@@ -148,7 +148,11 @@ function convert(fileContent: string): string {
   result = result.replace(
     /custom(Style|Class)=/,
     (_str: string, $1: string) => {
-      return $1.slice(0, 1).toLowerCase() + $1.slice(1) + '='
+      let str = $1.toLowerCase()
+      if (str === 'class') {
+        str += 'Name'
+      }
+      return str + '='
     },
   )
 

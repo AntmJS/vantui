@@ -135,7 +135,7 @@ export default class Index extends React.Component {
           <Checkbox
             value={checkbox1}
             data-key="checkbox1"
-            customClass="demo-checkbox"
+            className="demo-checkbox"
             onChange={this.onChange}
           >
             复选框

@@ -109,7 +109,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义图片" padding>
           <Empty
-            customClass="custom-image"
+            className="custom-image"
             image="https://img.yzcdn.cn/vant/custom-empty-image.png"
             description="描述文字"
           ></Empty>

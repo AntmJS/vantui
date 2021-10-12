@@ -160,7 +160,7 @@ export default class Index extends React.Component {
             type="primary"
             size="large"
             block
-            customClass="demo-margin-bottom"
+            className="demo-margin-bottom"
           >
             大号按钮
           </Button>

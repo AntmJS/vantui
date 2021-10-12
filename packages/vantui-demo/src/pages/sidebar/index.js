@@ -91,7 +91,7 @@ export default class Index extends React.Component {
         <Grid columnNum={2} border={false}>
           <GridItem useSlot>
             <h3 className="demo-sidebar-title">基础用法</h3>
-            <Sidebar customClass="custom-sidebar">
+            <Sidebar className="custom-sidebar">
               <SidebarItem title="标签名"></SidebarItem>
               <SidebarItem title="标签名"></SidebarItem>
               <SidebarItem title="标签名"></SidebarItem>

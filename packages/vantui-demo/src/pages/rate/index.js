@@ -98,7 +98,7 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock title="基础用法">
-          <Rate customClass="rate-position" modelValue={value1}></Rate>
+          <Rate className="rate-position" modelValue={value1}></Rate>
         </DemoBlock>
         <DemoBlock title="自定义图标">
           <Rate

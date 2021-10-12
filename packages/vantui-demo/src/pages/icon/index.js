@@ -96,7 +96,7 @@ export default class Index extends React.Component {
     const { active, demoIcon, demoImage, icons } = this.state
     return (
       <Tabs active={active} color="#1989fa" onChange={this.onSwitch}>
-        <Tab title="用法示例" customClass="demo-tab-pane">
+        <Tab title="用法示例" className="demo-tab-pane">
           <DemoBlock title="基础用法">
             <Col customClass="col" span="6">
               <Icon name={demoIcon} size="32px" customClass="icon"></Icon>

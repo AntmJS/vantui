@@ -123,7 +123,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <Block>
-        <DemoBlock customClass="white" title="基础用法">
+        <DemoBlock className="white" title="基础用法">
           <DropdownMenu>
             <DropdownItem value={value1} options={option1}></DropdownItem>
             <DropdownItem value={value2} options={option2}></DropdownItem>

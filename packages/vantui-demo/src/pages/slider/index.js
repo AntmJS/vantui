@@ -101,7 +101,7 @@ export default class Index extends React.Component {
         <DemoBlock title="基础用法">
           <Slider
             value="50"
-            customClass="slider"
+            className="slider"
             onChange={this.onChange}
           ></Slider>
         </DemoBlock>

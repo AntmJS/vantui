@@ -82,7 +82,7 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock title="加载类型" padding>
-          <Loading customClass="demo-loading"></Loading>
+          <Loading className="demo-loading"></Loading>
           <Loading customClass="demo-loading" type="spinner"></Loading>
         </DemoBlock>
         <DemoBlock title="自定义颜色" padding>

@@ -83,7 +83,7 @@ export default class Index extends React.Component {
       <Block>
         <DemoBlock title="基础用法" padding>
           <Row>
-            <Col span="8" customClass="dark">
+            <Col span="8" className="dark">
               span: 8
             </Col>
             <Col span="8" customClass="light">

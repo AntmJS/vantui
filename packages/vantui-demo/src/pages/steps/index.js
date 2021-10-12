@@ -126,7 +126,7 @@ export default class Index extends React.Component {
             steps={steps}
             active={active}
             onClickStep={this.onClick}
-            customClass="demo-margin-bottom"
+            className="demo-margin-bottom"
           ></Steps>
           <Button customClass="demo-margin-left" onClick={this.nextStep}>
             下一步

@@ -238,7 +238,7 @@ export default class Index extends React.Component {
               <Block>
                 <Icon
                   name="search"
-                  customClass="right-nav"
+                  className="right-nav"
                   onClick={this.onClickNavRight}
                 ></Icon>
               </Block>

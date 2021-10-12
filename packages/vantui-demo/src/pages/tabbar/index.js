@@ -110,7 +110,7 @@ export default class Index extends React.Component {
           <Tabbar
             active={active}
             data-key="active"
-            customClass="tabbar-position"
+            className="tabbar-position"
             safeAreaInsetBottom={false}
             onChange={this.onChange}
           >

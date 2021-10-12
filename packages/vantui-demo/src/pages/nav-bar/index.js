@@ -104,7 +104,7 @@ export default class Index extends React.Component {
             leftArrow
             renderRight={
               <Block>
-                <Icon name="search" customClass="icon" size="18"></Icon>
+                <Icon name="search" className="icon" size="18"></Icon>
               </Block>
             }
           ></NavBar>

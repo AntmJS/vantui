@@ -107,7 +107,7 @@ export default class Index extends React.Component {
             renderTags={
               <Block>
                 <View>
-                  <Tag plain type="danger" customClass="tag">
+                  <Tag plain type="danger" className="tag">
                     标签1
                   </Tag>
                   <Tag plain type="danger">

@@ -91,7 +91,7 @@ export default class Index extends React.Component {
       <Block>
         <DemoBlock title="基础用法">
           <GoodsAction
-            customClass="goods-action-position"
+            className="goods-action-position"
             safeAreaInsetBottom={false}
           >
             <GoodsActionIcon

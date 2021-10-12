@@ -176,7 +176,7 @@ export default class Index extends React.Component {
           isLink
         ></Cell>
         <Cell title="Custom" onClick={this.onClickCustom} isLink></Cell>
-        <Transition show={show} name={name} customClass="block"></Transition>
+        <Transition show={show} name={name} className="block"></Transition>
         <Transition
           show={showCustom}
           name

@@ -165,7 +165,7 @@ export default class Index extends React.Component {
                     {title1}
                     <Icon
                       name="question-o"
-                      customClass="van-icon-question"
+                      className="van-icon-question"
                     ></Icon>
                   </View>
                 </Block>
