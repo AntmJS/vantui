@@ -4,7 +4,7 @@ import * as utils from '../wxs/utils'
 import { style } from '../wxs/style'
 import { SliderProps } from '../../../types/slider'
 import { canIUseModel } from '../common/version.js'
-import { getRect } from '../common/utils.js'
+import { getRect, addUnit } from '../common/utils.js'
 
 const MIN_DISTANCE = 10
 function getDirection(x: number, y: number) {
@@ -29,6 +29,7 @@ export default function Index(props: SliderProps) {
     step = 1,
     value = 0,
     barHeight,
+    vertical = false,
     onDrag,
     onChange,
     onDragStart,
@@ -41,6 +42,7 @@ export default function Index(props: SliderProps) {
   } = props
 
   const [barStyle, setBarStyle] = useState<React.CSSProperties>()
+  const [wrapperStyle, setWrapperStyle] = useState<React.CSSProperties>()
   const [value_, setValue] = useState<any>()
   const [dragStatus, setDragStatus] = useState<any>()
   const [buttonIndex, setButtonIndex] = useState<any>()
@@ -117,6 +119,14 @@ export default function Index(props: SliderProps) {
     [getScope, isRange, max, min, value_],
   )
 
+  const calcOffset = useCallback(() => {
+    const scope = getScope(max, min)
+    if (isRange(value_)) {
+      return ((value_[0] - Number(min)) * 100) / scope + '%'
+    }
+    return '0%'
+  }, [getScope, isRange, max, min, value_])
+
   const format = useCallback(
     function (value) {
       return Math.round(Math.max(min, Math.min(value, max)) / step) * step
@@ -139,13 +149,22 @@ export default function Index(props: SliderProps) {
         value = format(value)
       }
 
+      const mainAxis = vertical ? 'height' : 'width'
+
       setValue(value)
+
+      setWrapperStyle({
+        background: inactiveColor || '',
+        [vertical ? 'width' : 'height']: addUnit(barHeight) || '',
+      })
       const styleBar: any = {
-        width: calcMainAxis(),
-        left: isRange(value) ? `${value[0]}%` : 0,
+        [mainAxis]: calcMainAxis(),
+        left: vertical ? 0 : calcOffset(),
+        top: vertical ? calcOffset() : 0,
       }
       if (drag) styleBar.transition = 'none'
       setBarStyle(styleBar)
+      drag ? 'transition: none;' : ''
       if (drag && onDrag) {
         onDrag({ detail: value } as ITouchEvent)
       }
@@ -156,7 +175,18 @@ export default function Index(props: SliderProps) {
         setValue(value)
       }
     },
-    [calcMainAxis, format, handleOverlap, isRange, onChange, onDrag],
+    [
+      calcMainAxis,
+      format,
+      handleOverlap,
+      isRange,
+      onChange,
+      onDrag,
+      barHeight,
+      calcOffset,
+      inactiveColor,
+      vertical,
+    ],
   )
 
   useEffect(
@@ -212,7 +242,11 @@ export default function Index(props: SliderProps) {
       const touchState = touchMove(event)
       setDragStatus('draging')
       getRect(null, '.van-slider').then((rect: any) => {
-        const diff = (touchState.deltaX / rect.width) * getRange()
+        // const diff = (touchState.deltaX / rect.width) * getRange()
+        const delta = vertical ? touchState.deltaY : touchState.deltaX
+        const total = vertical ? rect.height : rect.width
+        const diff = (delta / total) * getRange()
+
         if (isRange(startValue)) {
           newValue[buttonIndex] = startValue[buttonIndex] + diff
           setNewValue(newValue)
@@ -235,6 +269,7 @@ export default function Index(props: SliderProps) {
       startValue,
       touchMove,
       updateValue,
+      vertical,
     ],
   )
 
@@ -253,8 +288,14 @@ export default function Index(props: SliderProps) {
     function (event: any) {
       if (disabled) return
       getRect(null, '.van-slider').then((rect: any) => {
-        const value =
-          ((event.clientX - rect.left) / rect.width) * getRange() + min
+        const touchState = touchMove(event)
+        // const value = ((event.clientX - rect.left) / rect.width) * getRange() + min
+        const delta = vertical
+          ? touchState.clientY - rect.top
+          : touchState.clientX - rect.left
+        const total = vertical ? rect.height : rect.width
+        const value = Number(min) + (delta / total) * getRange()
+
         if (isRange(value_)) {
           const [left, right] = value_
           const middle = (left + right) / 2
@@ -268,7 +309,16 @@ export default function Index(props: SliderProps) {
         }
       })
     },
-    [disabled, getRange, isRange, min, updateValue, value_],
+    [
+      disabled,
+      getRange,
+      isRange,
+      min,
+      updateValue,
+      value_,
+      vertical,
+      touchMove,
+    ],
   )
 
   return (
@@ -277,17 +327,12 @@ export default function Index(props: SliderProps) {
         'custom-class ' +
         utils.bem('slider', {
           disabled,
+          vertical,
         }) +
         ' ' +
         className
       }
-      style={utils.style([
-        style({
-          background: inactiveColor,
-          height: utils.addUnit(barHeight),
-        }),
-        style,
-      ])}
+      style={utils.style([wrapperStyle, style])}
       onClick={onClick}
       {...others}
     >

@@ -9,7 +9,7 @@ export interface CircleProps extends StandardProps {
   size?: number
   fill?: string
   layerColor?: string
-  color?: string
+  color?: string | Record<string, string>
   type?: string
   strokeWidth?: number
   clockwise?: boolean

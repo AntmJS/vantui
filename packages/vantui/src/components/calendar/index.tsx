@@ -253,7 +253,7 @@ function Index(
       if (maxRange && calcDateNum(date) > maxRange) {
         if (showRangePrompt) {
           Toast({
-            duration: 0,
+            // duration: 0,
             message: rangePrompt || `选择天数不能超过 ${maxRange} 天`,
           })
         }

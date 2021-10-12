@@ -56,6 +56,7 @@ export default function Index(props: TabsProps) {
     offsetY: 0,
     startX: 0,
     startY: 0,
+    swiping: false,
   })
   const [state, setState]: any = useState({
     tabs: [],
@@ -197,6 +198,7 @@ export default function Index(props: TabsProps) {
         setState((pre: any) => {
           return { ...pre, lineOffsetLeft }
         })
+        ref.current.swiping = true
         if (skipTransition) {
           Taro.nextTick(() => {
             setState((pre: any) => {
@@ -305,7 +307,7 @@ export default function Index(props: TabsProps) {
   }
 
   const onTouchMove = function (event: any) {
-    if (!swipeable) return
+    if (!swipeable || ref.current.swiping) return
     touchMove(event)
   }
 
@@ -319,20 +321,21 @@ export default function Index(props: TabsProps) {
         setCurrentIndex(index)
       }
     }
+
+    ref.current.swiping = false
   }
 
   useEffect(function () {
     requestAnimationFrame(() => {
+      ref.current.swiping = true
       setState((pre: any) => {
         return {
           ...pre,
           container: Taro.createSelectorQuery().select('.van-tabs'),
         }
       })
-      if (!ref.current.skipInit) {
-        resize()
-        scrollIntoView()
-      }
+      resize()
+      scrollIntoView()
     })
     Taro.nextTick(function () {
       resize()
@@ -343,9 +346,6 @@ export default function Index(props: TabsProps) {
 
   useEffect(
     function () {
-      if (!ref.current.skipInit) {
-        ref.current.skipInit = true
-      }
       if (active !== getCurrentName()) {
         setCurrentIndexByName(active)
       }

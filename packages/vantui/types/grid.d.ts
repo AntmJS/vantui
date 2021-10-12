@@ -3,7 +3,7 @@ import { StandardProps } from '@tarojs/components'
 
 export interface GridProps extends StandardProps {
   square?: boolean
-  gutter?: number
+  gutter?: number | string
   clickable?: boolean
   columnNum?: number
   center?: boolean

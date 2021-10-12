@@ -6,7 +6,7 @@
 
 ### 差异点
 - 组件属性均用驼峰代替
-- slot改为通过属性传递ReactNode
+- slot改为通过属性传递ReactNode slot="footer" => renderFooter={<View></View>}
 
 ## 安装
 
@@ -28,7 +28,8 @@ yarn add @antmjs/vantui --production
 
 ### 引入组件
 
-```app.less
+```less
+/* app.less */
 @import '@antmjs/vantui/dist/style/index.less';
 
 page,
@@ -37,7 +38,8 @@ body {
 }
 ```
 
-```app.jsx
+```jsx
+/* page.tsx */
 import { Button } from '@antmjs/vantui'
 
 <Button onClick={() => { console.log('Hello World') }}>Hello World</Button>

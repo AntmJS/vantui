@@ -20,7 +20,7 @@ export interface ShareSheetProps extends StandardProps {
   overlay?: boolean
   safeAreaInsetBottom?: boolean
   closeOnClickOverlay?: boolean
-  duration?: number
+  duration?: number | string
   onClickOverlay?: () => void
   onCancel?: () => void
   onSelect?: (

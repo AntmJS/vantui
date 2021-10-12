@@ -1,11 +1,11 @@
 {
   "name": "vantui-doc",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "",
   "scripts": {
     "dev": "npx vant-cli dev",
-    "test": "npx vant-cli test",
+    "test": "",
     "build": "npx vant-cli build",
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
