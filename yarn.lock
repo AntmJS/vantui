@@ -2951,6 +2951,11 @@ babel-plugin-polyfill-regenerator@^0.2.2:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.2.2"
 
+babel-plugin-transform-taroapi@^3.3.9:
+  version "3.3.9"
+  resolved "https://registry.npmjs.org/babel-plugin-transform-taroapi/-/babel-plugin-transform-taroapi-3.3.9.tgz#385f9149ced0765151abe61683b8c5f449682f19"
+  integrity sha512-jJ7AvtthlY7OrwgdXHg5Irh/djbHTFd0NM+uGRpplt6RUfM7YCdVu2/Fa/dbWZZac5e9jM5KqW2qgZfJSTziEg==
+
 backo2@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"

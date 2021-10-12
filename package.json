@@ -117,6 +117,7 @@
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "all-contributors-cli": "^6.20.0",
+    "babel-plugin-transform-taroapi": "^3.3.9",
     "commitizen": "^4.2.4",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
