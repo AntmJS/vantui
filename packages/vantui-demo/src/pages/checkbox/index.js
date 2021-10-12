@@ -278,7 +278,7 @@ export default class Index extends React.Component {
                     onClick={this.toggle}
                   >
                     <Checkbox
-                      onTap={this.noop}
+                      onClick={this.noop}
                       className={'checkboxes-' + index}
                       name={item}
                     ></Checkbox>

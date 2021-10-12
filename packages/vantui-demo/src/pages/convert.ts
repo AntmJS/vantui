@@ -146,7 +146,7 @@ function convert(fileContent: string): string {
 
   // 替换 customStyle customClass
   result = result.replace(
-    /custom(Style|ClassName)=/,
+    /custom(Style|Class)=/,
     (_str: string, $1: string) => {
       return $1.slice(0, 1).toLowerCase() + $1.slice(1) + '='
     },
@@ -161,6 +161,10 @@ function convert(fileContent: string): string {
 
   // 去掉标题
   result = result.replace(/(?<=(<\/|<))H(\d)/g, 'h$2')
+
+  // onTap = onClick
+  result = result.replace(/onTap={/g, 'onClick={')
+
   return result
 }
 

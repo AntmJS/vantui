@@ -116,7 +116,7 @@ export default class Index extends React.Component {
           </Button>
           <Overlay show={showEmbedded} onClick={this.onClickHideEmbedded}>
             <View className="wrapper">
-              <View className="block" onTap={this.noop}></View>
+              <View className="block" onClick={this.noop}></View>
             </View>
           </Overlay>
         </DemoBlock>

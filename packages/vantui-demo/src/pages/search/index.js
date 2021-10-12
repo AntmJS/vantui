@@ -171,7 +171,7 @@ export default class Index extends React.Component {
             onSearch={this.onSearch}
             renderAction={
               <Block>
-                <View onTap={this.onClick}>搜索</View>
+                <View onClick={this.onClick}>搜索</View>
               </Block>
             }
           ></Search>

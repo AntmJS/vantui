@@ -131,41 +131,41 @@ export default class Index extends React.Component {
         <DemoBlock title="文字提示" padding>
           <Button
             type="primary"
-            onTap={this.showToast}
+            onClick={this.showToast}
             className="demo-margin-right"
           >
             文字提示
           </Button>
-          <Button type="primary" onTap={this.showLongToast}>
+          <Button type="primary" onClick={this.showLongToast}>
             长文字提示
           </Button>
         </DemoBlock>
         <DemoBlock title="加载提示" padding>
           <Button
             type="primary"
-            onTap={this.showLoadingToast}
+            onClick={this.showLoadingToast}
             className="demo-margin-right"
           >
             加载提示
           </Button>
-          <Button type="primary" onTap={this.showCustomLoadingToast}>
+          <Button type="primary" onClick={this.showCustomLoadingToast}>
             自定义加载图标
           </Button>
         </DemoBlock>
         <DemoBlock title="成功/失败提示" padding>
           <Button
             type="info"
-            onTap={this.showSuccessToast}
+            onClick={this.showSuccessToast}
             className="demo-margin-right"
           >
             成功提示
           </Button>
-          <Button type="danger" onTap={this.showFailToast}>
+          <Button type="danger" onClick={this.showFailToast}>
             失败提示
           </Button>
         </DemoBlock>
         <DemoBlock title="动态更新提示" padding>
-          <Button type="primary" onTap={this.showCustomizedToast}>
+          <Button type="primary" onClick={this.showCustomizedToast}>
             动态更新提示
           </Button>
         </DemoBlock>

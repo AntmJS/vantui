@@ -117,10 +117,10 @@ export default class Index extends React.Component {
           ></Circle>
           <Circle value={value} size="120" text="大小定制"></Circle>
         </DemoBlock>
-        <Button type="primary" size="small" data-step="10" onTap={this.run}>
+        <Button type="primary" size="small" data-step="10" onClick={this.run}>
           增加
         </Button>
-        <Button type="danger" size="small" data-step="-10" onTap={this.run}>
+        <Button type="danger" size="small" data-step="-10" onClick={this.run}>
           减少
         </Button>
       </Block>
