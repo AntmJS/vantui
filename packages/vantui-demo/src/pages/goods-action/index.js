@@ -117,7 +117,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="提示信息">
           <GoodsAction
-            customClass="goods-action-position"
+            className="goods-action-position"
             safeAreaInsetBottom={false}
           >
             <GoodsActionIcon icon="chat-o" text="客服" dot></GoodsActionIcon>
@@ -136,7 +136,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义按钮颜色">
           <GoodsAction
-            customClass="goods-action-position"
+            className="goods-action-position"
             safeAreaInsetBottom={false}
           >
             <GoodsActionIcon icon="chat-o" text="客服"></GoodsActionIcon>
@@ -154,7 +154,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="朴素按钮">
           <GoodsAction
-            customClass="goods-action-position"
+            className="goods-action-position"
             safeAreaInsetBottom={false}
           >
             <GoodsActionIcon icon="chat-o" text="客服"></GoodsActionIcon>

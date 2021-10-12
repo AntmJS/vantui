@@ -109,24 +109,24 @@ export default class Index extends React.Component {
           <Slider
             range
             value={[20, 60]}
-            customClass="slider"
+            className="slider"
             onChange={this.onChange}
           ></Slider>
         </DemoBlock>
         <DemoBlock title="指定选择范围">
           <Slider
-            customClass="slider"
+            className="slider"
             min="-50"
             max="50"
             onChange={this.onChange}
           ></Slider>
         </DemoBlock>
         <DemoBlock title="禁用">
-          <Slider customClass="slider" value="50" disabled></Slider>
+          <Slider className="slider" value="50" disabled></Slider>
         </DemoBlock>
         <DemoBlock title="指定步长">
           <Slider
-            customClass="slider"
+            className="slider"
             value="50"
             step="10"
             onChange={this.onChange}
@@ -135,7 +135,7 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义样式">
           <Slider
             value="50"
-            customClass="slider"
+            className="slider"
             barHeight="4px"
             activeColor="#ee0a24"
           ></Slider>
@@ -143,7 +143,7 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义按钮">
           <Slider
             value={currentValue}
-            customClass="slider"
+            className="slider"
             useButtonSlot
             activeColor="#ee0a24"
             onDrag={this.onDrag}

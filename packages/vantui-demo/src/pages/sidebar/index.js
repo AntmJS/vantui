@@ -99,7 +99,7 @@ export default class Index extends React.Component {
           </GridItem>
           <GridItem useSlot>
             <h3 className="demo-sidebar-title">徽标提示</h3>
-            <Sidebar customClass="custom-sidebar">
+            <Sidebar className="custom-sidebar">
               <SidebarItem title="标签名" dot></SidebarItem>
               <SidebarItem title="标签名" badge="5"></SidebarItem>
               <SidebarItem title="标签名" badge="99+"></SidebarItem>
@@ -107,7 +107,7 @@ export default class Index extends React.Component {
           </GridItem>
           <GridItem useSlot>
             <h3 className="demo-sidebar-title">禁用选项</h3>
-            <Sidebar customClass="custom-sidebar">
+            <Sidebar className="custom-sidebar">
               <SidebarItem title="标签名"></SidebarItem>
               <SidebarItem title="标签名" disabled></SidebarItem>
               <SidebarItem title="标签名"></SidebarItem>
@@ -115,7 +115,7 @@ export default class Index extends React.Component {
           </GridItem>
           <GridItem useSlot>
             <h3 className="demo-sidebar-title">监听切换事件</h3>
-            <Sidebar customClass="custom-sidebar" onChange={this.onChange}>
+            <Sidebar className="custom-sidebar" onChange={this.onChange}>
               <SidebarItem title="标签名 1"></SidebarItem>
               <SidebarItem title="标签名 2"></SidebarItem>
               <SidebarItem title="标签名 3"></SidebarItem>

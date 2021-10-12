@@ -129,7 +129,7 @@ export default class Index extends React.Component {
             <DropdownItem value={value2} options={option2}></DropdownItem>
           </DropdownMenu>
         </DemoBlock>
-        <DemoBlock customClass="white" title="自定义菜单内容">
+        <DemoBlock className="white" title="自定义菜单内容">
           <DropdownMenu>
             <DropdownItem value={value1} options={option1}></DropdownItem>
             <DropdownItem id="item" title={itemTitle}>
@@ -169,19 +169,19 @@ export default class Index extends React.Component {
             </DropdownItem>
           </DropdownMenu>
         </DemoBlock>
-        <DemoBlock customClass="white" title="自定义选中状态颜色">
+        <DemoBlock className="white" title="自定义选中状态颜色">
           <DropdownMenu activeColor="#1989fa">
             <DropdownItem value={value1} options={option1}></DropdownItem>
             <DropdownItem value={value2} options={option2}></DropdownItem>
           </DropdownMenu>
         </DemoBlock>
-        <DemoBlock customClass="white" title="向上展开">
+        <DemoBlock className="white" title="向上展开">
           <DropdownMenu direction="up">
             <DropdownItem value={value1} options={option1}></DropdownItem>
             <DropdownItem value={value2} options={option2}></DropdownItem>
           </DropdownMenu>
         </DemoBlock>
-        <DemoBlock customClass="white" title="禁用菜单">
+        <DemoBlock className="white" title="禁用菜单">
           <DropdownMenu>
             <DropdownItem
               value={value1}

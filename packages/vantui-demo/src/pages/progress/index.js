@@ -86,33 +86,33 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="线条粗细">
           <Progress
-            customClass="progress-position"
+            className="progress-position"
             strokeWidth="8"
             percentage="100"
           ></Progress>
         </DemoBlock>
         <DemoBlock title="置灰">
           <Progress
-            customClass="progress-position"
+            className="progress-position"
             inactive
             percentage="50"
           ></Progress>
         </DemoBlock>
         <DemoBlock title="样式定制">
           <Progress
-            customClass="progress-position"
+            className="progress-position"
             pivotText="橙色"
             color="#f2826a"
             percentage="25"
           ></Progress>
           <Progress
-            customClass="progress-position"
+            className="progress-position"
             pivotText="红色"
             color="#ee0a24"
             percentage="50"
           ></Progress>
           <Progress
-            customClass="progress-position"
+            className="progress-position"
             percentage="75"
             pivotText="紫色"
             pivotColor="#7232dd"

@@ -128,7 +128,7 @@ export default class Index extends React.Component {
             onClickStep={this.onClick}
             className="demo-margin-bottom"
           ></Steps>
-          <Button customClass="demo-margin-left" onClick={this.nextStep}>
+          <Button className="demo-margin-left" onClick={this.nextStep}>
             下一步
           </Button>
         </DemoBlock>

@@ -146,7 +146,7 @@ export default class Index extends React.Component {
             data-key="radio2"
             onChange={this.onChange}
           >
-            <Radio name="1" customClass="demo-radio">
+            <Radio name="1" className="demo-radio">
               单选框 1
             </Radio>
             <Radio name="2">单选框 2</Radio>
@@ -158,7 +158,7 @@ export default class Index extends React.Component {
             data-key="radioShape"
             onChange={this.onChange}
           >
-            <Radio name="1" shape="square" customClass="demo-radio">
+            <Radio name="1" shape="square" className="demo-radio">
               单选框
             </Radio>
             <Radio name="2" shape="square">
@@ -168,7 +168,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义颜色" padding>
           <RadioGroup value={radio3} data-key="radio3" onChange={this.onChange}>
-            <Radio name="1" customClass="demo-radio" checkedColor="#07c160">
+            <Radio name="1" className="demo-radio" checkedColor="#07c160">
               单选框
             </Radio>
             <Radio name="2" checkedColor="#07c160">
@@ -182,7 +182,7 @@ export default class Index extends React.Component {
             data-key="radioSize"
             onChange={this.onChange}
           >
-            <Radio name="1" iconSize="24px" customClass="demo-radio">
+            <Radio name="1" iconSize="24px" className="demo-radio">
               单选框
             </Radio>
             <Radio name="2" iconSize="24px">
@@ -230,7 +230,7 @@ export default class Index extends React.Component {
             data-key="radioLabel"
             onChange={this.onChange}
           >
-            <Radio labelDisabled name="1" customClass="demo-radio">
+            <Radio labelDisabled name="1" className="demo-radio">
               单选框 1
             </Radio>
             <Radio labelDisabled name="2">

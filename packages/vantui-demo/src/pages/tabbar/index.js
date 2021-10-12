@@ -124,7 +124,7 @@ export default class Index extends React.Component {
           <Tabbar
             active={active2}
             data-key="active2"
-            customClass="tabbar-position"
+            className="tabbar-position"
             safeAreaInsetBottom={false}
             onChange={this.onChange}
           >
@@ -146,7 +146,7 @@ export default class Index extends React.Component {
           <Tabbar
             active={active3}
             data-key="active3"
-            customClass="tabbar-position"
+            className="tabbar-position"
             safeAreaInsetBottom={false}
             onChange={this.onChange}
           >
@@ -166,7 +166,7 @@ export default class Index extends React.Component {
           <Tabbar
             active={active4}
             data-key="active4"
-            customClass="tabbar-position"
+            className="tabbar-position"
             safeAreaInsetBottom={false}
             onChange={this.onChange}
           >
@@ -201,7 +201,7 @@ export default class Index extends React.Component {
           <Tabbar
             active={active5}
             data-key="active5"
-            customClass="tabbar-position"
+            className="tabbar-position"
             activeColor="#07c160"
             inactiveColor="#000"
             safeAreaInsetBottom={false}
@@ -217,7 +217,7 @@ export default class Index extends React.Component {
           <Tabbar
             active={active6}
             data-key="active6"
-            customClass="tabbar-position"
+            className="tabbar-position"
             safeAreaInsetBottom={false}
             onChange={this.handleChange}
           >

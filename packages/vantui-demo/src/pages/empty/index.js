@@ -116,7 +116,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="底部内容" padding>
           <Empty description="描述文字">
-            <Button round type="danger" customClass="bottom-button">
+            <Button round type="danger" className="bottom-button">
               按钮
             </Button>
           </Empty>

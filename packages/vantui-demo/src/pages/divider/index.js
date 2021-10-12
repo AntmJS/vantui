@@ -84,18 +84,18 @@ export default class Index extends React.Component {
         <DemoBlock className="white" title="基础用法" padding>
           <Divider></Divider>
         </DemoBlock>
-        <DemoBlock customClass="white" title="内容位置" padding>
+        <DemoBlock className="white" title="内容位置" padding>
           <Divider contentPosition="center">文本</Divider>
           <Divider contentPosition="left">文本</Divider>
           <Divider contentPosition="right">文本</Divider>
         </DemoBlock>
-        <DemoBlock customClass="white" title="虚线" padding>
+        <DemoBlock className="white" title="虚线" padding>
           <Divider dashed></Divider>
         </DemoBlock>
-        <DemoBlock customClass="white" title="自定义样式" padding>
+        <DemoBlock className="white" title="自定义样式" padding>
           <Divider
             contentPosition="center"
-            customStyle="color: #1989fa;border-color: #1989fa;font-size: 18px;"
+            style="color: #1989fa;border-color: #1989fa;font-size: 18px;"
           >
             文本
           </Divider>

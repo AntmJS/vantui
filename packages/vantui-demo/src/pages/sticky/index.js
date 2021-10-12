@@ -114,7 +114,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="吸顶距离">
           <Sticky offsetTop={50}>
-            <Button type="info" customStyle="margin-left: 115px">
+            <Button type="info" style="margin-left: 115px">
               吸顶距离
             </Button>
           </Sticky>
@@ -122,7 +122,7 @@ export default class Index extends React.Component {
         <DemoBlock title="指定容器">
           <View id="container" style="height: 150px; background-color: #fff;">
             <Sticky container={container}>
-              <Button type="warning" customStyle="margin-left: 215px;">
+              <Button type="warning" style="margin-left: 215px;">
                 指定容器
               </Button>
             </Sticky>

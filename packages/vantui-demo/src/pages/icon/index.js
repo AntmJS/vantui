@@ -98,86 +98,86 @@ export default class Index extends React.Component {
       <Tabs active={active} color="#1989fa" onChange={this.onSwitch}>
         <Tab title="用法示例" className="demo-tab-pane">
           <DemoBlock title="基础用法">
-            <Col customClass="col" span="6">
-              <Icon name={demoIcon} size="32px" customClass="icon"></Icon>
+            <Col className="col" span="6">
+              <Icon name={demoIcon} size="32px" className="icon"></Icon>
             </Col>
-            <Col customClass="col" span="6">
-              <Icon name={demoImage} size="32px" customClass="icon"></Icon>
+            <Col className="col" span="6">
+              <Icon name={demoImage} size="32px" className="icon"></Icon>
             </Col>
           </DemoBlock>
           <DemoBlock title="提示信息">
-            <Col customClass="col" span="6">
-              <Icon name={demoIcon} size="32px" customClass="icon" dot></Icon>
+            <Col className="col" span="6">
+              <Icon name={demoIcon} size="32px" className="icon" dot></Icon>
             </Col>
-            <Col customClass="col" span="6">
+            <Col className="col" span="6">
               <Icon
                 name={demoIcon}
                 size="32px"
-                customClass="icon"
+                className="icon"
                 info="9"
               ></Icon>
             </Col>
-            <Col customClass="col" span="6">
+            <Col className="col" span="6">
               <Icon
                 name={demoIcon}
                 size="32px"
-                customClass="icon"
+                className="icon"
                 info="99+"
               ></Icon>
             </Col>
           </DemoBlock>
           <DemoBlock title="图标颜色">
-            <Col customClass="col" span="6">
+            <Col className="col" span="6">
               <Icon
                 name={demoIcon}
                 size="32px"
-                customClass="icon"
+                className="icon"
                 color="#1989fa"
               ></Icon>
             </Col>
-            <Col customClass="col" span="6">
+            <Col className="col" span="6">
               <Icon
                 name={demoIcon}
                 size="32px"
-                customClass="icon"
+                className="icon"
                 color="#07c160"
               ></Icon>
             </Col>
           </DemoBlock>
           <DemoBlock title="图标大小">
-            <Col customClass="col" span="6">
-              <Icon name={demoIcon} size="40" customClass="icon"></Icon>
+            <Col className="col" span="6">
+              <Icon name={demoIcon} size="40" className="icon"></Icon>
             </Col>
-            <Col customClass="col" span="6">
-              <Icon name={demoIcon} size="3rem" customClass="icon"></Icon>
+            <Col className="col" span="6">
+              <Icon name={demoIcon} size="3rem" className="icon"></Icon>
             </Col>
           </DemoBlock>
         </Tab>
-        <Tab title="基础图标" customClass="demo-tab-pane">
+        <Tab title="基础图标" className="demo-tab-pane">
           {icons.basic.map((item, index) => {
             return (
-              <Col key={item.index} customClass="col" span="6">
-                <Icon name={item} size="32px" customClass="icon"></Icon>
+              <Col key={item.index} className="col" span="6">
+                <Icon name={item} size="32px" className="icon"></Icon>
                 <View className="text">{item}</View>
               </Col>
             )
           })}
         </Tab>
-        <Tab title="线框风格" customClass="demo-tab-pane">
+        <Tab title="线框风格" className="demo-tab-pane">
           {icons.outline.map((item, index) => {
             return (
-              <Col key={item.index} customClass="col" span="6">
-                <Icon name={item} size="32px" customClass="icon"></Icon>
+              <Col key={item.index} className="col" span="6">
+                <Icon name={item} size="32px" className="icon"></Icon>
                 <View className="text">{item}</View>
               </Col>
             )
           })}
         </Tab>
-        <Tab title="实底风格" customClass="demo-tab-pane">
+        <Tab title="实底风格" className="demo-tab-pane">
           {icons.filled.map((item, index) => {
             return (
-              <Col key={item.index} customClass="col" span="6">
-                <Icon name={item} size="32px" customClass="icon"></Icon>
+              <Col key={item.index} className="col" span="6">
+                <Icon name={item} size="32px" className="icon"></Icon>
                 <View className="text">{item}</View>
               </Col>
             )

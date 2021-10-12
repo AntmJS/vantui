@@ -184,7 +184,7 @@ export default class Index extends React.Component {
             enter: 300,
             leave: 1000,
           }}
-          customClass="block"
+          className="block"
           enterClass="van-enter-class"
           enterActiveClass="van-enter-active-class"
           leaveActiveClass="van-leave-active-class"

@@ -194,25 +194,25 @@ export default class Index extends React.Component {
           <Popup
             show={show.top}
             position="top"
-            customStyle="height: 20%"
+            style="height: 20%"
             onClose={this.hideTop}
           ></Popup>
           <Popup
             show={show.bottom}
             position="bottom"
-            customStyle="height: 20%"
+            style="height: 20%"
             onClose={this.hideBottom}
           ></Popup>
           <Popup
             show={show.left}
             position="left"
-            customStyle="width: 20%; height: 100%"
+            style="width: 20%; height: 100%"
             onClose={this.hideLeft}
           ></Popup>
           <Popup
             show={show.right}
             position="right"
-            customStyle="width: 20%; height: 100%"
+            style="width: 20%; height: 100%"
             onClose={this.hideRight}
           ></Popup>
         </DemoBlock>
@@ -232,7 +232,7 @@ export default class Index extends React.Component {
             show={show.closeIcon}
             closeable
             position="bottom"
-            customStyle="height: 20%"
+            style="height: 20%"
             onClose={this.hideCloseIcon}
           ></Popup>
           <Popup
@@ -240,7 +240,7 @@ export default class Index extends React.Component {
             closeable
             closeIcon="close"
             position="bottom"
-            customStyle="height: 20%"
+            style="height: 20%"
             onClose={this.hideCustomCloseIcon}
           ></Popup>
           <Popup
@@ -248,7 +248,7 @@ export default class Index extends React.Component {
             closeable
             closeIconPosition="top-left"
             position="bottom"
-            customStyle="height: 20%"
+            style="height: 20%"
             onClose={this.hideCustomIconPosition}
           ></Popup>
         </DemoBlock>
@@ -258,7 +258,7 @@ export default class Index extends React.Component {
             show={show.round}
             round
             position="bottom"
-            customStyle="height: 20%"
+            style="height: 20%"
             onClose={this.hideRound}
           ></Popup>
         </DemoBlock>

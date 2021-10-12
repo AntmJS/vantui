@@ -102,7 +102,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义图标">
           <Rate
-            customClass="rate-position"
+            className="rate-position"
             icon="like"
             voidIcon="like-o"
             modelValue={value2}
@@ -110,7 +110,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义样式">
           <Rate
-            customClass="rate-position"
+            className="rate-position"
             modelValue={value3}
             size={25}
             color="#ffd21e"
@@ -120,7 +120,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="半星">
           <Rate
-            customClass="rate-position"
+            className="rate-position"
             modelValue={value4}
             allowHalf
             voidIcon="star"
@@ -128,21 +128,17 @@ export default class Index extends React.Component {
           ></Rate>
         </DemoBlock>
         <DemoBlock title="自定义数量">
-          <Rate
-            customClass="rate-position"
-            modelValue={value5}
-            count={6}
-          ></Rate>
+          <Rate className="rate-position" modelValue={value5} count={6}></Rate>
         </DemoBlock>
         <DemoBlock title="禁用状态">
-          <Rate customClass="rate-position" value={value6} disabled></Rate>
+          <Rate className="rate-position" value={value6} disabled></Rate>
         </DemoBlock>
         <DemoBlock title="只读状态">
-          <Rate customClass="rate-position" value={value6} readonly></Rate>
+          <Rate className="rate-position" value={value6} readonly></Rate>
         </DemoBlock>
         <DemoBlock title="监听 change 事件">
           <Rate
-            customClass="rate-position"
+            className="rate-position"
             value={value8}
             onChange={this.onChange}
           ></Rate>

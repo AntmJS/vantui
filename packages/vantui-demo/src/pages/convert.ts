@@ -145,14 +145,15 @@ function convert(fileContent: string): string {
   result = result.replace(reg, '')
 
   // 替换 customStyle customClass
+  // customClass="
   result = result.replace(
-    /custom(Style|Class)=/,
+    /custom(Style|Class)="/g,
     (_str: string, $1: string) => {
       let str = $1.toLowerCase()
       if (str === 'class') {
         str += 'Name'
       }
-      return str + '='
+      return str + '="'
     },
   )
 

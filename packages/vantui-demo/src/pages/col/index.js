@@ -86,36 +86,36 @@ export default class Index extends React.Component {
             <Col span="8" className="dark">
               span: 8
             </Col>
-            <Col span="8" customClass="light">
+            <Col span="8" className="light">
               span: 8
             </Col>
-            <Col span="8" customClass="dark">
+            <Col span="8" className="dark">
               span: 8
             </Col>
           </Row>
           <Row>
-            <Col span="4" customClass="dark">
+            <Col span="4" className="dark">
               span: 4
             </Col>
-            <Col span="10" offset="4" customClass="light">
+            <Col span="10" offset="4" className="light">
               offset: 4, span: 10
             </Col>
           </Row>
           <Row>
-            <Col offset="12" span="12" customClass="dark">
+            <Col offset="12" span="12" className="dark">
               offset: 12, span: 12
             </Col>
           </Row>
         </DemoBlock>
         <DemoBlock title="在列元素之间增加间距" padding>
           <Row gutter="20">
-            <Col span="8" customClass="dark">
+            <Col span="8" className="dark">
               span: 8
             </Col>
-            <Col span="8" customClass="light">
+            <Col span="8" className="light">
               span: 8
             </Col>
-            <Col span="8" customClass="dark">
+            <Col span="8" className="dark">
               span: 8
             </Col>
           </Row>

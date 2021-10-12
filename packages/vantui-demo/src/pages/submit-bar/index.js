@@ -105,7 +105,7 @@ export default class Index extends React.Component {
             tip="您的收货地址不支持同城送, 我们已为您推荐快递"
             tipIcon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
             onSubmit={this.onClickButton}
-            customClass="van-submit-bar"
+            className="van-submit-bar"
             safeAreaInsetBottom={false}
           ></SubmitBar>
         </DemoBlock>
@@ -115,7 +115,7 @@ export default class Index extends React.Component {
             price={3050}
             buttonText="提交订单"
             onSubmit={this.onClickButton}
-            customClass="van-submit-bar"
+            className="van-submit-bar"
             safeAreaInsetBottom={false}
           ></SubmitBar>
         </DemoBlock>
@@ -124,7 +124,7 @@ export default class Index extends React.Component {
             price={3050}
             buttonText="提交订单"
             onSubmit={this.onClickButton}
-            customClass="van-submit-bar"
+            className="van-submit-bar"
             tip={true}
             safeAreaInsetBottom={false}
             renderTip={
@@ -138,7 +138,7 @@ export default class Index extends React.Component {
               </Block>
             }
           >
-            <Tag type="primary" customClass="submit-tag">
+            <Tag type="primary" className="submit-tag">
               标签
             </Tag>
           </SubmitBar>

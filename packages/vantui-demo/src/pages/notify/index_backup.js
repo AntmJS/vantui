@@ -130,6 +130,7 @@ class _C extends React.Component {
               主要通知
             </VanButton>
             <VanButton
+              className="demo-margin-right"
               type="primary"
               data-type="success"
               onClick={this.showNotifyByType}

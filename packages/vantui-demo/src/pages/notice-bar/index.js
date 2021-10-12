@@ -98,7 +98,7 @@ export default class Index extends React.Component {
           <NoticeBar
             scrollable={false}
             text={text}
-            customClass="demo-margin-bottom"
+            className="demo-margin-bottom"
           ></NoticeBar>
         </DemoBlock>
         <DemoBlock title="多行展示">
@@ -107,7 +107,7 @@ export default class Index extends React.Component {
         <DemoBlock title="通知栏模式">
           <NoticeBar mode="closeable" text={shortText}></NoticeBar>
           <NoticeBar
-            customClass="margin-top"
+            className="margin-top"
             mode="link"
             text={shortText}
           ></NoticeBar>

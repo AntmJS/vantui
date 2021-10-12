@@ -119,7 +119,7 @@ export default class Index extends React.Component {
             renderFooter={
               <Block>
                 <View className="van-card__footer">
-                  <Button size="mini" round customClass="button">
+                  <Button size="mini" round className="button">
                     按钮
                   </Button>
                   <Button size="mini" round>

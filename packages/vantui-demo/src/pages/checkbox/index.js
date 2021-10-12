@@ -142,10 +142,10 @@ export default class Index extends React.Component {
           </Checkbox>
         </DemoBlock>
         <DemoBlock title="禁用状态">
-          <Checkbox disabled value={false} customClass="demo-checkbox">
+          <Checkbox disabled value={false} className="demo-checkbox">
             复选框
           </Checkbox>
-          <Checkbox disabled value={true} customClass="demo-checkbox">
+          <Checkbox disabled value={true} className="demo-checkbox">
             复选框
           </Checkbox>
         </DemoBlock>
@@ -154,7 +154,7 @@ export default class Index extends React.Component {
             value={checkboxShape}
             data-key="checkboxShape"
             shape="square"
-            customClass="demo-checkbox"
+            className="demo-checkbox"
             onChange={this.onChange}
           >
             复选框
@@ -165,7 +165,7 @@ export default class Index extends React.Component {
             value={checkbox2}
             data-key="checkbox2"
             checkedColor="#07c160"
-            customClass="demo-checkbox"
+            className="demo-checkbox"
             onChange={this.onChange}
           >
             复选框
@@ -176,7 +176,7 @@ export default class Index extends React.Component {
             iconSize="25px"
             value={checkboxSize}
             data-key="checkboxSize"
-            customClass="demo-checkbox"
+            className="demo-checkbox"
             onChange={this.onChange}
           >
             复选框
@@ -187,7 +187,7 @@ export default class Index extends React.Component {
             useIconSlot
             value={checkbox3}
             data-key="checkbox3"
-            customClass="demo-checkbox"
+            className="demo-checkbox"
             onChange={this.onChange}
             renderIcon={
               <Block>
@@ -207,7 +207,7 @@ export default class Index extends React.Component {
             labelDisabled
             value={checkboxLabel}
             data-key="checkboxLabel"
-            customClass="demo-checkbox"
+            className="demo-checkbox"
             onChange={this.onChange}
           >
             复选框
@@ -221,7 +221,7 @@ export default class Index extends React.Component {
           >
             {list.map((item, index) => {
               return (
-                <Checkbox key={item} name={item} customClass="demo-checkbox">
+                <Checkbox key={item} name={item} className="demo-checkbox">
                   {'复选框 ' + item}
                 </Checkbox>
               )
@@ -237,7 +237,7 @@ export default class Index extends React.Component {
           >
             {list.map((item, index) => {
               return (
-                <Checkbox key={item} name={item} customClass="demo-checkbox">
+                <Checkbox key={item} name={item} className="demo-checkbox">
                   {'复选框 ' + item}
                 </Checkbox>
               )
@@ -253,7 +253,7 @@ export default class Index extends React.Component {
           >
             {list.map((item, index) => {
               return (
-                <Checkbox key={item} name={item} customClass="demo-checkbox">
+                <Checkbox key={item} name={item} className="demo-checkbox">
                   {'复选框 ' + item}
                 </Checkbox>
               )
