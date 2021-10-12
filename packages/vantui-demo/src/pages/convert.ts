@@ -105,7 +105,12 @@ function convert(fileContent: string): string {
   const reg =
     /import\s+(?<com>[a-zA-Z]+)\s+from\s+'\.\.\/\.\.\/dist\/[\w\/-]+'\n/g
 
-  const coms = (result.match(reg) ?? []).map((e) => e.replace(reg, '$1'))
+  const coms = (result.match(reg) ?? [])
+    .map((e) => e.replace(reg, '$1'))
+    .filter((e) => {
+      const reg = new RegExp(`<${e}[\\s>]`)
+      return result.match(reg)
+    })
 
   // Toast 特殊处理
   // import Toast from '../../dist/toast/toast.js'

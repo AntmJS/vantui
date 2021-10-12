@@ -1,74 +1,7 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
-import {
-  ConfigProvider,
-  ShareSheet,
-  Calendar,
-  Skeleton,
-  DropdownItem,
-  DropdownMenu,
-  GridItem,
-  Grid,
-  IndexAnchor,
-  IndexBar,
-  Circle,
-  Overlay,
-  Picker,
-  CollapseItem,
-  Collapse,
-  Rate,
-  DatetimePicker,
-  TreeSelect,
-  Transition,
-  Toast,
-  Tag,
-  TabbarItem,
-  Tabbar,
-  Tabs,
-  Tab,
-  Switch,
-  Uploader,
-  SwipeCell,
-  SubmitBar,
-  Sticky,
-  Steps,
-  Stepper,
-  Slider,
-  SidebarItem,
-  Sidebar,
-  Search,
-  Row,
-  RadioGroup,
-  Radio,
-  Progress,
-  Popup,
-  Panel,
-  Notify,
-  NoticeBar,
-  NavBar,
-  Loading,
-  Image,
-  Icon,
-  GoodsActionButton,
-  GoodsActionIcon,
-  GoodsAction,
-  Field,
-  Empty,
-  Divider,
-  Dialog,
-  CountDown,
-  Col,
-  CheckboxGroup,
-  Checkbox,
-  CellGroup,
-  Cell,
-  Card,
-  Button,
-  Area,
-  ActionSheet,
-  notify,
-} from '@antmjs/vantui'
+import { Notify, Button, notify } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
@@ -133,6 +66,7 @@ export default class Index extends React.Component {
               主要通知
             </Button>
             <Button
+              className="demo-margin-right"
               type="primary"
               data-type="success"
               onClick={this.showNotifyByType}
