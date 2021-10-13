@@ -6,7 +6,7 @@ import Taro from '@tarojs/taro'
 import { Icon } from '@antmjs/vantui'
 import './index.less'
 
-class _C extends React.Component {
+export default class Index extends React.Component {
   onClick = (event) => {
     const { url } = event.target.dataset
     if (Taro.getCurrentPages().length > 9) {
@@ -40,5 +40,3 @@ class _C extends React.Component {
     )
   }
 }
-
-export default _C

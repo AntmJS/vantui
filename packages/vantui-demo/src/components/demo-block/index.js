@@ -4,7 +4,7 @@ import React from 'react'
 
 import './index.less'
 // eslint-disable
-class _C extends React.Component {
+export default class Index extends React.Component {
   constructor() {
     super()
   }
@@ -28,5 +28,3 @@ class _C extends React.Component {
     )
   }
 }
-
-export default _C
