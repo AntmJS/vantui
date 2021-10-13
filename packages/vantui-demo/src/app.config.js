@@ -31,7 +31,7 @@ export default {
     'pages/toast/index',
     'pages/transition/index',
     'pages/tree-select/index',
-    'pages/area/index',
+    // 'pages/area/index',
     'pages/submit-bar/index',
     'pages/radio/index',
     'pages/checkbox/index',
