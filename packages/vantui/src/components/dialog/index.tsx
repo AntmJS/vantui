@@ -11,7 +11,7 @@ import { DialogProps } from '../../../types/dialog'
 import { on, off, trigger } from './events'
 import * as utils from './../wxs/utils'
 // import dialog from './dialog'
-
+import dialog from './dialog'
 export default function Index(props: DialogProps) {
   const [options, setOptions] = useState<DialogProps>({})
 
@@ -135,6 +135,10 @@ export default function Index(props: DialogProps) {
   }, [props])
 
   useEffect(() => {
+    if (!props.id) {
+      return
+    }
+
     const alertFn = (params: DialogProps = {}) => {
       if (!params?.selector || props.id === params.selector.replace(/^#/, '')) {
         setOptions({
@@ -280,80 +284,21 @@ export default function Index(props: DialogProps) {
   )
 }
 
-const _defaultOptions = {
-  show: false,
-  title: '',
-  width: null,
-  theme: 'default',
-  message: '',
-  zIndex: 100,
-  overlay: true,
-  className: '',
-  asyncClose: false,
-  transition: 'scale',
-  messageAlign: '',
-  overlayStyle: '',
-  confirmButtonText: '确认',
-  cancelButtonText: '取消',
-  showConfirmButton: true,
-  showCancelButton: false,
-  closeOnClickOverlay: false,
-  confirmButtonOpenType: '',
-}
-
-Index.defaultOptions = { ..._defaultOptions }
-
 Index.alert = function (options: DialogProps) {
-  const p = new Promise<void>((resolve, reject) => {
-    const confirmFn = () => {
-      off('confirm', confirmFn)
-      resolve()
-    }
-
-    const cancelFn = () => {
-      off('cancel', cancelFn)
-      reject()
-    }
-    on('confirm', confirmFn)
-    on('cancel', cancelFn)
-  })
-
-  const innerOptions =
-    options?.theme === 'round-button'
-      ? {
-          confirmButtonColor: '#FFFFFF',
-          cancelButtonColor: '#FFFFFF',
-        }
-      : {}
-  trigger('alert', {
-    ...this.defaultOptions,
-    ...options,
-    ...innerOptions,
-    show: true,
-  })
-  return p
+  return dialog.alert(options)
 }
-
 Index.confirm = function (options: DialogProps) {
-  return this.alert({
-    ...options,
-    showCancelButton: true,
-  })
+  return dialog.confirm(options)
 }
 Index.close = function () {
-  off('confirm')
-  off('cancel')
-  trigger('close')
+  dialog.close()
 }
 Index.stopLoading = function () {
-  trigger('stopLoading')
+  dialog.stopLoading()
 }
 Index.setDefaultOptions = function (options: DialogProps) {
-  ;(this as any).defaultOptions = {
-    ...this.defaultOptions,
-    ...options,
-  }
+  dialog.setDefaultOptions(options)
 }
 Index.resetDefaultOptions = function () {
-  ;(this as any).defaultOptions = { ..._defaultOptions }
+  dialog.resetDefaultOptions()
 }

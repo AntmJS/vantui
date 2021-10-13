@@ -4,6 +4,7 @@ import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import Page from '../../common/page.js'
 import Dialog from '../../dist/dialog/dialog.js'
+import Toast from '../../dist/toast/toast.js'
 
 import VanConfigProvider from '../../dist/config-provider/index'
 import VanShareSheet from '../../dist/share-sheet/index'

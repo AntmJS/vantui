@@ -112,30 +112,22 @@ function convert(fileContent: string): string {
       return result.match(reg)
     })
 
-  // Toast 特殊处理
-  // import Toast from '../../dist/toast/toast.js'
+  // 通用
 
-  const toastReg = /import\s+Toast\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/
-  const toastResult = result.match(toastReg)
+  const currencyReg =
+    /import\s+(Notify|Dialog|Toast)\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/g
 
-  if (toastResult) {
-    coms.push('toast')
-    result = result.replace(toastReg, '')
-    result = result.replace(/(?<=\s+)Toast([(.])/g, 'toast$1')
-  }
-  // Dialog 处理
-  const dialogReg = /import\s+Dialog\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/
-  result = result.replace(dialogReg, '')
+  const currencyResult = (result.match(currencyReg) ?? []).map((e) =>
+    e.replace(currencyReg, (_str, $1) => `${$1.toLowerCase()}`),
+  )
 
-  // import Notify from '../../dist/notify/notify.js'
-
-  const notifyReg = /import\s+Notify\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/
-  const notifyResult = result.match(notifyReg)
-
-  if (notifyResult) {
-    coms.push('notify')
-    result = result.replace(notifyReg, '')
-    result = result.replace(/(?<=\s+)Notify([(.])/g, 'notify$1')
+  if (currencyResult.length !== 0) {
+    coms.push(...currencyResult)
+    result = result.replace(currencyReg, '')
+    result = result.replace(
+      /(?<=\s+)(Notify|Dialog|Toast)([(.])/g,
+      (_str, $1, $2) => `${$1.toLowerCase()}${$2}`,
+    )
   }
 
   //   import withWeapp from '@tarojs/with-weapp'
