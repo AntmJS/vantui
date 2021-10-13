@@ -38,5 +38,9 @@ packages/vantui-demo/dd
 packages/vantui-demo/qywx
 packages/vantui-demo/jd
 packages/vantui-demo/iot
+<<<<<<< HEAD
+packages/vantui-demo/**/**/index_backup.js
+=======
 packages/vantui-demo/build
 packages/vantui-demo/dist
+>>>>>>> main

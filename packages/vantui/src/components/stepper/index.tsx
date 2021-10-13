@@ -19,7 +19,7 @@ export default function Index(props: StepperProps) {
   const {
     theme,
     value,
-    integer = 'check',
+    integer,
     disabled,
     inputWidth,
     buttonSize,
@@ -147,6 +147,9 @@ export default function Index(props: StepperProps) {
         onChange?.(value)
         return value
       })
+    } else {
+      const value = _format(add(+currentValue, diff))
+      _emitChange(value)
     }
     // 不太美观----
 
