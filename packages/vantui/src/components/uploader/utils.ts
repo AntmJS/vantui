@@ -1,6 +1,3 @@
-// TESTCODE
-// eslint-disable-next-line
-// @ts-nocheck
 import Taro from '@tarojs/taro'
 import { pickExclude } from '../common/utils.js'
 import { isImageUrl, isVideoUrl } from '../common/validator.js'
@@ -29,13 +26,21 @@ export function isVideoFile(item: any) {
   return false
 }
 function formatImage(res: any) {
-  return res.tempFiles.map((item: any) =>
-    Object.assign(Object.assign({}, pickExclude(item, ['path'])), {
+  if (res.tempFiles) {
+    return res.tempFiles.map((item: any) =>
+      Object.assign(Object.assign({}, pickExclude(item, ['path'])), {
+        type: 'image',
+        url: item.path,
+        thumb: item.path,
+      }),
+    )
+  } else if (res.tempFilePaths) {
+    return res.tempFilePaths.map((item: any) => ({
       type: 'image',
-      url: item.path,
-      thumb: item.path,
-    }),
-  )
+      url: item,
+      thumb: item,
+    }))
+  }
 }
 function formatVideo(res: any) {
   return [
@@ -80,7 +85,7 @@ export function chooseFile({
   sizeType,
   camera,
   maxCount,
-}) {
+}: any) {
   return new Promise((resolve, reject) => {
     switch (accept) {
       case 'image':

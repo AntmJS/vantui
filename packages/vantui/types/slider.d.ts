@@ -17,6 +17,7 @@ export interface SliderProps extends StandardProps {
   step?: number
   value?: number
   barHeight?: number | string
+  vertical?: boolean
   onDrag?: (e: ITouchEvent & SliderEvent) => void
   onChange?: (e: ITouchEvent & SliderEvent) => void
   onDragStart?: () => void

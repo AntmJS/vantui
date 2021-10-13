@@ -25,7 +25,7 @@ export function usePageScroll(scroller: any) {
     return () => {
       let _a
       const page = getCurrentPage() as any
-      if (!isDef(page)) {
+      if (isDef(page)) {
         page.vanPageScroller =
           ((_a = page.vanPageScroller) === null || _a === undefined
             ? undefined

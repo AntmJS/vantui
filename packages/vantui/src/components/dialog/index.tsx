@@ -83,10 +83,10 @@ export default function Index(props: DialogProps) {
   const _handleAction = useCallback(
     (action) => {
       if (action === 'confirm') {
-        onConfirm?.(action, { dialog: null })
+        onConfirm?.({ detail: { action, dialog: { dialog: null } } })
         trigger('confirm')
       } else if (action === 'cancel') {
-        onCancel?.(action, { dialog: null })
+        onCancel?.({ detail: { action, dialog: { dialog: null } } })
         trigger('cancel')
       } else {
         trigger('cancel')
@@ -131,15 +131,12 @@ export default function Index(props: DialogProps) {
       _stopLoading()
     }
     setShow(props.show)
+    // eslint-disable-next-line
   }, [props])
 
   useEffect(() => {
     const alertFn = (params: DialogProps = {}) => {
       if (!params?.selector || props.id === params.selector.replace(/^#/, '')) {
-        console.log(
-          !params?.selector,
-          (params?.selector ?? '').replace(/^#/, ''),
-        )
         setOptions({
           ...params,
         })

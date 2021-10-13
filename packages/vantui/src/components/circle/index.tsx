@@ -18,7 +18,7 @@ const STEP = 1
 export default function Index(props: CircleProps) {
   const [state, setState] = useState({
     ready: false,
-    hoverColor: '#0000ff',
+    hoverColor: '',
   })
 
   const ref: any = useRef({
@@ -46,6 +46,13 @@ export default function Index(props: CircleProps) {
   } = props
 
   Taro.useReady(() => {
+    // taro h5 nativeProps问题还未修复 此处为hack处理
+    if (process.env.TARO_ENV === 'h5') {
+      const canvas = document.getElementsByTagName('canvas')[0]
+      canvas?.setAttribute('width', String(size))
+      canvas?.setAttribute('height', String(size))
+    }
+
     setState((state) => {
       return {
         ...state,
@@ -58,7 +65,11 @@ export default function Index(props: CircleProps) {
     if (state.ready) {
       ref.current.currentValue = value
       setHoverColor().then(() => {
-        drawCircle(ref.current.currentValue)
+        if (process.env.TARO_ENV === 'h5') {
+          reRender()
+        } else {
+          drawCircle(ref.current.currentValue)
+        }
       })
     }
 
@@ -116,12 +127,13 @@ export default function Index(props: CircleProps) {
   }, [size, type])
   const setHoverColor = useCallback(() => {
     if (isObj(color)) {
+      const _color = color as Record<string, string>
       return getContext().then((context: any) => {
         const LinearColor = context.createLinearGradient(size, 0, 0, 0)
         Object.keys(color)
           .sort((a, b) => parseFloat(a) - parseFloat(b))
           .map((key: any) =>
-            LinearColor.addColorStop(parseFloat(key) / 100, color[key]),
+            LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
           )
         setState((state) => {
           return {
@@ -131,7 +143,7 @@ export default function Index(props: CircleProps) {
         })
       })
     }
-    setState((state) => {
+    setState((state: any) => {
       return {
         ...state,
         hoverColor: color,
@@ -147,7 +159,6 @@ export default function Index(props: CircleProps) {
       endAngle: any,
       fill?: any,
     ) => {
-      console.log(context, strokeStyle, beginAngle, endAngle, fill)
       const position = size / 2
       const radius = position - strokeWidth / 2
       context.setStrokeStyle(strokeStyle)
@@ -230,6 +241,11 @@ export default function Index(props: CircleProps) {
   return (
     <View className={`van-circle ${className}`} style={style} {...others}>
       <Canvas
+        // eslint-disable-next-line
+        // @ts-ignore
+        width={size}
+        height={size}
+        nativeProps={{ width: size, height: size }}
         className="van-circle__canvas"
         type={type}
         style={'width: ' + `${size}px` + ';height:' + `${size}px`}
@@ -239,7 +255,6 @@ export default function Index(props: CircleProps) {
       {!text ? (
         <View className="van-circle__text">{children}</View>
       ) : (
-        // <CoverView className="van-circle__text">{text}</CoverView>
         <CoverView className="van-circle__text">{text}</CoverView>
       )}
     </View>

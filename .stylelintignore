@@ -25,6 +25,9 @@ LICENSE
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/vantui-doc/lib
+packages/vantui-doc/es
+packages/vantui-doc/dist
 packages/vantui/src/style/components/iconfont.less
 packages/vantui-demo/weapp
 packages/vantui-demo/alipay
@@ -36,3 +39,5 @@ packages/vantui-demo/dd
 packages/vantui-demo/qywx
 packages/vantui-demo/jd
 packages/vantui-demo/iot
+packages/vantui-demo/build
+packages/vantui-demo/dist

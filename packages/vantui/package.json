@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "typings": "types/index.d.ts",
@@ -9,7 +9,7 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public",
-    "registry": "http://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org"
   },
   "keywords": [
     "weui",

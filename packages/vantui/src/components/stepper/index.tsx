@@ -211,6 +211,7 @@ export default function Index(props: StepperProps) {
     if (!equal(value, currentValue)) {
       setCurrentValue(_format(value))
     }
+    // eslint-disable-next-line
   }, [_format, value])
   return (
     <View

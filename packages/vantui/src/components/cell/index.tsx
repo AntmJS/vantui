@@ -39,7 +39,7 @@ export default function Index(props: CellProps) {
   const _click: (event: ITouchEvent) => void = useCallback(
     function (event) {
       onClick?.(event)
-      if (url && linkType) jumpLink(linkType, url)
+      if (url && linkType) jumpLink(url, linkType)
     },
     [linkType, onClick, url],
   )

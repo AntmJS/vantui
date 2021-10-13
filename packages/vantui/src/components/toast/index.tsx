@@ -1,4 +1,3 @@
-import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import { ToastProps } from '../../../types/toast'
@@ -94,20 +93,25 @@ export default function Index(props: ToastProps) {
         }
       }
 
-      const selector = toastOptions.selector || defaultOptions.selector
-      if (process.env.TARO_ENV === 'h5') {
-        if (document.querySelector(selector)) {
-          action()
-        }
-      } else {
-        const query = Taro.createSelectorQuery()
-        query.select(selector).node()
-        query.exec((res) => {
-          if (res?.[0]) {
-            action()
-          }
-        })
-      }
+      action()
+      // const selector = toastOptions.selector || defaultOptions.selector
+      // if (process.env.TARO_ENV === 'h5') {
+      //   if (document.querySelector(selector)) {
+      //     action()
+      //   }
+      // } else {
+      //   if (process.env.TARO_ENV === 'alipay') {
+      //     action()
+      //   } else {
+      //     const query = Taro.createSelectorQuery()
+      //     query.select(selector).node()
+      //     query.exec((res) => {
+      //       if (res?.[0]) {
+      //         action()
+      //       }
+      //     })
+      //   }
+      // }
     })
 
     on('clear', (toastOptions) => {
