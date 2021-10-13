@@ -20,7 +20,10 @@ export default class Index extends React.Component {
 
   onClose = (event) => {
     this.setState({
-      [`show.${event.target.id}`]: false,
+      show: {
+        ...this.state.show,
+        [event.target.id]: false,
+      },
     })
   }
 

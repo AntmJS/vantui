@@ -175,6 +175,14 @@ function convert(fileContent: string): string {
   // onTap = onClick
   result = result.replace(/onTap={/g, 'onClick={')
 
+  // [`show.${event.target.dataset.type}`]: true,
+  result = result.replace(
+    /\[`show\.\$\{([\w\.]+)\}`\]:\s+(\w+),/,
+    `show: {
+      ...this.state.show,
+      [$1]: $2
+  }`,
+  )
   return result
 }
 
