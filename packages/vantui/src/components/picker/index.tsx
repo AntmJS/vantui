@@ -92,10 +92,10 @@ export default forwardRef(function Index(
         })
         onChange(event_ as PickerChangeEvents)
       }
-    } else if (type === 'canel') {
+    } else if (type === 'cancel') {
       if (onCancel) {
-        Object.defineProperties(event, {
-          detail: {
+        Object.defineProperty(event, 'detail', {
+          value: {
             value: simple ? getColumnValue(0) : getValues(),
             index: simple ? getColumnIndex(0) : getIndexes(),
           },
@@ -104,8 +104,8 @@ export default forwardRef(function Index(
       }
     } else if (type === 'confirm') {
       if (onConfirm) {
-        Object.defineProperties(event, {
-          detail: {
+        Object.defineProperty(event, 'detail', {
+          value: {
             value: simple ? getColumnValue(0) : getValues(),
             index: simple ? getColumnIndex(0) : getIndexes(),
           },

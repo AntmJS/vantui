@@ -23,6 +23,7 @@ export default class Index extends React.Component {
   }
 
   onDrag = (event) => {
+    console.info(event)
     this.setState({
       currentValue: event.detail.value,
     })
