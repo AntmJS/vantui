@@ -243,7 +243,6 @@ export default function Index(props: SliderProps) {
       setDragStatus('draging')
       getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
         const diff = (touchState.deltaX / rect.width) * getRange()
-        console.info(startValue, buttonIndex)
         if (isRange(startValue)) {
           newValue[buttonIndex] = startValue[buttonIndex] + diff
           setNewValue(newValue)
