@@ -106,12 +106,12 @@ class _C extends React.Component {
             <VanIndexBar scrollTop={scrollTop}>
               {indexList.map((item, index) => {
                 return (
-                  <View key={item.item}>
+                  <React.Fragment key={item.item}>
                     <VanIndexAnchor index={item}></VanIndexAnchor>
                     <VanCell title="文本"></VanCell>
                     <VanCell title="文本"></VanCell>
                     <VanCell title="文本"></VanCell>
-                  </View>
+                  </React.Fragment>
                 )
               })}
             </VanIndexBar>
@@ -122,14 +122,14 @@ class _C extends React.Component {
             <VanIndexBar indexList={customIndexList} scrollTop={scrollTop}>
               {customIndexList.map((item, index) => {
                 return (
-                  <View key={item.index}>
+                  <React.Fragment key={item.index}>
                     <VanIndexAnchor useSlot index={item}>
                       <Text>{'标题' + item}</Text>
                     </VanIndexAnchor>
                     <VanCell title="文本"></VanCell>
                     <VanCell title="文本"></VanCell>
                     <VanCell title="文本"></VanCell>
-                  </View>
+                  </React.Fragment>
                 )
               })}
             </VanIndexBar>

@@ -23,10 +23,7 @@ export interface ShareSheetProps extends StandardProps {
   duration?: number | string
   onClickOverlay?: () => void
   onCancel?: () => void
-  onSelect?: (
-    option: ShareSheetOptionItem | ShareSheetOptionItem,
-    index: number,
-  ) => void
+  onSelect?: (event: { detail: ShareSheetOptionItem }) => void
   onClose?: () => void
   renderTitle?: ReactNode
   renderDescription?: ReactNode

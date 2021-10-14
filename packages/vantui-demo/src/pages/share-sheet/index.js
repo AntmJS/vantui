@@ -72,7 +72,10 @@ export default class Index extends React.Component {
 
   onShowShareSheet = (event) => {
     this.setState({
-      [`show.${event.target.dataset.type}`]: true,
+      show: {
+        ...this.state.show,
+        [event.target.dataset.type]: true,
+      },
     })
   }
 

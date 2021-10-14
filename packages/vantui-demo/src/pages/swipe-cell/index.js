@@ -7,6 +7,7 @@ import {
   Dialog,
   CellGroup,
   Cell,
+  dialog,
   notify,
 } from '@antmjs/vantui'
 
@@ -26,11 +27,13 @@ export default class Index extends React.Component {
         instance.close()
         break
       case 'right':
-        Dialog.confirm({
-          message: '确定删除吗？',
-        }).then(() => {
-          instance.close()
-        })
+        dialog
+          .confirm({
+            message: '确定删除吗？',
+          })
+          .then(() => {
+            instance.close()
+          })
         break
     }
   }
