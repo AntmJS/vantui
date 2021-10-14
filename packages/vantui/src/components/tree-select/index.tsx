@@ -61,7 +61,7 @@ export default function Index(props: TreeSelectProps) {
       <ScrollView scrollY className="van-tree-select__nav">
         <VanSidebar
           activeKey={mainActiveIndex}
-          onChange={_onClickNav}
+          onChange={_onClickNav as any}
           className="van-tree-select__nav__inner"
         >
           {items.map((item: any, index: number) => {
