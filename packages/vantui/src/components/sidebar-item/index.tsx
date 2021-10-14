@@ -45,7 +45,7 @@ export default function Index(
     function () {
       if (disabled) return
       setAction(index).then(() => {
-        onChange?.(index)
+        onChange?.({ detail: index } as any)
         onClick?.(index)
       })
     },

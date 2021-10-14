@@ -17,9 +17,9 @@ function rootStyle(data: any) {
 }
 
 function wrapperStyle(data: any) {
-  const offset = addUnit(
-    data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2,
-  )
+  const off = data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2
+  const offNum = Math.ceil(off / data.itemHeight)
+  const offset = addUnit(offNum * data.itemHeight)
 
   return style({
     transition: 'transform ' + data.duration + 'ms',

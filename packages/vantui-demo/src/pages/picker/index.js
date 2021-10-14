@@ -36,6 +36,7 @@ export default class Index extends React.Component {
 
   onChange1 = (event) => {
     const { value, index } = event.detail
+    console.info(event, value, index)
     toast(`Value: ${value}, Index：${index}`)
   }
 
@@ -51,7 +52,7 @@ export default class Index extends React.Component {
   onChange2 = (event) => {
     const { picker, value } = event.detail
     picker.setColumnValues(1, this.state.column3[value[0]])
-    Taro.getApp().picker = picker
+    // Taro.getApp().picker = picker
   }
 
   render() {
@@ -81,12 +82,12 @@ export default class Index extends React.Component {
         <DemoBlock title="多列联动">
           <Picker columns={column4} onChange={this.onChange2}></Picker>
         </DemoBlock>
-        <DemoBlock title="禁用选项">
+        {/* <DemoBlock title="禁用选项">
           <Picker columns={column2}></Picker>
         </DemoBlock>
         <DemoBlock title="加载状态">
           <Picker loading columns={column4}></Picker>
-        </DemoBlock>
+        </DemoBlock> */}
         <Toast id="van-toast"></Toast>
       </Block>
     )

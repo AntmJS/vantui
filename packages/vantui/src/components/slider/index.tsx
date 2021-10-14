@@ -16,6 +16,7 @@ function getDirection(x: number, y: number) {
   }
   return ''
 }
+let currentIndex = 0
 
 export default function Index(props: SliderProps) {
   const {
@@ -49,6 +50,11 @@ export default function Index(props: SliderProps) {
   const [touchState, setTouchState] = useState<any>({})
   const [newValue, setNewValue] = useState<any>({})
   const [startValue, setstartValue] = useState<any>()
+  const [currentIndex_, setCurrentIndex] = useState<number>()
+
+  useEffect(() => {
+    setCurrentIndex(currentIndex++)
+  }, [])
 
   const resetTouchStatus = useCallback(
     function () {
@@ -143,6 +149,7 @@ export default function Index(props: SliderProps) {
 
   const updateValue = useCallback(
     function (value: any, end?: any, drag?: boolean) {
+      console.info('update')
       if (isRange(value)) {
         value = handleOverlap(value).map((val: any) => format(val))
       } else {
@@ -191,19 +198,17 @@ export default function Index(props: SliderProps) {
 
   useEffect(
     function () {
-      if (value !== value_) {
-        setValue(value)
-      }
+      setValue(value)
     },
-    [value, value_],
+    [value],
   )
 
-  useEffect(
-    function () {
-      updateValue(value_ || value)
-    },
-    [updateValue, value_, value],
-  )
+  useEffect(function () {
+    setTimeout(() => {
+      updateValue(value)
+    }, 3000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const onTouchStart = useCallback(
     function (event: any): any {
@@ -241,7 +246,7 @@ export default function Index(props: SliderProps) {
       }
       const touchState = touchMove(event)
       setDragStatus('draging')
-      getRect(null, '.van-slider').then((rect: any) => {
+      getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
         // const diff = (touchState.deltaX / rect.width) * getRange()
         const delta = vertical ? touchState.deltaY : touchState.deltaX
         const total = vertical ? rect.height : rect.width
@@ -270,6 +275,7 @@ export default function Index(props: SliderProps) {
       touchMove,
       updateValue,
       vertical,
+      currentIndex_,
     ],
   )
 
@@ -287,14 +293,9 @@ export default function Index(props: SliderProps) {
   const onClick = useCallback(
     function (event: any) {
       if (disabled) return
-      getRect(null, '.van-slider').then((rect: any) => {
-        const touchState = touchMove(event)
-        // const value = ((event.clientX - rect.left) / rect.width) * getRange() + min
-        const delta = vertical
-          ? touchState.clientY - rect.top
-          : touchState.clientX - rect.left
-        const total = vertical ? rect.height : rect.width
-        const value = Number(min) + (delta / total) * getRange()
+      getRect(null, `.van-slider${currentIndex_} `).then((rect: any) => {
+        const value =
+          ((event.clientX - rect.left) / rect.width) * getRange() + min
 
         if (isRange(value_)) {
           const [left, right] = value_
@@ -309,17 +310,10 @@ export default function Index(props: SliderProps) {
         }
       })
     },
-    [
-      disabled,
-      getRange,
-      isRange,
-      min,
-      updateValue,
-      value_,
-      vertical,
-      touchMove,
-    ],
+    [disabled, getRange, isRange, min, updateValue, value_, currentIndex_],
   )
+
+  console.info(range)
 
   return (
     <View
@@ -329,7 +323,7 @@ export default function Index(props: SliderProps) {
           disabled,
           vertical,
         }) +
-        ' ' +
+        ` van-slider${currentIndex_} ` +
         className
       }
       style={utils.style([wrapperStyle, style])}
@@ -363,7 +357,7 @@ export default function Index(props: SliderProps) {
             )}
           </View>
         )}
-        {range && (
+        {!range && (
           <View
             className={utils.bem('slider__button-wrapper-right')}
             data-index={1}
@@ -393,7 +387,7 @@ export default function Index(props: SliderProps) {
           >
             {useButtonSlot ? (
               renderButton ? (
-                renderButton(value_ as number)
+                renderButton
               ) : (
                 ''
               )

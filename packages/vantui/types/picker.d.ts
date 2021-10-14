@@ -16,7 +16,7 @@ interface PickerEvents {
 
 type PickerOptions = (string | PickerColumn)[]
 
-interface PickerChangeEvents {
+export type PickerChangeEvents = {
   detail: {
     value: number | number[]
     picker: IPickerInstance

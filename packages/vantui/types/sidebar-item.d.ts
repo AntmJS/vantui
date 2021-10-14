@@ -1,6 +1,10 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
-
+interface onChangeEvent {
+  event: {
+    detail?: number
+  }
+}
 export interface SidebarItemProps extends StandardProps {
   dot?: boolean
   badge?: string
@@ -8,7 +12,7 @@ export interface SidebarItemProps extends StandardProps {
   title?: string
   disabled?: boolean
   onClick?: (a: any) => void
-  onChange?: (a: any) => void
+  onChange?: (a: onChangeEvent) => void
   renderTitle?: (a: any) => React.ReactNode
 }
 
