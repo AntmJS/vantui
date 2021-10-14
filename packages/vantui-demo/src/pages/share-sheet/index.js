@@ -74,7 +74,7 @@ export default class Index extends React.Component {
     this.setState({
       show: {
         ...this.state.show,
-        [event.target.dataset.type]: true,
+        [event.currentTarget['data-type']]: true,
       },
     })
   }
