@@ -14,6 +14,7 @@ import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 
 let ARRAY: Array<any> = []
+let currentIndexInit = 0
 
 export default function Index(props: DropdownMenuProps) {
   const {
@@ -33,6 +34,7 @@ export default function Index(props: DropdownMenuProps) {
   const [windowHeight, setWindowHeight] = useState(0)
   const childrenInstance = useRef<Array<any>>([])
   const TimerKey = useRef<Date>()
+  const [currentIndex, setCurrentIndex] = useState<number>()
 
   const close = useCallback(function () {
     childrenInstance.current.forEach((child) => {
@@ -62,6 +64,7 @@ export default function Index(props: DropdownMenuProps) {
   useEffect(function () {
     return function () {
       ARRAY = (ARRAY || []).filter((item) => item && item.TimerKey !== TimerKey)
+      setCurrentIndex(currentIndexInit++)
     }
   }, [])
 
@@ -90,7 +93,9 @@ export default function Index(props: DropdownMenuProps) {
           menuItem.close()
         }
       })
-      toggleItem(index)
+      setTimeout(() => {
+        toggleItem(index)
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -112,22 +117,24 @@ export default function Index(props: DropdownMenuProps) {
 
   const getChildWrapperStyle = useCallback(
     function () {
-      return getRect(null, '.van-dropdown-menu').then((rect: any) => {
-        const { top = 0, bottom = 0 } = rect
-        const offset = direction === 'down' ? bottom : windowHeight - top
-        const wrapperStyle: React.CSSProperties = {
-          zIndex: zIndex,
-        }
-        if (direction === 'down') {
-          wrapperStyle.top = addUnit(offset * 2)
-        } else {
-          wrapperStyle.bottom = addUnit(offset * 2)
-        }
+      return getRect(null, `.van-dropdown-menu${currentIndex}`).then(
+        (rect: any) => {
+          const { top = 0, bottom = 0 } = rect
+          const offset = direction === 'down' ? bottom : windowHeight - top
+          const wrapperStyle: React.CSSProperties = {
+            zIndex: zIndex,
+          }
+          if (direction === 'down') {
+            wrapperStyle.top = addUnit(offset * 2)
+          } else {
+            wrapperStyle.bottom = addUnit(offset * 2)
+          }
 
-        return wrapperStyle
-      })
+          return wrapperStyle
+        },
+      )
     },
-    [direction, zIndex, windowHeight],
+    [currentIndex, direction, windowHeight, zIndex],
   )
 
   const ResetChildren = useMemo(
@@ -172,8 +179,8 @@ export default function Index(props: DropdownMenuProps) {
 
   return (
     <View
-      className={'van-dropdown-menu van-dropdown-menu--top-bottom ' + className}
-      style={utils.style([style])}
+      className={`van-dropdown-menu van-dropdown-menu${currentIndex} van-dropdown-menu--top-bottom  ${className}`}
+      style={utils.style([style, { position: 'relative' }])}
     >
       {itemListData.map((item: any, index: number) => {
         return (

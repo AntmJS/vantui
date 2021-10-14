@@ -43,6 +43,7 @@ export default class Index extends React.Component {
 
   onInput = (event) => {
     const { detail, currentTarget } = event
+    console.info(currentTarget)
     const result = this.getResult(detail, currentTarget.dataset.type)
 
     toast(result)

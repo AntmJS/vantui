@@ -19,6 +19,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
+    console.info(event)
     notify({
       type: 'primary',
       message: `切换至第${event.detail}项`,

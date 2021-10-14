@@ -188,7 +188,7 @@ function Index(
       },
       {
         threshold: [0.6],
-        root: document.getElementsByClassName('van-calendar__body')[0],
+        // root: document.getElementsByClassName('van-calendar__body')[0],
       },
     )
     contentObserver.current = contentObserver_
