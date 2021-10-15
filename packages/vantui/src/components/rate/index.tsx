@@ -49,7 +49,7 @@ export default function Index(props: RateProps) {
     if (!touchable) return
     const { clientX } = event?.touches?.[0] ?? {}
     if (clientX) {
-      getAllRect(null, `.comId${indexRef.current} .van-rate__icon`).then(
+      getAllRect(null, `.rateComId${indexRef.current} .van-rate__icon`).then(
         (list: any) => {
           const target = list
             .sort((cur: any, next: any) => {
@@ -102,7 +102,7 @@ export default function Index(props: RateProps) {
   return (
     <View
       className={
-        `comId${indexRef.current} ` +
+        `rateComId${indexRef.current} ` +
         utils.bem('rate') +
         ' custom-class ' +
         className
