@@ -106,6 +106,8 @@ export default function Index(props: UploaderProps) {
           })
           event.detail = params
           onBeforeRead?.(event)
+        }).catch((err) => {
+          console.log('err: ', err)
         })
       }
       if (!res) {

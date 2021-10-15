@@ -40,7 +40,7 @@ export default class Index extends React.Component {
 
   beforeRead = (event) => {
     const { file, callback = () => {} } = event.detail
-    if (file.url.indexOf('jpeg') < 0) {
+    if (file && file.url && file.url.indexOf('jpeg') < 0) {
       Taro.showToast({ title: '请选择jpg图片上传', icon: 'none' })
       callback(false)
       return
@@ -63,8 +63,9 @@ export default class Index extends React.Component {
   delete = (event) => {
     const { index, name } = event.detail
     const fileList = this.state[`fileList${name}`]
-    fileList.splice(index, 1)
-    this.setState({ [`fileList${name}`]: fileList })
+    const _fileList = JSON.parse(JSON.stringify(fileList))
+    _fileList.splice(index, 1)
+    this.setState({ [`fileList${name}`]: _fileList })
   }
 
   clickPreview = () => {}

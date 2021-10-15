@@ -61,7 +61,7 @@ export default function Index(props: TabbarProps) {
           current: data,
         }
       })
-      onChange?.(data)
+      onChange?.({ detail: data })
     },
     [onChange],
   )

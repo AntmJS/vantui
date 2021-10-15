@@ -66,7 +66,7 @@ export default function Index(props: ButtonProps) {
       {...others}
     >
       {loading ? (
-        <Block>
+        <View style="display: flex">
           <Loading
             className="loading-class"
             size={loadingSize}
@@ -80,7 +80,7 @@ export default function Index(props: ButtonProps) {
           {loadingText && (
             <View className="van-button__loading-text">{loadingText}</View>
           )}
-        </Block>
+        </View>
       ) : (
         <Block>
           {icon && (

@@ -82,7 +82,7 @@ export default function Index(props: SearchProps) {
     >
       <View className={utils.bem('search__content', [shape])}>
         {label ? (
-          <View className="van-search__label">{{ label }}</View>
+          <View className="van-search__label">{label}</View>
         ) : (
           renderLabel
         )}
@@ -128,7 +128,7 @@ export default function Index(props: SearchProps) {
             renderAction
           ) : (
             <View onClick={_cancel} className="cancel-class">
-              {{ actionText }}
+              {actionText}
             </View>
           )}
         </View>

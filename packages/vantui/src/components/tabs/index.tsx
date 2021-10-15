@@ -46,6 +46,7 @@ function parseTabList(children: React.ReactNode): any[] {
     .filter((tab) => tab)
 }
 
+let comIndex = 0
 export default function Index(props: TabsProps) {
   const ref = useRef({
     skipInit: false,
@@ -58,6 +59,8 @@ export default function Index(props: TabsProps) {
     startY: 0,
     swiping: false,
   })
+
+  const indexRef = useRef(comIndex)
   const [state, setState]: any = useState({
     tabs: [],
     scrollLeft: 0,
@@ -185,8 +188,8 @@ export default function Index(props: TabsProps) {
     }
     index = index ?? currentIndex
     Promise.all([
-      getAllRect(null, '.van-tab'),
-      getRect(null, '.van-tabs__line'),
+      getAllRect(null, `.tabsComId${indexRef.current} .van-tab`),
+      getRect(null, `.tabsComId${indexRef.current} .van-tabs__line`),
     ]).then(([rects = [], lineRect]: any) => {
       if (rects && lineRect) {
         const rect = rects[index!]
@@ -375,11 +378,16 @@ export default function Index(props: TabsProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [swipeThreshold],
   )
-
+  useEffect(() => {
+    comIndex++
+    indexRef.current = comIndex
+  }, [])
   return (
     <View
       className={
-        'custom-class ' + utils.bem('tabs', [type] + ` ${className || ''}`)
+        `tabsComId${indexRef.current} ` +
+        'custom-class ' +
+        utils.bem('tabs', [type] + ` ${className || ''}`)
       }
       style={style}
       {...others}

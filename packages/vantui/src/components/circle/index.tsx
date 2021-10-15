@@ -14,11 +14,13 @@ function format(rate: number) {
 const PERIMETER = 2 * Math.PI
 const BEGIN_ANGLE = -Math.PI / 2
 const STEP = 1
+let CIRCLE_INDEX = 0
 
 export default function Index(props: CircleProps) {
   const [state, setState] = useState({
     ready: false,
     hoverColor: '',
+    unitag: 'van-circle',
   })
 
   const ref: any = useRef({
@@ -45,72 +47,47 @@ export default function Index(props: CircleProps) {
     ...others
   } = props
 
-  Taro.useReady(() => {
-    // taro h5 nativeProps问题还未修复 此处为hack处理
-    if (process.env.TARO_ENV === 'h5') {
-      const canvas = document.getElementsByTagName('canvas')[0]
-      canvas?.setAttribute('width', String(size))
-      canvas?.setAttribute('height', String(size))
-    }
-
+  useEffect(() => {
     setState((state) => {
       return {
         ...state,
-        ready: true,
+        unitag:
+          process.env.TARO_ENV === 'h5'
+            ? `van-circle_uni_${CIRCLE_INDEX++}`
+            : 'van-circle',
       }
+    })
+  }, [])
+
+  Taro.useReady(() => {
+    // taro h5 nativeProps问题还未修复 hack处理
+    Taro.nextTick(() => {
+      if (process.env.TARO_ENV === 'h5') {
+        const taroCanvas = document.querySelector(`.${state.unitag}`)
+        const canvas = taroCanvas?.children?.[0]
+
+        canvas?.setAttribute('width', String(size))
+        canvas?.setAttribute('height', String(size))
+      }
+
+      setState((state) => {
+        return {
+          ...state,
+          ready: true,
+        }
+      })
     })
   })
 
-  useEffect(() => {
-    if (state.ready) {
-      ref.current.currentValue = value
-      setHoverColor().then(() => {
-        if (process.env.TARO_ENV === 'h5') {
-          reRender()
-        } else {
-          drawCircle(ref.current.currentValue)
-        }
-      })
-    }
-
-    return () => {
-      clearMockInterval()
-    }
-    /* eslint-disable-next-line */
-  }, [state.ready])
-
-  useEffect(() => {
-    if (state.ready) {
-      reRender()
-    }
-    /* eslint-disable-next-line */
-  }, [state.ready, value])
-
-  useEffect(() => {
-    if (state.ready) {
-      drawCircle(ref.current.currentValue)
-    }
-    /* eslint-disable-next-line */
-  }, [state.ready, size])
-
-  useEffect(() => {
-    if (state.ready) {
-      setHoverColor().then(() => {
-        drawCircle(ref.current.currentValue)
-      })
-    }
-    /* eslint-disable-next-line */
-  }, [state.ready, color])
-
   const getContext = useCallback(() => {
     if (type === '' || !canIUseCanvas2d()) {
-      const ctx = Taro.createCanvasContext('van-circle')
+      const ctx = Taro.createCanvasContext(state.unitag)
       return Promise.resolve(ctx)
     }
     const dpr = getSystemInfoSync().pixelRatio
     return new Promise((resolve: any) => {
       createSelectorQuery()
-        .select('#van-circle')
+        .select(`.${state.unitag}`)
         .node()
         .exec((res: any) => {
           const canvas = res[0].node
@@ -124,7 +101,7 @@ export default function Index(props: CircleProps) {
           resolve(adaptor(ctx))
         })
     })
-  }, [size, type])
+  }, [size, type, state.unitag])
   const setHoverColor = useCallback(() => {
     if (isObj(color)) {
       const _color = color as Record<string, string>
@@ -238,6 +215,49 @@ export default function Index(props: CircleProps) {
     run()
   }, [drawCircle, speed, value, clearMockInterval])
 
+  useEffect(() => {
+    if (state.ready) {
+      reRender()
+    }
+  }, [reRender, state.ready, value])
+
+  useEffect(() => {
+    if (state.ready) {
+      drawCircle(ref.current.currentValue)
+    }
+    // eslint-disable-next-line
+  }, [state.ready, size])
+
+  useEffect(() => {
+    if (state.ready) {
+      setHoverColor().then(() => {
+        drawCircle(ref.current.currentValue)
+      })
+    }
+    // eslint-disable-next-line
+  }, [state.ready, color])
+
+  useEffect(() => {
+    if (process.env.TARO_ENV !== 'h5') {
+      if (state.ready) {
+        ref.current.currentValue = value
+        setHoverColor().then(() => {
+          // if (process.env.TARO_ENV === 'h5') {
+          //   reRender()
+          // } else {
+          //   drawCircle(ref.current.currentValue)
+          // }
+          drawCircle(ref.current.currentValue)
+        })
+      }
+    }
+
+    return () => {
+      clearMockInterval()
+    }
+    /* eslint-disable-next-line */
+  }, [drawCircle, state.ready])
+
   return (
     <View className={`van-circle ${className}`} style={style} {...others}>
       <Canvas
@@ -246,11 +266,11 @@ export default function Index(props: CircleProps) {
         width={size}
         height={size}
         nativeProps={{ width: size, height: size }}
-        className="van-circle__canvas"
+        className={`van-circle__canvas ${state.unitag}`}
         type={type}
         style={'width: ' + `${size}px` + ';height:' + `${size}px`}
-        id="van-circle"
-        canvasId="van-circle"
+        id={state.unitag}
+        canvasId={state.unitag}
       ></Canvas>
       {!text ? (
         <View className="van-circle__text">{children}</View>

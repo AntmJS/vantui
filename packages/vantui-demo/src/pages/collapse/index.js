@@ -1,7 +1,6 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
-
 import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -27,7 +26,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    const { key } = event
+    const { key } = event.currentTarget.dataset
     this.setState({
       [key]: event.detail,
     })
@@ -59,9 +58,16 @@ export default class Index extends React.Component {
         <DemoBlock title="基础用法">
           <Collapse
             value={active1}
-            data-key="active1"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'active1' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'active1' },
+                },
+                target: {
+                  dataset: { key: 'active1' },
+                },
+              })
             }}
           >
             <CollapseItem title={title1}>{content1}</CollapseItem>
@@ -74,10 +80,17 @@ export default class Index extends React.Component {
         <DemoBlock title="手风琴">
           <Collapse
             value={active2}
-            data-key="active2"
             accordion
             onChange={(e) => {
-              this.onChange({ ...e, key: 'active2' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'active2' },
+                },
+                target: {
+                  dataset: { key: 'active2' },
+                },
+              })
             }}
           >
             <CollapseItem title={title1}>{content1}</CollapseItem>
@@ -88,15 +101,38 @@ export default class Index extends React.Component {
         <DemoBlock title="事件监听">
           <Collapse
             value={active3}
-            data-key="active3"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'active3' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'active3' },
+                },
+                target: {
+                  dataset: { key: 'active3' },
+                },
+              })
             }}
             onOpen={(e) => {
-              this.onOpen({ ...e, key: 'active3' })
+              this.onOpen({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'active3' },
+                },
+                target: {
+                  dataset: { key: 'active3' },
+                },
+              })
             }}
             onClose={(e) => {
-              this.onClose({ ...e, key: 'active3' })
+              this.onClose({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'active3' },
+                },
+                target: {
+                  dataset: { key: 'active3' },
+                },
+              })
             }}
           >
             <CollapseItem title={title1}>{content1}</CollapseItem>
@@ -107,9 +143,16 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义标题内容">
           <Collapse
             value={active4}
-            data-key="active4"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'active4' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'active4' },
+                },
+                target: {
+                  dataset: { key: 'active4' },
+                },
+              })
             }}
           >
             <CollapseItem

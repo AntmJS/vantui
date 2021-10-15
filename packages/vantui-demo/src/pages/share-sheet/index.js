@@ -75,7 +75,7 @@ export default class Index extends React.Component {
     this.setState({
       show: {
         ...this.state.show,
-        [event.type]: true,
+        [event.target.dataset.type]: true,
       },
     })
   }
@@ -110,9 +110,16 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="显示分享面板"
-            data-type="basic"
             onClick={(e) => {
-              this.onShowShareSheet({ ...e, type: 'basic' })
+              this.onShowShareSheet({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'basic' },
+                },
+                target: {
+                  dataset: { type: 'basic' },
+                },
+              })
             }}
           ></Cell>
           <ShareSheet
@@ -127,9 +134,16 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="显示分享面板"
-            data-type="multiLine"
             onClick={(e) => {
-              this.onShowShareSheet({ ...e, type: 'multiLine' })
+              this.onShowShareSheet({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'multiLine' },
+                },
+                target: {
+                  dataset: { type: 'multiLine' },
+                },
+              })
             }}
           ></Cell>
           <ShareSheet
@@ -144,9 +158,16 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="显示分享面板"
-            data-type="customIcon"
             onClick={(e) => {
-              this.onShowShareSheet({ ...e, type: 'customIcon' })
+              this.onShowShareSheet({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'customIcon' },
+                },
+                target: {
+                  dataset: { type: 'customIcon' },
+                },
+              })
             }}
           ></Cell>
           <ShareSheet
@@ -160,9 +181,16 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="显示分享面板"
-            data-type="withDesc"
             onClick={(e) => {
-              this.onShowShareSheet({ ...e, type: 'withDesc' })
+              this.onShowShareSheet({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'withDesc' },
+                },
+                target: {
+                  dataset: { type: 'withDesc' },
+                },
+              })
             }}
           ></Cell>
           <ShareSheet

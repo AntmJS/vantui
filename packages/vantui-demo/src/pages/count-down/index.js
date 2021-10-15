@@ -24,17 +24,18 @@ export default class Index extends React.Component {
   }
 
   start = () => {
-    const countDown = this.selectComponent('.control-count-down')
+    const countDown = this.controlCountDown
+
     countDown.start()
   }
 
   pause = () => {
-    const countDown = this.selectComponent('.control-count-down')
+    const countDown = this.controlCountDown
     countDown.pause()
   }
 
   reset = () => {
-    const countDown = this.selectComponent('.control-count-down')
+    const countDown = this.controlCountDown
     countDown.reset()
   }
 
@@ -65,6 +66,9 @@ export default class Index extends React.Component {
         <DemoBlock title="手动控制">
           <CountDown
             className="control-count-down"
+            ref={(c) => {
+              this.controlCountDown = c
+            }}
             millisecond
             time={3000}
             autoStart={false}

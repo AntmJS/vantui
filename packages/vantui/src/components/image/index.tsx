@@ -30,6 +30,8 @@ export default function Index(props: ImageProps) {
     showLoading = true,
     className,
     style,
+    renderError,
+    renderLoading,
     ...others
   } = props
 
@@ -41,7 +43,7 @@ export default function Index(props: ImageProps) {
       if (loading === undefined) setLoading(true)
       setError(false)
     },
-    [src, loading],
+    [loading],
   )
 
   const onLoad = useCallback(function () {
@@ -93,7 +95,7 @@ export default function Index(props: ImageProps) {
       {!error && (
         <Image
           src={src}
-          mode={computed.mode(fit as FitType) as TaroImageMode}
+          mode={computed.mode(fit || ('none' as FitType)) as TaroImageMode}
           lazyLoad={lazyLoad}
           className="image-class van-image__img"
           showMenuByLongpress={showMenuByLongpress}
@@ -105,7 +107,7 @@ export default function Index(props: ImageProps) {
       {loading && showLoading && (
         <View className="loading-class van-image__loading">
           {useLoadingSlot ? (
-            others.renderLoading
+            renderLoading
           ) : (
             <VanIcon name="photo" className="van-image__loading-icon"></VanIcon>
           )}
@@ -114,7 +116,7 @@ export default function Index(props: ImageProps) {
       {error && showError && (
         <View className="error-class van-image__error">
           {useErrorSlot ? (
-            others.renderError
+            renderError
           ) : (
             <VanIcon
               name="photo-fail"

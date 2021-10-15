@@ -8,11 +8,14 @@ import { getRect, requestAnimationFrame } from '../common/utils'
 import VanIcon from '../icon/index'
 import * as computed from './wxs'
 
+let NOTICE_BAR_INDEX = 0
+
 export default function Index(props: NoticeBarProps) {
   const [state, setState] = useState({
     ready: false,
     show: true,
     animationData: { actions: [] },
+    unitag: 0,
   })
 
   const params: any = {
@@ -38,7 +41,7 @@ export default function Index(props: NoticeBarProps) {
     color = '#ed6a0c',
     backgroundColor = '#fffbe8',
     background,
-    wrapable = false,
+    wrapable,
     renderLeftIcon,
     renderRightIcon,
     onClick,
@@ -48,6 +51,15 @@ export default function Index(props: NoticeBarProps) {
     children,
     ...others
   } = props
+
+  useEffect(() => {
+    setState((state) => {
+      return {
+        ...state,
+        unitag: NOTICE_BAR_INDEX++,
+      }
+    })
+  }, [])
 
   Taro.useReady(() => {
     ref.current.resetAnimation = Taro.createAnimation({
@@ -108,8 +120,8 @@ export default function Index(props: NoticeBarProps) {
   const init = useCallback(() => {
     requestAnimationFrame(() => {
       Promise.all([
-        getRect(null, '.van-notice-bar__content'),
-        getRect(null, '.van-notice-bar__wrap'),
+        getRect(null, `.van-notice-bar__content_${state.unitag}`),
+        getRect(null, `.van-notice-bar__wrap_${state.unitag}`),
       ]).then((rects) => {
         const contentRect: any = rects[0]
         const wrapRect: any = rects[1]
@@ -123,21 +135,23 @@ export default function Index(props: NoticeBarProps) {
         ) {
           return
         }
-        if (scrollable || wrapRect.width < contentRect.width) {
-          ref.current.wrapWidth = wrapRect.width
-          ref.current.contentWidth = contentRect.width
-          ref.current.duration =
-            ((wrapRect.width + contentRect.width) / speed) * 1000
-          ref.current.animation = Taro.createAnimation({
-            duration: ref.current.duration,
-            timingFunction: 'linear',
-            delay,
-          })
-          scroll()
-        }
+        Taro.nextTick(() => {
+          if (scrollable || wrapRect.width <= contentRect.width) {
+            ref.current.wrapWidth = wrapRect.width
+            ref.current.contentWidth = contentRect.width
+            ref.current.duration =
+              ((wrapRect.width + contentRect.width) / speed) * 1000
+            ref.current.animation = Taro.createAnimation({
+              duration: ref.current.duration,
+              timingFunction: 'linear',
+              delay,
+            })
+            scroll()
+          }
+        })
       })
     })
-  }, [scrollable, speed, delay, scroll])
+  }, [state.unitag, scrollable, speed, delay, scroll])
 
   const onClickIcon = useCallback(
     (event: ITouchEvent) => {
@@ -185,10 +199,12 @@ export default function Index(props: NoticeBarProps) {
         ) : (
           renderLeftIcon
         )}
-        <View className="van-notice-bar__wrap">
+        <View
+          className={`van-notice-bar__wrap van-notice-bar__wrap_${state.unitag}`}
+        >
           <View
             className={
-              'van-notice-bar__content van-ellipsis ' +
+              `van-notice-bar__content van-notice-bar__content_${state.unitag} ` +
               (scrollable === false && !wrapable ? 'van-ellipsis' : '')
             }
             animation={state.animationData}

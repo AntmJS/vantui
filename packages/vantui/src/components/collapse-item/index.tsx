@@ -42,6 +42,8 @@ export default function Index(
     ...others
   } = props
 
+  const refDom = useRef(null)
+
   useEffect(() => {
     updateExpanded()
     ref.current.mounted = true
@@ -64,7 +66,7 @@ export default function Index(
       ? value === currentName
       : (value || []).some((name: any) => name === currentName)
     if (expanded !== state.expanded) {
-      setContentAnimate(null, expanded, ref.current.mounted, setState)
+      setContentAnimate(null, expanded, ref.current.mounted, setState, refDom)
     }
     setState((state) => {
       return {
@@ -124,7 +126,7 @@ export default function Index(
         }
         animation={state.animation}
       >
-        <View className="van-collapse-item__content content-class">
+        <View className="van-collapse-item__content content-class" ref={refDom}>
           {children}
         </View>
       </View>

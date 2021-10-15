@@ -1,7 +1,6 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
-
 import { Image, CheckboxGroup, Checkbox, CellGroup, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -29,7 +28,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    const { key } = event
+    const { key } = event.currentTarget.dataset
     this.setState({ [key]: event.detail })
   }
 
@@ -41,9 +40,12 @@ export default class Index extends React.Component {
   }
 
   toggle = (event) => {
-    const { index } = event
-    const checkbox = this.selectComponent(`.checkboxes-${index}`)
-    checkbox.toggle()
+    const { index, name } = event.currentTarget.dataset
+    const arr = this.state[name]
+    arr[index] = !arr[index]
+    this.setState({
+      [name]: arr,
+    })
   }
 
   noop = () => {}
@@ -69,10 +71,17 @@ export default class Index extends React.Component {
         <DemoBlock title="基本用法">
           <Checkbox
             value={checkbox1}
-            data-key="checkbox1"
             className="demo-checkbox"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'checkbox1' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'checkbox1' },
+                },
+                target: {
+                  dataset: { key: 'checkbox1' },
+                },
+              })
             }}
           >
             复选框
@@ -89,11 +98,18 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义形状">
           <Checkbox
             value={checkboxShape}
-            data-key="checkboxShape"
             shape="square"
             className="demo-checkbox"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'checkboxShape' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'checkboxShape' },
+                },
+                target: {
+                  dataset: { key: 'checkboxShape' },
+                },
+              })
             }}
           >
             复选框
@@ -102,11 +118,18 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义颜色">
           <Checkbox
             value={checkbox2}
-            data-key="checkbox2"
             checkedColor="#07c160"
             className="demo-checkbox"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'checkbox2' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'checkbox2' },
+                },
+                target: {
+                  dataset: { key: 'checkbox2' },
+                },
+              })
             }}
           >
             复选框
@@ -116,10 +139,17 @@ export default class Index extends React.Component {
           <Checkbox
             iconSize="25px"
             value={checkboxSize}
-            data-key="checkboxSize"
             className="demo-checkbox"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'checkboxSize' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'checkboxSize' },
+                },
+                target: {
+                  dataset: { key: 'checkboxSize' },
+                },
+              })
             }}
           >
             复选框
@@ -129,10 +159,17 @@ export default class Index extends React.Component {
           <Checkbox
             useIconSlot
             value={checkbox3}
-            data-key="checkbox3"
             className="demo-checkbox"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'checkbox3' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'checkbox3' },
+                },
+                target: {
+                  dataset: { key: 'checkbox3' },
+                },
+              })
             }}
             renderIcon={
               <Block>
@@ -151,10 +188,17 @@ export default class Index extends React.Component {
           <Checkbox
             labelDisabled
             value={checkboxLabel}
-            data-key="checkboxLabel"
             className="demo-checkbox"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'checkboxLabel' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'checkboxLabel' },
+                },
+                target: {
+                  dataset: { key: 'checkboxLabel' },
+                },
+              })
             }}
           >
             复选框
@@ -163,9 +207,16 @@ export default class Index extends React.Component {
         <DemoBlock title="复选框组">
           <CheckboxGroup
             value={result}
-            data-key="result"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'result' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'result' },
+                },
+                target: {
+                  dataset: { key: 'result' },
+                },
+              })
             }}
           >
             {list.map((item, index) => {
@@ -181,9 +232,16 @@ export default class Index extends React.Component {
           <CheckboxGroup
             direction="horizontal"
             value={result4}
-            data-key="result4"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'result4' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'result4' },
+                },
+                target: {
+                  dataset: { key: 'result4' },
+                },
+              })
             }}
           >
             {list.map((item, index) => {
@@ -198,10 +256,17 @@ export default class Index extends React.Component {
         <DemoBlock title="限制最大可选数">
           <CheckboxGroup
             value={result2}
-            data-key="result2"
             max="2"
             onChange={(e) => {
-              this.onChange({ ...e, key: 'result2' })
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'result2' },
+                },
+                target: {
+                  dataset: { key: 'result2' },
+                },
+              })
             }}
           >
             {list.map((item, index) => {
@@ -214,13 +279,7 @@ export default class Index extends React.Component {
           </CheckboxGroup>
         </DemoBlock>
         <DemoBlock title="搭配单元格组件使用">
-          <CheckboxGroup
-            value={result3}
-            data-key="result3"
-            onChange={(e) => {
-              this.onChange({ ...e, key: 'result3' })
-            }}
-          >
+          <CheckboxGroup value={result3} data-key="result3">
             <CellGroup>
               {list.map((item, index) => {
                 return (
@@ -230,15 +289,24 @@ export default class Index extends React.Component {
                     valueClass="value-class"
                     clickable
                     data-index={index}
-                    onClick={(e) => {
-                      this.toggle({ ...e, index: index })
-                    }}
+                    data-name="result3"
                   >
                     <Checkbox
-                      onClick={this.noop}
+                      value={result3[index]}
+                      onChange={(event) => {
+                        this.toggle({
+                          detail: e.detail,
+                          currentTarget: {
+                            dataset: { index: index, name: 'result3' },
+                          },
+                          target: {
+                            dataset: { index: index, name: 'result3' },
+                          },
+                        })
+                      }}
                       className={'checkboxes-' + index}
                       name={item}
-                    ></Checkbox>
+                    />
                   </Cell>
                 )
               })}

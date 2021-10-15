@@ -16,21 +16,22 @@ function rootStyle(data: any) {
   })
 }
 
-// function wrapperStyle(data: any) {
-//   const off = data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2
-//   const offNum = Math.ceil(off / data.itemHeight)
-//   const offset = addUnit(offNum * data.itemHeight)
-
-//   return style({
-//     transition: 'transform ' + data.duration + 'ms',
-//     'line-height': addUnit(data.itemHeight),
-//     transform: 'translate3d(0, ' + offset + ', 0)',
-//   })
-// }
 function wrapperStyle(data: any) {
-  const offset = addUnit(
-    data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2,
-  )
+  if (process.env.TARO_ENV === 'h5') {
+    const offset = addUnit(
+      data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2,
+    )
+
+    return style({
+      transition: 'transform ' + data.duration + 'ms',
+      'line-height': addUnit(data.itemHeight),
+      transform: 'translate3d(0, ' + offset + ', 0)',
+    })
+  }
+
+  const off = data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2
+  const offNum = Math.ceil(off / data.itemHeight)
+  const offset = addUnit(offNum * data.itemHeight)
 
   return style({
     transition: 'transform ' + data.duration + 'ms',

@@ -23,7 +23,7 @@ export default class Index extends React.Component {
       background: '#ffe1e1',
     })
 
-    notify.clear()
+    // notify.clear()
   }
 
   showCustomDuration = () => {
@@ -34,7 +34,7 @@ export default class Index extends React.Component {
   }
 
   showNotifyByType = (event) => {
-    const { type } = event
+    const { type } = event.currentTarget.dataset
     notify({
       type,
       message: '通知内容',
@@ -61,9 +61,16 @@ export default class Index extends React.Component {
             <Button
               className="demo-margin-right"
               type="info"
-              data-type="primary"
               onClick={(e) => {
-                this.showNotifyByType({ ...e, type: 'primary' })
+                this.showNotifyByType({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'primary' },
+                  },
+                  target: {
+                    dataset: { type: 'primary' },
+                  },
+                })
               }}
             >
               主要通知
@@ -71,9 +78,16 @@ export default class Index extends React.Component {
             <Button
               className="demo-margin-right"
               type="primary"
-              data-type="success"
               onClick={(e) => {
-                this.showNotifyByType({ ...e, type: 'success' })
+                this.showNotifyByType({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'success' },
+                  },
+                  target: {
+                    dataset: { type: 'success' },
+                  },
+                })
               }}
             >
               成功通知
@@ -83,18 +97,32 @@ export default class Index extends React.Component {
             <Button
               className="demo-margin-right"
               type="danger"
-              data-type="danger"
               onClick={(e) => {
-                this.showNotifyByType({ ...e, type: 'danger' })
+                this.showNotifyByType({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'danger' },
+                  },
+                  target: {
+                    dataset: { type: 'danger' },
+                  },
+                })
               }}
             >
               危险通知
             </Button>
             <Button
               type="warning"
-              data-type="warning"
               onClick={(e) => {
-                this.showNotifyByType({ ...e, type: 'warning' })
+                this.showNotifyByType({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'warning' },
+                  },
+                  target: {
+                    dataset: { type: 'warning' },
+                  },
+                })
               }}
             >
               警告通知
