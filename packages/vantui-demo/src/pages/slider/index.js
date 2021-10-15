@@ -51,8 +51,8 @@ export default class Index extends React.Component {
         <DemoBlock title="指定选择范围">
           <Slider
             className="slider"
-            min="-50"
-            max="50"
+            min={-50}
+            max={50}
             onChange={this.onChange}
           ></Slider>
         </DemoBlock>
