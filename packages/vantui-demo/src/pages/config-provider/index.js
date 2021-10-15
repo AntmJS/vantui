@@ -33,7 +33,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    const { key } = event
+    const { key } = event.currentTarget.dataset
     this.setState({
       [key]: event.detail,
     })
@@ -52,9 +52,16 @@ export default class Index extends React.Component {
                   <View style="width: 100%">
                     <Rate
                       modelValue={rate}
-                      data-key="rate"
                       onChange={(e) => {
-                        this.onChange({ ...e, key: 'rate' })
+                        this.onChange({
+                          detail: e.detail,
+                          currentTarget: {
+                            dataset: { key: 'rate' },
+                          },
+                          target: {
+                            dataset: { key: 'rate' },
+                          },
+                        })
                       }}
                     ></Rate>
                   </View>
@@ -69,9 +76,16 @@ export default class Index extends React.Component {
                   <View style="width: 100%">
                     <Slider
                       value={slider}
-                      data-key="slider"
                       onChange={(e) => {
-                        this.onChange({ ...e, key: 'slider' })
+                        this.onChange({
+                          detail: e.detail,
+                          currentTarget: {
+                            dataset: { key: 'slider' },
+                          },
+                          target: {
+                            dataset: { key: 'slider' },
+                          },
+                        })
                       }}
                     ></Slider>
                   </View>
@@ -95,9 +109,16 @@ export default class Index extends React.Component {
                     <View style="width: 100%">
                       <Rate
                         modelValue={rate}
-                        data-key="rate"
                         onChange={(e) => {
-                          this.onChange({ ...e, key: 'rate' })
+                          this.onChange({
+                            detail: e.detail,
+                            currentTarget: {
+                              dataset: { key: 'rate' },
+                            },
+                            target: {
+                              dataset: { key: 'rate' },
+                            },
+                          })
                         }}
                       ></Rate>
                     </View>
@@ -112,9 +133,16 @@ export default class Index extends React.Component {
                     <View style="width: 100%">
                       <Slider
                         value={slider}
-                        data-key="slider"
                         onChange={(e) => {
-                          this.onChange({ ...e, key: 'slider' })
+                          this.onChange({
+                            detail: e.detail,
+                            currentTarget: {
+                              dataset: { key: 'slider' },
+                            },
+                            target: {
+                              dataset: { key: 'slider' },
+                            },
+                          })
                         }}
                       ></Slider>
                     </View>

@@ -104,7 +104,7 @@ export default class Index extends React.Component {
 
   show = (event) => {
     this.resetSettings()
-    const { type, id } = event
+    const { type, id } = event.currentTarget.dataset
     const data = {
       id,
       type,
@@ -192,31 +192,49 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="选择单个日期"
-            data-type="single"
-            data-id="selectSingle"
             value={computed.formatFullDate(date.selectSingle)}
             onClick={(e) => {
-              this.show({ ...e, type: 'single', id: 'selectSingle' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'single', id: 'selectSingle' },
+                },
+                target: {
+                  dataset: { type: 'single', id: 'selectSingle' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="选择多个日期"
-            data-type="multiple"
-            data-id="selectMultiple"
             value={computed.formatMultiple(date.selectMultiple)}
             onClick={(e) => {
-              this.show({ ...e, type: 'multiple', id: 'selectMultiple' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'multiple', id: 'selectMultiple' },
+                },
+                target: {
+                  dataset: { type: 'multiple', id: 'selectMultiple' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="选择日期区间"
-            data-type="range"
-            data-id="selectRange"
             value={computed.formatRange(date.selectRange)}
             onClick={(e) => {
-              this.show({ ...e, type: 'range', id: 'selectRange' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'range', id: 'selectRange' },
+                },
+                target: {
+                  dataset: { type: 'range', id: 'selectRange' },
+                },
+              })
             }}
           ></Cell>
         </DemoBlock>
@@ -224,21 +242,33 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="选择单个日期"
-            data-type="single"
-            data-id="quickSelect1"
             value={computed.formatFullDate(date.quickSelect1)}
             onClick={(e) => {
-              this.show({ ...e, type: 'single', id: 'quickSelect1' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'single', id: 'quickSelect1' },
+                },
+                target: {
+                  dataset: { type: 'single', id: 'quickSelect1' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="选择日期区间"
-            data-type="range"
-            data-id="quickSelect2"
             value={computed.formatRange(date.quickSelect2)}
             onClick={(e) => {
-              this.show({ ...e, type: 'range', id: 'quickSelect2' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'range', id: 'quickSelect2' },
+                },
+                target: {
+                  dataset: { type: 'range', id: 'quickSelect2' },
+                },
+              })
             }}
           ></Cell>
         </DemoBlock>
@@ -246,61 +276,97 @@ export default class Index extends React.Component {
           <Cell
             isLink
             title="自定义颜色"
-            data-type="range"
-            data-id="customColor"
             value={computed.formatRange(date.customColor)}
             onClick={(e) => {
-              this.show({ ...e, type: 'range', id: 'customColor' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'range', id: 'customColor' },
+                },
+                target: {
+                  dataset: { type: 'range', id: 'customColor' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="自定义日期范围"
-            data-type="single"
-            data-id="customRange"
             value={computed.formatFullDate(date.customRange)}
             onClick={(e) => {
-              this.show({ ...e, type: 'single', id: 'customRange' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'single', id: 'customRange' },
+                },
+                target: {
+                  dataset: { type: 'single', id: 'customRange' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="自定义按钮文字"
-            data-type="range"
-            data-id="customConfirm"
             value={computed.formatRange(date.customConfirm)}
             onClick={(e) => {
-              this.show({ ...e, type: 'range', id: 'customConfirm' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'range', id: 'customConfirm' },
+                },
+                target: {
+                  dataset: { type: 'range', id: 'customConfirm' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="自定义日期文案"
-            data-type="range"
-            data-id="customDayText"
             value={computed.formatRange(date.customDayText)}
             onClick={(e) => {
-              this.show({ ...e, type: 'range', id: 'customDayText' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'range', id: 'customDayText' },
+                },
+                target: {
+                  dataset: { type: 'range', id: 'customDayText' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="自定义弹出位置"
-            data-type="single"
-            data-id="customPosition"
             value={computed.formatFullDate(date.customPosition)}
             onClick={(e) => {
-              this.show({ ...e, type: 'single', id: 'customPosition' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'single', id: 'customPosition' },
+                },
+                target: {
+                  dataset: { type: 'single', id: 'customPosition' },
+                },
+              })
             }}
           ></Cell>
           <Cell
             isLink
             title="日期区间最大范围"
-            data-type="range"
-            data-id="maxRange"
             value={computed.formatRange(date.maxRange)}
             onClick={(e) => {
-              this.show({ ...e, type: 'range', id: 'maxRange' })
+              this.show({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'range', id: 'maxRange' },
+                },
+                target: {
+                  dataset: { type: 'range', id: 'maxRange' },
+                },
+              })
             }}
           ></Cell>
         </DemoBlock>

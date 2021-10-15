@@ -17,23 +17,23 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock className="white" title="基础用法" padding>
-          <divider></divider>
+          <Divider></Divider>
         </DemoBlock>
         <DemoBlock className="white" title="内容位置" padding>
-          <divider contentPosition="center">文本</divider>
-          <divider contentPosition="left">文本</divider>
-          <divider contentPosition="right">文本</divider>
+          <Divider contentPosition="center">文本</Divider>
+          <Divider contentPosition="left">文本</Divider>
+          <Divider contentPosition="right">文本</Divider>
         </DemoBlock>
         <DemoBlock className="white" title="虚线" padding>
-          <divider dashed></divider>
+          <Divider dashed></Divider>
         </DemoBlock>
         <DemoBlock className="white" title="自定义样式" padding>
-          <divider
+          <Divider
             contentPosition="center"
             style="color: #1989fa;border-color: #1989fa;font-size: 18px;"
           >
             文本
-          </divider>
+          </Divider>
         </DemoBlock>
       </Block>
     )

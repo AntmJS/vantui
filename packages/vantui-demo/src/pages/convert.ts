@@ -171,7 +171,7 @@ function convert(fileContent: string, pathName: string): string {
 
   // 去掉htmpl 标签
   result = result.replace(
-    /(?<=(?:<\/|<))(H\d|Div)/g,
+    /(?<=(?:<\/|<))(H\d|Div)(?=(>|\s+))/g,
     (_str: string, $1: string) => $1.toLowerCase(),
   )
 
@@ -197,6 +197,16 @@ function convert(fileContent: string, pathName: string): string {
   // })
 
   // if (datasets.length > 0) {
+  //   result = result.replace(datasetReg, (str, _$1, $2) => {
+  //     return str.replace(
+  //       /(event|e)\.(currentTarget|target)\.dataset/g,
+  //       (_str, eventName) => {
+  //         if (eventName) return eventName
+  //         return $2
+  //       },
+  //     )
+  //   })
+
   //   result = result.replace(
   //     /<[a-zA-Z]+\s+[^>]+data-[a-z]+="[\w-]+"[^>]+>/g,
   //     (str: string) => {
@@ -206,18 +216,16 @@ function convert(fileContent: string, pathName: string): string {
   //       })
   //       // {this.onChange}
   //       const fnReg = new RegExp(`{this\\.(${datasets.join('|')})}`, 'g')
-  //       // console.log(str, new RegExp(`{this\\.(${datasets.join('|')})}`, 'g'))
-  //       const newCom = str.replace(
-  //         fnReg,
-  //         `{(e) => {this.$1({...e, ${data.join(',')}})}}`,
-  //       )
+  //       const newCom = str
+  //         .replace(fnReg, `{(e) => {this.$1({...e, ${data.join(',')}})}}`)
+  //         .replace(dataReg, '')
   //       return newCom
   //     },
   //   )
   // }
 
+  //  不能合并
   const callFuncs = new Set<string>()
-
   result = result.replace(
     /<[a-zA-Z]+\s+[^>]+data-[a-z]+=("[\w-]+"|[\w-{}]+)+?[^>]+>/g,
     (str: string): any => {
@@ -230,30 +238,55 @@ function convert(fileContent: string, pathName: string): string {
       ;(str.match(callFuncsReg) ?? []).forEach((e) => {
         callFuncs.add(e.replace(callFuncsReg, '$1'))
       })
-      const newCom = str.replace(
-        callFuncsReg,
-        `={(e) => {this.$1({...e, ${data.join(',')}})}}`,
-      )
+      // 查一下 上边是不是 这个方法体内 是不是有 .(currentTarget|target)\\.dataset
+
+      const newCom = str
+        .replace(callFuncsReg, (str, $1) => {
+          // TODO:  临时解决一下
+          if (str === '={this.formatter}') return str
+
+          return `={(e) => {
+            this.${$1}({
+              detail: e.detail,
+              currentTarget: {
+                dataset: {${data.join(',')}}
+              },
+              target: {
+                dataset: {${data.join(',')}}
+              },
+            })
+          }}`
+        })
+        .replace(dataReg, '')
 
       return newCom
     },
   )
-  const callFuncsArr = Array.from(callFuncs)
-  const datasetReg = new RegExp(
-    `(${callFuncsArr.join(
-      '|',
-    )})\\s=\\s+\\([\\s|,|\\w|^\\n]+\\)\\s+=>\\s+{[\\s\\S]+?const\\s{[\\s\\S]+?}\\s+=\\s+event\\.(currentTarget|target)\\.dataset`,
-    'g',
-  )
+  // const callFuncsArr = Array.from(callFuncs)
+  // const datasetReg2 = new RegExp(
+  //   `(${callFuncsArr.join(
+  //     '|',
+  //   )})\\s=\\s+\\([\\s|,|\\w|^\\n]+\\)\\s+=>\\s+{[\\s\\S]+?const\\s{[\\s\\S]+?}\\s+=\\s+event\\.(currentTarget|target)\\.dataset`,
+  //   'g',
+  // )
+  // // // 1. 普通的导出
+  // result = result.replace(datasetReg2, (str, _$1, $2) => {
+  //   return str.replace(
+  //     /(event|e)\.(currentTarget|target)\.dataset/g,
+  //     (_str, eventName) => {
+  //       if (eventName) return eventName
+  //       return $2
+  //     },
+  //   )
+  // })
+  // // // 2. 变量信息
+  // result = result.replace(
+  //   /(e\.|event\.)?(currentTarget|target)\.dataset(\.\w+)/,
+  //   (_str, $1, _$2, $3) => {
+  //     return `${$1}${$3}`.replace('..', '.')
+  //   },
+  // )
 
-  result = result.replace(datasetReg, (str) => {
-    return str.replace(/event\.(currentTarget|target)\.dataset/g, 'event')
-  })
-  // currentTarget.dataset.type  event.target.dataset.type
-  result = result.replace(
-    /(event\.)?(currentTarget|target)\.dataset(\.\w+)/,
-    'event$3',
-  )
   console.log(pathName)
   return result
 }
