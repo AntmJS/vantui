@@ -309,21 +309,23 @@ function writeFile(
   })
 }
 
-// function unlink(
-//   dirName: string,
-//   e: {
-//     content: string
-//     path: string
-//   },
-// ) {
-//   fs.unlink(e.path, (err) => {
-//     if (err) {
-//       console.error(dirName + '删除失败', err)
-//     } else {
-//       console.log(dirName + '删除成功')
-//     }
-//   })
-// }
+function unlink(
+  dirName: string,
+  e: {
+    content: string
+    path: string
+  },
+) {
+  fs.unlink(e.path, (err) => {
+    if (err) {
+      console.error(dirName + '删除失败', err)
+    } else {
+      console.log(dirName + '删除成功')
+    }
+  })
+}
+
+const ACTION = 1 // 1 删除  2 修改
 
 ;(async () => {
   const filsNames = ['index_backup'] //['index', 'index2']
@@ -334,10 +336,15 @@ function writeFile(
     console.log('没找到文件， 请检查文件名称')
     return
   }
+
   result.forEach((e) => {
     if (!e) return
     const dirName = e.path.match(/\/([\w-]+)\/\w+\.js$/)?.[1] || ''
-    writeFile(dirName, e)
-    //  unlink(dirName, e)
+
+    if (ACTION === 1) {
+      unlink(dirName, e)
+    } else {
+      writeFile(dirName, e)
+    }
   })
 })()
