@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui",
-  "version": "0.2.0",
+  "version": "0.3.0-alpha.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "common:react": "dist/h5.js",
@@ -58,8 +58,6 @@
   "dependencies": {
     "@antmjs/iconfont": "1.9.4",
     "@babel/runtime-corejs3": "^7.14.7",
-    "@tarojs/components": "^3.3.9",
-    "@tarojs/taro": "^3.3.9",
     "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
@@ -68,6 +66,8 @@
     "rc-util": "^5.14.0"
   },
   "devDependencies": {
+    "@tarojs/components": "^3.3.9",
+    "@tarojs/taro": "^3.3.9",
     "@types/lodash.flow": "^3.5.6",
     "@types/react": "^17.0.17",
     "react": "^17.0.2",

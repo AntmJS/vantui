@@ -12,6 +12,7 @@ class Index extends Component {
 }
 
 createReactApp(Index, React, ReactDom, {})
+// initPxTransform的入参会根据@antmjs/plugin-vantui而更新，所以改动这里需看下插件的逻辑
 initPxTransform({
   designWidth: 750,
   deviceRatio: {

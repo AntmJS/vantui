@@ -2,6 +2,11 @@
 
 ### 在React应用中使用需要在如下文件中添加代码
 
+```bash
+yarn add @tarojs/taro @tarojs/components @antmjs/vantui
+yarn add @antmjs/babel-preset --dev
+```
+
 - index.html
 
 ```html
@@ -30,6 +35,17 @@ import { defineCustomElements, applyPolyfills } from '@tarojs/components/loader'
 applyPolyfills().then(function () {
   defineCustomElements(window)
 })
+```
+
+- src/index.less
+
+```less
+@import '@antmjs/vantui/dist/style/index.less';
+
+page,
+body {
+  font-size: 28px;
+}
 ```
 
 - webpack.config.js
@@ -144,9 +160,9 @@ applyPolyfills().then(function () {
     new webpack.EnvironmentPlugin({
       TARO_ENV: 'h5',
     }),
-    // const EnjectPlugin = require('@antmjs/plugin-vantui')
+    // const VantUIPlugin = require('@antmjs/plugin-vantui')
     // 如果用的就是750，则不需要添加该插件了
-    new EnjectPlugin({
+    new VantUIPlugin({
       designWidth: 750,
       deviceRatio: {
         640: 2.34 / 2,
