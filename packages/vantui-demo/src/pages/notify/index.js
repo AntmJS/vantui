@@ -1,6 +1,7 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Notify, Button, notify } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -33,7 +34,7 @@ export default class Index extends React.Component {
   }
 
   showNotifyByType = (event) => {
-    const { type } = event.currentTarget.dataset
+    const { type } = event
     notify({
       type,
       message: '通知内容',
@@ -61,7 +62,9 @@ export default class Index extends React.Component {
               className="demo-margin-right"
               type="info"
               data-type="primary"
-              onClick={this.showNotifyByType}
+              onClick={(e) => {
+                this.showNotifyByType({ ...e, type: 'primary' })
+              }}
             >
               主要通知
             </Button>
@@ -69,7 +72,9 @@ export default class Index extends React.Component {
               className="demo-margin-right"
               type="primary"
               data-type="success"
-              onClick={this.showNotifyByType}
+              onClick={(e) => {
+                this.showNotifyByType({ ...e, type: 'success' })
+              }}
             >
               成功通知
             </Button>
@@ -79,14 +84,18 @@ export default class Index extends React.Component {
               className="demo-margin-right"
               type="danger"
               data-type="danger"
-              onClick={this.showNotifyByType}
+              onClick={(e) => {
+                this.showNotifyByType({ ...e, type: 'danger' })
+              }}
             >
               危险通知
             </Button>
             <Button
               type="warning"
               data-type="warning"
-              onClick={this.showNotifyByType}
+              onClick={(e) => {
+                this.showNotifyByType({ ...e, type: 'warning' })
+              }}
             >
               警告通知
             </Button>

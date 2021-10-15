@@ -1,6 +1,7 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Tag, Card, Button } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'

@@ -93,8 +93,12 @@ export default class Index extends React.Component {
             onChange={(event) => {
               this.onChange(event, 'active3')
             }}
-            onOpen={this.onOpen}
-            onClose={this.onClose}
+            onOpen={(event) => {
+              this.onOpen(event, 'active3')
+            }}
+            onClose={(event) => {
+              this.onClose(event, 'active3')
+            }}
           >
             <CollapseItem title={title1}>{content1}</CollapseItem>
             <CollapseItem title={title2}>{content2}</CollapseItem>

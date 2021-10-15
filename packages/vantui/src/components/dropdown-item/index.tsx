@@ -50,41 +50,6 @@ export default function Index(
     [value],
   )
 
-  useEffect(
-    function () {
-      setChildrenInstance(index, {
-        updateDataFromParent,
-        disabled,
-        transition,
-        showPopup,
-        index,
-        setDisplayTitle,
-        displayTitle,
-        options,
-        value: value_,
-        toggle,
-      })
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      index,
-      setChildrenInstance,
-      disabled,
-      transition,
-      showPopup,
-      index,
-      setDisplayTitle,
-      displayTitle,
-      options,
-      value_,
-    ],
-  )
-
-  useEffect(function () {
-    updateDataFromParent()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const updateDataFromParent = useCallback(
     function () {
       const { overlay, duration, activeColor, closeOnClickOverlay, direction } =
@@ -96,6 +61,17 @@ export default function Index(
         activeColor,
         closeOnClickOverlay,
         direction,
+      })
+    },
+    [parentInstance],
+  )
+
+  const rerender = useCallback(
+    function () {
+      Taro.nextTick(() => {
+        if (parentInstance) {
+          parentInstance.updateItemListData()
+        }
       })
     },
     [parentInstance],
@@ -131,19 +107,44 @@ export default function Index(
         rerender()
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [parentState, showPopup, parentInstance],
+    [showPopup, parentInstance, parentState, rerender],
   )
 
-  const rerender = useCallback(
+  useEffect(
     function () {
-      Taro.nextTick(() => {
-        if (parentInstance) {
-          parentInstance.updateItemListData()
-        }
+      setChildrenInstance(index, {
+        updateDataFromParent,
+        disabled,
+        transition,
+        showPopup,
+        index,
+        setDisplayTitle,
+        displayTitle,
+        options,
+        value: value_,
+        toggle,
       })
     },
-    [parentInstance],
+    [
+      index,
+      setChildrenInstance,
+      disabled,
+      transition,
+      showPopup,
+      setDisplayTitle,
+      displayTitle,
+      options,
+      value_,
+      toggle,
+      updateDataFromParent,
+    ],
+  )
+
+  useEffect(
+    function () {
+      updateDataFromParent()
+    },
+    [updateDataFromParent],
   )
 
   const onClosed_ = useCallback(

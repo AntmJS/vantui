@@ -1,7 +1,8 @@
 import { ComponentClass } from 'react'
-import { PickerProps } from './picker'
+import { PickerProps, IPickerInstance } from './picker'
+
 export interface AreaProps
-  extends Omit<PickerProps, 'columns'>,
+  extends Omit<PickerProps, 'columns' | 'onChange'>,
     ComponentClass {
   value?: string
   areaList?: {
@@ -17,6 +18,13 @@ export interface AreaProps
   }
   columnsNum?: string | number
   columnsPlaceholder?: string[]
+  onChange: (event: {
+    detail: {
+      values: number[] | string[]
+      picker: IPickerInstance
+      index: number
+    }
+  }) => void
 }
 declare const Area: ComponentClass<AreaProps>
 

@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Transition, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'

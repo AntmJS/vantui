@@ -1,12 +1,14 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import {
   SwipeCell,
   Notify,
   Dialog,
   CellGroup,
   Cell,
+  dialog,
   notify,
 } from '@antmjs/vantui'
 
@@ -26,11 +28,13 @@ export default class Index extends React.Component {
         instance.close()
         break
       case 'right':
-        Dialog.confirm({
-          message: '确定删除吗？',
-        }).then(() => {
-          instance.close()
-        })
+        dialog
+          .confirm({
+            message: '确定删除吗？',
+          })
+          .then(() => {
+            instance.close()
+          })
         break
     }
   }

@@ -1,7 +1,8 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Image, Dialog, Cell } from '@antmjs/vantui'
+
+import { Image, Dialog, Cell, dialog, toast } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
@@ -25,7 +26,7 @@ export default class Index extends React.Component {
   }
 
   onClickThemeAlert = () => {
-    Dialog.alert({
+    dialog.alert({
       title: '标题',
       theme: 'round-button',
       message,
@@ -33,27 +34,27 @@ export default class Index extends React.Component {
   }
 
   onClickThemeAlert2 = () => {
-    Dialog.alert({
+    dialog.alert({
       theme: 'round-button',
       message,
     })
   }
 
   onClickAlert = () => {
-    Dialog.alert({
+    dialog.alert({
       title: '标题',
       message,
     })
   }
 
   onClickAlert2 = () => {
-    Dialog.alert({
+    dialog.alert({
       message,
     })
   }
 
   onClickConfirm = () => {
-    Dialog.confirm({
+    dialog.confirm({
       title: '标题',
       message,
     })
@@ -72,7 +73,7 @@ export default class Index extends React.Component {
         }, 1000)
       })
 
-    Dialog.confirm({
+    dialog.confirm({
       title: '标题',
       message,
       beforeClose,

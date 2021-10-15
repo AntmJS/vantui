@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Circle, Button } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -21,9 +22,9 @@ export default class Index extends React.Component {
   }
 
   run = (e) => {
-    const step = parseFloat(e.currentTarget.dataset.step)
+    // const step = parseFloat(e.currentTarget.dataset.step)
     this.setState({
-      value: format(this.state.value + step),
+      value: format(this.state.value + Number(e.step)),
     })
   }
 
@@ -31,15 +32,6 @@ export default class Index extends React.Component {
     const { value, gradientColor } = this.state
     return (
       <Block>
-        <DemoBlock title="demo">
-          <Circle
-            name="circle1"
-            value={value}
-            size={100}
-            strokeWidth={8}
-            text="颜色定制"
-          />
-        </DemoBlock>
         <DemoBlock title="基础用法">
           <Circle type="2d" value={value} text={value + '%'}></Circle>
         </DemoBlock>
@@ -60,10 +52,24 @@ export default class Index extends React.Component {
           ></Circle>
           <Circle value={value} size="120" text="大小定制"></Circle>
         </DemoBlock>
-        <Button type="primary" size="small" data-step="10" onClick={this.run}>
+        <Button
+          type="primary"
+          size="small"
+          data-step="10"
+          onClick={(e) => {
+            this.run({ ...e, step: '10' })
+          }}
+        >
           增加
         </Button>
-        <Button type="danger" size="small" data-step="-10" onClick={this.run}>
+        <Button
+          type="danger"
+          size="small"
+          data-step="-10"
+          onClick={(e) => {
+            this.run({ ...e, step: '-10' })
+          }}
+        >
           减少
         </Button>
       </Block>

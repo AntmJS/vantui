@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Tag } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -20,7 +21,10 @@ export default class Index extends React.Component {
 
   onClose = (event) => {
     this.setState({
-      [`show.${event.target.id}`]: false,
+      show: {
+        ...this.state.show,
+        [event.target.id]: false,
+      },
     })
   }
 

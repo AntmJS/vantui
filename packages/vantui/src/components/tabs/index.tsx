@@ -132,9 +132,11 @@ export default function Index(props: TabsProps) {
       onDisabled,
     }
     func[eventName]?.({
-      index: currentChild.props.index,
-      name: currentChild.props.name || currentChild.props.index,
-      title: currentChild.props.title,
+      detail: {
+        index: currentChild.props.index,
+        name: currentChild.props.name || currentChild.props.index,
+        title: currentChild.props.title,
+      },
     })
   }
 

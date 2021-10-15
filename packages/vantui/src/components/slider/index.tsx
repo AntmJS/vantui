@@ -16,6 +16,7 @@ function getDirection(x: number, y: number) {
   }
   return ''
 }
+let currentIndex = 0
 
 export default function Index(props: SliderProps) {
   const {
@@ -49,6 +50,11 @@ export default function Index(props: SliderProps) {
   const [touchState, setTouchState] = useState<any>({})
   const [newValue, setNewValue] = useState<any>({})
   const [startValue, setstartValue] = useState<any>()
+  const [currentIndex_, setCurrentIndex] = useState<number>()
+
+  useEffect(() => {
+    setCurrentIndex(currentIndex++)
+  }, [])
 
   const resetTouchStatus = useCallback(
     function () {
@@ -109,23 +115,26 @@ export default function Index(props: SliderProps) {
   }, [])
 
   const calcMainAxis = useCallback(
-    function () {
+    function (value_) {
       const scope = getScope(max, min)
       if (isRange(value_)) {
         return `${((value_[1] - value_[0]) * 100) / scope}%`
       }
       return `${((value_ - Number(min)) * 100) / scope}%`
     },
-    [getScope, isRange, max, min, value_],
+    [getScope, isRange, max, min],
   )
 
-  const calcOffset = useCallback(() => {
-    const scope = getScope(max, min)
-    if (isRange(value_)) {
-      return ((value_[0] - Number(min)) * 100) / scope + '%'
-    }
-    return '0%'
-  }, [getScope, isRange, max, min, value_])
+  const calcOffset = useCallback(
+    (value_) => {
+      const scope = getScope(max, min)
+      if (isRange(value_)) {
+        return ((value_[0] - Number(min)) * 100) / scope + '%'
+      }
+      return '0%'
+    },
+    [getScope, isRange, max, min],
+  )
 
   const format = useCallback(
     function (value) {
@@ -158,15 +167,15 @@ export default function Index(props: SliderProps) {
         [vertical ? 'width' : 'height']: addUnit(barHeight) || '',
       })
       const styleBar: any = {
-        [mainAxis]: calcMainAxis(),
-        left: vertical ? 0 : calcOffset(),
-        top: vertical ? calcOffset() : 0,
+        [mainAxis]: calcMainAxis(value),
+        left: vertical ? 0 : calcOffset(value),
+        top: vertical ? calcOffset(value) : 0,
       }
       if (drag) styleBar.transition = 'none'
       setBarStyle(styleBar)
       drag ? 'transition: none;' : ''
       if (drag && onDrag) {
-        onDrag({ detail: value } as ITouchEvent)
+        onDrag({ detail: { value: value } } as ITouchEvent)
       }
       if (end && onChange) {
         onChange({ detail: value } as ITouchEvent)
@@ -191,26 +200,17 @@ export default function Index(props: SliderProps) {
 
   useEffect(
     function () {
-      if (value !== value_) {
-        setValue(value)
-      }
+      setValue(value)
+      updateValue(value)
     },
-    [value, value_],
-  )
-
-  useEffect(
-    function () {
-      updateValue(value_ || value)
-    },
-    [updateValue, value_, value],
+    [value, updateValue],
   )
 
   const onTouchStart = useCallback(
-    function (event: any): any {
+    function (event: any, index?: number): any {
       if (disabled) return
-      const { index } = event.currentTarget.dataset
       if (typeof index === 'number') {
-        setButtonIndex(index)
+        setButtonIndex(index || 0)
       }
       touchStart(event)
       setstartValue(format(value_))
@@ -241,12 +241,8 @@ export default function Index(props: SliderProps) {
       }
       const touchState = touchMove(event)
       setDragStatus('draging')
-      getRect(null, '.van-slider').then((rect: any) => {
-        // const diff = (touchState.deltaX / rect.width) * getRange()
-        const delta = vertical ? touchState.deltaY : touchState.deltaX
-        const total = vertical ? rect.height : rect.width
-        const diff = (delta / total) * getRange()
-
+      getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
+        const diff = (touchState.deltaX / rect.width) * getRange()
         if (isRange(startValue)) {
           newValue[buttonIndex] = startValue[buttonIndex] + diff
           setNewValue(newValue)
@@ -269,7 +265,7 @@ export default function Index(props: SliderProps) {
       startValue,
       touchMove,
       updateValue,
-      vertical,
+      currentIndex_,
     ],
   )
 
@@ -287,14 +283,9 @@ export default function Index(props: SliderProps) {
   const onClick = useCallback(
     function (event: any) {
       if (disabled) return
-      getRect(null, '.van-slider').then((rect: any) => {
-        const touchState = touchMove(event)
-        // const value = ((event.clientX - rect.left) / rect.width) * getRange() + min
-        const delta = vertical
-          ? touchState.clientY - rect.top
-          : touchState.clientX - rect.left
-        const total = vertical ? rect.height : rect.width
-        const value = Number(min) + (delta / total) * getRange()
+      getRect(null, `.van-slider${currentIndex_} `).then((rect: any) => {
+        const value =
+          ((event.clientX - rect.left) / rect.width) * getRange() + min
 
         if (isRange(value_)) {
           const [left, right] = value_
@@ -309,16 +300,7 @@ export default function Index(props: SliderProps) {
         }
       })
     },
-    [
-      disabled,
-      getRange,
-      isRange,
-      min,
-      updateValue,
-      value_,
-      vertical,
-      touchMove,
-    ],
+    [disabled, getRange, isRange, min, updateValue, value_, currentIndex_],
   )
 
   return (
@@ -329,7 +311,7 @@ export default function Index(props: SliderProps) {
           disabled,
           vertical,
         }) +
-        ' ' +
+        ` van-slider${currentIndex_} ` +
         className
       }
       style={utils.style([wrapperStyle, style])}
@@ -346,8 +328,7 @@ export default function Index(props: SliderProps) {
         {range && (
           <View
             className={utils.bem('slider__button-wrapper-left')}
-            data-index={0}
-            onTouchStart={onTouchStart}
+            onTouchStart={(e) => onTouchStart(e, 0)}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
@@ -366,8 +347,7 @@ export default function Index(props: SliderProps) {
         {range && (
           <View
             className={utils.bem('slider__button-wrapper-right')}
-            data-index={1}
-            onTouchStart={onTouchStart}
+            onTouchStart={(e) => onTouchStart(e, 1)}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
@@ -391,12 +371,8 @@ export default function Index(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {useButtonSlot ? (
-              renderButton ? (
-                renderButton(value_ as number)
-              ) : (
-                ''
-              )
+            {useButtonSlot && renderButton ? (
+              renderButton
             ) : (
               <View className={utils.bem('slider__button')}></View>
             )}

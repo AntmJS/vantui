@@ -23,7 +23,7 @@ export interface CountDownProps extends StandardProps {
   format?: string
   autoStart?: boolean
   children?: ReactNode
-  onChange?: (timeData: ITimeData) => void
+  onChange?: (timeData: { detail: ITimeData }) => void
   onFinish?: () => void
   ref?: React.MutableRefObject<ICountDownRef | undefined>
 }

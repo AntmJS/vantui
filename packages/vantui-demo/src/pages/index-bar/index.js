@@ -1,6 +1,7 @@
 import { Block, View, Text } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { IndexAnchor, IndexBar, Tabs, Tab, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -43,12 +44,12 @@ export default class Index extends React.Component {
             <IndexBar scrollTop={scrollTop}>
               {indexList.map((item, index) => {
                 return (
-                  <View key={item.item}>
+                  <React.Fragment key={item.item}>
                     <IndexAnchor index={item}></IndexAnchor>
                     <Cell title="文本"></Cell>
                     <Cell title="文本"></Cell>
                     <Cell title="文本"></Cell>
-                  </View>
+                  </React.Fragment>
                 )
               })}
             </IndexBar>
@@ -59,14 +60,14 @@ export default class Index extends React.Component {
             <IndexBar indexList={customIndexList} scrollTop={scrollTop}>
               {customIndexList.map((item, index) => {
                 return (
-                  <View key={item.index}>
+                  <React.Fragment key={item.index}>
                     <IndexAnchor useSlot index={item}>
                       <Text>{'标题' + item}</Text>
                     </IndexAnchor>
                     <Cell title="文本"></Cell>
                     <Cell title="文本"></Cell>
                     <Cell title="文本"></Cell>
-                  </View>
+                  </React.Fragment>
                 )
               })}
             </IndexBar>

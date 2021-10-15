@@ -59,8 +59,6 @@ export default class Index extends React.Component {
       radio5,
     } = this.state
 
-    console.log('radio5: ', radio5)
-
     return (
       <Block>
         <DemoBlock title="基本用法" padding>

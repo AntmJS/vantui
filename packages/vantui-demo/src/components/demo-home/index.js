@@ -7,7 +7,7 @@ import list from '../../config.js'
 import DemoHomeNav from '../demo-home-nav/index'
 import './index.less'
 
-class _C extends React.Component {
+export default class Index extends React.Component {
   state = {
     list,
   }
@@ -26,7 +26,7 @@ class _C extends React.Component {
         <View className="demo-home__desc">轻量、可靠的小程序 UI 组件库</View>
         {list.map((group, index) => {
           return (
-            <View key={group.index}>
+            <View key={index}>
               <DemoHomeNav group={group}></DemoHomeNav>
             </View>
           )
@@ -35,5 +35,3 @@ class _C extends React.Component {
     )
   }
 }
-
-export default _C

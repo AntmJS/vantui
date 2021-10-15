@@ -1,7 +1,8 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Switch, Dialog } from '@antmjs/vantui'
+
+import { Switch, Dialog, dialog } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
@@ -21,12 +22,14 @@ export default class Index extends React.Component {
   }
 
   onChange2 = ({ detail }) => {
-    Dialog.confirm({
-      title: '提示',
-      message: '是否切换开关？',
-    }).then((res) => {
-      this.setState({ checked2: detail })
-    })
+    dialog
+      .confirm({
+        title: '提示',
+        message: '是否切换开关？',
+      })
+      .then((res) => {
+        this.setState({ checked2: detail })
+      })
   }
 
   render() {

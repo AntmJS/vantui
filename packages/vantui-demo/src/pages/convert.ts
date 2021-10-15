@@ -63,7 +63,7 @@ async function getContent(filsNames: string[]) {
   const allSchemaContent = await Promise.all(readAllFile)
   return allSchemaContent.filter((file) => file)
 }
-function convert(fileContent: string): string {
+function convert(fileContent: string, pathName: string): string {
   // 1. 先把  @withWeapp   弄出来
 
   let result = fileContent.replace(
@@ -93,7 +93,10 @@ function convert(fileContent: string): string {
   result = result.replace(
     /import\s+{([A-Za-z,\s]+)}\s+from\s+'@tarojs\/components'/,
     (_str: string, $1: string): any => {
-      return `import { ${$1.replace('Image', '')}} from '@tarojs/components'`
+      return `import { ${$1.replace(
+        /,?\s+Image/,
+        '',
+      )}} from '@tarojs/components'`
     },
   )
   result = result.replace(/this\.data/g, 'this.state')
@@ -102,52 +105,49 @@ function convert(fileContent: string): string {
 
   result = result.replace(/export\s+default\s+_C/, '')
 
-  const reg =
+  const importComReg =
     /import\s+(?<com>[a-zA-Z]+)\s+from\s+'\.\.\/\.\.\/dist\/[\w\/-]+'\n/g
 
-  const coms = (result.match(reg) ?? [])
-    .map((e) => e.replace(reg, '$1'))
+  const coms = (result.match(importComReg) ?? [])
+    .map((e) => e.replace(importComReg, '$1'))
     .filter((e) => {
       const reg = new RegExp(`<${e}[\\s>]`)
       return result.match(reg)
     })
 
-  // Toast 特殊处理
-  // import Toast from '../../dist/toast/toast.js'
+  // 通用
 
-  const toastReg = /import\s+Toast\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/
-  const toastResult = result.match(toastReg)
+  const currencyReg =
+    /import\s+(Notify|Dialog|Toast)\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/g
 
-  if (toastResult) {
-    coms.push('toast')
-    result = result.replace(toastReg, '')
-    result = result.replace(/(?<=\s+)Toast([(.])/g, 'toast$1')
-  }
-  // Dialog 处理
-  const dialogReg = /import\s+Dialog\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/
-  result = result.replace(dialogReg, '')
+  const currencyResult = (result.match(currencyReg) ?? []).map((e) =>
+    e.replace(currencyReg, (_str, $1) => `${$1.toLowerCase()}`),
+  )
 
-  // import Notify from '../../dist/notify/notify.js'
-
-  const notifyReg = /import\s+Notify\s+from\s+'[\.\/]+dist[\w\/-]+\.js'/
-  const notifyResult = result.match(notifyReg)
-
-  if (notifyResult) {
-    coms.push('notify')
-    result = result.replace(notifyReg, '')
-    result = result.replace(/(?<=\s+)Notify([(.])/g, 'notify$1')
+  if (currencyResult.length !== 0) {
+    coms.push(...currencyResult)
+    result = result.replace(currencyReg, '')
+    result = result.replace(
+      /(?<=\s+)(Notify|Dialog|Toast)([(.])/g,
+      (_str, $1, $2) => `${$1.toLowerCase()}${$2}`,
+    )
   }
 
   //   import withWeapp from '@tarojs/with-weapp'
   // import list from '../../config.js'
   // import Page from '../../common/page.js'
 
+  //  这个可以分 两次 把 withWeapp 和  Page 去掉
   result = result.replace(
-    /import\s+withWeapp[\s\S]+\/common\/page\.js'/,
+    /import\s+withWeapp\s+from\s+'@tarojs\/with-weapp'/,
+    '',
+  )
+  result = result.replace(
+    /import\s+Page\s+from\s+'[\/\.]+common\/page\.js'/,
     `import { ${coms.join(',')}} from '@antmjs/vantui'\n`,
   )
 
-  result = result.replace(reg, '')
+  result = result.replace(importComReg, '')
 
   // 替换 customStyle customClass
   // customClass="
@@ -169,12 +169,92 @@ function convert(fileContent: string): string {
     /import\s+([a-zA-Z]+)\s+from\s+'\.\.\/\.\.\/dist\/[\w\/-@]+config'\n/g
   result = result.replace(iconsReg, "import icons from '@vant/icons'\n")
 
-  // 去掉标题
-  result = result.replace(/(?<=(<\/|<))H(\d)/g, 'h$2')
+  // 去掉htmpl 标签
+  result = result.replace(
+    /(?<=(?:<\/|<))(H\d|Div)/g,
+    (_str: string, $1: string) => $1.toLowerCase(),
+  )
 
   // onTap = onClick
   result = result.replace(/onTap={/g, 'onClick={')
 
+  // [`show.${event.target.dataset.type}`]: true,
+  result = result.replace(
+    /\[`show\.\$\{([\w\.]+)\}`\]:\s+(\w+),/,
+    `show: {
+      ...this.state.show,
+      [$1]: $2
+  }`,
+  )
+  // 分析并对代码做出更改
+  // 1. dateset
+  // 2. selectComponent
+
+  // const datasetReg =
+  //   /(\w+?)\s=\s+\([\s|,|\w|^\n]+\)\s+=>\s+{[\w\(\)\.\s]+?const\s{[\s\S]+?}\s+=\s+event\.(currentTarget|target)\.dataset/g
+  // const datasets = (result.match(datasetReg) ?? []).map((e) => {
+  //   return e.replace(datasetReg, (_str, $1) => $1)
+  // })
+
+  // if (datasets.length > 0) {
+  //   result = result.replace(
+  //     /<[a-zA-Z]+\s+[^>]+data-[a-z]+="[\w-]+"[^>]+>/g,
+  //     (str: string) => {
+  //       const dataReg = /data-([a-z]+)="([\w-]+)"/g
+  //       const data = (str.match(dataReg) ?? []).map((e) => {
+  //         return e.replace(dataReg, '$1:$2')
+  //       })
+  //       // {this.onChange}
+  //       const fnReg = new RegExp(`{this\\.(${datasets.join('|')})}`, 'g')
+  //       // console.log(str, new RegExp(`{this\\.(${datasets.join('|')})}`, 'g'))
+  //       const newCom = str.replace(
+  //         fnReg,
+  //         `{(e) => {this.$1({...e, ${data.join(',')}})}}`,
+  //       )
+  //       return newCom
+  //     },
+  //   )
+  // }
+
+  const callFuncs = new Set<string>()
+
+  result = result.replace(
+    /<[a-zA-Z]+\s+[^>]+data-[a-z]+=("[\w-]+"|[\w-{}]+)+?[^>]+>/g,
+    (str: string): any => {
+      const dataReg = /data-([a-z]+)={?("[\w-]+"|[\w-]+)}?/g
+      const data = (str.match(dataReg) ?? []).map((e) => {
+        return e.replace(dataReg, '$1:$2')
+      })
+      const callFuncsReg = /={this\.(\w+)}/g
+
+      ;(str.match(callFuncsReg) ?? []).forEach((e) => {
+        callFuncs.add(e.replace(callFuncsReg, '$1'))
+      })
+      const newCom = str.replace(
+        callFuncsReg,
+        `={(e) => {this.$1({...e, ${data.join(',')}})}}`,
+      )
+
+      return newCom
+    },
+  )
+  const callFuncsArr = Array.from(callFuncs)
+  const datasetReg = new RegExp(
+    `(${callFuncsArr.join(
+      '|',
+    )})\\s=\\s+\\([\\s|,|\\w|^\\n]+\\)\\s+=>\\s+{[\\s\\S]+?const\\s{[\\s\\S]+?}\\s+=\\s+event\\.(currentTarget|target)\\.dataset`,
+    'g',
+  )
+
+  result = result.replace(datasetReg, (str) => {
+    return str.replace(/event\.(currentTarget|target)\.dataset/g, 'event')
+  })
+  // currentTarget.dataset.type  event.target.dataset.type
+  result = result.replace(
+    /(event\.)?(currentTarget|target)\.dataset(\.\w+)/,
+    'event$3',
+  )
+  console.log(pathName)
   return result
 }
 
@@ -185,17 +265,15 @@ function writeFile(
     path: string
   },
 ) {
-  fs.writeFile(
-    e.path.replace(/\/index_backup\.js$/, '/index.js'),
-    convert(e.content),
-    (err) => {
-      if (err) {
-        console.error(dirName + '写入失败', err)
-      } else {
-        console.log(dirName + '写入成功')
-      }
-    },
-  )
+  const pathName = e.path.replace(/\/index_backup\.js$/, '/index.js')
+  const data = convert(e.content, pathName)
+  fs.writeFile(pathName, data, (err) => {
+    if (err) {
+      console.error(dirName + '写入失败', err)
+    } else {
+      console.log(dirName + '写入成功')
+    }
+  })
 }
 
 // function unlink(

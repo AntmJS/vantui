@@ -1,11 +1,12 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Toast, Area, toast } from '@antmjs/vantui'
 
+import { areaList } from '@vant/area-data'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
-const db = Taro.cloud.database()
 
 export default class Index extends React.Component {
   constructor() {
@@ -13,29 +14,9 @@ export default class Index extends React.Component {
   }
 
   state = {
-    areaList: {},
-    loading: true,
+    areaList: areaList,
+    loading: false,
     value: 330302,
-  }
-
-  onShow = () => {
-    db.collection('region')
-      .limit(1)
-      .get()
-      .then((res) => {
-        if (res.data && res.data.length > 0) {
-          this.setState({
-            loading: false,
-            areaList: res.data[0],
-          })
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-        this.setState({
-          loading: false,
-        })
-      })
   }
 
   onChange = (event) => {

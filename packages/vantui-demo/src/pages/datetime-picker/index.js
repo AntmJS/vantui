@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { DatetimePicker, Toast, toast } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -43,7 +44,7 @@ export default class Index extends React.Component {
 
   onInput = (event) => {
     const { detail, currentTarget } = event
-    const result = this.getResult(detail, currentTarget.dataset.type)
+    const result = this.getResult(detail, event.type)
 
     toast(result)
   }
@@ -84,7 +85,9 @@ export default class Index extends React.Component {
             loading={loading}
             value={currentDate1}
             minDate={minDate}
-            onInput={this.onInput}
+            onInput={(e) => {
+              this.onInput({ ...e, type: 'datetime' })
+            }}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选择日期（年月日）">
@@ -93,8 +96,12 @@ export default class Index extends React.Component {
             data-type="date"
             value={currentDate2}
             minDate={minDate}
-            onInput={this.onInput}
-            formatter={this.formatter}
+            onInput={(e) => {
+              this.onInput({ ...e, type: 'date' })
+            }}
+            formatter={(e) => {
+              this.formatter({ ...e, type: 'date' })
+            }}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选择日期（年月）">
@@ -103,7 +110,9 @@ export default class Index extends React.Component {
             data-type="year-month"
             value={currentDate3}
             minDate={minDate}
-            onInput={this.onInput}
+            onInput={(e) => {
+              this.onInput({ ...e, type: 'year-month' })
+            }}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选择时间">
@@ -113,7 +122,9 @@ export default class Index extends React.Component {
             value={currentDate4}
             minHour={minHour}
             maxHour={maxHour}
-            onInput={this.onInput}
+            onInput={(e) => {
+              this.onInput({ ...e, type: 'time' })
+            }}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选项过滤器">

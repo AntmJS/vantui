@@ -74,7 +74,7 @@ export default class Index extends React.Component {
             data-key="checkbox1"
             className="demo-checkbox"
             onChange={(event) => {
-              onChange(event, 'checkbox1')
+              this.onChange(event, 'checkbox1')
             }}
           >
             复选框
@@ -216,13 +216,7 @@ export default class Index extends React.Component {
           </CheckboxGroup>
         </DemoBlock>
         <DemoBlock title="搭配单元格组件使用">
-          <CheckboxGroup
-            value={result3}
-            data-key="result3"
-            // onChange={(event) => {
-            //   this.onChange(event, 'result3')
-            // }}
-          >
+          <CheckboxGroup value={result3} data-key="result3">
             <CellGroup>
               {list.map((item, index) => {
                 return (
@@ -232,7 +226,6 @@ export default class Index extends React.Component {
                     valueClass="value-class"
                     clickable
                     data-index={index}
-                    onClick={() => {}}
                   >
                     <Checkbox
                       value={result3[index]}
