@@ -1,6 +1,7 @@
 import { Block, View, Text } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Row, Loading, Image, Col } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -30,14 +31,14 @@ export default class Index extends React.Component {
       <Block>
         <DemoBlock title="基础用法" padding>
           <Row>
-            <Image width="200" height="200" src={src}></Image>
+            <Image width="100" height="100" src={src}></Image>
           </Row>
         </DemoBlock>
         <DemoBlock title="填充模式" padding>
           <Row gutter="20">
             {fits.map((fit, index) => {
               return (
-                <Col key={fit.fit} span="8" style={{ paddingRight: '13.33px' }}>
+                <Col key={fit.fit} span="8">
                   <Image fit={fit} width="100%" height="27vw" src={src}></Image>
                   <View className="text">{fit}</View>
                 </Col>
@@ -49,7 +50,7 @@ export default class Index extends React.Component {
           <Row gutter="20">
             {fits.map((fit, index) => {
               return (
-                <Col key={fit.fit} span="8" style={{ paddingRight: '13.33px' }}>
+                <Col key={fit.fit} span="8">
                   <Image
                     round
                     fit={fit}
@@ -65,11 +66,11 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="加载中提示" padding>
           <Row gutter="20">
-            <Col span="8" style={{ paddingRight: '13.33px' }}>
+            <Col span="8">
               <Image width="100%" height="27vw"></Image>
               <View className="text">默认提示</View>
             </Col>
-            <Col span="8" style={{ paddingRight: '13.33px' }}>
+            <Col span="8">
               <Image
                 width="100%"
                 height="27vw"
@@ -86,11 +87,11 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="加载失败提示" padding>
           <Row gutter="20">
-            <Col span="8" style={{ paddingRight: '13.33px' }}>
+            <Col span="8">
               <Image width="100%" height="27vw" src="x"></Image>
               <View className="text">默认提示</View>
             </Col>
-            <Col span="8" style={{ paddingRight: '13.33px' }}>
+            <Col span="8">
               <Image
                 width="100%"
                 height="27vw"

@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Divider } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -16,23 +17,23 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock className="white" title="基础用法" padding>
-          <Divider></Divider>
+          <divider></divider>
         </DemoBlock>
         <DemoBlock className="white" title="内容位置" padding>
-          <Divider contentPosition="center">文本</Divider>
-          <Divider contentPosition="left">文本</Divider>
-          <Divider contentPosition="right">文本</Divider>
+          <divider contentPosition="center">文本</divider>
+          <divider contentPosition="left">文本</divider>
+          <divider contentPosition="right">文本</divider>
         </DemoBlock>
         <DemoBlock className="white" title="虚线" padding>
-          <Divider dashed></Divider>
+          <divider dashed></divider>
         </DemoBlock>
         <DemoBlock className="white" title="自定义样式" padding>
-          <Divider
+          <divider
             contentPosition="center"
             style="color: #1989fa;border-color: #1989fa;font-size: 18px;"
           >
             文本
-          </Divider>
+          </divider>
         </DemoBlock>
       </Block>
     )

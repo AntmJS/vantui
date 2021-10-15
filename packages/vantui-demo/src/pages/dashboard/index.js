@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import {} from '@antmjs/vantui'
 
 import list from '../../config.js'

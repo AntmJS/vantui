@@ -76,7 +76,7 @@ import './index.scss'
 @withWeapp({
   data: {
     areaList: areaList,
-    loading: true,
+    loading: false,
     value: 330302,
   },
 

@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Image, CheckboxGroup, Checkbox, CellGroup, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -28,7 +29,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    const { key } = event.currentTarget.dataset
+    const { key } = event
     this.setState({ [key]: event.detail })
   }
 
@@ -40,7 +41,7 @@ export default class Index extends React.Component {
   }
 
   toggle = (event) => {
-    const { index } = event.currentTarget.dataset
+    const { index } = event
     const checkbox = this.selectComponent(`.checkboxes-${index}`)
     checkbox.toggle()
   }
@@ -70,7 +71,9 @@ export default class Index extends React.Component {
             value={checkbox1}
             data-key="checkbox1"
             className="demo-checkbox"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'checkbox1' })
+            }}
           >
             复选框
           </Checkbox>
@@ -89,7 +92,9 @@ export default class Index extends React.Component {
             data-key="checkboxShape"
             shape="square"
             className="demo-checkbox"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'checkboxShape' })
+            }}
           >
             复选框
           </Checkbox>
@@ -100,7 +105,9 @@ export default class Index extends React.Component {
             data-key="checkbox2"
             checkedColor="#07c160"
             className="demo-checkbox"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'checkbox2' })
+            }}
           >
             复选框
           </Checkbox>
@@ -111,7 +118,9 @@ export default class Index extends React.Component {
             value={checkboxSize}
             data-key="checkboxSize"
             className="demo-checkbox"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'checkboxSize' })
+            }}
           >
             复选框
           </Checkbox>
@@ -122,7 +131,9 @@ export default class Index extends React.Component {
             value={checkbox3}
             data-key="checkbox3"
             className="demo-checkbox"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'checkbox3' })
+            }}
             renderIcon={
               <Block>
                 <Image
@@ -142,7 +153,9 @@ export default class Index extends React.Component {
             value={checkboxLabel}
             data-key="checkboxLabel"
             className="demo-checkbox"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'checkboxLabel' })
+            }}
           >
             复选框
           </Checkbox>
@@ -151,7 +164,9 @@ export default class Index extends React.Component {
           <CheckboxGroup
             value={result}
             data-key="result"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'result' })
+            }}
           >
             {list.map((item, index) => {
               return (
@@ -167,7 +182,9 @@ export default class Index extends React.Component {
             direction="horizontal"
             value={result4}
             data-key="result4"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'result4' })
+            }}
           >
             {list.map((item, index) => {
               return (
@@ -183,7 +200,9 @@ export default class Index extends React.Component {
             value={result2}
             data-key="result2"
             max="2"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'result2' })
+            }}
           >
             {list.map((item, index) => {
               return (
@@ -198,7 +217,9 @@ export default class Index extends React.Component {
           <CheckboxGroup
             value={result3}
             data-key="result3"
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'result3' })
+            }}
           >
             <CellGroup>
               {list.map((item, index) => {
@@ -209,7 +230,9 @@ export default class Index extends React.Component {
                     valueClass="value-class"
                     clickable
                     data-index={index}
-                    onClick={this.toggle}
+                    onClick={(e) => {
+                      this.toggle({ ...e, index: index })
+                    }}
                   >
                     <Checkbox
                       onClick={this.noop}

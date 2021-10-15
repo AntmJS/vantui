@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Calendar, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -103,7 +104,7 @@ export default class Index extends React.Component {
 
   show = (event) => {
     this.resetSettings()
-    const { type, id } = event.currentTarget.dataset
+    const { type, id } = event
     const data = {
       id,
       type,
@@ -194,7 +195,9 @@ export default class Index extends React.Component {
             data-type="single"
             data-id="selectSingle"
             value={computed.formatFullDate(date.selectSingle)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'single', id: 'selectSingle' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -202,7 +205,9 @@ export default class Index extends React.Component {
             data-type="multiple"
             data-id="selectMultiple"
             value={computed.formatMultiple(date.selectMultiple)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'multiple', id: 'selectMultiple' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -210,7 +215,9 @@ export default class Index extends React.Component {
             data-type="range"
             data-id="selectRange"
             value={computed.formatRange(date.selectRange)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'range', id: 'selectRange' })
+            }}
           ></Cell>
         </DemoBlock>
         <DemoBlock title="快捷选择">
@@ -220,7 +227,9 @@ export default class Index extends React.Component {
             data-type="single"
             data-id="quickSelect1"
             value={computed.formatFullDate(date.quickSelect1)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'single', id: 'quickSelect1' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -228,7 +237,9 @@ export default class Index extends React.Component {
             data-type="range"
             data-id="quickSelect2"
             value={computed.formatRange(date.quickSelect2)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'range', id: 'quickSelect2' })
+            }}
           ></Cell>
         </DemoBlock>
         <DemoBlock title="自定义日历">
@@ -238,7 +249,9 @@ export default class Index extends React.Component {
             data-type="range"
             data-id="customColor"
             value={computed.formatRange(date.customColor)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'range', id: 'customColor' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -246,7 +259,9 @@ export default class Index extends React.Component {
             data-type="single"
             data-id="customRange"
             value={computed.formatFullDate(date.customRange)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'single', id: 'customRange' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -254,7 +269,9 @@ export default class Index extends React.Component {
             data-type="range"
             data-id="customConfirm"
             value={computed.formatRange(date.customConfirm)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'range', id: 'customConfirm' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -262,7 +279,9 @@ export default class Index extends React.Component {
             data-type="range"
             data-id="customDayText"
             value={computed.formatRange(date.customDayText)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'range', id: 'customDayText' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -270,7 +289,9 @@ export default class Index extends React.Component {
             data-type="single"
             data-id="customPosition"
             value={computed.formatFullDate(date.customPosition)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'single', id: 'customPosition' })
+            }}
           ></Cell>
           <Cell
             isLink
@@ -278,7 +299,9 @@ export default class Index extends React.Component {
             data-type="range"
             data-id="maxRange"
             value={computed.formatRange(date.maxRange)}
-            onClick={this.show}
+            onClick={(e) => {
+              this.show({ ...e, type: 'range', id: 'maxRange' })
+            }}
           ></Cell>
         </DemoBlock>
         <DemoBlock title="平铺展示">

@@ -1,6 +1,7 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Slider } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -23,7 +24,6 @@ export default class Index extends React.Component {
   }
 
   onDrag = (event) => {
-    console.info(event)
     this.setState({
       currentValue: event.detail.value,
     })
