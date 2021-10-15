@@ -35,7 +35,7 @@
     "@babel/runtime" "^7.11.2"
     "@tarojs/runtime" "3.3.9"
 
-"@tarojs/components@^3.3.0":
+"@tarojs/components@^3.3.9":
   version "3.3.9"
   resolved "https://registry.nlark.com/@tarojs/components/download/@tarojs/components-3.3.9.tgz#0aaee9b61c1acd81911a7beb28650812ba73e0d7"
   integrity sha1-Cq7pthwazYGRGnvrKGUIErpz4Nc=
@@ -90,7 +90,7 @@
     raf "^3.4.1"
     whatwg-fetch "^3.4.0"
 
-"@tarojs/taro@3.3.9", "@tarojs/taro@^3.3.0":
+"@tarojs/taro@3.3.9", "@tarojs/taro@^3.3.9":
   version "3.3.9"
   resolved "https://registry.nlark.com/@tarojs/taro/download/@tarojs/taro-3.3.9.tgz#73898b1a072823ad0707f3a1fde6758ba4b1ea70"
   integrity sha1-c4mLGgcoI60HB/Oh/eZ1i6Sx6nA=
@@ -130,7 +130,7 @@
   resolved "https://registry.nlark.com/@types/scheduler/download/@types/scheduler-0.16.2.tgz?cache=0&sync_timestamp=1629709152024&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fscheduler%2Fdownload%2F%40types%2Fscheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha1-GmL4lSVyPd4kuhsBsJK/XfitTTk=
 
-"@vant/icons@^1.7.0":
+"@vant/icons@^1.7.1":
   version "1.7.1"
   resolved "https://registry.nlark.com/@vant/icons/download/@vant/icons-1.7.1.tgz?cache=0&sync_timestamp=1631954457671&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vant%2Ficons%2Fdownload%2F%40vant%2Ficons-1.7.1.tgz#49ae420302b5581e54e6894891e5a05bc76e9f87"
   integrity sha1-Sa5CAwK1WB5U5olIkeWgW8dun4c=

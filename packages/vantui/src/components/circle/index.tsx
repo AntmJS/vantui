@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { createSelectorQuery } from '@tarojs/taro'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { View, Canvas, CoverView } from '@tarojs/components'
 
@@ -109,7 +109,7 @@ export default function Index(props: CircleProps) {
     }
     const dpr = getSystemInfoSync().pixelRatio
     return new Promise((resolve: any) => {
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select('#van-circle')
         .node()
         .exec((res: any) => {

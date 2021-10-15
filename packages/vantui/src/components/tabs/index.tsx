@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { createSelectorQuery } from '@tarojs/taro'
 import {
   useState,
   isValidElement,
@@ -331,7 +331,7 @@ export default function Index(props: TabsProps) {
       setState((pre: any) => {
         return {
           ...pre,
-          container: Taro.createSelectorQuery().select('.van-tabs'),
+          container: createSelectorQuery().select('.van-tabs'),
         }
       })
       resize()

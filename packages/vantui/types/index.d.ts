@@ -1,3 +1,5 @@
+declare function pxTransform(size: number, designWidth?: number): string
+export { pxTransform }
 export {
   Button,
   MiniLoginButton,
