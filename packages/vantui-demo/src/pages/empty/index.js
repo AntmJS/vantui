@@ -17,7 +17,7 @@ export default class Index extends React.Component {
 
   onChange = (event) => {
     this.setState({
-      activeTab: event.detail.name,
+      activeTab: event.detail ? event.detail.name : '',
     })
   }
 

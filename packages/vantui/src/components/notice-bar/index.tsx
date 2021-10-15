@@ -38,7 +38,7 @@ export default function Index(props: NoticeBarProps) {
     color = '#ed6a0c',
     backgroundColor = '#fffbe8',
     background,
-    wrapable = false,
+    wrapable,
     renderLeftIcon,
     renderRightIcon,
     onClick,
@@ -123,18 +123,20 @@ export default function Index(props: NoticeBarProps) {
         ) {
           return
         }
-        if (scrollable || wrapRect.width < contentRect.width) {
-          ref.current.wrapWidth = wrapRect.width
-          ref.current.contentWidth = contentRect.width
-          ref.current.duration =
-            ((wrapRect.width + contentRect.width) / speed) * 1000
-          ref.current.animation = Taro.createAnimation({
-            duration: ref.current.duration,
-            timingFunction: 'linear',
-            delay,
-          })
-          scroll()
-        }
+        Taro.nextTick(() => {
+          if (scrollable || wrapRect.width < contentRect.width) {
+            ref.current.wrapWidth = wrapRect.width
+            ref.current.contentWidth = contentRect.width
+            ref.current.duration =
+              ((wrapRect.width + contentRect.width) / speed) * 1000
+            ref.current.animation = Taro.createAnimation({
+              duration: ref.current.duration,
+              timingFunction: 'linear',
+              delay,
+            })
+            scroll()
+          }
+        })
       })
     })
   }, [scrollable, speed, delay, scroll])

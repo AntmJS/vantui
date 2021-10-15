@@ -31,6 +31,15 @@ export default class Index extends React.Component {
     const { value, gradientColor } = this.state
     return (
       <Block>
+        <DemoBlock title="demo">
+          <Circle
+            name="circle1"
+            value={value}
+            size={100}
+            strokeWidth={8}
+            text="颜色定制"
+          />
+        </DemoBlock>
         <DemoBlock title="基础用法">
           <Circle type="2d" value={value} text={value + '%'}></Circle>
         </DemoBlock>

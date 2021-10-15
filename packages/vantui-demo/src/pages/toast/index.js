@@ -40,7 +40,7 @@ export default class Index extends React.Component {
 
   showCustomizedToast = () => {
     const text = (second) => `倒计时 ${second} 秒`
-    const toast = toast.loading({
+    toast.loading({
       duration: 0,
       forbidClick: true,
       message: text(3),
@@ -50,7 +50,10 @@ export default class Index extends React.Component {
     const timer = setInterval(() => {
       second--
       if (second) {
-        toast.setData({ message: text(second) })
+        toast.loading({
+          message: text(second),
+        })
+        // toast.setData({ message: text(second) })
       } else {
         clearInterval(timer)
         toast.clear()

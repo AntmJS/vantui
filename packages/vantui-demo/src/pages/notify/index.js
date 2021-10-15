@@ -22,7 +22,7 @@ export default class Index extends React.Component {
       background: '#ffe1e1',
     })
 
-    notify.clear()
+    // notify.clear()
   }
 
   showCustomDuration = () => {

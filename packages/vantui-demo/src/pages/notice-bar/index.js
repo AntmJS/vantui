@@ -25,14 +25,14 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="滚动模式">
           <NoticeBar
+            className="margin-top"
             scrollable
             text={shortText}
-            className="demo-margin-bottom"
           ></NoticeBar>
           <NoticeBar
+            className="margin-top"
             scrollable={false}
             text={text}
-            className="demo-margin-bottom"
           ></NoticeBar>
         </DemoBlock>
         <DemoBlock title="多行展示">

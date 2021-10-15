@@ -25,10 +25,12 @@ export default class Index extends React.Component {
     content3: '线上拓客，随时预约，贴心顺手的开单收银',
   }
 
-  onChange = (event) => {
-    const { key } = event.currentTarget.dataset
+  onChange = (event, name) => {
+    // console.log('event: ', event)
+    // console.log(event.target['data-key'])
+    // const { key } = event.currentTarget.dataset
     this.setState({
-      [key]: event.detail,
+      [name]: event.detail,
     })
   }
 
@@ -56,7 +58,13 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock title="基础用法">
-          <Collapse value={active1} data-key="active1" onChange={this.onChange}>
+          <Collapse
+            value={active1}
+            data-key="active1"
+            onChange={(event) => {
+              this.onChange(event, 'active1')
+            }}
+          >
             <CollapseItem title={title1}>{content1}</CollapseItem>
             <CollapseItem title={title2}>{content2}</CollapseItem>
             <CollapseItem title={title3} disabled>
@@ -69,7 +77,9 @@ export default class Index extends React.Component {
             value={active2}
             data-key="active2"
             accordion
-            onChange={this.onChange}
+            onChange={(event) => {
+              this.onChange(event, 'active2')
+            }}
           >
             <CollapseItem title={title1}>{content1}</CollapseItem>
             <CollapseItem title={title2}>{content2}</CollapseItem>
@@ -80,7 +90,9 @@ export default class Index extends React.Component {
           <Collapse
             value={active3}
             data-key="active3"
-            onChange={this.onChange}
+            onChange={(event) => {
+              this.onChange(event, 'active3')
+            }}
             onOpen={this.onOpen}
             onClose={this.onClose}
           >
@@ -90,7 +102,13 @@ export default class Index extends React.Component {
           </Collapse>
         </DemoBlock>
         <DemoBlock title="自定义标题内容">
-          <Collapse value={active4} data-key="active4" onChange={this.onChange}>
+          <Collapse
+            value={active4}
+            data-key="active4"
+            onChange={(event) => {
+              this.onChange(event, 'active4')
+            }}
+          >
             <CollapseItem
               renderTitle={
                 <Block>

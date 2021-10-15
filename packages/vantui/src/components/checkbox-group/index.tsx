@@ -1,5 +1,6 @@
 import { cloneElement, useMemo } from 'react'
 import { View } from '@tarojs/components'
+import { isArray } from '../wxs/array'
 
 import * as utils from '../wxs/utils'
 import { CheckboxGroupProps } from '../../../types/checkbox-group'
@@ -18,7 +19,8 @@ export default function Index(props: CheckboxGroupProps) {
   } = props
 
   const newChildren: any = useMemo(() => {
-    return children?.map((child: any, index: number) => {
+    const _children = isArray(children) ? children : [children]
+    return _children?.map((child: any, index: number) => {
       return cloneElement(child, {
         key: index,
         value: value.indexOf(child.props?.name) !== -1,

@@ -134,6 +134,8 @@ export default function Index(props: NotifyProps) {
     [state],
   )
 
+  console.log('state: ', state)
+
   return (
     <VanTransition
       name="slide-down"
