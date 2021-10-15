@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import {
   GridItem,
   Grid,
@@ -19,7 +20,6 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    console.info(event)
     notify({
       type: 'primary',
       message: `切换至第${event.detail}项`,

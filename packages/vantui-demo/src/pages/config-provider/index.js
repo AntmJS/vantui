@@ -1,6 +1,7 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import {
   ConfigProvider,
   Rate,
@@ -32,7 +33,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    const { key } = event.currentTarget.dataset
+    const { key } = event
     this.setState({
       [key]: event.detail,
     })
@@ -52,7 +53,9 @@ export default class Index extends React.Component {
                     <Rate
                       modelValue={rate}
                       data-key="rate"
-                      onChange={this.onChange}
+                      onChange={(e) => {
+                        this.onChange({ ...e, key: 'rate' })
+                      }}
                     ></Rate>
                   </View>
                 </Block>
@@ -67,7 +70,9 @@ export default class Index extends React.Component {
                     <Slider
                       value={slider}
                       data-key="slider"
-                      onChange={this.onChange}
+                      onChange={(e) => {
+                        this.onChange({ ...e, key: 'slider' })
+                      }}
                     ></Slider>
                   </View>
                 </Block>
@@ -91,7 +96,9 @@ export default class Index extends React.Component {
                       <Rate
                         modelValue={rate}
                         data-key="rate"
-                        onChange={this.onChange}
+                        onChange={(e) => {
+                          this.onChange({ ...e, key: 'rate' })
+                        }}
                       ></Rate>
                     </View>
                   </Block>
@@ -106,7 +113,9 @@ export default class Index extends React.Component {
                       <Slider
                         value={slider}
                         data-key="slider"
-                        onChange={this.onChange}
+                        onChange={(e) => {
+                          this.onChange({ ...e, key: 'slider' })
+                        }}
                       ></Slider>
                     </View>
                   </Block>

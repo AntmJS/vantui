@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { ShareSheet, Toast, Cell, toast } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -74,7 +75,7 @@ export default class Index extends React.Component {
     this.setState({
       show: {
         ...this.state.show,
-        [event.target.dataset.type]: true,
+        [event.type]: true,
       },
     })
   }
@@ -110,7 +111,9 @@ export default class Index extends React.Component {
             isLink
             title="显示分享面板"
             data-type="basic"
-            onClick={this.onShowShareSheet}
+            onClick={(e) => {
+              this.onShowShareSheet({ ...e, type: 'basic' })
+            }}
           ></Cell>
           <ShareSheet
             show={show.basic}
@@ -125,7 +128,9 @@ export default class Index extends React.Component {
             isLink
             title="显示分享面板"
             data-type="multiLine"
-            onClick={this.onShowShareSheet}
+            onClick={(e) => {
+              this.onShowShareSheet({ ...e, type: 'multiLine' })
+            }}
           ></Cell>
           <ShareSheet
             show={show.multiLine}
@@ -140,7 +145,9 @@ export default class Index extends React.Component {
             isLink
             title="显示分享面板"
             data-type="customIcon"
-            onClick={this.onShowShareSheet}
+            onClick={(e) => {
+              this.onShowShareSheet({ ...e, type: 'customIcon' })
+            }}
           ></Cell>
           <ShareSheet
             show={show.customIcon}
@@ -154,7 +161,9 @@ export default class Index extends React.Component {
             isLink
             title="显示分享面板"
             data-type="withDesc"
-            onClick={this.onShowShareSheet}
+            onClick={(e) => {
+              this.onShowShareSheet({ ...e, type: 'withDesc' })
+            }}
           ></Cell>
           <ShareSheet
             show={show.withDesc}

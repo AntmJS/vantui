@@ -11,6 +11,7 @@ export type PickerColumn = {
 interface PickerEvents {
   detail: {
     value: number | number[]
+    index: number | number[]
   }
 }
 

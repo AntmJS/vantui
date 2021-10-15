@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { Circle, Button } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -21,7 +22,7 @@ export default class Index extends React.Component {
   }
 
   run = (e) => {
-    const step = parseFloat(e.currentTarget.dataset.step)
+    const step = parseFloat(e.event.step)
     this.setState({
       value: format(this.state.value + step),
     })
@@ -51,10 +52,24 @@ export default class Index extends React.Component {
           ></Circle>
           <Circle value={value} size="120" text="大小定制"></Circle>
         </DemoBlock>
-        <Button type="primary" size="small" data-step="10" onClick={this.run}>
+        <Button
+          type="primary"
+          size="small"
+          data-step="10"
+          onClick={(e) => {
+            this.run({ ...e, step: '10' })
+          }}
+        >
           增加
         </Button>
-        <Button type="danger" size="small" data-step="-10" onClick={this.run}>
+        <Button
+          type="danger"
+          size="small"
+          data-step="-10"
+          onClick={(e) => {
+            this.run({ ...e, step: '-10' })
+          }}
+        >
           减少
         </Button>
       </Block>

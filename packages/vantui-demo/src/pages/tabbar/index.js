@@ -1,6 +1,7 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
+
 import { TabbarItem, Tabbar, Image } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -25,12 +26,12 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    const { key } = event.currentTarget.dataset
+    const { key } = event
     this.setState({ [key]: event.detail })
   }
 
   handleChange = (event) => {
-    const { key } = event.currentTarget.dataset
+    const { key } = event
     this.setState({ [key]: event.detail })
     Taro.showToast({ title: `点击标签 ${event.detail + 1}`, icon: 'none' })
   }
@@ -46,7 +47,9 @@ export default class Index extends React.Component {
             data-key="active"
             className="tabbar-position"
             safeAreaInsetBottom={false}
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'active' })
+            }}
           >
             <TabbarItem icon="home-o">标签</TabbarItem>
             <TabbarItem icon="search">标签</TabbarItem>
@@ -60,7 +63,9 @@ export default class Index extends React.Component {
             data-key="active2"
             className="tabbar-position"
             safeAreaInsetBottom={false}
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'active2' })
+            }}
           >
             <TabbarItem name="home" icon="home-o">
               标签
@@ -82,7 +87,9 @@ export default class Index extends React.Component {
             data-key="active3"
             className="tabbar-position"
             safeAreaInsetBottom={false}
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'active3' })
+            }}
           >
             <TabbarItem icon="home-o">标签</TabbarItem>
             <TabbarItem icon="search" dot>
@@ -102,7 +109,9 @@ export default class Index extends React.Component {
             data-key="active4"
             className="tabbar-position"
             safeAreaInsetBottom={false}
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'active4' })
+            }}
           >
             <TabbarItem
               info="3"
@@ -139,7 +148,9 @@ export default class Index extends React.Component {
             activeColor="#07c160"
             inactiveColor="#000"
             safeAreaInsetBottom={false}
-            onChange={this.onChange}
+            onChange={(e) => {
+              this.onChange({ ...e, key: 'active5' })
+            }}
           >
             <TabbarItem icon="home-o">标签</TabbarItem>
             <TabbarItem icon="search">标签</TabbarItem>
@@ -153,7 +164,9 @@ export default class Index extends React.Component {
             data-key="active6"
             className="tabbar-position"
             safeAreaInsetBottom={false}
-            onChange={this.handleChange}
+            onChange={(e) => {
+              this.handleChange({ ...e, key: 'active6' })
+            }}
           >
             <TabbarItem icon="home-o">标签1</TabbarItem>
             <TabbarItem icon="search">标签2</TabbarItem>

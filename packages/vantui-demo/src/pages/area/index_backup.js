@@ -4,7 +4,7 @@ import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import Page from '../../common/page.js'
 import Toast from '../../dist/toast/toast.js'
-
+import { areaList } from '@vant/area-data'
 import VanConfigProvider from '../../dist/config-provider/index'
 import VanShareSheet from '../../dist/share-sheet/index'
 import VanCalendar from '../../dist/calendar/index'
@@ -72,33 +72,12 @@ import VanArea from '../../dist/area/index'
 import VanActionSheet from '../../dist/action-sheet/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
-const db = Taro.cloud.database()
 
 @withWeapp({
   data: {
-    areaList: {},
-    loading: true,
+    areaList: areaList,
+    loading: false,
     value: 330302,
-  },
-
-  onShow() {
-    db.collection('region')
-      .limit(1)
-      .get()
-      .then((res) => {
-        if (res.data && res.data.length > 0) {
-          this.setData({
-            loading: false,
-            areaList: res.data[0],
-          })
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-        this.setData({
-          loading: false,
-        })
-      })
   },
 
   onChange(event) {
