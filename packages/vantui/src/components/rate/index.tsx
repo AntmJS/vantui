@@ -1,14 +1,15 @@
 import Taro from '@tarojs/taro'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { View, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Icon from '../icon/index'
 import { getAllRect } from '../common/utils'
 import { RateProps } from '../../../types/rate'
-
+let comIndex = 0
 export default function Index(props: RateProps) {
   const [countArray, setCountArray] = useState(Array.from({ length: 5 }))
   const [innerValue, setInnerValue] = useState(0)
+  const indexRef = useRef(comIndex)
 
   const {
     count = 5,
@@ -35,8 +36,9 @@ export default function Index(props: RateProps) {
     Object.defineProperty(event, 'detail', {
       value: score,
     })
+
     if (!disabled && !readonly) {
-      setInnerValue(score + 1)
+      setInnerValue(+score + 1)
       Taro.nextTick(() => {
         onChange?.(event)
       })
@@ -47,31 +49,33 @@ export default function Index(props: RateProps) {
     if (!touchable) return
     const { clientX } = event?.touches?.[0] ?? {}
     if (clientX) {
-      getAllRect(null, '.van-rate__icon').then((list: any) => {
-        const target = list
-          .sort((cur: any, next: any) => {
-            if (typeof cur.dataset.score !== 'number') {
-              const curScore = Number(cur.id.split('__')[1])
-              const nextScore = Number(next.id.split('__')[1])
-              return curScore - nextScore
-            } else {
-              return cur.dataset.score - next.dataset.score
+      getAllRect(null, `.comId${indexRef.current} .van-rate__icon`).then(
+        (list: any) => {
+          const target = list
+            .sort((cur: any, next: any) => {
+              if (typeof cur.dataset.score !== 'number') {
+                const curScore = Number(cur.id.split('__')[1])
+                const nextScore = Number(next.id.split('__')[1])
+                return curScore - nextScore
+              } else {
+                return cur.dataset.score - next.dataset.score
+              }
+            })
+            .find((item: any) => clientX >= item.left && clientX <= item.right)
+          if (target != null) {
+            if (typeof target.dataset.score !== 'number') {
+              target.dataset.score = Number(target.id.split('__')[1])
             }
-          })
-          .find((item: any) => clientX >= item.left && clientX <= item.right)
-        if (target != null) {
-          if (typeof target.dataset.score !== 'number') {
-            target.dataset.score = Number(target.id.split('__')[1])
+            if (target.dataset.score || target.dataset.score === 0) {
+              onSelect(
+                Object.assign(Object.assign({}, event), {
+                  currentTarget: target,
+                }),
+              )
+            }
           }
-          if (target.dataset.score || target.dataset.score === 0) {
-            onSelect(
-              Object.assign(Object.assign({}, event), {
-                currentTarget: target,
-              }),
-            )
-          }
-        }
-      })
+        },
+      )
     }
   }
 
@@ -91,9 +95,18 @@ export default function Index(props: RateProps) {
     },
     [count],
   )
+  useEffect(() => {
+    comIndex++
+    indexRef.current = comIndex
+  }, [])
   return (
     <View
-      className={utils.bem('rate') + ' custom-class ' + className}
+      className={
+        `comId${indexRef.current} ` +
+        utils.bem('rate') +
+        ' custom-class ' +
+        className
+      }
       style={style}
       onTouchMove={onTouchMove}
       {...others}

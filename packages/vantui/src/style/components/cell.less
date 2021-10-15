@@ -7,6 +7,7 @@
   display: flex;
   box-sizing: border-box;
   width: 100%;
+  flex: 1; // 10.15新加
   .theme(padding, '@cell-vertical-padding @cell-horizontal-padding');
   .theme(font-size, '@cell-font-size');
   .theme(line-height, '@cell-line-height');
@@ -28,8 +29,11 @@
   &__label {
     .theme(margin-top, '@cell-label-margin-top');
     .theme(font-size, '@cell-label-font-size');
-    .theme(line-height, '@cell-label-line-height');
+    // .theme(line-height, '@cell-label-line-height');
     .theme(color, '@cell-label-color');
+    // 10.15新加
+    display: flex;
+    align-items: center;
   }
 
   &__value {
