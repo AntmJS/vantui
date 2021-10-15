@@ -22,9 +22,9 @@ export default class Index extends React.Component {
   }
 
   run = (e) => {
-    // const step = parseFloat(e.currentTarget.dataset.step)
+    const step = parseFloat(e.currentTarget.dataset.step)
     this.setState({
-      value: format(this.state.value + Number(e.step)),
+      value: format(this.state.value + step),
     })
   }
 
@@ -55,9 +55,16 @@ export default class Index extends React.Component {
         <Button
           type="primary"
           size="small"
-          data-step="10"
           onClick={(e) => {
-            this.run({ ...e, step: '10' })
+            this.run({
+              detail: e.detail,
+              currentTarget: {
+                dataset: { step: '10' },
+              },
+              target: {
+                dataset: { step: '10' },
+              },
+            })
           }}
         >
           增加
@@ -65,9 +72,16 @@ export default class Index extends React.Component {
         <Button
           type="danger"
           size="small"
-          data-step="-10"
           onClick={(e) => {
-            this.run({ ...e, step: '-10' })
+            this.run({
+              detail: e.detail,
+              currentTarget: {
+                dataset: { step: '-10' },
+              },
+              target: {
+                dataset: { step: '-10' },
+              },
+            })
           }}
         >
           减少

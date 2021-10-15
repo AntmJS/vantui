@@ -44,7 +44,7 @@ export default class Index extends React.Component {
 
   onInput = (event) => {
     const { detail, currentTarget } = event
-    const result = this.getResult(detail, event.type)
+    const result = this.getResult(detail, currentTarget.dataset.type)
 
     toast(result)
   }
@@ -81,49 +81,75 @@ export default class Index extends React.Component {
         <DemoBlock title="选择完整时间">
           <DatetimePicker
             type="datetime"
-            data-type="datetime"
             loading={loading}
             value={currentDate1}
             minDate={minDate}
             onInput={(e) => {
-              this.onInput({ ...e, type: 'datetime' })
+              this.onInput({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'datetime' },
+                },
+                target: {
+                  dataset: { type: 'datetime' },
+                },
+              })
             }}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选择日期（年月日）">
           <DatetimePicker
             type="date"
-            data-type="date"
             value={currentDate2}
             minDate={minDate}
             onInput={(e) => {
-              this.onInput({ ...e, type: 'date' })
+              this.onInput({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'date' },
+                },
+                target: {
+                  dataset: { type: 'date' },
+                },
+              })
             }}
-            formatter={(e) => {
-              this.formatter({ ...e, type: 'date' })
-            }}
+            formatter={this.formatter}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选择日期（年月）">
           <DatetimePicker
             type="year-month"
-            data-type="year-month"
             value={currentDate3}
             minDate={minDate}
             onInput={(e) => {
-              this.onInput({ ...e, type: 'year-month' })
+              this.onInput({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'year-month' },
+                },
+                target: {
+                  dataset: { type: 'year-month' },
+                },
+              })
             }}
           ></DatetimePicker>
         </DemoBlock>
         <DemoBlock title="选择时间">
           <DatetimePicker
             type="time"
-            data-type="time"
             value={currentDate4}
             minHour={minHour}
             maxHour={maxHour}
             onInput={(e) => {
-              this.onInput({ ...e, type: 'time' })
+              this.onInput({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { type: 'time' },
+                },
+                target: {
+                  dataset: { type: 'time' },
+                },
+              })
             }}
           ></DatetimePicker>
         </DemoBlock>

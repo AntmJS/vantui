@@ -28,21 +28,15 @@ export default class Index extends React.Component {
     },
   }
 
-  onChange = (event, name) => {
-    // const { key } = event.currentTarget.dataset
-    this.setState({ [name]: event.detail })
+  onChange = (event) => {
+    const { key } = event.currentTarget.dataset
+    this.setState({ [key]: event.detail })
   }
 
-  // onClick = (event) => {
-  //   const { name } = event.currentTarget.dataset
-  //   this.setState({
-  //     radio5: name,
-  //   })
-  // }
-  onClick = (event, name, index) => {
-    // const { index } = event.currentTarget.dataset
+  onClick = (event) => {
+    const { key, index } = event.currentTarget.dataset
     this.setState({
-      [name]: index,
+      [key]: index,
     })
   }
 
@@ -64,9 +58,16 @@ export default class Index extends React.Component {
         <DemoBlock title="基本用法" padding>
           <RadioGroup
             value={radio1}
-            data-key="radio1"
-            onChange={(event) => {
-              this.onChange(event, 'radio1')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radio1' },
+                },
+                target: {
+                  dataset: { key: 'radio1' },
+                },
+              })
             }}
           >
             <Radio name="1" className="demo-radio">
@@ -78,9 +79,16 @@ export default class Index extends React.Component {
         <DemoBlock title="水平排列" padding>
           <RadioGroup
             value={radio1}
-            data-key="radio1"
-            onChange={(event) => {
-              this.onChange(event, 'radio1')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radio1' },
+                },
+                target: {
+                  dataset: { key: 'radio1' },
+                },
+              })
             }}
             direction="horizontal"
           >
@@ -92,9 +100,16 @@ export default class Index extends React.Component {
           <RadioGroup
             disabled
             value={radio2}
-            data-key="radio2"
-            onChange={(event) => {
-              this.onChange(event, 'radio2')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radio2' },
+                },
+                target: {
+                  dataset: { key: 'radio2' },
+                },
+              })
             }}
           >
             <Radio name="1" className="demo-radio">
@@ -106,9 +121,16 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义形状" padding>
           <RadioGroup
             value={radioShape}
-            data-key="radioShape"
-            onChange={(event) => {
-              this.onChange(event, 'radioShape')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radioShape' },
+                },
+                target: {
+                  dataset: { key: 'radioShape' },
+                },
+              })
             }}
           >
             <Radio name="1" shape="square" className="demo-radio">
@@ -122,9 +144,16 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义颜色" padding>
           <RadioGroup
             value={radio3}
-            data-key="radio3"
-            onChange={(event) => {
-              this.onChange(event, 'radio3')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radio3' },
+                },
+                target: {
+                  dataset: { key: 'radio3' },
+                },
+              })
             }}
           >
             <Radio name="1" className="demo-radio" checkedColor="#07c160">
@@ -138,9 +167,16 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义大小" padding>
           <RadioGroup
             value={radioSize}
-            data-key="radioSize"
-            onChange={(event) => {
-              this.onChange(event, 'radioSize')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radioSize' },
+                },
+                target: {
+                  dataset: { key: 'radioSize' },
+                },
+              })
             }}
           >
             <Radio name="1" iconSize="24px" className="demo-radio">
@@ -154,9 +190,16 @@ export default class Index extends React.Component {
         <DemoBlock title="自定义图标" padding>
           <RadioGroup
             value={radio4}
-            data-key="radio4"
-            onChange={(event) => {
-              this.onChange(event, 'radio4')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radio4' },
+                },
+                target: {
+                  dataset: { key: 'radio4' },
+                },
+              })
             }}
           >
             <Radio
@@ -194,9 +237,16 @@ export default class Index extends React.Component {
         <DemoBlock title="禁用文本点击" padding>
           <RadioGroup
             value={radioLabel}
-            data-key="radioLabel"
-            onChange={(event) => {
-              this.onChange(event, 'radioLabel')
+            onChange={(e) => {
+              this.onChange({
+                detail: e.detail,
+                currentTarget: {
+                  dataset: { key: 'radioLabel' },
+                },
+                target: {
+                  dataset: { key: 'radioLabel' },
+                },
+              })
             }}
           >
             <Radio labelDisabled name="1" className="demo-radio">
@@ -213,9 +263,16 @@ export default class Index extends React.Component {
               <Cell
                 title="单选框 1"
                 clickable
-                data-name="1"
-                onClick={(event) => {
-                  this.onClick(event, 'radio5', '1')
+                onClick={(e) => {
+                  this.onClick({
+                    detail: e.detail,
+                    currentTarget: {
+                      dataset: { name: '1', key: 'radio5' },
+                    },
+                    target: {
+                      dataset: { name: '1', key: 'radio5' },
+                    },
+                  })
                 }}
                 renderRightIcon={
                   <Block>
@@ -226,9 +283,16 @@ export default class Index extends React.Component {
               <Cell
                 title="单选框 2"
                 clickable
-                data-name="2"
-                onClick={(event) => {
-                  this.onClick(event, 'radio5', '2')
+                onClick={(e) => {
+                  this.onClick({
+                    detail: e.detail,
+                    currentTarget: {
+                      dataset: { name: '2', key: 'radio5' },
+                    },
+                    target: {
+                      dataset: { name: '2', key: 'radio5' },
+                    },
+                  })
                 }}
                 renderRightIcon={
                   <Block>
