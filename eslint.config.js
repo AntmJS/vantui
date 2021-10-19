@@ -13,9 +13,9 @@ module.exports = {
       // flowVersion: '0.53', // Flow version
     },
   },
-  // rules: {
-  //   'no-unused-vars': 'off',
-  //   '@typescript-eslint/no-unused-vars': 'off',
-  //   'import/no-named-as-default-member': 'off',
-  // },
+  rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'import/no-named-as-default-member': 'off',
+  },
 }

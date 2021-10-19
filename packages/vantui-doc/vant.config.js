@@ -42,6 +42,11 @@ module.exports = {
             title: '定制主题',
             hideSimulator: true,
           },
+          {
+            path: 'use-in-react',
+            title: '如何在React中使用',
+            hideSimulator: true,
+          },
         ],
       },
       {

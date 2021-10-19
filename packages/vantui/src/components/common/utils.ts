@@ -1,4 +1,7 @@
-import Taro from '@tarojs/taro'
+import Taro, {
+  getSystemInfoSync as TaroGetSystemInfoSync,
+  createSelectorQuery,
+} from '@tarojs/taro'
 import { isDef, isPlainObject, isPromise } from './validator'
 import { canIUseNextTick } from './version'
 export { isDef } from './validator'
@@ -17,7 +20,7 @@ export function nextTick(cb: any) {
 let systemInfo: any
 export function getSystemInfoSync() {
   if (systemInfo == null) {
-    systemInfo = Taro.getSystemInfoSync()
+    systemInfo = TaroGetSystemInfoSync()
   }
   return systemInfo
 }
@@ -43,7 +46,7 @@ export function requestAnimationFrame(cb: any) {
       cb()
     }, 33.333333333333336)
   }
-  return Taro.createSelectorQuery()
+  return createSelectorQuery()
     .selectViewport()
     .boundingClientRect()
     .exec(() => {
@@ -63,7 +66,7 @@ export function pickExclude(obj: any, keys: any) {
 }
 export function getRect(context: any, selector: any) {
   return new Promise((resolve) => {
-    let query = Taro.createSelectorQuery()
+    let query = createSelectorQuery()
     if (context) {
       query = query.in(context)
     }
@@ -77,7 +80,7 @@ export function getRect(context: any, selector: any) {
 }
 export function getAllRect(context: any, selector: any) {
   return new Promise((resolve) => {
-    let query = Taro.createSelectorQuery()
+    let query = createSelectorQuery()
     if (context) {
       query = query.in(context)
     }
