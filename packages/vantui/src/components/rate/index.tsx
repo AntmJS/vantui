@@ -31,6 +31,11 @@ export default function Index(props: RateProps) {
     ...others
   } = props
 
+  useEffect(() => {
+    comIndex++
+    indexRef.current = comIndex
+  }, [])
+
   const onSelect = function (event: ITouchEvent) {
     const { score } = event.currentTarget.dataset
     Object.defineProperty(event, 'detail', {
@@ -95,10 +100,7 @@ export default function Index(props: RateProps) {
     },
     [count],
   )
-  useEffect(() => {
-    comIndex++
-    indexRef.current = comIndex
-  }, [])
+
   return (
     <View
       className={

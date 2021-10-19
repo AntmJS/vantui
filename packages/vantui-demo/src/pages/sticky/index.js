@@ -28,6 +28,7 @@ export default class Index extends React.Component {
     Taro.createSelectorQuery()
       .select('#scroller')
       .boundingClientRect((res) => {
+        console.log('#scroller:', res.top)
         this.setState({
           scrollTop: event.detail.scrollTop,
           offsetTop: res.top,
@@ -39,7 +40,7 @@ export default class Index extends React.Component {
   render() {
     const { container, scrollTop, offsetTop } = this.state
     return (
-      <Block>
+      <View className="sticky-page">
         <DemoBlock title="基础用法">
           <Sticky>
             <Button type="primary" style="margin-left: 15px">
@@ -70,14 +71,14 @@ export default class Index extends React.Component {
             id="scroller"
             style="height: 200px; background-color: #fff;"
           >
-            <View style="height: 400px; padding-top: 50px;">
+            <View style="height: 400px;">
               <Sticky scrollTop={scrollTop} offsetTop={offsetTop}>
                 <Button type="warning">嵌套在 scroll-view 内</Button>
               </Sticky>
             </View>
           </ScrollView>
         </DemoBlock>
-      </Block>
+      </View>
     )
   }
 }

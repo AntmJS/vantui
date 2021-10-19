@@ -55,12 +55,12 @@ export default class Index extends React.Component {
   render() {
     const { tabs4, tabsWithName, tabs6, tabs3, tabs2 } = this.state
     return (
-      <Block>
+      <View className="tab-page">
         <DemoBlock title="基础用法">
           <Tabs active={1} onChange={this.onChange}>
             {tabs4.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -71,11 +71,7 @@ export default class Index extends React.Component {
           <Tabs active="b">
             {tabsWithName.map((item, index) => {
               return (
-                <Tab
-                  key={item.index}
-                  name={item.name}
-                  title={'标签 ' + item.index}
-                >
+                <Tab key={index} name={item.name} title={'标签 ' + index}>
                   <View className="content">{'内容' + item.index}</View>
                 </Tab>
               )
@@ -86,7 +82,7 @@ export default class Index extends React.Component {
           <Tabs>
             {tabs6.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -97,11 +93,7 @@ export default class Index extends React.Component {
           <Tabs onDisabled={this.onClickDisabled}>
             {tabs3.map((item, index) => {
               return (
-                <Tab
-                  key={item.index}
-                  disabled={index === 1}
-                  title={'标签 ' + item}
-                >
+                <Tab key={index} disabled={index === 1} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -112,7 +104,7 @@ export default class Index extends React.Component {
           <Tabs type="card" tabClass="special-tab">
             {tabs3.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content-2">{'内容' + item}</View>
                 </Tab>
               )
@@ -123,7 +115,7 @@ export default class Index extends React.Component {
           <Tabs onClick={this.onClick}>
             {tabs2.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -134,7 +126,7 @@ export default class Index extends React.Component {
           <Tabs sticky>
             {tabs4.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -145,7 +137,7 @@ export default class Index extends React.Component {
           <Tabs animated>
             {tabs4.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -156,7 +148,7 @@ export default class Index extends React.Component {
           <Tabs swipeable>
             {tabs4.map((item, index) => {
               return (
-                <Tab key={item.index} title={'标签 ' + item}>
+                <Tab key={index} title={'标签 ' + item}>
                   <View className="content">{'内容' + item}</View>
                 </Tab>
               )
@@ -182,7 +174,7 @@ export default class Index extends React.Component {
             {tabs4.map((item, index) => {
               return (
                 <Tab
-                  key={item.index}
+                  key={index}
                   title={'标签 ' + item}
                   dot={index === 1}
                   info={index === 2 ? 99 : null}
@@ -193,7 +185,7 @@ export default class Index extends React.Component {
             })}
           </Tabs>
         </DemoBlock>
-      </Block>
+      </View>
     )
   }
 }
