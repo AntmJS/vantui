@@ -1,3 +1,5 @@
+import { pxTransform } from '@tarojs/taro'
+export { pxTransform }
 export { default as Button } from './components/button'
 export { default as MiniLoginButton } from './components/button/miniLoginButton'
 export { default as MiniPhoneButton } from './components/button/miniPhoneButton'

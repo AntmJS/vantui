@@ -26,10 +26,8 @@ packages/vantui-demo/qq
 packages/vantui-demo/dd
 packages/vantui-demo/qywx
 packages/vantui-demo/jd
-<<<<<<< HEAD
-packages/vantui-demo/iot
-=======
 packages/vantui-demo/iot
 packages/vantui-demo/build
 packages/vantui-demo/dist
->>>>>>> main
+packages/react-demo/build
+packages/react-demo/dist

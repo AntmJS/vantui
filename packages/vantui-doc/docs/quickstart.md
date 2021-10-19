@@ -2,7 +2,7 @@
 
 ### 背景知识
 
-使用 @antmjs/vantui 前，请确保你已经学习过[Taro框架React版](https://taro.zone/)。
+使用 @antmjs/vantui 前，请确保你已经学习过[Taro框架React版](https://taro.zone/) 或者 [React](https://reactjs.org/)。
 
 ### 差异点
 - 组件属性均用驼峰代替
@@ -47,6 +47,30 @@ import { Button } from '@antmjs/vantui'
 
 > 其他使用方式暂时请查看[有赞文档](https://youzan.github.io/vant-weapp/#/home)
 
+## 注意
+
+### 单位尺寸转化问题
+
+VantUI默认的尺寸规则 [作用参考](https://taro-docs.jd.com/taro/docs/size) [修改参考](https://taro-docs.jd.com/taro/docs/config)
+
+```json
+{
+  "designWidth": 750,
+  "deviceRatio": {
+    "640": 2.34 / 2,
+    "750": 1,
+    "828": 1.81 / 2,
+  },
+}
+```
+
+如何在js中转换单位
+
+```js
+import { pxTransform } from '@antmjs/vantui'
+// 小程序转rpx H5转rem
+pxTransform(10)
+```
 ## 其他
 
 ### 在开发者工具中预览示例小程序

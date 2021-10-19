@@ -103,7 +103,7 @@ export default class Index extends React.Component {
           <Cell
             title="单元格"
             border={false}
-            renderRighticon={
+            renderRightIcon={
               <Block>
                 <Icon name="search"></Icon>
               </Block>

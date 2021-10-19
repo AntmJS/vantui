@@ -142,8 +142,15 @@
     &__info {
       position: relative !important;
       top: -2px !important;
-      display: inline-block;
+      // display: inline-block;
+      padding-top: 3px;
       transform: translateX(0) !important;
+    }
+
+    .van-info--dot {
+      border-radius: 100%;
+      .theme(width, '@info-dot-size');
+      .theme(height, '@info-dot-size');
     }
   }
 }
