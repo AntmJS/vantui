@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioProps } from '../../../types/radio'
 import VanIcon from '../icon/index'
-import { canIUseModel } from '../common/version.js'
+// import { canIUseModel } from '../common/version.js'
 import * as computed from './wxs'
 
 export default function Index(
@@ -52,14 +52,12 @@ export default function Index(
   const emitChange = useCallback(
     (event: ITouchEvent) => {
       onChange?.(event)
-      if (canIUseModel()) {
-        setState((state) => {
-          return {
-            ...state,
-            value: event.detail,
-          }
-        })
-      }
+      setState((state) => {
+        return {
+          ...state,
+          value: event.detail,
+        }
+      })
     },
     [onChange],
   )

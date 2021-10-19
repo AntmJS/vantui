@@ -34,9 +34,9 @@ export default class Index extends React.Component {
   }
 
   onClick = (event) => {
-    const { key, index } = event.currentTarget.dataset
+    const { key, name } = event.currentTarget.dataset
     this.setState({
-      [key]: index,
+      [key]: name,
     })
   }
 
