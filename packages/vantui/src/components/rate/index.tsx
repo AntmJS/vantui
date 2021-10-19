@@ -54,33 +54,34 @@ export default function Index(props: RateProps) {
     if (!touchable) return
     const { clientX } = event?.touches?.[0] ?? {}
     if (clientX) {
-      getAllRect(null, `.rateComId${indexRef.current} .van-rate__icon`).then(
-        (list: any) => {
-          const target = list
-            .sort((cur: any, next: any) => {
-              if (typeof cur.dataset.score !== 'number') {
-                const curScore = Number(cur.id.split('__')[1])
-                const nextScore = Number(next.id.split('__')[1])
-                return curScore - nextScore
-              } else {
-                return cur.dataset.score - next.dataset.score
-              }
-            })
-            .find((item: any) => clientX >= item.left && clientX <= item.right)
-          if (target != null) {
-            if (typeof target.dataset.score !== 'number') {
-              target.dataset.score = Number(target.id.split('__')[1])
+      getAllRect(
+        null,
+        `.rate-com-index${indexRef.current} .van-rate__icon`,
+      ).then((list: any) => {
+        const target = list
+          .sort((cur: any, next: any) => {
+            if (typeof cur.dataset.score !== 'number') {
+              const curScore = Number(cur.id.split('__')[1])
+              const nextScore = Number(next.id.split('__')[1])
+              return curScore - nextScore
+            } else {
+              return cur.dataset.score - next.dataset.score
             }
-            if (target.dataset.score || target.dataset.score === 0) {
-              onSelect(
-                Object.assign(Object.assign({}, event), {
-                  currentTarget: target,
-                }),
-              )
-            }
+          })
+          .find((item: any) => clientX >= item.left && clientX <= item.right)
+        if (target != null) {
+          if (typeof target.dataset.score !== 'number') {
+            target.dataset.score = Number(target.id.split('__')[1])
           }
-        },
-      )
+          if (target.dataset.score || target.dataset.score === 0) {
+            onSelect(
+              Object.assign(Object.assign({}, event), {
+                currentTarget: target,
+              }),
+            )
+          }
+        }
+      })
     }
   }
 
@@ -104,7 +105,7 @@ export default function Index(props: RateProps) {
   return (
     <View
       className={
-        `rateComId${indexRef.current} ` +
+        `rate-com-index${indexRef.current} ` +
         utils.bem('rate') +
         ' custom-class ' +
         className

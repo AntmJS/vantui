@@ -197,8 +197,8 @@ export default function Index(props: TabsProps) {
     }
     index = index ?? currentIndex
     Promise.all([
-      getAllRect(null, `.tabsComId${indexRef.current} .van-tab`),
-      getRect(null, `.tabsComId${indexRef.current} .van-tabs__line`),
+      getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
+      getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__line`),
     ]).then(([rects = [], lineRect]: any) => {
       if (rects && lineRect) {
         const rect = rects[index!]
@@ -244,8 +244,8 @@ export default function Index(props: TabsProps) {
     }
     index = index ?? currentIndex
     Promise.all([
-      getAllRect(null, `.tabsComId${indexRef.current} .van-tab`),
-      getRect(null, `.tabsComId${indexRef.current} .van-tabs__nav`),
+      getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
+      getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__nav`),
     ]).then(([tabRects, navRect]: any) => {
       if (tabRects && navRect) {
         const tabRect = tabRects[index!]
@@ -346,7 +346,7 @@ export default function Index(props: TabsProps) {
         ...pre,
         container: () =>
           Taro.createSelectorQuery().select(
-            `.tabsComId${indexRef.current}.van-tabs`,
+            `.tabs-com-index${indexRef.current}.van-tabs`,
           ),
       }
     })
@@ -394,7 +394,7 @@ export default function Index(props: TabsProps) {
   return (
     <View
       className={
-        `tabsComId${indexRef.current} ` +
+        `tabs-com-index${indexRef.current} ` +
         'custom-class ' +
         utils.bem('tabs', [type] + ` ${className || ''}`)
       }

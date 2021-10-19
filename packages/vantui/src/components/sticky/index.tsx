@@ -79,7 +79,7 @@ export default function Index(props: StickyProps) {
 
       if (typeof container === 'function') {
         Promise.all([
-          getRect(null, `.stickyComId${indexRef.current}${ROOT_ELEMENT}`),
+          getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`),
           getContainerRect(),
         ]).then(([root, container]: any) => {
           if (root && container) {
@@ -101,7 +101,7 @@ export default function Index(props: StickyProps) {
         })
         return
       }
-      getRect(null, `.stickyComId${indexRef.current}${ROOT_ELEMENT}`).then(
+      getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`).then(
         (root: any) => {
           if (!isDef(root)) {
             return
@@ -134,7 +134,7 @@ export default function Index(props: StickyProps) {
   return (
     <View
       className={
-        `stickyComId${indexRef.current} ` +
+        `sticky-com-index${indexRef.current} ` +
         'custom-class van-sticky ' +
         className
       }

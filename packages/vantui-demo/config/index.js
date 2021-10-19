@@ -94,7 +94,7 @@ let config = {
       }
     },
     router: {
-      mode: 'browser',
+      mode: 'hash',
     },
     devServer: {
       port: 10086,
