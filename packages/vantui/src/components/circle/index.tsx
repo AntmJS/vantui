@@ -5,7 +5,7 @@ import { View, Canvas, CoverView } from '@tarojs/components'
 import { CircleProps } from '../../../types/circle'
 import { getSystemInfoSync } from '../common/utils.js'
 import { isObj } from '../common/validator.js'
-import { canIUseCanvas2d } from '../common/version.js'
+// import { canIUseCanvas2d } from '../common/version.js'
 import { adaptor } from './canvas.js'
 
 function format(rate: number) {
@@ -51,10 +51,8 @@ export default function Index(props: CircleProps) {
     setState((state) => {
       return {
         ...state,
-        unitag:
-          process.env.TARO_ENV === 'h5'
-            ? `van-circle_uni_${CIRCLE_INDEX++}`
-            : 'van-circle',
+        // unitag: process.env.TARO_ENV === 'h5' ? `van-circle_uni_${CIRCLE_INDEX++}` : 'van-circle',
+        unitag: `van-circle_uni_${CIRCLE_INDEX++}`,
       }
     })
   }, [])
@@ -80,7 +78,8 @@ export default function Index(props: CircleProps) {
   })
 
   const getContext = useCallback(() => {
-    if (type === '' || !canIUseCanvas2d()) {
+    console.log('getContext')
+    if (type === '') {
       const ctx = Taro.createCanvasContext(state.unitag)
       return Promise.resolve(ctx)
     }
@@ -102,7 +101,9 @@ export default function Index(props: CircleProps) {
         })
     })
   }, [size, type, state.unitag])
-  const setHoverColor = useCallback(() => {
+
+  const setHoverColor = function () {
+    console.log('setHoverColor')
     if (isObj(color)) {
       const _color = color as Record<string, string>
       return getContext().then((context: any) => {
@@ -127,7 +128,7 @@ export default function Index(props: CircleProps) {
       }
     })
     return Promise.resolve()
-  }, [color, size, getContext])
+  }
   const presetCanvas = useCallback(
     (
       context: any,
@@ -170,6 +171,7 @@ export default function Index(props: CircleProps) {
   )
   const drawCircle = useCallback(
     (currentValue: any) => {
+      console.log('drawCircle')
       getContext().then((context: any) => {
         context.clearRect(0, 0, size, size)
         renderLayerCircle(context)
@@ -182,13 +184,14 @@ export default function Index(props: CircleProps) {
     },
     [getContext, renderHoverCircle, renderLayerCircle, size],
   )
-  const clearMockInterval = useCallback(() => {
+  const clearMockInterval = function () {
     if (ref.current.interval) {
       clearTimeout(ref.current.interval)
       ref.current.interval = null
     }
-  }, [])
+  }
   const reRender = useCallback(() => {
+    console.log('reRender')
     if (speed <= 0 || speed > 1000) {
       drawCircle(value)
       return
@@ -213,7 +216,7 @@ export default function Index(props: CircleProps) {
       }, 1000 / speed)
     }
     run()
-  }, [drawCircle, speed, value, clearMockInterval])
+  }, [drawCircle, speed, value])
 
   useEffect(() => {
     if (state.ready) {
@@ -238,25 +241,25 @@ export default function Index(props: CircleProps) {
   }, [state.ready, color])
 
   useEffect(() => {
-    if (process.env.TARO_ENV !== 'h5') {
-      if (state.ready) {
-        ref.current.currentValue = value
-        setHoverColor().then(() => {
-          // if (process.env.TARO_ENV === 'h5') {
-          //   reRender()
-          // } else {
-          //   drawCircle(ref.current.currentValue)
-          // }
-          drawCircle(ref.current.currentValue)
-        })
-      }
-    }
+    // if (process.env.TARO_ENV !== 'h5') {
+    //   if (state.ready) {
+    //     ref.current.currentValue = value
+    //     setHoverColor().then(() => {
+    //       // if (process.env.TARO_ENV === 'h5') {
+    //       // reRender()
+    //       // } else {
+    //       //   drawCircle(ref.current.currentValue)
+    //       // }
+    //       drawCircle(ref.current.currentValue)
+    //     })
+    //   }
+    // }
 
     return () => {
       clearMockInterval()
     }
     /* eslint-disable-next-line */
-  }, [drawCircle, state.ready])
+  }, [state.ready])
 
   return (
     <View className={`van-circle ${className}`} style={style} {...others}>

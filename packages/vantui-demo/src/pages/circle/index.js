@@ -32,6 +32,15 @@ export default class Index extends React.Component {
     const { value, gradientColor } = this.state
     return (
       <Block>
+        <DemoBlock title="demo">
+          <Circle
+            value={value}
+            size={100}
+            strokeWidth={8}
+            text="颜色定制"
+            color="#00ffff"
+          />
+        </DemoBlock>
         <DemoBlock title="基础用法">
           <Circle type="2d" value={value} text={value + '%'}></Circle>
         </DemoBlock>
@@ -43,7 +52,12 @@ export default class Index extends React.Component {
             color="#ee0a24"
             text="颜色定制"
           ></Circle>
-          <Circle value={value} color={gradientColor} text="渐变色"></Circle>
+          <Circle
+            type="2d"
+            value={value}
+            color={gradientColor}
+            text="渐变色"
+          ></Circle>
           <Circle
             value={value}
             color="#07c160"

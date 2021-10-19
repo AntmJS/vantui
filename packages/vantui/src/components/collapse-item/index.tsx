@@ -1,3 +1,4 @@
+import { useReady } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Block, ITouchEvent } from '@tarojs/components'
 
@@ -19,6 +20,7 @@ export default function Index(
     index: undefined,
     expanded: false,
     animation: { actions: [] },
+    ready: false,
   })
 
   const {
@@ -42,18 +44,16 @@ export default function Index(
     ...others
   } = props
 
+  useReady(() => {
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
+      }
+    })
+  })
+
   const refDom = useRef(null)
-
-  useEffect(() => {
-    updateExpanded()
-    ref.current.mounted = true
-    /* eslint-disable-next-line */
-  }, [])
-
-  useEffect(() => {
-    updateExpanded()
-    /* eslint-disable-next-line */
-  }, [parent.data])
 
   const updateExpanded = useCallback(() => {
     if (!parent) {
@@ -76,6 +76,19 @@ export default function Index(
       }
     })
   }, [parent, name, state.expanded])
+
+  useEffect(() => {
+    if (state.ready) {
+      updateExpanded()
+      ref.current.mounted = true
+    }
+  }, [state.ready, updateExpanded])
+
+  useEffect(() => {
+    if (state.ready) {
+      updateExpanded()
+    }
+  }, [state.ready, updateExpanded, parent.data])
 
   const onClick = useCallback(
     (event: ITouchEvent) => {

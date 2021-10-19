@@ -293,7 +293,7 @@ export default class Index extends React.Component {
                   >
                     <Checkbox
                       value={result3[index]}
-                      onChange={(event) => {
+                      onChange={(e) => {
                         this.toggle({
                           detail: e.detail,
                           currentTarget: {
