@@ -39,7 +39,7 @@ export default function Index(props: RateProps) {
   const onSelect = function (event: ITouchEvent) {
     const { score } = event.currentTarget.dataset
     Object.defineProperty(event, 'detail', {
-      value: score,
+      value: +score + 1,
     })
 
     if (!disabled && !readonly) {

@@ -51,7 +51,7 @@ export default class Index extends React.Component {
                 <Block>
                   <View style="width: 100%">
                     <Rate
-                      modelValue={rate}
+                      value={rate}
                       onChange={(e) => {
                         this.onChange({
                           detail: e.detail,
@@ -108,7 +108,7 @@ export default class Index extends React.Component {
                   <Block>
                     <View style="width: 100%">
                       <Rate
-                        modelValue={rate}
+                        value={rate}
                         onChange={(e) => {
                           this.onChange({
                             detail: e.detail,
