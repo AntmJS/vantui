@@ -114,7 +114,7 @@ export default class Index extends React.Component {
         <Transition show={show} name={name} className="block"></Transition>
         <Transition
           show={showCustom}
-          name
+          name=""
           duration={{
             enter: 300,
             leave: 1000,
