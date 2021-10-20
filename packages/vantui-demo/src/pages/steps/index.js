@@ -43,7 +43,7 @@ export default class Index extends React.Component {
 
   nextStep = () => {
     this.setState({
-      active: (this.state.active % 4) + 1,
+      active: (1 + this.state.active) % 4,
     })
   }
 
