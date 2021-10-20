@@ -192,7 +192,7 @@ export default function Index(props: NoticeBarProps) {
       >
         {leftIcon ? (
           <VanIcon
-            size={16}
+            size={32}
             name={leftIcon}
             className="van-notice-bar__left-icon"
           ></VanIcon>
