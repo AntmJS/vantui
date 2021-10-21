@@ -285,7 +285,7 @@ export default function Index(props: SliderProps) {
       if (disabled) return
       getRect(null, `.van-slider${currentIndex_} `).then((rect: any) => {
         const value =
-          ((event.clientX - rect.left) / rect.width) * getRange() + min
+          ((event.target.x - rect.left) / rect.width) * getRange() + min
 
         if (isRange(value_)) {
           const [left, right] = value_
