@@ -40,7 +40,7 @@
     border-width: 0;
   }
 
-  &--active::before {
+  &--active:not(&--disabled)::before {
     opacity: 0.15;
   }
 
@@ -52,30 +52,55 @@
     .theme(color, '@button-default-color');
     .theme(background, '@button-default-background-color');
     .theme(border, '@button-border-width solid @button-default-border-color');
+
+    &:not(&--disabled):active {
+      .theme(color, '@button-default-color');
+      .theme(background, '@button-default-background-color');
+    }
   }
 
   &--primary {
     .theme(color, '@button-primary-color');
     .theme(background, '@button-primary-background-color');
     .theme(border, '@button-border-width solid @button-primary-border-color');
+
+    &:not(&--disabled):active {
+      .theme(color, '@button-primary-color');
+      .theme(background, '@button-primary-background-color');
+    }
   }
 
   &--info {
     .theme(color, '@button-info-color');
     .theme(background, '@button-info-background-color');
     .theme(border, '@button-border-width solid @button-info-border-color');
+
+    &:not(&--disabled):active {
+      .theme(color, '@button-info-color');
+      .theme(background, '@button-info-background-color');
+    }
   }
 
   &--danger {
     .theme(color, '@button-danger-color');
     .theme(background, '@button-danger-background-color');
     .theme(border, '@button-border-width solid @button-danger-border-color');
+
+    &:not(&--disabled):active {
+      .theme(color, '@button-danger-color');
+      .theme(background, '@button-danger-background-color');
+    }
   }
 
   &--warning {
     .theme(color, '@button-warning-color');
     .theme(background, '@button-warning-background-color');
     .theme(border, '@button-border-width solid @button-warning-border-color');
+
+    &:not(&--disabled):active {
+      .theme(color, '@button-warning-color');
+      .theme(background, '@button-warning-background-color');
+    }
   }
 
   &--plain {
@@ -83,18 +108,42 @@
 
     &.van-button--primary {
       .theme(color, '@button-primary-background-color');
+
+      &:active {
+        .theme(color, '@button-primary-background-color');
+
+        background-color: #dedede;
+      }
     }
 
     &.van-button--info {
       .theme(color, '@button-info-background-color');
+
+      &:active {
+        .theme(color, '@button-info-background-color');
+
+        background-color: #dedede;
+      }
     }
 
     &.van-button--danger {
       .theme(color, '@button-danger-background-color');
+
+      &:active {
+        .theme(color, '@button-danger-background-color');
+
+        background-color: #dedede;
+      }
     }
 
     &.van-button--warning {
       .theme(color, '@button-warning-background-color');
+
+      &:active {
+        .theme(color, '@button-warning-background-color');
+
+        background-color: #dedede;
+      }
     }
   }
 

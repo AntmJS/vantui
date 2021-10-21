@@ -32,7 +32,6 @@ export default function Index(props: RateProps) {
   const [innerValue, setInnerValue] = useState(
     noControlled ? defaultValue : (value as number),
   )
-
   useEffect(() => {
     comIndex++
     indexRef.current = comIndex
@@ -54,34 +53,28 @@ export default function Index(props: RateProps) {
   // touchmove匹配到的节点找不到data-score，先注释掉
   const onTouchMove = function (event: ITouchEvent) {
     if (!touchable) return
+
     const { clientX } = event?.touches?.[0] ?? {}
     if (clientX) {
       getAllRect(
         null,
         `.rate-com-index${indexRef.current} .van-rate__icon`,
       ).then((list: any) => {
-        const target = list
-          .sort((cur: any, next: any) => {
-            if (typeof cur.dataset.score !== 'number') {
-              const curScore = Number(cur.id.split('__')[1])
-              const nextScore = Number(next.id.split('__')[1])
-              return curScore - nextScore
-            } else {
-              return cur.dataset.score - next.dataset.score
-            }
-          })
-          .find((item: any) => clientX >= item.left && clientX <= item.right)
-        if (target != null) {
-          if (typeof target.dataset.score !== 'number') {
-            target.dataset.score = Number(target.id.split('__')[1])
-          }
-          if (target.dataset.score || target.dataset.score === 0) {
-            onSelect(
-              Object.assign(Object.assign({}, event), {
-                currentTarget: target,
-              }),
-            )
-          }
+        const targetIndex = list
+          .sort((a: any, b: any) => a.right - b.right)
+          .findIndex(
+            (item: any) => clientX >= item.left && clientX <= item.right,
+          )
+        if (targetIndex !== -1) {
+          onSelect(
+            Object.assign(Object.assign({}, event), {
+              currentTarget: {
+                dataset: {
+                  score: allowHalf ? targetIndex / 2 - 0.5 : targetIndex,
+                },
+              },
+            }),
+          )
         }
       })
     }
