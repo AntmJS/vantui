@@ -59,14 +59,14 @@ export default class Index extends React.Component {
       <Block>
         <DemoBlock title="基本用法">
           <Search
-            modelValue={value}
+            defaultValue={value}
             placeholder="请输入搜索关键词"
             onSearch={this.onSearch}
           ></Search>
         </DemoBlock>
         <DemoBlock title="事件监听">
           <Search
-            modelValue={value}
+            defaultValue={value}
             showAction
             placeholder="请输入搜索关键词"
             onSearch={this.onSearch}
@@ -76,7 +76,7 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="搜索框内容对齐">
           <Search
-            modelValue={value}
+            defaultValue={value}
             inputAlign="center"
             placeholder="请输入搜索关键词"
           ></Search>
@@ -84,13 +84,13 @@ export default class Index extends React.Component {
         <DemoBlock title="禁用搜索框">
           <Search
             disabled
-            modelValue={value}
+            defaultValue={value}
             placeholder="请输入搜索关键词"
           ></Search>
         </DemoBlock>
         <DemoBlock title="自定义背景色">
           <Search
-            modelValue={value}
+            defaultValue={value}
             shape="round"
             background="#4fc08d"
             placeholder="请输入搜索关键词"
@@ -98,12 +98,13 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义按钮">
           <Search
-            modelValue={value}
+            value={value}
             label="地址"
             shape="round"
             placeholder="请输入搜索关键词"
             useActionSlot
             onSearch={this.onSearch}
+            onChange={this.onChange}
             renderAction={
               <Block>
                 <View onClick={this.onClick}>搜索</View>

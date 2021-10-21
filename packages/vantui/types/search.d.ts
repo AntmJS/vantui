@@ -3,6 +3,7 @@ import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface SearchProps extends StandardProps {
   value?: string | number
+  defaultValue?: string | number
   label?: string
   focus?: boolean
   error?: boolean

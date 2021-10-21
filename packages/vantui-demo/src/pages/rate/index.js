@@ -24,6 +24,9 @@ export default class Index extends React.Component {
 
   onChange = (event) => {
     toast('当前值：' + event.detail)
+    this.setState({
+      value8: event.detail,
+    })
   }
 
   render() {
@@ -32,20 +35,20 @@ export default class Index extends React.Component {
     return (
       <Block>
         <DemoBlock title="基础用法">
-          <Rate className="rate-position" modelValue={value1}></Rate>
+          <Rate className="rate-position" defaultValue={value1}></Rate>
         </DemoBlock>
         <DemoBlock title="自定义图标">
           <Rate
             className="rate-position"
             icon="like"
             voidIcon="like-o"
-            modelValue={value2}
+            defaultValue={value2}
           ></Rate>
         </DemoBlock>
         <DemoBlock title="自定义样式">
           <Rate
             className="rate-position"
-            modelValue={value3}
+            defaultValue={value3}
             size={25}
             color="#ffd21e"
             voidIcon="star"
@@ -55,20 +58,24 @@ export default class Index extends React.Component {
         <DemoBlock title="半星">
           <Rate
             className="rate-position"
-            modelValue={value4}
+            defaultValue={value4}
             allowHalf
             voidIcon="star"
             voidColor="#eee"
           ></Rate>
         </DemoBlock>
         <DemoBlock title="自定义数量">
-          <Rate className="rate-position" modelValue={value5} count={6}></Rate>
+          <Rate
+            className="rate-position"
+            defaultValue={value5}
+            count={6}
+          ></Rate>
         </DemoBlock>
         <DemoBlock title="禁用状态">
-          <Rate className="rate-position" value={value6} disabled></Rate>
+          <Rate className="rate-position" defaultValue={value6} disabled></Rate>
         </DemoBlock>
         <DemoBlock title="只读状态">
-          <Rate className="rate-position" value={value6} readonly></Rate>
+          <Rate className="rate-position" defaultValue={value6} readonly></Rate>
         </DemoBlock>
         <DemoBlock title="监听 change 事件">
           <Rate

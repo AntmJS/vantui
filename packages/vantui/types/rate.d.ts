@@ -3,6 +3,7 @@ import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface RateProps extends StandardProps {
   value?: number
+  defaultValue?: number
   readonly?: boolean
   disabled?: boolean
   allowHalf?: boolean
