@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Field from '../field'
 import { SearchProps } from '../../../types/search'
 
 export default function Index(props: SearchProps) {
-  const [innerValue, setInnerValue]: any = useState('')
   const {
     value,
+    defaultValue = '',
     label,
     focus,
     error,
@@ -45,10 +45,15 @@ export default function Index(props: SearchProps) {
     ...others
   } = props
 
-  const _change = function (e: ITouchEvent) {
-    setInnerValue(e.detail)
-    useState
-    onChange?.(e)
+  const noControlled = useMemo(() => typeof value === 'undefined', [value])
+  const [innerValue, setInnerValue] = useState(
+    noControlled ? defaultValue : value,
+  )
+  const _change = function (event: ITouchEvent) {
+    if (noControlled) {
+      setInnerValue(event.detail)
+    }
+    onChange?.(event)
   }
 
   const _cancel = function (e: ITouchEvent) {
@@ -71,6 +76,8 @@ export default function Index(props: SearchProps) {
     },
     [value],
   )
+
+  const searchValue = noControlled ? innerValue : (value as number)
 
   return (
     <View
@@ -96,7 +103,7 @@ export default function Index(props: SearchProps) {
           border={false}
           confirmType="search"
           className="van-search__field field-class"
-          value={innerValue}
+          value={searchValue}
           disabled={disabled}
           readonly={readonly}
           clearable={clearable}

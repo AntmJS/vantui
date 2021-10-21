@@ -39,7 +39,7 @@ export default function Index(props: TreeSelectProps) {
   )
 
   const _onClickNav = useCallback(
-    (index: number) => {
+    ({ detail: index }) => {
       const item = items[index]
       if (!item?.disabled) {
         onClickNav?.({ detail: { index } })
@@ -61,7 +61,7 @@ export default function Index(props: TreeSelectProps) {
       <ScrollView scrollY className="van-tree-select__nav">
         <VanSidebar
           activeKey={mainActiveIndex}
-          onChange={_onClickNav as any}
+          onChange={_onClickNav}
           className="van-tree-select__nav__inner"
         >
           {items.map((item: any, index: number) => {

@@ -1,5 +1,4 @@
-import Taro from '@tarojs/taro'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { View, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Icon from '../icon/index'
@@ -7,10 +6,6 @@ import { getAllRect } from '../common/utils'
 import { RateProps } from '../../../types/rate'
 let comIndex = 0
 export default function Index(props: RateProps) {
-  const [countArray, setCountArray] = useState(Array.from({ length: 5 }))
-  const [innerValue, setInnerValue] = useState(0)
-  const indexRef = useRef(comIndex)
-
   const {
     count = 5,
     gutter,
@@ -24,12 +19,19 @@ export default function Index(props: RateProps) {
     allowHalf,
     readonly,
     touchable = true,
-    value = 5,
+    value,
     onChange,
     style,
     className,
+    defaultValue = 5,
     ...others
   } = props
+  const indexRef = useRef(comIndex)
+  const [countArray, setCountArray] = useState(Array.from({ length: count }))
+  const noControlled = useMemo(() => typeof value === 'undefined', [value])
+  const [innerValue, setInnerValue] = useState(
+    noControlled ? defaultValue : (value as number),
+  )
 
   useEffect(() => {
     comIndex++
@@ -43,10 +45,10 @@ export default function Index(props: RateProps) {
     })
 
     if (!disabled && !readonly) {
-      setInnerValue(+score + 1)
-      Taro.nextTick(() => {
-        onChange?.(event)
-      })
+      if (noControlled) {
+        setInnerValue(event.detail as number)
+      }
+      onChange?.(event)
     }
   }
   // touchmove匹配到的节点找不到data-score，先注释掉
@@ -85,15 +87,15 @@ export default function Index(props: RateProps) {
     }
   }
 
-  useEffect(
-    function () {
-      if (value !== innerValue) {
-        setInnerValue(value)
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [value],
-  )
+  // useEffect(
+  //   function () {
+  //     if (value !== innerValue) {
+  //       setInnerValue(value as number)
+  //     }
+  //   },
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [value],
+  // )
 
   useEffect(
     function () {
@@ -101,6 +103,8 @@ export default function Index(props: RateProps) {
     },
     [count],
   )
+
+  const rateValue = noControlled ? innerValue : (value as number)
 
   return (
     <View
@@ -124,24 +128,24 @@ export default function Index(props: RateProps) {
             })}
           >
             <Icon
-              name={index + 1 <= innerValue ? icon : voidIcon}
+              name={index + 1 <= rateValue ? icon : voidIcon}
               className={
                 utils.bem('rate__icon', [
                   {
                     disabled,
-                    full: index + 1 <= innerValue,
+                    full: index + 1 <= rateValue,
                   },
                 ]) + ` icon-class`
               }
               style={utils.style({
                 fontSize: utils.addUnit(size),
               })}
-              id={`rate__${index}`}
+              id={`rate-com-index${indexRef.current}-rate__${index}`}
               data-score={index}
               color={
                 disabled
                   ? disabledColor
-                  : index + 1 <= innerValue
+                  : index + 1 <= rateValue
                   ? color
                   : voidColor
               }
@@ -149,25 +153,25 @@ export default function Index(props: RateProps) {
             ></Icon>
             {allowHalf && (
               <Icon
-                name={index + 0.5 <= innerValue ? icon : voidIcon}
+                name={index + 0.5 <= rateValue ? icon : voidIcon}
                 className={
                   utils.bem('rate__icon', [
                     'half',
                     {
                       disabled,
-                      full: index + 0.5 <= innerValue,
+                      full: index + 0.5 <= rateValue,
                     },
                   ]) + ` icon-class`
                 }
                 style={utils.style({
                   fontSize: utils.addUnit(size),
                 })}
-                id={`rate__${index - 0.5}`}
+                id={`rate-com-index${indexRef.current}-rate__${index - 0.5}`}
                 data-score={index - 0.5}
                 color={
                   disabled
                     ? disabledColor
-                    : index + 0.5 <= innerValue
+                    : index + 0.5 <= rateValue
                     ? color
                     : voidColor
                 }
