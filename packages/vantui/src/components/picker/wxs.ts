@@ -1,24 +1,23 @@
 /* eslint-disable */
 import { style } from '../wxs/utils'
-import { addUnit } from '../wxs/add-unit'
 import { isArray } from '../wxs/array'
 
 function columnsStyle(data: any) {
   return style({
-    height: addUnit(data.itemHeight * data.visibleItemCount),
+    height: data.itemHeight * data.visibleItemCount,
   })
 }
 
 function maskStyle(data: any) {
   return style({
     'background-size':
-      '100% ' + addUnit((data.itemHeight * (data.visibleItemCount - 1)) / 2),
+      '100% ' + ((data.itemHeight * (data.visibleItemCount - 1)) / 2 + 'px'),
   })
 }
 
 function frameStyle(data: any) {
   return style({
-    height: addUnit(data.itemHeight),
+    height: data.itemHeight + 'px',
   })
 }
 

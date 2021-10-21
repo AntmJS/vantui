@@ -34,6 +34,7 @@ import Month from './components/month/index'
 import Header from './components/header/index'
 
 const initialMinDate = getToday().getTime()
+let init = 0
 const initialMaxDate = (() => {
   const now = getToday()
   return new Date(
@@ -93,6 +94,11 @@ function Index(
   const [currentDate, setCurrentDate] = useState<any>(null)
   const [scrollIntoView, setScrollIntoView] = useState('')
   const contentObserver = useRef<any>()
+  const [compIndex, setComindex] = useState(0)
+
+  useEffect(function () {
+    setComindex(init++)
+  }, [])
 
   const limitDateRange = useCallback(
     function (date, minDateD = null, maxDateD = null) {
@@ -222,7 +228,7 @@ function Index(
         selectAll: true,
       })
       contentObserver.current = contentObserver_
-      contentObserver.current.relativeTo('.van-calendar__body')
+      contentObserver.current.relativeTo(`.van-calendar__body${compIndex}`)
       contentObserver.current.observe('.month', (res: any) => {
         if (res.intersectionRatio) {
           const item = Number(res.id.split(' ')[1].replace('month', ''))
@@ -230,7 +236,7 @@ function Index(
         }
       })
     },
-    [initRectH5],
+    [initRectH5, compIndex],
   )
 
   const emit = useCallback(
@@ -371,7 +377,7 @@ function Index(
           initRect()
           setTimeout(() => {
             scrollIntoViewFn()
-          })
+          }, 66)
         }, 66)
       }
     },
@@ -424,7 +430,7 @@ function Index(
               renderTitle={renderTitle}
             ></Header>
             <ScrollView
-              className="van-calendar__body"
+              className={`van-calendar__body  van-calendar__body${compIndex}`}
               scrollY
               scrollIntoView={scrollIntoView}
             >
@@ -499,7 +505,7 @@ function Index(
             renderTitle={<Block>{renderTitle}</Block>}
           ></Header>
           <ScrollView
-            className="van-calendar__body"
+            className={`van-calendar__body van-calendar__body${compIndex}`}
             scrollY
             scrollIntoView={scrollIntoView}
           >
