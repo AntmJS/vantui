@@ -117,7 +117,7 @@ export default function Index(
           gutter: parentState?.gutter,
         })}
       >
-        {<Block>{others.children}</Block> || (
+        {others.children || (
           <Block>
             <View className="van-grid-item__icon icon-class">
               {icon ? (
