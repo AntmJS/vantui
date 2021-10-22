@@ -37,7 +37,9 @@ export default function Index(props: StickyProps) {
     function () {
       const nodesRef = container?.()
       return new Promise((resolve) =>
-        nodesRef?.boundingClientRect(resolve).exec(),
+        nodesRef?.boundingClientRect().exec((rect: any = []) => {
+          return resolve(rect[0])
+        }),
       )
     },
     [container],
@@ -76,29 +78,32 @@ export default function Index(props: StickyProps) {
         return
       }
       ref.current.scrollTop = scrollTop || ref.current.scrollTop
-
       if (typeof container === 'function') {
         Promise.all([
           getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`),
           getContainerRect(),
-        ]).then(([root, container]: any) => {
-          if (root && container) {
-            if (offsetTop + root.height > container.height + container.top) {
-              setDataAfterDiff({
-                fixed: false,
-                transform: container.height - root.height,
-              })
-            } else if (offsetTop >= root.top) {
-              setDataAfterDiff({
-                fixed: true,
-                height: root.height,
-                transform: 0,
-              })
-            } else {
-              setDataAfterDiff({ fixed: false, transform: 0 })
+        ])
+          .then(([root, container]: any) => {
+            if (root && container) {
+              if (offsetTop + root.height > container.height + container.top) {
+                setDataAfterDiff({
+                  fixed: false,
+                  transform: container.height - root.height,
+                })
+              } else if (offsetTop >= root.top) {
+                setDataAfterDiff({
+                  fixed: true,
+                  height: root.height,
+                  transform: 0,
+                })
+              } else {
+                setDataAfterDiff({ fixed: false, transform: 0 })
+              }
             }
-          }
-        })
+          })
+          .catch((e) => {
+            console.log(e)
+          })
         return
       }
       getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`).then(
