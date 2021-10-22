@@ -15,9 +15,6 @@ export default function Index(props: SearchProps) {
     readonly,
     inputAlign,
     showAction,
-    useActionSlot,
-    useLeftIconSlot,
-    useRightIconSlot,
     leftIcon = 'search',
     rightIcon,
     placeholder,
@@ -82,7 +79,7 @@ export default function Index(props: SearchProps) {
   return (
     <View
       className={`${utils.bem('search', {
-        withaction: showAction || useActionSlot,
+        withaction: showAction || renderAction,
       })} custom-class ${className}`}
       style={utils.style([{ background: background }, style])}
       {...others}
@@ -96,8 +93,8 @@ export default function Index(props: SearchProps) {
 
         <Field
           type="text"
-          leftIcon={!useLeftIconSlot ? leftIcon : ''}
-          right-icon={!useRightIconSlot ? rightIcon : ''}
+          leftIcon={!renderLefticon ? leftIcon : ''}
+          right-icon={!renderRighticon ? rightIcon : ''}
           focus={focus}
           error={error}
           border={false}
@@ -113,8 +110,8 @@ export default function Index(props: SearchProps) {
           inputAlign={inputAlign}
           placeholder={placeholder}
           placeholder-style={placeholderStyle}
-          renderLefticon={useLeftIconSlot && renderLefticon}
-          renderRighticon={useRightIconSlot && renderRighticon}
+          renderLefticon={renderLefticon}
+          renderRighticon={renderRighticon}
           customStyle="padding: 5px 10px 5px 0; background-color: transparent;"
           onBlur={onBlur}
           onFocus={onFocus}
@@ -125,15 +122,13 @@ export default function Index(props: SearchProps) {
         />
       </View>
 
-      {(showAction || useActionSlot) && (
+      {(showAction || renderAction) && (
         <View
           className="van-search__action"
           hoverClass="van-search__action--hover"
           hoverStayTime={70}
         >
-          {useActionSlot ? (
-            renderAction
-          ) : (
+          {renderAction || (
             <View onClick={_cancel} className="cancel-class">
               {actionText}
             </View>

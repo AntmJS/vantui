@@ -203,7 +203,6 @@ export default class Index extends React.Component {
             }}
           >
             <Radio
-              useIconSlot
               name="1"
               renderIcon={
                 <Block>
@@ -218,7 +217,6 @@ export default class Index extends React.Component {
               自定义图标
             </Radio>
             <Radio
-              useIconSlot
               name="2"
               renderIcon={
                 <Block>

@@ -17,7 +17,6 @@ export interface ITimeData {
 }
 
 export interface CountDownProps extends StandardProps {
-  useSlot?: boolean
   millisecond?: boolean
   time?: number
   format?: string

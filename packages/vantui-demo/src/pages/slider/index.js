@@ -79,7 +79,6 @@ export default class Index extends React.Component {
           <Slider
             value={currentValue}
             className="slider"
-            useButtonSlot
             activeColor="#ee0a24"
             onDrag={this.onDrag}
             renderButton={

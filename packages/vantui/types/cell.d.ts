@@ -18,7 +18,6 @@ export interface CellProps extends StandardProps {
   arrowDirection?: 'left' | 'up' | 'down'
   border?: boolean
   titleStyle?: string
-  useLabelSlot?: boolean
   renderTitle?: ReactNode
   renderIcon?: ReactNode
   renderLabel?: ReactNode

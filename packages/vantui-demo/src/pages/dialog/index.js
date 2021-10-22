@@ -114,7 +114,6 @@ export default class Index extends React.Component {
           <Cell title="组件调用" onClick={this.showCustomDialog}></Cell>
         </DemoBlock>
         <Dialog
-          useSlot
           title="标题"
           show={show}
           showCancelButton

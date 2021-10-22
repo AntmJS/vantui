@@ -26,7 +26,6 @@ export default class Index extends React.Component {
             title="标题"
             desc="描述信息"
             status="状态"
-            useFooterSlot
             renderFooter={
               <Block>
                 <View className="footer">

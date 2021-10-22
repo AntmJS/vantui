@@ -5,7 +5,6 @@ export interface CheckboxProps extends StandardProps {
   name?: string
   value?: boolean
   disabled?: boolean
-  useIconSlot?: boolean
   checkedColor?: string
   labelPosition?: string
   labelDisabled?: boolean
