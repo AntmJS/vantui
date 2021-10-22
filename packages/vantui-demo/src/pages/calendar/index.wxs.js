@@ -1,4 +1,7 @@
 /* eslint-disable */
+function getDate(date) {
+  return new Date(date)
+}
 function formatDate(date) {
   if (date) {
     date = getDate(date)
@@ -8,6 +11,7 @@ function formatDate(date) {
 
 function formatFullDate(date) {
   if (date) {
+    console.info(date)
     date = getDate(date)
     return date.getFullYear() + '/' + formatDate(date)
   }
