@@ -104,7 +104,7 @@ export default function Index(
   return (
     <View
       className={
-        'van-collapse-item custom-class ' +
+        'van-collapse-item  ' +
         (state.index !== 0 ? 'van-hairline--top' : '') +
         ` ${className || ''}`
       }

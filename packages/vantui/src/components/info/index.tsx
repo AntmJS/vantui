@@ -14,7 +14,7 @@ export default function Index(props: InfoProps) {
             utils.bem('info', {
               dot,
             }) +
-            ' custom-class ' +
+            '  ' +
             className
           }
           style={utils.style([customStyle, style])}

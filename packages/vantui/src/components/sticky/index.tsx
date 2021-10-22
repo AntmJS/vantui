@@ -139,9 +139,7 @@ export default function Index(props: StickyProps) {
   return (
     <View
       className={
-        `sticky-com-index${indexRef.current} ` +
-        'custom-class van-sticky ' +
-        className
+        `sticky-com-index${indexRef.current} ` + ' van-sticky ' + className
       }
       style={utils.style([
         computed.containerStyle({

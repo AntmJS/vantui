@@ -15,11 +15,7 @@ export default function Index(props: EmptyProps) {
   } = props
 
   return (
-    <View
-      className={`custom-class van-empty ${className}`}
-      style={style}
-      {...others}
-    >
+    <View className={` van-empty ${className}`} style={style} {...others}>
       <View className="van-empty__image">{renderImage}</View>
       <View className="van-empty__image">
         {image && (

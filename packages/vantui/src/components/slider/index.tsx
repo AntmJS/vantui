@@ -305,7 +305,7 @@ export default function Index(props: SliderProps) {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('slider', {
           disabled,
           vertical,

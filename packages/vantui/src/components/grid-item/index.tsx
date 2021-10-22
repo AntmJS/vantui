@@ -78,7 +78,7 @@ export default function Index(
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('grid-item', {
           square: parentState?.square,
         }) +

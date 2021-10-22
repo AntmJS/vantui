@@ -27,8 +27,8 @@ export default function Index(props: SearchProps) {
     clearTrigger = 'focus',
     clearIcon = 'clear',
     renderLabel,
-    renderLefticon,
-    renderRighticon,
+    renderLeftIcon,
+    renderRightIcon,
     renderAction,
     onFocus,
     onBlur,
@@ -80,7 +80,7 @@ export default function Index(props: SearchProps) {
     <View
       className={`${utils.bem('search', {
         withaction: showAction || renderAction,
-      })} custom-class ${className}`}
+      })}  ${className}`}
       style={utils.style([{ background: background }, style])}
       {...others}
     >
@@ -93,8 +93,8 @@ export default function Index(props: SearchProps) {
 
         <Field
           type="text"
-          leftIcon={!renderLefticon ? leftIcon : ''}
-          right-icon={!renderRighticon ? rightIcon : ''}
+          leftIcon={!renderLeftIcon ? leftIcon : ''}
+          rightIcon={!renderRightIcon ? rightIcon : ''}
           focus={focus}
           error={error}
           border={false}
@@ -110,8 +110,8 @@ export default function Index(props: SearchProps) {
           inputAlign={inputAlign}
           placeholder={placeholder}
           placeholder-style={placeholderStyle}
-          renderLefticon={renderLefticon}
-          renderRighticon={renderRighticon}
+          renderLeftIcon={renderLeftIcon}
+          renderRightIcon={renderRightIcon}
           customStyle="padding: 5px 10px 5px 0; background-color: transparent;"
           onBlur={onBlur}
           onFocus={onFocus}

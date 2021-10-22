@@ -230,7 +230,7 @@ function Index(
 
   return (
     <View
-      className={`van-swipe-cell custom-class ${className}`}
+      className={`van-swipe-cell  ${className}`}
       data-key="cell"
       style={utils.style([style])}
       onClick={onClick_}

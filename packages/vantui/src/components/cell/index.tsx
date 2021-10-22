@@ -45,7 +45,7 @@ export default function Index(props: CellProps) {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('cell', [
           size,
           {

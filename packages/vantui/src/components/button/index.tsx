@@ -34,7 +34,7 @@ export default function Index(props: ButtonProps) {
   return (
     <Button
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('button', [
           type,
           size,

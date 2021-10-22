@@ -395,7 +395,7 @@ export default function Index(props: TabsProps) {
     <View
       className={
         `tabs-com-index${indexRef.current} ` +
-        'custom-class ' +
+        ' ' +
         utils.bem('tabs', [type] + ` ${className || ''}`)
       }
       style={style}

@@ -87,9 +87,7 @@ export default function Index(
 
   return (
     <View
-      className={
-        utils.bem('radio', [state.direction]) + ` custom-class ${className}`
-      }
+      className={utils.bem('radio', [state.direction]) + `  ${className}`}
       style={style}
       {...others}
     >

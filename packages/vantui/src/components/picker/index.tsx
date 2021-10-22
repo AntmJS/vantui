@@ -224,7 +224,7 @@ export default forwardRef(function Index(
 
   return (
     <View
-      className={`van-picker custom-class ${className}`}
+      className={`van-picker  ${className}`}
       style={utils.style([style])}
       {...others}
       onTouchMove={onTouchMove_}

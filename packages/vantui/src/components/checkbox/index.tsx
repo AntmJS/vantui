@@ -115,7 +115,7 @@ export default function Index(
           {
             horizontal: state.direction === 'horizontal',
           },
-        ]) + ` custom-class ${className}`
+        ]) + `  ${className}`
       }
       style={style}
       {...others}

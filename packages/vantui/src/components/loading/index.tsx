@@ -22,7 +22,7 @@ export default function Index(props: LoadingProps): JSX.Element {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('loading', {
           vertical,
         }) +
