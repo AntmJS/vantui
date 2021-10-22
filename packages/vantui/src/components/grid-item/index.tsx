@@ -20,7 +20,6 @@ export default function Index(
     info,
     badge,
     text,
-    useSlot,
     setChildrenInstance,
     parentInstance,
     index,
@@ -118,9 +117,7 @@ export default function Index(
           gutter: parentState?.gutter,
         })}
       >
-        {useSlot ? (
-          <Block>{others.children}</Block>
-        ) : (
+        {<Block>{others.children}</Block> || (
           <Block>
             <View className="van-grid-item__icon icon-class">
               {icon ? (

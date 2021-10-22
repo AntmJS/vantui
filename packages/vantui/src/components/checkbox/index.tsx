@@ -21,7 +21,6 @@ export default function Index(
     name,
     value,
     disabled,
-    useIconSlot,
     checkedColor = '#1989fa',
     labelPosition = 'right',
     labelDisabled,
@@ -138,9 +137,7 @@ export default function Index(
         </View>
       )}
       <View className="van-checkbox__icon-wrap" onClick={toggle}>
-        {useIconSlot ? (
-          renderIcon
-        ) : (
+        {renderIcon || (
           <VanIcon
             name="success"
             size="0.8em"

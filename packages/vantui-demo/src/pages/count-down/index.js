@@ -57,7 +57,7 @@ export default class Index extends React.Component {
           <CountDown millisecond time={time} format="HH:mm:ss:SSS"></CountDown>
         </DemoBlock>
         <DemoBlock title="自定义样式">
-          <CountDown useSlot time={time} onChange={this.onChange}>
+          <CountDown time={time} onChange={this.onChange}>
             <Text className="item">{timeData.hours}</Text>
             <Text className="item">{timeData.minutes}</Text>
             <Text className="item">{timeData.seconds}</Text>

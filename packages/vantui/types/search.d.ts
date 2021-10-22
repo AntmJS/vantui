@@ -11,9 +11,6 @@ export interface SearchProps extends StandardProps {
   readonly?: boolean
   inputAlign?: string
   showAction?: boolean
-  useActionSlot?: boolean
-  useLeftIconSlot?: boolean
-  useRightIconSlot?: boolean
   leftIcon?: string
   rightIcon?: string
   placeholder?: string

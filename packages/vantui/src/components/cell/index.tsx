@@ -21,7 +21,6 @@ export default function Index(props: CellProps) {
     titleWidth,
     titleStyle,
     title,
-    useLabelSlot,
     label,
     value,
     arrowDirection,
@@ -80,9 +79,9 @@ export default function Index(props: CellProps) {
         className="van-cell__title title-class"
       >
         {title || title === 0 ? <Block>{title}</Block> : renderTitle}
-        {(label || useLabelSlot) && (
+        {(label || renderLabel) && (
           <View className="van-cell__label label-class">
-            {useLabelSlot ? renderLabel : label && <Block>{label}</Block>}
+            {renderLabel || (label && <Block>{label}</Block>)}
           </View>
         )}
       </View>

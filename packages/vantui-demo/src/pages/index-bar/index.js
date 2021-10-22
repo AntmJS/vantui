@@ -61,7 +61,7 @@ export default class Index extends React.Component {
               {customIndexList.map((item, index) => {
                 return (
                   <React.Fragment key={item.index}>
-                    <IndexAnchor useSlot index={item}>
+                    <IndexAnchor index={item}>
                       <Text>{'标题' + item}</Text>
                     </IndexAnchor>
                     <Cell title="文本"></Cell>

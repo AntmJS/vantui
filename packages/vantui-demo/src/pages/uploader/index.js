@@ -181,7 +181,6 @@ export default class Index extends React.Component {
             onAfterRead={this.afterRead}
             onDelete={this.delete}
             onClickPreview={this.clickPreview}
-            useSlot={true}
           >
             <Button icon="photo" type="primary">
               上传图片

@@ -22,7 +22,6 @@ export default function Index(props: SliderProps) {
   const {
     range,
     disabled,
-    useButtonSlot,
     activeColor,
     inactiveColor,
     max = 100,
@@ -333,7 +332,7 @@ export default function Index(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {useButtonSlot ? (
+            {renderButton ? (
               renderLeftbutton ? (
                 renderLeftbutton(value_ as number)
               ) : (
@@ -352,7 +351,7 @@ export default function Index(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {useButtonSlot ? (
+            {renderButton ? (
               renderRightbutton ? (
                 renderRightbutton(value_ as number)
               ) : (
@@ -371,7 +370,7 @@ export default function Index(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {useButtonSlot && renderButton ? (
+            {renderButton ? (
               renderButton
             ) : (
               <View className={utils.bem('slider__button')}></View>

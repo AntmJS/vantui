@@ -134,7 +134,6 @@ export default class Index extends React.Component {
               clearable
               label="短信验证码"
               placeholder="请输入短信验证码"
-              useButtonSlot
               border={false}
               renderButton={
                 <Block>

@@ -157,7 +157,6 @@ export default class Index extends React.Component {
         </DemoBlock>
         <DemoBlock title="自定义图标">
           <Checkbox
-            useIconSlot
             value={checkbox3}
             className="demo-checkbox"
             onChange={(e) => {

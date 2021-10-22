@@ -41,7 +41,7 @@ export default class Index extends React.Component {
           <Grid columnNum="3" border={false}>
             {array3.map((item, index) => {
               return (
-                <GridItem useSlot key={index}>
+                <GridItem key={index}>
                   <Image
                     style="width: 100%; height: 90px;"
                     src={

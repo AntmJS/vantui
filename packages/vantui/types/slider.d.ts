@@ -9,7 +9,6 @@ type SliderEvent = {
 export interface SliderProps extends StandardProps {
   range?: boolean
   disabled?: boolean
-  useButtonSlot?: boolean
   activeColor?: string
   inactiveColor?: string
   max?: number
