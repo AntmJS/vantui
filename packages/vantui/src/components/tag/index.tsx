@@ -24,7 +24,7 @@ export default function Index(props: TagProps) {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('tag', [
           type,
           size,

@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioProps } from '../../../types/radio'
 import VanIcon from '../icon/index'
-import { canIUseModel } from '../common/version.js'
+// import { canIUseModel } from '../common/version.js'
 import * as computed from './wxs'
 
 export default function Index(
@@ -21,7 +21,6 @@ export default function Index(
     name,
     value,
     disabled = false,
-    useIconSlot,
     checkedColor,
     labelPosition = 'right',
     labelDisabled = false,
@@ -52,14 +51,12 @@ export default function Index(
   const emitChange = useCallback(
     (event: ITouchEvent) => {
       onChange?.(event)
-      if (canIUseModel()) {
-        setState((state) => {
-          return {
-            ...state,
-            value: event.detail,
-          }
-        })
-      }
+      setState((state) => {
+        return {
+          ...state,
+          value: event.detail,
+        }
+      })
     },
     [onChange],
   )
@@ -90,9 +87,7 @@ export default function Index(
 
   return (
     <View
-      className={
-        utils.bem('radio', [state.direction]) + ` custom-class ${className}`
-      }
+      className={utils.bem('radio', [state.direction]) + `  ${className}`}
       style={style}
       {...others}
     >
@@ -116,9 +111,7 @@ export default function Index(
         style={'font-size: ' + utils.addUnit(iconSize)}
         onClick={onClick}
       >
-        {useIconSlot ? (
-          renderIcon
-        ) : (
+        {renderIcon || (
           <VanIcon
             name="success"
             className={

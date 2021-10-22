@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { isObj } from './../../components/common/validator'
 import { TransitionProps } from './../../../types/mixins/transition'
 const getClassNames = (name: string) => ({
@@ -17,6 +17,12 @@ export function useTransition({
   onAfterLeave,
   onEnter,
   onLeave,
+  enterClass,
+  enterActiveClass,
+  enterToClass,
+  leaveClass,
+  leaveActiveClass,
+  leaveToClass,
 }: TransitionProps) {
   const transitionEnded = useRef(false)
   const status = useRef('')
@@ -24,6 +30,24 @@ export function useTransition({
   const [inited, setInited] = useState(false)
   const [currentDuration, setCurrentDuration] = useState(0)
   const [classes, setClasses] = useState('')
+  const classNames = useMemo(() => {
+    const names = getClassNames(name)
+    if (!name) {
+      names['enter'] += ` ${enterClass ?? ''}`
+      names['enter-to'] += `${enterToClass ?? ''} ${enterActiveClass ?? ''} `
+      names['leave'] += `  ${leaveClass ?? ''}`
+      names['leave-to'] += ` ${leaveToClass ?? ''} ${leaveActiveClass ?? ''}`
+    }
+    return names
+  }, [
+    enterActiveClass,
+    enterClass,
+    enterToClass,
+    leaveActiveClass,
+    leaveClass,
+    leaveToClass,
+    name,
+  ])
   const onTransitionEnd = useCallback(() => {
     if (transitionEnded.current) {
       return
@@ -41,8 +65,9 @@ export function useTransition({
     }
   }, [display, onAfterEnter, onAfterLeave, show])
   const _enter = useCallback(() => {
+    // debugger
     // const { duration, name } = this.data
-    const classNames = getClassNames(name)
+
     const currentDuration = isObj(duration) ? (duration as any).enter : duration
     status.current = 'enter'
     // this.$emit('before-enter')
@@ -64,13 +89,11 @@ export function useTransition({
         setClasses(classNames['enter-to'])
       })
     })
-  }, [duration, name, onBeforeEnter, onEnter])
+  }, [duration, onBeforeEnter, onEnter, classNames])
   const _leave = useCallback(() => {
     if (!display) {
       return
     }
-    // const { duration, name } = this.data
-    const classNames = getClassNames(name)
     const currentDuration = isObj(duration) ? (duration as any).leave : duration
     status.current = 'leave'
     onBeforeLeave?.()
@@ -92,7 +115,7 @@ export function useTransition({
         setClasses(classNames['leave-to'])
       })
     })
-  }, [display, duration, name, onBeforeLeave, onLeave, onTransitionEnd])
+  }, [classNames, display, duration, onBeforeLeave, onLeave, onTransitionEnd])
   useEffect(() => {
     show ? _enter() : _leave()
   }, [_enter, _leave, show])

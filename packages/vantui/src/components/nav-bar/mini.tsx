@@ -95,7 +95,7 @@ export default function Index(props: MiniNavBarProps) {
           utils.bem('mini-nav-bar', {
             fixed,
           }) +
-          ' custom-class ' +
+          '  ' +
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }

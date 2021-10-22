@@ -58,7 +58,7 @@ export default function Index(props: SidebarProps) {
   return (
     <View
       style={utils.style([style])}
-      className={`van-sidebar custom-class ${className}`}
+      className={`van-sidebar  ${className}`}
       {...others}
     >
       {ResetChildren}

@@ -43,7 +43,7 @@ export default function Index(props: SwitchProps) {
         utils.bem('switch', {
           on: checked === activeValue,
           disabled,
-        }) + ` custom-class ${className}`
+        }) + `  ${className}`
       }
       style={utils.style([
         computed.rootStyle({

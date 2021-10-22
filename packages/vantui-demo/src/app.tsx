@@ -1,7 +1,6 @@
 import { useDidShow, useDidHide } from '@tarojs/taro'
 import React, { useEffect } from 'react'
 import './app.less'
-
 interface IProps {
   children: React.ReactNode
 }

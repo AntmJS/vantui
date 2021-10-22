@@ -20,7 +20,6 @@ export default function Index(
     info,
     badge,
     text,
-    useSlot,
     setChildrenInstance,
     parentInstance,
     index,
@@ -79,7 +78,7 @@ export default function Index(
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('grid-item', {
           square: parentState?.square,
         }) +
@@ -118,9 +117,7 @@ export default function Index(
           gutter: parentState?.gutter,
         })}
       >
-        {useSlot ? (
-          <Block>{others.children}</Block>
-        ) : (
+        {others.children || (
           <Block>
             <View className="van-grid-item__icon icon-class">
               {icon ? (

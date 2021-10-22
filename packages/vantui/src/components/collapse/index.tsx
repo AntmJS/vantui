@@ -61,7 +61,7 @@ export default function Index(props: CollapseProps) {
   return (
     <View
       className={
-        'custom-class van-collapse ' +
+        ' van-collapse ' +
         (border ? 'van-hairline--top-bottom' : '') +
         ` ${className || ''}`
       }

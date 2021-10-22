@@ -63,10 +63,10 @@ export default function Index(props: FieldProps) {
     password,
     clearable,
     clearTrigger = 'focus',
-    renderLefticon,
+    renderLeftIcon,
     renderTitle,
     renderInput,
-    renderRighticon,
+    renderRightIcon,
     renderIcon,
     renderButton,
     onChange,
@@ -187,7 +187,7 @@ export default function Index(props: FieldProps) {
       customStyle={customStyle}
       arrowDirection={arrowDirection}
       className="van-field"
-      renderIcon={<Block>{renderLefticon}</Block>}
+      renderIcon={<Block>{renderLeftIcon}</Block>}
       renderTitle={
         <Block>
           {label ? (
@@ -311,7 +311,7 @@ export default function Index(props: FieldProps) {
               }
             ></Icon>
           )}
-          {renderRighticon}
+          {renderRightIcon}
           {renderIcon}
         </View>
         <View className="van-field__button">{renderButton}</View>

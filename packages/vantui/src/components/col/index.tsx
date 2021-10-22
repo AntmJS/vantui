@@ -4,12 +4,20 @@ import { ColProps } from '../../../types/col'
 import * as computed from './wxs'
 
 export default function Index(props: ColProps): JSX.Element {
-  const { span, offset, gutter, children, className, style, ...others } = props
+  const {
+    span,
+    offset,
+    gutter = 14,
+    children,
+    className,
+    style,
+    ...others
+  } = props
 
   return (
     <View
       className={
-        'custom-class ' +
+        '' +
         utils.bem('col', [span]) +
         ' ' +
         (offset ? 'van-col--offset-' + offset : '') +

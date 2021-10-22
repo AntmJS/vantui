@@ -43,7 +43,7 @@ export interface DialogProps
   renderTitle?: ReactNode
 }
 
-interface DialogCom {
+interface dialog {
   alert(options: DialogProps): Promise<void>
   confirm(options: DialogProps): Promise<void>
   setDefaultOptions(options: DialogProps): void
@@ -53,6 +53,6 @@ interface DialogCom {
 }
 
 // & DialogCom
-declare const Dialog: ComponentClass<DialogProps> & DialogCom
+declare const Dialog: ComponentClass<DialogProps> & dialog
 
-export { Dialog }
+export { Dialog, dialog }

@@ -1,6 +1,9 @@
 import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
+type eventDetail = {
+  detail: { index: number; name?: string; title?: string }
+}
 export interface TabsProps extends Omit<StandardProps, 'onClick'> {
   sticky?: boolean
   border?: boolean
@@ -20,12 +23,14 @@ export interface TabsProps extends Omit<StandardProps, 'onClick'> {
   offsetTop?: number
   lazyRender?: boolean
   children: ReactNode
-  renderNavleft?: ReactNode
-  renderNavright?: ReactNode
-  onScroll?: (data: { scrollTop?: number | null; isFixed?: boolean }) => any
-  onClick?: (data: { index: number; name?: string; title?: string }) => any
-  onChange?: (data: { index: number; name?: string; title?: string }) => any
-  onDisabled?: (data: { index: number; name?: string; title?: string }) => any
+  renderNavLeft?: ReactNode
+  renderNavRight?: ReactNode
+  onScroll?: (data: {
+    detail: { scrollTop?: number | null; isFixed?: boolean }
+  }) => void
+  onClick?: (event: eventDetail) => void
+  onChange?: (event: eventDetail) => void
+  onDisabled?: (event: eventDetail) => void
 }
 
 declare const Tabs: ComponentClass<TabsProps>

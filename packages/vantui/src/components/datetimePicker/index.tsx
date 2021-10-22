@@ -250,14 +250,17 @@ export default function Index(props: DatetimePickerProps) {
         updateColumnValue(val).then(() => {
           if (onInput)
             onInput({
-              detail: {
-                value: val,
+              detail: val,
+              currentTarget: {
+                dataset: {
+                  type: type,
+                },
               },
-            })
+            } as any)
         })
       }
     },
-    [correctValue, innerValue, onInput, updateColumnValue, value],
+    [correctValue, innerValue, onInput, updateColumnValue, value, type],
   )
 
   const onChange_ = function () {
@@ -294,10 +297,13 @@ export default function Index(props: DatetimePickerProps) {
     updateColumnValue(value).then(() => {
       if (onInput)
         onInput({
-          detail: {
-            value,
+          detail: value,
+          currentTarget: {
+            dataset: {
+              type: type,
+            },
           },
-        })
+        } as any)
       if (onChange) {
         const e = {
           detail: {

@@ -77,7 +77,7 @@ export default function Index(props: GridProps) {
   return (
     <View
       className={
-        'van-grid custom-class ' +
+        'van-grid  ' +
         (border && !gutter ? 'van-hairline--top' : '') +
         ' ' +
         className

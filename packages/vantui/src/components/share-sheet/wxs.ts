@@ -3,7 +3,7 @@ function isMulti(options: any) {
     return false
   }
 
-  return 'Array' === options.constructor && 'Array' === options[0].constructor
+  return Array.isArray(options) && Array.isArray(options[0])
 }
 
 const PRESET_ICONS = [

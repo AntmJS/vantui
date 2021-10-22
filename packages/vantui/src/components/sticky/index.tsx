@@ -8,8 +8,9 @@ import { isDef } from '../common/validator'
 import { StickyProps } from '../../../types/sticky'
 import * as computed from './wxs'
 const ROOT_ELEMENT = '.van-sticky'
-
+let comIndex = 0
 export default function Index(props: StickyProps) {
+  const indexRef = useRef(comIndex)
   const [state, setState] = useState({ height: 0, fixed: false, transform: 0 })
   const {
     zIndex = Sticky,
@@ -27,11 +28,18 @@ export default function Index(props: StickyProps) {
     scrollTop?: number
   }> = useRef({})
 
+  useEffect(() => {
+    comIndex++
+    indexRef.current = comIndex
+  }, [])
+
   const getContainerRect = useCallback(
     function () {
       const nodesRef = container?.()
       return new Promise((resolve) =>
-        nodesRef?.boundingClientRect(resolve).exec(),
+        nodesRef?.boundingClientRect().exec((rect: any = []) => {
+          return resolve(rect[0])
+        }),
       )
     },
     [container],
@@ -51,8 +59,10 @@ export default function Index(props: StickyProps) {
         })
       }
       onScroll?.({
-        scrollTop: ref.current.scrollTop,
-        isFixed: data.fixed || state.fixed,
+        detail: {
+          scrollTop: ref.current.scrollTop,
+          isFixed: data.fixed || state.fixed,
+        },
       })
     },
     [onScroll, state],
@@ -68,10 +78,12 @@ export default function Index(props: StickyProps) {
         return
       }
       ref.current.scrollTop = scrollTop || ref.current.scrollTop
-
       if (typeof container === 'function') {
-        Promise.all([getRect(null, ROOT_ELEMENT), getContainerRect()]).then(
-          ([root, container]: any) => {
+        Promise.all([
+          getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`),
+          getContainerRect(),
+        ])
+          .then(([root, container]: any) => {
             if (root && container) {
               if (offsetTop + root.height > container.height + container.top) {
                 setDataAfterDiff({
@@ -88,21 +100,25 @@ export default function Index(props: StickyProps) {
                 setDataAfterDiff({ fixed: false, transform: 0 })
               }
             }
-          },
-        )
+          })
+          .catch((e) => {
+            console.log(e)
+          })
         return
       }
-      getRect(null, ROOT_ELEMENT).then((root: any) => {
-        if (!isDef(root)) {
-          return
-        }
-        if (offsetTop >= root.top) {
-          setDataAfterDiff({ fixed: true, height: root.height })
-          // this.transform = 0
-        } else {
-          setDataAfterDiff({ fixed: false })
-        }
-      })
+      getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`).then(
+        (root: any) => {
+          if (!isDef(root)) {
+            return
+          }
+          if (offsetTop >= root.top) {
+            setDataAfterDiff({ fixed: true, height: root.height })
+            // this.transform = 0
+          } else {
+            setDataAfterDiff({ fixed: false })
+          }
+        },
+      )
     },
     [container, disabled, getContainerRect, offsetTop, setDataAfterDiff],
   )
@@ -119,9 +135,12 @@ export default function Index(props: StickyProps) {
     onMyScroll(e.scrollTop)
   })
 
+  // console.log()
   return (
     <View
-      className={'custom-class van-sticky ' + className}
+      className={
+        `sticky-com-index${indexRef.current} ` + ' van-sticky ' + className
+      }
       style={utils.style([
         computed.containerStyle({
           fixed: state.fixed,

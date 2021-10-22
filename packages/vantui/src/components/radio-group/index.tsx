@@ -1,5 +1,6 @@
-import { cloneElement } from 'react'
+import { cloneElement, useMemo } from 'react'
 import { View } from '@tarojs/components'
+import { isArray } from '../wxs/array'
 
 import * as utils from '../wxs/utils'
 import { RadioGroupProps } from '../../../types/radio-group'
@@ -16,19 +17,22 @@ export default function Index(props: RadioGroupProps) {
     ...others
   } = props
 
-  const newChildren: any = children?.map((child: any, index: number) => {
-    return cloneElement(child, {
-      key: index,
-      value,
-      onChange,
-      parent: {
-        data: {
-          disabled,
-          direction,
+  const newChildren: any = useMemo(() => {
+    const _children = isArray(children) ? children : [children]
+    return _children?.map((child: any, index: number) => {
+      return cloneElement(child, {
+        key: index,
+        value,
+        onChange,
+        parent: {
+          data: {
+            disabled,
+            direction,
+          },
         },
-      },
+      })
     })
-  })
+  }, [children, direction, disabled, onChange, value])
 
   return (
     <View

@@ -13,12 +13,13 @@ function rootStyle(data: any) {
 }
 
 const FIT_MODE_MAP = {
-  none: 'center',
+  none: 'scaleToFill',
   fill: 'scaleToFill',
   cover: 'aspectFill',
   contain: 'aspectFit',
   widthFix: 'widthFix',
   heightFix: 'heightFix',
+  scaleDown: 'aspectFit',
 }
 
 export type FitType =
@@ -28,6 +29,7 @@ export type FitType =
   | 'contain'
   | 'widthFix'
   | 'heightFix'
+  | 'scaleDown'
 
 function mode(fit: FitType) {
   return FIT_MODE_MAP[fit]

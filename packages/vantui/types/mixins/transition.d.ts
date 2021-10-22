@@ -11,4 +11,10 @@ export interface TransitionProps {
   onAfterLeave?: () => void
   onEnter?: () => void
   onLeave?: () => void
+  enterClass?: string
+  enterActiveClass?: string
+  enterToClass?: string
+  leaveClass?: string
+  leaveActiveClass?: string
+  leaveToClass?: string
 }

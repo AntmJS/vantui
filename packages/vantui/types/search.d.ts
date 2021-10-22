@@ -3,6 +3,7 @@ import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface SearchProps extends StandardProps {
   value?: string | number
+  defaultValue?: string | number
   label?: string
   focus?: boolean
   error?: boolean
@@ -10,9 +11,6 @@ export interface SearchProps extends StandardProps {
   readonly?: boolean
   inputAlign?: string
   showAction?: boolean
-  useActionSlot?: boolean
-  useLeftIconSlot?: boolean
-  useRightIconSlot?: boolean
   leftIcon?: string
   rightIcon?: string
   placeholder?: string
@@ -25,8 +23,8 @@ export interface SearchProps extends StandardProps {
   clearTrigger?: string
   clearIcon?: string
   renderLabel?: ReactNode
-  renderLefticon?: ReactNode
-  renderRighticon?: ReactNode
+  renderLeftIcon?: ReactNode
+  renderRightIcon?: ReactNode
   renderAction?: ReactNode
   onChange?: (e: ITouchEvent) => void
   onSearch?: (e: ITouchEvent) => void

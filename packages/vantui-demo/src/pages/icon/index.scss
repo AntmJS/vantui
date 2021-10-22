@@ -1,0 +1,30 @@
+page {
+  padding-bottom: 0;
+}
+
+.col {
+  display: inline-block;
+  float: none;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.icon {
+  margin: 32px 0;
+  color: #323233;
+}
+
+.text {
+  display: block;
+  height: 72px;
+  margin: -8px 0 8px;
+  padding: 0 10px;
+  color: #646566;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.demo-tab-pane {
+  margin: 40px;
+  background-color: #fff;
+}

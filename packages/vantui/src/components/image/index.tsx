@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useMemo } from 'react'
 import { View, Image } from '@tarojs/components'
 import { ImageProps } from '../../../types/image'
 import * as utils from '../wxs/utils'
@@ -22,23 +22,27 @@ export default function Index(props: ImageProps) {
     height,
     radius,
     lazyLoad,
-    useErrorSlot,
-    useLoadingSlot,
     showMenuByLongpress,
     fit,
-    showError,
-    showLoading,
+    showError = true,
+    showLoading = true,
     className,
     style,
+    renderError,
+    renderLoading,
     ...others
   } = props
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>()
   const [error, setError] = useState(false)
 
-  useEffect(function () {
-    setLoading(true)
-  }, [])
+  useEffect(
+    function () {
+      if (loading === undefined) setLoading(true)
+      setError(false)
+    },
+    [loading],
+  )
 
   const onLoad = useCallback(function () {
     setLoading(false)
@@ -47,6 +51,23 @@ export default function Index(props: ImageProps) {
   const onError = useCallback(function () {
     setError(true)
   }, [])
+  //样式挂在给img外层的webCompoent
+  const styleH5 = useMemo(
+    function () {
+      let style = {}
+      if (process.env.TARO_ENV === 'h5') {
+        if (fit === 'heightFix' || fit === 'widthFix') {
+          style = {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }
+        }
+      }
+      return style
+    },
+    [fit],
+  )
 
   return (
     <View
@@ -59,7 +80,7 @@ export default function Index(props: ImageProps) {
         style,
       ])}
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('image', {
           round,
         }) +
@@ -72,30 +93,25 @@ export default function Index(props: ImageProps) {
       {!error && (
         <Image
           src={src}
-          mode={
-            (computed.mode(fit as FitType) as TaroImageMode) || 'scaleToFill'
-          }
+          mode={computed.mode(fit || ('none' as FitType)) as TaroImageMode}
           lazyLoad={lazyLoad}
           className="image-class van-image__img"
           showMenuByLongpress={showMenuByLongpress}
           onLoad={onLoad}
           onError={onError}
+          style={styleH5}
         ></Image>
       )}
       {loading && showLoading && (
         <View className="loading-class van-image__loading">
-          {useLoadingSlot ? (
-            others.renderLoading
-          ) : (
+          {renderLoading || (
             <VanIcon name="photo" className="van-image__loading-icon"></VanIcon>
           )}
         </View>
       )}
       {error && showError && (
         <View className="error-class van-image__error">
-          {useErrorSlot ? (
-            others.renderError
-          ) : (
+          {renderError || (
             <VanIcon
               name="photo-fail"
               className="van-image__error-icon"

@@ -28,7 +28,6 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
     time,
     format = 'HH:mm:ss',
     autoStart = true,
-    useSlot,
     millisecond,
     onChange,
     onFinish,
@@ -51,8 +50,10 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
     function (remain?: number) {
       _ref.current.remain = remain
       const timeData = parseTimeData(remain)
-      if (useSlot) {
-        onChange?.(timeData)
+      if (children) {
+        onChange?.({
+          detail: timeData,
+        })
       }
       setState((pre: any) => {
         return { ...pre, formattedTime: parseFormat(format, timeData) }
@@ -62,7 +63,7 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
         onFinish?.()
       }
     },
-    [format, onChange, onFinish, pause, useSlot],
+    [children, format, onChange, onFinish, pause],
   )
 
   const microTick = useCallback(
@@ -154,10 +155,9 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
   return (
     <View className={`van-count-down ${className}`} style={style} {...others}>
-      {useSlot ? children : <Block>{formattedTime}</Block>}
+      {children ? children : <Block>{formattedTime}</Block>}
     </View>
   )
 }
