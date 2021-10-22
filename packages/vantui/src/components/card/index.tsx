@@ -53,11 +53,7 @@ export default function Index(props: CardProps) {
     [price],
   )
   return (
-    <View
-      className={`van-card custom-class ${className || ''}`}
-      style={style}
-      {...others}
-    >
+    <View className={`van-card  ${className || ''}`} style={style} {...others}>
       <View
         className={utils.bem('card__header', {
           center: centered,

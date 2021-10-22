@@ -27,6 +27,7 @@ const config = {
   external: [
     '@babel/runtime-corejs3',
     '@tarojs/taro',
+    '@tarojs/runtime',
     '@tarojs/components',
     'react',
     'react-dom',
@@ -57,7 +58,7 @@ const config = {
 }
 
 const h5Config = {
-  input: join(cwd, 'src/index.ts'),
+  input: join(cwd, 'src/h5.tsx'),
   output: [
     {
       file: join(cwd, 'dist/h5.js'),
@@ -70,14 +71,19 @@ const h5Config = {
       file: join(cwd, 'dist/h5.esm.js'),
     },
   ],
-  external: ['@babel/runtime-corejs3', 'react', 'react-dom'],
+  external: [
+    '@babel/runtime-corejs3',
+    '@tarojs/taro',
+    '@tarojs/runtime',
+    '@tarojs/components',
+    'react',
+    'react-dom',
+  ],
   plugins: [
     commonjs({
       include: /\/node_modules\//,
     }),
     nodeResolve({
-      extensions: ['.mjs', '.js', '.jsx', '.tsx', '.ts', '.vue'],
-      mainFields: ['main:h5', 'browser', 'module', 'jsnext:main', 'main'],
       customResolveOptions: {
         moduleDirectories: ['node_modules'],
       },

@@ -12,19 +12,30 @@ function optionText(option: any, valueKey: any) {
 
 function rootStyle(data: any) {
   return style({
-    height: addUnit(data.itemHeight * data.visibleItemCount),
+    height: data.itemHeight * data.visibleItemCount + 'px',
   })
 }
 
 function wrapperStyle(data: any) {
-  const offset = addUnit(
-    data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2,
-  )
+  // if (process.env.TARO_ENV === 'h5') {
+  //   const offset = addUnit(
+  //     data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2,
+  //   )
+
+  //   return style({
+  //     transition: 'transform ' + data.duration + 'ms',
+  //     'line-height': addUnit(data.itemHeight),
+  //     transform: 'translate3d(0, ' + offset + ', 0)',
+  //   })
+  // }
+
+  const offset =
+    data.offset + (data.itemHeight * (data.visibleItemCount - 1)) / 2
 
   return style({
     transition: 'transform ' + data.duration + 'ms',
-    'line-height': addUnit(data.itemHeight),
-    transform: 'translate3d(0, ' + offset + ', 0)',
+    'line-height': data.itemHeight + 'px',
+    transform: 'translate3d(0, ' + offset + 'px' + ', 0)',
   })
 }
 

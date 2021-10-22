@@ -8,7 +8,11 @@ import {
   useImperativeHandle,
 } from 'react'
 import { View } from '@tarojs/components'
-import { PickerProps, IPickerInstance } from '../../../types/picker'
+import {
+  PickerProps,
+  IPickerInstance,
+  PickerChangeEvents,
+} from '../../../types/picker'
 import PickerColumn from '../picker-column/index'
 import * as utils from '../wxs/utils'
 import Loading from '../loading/index'
@@ -19,14 +23,14 @@ export default forwardRef(function Index(
   ref: React.ForwardedRef<IPickerInstance>,
 ): JSX.Element {
   const {
-    valueKey,
+    valueKey = 'text',
     toolbarPosition = 'top',
     defaultIndex,
     columns,
     title,
     cancelButtonText,
     confirmButtonText,
-    itemHeight = 88,
+    itemHeight = 48, // 只支持px为单位的数字
     visibleItemCount = 5,
     loading,
     onChange,
@@ -59,37 +63,39 @@ export default forwardRef(function Index(
         const event_ = {}
         Object.defineProperties(event_, {
           detail: {
-            picker: {
-              setColumnValue,
-              getColumnValue,
-              setColumnValues,
-              getColumnValues: (index: number) =>
-                children.current[index].options,
-              getIndexes,
-              setIndexes: (indexes: number[]) => {
-                const stack = indexes.map((optionIndex, columnIndex) =>
-                  setColumnIndex(columnIndex, optionIndex),
-                )
-                return Promise.all(stack)
+            value: {
+              picker: {
+                setColumnValue,
+                getColumnValue,
+                setColumnValues,
+                getColumnValues: (index: number) =>
+                  children.current[index].options,
+                getIndexes,
+                setIndexes: (indexes: number[]) => {
+                  const stack = indexes.map((optionIndex, columnIndex) =>
+                    setColumnIndex(columnIndex, optionIndex),
+                  )
+                  return Promise.all(stack)
+                },
+                setColumnIndex,
+                getColumnIndex,
+                getValues,
+                setColumns,
+                children,
+                setValues,
+                columns,
               },
-              setColumnIndex,
-              getColumnIndex,
-              getValues,
-              setColumns,
-              children,
-              setValues,
-              columns,
+              value: simple ? getColumnValue(0) : getValues(),
+              index: simple ? getColumnIndex(0) : event,
             },
-            value: simple ? getColumnValue(0) : getValues(),
-            index: simple ? getColumnIndex(0) : event,
           },
         })
-        onChange(event)
+        onChange(event_ as PickerChangeEvents)
       }
-    } else if (type === 'canel') {
+    } else if (type === 'cancel') {
       if (onCancel) {
-        Object.defineProperties(event, {
-          detail: {
+        Object.defineProperty(event, 'detail', {
+          value: {
             value: simple ? getColumnValue(0) : getValues(),
             index: simple ? getColumnIndex(0) : getIndexes(),
           },
@@ -98,8 +104,8 @@ export default forwardRef(function Index(
       }
     } else if (type === 'confirm') {
       if (onConfirm) {
-        Object.defineProperties(event, {
-          detail: {
+        Object.defineProperty(event, 'detail', {
+          value: {
             value: simple ? getColumnValue(0) : getValues(),
             index: simple ? getColumnIndex(0) : getIndexes(),
           },
@@ -218,7 +224,7 @@ export default forwardRef(function Index(
 
   return (
     <View
-      className={`van-picker custom-class ${className}`}
+      className={`van-picker  ${className}`}
       style={utils.style([style])}
       {...others}
       onTouchMove={onTouchMove_}

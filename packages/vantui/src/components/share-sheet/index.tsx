@@ -34,8 +34,8 @@ export default function Index(props: ShareSheetProps) {
   }, [onClickOverlay])
 
   const _onSelect = useCallback(
-    (option, index) => {
-      onSelect?.(option, index)
+    (option) => {
+      onSelect?.({ detail: option })
     },
     [onSelect],
   )

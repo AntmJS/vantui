@@ -21,7 +21,7 @@ function Index(
 ): JSX.Element {
   const {
     valueKey,
-    itemHeight = 88,
+    itemHeight = 48,
     visibleItemCount = 5,
     initialOptions,
     defaultIndex,
@@ -129,7 +129,7 @@ function Index(
         )
         setTimeout(() => {
           setIndex(index, true)
-        })
+        }, 16)
       }
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
@@ -195,9 +195,10 @@ function Index(
         }),
     }
   })
+
   return (
     <View
-      className={`van-picker-column custom-class ${className}`}
+      className={`van-picker-column  ${className}`}
       style={utils.style([
         computed.rootStyle({
           itemHeight,
@@ -225,7 +226,7 @@ function Index(
             <View
               key={`picker-column__item${index}`}
               data-index={index}
-              style={computed.styleTran({ height: itemHeight })}
+              style={{ height: itemHeight + 'px' }}
               className={
                 'van-ellipsis ' +
                 utils.bem('picker-column__item', {

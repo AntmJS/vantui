@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import Field from '../field'
 import { SearchProps } from '../../../types/search'
 
 export default function Index(props: SearchProps) {
-  const [innerValue, setInnerValue]: any = useState('')
   const {
     value,
+    defaultValue = '',
     label,
     focus,
     error,
@@ -15,9 +15,6 @@ export default function Index(props: SearchProps) {
     readonly,
     inputAlign,
     showAction,
-    useActionSlot,
-    useLeftIconSlot,
-    useRightIconSlot,
     leftIcon = 'search',
     rightIcon,
     placeholder,
@@ -30,8 +27,8 @@ export default function Index(props: SearchProps) {
     clearTrigger = 'focus',
     clearIcon = 'clear',
     renderLabel,
-    renderLefticon,
-    renderRighticon,
+    renderLeftIcon,
+    renderRightIcon,
     renderAction,
     onFocus,
     onBlur,
@@ -45,10 +42,15 @@ export default function Index(props: SearchProps) {
     ...others
   } = props
 
-  const _change = function (e: ITouchEvent) {
-    setInnerValue(e.detail)
-    useState
-    onChange?.(e)
+  const noControlled = useMemo(() => typeof value === 'undefined', [value])
+  const [innerValue, setInnerValue] = useState(
+    noControlled ? defaultValue : value,
+  )
+  const _change = function (event: ITouchEvent) {
+    if (noControlled) {
+      setInnerValue(event.detail)
+    }
+    onChange?.(event)
   }
 
   const _cancel = function (e: ITouchEvent) {
@@ -72,31 +74,33 @@ export default function Index(props: SearchProps) {
     [value],
   )
 
+  const searchValue = noControlled ? innerValue : (value as number)
+
   return (
     <View
       className={`${utils.bem('search', {
-        withaction: showAction || useActionSlot,
-      })} custom-class ${className}`}
+        withaction: showAction || renderAction,
+      })}  ${className}`}
       style={utils.style([{ background: background }, style])}
       {...others}
     >
       <View className={utils.bem('search__content', [shape])}>
         {label ? (
-          <View className="van-search__label">{{ label }}</View>
+          <View className="van-search__label">{label}</View>
         ) : (
           renderLabel
         )}
 
         <Field
           type="text"
-          leftIcon={!useLeftIconSlot ? leftIcon : ''}
-          right-icon={!useRightIconSlot ? rightIcon : ''}
+          leftIcon={!renderLeftIcon ? leftIcon : ''}
+          rightIcon={!renderRightIcon ? rightIcon : ''}
           focus={focus}
           error={error}
           border={false}
           confirmType="search"
           className="van-search__field field-class"
-          value={innerValue}
+          value={searchValue}
           disabled={disabled}
           readonly={readonly}
           clearable={clearable}
@@ -106,8 +110,8 @@ export default function Index(props: SearchProps) {
           inputAlign={inputAlign}
           placeholder={placeholder}
           placeholder-style={placeholderStyle}
-          renderLefticon={useLeftIconSlot && renderLefticon}
-          renderRighticon={useRightIconSlot && renderRighticon}
+          renderLeftIcon={renderLeftIcon}
+          renderRightIcon={renderRightIcon}
           customStyle="padding: 5px 10px 5px 0; background-color: transparent;"
           onBlur={onBlur}
           onFocus={onFocus}
@@ -118,17 +122,15 @@ export default function Index(props: SearchProps) {
         />
       </View>
 
-      {(showAction || useActionSlot) && (
+      {(showAction || renderAction) && (
         <View
           className="van-search__action"
           hoverClass="van-search__action--hover"
           hoverStayTime={70}
         >
-          {useActionSlot ? (
-            renderAction
-          ) : (
+          {renderAction || (
             <View onClick={_cancel} className="cancel-class">
-              {{ actionText }}
+              {actionText}
             </View>
           )}
         </View>

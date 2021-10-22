@@ -20,7 +20,7 @@ export default function Index(props: DividerProps) {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('divider', [
           {
             dashed,

@@ -59,7 +59,7 @@ export default function Index(props: SubmitBarProps) {
   )
   return (
     <View
-      className={`van-submit-bar custom-class ${className || ''}`}
+      className={`van-submit-bar  ${className || ''}`}
       style={style}
       {...others}
     >

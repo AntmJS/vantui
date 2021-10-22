@@ -53,10 +53,10 @@ export interface FieldProps extends StandardProps {
   border?: boolean
   titleWidth?: string
   clearIcon?: string
-  renderLefticon?: ReactNode
+  renderLeftIcon?: ReactNode
   renderTitle?: ReactNode
   renderInput?: ReactNode
-  renderRighticon?: ReactNode
+  renderRightIcon?: ReactNode
   renderIcon?: ReactNode
   renderButton?: ReactNode
   onInput?: (e: ITouchEvent) => void

@@ -41,7 +41,7 @@ export default function Index(props: ProgressProps) {
 
   return (
     <View
-      className={'van-progress custom-class ' + className}
+      className={'van-progress  ' + className}
       style={utils.style([
         computed.rootStyle({
           strokeWidth,

@@ -140,13 +140,13 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
 
   const _onConfirm = useCallback(
     (event) => {
-      // const { index } = event.detail
+      const { index } = event.detail
       let { value } = event.detail
       value = _parseValues(value)
       onConfirm?.({
         detail: {
           value,
-          // index,
+          index,
         },
       })
     },
@@ -173,7 +173,8 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     if (!picker) {
       return
     }
-    let code: any = codeRef.current || _getDefaultCode()
+    let code: any = (codeRef.current || _getDefaultCode()) + ''
+
     const provinceList = _getList('province')
     const cityList = _getList('city', code.slice(0, 2))
     const stack = []
@@ -199,7 +200,6 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       indexes.push(_getIndex('county', code))
     }
     return Promise.all(stack)
-      .catch(() => {})
       .then(() => picker.setIndexes(indexes))
       .catch(() => {})
   }, [_getDefaultCode, _getIndex, _getList, _getPicker, columnsNum])
@@ -207,19 +207,18 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   const _onChange = useCallback(
     (event) => {
       let _a
-      const { index, value } = event
+      const { index, value, picker } = event.detail
       codeRef.current = value[index].code
       ;(_a = _setValues()) === null || _a === void 0
         ? void 0
         : _a.then(() => {
-            const event_ = event || { detail: { value: '' } }
-            Object.defineProperty(event_, 'detail', {
-              value: {
-                picker: pickerRef.current,
-                values: _parseValues(value),
+            const event_ = {
+              detail: {
+                picker,
+                values: _parseValues(picker.getValues()),
                 index,
               },
-            })
+            }
             onChange?.(event_)
           })
     },
@@ -300,15 +299,12 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     <VanPicker
       ref={pickerRef as any}
       className="van-area__picker"
-      // activeClass="active-class"
-      // toolbarClass="toolbar-class"
-      // columnClass="column-class"
       showToolbar
       valueKey="name"
       title={title}
       loading={loading}
       columns={computed.displayColumns(columns, columnsNum)}
-      itemHeight={itemHeight}
+      // itemHeight={itemHeight}
       visibleItemCount={visibleItemCount}
       cancelButtonText={cancelButtonText}
       confirmButtonText={confirmButtonText}

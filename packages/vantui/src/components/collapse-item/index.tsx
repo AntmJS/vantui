@@ -1,3 +1,4 @@
+import { useReady } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Block, ITouchEvent } from '@tarojs/components'
 
@@ -19,6 +20,7 @@ export default function Index(
     index: undefined,
     expanded: false,
     animation: { actions: [] },
+    ready: false,
   })
 
   const {
@@ -42,16 +44,16 @@ export default function Index(
     ...others
   } = props
 
-  useEffect(() => {
-    updateExpanded()
-    ref.current.mounted = true
-    /* eslint-disable-next-line */
-  }, [])
+  useReady(() => {
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
+      }
+    })
+  })
 
-  useEffect(() => {
-    updateExpanded()
-    /* eslint-disable-next-line */
-  }, [parent.data])
+  const refDom = useRef(null)
 
   const updateExpanded = useCallback(() => {
     if (!parent) {
@@ -64,7 +66,7 @@ export default function Index(
       ? value === currentName
       : (value || []).some((name: any) => name === currentName)
     if (expanded !== state.expanded) {
-      setContentAnimate(null, expanded, ref.current.mounted, setState)
+      setContentAnimate(null, expanded, ref.current.mounted, setState, refDom)
     }
     setState((state) => {
       return {
@@ -74,6 +76,19 @@ export default function Index(
       }
     })
   }, [parent, name, state.expanded])
+
+  useEffect(() => {
+    if (state.ready) {
+      updateExpanded()
+      ref.current.mounted = true
+    }
+  }, [state.ready, updateExpanded])
+
+  useEffect(() => {
+    if (state.ready) {
+      updateExpanded()
+    }
+  }, [state.ready, updateExpanded, parent.data])
 
   const onClick = useCallback(
     (event: ITouchEvent) => {
@@ -89,7 +104,7 @@ export default function Index(
   return (
     <View
       className={
-        'van-collapse-item custom-class ' +
+        'van-collapse-item  ' +
         (state.index !== 0 ? 'van-hairline--top' : '') +
         ` ${className || ''}`
       }
@@ -124,7 +139,7 @@ export default function Index(
         }
         animation={state.animation}
       >
-        <View className="van-collapse-item__content content-class">
+        <View className="van-collapse-item__content content-class" ref={refDom}>
           {children}
         </View>
       </View>

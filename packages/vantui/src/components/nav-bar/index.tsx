@@ -68,7 +68,7 @@ export default function Index(props: NavBarProps) {
           utils.bem('nav-bar', {
             fixed,
           }) +
-          ' custom-class ' +
+          '  ' +
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }

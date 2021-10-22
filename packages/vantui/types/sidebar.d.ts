@@ -1,8 +1,13 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 
+interface onChangeEvent {
+  event: {
+    detail?: number
+  }
+}
 export interface SidebarProps extends StandardProps {
-  onChange?: (...args: any[]) => any
+  onChange?: (a: onChangeEvent) => any
   activeKey: number
   children: React.ReactNode
 }

@@ -9,7 +9,6 @@ type SliderEvent = {
 export interface SliderProps extends StandardProps {
   range?: boolean
   disabled?: boolean
-  useButtonSlot?: boolean
   activeColor?: string
   inactiveColor?: string
   max?: number
@@ -22,8 +21,8 @@ export interface SliderProps extends StandardProps {
   onChange?: (e: ITouchEvent & SliderEvent) => void
   onDragStart?: () => void
   onDragEnd?: () => void
-  renderLeftbutton?: (value: number) => React.ReactNode
-  renderRightbutton?: (value: number) => React.ReactNode
+  renderLeftButton?: (value: number) => React.ReactNode
+  renderRightButton?: (value: number) => React.ReactNode
   renderButton?: (value: number) => React.ReactNode
 }
 

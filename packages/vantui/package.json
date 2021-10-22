@@ -1,13 +1,13 @@
 {
   "name": "@antmjs/vantui",
-  "version": "0.2.0",
+  "version": "0.3.0-alpha.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "common:react": "dist/h5.js",
   "module:react": "dist/h5.esm.js",
   "typings": "types/index.d.ts",
   "author": "三少 <hi_sanshao@outlook.com>",
-  "description": "一套适用于Taro3的vantui组件库",
+  "description": "一套适用于Taro3及React的vantui组件库",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
@@ -15,7 +15,9 @@
   },
   "keywords": [
     "weui",
-    "taroui"
+    "vant-weapp",
+    "Taro",
+    "React"
   ],
   "repository": {
     "type": "https",
@@ -54,18 +56,19 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
+    "@antmjs/iconfont": "1.9.4",
     "@babel/runtime-corejs3": "^7.14.7",
-    "@vant/icons": "^1.7.0",
+    "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
     "lodash.flow": "^3.5.0",
     "prop-types": "^15.7.2",
-    "rc-util": "^5.14.0"
+    "rc-util": "^5.14.0",
+    "rollup-plugin-styles": "^3.14.1"
   },
   "devDependencies": {
-    "@antmjs/iconfont": "1.9.4",
-    "@tarojs/components": "^3.3.0",
-    "@tarojs/taro": "^3.3.0",
+    "@tarojs/components": "^3.3.9",
+    "@tarojs/taro": "^3.3.9",
     "@types/lodash.flow": "^3.5.6",
     "@types/react": "^17.0.17",
     "react": "^17.0.2",

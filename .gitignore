@@ -29,3 +29,5 @@ packages/vantui-demo/jd
 packages/vantui-demo/iot
 packages/vantui-demo/build
 packages/vantui-demo/dist
+packages/react-demo/build
+packages/react-demo/dist

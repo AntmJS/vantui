@@ -49,7 +49,7 @@ export default function Index(props: GoodsActionProps) {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('goods-action', {
           safe: safeAreaInsetBottom,
         }) +

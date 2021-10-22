@@ -19,7 +19,7 @@ export default function Index(props: StepperProps) {
   const {
     theme,
     value,
-    integer = 'check',
+    integer,
     disabled,
     inputWidth,
     buttonSize,
@@ -133,55 +133,60 @@ export default function Index(props: StepperProps) {
     },
     [_emitChange, _format, onBlur],
   )
-  const _onChange = useCallback(() => {
-    if (_isDisabled(eventTypeRef.current)) {
-      onOverlimit?.()
-      return
-    }
-    const diff = eventTypeRef.current === 'minus' ? -step : +step
-    // const value = _format(add(+currentValue, diff))
-    // _emitChange(value)
-    if (!asyncChange) {
-      setCurrentValue((p: string) => {
-        const value = _format(add(+p, diff))
-        onChange?.(value)
-        return value
-      })
-    }
-    // 不太美观----
+  const _onChange = useCallback(
+    (currentValue) => {
+      if (_isDisabled(eventTypeRef.current)) {
+        onOverlimit?.()
+        return
+      }
+      const diff = eventTypeRef.current === 'minus' ? -step : +step
+      const value = _format(add(+currentValue, diff))
+      _emitChange(value)
+      // 不太美观----
 
-    if (eventTypeRef.current === 'plus') {
-      onPlus?.()
-    } else {
-      onMinus?.()
-    }
-  }, [
-    _isDisabled,
-    step,
-    asyncChange,
-    onOverlimit,
-    _format,
-    onChange,
-    onPlus,
-    onMinus,
-  ])
-  const _longPressStep = useCallback(() => {
-    longPressTimerRef.current = setTimeout(() => {
-      _onChange()
-      _longPressStep()
-    }, LONG_PRESS_INTERVAL)
-  }, [_onChange])
+      if (eventTypeRef.current === 'plus') {
+        onPlus?.()
+      } else {
+        onMinus?.()
+      }
+
+      return value
+    },
+    [
+      _isDisabled,
+      step,
+      asyncChange,
+      onOverlimit,
+      _format,
+      onChange,
+      onPlus,
+      onMinus,
+    ],
+  )
+  const _longPressStep = useCallback(
+    (currentValue) => {
+      longPressTimerRef.current = setTimeout(
+        (t) => {
+          const cv = _onChange(t)
+          _longPressStep(cv)
+        },
+        LONG_PRESS_INTERVAL,
+        currentValue,
+      )
+    },
+    [_onChange],
+  )
   const _onTap = useCallback(
     (event) => {
       const { type } = event.currentTarget.dataset
       eventTypeRef.current = type
-      _onChange()
+      _onChange(currentValue)
     },
-    [_onChange],
+    [_onChange, currentValue],
   )
   const _onTouchStart = useCallback(
     (event) => {
-      if (!longPress) {
+      if (!longPress || asyncChange) {
         return
       }
       clearTimeout(longPressTimerRef.current)
@@ -190,18 +195,18 @@ export default function Index(props: StepperProps) {
       isLongPressRef.current = false
       longPressTimerRef.current = setTimeout(() => {
         isLongPressRef.current = true
-        _onChange()
-        _longPressStep()
+        _onChange(currentValue)
+        _longPressStep(currentValue)
       }, LONG_PRESS_START_TIME)
     },
-    [longPress, _longPressStep, _onChange],
+    [longPress, asyncChange, _longPressStep, _onChange, currentValue],
   )
   const _onTouchEnd = useCallback(() => {
-    if (!longPress) {
+    if (!longPress || asyncChange) {
       return
     }
     clearTimeout(longPressTimerRef.current)
-  }, [longPress])
+  }, [asyncChange, longPress])
 
   useEffect(() => {
     _check()

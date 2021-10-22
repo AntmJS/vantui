@@ -5,6 +5,7 @@ import {
   cloneElement,
   useEffect,
   useRef,
+  useMemo,
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View, ScrollView } from '@tarojs/components'
@@ -46,6 +47,7 @@ function parseTabList(children: React.ReactNode): any[] {
     .filter((tab) => tab)
 }
 
+let comIndex = 0
 export default function Index(props: TabsProps) {
   const ref = useRef({
     skipInit: false,
@@ -58,6 +60,8 @@ export default function Index(props: TabsProps) {
     startY: 0,
     swiping: false,
   })
+
+  const indexRef = useRef(comIndex)
   const [state, setState]: any = useState({
     tabs: [],
     scrollLeft: 0,
@@ -96,8 +100,8 @@ export default function Index(props: TabsProps) {
     titleInactiveColor,
     swipeThreshold = 5,
     animated,
-    renderNavleft,
-    renderNavright,
+    renderNavLeft,
+    renderNavRight,
     onScroll,
     onClick,
     onChange,
@@ -107,17 +111,25 @@ export default function Index(props: TabsProps) {
     children,
     ...others
   } = props
-  const tabs = parseTabList(children)
-  const newChildren: any = tabs.map((tab, index) => {
-    return cloneElement(tab.node, {
-      key: index,
-      active: currentIndex === index,
-      lazyRender,
-      animated,
-      index,
-    })
-  })
 
+  useEffect(() => {
+    comIndex++
+    indexRef.current = comIndex
+  }, [])
+  const tabs = useMemo(() => {
+    return parseTabList(children)
+  }, [children])
+  const newChildren = useMemo(() => {
+    return tabs.map((tab, index) => {
+      return cloneElement(tab.node, {
+        key: index,
+        active: currentIndex === index,
+        lazyRender,
+        animated,
+        index,
+      })
+    }) as any[]
+  }, [animated, currentIndex, lazyRender, tabs])
   const trigger = function (
     eventName: 'onClick' | 'onChange' | 'onDisabled',
     child?: any,
@@ -132,9 +144,11 @@ export default function Index(props: TabsProps) {
       onDisabled,
     }
     func[eventName]?.({
-      index: currentChild.props.index,
-      name: currentChild.props.name || currentChild.props.index,
-      title: currentChild.props.title,
+      detail: {
+        index: currentChild.props.index,
+        name: currentChild.props.name || currentChild.props.index,
+        title: currentChild.props.title,
+      },
     })
   }
 
@@ -163,7 +177,7 @@ export default function Index(props: TabsProps) {
     })
     Taro.nextTick(() => {
       if (shouldEmitChange) {
-        trigger('onChange')
+        trigger('onChange', newChildren[cIndex])
       }
     })
   }
@@ -183,8 +197,8 @@ export default function Index(props: TabsProps) {
     }
     index = index ?? currentIndex
     Promise.all([
-      getAllRect(null, '.van-tab'),
-      getRect(null, '.van-tabs__line'),
+      getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
+      getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__line`),
     ]).then(([rects = [], lineRect]: any) => {
       if (rects && lineRect) {
         const rect = rects[index!]
@@ -219,7 +233,7 @@ export default function Index(props: TabsProps) {
     } else {
       setCurrentIndex(index)
       Taro.nextTick(() => {
-        trigger('onClick')
+        trigger('onClick', child)
       })
     }
   }
@@ -230,8 +244,8 @@ export default function Index(props: TabsProps) {
     }
     index = index ?? currentIndex
     Promise.all([
-      getAllRect(null, '.van-tab'),
-      getRect(null, '.van-tabs__nav'),
+      getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
+      getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__nav`),
     ]).then(([tabRects, navRect]: any) => {
       if (tabRects && navRect) {
         const tabRect = tabRects[index!]
@@ -326,40 +340,43 @@ export default function Index(props: TabsProps) {
   }
 
   useEffect(function () {
-    requestAnimationFrame(() => {
-      ref.current.swiping = true
-      setState((pre: any) => {
-        return {
-          ...pre,
-          container: Taro.createSelectorQuery().select('.van-tabs'),
-        }
-      })
-      resize()
-      scrollIntoView()
-    })
-    Taro.nextTick(function () {
-      resize()
-      scrollIntoView()
+    ref.current.swiping = true
+    setState((pre: any) => {
+      return {
+        ...pre,
+        container: () =>
+          Taro.createSelectorQuery().select(
+            `.tabs-com-index${indexRef.current}.van-tabs`,
+          ),
+      }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(
     function () {
+      Taro.nextTick(function () {
+        setTimeout(() => {
+          resize()
+          scrollIntoView()
+        }, 300)
+      })
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lineWidth],
+  )
+  useEffect(
+    function () {
       if (active !== getCurrentName()) {
-        setCurrentIndexByName(active)
+        Taro.nextTick(function () {
+          setTimeout(() => {
+            setCurrentIndexByName(active)
+          }, 300)
+        })
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active],
-  )
-
-  useEffect(
-    function () {
-      resize()
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [lineWidth],
   )
   useEffect(
     function () {
@@ -377,7 +394,9 @@ export default function Index(props: TabsProps) {
   return (
     <View
       className={
-        'custom-class ' + utils.bem('tabs', [type] + ` ${className || ''}`)
+        `tabs-com-index${indexRef.current} ` +
+        ' ' +
+        utils.bem('tabs', [type] + ` ${className || ''}`)
       }
       style={style}
       {...others}
@@ -398,7 +417,7 @@ export default function Index(props: TabsProps) {
             (type === 'line' && border ? 'van-hairline--top-bottom' : '')
           }
         >
-          {renderNavleft}
+          {renderNavLeft}
           <ScrollView
             scrollX={scrollable}
             scrollWithAnimation={scrollWithAnimation}
@@ -475,7 +494,7 @@ export default function Index(props: TabsProps) {
               })}
             </View>
           </ScrollView>
-          {renderNavright}
+          {renderNavRight}
         </View>
       </Sticky>
       <View
