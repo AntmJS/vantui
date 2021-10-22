@@ -21,7 +21,6 @@ export default function Index(
     name,
     value,
     disabled = false,
-    useIconSlot,
     checkedColor,
     labelPosition = 'right',
     labelDisabled = false,
@@ -114,9 +113,7 @@ export default function Index(
         style={'font-size: ' + utils.addUnit(iconSize)}
         onClick={onClick}
       >
-        {useIconSlot ? (
-          renderIcon
-        ) : (
+        {renderIcon || (
           <VanIcon
             name="success"
             className={

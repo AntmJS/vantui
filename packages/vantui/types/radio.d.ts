@@ -5,7 +5,6 @@ export interface RadioProps extends StandardProps {
   name?: string
   value?: null
   disabled?: boolean
-  useIconSlot?: boolean
   checkedColor?: string
   labelPosition?: string
   labelDisabled?: boolean

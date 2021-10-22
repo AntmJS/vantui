@@ -40,7 +40,6 @@ export default class Index extends React.Component {
               title="单元格"
               value="内容"
               size="large"
-              useLabelSlot
               border={false}
               renderLabel={
                 <Block>

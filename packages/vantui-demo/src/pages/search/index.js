@@ -102,7 +102,6 @@ export default class Index extends React.Component {
             label="地址"
             shape="round"
             placeholder="请输入搜索关键词"
-            useActionSlot
             onSearch={this.onSearch}
             onChange={this.onChange}
             renderAction={

@@ -10,8 +10,6 @@ export interface ImageProps extends StandardProps {
   height?: number
   radius?: number
   lazyLoad?: boolean
-  useErrorSlot?: boolean
-  useLoadingSlot?: boolean
   showMenuByLongpress?: boolean
   fit?: ImageFit
   showError?: boolean

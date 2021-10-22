@@ -28,7 +28,6 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
     time,
     format = 'HH:mm:ss',
     autoStart = true,
-    useSlot,
     millisecond,
     onChange,
     onFinish,

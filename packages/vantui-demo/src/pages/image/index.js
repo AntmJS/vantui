@@ -74,7 +74,6 @@ export default class Index extends React.Component {
               <Image
                 width="100%"
                 height="27vw"
-                useLoadingSlot
                 renderLoading={
                   <Block>
                     <Loading type="spinner" size="20" vertical></Loading>
@@ -96,7 +95,6 @@ export default class Index extends React.Component {
                 width="100%"
                 height="27vw"
                 src="x"
-                useErrorSlot
                 renderError={
                   <Block>
                     <Text>加载失败</Text>
