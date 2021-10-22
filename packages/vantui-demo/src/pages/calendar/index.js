@@ -49,13 +49,16 @@ export default class Index extends React.Component {
   }
 
   onConfirm = (event) => {
-    console.log(event)
+    console.log(event, `date.${this.state.id}`)
     this.setState({ showCalendar: false })
 
     this.setState({
-      [`date.${this.state.id}`]: Array.isArray(event.detail)
-        ? event.detail.map((date) => date.valueOf())
-        : event.detail.valueOf(),
+      date: {
+        ...this.state.date,
+        [`${this.state.id}`]: Array.isArray(event.detail.value)
+          ? event.detail.value.map((date) => date?.valueOf())
+          : event.detail.value.valueOf(),
+      },
     })
   }
 

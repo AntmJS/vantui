@@ -91,7 +91,7 @@ function Index(
   } = props
 
   const [subtitle, setSubtitle] = useState('')
-  const [currentDate, setCurrentDate] = useState<any>(null)
+  const [currentDate, setCurrentDate] = useState<any>()
   const [scrollIntoView, setScrollIntoView] = useState('')
   const contentObserver = useRef<any>()
   const [compIndex, setComindex] = useState(0)
@@ -273,6 +273,13 @@ function Index(
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function select(date: any, complete?: boolean) {
+    if (Array.isArray(date)) {
+      date = date
+        .filter((d: any) => !!d)
+        .map((item: any) => {
+          return typeof item === 'number' ? new Date(item) : item
+        })
+    }
     if (complete && type === 'range') {
       const valid = checkRange(date)
       if (!valid) {
@@ -287,7 +294,7 @@ function Index(
     }
     emit(date)
     if (complete && !showConfirm) {
-      onConfirm_()
+      onConfirm_(date)
     }
   }
 
@@ -348,13 +355,13 @@ function Index(
   )
 
   const onConfirm_ = useCallback(
-    function () {
+    function (date) {
       if (type === 'range' && !checkRange(currentDate)) {
         return
       }
       const e = {
         detail: {
-          value: copyDates(currentDate),
+          value: date || copyDates(currentDate),
         },
       } as ITouchEvent
       if (onConfirm) onConfirm(e)

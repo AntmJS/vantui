@@ -186,7 +186,7 @@ export default function Index(props: StepperProps) {
   )
   const _onTouchStart = useCallback(
     (event) => {
-      if (!longPress) {
+      if (!longPress || asyncChange) {
         return
       }
       clearTimeout(longPressTimerRef.current)
@@ -199,14 +199,14 @@ export default function Index(props: StepperProps) {
         _longPressStep(currentValue)
       }, LONG_PRESS_START_TIME)
     },
-    [longPress, _longPressStep, _onChange, currentValue],
+    [longPress, asyncChange, _longPressStep, _onChange, currentValue],
   )
   const _onTouchEnd = useCallback(() => {
-    if (!longPress) {
+    if (!longPress || asyncChange) {
       return
     }
     clearTimeout(longPressTimerRef.current)
-  }, [longPress])
+  }, [asyncChange, longPress])
 
   useEffect(() => {
     _check()
