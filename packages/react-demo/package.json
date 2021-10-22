@@ -1,9 +1,9 @@
 {
   "name": "react-demo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@antmjs/vantui": "0.3.0-alpha.0",
+    "@antmjs/vantui": "1.0.0",
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
