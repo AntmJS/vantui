@@ -161,7 +161,7 @@ export default class Index extends React.Component {
             onChange={this.onChange}
             tabClass="special-tab"
             tabActiveClass="special-tab-active"
-            renderNavright={
+            renderNavRight={
               <Block>
                 <Icon
                   name="search"
