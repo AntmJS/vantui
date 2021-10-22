@@ -100,8 +100,8 @@ export default function Index(props: TabsProps) {
     titleInactiveColor,
     swipeThreshold = 5,
     animated,
-    renderNavleft,
-    renderNavright,
+    renderNavLeft,
+    renderNavRight,
     onScroll,
     onClick,
     onChange,
@@ -417,7 +417,7 @@ export default function Index(props: TabsProps) {
             (type === 'line' && border ? 'van-hairline--top-bottom' : '')
           }
         >
-          {renderNavleft}
+          {renderNavLeft}
           <ScrollView
             scrollX={scrollable}
             scrollWithAnimation={scrollWithAnimation}
@@ -494,7 +494,7 @@ export default function Index(props: TabsProps) {
               })}
             </View>
           </ScrollView>
-          {renderNavright}
+          {renderNavRight}
         </View>
       </Sticky>
       <View
