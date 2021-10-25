@@ -5,7 +5,7 @@ import { View, Canvas, CoverView } from '@tarojs/components'
 import { CircleProps } from '../../../types/circle'
 import { getSystemInfoSync } from '../common/utils.js'
 import { isObj } from '../common/validator.js'
-// import { canIUseCanvas2d } from '../common/version.js'
+import { canIUseCanvas2d } from '../common/version.js'
 import { adaptor } from './canvas.js'
 
 function format(rate: number) {
@@ -79,7 +79,7 @@ export default function Index(props: CircleProps) {
 
   const getContext = useCallback(() => {
     console.log('getContext')
-    if (type === '') {
+    if (type === '' || (process.env.TARO_ENV === 'h5' && !canIUseCanvas2d())) {
       const ctx = Taro.createCanvasContext(state.unitag)
       return Promise.resolve(ctx)
     }
