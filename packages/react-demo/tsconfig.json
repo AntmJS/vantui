@@ -19,7 +19,7 @@
     "module": "commonjs",
     // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
     "moduleResolution": "Node",
-    "target": "es5",
+    "target": "es6",
     "lib": ["ESNext", "dom"],
     /** emit */
     "noEmit": true,
@@ -30,17 +30,19 @@
     "isolatedModules": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    // declaration和allowJs不能同时设为true
+    "allowJs": true,
     "jsx": "react-jsx",
     "skipLibCheck": false,
     "paths": {
       // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
-      "@/*": ["./src/*"]
+      // "@/*": ["./src/*"]
     }
   },
   "include": [
-    "*.js",
+    // "*.js",
     "*.d.ts",
-    "src",
+    "src/index",
     "config/**/*.js",
     "scripts/**/*.js",
     "test"

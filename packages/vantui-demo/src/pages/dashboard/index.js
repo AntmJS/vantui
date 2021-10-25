@@ -4,7 +4,7 @@ import Taro from '@tarojs/taro'
 
 import {} from '@antmjs/vantui'
 
-import list from '../../config.js'
+import list from '../../config'
 
 import DemoBlock from '../../components/demo-block/index'
 import DemoHome from '../../components/demo-home/index'

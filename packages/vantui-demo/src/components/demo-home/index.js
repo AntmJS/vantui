@@ -2,7 +2,7 @@ import { Block, View, Image } from '@tarojs/components'
 import React from 'react'
 import Taro from '@tarojs/taro'
 
-import list from '../../config.js'
+import list from '../../config'
 /* eslint-disable react/prop-types */
 import DemoHomeNav from '../demo-home-nav/index'
 import './index.less'
