@@ -5,7 +5,7 @@ import Taro from '@tarojs/taro'
 import { Image, Dialog, Cell, dialog, toast } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 const message = '代码是写出来给人看的，附带能在机器上运行'
 
 export default class Index extends React.Component {

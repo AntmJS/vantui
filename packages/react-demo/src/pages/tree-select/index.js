@@ -7,7 +7,7 @@ import { TreeSelect, Image } from '@antmjs/vantui'
 import DemoBlock from '../../components/demo-block/index'
 import config from './config.js'
 
-import './index.less'
+import './index.scss'
 const items = [
   {
     text: config.pro1Name,

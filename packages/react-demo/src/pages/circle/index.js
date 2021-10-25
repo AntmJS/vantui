@@ -5,7 +5,7 @@ import Taro from '@tarojs/taro'
 import { Circle, Button } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 const format = (rate) => Math.min(Math.max(rate, 0), 100)
 
 export default class Index extends React.Component {

@@ -6,7 +6,7 @@ import { Toast, Area, toast } from '@antmjs/vantui'
 
 import { areaList } from '@vant/area-data'
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 
 export default class Index extends React.Component {
   constructor() {

@@ -4,7 +4,7 @@ import Taro from '@tarojs/taro'
 import { Image, CheckboxGroup, Checkbox, CellGroup, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 
 export default class Index extends React.Component {
   constructor() {

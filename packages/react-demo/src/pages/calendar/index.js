@@ -6,7 +6,7 @@ import { Calendar, Cell } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
 import computed from './index.wxs.js'
-import './index.less'
+import './index.scss'
 
 export default class Index extends React.Component {
   constructor() {

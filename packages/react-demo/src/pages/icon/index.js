@@ -7,7 +7,7 @@ import { Tabs, Tab, Icon, Col } from '@antmjs/vantui'
 import icons from '@vant/icons'
 
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 
 export default class Index extends React.Component {
   constructor() {

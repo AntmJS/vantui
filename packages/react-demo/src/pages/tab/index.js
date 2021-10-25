@@ -5,7 +5,7 @@ import Taro from '@tarojs/taro'
 import { Tabs, Tab, Icon } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 
 export default class Index extends React.Component {
   constructor() {
@@ -161,7 +161,7 @@ export default class Index extends React.Component {
             onChange={this.onChange}
             tabClass="special-tab"
             tabActiveClass="special-tab-active"
-            renderNavright={
+            renderNavRight={
               <Block>
                 <Icon
                   name="search"

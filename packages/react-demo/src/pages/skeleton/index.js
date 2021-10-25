@@ -5,7 +5,7 @@ import Taro from '@tarojs/taro'
 import { Skeleton, Switch, Image } from '@antmjs/vantui'
 
 import DemoBlock from '../../components/demo-block/index'
-import './index.less'
+import './index.scss'
 
 export default class Index extends React.Component {
   constructor() {
