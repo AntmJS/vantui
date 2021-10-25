@@ -1,6 +1,6 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { Search } from '@antmjs/vantui'
 
@@ -23,7 +23,7 @@ export default class Index extends React.Component {
 
   onSearch = () => {
     if (this.state.value) {
-      Taro.showToast({
+      showToast({
         title: '搜索：' + this.state.value,
         icon: 'none',
       })
@@ -32,7 +32,7 @@ export default class Index extends React.Component {
 
   onClick = () => {
     if (this.state.value) {
-      Taro.showToast({
+      showToast({
         title: '搜索：' + this.state.value,
         icon: 'none',
       })
@@ -40,14 +40,14 @@ export default class Index extends React.Component {
   }
 
   onCancel = () => {
-    Taro.showToast({
+    showToast({
       title: '取消',
       icon: 'none',
     })
   }
 
   onClear = () => {
-    Taro.showToast({
+    showToast({
       title: '清空',
       icon: 'none',
     })

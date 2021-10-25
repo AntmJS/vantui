@@ -1,6 +1,6 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { Field, CellGroup, Button } from '@antmjs/vantui'
 
@@ -24,7 +24,7 @@ export default class Index extends React.Component {
   }
 
   onClickIcon = () => {
-    Taro.showToast({
+    showToast({
       icon: 'none',
       title: '点击图标',
     })

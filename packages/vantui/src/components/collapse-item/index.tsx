@@ -101,6 +101,8 @@ export default function Index(
     [parent, disabled, name, state.expanded],
   )
 
+  console.log('state.animation: ', state.animation)
+
   return (
     <View
       className={

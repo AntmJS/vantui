@@ -78,7 +78,6 @@ export default function Index(props: CircleProps) {
   })
 
   const getContext = useCallback(() => {
-    console.log('getContext')
     if (type === '' || (process.env.TARO_ENV === 'h5' && !canIUseCanvas2d())) {
       const ctx = Taro.createCanvasContext(state.unitag)
       return Promise.resolve(ctx)
@@ -103,7 +102,6 @@ export default function Index(props: CircleProps) {
   }, [size, type, state.unitag])
 
   const setHoverColor = function () {
-    console.log('setHoverColor')
     if (isObj(color)) {
       const _color = color as Record<string, string>
       return getContext().then((context: any) => {
@@ -171,7 +169,6 @@ export default function Index(props: CircleProps) {
   )
   const drawCircle = useCallback(
     (currentValue: any) => {
-      console.log('drawCircle')
       getContext().then((context: any) => {
         context.clearRect(0, 0, size, size)
         renderLayerCircle(context)
@@ -191,7 +188,6 @@ export default function Index(props: CircleProps) {
     }
   }
   const reRender = useCallback(() => {
-    console.log('reRender')
     if (speed <= 0 || speed > 1000) {
       drawCircle(value)
       return

@@ -371,7 +371,7 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {renderButton ? (
-              renderButton(value_ as number)
+              renderButton?.(value_ as number)
             ) : (
               <View className={utils.bem('slider__button')}></View>
             )}

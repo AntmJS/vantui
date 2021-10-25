@@ -1,6 +1,6 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { Tabs, Tab, Icon } from '@antmjs/vantui'
 
@@ -25,28 +25,28 @@ export default class Index extends React.Component {
   }
 
   onClickDisabled = (event) => {
-    Taro.showToast({
+    showToast({
       title: `标签 ${event.detail.index + 1} 已被禁用`,
       icon: 'none',
     })
   }
 
   onChange = (event) => {
-    Taro.showToast({
+    showToast({
       title: `切换到标签 ${event.detail.index + 1}`,
       icon: 'none',
     })
   }
 
   onClickNavRight = () => {
-    Taro.showToast({
+    showToast({
       title: '点击 right nav',
       icon: 'none',
     })
   }
 
   onClick = (event) => {
-    Taro.showToast({
+    showToast({
       title: `点击标签 ${event.detail.index + 1}`,
       icon: 'none',
     })

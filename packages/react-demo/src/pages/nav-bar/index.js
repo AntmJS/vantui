@@ -1,6 +1,6 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { NavBar, Icon } from '@antmjs/vantui'
 
@@ -13,11 +13,11 @@ export default class Index extends React.Component {
   }
 
   onClickLeft = () => {
-    Taro.showToast({ title: '点击返回', icon: 'none' })
+    showToast({ title: '点击返回', icon: 'none' })
   }
 
   onClickRight = () => {
-    Taro.showToast({ title: '点击按钮', icon: 'none' })
+    showToast({ title: '点击按钮', icon: 'none' })
   }
 
   render() {

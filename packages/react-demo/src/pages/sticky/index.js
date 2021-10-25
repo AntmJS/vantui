@@ -1,6 +1,6 @@
 import { Block, View, ScrollView } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { createSelectorQuery } from '@tarojs/taro'
 
 import { Sticky, Button } from '@antmjs/vantui'
 
@@ -20,12 +20,12 @@ export default class Index extends React.Component {
 
   onReady = () => {
     this.setState({
-      container: () => Taro.createSelectorQuery().select('#container'),
+      container: () => createSelectorQuery().select('#container'),
     })
   }
 
   onScroll = (event) => {
-    Taro.createSelectorQuery()
+    createSelectorQuery()
       .select('#scroller')
       .boundingClientRect((res) => {
         console.log('#scroller:', res.top)
