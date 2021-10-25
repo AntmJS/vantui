@@ -3,7 +3,7 @@ import * as utils from '../wxs/utils'
 import { InfoProps } from '../../../types/info'
 
 export default function Index(props: InfoProps) {
-  const { dot, info = null, customStyle, style, className, ...others } = props
+  const { dot, info = null, style, className, ...others } = props
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function Index(props: InfoProps) {
             '  ' +
             className
           }
-          style={utils.style([customStyle, style])}
+          style={utils.style([style])}
           {...others}
         >
           {dot ? '' : info}

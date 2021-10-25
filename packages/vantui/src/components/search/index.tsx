@@ -59,10 +59,13 @@ export default function Index(props: SearchProps) {
      * https://github.com/youzan/@vant/weapp/issues/1768
      */
     setTimeout(() => {
-      e.detail = ''
       setInnerValue('')
 
       onCancel?.()
+      Object.defineProperty(e, 'detail', {
+        value: '',
+      })
+
       onChange?.(e)
     }, 200)
   }
@@ -79,7 +82,7 @@ export default function Index(props: SearchProps) {
   return (
     <View
       className={`${utils.bem('search', {
-        withaction: showAction || renderAction,
+        withaction: showAction || !!renderAction,
       })}  ${className}`}
       style={utils.style([{ background: background }, style])}
       {...others}
@@ -112,7 +115,7 @@ export default function Index(props: SearchProps) {
           placeholder-style={placeholderStyle}
           renderLeftIcon={renderLeftIcon}
           renderRightIcon={renderRightIcon}
-          customStyle="padding: 5px 10px 5px 0; background-color: transparent;"
+          style="padding: 5px 10px 5px 0; background-color: transparent;"
           onBlur={onBlur}
           onFocus={onFocus}
           onChange={_change}

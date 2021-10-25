@@ -8,7 +8,6 @@ function rootStyle(data: any) {
       color: data.textColor,
       'font-size': addUnit(data.fontSize),
     },
-    data.customStyle,
   ])
 }
 

@@ -26,7 +26,6 @@ export default function Index(props: MiniNavBarProps) {
     border = true,
     zIndex = Navbar,
     renderTitle,
-    customStyle,
     homeUrl,
     buttonColor = 'white',
     title,
@@ -107,8 +106,7 @@ export default function Index(props: MiniNavBarProps) {
             fromLeft,
           }) +
             '; ' +
-            customStyle,
-          style,
+            style,
         ])}
         {...others}
       >

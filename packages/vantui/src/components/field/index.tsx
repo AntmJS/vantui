@@ -27,7 +27,7 @@ export default function Index(props: FieldProps) {
     required,
     clickable,
     titleWidth = '6.2em',
-    customStyle,
+    style,
     arrowDirection,
     label,
     disabled,
@@ -184,7 +184,7 @@ export default function Index(props: FieldProps) {
       clickable={clickable}
       titleWidth={titleWidth}
       titleStyle="margin-right: 12px;"
-      customStyle={customStyle}
+      style={style}
       arrowDirection={arrowDirection}
       className="van-field"
       renderIcon={<Block>{renderLeftIcon}</Block>}
