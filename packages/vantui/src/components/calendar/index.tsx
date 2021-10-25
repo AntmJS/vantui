@@ -294,7 +294,7 @@ function Index(
     }
     emit(date)
     if (complete && !showConfirm) {
-      onConfirm_(date)
+      onConfirm_(null, date)
     }
   }
 
@@ -355,7 +355,7 @@ function Index(
   )
 
   const onConfirm_ = useCallback(
-    function (date) {
+    function (_, date?: any) {
       if (type === 'range' && !checkRange(currentDate)) {
         return
       }
@@ -364,6 +364,7 @@ function Index(
           value: date || copyDates(currentDate),
         },
       } as ITouchEvent
+      console.info(e)
       if (onConfirm) onConfirm(e)
     },
     [checkRange, currentDate, onConfirm, type],

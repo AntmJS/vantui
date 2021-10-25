@@ -80,7 +80,7 @@ export default function Index(props: ImageProps) {
         style,
       ])}
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('image', {
           round,
         }) +

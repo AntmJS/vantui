@@ -27,8 +27,8 @@ export default function Index(props: SearchProps) {
     clearTrigger = 'focus',
     clearIcon = 'clear',
     renderLabel,
-    renderLefticon,
-    renderRighticon,
+    renderLeftIcon,
+    renderRightIcon,
     renderAction,
     onFocus,
     onBlur,
@@ -59,10 +59,13 @@ export default function Index(props: SearchProps) {
      * https://github.com/youzan/@vant/weapp/issues/1768
      */
     setTimeout(() => {
-      e.detail = ''
       setInnerValue('')
 
       onCancel?.()
+      Object.defineProperty(e, 'detail', {
+        value: '',
+      })
+
       onChange?.(e)
     }, 200)
   }
@@ -79,8 +82,8 @@ export default function Index(props: SearchProps) {
   return (
     <View
       className={`${utils.bem('search', {
-        withaction: showAction || renderAction,
-      })} custom-class ${className}`}
+        withaction: showAction || !!renderAction,
+      })}  ${className}`}
       style={utils.style([{ background: background }, style])}
       {...others}
     >
@@ -93,8 +96,8 @@ export default function Index(props: SearchProps) {
 
         <Field
           type="text"
-          leftIcon={!renderLefticon ? leftIcon : ''}
-          right-icon={!renderRighticon ? rightIcon : ''}
+          leftIcon={!renderLeftIcon ? leftIcon : ''}
+          rightIcon={!renderRightIcon ? rightIcon : ''}
           focus={focus}
           error={error}
           border={false}
@@ -110,9 +113,9 @@ export default function Index(props: SearchProps) {
           inputAlign={inputAlign}
           placeholder={placeholder}
           placeholder-style={placeholderStyle}
-          renderLefticon={renderLefticon}
-          renderRighticon={renderRighticon}
-          customStyle="padding: 5px 10px 5px 0; background-color: transparent;"
+          renderLeftIcon={renderLeftIcon}
+          renderRightIcon={renderRightIcon}
+          style="padding: 5px 10px 5px 0; background-color: transparent;"
           onBlur={onBlur}
           onFocus={onFocus}
           onChange={_change}

@@ -17,7 +17,7 @@ export default function Index(props: ColProps): JSX.Element {
   return (
     <View
       className={
-        'custom-class ' +
+        '' +
         utils.bem('col', [span]) +
         ' ' +
         (offset ? 'van-col--offset-' + offset : '') +

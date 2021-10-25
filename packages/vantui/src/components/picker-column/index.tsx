@@ -198,7 +198,7 @@ function Index(
 
   return (
     <View
-      className={`van-picker-column custom-class ${className}`}
+      className={`van-picker-column  ${className}`}
       style={utils.style([
         computed.rootStyle({
           itemHeight,

@@ -8,7 +8,7 @@ export default function Index(props: RowProps): JSX.Element {
 
   return (
     <View
-      className={`van-row custom-class ${className}`}
+      className={`van-row  ${className}`}
       style={utils.style([
         computed.rootStyle({
           gutter,

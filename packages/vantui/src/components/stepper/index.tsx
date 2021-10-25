@@ -1,4 +1,4 @@
-import { View, Input } from '@tarojs/components'
+import { View, Input, ITouchEvent } from '@tarojs/components'
 import { useCallback, useEffect, useState, useRef } from 'react'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator.js'
@@ -201,12 +201,18 @@ export default function Index(props: StepperProps) {
     },
     [longPress, asyncChange, _longPressStep, _onChange, currentValue],
   )
-  const _onTouchEnd = useCallback(() => {
-    if (!longPress || asyncChange) {
-      return
-    }
-    clearTimeout(longPressTimerRef.current)
-  }, [asyncChange, longPress])
+  const _onTouchEnd = useCallback(
+    (event: ITouchEvent) => {
+      if (!longPress) {
+        return
+      }
+      if (isLongPressRef.current) {
+        event.preventDefault()
+      }
+      clearTimeout(longPressTimerRef.current)
+    },
+    [longPress],
+  )
 
   useEffect(() => {
     _check()

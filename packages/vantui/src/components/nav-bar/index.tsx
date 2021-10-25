@@ -16,7 +16,6 @@ export default function Index(props: NavBarProps) {
     border = true,
     zIndex = Navbar,
     safeAreaInsetTop = true,
-    customStyle,
     leftArrow,
     leftText,
     title,
@@ -68,7 +67,7 @@ export default function Index(props: NavBarProps) {
           utils.bem('nav-bar', {
             fixed,
           }) +
-          ' custom-class ' +
+          '  ' +
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }
@@ -79,8 +78,7 @@ export default function Index(props: NavBarProps) {
             safeAreaInsetTop,
           }) +
             '; ' +
-            customStyle,
-          style,
+            style,
         ])}
         {...others}
       >

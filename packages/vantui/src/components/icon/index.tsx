@@ -8,7 +8,6 @@ export default function Index(props: IconProps) {
   const {
     classPrefix = 'van-icon',
     name,
-    customStyle,
     color,
     size,
     dot,
@@ -27,7 +26,6 @@ export default function Index(props: IconProps) {
       }
       style={utils.style([
         computed.rootStyle({
-          customStyle,
           color,
           size,
         }),

@@ -47,7 +47,7 @@ export default function Index(props: SkeletonProps) {
   return loading ? (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('skeleton', [
           {
             animate,

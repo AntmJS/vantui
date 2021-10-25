@@ -27,7 +27,7 @@ export default function Index(props: FieldProps) {
     required,
     clickable,
     titleWidth = '6.2em',
-    customStyle,
+    style,
     arrowDirection,
     label,
     disabled,
@@ -63,10 +63,10 @@ export default function Index(props: FieldProps) {
     password,
     clearable,
     clearTrigger = 'focus',
-    renderLefticon,
+    renderLeftIcon,
     renderTitle,
     renderInput,
-    renderRighticon,
+    renderRightIcon,
     renderIcon,
     renderButton,
     onChange,
@@ -184,10 +184,10 @@ export default function Index(props: FieldProps) {
       clickable={clickable}
       titleWidth={titleWidth}
       titleStyle="margin-right: 12px;"
-      customStyle={customStyle}
+      style={style}
       arrowDirection={arrowDirection}
       className="van-field"
-      renderIcon={<Block>{renderLefticon}</Block>}
+      renderIcon={<Block>{renderLeftIcon}</Block>}
       renderTitle={
         <Block>
           {label ? (
@@ -311,7 +311,7 @@ export default function Index(props: FieldProps) {
               }
             ></Icon>
           )}
-          {renderRighticon}
+          {renderRightIcon}
           {renderIcon}
         </View>
         <View className="van-field__button">{renderButton}</View>

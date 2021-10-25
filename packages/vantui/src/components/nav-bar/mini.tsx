@@ -26,7 +26,6 @@ export default function Index(props: MiniNavBarProps) {
     border = true,
     zIndex = Navbar,
     renderTitle,
-    customStyle,
     homeUrl,
     buttonColor = 'white',
     title,
@@ -95,7 +94,7 @@ export default function Index(props: MiniNavBarProps) {
           utils.bem('mini-nav-bar', {
             fixed,
           }) +
-          ' custom-class ' +
+          '  ' +
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }
@@ -107,8 +106,7 @@ export default function Index(props: MiniNavBarProps) {
             fromLeft,
           }) +
             '; ' +
-            customStyle,
-          style,
+            style,
         ])}
         {...others}
       >

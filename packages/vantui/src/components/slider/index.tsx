@@ -36,8 +36,8 @@ export default function Index(props: SliderProps) {
     onDragEnd,
     className = '',
     renderButton,
-    renderLeftbutton,
-    renderRightbutton,
+    renderLeftButton,
+    renderRightButton,
     ...others
   } = props
 
@@ -305,7 +305,7 @@ export default function Index(props: SliderProps) {
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('slider', {
           disabled,
           vertical,
@@ -333,8 +333,8 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {renderButton ? (
-              renderLeftbutton ? (
-                renderLeftbutton(value_ as number)
+              renderLeftButton ? (
+                renderLeftButton(value_ as number)
               ) : (
                 ''
               )
@@ -352,8 +352,8 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {renderButton ? (
-              renderRightbutton ? (
-                renderRightbutton(value_ as number)
+              renderRightButton ? (
+                renderRightButton(value_ as number)
               ) : (
                 ''
               )
@@ -371,7 +371,7 @@ export default function Index(props: SliderProps) {
             onTouchCancel={onTouchEnd}
           >
             {renderButton ? (
-              renderButton
+              renderButton(value_ as number)
             ) : (
               <View className={utils.bem('slider__button')}></View>
             )}

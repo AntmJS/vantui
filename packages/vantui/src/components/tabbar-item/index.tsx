@@ -19,7 +19,7 @@ export default function Index(
     iconPrefix = 'van-icon',
     dot,
     info,
-    renderIconactive,
+    renderIconActive,
     renderIcon,
     index,
     active,
@@ -73,7 +73,7 @@ export default function Index(
           ></Icon>
         ) : (
           <Block>
-            {active === (name ?? index) ? renderIconactive : renderIcon}
+            {active === (name ?? index) ? renderIconActive : renderIcon}
           </Block>
         )}
         <Info dot={dot} className="van-tabbar-item__info"></Info>

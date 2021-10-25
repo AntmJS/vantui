@@ -26,7 +26,7 @@ export default function Index(props: CellGroupProps) {
       )}
       <View
         className={
-          'custom-class ' +
+          ' ' +
           utils.bem('cell-group', {
             inset,
           }) +

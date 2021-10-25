@@ -30,7 +30,7 @@ export default function Index(
   return (
     <View
       className={
-        'custom-class ' +
+        ' ' +
         utils.bem('tab__pane', {
           active,
           inactive: !active,

@@ -23,8 +23,8 @@ export interface SearchProps extends StandardProps {
   clearTrigger?: string
   clearIcon?: string
   renderLabel?: ReactNode
-  renderLefticon?: ReactNode
-  renderRighticon?: ReactNode
+  renderLeftIcon?: ReactNode
+  renderRightIcon?: ReactNode
   renderAction?: ReactNode
   onChange?: (e: ITouchEvent) => void
   onSearch?: (e: ITouchEvent) => void

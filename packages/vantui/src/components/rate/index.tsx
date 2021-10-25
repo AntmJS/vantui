@@ -104,7 +104,7 @@ export default function Index(props: RateProps) {
       className={
         `rate-com-index${indexRef.current} ` +
         utils.bem('rate') +
-        ' custom-class ' +
+        '  ' +
         className
       }
       style={style}

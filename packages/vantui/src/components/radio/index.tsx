@@ -87,9 +87,7 @@ export default function Index(
 
   return (
     <View
-      className={
-        utils.bem('radio', [state.direction]) + ` custom-class ${className}`
-      }
+      className={utils.bem('radio', [state.direction]) + `  ${className}`}
       style={style}
       {...others}
     >
@@ -132,9 +130,6 @@ export default function Index(
               parentDisabled: state.parentDisabled,
               value,
               name,
-            })}
-            customStyle={computed.iconCustomStyle({
-              iconSize,
             })}
           ></VanIcon>
         )}
