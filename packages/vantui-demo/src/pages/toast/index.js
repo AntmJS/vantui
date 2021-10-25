@@ -3,6 +3,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 
 import { Toast, Button, toast } from '@antmjs/vantui'
+import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 
@@ -64,50 +65,52 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <Block>
-        <DemoBlock title="文字提示" padding>
-          <Button
-            type="primary"
-            onClick={this.showToast}
-            className="demo-margin-right"
-          >
-            文字提示
-          </Button>
-          <Button type="primary" onClick={this.showLongToast}>
-            长文字提示
-          </Button>
-        </DemoBlock>
-        <DemoBlock title="加载提示" padding>
-          <Button
-            type="primary"
-            onClick={this.showLoadingToast}
-            className="demo-margin-right"
-          >
-            加载提示
-          </Button>
-          <Button type="primary" onClick={this.showCustomLoadingToast}>
-            自定义加载图标
-          </Button>
-        </DemoBlock>
-        <DemoBlock title="成功/失败提示" padding>
-          <Button
-            type="info"
-            onClick={this.showSuccessToast}
-            className="demo-margin-right"
-          >
-            成功提示
-          </Button>
-          <Button type="danger" onClick={this.showFailToast}>
-            失败提示
-          </Button>
-        </DemoBlock>
-        <DemoBlock title="动态更新提示" padding>
-          <Button type="primary" onClick={this.showCustomizedToast}>
-            动态更新提示
-          </Button>
-        </DemoBlock>
-        <Toast id="van-toast"></Toast>
-      </Block>
+      <DemoPage title="Toast 轻提示">
+        <Block>
+          <DemoBlock title="文字提示" padding>
+            <Button
+              type="primary"
+              onClick={this.showToast}
+              className="demo-margin-right"
+            >
+              文字提示
+            </Button>
+            <Button type="primary" onClick={this.showLongToast}>
+              长文字提示
+            </Button>
+          </DemoBlock>
+          <DemoBlock title="加载提示" padding>
+            <Button
+              type="primary"
+              onClick={this.showLoadingToast}
+              className="demo-margin-right"
+            >
+              加载提示
+            </Button>
+            <Button type="primary" onClick={this.showCustomLoadingToast}>
+              自定义加载图标
+            </Button>
+          </DemoBlock>
+          <DemoBlock title="成功/失败提示" padding>
+            <Button
+              type="info"
+              onClick={this.showSuccessToast}
+              className="demo-margin-right"
+            >
+              成功提示
+            </Button>
+            <Button type="danger" onClick={this.showFailToast}>
+              失败提示
+            </Button>
+          </DemoBlock>
+          <DemoBlock title="动态更新提示" padding>
+            <Button type="primary" onClick={this.showCustomizedToast}>
+              动态更新提示
+            </Button>
+          </DemoBlock>
+          <Toast id="van-toast"></Toast>
+        </Block>
+      </DemoPage>
     )
   }
 }
