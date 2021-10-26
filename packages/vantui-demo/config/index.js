@@ -152,7 +152,7 @@ let config = {
       // 'pages/empty/index'
       customRoutes: process.env.DOC
         ? h5Touter.reduce((p, n) => {
-            p[n] = n.replace(/pages\/([\w-]+)\/index/, '$1')
+            p[`/${n}`] = n.replace(/pages\/([\w-]+)\/index/, '/$1')
             return p
           }, {})
         : '',
