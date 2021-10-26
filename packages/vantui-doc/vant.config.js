@@ -18,25 +18,25 @@ module.exports = {
       //   process && process.env && process.env.SITE_ENV === 'real'
       //     ? ''
       //     : 'http://0.0.0.0:10086/',
-      routeMapper: (path) => {
-        let pathApply = `/page${path}/index`
-        const devGuidePaths = [
-          '/home',
-          '/quickstart',
-          '/custom-style',
-          '/theme',
-        ]
-        if (devGuidePaths.includes(path)) {
-          pathApply = `/pages/dashboard/index`
-        }
+      // routeMapper: (path) => {
+      //   let pathApply = `/page${path}/index`
+      //   const devGuidePaths = [
+      //     '/home',
+      //     '/quickstart',
+      //     '/custom-style',
+      //     '/theme',
+      //   ]
+      //   if (devGuidePaths.includes(path)) {
+      //     pathApply = `/pages/dashboard/index`
+      //   }
 
-        console.info(
-          pathApply,
-          'pathApplypathApplypathApplypathApplypathApplypathApplypathApply',
-        )
+      //   console.info(
+      //     pathApply,
+      //     'pathApplypathApplypathApplypathApplypathApplypathApplypathApply',
+      //   )
 
-        return pathApply
-      },
+      //   return pathApply
+      // },
       syncPathFromSimulator: true,
     },
     title: 'vantui',
