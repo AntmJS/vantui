@@ -4,12 +4,11 @@
   "version": "0.2.0",
   "description": "",
   "scripts": {
-    "dev": "npx vant-cli dev",
-    "test": "",
-    "build": "npx vant-cli build",
+    "dev": "cross-env SITE_ENV=dev npx vant-cli dev",
+    "build": "cross-env SITE_ENV=real npx vant-cli build",
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
-    "build-site": "npx vant-cli build-site && gh-pages -d site"
+    "build-site": "cross-env SITE_ENV=real npx vant-cli build-site && gh-pages -d site"
   },
   "author": "sanshao",
   "license": "MIT",
@@ -19,6 +18,7 @@
   "devDependencies": {
     "@vant/cli": "^3.9.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "cross-env": "^7.0.3",
     "vue": "^3.0.0"
   },
   "browserslist": [

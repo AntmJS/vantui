@@ -50,9 +50,12 @@ function trackStyle(data: any) {
   }
 
   return style({
-    left: -100 * data.currentIndex + '%',
+    // left: -100 * data.currentIndex + '%',
+    transform: `translate3d(${-100 * data.currentIndex}%, 0px, 0px)`,
+    '-webkit-transform': `translate3d(${-100 * data.currentIndex}%, 0px, 0px)`,
     'transition-duration': data.duration + 's',
     '-webkit-transition-duration': data.duration + 's',
+    transition: data.duration + 's',
   })
 }
 

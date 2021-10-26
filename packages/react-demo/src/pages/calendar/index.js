@@ -3,6 +3,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 
 import { Calendar, Cell } from '@antmjs/vantui'
+import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 import computed from './index.wxs.js'
@@ -190,223 +191,225 @@ export default class Index extends React.Component {
       confirmDisabledText,
     } = this.state
     return (
-      <Block>
-        <DemoBlock title="基础用法">
-          <Cell
-            isLink
-            title="选择单个日期"
-            value={computed.formatFullDate(date.selectSingle)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'single', id: 'selectSingle' },
-                },
-                target: {
-                  dataset: { type: 'single', id: 'selectSingle' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="选择多个日期"
-            value={computed.formatMultiple(date.selectMultiple)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'multiple', id: 'selectMultiple' },
-                },
-                target: {
-                  dataset: { type: 'multiple', id: 'selectMultiple' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="选择日期区间"
-            value={computed.formatRange(date.selectRange)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'range', id: 'selectRange' },
-                },
-                target: {
-                  dataset: { type: 'range', id: 'selectRange' },
-                },
-              })
-            }}
-          ></Cell>
-        </DemoBlock>
-        <DemoBlock title="快捷选择">
-          <Cell
-            isLink
-            title="选择单个日期"
-            value={computed.formatFullDate(date.quickSelect1)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'single', id: 'quickSelect1' },
-                },
-                target: {
-                  dataset: { type: 'single', id: 'quickSelect1' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="选择日期区间"
-            value={computed.formatRange(date.quickSelect2)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'range', id: 'quickSelect2' },
-                },
-                target: {
-                  dataset: { type: 'range', id: 'quickSelect2' },
-                },
-              })
-            }}
-          ></Cell>
-        </DemoBlock>
-        <DemoBlock title="自定义日历">
-          <Cell
-            isLink
-            title="自定义颜色"
-            value={computed.formatRange(date.customColor)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'range', id: 'customColor' },
-                },
-                target: {
-                  dataset: { type: 'range', id: 'customColor' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="自定义日期范围"
-            value={computed.formatFullDate(date.customRange)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'single', id: 'customRange' },
-                },
-                target: {
-                  dataset: { type: 'single', id: 'customRange' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="自定义按钮文字"
-            value={computed.formatRange(date.customConfirm)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'range', id: 'customConfirm' },
-                },
-                target: {
-                  dataset: { type: 'range', id: 'customConfirm' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="自定义日期文案"
-            value={computed.formatRange(date.customDayText)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'range', id: 'customDayText' },
-                },
-                target: {
-                  dataset: { type: 'range', id: 'customDayText' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="自定义弹出位置"
-            value={computed.formatFullDate(date.customPosition)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'single', id: 'customPosition' },
-                },
-                target: {
-                  dataset: { type: 'single', id: 'customPosition' },
-                },
-              })
-            }}
-          ></Cell>
-          <Cell
-            isLink
-            title="日期区间最大范围"
-            value={computed.formatRange(date.maxRange)}
-            onClick={(e) => {
-              this.show({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'range', id: 'maxRange' },
-                },
-                target: {
-                  dataset: { type: 'range', id: 'maxRange' },
-                },
-              })
-            }}
-          ></Cell>
-        </DemoBlock>
-        <DemoBlock title="平铺展示">
+      <DemoPage title="Calendar 日历">
+        <Block>
+          <DemoBlock title="基础用法">
+            <Cell
+              isLink
+              title="选择单个日期"
+              value={computed.formatFullDate(date.selectSingle)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'single', id: 'selectSingle' },
+                  },
+                  target: {
+                    dataset: { type: 'single', id: 'selectSingle' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="选择多个日期"
+              value={computed.formatMultiple(date.selectMultiple)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'multiple', id: 'selectMultiple' },
+                  },
+                  target: {
+                    dataset: { type: 'multiple', id: 'selectMultiple' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="选择日期区间"
+              value={computed.formatRange(date.selectRange)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'range', id: 'selectRange' },
+                  },
+                  target: {
+                    dataset: { type: 'range', id: 'selectRange' },
+                  },
+                })
+              }}
+            ></Cell>
+          </DemoBlock>
+          <DemoBlock title="快捷选择">
+            <Cell
+              isLink
+              title="选择单个日期"
+              value={computed.formatFullDate(date.quickSelect1)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'single', id: 'quickSelect1' },
+                  },
+                  target: {
+                    dataset: { type: 'single', id: 'quickSelect1' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="选择日期区间"
+              value={computed.formatRange(date.quickSelect2)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'range', id: 'quickSelect2' },
+                  },
+                  target: {
+                    dataset: { type: 'range', id: 'quickSelect2' },
+                  },
+                })
+              }}
+            ></Cell>
+          </DemoBlock>
+          <DemoBlock title="自定义日历">
+            <Cell
+              isLink
+              title="自定义颜色"
+              value={computed.formatRange(date.customColor)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'range', id: 'customColor' },
+                  },
+                  target: {
+                    dataset: { type: 'range', id: 'customColor' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="自定义日期范围"
+              value={computed.formatFullDate(date.customRange)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'single', id: 'customRange' },
+                  },
+                  target: {
+                    dataset: { type: 'single', id: 'customRange' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="自定义按钮文字"
+              value={computed.formatRange(date.customConfirm)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'range', id: 'customConfirm' },
+                  },
+                  target: {
+                    dataset: { type: 'range', id: 'customConfirm' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="自定义日期文案"
+              value={computed.formatRange(date.customDayText)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'range', id: 'customDayText' },
+                  },
+                  target: {
+                    dataset: { type: 'range', id: 'customDayText' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="自定义弹出位置"
+              value={computed.formatFullDate(date.customPosition)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'single', id: 'customPosition' },
+                  },
+                  target: {
+                    dataset: { type: 'single', id: 'customPosition' },
+                  },
+                })
+              }}
+            ></Cell>
+            <Cell
+              isLink
+              title="日期区间最大范围"
+              value={computed.formatRange(date.maxRange)}
+              onClick={(e) => {
+                this.show({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'range', id: 'maxRange' },
+                  },
+                  target: {
+                    dataset: { type: 'range', id: 'maxRange' },
+                  },
+                })
+              }}
+            ></Cell>
+          </DemoBlock>
+          <DemoBlock title="平铺展示">
+            <Calendar
+              title="日历"
+              poppable={false}
+              showConfirm={false}
+              minDate={tiledMinDate}
+              maxDate={tiledMaxDate}
+              firstDayOfWeek={firstDayOfWeek}
+              className="tiled-calendar"
+            ></Calendar>
+          </DemoBlock>
           <Calendar
-            title="日历"
-            poppable={false}
-            showConfirm={false}
-            minDate={tiledMinDate}
-            maxDate={tiledMaxDate}
+            show={showCalendar}
+            type={type}
+            color={color}
+            round={round}
+            position={position}
+            minDate={minDate}
+            maxDate={maxDate}
+            maxRange={maxRange}
+            formatter={formatter}
+            showConfirm={showConfirm}
+            confirmText={confirmText}
+            confirmDisabledText={confirmDisabledText}
             firstDayOfWeek={firstDayOfWeek}
-            className="tiled-calendar"
+            onConfirm={this.onConfirm}
+            onSelect={this.onSelect}
+            onUnselect={this.onUnselect}
+            onOpen={this.onOpen}
+            onOpened={this.onOpened}
+            onClose={this.onClose}
+            onClosed={this.onClosed}
           ></Calendar>
-        </DemoBlock>
-        <Calendar
-          show={showCalendar}
-          type={type}
-          color={color}
-          round={round}
-          position={position}
-          minDate={minDate}
-          maxDate={maxDate}
-          maxRange={maxRange}
-          formatter={formatter}
-          showConfirm={showConfirm}
-          confirmText={confirmText}
-          confirmDisabledText={confirmDisabledText}
-          firstDayOfWeek={firstDayOfWeek}
-          onConfirm={this.onConfirm}
-          onSelect={this.onSelect}
-          onUnselect={this.onUnselect}
-          onOpen={this.onOpen}
-          onOpened={this.onOpened}
-          onClose={this.onClose}
-          onClosed={this.onClosed}
-        ></Calendar>
-      </Block>
+        </Block>
+      </DemoPage>
     )
   }
 }
