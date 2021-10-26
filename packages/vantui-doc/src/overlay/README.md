@@ -25,7 +25,7 @@ import { Overlay } from "vantui";
     显示遮罩层
   </Button>
   <Overlay
-    show={ this.show }
+    show={ `${ this.show }` }
     onClick={ this.onClickHide }
   />
 </View>
@@ -63,7 +63,7 @@ function onClickHide() {
     嵌入内容
   </Button>
   <Overlay
-    show={ this.show }
+    show={ `${ this.show }` }
     onClick={ this.onClickHide }
   >
     <View class="wrapper">

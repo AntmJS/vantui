@@ -19,7 +19,7 @@ import { SubmitBar } from "vantui";
 ```jsx
 <View>
   <SubmitBar
-    price={ 3050 }
+    price={ `${ 3050 }` }
     buttonText="提交订单"
     onSubmit={ onSubmit }
   />
@@ -35,7 +35,7 @@ import { SubmitBar } from "vantui";
 <View>
   <SubmitBar
     disabled={ true }
-    price={ 3050 }
+    price={ `${ 3050 }` }
     buttonText="提交订单"
     tip="您的收货地址不支持同城送, 我们已为您推荐快递"
     tipIcon="infoO"
@@ -53,7 +53,7 @@ import { SubmitBar } from "vantui";
 <View>
   <SubmitBar
     loading={ true }
-    price={ 3050 }
+    price={ `${ 3050 }` }
     buttonText="提交订单"
     onSubmit={ onSubmit }
   />
@@ -68,10 +68,10 @@ import { SubmitBar } from "vantui";
 ```jsx
 <View>
   <SubmitBar
-    price={ 3050 }
+    price={ `${ 3050 }` }
     buttonText="提交订单"
     onSubmit={ onClickButton }
-    tip={ true }
+    tip={ `${ true }` }
   >
     <Tag type="primary">
       标签

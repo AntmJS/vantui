@@ -38,7 +38,7 @@ import { NoticeBar } from "vantui";
     text="技术是开发它的人的共同灵魂。"
   /> {/*  文字较长时，通过禁用 scrollable 属性关闭滚动播放  */}
   <NoticeBar
-    scrollable={ false }
+    scrollable={ `${ false }` }
     text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
   />
 </View>
@@ -53,7 +53,7 @@ import { NoticeBar } from "vantui";
 <View>
   <NoticeBar
     wrapable={ true }
-    scrollable={ false }
+    scrollable={ `${ false }` }
     text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
   />
 </View>
@@ -102,8 +102,8 @@ import { NoticeBar } from "vantui";
 ```jsx
 <View>
   <NoticeBar
-    text={ text }
-    speed={speedValue}
+    text={ `${ text }` }
+    speed={ `${speedValue}` }
     leftIcon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
   />
 </View>

@@ -21,7 +21,7 @@ import { Transition } from "vantui";
 ```jsx
 <View>
   <Transition
-    show={ show }
+    show={ `${ show }` }
     className="block"
   >
     内容
@@ -48,9 +48,9 @@ transition 组件内置了多种动画，可以通过`name`字段指定动画类
 ```jsx
 <View>
   <Transition
-    show={ show }
+    show={ `${ show }` }
     name=""
-    duration={ { enter: 300, leave: 1000 } }
+    duration={ `${ { enter: 300, leave: 1000 } }` }
     enterClass="vanEnterClass"
     enterActiveClass="vanEnterActiveClass"
     leaveActiveClass="vanLeaveActiveClass"

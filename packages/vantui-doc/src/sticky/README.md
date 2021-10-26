@@ -37,7 +37,7 @@ import { Sticky } from "vantui";
 
 ```jsx
 <View>
-  <Sticky offsetTop={ 50 }>
+  <Sticky offsetTop={ `${ 50 }` }>
     <Button type="info">
       吸顶距离
     </Button>
@@ -56,7 +56,7 @@ import { Sticky } from "vantui";
     id="container"
     style="height: 150px;"
   >
-    <Sticky container={ this.container }>
+    <Sticky container={ `${ this.container }` }>
       <Button type="warning">
         指定容器
       </Button>
@@ -92,8 +92,8 @@ function onReady() {
   >
     <View style="height: 400px; paddingTop: 50px;">
       <Sticky
-        scrollTop={ this.scrollTop }
-        offsetTop={ this.offsetTop }
+        scrollTop={ `${ this.scrollTop }` }
+        offsetTop={ `${ this.offsetTop }` }
       >
         <Button type="warning">
           嵌套在 scrollView 内

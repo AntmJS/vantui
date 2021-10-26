@@ -21,9 +21,9 @@ import { TreeSelect } from "vantui";
 ```jsx
 <View>
   <TreeSelect
-    items={ items }
-    mainActiveIndex={ this.mainActiveIndex }
-    activeId={ this.activeId }
+    items={ `${ items }` }
+    mainActiveIndex={ `${ this.mainActiveIndex }` }
+    activeId={ `${ this.activeId }` }
     onClickNav={ this.onClickNav }
     onClickItem={ this.onClickItem }
   />
@@ -60,10 +60,10 @@ function onClickItem({
 ```jsx
 <View>
   <TreeSelect
-    items={ items }
-    mainActiveIndex={ this.mainActiveIndex }
-    activeId={ this.activeId }
-    max={ this.max }
+    items={ `${ items }` }
+    mainActiveIndex={ `${ this.mainActiveIndex }` }
+    activeId={ `${ this.activeId }` }
+    max={ `${ this.max }` }
     onClickNav={ this.onClickNav }
     onClickItem={ this.onClickItem }
   />
@@ -111,10 +111,10 @@ function onClickItem({
 ```jsx
 <View>
   <TreeSelect
-    items={ items }
+    items={ `${ items }` }
     height="55vw"
-    mainActiveIndex={ this.mainActiveIndex }
-    activeId={ this.activeId }
+    mainActiveIndex={ `${ this.mainActiveIndex }` }
+    activeId={ `${ this.activeId }` }
     onClickNav={ this.onClickNav }
     onClickItem={ this.onClickItem }
   >

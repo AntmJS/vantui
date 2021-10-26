@@ -22,11 +22,11 @@ import { Calendar } from "vantui";
 <View>
   <Cell
     title="选择单个日期"
-    value={ this.date }
+    value={ `${ this.date }` }
     onClick={ this.onDisplay }
   />
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     onClose={ this.onClose }
     onConfirm={ this.onConfirm }
   />
@@ -54,7 +54,7 @@ function onClose() {
 
 function formatDate(date) {
   date = new Date(date);
-  returndate.getMonth() + 1}/${date.getDate()}`;
+  return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
 function onConfirm(event) {
@@ -73,11 +73,11 @@ function onConfirm(event) {
 <View>
   <Cell
     title="选择多个日期"
-    value={ this.text }
+    value={ `${ this.text }` }
     onClick={ this.onDisplay }
   />
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     type="multiple"
     onClose={ this.onClose }
     onConfirm={ this.onConfirm }
@@ -120,11 +120,11 @@ function onConfirm(event) {
 <View>
   <Cell
     title="选择日期区间"
-    value={ this.date }
+    value={ `${ this.date }` }
     onClick={ this.onDisplay }
   />
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     type="range"
     onClose={ this.onClose }
     onConfirm={ this.onConfirm }
@@ -153,14 +153,15 @@ function onClose() {
 
 function formatDate(date) {
   date = new Date(date);
-  returndate.getMonth() + 1}/${date.getDate()}`;
+  return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
 function onConfirm(event) {
   const [start, end] = event.detail;
   this.setData({
     show: false,
-    date:this.formatDate(start)} - ${this.formatDate(end)  });
+    date: `${this.formatDate(start)} - ${this.formatDate(end)}`
+  });
 } 
 ```
 
@@ -173,8 +174,8 @@ function onConfirm(event) {
 ```jsx
 <View>
   <Calendar
-    show={ this.show }
-    showConfirm={ false }
+    show={ `${ this.show }` }
+    showConfirm={ `${ false }` }
   />
 </View>
  
@@ -187,7 +188,7 @@ function onConfirm(event) {
 ```jsx
 <View>
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     color="#07c160"
   />
 </View>
@@ -201,9 +202,9 @@ function onConfirm(event) {
 ```jsx
 <View>
   <Calendar
-    show={ this.show }
-    minDate={ this.minDate }
-    maxDate={ this.maxDate }
+    show={ `${ this.show }` }
+    minDate={ `${ this.minDate }` }
+    maxDate={ `${ this.maxDate }` }
   />
 </View>
  
@@ -224,7 +225,7 @@ this.state = {
 ```jsx
 <View>
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     type="range"
     confirmText="完成"
     confirmDisabledText="请选择结束时间"
@@ -240,9 +241,9 @@ this.state = {
 ```jsx
 <View>
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     type="range"
-    formatter={ this.formatter }
+    formatter={ `${ this.formatter }` }
   />
 </View>
  
@@ -283,7 +284,7 @@ this.state = {
 ```jsx
 <View>
   <Calendar
-    show={ this.show }
+    show={ `${ this.show }` }
     round="false"
     position="right"
   />
@@ -299,7 +300,7 @@ this.state = {
 <View>
   <Calendar
     type="range"
-    maxRange={ 3 }
+    maxRange={ `${ 3 }` }
   />
 </View>
  
@@ -311,7 +312,7 @@ this.state = {
 
 ```jsx
 <View>
-  <Calendar firstDayOfWeek={ 1 } />
+  <Calendar firstDayOfWeek={ `${ 1 }` } />
 </View>
  
 ```
@@ -324,8 +325,8 @@ this.state = {
 <View>
   <Calendar
     title="日历"
-    poppable={ false }
-    showConfirm={ false }
+    poppable={ `${ false }` }
+    showConfirm={ `${ false }` }
     class="calendar"
   />
 </View>

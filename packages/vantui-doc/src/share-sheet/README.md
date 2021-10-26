@@ -25,9 +25,9 @@ import { ShareSheet } from "vantui";
     onClick={ this.onClick }
   />
   <ShareSheet
-    show={ this.showShare }
+    show={ `${ this.showShare }` }
     title="立即分享给好友"
-    options={ this.options }
+    options={ `${ this.options }` }
     onSelect={ this.onSelect }
     onClose={ this.onClose }
   />
@@ -82,9 +82,9 @@ function onSelect(event) {
 ```jsx
 <View>
   <ShareSheet
-    show={ this.showShare }
+    show={ `${ this.showShare }` }
     title="立即分享给好友"
-    options={ this.options }
+    options={ `${ this.options }` }
   />
 </View>
  
@@ -122,8 +122,8 @@ this.state = {
 ```jsx
 <View>
   <ShareSheet
-    show={ this.showShare }
-    options={ this.options }
+    show={ `${ this.showShare }` }
+    options={ `${ this.options }` }
   />
 </View>
  
@@ -152,8 +152,8 @@ this.state = {
 ```jsx
 <View>
   <ShareSheet
-    show={ this.showShare }
-    options={ this.options }
+    show={ `${ this.showShare }` }
+    options={ `${ this.options }` }
     title="立即分享给好友"
     description="描述信息"
   />

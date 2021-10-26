@@ -19,7 +19,7 @@ import { Switch } from "vantui";
 ```jsx
 <View>
   <Switch
-    checked={ this.checked }
+    checked={ `${ this.checked }` }
     onChange={ this.onChange }
   />
 </View>
@@ -46,7 +46,7 @@ function onChange({
 ```jsx
 <View>
   <Switch
-    checked={ this.checked }
+    checked={ `${ this.checked }` }
     disabled={ true }
   />
 </View>
@@ -58,7 +58,7 @@ function onChange({
 ```jsx
 <View>
   <Switch
-    checked={ this.checked }
+    checked={ `${ this.checked }` }
     loading={ true }
   />
 </View>
@@ -70,7 +70,7 @@ function onChange({
 ```jsx
 <View>
   <Switch
-    checked={ this.checked }
+    checked={ `${ this.checked }` }
     size="24px"
   />
 </View>
@@ -82,7 +82,7 @@ function onChange({
 ```jsx
 <View>
   <Switch
-    checked={ this.checked }
+    checked={ `${ this.checked }` }
     activeColor="#07c160"
     inactiveColor="#ee0a24"
   />
@@ -95,7 +95,7 @@ function onChange({
 ```jsx
 <View>
   <Switch
-    checked={ this.checked }
+    checked={ `${ this.checked }` }
     onChange={ this.onChange }
   />
 </View>

@@ -37,7 +37,7 @@ import { Slider } from "vantui";
 ```jsx
 <View>
   <Slider
-    value={ 10, 50 }
+    value={ `${ 10, 50 }` }
     range={ true }
     change="onChange"
   />
@@ -103,7 +103,7 @@ import { Slider } from "vantui";
 ```jsx
 <View>
   <Slider
-    value={ this.currentValue }
+    value={ `${ this.currentValue }` }
     useButtonSlot={ true }
     onDrag={ this.onDrag }
     renderButton={ (
@@ -145,7 +145,7 @@ function onDrag(event) {
       onChange={ onChange }
     />
     <Slider
-      value={ [10, 50] }
+      value={ `${ [10, 50] }` }
       range={ true }
       vertical={ true }
       style="marginLeft: 100px;"

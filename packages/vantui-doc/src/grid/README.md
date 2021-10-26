@@ -69,7 +69,7 @@ import { GridItem } from "vantui";
 <View>
   <Grid
     columnNum="3"
-    border={ false }
+    border={ `${ false }` }
   >
     { (new Array(3)).map((item, index) => (
         <GridItem forItem="index">
@@ -107,7 +107,7 @@ import { GridItem } from "vantui";
 
 ```jsx
 <View>
-  <Grid gutter={ 10 }>
+  <Grid gutter={ `${ 10 }` }>
     <GridItem
       icon="photoO"
       text="文字"

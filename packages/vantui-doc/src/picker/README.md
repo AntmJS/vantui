@@ -19,7 +19,7 @@ import { Picker } from "vantui";
 ```jsx
 <View>
   <Picker
-    columns={ this.columns }
+    columns={ `${ this.columns }` }
     onChange={ this.onChange }
   />
 </View>
@@ -49,8 +49,8 @@ function onChange(event) {
 ```jsx
 <View>
   <Picker
-    columns={ this.columns }
-    defaultIndex={ 2 }
+    columns={ `${ this.columns }` }
+    defaultIndex={ `${ 2 }` }
     onChange={ this.onChange }
   />
 </View>
@@ -64,7 +64,7 @@ function onChange(event) {
   <Picker
     showToolbar={ true }
     title="标题"
-    columns={ this.columns }
+    columns={ `${ this.columns }` }
     onCancel={ this.onCancel }
     onConfirm={ this.onConfirm }
   />
@@ -97,7 +97,7 @@ function onCancel() {
 ```jsx
 <View>
   <Picker
-    columns={ this.columns }
+    columns={ `${ this.columns }` }
     onChange={ this.onChange }
   />
 </View>
@@ -136,7 +136,7 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <Picker columns={ this.columns } />
+  <Picker columns={ `${ this.columns }` } />
 </View>
  
 ```
@@ -161,7 +161,7 @@ this.state = {
 ```jsx
 <View>
   <Picker
-    columns={ this.columns }
+    columns={ `${ this.columns }` }
     loading={ true }
   />
 </View>
