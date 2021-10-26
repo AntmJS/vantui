@@ -14,10 +14,10 @@ module.exports = {
   },
   site: {
     simulator: {
-      url:
-        process && process.env && process.env.SITE_ENV === 'real'
-          ? ''
-          : 'http://0.0.0.0:10086/',
+      // url:
+      //   process && process.env && process.env.SITE_ENV === 'real'
+      //     ? ''
+      //     : 'http://0.0.0.0:10086/',
       routeMapper: (path) => {
         let pathApply = `/page${path}/index`
         const devGuidePaths = [
