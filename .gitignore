@@ -1,0 +1,16 @@
+*.log
+*.swp
+.temp
+.idea
+.rn_temp
+.DS_Store
+node_modules
+coverage
+weapp
+alipay
+swan
+tt
+qq
+build
+dist
+packages
