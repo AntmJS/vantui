@@ -7,7 +7,10 @@ import './app.less'
 
 export default class Index extends React.Component {
   onPageNotFound() {
-    navigateTo({ url: '/' })
+    navigateTo({
+      url:
+        process.env.TARO_ENV === 'h5' ? '/dashboard' : '/pages/dashboard/index',
+    })
   }
 
   render() {

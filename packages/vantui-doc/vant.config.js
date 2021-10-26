@@ -29,15 +29,13 @@ module.exports = {
       //   if (devGuidePaths.includes(path)) {
       //     pathApply = `/pages/dashboard/index`
       //   }
-
       //   console.info(
       //     pathApply,
       //     'pathApplypathApplypathApplypathApplypathApplypathApplypathApply',
       //   )
-
       //   return pathApply
       // },
-      syncPathFromSimulator: true,
+      // syncPathFromSimulator: true,
     },
     title: 'vantui',
     logo: 'https://img.yzcdn.cn/vant/logo.png',
