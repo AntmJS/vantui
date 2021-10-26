@@ -1,6 +1,5 @@
 import { Icon } from '@antmjs/vantui'
 import { View } from '@tarojs/components'
-import { navigateBack } from '@tarojs/taro'
 import * as React from 'react'
 import './index.less'
 
@@ -14,7 +13,7 @@ export default function Page(props) {
         <Icon
           name="arrow-left"
           className="demo-nav__back"
-          onClick={() => navigateBack()}
+          onClick={() => history.go(-1)}
         />
         <View className="demo-nav__title">{title} </View>
       </View>
