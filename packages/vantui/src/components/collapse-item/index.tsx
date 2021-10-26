@@ -45,13 +45,25 @@ export default function Index(
   } = props
 
   useReady(() => {
-    setState((state) => {
-      return {
-        ...state,
-        ready: true,
-      }
-    })
+    if (process.env.TARO_ENV !== 'h5') {
+      setState((state) => {
+        return {
+          ...state,
+          ready: true,
+        }
+      })
+    }
   })
+  useEffect(() => {
+    if (process.env.TARO_ENV === 'h5') {
+      setState((state) => {
+        return {
+          ...state,
+          ready: true,
+        }
+      })
+    }
+  }, [])
 
   const refDom = useRef(null)
 
@@ -100,8 +112,6 @@ export default function Index(
     },
     [parent, disabled, name, state.expanded],
   )
-
-  console.log('state.animation: ', state.animation)
 
   return (
     <View

@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { previewImage as TaroPreviewImage, showToast } from '@tarojs/taro'
 import { useState, useEffect, useCallback } from 'react'
 import { View, Text, Image, Video, ITouchEvent } from '@tarojs/components'
 
@@ -189,13 +189,13 @@ export default function Index(props: UploaderProps) {
       if (!previewFullImage) return
       const { index } = event.currentTarget.dataset
       const item = state.lists[index]
-      Taro.previewImage({
+      TaroPreviewImage({
         urls: state.lists
           .filter((item) => isImageFile(item))
           .map((item) => item.url),
         current: item.url,
         fail() {
-          Taro.showToast({ title: '预览图片失败', icon: 'none' })
+          showToast({ title: '预览图片失败', icon: 'none' })
         },
       })
     },
@@ -218,7 +218,7 @@ export default function Index(props: UploaderProps) {
         //   Taro.showToast({ title: '预览视频成功', icon: 'none' })
         // },
         fail() {
-          Taro.showToast({ title: '预览视频失败', icon: 'none' })
+          showToast({ title: '预览视频失败', icon: 'none' })
         },
       })
     }

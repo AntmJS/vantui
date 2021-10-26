@@ -1,4 +1,7 @@
-import Taro, { getSystemInfoSync, canIUse } from '@tarojs/taro'
+import Taro, {
+  getSystemInfoSync as TaroGetSystemInfoSync,
+  canIUse,
+} from '@tarojs/taro'
 function compareVersion(v1: any, v2: any) {
   v1 = v1.split('.')
   v2 = v2.split('.')
@@ -22,14 +25,14 @@ function compareVersion(v1: any, v2: any) {
   return 0
 }
 let systemInfo: any
-function getSystemInfoSyncs() {
+function getSystemInfoSync() {
   if (systemInfo == null) {
-    systemInfo = getSystemInfoSync()
+    systemInfo = TaroGetSystemInfoSync()
   }
   return systemInfo
 }
 function gte(version: any) {
-  const system = getSystemInfoSyncs()
+  const system = getSystemInfoSync()
   return compareVersion(system.SDKVersion, version) >= 0
 }
 export function canIUseModel() {

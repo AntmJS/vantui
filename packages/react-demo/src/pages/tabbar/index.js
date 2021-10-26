@@ -1,6 +1,6 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { TabbarItem, Tabbar, Image } from '@antmjs/vantui'
 
@@ -33,7 +33,7 @@ export default class Index extends React.Component {
   handleChange = (event) => {
     const { key } = event.currentTarget.dataset
     this.setState({ [key]: event.detail })
-    Taro.showToast({ title: `点击标签 ${event.detail + 1}`, icon: 'none' })
+    showToast({ title: `点击标签 ${event.detail + 1}`, icon: 'none' })
   }
 
   render() {

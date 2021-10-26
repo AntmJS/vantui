@@ -42,7 +42,7 @@ export default class Index extends React.Component {
           />
         </DemoBlock>
         <DemoBlock title="基础用法">
-          <Circle type="2d" value={value} text={value + '%'}></Circle>
+          <Circle value={value} text={value + '%'}></Circle>
         </DemoBlock>
         <DemoBlock title="样式定制">
           <Circle value={value} strokeWidth={6} text="宽度定制"></Circle>
