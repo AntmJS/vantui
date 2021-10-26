@@ -23,7 +23,7 @@ import { Uploader } from "vantui";
 ```jsx
 <View>
   <Uploader
-    fileList={ this.fileList }
+    fileList={ `${ this.fileList }` }
     onAfterRead={ afterRead }
   />
 </View>
@@ -72,7 +72,7 @@ function afterRead(event) {
 
 ```jsx
 <View>
-  <Uploader fileList={ this.fileList } />
+  <Uploader fileList={ `${ this.fileList }` } />
 </View>
  
 ```
@@ -102,8 +102,8 @@ this.state = {
 ```jsx
 <View>
   <Uploader
-    fileList={ this.fileList }
-    deletable={ true }
+    fileList={ `${ this.fileList }` }
+    deletable={ `${ true }` }
   />
 </View>
  
@@ -126,7 +126,7 @@ this.state = {
 
 ```jsx
 <View>
-  <Uploader fileList={ this.fileList } />
+  <Uploader fileList={ `${ this.fileList }` } />
 </View>
  
 ```
@@ -152,7 +152,7 @@ this.state = {
 ```jsx
 <View>
   <Uploader
-    fileList={ this.fileList }
+    fileList={ `${ this.fileList }` }
     maxCount="2"
     onAfterRead={ afterRead }
   />
@@ -185,7 +185,7 @@ this.state = {
 ```jsx
 <View>
   <Uploader
-    fileList={ this.fileList }
+    fileList={ `${ this.fileList }` }
     accept="media"
     useBeforeRead={ true }
     onBeforeRead={ beforeRead }

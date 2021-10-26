@@ -138,7 +138,7 @@ Dialog.confirm({
 <View>
   <Dialog
     title="标题"
-    show={ this.show }
+    show={ `${ this.show }` }
     showCancelButton={ true }
     confirmButtonOpenType="getUserInfo"
     onClose={ this.onClose }

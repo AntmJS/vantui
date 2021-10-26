@@ -20,7 +20,7 @@ import { TabbarItem } from "vantui";
 ```jsx
 <View>
   <Tabbar
-    active={ this.active }
+    active={ `${ this.active }` }
     onChange={ this.onChange }
   >
     <TabbarItem icon="homeO">
@@ -60,7 +60,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Tabbar
-    active={ this.active }
+    active={ `${ this.active }` }
     onChange={ this.onChange }
   >
     <TabbarItem
@@ -109,7 +109,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Tabbar
-    active={ this.active }
+    active={ `${ this.active }` }
     onChange={ this.onChange }
   >
     <TabbarItem icon="homeO">
@@ -145,19 +145,19 @@ function onChange(event) {
 ```jsx
 <View>
   <Tabbar
-    active={ this.active }
+    active={ `${ this.active }` }
     onChange={ this.onChange }
   >
     <TabbarItem info="3">
       <Image
         slot="icon"
-        src={ icon.normal }
+        src={ `${ icon.normal }` }
         mode="aspectFit"
         style="width: 30px; height: 18px;"
       />
       <Image
         slot="iconActive"
-        src={ icon.active }
+        src={ `${ icon.active }` }
         mode="aspectFit"
         style="width: 30px; height: 18px;"
       /> 自定义
@@ -194,7 +194,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Tabbar
-    active={ this.active }
+    active={ `${ this.active }` }
     activeColor="#07c160"
     inactiveColor="#000"
     onChange={ this.onChange }
@@ -233,7 +233,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Tabbar
-    active={ this.active }
+    active={ `${ this.active }` }
     onChange={ this.onChange }
   >
     <TabbarItem icon="homeO">

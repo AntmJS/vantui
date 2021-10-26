@@ -22,7 +22,7 @@ import { CheckboxGroup } from "vantui";
 ```jsx
 <View>
   <Checkbox
-    value={ this.checked }
+    value={ `${ this.checked }` }
     onChange={ this.onChange }
   >
     复选框
@@ -51,7 +51,7 @@ function onChange(event) {
 <View>
   <Checkbox
     disabled={ true }
-    value={ this.checked }
+    value={ `${ this.checked }` }
     onChange={ this.onChange }
   >
     复选框
@@ -67,7 +67,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Checkbox
-    value={ this.checked }
+    value={ `${ this.checked }` }
     shape="square"
     onChange={ this.onChange }
   >
@@ -84,7 +84,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Checkbox
-    value={ this.checked }
+    value={ `${ this.checked }` }
     checkedColor="#07c160"
     onChange={ this.onChange }
   >
@@ -101,7 +101,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Checkbox
-    value={ this.checked }
+    value={ `${ this.checked }` }
     iconSize="25px"
   >
     复选框
@@ -118,12 +118,12 @@ function onChange(event) {
 <View>
   <Checkbox
     useIconSlot={ true }
-    value={ this.checked }
+    value={ `${ this.checked }` }
     onChange={ this.onChange }
     renderIcon={ (
           <Image
             slot="icon"
-            src={ checked ? activeIcon : inactiveIcon }
+            src={ `${ checked ? activeIcon : inactiveIcon }` }
           />
 
         ) }
@@ -155,7 +155,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Checkbox
-    value={ this.checked }
+    value={ `${ this.checked }` }
     labelDisabled={ true }
   >
     复选框
@@ -171,7 +171,7 @@ function onChange(event) {
 ```jsx
 <View>
   <CheckboxGroup
-    value={ this.result }
+    value={ `${ this.result }` }
     onChange={ this.onChange }
   >
     <Checkbox name="a">
@@ -205,9 +205,9 @@ function onChange(event) {
 ```jsx
 <View>
   <CheckboxGroup
-    value={ this.result }
+    value={ `${ this.result }` }
     onChange={ this.onChange }
-    max={ 2 }
+    max={ `${ 2 }` }
   >
     <Checkbox name="a">
       复选框 a
@@ -230,22 +230,22 @@ function onChange(event) {
 ```jsx
 <View>
   <CheckboxGroup
-    value={ this.result }
+    value={ `${ this.result }` }
     onChange={ this.onChange }
   >
     <CellGroup>
       { list.map((item, index) => (
           <Cell
-            key={index}
-            title={ `复选框 ${ item }
+            key={ `${index}` }
+            title={ `复选框 ${ item }` }
             valueClass="valueClass"
             clickable={ true }
-            dataIndex={ index }
+            dataIndex={ `${ index }` }
             onClick={ toggle }
           >
             <Checkbox
-              class={ `checkboxes-${ index }
-              name={ item }
+              class={ `checkboxes-${ index }` }
+              name={ `${ item }` }
             />
           </Cell>
         

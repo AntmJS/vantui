@@ -21,7 +21,7 @@ import { Circle } from "vantui";
 ```jsx
 <View>
   <Circle
-    value={ 30 }
+    value={ `${ 30 }` }
     text="text"
   />
 </View>
@@ -35,7 +35,7 @@ import { Circle } from "vantui";
 ```jsx
 <View>
   <Circle
-    value={ this.value }
+    value={ `${ this.value }` }
     strokeWidth="6"
     text="宽度定制"
   />
@@ -50,7 +50,7 @@ import { Circle } from "vantui";
 ```jsx
 <View>
   <Circle
-    value={ this.value }
+    value={ `${ this.value }` }
     layerColor="#eeeeee"
     color="#ee0a24"
     text="颜色定制"
@@ -66,8 +66,8 @@ import { Circle } from "vantui";
 ```jsx
 <View>
   <Circle
-    value={ this.value }
-    color={ this.gradientColor }
+    value={ `${ this.value }` }
+    color={ `${ this.gradientColor }` }
     text="渐变色"
   />
 </View>
@@ -91,9 +91,9 @@ this.state = {
 ```jsx
 <View>
   <Circle
-    value={ this.value }
+    value={ `${ this.value }` }
     color="#07c160"
-    clockwise={ false }
+    clockwise={ `${ false }` }
     text="逆时针"
   />
 </View>
@@ -107,7 +107,7 @@ this.state = {
 ```jsx
 <View>
   <Circle
-    value={ this.value }
+    value={ `${ this.value }` }
     size="120"
     text="大小定制"
   />

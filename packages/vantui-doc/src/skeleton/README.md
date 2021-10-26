@@ -55,7 +55,7 @@ import { Skeleton } from "vantui";
     title={ true }
     avatar={ true }
     row="3"
-    loading={ this.loading }
+    loading={ `${ this.loading }` }
   >
     <View>
       实际内容

@@ -22,7 +22,7 @@ import { CollapseItem } from "vantui";
 ```jsx
 <View>
   <Collapse
-    value={ this.activeNames }
+    value={ `${ this.activeNames }` }
     onChange={ this.onChange }
   >
     <CollapseItem
@@ -69,7 +69,7 @@ function onChange(event) {
 <View>
   <Collapse
     accordion={ true }
-    value={ this.activeName }
+    value={ `${ this.activeName }` }
     onChange={ this.onChange }
   >
     <CollapseItem
@@ -114,7 +114,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Collapse
-    value={ this.activeNames }
+    value={ `${ this.activeNames }` }
     onChange={ this.onChange }
     onOpen={ this.onOpen }
     onClose={ this.onClose }
@@ -167,7 +167,7 @@ function onClose(event) {
 ```jsx
 <View>
   <Collapse
-    value={ this.activeNames }
+    value={ `${ this.activeNames }` }
     onChange={ this.onChange }
   >
     <CollapseItem name="1">

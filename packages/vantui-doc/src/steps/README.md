@@ -19,8 +19,8 @@ import { Steps } from "vantui";
 ```jsx
 <View>
   <Steps
-    steps={ this.steps }
-    active={ active }
+    steps={ `${ this.steps }` }
+    active={ `${ active }` }
   />
 </View>
  
@@ -51,8 +51,8 @@ this.state = {
 ```jsx
 <View>
   <Steps
-    steps={ this.steps }
-    active={ active }
+    steps={ `${ this.steps }` }
+    active={ `${ active }` }
     activeIcon="success"
     activeColor="#38f"
   />
@@ -67,8 +67,8 @@ this.state = {
 ```jsx
 <View>
   <Steps
-    steps={ this.steps }
-    active={ active }
+    steps={ `${ this.steps }` }
+    active={ `${ active }` }
   />
 </View>
  
@@ -107,8 +107,8 @@ this.state = {
 ```jsx
 <View>
   <Steps
-    steps={ this.steps }
-    active={ active }
+    steps={ `${ this.steps }` }
+    active={ `${ active }` }
     direction="vertical"
     activeColor="#ee0a24"
   />

@@ -19,8 +19,8 @@ import { SwipeCell } from "vantui";
 ```jsx
 <View>
   <SwipeCell
-    rightWidth={ 65 }
-    leftWidth={ 65 }
+    rightWidth={ `${ 65 }` }
+    leftWidth={ `${ 65 }` }
   >
     <View slot="left">
       选择
@@ -47,8 +47,8 @@ import { SwipeCell } from "vantui";
 <View>
   <SwipeCell
     id="swipeCell"
-    rightWidth={ 65 }
-    leftWidth={ 65 }
+    rightWidth={ `${ 65 }` }
+    leftWidth={ `${ 65 }` }
     asyncClose={ true }
     onClose={ onClose }
   >
@@ -79,8 +79,8 @@ import { SwipeCell } from "vantui";
 <View>
   <SwipeCell
     id="swipeCell2"
-    rightWidth={ 65 }
-    leftWidth={ 65 }
+    rightWidth={ `${ 65 }` }
+    leftWidth={ `${ 65 }` }
     name="示例"
     onOpen={ onOpen }
   >

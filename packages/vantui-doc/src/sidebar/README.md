@@ -23,7 +23,7 @@ import { SidebarItem } from "vantui";
 
 ```jsx
 <View>
-  <Sidebar activeKey={ this.activeKey }>
+  <Sidebar activeKey={ `${ this.activeKey }` }>
     <SidebarItem title="标签名" />
     <SidebarItem title="标签名" />
     <SidebarItem title="标签名" />
@@ -44,7 +44,7 @@ this.state = {
 
 ```jsx
 <View>
-  <Sidebar activeKey={ this.activeKey }>
+  <Sidebar activeKey={ `${ this.activeKey }` }>
     <SidebarItem
       title="标签名"
       dot={ true }
@@ -68,7 +68,7 @@ this.state = {
 
 ```jsx
 <View>
-  <Sidebar activeKey={ this.activeKey }>
+  <Sidebar activeKey={ `${ this.activeKey }` }>
     <SidebarItem title="标签名" />
     <SidebarItem
       title="标签名"
@@ -87,7 +87,7 @@ this.state = {
 ```jsx
 <View>
   <Sidebar
-    activeKey={ this.activeKey }
+    activeKey={ `${ this.activeKey }` }
     onChange={ this.onChange }
   >
     <SidebarItem title="标签名 1" />

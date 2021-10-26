@@ -22,7 +22,7 @@ import { CountDown } from "vantui";
 
 ```jsx
 <View>
-  <CountDown time={ this.time } />
+  <CountDown time={ `${ this.time }` } />
 </View>
  
 ```
@@ -40,7 +40,7 @@ this.state = {
 ```jsx
 <View>
   <CountDown
-    time={ this.time }
+    time={ `${ this.time }` }
     format="DD 天 HH 时 mm 分 ss 秒"
   />
 </View>
@@ -55,7 +55,7 @@ this.state = {
 <View>
   <CountDown
     millisecond={ true }
-    time={ this.time }
+    time={ `${ this.time }` }
     format="HH:mm:ss:SSS"
   />
 </View>
@@ -69,7 +69,7 @@ this.state = {
 ```jsx
 <View>
   <CountDown
-    time={ this.time }
+    time={ `${ this.time }` }
     onChange={ this.onChange }
   >
     <Text class="item">
@@ -121,8 +121,8 @@ function onChange(e) {
   <CountDown
     class="controlCountDown"
     millisecond={ true }
-    time={ 3000 }
-    autoStart={ false }
+    time={ `${ 3000 }` }
+    autoStart={ `${ false }` }
     format="ss:SSS"
     onFinish={ finished }
   />

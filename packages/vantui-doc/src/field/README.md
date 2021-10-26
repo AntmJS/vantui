@@ -20,9 +20,9 @@ import { Field } from "vantui";
 <View>
   <CellGroup>
     <Field
-      value={ this.value }
+      value={ `${ this.value }` }
       placeholder="请输入用户名"
-      border={ false }
+      border={ `${ false }` }
       onChange={ this.onChange }
     />
   </CellGroup>
@@ -50,9 +50,9 @@ function onChange(event) {
   <CellGroup>
     <Field
       model={ true }
-      value={ this.value }
+      value={ `${ this.value }` }
       placeholder="请输入用户名"
-      border={ false }
+      border={ `${ false }` }
     />
   </CellGroup>
 </View>
@@ -73,7 +73,7 @@ this.state = {
 <View>
   <CellGroup>
     <Field
-      value={ username }
+      value={ `${ username }` }
       required={ true }
       clearable={ true }
       label="用户名"
@@ -82,12 +82,12 @@ this.state = {
       onClickIcon={ onClickIcon }
     />
     <Field
-      value={ password }
+      value={ `${ password }` }
       type="password"
       label="密码"
       placeholder="请输入密码"
       required={ true }
-      border={ false }
+      border={ `${ false }` }
     />
   </CellGroup>
 </View>
@@ -104,7 +104,7 @@ this.state = {
       label="用户名"
       leftIcon="contact"
       disabled={ true }
-      border={ false }
+      border={ `${ false }` }
     />
   </CellGroup>
 </View>
@@ -119,17 +119,17 @@ this.state = {
 <View>
   <CellGroup>
     <Field
-      value={ username }
+      value={ `${ username }` }
       label="用户名"
       placeholder="请输入用户名"
       error={ true }
     />
     <Field
-      value={ phone }
+      value={ `${ phone }` }
       label="手机号"
       placeholder="请输入手机号"
       errorMessage="手机号格式错误"
-      border={ false }
+      border={ `${ false }` }
     />
   </CellGroup>
 </View>
@@ -144,7 +144,7 @@ this.state = {
 <View>
   <CellGroup>
     <Field
-      value={ username3 }
+      value={ `${ username3 }` }
       label="用户名"
       placeholder="请输入用户名"
       inputAlign="right"
@@ -162,12 +162,12 @@ this.state = {
 <View>
   <CellGroup>
     <Field
-      value={ message }
+      value={ `${ message }` }
       label="留言"
       type="textarea"
       placeholder="请输入留言"
       autosize={ true }
-      border={ false }
+      border={ `${ false }` }
     />
   </CellGroup>
 </View>
@@ -182,12 +182,12 @@ this.state = {
 <View>
   <CellGroup>
     <Field
-      value={ sms }
+      value={ `${ sms }` }
       center={ true }
       clearable={ true }
       label="短信验证码"
       placeholder="请输入短信验证码"
-      border={ false }
+      border={ `${ false }` }
       useButtonSlot={ true }
       renderButton={ (
           <Button 

@@ -22,7 +22,7 @@ import { RadioGroup } from "vantui";
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <Radio name="1">
@@ -55,7 +55,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
     direction="horizontal"
   >
@@ -77,7 +77,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     disabled={ true }
     onChange={ this.onChange }
   >
@@ -99,7 +99,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <Radio
@@ -126,7 +126,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <Radio
@@ -153,7 +153,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <Radio
@@ -180,17 +180,17 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <Radio
       useIconSlot={ true }
-      value={ this.radio }
+      value={ `${ this.radio }` }
       name="1"
       renderIcon={ (
           <Image
             slot="icon"
-            src={ radio === '1' ? icon.active : icon.normal }
+            src={ `${ radio === '1' ? icon.active : icon.normal }` }
           />
 
         ) }
@@ -199,12 +199,12 @@ function onChange(event) {
     </Radio>
     <Radio
       useIconSlot={ true }
-      value={ this.radio }
+      value={ `${ this.radio }` }
       name="2"
       renderIcon={ (
           <Image
             slot="icon"
-            src={ radio === '2' ? icon.active : icon.normal }
+            src={ `${ radio === '2' ? icon.active : icon.normal }` }
           />
 
         ) }
@@ -239,7 +239,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <Radio
@@ -266,7 +266,7 @@ function onChange(event) {
 ```jsx
 <View>
   <RadioGroup
-    value={ this.radio }
+    value={ `${ this.radio }` }
     onChange={ this.onChange }
   >
     <CellGroup>
