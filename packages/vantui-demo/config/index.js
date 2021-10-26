@@ -90,7 +90,7 @@ let config = {
           .publicPath(publicPath.replace('VERSION', version))
       }
       if (process.env.WATCHING === 'true') {
-        chain.output.publicPath(`/`)
+        chain.output.publicPath(`/vantui`)
       }
     },
     router: {
