@@ -25,27 +25,27 @@ module.exports = {
           {
             path: 'home',
             title: '介绍',
-            hideSimulator: true,
+            hideSimulator: false,
           },
           {
             path: 'quickstart',
             title: '快速上手',
-            hideSimulator: true,
+            hideSimulator: false,
           },
           {
             path: 'custom-style',
             title: '样式覆盖',
-            hideSimulator: true,
+            hideSimulator: false,
           },
           {
             path: 'theme',
             title: '定制主题',
-            hideSimulator: true,
+            hideSimulator: false,
           },
           {
             path: 'use-in-react',
             title: '如何在React中使用',
-            hideSimulator: true,
+            hideSimulator: false,
           },
         ],
       },
@@ -55,7 +55,7 @@ module.exports = {
           {
             path: 'index',
             title: '参考',
-            hideSimulator: true,
+            hideSimulator: false,
           },
         ],
       },
