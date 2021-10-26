@@ -11,7 +11,7 @@ function onPageScroll(event: any) {
 }
 export function usePageScroll(scroller: any) {
   useEffect(() => {
-    const page = getCurrentPage() as any
+    const page = (getCurrentPage() || {}) as any
     if (Array.isArray(page.vanPageScroller)) {
       page.vanPageScroller.push(scroller.bind(null))
     } else {

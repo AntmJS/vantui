@@ -350,17 +350,20 @@ export default function Index(props: TabsProps) {
           ),
       }
     })
+    setTimeout(() => {
+      resize()
+      scrollIntoView()
+      if (active !== getCurrentName()) {
+        setCurrentIndexByName(active)
+      }
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(
     function () {
-      nextTick(function () {
-        setTimeout(() => {
-          resize()
-          scrollIntoView()
-        }, 300)
-      })
+      resize()
+      scrollIntoView()
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [lineWidth],
@@ -368,16 +371,13 @@ export default function Index(props: TabsProps) {
   useEffect(
     function () {
       if (active !== getCurrentName()) {
-        nextTick(function () {
-          setTimeout(() => {
-            setCurrentIndexByName(active)
-          }, 300)
-        })
+        setCurrentIndexByName(active)
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active],
   )
+
   useEffect(
     function () {
       setState((pre: any) => {
