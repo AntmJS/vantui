@@ -9,7 +9,7 @@ import {
   cloneElement,
 } from 'react'
 // import { throttle } from 'lodash'
-import Taro from '@tarojs/taro'
+import { pageScrollTo, nextTick } from '@tarojs/taro'
 import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
 import { getRect, getAllRect, isDef } from '../common/utils.js'
@@ -117,7 +117,7 @@ export default function Index(props: IndexBarProps) {
   }, [])
   const _scrollIntoView = useCallback(
     (top) => {
-      Taro.pageScrollTo({
+      pageScrollTo({
         duration: 0,
         scrollTop: top + stickyOffsetTop, // + scrollTopRef.current,
       })
@@ -323,7 +323,7 @@ export default function Index(props: IndexBarProps) {
   }, [])
 
   const _updateData = useCallback(() => {
-    Taro.nextTick(() => {
+    nextTick(() => {
       if (timerRef.current !== null) {
         clearTimeout(timerRef.current)
       }

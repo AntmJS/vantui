@@ -704,6 +704,7 @@ module.exports = function (webpackEnv) {
       // Otherwise React will be compiled in the very slow development mode.
       new webpack.DefinePlugin({
         ...env.stringified,
+        
         ENABLE_INNER_HTML: true,
         ENABLE_ADJACENT_HTML: true,
         ENABLE_TEMPLATE_CONTENT: true,
@@ -711,6 +712,7 @@ module.exports = function (webpackEnv) {
         ENABLE_SIZE_APIS: false,
       }),
       new webpack.EnvironmentPlugin({
+        LIBRARY_ENV: 'react',
         TARO_ENV: 'h5',
       }),
       // This is necessary to emit hot updates (CSS and Fast Refresh):

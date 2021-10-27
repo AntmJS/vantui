@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { createAnimation } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Navigator, ITouchEvent } from '@tarojs/components'
 
@@ -62,7 +62,22 @@ export default function Index(props: NoticeBarProps) {
   }, [])
 
   Taro.useReady(() => {
-    ref.current.resetAnimation = Taro.createAnimation({
+    if (process.env.TARO_ENV !== 'h5') {
+      ref.current.resetAnimation = createAnimation({
+        duration: 0,
+        timingFunction: 'linear',
+      })
+
+      setState((state) => {
+        return {
+          ...state,
+          ready: true,
+        }
+      })
+    }
+  })
+  useEffect(() => {
+    ref.current.resetAnimation = createAnimation({
       duration: 0,
       timingFunction: 'linear',
     })
@@ -73,7 +88,7 @@ export default function Index(props: NoticeBarProps) {
         ready: true,
       }
     })
-  })
+  }, [])
 
   useEffect(() => {
     if (text && state.ready) {
@@ -141,7 +156,7 @@ export default function Index(props: NoticeBarProps) {
             ref.current.contentWidth = contentRect.width
             ref.current.duration =
               ((wrapRect.width + contentRect.width) / speed) * 1000
-            ref.current.animation = Taro.createAnimation({
+            ref.current.animation = createAnimation({
               duration: ref.current.duration,
               timingFunction: 'linear',
               delay,
