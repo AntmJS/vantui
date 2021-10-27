@@ -4,13 +4,47 @@ import './app.less'
 // interface IProps {
 //   children: React.ReactNode
 // }
-
+let oldHash = ''
 export default class Index extends React.Component {
   onPageNotFound() {
     navigateTo({
-      url:
-        process.env.TARO_ENV === 'h5' ? '/dashboard' : '/pages/dashboard/index',
+      url: '/',
     })
+  }
+
+  componentDidMount() {
+    if (process.env.TARO_ENV !== 'h5') return
+    window.top?.postMessage({ type: 'iframeReady' }, '*')
+    window.addEventListener('message', (event) => {
+      if (event.data?.type !== 'replacePath') {
+        return
+      }
+
+      const path = event.data?.value || ''
+      navigateTo({ url: `/pages${path}/index` })
+    })
+    oldHash = window.location.hash
+    const pathMatch = oldHash.match(/^#\/([\w-]+)/)
+    if (pathMatch && pathMatch[1]) {
+      navigateTo({ url: `/pages${pathMatch[1]}/index` })
+    }
+  }
+
+  componentDidUpdate() {
+    if (process.env.TARO_ENV !== 'h5') return
+    if (oldHash !== window.location.hash) {
+      oldHash = window.location.hash
+      window.top?.postMessage(
+        {
+          type: 'replacePath',
+          value: window.location.hash.replace(
+            /#\/pages(\/[\w-]+)\/index/,
+            '$1',
+          ),
+        },
+        '*',
+      )
+    }
   }
 
   render() {
