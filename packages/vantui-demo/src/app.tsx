@@ -8,7 +8,7 @@ let oldHash = ''
 export default class Index extends React.Component {
   onPageNotFound() {
     navigateTo({
-      url: '/',
+      url: '/pages/dashboard/index',
     })
   }
 
@@ -32,7 +32,7 @@ export default class Index extends React.Component {
 
   componentDidUpdate() {
     if (process.env.TARO_ENV !== 'h5') return
-    if (oldHash !== window.location.hash) {
+    if (oldHash !== '' && oldHash !== window.location.hash) {
       oldHash = window.location.hash
       window.top?.postMessage(
         {
