@@ -16,11 +16,11 @@
 
 docBranchName = 'feat/doc'
 
-git  add .
+# git  add .
 
-git stash
+# git stash
 
-git checkout ${docBranchName}
+git checkout $docBranchName
 
 
 # echo '=========='
