@@ -29,7 +29,7 @@ export default class Index extends React.Component {
       navigateTo({ url })
     })
     oldHash = window.location.hash
-    const pathMatch = oldHash.match(/^#\/([\w-]+)/)
+    const pathMatch = oldHash.match(/^#\/([\w-]+)$/)
     if (pathMatch && pathMatch[1]) {
       navigateTo({ url: `/pages${pathMatch[1]}/index` })
     }

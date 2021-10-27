@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import { Skeleton, Switch, Image } from '@antmjs/vantui'

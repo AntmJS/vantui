@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import { Notify, Button, notify } from '@antmjs/vantui'

@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
