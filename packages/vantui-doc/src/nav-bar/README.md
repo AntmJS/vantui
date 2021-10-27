@@ -41,19 +41,18 @@ function onClickRight() {
 
 ### 高级用法
 
-通过 slot 定制内容。
-
 ```jsx
 <View>
   <NavBar
     title="标题"
     leftText="返回"
     leftArrow={ true }
+    renderRight={
+      <Block>
+        <Icon name="search" className="icon" size="36"></Icon>
+      </Block>
+    }
   >
-    <Icon
-      name="search"
-      slot="right"
-    />
   </NavBar>
 </View>
  

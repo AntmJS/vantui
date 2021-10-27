@@ -72,16 +72,18 @@ import { SubmitBar } from "vantui";
     buttonText="提交订单"
     onSubmit={ onClickButton }
     tip={ `${ true }` }
+    renderTip={(
+      <View >
+        您的收货地址不支持同城送,
+        <Text>
+          修改地址
+        </Text>
+      </View>
+    )}
   >
     <Tag type="primary">
       标签
     </Tag>
-    <View slot="tip">
-      您的收货地址不支持同城送,
-      <Text>
-        修改地址
-      </Text>
-    </View>
   </SubmitBar>
 </View>
  

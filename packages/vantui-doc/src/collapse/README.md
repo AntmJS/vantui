@@ -170,11 +170,15 @@ function onClose(event) {
     value={ `${ this.activeNames }` }
     onChange={ this.onChange }
   >
-    <CollapseItem name="1">
-      <View slot="title">
-        有赞微商城
-        <Icon name="questionO" />
-      </View>
+    <CollapseItem 
+      name="1" 
+      renderTitle={(
+        <View>
+          有赞微商城
+          <Icon name="questionO" />
+        </View>
+      )}
+      >
       提供多样店铺模板，快速搭建网上商城
     </CollapseItem>
     <CollapseItem

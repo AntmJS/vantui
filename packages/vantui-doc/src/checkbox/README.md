@@ -117,16 +117,13 @@ function onChange(event) {
 ```jsx
 <View>
   <Checkbox
-    useIconSlot={ true }
     value={ `${ this.checked }` }
     onChange={ this.onChange }
     renderIcon={ (
-          <Image
-            slot="icon"
-            src={ `${ checked ? activeIcon : inactiveIcon }` }
-          />
-
-        ) }
+      <Image
+        src={ `${ checked ? activeIcon : inactiveIcon }` }
+      />
+    ) }
   >
     自定义图标
   </Checkbox>
@@ -234,14 +231,14 @@ function onChange(event) {
     onChange={ this.onChange }
   >
     <CellGroup>
-      { list.map((item, index) => (
+      { this.list.map((item, index) => (
           <Cell
             key={ `${index}` }
             title={ `复选框 ${ item }` }
             valueClass="valueClass"
             clickable={ true }
             dataIndex={ `${ index }` }
-            onClick={ toggle }
+            onClick={ this.toggle }
           >
             <Checkbox
               class={ `checkboxes-${ index }` }

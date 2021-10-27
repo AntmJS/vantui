@@ -86,15 +86,12 @@ import { Image } from "vantui";
 ```jsx
 <View>
   <Image
-    useLoadingSlot={ true }
     renderLoading={ (
           <Loading
-            slot="loading"
             type="spinner"
             size="20"
             vertical={ true }
           />
-
         ) }
   />
 </View>
@@ -108,9 +105,8 @@ import { Image } from "vantui";
 ```jsx
 <View>
   <Image
-    useErrorSlot={ true }
     renderError={ (
-          <Text slot="error">
+          <Text>
             加载失败
           </Text>
 

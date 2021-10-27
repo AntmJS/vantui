@@ -9,7 +9,7 @@ Vant 中默认包含了一些常用样式，可以直接通过 className 的方�
 在 Taro 文件中引入组件
 
 ```css
-@import '@vant/weapp/common/index.wxss';
+@import 'vantui/dist/style/common.less';
 ```
 
 ## 代码演示

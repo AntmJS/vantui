@@ -176,8 +176,6 @@ this.state = {
 
 ### 插入按钮
 
-通过 button slot 可以在输入框尾部插入按钮。
-
 ```jsx
 <View>
   <CellGroup>
@@ -188,10 +186,8 @@ this.state = {
       label="短信验证码"
       placeholder="请输入短信验证码"
       border={ `${ false }` }
-      useButtonSlot={ true }
       renderButton={ (
           <Button 
-            slot="button" 
             size="small" 
             type="primary"
           >

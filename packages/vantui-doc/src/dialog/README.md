@@ -26,16 +26,16 @@ import { Dialog } from "vantui";
 ```
 
 ```javascript
-import Dialog from 'path/to/@vant/weapp/dist/dialog/dialog';
+import { dialog } from 'vantui';
 
-Dialog.alert({
+dialog.alert({
   title: '标题',
   message: '弹窗内容',
 }).then(() => {
   // on close
 });
 
-Dialog.alert({
+dialog.alert({
   message: '弹窗内容',
 }).then(() => {
   // on close
@@ -54,9 +54,9 @@ Dialog.alert({
 ```
 
 ```javascript
-import Dialog from 'path/to/@vant/weapp/dist/dialog/dialog';
+import { dialog } from 'vantui';
 
-Dialog.confirm({
+dialog.confirm({
   title: '标题',
   message: '弹窗内容',
 })
@@ -80,9 +80,9 @@ Dialog.confirm({
 ```
 
 ```javascript
-import Dialog from 'path/to/@vant/weapp/dist/dialog/dialog';
+import { dialog } from 'vantui';
 
-Dialog.alert({
+dialog.alert({
   title: '标题',
   message: '弹窗内容',
   theme: 'roundButton',
@@ -90,7 +90,7 @@ Dialog.alert({
   // on close
 });
 
-Dialog.alert({
+dialog.alert({
   message: '弹窗内容',
   theme: 'roundButton',
 }).then(() => {
@@ -110,7 +110,7 @@ Dialog.alert({
 ```
 
 ```javascript
-import Dialog from 'path/to/@vant/weapp/dist/dialog/dialog';
+import { dialog } from 'vantui';
 
 const beforeClose = (action) => new Promise((resolve) => {
   setTimeout(() => {
@@ -123,7 +123,7 @@ const beforeClose = (action) => new Promise((resolve) => {
   }, 1000);
 });
 
-Dialog.confirm({
+dialog.confirm({
   title: '标题',
   message: '弹窗内容'
   beforeClose
