@@ -94,7 +94,7 @@ export default class Index extends React.Component {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
-                  <View className="text">{item}</View>
+                  <div className="text">{item}</div>
                 </Col>
               )
             })}
@@ -104,7 +104,7 @@ export default class Index extends React.Component {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
-                  <View className="text">{item}</View>
+                  <div className="text">{item}</div>
                 </Col>
               )
             })}
@@ -114,7 +114,7 @@ export default class Index extends React.Component {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
-                  <View className="text">{item}</View>
+                  <div className="text">{item}</div>
                 </Col>
               )
             })}

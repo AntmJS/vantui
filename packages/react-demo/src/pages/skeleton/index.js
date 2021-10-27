@@ -42,20 +42,20 @@ export default class Index extends React.Component {
               onChange={this.onChange}
             ></Switch>
             <Skeleton title avatar row="3" loading={!show}>
-              <View className="demo-preview">
+              <div className="demo-preview">
                 <Image
                   className="demo-preview-img"
                   src="https://img.yzcdn.cn/vant/logo.png"
                 ></Image>
-                <View className="demo-content">
-                  <View className="demo-content-h3">关于 Vant Weapp</View>
-                  <View className="domo-content-p">
+                <div className="demo-content">
+                  <div className="demo-content-h3">关于 Vant Weapp</div>
+                  <div className="domo-content-p">
                     Vant Weapp 是移动端 Vue 组件库 Vant
                     的小程序版本，两者基于相同的视觉规范，提供一致的 API
                     接口，助力开发者快速搭建小程序应用。
-                  </View>
-                </View>
-              </View>
+                  </div>
+                </div>
+              </div>
             </Skeleton>
           </DemoBlock>
         </>

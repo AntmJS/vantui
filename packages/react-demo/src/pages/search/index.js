@@ -108,7 +108,7 @@ export default class Index extends React.Component {
               onChange={this.onChange}
               renderAction={
                 <>
-                  <View onClick={this.onClick}>搜索</View>
+                  <div onClick={this.onClick}>搜索</div>
                 </>
               }
             ></Search>

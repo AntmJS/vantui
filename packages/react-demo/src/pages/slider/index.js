@@ -86,7 +86,7 @@ export default class Index extends React.Component {
               renderButton={() => {
                 return (
                   <>
-                    <View className="custom-button">{currentValue}</View>
+                    <div className="custom-button">{currentValue}</div>
                   </>
                 )
               }}

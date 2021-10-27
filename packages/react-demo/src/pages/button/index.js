@@ -18,7 +18,7 @@ export default class Index extends React.Component {
       <DemoPage title="Button 按钮">
         <>
           <DemoBlock title="按钮类型" padding>
-            <View className="row">
+            <div className="row">
               <Button className="demo-margin-right">默认按钮</Button>
               <Button type="primary" className="demo-margin-right">
                 主要按钮
@@ -26,7 +26,7 @@ export default class Index extends React.Component {
               <Button type="info" className="demo-margin-right">
                 信息按钮
               </Button>
-            </View>
+            </div>
             <Button type="danger" className="demo-margin-right">
               危险按钮
             </Button>

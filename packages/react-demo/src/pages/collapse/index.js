@@ -160,13 +160,13 @@ export default class Index extends React.Component {
               <CollapseItem
                 renderTitle={
                   <>
-                    <View>
+                    <div>
                       {title1}
                       <Icon
                         name="question-o"
                         className="van-icon-question"
                       ></Icon>
-                    </View>
+                    </div>
                   </>
                 }
               >

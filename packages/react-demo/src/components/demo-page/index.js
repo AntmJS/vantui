@@ -8,16 +8,16 @@ export default function Page(props) {
   const { title, children } = props
 
   return (
-    <View className="demo-page">
-      <View className="demo-nav">
+    <div className="demo-page">
+      <div className="demo-nav">
         <Icon
           name="arrow-left"
           className="demo-nav__back"
           onClick={() => history.go(-1)}
         />
-        <View className="demo-nav__title">{title} </View>
-      </View>
+        <div className="demo-nav__title">{title} </div>
+      </div>
       {children}
-    </View>
+    </div>
   )
 }

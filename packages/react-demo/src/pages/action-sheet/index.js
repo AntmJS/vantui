@@ -134,7 +134,7 @@ export default class Index extends React.Component {
               title="标题"
               onClose={this.toggleActionSheet5}
             >
-              <View className="content">内容</View>
+              <div className="content">内容</div>
             </ActionSheet>
           </DemoBlock>
           <DemoBlock title="微信开放能力" padding>

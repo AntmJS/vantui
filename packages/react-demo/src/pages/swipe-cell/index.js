@@ -66,12 +66,12 @@ export default class Index extends React.Component {
               leftWidth={65}
               renderLeft={
                 <>
-                  <View className="van-swipe-cell__left_">选择</View>
+                  <div className="van-swipe-cell__left_">选择</div>
                 </>
               }
               renderRight={
                 <>
-                  <View className="van-swipe-cell__right_">删除</View>
+                  <div className="van-swipe-cell__right_">删除</div>
                 </>
               }
             >
@@ -89,12 +89,12 @@ export default class Index extends React.Component {
               onClose={this.onClose}
               renderLeft={
                 <>
-                  <View className="van-swipe-cell__left_">选择</View>
+                  <div className="van-swipe-cell__left_">选择</div>
                 </>
               }
               renderRight={
                 <>
-                  <View className="van-swipe-cell__right_">删除</View>
+                  <div className="van-swipe-cell__right_">删除</div>
                 </>
               }
             >
@@ -112,12 +112,12 @@ export default class Index extends React.Component {
               onOpen={this.onOpen}
               renderLeft={
                 <>
-                  <View className="van-swipe-cell__left_">选择</View>
+                  <div className="van-swipe-cell__left_">选择</div>
                 </>
               }
               renderRight={
                 <>
-                  <View className="van-swipe-cell__right_">删除</View>
+                  <div className="van-swipe-cell__right_">删除</div>
                 </>
               }
             >

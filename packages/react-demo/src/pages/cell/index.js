@@ -44,7 +44,7 @@ export default class Index extends React.Component {
                 border={false}
                 renderLabel={
                   <>
-                    <View>描述信息</View>
+                    <div>描述信息</div>
                   </>
                 }
               ></Cell>
@@ -93,10 +93,10 @@ export default class Index extends React.Component {
               isLink
               renderTitle={
                 <>
-                  <View>
-                    <View className="title">单元格</View>
+                  <div>
+                    <div className="title">单元格</div>
                     <Tag type="danger">标签</Tag>
-                  </View>
+                  </div>
                 </>
               }
             ></Cell>
