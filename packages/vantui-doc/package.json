@@ -4,11 +4,11 @@
   "version": "0.2.0",
   "description": "",
   "scripts": {
-    "dev": "cross-env SITE_ENV=dev npx vant-cli dev",
-    "build": "cross-env SITE_ENV=real npx vant-cli build",
+    "dev": "npx vant-cli dev",
+    "build": "npx vant-cli build",
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
-    "build-site": "cross-env SITE_ENV=real npx vant-cli build-site && gh-pages -d site"
+    "build-site": "npx vant-cli build-site && gh-pages -d site"
   },
   "author": "sanshao",
   "license": "MIT",
