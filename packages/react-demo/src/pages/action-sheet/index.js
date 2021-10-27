@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Button, ActionSheet } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -83,7 +82,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="ActionSheet 动作面板">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Button type="primary" onClick={this.toggleActionSheet1}>
               弹出菜单
@@ -150,7 +149,7 @@ export default class Index extends React.Component {
               onGetuserinfo={this.onGetUserInfo}
             ></ActionSheet>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

@@ -1,6 +1,5 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { GridItem, Grid, Image } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'

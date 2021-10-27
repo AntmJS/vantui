@@ -1,6 +1,6 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+
 import { Image, CheckboxGroup, Checkbox, CellGroup, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 

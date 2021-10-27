@@ -1,6 +1,5 @@
 import { Block, View, Text } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Row, Loading, Image, Col } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -30,7 +29,7 @@ export default class Index extends React.Component {
     const { src, fits } = this.state
     return (
       <DemoPage title="Image 图片">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Row>
               <Image width="100" height="100" src={src}></Image>
@@ -82,9 +81,9 @@ export default class Index extends React.Component {
                   width="100%"
                   height="27vw"
                   renderLoading={
-                    <Block>
+                    <>
                       <Loading type="spinner" size="20" vertical></Loading>
-                    </Block>
+                    </>
                   }
                 ></Image>
                 <View className="text">自定义提示</View>
@@ -103,16 +102,16 @@ export default class Index extends React.Component {
                   height="27vw"
                   src="x"
                   renderError={
-                    <Block>
+                    <>
                       <Text>加载失败</Text>
-                    </Block>
+                    </>
                   }
                 ></Image>
                 <View className="text">自定义提示</View>
               </Col>
             </Row>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

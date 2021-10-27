@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Calendar, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -192,7 +190,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Calendar 日历">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Cell
               isLink
@@ -408,7 +406,7 @@ export default class Index extends React.Component {
             onClose={this.onClose}
             onClosed={this.onClosed}
           ></Calendar>
-        </Block>
+        </>
       </DemoPage>
     )
   }

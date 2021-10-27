@@ -1,6 +1,6 @@
 import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+
 import DemoPage from '../../components/demo-page/index'
 
 import {} from '@antmjs/vantui'

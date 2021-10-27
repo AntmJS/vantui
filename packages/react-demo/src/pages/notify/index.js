@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Notify, Button, notify } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -52,7 +51,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Notify 消息通知">
-        <Block>
+        <>
           <DemoBlock padding title="基础用法">
             <Button type="danger" onClick={this.showNotify}>
               基础用法
@@ -153,7 +152,7 @@ export default class Index extends React.Component {
             </Button>
           </DemoBlock>
           <Notify id="van-notify"></Notify>
-        </Block>
+        </>
       </DemoPage>
     )
   }

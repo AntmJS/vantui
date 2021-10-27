@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { ShareSheet, Toast, Cell, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -107,7 +105,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="ShareSheet 分享面板">
-        <Block>
+        <>
           <DemoBlock card title="基础用法">
             <Cell
               isLink
@@ -205,7 +203,7 @@ export default class Index extends React.Component {
             ></ShareSheet>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Toast, Steps, Button, toast } from '@antmjs/vantui'
 
@@ -56,7 +54,7 @@ export default class Index extends React.Component {
     const { steps, active, customIconSteps } = this.state
     return (
       <DemoPage title="Steps 步骤条">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Steps
               steps={steps}
@@ -89,7 +87,7 @@ export default class Index extends React.Component {
             ></Steps>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

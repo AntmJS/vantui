@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Popup, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -112,7 +110,7 @@ export default class Index extends React.Component {
     const { show } = this.state
     return (
       <DemoPage title="Popup 弹出层">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Cell title="展示弹出层" isLink onClick={this.showBasic}></Cell>
             <Popup
@@ -199,7 +197,7 @@ export default class Index extends React.Component {
               onClose={this.hideRound}
             ></Popup>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

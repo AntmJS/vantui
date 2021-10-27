@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Progress } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -17,7 +15,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Progress 进度条">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Progress className="progress-position" percentage="0"></Progress>
           </DemoBlock>
@@ -56,7 +54,7 @@ export default class Index extends React.Component {
               color="linear-gradient(to right, #be99ff, #7232dd)"
             ></Progress>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

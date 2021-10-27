@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Toast, Button, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -66,7 +64,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Toast 轻提示">
-        <Block>
+        <>
           <DemoBlock title="文字提示" padding>
             <Button
               type="primary"
@@ -109,7 +107,7 @@ export default class Index extends React.Component {
             </Button>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

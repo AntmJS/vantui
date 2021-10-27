@@ -21,7 +21,12 @@ export default class Index extends React.Component {
       }
 
       const path = event.data?.value || ''
-      navigateTo({ url: `/pages${path}/index` })
+      let url = `/pages${path}/index`
+      const devGuidePaths = ['/home', '/quickstart', '/custom-style', '/theme']
+      if (devGuidePaths.includes(path)) {
+        url = `/pages/dashboard/index`
+      }
+      navigateTo({ url })
     })
     oldHash = window.location.hash
     const pathMatch = oldHash.match(/^#\/([\w-]+)/)

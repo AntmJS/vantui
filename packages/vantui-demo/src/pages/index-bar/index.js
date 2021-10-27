@@ -1,6 +1,5 @@
 import { Block, View, Text } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { IndexAnchor, IndexBar, Tabs, Tab, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'

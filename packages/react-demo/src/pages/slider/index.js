@@ -34,7 +34,7 @@ export default class Index extends React.Component {
     const { currentValue } = this.state
     return (
       <DemoPage title="Slider 滑块">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Slider
               value="50"
@@ -85,14 +85,14 @@ export default class Index extends React.Component {
               onDrag={this.onDrag}
               renderButton={() => {
                 return (
-                  <Block>
+                  <>
                     <View className="custom-button">{currentValue}</View>
-                  </Block>
+                  </>
                 )
               }}
             ></Slider>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

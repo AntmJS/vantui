@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import {
   SwipeCell,
@@ -60,20 +59,20 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="SwipeCell 滑动单元格">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <SwipeCell
               rightWidth={65}
               leftWidth={65}
               renderLeft={
-                <Block>
+                <>
                   <View className="van-swipe-cell__left_">选择</View>
-                </Block>
+                </>
               }
               renderRight={
-                <Block>
+                <>
                   <View className="van-swipe-cell__right_">删除</View>
-                </Block>
+                </>
               }
             >
               <CellGroup>
@@ -89,14 +88,14 @@ export default class Index extends React.Component {
               asyncClose
               onClose={this.onClose}
               renderLeft={
-                <Block>
+                <>
                   <View className="van-swipe-cell__left_">选择</View>
-                </Block>
+                </>
               }
               renderRight={
-                <Block>
+                <>
                   <View className="van-swipe-cell__right_">删除</View>
-                </Block>
+                </>
               }
             >
               <CellGroup>
@@ -112,14 +111,14 @@ export default class Index extends React.Component {
               name="示例"
               onOpen={this.onOpen}
               renderLeft={
-                <Block>
+                <>
                   <View className="van-swipe-cell__left_">选择</View>
-                </Block>
+                </>
               }
               renderRight={
-                <Block>
+                <>
                   <View className="van-swipe-cell__right_">删除</View>
-                </Block>
+                </>
               }
             >
               <CellGroup>
@@ -129,7 +128,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <Dialog id="van-dialog"></Dialog>
           <Notify id="van-notify"></Notify>
-        </Block>
+        </>
       </DemoPage>
     )
   }

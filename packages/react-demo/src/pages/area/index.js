@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Toast, Area, toast } from '@antmjs/vantui'
 
@@ -38,7 +36,7 @@ export default class Index extends React.Component {
     const { value, loading, areaList } = this.state
     return (
       <DemoPage title="Area 省市区选择">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Area
               value={value}
@@ -80,7 +78,7 @@ export default class Index extends React.Component {
             ></Area>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

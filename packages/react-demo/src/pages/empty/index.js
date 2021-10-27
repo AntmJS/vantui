@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Tabs, Tab, Empty, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -27,7 +25,7 @@ export default class Index extends React.Component {
     const { activeTab } = this.state
     return (
       <DemoPage title="Empty 空状态">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Empty description="描述文字"></Empty>
           </DemoBlock>
@@ -58,7 +56,7 @@ export default class Index extends React.Component {
               </Button>
             </Empty>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

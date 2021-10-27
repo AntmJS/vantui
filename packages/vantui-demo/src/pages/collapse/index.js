@@ -1,6 +1,6 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+
 import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 

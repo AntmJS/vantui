@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
 
@@ -42,7 +41,7 @@ export default class Index extends React.Component {
       this.state
     return (
       <DemoPage title="Tabbar 标签栏">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Tabbar
               active={active}
@@ -146,22 +145,22 @@ export default class Index extends React.Component {
               <TabbarItem
                 info="3"
                 renderIcon={
-                  <Block>
+                  <>
                     <Image
                       src={icon.normal}
                       mode="aspectFit"
                       style="width: 30px; height: 18px;"
                     ></Image>
-                  </Block>
+                  </>
                 }
                 renderIconactive={
-                  <Block>
+                  <>
                     <Image
                       src={icon.active}
                       mode="aspectFit"
                       style="width: 30px; height: 18px;"
                     ></Image>
-                  </Block>
+                  </>
                 }
               >
                 自定义
@@ -218,7 +217,7 @@ export default class Index extends React.Component {
               <TabbarItem icon="setting-o">标签4</TabbarItem>
             </Tabbar>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

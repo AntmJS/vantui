@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { TreeSelect, Image } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -89,7 +87,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="TreeSelect 分类选择">
-        <Block>
+        <>
           <DemoBlock title="单选模式">
             <TreeSelect
               items={items}
@@ -125,7 +123,7 @@ export default class Index extends React.Component {
               onClickItem={this.onClickItem}
               onClickNav={this.onClickNav}
               renderContent={
-                <Block>
+                <>
                   {mainActiveIndex === 0 ? (
                     <Image
                       src="https://img.yzcdn.cn/vant/apple-1.jpg"
@@ -142,7 +140,7 @@ export default class Index extends React.Component {
                       ></Image>
                     )
                   )}
-                </Block>
+                </>
               }
             ></TreeSelect>
           </DemoBlock>
@@ -155,7 +153,7 @@ export default class Index extends React.Component {
               onClickNav={this.onClickNav}
             ></TreeSelect>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

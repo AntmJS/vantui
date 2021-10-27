@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Rate, Toast, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -35,7 +33,7 @@ export default class Index extends React.Component {
       this.state
     return (
       <DemoPage title="Rate 评分">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Rate className="rate-position" defaultValue={value1}></Rate>
           </DemoBlock>
@@ -95,7 +93,7 @@ export default class Index extends React.Component {
             ></Rate>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

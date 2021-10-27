@@ -1,6 +1,5 @@
 import { Block, View, ScrollView } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Sticky, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'

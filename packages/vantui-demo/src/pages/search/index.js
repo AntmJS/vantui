@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Search } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'

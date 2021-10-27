@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import {
   ConfigProvider,
@@ -44,13 +43,13 @@ export default class Index extends React.Component {
     const { rate, slider, themeVars } = this.state
     return (
       <DemoPage title="ConfigProvider 全局配置">
-        <Block>
+        <>
           <DemoBlock title="默认主题">
             <CellGroup>
               <Field
                 label="评分"
                 renderInput={
-                  <Block>
+                  <>
                     <View style="width: 100%">
                       <Rate
                         value={rate}
@@ -67,14 +66,14 @@ export default class Index extends React.Component {
                         }}
                       ></Rate>
                     </View>
-                  </Block>
+                  </>
                 }
               ></Field>
               <Field
                 label="滑块"
                 border={false}
                 renderInput={
-                  <Block>
+                  <>
                     <View style="width: 100%">
                       <Slider
                         value={slider}
@@ -91,7 +90,7 @@ export default class Index extends React.Component {
                         }}
                       ></Slider>
                     </View>
-                  </Block>
+                  </>
                 }
               ></Field>
             </CellGroup>
@@ -107,7 +106,7 @@ export default class Index extends React.Component {
                 <Field
                   label="评分"
                   renderInput={
-                    <Block>
+                    <>
                       <View style="width: 100%">
                         <Rate
                           value={rate}
@@ -124,14 +123,14 @@ export default class Index extends React.Component {
                           }}
                         ></Rate>
                       </View>
-                    </Block>
+                    </>
                   }
                 ></Field>
                 <Field
                   label="滑块"
                   border={false}
                   renderInput={
-                    <Block>
+                    <>
                       <View style="width: 100%">
                         <Slider
                           value={slider}
@@ -148,7 +147,7 @@ export default class Index extends React.Component {
                           }}
                         ></Slider>
                       </View>
-                    </Block>
+                    </>
                   }
                 ></Field>
               </CellGroup>
@@ -159,7 +158,7 @@ export default class Index extends React.Component {
               </View>
             </ConfigProvider>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

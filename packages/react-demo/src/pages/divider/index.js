@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Divider } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -17,7 +15,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Divider 分割线">
-        <Block>
+        <>
           <DemoBlock className="white" title="基础用法" padding>
             <Divider></Divider>
           </DemoBlock>
@@ -37,7 +35,7 @@ export default class Index extends React.Component {
               文本
             </Divider>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

@@ -1,6 +1,6 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
+
 import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -56,7 +56,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Collapse 折叠面板">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Collapse
               value={active1}
@@ -159,7 +159,7 @@ export default class Index extends React.Component {
             >
               <CollapseItem
                 renderTitle={
-                  <Block>
+                  <>
                     <View>
                       {title1}
                       <Icon
@@ -167,7 +167,7 @@ export default class Index extends React.Component {
                         className="van-icon-question"
                       ></Icon>
                     </View>
-                  </Block>
+                  </>
                 }
               >
                 {content1}
@@ -178,7 +178,7 @@ export default class Index extends React.Component {
             </Collapse>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

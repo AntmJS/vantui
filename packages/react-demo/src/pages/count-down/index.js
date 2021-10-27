@@ -1,6 +1,5 @@
 import { Block, Text } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { GridItem, Grid, Toast, CountDown, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -48,7 +47,7 @@ export default class Index extends React.Component {
     const { time, timeData } = this.state
     return (
       <DemoPage title="CountDown 倒计时">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <CountDown time={time}></CountDown>
           </DemoBlock>
@@ -100,7 +99,7 @@ export default class Index extends React.Component {
             </Grid>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

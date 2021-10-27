@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import {
   GridItem,
@@ -30,7 +28,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Sidebar 侧边导航">
-        <Block>
+        <>
           <Grid columnNum={2} border={false}>
             <GridItem>
               <h3 className="demo-sidebar-title">基础用法</h3>
@@ -66,7 +64,7 @@ export default class Index extends React.Component {
             </GridItem>
           </Grid>
           <Notify id="van-notify"></Notify>
-        </Block>
+        </>
       </DemoPage>
     )
   }

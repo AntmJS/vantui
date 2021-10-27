@@ -168,13 +168,13 @@ export default class Index extends React.Component {
               tabClass="special-tab"
               tabActiveClass="special-tab-active"
               renderNavRight={
-                <Block>
+                <>
                   <Icon
                     name="search"
                     className="right-nav"
                     onClick={this.onClickNavRight}
                   ></Icon>
-                </Block>
+                </>
               }
             >
               {tabs4.map((item, index) => {

@@ -1,6 +1,5 @@
 import { Block, View, Text } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Toast, Tag, SubmitBar, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -23,7 +22,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="SubmitBar 提交订单栏">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <SubmitBar
               price={3050}
@@ -64,14 +63,14 @@ export default class Index extends React.Component {
               tip={true}
               safeAreaInsetBottom={false}
               renderTip={
-                <Block>
+                <>
                   <View>
                     您的收货地址不支持同城送
                     <Text className="edit-address" onClick={this.onClickLink}>
                       修改地址
                     </Text>
                   </View>
-                </Block>
+                </>
               }
             >
               <Tag type="primary" className="submit-tag">
@@ -80,7 +79,7 @@ export default class Index extends React.Component {
             </SubmitBar>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

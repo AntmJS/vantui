@@ -113,7 +113,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Uploader 文件上传">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Uploader
               name="1"
@@ -216,7 +216,7 @@ export default class Index extends React.Component {
               </Button>
             </View>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

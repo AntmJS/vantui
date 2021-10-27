@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Toast, Stepper, Cell, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -32,7 +30,7 @@ export default class Index extends React.Component {
     const { value } = this.state
     return (
       <DemoPage title="Stepper 步进器">
-        <Block>
+        <>
           <Cell center title="基础用法">
             <Stepper value={1}></Stepper>
           </Cell>
@@ -68,7 +66,7 @@ export default class Index extends React.Component {
             <Stepper value={1} theme="round" buttonSize="22px"></Stepper>
           </Cell>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

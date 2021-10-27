@@ -58,7 +58,7 @@ export default class Index extends React.Component {
     const { value } = this.state
     return (
       <DemoPage title="Search 搜索">
-        <Block>
+        <>
           <DemoBlock title="基本用法">
             <Search
               defaultValue={value}
@@ -107,13 +107,13 @@ export default class Index extends React.Component {
               onSearch={this.onSearch}
               onChange={this.onChange}
               renderAction={
-                <Block>
+                <>
                   <View onClick={this.onClick}>搜索</View>
-                </Block>
+                </>
               }
             ></Search>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

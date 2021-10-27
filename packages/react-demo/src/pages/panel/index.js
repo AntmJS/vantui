@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Panel, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -17,7 +16,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Panel 面板">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Panel title="标题" desc="描述信息" status="状态">
               <View className="content">内容</View>
@@ -29,7 +28,7 @@ export default class Index extends React.Component {
               desc="描述信息"
               status="状态"
               renderFooter={
-                <Block>
+                <>
                   <View className="footer">
                     <Button size="small" className="demo-margin-right">
                       按钮
@@ -38,13 +37,13 @@ export default class Index extends React.Component {
                       按钮
                     </Button>
                   </View>
-                </Block>
+                </>
               }
             >
               <View className="content">内容</View>
             </Panel>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

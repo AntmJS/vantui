@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { GridItem, Grid, Image } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -24,7 +22,7 @@ export default class Index extends React.Component {
     const { array4, array6, array3, array8 } = this.state
     return (
       <DemoPage title="Grid 宫格">
-        <Block>
+        <>
           <DemoBlock title="基本用法">
             <Grid>
               {array4.map((item, index) => {
@@ -110,7 +108,7 @@ export default class Index extends React.Component {
               <GridItem icon="search" text="文字" badge="99+"></GridItem>
             </Grid>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

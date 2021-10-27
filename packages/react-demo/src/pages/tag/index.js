@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Tag } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -33,7 +31,7 @@ export default class Index extends React.Component {
     const { show } = this.state
     return (
       <DemoPage title="Tag 标记">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Tag className="demo-margin-right" type="primary">
               标签
@@ -145,7 +143,7 @@ export default class Index extends React.Component {
               </Tag>
             )}
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

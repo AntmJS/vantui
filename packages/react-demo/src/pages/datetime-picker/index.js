@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { DatetimePicker, Toast, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -79,7 +77,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="DatetimePicker 时间选择">
-        <Block>
+        <>
           <DemoBlock title="选择完整时间">
             <DatetimePicker
               type="datetime"
@@ -163,7 +161,7 @@ export default class Index extends React.Component {
             ></DatetimePicker>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

@@ -1,6 +1,5 @@
 import { Block, View } from '@tarojs/components'
 import React from 'react'
-import Taro from '@tarojs/taro'
 
 import { Overlay, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -40,7 +39,7 @@ export default class Index extends React.Component {
     const { show, showEmbedded } = this.state
     return (
       <DemoPage title="Overlay 遮罩层">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Button type="primary" onClick={this.onClickShow}>
               显示遮罩层
@@ -57,7 +56,7 @@ export default class Index extends React.Component {
               </View>
             </Overlay>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }
