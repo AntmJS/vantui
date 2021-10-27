@@ -42,16 +42,17 @@ import { Card } from "vantui";
     desc="描述信息"
     title="商品标题"
     thumb={ `${ imageURL }` }
-  >
-    <View slot="footer">
-      <Button size="mini">
-        按钮
-      </Button>
-      <Button size="mini">
-        按钮
-      </Button>
-    </View>
-  </Card>
+    renderFooter={(
+      <View>
+        <Button size="mini">
+          按钮
+        </Button>
+        <Button size="mini">
+          按钮
+        </Button>
+      </View>
+    )}
+  />
 </View>
  
 ```

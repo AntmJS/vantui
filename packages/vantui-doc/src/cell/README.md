@@ -166,23 +166,26 @@ import { CellGroup } from "vantui";
     value="内容"
     icon="shopO"
     isLink={ true }
-  >
-    <View slot="title">
-      <View class="vanCellText">
-        单元格
+    renderTitle={(
+      <View>
+        <View class="vanCellText">
+          单元格
+        </View>
+        <Tag type="danger">
+          标签
+        </Tag>
       </View>
-      <Tag type="danger">
-        标签
-      </Tag>
-    </View>
-  </Cell>
-  <Cell title="单元格">
-    <Icon
-      slot="rightIcon"
-      name="search"
-      class="customIcon"
-    />
-  </Cell>
+    )}
+  />
+  <Cell 
+    title="单元格"
+    renderIcon={(
+      <Icon
+        name="search"
+        class="customIcon"
+      />
+    )}
+  >
 </View>
  
 ```

@@ -175,8 +175,6 @@ function onChange(event) {
 
 ### 自定义图标
 
-通过`icon`插槽自定义图标，需要设置`useIconSlot`属性。
-
 ```jsx
 <View>
   <RadioGroup
@@ -184,12 +182,10 @@ function onChange(event) {
     onChange={ this.onChange }
   >
     <Radio
-      useIconSlot={ true }
       value={ `${ this.radio }` }
       name="1"
       renderIcon={ (
           <Image
-            slot="icon"
             src={ `${ radio === '1' ? icon.active : icon.normal }` }
           />
 
@@ -198,12 +194,10 @@ function onChange(event) {
       自定义图标
     </Radio>
     <Radio
-      useIconSlot={ true }
       value={ `${ this.radio }` }
       name="2"
       renderIcon={ (
           <Image
-            slot="icon"
             src={ `${ radio === '2' ? icon.active : icon.normal }` }
           />
 
@@ -275,22 +269,24 @@ function onChange(event) {
         clickable={ true }
         dataName="1"
         onClick={ this.onClick }
+        renderRight={(
+          <Radio
+            name="1"
+          />
+        )}
       >
-        <Radio
-          slot="rightIcon"
-          name="1"
-        />
       </Cell>
       <Cell
         title="单选框 2"
         clickable={ true }
         dataName="2"
         onClick={ this.onClick }
+        renderRight={(
+          <Radio
+            name="2"
+          />
+        )}
       >
-        <Radio
-          slot="rightIcon"
-          name="2"
-        />
       </Cell>
     </CellGroup>
   </RadioGroup>

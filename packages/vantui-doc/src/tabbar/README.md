@@ -140,28 +140,35 @@ function onChange(event) {
 
 ### 自定义图标
 
-可以通过 slot 自定义图标，其中 icon slot 代表未选中状态下的图标，iconActive slot 代表选中状态下的图标。
-
 ```jsx
 <View>
   <Tabbar
     active={ `${ this.active }` }
     onChange={ this.onChange }
   >
-    <TabbarItem info="3">
-      <Image
-        slot="icon"
-        src={ `${ icon.normal }` }
-        mode="aspectFit"
-        style="width: 30px; height: 18px;"
-      />
-      <Image
-        slot="iconActive"
-        src={ `${ icon.active }` }
-        mode="aspectFit"
-        style="width: 30px; height: 18px;"
-      /> 自定义
-    </TabbarItem>
+  <TabbarItem
+    info="3"
+    renderIcon={
+      <Block>
+        <Image
+          src={icon.normal}
+          mode="aspectFit"
+          style="width: 30px; height: 18px;"
+        ></Image>
+      </Block>
+    }
+    renderIconactive={
+      <Block>
+        <Image
+          src={icon.active}
+          mode="aspectFit"
+          style="width: 30px; height: 18px;"
+        ></Image>
+      </Block>
+    }
+  >
+    自定义
+  </TabbarItem>
     <TabbarItem icon="search">
       标签
     </TabbarItem>

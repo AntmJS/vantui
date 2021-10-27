@@ -104,17 +104,14 @@ import { Slider } from "vantui";
 <View>
   <Slider
     value={ `${ this.currentValue }` }
-    useButtonSlot={ true }
     onDrag={ this.onDrag }
     renderButton={ (
-          <View
-            class="customButton"
-            slot="button"
-          >
-            { currentValue }/100
-          </View>
-
-        ) }
+      <View
+        class="customButton"
+      >
+        { currentValue }/100
+      </View>
+    )}
   />
 </View>
  

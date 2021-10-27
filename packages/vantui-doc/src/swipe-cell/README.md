@@ -21,19 +21,23 @@ import { SwipeCell } from "vantui";
   <SwipeCell
     rightWidth={ `${ 65 }` }
     leftWidth={ `${ 65 }` }
+    renderLeft={(
+      <View>
+        选择
+      </View>
+    )}
+    renderRight={(
+      <View>
+        删除
+      </View>
+    )}
   >
-    <View slot="left">
-      选择
-    </View>
     <CellGroup>
       <Cell
         title="单元格"
         value="内容"
       />
     </CellGroup>
-    <View slot="right">
-      删除
-    </View>
   </SwipeCell>
 </View>
  
@@ -51,19 +55,23 @@ import { SwipeCell } from "vantui";
     leftWidth={ `${ 65 }` }
     asyncClose={ true }
     onClose={ onClose }
+    renderLeft={(
+      <View>
+        选择
+      </View>
+    )}
+    renderRight={(
+      <View>
+        删除
+      </View>
+    )}
   >
-    <View slot="left">
-      选择
-    </View>
     <CellGroup>
       <Cell
         title="单元格"
         value="内容"
       />
     </CellGroup>
-    <View slot="right">
-      删除
-    </View>
   </SwipeCell>
 </View>
  
@@ -83,25 +91,23 @@ import { SwipeCell } from "vantui";
     leftWidth={ `${ 65 }` }
     name="示例"
     onOpen={ onOpen }
+    renderLeft={(
+      <View class="vanSwipeCell__left">
+        选择
+      </View>
+    )}
+    renderRight={(
+      <View class="vanSwipeCell__right">
+        删除
+      </View>
+    )}
   >
-    <View
-      slot="left"
-      class="vanSwipeCell__left"
-    >
-      选择
-    </View>
     <CellGroup>
       <Cell
         title="单元格"
         value="内容"
       />
     </CellGroup>
-    <View
-      slot="right"
-      class="vanSwipeCell__right"
-    >
-      删除
-    </View>
   </SwipeCell>
 </View>
  

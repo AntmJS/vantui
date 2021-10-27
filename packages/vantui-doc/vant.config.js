@@ -81,6 +81,51 @@ module.exports = {
         ],
       },
       {
+        title: '基础组件',
+        items: [
+          {
+            path: 'button',
+            title: 'Button 按钮',
+          },
+          {
+            path: 'cell',
+            title: 'Cell 单元格',
+          },
+          {
+            path: 'config-provider',
+            title: 'ConfigProvider 全局配置',
+          },
+          {
+            path: 'icon',
+            title: 'Icon 图标',
+          },
+          {
+            path: 'image',
+            title: 'Image 图片',
+          },
+          {
+            path: 'col',
+            title: 'Layout 布局',
+          },
+          {
+            path: 'popup',
+            title: 'Popup 弹出层',
+          },
+          {
+            path: 'common',
+            title: 'Style 内置样式',
+          },
+          {
+            path: 'toast',
+            title: 'Toast 轻提示',
+          },
+          {
+            path: 'transition',
+            title: 'transition 动画',
+          },
+        ],
+      },
+      {
         title: '表单组件',
         items: [
           {

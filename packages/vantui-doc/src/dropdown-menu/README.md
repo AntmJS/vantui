@@ -73,25 +73,31 @@ this.state = {
       id="item"
       title={ `${ this.itemTitle }` }
     >
-      <Cell title={ `${ this.switchTitle1 }` }>
-        <Switch
-          slot="rightIcon"
-          size="24px"
-          style="height: 26px"
-          checked={ `${ switch1 }` }
-          activeColor="#ee0a24"
-          onChange={ this.onSwitch1Change }
-        />
+      <Cell 
+        title={ `${ this.switchTitle1 }` }
+        renderRightIcon={(
+          <Switch
+            size="24px"
+            style="height: 26px"
+            checked={ `${ switch1 }` }
+            activeColor="#ee0a24"
+            onChange={ this.onSwitch1Change }
+          />
+        )}
+      >
       </Cell>
-      <Cell title={ `${ this.switchTitle2 }` }>
-        <Switch
-          slot="rightIcon"
-          size="24px"
-          style="height: 26px"
-          checked={ `${ switch2 }` }
-          activeColor="#ee0a24"
-          onChange={ this.onSwitch2Change }
-        />
+      <Cell 
+        title={ `${ this.switchTitle2 }` }
+        renderRightIcon={(
+          <Switch
+            size="24px"
+            style="height: 26px"
+            checked={ `${ switch2 }` }
+            activeColor="#ee0a24"
+            onChange={ this.onSwitch2Change }
+          />
+        )}
+      >
       </Cell>
       <View style="padding: 5px 16px;">
         <Button

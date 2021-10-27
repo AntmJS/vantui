@@ -120,7 +120,6 @@ function onClickItem({
   >
     <Image
       src="https://img.yzcdn.cn/vant/apple-1.jpg"
-      slot="content"
     />
   </TreeSelect>
 </View>

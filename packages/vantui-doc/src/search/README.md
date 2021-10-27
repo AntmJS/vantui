@@ -93,20 +93,16 @@ import { Search } from "vantui";
 
 ### 自定义按钮
 
-`vanSearch` 支持自定义右侧取消按钮，使用名字为 action 的 slot，并设置 useActionSlot 为 true 即可。
-
 ```jsx
 <View>
   <Search
     value={ `${ this.value }` }
     label="地址"
     placeholder="请输入搜索关键词"
-    useActionSlot={ true }
     onChange={ this.onChange }
     onSearch={ this.onSearch }
     renderAction={ (
           <View
-            slot="action"
             onTap={ this.onClick }
           >
             搜索

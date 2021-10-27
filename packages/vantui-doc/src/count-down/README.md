@@ -64,7 +64,7 @@ this.state = {
 
 ### 自定义样式
 
-设置`useSlot`属性后可以自定义倒计时样式，需要通过`onChange`事件获取`timeData`对象并自行渲染，格式见下方表格。
+通过`onChange`事件获取`timeData`对象并自行渲染，格式见下方表格。
 
 ```jsx
 <View>

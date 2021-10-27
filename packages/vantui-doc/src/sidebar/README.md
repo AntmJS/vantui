@@ -100,13 +100,13 @@ this.state = {
 ```
 
 ```js
-import Notify from '@vant/weapp/dist/notify/notify';
+import { notify } from 'vantui';
 this.state = {
   activeKey: 0
 };
 
 function onChange(event) {
-  Notify({
+  notify({
     type: 'primary',
     message: event.detail
   });

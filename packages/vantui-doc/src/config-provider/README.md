@@ -56,7 +56,6 @@ page {
     <CellGroup>
       <Field label="评分">
         <View
-          slot="input"
           style="width: 100%"
         >
           <Rate
@@ -72,7 +71,6 @@ page {
         border={ `${ false }` }
       >
         <View
-          slot="input"
           style="width: 100%"
         >
           <Slider

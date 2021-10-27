@@ -17,9 +17,9 @@ import { Notify } from "vantui";
 ### 基础用法
 
 ```js
-import Notify from 'path/to/@vant/weapp/dist/notify/notify';
+import { notify } from 'vantui';
 
-Notify('通知内容');
+notify('通知内容');
 ```
 
 ```jsx
@@ -36,16 +36,16 @@ Notify('通知内容');
 
 ```js
 // 主要通知
-Notify({ type: 'primary', message: '通知内容' });
+notify({ type: 'primary', message: '通知内容' });
 
 // 成功通知
-Notify({ type: 'success', message: '通知内容' });
+notify({ type: 'success', message: '通知内容' });
 
 // 危险通知
-Notify({ type: 'danger', message: '通知内容' });
+notify({ type: 'danger', message: '通知内容' });
 
 // 警告通知
-Notify({ type: 'warning', message: '通知内容' });
+notify({ type: 'warning', message: '通知内容' });
 ```
 
 ### 自定义通知

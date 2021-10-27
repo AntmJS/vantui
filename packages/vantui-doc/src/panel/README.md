@@ -31,28 +31,28 @@ import { Panel } from "vantui";
 
 ### 高级用法
 
-使用`slot`自定义内容。
-
 ```jsx
 <View>
   <Panel
     title="标题"
     desc="描述信息"
     status="状态"
+    renderFooter={(
+      <View>
+        <Button size="small">
+          按钮
+        </Button>
+        <Button
+          size="small"
+          type="danger"
+        >
+          按钮
+        </Button>
+      </View>
+    )}
   >
     <View>
       内容
-    </View>
-    <View slot="footer">
-      <Button size="small">
-        按钮
-      </Button>
-      <Button
-        size="small"
-        type="danger"
-      >
-        按钮
-      </Button>
     </View>
   </Panel>
 </View>

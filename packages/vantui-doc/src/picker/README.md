@@ -27,7 +27,7 @@ import { Picker } from "vantui";
 ```
 
 ```js
-import Toast from 'path/to/@vant/weapp/dist/toast/toast';
+import { toast } from 'vantui';
 this.state = {
   columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
 };
@@ -38,7 +38,7 @@ function onChange(event) {
     value,
     index
   } = event.detail;
-  Toast(`当前值：${value}, 当前索引：${index}`);
+  toast(`当前值：${value}, 当前索引：${index}`);
 } 
 ```
 
@@ -73,7 +73,7 @@ function onChange(event) {
 ```
 
 ```js
-import Toast from 'path/to/@vant/weapp/dist/toast/toast';
+import { toast } from 'vantui';
 this.state = {
   columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
 };
@@ -84,11 +84,11 @@ function onConfirm(event) {
     value,
     index
   } = event.detail;
-  Toast(`当前值：${value}, 当前索引：${index}`);
+  toast(`当前值：${value}, 当前索引：${index}`);
 }
 
 function onCancel() {
-  Toast('取消');
+  toast('取消');
 } 
 ```
 
