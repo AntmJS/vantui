@@ -14,19 +14,21 @@
 # mv  ./../vantui-demo/build/index.html  ./site/mobile.html
 
 
+docBranchName = 'feat/doc'
+
 git  add .
 
 git stash
 
-git checkout gh-pages
+git checkout ${docBranchName}
 
 
+# echo '=========='
+# cd ./../../
+# ls
+# git branch
+# pwd
+# echo '-------------'
+# git checkout feat/demo-ui
 
-echo '=========='
-cd ./../../
-ls
-pwd
-echo '-------------'
-git checkout feat/demo-ui
-
-git stash pop
+# git stash pop
