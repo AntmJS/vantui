@@ -8,7 +8,8 @@
     "build": "npx vant-cli build",
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
-    "build-site": "npx vant-cli build-site && gh-pages -d site"
+    "build-site": "npx vant-cli build-site",
+    "publish": "npx gh-pages -d site"
   },
   "author": "sanshao",
   "license": "MIT",
