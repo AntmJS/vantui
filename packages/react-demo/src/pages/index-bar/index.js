@@ -1,17 +1,16 @@
-import { Block, View, Text } from '@tarojs/components'
-import React from 'react'
+import { Text } from '@tarojs/components'
+import { Component, Fragment } from 'react'
 
 import { IndexAnchor, IndexBar, Tabs, Tab, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
-import DemoBlock from '../../components/demo-block/index'
 const indexList = []
 const charCodeOfA = 'A'.charCodeAt(0)
 for (let i = 0; i < 26; i++) {
   indexList.push(String.fromCharCode(charCodeOfA + i))
 }
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -43,14 +42,14 @@ export default class Index extends React.Component {
           <Tab title="基础用法">
             {activeTab === 0 && (
               <IndexBar scrollTop={scrollTop}>
-                {indexList.map((item, index) => {
+                {indexList.map((item) => {
                   return (
-                    <React.Fragment key={item.item}>
+                    <Fragment key={item.item}>
                       <IndexAnchor index={item}></IndexAnchor>
                       <Cell title="文本"></Cell>
                       <Cell title="文本"></Cell>
                       <Cell title="文本"></Cell>
-                    </React.Fragment>
+                    </Fragment>
                   )
                 })}
               </IndexBar>
@@ -59,16 +58,16 @@ export default class Index extends React.Component {
           <Tab title="自定义索引列表">
             {activeTab === 1 && (
               <IndexBar indexList={customIndexList} scrollTop={scrollTop}>
-                {customIndexList.map((item, index) => {
+                {customIndexList.map((item) => {
                   return (
-                    <React.Fragment key={item.index}>
+                    <Fragment key={item.index}>
                       <IndexAnchor index={item}>
                         <Text>{'标题' + item}</Text>
                       </IndexAnchor>
                       <Cell title="文本"></Cell>
                       <Cell title="文本"></Cell>
                       <Cell title="文本"></Cell>
-                    </React.Fragment>
+                    </Fragment>
                   )
                 })}
               </IndexBar>

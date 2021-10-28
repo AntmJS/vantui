@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { Switch, Dialog, dialog } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -6,7 +6,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -26,7 +26,7 @@ export default class Index extends React.Component {
         title: '提示',
         message: '是否切换开关？',
       })
-      .then((res) => {
+      .then(() => {
         this.setState({ checked2: detail })
       })
   }

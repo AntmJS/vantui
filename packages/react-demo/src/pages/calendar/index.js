@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { Calendar, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -7,7 +7,7 @@ import DemoBlock from '../../components/demo-block/index'
 import computed from './index.wxs.js'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

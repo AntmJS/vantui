@@ -1,6 +1,6 @@
-import { Block, View, ScrollView } from '@tarojs/components'
-import React from 'react'
-import Taro, { createSelectorQuery } from '@tarojs/taro'
+import { View, ScrollView } from '@tarojs/components'
+import { Component } from 'react'
+import { createSelectorQuery } from '@tarojs/taro'
 
 import { Sticky, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -8,7 +8,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

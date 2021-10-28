@@ -1,11 +1,11 @@
 import { navigateTo } from '@tarojs/taro'
-import React from 'react'
+import { Component } from 'react'
 import './app.less'
 // interface IProps {
 //   children: React.ReactNode
 // }
 let oldHash = ''
-export default class Index extends React.Component {
+export default class Index extends Component {
   onPageNotFound() {
     navigateTo({
       url: '/pages/dashboard/index',

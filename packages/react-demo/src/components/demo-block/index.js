@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import { Component } from 'react'
 
 import './index.less'
 // eslint-disable
-export default class Index extends React.Component {
+export default class Index extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { padding, title, card } = this.props

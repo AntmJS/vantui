@@ -1,5 +1,4 @@
 import { Icon } from '@antmjs/vantui'
-import { View } from '@tarojs/components'
 import * as React from 'react'
 import './index.less'
 

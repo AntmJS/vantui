@@ -1,13 +1,13 @@
-import React from 'react'
+import { Component } from 'react'
 
-import { Image, Dialog, Cell, dialog, toast } from '@antmjs/vantui'
+import { Image, Dialog, Cell, dialog } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 const message = '代码是写出来给人看的，附带能在机器上运行'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

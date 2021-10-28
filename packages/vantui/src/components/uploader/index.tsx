@@ -1,4 +1,4 @@
-import Taro, { previewImage as TaroPreviewImage, showToast } from '@tarojs/taro'
+import { previewImage as TaroPreviewImage, showToast } from '@tarojs/taro'
 import { useState, useEffect, useCallback } from 'react'
 import { View, Text, Image, Video, ITouchEvent } from '@tarojs/components'
 
