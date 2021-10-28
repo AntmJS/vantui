@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { Toast, Steps, Button, toast } from '@antmjs/vantui'
 
@@ -25,7 +25,7 @@ const steps = [
   },
 ]
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

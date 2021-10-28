@@ -1,5 +1,5 @@
 import { View, Text } from '@tarojs/components'
-import React from 'react'
+import { Component } from 'react'
 
 import { Row, Loading, Image, Col } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -7,7 +7,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -37,7 +37,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <DemoBlock title="填充模式" padding>
             <Row gutter="20">
-              {fits.map((fit, index) => {
+              {fits.map((fit) => {
                 return (
                   <Col key={fit.fit} span="8">
                     <Image
@@ -54,7 +54,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <DemoBlock title="圆形图片" padding>
             <Row gutter="20">
-              {fits.map((fit, index) => {
+              {fits.map((fit) => {
                 return (
                   <Col key={fit.fit} span="8">
                     <Image

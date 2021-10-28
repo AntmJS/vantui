@@ -1,5 +1,5 @@
 import { View, Text } from '@tarojs/components'
-import React from 'react'
+import { Component } from 'react'
 
 import { Toast, Tag, SubmitBar, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -7,7 +7,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

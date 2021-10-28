@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tabs, Tab, Icon, Col } from '@antmjs/vantui'
 
@@ -8,7 +8,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -89,7 +89,7 @@ export default class Index extends React.Component {
             </DemoBlock>
           </Tab>
           <Tab title="基础图标" className="demo-tab-pane">
-            {icons.basic.map((item, index) => {
+            {icons.basic.map((item) => {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
@@ -99,7 +99,7 @@ export default class Index extends React.Component {
             })}
           </Tab>
           <Tab title="线框风格" className="demo-tab-pane">
-            {icons.outline.map((item, index) => {
+            {icons.outline.map((item) => {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
@@ -109,7 +109,7 @@ export default class Index extends React.Component {
             })}
           </Tab>
           <Tab title="实底风格" className="demo-tab-pane">
-            {icons.filled.map((item, index) => {
+            {icons.filled.map((item) => {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>

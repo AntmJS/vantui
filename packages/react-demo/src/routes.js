@@ -194,7 +194,7 @@ export default [
     title: 'sidebar',
     path: '/pages/sidebar/index',
     page: './pages/sidebar/index',
-    component: Slider,
+    component: Sidebar,
   },
   {
     title: 'tab',

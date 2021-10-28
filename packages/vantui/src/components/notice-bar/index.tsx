@@ -1,4 +1,4 @@
-import Taro, { createAnimation } from '@tarojs/taro'
+import { createAnimation } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Navigator, ITouchEvent } from '@tarojs/components'
 

@@ -1,12 +1,12 @@
-import React from 'react'
-import Taro, { showToast } from '@tarojs/taro'
+import { Component } from 'react'
+import { showToast } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { Search } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import { Component } from 'react'
 import { Icon } from '@antmjs/vantui'
 import history from '../../history'
 import './index.less'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor(props) {
     super(props)
   }
