@@ -35,7 +35,7 @@ function onChange({
   detail
 }) {
   // 需要手动对 checked 状态进行更新
-  this.setData({
+  this.setState({
     checked: detail
   });
 } 
@@ -115,7 +115,7 @@ function onChange({
     content: '是否切换开关？',
     success: res => {
       if (res.confirm) {
-        this.setData({
+        this.setState({
           checked2: detail
         });
       }

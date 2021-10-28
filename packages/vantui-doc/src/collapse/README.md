@@ -55,7 +55,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     activeNames: event.detail
   });
 } 
@@ -101,7 +101,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     activeName: event.detail
   });
 } 
@@ -148,7 +148,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     activeNames: event.detail
   });
 }
@@ -199,7 +199,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     activeNames: event.detail
   });
 } 

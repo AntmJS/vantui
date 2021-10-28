@@ -144,7 +144,7 @@ function onChange(value) {
   });
   setTimeout(() => {
     Toast.clear();
-    this.setData({
+    this.setState({
       value
     });
   }, 500);

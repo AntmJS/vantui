@@ -37,7 +37,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     checked: event.detail
   });
 } 
@@ -139,7 +139,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     checked: event.detail
   });
 } 
@@ -191,7 +191,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     result: event.detail
   });
 } 
@@ -260,7 +260,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     result: event.detail
   });
 }

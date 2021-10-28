@@ -160,7 +160,7 @@ function getUserInfo(event) {
 }
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 } 

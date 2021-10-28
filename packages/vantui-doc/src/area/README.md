@@ -126,7 +126,7 @@ db.collection('region')
   .get()
   .then((res) => {
     if (res.data && res.data.length > 0) {
-      this.setData({
+      this.setState({
         areaList: res.data[0],
       });
     }

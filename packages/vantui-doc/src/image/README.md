@@ -12,8 +12,6 @@
 import { Image } from "vantui"; 
 ```
 
-> Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)。
-
 ## 代码演示
 
 ### 基础用法
@@ -100,7 +98,7 @@ import { Image } from "vantui";
 
 ### 加载失败提示
 
-`Image`组件提供了默认的加载失败提示，支持通过`error`插槽自定义内容。
+`Image`组件提供了默认的加载失败提示，支持通过`renderError`来自定义内容。
 
 ```jsx
 <View>
@@ -109,7 +107,6 @@ import { Image } from "vantui";
           <Text>
             加载失败
           </Text>
-
         ) }
   />
 </View>

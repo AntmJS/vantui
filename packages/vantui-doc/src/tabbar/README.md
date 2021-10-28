@@ -47,7 +47,7 @@ this.state = {
 
 function onChange(event) {
   // event.detail 的值为当前选中项的索引
-  this.setData({
+  this.setState({
     active: event.detail
   });
 } 
@@ -98,7 +98,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     active: event.detail
   });
 } 
@@ -190,7 +190,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     active: event.detail
   });
 } 
@@ -229,7 +229,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     active: event.detail
   });
 } 

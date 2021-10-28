@@ -42,7 +42,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     radio: event.detail
   });
 } 
@@ -220,7 +220,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     radio: event.detail
   });
 } 
@@ -300,7 +300,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     radio: event.detail
   });
 }
@@ -309,7 +309,7 @@ function onClick(event) {
   const {
     name
   } = event.currentTarget.dataset;
-  this.setData({
+  this.setState({
     radio: name
   });
 } 
@@ -321,7 +321,7 @@ import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface RadioProps extends StandardProps {
   name?: string
-  value?: null
+  value?: any
   disabled?: boolean
   checkedColor?: string
   labelPosition?: string

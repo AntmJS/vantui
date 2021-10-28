@@ -9,7 +9,8 @@
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
     "build-site": "npx vant-cli build-site",
-    "publish": "npx gh-pages -d site"
+    "publish": "npx gh-pages -d site",
+    "docs-ts": "node ./synch.js"
   },
   "author": "sanshao",
   "license": "MIT",
@@ -20,6 +21,7 @@
     "@vant/cli": "^3.9.0",
     "@vue/compiler-sfc": "^3.0.0",
     "cross-env": "^7.0.3",
+    "glob": "^7.2.0",
     "vue": "^3.0.0"
   },
   "browserslist": [

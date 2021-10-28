@@ -230,7 +230,7 @@ this.state = {
 };
 
 function onClose(event) {
-  this.setData({
+  this.setState({
     [`show.${event.target.id}`]: false
   });
 } 

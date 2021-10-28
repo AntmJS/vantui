@@ -45,7 +45,7 @@ this.state = {
 };
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 }
@@ -160,7 +160,7 @@ this.state = {
 };
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 }

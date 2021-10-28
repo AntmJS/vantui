@@ -40,7 +40,7 @@ this.state = {
 function onClickNav({
   detail = {}
 }) {
-  this.setData({
+  this.setState({
     mainActiveIndex: detail.index || 0
   });
 }
@@ -49,7 +49,7 @@ function onClickItem({
   detail = {}
 }) {
   const activeId = this.data.activeId === detail.id ? null : detail.id;
-  this.setData({
+  this.setState({
     activeId
   });
 } 
@@ -81,7 +81,7 @@ this.state = {
 function onClickNav({
   detail = {}
 }) {
-  this.setData({
+  this.setState({
     mainActiveIndex: detail.index || 0
   });
 }
@@ -100,7 +100,7 @@ function onClickItem({
     activeId.push(detail.id);
   }
 
-  this.setData({
+  this.setState({
     activeId
   });
 } 

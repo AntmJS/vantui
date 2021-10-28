@@ -120,7 +120,7 @@ this.state = {
 };
 
 function onChange(e) {
-  this.setData({
+  this.setState({
     value: e.detail
   });
 }

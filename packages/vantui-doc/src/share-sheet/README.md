@@ -58,13 +58,13 @@ this.state = {
 };
 
 function onClick(event) {
-  this.setData({
+  this.setState({
     showShare: true
   });
 }
 
 function onClose() {
-  this.setData({
+  this.setState({
     showShare: false
   });
 }

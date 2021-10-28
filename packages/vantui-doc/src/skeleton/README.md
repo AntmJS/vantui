@@ -71,7 +71,7 @@ this.state = {
 };
 
 function onReady() {
-  this.setData({
+  this.setState({
     loading: false
   });
 } 

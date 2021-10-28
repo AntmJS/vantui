@@ -156,9 +156,9 @@ import { CellGroup } from "vantui";
  
 ```
 
-### 使用插槽
+### 自定义渲染内容
 
-如以上用法不能满足你的需求，可以使用插槽来自定义内容。
+如以上用法不能满足你的需求，可以使用`renderTitle`和`renderIcon`来渲染内容
 
 ```jsx
 <View>
