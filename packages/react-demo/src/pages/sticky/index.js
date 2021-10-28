@@ -42,7 +42,7 @@ export default class Index extends React.Component {
     const { container, scrollTop, offsetTop } = this.state
     return (
       <DemoPage title="Sticky 粘性布局">
-        <div className="sticky-page">
+        <View className="sticky-page">
           <DemoBlock title="基础用法">
             <Sticky>
               <Button type="primary" style="margin-left: 15px">
@@ -58,13 +58,13 @@ export default class Index extends React.Component {
             </Sticky>
           </DemoBlock>
           <DemoBlock title="指定容器">
-            <div id="container" style="height: 150px; background-color: #fff;">
+            <View id="container" style="height: 150px; background-color: #fff;">
               <Sticky container={container}>
                 <Button type="warning" style="margin-left: 215px;">
                   指定容器
                 </Button>
               </Sticky>
-            </div>
+            </View>
           </DemoBlock>
           <DemoBlock title="嵌套在 scroll-view 内使用">
             <ScrollView
@@ -73,14 +73,14 @@ export default class Index extends React.Component {
               id="scroller"
               style="height: 200px; background-color: #fff;"
             >
-              <div style="height: 400px;">
+              <View style="height: 400px;">
                 <Sticky scrollTop={scrollTop} offsetTop={offsetTop}>
                   <Button type="warning">嵌套在 scroll-view 内</Button>
                 </Sticky>
-              </div>
+              </View>
             </ScrollView>
           </DemoBlock>
-        </div>
+        </View>
       </DemoPage>
     )
   }
