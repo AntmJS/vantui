@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Overlay, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -50,9 +50,9 @@ export default class Index extends React.Component {
               嵌入内容
             </Button>
             <Overlay show={showEmbedded} onClick={this.onClickHideEmbedded}>
-              <div className="wrapper">
-                <div className="block" onClick={this.noop}></div>
-              </div>
+              <View className="wrapper">
+                <View className="block" onClick={this.noop}></View>
+              </View>
             </Overlay>
           </DemoBlock>
         </>

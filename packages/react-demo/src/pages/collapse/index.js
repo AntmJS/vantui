@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -159,13 +159,13 @@ export default class Index extends React.Component {
               <CollapseItem
                 renderTitle={
                   <>
-                    <div>
+                    <View>
                       {title1}
                       <Icon
                         name="question-o"
                         className="van-icon-question"
                       ></Icon>
-                    </div>
+                    </View>
                   </>
                 }
               >

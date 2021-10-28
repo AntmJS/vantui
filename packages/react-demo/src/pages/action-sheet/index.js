@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Button, ActionSheet } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -133,7 +133,7 @@ export default class Index extends React.Component {
               title="标题"
               onClose={this.toggleActionSheet5}
             >
-              <div className="content">内容</div>
+              <View className="content">内容</View>
             </ActionSheet>
           </DemoBlock>
           <DemoBlock title="微信开放能力" padding>

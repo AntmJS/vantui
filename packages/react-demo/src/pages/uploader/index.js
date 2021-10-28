@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
-
+import { View } from '@tarojs/components'
 import { Uploader, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -209,11 +209,11 @@ export default class Index extends React.Component {
               onClickPreview={this.clickPreview}
               useBeforeRead={true}
             ></Uploader>
-            <div className="demo-margin-bottom">
+            <View className="demo-margin-bottom">
               <Button type="primary" onClick={this.uploadToCloud}>
                 上传至云存储
               </Button>
-            </div>
+            </View>
           </DemoBlock>
         </>
       </DemoPage>

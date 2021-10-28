@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import {
   SwipeCell,
   Notify,
@@ -65,12 +65,12 @@ export default class Index extends React.Component {
               leftWidth={65}
               renderLeft={
                 <>
-                  <div className="van-swipe-cell__left_">选择</div>
+                  <View className="van-swipe-cell__left_">选择</View>
                 </>
               }
               renderRight={
                 <>
-                  <div className="van-swipe-cell__right_">删除</div>
+                  <View className="van-swipe-cell__right_">删除</View>
                 </>
               }
             >
@@ -88,12 +88,12 @@ export default class Index extends React.Component {
               onClose={this.onClose}
               renderLeft={
                 <>
-                  <div className="van-swipe-cell__left_">选择</div>
+                  <View className="van-swipe-cell__left_">选择</View>
                 </>
               }
               renderRight={
                 <>
-                  <div className="van-swipe-cell__right_">删除</div>
+                  <View className="van-swipe-cell__right_">删除</View>
                 </>
               }
             >
@@ -111,12 +111,12 @@ export default class Index extends React.Component {
               onOpen={this.onOpen}
               renderLeft={
                 <>
-                  <div className="van-swipe-cell__left_">选择</div>
+                  <View className="van-swipe-cell__left_">选择</View>
                 </>
               }
               renderRight={
                 <>
-                  <div className="van-swipe-cell__right_">删除</div>
+                  <View className="van-swipe-cell__right_">删除</View>
                 </>
               }
             >

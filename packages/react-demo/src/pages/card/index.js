@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Tag, Card, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -20,7 +20,7 @@ export default class Index extends React.Component {
     const { imageURL } = this.state
     return (
       <DemoPage title="Card 商品卡片">
-        <div className="container">
+        <View className="container">
           <DemoBlock title="基础用法">
             <Card
               num="2"
@@ -41,31 +41,31 @@ export default class Index extends React.Component {
               thumb={imageURL}
               renderTags={
                 <>
-                  <div>
+                  <View>
                     <Tag plain type="danger" className="tag">
                       标签1
                     </Tag>
                     <Tag plain type="danger">
                       标签2
                     </Tag>
-                  </div>
+                  </View>
                 </>
               }
               renderFooter={
                 <>
-                  <div className="van-card__footer">
+                  <View className="van-card__footer">
                     <Button size="mini" round className="button">
                       按钮
                     </Button>
                     <Button size="mini" round>
                       按钮
                     </Button>
-                  </div>
+                  </View>
                 </>
               }
             ></Card>
           </DemoBlock>
-        </div>
+        </View>
       </DemoPage>
     )
   }

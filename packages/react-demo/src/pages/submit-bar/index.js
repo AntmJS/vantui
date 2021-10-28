@@ -1,4 +1,4 @@
-import { Block, View, Text } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import React from 'react'
 
 import { Toast, Tag, SubmitBar, toast } from '@antmjs/vantui'
@@ -64,12 +64,12 @@ export default class Index extends React.Component {
               safeAreaInsetBottom={false}
               renderTip={
                 <>
-                  <div>
+                  <View>
                     您的收货地址不支持同城送
                     <Text className="edit-address" onClick={this.onClickLink}>
                       修改地址
                     </Text>
-                  </div>
+                  </View>
                 </>
               }
             >

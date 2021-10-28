@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
-
+import { View } from '@tarojs/components'
 import { Tabs, Tab, Icon } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -56,13 +56,13 @@ export default class Index extends React.Component {
     const { tabs4, tabsWithName, tabs6, tabs3, tabs2 } = this.state
     return (
       <DemoPage title="Tab 标签页">
-        <div className="tab-page">
+        <View className="tab-page">
           <DemoBlock title="基础用法">
             <Tabs active={1} onChange={this.onChange}>
               {tabs4.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -73,7 +73,7 @@ export default class Index extends React.Component {
               {tabsWithName.map((item, index) => {
                 return (
                   <Tab key={index} name={item.name} title={'标签 ' + index}>
-                    <div className="content">{'内容' + item.index}</div>
+                    <View className="content">{'内容' + item.index}</View>
                   </Tab>
                 )
               })}
@@ -84,7 +84,7 @@ export default class Index extends React.Component {
               {tabs6.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -99,7 +99,7 @@ export default class Index extends React.Component {
                     disabled={index === 1}
                     title={'标签 ' + item}
                   >
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -110,7 +110,7 @@ export default class Index extends React.Component {
               {tabs3.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content-2">{'内容' + item}</div>
+                    <View className="content-2">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -121,7 +121,7 @@ export default class Index extends React.Component {
               {tabs2.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -132,7 +132,7 @@ export default class Index extends React.Component {
               {tabs4.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -143,7 +143,7 @@ export default class Index extends React.Component {
               {tabs4.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -154,7 +154,7 @@ export default class Index extends React.Component {
               {tabs4.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
@@ -184,13 +184,13 @@ export default class Index extends React.Component {
                     dot={index === 1}
                     info={index === 2 ? 99 : null}
                   >
-                    <div className="content">{'内容' + item}</div>
+                    <View className="content">{'内容' + item}</View>
                   </Tab>
                 )
               })}
             </Tabs>
           </DemoBlock>
-        </div>
+        </View>
       </DemoPage>
     )
   }

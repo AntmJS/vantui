@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import {
   DropdownItem,
   DropdownMenu,
@@ -102,11 +102,11 @@ export default class Index extends React.Component {
                     </>
                   }
                 ></Cell>
-                <div style="padding: 5px 16px;">
+                <View style="padding: 5px 16px;">
                   <Button type="danger" block round onClick={this.onConfirm}>
                     确认
                   </Button>
-                </div>
+                </View>
               </DropdownItem>
             </DropdownMenu>
           </DemoBlock>

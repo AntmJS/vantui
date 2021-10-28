@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Tag, Icon, CellGroup, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -43,7 +43,7 @@ export default class Index extends React.Component {
                 border={false}
                 renderLabel={
                   <>
-                    <div>描述信息</div>
+                    <View>描述信息</View>
                   </>
                 }
               ></Cell>
@@ -92,10 +92,10 @@ export default class Index extends React.Component {
               isLink
               renderTitle={
                 <>
-                  <div>
-                    <div className="title">单元格</div>
+                  <View>
+                    <View className="title">单元格</View>
                     <Tag type="danger">标签</Tag>
-                  </div>
+                  </View>
                 </>
               }
             ></Cell>

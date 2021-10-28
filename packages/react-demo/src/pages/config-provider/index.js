@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import {
   ConfigProvider,
   Rate,
@@ -49,7 +49,7 @@ export default class Index extends React.Component {
                 label="评分"
                 renderInput={
                   <>
-                    <div style="width: 100%">
+                    <View style="width: 100%">
                       <Rate
                         value={rate}
                         onChange={(e) => {
@@ -64,7 +64,7 @@ export default class Index extends React.Component {
                           })
                         }}
                       ></Rate>
-                    </div>
+                    </View>
                   </>
                 }
               ></Field>
@@ -73,7 +73,7 @@ export default class Index extends React.Component {
                 border={false}
                 renderInput={
                   <>
-                    <div style="width: 100%">
+                    <View style="width: 100%">
                       <Slider
                         value={slider}
                         onChange={(e) => {
@@ -88,16 +88,16 @@ export default class Index extends React.Component {
                           })
                         }}
                       ></Slider>
-                    </div>
+                    </View>
                   </>
                 }
               ></Field>
             </CellGroup>
-            <div style="margin: 16px">
+            <View style="margin: 16px">
               <Button round block type="primary">
                 提交
               </Button>
-            </div>
+            </View>
           </DemoBlock>
           <DemoBlock title="定制主题">
             <ConfigProvider themeVars={themeVars}>
@@ -106,7 +106,7 @@ export default class Index extends React.Component {
                   label="评分"
                   renderInput={
                     <>
-                      <div style="width: 100%">
+                      <View style="width: 100%">
                         <Rate
                           value={rate}
                           onChange={(e) => {
@@ -121,7 +121,7 @@ export default class Index extends React.Component {
                             })
                           }}
                         ></Rate>
-                      </div>
+                      </View>
                     </>
                   }
                 ></Field>
@@ -130,7 +130,7 @@ export default class Index extends React.Component {
                   border={false}
                   renderInput={
                     <>
-                      <div style="width: 100%">
+                      <View style="width: 100%">
                         <Slider
                           value={slider}
                           onChange={(e) => {
@@ -145,16 +145,16 @@ export default class Index extends React.Component {
                             })
                           }}
                         ></Slider>
-                      </div>
+                      </View>
                     </>
                   }
                 ></Field>
               </CellGroup>
-              <div style="margin: 16px">
+              <View style="margin: 16px">
                 <Button round block type="primary">
                   提交
                 </Button>
-              </div>
+              </View>
             </ConfigProvider>
           </DemoBlock>
         </>

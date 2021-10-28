@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
-
+import { View } from '@tarojs/components'
 import { Search } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -107,7 +107,7 @@ export default class Index extends React.Component {
               onChange={this.onChange}
               renderAction={
                 <>
-                  <div onClick={this.onClick}>搜索</div>
+                  <View onClick={this.onClick}>搜索</View>
                 </>
               }
             ></Search>

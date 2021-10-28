@@ -1,6 +1,6 @@
 import React from 'react'
-import Taro, { showToast } from '@tarojs/taro'
-
+import { showToast } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { Slider } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -85,7 +85,7 @@ export default class Index extends React.Component {
               renderButton={() => {
                 return (
                   <>
-                    <div className="custom-button">{currentValue}</div>
+                    <View className="custom-button">{currentValue}</View>
                   </>
                 )
               }}
