@@ -32,7 +32,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     value: event.detail
   });
 } 
@@ -89,7 +89,7 @@ this.state = {
 };
 
 function onChange(event) {
-  this.setData({
+  this.setState({
     value: event.detail
   });
 } 

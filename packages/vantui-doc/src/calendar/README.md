@@ -41,13 +41,13 @@ this.state = {
 };
 
 function onDisplay() {
-  this.setData({
+  this.setState({
     show: true
   });
 }
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 }
@@ -58,7 +58,7 @@ function formatDate(date) {
 }
 
 function onConfirm(event) {
-  this.setData({
+  this.setState({
     show: false,
     date: this.formatDate(event.detail)
   });
@@ -93,19 +93,19 @@ this.state = {
 };
 
 function onDisplay() {
-  this.setData({
+  this.setState({
     show: true
   });
 }
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 }
 
 function onConfirm(event) {
-  this.setData({
+  this.setState({
     show: false,
     date: `选择了 ${event.detail.length} 个日期`
   });
@@ -140,13 +140,13 @@ this.state = {
 };
 
 function onDisplay() {
-  this.setData({
+  this.setState({
     show: true
   });
 }
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 }
@@ -158,7 +158,7 @@ function formatDate(date) {
 
 function onConfirm(event) {
   const [start, end] = event.detail;
-  this.setData({
+  this.setState({
     show: false,
     date: `${this.formatDate(start)} - ${this.formatDate(end)}`
   });

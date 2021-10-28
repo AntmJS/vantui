@@ -72,7 +72,7 @@ this.state = {
 };
 
 function onReady() {
-  this.setData({
+  this.setState({
     container: () => wx.createSelectorQuery().select('#container')
   });
 } 
@@ -113,7 +113,7 @@ this.state = {
 
 function onScroll(event) {
   wx.createSelectorQuery().select('#scroller').boundingClientRect(res => {
-    this.setData({
+    this.setState({
       scrollTop: event.detail.scrollTop,
       offsetTop: res.top
     });

@@ -38,13 +38,13 @@ this.state = {
 };
 
 function onClickShow() {
-  this.setData({
+  this.setState({
     show: true
   });
 }
 
 function onClickHide() {
-  this.setData({
+  this.setState({
     show: false
   });
 } 
@@ -80,13 +80,13 @@ this.state = {
 };
 
 function onClickShow() {
-  this.setData({
+  this.setState({
     show: true
   });
 }
 
 function onClickHide() {
-  this.setData({
+  this.setState({
     show: false
   });
 }

@@ -140,7 +140,7 @@ function onConfirm() {
 function onSwitch1Change({
   detail
 }) {
-  this.setData({
+  this.setState({
     switch1: detail
   });
 }
@@ -148,7 +148,7 @@ function onSwitch1Change({
 function onSwitch2Change({
   detail
 }) {
-  this.setData({
+  this.setState({
     switch2: detail
   });
 } 

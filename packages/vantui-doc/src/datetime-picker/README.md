@@ -41,7 +41,7 @@ this.state = {
 };
 
 function onInput(event) {
-  this.setData({
+  this.setState({
     currentDate: event.detail
   });
 } 
@@ -84,7 +84,7 @@ this.state = {
 };
 
 function onInput(event) {
-  this.setData({
+  this.setState({
     currentDate: event.detail
   });
 } 
@@ -113,7 +113,7 @@ this.state = {
 };
 
 function onInput(event) {
-  this.setData({
+  this.setState({
     currentDate: event.detail
   });
 } 
@@ -144,7 +144,7 @@ this.state = {
 };
 
 function onInput(event) {
-  this.setData({
+  this.setState({
     currentDate: event.detail
   });
 } 

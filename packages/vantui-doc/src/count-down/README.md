@@ -93,7 +93,7 @@ this.state = {
 };
 
 function onChange(e) {
-  this.setData({
+  this.setState({
     timeData: e.detail
   });
 } 

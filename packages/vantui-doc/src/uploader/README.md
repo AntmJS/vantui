@@ -57,7 +57,7 @@ function afterRead(event) {
       fileList.push({ ...file,
         url: res.data
       });
-      this.setData({
+      this.setState({
         fileList
       });
     }
@@ -228,7 +228,7 @@ uploadToCloud() {
       .then(data => {
         wx.showToast({ title: '上传成功', icon: 'none' });
         const newFileList = data.map(item => ({ url: item.fileID }));
-        this.setData({ cloudPath: data, fileList: newFileList });
+        this.setState({ cloudPath: data, fileList: newFileList });
       })
       .catch(e => {
         wx.showToast({ title: '上传失败', icon: 'none' });

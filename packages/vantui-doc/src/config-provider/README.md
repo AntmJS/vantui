@@ -115,7 +115,7 @@ function onChange(event) {
   const {
     key
   } = event.currentTarget.dataset;
-  this.setData({
+  this.setState({
     [key]: event.detail
   });
 } 

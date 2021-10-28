@@ -41,13 +41,13 @@ this.state = {
 };
 
 function showPopup() {
-  this.setData({
+  this.setState({
     show: true
   });
 }
 
 function onClose() {
-  this.setData({
+  this.setState({
     show: false
   });
 } 

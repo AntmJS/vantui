@@ -123,7 +123,7 @@ this.state = {
 };
 
 function onDrag(event) {
-  this.setData({
+  this.setState({
     currentValue: event.detail.value
   });
 } 
