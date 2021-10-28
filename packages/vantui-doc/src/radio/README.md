@@ -321,7 +321,7 @@ import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface RadioProps extends StandardProps {
   name?: string
-  value?: null
+  value?: any
   disabled?: boolean
   checkedColor?: string
   labelPosition?: string
