@@ -1,11 +1,11 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { Toast, Button, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { Image, CheckboxGroup, Checkbox, CellGroup, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -6,7 +6,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -219,7 +219,7 @@ export default class Index extends React.Component {
                 })
               }}
             >
-              {list.map((item, index) => {
+              {list.map((item) => {
                 return (
                   <Checkbox key={item} name={item} className="demo-checkbox">
                     {'复选框 ' + item}
@@ -244,7 +244,7 @@ export default class Index extends React.Component {
                 })
               }}
             >
-              {list.map((item, index) => {
+              {list.map((item) => {
                 return (
                   <Checkbox key={item} name={item} className="demo-checkbox">
                     {'复选框 ' + item}
@@ -269,7 +269,7 @@ export default class Index extends React.Component {
                 })
               }}
             >
-              {list.map((item, index) => {
+              {list.map((item) => {
                 return (
                   <Checkbox key={item} name={item} className="demo-checkbox">
                     {'复选框 ' + item}

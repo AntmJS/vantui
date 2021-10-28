@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { TreeSelect, Image } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -23,7 +23,7 @@ const items = [
   },
 ]
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

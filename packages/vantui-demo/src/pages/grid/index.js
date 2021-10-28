@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import { GridItem, Grid, Image } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -6,7 +6,7 @@ import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -25,7 +25,7 @@ export default class Index extends React.Component {
         <>
           <DemoBlock title="基本用法">
             <Grid>
-              {array4.map((item, index) => {
+              {array4.map((item) => {
                 return (
                   <GridItem icon="photo-o" text="文字" key={item}></GridItem>
                 )
@@ -34,7 +34,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <DemoBlock title="自定义列数">
             <Grid columnNum="3">
-              {array6.map((item, index) => {
+              {array6.map((item) => {
                 return (
                   <GridItem icon="photo-o" text="文字" key={item}></GridItem>
                 )
@@ -61,7 +61,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <DemoBlock title="正方形格子">
             <Grid square>
-              {array8.map((item, index) => {
+              {array8.map((item) => {
                 return (
                   <GridItem icon="photo-o" text="文字" key={item}></GridItem>
                 )
@@ -70,7 +70,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <DemoBlock title="格子间距">
             <Grid gutter={10}>
-              {array8.map((item, index) => {
+              {array8.map((item) => {
                 return (
                   <GridItem icon="photo-o" text="文字" key={item}></GridItem>
                 )
@@ -79,7 +79,7 @@ export default class Index extends React.Component {
           </DemoBlock>
           <DemoBlock title="内容横排">
             <Grid direction="horizontal" columnNum="3">
-              {array3.map((item, index) => {
+              {array3.map((item) => {
                 return (
                   <GridItem icon="photo-o" text="文字" key={item}></GridItem>
                 )
