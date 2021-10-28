@@ -1,6 +1,5 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Skeleton, Switch, Image } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -24,7 +23,7 @@ export default class Index extends React.Component {
     const { show } = this.state
     return (
       <DemoPage title="Skeleton 骨架屏">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Skeleton
               title
@@ -58,7 +57,7 @@ export default class Index extends React.Component {
               </View>
             </Skeleton>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

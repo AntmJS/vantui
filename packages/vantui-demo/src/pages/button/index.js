@@ -1,6 +1,5 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -16,7 +15,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Button 按钮">
-        <Block>
+        <>
           <DemoBlock title="按钮类型" padding>
             <View className="row">
               <Button className="demo-margin-right">默认按钮</Button>
@@ -133,7 +132,7 @@ export default class Index extends React.Component {
               渐变色按钮
             </Button>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

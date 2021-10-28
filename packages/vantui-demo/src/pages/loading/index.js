@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Loading } from '@antmjs/vantui'
@@ -16,7 +15,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Loading 加载">
-        <Block>
+        <>
           <DemoBlock title="加载类型" padding>
             <Loading className="demo-loading"></Loading>
             <Loading className="demo-loading" type="spinner"></Loading>
@@ -39,7 +38,7 @@ export default class Index extends React.Component {
               加载中...
             </Loading>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

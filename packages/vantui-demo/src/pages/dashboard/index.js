@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import DemoPage from '../../components/demo-page/index'

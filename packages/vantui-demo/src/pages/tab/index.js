@@ -1,6 +1,6 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import Taro, { showToast } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { Tabs, Tab, Icon } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -25,28 +25,28 @@ export default class Index extends React.Component {
   }
 
   onClickDisabled = (event) => {
-    Taro.showToast({
+    showToast({
       title: `标签 ${event.detail.index + 1} 已被禁用`,
       icon: 'none',
     })
   }
 
   onChange = (event) => {
-    Taro.showToast({
+    showToast({
       title: `切换到标签 ${event.detail.index + 1}`,
       icon: 'none',
     })
   }
 
   onClickNavRight = () => {
-    Taro.showToast({
+    showToast({
       title: '点击 right nav',
       icon: 'none',
     })
   }
 
   onClick = (event) => {
-    Taro.showToast({
+    showToast({
       title: `点击标签 ${event.detail.index + 1}`,
       icon: 'none',
     })
@@ -167,13 +167,13 @@ export default class Index extends React.Component {
               tabClass="special-tab"
               tabActiveClass="special-tab-active"
               renderNavRight={
-                <Block>
+                <>
                   <Icon
                     name="search"
                     className="right-nav"
                     onClick={this.onClickNavRight}
                   ></Icon>
-                </Block>
+                </>
               }
             >
               {tabs4.map((item, index) => {

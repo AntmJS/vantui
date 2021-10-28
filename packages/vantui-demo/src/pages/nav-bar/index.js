@@ -1,5 +1,5 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { NavBar, Icon } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -13,17 +13,17 @@ export default class Index extends React.Component {
   }
 
   onClickLeft = () => {
-    Taro.showToast({ title: '点击返回', icon: 'none' })
+    showToast({ title: '点击返回', icon: 'none' })
   }
 
   onClickRight = () => {
-    Taro.showToast({ title: '点击按钮', icon: 'none' })
+    showToast({ title: '点击按钮', icon: 'none' })
   }
 
   render() {
     return (
       <DemoPage title="NavBar 导航栏">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <NavBar
               title="标题"
@@ -39,13 +39,13 @@ export default class Index extends React.Component {
               leftText="返回"
               leftArrow
               renderRight={
-                <Block>
+                <>
                   <Icon name="search" className="icon" size="36"></Icon>
-                </Block>
+                </>
               }
             ></NavBar>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

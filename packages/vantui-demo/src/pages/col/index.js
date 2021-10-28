@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Row, Col } from '@antmjs/vantui'
@@ -16,7 +15,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Layout 布局">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Row>
               <Col span="8" className="dark">
@@ -56,7 +55,7 @@ export default class Index extends React.Component {
               </Col>
             </Row>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

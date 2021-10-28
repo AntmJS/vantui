@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { NoticeBar } from '@antmjs/vantui'
@@ -21,7 +20,7 @@ export default class Index extends React.Component {
     const { text, shortText } = this.state
     return (
       <DemoPage title="NoticeBar 通知栏">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <NoticeBar text={text} leftIcon="volume-o"></NoticeBar>
           </DemoBlock>
@@ -56,7 +55,7 @@ export default class Index extends React.Component {
               leftIcon="info-o"
             ></NoticeBar>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

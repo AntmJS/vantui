@@ -1,6 +1,6 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import { showToast } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { Slider } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -17,7 +17,7 @@ export default class Index extends React.Component {
   }
 
   onChange = (event) => {
-    Taro.showToast({
+    showToast({
       icon: 'none',
       title: `当前值：${event.detail}`,
     })
@@ -33,7 +33,7 @@ export default class Index extends React.Component {
     const { currentValue } = this.state
     return (
       <DemoPage title="Slider 滑块">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Slider
               value="50"
@@ -84,14 +84,14 @@ export default class Index extends React.Component {
               onDrag={this.onDrag}
               renderButton={() => {
                 return (
-                  <Block>
+                  <>
                     <View className="custom-button">{currentValue}</View>
-                  </Block>
+                  </>
                 )
               }}
             ></Slider>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

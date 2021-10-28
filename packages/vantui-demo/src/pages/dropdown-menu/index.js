@@ -1,6 +1,5 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import {
   DropdownItem,
   DropdownMenu,
@@ -64,7 +63,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Dropdown Menu">
-        <Block>
+        <>
           <DemoBlock className="white" title="基础用法">
             <DropdownMenu>
               <DropdownItem value={value1} options={option1}></DropdownItem>
@@ -78,7 +77,7 @@ export default class Index extends React.Component {
                 <Cell
                   title={switchTitle1}
                   renderRighticon={
-                    <Block>
+                    <>
                       <Switch
                         size="24px"
                         style="height: 26px"
@@ -86,13 +85,13 @@ export default class Index extends React.Component {
                         activeColor="#ee0a24"
                         onChange={this.onSwitch1Change}
                       ></Switch>
-                    </Block>
+                    </>
                   }
                 ></Cell>
                 <Cell
                   title={switchTitle2}
                   renderRighticon={
-                    <Block>
+                    <>
                       <Switch
                         size="24px"
                         style="height: 26px"
@@ -100,7 +99,7 @@ export default class Index extends React.Component {
                         activeColor="#ee0a24"
                         onChange={this.onSwitch2Change}
                       ></Switch>
-                    </Block>
+                    </>
                   }
                 ></Cell>
                 <View style="padding: 5px 16px;">
@@ -137,7 +136,7 @@ export default class Index extends React.Component {
               ></DropdownItem>
             </DropdownMenu>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

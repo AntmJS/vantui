@@ -47,7 +47,7 @@ export default class Index extends React.Component {
     const { time, timeData } = this.state
     return (
       <DemoPage title="CountDown 倒计时">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <CountDown time={time}></CountDown>
           </DemoBlock>
@@ -99,7 +99,7 @@ export default class Index extends React.Component {
             </Grid>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

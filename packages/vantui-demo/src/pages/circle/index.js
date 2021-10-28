@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Circle, Button } from '@antmjs/vantui'
@@ -32,7 +31,7 @@ export default class Index extends React.Component {
     const { value, gradientColor } = this.state
     return (
       <DemoPage title="Circle 进度条">
-        <Block>
+        <>
           <DemoBlock title="demo">
             <Circle
               value={value}
@@ -101,7 +100,7 @@ export default class Index extends React.Component {
           >
             减少
           </Button>
-        </Block>
+        </>
       </DemoPage>
     )
   }

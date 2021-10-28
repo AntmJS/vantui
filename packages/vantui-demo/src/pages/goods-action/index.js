@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import {
@@ -29,7 +28,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="GoodsAction 商品导航">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <GoodsAction
               className="goods-action-position"
@@ -113,7 +112,7 @@ export default class Index extends React.Component {
             </GoodsAction>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

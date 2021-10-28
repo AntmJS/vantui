@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Image, CheckboxGroup, Checkbox, CellGroup, Cell } from '@antmjs/vantui'
@@ -69,7 +68,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Checkbox 复选框">
-        <Block>
+        <>
           <DemoBlock title="基本用法">
             <Checkbox
               value={checkbox1}
@@ -173,13 +172,13 @@ export default class Index extends React.Component {
                 })
               }}
               renderIcon={
-                <Block>
+                <>
                   <Image
                     className="icon"
                     mode="widthFix"
                     src={checkbox3 ? activeIcon : inactiveIcon}
                   ></Image>
-                </Block>
+                </>
               }
             >
               自定义图标
@@ -314,7 +313,7 @@ export default class Index extends React.Component {
               </CellGroup>
             </CheckboxGroup>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

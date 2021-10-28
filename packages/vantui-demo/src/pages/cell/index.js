@@ -1,6 +1,5 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Tag, Icon, CellGroup, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -16,7 +15,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <DemoPage title="Cell 单元格">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <CellGroup>
               <Cell title="单元格" value="内容"></Cell>
@@ -43,9 +42,9 @@ export default class Index extends React.Component {
                 size="large"
                 border={false}
                 renderLabel={
-                  <Block>
+                  <>
                     <View>描述信息</View>
-                  </Block>
+                  </>
                 }
               ></Cell>
             </CellGroup>
@@ -92,28 +91,28 @@ export default class Index extends React.Component {
               icon="shop-o"
               isLink
               renderTitle={
-                <Block>
+                <>
                   <View>
                     <View className="title">单元格</View>
                     <Tag type="danger">标签</Tag>
                   </View>
-                </Block>
+                </>
               }
             ></Cell>
             <Cell
               title="单元格"
               border={false}
               renderRightIcon={
-                <Block>
+                <>
                   <Icon name="search"></Icon>
-                </Block>
+                </>
               }
             ></Cell>
           </DemoBlock>
           <DemoBlock title="垂直居中">
             <Cell center title="单元格" value="内容" label="描述信息"></Cell>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

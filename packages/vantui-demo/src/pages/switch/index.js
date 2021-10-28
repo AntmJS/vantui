@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Switch, Dialog, dialog } from '@antmjs/vantui'
@@ -36,7 +35,7 @@ export default class Index extends React.Component {
     const { checked, checked2 } = this.state
     return (
       <DemoPage title="Switch 开关">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Switch checked={checked} onChange={this.onChange}></Switch>
           </DemoBlock>
@@ -73,7 +72,7 @@ export default class Index extends React.Component {
             ></Switch>
           </DemoBlock>
           <Dialog id="van-dialog"></Dialog>
-        </Block>
+        </>
       </DemoPage>
     )
   }

@@ -1,6 +1,5 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import { View } from '@tarojs/components'
 import { Tag, Card, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -41,7 +40,7 @@ export default class Index extends React.Component {
               title="2018秋冬新款男士休闲时尚军绿飞行夹克秋冬新款男"
               thumb={imageURL}
               renderTags={
-                <Block>
+                <>
                   <View>
                     <Tag plain type="danger" className="tag">
                       标签1
@@ -50,10 +49,10 @@ export default class Index extends React.Component {
                       标签2
                     </Tag>
                   </View>
-                </Block>
+                </>
               }
               renderFooter={
-                <Block>
+                <>
                   <View className="van-card__footer">
                     <Button size="mini" round className="button">
                       按钮
@@ -62,7 +61,7 @@ export default class Index extends React.Component {
                       按钮
                     </Button>
                   </View>
-                </Block>
+                </>
               }
             ></Card>
           </DemoBlock>

@@ -1,5 +1,5 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
+import Taro, { showToast } from '@tarojs/taro'
 
 import { Field, CellGroup, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
@@ -24,7 +24,7 @@ export default class Index extends React.Component {
   }
 
   onClickIcon = () => {
-    Taro.showToast({
+    showToast({
       icon: 'none',
       title: '点击图标',
     })
@@ -43,7 +43,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Field 输入框">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <CellGroup>
               <Field
@@ -137,16 +137,16 @@ export default class Index extends React.Component {
                 placeholder="请输入短信验证码"
                 border={false}
                 renderButton={
-                  <Block>
+                  <>
                     <Button size="small" type="primary" className="button">
                       发送验证码
                     </Button>
-                  </Block>
+                  </>
                 }
               ></Field>
             </CellGroup>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

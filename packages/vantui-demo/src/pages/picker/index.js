@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Picker, Toast, toast } from '@antmjs/vantui'
@@ -59,7 +58,7 @@ export default class Index extends React.Component {
     const { column1, column4, column2 } = this.state
     return (
       <DemoPage title="Picker 选择器">
-        <Block>
+        <>
           <DemoBlock title="基础用法">
             <Picker columns={column1} onChange={this.onChange1}></Picker>
           </DemoBlock>
@@ -90,7 +89,7 @@ export default class Index extends React.Component {
             <Picker loading columns={column4}></Picker>
           </DemoBlock>
           <Toast id="van-toast"></Toast>
-        </Block>
+        </>
       </DemoPage>
     )
   }

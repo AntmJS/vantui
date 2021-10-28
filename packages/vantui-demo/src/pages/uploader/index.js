@@ -1,6 +1,6 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
-
+import Taro, { showToast } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { Uploader, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -41,7 +41,7 @@ export default class Index extends React.Component {
   beforeRead = (event) => {
     const { file, callback = () => {} } = event.detail
     if (file && file.url && file.url.indexOf('jpeg') < 0) {
-      Taro.showToast({ title: '请选择jpg图片上传', icon: 'none' })
+      showToast({ title: '请选择jpg图片上传', icon: 'none' })
       callback(false)
       return
     }
@@ -57,7 +57,7 @@ export default class Index extends React.Component {
   }
 
   oversize = () => {
-    Taro.showToast({ title: '文件超出大小限制', icon: 'none' })
+    showToast({ title: '文件超出大小限制', icon: 'none' })
   }
 
   delete = (event) => {
@@ -74,19 +74,19 @@ export default class Index extends React.Component {
     Taro.cloud.init()
     const { fileList6: fileList = [] } = this.state
     if (!fileList.length) {
-      Taro.showToast({ title: '请选择图片', icon: 'none' })
+      showToast({ title: '请选择图片', icon: 'none' })
     } else {
       const uploadTasks = fileList.map((file, index) =>
         this.uploadFilePromise(`my-photo${index}.png`, file),
       )
       Promise.all(uploadTasks)
         .then((data) => {
-          Taro.showToast({ title: '上传成功', icon: 'none' })
+          showToast({ title: '上传成功', icon: 'none' })
           const fileList = data.map((item) => ({ url: item.fileID }))
           this.setState({ cloudPath: data, fileList6: fileList })
         })
         .catch((e) => {
-          Taro.showToast({ title: '上传失败', icon: 'none' })
+          showToast({ title: '上传失败', icon: 'none' })
           console.log(e)
         })
     }
@@ -112,7 +112,7 @@ export default class Index extends React.Component {
     } = this.state
     return (
       <DemoPage title="Uploader 文件上传">
-        <Block>
+        <>
           <DemoBlock title="基础用法" padding>
             <Uploader
               name="1"
@@ -215,7 +215,7 @@ export default class Index extends React.Component {
               </Button>
             </View>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { RadioGroup, Radio, Image, CellGroup, Cell } from '@antmjs/vantui'
@@ -56,7 +55,7 @@ export default class Index extends React.Component {
 
     return (
       <DemoPage title="Radio 单选框">
-        <Block>
+        <>
           <DemoBlock title="基本用法" padding>
             <RadioGroup
               value={radio1}
@@ -207,13 +206,13 @@ export default class Index extends React.Component {
               <Radio
                 name="1"
                 renderIcon={
-                  <Block>
+                  <>
                     <Image
                       src={radio4 === '1' ? icon.active : icon.normal}
                       className="icon"
                       mode="widthFix"
                     ></Image>
-                  </Block>
+                  </>
                 }
               >
                 自定义图标
@@ -221,13 +220,13 @@ export default class Index extends React.Component {
               <Radio
                 name="2"
                 renderIcon={
-                  <Block>
+                  <>
                     <Image
                       src={radio4 === '2' ? icon.active : icon.normal}
                       className="icon"
                       mode="widthFix"
                     ></Image>
-                  </Block>
+                  </>
                 }
               >
                 自定义图标
@@ -275,9 +274,9 @@ export default class Index extends React.Component {
                     })
                   }}
                   renderRightIcon={
-                    <Block>
+                    <>
                       <Radio value={radio5} name="1"></Radio>
-                    </Block>
+                    </>
                   }
                 ></Cell>
                 <Cell
@@ -295,15 +294,15 @@ export default class Index extends React.Component {
                     })
                   }}
                   renderRightIcon={
-                    <Block>
+                    <>
                       <Radio value={radio5} name="2"></Radio>
-                    </Block>
+                    </>
                   }
                 ></Cell>
               </CellGroup>
             </RadioGroup>
           </DemoBlock>
-        </Block>
+        </>
       </DemoPage>
     )
   }

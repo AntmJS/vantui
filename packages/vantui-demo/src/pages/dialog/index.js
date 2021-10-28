@@ -1,4 +1,3 @@
-import { Block } from '@tarojs/components'
 import React from 'react'
 
 import { Image, Dialog, Cell, dialog, toast } from '@antmjs/vantui'
@@ -90,7 +89,7 @@ export default class Index extends React.Component {
     const { show } = this.state
     return (
       <DemoPage title="Dialog 弹出框">
-        <Block>
+        <>
           <DemoBlock card title="提示弹窗" padding>
             <Cell title="提示弹窗" onClick={this.onClickAlert} isLink></Cell>
             <Cell
@@ -132,7 +131,7 @@ export default class Index extends React.Component {
             ></Image>
           </Dialog>
           <Dialog id="van-dialog"></Dialog>
-        </Block>
+        </>
       </DemoPage>
     )
   }
