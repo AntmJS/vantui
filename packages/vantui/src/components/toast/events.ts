@@ -1,5 +1,9 @@
 import { Events } from '@tarojs/taro'
-type EventNames = 'clear' | 'show' | 'setDefaultOptions' | 'resetDefaultOptions'
+type EventNames =
+  | 'toast_clear'
+  | 'toast_show'
+  | 'toast_setDefaultOptions'
+  | 'toast_resetDefaultOptions'
 
 const events = new Events()
 

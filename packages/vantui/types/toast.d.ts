@@ -12,6 +12,7 @@ export interface ToastProps extends StandardProps {
   message?: string
   loadingType?: 'circular' | 'spinner' | undefined
   selector?: string
+  id?: string
   children?: ReactNode
   onClose?: () => any
 }
