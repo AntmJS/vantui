@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import { Notify, Button, notify } from '@antmjs/vantui'
@@ -58,7 +57,7 @@ export default class Index extends React.Component {
             </Button>
           </DemoBlock>
           <DemoBlock padding title="通知类型">
-            <View className="demo-margin-bottom">
+            <div className="demo-margin-bottom">
               <Button
                 className="demo-margin-right"
                 type="info"
@@ -93,8 +92,8 @@ export default class Index extends React.Component {
               >
                 成功通知
               </Button>
-            </View>
-            <View className="demo-margin-bottom">
+            </div>
+            <div className="demo-margin-bottom">
               <Button
                 className="demo-margin-right"
                 type="danger"
@@ -128,7 +127,7 @@ export default class Index extends React.Component {
               >
                 警告通知
               </Button>
-            </View>
+            </div>
           </DemoBlock>
           <DemoBlock padding title="自定义通知">
             <Button

@@ -64,12 +64,12 @@ export default class Index extends React.Component {
               safeAreaInsetBottom={false}
               renderTip={
                 <>
-                  <View>
+                  <div>
                     您的收货地址不支持同城送
                     <Text className="edit-address" onClick={this.onClickLink}>
                       修改地址
                     </Text>
-                  </View>
+                  </div>
                 </>
               }
             >

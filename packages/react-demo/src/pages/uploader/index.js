@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
 
@@ -210,11 +209,11 @@ export default class Index extends React.Component {
               onClickPreview={this.clickPreview}
               useBeforeRead={true}
             ></Uploader>
-            <View className="demo-margin-bottom">
+            <div className="demo-margin-bottom">
               <Button type="primary" onClick={this.uploadToCloud}>
                 上传至云存储
               </Button>
-            </View>
+            </div>
           </DemoBlock>
         </>
       </DemoPage>

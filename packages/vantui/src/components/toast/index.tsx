@@ -138,7 +138,6 @@ export default function Index(props: ToastProps) {
     }
     /* eslint-disable-next-line */
   }, [])
-
   return (
     <View>
       {(state.mask || state.forbidClick) && (

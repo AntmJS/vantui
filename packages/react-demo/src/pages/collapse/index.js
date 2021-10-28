@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
@@ -160,13 +159,13 @@ export default class Index extends React.Component {
               <CollapseItem
                 renderTitle={
                   <>
-                    <View>
+                    <div>
                       {title1}
                       <Icon
                         name="question-o"
                         className="van-icon-question"
                       ></Icon>
-                    </View>
+                    </div>
                   </>
                 }
               >

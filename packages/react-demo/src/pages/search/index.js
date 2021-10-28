@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
 
@@ -108,7 +107,7 @@ export default class Index extends React.Component {
               onChange={this.onChange}
               renderAction={
                 <>
-                  <View onClick={this.onClick}>搜索</View>
+                  <div onClick={this.onClick}>搜索</div>
                 </>
               }
             ></Search>

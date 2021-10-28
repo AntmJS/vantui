@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 import Taro, { showToast } from '@tarojs/taro'
 
@@ -86,7 +85,7 @@ export default class Index extends React.Component {
               renderButton={() => {
                 return (
                   <>
-                    <View className="custom-button">{currentValue}</View>
+                    <div className="custom-button">{currentValue}</div>
                   </>
                 )
               }}

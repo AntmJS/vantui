@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import {
@@ -103,11 +102,11 @@ export default class Index extends React.Component {
                     </>
                   }
                 ></Cell>
-                <View style="padding: 5px 16px;">
+                <div style="padding: 5px 16px;">
                   <Button type="danger" block round onClick={this.onConfirm}>
                     确认
                   </Button>
-                </View>
+                </div>
               </DropdownItem>
             </DropdownMenu>
           </DemoBlock>

@@ -1,4 +1,3 @@
-import { Block, View } from '@tarojs/components'
 import React from 'react'
 
 import { Tabs, Tab, Icon, Col } from '@antmjs/vantui'
@@ -94,7 +93,7 @@ export default class Index extends React.Component {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
-                  <View className="text">{item}</View>
+                  <div className="text">{item}</div>
                 </Col>
               )
             })}
@@ -104,7 +103,7 @@ export default class Index extends React.Component {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
-                  <View className="text">{item}</View>
+                  <div className="text">{item}</div>
                 </Col>
               )
             })}
@@ -114,7 +113,7 @@ export default class Index extends React.Component {
               return (
                 <Col key={item.index} className="col" span="6">
                   <Icon name={item} size="32px" className="icon"></Icon>
-                  <View className="text">{item}</View>
+                  <div className="text">{item}</div>
                 </Col>
               )
             })}

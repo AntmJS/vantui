@@ -46,7 +46,7 @@ export default class Index extends React.Component {
                       height="27vw"
                       src={src}
                     ></Image>
-                    <View className="text">{fit}</View>
+                    <div className="text">{fit}</div>
                   </Col>
                 )
               })}
@@ -64,7 +64,7 @@ export default class Index extends React.Component {
                       height="27vw"
                       src={src}
                     ></Image>
-                    <View className="text">{fit}</View>
+                    <div className="text">{fit}</div>
                   </Col>
                 )
               })}
@@ -74,7 +74,7 @@ export default class Index extends React.Component {
             <Row gutter="20">
               <Col span="8">
                 <Image width="100%" height="27vw"></Image>
-                <View className="text">默认提示</View>
+                <div className="text">默认提示</div>
               </Col>
               <Col span="8">
                 <Image
@@ -86,7 +86,7 @@ export default class Index extends React.Component {
                     </>
                   }
                 ></Image>
-                <View className="text">自定义提示</View>
+                <div className="text">自定义提示</div>
               </Col>
             </Row>
           </DemoBlock>
@@ -94,7 +94,7 @@ export default class Index extends React.Component {
             <Row gutter="20">
               <Col span="8">
                 <Image width="100%" height="27vw" src="x"></Image>
-                <View className="text">默认提示</View>
+                <div className="text">默认提示</div>
               </Col>
               <Col span="8">
                 <Image
@@ -107,7 +107,7 @@ export default class Index extends React.Component {
                     </>
                   }
                 ></Image>
-                <View className="text">自定义提示</View>
+                <div className="text">自定义提示</div>
               </Col>
             </Row>
           </DemoBlock>
