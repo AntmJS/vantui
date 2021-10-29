@@ -1,4 +1,4 @@
-import { createAnimation } from '@tarojs/taro'
+import { createAnimation, useReady, nextTick } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Navigator, ITouchEvent } from '@tarojs/components'
 
@@ -61,7 +61,7 @@ export default function Index(props: NoticeBarProps) {
     })
   }, [])
 
-  Taro.useReady(() => {
+  useReady(() => {
     if (process.env.TARO_ENV !== 'h5') {
       ref.current.resetAnimation = createAnimation({
         duration: 0,
@@ -150,7 +150,7 @@ export default function Index(props: NoticeBarProps) {
         ) {
           return
         }
-        Taro.nextTick(() => {
+        nextTick(() => {
           if (scrollable || wrapRect.width <= contentRect.width) {
             ref.current.wrapWidth = wrapRect.width
             ref.current.contentWidth = contentRect.width
