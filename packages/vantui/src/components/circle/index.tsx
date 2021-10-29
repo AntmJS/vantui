@@ -113,6 +113,7 @@ export default function Index(props: CircleProps) {
         })
       }, 100)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getContext = useCallback(() => {

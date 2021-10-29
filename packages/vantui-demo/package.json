@@ -106,13 +106,14 @@
   },
   "dependencies": {
     "@antmjs/mini-fix": "^1.12.0",
-    "@antmjs/vantui": "1.0.0",
+    "@antmjs/vantui": "^1.0.0",
     "@babel/runtime-corejs3": "^7.14.7",
     "@tarojs/components": "3.3.7",
     "@tarojs/react": "3.3.7",
     "@tarojs/runtime": "3.3.7",
     "@tarojs/taro": "3.3.7",
     "@vant/area-data": "^1.1.3",
+    "@vant/icons": "^1.7.1",
     "core-js": "^3.15.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
@@ -126,7 +127,6 @@
     "@tarojs/webpack-runner": "3.3.7",
     "@types/react": "^17.0.2",
     "@types/webpack-env": "^1.13.6",
-    "@vant/icons": "^1.7.1",
     "babel-plugin-transform-taroapi": "^3.3.7",
     "cross-env": "^7.0.3",
     "eslint": "^7.30.0",
