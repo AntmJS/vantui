@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import ReactDom from 'react-dom'
 import { initPxTransform } from '@tarojs/taro'
 import { createReactApp } from '@tarojs/runtime'
-import '@tarojs/components/dist/taro-components/taro-components.css'
 
 class Index extends Component {
   render() {

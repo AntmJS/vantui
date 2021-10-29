@@ -113,6 +113,7 @@ export default function Index(props: CircleProps) {
         })
       }, 100)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getContext = useCallback(() => {
@@ -214,6 +215,7 @@ export default function Index(props: CircleProps) {
   )
   const drawCircle = useCallback(
     (currentValue: any) => {
+      console.log('drawCircle')
       getContext().then((context: any) => {
         context.clearRect(0, 0, size, size)
         renderLayerCircle(context)
@@ -233,6 +235,7 @@ export default function Index(props: CircleProps) {
     }
   }
   const reRender = useCallback(() => {
+    console.log('reRender')
     if (speed <= 0 || speed > 1000) {
       drawCircle(value)
       return

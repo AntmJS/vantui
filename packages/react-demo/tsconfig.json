@@ -19,7 +19,7 @@
     "module": "commonjs",
     // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
     "moduleResolution": "Node",
-    "target": "es6",
+    "target": "es5",
     "lib": ["ESNext", "dom"],
     /** emit */
     "noEmit": true,

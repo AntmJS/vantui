@@ -40,6 +40,7 @@ applyPolyfills().then(function () {
 - src/index.less
 
 ```less
+@import '@tarojs/components/dist/taro-components/taro-components.css';
 @import '@antmjs/vantui/dist/style/index.less';
 
 page,

@@ -78,6 +78,11 @@ module.exports = {
             title: '如何在React中使用',
             hideSimulator: false,
           },
+          {
+            path: 'use-in-react',
+            title: '如何在React中使用',
+            hideSimulator: true,
+          },
         ],
       },
       {
