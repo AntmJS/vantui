@@ -7,7 +7,7 @@ export interface NavBarProps extends StandardProps {
   placeholder?: boolean
   leftText?: string
   rightText?: string
-  customStyle?: string
+  style?: string
   leftArrow?: boolean
   border?: boolean
   zIndex?: number
@@ -27,7 +27,7 @@ export interface MiniNavBarProps extends StandardProps {
   title?: string
   fixed?: boolean
   placeholder?: boolean
-  customStyle?: string
+  style?: string
   border?: boolean
   zIndex?: number
   renderTitle?: ReactNode

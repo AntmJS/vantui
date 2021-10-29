@@ -117,7 +117,7 @@ function noop() {}
 | zIndex | zIndex 层级 | _string \| number_ | `1` |
 | duration | 动画时长，单位秒 | _string \| number_ | `0.3` |
 | className | 自定义类名 | _string_ | - |
-| customStyle | 自定义样式 | _string_ | - |
+| style | 自定义样式 | _string_ | - |
 | lockScroll `v1.7.3` | 是否锁定背景滚动，锁定时蒙层里的内容也将无法滚动 | _boolean_ | true |
 
 ### Events
