@@ -1,3 +1,4 @@
+import { View, Image } from '@tarojs/components'
 import { Component } from 'react'
 
 import list from '../../config'
@@ -12,24 +13,24 @@ export default class Index extends Component {
   render() {
     const { list } = this.state
     return (
-      <div className="demo-home">
-        <div className="demo-home__title">
-          <img
-            // mode="aspectFit"
+      <View className="demo-home">
+        <View className="demo-home__title">
+          <Image
+            mode="aspectFit"
             className="demo-home__image"
             src="https://img.yzcdn.cn/vant/logo.png"
-          ></img>
-          <div className="demo-home__text">Vant Weapp</div>
-        </div>
-        <div className="demo-home__desc">轻量、可靠的小程序 UI 组件库</div>
+          ></Image>
+          <View className="demo-home__text">Vant Weapp</View>
+        </View>
+        <View className="demo-home__desc">轻量、可靠的小程序 UI 组件库</View>
         {list.map((group, index) => {
           return (
-            <div key={index}>
+            <View key={index}>
               <DemoHomeNav group={group}></DemoHomeNav>
-            </div>
+            </View>
           )
         })}
-      </div>
+      </View>
     )
   }
 }

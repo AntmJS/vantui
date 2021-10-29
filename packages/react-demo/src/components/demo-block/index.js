@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { View } from '@tarojs/components'
 import { Component } from 'react'
 
 import './index.less'
@@ -8,19 +9,19 @@ export default class Index extends Component {
     // eslint-disable-next-line react/prop-types
     const { padding, title, card } = this.props
     return (
-      <div
+      <View
         className={
           'custom-class demo-block van-clearfix ' +
           (padding ? 'demo-block--padding' : '')
         }
       >
-        {title && <div className="demo-block__title">{title}</div>}
+        {title && <View className="demo-block__title">{title}</View>}
         {card ? (
-          <div className="demo-block__card">{this.props.children}</div>
+          <View className="demo-block__card">{this.props.children}</View>
         ) : (
           this.props.children
         )}
-      </div>
+      </View>
     )
   }
 }

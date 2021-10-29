@@ -1,4 +1,6 @@
 import { Icon } from '@antmjs/vantui'
+import { navigateBack } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import * as React from 'react'
 import './index.less'
 
@@ -6,17 +8,23 @@ export default function Page(props) {
   // eslint-disable-next-line react/prop-types
   const { title, children } = props
 
+  const onBack = () => {
+    if (process.env.LIBRARY_ENV === 'react') {
+      history.go(-1)
+    } else {
+      navigateBack()
+    }
+  }
+
   return (
-    <div className="demo-page">
-      <div className="demo-nav">
-        <Icon
-          name="arrow-left"
-          className="demo-nav__back"
-          onClick={() => history.go(-1)}
-        />
-        <div className="demo-nav__title">{title} </div>
-      </div>
+    <View className="demo-page">
+      {'h5' === process.env.TARO_ENV && (
+        <View className="demo-nav">
+          <Icon name="arrow-left" className="demo-nav__back" onClick={onBack} />
+          <View className="demo-nav__title">{title} </View>
+        </View>
+      )}
       {children}
-    </div>
+    </View>
   )
 }
