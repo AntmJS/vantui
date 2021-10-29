@@ -5,6 +5,9 @@ import { Component } from 'react'
 import './index.less'
 // eslint-disable
 export default class Index extends Component {
+  constructor() {
+    super()
+  }
   render() {
     // eslint-disable-next-line react/prop-types
     const { padding, title, card } = this.props
