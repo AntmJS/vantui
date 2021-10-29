@@ -282,9 +282,11 @@ export default function Index(props: SliderProps) {
   const onClick = useCallback(
     function (event: any) {
       if (disabled) return
-      getRect(null, `.van-slider${currentIndex_} `).then((rect: any) => {
+      getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
         const value =
-          ((event.target.x - rect.left) / rect.width) * getRange() + min
+          (((event.target.x || event.clientX) - rect.left) / rect.width) *
+            getRange() +
+          min
 
         if (isRange(value_)) {
           const [left, right] = value_

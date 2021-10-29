@@ -8,7 +8,7 @@ export default class Index extends Component {
   constructor(props) {
     super(props)
   }
-  onClick = () => {
+  onClick = (event) => {
     const { url } = event.target.dataset
     if (getCurrentPages().length > 9) {
       redirectTo({ url })
