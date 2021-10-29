@@ -62,11 +62,6 @@ export default function Index(props: DialogProps) {
 
       Taro.nextTick(() => {
         onClose?.({ detail: action })
-
-        // const { callback } = this.data
-        // if (callback) {
-        //   callback(action, this)
-        // }
       })
     },
     [onClose],
@@ -84,6 +79,7 @@ export default function Index(props: DialogProps) {
     (action) => {
       if (action === 'confirm') {
         onConfirm?.({ detail: { action, dialog: { dialog: null } } })
+        // 触发promise
         trigger('confirm')
       } else if (action === 'cancel') {
         onCancel?.({ detail: { action, dialog: { dialog: null } } })
@@ -102,14 +98,18 @@ export default function Index(props: DialogProps) {
       }
 
       if (beforeClose) {
-        toPromise(beforeClose(action)).then((value: boolean) => {
-          if (value) {
-            _close(action)
+        toPromise(beforeClose(action))
+          .then((value: boolean) => {
+            if (value) {
+              _close(action)
+              _stopLoading()
+            } else {
+              _stopLoading()
+            }
+          })
+          .catch(() => {
             _stopLoading()
-          } else {
-            _stopLoading()
-          }
-        })
+          })
       }
     },
     [_close, _stopLoading, asyncClose, beforeClose, onCancel, onConfirm],

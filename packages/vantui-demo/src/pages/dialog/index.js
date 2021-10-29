@@ -72,11 +72,15 @@ export default class Index extends Component {
         }, 1000)
       })
 
-    dialog.confirm({
-      title: '标题',
-      message,
-      beforeClose,
-    })
+    dialog
+      .confirm({
+        title: '标题',
+        message,
+        beforeClose,
+      })
+      .catch((e) => {
+        conosle.log(e)
+      })
   }
 
   onClose = () => {
