@@ -1,7 +1,7 @@
 import { Icon } from '@antmjs/vantui'
-import { navigateBack } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import * as React from 'react'
+import history from './../../history'
 import './index.less'
 
 export default function Page(props) {
@@ -9,11 +9,7 @@ export default function Page(props) {
   const { title, children } = props
 
   const onBack = () => {
-    if (process.env.LIBRARY_ENV === 'react') {
-      history.go(-1)
-    } else {
-      navigateBack()
-    }
+    history.go(-1)
   }
 
   return (
