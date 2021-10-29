@@ -1,6 +1,6 @@
 import { defineCustomElements, applyPolyfills } from '@tarojs/components/loader'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import './index.less'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -9,7 +9,7 @@ applyPolyfills().then(function () {
   defineCustomElements(window)
 })
 
-ReactDOM.render(
+render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
