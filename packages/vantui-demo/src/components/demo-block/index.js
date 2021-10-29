@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Block, View } from '@tarojs/components'
-import React from 'react'
+import { View } from '@tarojs/components'
+import { Component } from 'react'
 
 import './index.less'
 // eslint-disable
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

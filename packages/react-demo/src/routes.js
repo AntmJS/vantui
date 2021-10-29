@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import Dashboard from './pages/dashboard/index'
 import ActionSheet from './pages/action-sheet/index'
 import Button from './pages/button/index'
