@@ -116,7 +116,7 @@ export interface IconProps extends StandardProps {
   info?: number | string
   size?: number | string
   color?: string
-  customStyle?: string
+  style?: string
   classPrefix?: string
   name?: string
 }

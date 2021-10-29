@@ -195,7 +195,7 @@ export interface DialogProps
   selector?: string
   ariaLabel?: string
   className?: string
-  customStyle?: string
+  style?: string
   transition?: 'fade' | 'none'
   /**
    * @deprecated use beforeClose instead

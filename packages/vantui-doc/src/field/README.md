@@ -274,7 +274,7 @@ export interface FieldProps extends StandardProps {
   iconClass?: string
   clickable?: boolean
   inputAlign?: string
-  customStyle?: string
+  style?: string
   errorMessage?: string
   arrowDirection?: 'left' | 'up' | 'down'
   showWordLimit?: boolean

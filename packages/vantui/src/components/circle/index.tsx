@@ -70,12 +70,6 @@ export default function Index(props: CircleProps) {
         canvas?.setAttribute('height', String(size))
       }
 
-      /* eslint-disable-next-line */
-      // @ts-ignore
-      Current.page = {
-        path: `page-${state.unitag}`,
-      }
-
       setState((state) => {
         return {
           ...state,
@@ -97,12 +91,6 @@ export default function Index(props: CircleProps) {
             canvas?.setAttribute('width', String(size))
             canvas?.setAttribute('height', String(size))
 
-            /* eslint-disable-next-line */
-            // @ts-ignore
-            Current.page = {
-              path: `page-${state.unitag}`,
-            }
-
             setState((state) => {
               return {
                 ...state,
@@ -119,8 +107,10 @@ export default function Index(props: CircleProps) {
   const getContext = useCallback(() => {
     /* eslint-disable-next-line */
     // @ts-ignore
-    Current.page = {
-      path: `page-${state.unitag}`,
+    if (process.env.LIBRARY_ENV === 'react') {
+      /* eslint-disable-next-line */
+      // @ts-ignore
+      Current.page = { path: `page-${state.unitag}` }
     }
     if (type === '' || process.env.TARO_ENV === 'h5') {
       const ctx = createCanvasContext(state.unitag)

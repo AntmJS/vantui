@@ -149,7 +149,7 @@ function convert(fileContent: string, pathName: string): string {
 
   result = result.replace(importComReg, '')
 
-  // 替换 customStyle customClass
+  // 替换 style customClass
   // customClass="
   result = result.replace(
     /custom(Style|Class)="/g,

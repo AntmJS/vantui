@@ -42,6 +42,10 @@ export default function Index(props: DropdownMenuProps) {
     })
   }, [])
 
+  useLayoutEffect(function () {
+    setCurrentIndex(currentIndexInit++)
+  }, [])
+
   useLayoutEffect(
     function () {
       const { windowHeight } = getSystemInfoSync()
@@ -58,13 +62,11 @@ export default function Index(props: DropdownMenuProps) {
 
   useLayoutEffect(function () {
     updateItemListData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(function () {
     return function () {
       ARRAY = (ARRAY || []).filter((item) => item && item.TimerKey !== TimerKey)
-      setCurrentIndex(currentIndexInit++)
     }
   }, [])
 
@@ -80,25 +82,38 @@ export default function Index(props: DropdownMenuProps) {
     }, 33)
   }
 
-  const onTitleTap = useCallback(function (event: any) {
-    const { index } = event.currentTarget.dataset
-    const child = childrenInstance.current[index]
-    if (!child.disabled) {
-      ARRAY.forEach((menuItem) => {
-        if (
-          menuItem &&
-          menuItem.closeOnClickOutside &&
-          menuItem.TimerKey !== TimerKey
-        ) {
-          menuItem.close()
-        }
-      })
-      setTimeout(() => {
-        toggleItem(index)
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  const toggleItem = useCallback(function (active: number) {
+    childrenInstance.current.forEach((item: any, index: number) => {
+      const { showPopup } = item
+      if (index === Number(active)) {
+        item.toggle()
+      } else if (showPopup) {
+        item.toggle(false, { immediate: true })
+      }
+    })
   }, [])
+
+  const onTitleTap = useCallback(
+    function (event: any) {
+      const { index } = event.currentTarget.dataset
+      const child = childrenInstance.current[index]
+      if (!child.disabled) {
+        ARRAY.forEach((menuItem) => {
+          if (
+            menuItem &&
+            menuItem.closeOnClickOutside &&
+            menuItem.TimerKey !== TimerKey
+          ) {
+            menuItem.close()
+          }
+        })
+        setTimeout(() => {
+          toggleItem(index)
+        })
+      }
+    },
+    [toggleItem],
+  )
 
   useEffect(
     function () {
@@ -134,7 +149,7 @@ export default function Index(props: DropdownMenuProps) {
         },
       )
     },
-    [currentIndex, direction, windowHeight, zIndex],
+    [direction, windowHeight, zIndex, currentIndex],
   )
 
   const ResetChildren = useMemo(
@@ -147,6 +162,7 @@ export default function Index(props: DropdownMenuProps) {
               key: index,
               setChildrenInstance,
               index,
+              currentIndex,
               parentInstance: {
                 overlay,
                 duration,
@@ -162,20 +178,18 @@ export default function Index(props: DropdownMenuProps) {
       }
       return res
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [others.children],
+    [
+      others.children,
+      activeColor,
+      closeOnClickOverlay,
+      currentIndex,
+      direction,
+      duration,
+      getChildWrapperStyle,
+      overlay,
+      setChildrenInstance,
+    ],
   )
-
-  const toggleItem = useCallback(function (active: number) {
-    childrenInstance.current.forEach((item: any, index: number) => {
-      const { showPopup } = item
-      if (index === Number(active)) {
-        item.toggle()
-      } else if (showPopup) {
-        item.toggle(false, { immediate: true })
-      }
-    })
-  }, [])
 
   return (
     <View

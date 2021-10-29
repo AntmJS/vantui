@@ -62,7 +62,7 @@ function onClose() {
   <Popup
     show={ `${ this.show }` }
     position="top"
-    customStyle="height: 20%;"
+    style="height: 20%;"
     onClose={ this.onClose }
   />
 </View>
@@ -79,7 +79,7 @@ function onClose() {
     show={ `${ this.show }` }
     closeable={ true }
     position="bottom"
-    customStyle="height: 20%"
+    style="height: 20%"
     onClose={ this.onClose }
   /> {/*  自定义图标  */}
   <Popup
@@ -87,7 +87,7 @@ function onClose() {
     closeable={ true }
     closeIcon="close"
     position="bottom"
-    customStyle="height: 20%"
+    style="height: 20%"
     onClose={ this.onClose }
   /> {/*  图标位置  */}
   <Popup
@@ -95,7 +95,7 @@ function onClose() {
     closeable={ true }
     closeIconPosition="topLeft"
     position="bottom"
-    customStyle="height: 20%"
+    style="height: 20%"
     onClose={ this.onClose }
   />
 </View>
@@ -112,7 +112,7 @@ function onClose() {
     show={ `${ this.show }` }
     round={ true }
     position="bottom"
-    customStyle="height: 20%"
+    style="height: 20%"
     onClose={ this.onClose }
   />
 </View>

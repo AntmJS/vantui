@@ -223,7 +223,7 @@ export interface CellProps extends StandardProps {
   required?: boolean
   clickable?: boolean
   titleWidth?: string
-  customStyle?: string
+  style?: string
   arrowDirection?: 'left' | 'up' | 'down'
   border?: boolean
   titleStyle?: string
