@@ -173,12 +173,11 @@ function Index(
 
   const onClick_ = useCallback(
     function (event) {
+      event.stopPropagation()
       const { key: position = 'outside' } = event.currentTarget.dataset
-      Object.defineProperties(event, {
-        detail: {
-          value: {
-            position,
-          },
+      Object.defineProperty(event, 'detail', {
+        value: {
+          position,
         },
       })
       if (onClick) onClick(event)
