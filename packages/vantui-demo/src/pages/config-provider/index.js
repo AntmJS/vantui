@@ -1,7 +1,5 @@
-import { Block, View } from '@tarojs/components'
-import React from 'react'
-import Taro from '@tarojs/taro'
-
+import { Component } from 'react'
+import { View } from '@tarojs/components'
 import {
   ConfigProvider,
   Rate,
@@ -10,10 +8,11 @@ import {
   CellGroup,
   Button,
 } from '@antmjs/vantui'
+import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -42,70 +41,14 @@ export default class Index extends React.Component {
   render() {
     const { rate, slider, themeVars } = this.state
     return (
-      <Block>
-        <DemoBlock title="默认主题">
-          <CellGroup>
-            <Field
-              label="评分"
-              renderInput={
-                <Block>
-                  <View style="width: 100%">
-                    <Rate
-                      value={rate}
-                      onChange={(e) => {
-                        this.onChange({
-                          detail: e.detail,
-                          currentTarget: {
-                            dataset: { key: 'rate' },
-                          },
-                          target: {
-                            dataset: { key: 'rate' },
-                          },
-                        })
-                      }}
-                    ></Rate>
-                  </View>
-                </Block>
-              }
-            ></Field>
-            <Field
-              label="滑块"
-              border={false}
-              renderInput={
-                <Block>
-                  <View style="width: 100%">
-                    <Slider
-                      value={slider}
-                      onChange={(e) => {
-                        this.onChange({
-                          detail: e.detail,
-                          currentTarget: {
-                            dataset: { key: 'slider' },
-                          },
-                          target: {
-                            dataset: { key: 'slider' },
-                          },
-                        })
-                      }}
-                    ></Slider>
-                  </View>
-                </Block>
-              }
-            ></Field>
-          </CellGroup>
-          <View style="margin: 16px">
-            <Button round block type="primary">
-              提交
-            </Button>
-          </View>
-        </DemoBlock>
-        <DemoBlock title="定制主题">
-          <ConfigProvider themeVars={themeVars}>
+      <DemoPage title="ConfigProvider 全局配置">
+        <>
+          <DemoBlock title="默认主题">
             <CellGroup>
               <Field
                 label="评分"
                 renderInput={
-                  <Block>
+                  <>
                     <View style="width: 100%">
                       <Rate
                         value={rate}
@@ -122,14 +65,14 @@ export default class Index extends React.Component {
                         }}
                       ></Rate>
                     </View>
-                  </Block>
+                  </>
                 }
               ></Field>
               <Field
                 label="滑块"
                 border={false}
                 renderInput={
-                  <Block>
+                  <>
                     <View style="width: 100%">
                       <Slider
                         value={slider}
@@ -146,7 +89,7 @@ export default class Index extends React.Component {
                         }}
                       ></Slider>
                     </View>
-                  </Block>
+                  </>
                 }
               ></Field>
             </CellGroup>
@@ -155,9 +98,67 @@ export default class Index extends React.Component {
                 提交
               </Button>
             </View>
-          </ConfigProvider>
-        </DemoBlock>
-      </Block>
+          </DemoBlock>
+          <DemoBlock title="定制主题">
+            <ConfigProvider themeVars={themeVars}>
+              <CellGroup>
+                <Field
+                  label="评分"
+                  renderInput={
+                    <>
+                      <View style="width: 100%">
+                        <Rate
+                          value={rate}
+                          onChange={(e) => {
+                            this.onChange({
+                              detail: e.detail,
+                              currentTarget: {
+                                dataset: { key: 'rate' },
+                              },
+                              target: {
+                                dataset: { key: 'rate' },
+                              },
+                            })
+                          }}
+                        ></Rate>
+                      </View>
+                    </>
+                  }
+                ></Field>
+                <Field
+                  label="滑块"
+                  border={false}
+                  renderInput={
+                    <>
+                      <View style="width: 100%">
+                        <Slider
+                          value={slider}
+                          onChange={(e) => {
+                            this.onChange({
+                              detail: e.detail,
+                              currentTarget: {
+                                dataset: { key: 'slider' },
+                              },
+                              target: {
+                                dataset: { key: 'slider' },
+                              },
+                            })
+                          }}
+                        ></Slider>
+                      </View>
+                    </>
+                  }
+                ></Field>
+              </CellGroup>
+              <View style="margin: 16px">
+                <Button round block type="primary">
+                  提交
+                </Button>
+              </View>
+            </ConfigProvider>
+          </DemoBlock>
+        </>
+      </DemoPage>
     )
   }
 }

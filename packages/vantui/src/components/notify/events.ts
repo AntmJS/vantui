@@ -1,5 +1,5 @@
 import { Events } from '@tarojs/taro'
-type EventNames = 'clear' | 'show'
+type EventNames = 'notify_clear' | 'notify_show'
 
 const events = new Events()
 

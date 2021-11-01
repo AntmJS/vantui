@@ -12,6 +12,7 @@ export interface NotifyProps extends StandardProps {
   zIndex?: number
   safeAreaInsetTop?: boolean
   top?: number
+  id?: string
   onClick?: (data: any) => void
   onOpened?: () => void
   onClose?: () => void

@@ -1,3 +1,38 @@
+/* stylelint-disable selector-type-no-unknown, selector-max-type */
+// @import '@antmjs/vantui/dist/style/common.less';
+@import '@tarojs/components/dist/taro-components/taro-components.css';
+@import '@antmjs/vantui/dist/style/index.less';
+
+page,
+body {
+  background-color: #f7f7f7;
+  font-size: 28px;
+}
+body taro-button-core {
+  width: initial;
+}
+
+taro-button-core + taro-button-core {
+  margin-top: 0 !important;
+}
+
+.demo-margin-left {
+  margin-left: 10px;
+}
+
+.demo-margin-right {
+  margin-right: 10px;
+}
+
+.demo-margin-bottom {
+  margin-bottom: 15px;
+}
+// stylelint-disable-next-line
+// page,
+// body {
+//   background-color: #ffffff;
+// }
+
 .pages-index-index {
   color: #000000;
   margin-top: 200px;

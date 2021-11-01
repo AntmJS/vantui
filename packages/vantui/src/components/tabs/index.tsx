@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import {
   useState,
   isValidElement,
@@ -175,7 +175,7 @@ export default function Index(props: TabsProps) {
       resize(cIndex)
       scrollIntoView(cIndex)
     })
-    Taro.nextTick(() => {
+    nextTick(() => {
       if (shouldEmitChange) {
         trigger('onChange', newChildren[cIndex])
       }
@@ -214,7 +214,7 @@ export default function Index(props: TabsProps) {
         })
         ref.current.swiping = true
         if (skipTransition) {
-          Taro.nextTick(() => {
+          nextTick(() => {
             setState((pre: any) => {
               return { ...pre, skipTransition: false }
             })
@@ -232,7 +232,7 @@ export default function Index(props: TabsProps) {
       trigger('onDisabled', child)
     } else {
       setCurrentIndex(index)
-      Taro.nextTick(() => {
+      nextTick(() => {
         trigger('onClick', child)
       })
     }
@@ -259,7 +259,7 @@ export default function Index(props: TabsProps) {
           }
         })
         if (!scrollWithAnimation) {
-          Taro.nextTick(() => {
+          nextTick(() => {
             setState((pre: any) => {
               return {
                 ...pre,
@@ -345,9 +345,16 @@ export default function Index(props: TabsProps) {
       return {
         ...pre,
         container: () =>
-          Taro.createSelectorQuery().select(
+          createSelectorQuery().select(
             `.tabs-com-index${indexRef.current}.van-tabs`,
           ),
+      }
+    })
+    setTimeout(() => {
+      resize()
+      scrollIntoView()
+      if (active !== getCurrentName()) {
+        setCurrentIndexByName(active)
       }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -355,12 +362,8 @@ export default function Index(props: TabsProps) {
 
   useEffect(
     function () {
-      Taro.nextTick(function () {
-        setTimeout(() => {
-          resize()
-          scrollIntoView()
-        }, 300)
-      })
+      resize()
+      scrollIntoView()
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [lineWidth],
@@ -368,16 +371,13 @@ export default function Index(props: TabsProps) {
   useEffect(
     function () {
       if (active !== getCurrentName()) {
-        Taro.nextTick(function () {
-          setTimeout(() => {
-            setCurrentIndexByName(active)
-          }, 300)
-        })
+        setCurrentIndexByName(active)
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active],
   )
+
   useEffect(
     function () {
       setState((pre: any) => {

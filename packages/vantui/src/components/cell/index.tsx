@@ -16,7 +16,6 @@ export default function Index(props: CellProps) {
     border = true,
     isLink,
     clickable,
-    customStyle,
     icon,
     titleWidth,
     titleStyle,
@@ -59,7 +58,7 @@ export default function Index(props: CellProps) {
       }
       hoverClass="van-cell--hover hover-class"
       hoverStayTime={70}
-      style={utils.style([customStyle, style])}
+      style={utils.style([style])}
       onClick={_click}
       {...others}
     >

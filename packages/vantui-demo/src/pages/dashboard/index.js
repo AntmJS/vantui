@@ -1,15 +1,12 @@
-import { Block } from '@tarojs/components'
-import React from 'react'
-import Taro from '@tarojs/taro'
+import { Component } from 'react'
 
 import {} from '@antmjs/vantui'
 
-import list from '../../config.js'
+import list from '../../config'
 
-import DemoBlock from '../../components/demo-block/index'
 import DemoHome from '../../components/demo-home/index'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }

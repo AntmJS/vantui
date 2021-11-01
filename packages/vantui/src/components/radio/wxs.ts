@@ -18,12 +18,4 @@ function iconStyle(data: any) {
   return style(styles)
 }
 
-function iconCustomStyle(data: any) {
-  return style({
-    'line-height': addUnit(data.iconSize),
-    'font-size': '.8em',
-    display: 'block',
-  })
-}
-
-export { iconStyle, iconCustomStyle }
+export { iconStyle }

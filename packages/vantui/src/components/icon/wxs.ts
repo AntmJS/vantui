@@ -6,7 +6,7 @@ function isImage(name: any) {
 }
 
 function rootClass(data: any) {
-  const classes = ['custom-class']
+  const classes = []
 
   if (data.classPrefix != null) {
     classes.push(data.classPrefix)
@@ -27,7 +27,6 @@ function rootStyle(data: any) {
       color: data.color,
       'font-size': addUnit(data.size),
     },
-    data.customStyle,
   ])
 }
 

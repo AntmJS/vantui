@@ -1,7 +1,5 @@
-import { Block, View } from '@tarojs/components'
-import React from 'react'
-import Taro from '@tarojs/taro'
-
+import { Component } from 'react'
+import { View } from '@tarojs/components'
 import {
   DropdownItem,
   DropdownMenu,
@@ -9,11 +7,12 @@ import {
   Cell,
   Button,
 } from '@antmjs/vantui'
+import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -63,80 +62,82 @@ export default class Index extends React.Component {
       switch2,
     } = this.state
     return (
-      <Block>
-        <DemoBlock className="white" title="基础用法">
-          <DropdownMenu>
-            <DropdownItem value={value1} options={option1}></DropdownItem>
-            <DropdownItem value={value2} options={option2}></DropdownItem>
-          </DropdownMenu>
-        </DemoBlock>
-        <DemoBlock className="white" title="自定义菜单内容">
-          <DropdownMenu>
-            <DropdownItem value={value1} options={option1}></DropdownItem>
-            <DropdownItem id="item" title={itemTitle}>
-              <Cell
-                title={switchTitle1}
-                renderRighticon={
-                  <Block>
-                    <Switch
-                      size="24px"
-                      style="height: 26px"
-                      checked={switch1}
-                      activeColor="#ee0a24"
-                      onChange={this.onSwitch1Change}
-                    ></Switch>
-                  </Block>
-                }
-              ></Cell>
-              <Cell
-                title={switchTitle2}
-                renderRighticon={
-                  <Block>
-                    <Switch
-                      size="24px"
-                      style="height: 26px"
-                      checked={switch2}
-                      activeColor="#ee0a24"
-                      onChange={this.onSwitch2Change}
-                    ></Switch>
-                  </Block>
-                }
-              ></Cell>
-              <View style="padding: 5px 16px;">
-                <Button type="danger" block round onClick={this.onConfirm}>
-                  确认
-                </Button>
-              </View>
-            </DropdownItem>
-          </DropdownMenu>
-        </DemoBlock>
-        <DemoBlock className="white" title="自定义选中状态颜色">
-          <DropdownMenu activeColor="#1989fa">
-            <DropdownItem value={value1} options={option1}></DropdownItem>
-            <DropdownItem value={value2} options={option2}></DropdownItem>
-          </DropdownMenu>
-        </DemoBlock>
-        <DemoBlock className="white" title="向上展开">
-          <DropdownMenu direction="up">
-            <DropdownItem value={value1} options={option1}></DropdownItem>
-            <DropdownItem value={value2} options={option2}></DropdownItem>
-          </DropdownMenu>
-        </DemoBlock>
-        <DemoBlock className="white" title="禁用菜单">
-          <DropdownMenu>
-            <DropdownItem
-              value={value1}
-              disabled
-              options={option1}
-            ></DropdownItem>
-            <DropdownItem
-              value={value2}
-              disabled
-              options={option2}
-            ></DropdownItem>
-          </DropdownMenu>
-        </DemoBlock>
-      </Block>
+      <DemoPage title="Dropdown Menu">
+        <>
+          <DemoBlock className="white" title="基础用法">
+            <DropdownMenu>
+              <DropdownItem value={value1} options={option1}></DropdownItem>
+              <DropdownItem value={value2} options={option2}></DropdownItem>
+            </DropdownMenu>
+          </DemoBlock>
+          <DemoBlock className="white" title="自定义菜单内容">
+            <DropdownMenu>
+              <DropdownItem value={value1} options={option1}></DropdownItem>
+              <DropdownItem id="item" title={itemTitle}>
+                <Cell
+                  title={switchTitle1}
+                  renderRighticon={
+                    <>
+                      <Switch
+                        size="24px"
+                        style="height: 26px"
+                        checked={switch1}
+                        activeColor="#ee0a24"
+                        onChange={this.onSwitch1Change}
+                      ></Switch>
+                    </>
+                  }
+                ></Cell>
+                <Cell
+                  title={switchTitle2}
+                  renderRighticon={
+                    <>
+                      <Switch
+                        size="24px"
+                        style="height: 26px"
+                        checked={switch2}
+                        activeColor="#ee0a24"
+                        onChange={this.onSwitch2Change}
+                      ></Switch>
+                    </>
+                  }
+                ></Cell>
+                <View style="padding: 5px 16px;">
+                  <Button type="danger" block round onClick={this.onConfirm}>
+                    确认
+                  </Button>
+                </View>
+              </DropdownItem>
+            </DropdownMenu>
+          </DemoBlock>
+          <DemoBlock className="white" title="自定义选中状态颜色">
+            <DropdownMenu activeColor="#1989fa">
+              <DropdownItem value={value1} options={option1}></DropdownItem>
+              <DropdownItem value={value2} options={option2}></DropdownItem>
+            </DropdownMenu>
+          </DemoBlock>
+          <DemoBlock className="white" title="向上展开">
+            <DropdownMenu direction="up">
+              <DropdownItem value={value1} options={option1}></DropdownItem>
+              <DropdownItem value={value2} options={option2}></DropdownItem>
+            </DropdownMenu>
+          </DemoBlock>
+          <DemoBlock className="white" title="禁用菜单">
+            <DropdownMenu>
+              <DropdownItem
+                value={value1}
+                disabled
+                options={option1}
+              ></DropdownItem>
+              <DropdownItem
+                value={value2}
+                disabled
+                options={option2}
+              ></DropdownItem>
+            </DropdownMenu>
+          </DemoBlock>
+        </>
+      </DemoPage>
     )
   }
 }

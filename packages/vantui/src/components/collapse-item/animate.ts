@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { createAnimation } from '@tarojs/taro'
 // import { canIUseAnimate } from '../common/version.js'
 import { getRect } from '../common/utils.js'
 // function useAnimate(context: any, expanded: any, mounted: any, height: any) {
@@ -31,7 +31,7 @@ import { getRect } from '../common/utils.js'
 //   )
 // }
 function useAnimation(expanded: any, mounted: any, height: any, setState: any) {
-  const animation = Taro.createAnimation({
+  const animation = createAnimation({
     duration: 0,
     timingFunction: 'ease-in-out',
   })

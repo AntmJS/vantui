@@ -11,7 +11,7 @@ function kebabCase(word: any) {
   return newWord
 }
 
-function style(styles: any) {
+function style(styles: any): string {
   if (array.isArray(styles)) {
     return styles
       .filter(function (item: any) {

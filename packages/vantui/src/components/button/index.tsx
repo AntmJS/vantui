@@ -18,7 +18,6 @@ export default function Index(props: ButtonProps) {
     disabled,
     hairline,
     color,
-    customStyle,
     loadingSize = Taro.pxTransform(40),
     loadingType = 'circular',
     loadingText,
@@ -58,7 +57,6 @@ export default function Index(props: ButtonProps) {
         computed.rootStyle({
           plain,
           color,
-          customStyle,
         }),
         style,
       ])}
@@ -89,7 +87,7 @@ export default function Index(props: ButtonProps) {
               name={icon}
               classPrefix={classPrefix}
               className="van-button__icon"
-              customStyle="line-height: inherit;"
+              style="line-height: inherit;"
             ></Icon>
           )}
           <View className="van-button__text">{children}</View>

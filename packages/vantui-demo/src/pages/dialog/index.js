@@ -1,14 +1,13 @@
-import { Block } from '@tarojs/components'
-import React from 'react'
-import Taro from '@tarojs/taro'
+import { Component } from 'react'
 
-import { Image, Dialog, Cell, dialog, toast } from '@antmjs/vantui'
+import { Image, Dialog, Cell, dialog } from '@antmjs/vantui'
+import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 const message = '代码是写出来给人看的，附带能在机器上运行'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -73,11 +72,15 @@ export default class Index extends React.Component {
         }, 1000)
       })
 
-    dialog.confirm({
-      title: '标题',
-      message,
-      beforeClose,
-    })
+    dialog
+      .confirm({
+        title: '标题',
+        message,
+        beforeClose,
+      })
+      .catch((e) => {
+        conosle.log(e)
+      })
   }
 
   onClose = () => {
@@ -89,45 +92,51 @@ export default class Index extends React.Component {
   render() {
     const { show } = this.state
     return (
-      <Block>
-        <DemoBlock card title="提示弹窗" padding>
-          <Cell title="提示弹窗" onClick={this.onClickAlert} isLink></Cell>
-          <Cell
-            title="提示弹窗（无标题）"
-            onClick={this.onClickAlert2}
-            isLink
-          ></Cell>
-          <Cell title="确认弹窗" onClick={this.onClickConfirm} isLink></Cell>
-        </DemoBlock>
-        <DemoBlock card title="圆角按钮样式" padding>
-          <Cell title="提示弹窗" onClick={this.onClickThemeAlert} isLink></Cell>
-          <Cell
-            title="提示弹窗（无标题）"
-            onClick={this.onClickThemeAlert2}
-            isLink
-          ></Cell>
-        </DemoBlock>
-        <DemoBlock card title="异步关闭" padding>
-          <Cell title="异步关闭" onClick={this.onClickAsyncClose}></Cell>
-        </DemoBlock>
-        <DemoBlock card title="组件调用" padding>
-          <Cell title="组件调用" onClick={this.showCustomDialog}></Cell>
-        </DemoBlock>
-        <Dialog
-          title="标题"
-          show={show}
-          showCancelButton
-          onClose={this.onClose}
-          confirmButtonOpenType="getUserInfo"
-          onGetuserinfo={this.getUserInfo}
-        >
-          <Image
-            className="demo-image"
-            src="https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
-          ></Image>
-        </Dialog>
-        <Dialog id="van-dialog"></Dialog>
-      </Block>
+      <DemoPage title="Dialog 弹出框">
+        <>
+          <DemoBlock card title="提示弹窗" padding>
+            <Cell title="提示弹窗" onClick={this.onClickAlert} isLink></Cell>
+            <Cell
+              title="提示弹窗（无标题）"
+              onClick={this.onClickAlert2}
+              isLink
+            ></Cell>
+            <Cell title="确认弹窗" onClick={this.onClickConfirm} isLink></Cell>
+          </DemoBlock>
+          <DemoBlock card title="圆角按钮样式" padding>
+            <Cell
+              title="提示弹窗"
+              onClick={this.onClickThemeAlert}
+              isLink
+            ></Cell>
+            <Cell
+              title="提示弹窗（无标题）"
+              onClick={this.onClickThemeAlert2}
+              isLink
+            ></Cell>
+          </DemoBlock>
+          <DemoBlock card title="异步关闭" padding>
+            <Cell title="异步关闭" onClick={this.onClickAsyncClose}></Cell>
+          </DemoBlock>
+          <DemoBlock card title="组件调用" padding>
+            <Cell title="组件调用" onClick={this.showCustomDialog}></Cell>
+          </DemoBlock>
+          <Dialog
+            title="标题"
+            show={show}
+            showCancelButton
+            onClose={this.onClose}
+            confirmButtonOpenType="getUserInfo"
+            onGetuserinfo={this.getUserInfo}
+          >
+            <Image
+              className="demo-image"
+              src="https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
+            ></Image>
+          </Dialog>
+          <Dialog id="van-dialog"></Dialog>
+        </>
+      </DemoPage>
     )
   }
 }

@@ -140,7 +140,6 @@ export default function Index(
         {renderIcon || (
           <VanIcon
             name="success"
-            size="0.8em"
             className={
               utils.bem('checkbox__icon', [
                 shape,
@@ -150,14 +149,15 @@ export default function Index(
                 },
               ]) + ' icon-class'
             }
-            style={computed.iconStyle({
-              checkedColor,
-              value,
-              disabled,
-              parentDisabled: state.parentDisabled,
-              iconSize,
-            })}
-            customStyle="line-height: 1.25em;"
+            style={
+              computed.iconStyle({
+                checkedColor,
+                value,
+                disabled,
+                parentDisabled: state.parentDisabled,
+                iconSize,
+              }) + 'line-height:1.25em;'
+            }
           ></VanIcon>
         )}
       </View>

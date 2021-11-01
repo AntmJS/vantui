@@ -134,7 +134,7 @@ function convert(fileContent: string, pathName: string): string {
   }
 
   //   import withWeapp from '@tarojs/with-weapp'
-  // import list from '../../config.js'
+  // import list from '../../config'
   // import Page from '../../common/page.js'
 
   //  这个可以分 两次 把 withWeapp 和  Page 去掉
@@ -149,7 +149,7 @@ function convert(fileContent: string, pathName: string): string {
 
   result = result.replace(importComReg, '')
 
-  // 替换 customStyle customClass
+  // 替换 style customClass
   // customClass="
   result = result.replace(
     /custom(Style|Class)="/g,

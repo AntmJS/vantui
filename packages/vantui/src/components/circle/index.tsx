@@ -1,11 +1,15 @@
-import Taro, { createSelectorQuery } from '@tarojs/taro'
+import Taro, {
+  createSelectorQuery,
+  createCanvasContext,
+  useReady,
+} from '@tarojs/taro'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { View, Canvas, CoverView } from '@tarojs/components'
+import { Current } from '@tarojs/runtime'
 
 import { CircleProps } from '../../../types/circle'
 import { getSystemInfoSync } from '../common/utils.js'
 import { isObj } from '../common/validator.js'
-// import { canIUseCanvas2d } from '../common/version.js'
 import { adaptor } from './canvas.js'
 
 function format(rate: number) {
@@ -57,13 +61,11 @@ export default function Index(props: CircleProps) {
     })
   }, [])
 
-  Taro.useReady(() => {
-    // taro h5 nativeProps问题还未修复 hack处理
+  useReady(() => {
     Taro.nextTick(() => {
       if (process.env.TARO_ENV === 'h5') {
         const taroCanvas = document.querySelector(`.${state.unitag}`)
         const canvas = taroCanvas?.children?.[0]
-
         canvas?.setAttribute('width', String(size))
         canvas?.setAttribute('height', String(size))
       }
@@ -77,10 +79,41 @@ export default function Index(props: CircleProps) {
     })
   })
 
+  useEffect(() => {
+    /* eslint-disable-next-line */
+    // @ts-ignore
+    if (process.env.LIBRARY_ENV === 'react') {
+      setTimeout(() => {
+        Taro.nextTick(() => {
+          if (process.env.TARO_ENV === 'h5') {
+            const taroCanvas = document.querySelector(`.${state.unitag}`)
+            const canvas = taroCanvas?.children?.[0]
+            canvas?.setAttribute('width', String(size))
+            canvas?.setAttribute('height', String(size))
+
+            setState((state) => {
+              return {
+                ...state,
+                ready: true,
+              }
+            })
+          }
+        })
+      }, 100)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const getContext = useCallback(() => {
-    console.log('getContext')
-    if (type === '') {
-      const ctx = Taro.createCanvasContext(state.unitag)
+    /* eslint-disable-next-line */
+    // @ts-ignore
+    if (process.env.LIBRARY_ENV === 'react') {
+      /* eslint-disable-next-line */
+      // @ts-ignore
+      Current.page = { path: `page-${state.unitag}` }
+    }
+    if (type === '' || process.env.TARO_ENV === 'h5') {
+      const ctx = createCanvasContext(state.unitag)
       return Promise.resolve(ctx)
     }
     const dpr = getSystemInfoSync().pixelRatio
@@ -90,20 +123,21 @@ export default function Index(props: CircleProps) {
         .node()
         .exec((res: any) => {
           const canvas = res[0].node
-          const ctx = canvas.getContext(type)
-          if (!ref.current.inited) {
-            ref.current.inited = true
-            canvas.width = size * dpr
-            canvas.height = size * dpr
-            ctx.scale(dpr, dpr)
+          if (canvas) {
+            const ctx = canvas.getContext(type)
+            if (!ref.current.inited) {
+              ref.current.inited = true
+              canvas.width = size * dpr
+              canvas.height = size * dpr
+              ctx.scale(dpr, dpr)
+            }
+            resolve(adaptor(ctx))
           }
-          resolve(adaptor(ctx))
         })
     })
   }, [size, type, state.unitag])
 
   const setHoverColor = function () {
-    console.log('setHoverColor')
     if (isObj(color)) {
       const _color = color as Record<string, string>
       return getContext().then((context: any) => {
@@ -171,7 +205,6 @@ export default function Index(props: CircleProps) {
   )
   const drawCircle = useCallback(
     (currentValue: any) => {
-      console.log('drawCircle')
       getContext().then((context: any) => {
         context.clearRect(0, 0, size, size)
         renderLayerCircle(context)
@@ -191,7 +224,6 @@ export default function Index(props: CircleProps) {
     }
   }
   const reRender = useCallback(() => {
-    console.log('reRender')
     if (speed <= 0 || speed > 1000) {
       drawCircle(value)
       return
@@ -262,7 +294,12 @@ export default function Index(props: CircleProps) {
   }, [state.ready])
 
   return (
-    <View className={`van-circle ${className}`} style={style} {...others}>
+    <View
+      id={`page-${state.unitag}`}
+      className={`van-circle ${className}`}
+      style={style}
+      {...others}
+    >
       <Canvas
         // eslint-disable-next-line
         // @ts-ignore

@@ -1,13 +1,12 @@
-import { Block } from '@tarojs/components'
-import React from 'react'
-import Taro from '@tarojs/taro'
+import { Component } from 'react'
 
 import { DatetimePicker, Toast, toast } from '@antmjs/vantui'
+import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor() {
     super()
   }
@@ -77,91 +76,93 @@ export default class Index extends React.Component {
       maxHour,
     } = this.state
     return (
-      <Block>
-        <DemoBlock title="选择完整时间">
-          <DatetimePicker
-            type="datetime"
-            loading={loading}
-            value={currentDate1}
-            minDate={minDate}
-            onInput={(e) => {
-              this.onInput({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'datetime' },
-                },
-                target: {
-                  dataset: { type: 'datetime' },
-                },
-              })
-            }}
-          ></DatetimePicker>
-        </DemoBlock>
-        <DemoBlock title="选择日期（年月日）">
-          <DatetimePicker
-            type="date"
-            value={currentDate2}
-            minDate={minDate}
-            onInput={(e) => {
-              this.onInput({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'date' },
-                },
-                target: {
-                  dataset: { type: 'date' },
-                },
-              })
-            }}
-            formatter={this.formatter}
-          ></DatetimePicker>
-        </DemoBlock>
-        <DemoBlock title="选择日期（年月）">
-          <DatetimePicker
-            type="year-month"
-            value={currentDate3}
-            minDate={minDate}
-            onInput={(e) => {
-              this.onInput({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'year-month' },
-                },
-                target: {
-                  dataset: { type: 'year-month' },
-                },
-              })
-            }}
-          ></DatetimePicker>
-        </DemoBlock>
-        <DemoBlock title="选择时间">
-          <DatetimePicker
-            type="time"
-            value={currentDate4}
-            minHour={minHour}
-            maxHour={maxHour}
-            onInput={(e) => {
-              this.onInput({
-                detail: e.detail,
-                currentTarget: {
-                  dataset: { type: 'time' },
-                },
-                target: {
-                  dataset: { type: 'time' },
-                },
-              })
-            }}
-          ></DatetimePicker>
-        </DemoBlock>
-        <DemoBlock title="选项过滤器">
-          <DatetimePicker
-            type="time"
-            value={currentDate4}
-            filter={this.filter}
-          ></DatetimePicker>
-        </DemoBlock>
-        <Toast id="van-toast"></Toast>
-      </Block>
+      <DemoPage title="DatetimePicker 时间选择">
+        <>
+          <DemoBlock title="选择完整时间">
+            <DatetimePicker
+              type="datetime"
+              loading={loading}
+              value={currentDate1}
+              minDate={minDate}
+              onInput={(e) => {
+                this.onInput({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'datetime' },
+                  },
+                  target: {
+                    dataset: { type: 'datetime' },
+                  },
+                })
+              }}
+            ></DatetimePicker>
+          </DemoBlock>
+          <DemoBlock title="选择日期（年月日）">
+            <DatetimePicker
+              type="date"
+              value={currentDate2}
+              minDate={minDate}
+              onInput={(e) => {
+                this.onInput({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'date' },
+                  },
+                  target: {
+                    dataset: { type: 'date' },
+                  },
+                })
+              }}
+              formatter={this.formatter}
+            ></DatetimePicker>
+          </DemoBlock>
+          <DemoBlock title="选择日期（年月）">
+            <DatetimePicker
+              type="year-month"
+              value={currentDate3}
+              minDate={minDate}
+              onInput={(e) => {
+                this.onInput({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'year-month' },
+                  },
+                  target: {
+                    dataset: { type: 'year-month' },
+                  },
+                })
+              }}
+            ></DatetimePicker>
+          </DemoBlock>
+          <DemoBlock title="选择时间">
+            <DatetimePicker
+              type="time"
+              value={currentDate4}
+              minHour={minHour}
+              maxHour={maxHour}
+              onInput={(e) => {
+                this.onInput({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { type: 'time' },
+                  },
+                  target: {
+                    dataset: { type: 'time' },
+                  },
+                })
+              }}
+            ></DatetimePicker>
+          </DemoBlock>
+          <DemoBlock title="选项过滤器">
+            <DatetimePicker
+              type="time"
+              value={currentDate4}
+              filter={this.filter}
+            ></DatetimePicker>
+          </DemoBlock>
+          <Toast id="van-toast"></Toast>
+        </>
+      </DemoPage>
     )
   }
 }

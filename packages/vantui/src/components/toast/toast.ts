@@ -10,20 +10,20 @@ const createMethod = (type: string) => (options: ToastProps | string) =>
   Toast(Object.assign({ type }, parseOptions(options)))
 
 const Toast = function (options: ToastProps | string) {
-  trigger('show', options)
+  trigger('toast_show', options)
 }
 
 Toast.loading = createMethod('loading')
 Toast.success = createMethod('success')
 Toast.fail = createMethod('fail')
 Toast.clear = function (options?: ToastProps) {
-  trigger('clear', options)
+  trigger('toast_clear', options)
 }
 Toast.setDefaultOptions = (options: ToastProps) => {
-  trigger('setDefaultOptions', options)
+  trigger('toast_setDefaultOptions', options)
 }
 Toast.resetDefaultOptions = () => {
-  trigger('resetDefaultOptions')
+  trigger('toast_resetDefaultOptions')
 }
 
 export default Toast

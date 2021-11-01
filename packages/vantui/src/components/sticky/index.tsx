@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { View } from '@tarojs/components'
-import { usePageScroll } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
 import { Sticky } from '../common/zIndex'
 import { isDef } from '../common/validator'
 import { StickyProps } from '../../../types/sticky'
+import { usePageScroll } from './../mixins/page-scroll'
 import * as computed from './wxs'
 const ROOT_ELEMENT = '.van-sticky'
 let comIndex = 0
@@ -131,7 +131,7 @@ export default function Index(props: StickyProps) {
     [scrollTop, container, disabled, offsetTop],
   )
 
-  usePageScroll(function (e) {
+  usePageScroll(function (e: any) {
     onMyScroll(e.scrollTop)
   })
 
@@ -139,7 +139,9 @@ export default function Index(props: StickyProps) {
   return (
     <View
       className={
-        `sticky-com-index${indexRef.current} ` + ' van-sticky ' + className
+        `sticky-com-index${indexRef.current} ` +
+        ' van-sticky ' +
+        (className || '')
       }
       style={utils.style([
         computed.containerStyle({

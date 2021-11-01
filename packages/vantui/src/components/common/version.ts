@@ -1,4 +1,7 @@
-import Taro from '@tarojs/taro'
+import Taro, {
+  getSystemInfoSync as TaroGetSystemInfoSync,
+  canIUse,
+} from '@tarojs/taro'
 function compareVersion(v1: any, v2: any) {
   v1 = v1.split('.')
   v2 = v2.split('.')
@@ -24,7 +27,7 @@ function compareVersion(v1: any, v2: any) {
 let systemInfo: any
 function getSystemInfoSync() {
   if (systemInfo == null) {
-    systemInfo = Taro.getSystemInfoSync()
+    systemInfo = TaroGetSystemInfoSync()
   }
   return systemInfo
 }
@@ -45,7 +48,7 @@ export function canIUseGroupSetData() {
   return gte('2.4.0')
 }
 export function canIUseNextTick() {
-  return Taro.canIUse('nextTick')
+  return canIUse('nextTick')
 }
 export function canIUseCanvas2d() {
   return gte('2.9.0')

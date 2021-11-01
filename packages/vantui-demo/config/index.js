@@ -95,6 +95,7 @@ let config = {
     },
     router: {
       mode: 'hash',
+      // 'pages/empty/index'
     },
     devServer: {
       port: 10086,

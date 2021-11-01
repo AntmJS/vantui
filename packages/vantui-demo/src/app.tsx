@@ -1,35 +1,64 @@
-import { useDidShow, useDidHide } from '@tarojs/taro'
-import React, { useEffect } from 'react'
+import { navigateTo } from '@tarojs/taro'
+import { Component } from 'react'
 import './app.less'
-interface IProps {
-  children: React.ReactNode
-}
+// interface IProps {
+//   children: React.ReactNode
+// }
+let oldHash = ''
+export default class Index extends Component {
+  onPageNotFound() {
+    navigateTo({
+      url: '/pages/dashboard/index',
+    })
+  }
 
-export default function App(props: IProps) {
-  // 可以使用所有的 React Hooks
-  useEffect(() => {
-    console.log('app launch')
-    return function () {
-      // 这个暂时不确定会不会触发
-      console.log('app unlaunch')
+  componentDidMount() {
+    if (process.env.TARO_ENV !== 'h5') return
+    window.top?.postMessage({ type: 'iframeReady' }, '*')
+    window.addEventListener('message', (event) => {
+      if (event.data?.type !== 'replacePath') {
+        return
+      }
+
+      const path = event.data?.value || ''
+      let url = `/pages${path}/index`
+      const devGuidePaths = ['/home', '/quickstart', '/custom-style', '/theme']
+      if (devGuidePaths.includes(path)) {
+        url = `/pages/dashboard/index`
+      }
+      navigateTo({ url })
+    })
+    oldHash = window.location.hash
+    const pathMatch = oldHash.match(/^#\/([\w-]+)$/)
+    if (pathMatch && pathMatch[1]) {
+      navigateTo({ url: `/pages${pathMatch[1]}/index` })
     }
-  }, [])
+  }
 
-  // 对应 onShow
-  useDidShow(() => {
-    console.log('app show')
-  })
+  componentDidUpdate() {
+    if (process.env.TARO_ENV !== 'h5') return
+    if (oldHash !== '' && oldHash !== window.location.hash) {
+      oldHash = window.location.hash
+      window.top?.postMessage(
+        {
+          type: 'replacePath',
+          value: window.location.hash.replace(
+            /#\/pages(\/[\w-]+)\/index/,
+            '$1',
+          ),
+        },
+        '*',
+      )
+    }
+  }
 
-  // 对应 onHide
-  useDidHide(() => {
-    console.log('app hide')
-  })
-
-  return (
-    // 在入口组件不会渲染任何内容，但我们可以在这里做类似于状态管理的事情
-    <>
-      {/* props.children 是将要被渲染的页面 */}
-      {props.children}
-    </>
-  )
+  render() {
+    return (
+      <>
+        {/* props.children 是将要被渲染的页面 */}
+        {/* eslint-disable-next-line react/prop-types */}
+        {this.props.children}
+      </>
+    )
+  }
 }

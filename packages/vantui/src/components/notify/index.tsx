@@ -6,9 +6,10 @@ import { NotifyProps } from '../../../types/notify'
 import VanTransition from '../transition/index'
 import { getSystemInfoSync } from '../common/utils.js'
 import * as computed from './wxs'
-import { on, off } from './events'
+import { on, off, trigger } from './events'
 import Notify from './notify'
 
+const defaultId = 'van-notify'
 const defaultOptions = {
   selector: '#van-notify',
   message: '',
@@ -19,6 +20,7 @@ const defaultOptions = {
   zIndex: 110,
   safeAreaInsetTop: false,
   top: 0,
+  id: defaultId,
 }
 let timer: any = null
 function parseOptions(message: any) {
@@ -40,6 +42,7 @@ export default function Index(props: NotifyProps) {
     zIndex: 110,
     safeAreaInsetTop: false,
     top: 0,
+    id: defaultId,
     onClick: (_data: any) => {},
     onOpened: () => {},
     onClose: () => {},
@@ -48,12 +51,10 @@ export default function Index(props: NotifyProps) {
   const { style, className, ...others } = props
 
   useEffect(() => {
-    /* eslint-disable-next-line */
-    const { style, className, ...others } = props
     setState((state) => {
       return {
         ...state,
-        ...others,
+        id: props.id || defaultId,
       }
     })
   }, [props])
@@ -69,28 +70,30 @@ export default function Index(props: NotifyProps) {
   }, [])
 
   useEffect(() => {
-    on('show', (notifyOptions) => {
+    on('notify_show', (notifyOptions) => {
       const options = Object.assign(
         Object.assign({}, defaultOptions),
         parseOptions(notifyOptions),
       )
 
-      setState((state) => {
-        return {
-          ...state,
-          ...options,
-        }
-      })
-      show(notifyOptions)
+      if (options.id === state.id || (!options.id && state.id === defaultId)) {
+        setState((state) => {
+          return {
+            ...state,
+            ...options,
+          }
+        })
+        show(notifyOptions)
+      }
     })
 
-    on('clear', (notifyOptions) => {
+    on('notify_clear', (notifyOptions) => {
       hide(notifyOptions)
     })
 
     return () => {
-      off('show')
-      off('clear')
+      off('notify_show')
+      off('notify_clear')
     }
     /* eslint-disable-next-line */
   }, [])
@@ -121,11 +124,12 @@ export default function Index(props: NotifyProps) {
       })
       if (state.duration > 0 && state.duration !== Infinity) {
         timer = setTimeout(() => {
-          hide(notifyOptions)
+          // hide(notifyOptions)
+          trigger('notify_clear', notifyOptions)
         }, state.duration)
       }
     },
-    [hide, state.duration],
+    [state.duration],
   )
   const onTap = useCallback(
     (event: ITouchEvent) => {

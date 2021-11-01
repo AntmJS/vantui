@@ -304,7 +304,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       title={title}
       loading={loading}
       columns={computed.displayColumns(columns, columnsNum)}
-      // itemHeight={itemHeight}
+      itemHeight={itemHeight}
       visibleItemCount={visibleItemCount}
       cancelButtonText={cancelButtonText}
       confirmButtonText={confirmButtonText}

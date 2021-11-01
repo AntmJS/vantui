@@ -2,7 +2,7 @@ import { style } from '../wxs/style'
 
 function rootStyle(data: any) {
   if (!data.color) {
-    return data.customStyle
+    return ''
   }
 
   const properties: any = {
@@ -17,7 +17,7 @@ function rootStyle(data: any) {
     properties['border-color'] = data.color
   }
 
-  return style([properties, data.customStyle])
+  return style([properties])
 }
 
 function loadingColor(data: any) {

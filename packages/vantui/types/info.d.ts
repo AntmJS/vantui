@@ -4,7 +4,7 @@ import { StandardProps } from '@tarojs/components'
 export interface InfoProps extends StandardProps {
   dot?: boolean
   info?: string | number
-  customStyle?: string
+  style?: string
 }
 
 declare const Info: ComponentClass<InfoProps>

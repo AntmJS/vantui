@@ -7,7 +7,7 @@ import * as computed from './wxs'
 export default function Index(props: LoadingProps): JSX.Element {
   const {
     vertical,
-    type,
+    type = 'circular',
     color,
     size,
     textSize,

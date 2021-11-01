@@ -6,9 +6,10 @@ import VanOverlay from '../overlay/index'
 import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
 import { isObj } from '../common/validator.js'
-import { on, off } from './events'
+import { on, off, trigger } from './events'
 import Toast from './toast'
 
+const defaultId = 'van-toast'
 const defaultOptions = {
   show: true,
   zIndex: 1000,
@@ -20,6 +21,7 @@ const defaultOptions = {
   message: '',
   loadingType: 'circular',
   selector: '#van-toast',
+  id: defaultId,
 }
 // let queue: any = []
 let currentOptions = Object.assign({}, defaultOptions)
@@ -40,18 +42,17 @@ export default function Index(props: ToastProps) {
     message: '',
     loadingType: 'circular' as any,
     selector: '#van-toast',
+    id: defaultId,
   })
 
   /* eslint-disable-next-line */
   const { style, className, children, ...others } = props
 
   useEffect(() => {
-    /* eslint-disable-next-line */
-    const { style, className, children, ...others } = props
     setState((state) => {
       return {
         ...state,
-        ...others,
+        id: props.id || defaultId,
       }
     })
   }, [props])
@@ -68,15 +69,14 @@ export default function Index(props: ToastProps) {
   }, [])
 
   useEffect(() => {
-    on('show', (toastOptions) => {
-      const action = () => {
-        const options = Object.assign(
-          Object.assign({}, currentOptions),
-          parseOptions(toastOptions),
-        )
+    on('toast_show', (toastOptions) => {
+      const options = Object.assign(
+        Object.assign({}, currentOptions),
+        parseOptions(toastOptions),
+      )
 
+      if (options.id === state.id || (!options.id && state.id === defaultId)) {
         // queue.push(toastOptions)
-
         setState((state) => {
           return {
             ...state,
@@ -87,34 +87,15 @@ export default function Index(props: ToastProps) {
         clearTimeout(timer)
         if (options.duration != null && options.duration > 0) {
           timer = setTimeout(() => {
-            clear(toastOptions)
+            // clear(toastOptions)
+            trigger('toast_clear', toastOptions)
             // queue = queue.filter((item: any) => item.sel !== toast)
           }, options.duration)
         }
       }
-
-      action()
-      // const selector = toastOptions.selector || defaultOptions.selector
-      // if (process.env.TARO_ENV === 'h5') {
-      //   if (document.querySelector(selector)) {
-      //     action()
-      //   }
-      // } else {
-      //   if (process.env.TARO_ENV === 'alipay') {
-      //     action()
-      //   } else {
-      //     const query = Taro.createSelectorQuery()
-      //     query.select(selector).node()
-      //     query.exec((res) => {
-      //       if (res?.[0]) {
-      //         action()
-      //       }
-      //     })
-      //   }
-      // }
     })
 
-    on('clear', (toastOptions) => {
+    on('toast_clear', (toastOptions) => {
       clear(toastOptions)
       // queue.forEach((toast: any) => {
       //   toast.clear()
@@ -122,23 +103,22 @@ export default function Index(props: ToastProps) {
       // queue = []
     })
 
-    on('setDefaultOptions', (options: any) => {
+    on('toast_setDefaultOptions', (options: any) => {
       currentOptions = Object.assign(currentOptions, options)
     })
 
-    on('resetDefaultOptions', () => {
+    on('toast_resetDefaultOptions', () => {
       currentOptions = Object.assign({}, defaultOptions)
     })
 
     return () => {
-      off('show')
-      off('clear')
-      off('setDefaultOptions')
-      off('resetDefaultOptions')
+      off('toast_show')
+      off('toast_clear')
+      off('toast_setDefaultOptions')
+      off('toast_resetDefaultOptions')
     }
     /* eslint-disable-next-line */
   }, [])
-
   return (
     <View>
       {(state.mask || state.forbidClick) && (
