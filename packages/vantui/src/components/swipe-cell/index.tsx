@@ -50,8 +50,8 @@ function Index(
   } = props
 
   const swipeMove = useCallback(
-    function (offset = 0, dragging?: boolean) {
-      const offset_ = range(offset, -rightWidth, leftWidth)
+    function (offset2 = 0, dragging?: boolean) {
+      const offset_ = range(offset2, -rightWidth, leftWidth)
       setOffset(offset_)
       const transform = `translate3d(${offset_}px, 0, 0)`
       const transition = dragging
@@ -174,21 +174,26 @@ function Index(
   const onClick_ = useCallback(
     function (event) {
       event.stopPropagation()
+      event.preventDefault()
       const { key: position = 'outside' } = event.currentTarget.dataset
       Object.defineProperty(event, 'detail', {
         value: {
           position,
+          instance: {
+            close,
+            open,
+          },
         },
       })
       if (onClick) onClick(event)
-      if (offset) return
       if (asyncClose && onClose) {
         onClose(event)
+        swipeMove(0)
       } else {
         swipeMove(0)
       }
     },
-    [asyncClose, offset, onClick, onClose, swipeMove],
+    [asyncClose, onClick, onClose, swipeMove],
   )
 
   const startDrag = useCallback(
