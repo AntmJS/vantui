@@ -23,11 +23,15 @@ export default class Index extends Component {
   onChange2 = ({ detail }) => {
     dialog
       .confirm({
+        selector: '#switch-demo',
         title: '提示',
         message: '是否切换开关？',
       })
       .then(() => {
-        this.setState({ checked2: detail })
+        // this.setState({ checked2: detail })
+      })
+      .catch((e) => {
+        console.log(e)
       })
   }
 
@@ -71,7 +75,7 @@ export default class Index extends Component {
               onChange={this.onChange2}
             ></Switch>
           </DemoBlock>
-          <Dialog id="van-dialog"></Dialog>
+          <Dialog id="switch-demo"></Dialog>
         </>
       </DemoPage>
     )
