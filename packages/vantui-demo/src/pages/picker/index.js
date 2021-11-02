@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import Taro from '@tarojs/taro'
 import { Picker, Toast, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'

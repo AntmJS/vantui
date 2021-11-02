@@ -105,6 +105,7 @@ export default class Index extends Component {
                 type="warning"
               ></GoodsActionButton>
               <GoodsActionButton
+                type="primary"
                 plain
                 color="#7232dd"
                 text="立即购买"

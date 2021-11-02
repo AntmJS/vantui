@@ -193,6 +193,7 @@ function Index(
         swipeMove(0)
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [asyncClose, onClick, onClose, swipeMove],
   )
 

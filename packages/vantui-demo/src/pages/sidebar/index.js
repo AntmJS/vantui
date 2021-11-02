@@ -31,7 +31,7 @@ export default class Index extends Component {
           <Grid columnNum={2} border={false}>
             <GridItem>
               <h3 className="demo-sidebar-title">基础用法</h3>
-              <Sidebar className="custom-sidebar">
+              <Sidebar className="custom-sidebar" activeKey={0}>
                 <SidebarItem title="标签名"></SidebarItem>
                 <SidebarItem title="标签名"></SidebarItem>
                 <SidebarItem title="标签名"></SidebarItem>
@@ -39,7 +39,7 @@ export default class Index extends Component {
             </GridItem>
             <GridItem>
               <h3 className="demo-sidebar-title">徽标提示</h3>
-              <Sidebar className="custom-sidebar">
+              <Sidebar className="custom-sidebar" activeKey={0}>
                 <SidebarItem title="标签名" dot></SidebarItem>
                 <SidebarItem title="标签名" badge="5"></SidebarItem>
                 <SidebarItem title="标签名" badge="99+"></SidebarItem>
@@ -47,7 +47,7 @@ export default class Index extends Component {
             </GridItem>
             <GridItem>
               <h3 className="demo-sidebar-title">禁用选项</h3>
-              <Sidebar className="custom-sidebar">
+              <Sidebar className="custom-sidebar" activeKey={0}>
                 <SidebarItem title="标签名"></SidebarItem>
                 <SidebarItem title="标签名" disabled></SidebarItem>
                 <SidebarItem title="标签名"></SidebarItem>
@@ -55,7 +55,11 @@ export default class Index extends Component {
             </GridItem>
             <GridItem>
               <h3 className="demo-sidebar-title">监听切换事件</h3>
-              <Sidebar className="custom-sidebar" onChange={this.onChange}>
+              <Sidebar
+                className="custom-sidebar"
+                onChange={this.onChange}
+                activeKey={0}
+              >
                 <SidebarItem title="标签名 1"></SidebarItem>
                 <SidebarItem title="标签名 2"></SidebarItem>
                 <SidebarItem title="标签名 3"></SidebarItem>

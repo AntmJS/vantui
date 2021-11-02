@@ -1255,17 +1255,9 @@
     "@babel/runtime" "^7.11.2"
     "@tarojs/runtime" "3.3.11"
 
-"@tarojs/api@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/api/download/@tarojs/api-3.3.7.tgz?cache=0&sync_timestamp=1635212519780&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fapi%2Fdownload%2F%40tarojs%2Fapi-3.3.7.tgz#a8c772cc032155c9fbfe8900a42d587a1aa72d68"
-  integrity sha1-qMdyzAMhVcn7/okApC1YehqnLWg=
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@tarojs/runtime" "3.3.7"
-
-"@tarojs/cli@^3.3.7":
+"@tarojs/cli@3.3.11":
   version "3.3.11"
-  resolved "https://registry.npmmirror.com/@tarojs/cli/download/@tarojs/cli-3.3.11.tgz?cache=0&sync_timestamp=1635212461968&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fcli%2Fdownload%2F%40tarojs%2Fcli-3.3.11.tgz#855a8cab86afb49695532a3607347f06e6fbee4c"
+  resolved "https://registry.npmmirror.com/@tarojs/cli/download/@tarojs/cli-3.3.11.tgz#855a8cab86afb49695532a3607347f06e6fbee4c"
   integrity sha1-hVqMq4avtJaVUyo2BzR/Bub77kw=
   dependencies:
     "@hapi/joi" "17.1.1"
@@ -1365,21 +1357,6 @@
     swiper "6.8.0"
     weui "^1.1.2"
 
-"@tarojs/components@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/components/download/@tarojs/components-3.3.7.tgz#a6277cd1a496786a82ab7debbc7e14bcd47d6f50"
-  integrity sha1-pid80aSWeGqCq33rvH4UvNR9b1A=
-  dependencies:
-    "@stencil/core" "2.4.0"
-    "@tarojs/taro" "3.3.7"
-    better-scroll "^1.14.1"
-    classnames "^2.2.5"
-    intersection-observer "^0.7.0"
-    omit.js "^1.0.0"
-    resolve-pathname "^3.0.0"
-    swiper "6.8.0"
-    weui "^1.1.2"
-
 "@tarojs/helper@3.3.11":
   version "3.3.11"
   resolved "https://registry.npmmirror.com/@tarojs/helper/download/@tarojs/helper-3.3.11.tgz?cache=0&sync_timestamp=1635212515104&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fhelper%2Fdownload%2F%40tarojs%2Fhelper-3.3.11.tgz#eb4f38151cd9417ddf46cdafacbcfa0172711245"
@@ -1405,49 +1382,24 @@
     resolve "1.15.1"
     yauzl "2.10.0"
 
-"@tarojs/helper@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/helper/download/@tarojs/helper-3.3.7.tgz?cache=0&sync_timestamp=1635212515104&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fhelper%2Fdownload%2F%40tarojs%2Fhelper-3.3.7.tgz#cc018667dea95cdccb55ceb14a330b0b6ba3c001"
-  integrity sha1-zAGGZ96pXNzLVc6xSjMLC2ujwAE=
+"@tarojs/mini-runner@3.3.11":
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/@tarojs/mini-runner/download/@tarojs/mini-runner-3.3.11.tgz#44d78ae07d6128a87f17833c4d7167d7d59e3c1d"
+  integrity sha1-RNeK4H1hKKh/F4M8TXFn19WePB0=
   dependencies:
     "@babel/core" "^7.11.1"
-    "@babel/plugin-proposal-class-properties" "7.10.4"
-    "@babel/plugin-proposal-decorators" "7.10.5"
-    "@babel/plugin-proposal-object-rest-spread" "7.14.7"
-    "@babel/plugin-transform-runtime" "7.11.0"
-    "@babel/preset-env" "^7.11.0"
-    "@babel/preset-typescript" "7.12.17"
-    "@babel/register" "7.14.5"
-    "@babel/runtime" "^7.9.2"
-    "@tarojs/taro" "3.3.7"
-    chalk "3.0.0"
-    chokidar "3.3.1"
-    cross-spawn "7.0.3"
-    debug "4.1.1"
-    find-yarn-workspace-root "2.0.0"
-    fs-extra "8.1.0"
-    lodash "4.17.21"
-    resolve "1.15.1"
-    yauzl "2.10.0"
-
-"@tarojs/mini-runner@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/mini-runner/download/@tarojs/mini-runner-3.3.7.tgz?cache=0&sync_timestamp=1635212830190&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fmini-runner%2Fdownload%2F%40tarojs%2Fmini-runner-3.3.7.tgz#31ae28d7ccaaab0297f7a70d4ffa7badaf5cdfde"
-  integrity sha1-Ma4o18yqqwKX96cNT/p7ra9c394=
-  dependencies:
-    "@babel/core" "^7.11.1"
-    "@tarojs/helper" "3.3.7"
-    "@tarojs/plugin-platform-alipay" "3.3.7"
-    "@tarojs/plugin-platform-jd" "3.3.7"
-    "@tarojs/plugin-platform-qq" "3.3.7"
-    "@tarojs/plugin-platform-swan" "3.3.7"
-    "@tarojs/plugin-platform-tt" "3.3.7"
-    "@tarojs/plugin-platform-weapp" "3.3.7"
-    "@tarojs/runner-utils" "3.3.7"
-    "@tarojs/runtime" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-    "@tarojs/taro" "3.3.7"
-    "@tarojs/taro-loader" "3.3.7"
+    "@tarojs/helper" "3.3.11"
+    "@tarojs/plugin-platform-alipay" "3.3.11"
+    "@tarojs/plugin-platform-jd" "3.3.11"
+    "@tarojs/plugin-platform-qq" "3.3.11"
+    "@tarojs/plugin-platform-swan" "3.3.11"
+    "@tarojs/plugin-platform-tt" "3.3.11"
+    "@tarojs/plugin-platform-weapp" "3.3.11"
+    "@tarojs/runner-utils" "3.3.11"
+    "@tarojs/runtime" "3.3.11"
+    "@tarojs/shared" "3.3.11"
+    "@tarojs/taro" "3.3.11"
+    "@tarojs/taro-loader" "3.3.11"
     babel-loader "8.2.1"
     copy-webpack-plugin "5.1.2"
     css "2.2.4"
@@ -1468,10 +1420,10 @@
     mkdirp "^1.0.4"
     ora "^3.4.0"
     postcss "8.3.5"
-    postcss-html-transform "3.3.7"
+    postcss-html-transform "3.3.11"
     postcss-import "12.0.1"
     postcss-loader "4.3.0"
-    postcss-pxtransform "3.3.7"
+    postcss-pxtransform "3.3.11"
     postcss-url "8.0.0"
     regenerator-runtime "0.11"
     request "^2.88.0"
@@ -1500,15 +1452,6 @@
     "@tarojs/service" "3.3.11"
     "@tarojs/shared" "3.3.11"
 
-"@tarojs/plugin-platform-alipay@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-alipay/download/@tarojs/plugin-platform-alipay-3.3.7.tgz#c251c1e06386b860e681a459a1adb49c7194fa2c"
-  integrity sha1-wlHB4GOGuGDmgaRZoa20nHGU+iw=
-  dependencies:
-    "@tarojs/components" "3.3.7"
-    "@tarojs/service" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-
 "@tarojs/plugin-platform-jd@3.3.11":
   version "3.3.11"
   resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-jd/download/@tarojs/plugin-platform-jd-3.3.11.tgz#1c64f3b581bb1370a8e9e64ab9a2e7fb7fba1b5a"
@@ -1516,14 +1459,6 @@
   dependencies:
     "@tarojs/service" "3.3.11"
     "@tarojs/shared" "3.3.11"
-
-"@tarojs/plugin-platform-jd@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-jd/download/@tarojs/plugin-platform-jd-3.3.7.tgz#88ae3abe3734445ef12c3da2b0a969638a07aa0a"
-  integrity sha1-iK46vjc0RF7xLD2isKlpY4oHqgo=
-  dependencies:
-    "@tarojs/service" "3.3.7"
-    "@tarojs/shared" "3.3.7"
 
 "@tarojs/plugin-platform-qq@3.3.11":
   version "3.3.11"
@@ -1534,15 +1469,6 @@
     "@tarojs/service" "3.3.11"
     "@tarojs/shared" "3.3.11"
 
-"@tarojs/plugin-platform-qq@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-qq/download/@tarojs/plugin-platform-qq-3.3.7.tgz#71d3f5cbb72a506482ea38d1ed699d865aa0d696"
-  integrity sha1-cdP1y7cqUGSC6jjR7Wmdhlqg1pY=
-  dependencies:
-    "@tarojs/plugin-platform-weapp" "3.3.7"
-    "@tarojs/service" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-
 "@tarojs/plugin-platform-swan@3.3.11":
   version "3.3.11"
   resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-swan/download/@tarojs/plugin-platform-swan-3.3.11.tgz#538d5deb7e8cacf92fa193bfa5f034437e2b387b"
@@ -1552,15 +1478,6 @@
     "@tarojs/service" "3.3.11"
     "@tarojs/shared" "3.3.11"
 
-"@tarojs/plugin-platform-swan@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-swan/download/@tarojs/plugin-platform-swan-3.3.7.tgz#98f32e63d1386f42e4f90d59bec13f9ef57cf862"
-  integrity sha1-mPMuY9E4b0Lk+Q1ZvsE/nvV8+GI=
-  dependencies:
-    "@tarojs/components" "3.3.7"
-    "@tarojs/service" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-
 "@tarojs/plugin-platform-tt@3.3.11":
   version "3.3.11"
   resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-tt/download/@tarojs/plugin-platform-tt-3.3.11.tgz#adb33901e56cfd448aab0d52e4baeb33292403ff"
@@ -1568,14 +1485,6 @@
   dependencies:
     "@tarojs/service" "3.3.11"
     "@tarojs/shared" "3.3.11"
-
-"@tarojs/plugin-platform-tt@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-tt/download/@tarojs/plugin-platform-tt-3.3.7.tgz#ea631bebbcd79bfc631cf6428c6467e33ab18194"
-  integrity sha1-6mMb67zXm/xjHPZCjGRn4zqxgZQ=
-  dependencies:
-    "@tarojs/service" "3.3.7"
-    "@tarojs/shared" "3.3.7"
 
 "@tarojs/plugin-platform-weapp@3.3.11":
   version "3.3.11"
@@ -1586,22 +1495,13 @@
     "@tarojs/service" "3.3.11"
     "@tarojs/shared" "3.3.11"
 
-"@tarojs/plugin-platform-weapp@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-weapp/download/@tarojs/plugin-platform-weapp-3.3.7.tgz#1b8bd8410981abc37c546113b9030ddd23ce78f2"
-  integrity sha1-G4vYQQmBq8N8VGETuQMN3SPOePI=
+"@tarojs/react@3.3.11":
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/@tarojs/react/download/@tarojs/react-3.3.11.tgz#bd7bd438563d68a0103fc1ec3654d961cafc68e1"
+  integrity sha1-vXvUOFY9aKAQP8HsNlTZYcr8aOE=
   dependencies:
-    "@tarojs/components" "3.3.7"
-    "@tarojs/service" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-
-"@tarojs/react@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/react/download/@tarojs/react-3.3.7.tgz#00fd8834215952c24baebb41fd20a02f639572d3"
-  integrity sha1-AP2INCFZUsJLrrtB/SCgL2OVctM=
-  dependencies:
-    "@tarojs/runtime" "3.3.7"
-    "@tarojs/shared" "3.3.7"
+    "@tarojs/runtime" "3.3.11"
+    "@tarojs/shared" "3.3.11"
     react-reconciler "0.26.1"
     scheduler "^0.20.1"
 
@@ -1616,23 +1516,12 @@
     universal-router "^8.3.0"
     url-parse "^1.4.7"
 
-"@tarojs/router@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/router/download/@tarojs/router-3.3.7.tgz?cache=0&sync_timestamp=1635212529243&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Frouter%2Fdownload%2F%40tarojs%2Frouter-3.3.7.tgz#4a88b725dc46929bf1bf1a85796b2fb1e95998f1"
-  integrity sha1-Soi3JdxGkpvxvxqFeWsvselZmPE=
+"@tarojs/runner-utils@3.3.11":
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/@tarojs/runner-utils/download/@tarojs/runner-utils-3.3.11.tgz#719826299f84bc9ba1b000449703e5805b90d05d"
+  integrity sha1-cZgmKZ+EvJuhsABElwPlgFuQ0F0=
   dependencies:
-    "@tarojs/runtime" "3.3.7"
-    history "^5.0.0"
-    query-string "^6.13.8"
-    universal-router "^8.3.0"
-    url-parse "^1.4.7"
-
-"@tarojs/runner-utils@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/runner-utils/download/@tarojs/runner-utils-3.3.7.tgz?cache=0&sync_timestamp=1635212843452&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Frunner-utils%2Fdownload%2F%40tarojs%2Frunner-utils-3.3.7.tgz#8825df79fbfe57f6407a774142bc25df572b8944"
-  integrity sha1-iCXfefv+V/ZAendBQrwl31criUQ=
-  dependencies:
-    "@tarojs/helper" "3.3.7"
+    "@tarojs/helper" "3.3.11"
     scss-bundle "^3.0.2"
 
 "@tarojs/runtime@3.3.11":
@@ -1641,16 +1530,6 @@
   integrity sha1-1kn6lOOMP8jbPlGx3NgKs+Ew9NE=
   dependencies:
     "@tarojs/shared" "3.3.11"
-    inversify "5.1.1"
-    lodash-es "4.17.15"
-    reflect-metadata "^0.1.13"
-
-"@tarojs/runtime@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/runtime/download/@tarojs/runtime-3.3.7.tgz?cache=0&sync_timestamp=1635212520003&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fruntime%2Fdownload%2F%40tarojs%2Fruntime-3.3.7.tgz#31d70d1fec713cac7c40a0bcdaedf02b49a92cff"
-  integrity sha1-MdcNH+xxPKx8QKC82u3wK0mpLP8=
-  dependencies:
-    "@tarojs/shared" "3.3.7"
     inversify "5.1.1"
     lodash-es "4.17.15"
     reflect-metadata "^0.1.13"
@@ -1669,29 +1548,10 @@
     resolve "1.15.1"
     tapable "1.1.3"
 
-"@tarojs/service@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/service/download/@tarojs/service-3.3.7.tgz?cache=0&sync_timestamp=1635212515472&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fservice%2Fdownload%2F%40tarojs%2Fservice-3.3.7.tgz#74742b93b09dffe931e4c61cbb094e2028c1a884"
-  integrity sha1-dHQrk7Cd/+kx5MYcuwlOICjBqIQ=
-  dependencies:
-    "@hapi/joi" "17.1.1"
-    "@tarojs/helper" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-    "@tarojs/taro" "3.3.7"
-    fs-extra "8.1.0"
-    lodash "4.17.21"
-    resolve "1.15.1"
-    tapable "1.1.3"
-
 "@tarojs/shared@3.3.11":
   version "3.3.11"
   resolved "https://registry.npmmirror.com/@tarojs/shared/download/@tarojs/shared-3.3.11.tgz?cache=0&sync_timestamp=1635212518147&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fshared%2Fdownload%2F%40tarojs%2Fshared-3.3.11.tgz#bfbd90465153b61c7d7c861917a22efae72a5e7e"
   integrity sha1-v72QRlFTthx9fIYZF6Iu+ucqXn4=
-
-"@tarojs/shared@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/shared/download/@tarojs/shared-3.3.7.tgz?cache=0&sync_timestamp=1635212518147&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fshared%2Fdownload%2F%40tarojs%2Fshared-3.3.7.tgz#19446411d3f0cc5c422091f193ae33a0e101ea41"
-  integrity sha1-GURkEdPwzFxCIJHxk64zoOEB6kE=
 
 "@tarojs/taro-h5@3.3.11":
   version "3.3.11"
@@ -1707,26 +1567,12 @@
     raf "^3.4.1"
     whatwg-fetch "^3.4.0"
 
-"@tarojs/taro-h5@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/taro-h5/download/@tarojs/taro-h5-3.3.7.tgz?cache=0&sync_timestamp=1635212520408&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Ftaro-h5%2Fdownload%2F%40tarojs%2Ftaro-h5-3.3.7.tgz#56afabc15a8f041ce5ef1e2ea2b3f66d9727a62f"
-  integrity sha1-Vq+rwVqPBBzl7x4uorP2bZcnpi8=
+"@tarojs/taro-loader@3.3.11":
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/@tarojs/taro-loader/download/@tarojs/taro-loader-3.3.11.tgz#5a9c7ce67ccc2b3ee1143a9324bdecc3eba1869f"
+  integrity sha1-Wpx85nzMKz7hFDqTJL3sw+uhhp8=
   dependencies:
-    "@tarojs/api" "3.3.7"
-    "@tarojs/router" "3.3.7"
-    "@tarojs/runtime" "3.3.7"
-    base64-js "^1.3.0"
-    jsonp-retry "^1.0.3"
-    mobile-detect "^1.4.2"
-    raf "^3.4.1"
-    whatwg-fetch "^3.4.0"
-
-"@tarojs/taro-loader@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/taro-loader/download/@tarojs/taro-loader-3.3.7.tgz#9b967e48c24ac6e5fa11ad88cb475876dca1fd8b"
-  integrity sha1-m5Z+SMJKxuX6Ea2Iy0dYdtyh/Ys=
-  dependencies:
-    "@tarojs/helper" "3.3.7"
+    "@tarojs/helper" "3.3.11"
     acorn "^8.0.4"
     acorn-walk "^8.0.0"
     loader-utils "^1.2.3"
@@ -1739,15 +1585,6 @@
     "@tarojs/api" "3.3.11"
     "@tarojs/runtime" "3.3.11"
     "@tarojs/taro-h5" "3.3.11"
-
-"@tarojs/taro@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/taro/download/@tarojs/taro-3.3.7.tgz?cache=0&sync_timestamp=1635212517842&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Ftaro%2Fdownload%2F%40tarojs%2Ftaro-3.3.7.tgz#a7c182b51bbf7afa9686b6d6bc297bfba5f07fed"
-  integrity sha1-p8GCtRu/evqWhrbWvCl7+6Xwf+0=
-  dependencies:
-    "@tarojs/api" "3.3.7"
-    "@tarojs/runtime" "3.3.7"
-    "@tarojs/taro-h5" "3.3.7"
 
 "@tarojs/taroize@3.3.11":
   version "3.3.11"
@@ -1797,18 +1634,18 @@
     prettier "^1.14.2"
     typescript "^3.2.2"
 
-"@tarojs/webpack-runner@3.3.7":
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/@tarojs/webpack-runner/download/@tarojs/webpack-runner-3.3.7.tgz?cache=0&sync_timestamp=1635212833162&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tarojs%2Fwebpack-runner%2Fdownload%2F%40tarojs%2Fwebpack-runner-3.3.7.tgz#a81ba455ec525a8b8e8257f961c505f22b0972ae"
-  integrity sha1-qBukVexSWouOglf5YcUF8isJcq4=
+"@tarojs/webpack-runner@3.3.11":
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/@tarojs/webpack-runner/download/@tarojs/webpack-runner-3.3.11.tgz#d74442e494f714f4d7176cbcd097ea8896c5369b"
+  integrity sha1-10RC5JT3FPTXF2y80JfqiJbFNps=
   dependencies:
     "@babel/core" "^7.11.1"
     "@pmmmwh/react-refresh-webpack-plugin" "0.4.3"
-    "@tarojs/helper" "3.3.7"
-    "@tarojs/runner-utils" "3.3.7"
-    "@tarojs/runtime" "3.3.7"
-    "@tarojs/shared" "3.3.7"
-    "@tarojs/taro-loader" "3.3.7"
+    "@tarojs/helper" "3.3.11"
+    "@tarojs/runner-utils" "3.3.11"
+    "@tarojs/runtime" "3.3.11"
+    "@tarojs/shared" "3.3.11"
+    "@tarojs/taro-loader" "3.3.11"
     autoprefixer "9.7.4"
     babel-loader "8.2.1"
     copy-webpack-plugin "5.1.1"
@@ -1827,8 +1664,8 @@
     ora "4.0.3"
     postcss "8.3.5"
     postcss-loader "4.3.0"
-    postcss-plugin-constparse "3.3.7"
-    postcss-pxtransform "3.3.7"
+    postcss-plugin-constparse "3.3.11"
+    postcss-pxtransform "3.3.11"
     react-refresh "0.9.0"
     resolve "1.15.1"
     resolve-url-loader "3.1.3"
@@ -3006,10 +2843,10 @@ babel-plugin-transform-taroapi@1.3.15:
   resolved "https://registry.npmmirror.com/babel-plugin-transform-taroapi/download/babel-plugin-transform-taroapi-1.3.15.tgz?cache=0&sync_timestamp=1635212510095&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fbabel-plugin-transform-taroapi%2Fdownload%2Fbabel-plugin-transform-taroapi-1.3.15.tgz#413de3cc47389387bbd36be292d8945d36caf52e"
   integrity sha1-QT3jzEc4k4e702viktiUXTbK9S4=
 
-babel-plugin-transform-taroapi@^3.3.7:
-  version "3.3.11"
-  resolved "https://registry.npmmirror.com/babel-plugin-transform-taroapi/download/babel-plugin-transform-taroapi-3.3.11.tgz?cache=0&sync_timestamp=1635212510095&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fbabel-plugin-transform-taroapi%2Fdownload%2Fbabel-plugin-transform-taroapi-3.3.11.tgz#e53919e0a95bd456a8442864bf5eb2eb95a79fe1"
-  integrity sha1-5TkZ4Klb1FaoRChkv16y65Wnn+E=
+babel-plugin-transform-taroapi@^3.3.11:
+  version "3.3.12"
+  resolved "https://registry.npmmirror.com/babel-plugin-transform-taroapi/download/babel-plugin-transform-taroapi-3.3.12.tgz#fbe55f78f991a8f16093b18843f6bc41ae295983"
+  integrity sha1-++VfePmRqPFgk7GIQ/a8Qa4pWYM=
 
 babel-register@^6.26.0, babel-register@^6.9.0:
   version "6.26.0"
@@ -10008,10 +9845,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.nlark.com/posix-character-classes/download/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-postcss-html-transform@3.3.7:
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/postcss-html-transform/download/postcss-html-transform-3.3.7.tgz?cache=0&sync_timestamp=1635213009548&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fpostcss-html-transform%2Fdownload%2Fpostcss-html-transform-3.3.7.tgz#87e29ec51f860758fb1c18a4019c801280776d03"
-  integrity sha1-h+KexR+GB1j7HBikAZyAEoB3bQM=
+postcss-html-transform@3.3.11:
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/postcss-html-transform/download/postcss-html-transform-3.3.11.tgz#1ff57f90f0c795980d3bd0d4359f2bd8d5dcd8a6"
+  integrity sha1-H/V/kPDHlZgNO9DUNZ8r2NXc2KY=
   dependencies:
     postcss "^6.0.22"
 
@@ -10128,10 +9965,10 @@ postcss-modules-values@^3.0.0:
     icss-utils "^4.0.0"
     postcss "^7.0.6"
 
-postcss-plugin-constparse@3.3.7:
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/postcss-plugin-constparse/download/postcss-plugin-constparse-3.3.7.tgz#dff2e0f321ca7b7a32253c28fb477e7cea262d9d"
-  integrity sha1-3/Lg8yHKe3oyJTwo+0d+fOomLZ0=
+postcss-plugin-constparse@3.3.11:
+  version "3.3.11"
+  resolved "https://registry.npmmirror.com/postcss-plugin-constparse/download/postcss-plugin-constparse-3.3.11.tgz#46c7d04f55a1814a13de3cf53328a971417f8b09"
+  integrity sha1-RsfQT1WhgUoT3jz1MyipcUF/iwk=
   dependencies:
     postcss "^6.0.22"
 
@@ -10147,14 +9984,6 @@ postcss-pxtransform@3.3.11:
   version "3.3.11"
   resolved "https://registry.npmmirror.com/postcss-pxtransform/download/postcss-pxtransform-3.3.11.tgz#c5966a934d3cbd04b09b19a56e8f0ecb4f2724a8"
   integrity sha1-xZZqk008vQSwmxmlbo8Oy08nJKg=
-  dependencies:
-    postcss "^6.0.16"
-    postcss-pxtorem "^4.0.1"
-
-postcss-pxtransform@3.3.7:
-  version "3.3.7"
-  resolved "https://registry.npmmirror.com/postcss-pxtransform/download/postcss-pxtransform-3.3.7.tgz#6b38ef1b9eae12f530f41969b899f7cdd77e3470"
-  integrity sha1-azjvG56uEvUw9BlpuJn3zdd+NHA=
   dependencies:
     postcss "^6.0.16"
     postcss-pxtorem "^4.0.1"

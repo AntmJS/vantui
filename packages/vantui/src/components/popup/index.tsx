@@ -85,7 +85,7 @@ export default function Index(this: any, props: PopupProps) {
 
   const getClassName = useCallback((name) => {
     return name.replace(/([A-Z])/g, (_: string, $1: string) => {
-      return '-' + $1.toLowerCase()
+      return '-' + $1?.toLowerCase()
     })
   }, [])
 
