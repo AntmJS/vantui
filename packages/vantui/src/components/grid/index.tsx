@@ -12,7 +12,7 @@ export default function Index(props: GridProps) {
     center = true,
     border = true,
     direction,
-    iconSize,
+    iconSize = '28',
     square,
     reverse = false,
     className = '',

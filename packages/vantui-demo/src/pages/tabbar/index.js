@@ -153,7 +153,7 @@ export default class Index extends Component {
                     ></Image>
                   </>
                 }
-                renderIconactive={
+                renderIconActive={
                   <>
                     <Image
                       src={icon.active}

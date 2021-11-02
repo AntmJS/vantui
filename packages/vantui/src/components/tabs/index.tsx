@@ -321,12 +321,12 @@ export default function Index(props: TabsProps) {
   }
 
   const onTouchMove = function (event: any) {
-    if (!swipeable || ref.current.swiping) return
+    if (!swipeable || !ref.current.swiping) return
     touchMove(event)
   }
 
   const onTouchEnd = function () {
-    if (!swipeable) return
+    if (!swipeable || !ref.current.swiping) return
     const { direction, deltaX, offsetX } = ref.current
     const minSwipeDistance = 50
     if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
