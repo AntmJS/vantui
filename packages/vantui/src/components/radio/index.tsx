@@ -25,7 +25,7 @@ export default function Index(
     labelPosition = 'right',
     labelDisabled = false,
     shape = 'round',
-    iconSize = 40,
+    iconSize = '20px',
     renderIcon,
     onChange,
     style,
