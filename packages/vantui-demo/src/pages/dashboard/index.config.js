@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'Vant Weapp' }
+export default { navigationBarTitleText: '@antmjs/vantui' }
