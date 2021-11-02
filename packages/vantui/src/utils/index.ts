@@ -95,7 +95,7 @@ function objectToString(style: ANTMUI.IAnyObject | string): string {
   if (style && typeof style === 'object') {
     let styleStr = ''
     Object.keys(style).forEach((key) => {
-      const lowerCaseKey = key.replace(/([A-Z])/g, '-$1').toLowerCase()
+      const lowerCaseKey = key.replace(/([A-Z])/g, '-$1')?.toLowerCase()
       styleStr += `${lowerCaseKey}:${style[key]};`
     })
     return styleStr

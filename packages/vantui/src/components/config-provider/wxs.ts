@@ -6,7 +6,7 @@ function kebabCase(word: any) {
     .replace(/[A-Z]/g, function (i: any) {
       return '-' + i
     })
-    .toLowerCase()
+    ?.toLowerCase()
     .replace(/^-/, '')
 
   return newWord
