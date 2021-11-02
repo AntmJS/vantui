@@ -1,12 +1,22 @@
 import { Icon } from '@antmjs/vantui'
 import { View } from '@tarojs/components'
-import { navigateBack } from '@tarojs/taro'
-import * as React from 'react'
+import { navigateBack, pageScrollTo } from '@tarojs/taro'
+import React, { useEffect } from 'react'
 import './index.less'
 
 export default function Page(props) {
   // eslint-disable-next-line react/prop-types
   const { title, children } = props
+
+  useEffect(() => {
+    if (process.env.LIBRARY_ENV === 'react') {
+      document.body.scrollTop = document.documentElement.scrollTop = 0
+    } else {
+      pageScrollTo({
+        scrollTop: 0,
+      })
+    }
+  })
 
   return (
     <View className="demo-page">

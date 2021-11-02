@@ -9,7 +9,7 @@ export interface GridProps extends StandardProps {
   center?: boolean
   border?: boolean
   direction?: string
-  iconSize?: string
+  iconSize?: string | number
   reverse?: boolean
   children?: React.ReactNode
 }
