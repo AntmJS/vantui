@@ -180,10 +180,10 @@ export default class Index extends Component {
                 })
               }}
             >
-              <Radio name="1" iconSize="24px" className="demo-radio">
+              <Radio name="1" iconSize="48" className="demo-radio">
                 单选框
               </Radio>
-              <Radio name="2" iconSize="24px">
+              <Radio name="2" iconSize="48">
                 单选框
               </Radio>
             </RadioGroup>
