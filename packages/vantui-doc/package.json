@@ -4,11 +4,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "npx vant-cli dev",
-    "build": "node synch.js && npx vant-cli build",
+    "dev": "node synch.js && npx vant-cli dev",
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
-    "build-site": "sh ./build.sh",
+    "build": "node synch.js && sh ./build.sh",
     "publish": "npx gh-pages -d site",
     "docs-ts": "node ./synch.js"
   },
