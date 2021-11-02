@@ -37,7 +37,7 @@ module.exports = {
       // },
       // syncPathFromSimulator: true,
     },
-    title: 'vantui',
+    title: '@antmjs/vantui',
     logo: 'https://img.yzcdn.cn/vant/logo.png',
     links: [
       {
