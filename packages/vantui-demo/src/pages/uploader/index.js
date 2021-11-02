@@ -1,9 +1,8 @@
 import { Component } from 'react'
-import { showToast } from '@tarojs/taro'
+import Taro, { showToast } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { Uploader, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
-
 import DemoBlock from '../../components/demo-block/index'
 import './index.scss'
 
