@@ -5,10 +5,10 @@
   "description": "",
   "scripts": {
     "dev": "npx vant-cli dev",
-    "build": "npx vant-cli build",
+    "build": "node synch.js && npx vant-cli build",
     "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
-    "build-site": "npx vant-cli build-site",
+    "build-site": "sh ./build.sh",
     "publish": "npx gh-pages -d site",
     "docs-ts": "node ./synch.js"
   },
