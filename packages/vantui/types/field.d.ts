@@ -47,6 +47,7 @@ export interface FieldProps extends StandardProps {
   arrowDirection?: 'left' | 'up' | 'down'
   showWordLimit?: boolean
   errorMessageAlign?: string
+  alwaysEmbed?: boolean
   readonly?: boolean
   clearable?: boolean
   clearTrigger?: string

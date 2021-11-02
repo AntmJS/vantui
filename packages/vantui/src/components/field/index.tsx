@@ -57,6 +57,7 @@ export default function Index(props: FieldProps) {
     holdKeyboard,
     selectionEnd = -1,
     selectionStart = -1,
+    alwaysEmbed,
     disableDefaultPadding = true,
     confirmType,
     confirmHold,
@@ -286,6 +287,7 @@ export default function Index(props: FieldProps) {
             adjustPosition={adjustPosition}
             selectionEnd={selectionEnd}
             selectionStart={selectionStart}
+            alwaysEmbed={alwaysEmbed}
             password={password}
             onInput={_input}
             onClick={onClickInput}

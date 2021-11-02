@@ -7,9 +7,9 @@ export interface ToastProps extends StandardProps {
   duration?: number
   mask?: boolean
   forbidClick?: boolean
-  type?: string
+  type?: 'loading' | 'success' | 'fail' | 'html' | 'text'
   position?: 'top' | 'middle' | 'bottom'
-  message?: string
+  message?: string | ReactNode
   loadingType?: 'circular' | 'spinner' | undefined
   selector?: string
   id?: string

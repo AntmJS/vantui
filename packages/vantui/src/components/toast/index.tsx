@@ -1,4 +1,4 @@
-import { View, Text } from '@tarojs/components'
+import { View, Text, RichText } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import { ToastProps } from '../../../types/toast'
 import VanTransition from '../transition/index'
@@ -137,7 +137,7 @@ export default function Index(props: ToastProps) {
           id="van-toast"
           className={
             'van-toast van-toast--' +
-            (state.type === 'text' ? 'text' : 'icon') +
+            (state.type === 'icon' ? 'icon' : 'text') +
             ` van-toast--${state.position} ${className}`
           }
           style={style}
@@ -146,6 +146,8 @@ export default function Index(props: ToastProps) {
         >
           {state.type === 'text' ? (
             <Text>{state.message}</Text>
+          ) : state.type === 'html' ? (
+            <RichText nodes={state.message} />
           ) : (
             <View className="van-toast__box">
               {state.type === 'loading' ? (
