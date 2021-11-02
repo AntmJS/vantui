@@ -1,4 +1,4 @@
-import { View, Block, Text } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import { GridItemProps } from '../../../types/grid-item'
 import * as utils from '../wxs/utils'
@@ -118,7 +118,7 @@ export default function Index(
         })}
       >
         {others.children || (
-          <Block>
+          <>
             <View className="van-grid-item__icon icon-class">
               {icon ? (
                 <VanIcon
@@ -136,7 +136,7 @@ export default function Index(
             <View className="van-grid-item__text text-class">
               {text ? <Text>{text}</Text> : parentState.renderText}
             </View>
-          </Block>
+          </>
         )}
       </View>
     </View>
