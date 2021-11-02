@@ -5,10 +5,9 @@
   "description": "",
   "scripts": {
     "dev": "node synch.js && npx vant-cli dev",
-    "release": "npx vant-cli release",
     "test:coverage": "open test/coverage/index.html",
     "build": "node synch.js && sh ./build.sh",
-    "publish": "npx gh-pages -d site",
+    "release": "npx gh-pages -d site",
     "docs-ts": "node ./synch.js"
   },
   "author": "sanshao",
