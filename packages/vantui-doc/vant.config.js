@@ -78,11 +78,6 @@ module.exports = {
             title: '如何在React中使用',
             hideSimulator: false,
           },
-          {
-            path: 'use-in-react',
-            title: '如何在React中使用',
-            hideSimulator: true,
-          },
         ],
       },
       {
@@ -324,7 +319,7 @@ module.exports = {
         ],
       },
       {
-        title: '废弃',
+        title: '有赞Vant-Weapp小程序文档',
         items: [
           {
             path: 'index',

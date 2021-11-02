@@ -2,7 +2,7 @@
   <div class="intro" style="text-align: center; padding: 20px;">
     <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
-    <p>一套基于 vant-weapp 开发的在 Taro-React / React 框架中使用的多端 UI 组件库</p>
+    <p>一套基于 vant-weapp 开发的在 Taro-React / H5-React 框架中使用的多端 UI 组件库</p>
   </div>
 </div>
 
@@ -42,11 +42,11 @@ TS类型安全
 React应用中使用
 </div>
 
-> 小程序、Taro-React-H5、React-H5多端完全统一
+> Taro-React(H5、微信、支付宝)、H5-React多端完全统一
 
 ### 贡献代码
 
-使用过程中发现任何问题都可以提 [Issue](https://github.com/antmjs/vantui/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/antmjs/vantui/pulls)，同时，到目前为止我们已经对vant-weapp的[commit](https://github.com/youzan/vant-weapp/commits/dev)记录同步到了1.9.1的版本，我们也会持续同步
+使用过程中发现任何问题都可以提 [Issue](https://github.com/antmjs/vantui/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/antmjs/vantui/pulls)，同时，到目前为止我们已经对vant-weapp的[commit](https://github.com/youzan/vant-weapp/commits/dev)记录同步到了1.9.2的版本，我们也会持续同步
 
 ### 开源协议
 
