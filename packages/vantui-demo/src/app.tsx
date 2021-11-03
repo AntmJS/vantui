@@ -1,9 +1,6 @@
 import { navigateTo } from '@tarojs/taro'
 import { Component } from 'react'
 import './app.less'
-// interface IProps {
-//   children: React.ReactNode
-// }
 let oldHash = ''
 export default class Index extends Component {
   onPageNotFound() {
@@ -13,6 +10,14 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
+    function getUrl(path: string) {
+      let url = `/pages${path}/index`
+      const devGuidePaths = ['/home', '/quickstart', '/custom-style', '/theme']
+      if (devGuidePaths.includes(path)) {
+        url = `/pages/dashboard/index`
+      }
+      return url
+    }
     if (process.env.TARO_ENV !== 'h5') return
     window.top?.postMessage({ type: 'iframeReady' }, '*')
     window.addEventListener('message', (event) => {
@@ -21,17 +26,15 @@ export default class Index extends Component {
       }
 
       const path = event.data?.value || ''
-      let url = `/pages${path}/index`
-      const devGuidePaths = ['/home', '/quickstart', '/custom-style', '/theme']
-      if (devGuidePaths.includes(path)) {
-        url = `/pages/dashboard/index`
-      }
-      navigateTo({ url })
+      navigateTo({ url: getUrl(path) })
     })
     oldHash = window.location.hash
     const pathMatch = oldHash.match(/^#\/([\w-]+)$/)
     if (pathMatch && pathMatch[1]) {
-      navigateTo({ url: `/pages${pathMatch[1]}/index` })
+      setTimeout(() => {
+        window.location.href =
+          '/vantui/mobile.html#' + getUrl('/' + pathMatch[1])
+      }, 600)
     }
   }
 
