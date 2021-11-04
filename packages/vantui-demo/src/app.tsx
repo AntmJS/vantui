@@ -12,7 +12,13 @@ export default class Index extends Component {
   componentDidMount() {
     function getUrl(path: string) {
       let url = `/pages${path}/index`
-      const devGuidePaths = ['/home', '/quickstart', '/custom-style', '/theme']
+      const devGuidePaths = [
+        '/home',
+        '/quickstart',
+        '/custom-style',
+        '/theme',
+        '/use-in-react',
+      ]
       if (devGuidePaths.includes(path)) {
         url = `/pages/dashboard/index`
       }
