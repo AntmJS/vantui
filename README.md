@@ -2,26 +2,15 @@
   <div class="intro" style="text-align: center; padding: 20px;">
     <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
-    <p>一套基于 vant-weapp 开发的在 Taro-React / H5-React 框架中使用的多端 UI 组件库</p>
+    <p>一套基于 vant-weapp 开发的在 Taro-React / React 框架中使用的多端 UI 组件库</p>
   </div>
 </div>
-
-### 组件文档
-[点击查看](https://antmjs.github.io/vantui/#/home)
 
 ### 关联
 - [Vant Weapp](https://github.com/youzan/vant-weapp)：由有赞团队打造的轻量、可靠的微信小程序 UI 组件库
 - [Taro](https://github.com/NervJS/taro)：由京东团队打造的开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发微信/京东/百度/支付宝/字节跳动/ QQ 小程序/H5/React Native 等应用
 - [React](https://reactjs.org/)：Facebook 内部开源出来的用于构建用户界面的 JavaScript 库
 
-### 起源
-- 为什么要做这个组件库？我们认为有赞团队的组件库经过了多年的实践积累，以及经过我们的实际体验之后认为确实是一款优秀的组件库，但可惜的是他们只提供了Vue版本和微信小程序版本，而我们的技术架构选用的是Facebook的React库以及京东的Taro库，所以就开始思考如何能把有赞微信小程序的版本迁移到Taro上面来，最终我们实现了[@antmjs/vantui](https://github.com/antmjs/vantui)。
-- 为什么是99%？迁移的步骤其实不难，第一步100%同步样式，第二步通过Taro convert转译之后再重构js部分，但因为有赞微信小程序的版本完全基于微信小程序实现的，所以在改造兼容支付宝小程序、H5的时候还是存在不能100%兼容的情况，具体的个别差异点可以参考[快速上手](https://antmjs.github.io/vantui/#/quickstart)。
-- 为什么能支持React应用？创建初期是为了在Taro上面使用才建立的，但当我们开始在H5端测试的时候发现，既然这个库能在Taro版的H5应用中使用，为什么不能在React中使用呢？于是乎我们开始调研Taro的底层架构随即理清思路，在不重构任何组件的前提下使之能在React中使用
-
-### 预览
-
-正在全力建设中...
 
 ### 优势
 <div>
@@ -42,7 +31,19 @@ TS类型安全
 React应用中使用
 </div>
 
-> Taro-React(H5、微信、支付宝)、H5-React多端完全统一
+> Taro-React(微信小程序、支付宝小程序、H5)、H5-React多端完全统一
+
+> 如果觉得不错，麻烦给个Star哦[@antmjs/vantui](https://github.com/antmjs/vantui)
+
+### 起源
+- 为什么要做这个组件库？看过开源的一些组件库，给我们的感觉就是觉得OK的但没有React版，有React版的组件质量还是有待提升，难道自建？不是不能（卷嘛），只是没必要，一来费时费力，二来很难让大家信任它，好在我们看到了有赞的组件库，17年开始就一直在更新，实际体验也非常好，但可惜的是他们只提供了Vue版本和微信小程序版本，而我们的技术架构选用的是React以及Taro-React，所以就开始思考如何能把有赞微信小程序的版本迁移到Taro上面来，我们通过很少的人力，很短的时间就实现了[@antmjs/vantui](https://github.com/antmjs/vantui)React版。
+- 为什么是99%？迁移的步骤其实不难，第一步100%同步样式，第二步通过Taro convert转译之后再重构js部分，但因为有赞微信小程序的版本完全基于微信小程序实现的，所以在改造兼容支付宝小程序、H5的时候还是存在不能100%兼容的情况，具体的个别差异点可以参考[快速上手](https://antmjs.github.io/vantui/#/quickstart)，目前我们和有赞微信小程序的最新版1.9.2保持一致。
+- 为什么能支持React应用？创建初期是为了在Taro上面使用才建立的，但当我们开始在H5端测试的时候发现，既然这个库能在Taro版的H5应用中使用，为什么不能在React中使用呢？于是乎我们开始调研Taro的底层架构随即理清思路，在不重构任何组件的前提下使之能在React中使用
+- 为什么Logo还是用有赞的？我们认为我们只是在有赞的组件库的基础上扩展了其他端的使用范畴，它的核心还是有赞团队多年的积累沉淀，它理应被更多人看见，我们顶多算锦上添花，但如果有涉及到侵犯使用权的，我们可以换掉哦😄😄
+
+### 预览
+
+正在全力建设中，需要看小程序的可以参见快速上手...
 
 ### 贡献代码
 
@@ -51,6 +52,11 @@ React应用中使用
 ### 开源协议
 
 本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源
+
+### 关于我们
+
+小电科技创新事业部前端团队发起，我们把我们认为能提高业务开发效率的一些Idea落地成各种工具库，分享给大家，希望通过这些库能够让其他公司乃至个人能更快更好的为业务赋能。除了这个组件库，我们也有@antmjs/antm，里面有很多小而实用的库可以供大家使用，我们也会把一些项目模版分享给大家作为参考，如果觉得不错，记得加星关注哦
+
 
 
 ### 参与贡献的小伙伴
