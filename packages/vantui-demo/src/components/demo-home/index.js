@@ -26,8 +26,8 @@ export default class Index extends Component {
           Taro-React H5-React通用的UI 组件库
         </View>
         <View className="demo-home__desc">
-          已支持通过Taro-React编译的微信小程序、支付宝小程序、H5
-          已支持在纯H5-React应用内使用
+          <View>已支持通过Taro-React编译的微信小程序、支付宝小程序、H5</View>
+          <View>已支持在纯H5-React应用内使用</View>
         </View>
         {list.map((group, index) => {
           return (
