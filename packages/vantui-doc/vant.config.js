@@ -47,6 +47,17 @@ module.exports = {
     ],
     nav: [
       {
+        title: '写在前面',
+        items: [
+          {
+            path: 'front',
+            title: '写在前面',
+            hideSimulator: false,
+            items: [],
+          },
+        ],
+      },
+      {
         title: '开发指南',
         items: [
           {

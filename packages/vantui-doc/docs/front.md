@@ -1,5 +1,5 @@
-## 写在前面
-
+### 关于我们
+  我们是antmjs团队，在小程序以及taro方面有几年的经验，通过沉淀antmjs，提供了一些在前端开发范畴内的一些解决方案(有些可能并不太成熟)，希望可以通过开源的形式向社区学习，同时也可以向社区提供一些有价值的产物。
 
 ### 特别声明
   该组件库并不是一个新的轮子，我们只是得益于有赞团队在vant-weapp的多年实践、积累、沉淀上做了一些简单的扩展，让他可以以react的方式进行开发接入。
@@ -7,6 +7,15 @@
   我们是vant-weapp的锦上添花版本，或者叫React / Taro React扩展板，在此还是需要感谢Taro团队以及有赞团队为社区所作出的贡献。
 
   Logo暂时还未获得使用许可，如有侵权，请及时联系我们。
+
+
+### 我们的优势
+  * vantui是通过转译vant-weapp，并将原来的小程序版本同步为react版本，几乎可以保持与vant-weapp的高度一致的开发使用体验。
+
+  * 我们团队会尽可能快的与vant-weapp保持同步
+
+  * 因为我们不是完全的重构，我们是进行扩展与同步，在效率与持续维护方面会存在很大的优势
+
 
 ### 为什么要做这件事
 
@@ -29,6 +38,17 @@
 * 我们尽可能的做到Taro所支持的所有端
 * 组件懒加载
 * 持续保持与vant-weapp的同步
+* ...
+
+
+### 团队成员
+
+[![hisanshao](https://avatars.githubusercontent.com/u/26359618?s=80&v=4)](https://github.com/hisanshao/) | [![Chitanda60](https://avatars.githubusercontent.com/u/16026533?s=80&v=4)](https://github.com/Chitanda60/) | [![zuolung](https://avatars.githubusercontent.com/u/19684540?s=80&v=4)](https://github.com/Banlangenn/) | [![hisanshao](https://avatars.githubusercontent.com/u/28145148?s=80&v=4)](https://github.com/zuolung/)
+:---:|:---:|:---:|:---:
+[hisanshao](https://github.com/hisanshao/) | [Chitanda60](https://github.com/Chitanda60/) | [Banlangenn](https://github.com/Banlangenn/) | [zuolung](https://github.com/zuolung/)
+
+
+### 联系我们
 
 ### 最后
   如果小伙伴们在使用过程中觉得还不错，欢迎[star~](https://github.com/AntmJS/vantui)
