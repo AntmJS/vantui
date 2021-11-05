@@ -16,7 +16,8 @@ export default function Page(props) {
         scrollTop: 0,
       })
     }
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.hash])
 
   return (
     <View className="demo-page">
