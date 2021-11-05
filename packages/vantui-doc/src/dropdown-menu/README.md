@@ -21,12 +21,12 @@ import { DropdownItem } from "vantui";
 <View>
   <DropdownMenu>
     <DropdownItem
-      value={ `${ this.value1 }` }
-      options={ `${ this.option1 }` }
+      value={ this.state.value1 }
+      options={ this.state.option1 }
     />
     <DropdownItem
-      value={ `${ this.value2 }` }
-      options={ `${ this.option2 }` }
+      value={ this.state.value2 }
+      options={ this.state.option2 }
     />
   </DropdownMenu>
 </View>
@@ -66,20 +66,20 @@ this.state = {
 <View>
   <DropdownMenu>
     <DropdownItem
-      value={ `${ this.value1 }` }
-      options={ `${ this.option1 }` }
+      value={ this.state.value1 }
+      options={ this.state.option1 }
     />
     <DropdownItem
       id="item"
-      title={ `${ this.itemTitle }` }
+      title={ this.state.itemTitle }
     >
       <Cell 
-        title={ `${ this.switchTitle1 }` }
+        title={ this.state.switchTitle1 }
         renderRightIcon={(
           <Switch
             size="24px"
             style="height: 26px"
-            checked={ `${ switch1 }` }
+            checked={ this.state.switch1 }
             activeColor="#ee0a24"
             onChange={ this.onSwitch1Change }
           />
@@ -87,12 +87,12 @@ this.state = {
       >
       </Cell>
       <Cell 
-        title={ `${ this.switchTitle2 }` }
+        title={ this.state.switchTitle2 }
         renderRightIcon={(
           <Switch
             size="24px"
             style="height: 26px"
-            checked={ `${ switch2 }` }
+            checked={ this.state.switch2 }
             activeColor="#ee0a24"
             onChange={ this.onSwitch2Change }
           />
@@ -160,12 +160,12 @@ function onSwitch2Change({
 <View>
   <DropdownMenu activeColor="#1989fa">
     <DropdownItem
-      value={ `${ this.value1 }` }
-      options={ `${ this.option1 }` }
+      value={ this.state.value1 }
+      options={ this.state.option1 }
     />
     <DropdownItem
-      value={ `${ this.value2 }` }
-      options={ `${ this.option2 }` }
+      value={ this.state.value2 }
+      options={ this.state.option2 }
     />
   </DropdownMenu>
 </View>
@@ -178,12 +178,12 @@ function onSwitch2Change({
 <View>
   <DropdownMenu direction="up">
     <DropdownItem
-      value={ `${ this.value1 }` }
-      options={ `${ this.option1 }` }
+      value={ this.state.value1 }
+      options={ this.state.option1 }
     />
     <DropdownItem
-      value={ `${ this.value2 }` }
-      options={ `${ this.option2 }` }
+      value={ this.state.value2 }
+      options={ this.state.option2 }
     />
   </DropdownMenu>
 </View>
@@ -196,14 +196,14 @@ function onSwitch2Change({
 <View>
   <DropdownMenu>
     <DropdownItem
-      value={ `${ this.value1 }` }
+      value={ this.state.value1 }
       disabled={ true }
-      options={ `${ this.option1 }` }
+      options={ this.state.option1 }
     />
     <DropdownItem
-      value={ `${ this.value2 }` }
+      value={ this.state.value2 }
       disabled={ true }
-      options={ `${ this.option2 }` }
+      options={ this.state.option2 }
     />
   </DropdownMenu>
 </View>

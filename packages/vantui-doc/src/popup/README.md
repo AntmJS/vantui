@@ -23,10 +23,10 @@ import { Popup } from "vantui";
   <Cell
     title="展示弹出层"
     isLink={ true }
-    onClick={ showPopup }
+    onClick={ this.showPopup }
   />
   <Popup
-    show={ `${ this.show }` }
+    show={ this.state.show }
     onClose={ this.onClose }
   >
     内容
@@ -60,7 +60,7 @@ function onClose() {
 ```jsx
 <View>
   <Popup
-    show={ `${ this.show }` }
+    show={ this.state.show }
     position="top"
     style="height: 20%;"
     onClose={ this.onClose }
@@ -76,22 +76,24 @@ function onClose() {
 ```jsx
 <View>
   <Popup
-    show={ `${ this.show }` }
+    show={ this.state.show }
     closeable={ true }
     position="bottom"
     style="height: 20%"
     onClose={ this.onClose }
-  /> {/*  自定义图标  */}
+  />
+   {/*  自定义图标  */}
   <Popup
-    show={ `${ this.show }` }
+    show={ this.state.show }
     closeable={ true }
     closeIcon="close"
     position="bottom"
     style="height: 20%"
     onClose={ this.onClose }
-  /> {/*  图标位置  */}
+  /> 
+  {/*  图标位置  */}
   <Popup
-    show={ `${ this.show }` }
+    show={ this.state.show }
     closeable={ true }
     closeIconPosition="topLeft"
     position="bottom"
@@ -109,7 +111,7 @@ function onClose() {
 ```jsx
 <View>
   <Popup
-    show={ `${ this.show }` }
+    show={ this.state.show }
     round={ true }
     position="bottom"
     style="height: 20%"
@@ -132,8 +134,8 @@ function onClose() {
 ```jsx
 <View>
   {/*  pageMeta 只能是页面内的第一个节点  */}
-  <pageMeta pageStyle={ `${ show ? 'overflow: hidden;' : '' }` } />
-  <Popup show={ `${ this.show }` } />
+  <pageMeta pageStyle={ this.state.show ? 'overflow: hidden;' : '' } />
+  <Popup show={ this.state.show } />
 </View>
  
 ```

@@ -33,11 +33,13 @@ Empty 组件内置了多种占位图片类型，可以在不同业务场景下�
   <Empty
     image="error"
     description="描述文字"
-  /> {/*  网络错误  */}
+  /> 
+  {/*  网络错误  */}
   <Empty
     image="network"
     description="描述文字"
-  /> {/*  搜索提示  */}
+  /> 
+  {/*  搜索提示  */}
   <Empty
     image="search"
     description="描述文字"

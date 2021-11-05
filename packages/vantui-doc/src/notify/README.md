@@ -53,13 +53,13 @@ notify({ type: 'warning', message: '通知内容' });
 自定义消息通知的颜色和展示时长。
 
 ```js
-Notify({
+notify({
   message: '自定义颜色',
   color: '#ad0000',
   background: '#ffe1e1',
 });
 
-Notify({
+notify({
   message: '自定义时长',
   duration: 1000,
 });
@@ -68,7 +68,7 @@ Notify({
 ### 自定义选择器
 
 ```js
-Notify({
+notify({
   message: '自定义节点选择器',
   duration: 1000,
   selector: '#customSelector',

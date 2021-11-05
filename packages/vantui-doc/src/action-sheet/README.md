@@ -21,8 +21,8 @@ import { ActionSheet } from "vantui";
 ```jsx
 <View>
   <ActionSheet
-    show={ `${ this.show }` }
-    actions={ `${ this.actions }` }
+    show={  this.state.show }
+    actions={  this.state.actions }
     onClose={ this.onClose }
     onSelect={ this.onSelect }
   />
@@ -62,8 +62,8 @@ function onSelect(event) {
 ```jsx
 <View>
   <ActionSheet
-    show={ `${ this.show }` }
-    actions={ `${ this.actions }` }
+    show={  this.state.show }
+    actions={  this.actions }
     cancelText="取消"
   />
 </View>
@@ -92,8 +92,8 @@ this.state = {
 ```jsx
 <View>
   <ActionSheet
-    show={ `${ this.show }` }
-    actions={ `${ this.actions }` }
+    show={  this.state.show }
+    actions={  this.actions }
     cancelText="取消"
   />
 </View>
@@ -107,8 +107,8 @@ this.state = {
 ```jsx
 <View>
   <ActionSheet
-    show={ `${ this.show }` }
-    actions={ `${ this.actions }` }
+    show={  this.state.show }
+    actions={  this.actions }
     description="这是一段描述信息"
   />
 </View>
@@ -122,7 +122,7 @@ this.state = {
 ```jsx
 <View>
   <ActionSheet
-    show={ `${ this.show }` }
+    show={  this.state.show }
     title="标题"
   >
     <View>
@@ -140,8 +140,8 @@ this.state = {
 ```jsx
 <View>
   <ActionSheet
-    show={ `${ this.show }` }
-    actions={ `${ this.actions }` }
+    show={  this.state.show }
+    actions={  this.state.actions }
     onClose={ this.onClose }
     onGetuserinfo={ this.onGetUserInfo }
   />

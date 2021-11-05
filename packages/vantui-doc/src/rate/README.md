@@ -19,7 +19,7 @@ import { Rate } from "vantui";
 ```jsx
 <View>
   <Rate
-    value={ `${ this.value }` }
+    value={ this.state.value }
     onChange={ this.onChange }
   />
 </View>
@@ -43,7 +43,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Rate
-    value={ `${ this.value }` }
+    value={ this.state.value }
     icon="like"
     voidIcon="likeO"
     onChange={ this.onChange }
@@ -57,8 +57,8 @@ function onChange(event) {
 ```jsx
 <View>
   <Rate
-    value={ `${ this.value }` }
-    size={ `${ 25 }` }
+    value={ this.state.value }
+    size={ 25 }
     color="#ffd21e"
     voidIcon="star"
     voidColor="#eee"
@@ -73,7 +73,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Rate
-    value={ `${ this.value }` }
+    value={ this.state.value }
     allowHalf={ true }
     voidIcon="star"
     voidColor="#eee"
@@ -100,8 +100,8 @@ function onChange(event) {
 ```jsx
 <View>
   <Rate
-    value={ `${ this.value }` }
-    count={ `${ 6 }` }
+    value={ this.state.value }
+    count={ 6 }
     onChange={ this.onChange }
   />
 </View>
@@ -114,7 +114,7 @@ function onChange(event) {
 <View>
   <Rate
     disabled={ true }
-    value={ `${ this.value }` }
+    value={ this.state.value }
     onChange={ this.onChange }
   />
 </View>
@@ -127,7 +127,7 @@ function onChange(event) {
 <View>
   <Rate
     readonly={ true }
-    value={ `${ this.value }` }
+    value={ this.state.value }
     onChange={ this.onChange }
   />
 </View>
@@ -141,7 +141,7 @@ function onChange(event) {
 ```jsx
 <View>
   <Rate
-    value={ `${ this.value }` }
+    value={ this.state.value }
     onChange={ this.onChange }
   />
 </View>

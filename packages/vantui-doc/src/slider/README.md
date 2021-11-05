@@ -20,7 +20,7 @@ import { Slider } from "vantui";
 <View>
   <Slider
     value="50"
-    onChange={ onChange }
+    onChange={ this.onChange }
   />
 </View>
  
@@ -37,9 +37,9 @@ import { Slider } from "vantui";
 ```jsx
 <View>
   <Slider
-    value={ `${ 10, 50 }` }
+    value={ 10, 50 }
     range={ true }
-    change="onChange"
+    change={this.onChange}
   />
 </View>
  
@@ -103,13 +103,13 @@ import { Slider } from "vantui";
 ```jsx
 <View>
   <Slider
-    value={ `${ this.currentValue }` }
+    value={ this.state.currentValue }
     onDrag={ this.onDrag }
     renderButton={ (
       <View
         class="customButton"
       >
-        { currentValue }/100
+        { this.state.currentValue }/100
       </View>
     )}
   />
@@ -139,14 +139,14 @@ function onDrag(event) {
     <Slider
       value="50"
       vertical={ true }
-      onChange={ onChange }
+      onChange={ this.onChange }
     />
     <Slider
-      value={ `${ [10, 50] }` }
+      value={ [10, 50] }
       range={ true }
       vertical={ true }
       style="marginLeft: 100px;"
-      onChange={ onChange }
+      onChange={ this.onChange }
     />
   </View>
 </View>

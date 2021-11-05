@@ -23,7 +23,7 @@ import { Card } from "vantui";
     price="2.00"
     desc="描述信息"
     title="商品标题"
-    thumb={ `${ imageURL }` }
+    thumb={ imageURL }
   />
 </View>
  
@@ -41,7 +41,7 @@ import { Card } from "vantui";
     price="10.00"
     desc="描述信息"
     title="商品标题"
-    thumb={ `${ imageURL }` }
+    thumb={  imageURL  }
     renderFooter={(
       <View>
         <Button size="mini">
