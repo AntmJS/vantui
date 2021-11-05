@@ -48,7 +48,7 @@ import { IndexAnchor } from "vantui";
 
 ```jsx
 <View>
-  <IndexBar indexList={ `${ this.indexList }` }>
+  <IndexBar indexList={ this.state.indexList }>
     <View>
       <IndexAnchor index="1">
         标题1

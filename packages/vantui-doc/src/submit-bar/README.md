@@ -19,9 +19,9 @@ import { SubmitBar } from "vantui";
 ```jsx
 <View>
   <SubmitBar
-    price={ `${ 3050 }` }
+    price={ 3050 }
     buttonText="提交订单"
-    onSubmit={ onSubmit }
+    onSubmit={ this.onSubmit }
   />
 </View>
  
@@ -35,11 +35,11 @@ import { SubmitBar } from "vantui";
 <View>
   <SubmitBar
     disabled={ true }
-    price={ `${ 3050 }` }
+    price={ 3050 }
     buttonText="提交订单"
     tip="您的收货地址不支持同城送, 我们已为您推荐快递"
     tipIcon="infoO"
-    onSubmit={ onSubmit }
+    onSubmit={ this.onSubmit }
   />
 </View>
  
@@ -53,9 +53,9 @@ import { SubmitBar } from "vantui";
 <View>
   <SubmitBar
     loading={ true }
-    price={ `${ 3050 }` }
+    price={ 3050 }
     buttonText="提交订单"
-    onSubmit={ onSubmit }
+    onSubmit={ this.onSubmit }
   />
 </View>
  
@@ -68,10 +68,10 @@ import { SubmitBar } from "vantui";
 ```jsx
 <View>
   <SubmitBar
-    price={ `${ 3050 }` }
+    price={ 3050 }
     buttonText="提交订单"
-    onSubmit={ onClickButton }
-    tip={ `${ true }` }
+    onSubmit={ this.onClickButton }
+    tip={ true }
     renderTip={(
       <View >
         您的收货地址不支持同城送,

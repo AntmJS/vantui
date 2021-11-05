@@ -22,9 +22,9 @@ import { DatetimePicker } from "vantui";
 <View>
   <DatetimePicker
     type="datetime"
-    value={ `${ this.currentDate }` }
-    minDate={ `${ this.minDate }` }
-    maxDate={ `${ this.maxDate }` }
+    value={ this.state.currentDate }
+    minDate={ this.state.minDate }
+    maxDate={ this.state.maxDate }
     onInput={ this.onInput }
   />
 </View>
@@ -55,10 +55,10 @@ function onInput(event) {
 <View>
   <DatetimePicker
     type="date"
-    value={ `${ this.currentDate }` }
-    onInput={ this.onInput }
-    minDate={ `${ this.minDate }` }
-    formatter={ `${ this.formatter }` }
+    value={ this.state.currentDate }
+    onInput={ this.state.onInput }
+    minDate={ this.state.minDate }
+    formatter={ this.state.formatter }
   />
 </View>
  
@@ -71,11 +71,11 @@ this.state = {
 
   formatter(type, value) {
     if (type === 'year') {
-      return `${value}年`;
+      returnvalue}年`;
     }
 
     if (type === 'month') {
-      return `${value}月`;
+      returnvalue}月`;
     }
 
     return value;
@@ -98,8 +98,8 @@ function onInput(event) {
 <View>
   <DatetimePicker
     type="yearMonth"
-    value={ `${ this.currentDate }` }
-    minDate={ `${ this.minDate }` }
+    value={ this.state.currentDate }
+    minDate={ this.state.minDate }
     onInput={ this.onInput }
   />
 </View>
@@ -127,9 +127,9 @@ function onInput(event) {
 <View>
   <DatetimePicker
     type="time"
-    value={ `${ this.currentDate }` }
-    minHour={ `${ this.minHour }` }
-    maxHour={ `${ this.maxHour }` }
+    value={ this.state.currentDate }
+    minHour={ this.state.minHour }
+    maxHour={ this.state.maxHour }
     onInput={ this.onInput }
   />
 </View>
@@ -158,8 +158,8 @@ function onInput(event) {
 <View>
   <DatetimePicker
     type="time"
-    value={ `${ this.currentDate }` }
-    filter={ `${ this.filter }` }
+    value={ this.state.currentDate }
+    filter={ this.state.filter }
   />
 </View>
  

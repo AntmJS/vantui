@@ -21,7 +21,7 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
+    value={ 1 }
     onChange={ this.onChange }
   />
 </View>
@@ -39,7 +39,7 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
+    value={ 1 }
     step="2"
   />
 </View>
@@ -53,7 +53,7 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 5 }` }
+    value={ 5 }
     min="5"
     max="8"
   />
@@ -68,7 +68,7 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
+    value={ 1 }
     integer={ true }
   />
 </View>
@@ -82,7 +82,7 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
+    value={ 1 }
     disabled={ true }
   />
 </View>
@@ -96,8 +96,8 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
-    longPress={ `${ false }` }
+    value={ 1 }
+    longPress={ false }
   />
 </View>
  
@@ -110,9 +110,9 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
+    value={ 1 }
     step="0.2"
-    decimalLength={ `${ 1 }` }
+    decimalLength={ 1 }
   />
 </View>
  
@@ -125,7 +125,7 @@ import { Stepper } from "vantui";
 ```jsx
 <View>
   <Stepper
-    value={ `${ this.value }` }
+    value={ this.state.value }
     asyncChange={ true }
     onChange={ this.onChange }
   />
@@ -158,7 +158,7 @@ function onChange(value) {
 ```jsx
 <View>
   <Stepper
-    value={ `${ 1 }` }
+    value={ 1 }
     inputWidth="40px"
     buttonSize="32px"
   />

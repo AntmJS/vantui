@@ -21,7 +21,7 @@ import { Search } from "vantui";
 ```jsx
 <View>
   <Search
-    value={ `${ this.value }` }
+    value={ this.state.value }
     placeholder="请输入搜索关键词"
   />
 </View>
@@ -35,11 +35,11 @@ import { Search } from "vantui";
 ```jsx
 <View>
   <Search
-    value={ `${ this.value }` }
+    value={ this.state.value }
     placeholder="请输入搜索关键词"
     showAction={ true }
     onSearch={ this.onSearch }
-    onCancel={ onCancel }
+    onCancel={ this.onCancel }
   />
 </View>
  
@@ -52,7 +52,7 @@ import { Search } from "vantui";
 ```jsx
 <View>
   <Search
-    value={ `${ this.value }` }
+    value={ this.state.value }
     inputAlign="center"
     placeholder="请输入搜索关键词"
   />
@@ -68,7 +68,7 @@ import { Search } from "vantui";
 <View>
   <Search
     disabled={ true }
-    value={ `${ this.value }` }
+    value={ this.state.value }
     placeholder="请输入搜索关键词"
   />
 </View>
@@ -82,7 +82,7 @@ import { Search } from "vantui";
 ```jsx
 <View>
   <Search
-    value={ `${ this.value }` }
+    value={ this.state.value }
     shape="round"
     background="#4fc08d"
     placeholder="请输入搜索关键词"
@@ -96,7 +96,7 @@ import { Search } from "vantui";
 ```jsx
 <View>
   <Search
-    value={ `${ this.value }` }
+    value={ this.state.value }
     label="地址"
     placeholder="请输入搜索关键词"
     onChange={ this.onChange }

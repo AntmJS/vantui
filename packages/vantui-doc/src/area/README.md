@@ -20,7 +20,7 @@ import { Area } from "vantui";
 
 ```jsx
 <View>
-  <Area areaList={ `${ this.areaList }` } />
+  <Area areaList={  this.areaList } />
 </View>
  
 ```
@@ -73,7 +73,7 @@ this.state = {
 ```jsx
 <View>
   <Area
-    areaList={ `${ this.areaList }` }
+    areaList={ this.state.areaList }
     value="110101"
   />
 </View>
@@ -87,8 +87,8 @@ this.state = {
 ```jsx
 <View>
   <Area
-    areaList={ `${ this.areaList }` }
-    columnsNum={ `${ 2 }` }
+    areaList={  this.state.areaList }
+    columnsNum={  2 }
     title="标题"
   />
 </View>
@@ -102,8 +102,8 @@ this.state = {
 ```jsx
 <View>
   <Area
-    areaList={ `${ this.areaList }` }
-    columnsPlaceholder={ `${ ['请选择', '请选择', '请选择'] }` }
+    areaList={  this.state.areaList }
+    columnsPlaceholder={  ['请选择', '请选择', '请选择'] }
     title="标题"
   />
 </View>

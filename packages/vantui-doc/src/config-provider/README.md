@@ -52,7 +52,7 @@ page {
 
 ```jsx
 <View>
-  <ConfigProvider themeVars={ `${ this.themeVars }` }>
+  <ConfigProvider themeVars={ this.state.themeVars }>
     <CellGroup>
       <Field label="评分">
         <View
@@ -60,7 +60,7 @@ page {
         >
           <Rate
             model={ true }
-            value={ `${ this.rate }` }
+            value={ this.state.rate }
             dataKey="rate"
             onChange={ this.onChange }
           />
@@ -68,13 +68,13 @@ page {
       </Field>
       <Field
         label="滑块"
-        border={ `${ false }` }
+        border={ false }
       >
         <View
           style="width: 100%"
         >
           <Slider
-            value={ `${ this.slider }` }
+            value={ this.state.slider }
             dataKey="slider"
             onChange={ this.onChange }
           />

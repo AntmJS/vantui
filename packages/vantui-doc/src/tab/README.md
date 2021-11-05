@@ -22,7 +22,7 @@ import { Tabs } from "vantui";
 ```jsx
 <View>
   <Tabs
-    active={ `${ this.active }` }
+    active={ this.state.active }
     onChange={ this.onChange }
   >
     <Tab title="标签 1">
@@ -91,7 +91,7 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <Tabs active={ `${ this.active }` }>
+  <Tabs active={ this.state.active }>
     <Tab title="标签 1">
       内容 1
     </Tab>
@@ -121,7 +121,7 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <Tabs onDisabled={ onClickDisabled }>
+  <Tabs onDisabled={ this.onClickDisabled }>
     <Tab title="标签 1">
       内容 1
     </Tab>
@@ -170,7 +170,7 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <Tabs onClick={ onClick }>
+  <Tabs onClick={ this.onClick }>
     <Tab title="标签 1">
       内容 1
     </Tab>
@@ -266,8 +266,8 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <Popup show={ `${ show }` }>
-    { show.map((item, index) => (
+  <Popup show={ this.state.show }>
+    { this.state.show.map((item, index) => (
         <Tabs>
           <Tab title="标签 1">
             内容 1
