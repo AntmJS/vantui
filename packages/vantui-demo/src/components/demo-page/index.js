@@ -1,7 +1,7 @@
 import { Icon } from '@antmjs/vantui'
 import { View } from '@tarojs/components'
-import { navigateBack } from '@tarojs/taro'
-import * as React from 'react'
+import { navigateBack, pageScrollTo } from '@tarojs/taro'
+import { useEffect } from 'react'
 import './index.less'
 
 export default function Page(props) {
