@@ -47,10 +47,11 @@ export default class Index extends Component {
                   src="https://img.yzcdn.cn/vant/logo.png"
                 ></Image>
                 <View className="demo-content">
-                  <View className="demo-content-h3">关于 Vant Weapp</View>
+                  <View className="demo-content-h3">关于 @antmjs/vantui</View>
                   <View className="domo-content-p">
-                    Vant Weapp 是移动端 Vue 组件库 Vant
-                    的小程序版本，两者基于相同的视觉规范，提供一致的 API
+                    一套基于 vant-weapp 开发的在 Taro-React / React
+                    框架中使用的多端 UI
+                    组件库，两者基于相同的视觉规范，提供一致的 API
                     接口，助力开发者快速搭建小程序应用。
                   </View>
                 </View>

@@ -25,7 +25,7 @@ export default function Index(
     labelPosition = 'right',
     labelDisabled,
     shape = 'round',
-    iconSize = 40,
+    iconSize = '20px',
     renderIcon,
     onChange,
     style,
@@ -156,7 +156,7 @@ export default function Index(
                 disabled,
                 parentDisabled: state.parentDisabled,
                 iconSize,
-              }) + 'line-height:1.25em;'
+              }) + ';line-height:1.25em;'
             }
           ></VanIcon>
         )}

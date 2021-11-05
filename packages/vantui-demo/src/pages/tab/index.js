@@ -14,7 +14,7 @@ export default class Index extends Component {
 
   state = {
     tabs2: [1, 2],
-    tabs3: [1, 2, 3],
+    tabs3: [1, 2, 3, 5, 6],
     tabs4: [1, 2, 3, 4],
     tabs6: [1, 2, 3, 4, 5, 6],
     tabsWithName: [

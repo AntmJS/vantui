@@ -40,7 +40,11 @@
     }
 
     &--card {
+      box-sizing: border-box;
       .theme(margin, '0 @padding-md');
+      .theme(border, '@border-width-base solid @tabs-default-color');
+      .theme(width, 'calc(100% - calc(@padding-md * 2))');
+      .theme(border-radius, '@border-radius-sm');
     }
 
     &::-webkit-scrollbar {

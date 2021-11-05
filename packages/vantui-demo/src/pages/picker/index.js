@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import Taro from '@tarojs/taro'
 import { Picker, Toast, toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
@@ -49,7 +48,6 @@ export default class Index extends Component {
   onChange2 = (event) => {
     const { picker, value } = event.detail
     picker.setColumnValues(1, this.state.column3[value[0]])
-    Taro.getApp().picker = picker
   }
 
   render() {

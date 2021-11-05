@@ -28,7 +28,7 @@ export default class Index extends Component {
         message: '是否切换开关？',
       })
       .then(() => {
-        // this.setState({ checked2: detail })
+        this.setState({ checked2: detail })
       })
       .catch((e) => {
         console.log(e)

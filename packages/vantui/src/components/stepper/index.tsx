@@ -152,6 +152,7 @@ export default function Index(props: StepperProps) {
 
       return value
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       _isDisabled,
       step,

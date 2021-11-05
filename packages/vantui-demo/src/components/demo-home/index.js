@@ -20,9 +20,15 @@ export default class Index extends Component {
             className="demo-home__image"
             src="https://img.yzcdn.cn/vant/logo.png"
           ></Image>
-          <View className="demo-home__text">Vant Weapp</View>
+          <View className="demo-home__text">@antmjs/vantui</View>
         </View>
-        <View className="demo-home__desc">轻量、可靠的小程序 UI 组件库</View>
+        <View className="demo-home__desc">
+          Taro-React H5-React通用的UI 组件库
+        </View>
+        <View className="demo-home__desc">
+          <View>已支持通过Taro-React编译的微信小程序、支付宝小程序、H5</View>
+          <View>已支持在纯H5-React应用内使用</View>
+        </View>
         {list.map((group, index) => {
           return (
             <View key={index}>

@@ -63,6 +63,8 @@ body {
       'main',
     ],
     alias: {
+      // 默认@tarojs/components要指向dist-h5/react，而loader和taro-components.css只要直接指向@tarojs/components就行
+      // 理论上还有优化的空间，慢慢来，持续迭代
       '@tarojs/components/dist/taro-components/taro-components.css': path.resolve(process.cwd(), './node_modules/@tarojs/components/dist/taro-components/taro-components.css'),
       '@tarojs/components/loader': path.resolve(process.cwd(), './node_modules/@tarojs/components/loader'),
       '@tarojs/components': path.resolve(process.cwd(), './node_modules/@tarojs/components/dist-h5/react'),
@@ -73,6 +75,7 @@ body {
   module: {
     rules: [
       {
+        // 这里其实可以在自己的webpack内配置，核心就是匹配到test的部分不触发polyfill，仅仅更新下语法就行，否则会报错
         test: /node_modules\/@tarojs(.+?)\.[tj]sx?$/i,
         loader: require.resolve('babel-loader'),
         options: {
@@ -131,6 +134,7 @@ body {
         },
       },
       {
+        // 可以参考Taro的自适应方案
         test: /\.less$/
         use: [
           // 这里展示的是组件核心需要的loader，其他loader请自行添加
@@ -151,6 +155,7 @@ body {
     ]
   },
   plugins: [
+    // 为了使移动H5和Taro小程序保持同一套组件，原因在介绍有说明，所以这里需要把Taro内置的一些插件属性给加进来
     new webpack.DefinePlugin({
       ENABLE_INNER_HTML: true,
       ENABLE_ADJACENT_HTML: true,

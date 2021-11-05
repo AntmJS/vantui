@@ -56,7 +56,7 @@ export default {
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',
-    navigationBarTitleText: 'Vant Weapp',
+    navigationBarTitleText: '@antmjs/vantui',
     navigationBarTextStyle: 'black',
     backgroundTextStyle: 'dark',
     backgroundColor: '#f8f8f8',

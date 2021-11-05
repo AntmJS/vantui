@@ -79,7 +79,7 @@ export default class Index extends Component {
         beforeClose,
       })
       .catch((e) => {
-        conosle.log(e)
+        console.log(e)
       })
   }
 

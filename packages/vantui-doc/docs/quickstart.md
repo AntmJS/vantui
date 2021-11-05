@@ -6,7 +6,12 @@
 
 ### 差异点
 - 组件属性均用驼峰代替
-- slot改为通过属性传递ReactNode slot="footer" => renderFooter={<View></View>}
+- slot改为通过属性传递ReactNode 即 slot="footer" 改为 render为前缀F大写传ReactNode renderFooter={<View></View>}
+- 组件文档案例部分可能会存在一些小问题（时间紧大家见谅）如果有问题可以提issue给我们，你们可以先看实际demo。文档TS信息是和我们的组件同步的
+
+### 支持程度
+- Taro需要使用3.0+的版本
+- 小程序参考Taro的最低支持程度
 
 ## 安装
 
@@ -22,7 +27,13 @@ yarn add @antmjs/vantui --production
 
 ### 示例工程
 
-我们提供了一个[示例工程](https://github.com/AntmJS/vantui/tree/main/packages/vantui-demo)
+- 拉取代码[VantUI](https://github.com/AntmJS/vantui)
+
+- 执行 yarn && yarn bootstrap
+
+> 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn start
+
+> 进入React版工程:react-demo即 cd packages/react-demo && yarn watch:weapp
 
 ## 使用
 
@@ -71,18 +82,3 @@ import { pxTransform } from '@antmjs/vantui'
 // 小程序转rpx H5转rem
 pxTransform(10)
 ```
-## 其他
-
-### 在开发者工具中预览示例小程序
-
-```bash
-
-# 将项目克隆到本地
-git clone git@github.com:antmjs/vantui.git
-
-# 安装项目依赖
-yarn & lerna bootstrap & yarn build
-
-lerna run dev:weapp --scope=vantui-demo
-
-接着打开微信开发者工具，导入`weapp`目录的项目就可以预览示例了。

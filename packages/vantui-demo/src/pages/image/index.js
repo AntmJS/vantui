@@ -18,7 +18,7 @@ export default class Index extends Component {
       'cover',
       'fill',
       'none',
-      'scale-down',
+      'scaleDown',
       'widthFix',
       'heightFix',
     ],
