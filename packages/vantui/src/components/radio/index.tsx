@@ -1,25 +1,22 @@
 import { ITouchEvent, View } from '@tarojs/components'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useContext } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioProps } from '../../../types/radio'
 import VanIcon from '../icon/index'
 // import { canIUseModel } from '../common/version.js'
+import RadioGroupContext from '../radio-group/context'
+import { isEmptyObject } from '../../utils/type'
 import * as computed from './wxs'
 
-export default function Index(
-  props: RadioProps & {
-    parent?: any
-  },
-) {
+export default function Index(props: RadioProps) {
   const [state, setState] = useState({
+    value: '',
     direction: '',
     parentDisabled: false,
   })
 
   const {
-    parent,
     name,
-    value,
     disabled = false,
     checkedColor,
     labelPosition = 'right',
@@ -27,26 +24,50 @@ export default function Index(
     shape = 'round',
     iconSize = '20px',
     renderIcon,
-    onChange,
     style,
     className,
     children,
     ...others
   } = props
 
+  const parentData = useContext(RadioGroupContext)
+
+  const onChange = useCallback(
+    (event) => {
+      if (parentData.onChange) {
+        parentData.onChange(event)
+        return
+      }
+
+      props?.onChange?.(event)
+    },
+    // eslint-disable-next-line
+    [parentData.onChange, props.onChange],
+  )
+
   useEffect(() => {
-    if (!parent) {
-      return
-    }
-    const { disabled, direction } = parent.data
     setState((state) => {
       return {
         ...state,
-        direction,
-        parentDisabled: disabled,
+        value: props.value,
       }
     })
-  }, [parent])
+  }, [props.value])
+
+  useEffect(() => {
+    if (!isEmptyObject(parentData)) {
+      const { value, direction, disabled }: any = parentData
+
+      setState((state) => {
+        return {
+          ...state,
+          value,
+          direction,
+          parentDisabled: disabled,
+        }
+      })
+    }
+  }, [props.value, parentData])
 
   const emitChange = useCallback(
     (event: ITouchEvent) => {
@@ -119,7 +140,7 @@ export default function Index(
                 shape,
                 {
                   disabled: disabled || state.parentDisabled,
-                  checked: value === name,
+                  checked: state.value === name,
                 },
               ]) + ' icon-class'
             }
@@ -128,7 +149,7 @@ export default function Index(
               checkedColor,
               disabled,
               parentDisabled: state.parentDisabled,
-              value,
+              value: state.value,
               name,
             })}
           ></VanIcon>

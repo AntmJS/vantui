@@ -3,7 +3,7 @@ import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface CheckboxGroupProps extends StandardProps {
   max?: number
-  value?: Array<boolean>
+  value?: Array<any>
   disabled?: boolean
   direction?: 'horizontal' | 'vertical'
   children?: Array<ReactNode>

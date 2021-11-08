@@ -1,9 +1,11 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useContext } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
 import { CheckboxProps } from '../../../types/checkbox'
+import CheckboxGroupContext from '../checkbox-group/context'
+import { isEmptyObject } from '../../utils/type'
 import * as computed from './wxs'
 
 export default function Index(
@@ -12,14 +14,13 @@ export default function Index(
   },
 ) {
   const [state, setState] = useState({
+    value: undefined,
     parentDisabled: false,
     direction: 'vertical',
   })
 
   const {
-    parent,
     name,
-    value,
     disabled,
     checkedColor = '#1989fa',
     labelPosition = 'right',
@@ -27,32 +28,62 @@ export default function Index(
     shape = 'round',
     iconSize = '20px',
     renderIcon,
-    onChange,
     style,
     className,
     children,
     ...others
   } = props
 
+  const parentData = useContext(CheckboxGroupContext)
+
+  const onChange = useCallback(
+    (event) => {
+      if (parentData.onChange) {
+        parentData.onChange(event)
+        return
+      }
+
+      props?.onChange?.(event)
+    },
+    // eslint-disable-next-line
+    [parentData.onChange, props.onChange],
+  )
+
   useEffect(() => {
-    if (!parent) {
-      return
-    }
-    const { disabled, direction } = parent.data
     setState((state) => {
+      const value: any = props.value
       return {
         ...state,
-        direction,
-        parentDisabled: disabled,
+        value,
       }
     })
-  }, [parent])
+  }, [props.value])
+
+  useEffect(() => {
+    if (!isEmptyObject(parentData)) {
+      const {
+        value: parentValue,
+        direction,
+        disabled: parentDisabled,
+      }: any = parentData
+
+      const value: any = parentValue?.indexOf(`${props.name}`) !== -1
+
+      setState((state) => {
+        return {
+          ...state,
+          value,
+          direction,
+          parentDisabled,
+        }
+      })
+    }
+  }, [props, parentData])
 
   const setParentValue = useCallback(
     (parent: any, event: ITouchEvent) => {
-      const parentValue = parent.value.slice()
       const value = event.detail
-      const { max } = parent.data
+      const { max, value: parentValue } = parent
       if (value) {
         if (max && parentValue.length >= max) {
           return
@@ -75,37 +106,37 @@ export default function Index(
   )
   const emitChange = useCallback(
     (event: ITouchEvent) => {
-      if (parent) {
-        setParentValue(parent, event)
+      if (!isEmptyObject(parentData)) {
+        setParentValue(parentData, event)
       } else {
         onChange?.(event)
       }
     },
-    [parent, onChange, setParentValue],
+    [parentData, onChange, setParentValue],
   )
   const toggle = useCallback(
     (event: ITouchEvent) => {
       if (!disabled && !state.parentDisabled) {
         Object.defineProperty(event, 'detail', {
-          value: !value,
+          value: !state.value,
           writable: true,
         })
         emitChange(event)
       }
     },
-    [disabled, emitChange, state.parentDisabled, value],
+    [disabled, emitChange, state.parentDisabled, state.value],
   )
   const onClickLabel = useCallback(
     (event: ITouchEvent) => {
       if (!disabled && !labelDisabled && !state.parentDisabled) {
         Object.defineProperty(event, 'detail', {
-          value: !value,
+          value: !state.value,
           writable: true,
         })
         emitChange(event)
       }
     },
-    [disabled, emitChange, labelDisabled, state.parentDisabled, value],
+    [disabled, emitChange, labelDisabled, state.parentDisabled, state.value],
   )
 
   return (
@@ -145,14 +176,14 @@ export default function Index(
                 shape,
                 {
                   disabled: disabled || state.parentDisabled,
-                  checked: value,
+                  checked: state.value,
                 },
               ]) + ' icon-class'
             }
             style={
               computed.iconStyle({
                 checkedColor,
-                value,
+                value: state.value,
                 disabled,
                 parentDisabled: state.parentDisabled,
                 iconSize,
