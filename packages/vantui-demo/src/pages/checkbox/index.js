@@ -32,13 +32,6 @@ export default class Index extends Component {
     this.setState({ [key]: event.detail })
   }
 
-  onClick = (event) => {
-    const { value } = event.currentTarget.dataset
-    this.setState({
-      radio3: value,
-    })
-  }
-
   toggle = (event) => {
     const { index, name } = event.currentTarget.dataset
     const arr = this.state[name]
@@ -279,7 +272,7 @@ export default class Index extends Component {
             </CheckboxGroup>
           </DemoBlock>
           <DemoBlock title="搭配单元格组件使用">
-            <CheckboxGroup value={result3} data-key="result3">
+            <CheckboxGroup value={result3}>
               <CellGroup>
                 {list.map((item, index) => {
                   return (
@@ -290,23 +283,19 @@ export default class Index extends Component {
                       clickable
                       data-index={index}
                       data-name="result3"
+                      onClick={(e) => {
+                        this.toggle({
+                          detail: e.detail,
+                          currentTarget: {
+                            dataset: { name: 'result3' },
+                          },
+                          target: {
+                            dataset: { name: 'result3' },
+                          },
+                        })
+                      }}
                     >
-                      <Checkbox
-                        value={result3[index]}
-                        onChange={(e) => {
-                          this.toggle({
-                            detail: e.detail,
-                            currentTarget: {
-                              dataset: { index: index, name: 'result3' },
-                            },
-                            target: {
-                              dataset: { index: index, name: 'result3' },
-                            },
-                          })
-                        }}
-                        className={'checkboxes-' + index}
-                        name={item}
-                      />
+                      <Checkbox className={'checkboxes-' + index} name={item} />
                     </Cell>
                   )
                 })}
