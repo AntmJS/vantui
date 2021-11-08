@@ -257,7 +257,20 @@ export default class Index extends Component {
             </RadioGroup>
           </DemoBlock>
           <DemoBlock title="与 Cell 组件一起使用">
-            <RadioGroup value={radio5}>
+            <RadioGroup
+              value={radio5}
+              onChange={(e) => {
+                this.onChange({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { key: 'radio5' },
+                  },
+                  target: {
+                    dataset: { key: 'radio5' },
+                  },
+                })
+              }}
+            >
               <CellGroup>
                 <Cell
                   title="单选框 1"
@@ -275,7 +288,7 @@ export default class Index extends Component {
                   }}
                   renderRightIcon={
                     <>
-                      <Radio value={radio5} name="1"></Radio>
+                      <Radio name="1"></Radio>
                     </>
                   }
                 ></Cell>
@@ -295,7 +308,7 @@ export default class Index extends Component {
                   }}
                   renderRightIcon={
                     <>
-                      <Radio value={radio5} name="2"></Radio>
+                      <Radio name="2"></Radio>
                     </>
                   }
                 ></Cell>
