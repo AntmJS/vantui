@@ -226,27 +226,37 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <CheckboxGroup
-    value={ this.state.result }
-    onChange={ this.onChange }
-  >
+  <CheckboxGroup value={this.state.result3} data-key="result3">
     <CellGroup>
-      { this.state.list.map((item, index) => (
+      {this.state.list.map((item, index) => {
+        return (
           <Cell
-            key={index}
-            title={ `复选框 ${ item }` }
-            valueClass="valueClass"
-            clickable={ true }
-            dataIndex={ index }
-            onClick={ this.toggle }
+            key={item}
+            title={'复选框 ' + item}
+            valueClass="value-class"
+            clickable
+            data-index={index}
+            data-name="result3"
           >
             <Checkbox
-              class={ `checkboxes-${ index }` }
-              name={ item }
+              value={this.state.result3[index]}
+              onChange={(e) => {
+                this.toggle({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { index: index, name: 'result3' },
+                  },
+                  target: {
+                    dataset: { index: index, name: 'result3' },
+                  },
+                })
+              }}
+              className={'checkboxes-' + index}
+              name={item}
             />
           </Cell>
-        
-        )) }
+        )
+      })}
     </CellGroup>
   </CheckboxGroup>
 </View>
@@ -259,21 +269,19 @@ this.state = {
   result: ['a', 'b']
 };
 
-function onChange(event) {
+onChange = (event) => {
+  const { key } = event.currentTarget.dataset
+  this.setState({ [key]: event.detail })
+}
+
+toggle = (event) => {
+  const { index, name } = event.currentTarget.dataset
+  const arr = this.state[name]
+  arr[index] = !arr[index]
   this.setState({
-    result: event.detail
-  });
+    [name]: arr,
+  })
 }
-
-function toggle(event) {
-  const {
-    index
-  } = event.currentTarget.dataset;
-  const checkbox = this.selectComponent(`.checkboxes-${index}`);
-  checkbox.toggle();
-}
-
-function noop() {} 
 ```
 
 ```css

@@ -158,34 +158,32 @@ import { CellGroup } from "vantui";
 
 ### 自定义渲染内容
 
-如以上用法不能满足你的需求，可以使用`renderTitle`和`renderIcon`来渲染内容
+如以上用法不能满足你的需求，可以使用`renderTitle`和`renderRightIcon`来渲染内容
 
 ```jsx
 <View>
   <Cell
     value="内容"
-    icon="shopO"
-    isLink={ true }
-    renderTitle={(
-      <View>
-        <View class="vanCellText">
-          单元格
+    icon="shop-o"
+    isLink
+    renderTitle={
+      <>
+        <View>
+          <View className="title">单元格</View>
+          <Tag type="danger">标签</Tag>
         </View>
-        <Tag type="danger">
-          标签
-        </Tag>
-      </View>
-    )}
-  />
-  <Cell 
+      </>
+    }
+  ></Cell>
+  <Cell
     title="单元格"
-    renderIcon={(
-      <Icon
-        name="search"
-        class="customIcon"
-      />
-    )}
-  >
+    border={false}
+    renderRightIcon={
+      <>
+        <Icon name="search"></Icon>
+      </>
+    }
+  ></Cell>
 </View>
  
 ```
