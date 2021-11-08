@@ -57,7 +57,11 @@ React应用中使用
 
 小电科技创新事业部前端团队发起，我们把我们认为能提高业务开发效率的一些Idea落地成各种工具库，分享给大家，希望通过这些库能够让其他公司乃至个人能更快更好的为业务赋能。除了这个组件库，我们也有@antmjs/antm，里面有很多小而实用的库可以供大家使用，我们也会把一些项目模版分享给大家作为参考，如果觉得不错，记得加星关注哦
 
+### 快速沟通群
 
+<div style="display:inline-block;">
+<img width="300px" src="https://raw.githubusercontent.com/AntmJS/vantui/2dd4810ce20f357ae1ba020a4c073d766698e760/images/antmjs.jpeg" />
+</div>
 
 ### 参与贡献的小伙伴
 
