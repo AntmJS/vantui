@@ -56,7 +56,7 @@ export default {
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',
-    navigationBarTitleText: '@antmjs/vantui',
+    navigationBarTitleText: 'antmjs-vantui',
     navigationBarTextStyle: 'black',
     backgroundTextStyle: 'dark',
     backgroundColor: '#f8f8f8',
