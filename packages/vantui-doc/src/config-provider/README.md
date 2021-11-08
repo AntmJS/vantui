@@ -52,47 +52,63 @@ page {
 
 ```jsx
 <View>
-  <ConfigProvider themeVars={ this.state.themeVars }>
+  <ConfigProvider themeVars={themeVars}>
     <CellGroup>
-      <Field label="评分">
-        <View
-          style="width: 100%"
-        >
-          <Rate
-            model={ true }
-            value={ this.state.rate }
-            dataKey="rate"
-            onChange={ this.onChange }
-          />
-        </View>
-      </Field>
+      <Field
+        label="评分"
+        renderInput={
+          <>
+            <View style="width: 100%">
+              <Rate
+                value={rate}
+                onChange={(e) => {
+                  this.onChange({
+                    detail: e.detail,
+                    currentTarget: {
+                      dataset: { key: 'rate' },
+                    },
+                    target: {
+                      dataset: { key: 'rate' },
+                    },
+                  })
+                }}
+              ></Rate>
+            </View>
+          </>
+        }
+      ></Field>
       <Field
         label="滑块"
-        border={ false }
-      >
-        <View
-          style="width: 100%"
-        >
-          <Slider
-            value={ this.state.slider }
-            dataKey="slider"
-            onChange={ this.onChange }
-          />
-        </View>
-      </Field>
+        border={false}
+        renderInput={
+          <>
+            <View style="width: 100%">
+              <Slider
+                value={slider}
+                onChange={(e) => {
+                  this.onChange({
+                    detail: e.detail,
+                    currentTarget: {
+                      dataset: { key: 'slider' },
+                    },
+                    target: {
+                      dataset: { key: 'slider' },
+                    },
+                  })
+                }}
+              ></Slider>
+            </View>
+          </>
+        }
+      ></Field>
     </CellGroup>
     <View style="margin: 16px">
-      <Button
-        round={ true }
-        block={ true }
-        type="primary"
-      >
+      <Button round block type="primary">
         提交
       </Button>
     </View>
   </ConfigProvider>
 </View>
- 
 ```
 
 ```js

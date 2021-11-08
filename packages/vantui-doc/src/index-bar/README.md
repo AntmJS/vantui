@@ -24,18 +24,14 @@ import { IndexAnchor } from "vantui";
 ```jsx
 <View>
   <IndexBar>
-    <View>
-      <IndexAnchor index="A" />
-      <Cell title="文本" />
-      <Cell title="文本" />
-      <Cell title="文本" />
-    </View>
-    <View>
-      <IndexAnchor index="B" />
-      <Cell title="文本" />
-      <Cell title="文本" />
-      <Cell title="文本" />
-    </View>
+    <IndexAnchor index="A" />
+    <Cell title="文本" />
+    <Cell title="文本" />
+    <Cell title="文本" />
+    <IndexAnchor index="B" />
+    <Cell title="文本" />
+    <Cell title="文本" />
+    <Cell title="文本" />
     ...
   </IndexBar>
 </View>
@@ -49,22 +45,18 @@ import { IndexAnchor } from "vantui";
 ```jsx
 <View>
   <IndexBar indexList={ this.state.indexList }>
-    <View>
-      <IndexAnchor index="1">
-        标题1
-      </IndexAnchor>
-      <Cell title="文本" />
-      <Cell title="文本" />
-      <Cell title="文本" />
-    </View>
-    <View>
-      <IndexAnchor index="2">
-        标题2
-      </IndexAnchor>
-      <Cell title="文本" />
-      <Cell title="文本" />
-      <Cell title="文本" />
-    </View>
+    <IndexAnchor index="1">
+      标题1
+    </IndexAnchor>
+    <Cell title="文本" />
+    <Cell title="文本" />
+    <Cell title="文本" />
+    <IndexAnchor index="2">
+      标题2
+    </IndexAnchor>
+    <Cell title="文本" />
+    <Cell title="文本" />
+    <Cell title="文本" />
     ...
   </IndexBar>
 </View>
