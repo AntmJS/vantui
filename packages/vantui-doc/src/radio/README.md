@@ -259,35 +259,48 @@ function onChange(event) {
 
 ```jsx
 <View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
+  <RadioGroup value={radio5}>
     <CellGroup>
       <Cell
         title="单选框 1"
-        clickable={ true }
-        dataName="1"
-        onClick={ this.onClick }
-        renderRight={(
-          <Radio
-            name="1"
-          />
-        )}
-      >
-      </Cell>
+        clickable
+        onClick={(e) => {
+          this.onClick({
+            detail: e.detail,
+            currentTarget: {
+              dataset: { name: '1', key: 'radio5' },
+            },
+            target: {
+              dataset: { name: '1', key: 'radio5' },
+            },
+          })
+        }}
+        renderRightIcon={
+          <>
+            <Radio value={radio5} name="1"></Radio>
+          </>
+        }
+      ></Cell>
       <Cell
         title="单选框 2"
-        clickable={ true }
-        dataName="2"
-        onClick={ this.onClick }
-        renderRight={(
-          <Radio
-            name="2"
-          />
-        )}
-      >
-      </Cell>
+        clickable
+        onClick={(e) => {
+          this.onClick({
+            detail: e.detail,
+            currentTarget: {
+              dataset: { name: '2', key: 'radio5' },
+            },
+            target: {
+              dataset: { name: '2', key: 'radio5' },
+            },
+          })
+        }}
+        renderRightIcon={
+          <>
+            <Radio value={radio5} name="2"></Radio>
+          </>
+        }
+      ></Cell>
     </CellGroup>
   </RadioGroup>
 </View>
