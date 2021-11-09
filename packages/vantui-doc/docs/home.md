@@ -49,7 +49,7 @@
 ### 学习链接
 
 * [github文档](https://antmjs.github.io/vantui/#/home)
-* [gitee文档](antm-js.gitee.io/vantui/#/home)
+* [gitee文档](https://antm-js.gitee.io/vantui/#/home)
 
 ### 预览
 
