@@ -3,8 +3,8 @@ import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { style } from '../wxs/style'
 import { SliderProps } from '../../../types/slider'
-import { canIUseModel } from '../common/version.js'
-import { getRect, addUnit } from '../common/utils.js'
+import { canIUseModel } from '../common/version'
+import { getRect, addUnit } from '../common/utils'
 
 const MIN_DISTANCE = 10
 function getDirection(x: number, y: number) {

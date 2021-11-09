@@ -1,6 +1,6 @@
 import { createAnimation } from '@tarojs/taro'
-// import { canIUseAnimate } from '../common/version.js'
-import { getRect } from '../common/utils.js'
+// import { canIUseAnimate } from '../common/version'
+import { getRect } from '../common/utils'
 // function useAnimate(context: any, expanded: any, mounted: any, height: any) {
 //   const selector = '.van-collapse-item__wrapper'
 //   if (expanded) {

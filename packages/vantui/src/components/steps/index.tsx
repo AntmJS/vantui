@@ -1,7 +1,7 @@
 import { View, ITouchEvent } from '@tarojs/components'
 import { useCallback } from 'react'
 import * as utils from '../wxs/utils'
-import { GREEN, GRAY_DARK } from '../common/color.js'
+import { GREEN, GRAY_DARK } from '../common/color'
 import VanIcon from '../icon/index'
 import { StepsProps } from './../../../types/steps'
 export function getStatus(index: number, active: any) {

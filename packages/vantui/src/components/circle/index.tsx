@@ -8,9 +8,9 @@ import { View, Canvas, CoverView } from '@tarojs/components'
 import { Current } from '@tarojs/runtime'
 
 import { CircleProps } from '../../../types/circle'
-import { getSystemInfoSync } from '../common/utils.js'
-import { isObj } from '../common/validator.js'
-import { adaptor } from './canvas.js'
+import { getSystemInfoSync } from '../common/utils'
+import { isObj } from '../common/validator'
+import { adaptor } from './canvas'
 
 function format(rate: number) {
   return Math.min(Math.max(rate, 0), 100)

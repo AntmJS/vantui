@@ -1,4 +1,4 @@
-import { isDef } from '../common/validator.js'
+import { isDef } from '../common/validator'
 
 const currentYear = new Date().getFullYear()
 function isValidDate(date: any) {

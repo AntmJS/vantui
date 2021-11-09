@@ -11,7 +11,7 @@ import {
 import Taro from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import Toast from '../toast/toast'
-import { requestAnimationFrame } from '../common/utils.js'
+import { requestAnimationFrame } from '../common/utils'
 import VanToast from '../toast/index'
 import VanPopup from '../popup/index'
 import VanButton from '../button/index'
