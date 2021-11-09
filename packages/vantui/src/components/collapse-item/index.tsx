@@ -5,7 +5,7 @@ import { View, Block, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../../types/collapse-item'
 import VanCell from '../cell/index'
-import { setContentAnimate } from './animate.js'
+import { setContentAnimate } from './animate'
 
 export default function Index(
   props: CollapseItemProps & {

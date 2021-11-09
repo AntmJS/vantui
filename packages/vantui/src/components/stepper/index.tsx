@@ -1,7 +1,7 @@
 import { View, Input, ITouchEvent } from '@tarojs/components'
 import { useCallback, useEffect, useState, useRef } from 'react'
 import * as utils from '../wxs/utils'
-import { isDef } from '../common/validator.js'
+import { isDef } from '../common/validator'
 import { StepperProps } from './../../../types/stepper'
 import * as computed from './wxs'
 const LONG_PRESS_START_TIME = 600

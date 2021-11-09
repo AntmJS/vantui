@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import { pickExclude } from '../common/utils.js'
-import { isImageUrl, isVideoUrl } from '../common/validator.js'
+import { pickExclude } from '../common/utils'
+import { isImageUrl, isVideoUrl } from '../common/validator'
 export function isImageFile(item: any) {
   if (item.isImage != null) {
     return item.isImage

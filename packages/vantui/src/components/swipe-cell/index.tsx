@@ -8,7 +8,7 @@ import {
 } from 'react'
 import * as utils from '../wxs/utils'
 import { SwipeCellProps, ISwiperCellInstance } from '../../../types/swipe-cell'
-import { range } from '../common/utils.js'
+import { range } from '../common/utils'
 
 const THRESHOLD = 0.3
 let ARRAY: any[] = []

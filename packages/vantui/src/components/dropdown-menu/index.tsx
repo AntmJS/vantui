@@ -9,7 +9,7 @@ import {
   useLayoutEffect,
 } from 'react'
 import { DropdownMenuProps } from '../../../types/dropdown-menu'
-import { addUnit, getRect, getSystemInfoSync } from '../common/utils.js'
+import { addUnit, getRect, getSystemInfoSync } from '../common/utils'
 import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 

@@ -5,7 +5,7 @@ import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
 import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
-import { isObj } from '../common/validator.js'
+import { isObj } from '../common/validator'
 import { on, off, trigger } from './events'
 import Toast from './toast'
 

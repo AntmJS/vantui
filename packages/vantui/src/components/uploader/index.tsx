@@ -7,7 +7,7 @@ import VanLoading from '../loading/index'
 import VanIcon from '../icon/index'
 import { isBoolean, isPromise } from '../common/validator'
 import * as computed from './wxs'
-import { isImageFile, chooseFile, isVideoFile } from './utils.js'
+import { isImageFile, chooseFile, isVideoFile } from './utils'
 
 export default function Index(props: UploaderProps) {
   const [state, setState] = useState({

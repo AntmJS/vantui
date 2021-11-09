@@ -9,8 +9,8 @@ import {
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { PickerColumnProps } from '../../../types/picker-column'
-import { range } from '../common/utils.js'
-import { isObj } from '../common/validator.js'
+import { range } from '../common/utils'
+import { isObj } from '../common/validator'
 import * as computed from './wxs'
 
 const DEFAULT_DURATION = 200

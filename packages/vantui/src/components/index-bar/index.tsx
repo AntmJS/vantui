@@ -12,8 +12,8 @@ import {
 import { pageScrollTo, nextTick } from '@tarojs/taro'
 import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
-import { getRect, getAllRect, isDef } from '../common/utils.js'
-import { GREEN } from '../common/color.js'
+import { getRect, getAllRect, isDef } from '../common/utils'
+import { GREEN } from '../common/color'
 import { usePageScroll } from './../mixins/page-scroll'
 import { IndexBarProps } from './../../../types/index-bar'
 const genIndexList = () => {
