@@ -31,9 +31,9 @@ yarn add @antmjs/vantui --production
 
 - 执行 yarn && yarn bootstrap
 
-> 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn start
+> 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn watch:weapp
 
-> 进入React版工程:react-demo即 cd packages/react-demo && yarn watch:weapp
+> 进入React版工程:react-demo即 cd packages/react-demo && yarn start
 
 ## 使用
 

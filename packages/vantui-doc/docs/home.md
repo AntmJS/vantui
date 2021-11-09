@@ -2,44 +2,54 @@
   <div class="intro" style="text-align: center; padding: 20px;">
     <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
-    <p>一套基于 vant-weapp 开发的在 Taro-React / React 框架中使用的多端 UI 组件库</p>
+    <p>基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</p>
   </div>
 </div>
 
-### 关联
+### 相关链接
 - [Vant Weapp](https://github.com/youzan/vant-weapp)：由有赞团队打造的轻量、可靠的微信小程序 UI 组件库
 - [Taro](https://github.com/NervJS/taro)：由京东团队打造的开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发微信/京东/百度/支付宝/字节跳动/ QQ 小程序/H5/React Native 等应用
-- [React](https://reactjs.org/)：Facebook 内部开源出来的用于构建用户界面的 JavaScript 库
+
+### 为什么是高度一致
+
+- 99% 样式文件迁移，保留了有赞 5 年多积累的精华！
+
+- 100% React 化，在 React 化的过程中保留了有赞的大部分 JS 逻辑，尽可能的少重构！
+
+- 10+ 项目接入中
+
+> 目前文档还在更新中，如果按文档开发出现问题，请看 TS 信息和实际的[demo](https://github.com/AntmJS/vantui/tree/main/packages/vantui-demo)，demo 是找测试同学测试过的！
+
+### 我们带来了什么
+
+- 使用 TypeScript 编写，提供完整的类型定义
+
+- 支持 Taro(H5、微信小程序、支付宝小程序、...)
+
+- 支持 React(webpack 兼容配置我们后续会统一起来，方便大家使用)
+
+- 与 VantWeapp 的 UI 和 API 尽可能的保持一致，同时持续跟进其 commit 纪录
+
+- 50+ 个高质量组件，覆盖移动端主流场景
+
+- 支持主题定制
+
+### 为什么你可以放心用
+
+- 首先，团队内部的应用都在基于这套组件在开发，所以毋庸质疑我们会持续维护好这个组件；
+
+- 其二，做这个组件库的想法就是一群志同道合的小伙伴们共同实现的，所以本质上是自发的项目，所以也会尽最大努力及时优化及修复；
+
+- 其三，我们没用选择重构是因为我们从一开始就知道我们短期内如果重构是没办法达到我们的理想中的效果的，所以在设计上我们的宗旨就是找优质组件库来改造，好在最终我们实现了，我们花了一些时间把 vant weapp 的 50+ 组件改造成了AntM的版本，同时保留了他们多年积累的组件的质量。
 
 
-### 优势
-<div>
-<div style="display:inline-block;width:48px;"><img height="20px" src="data:image/png;base64,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" />
-</div>
-TS类型安全
-</div>
-<div>
-<div style="display:inline-block;">
-<img height="20px" src="https://img20.360buyimg.com/ling/jfs/t1/20876/36/12835/3043/5c9c2929Ed18cfb11/15b1c03ec830ab8e.png" />
-</div>
-目前支持微信小程序、支付宝小程序、H5。其他端逐渐更新中...
-</div>
-<div>
-<div style="display:inline-block;width:48px;">
-<img height="20px" src="https://cdn.jsdelivr.net/gh/reactnativecn/react-native-website@gh-pages/img/header_logo.svg" />
-</div>
-React应用中使用
-</div>
+> 如果觉得不错，麻烦给个Star哦
+> 收到了一些反馈，这里说明一下吧。关于demo的质量和文档现在确实是有一些不足的地方的，因为做这件事的人并不多暂时，我们把更多的精力放在了组件本身，确保大家在实际的应用中能够更少的被中断。目前除了50多个组件要维护，还有Taro Demo和React Demo和文档，同时公司也有业务要跟进，所以希望大家能够体谅，当然非常欢迎有兴趣的人一起来完善它！
 
-> Taro-React(微信小程序、支付宝小程序、H5)、H5-React多端完全统一
+### 学习链接
 
-> 如果觉得不错，麻烦给个Star哦[@antmjs/vantui](https://github.com/antmjs/vantui)
-
-### 起源
-- 为什么要做这个组件库？看过开源的一些组件库，给我们的感觉就是觉得OK的但没有React版，有React版的组件质量还是有待提升，难道自建？不是不能（卷嘛），只是没必要，一来费时费力，二来很难让大家信任它，好在我们看到了有赞的组件库，17年开始就一直在更新，实际体验也非常好，但可惜的是他们只提供了Vue版本和微信小程序版本，而我们的技术架构选用的是React以及Taro-React，所以就开始思考如何能把有赞微信小程序的版本迁移到Taro上面来，我们通过很少的人力，很短的时间就实现了[@antmjs/vantui](https://github.com/antmjs/vantui)React版。
-- 为什么是99%？迁移的步骤其实不难，第一步100%同步样式，第二步通过Taro convert转译之后再重构js部分，但因为有赞微信小程序的版本完全基于微信小程序实现的，所以在改造兼容支付宝小程序、H5的时候还是存在不能100%兼容的情况，具体的个别差异点可以参考[快速上手](https://antmjs.github.io/vantui/#/quickstart)，目前我们和有赞微信小程序的最新版1.9.2保持一致。
-- 为什么能支持React应用？创建初期是为了在Taro上面使用才建立的，但当我们开始在H5端测试的时候发现，既然这个库能在Taro版的H5应用中使用，为什么不能在React中使用呢？于是乎我们开始调研Taro的底层架构随即理清思路，在不重构任何组件的前提下使之能在React中使用
-- 为什么Logo还是用有赞的？我们认为我们只是在有赞的组件库的基础上扩展了其他端的使用范畴，它的核心还是有赞团队多年的积累沉淀，它理应被更多人看见，我们顶多算锦上添花，但如果有涉及到侵犯使用权的，我们可以换掉哦😄😄
+* [github文档](https://antmjs.github.io/vantui/#/home)
+* [gitee文档](https://antm-js.gitee.io/vantui/#/home)
 
 ### 预览
 
@@ -53,18 +63,26 @@ React应用中使用
 
 本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源
 
-### 关于我们
+### 参与共建
 
-小电科技创新事业部前端团队发起，我们把我们认为能提高业务开发效率的一些Idea落地成各种工具库，分享给大家，希望通过这些库能够让其他公司乃至个人能更快更好的为业务赋能。除了这个组件库，我们也有@antmjs/antm，里面有很多小而实用的库可以供大家使用，我们也会把一些项目模版分享给大家作为参考，如果觉得不错，记得加星关注哦
+首发阵容来自小电科技创新事业部前端团队，我们希望在开源领域能够让大家一起来参与，所以我们重新命名了团队名称“AntM团队”，寓意是打造小而实用的工具提高工作效率，同时欢迎有兴趣一起共建的小伙伴能够加入这个团队，人多力量大。
 
-### 快速沟通群
+### 特别声明
+* 该组件库并不是一个新的轮子，我们只是得益于有赞团队在vant-weapp的多年实践、积累、沉淀上做了一些简单的扩展，让它可以以Taro/React的方式进行开发接入。
 
-<div style="display:inline-block;">
-<img width="300px" src="https://raw.githubusercontent.com/AntmJS/vantui/2dd4810ce20f357ae1ba020a4c073d766698e760/images/antmjs.jpeg" />
-</div>
+* 我们是vant-weapp的锦上添花版本，在此还是需要感谢Taro团队以及有赞团队为社区所作出的贡献。
+
+* Logo暂时还未获得使用许可，如有侵权，请及时联系我们。
 
 ### 参与贡献的小伙伴
 
 [![hisanshao](https://avatars.githubusercontent.com/u/26359618?s=100&v=4)](https://github.com/hisanshao/) | [![Chitanda60](https://avatars.githubusercontent.com/u/16026533?s=100&v=4)](https://github.com/Chitanda60/) | [![zuolung](https://avatars.githubusercontent.com/u/19684540?s=100&v=4)](https://github.com/Banlangenn/) | [![hisanshao](https://avatars.githubusercontent.com/u/28145148?s=100&v=4)](https://github.com/zuolung/)
 :---:|:---:|:---:|:---:
 [hisanshao](https://github.com/hisanshao/) | [Chitanda60](https://github.com/Chitanda60/) | [Banlangenn](https://github.com/Banlangenn/) | [zuolung](https://github.com/zuolung/)
+
+### 快速沟通群
+
+<div style="display:inline-block;">
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v2.png" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/dingding_v1.png" />
+</div>
