@@ -29,7 +29,7 @@ yarn add @antmjs/vantui --production
 
 - 拉取代码[VantUI](https://github.com/AntmJS/vantui)
 
-- 执行 yarn && yarn bootstrap
+- 执行 yarn && yarn bootstrap && yarn build
 
 > 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn watch:weapp
 
