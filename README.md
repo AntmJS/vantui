@@ -40,10 +40,10 @@
 
 - 其二，做这个组件库的想法就是一群志同道合的小伙伴们共同实现的，所以本质上是自发的项目，所以也会尽最大努力及时优化及修复；
 
-- 其三，我们没用选择重构是因为我们从一开始就知道我们短期内如果重构是没办法达到我们的理想中的效果的，所以在设计上我们的宗旨就是找优质组件库来改造，好在最终我们实现了，我们花了一个多月时间把 vant weapp 的 50+组件改造成了我我们的版本，同时还保留了他们多年积累的组件的质量。
+- 其三，我们没用选择重构是因为我们从一开始就知道我们短期内如果重构是没办法达到我们的理想中的效果的，所以在设计上我们的宗旨就是找优质组件库来改造，好在最终我们实现了，我们花了一些时间把 vant weapp 的 50+ 组件改造成了AntM的版本，同时保留了他们多年积累的组件的质量。
 
 
-> 如果觉得不错，麻烦给个Star哦[@antmjs/vantui](https://github.com/antmjs/vantui)
+> 如果觉得不错，麻烦给个Star哦
 
 ### 学习链接
 
@@ -82,6 +82,6 @@
 ### 快速沟通群
 
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v1.jpeg" />
-<img style="width:300px" src="https://antm-js.gitee.io/resource/dingding.jpeg" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v2.png" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/dingding_v1.png" />
 </div>
