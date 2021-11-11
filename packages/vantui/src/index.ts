@@ -1,9 +1,8 @@
-import { pxTransform } from '@tarojs/taro'
-export { pxTransform }
+export { pxTransform } from '@tarojs/taro'
 export { default as Button } from './components/button'
-export { default as MiniLoginButton } from './components/button/miniLoginButton'
-export { default as MiniPhoneButton } from './components/button/miniPhoneButton'
-export { default as MiniUserButton } from './components/button/miniUserButton'
+export { default as MiniLoginButton } from './components/mini-login-button'
+export { default as MiniPhoneButton } from './components/mini-phone-button'
+export { default as MiniUserButton } from './components/mini-user-button'
 export { default as Progress } from './components/progress'
 export { default as Sticky } from './components/sticky'
 export { default as Info } from './components/info'

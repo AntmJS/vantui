@@ -1,6 +1,6 @@
 import type { MiniLoginButtonProps } from '../../../types/button.d'
 import Taro from '@tarojs/taro'
-import Button from './index'
+import Button from '../button'
 
 declare const my: any
 
