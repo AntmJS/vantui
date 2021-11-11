@@ -114,27 +114,19 @@ this.state = {
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### CircleProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/circle.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| text | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| lineCap | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| value | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| speed | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| size | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| fill | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| layerColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| color | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Record<string,&nbsp;string><br/>_ | - | `否` |
+| type | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| strokeWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| clockwise | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
 
-export interface CircleProps extends StandardProps {
-  text?: string
-  lineCap?: string
-  value?: number
-  speed?: number
-  size?: number
-  fill?: string
-  layerColor?: string
-  color?: string | Record<string, string>
-  type?: string
-  strokeWidth?: number
-  clockwise?: boolean
-  children?: ReactNode
-}
-
-declare const Circle: ComponentClass<CircleProps>
-
-export { Circle }
-```

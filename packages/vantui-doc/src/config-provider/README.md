@@ -136,17 +136,9 @@ function onChange(event) {
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### ConfigProviderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/config-provider.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| themeVars | - | _&nbsp;&nbsp;Normal.IAnyObject<br/>_ | - | `是` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `是` |
 
-export interface ConfigProviderProps extends StandardProps {
-  themeVars: Normal.IAnyObject
-  children: ReactNode
-}
-
-declare const ConfigProvider: ComponentClass<ConfigProviderProps>
-
-export { ConfigProvider }
-```

@@ -204,22 +204,14 @@ function onChange(event) {
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+### CollapseProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | - | _&nbsp;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number><br/>_ | - | `否` |
+| accordion | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;Array<ReactNode><br/>_ | - | `否` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onOpen | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onClose | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
 
-export interface CollapseProps extends StandardProps {
-  value?: Array<string | number>
-  accordion?: boolean
-  border?: boolean
-  children?: Array<ReactNode>
-  onChange?: (event: ITouchEvent) => any
-  onOpen?: (event: ITouchEvent) => any
-  onClose?: (event: ITouchEvent) => any
-}
-
-declare const Collapse: ComponentClass<CollapseProps>
-
-export { Collapse }
-```

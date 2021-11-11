@@ -203,37 +203,29 @@ import { CellGroup } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### CellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cell.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| url | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| linkType | - | _&nbsp;&nbsp;"navigateTo"&nbsp;&brvbar;&nbsp;"reLaunch"&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | - | `否` |
+| title | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| size | - | _&nbsp;&nbsp;"large"<br/>_ | - | `否` |
+| label | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| center | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| isLink | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| required | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| clickable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| titleWidth | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| arrowDirection | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_ | - | `否` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| titleStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderLabel | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderExtra | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode&nbsp;&brvbar;&nbsp;JSX.Element&nbsp;&brvbar;&nbsp;JSX.Element[]<br/>_ | - | `否` |
 
-export interface CellProps extends StandardProps {
-  url?: string
-  linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
-  title?: string | number
-  value?: string | number
-  icon?: string
-  size?: 'large'
-  label?: string
-  center?: boolean
-  isLink?: boolean
-  required?: boolean
-  clickable?: boolean
-  titleWidth?: string
-  style?: string
-  arrowDirection?: 'left' | 'up' | 'down'
-  border?: boolean
-  titleStyle?: string
-  renderTitle?: ReactNode
-  renderIcon?: ReactNode
-  renderLabel?: ReactNode
-  renderRightIcon?: ReactNode
-  renderExtra?: ReactNode
-  children?: ReactNode | JSX.Element | JSX.Element[]
-}
-
-declare const Cell: ComponentClass<CellProps>
-
-export { Cell }
-```

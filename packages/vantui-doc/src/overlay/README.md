@@ -108,38 +108,12 @@ function noop() {}
   backgroundColor: #fff;
 }
 ```
+### OverlayProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/overlay.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| lockScroll | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| zIndex | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| duration | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enter:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leave:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
 
-### Props
-
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| show | 是否展示遮罩层 | _boolean_ | `false` |
-| zIndex | zIndex 层级 | _string \| number_ | `1` |
-| duration | 动画时长，单位秒 | _string \| number_ | `0.3` |
-| className | 自定义类名 | _string_ | - |
-| style | 自定义样式 | _string_ | - |
-| lockScroll `v1.7.3` | 是否锁定背景滚动，锁定时蒙层里的内容也将无法滚动 | _boolean_ | true |
-
-### Events
-
-| 事件名     | 说明       | 回调参数 |
-| ---------- | ---------- | -------- |
-| onClick | 点击时触发 | -        |
-### TS信息
-```ts 
-import { StandardProps } from '@tarojs/components'
-import { ComponentClass, ReactNode } from 'react'
-export interface OverlayProps extends StandardProps {
-  show?: boolean
-  lockScroll?: boolean
-  zIndex?: string | number
-  duration?:
-    | string
-    | number
-    | { enter: string | number; leave: string | number }
-  children?: ReactNode
-}
-declare const Overlay: ComponentClass<OverlayProps>
-
-export { Overlay }
-```

@@ -56,39 +56,30 @@ import { Card } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-import { ImageProps } from '@tarojs/components/types/Image.d'
+### CardProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/card.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| tag | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| num | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| desc | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| thumb | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| price | - | _&nbsp;&nbsp;string<br/>_ | - | `是` |
+| centered | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| lazyLoad | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| thumbLink | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| originPrice | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| thumbMode | - | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode<br/>_ | - | `否` |
+| currency | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| renderFooter | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderBottom | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderNum | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderOriginPrice | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderPrice | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderPriceTop | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderTags | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderDesc | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderTag | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderThumb | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
 
-export interface CardProps extends StandardProps {
-  tag?: string
-  num?: string
-  desc?: string
-  thumb?: string
-  title?: string
-  price: string
-  centered?: boolean
-  lazyLoad?: boolean
-  thumbLink?: string
-  originPrice?: string
-  thumbMode?: keyof ImageProps.mode
-  currency?: string
-  renderFooter?: ReactNode
-  renderBottom?: ReactNode
-  renderNum?: ReactNode
-  renderOriginPrice?: ReactNode
-  renderPrice?: ReactNode
-  renderPriceTop?: ReactNode
-  renderTags?: ReactNode
-  renderDesc?: ReactNode
-  renderTitle?: ReactNode
-  renderTag?: ReactNode
-  renderThumb?: ReactNode
-}
-
-declare const Card: ComponentClass<CardProps>
-
-export { Card }
-```

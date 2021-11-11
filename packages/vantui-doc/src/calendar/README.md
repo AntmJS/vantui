@@ -338,79 +338,49 @@ this.state = {
   --calendarHeight: 500px;
 }
 ```
-### TS信息
-```ts 
-import React, { ComponentClass } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+### ICalendarInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+| 方法 | 说明 | 类型 |
+| --- | --- | --- |
+| reset | - | _&nbsp;&nbsp;(date?:&nbsp;Date&nbsp;&brvbar;&nbsp;Date[])&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;//<br/>_ |
+| scrollToDate | - | _&nbsp;&nbsp;(date:&nbsp;Date)&nbsp;=>&nbsp;void<br/>_ |
 
-type CalendarSelectType = 'selected' | 'start' | 'middle' | 'end' | 'disabled'
+### CalendarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| formatter | - | _&nbsp;&nbsp;(day:&nbsp;Day)&nbsp;=>&nbsp;Day<br/>_ | - | `否` |
+| confirmText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| rangePrompt | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| showRangePrompt | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| defaultDate | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | - | `否` |
+| allowSameDay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| confirmDisabledText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| type | - | _&nbsp;&nbsp;CalendarType<br/>_ | - | `否` |
+| minDate | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| maxDate | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| position | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"top"<br/>_ | - | `否` |
+| rowHeight | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| poppable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| showMark | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| showTitle | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| showConfirm | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| showSubtitle | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| maxRange | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| firstDayOfWeek | - | _&nbsp;&nbsp;0&nbsp;&brvbar;&nbsp;1&nbsp;&brvbar;&nbsp;2&nbsp;&brvbar;&nbsp;3&nbsp;&brvbar;&nbsp;4&nbsp;&brvbar;&nbsp;5&nbsp;&brvbar;&nbsp;6<br/>_ | - | `否` |
+| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onConfirm | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| overRange | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onUnselect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEventsSingle)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onSelect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClickSubtitle | - | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| renderTitle | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
+| renderFooter | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
 
-type CalendarType = 'single' | 'multiple' | 'range'
-interface CalendarEvents extends ITouchEvent {
-  detail: {
-    value: Date | Date[]
-  }
-}
-
-interface CalendarEventsSingle extends ITouchEvent {
-  detail: {
-    value: Date
-  }
-}
-
-type Day = {
-  date: CalendarSelectType
-  type?: string
-  text?: string | number
-  bottomInfo?: string
-  className?: string
-  topInfo?: string
-}
-
-export type ICalendarInstance = {
-  reset: (date?: Date | Date[]) => void
-  // scrollToDate: (date: Date) => void
-}
-export interface CalendarProps extends StandardProps {
-  title?: string
-  color?: string
-  show?: boolean
-  formatter?: (day: Day) => Day
-  confirmText?: string
-  rangePrompt?: string
-  showRangePrompt?: boolean
-  defaultDate?: string | string[]
-  allowSameDay?: boolean
-  confirmDisabledText?: string
-  type?: CalendarType
-  minDate?: number
-  maxDate?: number
-  position?: 'left' | 'right' | 'bottom' | 'top'
-  rowHeight?: number | string
-  round?: boolean
-  poppable?: boolean
-  showMark?: boolean
-  showTitle?: boolean
-  showConfirm?: boolean
-  showSubtitle?: boolean
-  safeAreaInsetBottom?: boolean
-  closeOnClickOverlay?: boolean
-  maxRange?: number
-  firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-  onOpen?: () => void
-  onClose?: () => void
-  onOpened?: () => void
-  onClosed?: () => void
-  onConfirm?: (e: CalendarEvents) => void
-  overRange?: () => void
-  onUnselect?: (e: CalendarEventsSingle) => void
-  onSelect?: (e: CalendarEvents) => void
-  onClickSubtitle?: (a?: any) => void
-  renderTitle?: React.ReactNode
-  renderFooter?: React.ReactNode
-}
-
-declare const Calendar: ComponentClass<CalendarProps>
-
-export { Calendar }
-```

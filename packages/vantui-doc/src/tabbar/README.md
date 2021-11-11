@@ -276,25 +276,17 @@ function onClick(event) {
 ### 结合自定义 tabBar
 
 请参考 [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/customTabbar.html) 与 [代码片段](https://developers.weixin.qq.com/s/vaXgTsmQ7hnm)。
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### TabbarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tabbar.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| active | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
 
-export interface TabbarProps extends StandardProps {
-  active?: number
-  activeColor?: string
-  inactiveColor?: string
-  fixed?: boolean
-  placeholder?: boolean
-  border?: boolean
-  zIndex?: number
-  safeAreaInsetBottom?: boolean
-  children?: ReactNode
-  onChange?: (event: { detail: string | number }) => void
-}
-
-declare const Tabbar: ComponentClass<TabbarProps>
-
-export { Tabbar }
-```

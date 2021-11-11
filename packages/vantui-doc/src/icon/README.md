@@ -106,22 +106,14 @@ import { Icon } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### IconProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/icon.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| info | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
+| size | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| classPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| name | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
 
-export interface IconProps extends StandardProps {
-  dot?: boolean
-  info?: number | string
-  size?: number | string
-  color?: string
-  style?: string
-  classPrefix?: string
-  name?: string
-}
-
-declare const Icon: ComponentClass<IconProps>
-
-export { Icon }
-```

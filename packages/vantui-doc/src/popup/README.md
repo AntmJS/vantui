@@ -139,35 +139,22 @@ function onClose() {
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-import { TransitionProps } from './mixins/transition'
-import { OverlayProps } from './overlay'
+### PopupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/popup.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| closeable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| overlayStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| transition | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| closeIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| closeIconPosition | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| position | - | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_ | - | `否` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
 
-export interface PopupProps
-  extends TransitionProps,
-    StandardProps,
-    OverlayProps {
-  round?: boolean
-  closeable?: boolean
-  overlayStyle?: string
-  transition?: string
-  zIndex?: number
-  overlay?: boolean
-  closeIcon?: string
-  closeIconPosition?: string
-  closeOnClickOverlay?: boolean
-  position?: 'top' | 'bottom' | 'right' | 'left'
-  safeAreaInsetBottom?: boolean
-  safeAreaInsetTop?: boolean
-  children?: ReactNode
-  onClickOverlay?: () => void
-  onClose?: () => void
-}
-
-declare const Popup: ComponentClass<PopupProps>
-
-export { Popup }
-```

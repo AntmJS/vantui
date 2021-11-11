@@ -289,26 +289,18 @@ toggle = (event) => {
   flex: none !important;
 }
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+### CheckboxProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/checkbox.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| value | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| checkedColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| labelPosition | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| labelDisabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| shape | - | _&nbsp;&nbsp;"round"&nbsp;&brvbar;&nbsp;"square"<br/>_ | - | `否` |
+| iconSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
 
-export interface CheckboxProps extends StandardProps {
-  name?: string
-  value?: boolean
-  disabled?: boolean
-  checkedColor?: string
-  labelPosition?: string
-  labelDisabled?: boolean
-  shape?: 'round' | 'square'
-  iconSize?: string | number
-  children?: ReactNode
-  renderIcon?: ReactNode
-  onChange?: (event: ITouchEvent) => any
-}
-
-declare const Checkbox: ComponentClass<CheckboxProps>
-
-export { Checkbox }
-```

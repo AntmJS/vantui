@@ -246,65 +246,42 @@ import { Button } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { BaseEventOrig } from '@tarojs/components/types/common.d'
-import { ButtonProps as TaroButtonProps } from '@tarojs/components'
+### ButtonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/button.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| classPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"primary"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"info"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"warning"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"danger"<br/>_ | - | `否` |
+| size | - | _&nbsp;&nbsp;"small"&nbsp;&brvbar;&nbsp;"normal"&nbsp;&brvbar;&nbsp;"large"&nbsp;&brvbar;&nbsp;"mini"<br/>_ | - | `否` |
+| block | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| square | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| hairline | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| loadingText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| loadingSize | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| loadingType | - | _&nbsp;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;"circular"<br/>_ | - | `否` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `是` |
 
-export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
-  icon?: string
-  classPrefix?: string
-  type?: 'default' | 'primary' | 'info' | 'warning' | 'danger'
-  size?: 'small' | 'normal' | 'large' | 'mini'
-  block?: boolean
-  round?: boolean
-  square?: boolean
-  loading?: boolean
-  hairline?: boolean
-  disabled?: boolean
-  loadingText?: string
-  loadingSize?: string
-  style?: string
-  loadingType?: 'spinner' | 'circular'
-  color?: string
-  children: ReactNode
-}
+### MiniLoginButtonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/button.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| onFail | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;error:&nbsp;Taro.General.CallbackResult<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `是` |
+| onGetLoginCode | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;loginInfo:&nbsp;Taro.login.SuccessCallbackResult<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `是` |
 
-export interface MiniLoginButtonProps extends ButtonProps {
-  onFail: (error: Taro.General.CallbackResult) => void
-  onGetLoginCode: (loginInfo: Taro.login.SuccessCallbackResult) => void
-}
+### MiniUserButtonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/button.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| onGetUserInfo | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;userInfo:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Taro.UserInfo<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Taro.getUserProfile.SuccessCallbackResult<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;TaroButtonProps.onGetUserInfoEventDetail<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `是` |
+| onFail | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;error:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Taro.General.CallbackResult<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;BaseEventOrig<TaroButtonProps.onGetUserInfoEventDetail><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `是` |
+| desc | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
 
-export interface MiniUserButtonProps
-  extends Omit<ButtonProps, 'onGetUserInfo'> {
-  onGetUserInfo: (
-    userInfo:
-      | Taro.UserInfo
-      | Taro.getUserProfile.SuccessCallbackResult
-      | TaroButtonProps.onGetUserInfoEventDetail,
-  ) => void
-  onFail: (
-    error:
-      | Taro.General.CallbackResult
-      | BaseEventOrig<TaroButtonProps.onGetUserInfoEventDetail>,
-  ) => void
-  desc?: string
-}
+### MiniPhoneButtonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/button.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| onFail | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;error:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Taro.General.CallbackResult<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;BaseEventOrig<TaroButtonProps.onGetPhoneNumberEventDetail><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `是` |
+| onGetPhone | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;phoneInfo:&nbsp;TaroButtonProps.onGetPhoneNumberEventDetail<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `是` |
 
-export interface MiniPhoneButtonProps extends ButtonProps {
-  onFail: (
-    error:
-      | Taro.General.CallbackResult
-      | BaseEventOrig<TaroButtonProps.onGetPhoneNumberEventDetail>,
-  ) => void
-  onGetPhone: (phoneInfo: TaroButtonProps.onGetPhoneNumberEventDetail) => void
-}
-
-declare const Button: ComponentClass<ButtonProps>
-declare const MiniLoginButton: ComponentClass<MiniLoginButtonProps>
-declare const MiniUserButton: ComponentClass<MiniUserButtonProps>
-declare const MiniPhoneButton: ComponentClass<MiniPhoneButtonProps>
-
-export { Button, MiniLoginButton, MiniUserButton, MiniPhoneButton }
-```

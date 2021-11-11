@@ -68,19 +68,14 @@ this.state = {
   indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }; 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-export interface IndexBarProps extends StandardProps {
-  sticky?: boolean
-  zIndex?: number
-  highlightColor?: string
-  stickyOffsetTop?: number
-  indexList?: string[] | number[]
-  onSelect?: (event: { detail: string | number }) => void
-  children?: ReactNode
-}
-declare const IndexBar: ComponentClass<IndexBarProps>
-export { IndexBar }
-```
+### IndexBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/index-bar.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| sticky | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| highlightColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| stickyOffsetTop | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| indexList | - | _&nbsp;&nbsp;string[]&nbsp;&brvbar;&nbsp;number[]<br/>_ | - | `否` |
+| onSelect | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+

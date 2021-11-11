@@ -115,30 +115,16 @@ this.state = {
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+### StepsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/steps.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| steps | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;index?:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;desc:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;activeIcon?:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;inactiveIcon?:&nbsp;string<br/>&nbsp;&nbsp;}[]<br/>_ | - | `否` |
+| active | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| direction | - | _&nbsp;&nbsp;"horizontal"&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | - | `否` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| activeIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| inactiveIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| onClickStep | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{&nbsp;detail:&nbsp;number&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
 
-export interface StepsProps extends StandardProps {
-  icon?: string
-  steps?: {
-    index?: number
-    desc: string
-    text: string
-    activeIcon?: string
-    inactiveIcon?: string
-  }[]
-  active?: number
-  direction?: 'horizontal' | 'vertical'
-  activeColor?: string
-  inactiveColor?: string
-  activeIcon?: string
-  inactiveIcon?: string
-  onClickStep?: (event: ITouchEvent & { detail: number }) => void
-}
-
-declare const Steps: ComponentClass<StepsProps>
-
-export { Steps }
-```

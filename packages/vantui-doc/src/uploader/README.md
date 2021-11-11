@@ -244,46 +244,37 @@ uploadFilePromise(fileName, chooseResult) {
   });
 }
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
-import { ImageProps } from '@tarojs/components/types/Image'
+### UploaderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/uploader.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| multiple | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| uploadText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| useBeforeRead | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| afterRead | - | _&nbsp;&nbsp;any<br/>_ | - | `否` |
+| beforeRead | - | _&nbsp;&nbsp;any<br/>_ | - | `否` |
+| previewSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| accept | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"all"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"media"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"image"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"file"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"video"<br/>_ | - | `否` |
+| fileList | - | _&nbsp;&nbsp;Array<any><br/>_ | - | `否` |
+| maxSize | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| maxCount | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| deletable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| showUpload | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| previewImage | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| previewFullImage | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| imageFit | - | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `否` |
+| uploadIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| sizeType | - | _&nbsp;&nbsp;Array<string><br/>_ | - | `否` |
+| capture | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Array<string><br/>_ | - | `否` |
+| compressed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| maxDuration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| camera | - | _&nbsp;&nbsp;"back"&nbsp;&brvbar;&nbsp;"front"<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| onError | - | _&nbsp;&nbsp;(error:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onDelete | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onBeforeRead | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onAfterRead | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onOversize | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| onClickPreview | - | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
 
-export interface UploaderProps extends StandardProps {
-  disabled?: boolean
-  multiple?: boolean
-  uploadText?: string
-  useBeforeRead?: boolean
-  afterRead?: any
-  beforeRead?: any
-  previewSize?: string | number
-  name?: string | number
-  accept?: 'all' | 'media' | 'image' | 'file' | 'video'
-  fileList?: Array<any>
-  maxSize?: number
-  maxCount?: number
-  deletable?: boolean
-  showUpload?: boolean
-  previewImage?: boolean
-  previewFullImage?: boolean
-  imageFit?: keyof ImageProps.mode | undefined
-  uploadIcon?: string
-  sizeType?: Array<string>
-  capture?: string | Array<string>
-  compressed?: boolean
-  maxDuration?: number
-  camera?: 'back' | 'front'
-  children?: ReactNode
-  onError?: (error: any) => any
-  onDelete?: (event: ITouchEvent) => any
-  onBeforeRead?: (event: ITouchEvent) => any
-  onAfterRead?: (event: ITouchEvent) => any
-  onOversize?: (event: ITouchEvent) => any
-  onClickPreview?: (data: any) => any
-}
-
-declare const Uploader: ComponentClass<UploaderProps>
-
-export { Uploader }
-```

@@ -125,41 +125,17 @@ function onClickItem({
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, TouchEvent } from 'react'
-import { StandardProps } from '@tarojs/components'
-import { ReactNode } from 'packages/vantui-demo/node_modules/@types/react'
-export interface TreeSelectProps extends StandardProps {
-  items?: {
-    text: number | string
-    badge?: number | string
-    dot?: boolean
-    disabled?: boolean
-    children?: {
-      text: number | string
-      id: number | string
-      disabled?: boolean
-    }[]
-  }[]
-  activeId?: string | number | number[] | string[]
-  mainActiveIndex?: number
-  value?: number
-  height?: number | string
-  max?: number
-  selectedIcon?: string
-  onClickItem?: (
-    event: TouchEvent & {
-      detail: {
-        text: string
-        id: string | number
-        disabled?: boolean
-      }
-    },
-  ) => void
-  onClickNav?: (event: { detail: { index: number } }) => void
-  renderContent?: ReactNode
-}
-declare const TreeSelect: ComponentClass<TreeSelectProps>
-export { TreeSelect }
-```
+### TreeSelectProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tree-select.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| items | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;badge?:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;dot?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;disabled?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;children?:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;}[]<br/>&nbsp;&nbsp;}[]<br/>_ | - | `否` |
+| activeId | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number&nbsp;&brvbar;&nbsp;number[]&nbsp;&brvbar;&nbsp;string[]<br/>_ | - | `否` |
+| mainActiveIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| value | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| height | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
+| max | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| selectedIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| onClickItem | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;TouchEvent&nbsp;&&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClickNav | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{&nbsp;index:&nbsp;number&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| renderContent | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+

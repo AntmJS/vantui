@@ -1,17 +1,21 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
 const path = require('path')
-const { format } = require('prettier')
+const Prettier = require('prettier')
 const glob = require('glob')
+const markdownToAst = require('markdown-to-ast')
+const astToMarkdown = require('ast-to-markdown')
 
 glob(
   `${path.resolve(process.cwd(), './src/**/README.md')}`,
   function (err, path_) {
     path_.map((item) => {
       const componentName = item.split('/').reverse()[1]
-      let content = fs
-        .readFileSync(item, 'utf-8')
-        .replace(/###\sTS信息[\s\S]+```$/, '')
+      let content = fs.readFileSync(item, 'utf-8')
+
+      if (content) {
+        content = removeOldTable(content)
+      }
 
       if (
         fs.existsSync(`../vantui/types/${componentName}.d.ts`) &&
@@ -21,10 +25,10 @@ glob(
           `../vantui/types/${componentName}.d.ts`,
           'utf-8',
         )
-        console.info(tsInfo)
         const { TOKENS, commentsArr } = getAllTokens(tsInfo)
         const res = parseTokens(TOKENS, commentsArr)
-        fs.writeFileSync(item, content + createMd(res))
+
+        fs.writeFileSync(item, content + createMd(res, componentName))
       }
     })
   },
@@ -195,46 +199,47 @@ function parseComments(comments = '') {
 
   arr.forEach((item) => {
     const cons = item.split('##')
-    res[cons[0]] = cons[1] || '-'
+    res[cons[0] + '99'] = cons[1] || '-'
   })
 
   return res
 }
 // 生成MD
-function createMd(obj) {
+function createMd(obj, compName) {
   let mdRes = ``
   for (const Dkey in obj) {
     const item = obj[Dkey]
-    mdRes += `### ${item['desc'] || `${Dkey} 说明`}
-    
+    mdRes +=
+      `### ${item['desc99'] || Dkey}` +
+      ` [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/${compName}.d.ts)   
 `
-    let header = `| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+    let header = `| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
 `
-    let key = ['self', 'desc', 'value', 'default', 'require']
+    let key = ['self99', 'desc99', 'value', 'default99', 'require']
     if (!Dkey.includes('Props')) {
       header = `| 参数 | 说明 | 类型 |
 | --- | --- | --- |
 `
-      key = ['self', 'desc', 'value']
+      key = ['self99', 'desc99', 'value']
     }
     if (Dkey.includes('Instance')) {
       header = `| 方法 | 说明 | 类型 |
 | --- | --- | --- |
 `
-      key = ['self', 'desc', 'value']
+      key = ['self99', 'desc99', 'value']
     }
     mdRes += header
     Object.keys(item).map((_key) => {
       if (typeof item[_key] === 'object' && item[_key]) {
         key.forEach((k) => {
-          if (k === 'self') {
+          if (k === 'self99') {
             mdRes += `| ${_key} `
           } else {
             let con = item[_key][k]
             if (typeof con === 'string') con = con.replace(/[\n]{2,3}$/, '')
             if (k === 'value') {
-              con = format(
+              con = Prettier.format(
                 `type temp = {
 attr:${con}
 }
@@ -242,6 +247,7 @@ attr:${con}
                 {
                   parser: 'typescript',
                   semi: false,
+                  printWidth: 48,
                 },
               )
 
@@ -256,12 +262,14 @@ attr:${con}
                 .replace(/[\n]+/g, '<br/>')
                 .replace(/\s(?!=\/)/g, '&nbsp;')
             }
-            if (con) {
+            if (con && k === 'value') {
               con = `_${con}_`
-            } else {
+            } else if (con && k === 'require') {
+              con = '`' + con + '`'
+            } else if (!con) {
               con = `-`
             }
-            mdRes += `| ` + `${con} `.replace(/\|/g, '/')
+            mdRes += `| ` + `${con} `.replace(/\|/g, '&brvbar;')
           }
         })
 
@@ -272,4 +280,25 @@ attr:${con}
     mdRes += `\n`
   }
   return mdRes
+}
+
+function removeOldTable(md) {
+  let ast = markdownToAst.parse(md)
+  let shouldRmoveIndex
+  let firstTableIndex
+  ast.children.forEach((as, index) => {
+    if (as.type === 'Table' && firstTableIndex === undefined) {
+      firstTableIndex = index
+    }
+  })
+
+  for (let index = firstTableIndex; index >= 0; index--) {
+    if (ast.children[index].type === 'Header') {
+      shouldRmoveIndex = index
+      break
+    }
+  }
+
+  ast.children = ast.children.slice(0, shouldRmoveIndex)
+  return astToMarkdown(ast)
 }

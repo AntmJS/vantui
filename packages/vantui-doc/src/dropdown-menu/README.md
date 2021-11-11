@@ -209,38 +209,24 @@ function onSwitch2Change({
 </View>
  
 ```
-### TS信息
-```ts 
-import React, { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### DropdownMenuProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| direction | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| closeOnClickOutside | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| popupStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `否` |
+| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `否` |
+| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| options | - | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
+| value | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
 
-type DropdownMenuOption = {
-  text?: string
-  value: number | string
-  icon?: string
-}
-
-export interface DropdownMenuProps extends StandardProps {
-  activeColor?: string
-  overlay?: boolean
-  zIndex?: number
-  duration?: number
-  direction?: string
-  closeOnClickOverlay?: boolean
-  closeOnClickOutside?: boolean
-  popupStyle?: React.CSSProperties
-  wrapperStyle?: React.CSSProperties
-  onOpen?: () => void
-  onOpened?: () => void
-  onClose?: () => void
-  onClosed?: () => void
-  options?: Array<DropdownMenuOption>
-  children?: React.ReactNode
-  value?: string
-  disabled?: boolean
-}
-
-declare const DropdownMenu: ComponentClass<DropdownMenuProps>
-
-export { DropdownMenu }
-```

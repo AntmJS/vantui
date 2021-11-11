@@ -123,24 +123,16 @@ function onChange({
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+### SwitchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/switch.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| checked | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| size | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| activeValue | - | _&nbsp;&nbsp;any<br/>_ | - | `否` |
+| inactiveValue | - | _&nbsp;&nbsp;any<br/>_ | - | `否` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
 
-export interface SwitchProps extends StandardProps {
-  checked?: boolean
-  loading?: boolean
-  disabled?: boolean
-  activeColor?: string
-  inactiveColor?: string
-  size?: string
-  activeValue?: any
-  inactiveValue?: any
-  onChange?: (event: ITouchEvent) => any
-}
-
-declare const Switch: ComponentClass<SwitchProps>
-
-export { Switch }
-```

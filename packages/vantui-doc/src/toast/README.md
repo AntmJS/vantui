@@ -96,38 +96,19 @@ toast({
   },
 });
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-import toast from '../src/components/toast/toast'
+### ToastProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/toast.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
+| mask | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| forbidClick | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"loading"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"fail"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"html"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>_ | - | `否` |
+| position | - | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"middle"&nbsp;&brvbar;&nbsp;"bottom"<br/>_ | - | `否` |
+| message | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_ | - | `否` |
+| loadingType | - | _&nbsp;&nbsp;"circular"&nbsp;&brvbar;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `否` |
+| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| id | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ | - | `否` |
 
-export interface ToastProps extends StandardProps {
-  zIndex?: number
-  duration?: number
-  mask?: boolean
-  forbidClick?: boolean
-  type?: 'loading' | 'success' | 'fail' | 'html' | 'text'
-  position?: 'top' | 'middle' | 'bottom'
-  message?: string | ReactNode
-  loadingType?: 'circular' | 'spinner' | undefined
-  selector?: string
-  id?: string
-  children?: ReactNode
-  onClose?: () => any
-}
-
-interface toastProps {
-  show: (options: ToastProps | string) => any
-  loading: (options: ToastProps | string) => any
-  success: (options: ToastProps | string) => any
-  fail: (options: ToastProps | string) => any
-  clear: (options?: ToastProps) => void
-  setDefaultOptions: (options: ToastProps) => void
-  resetDefaultOptions: (options: any) => void
-}
-
-declare const Toast: ComponentClass<ToastProps> & toastProps
-
-export { Toast, toast }
-```

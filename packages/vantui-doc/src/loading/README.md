@@ -61,20 +61,13 @@ import { Loading } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
-export interface LoadingProps extends StandardProps {
-  color?: string
-  vertical?: boolean
-  type?: 'spinner' | 'circular'
-  size?: string | number
-  textSize?: string | number
-  children?: React.ReactNode
-}
+### LoadingProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/loading.d.ts)   
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| vertical | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| type | - | _&nbsp;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;"circular"<br/>_ | - | `否` |
+| size | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| textSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
 
-declare const Loading: ComponentClass<LoadingProps>
-
-export { Loading }
-```
