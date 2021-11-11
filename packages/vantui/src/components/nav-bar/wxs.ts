@@ -1,4 +1,4 @@
-import { style } from '../wxs/style';
+import { style } from '../wxs/style'
 
 function barStyle(data: any) {
   return style({
@@ -10,4 +10,4 @@ function barStyle(data: any) {
   });
 }
 
-export { barStyle };
+export { barStyle }
