@@ -277,16 +277,17 @@ function onClick(event) {
 
 请参考 [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/customTabbar.html) 与 [代码片段](https://developers.weixin.qq.com/s/vaXgTsmQ7hnm)。
 ### TabbarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tabbar.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| active | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| active | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 

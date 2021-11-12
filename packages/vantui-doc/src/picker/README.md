@@ -167,48 +167,48 @@ this.state = {
 </View>
  
 ```
-### PickerColumn [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+### PickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| valueKey | 选项为对象的时候，文字对应的 key | _&nbsp;&nbsp;string<br/>_ | text | `false` |
+| toolbarPosition | 顶部栏位置，可选值为bottom | _&nbsp;&nbsp;string<br/>_ | top | `false` |
+| defaultIndex | 单列选择器的默认选中项索引,多列选择器请参考下方的 Columns 配置 | _&nbsp;&nbsp;number<br/>_ | 0 | `false` |
+| columns | 每一项数据，可为字符或者对象，对象默认展示值是valueKey设置的key | _&nbsp;&nbsp;any[]<br/>_ | [] | `false` |
+| title | 顶部栏标题 | _&nbsp;&nbsp;string<br/>_ | '' | `false` |
+| cancelButtonText | 取消按钮文字 | _&nbsp;&nbsp;string<br/>_ | 取消 | `false` |
+| confirmButtonText | 确认按钮文字 | _&nbsp;&nbsp;string<br/>_ | 确认 | `false` |
+| loading | 加载状态 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| itemHeight | 选项高度,对应单位PX | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | 48 | `false` |
+| visibleItemCount | 可见的选项个数 | _&nbsp;&nbsp;number<br/>_ | 6 | `false` |
+| onChange | 变化触发方法 | _&nbsp;&nbsp;(e:&nbsp;PickerChangeEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | 取消触发方法 | _&nbsp;&nbsp;(e:&nbsp;PickerEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onConfirm | 确认触发方法 | _&nbsp;&nbsp;(e:&nbsp;PickerEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| showToolbar | 是否显示顶部栏 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+
+### 事件 onConfirm 和 onCancel [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
-| values | - | _&nbsp;&nbsp;string[]<br/>_ |
-| defaultIndex | - | _&nbsp;&nbsp;number<br/>_ |
-| className | - | _&nbsp;&nbsp;string<br/>_ |
-| children | - | _&nbsp;&nbsp;PickerColumn<br/>_ |
+| detail | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>&nbsp;&nbsp;}<br/>_ |
 
-### PickerChangeEvents [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+### 触发事件 onChange [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | detail | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;picker:&nbsp;IPickerInstance<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;}<br/>_ |
 
-### IPickerInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+通过ref获取到的方法如下
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
-| setColumnValues | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;PickerOptions,<br/>&nbsp;&nbsp;&nbsp;&nbsp;needReset:&nbsp;boolean<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<any><br/>_ |
-| getColumnValues | - | _&nbsp;&nbsp;(index:&nbsp;number)&nbsp;=>&nbsp;(number&nbsp;&brvbar;&nbsp;string)[]<br/>_ |
-| setColumnValue | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
-| getColumnValue | - | _&nbsp;&nbsp;(index:&nbsp;number)&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
-| columns | - | _&nbsp;&nbsp;PickerColumn[]<br/>_ |
-| getIndexes | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number[]<br/>_ |
-| setIndexes | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
-| getValues | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
-| confirm | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
-
-### PickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| valueKey | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| toolbarPosition | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| defaultIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| columns | - | _&nbsp;&nbsp;any[]<br/>_ | - | `否` |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| cancelButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| confirmButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| itemHeight | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| itemWidth | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| visibleItemCount | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| onChange | - | _&nbsp;&nbsp;(e:&nbsp;PickerChangeEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onCancel | - | _&nbsp;&nbsp;(e:&nbsp;PickerEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onConfirm | - | _&nbsp;&nbsp;(e:&nbsp;PickerEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| showToolbar | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| setColumnValues | 设置每一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;string[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;needReset:&nbsp;boolean<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<any><br/>_ |
+| getColumnValues | 获取每一列的值 | _&nbsp;&nbsp;(index:&nbsp;number[])&nbsp;=>&nbsp;(number&nbsp;&brvbar;&nbsp;string)[]<br/>_ |
+| setColumnValue | 设置某一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
+| getColumnValue | 获取某一列的值 | _&nbsp;&nbsp;(index:&nbsp;number)&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
+| columns | 每列的数据 | _&nbsp;&nbsp;any[]<br/>_ |
+| getIndexes | 获取每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number[]<br/>_ |
+| setIndexes | 获取每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| getValues | 每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
+| confirm | 触发确认的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 

@@ -245,36 +245,37 @@ uploadFilePromise(fileName, chooseResult) {
 }
 ```
 ### UploaderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/uploader.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| multiple | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| uploadText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| useBeforeRead | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| afterRead | - | _&nbsp;&nbsp;any<br/>_ | - | `否` |
-| beforeRead | - | _&nbsp;&nbsp;any<br/>_ | - | `否` |
-| previewSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| accept | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"all"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"media"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"image"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"file"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"video"<br/>_ | - | `否` |
-| fileList | - | _&nbsp;&nbsp;Array<any><br/>_ | - | `否` |
-| maxSize | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| maxCount | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| deletable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showUpload | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| previewImage | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| previewFullImage | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| imageFit | - | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `否` |
-| uploadIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| sizeType | - | _&nbsp;&nbsp;Array<string><br/>_ | - | `否` |
-| capture | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Array<string><br/>_ | - | `否` |
-| compressed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| maxDuration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| camera | - | _&nbsp;&nbsp;"back"&nbsp;&brvbar;&nbsp;"front"<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| onError | - | _&nbsp;&nbsp;(error:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
-| onDelete | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
-| onBeforeRead | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
-| onAfterRead | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
-| onOversize | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
-| onClickPreview | - | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| multiple | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| uploadText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| useBeforeRead | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| afterRead | - | _&nbsp;&nbsp;any<br/>_ | - | `false` |
+| beforeRead | - | _&nbsp;&nbsp;any<br/>_ | - | `false` |
+| previewSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| accept | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"all"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"media"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"image"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"file"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"video"<br/>_ | - | `false` |
+| fileList | - | _&nbsp;&nbsp;Array<any><br/>_ | - | `false` |
+| maxSize | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| maxCount | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| deletable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showUpload | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| previewImage | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| previewFullImage | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| imageFit | - | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `false` |
+| uploadIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| sizeType | - | _&nbsp;&nbsp;Array<string><br/>_ | - | `false` |
+| capture | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Array<string><br/>_ | - | `false` |
+| compressed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| maxDuration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| camera | - | _&nbsp;&nbsp;"back"&nbsp;&brvbar;&nbsp;"front"<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onError | - | _&nbsp;&nbsp;(error:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| onDelete | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| onBeforeRead | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| onAfterRead | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| onOversize | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| onClickPreview | - | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 

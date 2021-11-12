@@ -1,22 +1,90 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
-
-export type PickerColumn = {
-  values: string[]
+/**
+ * @title  Props
+ */
+export interface PickerProps extends StandardProps {
+  /**
+   * @description 选项为对象的时候，文字对应的 key
+   * @default text
+   */
+  valueKey?: string
+  /**
+   * @description 顶部栏位置，可选值为bottom
+   * @default top
+   */
+  toolbarPosition?: string
+  /**
+   * @description 	单列选择器的默认选中项索引,多列选择器请参考下方的 Columns 配置
+   * @default 0
+   */
   defaultIndex?: number
-  className?: string
-  children?: PickerColumn
+  /**
+   * @description 	每一项数据，可为字符或者对象，对象默认展示值是valueKey设置的key
+   * @default []
+   */
+  columns?: any[]
+  /**
+   * @description 	顶部栏标题
+   * @default ''
+   */
+  title?: string
+  /**
+   * @description 	取消按钮文字
+   * @default 取消
+   */
+  cancelButtonText?: string
+  /**
+   * @description 	确认按钮文字
+   * @default 确认
+   */
+  confirmButtonText?: string
+  /**
+   * @description 	加载状态
+   * @default false
+   */
+  loading?: boolean
+  /**
+   * @description 	选项高度,对应单位PX
+   * @default 48
+   */
+  itemHeight?: string | number
+  /**
+   * @description 	可见的选项个数
+   * @default 6
+   */
+  visibleItemCount?: number
+  /**
+   * @description 变化触发方法
+   */
+  onChange?: (e: PickerChangeEvents) => void
+  /**
+   * @description 取消触发方法
+   */
+  onCancel?: (e: PickerEvents) => void
+  /**
+   * @description 确认触发方法
+   */
+  onConfirm?: (e: PickerEvents) => void
+  /**
+   * @description 	是否显示顶部栏
+   * @default       false
+   */
+  showToolbar?: boolean
 }
-
-interface PickerEvents {
+/**
+ * @title 事件 onConfirm 和 onCancel
+ */
+export interface PickerEvents {
   detail: {
     value: number | number[]
     index: number | number[]
   }
 }
 
-type PickerOptions = (string | PickerColumn)[]
-
+/**
+ * @title 触发事件 onChange
+ */
 export type PickerChangeEvents = {
   detail: {
     value: number | number[]
@@ -24,38 +92,51 @@ export type PickerChangeEvents = {
     index: number
   }
 }
-
+/**
+ * @title 组件实例
+ * @description 通过ref获取到的方法如下
+ */
 export type IPickerInstance = {
+  /**
+   * @description 设置每一列的值
+   */
   setColumnValues: (
     index: number,
-    options: PickerOptions,
+    options: string[],
     needReset: boolean,
   ) => Promise<any>
-  getColumnValues: (index: number) => (number | string)[]
+  /**
+   * @description 获取每一列的值
+   */
+  getColumnValues: (index: number[]) => (number | string)[]
+  /**
+   * @description 设置某一列的值
+   */
   setColumnValue: (index: number, value: number | string) => any
+  /**
+   * @description 获取某一列的值
+   */
   getColumnValue: (index: number) => number | string
-  columns: PickerColumn[]
+  /**
+   * @description 每列的数据
+   */
+  columns: any[]
+  /**
+   * @description 获取每一列展示的下标
+   */
   getIndexes: () => number[]
+  /**
+   * @description 获取每一列展示的下标
+   */
   setIndexes: () => void
+  /**
+   * @description 每一列展示的下标
+   */
   getValues: () => number | string
+  /**
+   * @description 触发确认的方法
+   */
   confirm: () => void
-}
-export interface PickerProps extends StandardProps {
-  valueKey?: string
-  toolbarPosition?: string
-  defaultIndex?: number
-  columns?: any[]
-  title?: string
-  cancelButtonText?: string
-  confirmButtonText?: string
-  loading?: boolean
-  itemHeight?: string | number
-  itemWidth?: string | number
-  visibleItemCount?: number
-  onChange?: (e: PickerChangeEvents) => void
-  onCancel?: (e: PickerEvents) => void
-  onConfirm?: (e: PickerEvents) => void
-  showToolbar?: boolean
 }
 
 declare const Picker: ComponentClass<PickerProps>

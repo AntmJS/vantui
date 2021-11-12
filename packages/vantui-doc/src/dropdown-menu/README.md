@@ -210,23 +210,24 @@ function onSwitch2Change({
  
 ```
 ### DropdownMenuProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| direction | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| closeOnClickOutside | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| popupStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `否` |
-| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `否` |
-| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| options | - | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
-| value | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| direction | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOutside | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| popupStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
+| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
+| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| options | - | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 

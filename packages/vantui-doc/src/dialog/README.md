@@ -166,33 +166,34 @@ function onClose() {
 } 
 ```
 ### DialogProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dialog.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| width | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| theme | - | _&nbsp;&nbsp;"round-button"<br/>_ | - | `否` |
-| cancelButtonColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| confirmButtonColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| onConfirm | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialog?:&nbsp;{&nbsp;dialog:&nbsp;any&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onCancel | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialog?:&nbsp;{&nbsp;dialog:&nbsp;any&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;(event:&nbsp;{&nbsp;detail:&nbsp;string&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| message | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| ariaLabel | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| className | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| style | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| transition | - | _&nbsp;&nbsp;"fade"&nbsp;&brvbar;&nbsp;"none"<br/>_ | - | `否` |
-| asyncClose | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| beforeClose | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<void&nbsp;&brvbar;&nbsp;boolean>&nbsp;&brvbar;&nbsp;void&nbsp;&brvbar;&nbsp;boolean<br/>_ | - | `否` |
-| messageAlign | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"<br/>_ | - | `否` |
-| confirmButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| cancelButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| showConfirmButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showCancelButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| confirmButtonOpenType | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| width | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| theme | - | _&nbsp;&nbsp;"round-button"<br/>_ | - | `false` |
+| cancelButtonColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| confirmButtonColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| onConfirm | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialog?:&nbsp;{&nbsp;dialog:&nbsp;any&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialog?:&nbsp;{&nbsp;dialog:&nbsp;any&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;(event:&nbsp;{&nbsp;detail:&nbsp;string&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| message | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| ariaLabel | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| className | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| transition | - | _&nbsp;&nbsp;"fade"&nbsp;&brvbar;&nbsp;"none"<br/>_ | - | `false` |
+| asyncClose | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| beforeClose | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<void&nbsp;&brvbar;&nbsp;boolean>&nbsp;&brvbar;&nbsp;void&nbsp;&brvbar;&nbsp;boolean<br/>_ | - | `false` |
+| messageAlign | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"<br/>_ | - | `false` |
+| confirmButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| cancelButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showConfirmButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showCancelButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| confirmButtonOpenType | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 

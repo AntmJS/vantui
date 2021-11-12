@@ -170,6 +170,7 @@ function onGetUserInfo(e) {
 } 
 ```
 ### ActionSheetItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)   
+
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | name | - | _&nbsp;&nbsp;string<br/>_ |
@@ -179,22 +180,23 @@ function onGetUserInfo(e) {
 | disabled | - | _&nbsp;&nbsp;boolean<br/>_ |
 
 ### ActionSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)   
+[object Object]
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| actions | - | _&nbsp;&nbsp;ActionSheetItem[]<br/>_ | - | `是` |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| cancelText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| description | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| closeOnClickAction | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| onSelect | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ActionSheetItem<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| actions | - | _&nbsp;&nbsp;ActionSheetItem[]<br/>_ | - | `true` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| cancelText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| description | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickAction | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onSelect | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ActionSheetItem<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 

@@ -73,7 +73,8 @@ transition 组件内置了多种动画，可以通过`name`字段指定动画类
 }
 ```
 ### TransitionPropsCom [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/transition.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 

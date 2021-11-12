@@ -166,6 +166,7 @@ function finished() {
 } 
 ```
 ### ICountDownRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
+
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | start | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
@@ -173,6 +174,7 @@ function finished() {
 | reset | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 
 ### ITimeData [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
+
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | days | - | _&nbsp;&nbsp;number<br/>_ |
@@ -182,14 +184,15 @@ function finished() {
 | milliseconds | - | _&nbsp;&nbsp;number<br/>_ |
 
 ### CountDownProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| millisecond | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| time | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| format | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| autoStart | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| onChange | - | _&nbsp;&nbsp;(timeData:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ITimeData<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onFinish | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| ref | - | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;ICountDownRef&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | - | `否` |
+| millisecond | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| time | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| format | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| autoStart | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(timeData:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ITimeData<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onFinish | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| ref | - | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;ICountDownRef&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | - | `false` |
 

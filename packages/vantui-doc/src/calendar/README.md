@@ -339,48 +339,50 @@ this.state = {
 }
 ```
 ### ICalendarInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
 | reset | - | _&nbsp;&nbsp;(date?:&nbsp;Date&nbsp;&brvbar;&nbsp;Date[])&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;//<br/>_ |
 | scrollToDate | - | _&nbsp;&nbsp;(date:&nbsp;Date)&nbsp;=>&nbsp;void<br/>_ |
 
 ### CalendarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| formatter | - | _&nbsp;&nbsp;(day:&nbsp;Day)&nbsp;=>&nbsp;Day<br/>_ | - | `否` |
-| confirmText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| rangePrompt | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| showRangePrompt | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| defaultDate | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | - | `否` |
-| allowSameDay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| confirmDisabledText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| type | - | _&nbsp;&nbsp;CalendarType<br/>_ | - | `否` |
-| minDate | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| maxDate | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| position | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"top"<br/>_ | - | `否` |
-| rowHeight | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
-| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| poppable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showMark | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showTitle | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showConfirm | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showSubtitle | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| maxRange | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| firstDayOfWeek | - | _&nbsp;&nbsp;0&nbsp;&brvbar;&nbsp;1&nbsp;&brvbar;&nbsp;2&nbsp;&brvbar;&nbsp;3&nbsp;&brvbar;&nbsp;4&nbsp;&brvbar;&nbsp;5&nbsp;&brvbar;&nbsp;6<br/>_ | - | `否` |
-| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onConfirm | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| overRange | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onUnselect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEventsSingle)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onSelect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClickSubtitle | - | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| renderTitle | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
-| renderFooter | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| formatter | - | _&nbsp;&nbsp;(day:&nbsp;Day)&nbsp;=>&nbsp;Day<br/>_ | - | `false` |
+| confirmText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| rangePrompt | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showRangePrompt | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| defaultDate | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | - | `false` |
+| allowSameDay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| confirmDisabledText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;CalendarType<br/>_ | - | `false` |
+| minDate | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| maxDate | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| position | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"top"<br/>_ | - | `false` |
+| rowHeight | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| poppable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showMark | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showTitle | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showConfirm | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showSubtitle | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| maxRange | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| firstDayOfWeek | - | _&nbsp;&nbsp;0&nbsp;&brvbar;&nbsp;1&nbsp;&brvbar;&nbsp;2&nbsp;&brvbar;&nbsp;3&nbsp;&brvbar;&nbsp;4&nbsp;&brvbar;&nbsp;5&nbsp;&brvbar;&nbsp;6<br/>_ | - | `false` |
+| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onConfirm | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| overRange | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onUnselect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEventsSingle)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onSelect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickSubtitle | - | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| renderFooter | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
 

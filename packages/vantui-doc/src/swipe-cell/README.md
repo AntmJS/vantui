@@ -117,23 +117,25 @@ import { SwipeCell } from "vantui";
  
 ```
 ### SwipeCellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swipe-cell.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| leftWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| rightWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| asyncClose | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| catchMove | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `否` |
-| onOpen | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellOpen)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClick | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellClick<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellClose<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| renderLeft | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
-| renderRight | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `否` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| rightWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| asyncClose | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| catchMove | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
+| onOpen | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellOpen)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellClick<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellClose<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderLeft | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| renderRight | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
 
 ### ISwiperCellInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swipe-cell.d.ts)   
+
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
 | open | - | _&nbsp;&nbsp;(position:&nbsp;"left"&nbsp;&brvbar;&nbsp;"right")&nbsp;=>&nbsp;void<br/>_ |

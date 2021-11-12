@@ -83,19 +83,20 @@ notify({
  
 ```
 ### NotifyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notify.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| message | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| background | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| type | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| top | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| id | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| onClick | - | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| message | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| background | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| top | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| id | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 

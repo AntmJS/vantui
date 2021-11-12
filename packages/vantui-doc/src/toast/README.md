@@ -97,18 +97,19 @@ toast({
 });
 ```
 ### ToastProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/toast.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| mask | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| forbidClick | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"loading"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"fail"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"html"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>_ | - | `否` |
-| position | - | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"middle"&nbsp;&brvbar;&nbsp;"bottom"<br/>_ | - | `否` |
-| message | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_ | - | `否` |
-| loadingType | - | _&nbsp;&nbsp;"circular"&nbsp;&brvbar;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `否` |
-| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| id | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ | - | `否` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| mask | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| forbidClick | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"loading"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"fail"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"html"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>_ | - | `false` |
+| position | - | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"middle"&nbsp;&brvbar;&nbsp;"bottom"<br/>_ | - | `false` |
+| message | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_ | - | `false` |
+| loadingType | - | _&nbsp;&nbsp;"circular"&nbsp;&brvbar;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `false` |
+| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| id | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 

@@ -135,12 +135,13 @@ db.collection('region')
     console.log(err);
   });
 ```
-### API [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/area.d.ts)   
+### AreaProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/area.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| value | 地址选择的值 | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| areaList | 地区选择列表 | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;province_list:&nbsp;IAnyObjectString<br/>&nbsp;&nbsp;&nbsp;&nbsp;city_list:&nbsp;IAnyObjectString<br/>&nbsp;&nbsp;&nbsp;&nbsp;county_list:&nbsp;IAnyObjectString<br/>&nbsp;&nbsp;}<br/>_ | - | `否` |
-| columnsNum | 多少列 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `否` |
-| columnsPlaceholder | 每列的展位 | _&nbsp;&nbsp;string[]<br/>_ | - | `否` |
-| onChange | 触发方法 | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;number[]&nbsp;&brvbar;&nbsp;string[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;picker:&nbsp;IPickerInstance<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `是` |
+| value | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| areaList | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;province_list:&nbsp;IAnyObjectString<br/>&nbsp;&nbsp;&nbsp;&nbsp;city_list:&nbsp;IAnyObjectString<br/>&nbsp;&nbsp;&nbsp;&nbsp;county_list:&nbsp;IAnyObjectString<br/>&nbsp;&nbsp;}<br/>_ | - | `false` |
+| columnsNum | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| columnsPlaceholder | - | _&nbsp;&nbsp;string[]<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;number[]&nbsp;&brvbar;&nbsp;string[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;picker:&nbsp;IPickerInstance<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 

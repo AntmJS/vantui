@@ -113,9 +113,10 @@ function onChange(event) {
 } 
 ```
 ### SidebarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sidebar.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| onChange | - | _&nbsp;&nbsp;(a:&nbsp;onChangeEvent)&nbsp;=>&nbsp;any<br/>_ | - | `否` |
-| activeKey | - | _&nbsp;&nbsp;number<br/>_ | - | `是` |
-| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `是` |
+| onChange | - | _&nbsp;&nbsp;(a:&nbsp;onChangeEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| activeKey | - | _&nbsp;&nbsp;number<br/>_ | - | `true` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `true` |
 

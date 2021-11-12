@@ -115,18 +115,19 @@ this.state = {
  
 ```
 ### CircleProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/circle.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| text | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| lineCap | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| value | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| speed | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| size | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| fill | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| layerColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| color | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Record<string,&nbsp;string><br/>_ | - | `否` |
-| type | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| strokeWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| clockwise | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
+| text | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| lineCap | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| speed | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| size | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| fill | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| layerColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Record<string,&nbsp;string><br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| strokeWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| clockwise | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 

@@ -183,7 +183,38 @@ this.state = {
   }]
 }; 
 ```
+
 ### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
+
+[object Object]
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ |
+| icon | - | _&nbsp;&nbsp;string<br/>_ |
+| description | - | _&nbsp;&nbsp;string<br/>_ |
+| openType | - | _&nbsp;&nbsp;string<br/>_ |
+
+### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
+
+[object Object]
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ |
+| icon | - | _&nbsp;&nbsp;string<br/>_ |
+| description | - | _&nbsp;&nbsp;string<br/>_ |
+| openType | - | _&nbsp;&nbsp;string<br/>_ |
+
+### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
+
+[object Object]
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ |
+| icon | - | _&nbsp;&nbsp;string<br/>_ |
+| description | - | _&nbsp;&nbsp;string<br/>_ |
+| openType | - | _&nbsp;&nbsp;string<br/>_ |
+### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
+[object Object]
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | name | - | _&nbsp;&nbsp;string<br/>_ |
@@ -192,6 +223,7 @@ this.state = {
 | openType | - | _&nbsp;&nbsp;string<br/>_ |
 
 ### ShareSheetOption [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
+
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | showBorder | - | _&nbsp;&nbsp;boolean<br/>_ |
@@ -199,23 +231,24 @@ this.state = {
 | onSelect | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;option:&nbsp;ShareSheetOptionItem,<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 
 ### ShareSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
+[object Object]
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| overlayStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| duration | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
-| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onSelect | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ShareSheetOptionItem<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| renderDescription | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| cancelText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| description | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| options | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[][]<br/>_ | - | `否` |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| overlayStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| duration | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onSelect | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ShareSheetOptionItem<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderDescription | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| cancelText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| description | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| options | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[][]<br/>_ | - | `false` |
 

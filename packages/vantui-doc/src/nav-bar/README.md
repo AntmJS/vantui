@@ -58,21 +58,22 @@ function onClickRight() {
  
 ```
 ### NavBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/nav-bar.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| leftText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| rightText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| style | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| leftArrow | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| renderLeft | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| renderRight | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `否` |
-| onClickLeft | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
-| onClickRight | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| rightText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| leftArrow | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLeft | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRight | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClickLeft | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickRight | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 

@@ -107,13 +107,14 @@ import { Icon } from "vantui";
  
 ```
 ### IconProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/icon.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| info | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
-| size | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
-| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| style | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| classPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| name | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| info | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| size | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| classPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 

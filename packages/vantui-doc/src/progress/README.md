@@ -79,15 +79,16 @@ import { Progress } from "vantui";
  
 ```
 ### ProgressProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/progress.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| inactive | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| percentage | - | _&nbsp;&nbsp;number<br/>_ | - | `是` |
-| pivotText | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| pivotColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| trackColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| showPivot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| color | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| textColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| strokeWidth | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `否` |
+| inactive | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| percentage | - | _&nbsp;&nbsp;number<br/>_ | - | `true` |
+| pivotText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| pivotColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| trackColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showPivot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| textColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| strokeWidth | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
 

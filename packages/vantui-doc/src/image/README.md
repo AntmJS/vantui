@@ -113,18 +113,19 @@ import { Image } from "vantui";
  
 ```
 ### ImageProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/image.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| src | - | _&nbsp;&nbsp;string<br/>_ | - | `是` |
-| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| width | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| height | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| radius | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| lazyLoad | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showMenuByLongpress | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| fit | - | _&nbsp;&nbsp;ImageFit<br/>_ | - | `否` |
-| showError | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| showLoading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| renderLoading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
-| renderError | - | _&nbsp;&nbsp;boolean<br/>_ | - | `否` |
+| src | - | _&nbsp;&nbsp;string<br/>_ | - | `true` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| width | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| height | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| radius | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| lazyLoad | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showMenuByLongpress | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| fit | - | _&nbsp;&nbsp;ImageFit<br/>_ | - | `false` |
+| showError | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showLoading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| renderLoading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| renderError | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 

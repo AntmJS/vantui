@@ -116,15 +116,16 @@ this.state = {
  
 ```
 ### StepsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/steps.d.ts)   
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| steps | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;index?:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;desc:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;activeIcon?:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;inactiveIcon?:&nbsp;string<br/>&nbsp;&nbsp;}[]<br/>_ | - | `否` |
-| active | - | _&nbsp;&nbsp;number<br/>_ | - | `否` |
-| direction | - | _&nbsp;&nbsp;"horizontal"&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | - | `否` |
-| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| activeIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| inactiveIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `否` |
-| onClickStep | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{&nbsp;detail:&nbsp;number&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `否` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| steps | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;index?:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;desc:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;activeIcon?:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;inactiveIcon?:&nbsp;string<br/>&nbsp;&nbsp;}[]<br/>_ | - | `false` |
+| active | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| direction | - | _&nbsp;&nbsp;"horizontal"&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | - | `false` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| activeIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| inactiveIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| onClickStep | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{&nbsp;detail:&nbsp;number&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
