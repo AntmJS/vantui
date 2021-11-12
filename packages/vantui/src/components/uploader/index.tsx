@@ -1,11 +1,12 @@
 import { previewImage as TaroPreviewImage, showToast } from '@tarojs/taro'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { View, Text, Image, Video, ITouchEvent } from '@tarojs/components'
 
 import { UploaderProps } from '../../../types/uploader'
 import VanLoading from '../loading/index'
 import VanIcon from '../icon/index'
 import { isBoolean, isPromise } from '../common/validator'
+import { isArray } from '../../utils/type'
 import * as computed from './wxs'
 import { isImageFile, chooseFile, isVideoFile } from './utils'
 
@@ -23,7 +24,6 @@ export default function Index(props: UploaderProps) {
     previewSize = 160,
     name = '',
     accept = 'image',
-    fileList = [],
     maxSize = Number.MAX_VALUE,
     maxCount = 100,
     deletable = true,
@@ -49,6 +49,10 @@ export default function Index(props: UploaderProps) {
     ...others
   } = props
 
+  const fileList = useMemo(() => {
+    return isArray(props.fileList) ? props.fileList : []
+  }, [props.fileList])
+
   const formatFileList = useCallback(
     (fileList: any) => {
       const lists = fileList.map((item: any) =>
@@ -72,10 +76,10 @@ export default function Index(props: UploaderProps) {
     (index?: number) => {
       return {
         name: name,
-        index: index == null ? fileList.length : index,
+        index: index == null ? fileList?.length : index,
       }
     },
-    [fileList.length, name],
+    [fileList?.length, name],
   )
   const _onAfterRead = useCallback(
     (event: ITouchEvent) => {
@@ -174,7 +178,7 @@ export default function Index(props: UploaderProps) {
     (event: ITouchEvent) => {
       const { index } = event.currentTarget.dataset
       const params = Object.assign(Object.assign({}, getDetail(index)), {
-        file: fileList[index],
+        file: fileList?.[index],
       })
       Object.defineProperty(event, 'detail', {
         value: params,
