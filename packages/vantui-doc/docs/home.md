@@ -83,6 +83,6 @@
 ### 快速沟通群
 
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v2.png" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v3.jpeg" />
 <img style="width:300px" src="https://antm-js.gitee.io/resource/dingding_v1.png" />
 </div>
