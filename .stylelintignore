@@ -25,6 +25,8 @@ LICENSE
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/vantui/lib
+packages/vantui/es
 packages/vantui-doc/lib
 packages/vantui-doc/es
 packages/vantui-doc/dist
@@ -41,9 +43,11 @@ packages/vantui-demo/jd
 packages/vantui-demo/iot
 packages/vantui-demo/build
 packages/vantui-demo/dist
+packages/react-demo/src/pages
 packages/react-demo/build
 packages/react-demo/dist
 packages/react-demo/config
 packages/react-demo/scripts
 packages/react-demo/public
 packages/react-demo/src
+packages/vantui-doc

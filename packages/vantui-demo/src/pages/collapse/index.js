@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { View } from '@tarojs/components'
-import { CollapseItem, Collapse, Toast, Icon, toast } from '@antmjs/vantui'
+import { CollapseItem, Collapse, Toast, Icon } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -33,11 +33,11 @@ export default class Index extends Component {
   }
 
   onOpen = (event) => {
-    toast(`展开: ${event.detail}`)
+    Toast.show(`展开: ${event.detail}`)
   }
 
   onClose = (event) => {
-    toast(`关闭: ${event.detail}`)
+    Toast.show(`关闭: ${event.detail}`)
   }
 
   render() {

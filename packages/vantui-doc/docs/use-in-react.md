@@ -31,7 +31,9 @@ yarn add @antmjs/babel-preset --dev
 - src/index.js (入口文件)
 
 ```js
+import { init } from '@antmjs/vantui'
 import { defineCustomElements, applyPolyfills } from '@tarojs/components/loader'
+init()
 applyPolyfills().then(function () {
   defineCustomElements(window)
 })
@@ -40,9 +42,6 @@ applyPolyfills().then(function () {
 - src/index.less
 
 ```less
-@import '@tarojs/components/dist/taro-components/taro-components.css';
-@import '@antmjs/vantui/dist/style/index.less';
-
 page,
 body {
   font-size: 28px;
@@ -55,7 +54,6 @@ body {
 {
   resolve: {
     mainFields: [
-      'module:react', // common:react
       'main:h5',
       'browser',
       'module',

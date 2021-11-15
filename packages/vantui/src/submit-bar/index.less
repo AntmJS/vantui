@@ -1,0 +1,86 @@
+@import '../style/var.less';
+.van-submit-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  user-select: none;
+  .theme(z-index, '@submit-bar-z-index');
+  .theme(background-color, '@submit-bar-background-color');
+
+  &__tip {
+    .theme(padding, '@submit-bar-tip-padding');
+    .theme(color, '@submit-bar-tip-color');
+    .theme(font-size, '@submit-bar-tip-font-size');
+    .theme(line-height, '@submit-bar-tip-line-height');
+    .theme(background-color, '@submit-bar-tip-background-color');
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__tip-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    .theme(font-size, '@submit-bar-tip-icon-size');
+    .theme(min-width, 'calc(@submit-bar-tip-icon-size * 1.5)');
+  }
+
+  &__tip-text {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .theme(padding, '@submit-bar-padding');
+    .theme(height, '@submit-bar-height');
+    .theme(font-size, '@submit-bar-text-font-size');
+    .theme(background-color, '@submit-bar-background-color');
+  }
+
+  &__safe {
+    height: constant(safe-area-inset-bottom);
+    /* stylelint-disable-next-line */
+    height: env(safe-area-inset-bottom);
+  }
+
+  &__text {
+    flex: 1;
+    text-align: right;
+    .theme(color, '@submit-bar-text-color');
+    .theme(padding-right, '@padding-sm');
+    .theme(font-weight, '@font-weight-bold');
+  }
+
+  &__price {
+    .theme(color, '@submit-bar-price-color');
+    .theme(font-weight, '@font-weight-bold');
+    .theme(font-size, '@submit-bar-price-font-size');
+
+    &-integer {
+      font-size: @submit-bar-price-integer-font-size;
+      font-family: @submit-bar-price-font-family;
+    }
+  }
+
+  &__currency {
+    .theme(font-size, '@submit-bar-currency-font-size');
+  }
+
+  &__suffix-label {
+    margin-left: 10px;
+  }
+
+  &__button {
+    .theme(width,'@submit-bar-button-width');
+    .theme(font-weight, '@font-weight-bold');
+    .theme(--button-default-height, '@submit-bar-button-height') !important;
+    .theme(--button-line-height, '@submit-bar-button-height') !important;
+  }
+}

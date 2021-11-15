@@ -1,0 +1,115 @@
+@import '../style/var.less';
+@import '../style/hairline.less';
+.van-cell {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  flex: 1; // 10.15新加
+  .theme(padding, '@cell-vertical-padding @cell-horizontal-padding');
+  .theme(font-size, '@cell-font-size');
+  .theme(line-height, '@cell-line-height');
+  .theme(color, '@cell-text-color');
+  .theme(background-color, '@cell-background-color');
+
+  &::after {
+    .hairline-bottom(@border-color, @padding-md, @padding-md);
+  }
+
+  &--borderless::after {
+    display: none;
+  }
+
+  &-group {
+    .theme(background-color, '@cell-background-color');
+  }
+
+  &__label {
+    .theme(margin-top, '@cell-label-margin-top');
+    .theme(font-size, '@cell-label-font-size');
+    // .theme(line-height, '@cell-label-line-height');
+    .theme(color, '@cell-label-color');
+    // 10.15新加
+    display: flex;
+    align-items: center;
+  }
+
+  &__value {
+    overflow: hidden;
+    text-align: right;
+    vertical-align: middle;
+    .theme(color, '@cell-value-color');
+  }
+
+  &__title,
+  &__value {
+    flex: 1;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__left-icon-wrap,
+  &__right-icon-wrap {
+    display: flex;
+    align-items: center;
+    .theme(height, '@cell-line-height');
+    .theme(font-size, '@cell-icon-size');
+  }
+
+  &__left-icon-wrap {
+    .theme(margin-right, '@padding-base');
+  }
+
+  &__right-icon-wrap {
+    .theme(margin-left, '@padding-base');
+    .theme(color, '@cell-right-icon-color');
+  }
+
+  &__left-icon {
+    vertical-align: middle;
+    .theme(line-height, '@cell-line-height');
+  }
+
+  &__right-icon {
+    .theme(line-height, '@cell-line-height');
+  }
+
+  &--clickable&--hover {
+    .theme(background-color, '@cell-active-color');
+  }
+
+  &--required {
+    overflow: visible;
+
+    &::before {
+      position: absolute;
+      content: '*';
+      .theme(left, '@padding-xs');
+      .theme(font-size, '@cell-font-size');
+      .theme(color, '@cell-required-color');
+    }
+  }
+
+  &--center {
+    align-items: center;
+  }
+
+  &--large {
+    .theme(padding-top, '@cell-large-vertical-padding');
+    .theme(padding-bottom, '@cell-large-vertical-padding');
+
+    .van-cell__title {
+      .theme(font-size, '@cell-large-title-font-size');
+    }
+
+    .van-cell__value {
+      .theme(font-size, '@cell-large-value-font-size');
+    }
+
+    .van-cell__label {
+      .theme(font-size, '@cell-large-label-font-size');
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Rate, Toast, toast } from '@antmjs/vantui'
+import { Rate, Toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -22,7 +22,7 @@ export default class Index extends Component {
   }
 
   onChange = (event) => {
-    toast('当前值：' + event.detail)
+    Toast.show('当前值：' + event.detail)
     this.setState({
       value8: event.detail,
     })

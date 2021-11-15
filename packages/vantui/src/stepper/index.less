@@ -1,0 +1,132 @@
+/* stylelint-disable no-descending-specificity */
+@import '../style/var.less';
+.van-stepper {
+  font-size: 0;
+
+  &__minus,
+  &__plus {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 2px;
+    vertical-align: middle;
+    border: 0;
+    .theme(background-color, '@stepper-background-color');
+    .theme(color, '@stepper-button-icon-color');
+    .theme(width, '@stepper-input-height');
+    .theme(height, '@stepper-input-height');
+    .theme(padding, '@padding-base');
+
+    &::before {
+      width: 18px;
+      height: 2px;
+    }
+
+    &::after {
+      width: 2px;
+      height: 18px;
+    }
+
+    &:empty&::before,
+    &:empty&::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      background-color: currentColor;
+      content: '';
+    }
+
+    &--hover {
+      .theme(background-color, '@stepper-active-color');
+    }
+
+    &--disabled {
+      .theme(color, '@stepper-button-disabled-icon-color');
+      .theme(background-color, '@stepper-button-disabled-color');
+    }
+
+    &--disabled&--hover {
+      .theme(background-color, '@stepper-button-disabled-color');
+    }
+  }
+
+  &__minus {
+    .theme(border-radius, '@stepper-border-radius 0 0 @stepper-border-radius');
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &__plus {
+    .theme(border-radius, '0 @stepper-border-radius @stepper-border-radius 0');
+  }
+
+  .van-stepper__input {
+    .weui-input {
+      height: 100%;
+    }
+  }
+
+  &--round {
+    .van-stepper__input {
+      background-color: transparent !important;
+    }
+
+    .van-stepper__plus,
+    .van-stepper__minus {
+      border-radius: 100%;
+
+      &:active {
+        opacity: @active-opacity;
+      }
+
+      &--disabled {
+        &,
+        &:active {
+          opacity: 0.3;
+        }
+      }
+    }
+
+    .van-stepper__plus {
+      color: @white;
+      background-color: @stepper-button-round-theme-color;
+    }
+
+    .van-stepper__minus {
+      color: @stepper-button-round-theme-color;
+      background-color: @white;
+      border: 2px solid @stepper-button-round-theme-color;
+    }
+  }
+
+  &__input {
+    display: inline-block;
+    box-sizing: border-box;
+    // 覆盖 common style 中 input 的 min-height: 1.4rem;
+    // 避免 button-size 对 input 设置的 height 不生效
+    min-height: 0;
+    margin: 2px;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+    border: 0;
+    border-width: 2px 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    .theme(font-size, '@stepper-input-font-size');
+    .theme(color, '@stepper-input-text-color');
+    .theme(background-color, '@stepper-background-color');
+    .theme(width, '@stepper-input-width');
+    .theme(height, '@stepper-input-height');
+
+    &--disabled {
+      .theme(color, '@stepper-input-disabled-text-color');
+      .theme(background-color, '@stepper-input-disabled-background-color');
+    }
+  }
+}

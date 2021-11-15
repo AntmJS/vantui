@@ -1,6 +1,6 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
-import notify from '../src/components/notify/notify'
+import notify from '../src/notify/notify'
 
 export interface NotifyProps extends StandardProps {
   selector?: string

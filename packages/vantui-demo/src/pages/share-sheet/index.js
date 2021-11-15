@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { ShareSheet, Toast, Cell, toast } from '@antmjs/vantui'
+import { ShareSheet, Toast, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -91,7 +91,7 @@ export default class Index extends Component {
   }
 
   onSelect = (event) => {
-    toast(event.detail.name)
+    Toast.show(event.detail.name)
     this.onClose()
   }
 

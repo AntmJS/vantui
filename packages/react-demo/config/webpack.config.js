@@ -311,7 +311,6 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       mainFields: [
-        'module:react', // common:react
         'main:h5',
         'browser',
         'module',
@@ -492,6 +491,18 @@ module.exports = function (webpackEnv) {
                         },
                       },
                     },
+                  ],
+                  [
+                    'import',
+                    {
+                      libraryName: '@antmjs/vantui',
+                      libraryDirectory: 'es',
+                      style: (name) => {
+                        return `${name}/style/less`
+                      },
+                      // style: true,
+                    },
+                    '@antmjs/vantui',
                   ],
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
@@ -744,6 +755,7 @@ module.exports = function (webpackEnv) {
         new WatchMissingNodeModulesPlugin(paths.appNodeModules),
       isEnvProduction &&
         new MiniCssExtractPlugin({
+          ignoreOrder: true,
           // Options similar to the same options in webpackOptions.output
           // both options are optional
           filename: 'static/css/[name].[contenthash:8].css',

@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Toast, Stepper, Cell, toast } from '@antmjs/vantui'
+import { Toast, Stepper, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import './index.scss'
@@ -15,12 +15,12 @@ export default class Index extends Component {
   }
 
   onChange = (event) => {
-    toast.loading({
+    Toast.loading({
       forbidClick: true,
     })
 
     setTimeout(() => {
-      toast.clear()
+      Toast.clear()
       this.setState({ value: event.detail })
     }, 500)
   }

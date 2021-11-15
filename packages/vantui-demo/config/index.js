@@ -65,7 +65,7 @@ let config = {
       },
     },
     miniCssExtractPluginOption: {
-      ignoreOrder: false,
+      ignoreOrder: true,
     },
   },
   h5: {

@@ -1,0 +1,32 @@
+@import '../style/var.less';
+.van-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+  transform: translate(50%, -50%);
+  transform-origin: 100%;
+
+  .theme(height, '@info-size');
+  .theme(min-width, '@info-size');
+  .theme(padding, '@info-padding');
+  .theme(color, '@info-color');
+  .theme(font-weight, '@info-font-weight');
+  .theme(font-size, '@info-font-size');
+  .theme(font-family, '@info-font-family');
+  .theme(background-color, '@info-background-color');
+  .theme(border, '@info-border-width solid @white');
+  .theme(border-radius, '@info-size');
+
+  &--dot {
+    min-width: 0;
+    border-radius: 100%;
+    .theme(width, '@info-dot-size');
+    .theme(height, '@info-dot-size');
+    .theme(background-color, '@info-dot-color');
+  }
+}

@@ -1,0 +1,45 @@
+@import '../style/var.less';
+.van-switch {
+  position: relative;
+  display: inline-block;
+  box-sizing: content-box;
+  .theme(width, '@switch-width');
+  .theme(height, '@switch-height');
+  .theme(background-color, '@switch-background-color');
+  .theme(border, '@switch-border');
+  .theme(border-radius, '@switch-node-size');
+  .theme(transition, 'background-color @switch-transition-duration');
+
+  &__node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    .theme(z-index, '@switch-node-z-index');
+    .theme(width, '@switch-node-size');
+    .theme(height, '@switch-node-size');
+    .theme(background-color, '@switch-node-background-color');
+    .theme(box-shadow, '@switch-node-box-shadow');
+    .theme(transition, 'transform @switch-transition-duration cubic-bezier(.3, 1.05, .4, 1.05)');
+  }
+
+  &__loading {
+    position: absolute !important;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+  }
+
+  &--on {
+    .theme(background-color, '@switch-on-background-color');
+
+    .van-switch__node {
+      .theme(transform, 'translateX(calc(@switch-width - @switch-node-size))');
+    }
+  }
+
+  &--disabled {
+    .theme(opacity, '@switch-disabled-opacity');
+  }
+}

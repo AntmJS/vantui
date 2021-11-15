@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Picker, Toast, toast } from '@antmjs/vantui'
+import { Picker, Toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
 export default class Index extends Component {
@@ -33,16 +33,16 @@ export default class Index extends Component {
 
   onChange1 = (event) => {
     const { value, index } = event.detail
-    toast(`Value: ${value}, Index：${index}`)
+    Toast.show(`Value: ${value}, Index：${index}`)
   }
 
   onConfirm = (event) => {
     const { value, index } = event.detail
-    toast(`Value: ${value}, Index：${index}`)
+    Toast.show(`Value: ${value}, Index：${index}`)
   }
 
   onCancel = () => {
-    toast('取消')
+    Toast.show('取消')
   }
 
   onChange2 = (event) => {

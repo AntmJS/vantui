@@ -1,11 +1,9 @@
-declare function pxTransform(size: number, designWidth?: number): string
-export { pxTransform }
-export {
-  Button,
-  MiniLoginButton,
-  MiniUserButton,
-  MiniPhoneButton,
-} from './button.d'
+export function pxTransform(size: number, designWidth?: number): string
+export function init(): void
+export { Button } from './button.d'
+export { MiniLoginButton } from './mini-login-button.d'
+export { MiniUserButton } from './mini-user-button.d'
+export { MiniPhoneButton } from './mini-phone-button.d'
 export { Icon } from './icon.d'
 export { Loading } from './loading.d'
 export { Info } from './info.d'
@@ -20,7 +18,7 @@ export { Tab } from './tab.d'
 export { Image } from './image.d'
 export { Col } from './col.d'
 export { Row } from './row.d'
-export { Toast, toast } from './toast.d'
+export { Toast } from './toast.d'
 export { Divider } from './divider.d'
 export { Empty } from './empty.d'
 export { NoticeBar } from './notice-bar.d'
@@ -49,7 +47,7 @@ export { Stepper } from './stepper.d'
 export { Steps } from './steps.d'
 export { Tabbar } from './tabbar.d'
 export { TabbarItem } from './tabbar-item.d'
-export { Notify, notify } from './notify'
+export { Notify } from './notify'
 export { Grid } from './grid'
 export { GridItem } from './grid-item'
 export { DropdownMenu } from './dropdown-menu'
@@ -64,7 +62,7 @@ export { DatetimePicker } from './datetime-picker'
 export { ShareSheet } from './share-sheet.d'
 export { TreeSelect } from './tree-select.d'
 export { Area } from './area.d'
-export { Dialog, dialog } from './dialog.d'
+export { Dialog } from './dialog.d'
 export { SwipeCell } from './swipe-cell'
 export { Calendar } from './calendar'
 export { ConfigProvider } from './config-provider'

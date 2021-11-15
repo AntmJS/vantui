@@ -58,5 +58,15 @@ module.exports = {
       require('babel-plugin-transform-taroapi'),
       { packageName: '@tarojs/taro', apis },
     ], // taro可以加，tree-shaking用
+    [
+      'import',
+      {
+        libraryName: '@antmjs/vantui',
+        libraryDirectory: 'es',
+        style: (name) => `${name}/style/less`,
+        // style: true,
+      },
+      '@antmjs/vantui',
+    ],
   ],
 }

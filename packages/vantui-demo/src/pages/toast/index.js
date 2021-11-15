@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Toast, Button, toast } from '@antmjs/vantui'
+import { Toast, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -11,19 +11,19 @@ export default class Index extends Component {
   }
 
   showToast = () => {
-    toast('提示内容')
+    Toast.show('提示内容')
   }
 
   showLongToast = () => {
-    toast('这是一条长文字提示，超过一定字数就会换行')
+    Toast.show('这是一条长文字提示，超过一定字数就会换行')
   }
 
   showLoadingToast = () => {
-    toast.loading({ message: '加载中...', forbidClick: true })
+    Toast.loading({ message: '加载中...', forbidClick: true })
   }
 
   showCustomLoadingToast = () => {
-    toast.loading({
+    Toast.loading({
       message: '加载中...',
       forbidClick: true,
       loadingType: 'spinner',
@@ -31,16 +31,16 @@ export default class Index extends Component {
   }
 
   showSuccessToast = () => {
-    toast.success('成功文案')
+    Toast.success('成功文案')
   }
 
   showFailToast = () => {
-    toast.fail('失败提示')
+    Toast.fail('失败提示')
   }
 
   showCustomizedToast = () => {
     const text = (second) => `倒计时 ${second} 秒`
-    toast.loading({
+    Toast.loading({
       duration: 0,
       forbidClick: true,
       message: text(3),
@@ -50,13 +50,13 @@ export default class Index extends Component {
     const timer = setInterval(() => {
       second--
       if (second) {
-        toast.loading({
+        Toast.loading({
           message: text(second),
         })
         // toast.setData({ message: text(second) })
       } else {
         clearInterval(timer)
-        toast.clear()
+        Toast.clear()
       }
     }, 1000)
   }

@@ -1,0 +1,23 @@
+@import '../style/var.less';
+.van-goods-action {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  box-sizing: content-box;
+  .theme(z-index, '@goods-action-z-index');
+  .theme(height, '@goods-action-height');
+  .theme(background-color, '@goods-action-background-color');
+
+  &--safe {
+    padding-bottom: constant(safe-area-inset-bottom);
+    /* stylelint-disable-next-line */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* stylelint-disable-next-line */
+  taro-button-core + taro-button-core {
+    margin-top: inherit;
+  }
+}

@@ -1,14 +1,6 @@
 import { Component } from 'react'
 import { View } from '@tarojs/components'
-import {
-  SwipeCell,
-  Notify,
-  Dialog,
-  CellGroup,
-  Cell,
-  dialog,
-  notify,
-} from '@antmjs/vantui'
+import { SwipeCell, Notify, Dialog, CellGroup, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -27,13 +19,11 @@ export default class Index extends Component {
         instance.close()
         break
       case 'right':
-        dialog
-          .confirm({
-            message: '确定删除吗？',
-          })
-          .then(() => {
-            instance.close()
-          })
+        Dialog.confirm({
+          message: '确定删除吗？',
+        }).then(() => {
+          instance.close()
+        })
         break
     }
   }
@@ -41,13 +31,13 @@ export default class Index extends Component {
     const { position, name } = event.detail
     switch (position) {
       case 'left':
-        notify({
+        Notify.show({
           type: 'primary',
           message: `${name}${position}部分展示open事件被触发`,
         })
         break
       case 'right':
-        notify({
+        Notify.show({
           type: 'primary',
           message: `${name}${position}部分展示open事件被触发`,
         })

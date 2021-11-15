@@ -1,7 +1,7 @@
 import { Text } from '@tarojs/components'
 import { Component } from 'react'
 
-import { GridItem, Grid, Toast, CountDown, toast } from '@antmjs/vantui'
+import { GridItem, Grid, Toast, CountDown } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -40,7 +40,7 @@ export default class Index extends Component {
   }
 
   finished = () => {
-    toast('倒计时结束')
+    Toast.show('倒计时结束')
   }
 
   render() {

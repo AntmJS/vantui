@@ -1,0 +1,63 @@
+@import '../style/var.less';
+.van-toast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  .theme(color, '@toast-text-color');
+  .theme(font-size, '@toast-font-size');
+  .theme(line-height, '@toast-line-height');
+
+  // allow newline charactor
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  .theme(background-color, '@toast-background-color');
+  .theme(border-radius, '@toast-border-radius');
+
+  &__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    // hack for avoid max-width when use left & fixed
+    width: fit-content;
+    transform: translate(-50%, -50%);
+    .theme(max-width, '@toast-max-width');
+  }
+
+  &--text {
+    .theme(min-width, '@toast-text-min-width');
+    .theme(padding, '@toast-text-padding');
+  }
+
+  &--icon {
+    .theme(width, '@toast-default-width');
+    .theme(min-height, '@toast-default-min-height');
+    .theme(padding, '@toast-default-padding');
+
+    .van-toast__icon {
+      .theme(font-size, '@toast-icon-size');
+    }
+
+    .van-toast__text {
+      padding-top: @padding-xs;
+    }
+  }
+
+  &__box {
+    display: grid;
+    text-align: center;
+  }
+
+  &__loading {
+    margin: 20px 0;
+  }
+
+  &--top {
+    transform: translate(0, -30vh);
+  }
+
+  &--bottom {
+    transform: translate(0, 30vh);
+  }
+}

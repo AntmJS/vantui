@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Image, Dialog, Cell, dialog } from '@antmjs/vantui'
+import { Image, Dialog, Cell } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -25,7 +25,7 @@ export default class Index extends Component {
   }
 
   onClickThemeAlert = () => {
-    dialog.alert({
+    Dialog.alert({
       title: '标题',
       theme: 'round-button',
       message,
@@ -33,27 +33,27 @@ export default class Index extends Component {
   }
 
   onClickThemeAlert2 = () => {
-    dialog.alert({
+    Dialog.alert({
       theme: 'round-button',
       message,
     })
   }
 
   onClickAlert = () => {
-    dialog.alert({
+    Dialog.alert({
       title: '标题',
       message,
     })
   }
 
   onClickAlert2 = () => {
-    dialog.alert({
+    Dialog.alert({
       message,
     })
   }
 
   onClickConfirm = () => {
-    dialog.confirm({
+    Dialog.confirm({
       title: '标题',
       message,
     })
@@ -72,15 +72,13 @@ export default class Index extends Component {
         }, 1000)
       })
 
-    dialog
-      .confirm({
-        title: '标题',
-        message,
-        beforeClose,
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    Dialog.confirm({
+      title: '标题',
+      message,
+      beforeClose,
+    }).catch((e) => {
+      console.log(e)
+    })
   }
 
   onClose = () => {
@@ -131,6 +129,7 @@ export default class Index extends Component {
           >
             <Image
               className="demo-image"
+              height="240px"
               src="https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
             ></Image>
           </Dialog>

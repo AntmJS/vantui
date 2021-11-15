@@ -1,0 +1,55 @@
+@import '../style/var.less';
+.van-search {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  .theme(padding, '@search-padding');
+
+  &__content {
+    display: flex;
+    flex: 1;
+    .theme(padding-left, '@padding-sm');
+    .theme(border-radius, '@border-radius-sm');
+    .theme(background-color, '@search-background-color');
+
+    &--round {
+      .theme(border-radius, '@border-radius-max');
+    }
+  }
+
+  &__label {
+    .theme(padding, '@search-label-padding');
+    .theme(font-size, '@search-label-font-size');
+    .theme(line-height, '@search-input-height');
+    .theme(color, '@search-label-color');
+  }
+
+  &__field {
+    flex: 1;
+
+    &__left-icon {
+      .theme(color, '@search-left-icon-color');
+    }
+  }
+
+  &--withaction {
+    padding-right: 0;
+  }
+
+  &__action {
+    .theme(padding, '@search-action-padding');
+    .theme(font-size, '@search-action-font-size');
+    .theme(line-height, '@search-input-height');
+    .theme(color, '@search-action-text-color');
+
+    &--hover {
+      .theme(background-color, '@active-color');
+    }
+  }
+  .van-cell__title {
+    display: none;
+  }
+  .weui-input {
+    height: 100%;
+  }
+}

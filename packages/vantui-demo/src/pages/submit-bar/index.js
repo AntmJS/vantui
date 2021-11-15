@@ -1,7 +1,7 @@
 import { View, Text } from '@tarojs/components'
 import { Component } from 'react'
 
-import { Toast, Tag, SubmitBar, toast } from '@antmjs/vantui'
+import { Toast, Tag, SubmitBar } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -13,10 +13,10 @@ export default class Index extends Component {
   }
 
   onClickButton = () => {
-    toast('点击按钮')
+    Toast.show('点击按钮')
   }
   onClickLink = () => {
-    toast('修改地址')
+    Toast.show('修改地址')
   }
 
   render() {

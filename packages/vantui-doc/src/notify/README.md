@@ -17,9 +17,9 @@ import { Notify } from "vantui";
 ### 基础用法
 
 ```js
-import { notify } from 'vantui';
+import { Notify } from 'vantui';
 
-notify('通知内容');
+Notify.show('通知内容');
 ```
 
 ```jsx
@@ -36,16 +36,16 @@ notify('通知内容');
 
 ```js
 // 主要通知
-notify({ type: 'primary', message: '通知内容' });
+Notify.show({ type: 'primary', message: '通知内容' });
 
 // 成功通知
-notify({ type: 'success', message: '通知内容' });
+Notify.show({ type: 'success', message: '通知内容' });
 
 // 危险通知
-notify({ type: 'danger', message: '通知内容' });
+Notify.show({ type: 'danger', message: '通知内容' });
 
 // 警告通知
-notify({ type: 'warning', message: '通知内容' });
+Notify.show({ type: 'warning', message: '通知内容' });
 ```
 
 ### 自定义通知
@@ -53,13 +53,13 @@ notify({ type: 'warning', message: '通知内容' });
 自定义消息通知的颜色和展示时长。
 
 ```js
-notify({
+Notify.show({
   message: '自定义颜色',
   color: '#ad0000',
   background: '#ffe1e1',
 });
 
-notify({
+Notify.show({
   message: '自定义时长',
   duration: 1000,
 });
@@ -68,7 +68,7 @@ notify({
 ### 自定义选择器
 
 ```js
-notify({
+Notify.show({
   message: '自定义节点选择器',
   duration: 1000,
   selector: '#customSelector',
@@ -86,7 +86,7 @@ notify({
 ```ts 
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
-import notify from '../src/components/notify/notify'
+import notify from '../src/notify/notify'
 
 export interface NotifyProps extends StandardProps {
   selector?: string
