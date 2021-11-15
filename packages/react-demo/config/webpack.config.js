@@ -311,7 +311,6 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       mainFields: [
-        'module:react', // common:react
         'main:h5',
         'browser',
         'module',
@@ -492,6 +491,19 @@ module.exports = function (webpackEnv) {
                         },
                       },
                     },
+                  ],
+                  [
+                    'import',
+                    {
+                      libraryName: '@antmjs/vantui',
+                      libraryDirectory: 'es',
+                      style: (name) => {
+                        console.log(name)
+                        return `${name}/style/less`
+                      },
+                      // style: true,
+                    },
+                    '@antmjs/vantui',
                   ],
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&

@@ -26,16 +26,16 @@ import { Dialog } from "vantui";
 ```
 
 ```javascript
-import { dialog } from 'vantui';
+import { Dialog } from 'vantui';
 
-dialog.alert({
+Dialog.alert({
   title: '标题',
   message: '弹窗内容',
 }).then(() => {
   // on close
 });
 
-dialog.alert({
+Dialog.alert({
   message: '弹窗内容',
 }).then(() => {
   // on close
@@ -54,9 +54,9 @@ dialog.alert({
 ```
 
 ```javascript
-import { dialog } from 'vantui';
+import { Dialog } from 'vantui';
 
-dialog.confirm({
+Dialog.confirm({
   title: '标题',
   message: '弹窗内容',
 })
@@ -80,9 +80,9 @@ dialog.confirm({
 ```
 
 ```javascript
-import { dialog } from 'vantui';
+import { Dialog } from 'vantui';
 
-dialog.alert({
+Dialog.alert({
   title: '标题',
   message: '弹窗内容',
   theme: 'roundButton',
@@ -90,7 +90,7 @@ dialog.alert({
   // on close
 });
 
-dialog.alert({
+Dialog.alert({
   message: '弹窗内容',
   theme: 'roundButton',
 }).then(() => {
@@ -110,7 +110,7 @@ dialog.alert({
 ```
 
 ```javascript
-import { dialog } from 'vantui';
+import { Dialog } from 'vantui';
 
 const beforeClose = (action) => new Promise((resolve) => {
   setTimeout(() => {
@@ -123,7 +123,7 @@ const beforeClose = (action) => new Promise((resolve) => {
   }, 1000);
 });
 
-dialog.confirm({
+Dialog.confirm({
   title: '标题',
   message: '弹窗内容'
   beforeClose

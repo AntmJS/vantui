@@ -13,6 +13,8 @@ package-lock.json
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/vantui/lib
+packages/vantui/es
 packages/vantui-doc/lib
 packages/vantui-doc/es
 packages/vantui-doc/dist

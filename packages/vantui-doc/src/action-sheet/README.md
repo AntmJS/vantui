@@ -182,7 +182,7 @@ export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
   disabled?: boolean
 }
 export interface ActionSheetProps extends StandardProps, PopupProps {
-  actions: ActionSheetItem[]
+  actions?: ActionSheetItem[]
   title?: string
   show?: boolean
   cancelText?: string

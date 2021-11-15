@@ -1,0 +1,109 @@
+@import '../style/var.less';
+.van-card {
+  position: relative;
+  box-sizing: border-box;
+  .theme(padding, '@card-padding');
+  .theme(font-size, '@card-font-size');
+  .theme(color, '@card-text-color');
+  .theme(background-color, '@card-background-color');
+
+  &__header {
+    display: flex;
+
+    &--center {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    flex: none;
+    .theme(width, '@card-thumb-size');
+    .theme(height, '@card-thumb-size');
+    .theme(margin-right, '@padding-xs');
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    .theme(border-radius, '@border-radius-lg');
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0; /* hack for flex box ellipsis */
+    .theme(min-height, '@card-thumb-size');
+
+    &--center {
+      justify-content: center;
+    }
+  }
+
+  &__title,
+  &__desc {
+    word-wrap: break-word;
+  }
+
+  &__title {
+    font-weight: bold;
+    .theme(line-height, '@card-title-line-height');
+  }
+
+  &__desc {
+    .theme(line-height, '@card-desc-line-height');
+    .theme(color, '@card-desc-color');
+  }
+
+  &__bottom {
+    line-height: 40px;
+  }
+
+  &__price {
+    display: inline-block;
+    font-weight: bold;
+    .theme(color, '@card-price-color');
+    .theme(font-size, '@card-price-font-size');
+
+    &-integer {
+      .theme(font-size, '@card-price-integer-font-size');
+      .theme(font-family, '@card-price-font-family');
+    }
+
+    &-decimal {
+      .theme(font-family, '@card-price-font-family');
+    }
+  }
+
+  &__origin-price {
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: line-through;
+    .theme(font-size, '@card-origin-price-font-size');
+    .theme(color, '@card-origin-price-color');
+  }
+
+  &__num {
+    float: right;
+  }
+
+  &__tag {
+    position: absolute !important;
+    top: 4px;
+    left: 0;
+  }
+
+  &__footer {
+    flex: none;
+    width: 100%;
+    text-align: right;
+  }
+}

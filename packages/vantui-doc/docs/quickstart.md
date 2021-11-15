@@ -35,30 +35,115 @@ yarn add @antmjs/vantui --production
 
 > 进入React版工程:react-demo即 cd packages/react-demo && yarn start
 
-## 使用
+## 引入组件
 
-### 引入组件
+### 方式一. 通过 babel 插件按需引入组件
 
-```less
-/* app.less */
-@import '@antmjs/vantui/dist/style/index.less';
+[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 是一款 babel 插件，它会在编译过程中将 import 语句自动转换为按需引入的方式。
 
-page,
-body {
-  font-size: 28px;
+```bash
+# 安装插件
+npm i babel-plugin-import -D
+```
+
+在.babelrc 或 babel.config.js 中添加配置：
+
+```json
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "@antmjs/vantui",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ]
+  ]
 }
 ```
 
-```jsx
-/* page.tsx */
-import { Button } from '@antmjs/vantui'
+接着你可以在代码中直接引入 VantUI 组件，插件会自动将代码转化为按需引入的形式。
 
-<Button onClick={() => { console.log('Hello World') }}>Hello World</Button>
+```js
+// 原始代码
+import { Button } from '@antmjs/vantui';
+
+// 编译后代码
+import Button from '@antmjs/vantui/es/button';
+import '@antmjs/vantui/es/button/style';
 ```
 
-> 其他使用方式暂时请查看[有赞文档](https://youzan.github.io/vant-weapp/#/home)
+> 如果你在使用 TypeScript，可以使用 [ts-import-plugin](https://github.com/Brooooooklyn/ts-import-plugin) 实现按需引入。
+
+### 方式二. 在 Vite 项目中按需引入组件
+
+对于 vite 项目，可以使用 [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) 实现按需引入, 原理和 `babel-plugin-import` 类似。
+
+```bash
+# 安装插件
+npm i vite-plugin-style-import -D
+```
+
+```js
+// vite.config.js
+import styleImport from 'vite-plugin-style-import';
+
+export default {
+  plugins: [
+    styleImport({
+      libs: [
+        {
+          libraryName: '@antmjs/vantui',
+          esModule: true,
+          resolveStyle: (name) => `@antmjs/vantui/es/${name}/style`,
+        },
+      ],
+    }),
+  ],
+};
+```
+
+### 方式三. 手动按需引入组件
+
+在不使用插件的情况下，可以手动引入需要使用的组件和样式。
+
+```js
+// 引入组件
+import Button from '@antmjs/vantui/es/button';
+// 引入组件对应的样式，若组件没有样式文件，则无须引入
+import '@antmjs/vantui/es/button/style';
+```
+
+### 方式四. 导入所有组件
+
+Vant 支持一次性导入所有组件，引入所有组件会增加代码包体积，因此不推荐这种做法。
+
+```js
+import '@antmjs/vantui/lib/index.css';
+```
+
+> Tips: 配置按需引入后，将不允许直接导入所有组件。
+
 
 ## 注意
+
+```js
+// Taro小程序
+"miniCssExtractPluginOption": {
+  "ignoreOrder": true,
+}
+```
+
+```js
+// react
+new MiniCssExtractPlugin({
+  "ignoreOrder": true,
+  ...
+})
+```
+
+> 线上打包的时候会提示conflicating order between ... 此类警告，可以通过ignoreOrder:true关闭
 
 ### 单位尺寸转化问题
 

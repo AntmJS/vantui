@@ -1,6 +1,6 @@
 import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
-import toast from '../src/components/toast/toast'
+import toast from '../src/toast/toast'
 
 export interface ToastProps extends StandardProps {
   zIndex?: number

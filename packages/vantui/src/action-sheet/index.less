@@ -1,0 +1,82 @@
+@import '../style/var.less';
+
+.van-action-sheet {
+  .theme(max-height, '@action-sheet-max-height') !important;
+  .theme(color, '@action-sheet-item-text-color');
+
+  &__item,
+  &__cancel {
+    height: auto;
+    border: none;
+    padding: 28px @padding-md;
+    text-align: center;
+    .theme(font-size, '@action-sheet-item-font-size');
+    .theme(line-height, '@action-sheet-item-line-height');
+    .theme(background-color, '@action-sheet-item-background');
+
+    &--hover {
+      .theme(background-color, '@active-color');
+    }
+
+    // reset weapp default border
+    &::after {
+      border-width: 0;
+    }
+  }
+
+  &__cancel {
+    .theme(color, '@action-sheet-cancel-text-color');
+  }
+
+  &__gap {
+    display: block;
+    .theme(height, '@action-sheet-cancel-padding-top');
+    .theme(background-color, '@action-sheet-cancel-padding-color');
+  }
+
+  &__item--disabled {
+    .theme(color, '@action-sheet-item-disabled-text-color');
+  }
+
+  &__item--disabled&__item--hover {
+    .theme(background-color, '@action-sheet-item-background');
+  }
+
+  &__subname {
+    .theme(margin-top, '@padding-xs');
+    .theme(font-size, '@action-sheet-subname-font-size');
+    .theme(color, '@action-sheet-subname-color');
+    .theme(line-height, '@action-sheet-subname-line-height');
+  }
+
+  &__header {
+    text-align: center;
+    .theme(font-weight, '@font-weight-bold');
+    .theme(font-size, '@action-sheet-header-font-size');
+    .theme(line-height, '@action-sheet-header-height');
+  }
+
+  &__description {
+    @padding: 40px;
+
+    text-align: center;
+    .theme(padding, '@padding @padding-md');
+    .theme(color, '@action-sheet-description-color');
+    .theme(font-size, '@action-sheet-description-font-size');
+    .theme(line-height, '@action-sheet-description-line-height');
+  }
+
+  &__close {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    line-height: inherit !important;
+    .theme(padding, '@action-sheet-close-icon-padding');
+    .theme(font-size, '@action-sheet-close-icon-size') !important;
+    .theme(color, '@action-sheet-close-icon-color');
+  }
+
+  &__loading {
+    display: flex !important;
+  }
+}

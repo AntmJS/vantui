@@ -17,9 +17,9 @@ import { Toast } from "vantui";
 ### 文字提示
 
 ```javascript
-import { toast } from 'vantui';
+import { Toast } from 'vantui';
 
-toast('我是提示文案，建议不超过十五字~');
+Toast.show('我是提示文案，建议不超过十五字~');
 ```
 
 ```jsx
@@ -34,13 +34,13 @@ toast('我是提示文案，建议不超过十五字~');
 使用 `Toast.loading` 方法展示加载提示，通过 `forbidClick` 属性可以禁用背景点击，通过 `loadingType` 属性可以自定义加载图标类型。
 
 ```javascript
-toast.loading({
+Toast.loading({
   message: '加载中...',
   forbidClick: true,
 });
 
 // 自定义加载图标
-toast.loading({
+Toast.loading({
   message: '加载中...',
   forbidClick: true,
   loadingType: 'spinner',
@@ -50,14 +50,14 @@ toast.loading({
 ### 成功/失败提示
 
 ```javascript
-toast.success('成功文案');
-toast.fail('失败文案');
+Toast.success('成功文案');
+Toast.fail('失败文案');
 ```
 
 ### 动态更新提示
 
 ```javascript
-const toast = toast.loading({
+const toast = Toast.loading({
   duration: 0, // 持续展示 toast
   forbidClick: true,
   message: '倒计时 3 秒',
@@ -88,7 +88,7 @@ const timer = setInterval(() => {
 ### OnClose 回调函数
 
 ```javascript
-toast({
+Toast.show({
   type: 'success',
   message: '提交成功',
   onClose: () => {
@@ -100,7 +100,7 @@ toast({
 ```ts 
 import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
-import toast from '../src/components/toast/toast'
+import toast from '../src/toast/toast'
 
 export interface ToastProps extends StandardProps {
   zIndex?: number

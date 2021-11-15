@@ -1,0 +1,38 @@
+@import '../style/var.less';
+.van-rate {
+  display: inline-flex;
+  user-select: none;
+
+  &__item {
+    position: relative;
+    .theme(padding, '0 @rate-horizontal-padding');
+
+    &:not(:last-child) {
+      .theme(padding-right, '@rate-icon-gutter');
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 1em;
+    .theme(color, '@rate-icon-void-color');
+    .theme(font-size, '@rate-icon-size');
+
+    &--half {
+      position: absolute;
+      top: 0;
+      width: 0.5em;
+      overflow: hidden;
+      .theme(left, '@rate-horizontal-padding');
+      .theme(color, '@rate-icon-full-color');
+    }
+
+    &--full {
+      .theme(color, '@rate-icon-full-color');
+    }
+
+    &--disabled {
+      .theme(color, '@rate-icon-disabled-color');
+    }
+  }
+}

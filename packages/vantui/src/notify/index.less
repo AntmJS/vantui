@@ -1,0 +1,32 @@
+@import '../style/var.less';
+.van-notify {
+  text-align: center;
+  word-wrap: break-word;
+  .theme(padding, '@notify-padding');
+  .theme(font-size, '@notify-font-size');
+  .theme(line-height, '@notify-line-height');
+
+  &__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &--primary {
+    .theme(background-color, '@notify-primary-background-color');
+  }
+
+  &--success {
+    .theme(background-color, '@notify-success-background-color');
+  }
+
+  &--danger {
+    .theme(background-color, '@notify-danger-background-color');
+  }
+
+  &--warning {
+    .theme(background-color, '@notify-warning-background-color');
+  }
+}

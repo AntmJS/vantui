@@ -1,0 +1,22 @@
+@import '../style/var.less';
+.van-goods-action-icon {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center !important;
+  line-height: 1 !important;
+  border: none !important;
+
+  .theme(font-size, '@goods-action-icon-font-size') !important;
+  .theme(color, '@goods-action-icon-text-color') !important;
+  .theme(min-width, '@goods-action-icon-width');
+  .theme(height, '@goods-action-icon-height') !important;
+
+  &__icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto 10px;
+    .theme(color, '@goods-action-icon-color');
+    .theme(font-size, '@goods-action-icon-size');
+  }
+}

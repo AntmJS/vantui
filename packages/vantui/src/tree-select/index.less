@@ -1,0 +1,49 @@
+@import '../style/var.less';
+.van-tree-select {
+  position: relative;
+  display: flex;
+  user-select: none;
+  .theme(font-size, '@tree-select-font-size');
+
+  &__nav {
+    flex: 1;
+    .theme(background-color, '@tree-select-nav-background-color');
+
+    &__inner {
+      width: 100% !important;
+      height: 100%;
+    }
+
+    --sidebar-padding: @tree-select-nav-item-padding;
+  }
+
+  &__content {
+    flex: 2;
+    .theme(background-color, '@tree-select-content-background-color');
+  }
+
+  &__item {
+    @padding: 64px;
+
+    position: relative;
+    font-weight: bold;
+
+    .theme(padding, '0 @padding 0 @padding-md');
+    .theme(line-height, '@tree-select-item-height');
+
+    &--active {
+      .theme(color, '@tree-select-item-active-color');
+    }
+
+    &--disabled {
+      .theme(color, '@tree-select-item-disabled-color');
+    }
+  }
+
+  &__selected {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    .theme(right, '@padding-md');
+  }
+}
