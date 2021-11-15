@@ -129,6 +129,7 @@ export default class Index extends Component {
           >
             <Image
               className="demo-image"
+              height="240px"
               src="https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
             ></Image>
           </Dialog>
