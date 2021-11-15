@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Toast, Area, toast } from '@antmjs/vantui'
+import { Toast, Area } from '@antmjs/vantui'
 
 import { areaList } from '@vant/area-data'
 import DemoPage from '../../components/demo-page/index'
@@ -21,7 +21,7 @@ export default class Index extends Component {
   onChange = (event) => {
     const { values } = event.detail
 
-    toast(values.map((item) => item.name).join('-'))
+    Toast.show(values.map((item) => item.name).join('-'))
   }
 
   onConfirm = (event) => {

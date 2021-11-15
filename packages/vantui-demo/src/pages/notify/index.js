@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { View } from '@tarojs/components'
-import { Notify, Button, notify } from '@antmjs/vantui'
+import { Notify, Button } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -12,21 +12,21 @@ export default class Index extends Component {
   }
 
   showNotify = () => {
-    notify('通知内容')
+    Notify.show('通知内容')
   }
 
   showCustomColor = () => {
-    notify({
+    Notify.show({
       message: '自定义颜色',
       color: '#ad0000',
       background: '#ffe1e1',
     })
 
-    // notify.clear()
+    // Notify.clear()
   }
 
   showCustomDuration = () => {
-    notify({
+    Notify.show({
       duration: 1000,
       message: '自定义时长',
     })
@@ -34,14 +34,14 @@ export default class Index extends Component {
 
   showNotifyByType = (event) => {
     const { type } = event.currentTarget.dataset
-    notify({
+    Notify.show({
       type,
       message: '通知内容',
     })
   }
 
   showSafe = () => {
-    notify({
+    Notify.show({
       message: '通知内容',
       safeAreaInsetTop: true,
     })

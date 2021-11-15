@@ -498,7 +498,6 @@ module.exports = function (webpackEnv) {
                       libraryName: '@antmjs/vantui',
                       libraryDirectory: 'es',
                       style: (name) => {
-                        console.log(name)
                         return `${name}/style/less`
                       },
                       // style: true,
@@ -756,6 +755,7 @@ module.exports = function (webpackEnv) {
         new WatchMissingNodeModulesPlugin(paths.appNodeModules),
       isEnvProduction &&
         new MiniCssExtractPlugin({
+          ignoreOrder: true,
           // Options similar to the same options in webpackOptions.output
           // both options are optional
           filename: 'static/css/[name].[contenthash:8].css',

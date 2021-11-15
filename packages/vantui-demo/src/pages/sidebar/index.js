@@ -1,13 +1,6 @@
 import { Component } from 'react'
 
-import {
-  GridItem,
-  Grid,
-  SidebarItem,
-  Sidebar,
-  Notify,
-  notify,
-} from '@antmjs/vantui'
+import { GridItem, Grid, SidebarItem, Sidebar, Notify } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import './index.scss'
@@ -18,7 +11,7 @@ export default class Index extends Component {
   }
 
   onChange = (event) => {
-    notify({
+    Notify.show({
       type: 'primary',
       message: `切换至第${event.detail}项`,
     })

@@ -263,7 +263,7 @@ export function Uploader(props: UploaderProps) {
             {state.lists.map((item: any, index) => {
               return (
                 <View
-                  key={item.index}
+                  key={item.index || index}
                   className="van-uploader__preview"
                   data-index={index}
                   onClick={_onClickPreview}

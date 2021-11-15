@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Toast, Steps, Button, toast } from '@antmjs/vantui'
+import { Toast, Steps, Button } from '@antmjs/vantui'
 
 import icons from '@vant/icons'
 import DemoPage from '../../components/demo-page/index'
@@ -47,7 +47,7 @@ export default class Index extends Component {
   }
 
   onClick = (event) => {
-    toast(`Index: ${event.detail}`)
+    Toast.show(`Index: ${event.detail}`)
   }
 
   render() {

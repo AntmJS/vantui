@@ -7,10 +7,8 @@ import { isDef } from '../common/validator'
 import { StickyProps } from '../../types/sticky'
 import { usePageScroll } from './../mixins/page-scroll'
 import * as computed from './wxs'
-const ROOT_ELEMENT = '.van-sticky'
-let comIndex = 0
 export function Sticky(props: StickyProps) {
-  const indexRef = useRef(comIndex)
+  const indexRef = useRef(+new Date())
   const [state, setState] = useState({ height: 0, fixed: false, transform: 0 })
   const {
     zIndex = InnerSticky,
@@ -27,11 +25,6 @@ export function Sticky(props: StickyProps) {
   const ref: React.MutableRefObject<{
     scrollTop?: number
   }> = useRef({})
-
-  useEffect(() => {
-    comIndex++
-    indexRef.current = comIndex
-  }, [])
 
   const getContainerRect = useCallback(
     function () {
@@ -80,7 +73,7 @@ export function Sticky(props: StickyProps) {
       ref.current.scrollTop = scrollTop || ref.current.scrollTop
       if (typeof container === 'function') {
         Promise.all([
-          getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`),
+          getRect(null, `.sticky-com-index${indexRef.current}`),
           getContainerRect(),
         ])
           .then(([root, container]: any) => {
@@ -105,20 +98,21 @@ export function Sticky(props: StickyProps) {
             console.log(e)
           })
         return
+      } else {
+        getRect(null, `.sticky-com-index${indexRef.current}`).then(
+          (root: any) => {
+            if (!isDef(root)) {
+              return
+            }
+            if (offsetTop >= root.top) {
+              setDataAfterDiff({ fixed: true, height: root.height })
+              // this.transform = 0
+            } else {
+              setDataAfterDiff({ fixed: false })
+            }
+          },
+        )
       }
-      getRect(null, `.sticky-com-index${indexRef.current}${ROOT_ELEMENT}`).then(
-        (root: any) => {
-          if (!isDef(root)) {
-            return
-          }
-          if (offsetTop >= root.top) {
-            setDataAfterDiff({ fixed: true, height: root.height })
-            // this.transform = 0
-          } else {
-            setDataAfterDiff({ fixed: false })
-          }
-        },
-      )
     },
     [container, disabled, getContainerRect, offsetTop, setDataAfterDiff],
   )

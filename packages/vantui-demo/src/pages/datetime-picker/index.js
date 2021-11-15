@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { DatetimePicker, Toast, toast } from '@antmjs/vantui'
+import { DatetimePicker, Toast } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -45,7 +45,7 @@ export default class Index extends Component {
     const { detail, currentTarget } = event
     const result = this.getResult(detail, currentTarget.dataset.type)
 
-    toast(result)
+    Toast.show(result)
   }
 
   getResult = (time, type) => {

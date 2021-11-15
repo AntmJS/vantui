@@ -5,7 +5,6 @@ import {
   GoodsActionButton,
   GoodsActionIcon,
   GoodsAction,
-  toast,
 } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
@@ -18,11 +17,11 @@ export default class Index extends Component {
   }
 
   onClickIcon = () => {
-    toast('点击图标')
+    Toast.show('点击图标')
   }
 
   onClickButton = () => {
-    toast('点击按钮')
+    Toast.show('点击按钮')
   }
 
   render() {

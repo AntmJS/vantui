@@ -91,8 +91,8 @@ export function chooseFile({
       case 'image':
         Taro.chooseImage({
           count: multiple ? Math.min(maxCount, 9) : 1,
-          sourceType: capture,
-          sizeType,
+          sourceType: capture || ['album', 'camera'],
+          sizeType: sizeType || ['original', 'compressed'],
           success: (res) => resolve(formatImage(res)),
           fail: reject,
         })
@@ -100,20 +100,20 @@ export function chooseFile({
       case 'media':
         Taro.chooseMedia({
           count: multiple ? Math.min(maxCount, 9) : 1,
-          sourceType: capture,
+          sourceType: capture || ['album', 'camera'],
           maxDuration,
-          sizeType,
-          camera,
+          sizeType: sizeType || ['original', 'compressed'],
+          camera: camera || 'back',
           success: (res) => resolve(formatMedia(res)),
           fail: reject,
         })
         break
       case 'video':
         Taro.chooseVideo({
-          sourceType: capture,
+          sourceType: capture || ['album', 'camera'],
           compressed,
-          maxDuration,
-          camera,
+          maxDuration: maxDuration || 60,
+          camera: camera || 'back',
           success: (res) => resolve(formatVideo(res)),
           fail: reject,
         })

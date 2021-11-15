@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Switch, Dialog, dialog } from '@antmjs/vantui'
+import { Switch, Dialog } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
 
 import DemoBlock from '../../components/demo-block/index'
@@ -21,12 +21,11 @@ export default class Index extends Component {
   }
 
   onChange2 = ({ detail }) => {
-    dialog
-      .confirm({
-        selector: '#switch-demo',
-        title: '提示',
-        message: '是否切换开关？',
-      })
+    Dialog.confirm({
+      selector: '#switch-demo',
+      title: '提示',
+      message: '是否切换开关？',
+    })
       .then(() => {
         this.setState({ checked2: detail })
       })
