@@ -48,7 +48,7 @@ npm i babel-plugin-import -D
 
 在.babelrc 或 babel.config.js 中添加配置：
 
-```json
+```js
 {
   "plugins": [
     [
@@ -57,7 +57,24 @@ npm i babel-plugin-import -D
         "libraryName": "@antmjs/vantui",
         "libraryDirectory": "es",
         "style": true
-      }
+      },
+      "@antmjs/vantui"
+    ]
+  ]
+}
+```
+
+```js
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "@antmjs/vantui",
+        "libraryDirectory": "es",
+        "style": (name) => `${name}/style/less`,
+      },
+      "@antmjs/vantui"
     ]
   ]
 }
