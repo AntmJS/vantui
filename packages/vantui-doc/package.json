@@ -8,7 +8,7 @@
     "test:coverage": "open test/coverage/index.html",
     "build": "node synch.js && sh ./build.sh",
     "release": "npx gh-pages -d site",
-    "docs-ts": "node ./synch.js"
+    "docs-ts": "node ./scripts/ts-to-md"
   },
   "author": "sanshao",
   "license": "MIT",
