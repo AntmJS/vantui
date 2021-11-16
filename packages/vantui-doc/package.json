@@ -4,9 +4,9 @@
   "version": "1.2.2",
   "description": "",
   "scripts": {
-    "dev": "node synch.js && npx vant-cli dev",
+    "dev": "node ./scripts/ts-to-md && npx vant-cli dev",
     "test:coverage": "open test/coverage/index.html",
-    "build": "node synch.js && sh ./build.sh",
+    "build": "node ./scripts/ts-to-md && sh ./build.sh",
     "release": "npx gh-pages -d site",
     "docs-ts": "node ./scripts/ts-to-md"
   },
