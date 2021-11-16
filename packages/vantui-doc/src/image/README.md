@@ -114,7 +114,7 @@ import { Image } from "vantui";
 ```
 ### TS信息
 ```ts 
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 type ImageFit = 'contain' | 'cover' | 'fill' | 'widthFix' | 'heightFix' | 'none'
@@ -130,8 +130,8 @@ export interface ImageProps extends StandardProps {
   fit?: ImageFit
   showError?: boolean
   showLoading?: boolean
-  renderLoading?: boolean
-  renderError?: boolean
+  renderLoading?: ReactNode
+  renderError?: ReactNode
 }
 
 declare const Image: ComponentClass<ImageProps>
