@@ -157,30 +157,23 @@ function onChange(event) {
   Toast('当前值：' + event.detail);
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+### RateProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/rate.d.ts)   
 
-export interface RateProps extends StandardProps {
-  value?: number
-  defaultValue?: number
-  readonly?: boolean
-  disabled?: boolean
-  allowHalf?: boolean
-  size?: string | number
-  icon?: string
-  voidIcon?: string
-  color?: string
-  voidColor?: string
-  disabledColor?: string
-  count?: number
-  gutter?: string | number
-  touchable?: boolean
-  onChange?: (e: ITouchEvent) => any
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| defaultValue | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| readonly | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| allowHalf | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| size | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| voidIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| voidColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| disabledColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| count | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| gutter | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| touchable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 
-declare const Rate: ComponentClass<RateProps>
-
-export { Rate }
-```

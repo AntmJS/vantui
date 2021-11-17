@@ -276,25 +276,18 @@ function onClick(event) {
 ### 结合自定义 tabBar
 
 请参考 [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/customTabbar.html) 与 [代码片段](https://developers.weixin.qq.com/s/vaXgTsmQ7hnm)。
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### TabbarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tabbar.d.ts)   
 
-export interface TabbarProps extends StandardProps {
-  active?: number
-  activeColor?: string
-  inactiveColor?: string
-  fixed?: boolean
-  placeholder?: boolean
-  border?: boolean
-  zIndex?: number
-  safeAreaInsetBottom?: boolean
-  children?: ReactNode
-  onChange?: (event: { detail: string | number }) => void
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| active | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-declare const Tabbar: ComponentClass<TabbarProps>
-
-export { Tabbar }
-```

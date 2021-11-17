@@ -75,19 +75,12 @@ Layout 组件提供了`24列栅格`，通过在`Col`上添加`span`属性设置�
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### ColProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/col.d.ts)   
 
-export interface ColProps extends StandardProps {
-  span: number | string
-  offset?: number | string
-  gutter?: number | string
-  children: React.ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| span | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `true` |
+| offset | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| gutter | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `true` |
 
-declare const Col: ComponentClass<ColProps>
-
-export { Col }
-```

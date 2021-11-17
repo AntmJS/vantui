@@ -120,24 +120,15 @@ function onScroll(event) {
   }).exec();
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### StickyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sticky.d.ts)   
 
-export interface StickyProps extends StandardProps {
-  zIndex?: number
-  offsetTop?: number
-  disabled?: boolean
-  container?: () => any
-  scrollTop?: number
-  children?: ReactNode
-  onScroll?: (data: {
-    detail: { scrollTop?: number; isFixed?: boolean }
-  }) => any
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| offsetTop | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| container | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| scrollTop | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onScroll | - | _&nbsp;&nbsp;(data:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrollTop?:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isFixed?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 
-declare const Sticky: ComponentClass<StickyProps>
-
-export { Sticky }
-```

@@ -133,46 +133,39 @@ function onClick() {
   Toast('搜索' + this.data.value);
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+### SearchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/search.d.ts)   
 
-export interface SearchProps extends StandardProps {
-  value?: string | number
-  defaultValue?: string | number
-  label?: string
-  focus?: boolean
-  error?: boolean
-  disabled?: boolean
-  readonly?: boolean
-  inputAlign?: string
-  showAction?: boolean
-  leftIcon?: string
-  rightIcon?: string
-  placeholder?: string
-  placeholderStyle?: string
-  actionText?: string
-  background?: string
-  maxlength?: number
-  shape?: string
-  clearable?: boolean
-  clearTrigger?: string
-  clearIcon?: string
-  renderLabel?: ReactNode
-  renderLeftIcon?: ReactNode
-  renderRightIcon?: ReactNode
-  renderAction?: ReactNode
-  onChange?: (e: ITouchEvent) => void
-  onSearch?: (e: ITouchEvent) => void
-  onFocus?: (e: ITouchEvent) => void
-  onBlur?: (e: ITouchEvent) => void
-  onClear?: () => void
-  onCancel?: () => void
-  onClickInput?: () => void
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| defaultValue | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| label | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| focus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| error | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| readonly | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| inputAlign | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showAction | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| rightIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| placeholder | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| placeholderStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| actionText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| background | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| maxlength | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| shape | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| clearable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| clearTrigger | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| clearIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderLabel | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLeftIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderAction | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onSearch | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onFocus | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onBlur | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClear | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickInput | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-declare const Search: ComponentClass<SearchProps>
-
-export { Search }
-```

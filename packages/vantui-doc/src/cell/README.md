@@ -203,37 +203,30 @@ import { CellGroup } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### CellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cell.d.ts)   
 
-export interface CellProps extends StandardProps {
-  url?: string
-  linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
-  title?: string | number
-  value?: string | number
-  icon?: string
-  size?: 'large'
-  label?: string
-  center?: boolean
-  isLink?: boolean
-  required?: boolean
-  clickable?: boolean
-  titleWidth?: string
-  style?: string
-  arrowDirection?: 'left' | 'up' | 'down'
-  border?: boolean
-  titleStyle?: string
-  renderTitle?: ReactNode
-  renderIcon?: ReactNode
-  renderLabel?: ReactNode
-  renderRightIcon?: ReactNode
-  renderExtra?: ReactNode
-  children?: ReactNode | JSX.Element | JSX.Element[]
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| url | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| linkType | - | _&nbsp;&nbsp;"navigateTo"&nbsp;&brvbar;&nbsp;"reLaunch"&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| size | - | _&nbsp;&nbsp;"large"<br/>_ | - | `false` |
+| label | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| center | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| isLink | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| required | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| clickable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| titleWidth | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| arrowDirection | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| titleStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLabel | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderExtra | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode&nbsp;&brvbar;&nbsp;JSX.Element&nbsp;&brvbar;&nbsp;JSX.Element[]<br/>_ | - | `false` |
 
-declare const Cell: ComponentClass<CellProps>
-
-export { Cell }
-```

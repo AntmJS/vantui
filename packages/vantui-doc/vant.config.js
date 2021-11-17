@@ -59,10 +59,6 @@ module.exports = {
             title: '快速上手',
             hideSimulator: false,
           },
-          // {
-          //   path: 'changelog',
-          //   title: '更新日志',
-          // },
           {
             path: 'custom-style',
             title: '样式覆盖',
@@ -76,6 +72,11 @@ module.exports = {
           {
             path: 'use-in-react',
             title: '如何在React中使用',
+            hideSimulator: false,
+          },
+          {
+            path: 'comments',
+            title: 'typescript同步到文档',
             hideSimulator: false,
           },
         ],

@@ -112,23 +112,11 @@ function onChange(event) {
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### SidebarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sidebar.d.ts)   
 
-interface onChangeEvent {
-  event: {
-    detail?: number
-  }
-}
-export interface SidebarProps extends StandardProps {
-  onChange?: (a: onChangeEvent) => any
-  activeKey: number
-  children: React.ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| onChange | - | _&nbsp;&nbsp;(a:&nbsp;onChangeEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| activeKey | - | _&nbsp;&nbsp;number<br/>_ | - | `true` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `true` |
 
-declare const Sidebar: ComponentClass<SidebarProps>
-
-export { Sidebar }
-```

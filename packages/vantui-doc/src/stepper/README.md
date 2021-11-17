@@ -165,42 +165,34 @@ function onChange(value) {
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps, CommonEventFunction } from '@tarojs/components'
-import { InputProps } from '@tarojs/components/types/Input'
+### StepperProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/stepper.d.ts)   
 
-export interface StepperProps extends StandardProps {
-  name?: string
-  value?: string | number
-  integer?: boolean
-  disabled?: boolean
-  inputWidth?: string | number
-  buttonSize?: string | number
-  asyncChange?: boolean
-  disableInput?: boolean
-  decimalLength?: number
-  min?: string | number
-  max?: string | number
-  step?: string | number
-  showPlus?: boolean
-  showMinus?: boolean
-  disablePlus?: boolean
-  disableMinus?: boolean
-  longPress?: boolean
-  theme?: 'round'
-  onFocus?: CommonEventFunction<InputProps.inputForceEventDetail>
-  onChange?: (event: { detail: number | string }) => void
-  onBlur?: CommonEventFunction<InputProps.inputForceEventDetail>
-  onOverlimit?: () => void
-  onPlus?: () => void
-  onMinus?: () => void
-  renderMinus?: ReactNode
-  renderPlus?: ReactNode
-}
-// Partial
-declare const Stepper: ComponentClass<StepperProps>
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| integer | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| inputWidth | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| buttonSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| asyncChange | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disableInput | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| decimalLength | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| min | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| max | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| step | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| showPlus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showMinus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disablePlus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disableMinus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| longPress | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| theme | - | _&nbsp;&nbsp;"round"<br/>_ | - | `false` |
+| onFocus | - | _&nbsp;&nbsp;CommonEventFunction<InputProps.inputForceEventDetail><br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onBlur | - | _&nbsp;&nbsp;CommonEventFunction<InputProps.inputForceEventDetail><br/>_ | - | `false` |
+| onOverlimit | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onPlus | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onMinus | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderMinus | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderPlus | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-export { Stepper }
-```

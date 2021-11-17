@@ -112,29 +112,20 @@ import { Image } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### ImageProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/image.d.ts)   
 
-type ImageFit = 'contain' | 'cover' | 'fill' | 'widthFix' | 'heightFix' | 'none'
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| src | - | _&nbsp;&nbsp;string<br/>_ | - | `true` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| width | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| height | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| radius | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| lazyLoad | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showMenuByLongpress | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| fit | - | _&nbsp;&nbsp;ImageFit<br/>_ | - | `false` |
+| showError | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showLoading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| renderLoading | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderError | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-export interface ImageProps extends StandardProps {
-  src: string
-  round?: boolean
-  width?: number
-  height?: number
-  radius?: number
-  lazyLoad?: boolean
-  showMenuByLongpress?: boolean
-  fit?: ImageFit
-  showError?: boolean
-  showLoading?: boolean
-  renderLoading?: ReactNode
-  renderError?: ReactNode
-}
-
-declare const Image: ComponentClass<ImageProps>
-
-export { Image }
-```

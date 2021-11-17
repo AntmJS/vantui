@@ -82,34 +82,21 @@ Notify.show({
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
-import notify from '../src/notify/notify'
+### NotifyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notify.d.ts)   
 
-export interface NotifyProps extends StandardProps {
-  selector?: string
-  message?: string
-  background?: string
-  type?: string
-  color?: string
-  duration?: number
-  zIndex?: number
-  safeAreaInsetTop?: boolean
-  top?: number
-  id?: string
-  onClick?: (data: any) => void
-  onOpened?: () => void
-  onClose?: () => void
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| message | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| background | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| top | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| id | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-interface notifyProps {
-  show: (options: NotifyProps | string) => any
-  clear: (options?: NotifyProps) => any
-}
-
-declare const Notify: ComponentClass<NotifyProps> & notifyProps
-
-export { Notify, notify }
-```

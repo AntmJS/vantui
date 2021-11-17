@@ -11,6 +11,7 @@ import {
 import * as computed from './wxs'
 import VanPicker from './../picker'
 import { AreaProps } from './../../types/area'
+import { PickerEvents } from './../../types/picker'
 const EMPTY_CODE = '000000'
 function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   const {
@@ -148,7 +149,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
           value,
           index,
         },
-      })
+      } as PickerEvents)
     },
     [_parseValues, onConfirm],
   )

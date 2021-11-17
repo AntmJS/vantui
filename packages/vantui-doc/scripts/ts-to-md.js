@@ -46,30 +46,30 @@ function createMd(obj, compName) {
     const item = obj[Dkey]
     if (!Object.keys(item).length) continue
     mdRes +=
-      `### ${item['title'] && typeof item['title'] === 'string'
-        ? item['title']
+      `### ${item['title__'] && typeof item['title__'] === 'string'
+        ? item['title__']
         : Dkey
       }` +
       ` [[详情]](${GITHUB_TYPESHS}/${compName}.d.ts)   
 `
-    mdRes += `${item['description'] || ''}
+    mdRes += `${item['description__'] || ''}
 `
     let header = `| 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
 `
-    let key = ['self', 'description', 'value', 'default', 'require']
+    let key = ['self', 'description__', 'value', 'default__', 'require']
     if (!Dkey.includes('Props')) {
       header = `| 参数 | 说明 | 类型 |
 | --- | --- | --- |
 `
-      key = ['self', 'description', 'value']
+      key = ['self', 'description__', 'value']
     }
 
     if (Dkey.includes('Instance')) {
       header = `| 方法 | 说明 | 类型 |
 | --- | --- | --- |
 `
-      key = ['self', 'description', 'value']
+      key = ['self', 'description__', 'value']
     }
     mdRes += header
     Object.keys(item).map((_key) => {

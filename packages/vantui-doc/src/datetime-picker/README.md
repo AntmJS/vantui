@@ -179,57 +179,29 @@ this.state = {
 
 }; 
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
-import { PickerProps } from './picker'
+### DatetimePickerEventsByInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)   
 
-type DatetimePickerEventsByValue = {
-  detail: {
-    value?: string | number
-  }
-}
+| 方法 | 说明 | 类型 |
+| --- | --- | --- |
+| detail | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;datetimePicker:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setColumns:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerValue:&nbsp;Date<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateColumnValue:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<string><br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>_ |
 
-export type DatetimePickerEventsByInstance = {
-  detail: {
-    datetimePicker: {
-      columns: (string | number)[]
-      setColumns: (columns: (string | number)[]) => (string | number)[]
-      innerValue: Date
-      updateColumnValue: (value: string) => Promise<string>
-    }
-  }
-}
+### DatetimePickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)   
 
-type DefinedExculdeNoMatch<TObject, T> = {
-  [K in keyof TObject]: K extends T ? unknown : TObject[K]
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| filter | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;(number&nbsp;&brvbar;&nbsp;string)[]<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showToolbar | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| formatter | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| minDate | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| maxDate | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| minHour | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| maxHour | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| minMinute | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| maxMinute | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| onInput | - | _&nbsp;&nbsp;(e:&nbsp;DatetimePickerEventsByValue)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;DatetimePickerEventsByInstance<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onConfirm | - | _&nbsp;&nbsp;(e:&nbsp;DatetimePickerEventsByValue)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-export interface DatetimePickerProps
-  extends DefinedExculdeNoMatch<
-      PickerProps,
-      'onInput' | 'onConfirm' | 'onChange'
-    >,
-    StandardProps {
-  value?: string | number
-  filter?: (type: string, values: (string | number)[]) => (number | string)[]
-  type?: string
-  showToolbar?: boolean
-  formatter?: (type: string, value: string | number) => number | string
-  minDate?: number | string
-  maxDate?: number | string
-  minHour?: number | string
-  maxHour?: number | string
-  minMinute?: number | string
-  maxMinute?: number | string
-  onInput?: (e: DatetimePickerEventsByValue) => void
-  onChange?: (e: DatetimePickerEventsByInstance) => void
-  onConfirm?: (e: DatetimePickerEventsByValue) => void
-  onCancel?: () => void
-}
-
-declare const DatetimePicker: ComponentClass<DatetimePickerProps>
-
-export { DatetimePicker }
-```

@@ -167,69 +167,48 @@ this.state = {
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### PickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
 
-export type PickerColumn = {
-  values: string[]
-  defaultIndex?: number
-  className?: string
-  children?: PickerColumn
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| valueKey | 选项为对象的时候，文字对应的 key | _&nbsp;&nbsp;string<br/>_ | text | `false` |
+| toolbarPosition | 顶部栏位置，可选值为bottom | _&nbsp;&nbsp;string<br/>_ | top | `false` |
+| defaultIndex | 单列选择器的默认选中项索引,多列选择器请参考下方的 Columns 配置 | _&nbsp;&nbsp;number<br/>_ | 0 | `false` |
+| columns | 每一项数据，可为字符或者对象，对象默认展示值是valueKey设置的key | _&nbsp;&nbsp;any[]<br/>_ | [] | `false` |
+| title | 顶部栏标题 | _&nbsp;&nbsp;string<br/>_ | '' | `false` |
+| cancelButtonText | 取消按钮文字 | _&nbsp;&nbsp;string<br/>_ | 取消 | `false` |
+| confirmButtonText | 确认按钮文字 | _&nbsp;&nbsp;string<br/>_ | 确认 | `false` |
+| loading | 加载状态 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| itemHeight | 选项高度,对应单位PX | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | 48 | `false` |
+| visibleItemCount | 可见的选项个数 | _&nbsp;&nbsp;number<br/>_ | 6 | `false` |
+| onChange | 变化触发方法 | _&nbsp;&nbsp;(e:&nbsp;PickerChangeEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | 取消触发方法 | _&nbsp;&nbsp;(e:&nbsp;PickerEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onConfirm | 确认触发方法 | _&nbsp;&nbsp;(e:&nbsp;PickerEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| showToolbar | 是否显示顶部栏 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
 
-interface PickerEvents {
-  detail: {
-    value: number | number[]
-    index: number | number[]
-  }
-}
+### 事件 onConfirm 和 onCancel [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+继承了Taro的ITouchEvent类型
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| detail | 返回选项对应的值和选项对应的下标 | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>&nbsp;&nbsp;}<br/>_ |
 
-type PickerOptions = (string | PickerColumn)[]
+### 触发事件 onChange [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+继承了Taro的ITouchEvent类型
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| detail | 返回选项对应的值、picker实例和选项对应的下标 | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;picker:&nbsp;IPickerInstance<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;}<br/>_ |
 
-export type PickerChangeEvents = {
-  detail: {
-    value: number | number[]
-    picker: IPickerInstance
-    index: number
-  }
-}
+### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
+通过ref获取到的方法如下
+| 方法 | 说明 | 类型 |
+| --- | --- | --- |
+| setColumnValues | 设置每一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;string[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;needReset:&nbsp;boolean<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<any><br/>_ |
+| getColumnValues | 获取每一列的值 | _&nbsp;&nbsp;(index:&nbsp;number[])&nbsp;=>&nbsp;(number&nbsp;&brvbar;&nbsp;string)[]<br/>_ |
+| setColumnValue | 设置某一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
+| getColumnValue | 获取某一列的值 | _&nbsp;&nbsp;(index:&nbsp;number)&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
+| columns | 每列的数据 | _&nbsp;&nbsp;any[]<br/>_ |
+| getIndexes | 获取每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number[]<br/>_ |
+| setIndexes | 获取每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| getValues | 每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
+| confirm | 触发确认的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 
-export type IPickerInstance = {
-  setColumnValues: (
-    index: number,
-    options: PickerOptions,
-    needReset: boolean,
-  ) => Promise<any>
-  getColumnValues: (index: number) => (number | string)[]
-  setColumnValue: (index: number, value: number | string) => any
-  getColumnValue: (index: number) => number | string
-  columns: PickerColumn[]
-  getIndexes: () => number[]
-  setIndexes: () => void
-  getValues: () => number | string
-  confirm: () => void
-}
-export interface PickerProps extends StandardProps {
-  valueKey?: string
-  toolbarPosition?: string
-  defaultIndex?: number
-  columns?: any[]
-  title?: string
-  cancelButtonText?: string
-  confirmButtonText?: string
-  loading?: boolean
-  itemHeight?: string | number
-  itemWidth?: string | number
-  visibleItemCount?: number
-  onChange?: (e: PickerChangeEvents) => void
-  onCancel?: (e: PickerEvents) => void
-  onConfirm?: (e: PickerEvents) => void
-  showToolbar?: boolean
-}
-
-declare const Picker: ComponentClass<PickerProps>
-
-export { Picker }
-```

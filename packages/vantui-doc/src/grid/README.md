@@ -192,25 +192,18 @@ import { GridItem } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### GridProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/grid.d.ts)   
 
-export interface GridProps extends StandardProps {
-  square?: boolean
-  gutter?: number | string
-  clickable?: boolean
-  columnNum?: number
-  center?: boolean
-  border?: boolean
-  direction?: string
-  iconSize?: string | number
-  reverse?: boolean
-  children?: React.ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| square | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| gutter | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| clickable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| columnNum | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| center | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| direction | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| iconSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| reverse | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
 
-declare const Grid: ComponentClass<GridProps>
-
-export { Grid }
-```

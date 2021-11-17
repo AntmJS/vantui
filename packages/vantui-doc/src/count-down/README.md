@@ -165,38 +165,34 @@ function finished() {
   Toast('倒计时结束');
 } 
 ```
-### TS信息
-```ts 
-import type { ForwardRefRenderFunction } from 'react'
-import { ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### ICountDownRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
 
-export interface ICountDownRef {
-  start: () => void
-  pause: () => void
-  reset: () => void
-}
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| start | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| pause | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| reset | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 
-export interface ITimeData {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-  milliseconds: number
-}
+### ITimeData [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
 
-export interface CountDownProps extends StandardProps {
-  millisecond?: boolean
-  time?: number
-  format?: string
-  autoStart?: boolean
-  children?: ReactNode
-  onChange?: (timeData: { detail: ITimeData }) => void
-  onFinish?: () => void
-  ref?: React.MutableRefObject<ICountDownRef | undefined>
-}
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| days | - | _&nbsp;&nbsp;number<br/>_ |
+| hours | - | _&nbsp;&nbsp;number<br/>_ |
+| minutes | - | _&nbsp;&nbsp;number<br/>_ |
+| seconds | - | _&nbsp;&nbsp;number<br/>_ |
+| milliseconds | - | _&nbsp;&nbsp;number<br/>_ |
 
-declare const CountDown: ForwardRefRenderFunction<ICountDownRef, CountDownProps>
+### CountDownProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
 
-export { CountDown }
-```
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| millisecond | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| time | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| format | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| autoStart | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(timeData:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ITimeData<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onFinish | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| ref | - | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;ICountDownRef&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | - | `false` |
+
