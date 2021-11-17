@@ -180,7 +180,7 @@ function onGetUserInfo(e) {
 | disabled | - | _&nbsp;&nbsp;boolean<br/>_ |
 
 ### ActionSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)   
-[object Object]
+
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
 | actions | - | _&nbsp;&nbsp;ActionSheetItem[]<br/>_ | - | `false` |

@@ -173,7 +173,8 @@ function parseComments(comments = '') {
 
   arr.forEach((item) => {
     const cons = item.split('##')
-    res[cons[0]] = cons[1]
+    // 防止注释属性名称和类型属性名称重名
+    res[cons[0] + '__'] = cons[1]
   })
 
   return res
