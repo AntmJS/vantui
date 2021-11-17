@@ -88,31 +88,24 @@ import { SubmitBar } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+### SubmitBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/submit-bar.d.ts)   
 
-export interface SubmitBarProps extends StandardProps {
-  tip?: string
-  tipIcon?: string
-  price?: number
-  label?: string
-  loading?: boolean
-  disabled?: boolean
-  buttonText?: string
-  currency?: string
-  buttonType?: 'default' | 'primary' | 'info' | 'warning' | 'danger'
-  decimalLength?: number
-  suffixLabel?: string
-  safeAreaInsetBottom?: boolean
-  children?: ReactNode
-  renderTop?: ReactNode
-  renderTip?: ReactNode
-  onSubmit?: (event: ITouchEvent) => void
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| tip | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| tipIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| price | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| label | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| buttonText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| currency | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| buttonType | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"primary"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"info"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"warning"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"danger"<br/>_ | - | `false` |
+| decimalLength | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| suffixLabel | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderTop | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderTip | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onSubmit | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-declare const SubmitBar: ComponentClass<SubmitBarProps>
-
-export { SubmitBar }
-```

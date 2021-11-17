@@ -49,7 +49,7 @@ export default class Index extends Component {
 
   afterRead = (event) => {
     const { file, name } = event.detail
-    console.log(JSON.stringify(file, null, 2))
+    console.log('...', file, name)
     const fileList = this.state[`fileList${name}`]
 
     this.setState({ [`fileList${name}`]: fileList.concat(file) })
@@ -60,6 +60,7 @@ export default class Index extends Component {
   }
 
   delete = (event) => {
+    console.log('....', event)
     const { index, name } = event.detail
     const fileList = this.state[`fileList${name}`]
     const _fileList = JSON.parse(JSON.stringify(fileList))

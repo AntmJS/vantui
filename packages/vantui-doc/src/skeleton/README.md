@@ -76,25 +76,18 @@ function onReady() {
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### SkeletonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/skeleton.d.ts)   
 
-export interface SkeletonProps extends StandardProps {
-  row?: number
-  title?: boolean
-  avatar?: boolean
-  loading?: boolean
-  animate?: boolean
-  avatarSize?: string | number
-  avatarShape?: 'square' | 'round'
-  titleWidth?: string | number
-  rowWidth?: string | string[]
-  children?: ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| row | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| avatar | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| animate | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| avatarSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| avatarShape | - | _&nbsp;&nbsp;"square"&nbsp;&brvbar;&nbsp;"round"<br/>_ | - | `false` |
+| titleWidth | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| rowWidth | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-declare const Skeleton: ComponentClass<SkeletonProps>
-
-export { Skeleton }
-```

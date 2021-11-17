@@ -135,37 +135,13 @@ db.collection('region')
     console.log(err);
   });
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { PickerProps, IPickerInstance } from './picker'
+### AreaProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/area.d.ts)   
 
-export interface AreaProps
-  extends Omit<PickerProps, 'columns' | 'onChange'>,
-    ComponentClass {
-  value?: string
-  areaList?: {
-    province_list: {
-      [x: number | string]: string
-    }
-    city_list: {
-      [x: number | string]: string
-    }
-    county_list: {
-      [x: number | string]: string
-    }
-  }
-  columnsNum?: string | number
-  columnsPlaceholder?: string[]
-  onChange: (event: {
-    detail: {
-      values: number[] | string[]
-      picker: IPickerInstance
-      index: number
-    }
-  }) => void
-}
-declare const Area: ComponentClass<AreaProps>
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| areaList | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;province_list:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x:&nbsp;number&nbsp;&brvbar;&nbsp;string]:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;city_list:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x:&nbsp;number&nbsp;&brvbar;&nbsp;string]:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;county_list:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x:&nbsp;number&nbsp;&brvbar;&nbsp;string]:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>_ | - | `false` |
+| columnsNum | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| columnsPlaceholder | - | _&nbsp;&nbsp;string[]<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;number[]&nbsp;&brvbar;&nbsp;string[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;picker:&nbsp;IPickerInstance<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 
-export { Area }
-```

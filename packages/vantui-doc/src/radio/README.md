@@ -327,26 +327,19 @@ function onClick(event) {
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+### RadioProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/radio.d.ts)   
 
-export interface RadioProps extends StandardProps {
-  name?: string
-  value?: any
-  disabled?: boolean
-  checkedColor?: string
-  labelPosition?: string
-  labelDisabled?: boolean
-  shape?: 'round' | 'square'
-  iconSize?: number | string
-  children?: ReactNode
-  renderIcon?: ReactNode
-  onChange?: (event: ITouchEvent) => any
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;any<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| checkedColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| labelPosition | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| labelDisabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| shape | - | _&nbsp;&nbsp;"round"&nbsp;&brvbar;&nbsp;"square"<br/>_ | - | `false` |
+| iconSize | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 
-declare const Radio: ComponentClass<RadioProps>
-
-export { Radio }
-```

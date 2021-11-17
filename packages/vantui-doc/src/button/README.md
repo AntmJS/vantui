@@ -246,31 +246,24 @@ import { Button } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { ButtonProps as TaroButtonProps } from '@tarojs/components'
+### ButtonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/button.d.ts)   
 
-export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
-  icon?: string
-  classPrefix?: string
-  type?: 'default' | 'primary' | 'info' | 'warning' | 'danger'
-  size?: 'small' | 'normal' | 'large' | 'mini'
-  block?: boolean
-  round?: boolean
-  square?: boolean
-  loading?: boolean
-  hairline?: boolean
-  disabled?: boolean
-  loadingText?: string
-  loadingSize?: string
-  style?: string
-  loadingType?: 'spinner' | 'circular'
-  color?: string
-  children: ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| classPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"primary"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"info"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"warning"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"danger"<br/>_ | - | `false` |
+| size | - | _&nbsp;&nbsp;"small"&nbsp;&brvbar;&nbsp;"normal"&nbsp;&brvbar;&nbsp;"large"&nbsp;&brvbar;&nbsp;"mini"<br/>_ | - | `false` |
+| block | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| square | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| hairline | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| loadingText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| loadingSize | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| loadingType | - | _&nbsp;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;"circular"<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `true` |
 
-declare const Button: ComponentClass<ButtonProps>
-
-export { Button }
-```

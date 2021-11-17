@@ -139,35 +139,23 @@ function onClose() {
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-import { TransitionProps } from './mixins/transition'
-import { OverlayProps } from './overlay'
+### PopupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/popup.d.ts)   
 
-export interface PopupProps
-  extends TransitionProps,
-    StandardProps,
-    OverlayProps {
-  round?: boolean
-  closeable?: boolean
-  overlayStyle?: string
-  transition?: string
-  zIndex?: number
-  overlay?: boolean
-  closeIcon?: string
-  closeIconPosition?: string
-  closeOnClickOverlay?: boolean
-  position?: 'top' | 'bottom' | 'right' | 'left'
-  safeAreaInsetBottom?: boolean
-  safeAreaInsetTop?: boolean
-  children?: ReactNode
-  onClickOverlay?: () => void
-  onClose?: () => void
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| overlayStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| transition | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| closeIconPosition | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| position | - | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-declare const Popup: ComponentClass<PopupProps>
-
-export { Popup }
-```

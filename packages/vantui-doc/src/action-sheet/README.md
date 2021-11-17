@@ -169,36 +169,34 @@ function onGetUserInfo(e) {
   console.log(e.detail);
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps, ButtonProps, ITouchEvent } from '@tarojs/components'
-import { PopupProps } from './popup'
-export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
-  name?: string
-  subname?: string
-  color?: string
-  loading?: boolean
-  disabled?: boolean
-}
-export interface ActionSheetProps extends StandardProps, PopupProps {
-  actions?: ActionSheetItem[]
-  title?: string
-  show?: boolean
-  cancelText?: string
-  description?: string
-  overlay?: boolean
-  closeOnClickOverlay?: boolean
-  closeOnClickAction?: boolean
-  safeAreaInsetBottom?: boolean
-  round?: boolean
-  zIndex?: number
-  children?: ReactNode
-  onSelect?: (event: ITouchEvent & { detail: ActionSheetItem }) => void
-  onCancel?: () => void
-  onClose?: () => void
-  onClickOverlay?: () => void
-}
-declare const ActionSheet: ComponentClass<ActionSheetProps>
-export { ActionSheet }
-```
+### ActionSheetItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)   
+
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string<br/>_ |
+| subname | - | _&nbsp;&nbsp;string<br/>_ |
+| color | - | _&nbsp;&nbsp;string<br/>_ |
+| loading | - | _&nbsp;&nbsp;boolean<br/>_ |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ |
+
+### ActionSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)   
+[object Object]
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| actions | - | _&nbsp;&nbsp;ActionSheetItem[]<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| cancelText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| description | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickAction | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onSelect | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ActionSheetItem<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+

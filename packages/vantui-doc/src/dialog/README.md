@@ -165,64 +165,35 @@ function onClose() {
   });
 } 
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### DialogProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dialog.d.ts)   
 
-import { ButtonProps } from './button'
-import { PopupProps } from './popup'
-export interface DialogProps
-  extends StandardProps,
-    Omit<PopupProps, 'onClose'>,
-    Omit<ButtonProps, 'children'> {
-  show?: boolean
-  title?: string
-  width?: string | number
-  zIndex?: number
-  theme?: 'round-button'
-  cancelButtonColor?: string
-  confirmButtonColor?: string
-  onConfirm?: (event: {
-    detail: { action: string; dialog?: { dialog: any } }
-  }) => void
-  onCancel?: (event: {
-    detail: { action: string; dialog?: { dialog: any } }
-  }) => void
-  onClose?: (event: { detail: string }) => void
-  message?: string
-  overlay?: boolean
-  selector?: string
-  ariaLabel?: string
-  className?: string
-  style?: string
-  transition?: 'fade' | 'none'
-  /**
-   * @deprecated use beforeClose instead
-   */
-  asyncClose?: boolean
-  beforeClose?: (action: string) => Promise<void | boolean> | void | boolean
-  messageAlign?: 'left' | 'right'
-  confirmButtonText?: string
-  cancelButtonText?: string
-  showConfirmButton?: boolean
-  showCancelButton?: boolean
-  closeOnClickOverlay?: boolean
-  confirmButtonOpenType?: string
-  renderTitle?: ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| width | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| theme | - | _&nbsp;&nbsp;"round-button"<br/>_ | - | `false` |
+| cancelButtonColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| confirmButtonColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| onConfirm | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialog?:&nbsp;{&nbsp;dialog:&nbsp;any&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialog?:&nbsp;{&nbsp;dialog:&nbsp;any&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;(event:&nbsp;{&nbsp;detail:&nbsp;string&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| message | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| selector | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| ariaLabel | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| className | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| transition | - | _&nbsp;&nbsp;"fade"&nbsp;&brvbar;&nbsp;"none"<br/>_ | - | `false` |
+| asyncClose | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| beforeClose | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;action:&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<void&nbsp;&brvbar;&nbsp;boolean>&nbsp;&brvbar;&nbsp;void&nbsp;&brvbar;&nbsp;boolean<br/>_ | - | `false` |
+| messageAlign | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"<br/>_ | - | `false` |
+| confirmButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| cancelButtonText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showConfirmButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| showCancelButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| confirmButtonOpenType | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-interface dialog {
-  alert(options: DialogProps): Promise<void>
-  confirm(options: DialogProps): Promise<void>
-  setDefaultOptions(options: DialogProps): void
-  resetDefaultOptions(): void
-  close(): void
-  stopLoading(): void
-}
-
-// & DialogCom
-declare const Dialog: ComponentClass<DialogProps> & dialog
-
-export { Dialog, dialog }
-```

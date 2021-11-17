@@ -111,32 +111,25 @@ import { NoticeBar } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+### NoticeBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notice-bar.d.ts)   
 
-export interface NoticeBarProps extends StandardProps {
-  text?: string
-  mode?: 'closeable' | 'link'
-  url?: string
-  openType?: any
-  delay?: number
-  speed?: number
-  scrollable?: boolean
-  leftIcon?: string
-  color?: string
-  backgroundColor?: string
-  background?: string
-  wrapable?: boolean
-  children?: ReactNode
-  renderLeftIcon?: ReactNode
-  renderRightIcon?: ReactNode
-  onClick?: (event: ITouchEvent) => any
-  onClose?: (event: ITouchEvent) => any
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| text | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| mode | - | _&nbsp;&nbsp;"closeable"&nbsp;&brvbar;&nbsp;"link"<br/>_ | - | `false` |
+| url | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| openType | - | _&nbsp;&nbsp;any<br/>_ | - | `false` |
+| delay | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| speed | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| scrollable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| backgroundColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| background | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| wrapable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLeftIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 
-declare const NoticeBar: ComponentClass<NoticeBarProps>
-
-export { NoticeBar }
-```

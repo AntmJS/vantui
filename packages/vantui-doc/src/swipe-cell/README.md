@@ -116,53 +116,28 @@ import { SwipeCell } from "vantui";
 ```js
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+### SwipeCellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swipe-cell.d.ts)   
 
-type SwipeCellClick = {
-  detail: {
-    position: 'left' | 'right' | 'cell' | 'outside'
-  }
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| rightWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| asyncClose | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| catchMove | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
+| onOpen | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellOpen)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellClick<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&&nbsp;SwipeCellClose<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderLeft | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| renderRight | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
 
-type SwipeCellOpen = {
-  detail: {
-    position: 'left' | 'right'
-    name: string
-  }
-}
+### ISwiperCellInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swipe-cell.d.ts)   
 
-type SwipeCellClose = {
-  detail: {
-    position: 'left' | 'right'
-    name: string
-  }
-}
+| 方法 | 说明 | 类型 |
+| --- | --- | --- |
+| open | - | _&nbsp;&nbsp;(position:&nbsp;"left"&nbsp;&brvbar;&nbsp;"right")&nbsp;=>&nbsp;void<br/>_ |
+| close | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 
-export interface SwipeCellProps extends StandardProps {
-  disabled?: boolean
-  leftWidth?: number
-  rightWidth?: number
-  asyncClose?: boolean
-  name?: string | number
-  catchMove?: boolean
-  wrapperStyle?: React.CSSProperties
-  onOpen?: (e: ITouchEvent & SwipeCellOpen) => void
-  onClick?: (e: ITouchEvent & SwipeCellClick) => void
-  onClose?: (e: ITouchEvent & SwipeCellClose) => void
-  renderLeft?: React.ReactNode
-  renderRight?: React.ReactNode
-  children?: React.ReactNode
-}
-
-export type ISwiperCellInstance = {
-  open: (position: 'left' | 'right') => void
-  close: () => void
-}
-
-declare const SwipeCell: ComponentClass<SwipeCellProps>
-
-export { SwipeCell }
-```

@@ -78,24 +78,17 @@ import { Progress } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass } from 'react'
-import { StandardProps } from '@tarojs/components'
+### ProgressProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/progress.d.ts)   
 
-export interface ProgressProps extends StandardProps {
-  inactive?: boolean
-  percentage: number
-  pivotText?: string
-  pivotColor?: string
-  trackColor?: string
-  showPivot?: boolean
-  color?: string
-  textColor?: string
-  strokeWidth?: number | string
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| inactive | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| percentage | - | _&nbsp;&nbsp;number<br/>_ | - | `true` |
+| pivotText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| pivotColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| trackColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showPivot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| textColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| strokeWidth | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
 
-declare const Progress: ComponentClass<ProgressProps>
-
-export { Progress }
-```

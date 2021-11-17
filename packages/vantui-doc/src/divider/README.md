@@ -99,22 +99,15 @@ import { Divider } from "vantui";
 </View>
  
 ```
-### TS信息
-```ts 
-import { ComponentClass, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+### DividerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/divider.d.ts)   
 
-export interface DividerProps extends StandardProps {
-  dashed?: boolean
-  hairline?: boolean
-  contentPosition?: 'left' | 'center' | 'right'
-  fontSize?: string
-  borderColor?: string
-  textColor?: string
-  children?: ReactNode
-}
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| dashed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| hairline | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| contentPosition | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"center"&nbsp;&brvbar;&nbsp;"right"<br/>_ | - | `false` |
+| fontSize | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| borderColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| textColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-declare const Divider: ComponentClass<DividerProps>
-
-export { Divider }
-```
