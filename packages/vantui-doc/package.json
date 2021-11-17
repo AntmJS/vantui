@@ -4,11 +4,11 @@
   "version": "1.2.2",
   "description": "",
   "scripts": {
-    "dev": "node synch.js && npx vant-cli dev",
+    "dev": "node ./scripts/ts-to-md && npx vant-cli dev",
     "test:coverage": "open test/coverage/index.html",
-    "build": "node synch.js && sh ./build.sh",
+    "build": "node ./scripts/ts-to-md && sh ./build.sh",
     "release": "npx gh-pages -d site",
-    "docs-ts": "node ./synch.js"
+    "docs-ts": "node ./scripts/ts-to-md"
   },
   "author": "sanshao",
   "license": "MIT",
@@ -18,8 +18,11 @@
   "devDependencies": {
     "@vant/cli": "^3.9.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "ast-to-markdown": "^1.0.0",
     "cross-env": "^7.0.3",
     "glob": "^7.2.0",
+    "markdown-to-ast": "^6.0.3",
+    "prettier": "^2.4.1",
     "vue": "^3.0.0"
   },
   "browserslist": [
