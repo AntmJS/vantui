@@ -196,13 +196,7 @@ this.state = {
 
 ### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
 
-[object Object]
-| 参数 | 说明 | 类型 |
-| --- | --- | --- |
-| name | - | _&nbsp;&nbsp;string<br/>_ |
-| icon | - | _&nbsp;&nbsp;string<br/>_ |
-| description | - | _&nbsp;&nbsp;string<br/>_ |
-| openType | - | _&nbsp;&nbsp;string<br/>_ |
+=======
 ### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)   
 
 | 参数 | 说明 | 类型 |
