@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
+import { ITouchEvent } from '@tarojs/components'
 import VanPicker from '../picker/index'
 import {
   DatetimePickerProps,
@@ -334,8 +335,15 @@ export function DatetimePicker(props: DatetimePickerProps) {
       cancelButtonText={cancelButtonText}
       onChange={onChange_}
       onConfirm={useCallback(
-        function () {
-          if (onConfirm) onConfirm(innerValue)
+        function (event: ITouchEvent) {
+          if (onConfirm) {
+            Object.defineProperty(event, 'detail', {
+              value: {
+                innerValue,
+              },
+            })
+            onConfirm(event)
+          }
         },
         [innerValue, onConfirm],
       )}
