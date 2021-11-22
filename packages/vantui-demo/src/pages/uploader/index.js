@@ -111,7 +111,7 @@ export default class Index extends Component {
       fileList6,
     } = this.state
     return (
-      <DemoPage title="Uploader 文件上传">
+      <DemoPage title="Uploader 文件上传" className="page-uploader">
         <>
           <DemoBlock title="基础用法" padding>
             <Uploader

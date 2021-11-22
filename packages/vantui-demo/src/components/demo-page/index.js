@@ -6,7 +6,7 @@ import './index.less'
 
 export default function Page(props) {
   // eslint-disable-next-line react/prop-types
-  const { title, children } = props
+  const { title, className = '', children } = props
 
   const router = useRouter()
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Page(props) {
   }, [router.path])
 
   return (
-    <View className="demo-page">
+    <View className={`demo-page ${className}`}>
       {'h5' === process.env.TARO_ENV && (
         <View className="demo-nav">
           <Icon
