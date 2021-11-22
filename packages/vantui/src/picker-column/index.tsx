@@ -33,7 +33,7 @@ function Index(
   } = props
 
   const [options, setOptions] = useState<Array<any>>([])
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState<unknown>()
   const [duration, setDuration] = useState(0)
   const [startY, setStartY] = useState(0)
   const [offset, setOffset] = useState(0)
@@ -46,7 +46,9 @@ function Index(
 
   const adjustIndex = useCallback(
     function (index: number): any {
-      const initialOptions_ = options as Array<any>
+      const initialOptions_ = (
+        options.length ? options : initialOptions
+      ) as Array<any>
       const count = initialOptions_.length
       index = range(index, 0, count)
       for (let i = index; i < count; i++) {
@@ -60,7 +62,7 @@ function Index(
         }
       }
     },
-    [isDisabled, options],
+    [isDisabled, options, initialOptions],
   )
 
   const setIndex = useCallback(
@@ -78,19 +80,19 @@ function Index(
     [adjustIndex, curColIndex, currentIndex, itemHeight, onChange],
   )
 
+  useEffect(function () {
+    setCurrentIndex(defaultIndex)
+    setIndex(defaultIndex || 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(
     function () {
-      if (defaultIndex && !currentIndex) setCurrentIndex(defaultIndex || 0)
       if (canInit) {
         setOptions(initialOptions || [])
       }
-      setTimeout(() => {
-        if (defaultIndex && !currentIndex) {
-          setIndex(defaultIndex || 0)
-        }
-      })
     },
-    [currentIndex, initialOptions, setIndex, defaultIndex, canInit],
+    [canInit, initialOptions],
   )
 
   const onTouchMove = useCallback(
@@ -154,7 +156,7 @@ function Index(
 
   const getValue = useCallback(
     function () {
-      return options[currentIndex]
+      return options[currentIndex as number]
     },
     [options, currentIndex],
   )

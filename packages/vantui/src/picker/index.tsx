@@ -138,7 +138,7 @@ const Picker = forwardRef(function Index(
   const setColumnValues = useCallback(function (
     index,
     options,
-    needReset = true,
+    needReset = false,
   ) {
     const column = children.current[index]
     if (column == null) {
