@@ -1,6 +1,13 @@
 import { previewImage as TaroPreviewImage, showToast } from '@tarojs/taro'
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import { View, Text, Image, Video, ITouchEvent } from '@tarojs/components'
+import {
+  View,
+  Block,
+  Text,
+  Image,
+  Video,
+  ITouchEvent,
+} from '@tarojs/components'
 
 import { UploaderProps } from '../../types/uploader'
 import VanLoading from '../loading/index'
@@ -258,99 +265,95 @@ export function Uploader(props: UploaderProps) {
   return (
     <View className={`van-uploader ${className}`} style={style} {...others}>
       <View className="van-uploader__wrapper">
-        {previewImage && (
-          <View className="van-uploader__box">
-            {state.lists.map((item: any, index) => {
-              return (
-                <View
-                  key={item.index || index}
-                  className="van-uploader__preview"
-                  data-index={index}
-                  onClick={_onClickPreview}
-                >
-                  {item.isImage ? (
-                    <Image
-                      mode={imageFit}
-                      src={item.thumb || item.url}
-                      // eslint-disable-next-line
-                      // @ts-ignore
-                      alt={item.name || '图片' + index}
-                      className="van-uploader__preview-image"
-                      style={computed.sizeStyle({
-                        previewSize,
-                      })}
-                      data-index={index}
-                      onClick={onPreviewImage}
-                    ></Image>
-                  ) : item.isVideo ? (
-                    <Video
-                      src={item.url}
-                      title={item.name || '视频' + index}
-                      poster={item.thumb}
-                      autoplay={item.autoplay}
-                      className="van-uploader__preview-image"
-                      style={computed.sizeStyle({
-                        previewSize,
-                      })}
-                      data-index={index}
-                      onClick={onPreviewVideo}
-                    ></Video>
-                  ) : (
-                    <View
-                      className="van-uploader__file"
-                      style={computed.sizeStyle({
-                        previewSize,
-                      })}
-                      data-index={index}
-                      onClick={onPreviewFile}
-                    >
+        {previewImage &&
+          state.lists.map((item: any, index) => {
+            return (
+              <View
+                key={item.index || index}
+                className="van-uploader__preview"
+                data-index={index}
+                onClick={_onClickPreview}
+              >
+                {item.isImage ? (
+                  <Image
+                    mode={imageFit}
+                    src={item.thumb || item.url}
+                    // eslint-disable-next-line
+                    // @ts-ignore
+                    alt={item.name || '图片' + index}
+                    className="van-uploader__preview-image"
+                    style={computed.sizeStyle({
+                      previewSize,
+                    })}
+                    data-index={index}
+                    onClick={onPreviewImage}
+                  ></Image>
+                ) : item.isVideo ? (
+                  <Video
+                    src={item.url}
+                    title={item.name || '视频' + index}
+                    poster={item.thumb}
+                    autoplay={item.autoplay}
+                    className="van-uploader__preview-image"
+                    style={computed.sizeStyle({
+                      previewSize,
+                    })}
+                    data-index={index}
+                    onClick={onPreviewVideo}
+                  ></Video>
+                ) : (
+                  <View
+                    className="van-uploader__file"
+                    style={computed.sizeStyle({
+                      previewSize,
+                    })}
+                    data-index={index}
+                    onClick={onPreviewFile}
+                  >
+                    <VanIcon
+                      name="description"
+                      className="van-uploader__file-icon"
+                    ></VanIcon>
+                    <View className="van-uploader__file-name van-ellipsis">
+                      {item.name || item.url}
+                    </View>
+                  </View>
+                )}
+                {(item.status === 'uploading' || item.status === 'failed') && (
+                  <View className="van-uploader__mask">
+                    {item.status === 'failed' ? (
                       <VanIcon
-                        name="description"
-                        className="van-uploader__file-icon"
+                        name="close"
+                        className="van-uploader__mask-icon"
                       ></VanIcon>
-                      <View className="van-uploader__file-name van-ellipsis">
-                        {item.name || item.url}
-                      </View>
-                    </View>
-                  )}
-                  {(item.status === 'uploading' ||
-                    item.status === 'failed') && (
-                    <View className="van-uploader__mask">
-                      {item.status === 'failed' ? (
-                        <VanIcon
-                          name="close"
-                          className="van-uploader__mask-icon"
-                        ></VanIcon>
-                      ) : (
-                        <VanLoading className="van-uploader__loading"></VanLoading>
-                      )}
-                      {item.message && (
-                        <Text className="van-uploader__mask-message">
-                          {item.message}
-                        </Text>
-                      )}
-                    </View>
-                  )}
-                  {deletable && item.deletable && (
-                    <View
-                      data-index={index}
-                      className="van-uploader__preview-delete"
-                      onClick={deleteItem}
-                    >
-                      <VanIcon
-                        name="cross"
-                        className="van-uploader__preview-delete-icon"
-                      ></VanIcon>
-                    </View>
-                  )}
-                </View>
-              )
-            })}
-          </View>
-        )}
+                    ) : (
+                      <VanLoading className="van-uploader__loading"></VanLoading>
+                    )}
+                    {item.message && (
+                      <Text className="van-uploader__mask-message">
+                        {item.message}
+                      </Text>
+                    )}
+                  </View>
+                )}
+                {deletable && item.deletable && (
+                  <View
+                    data-index={index}
+                    className="van-uploader__preview-delete"
+                    onClick={deleteItem}
+                  >
+                    <VanIcon
+                      name="cross"
+                      className="van-uploader__preview-delete-icon"
+                    ></VanIcon>
+                  </View>
+                )}
+              </View>
+            )
+          })}
         {/*  上传样式  */}
         {state.isInCount && (
-          <View className="van-uploader__box">
+          <Block>
             <View className="van-uploader__slot" onClick={startUpload}>
               {children}
             </View>
@@ -377,7 +380,7 @@ export function Uploader(props: UploaderProps) {
                 )}
               </View>
             )}
-          </View>
+          </Block>
         )}
       </View>
     </View>
