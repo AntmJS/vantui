@@ -15,7 +15,6 @@ import {
   range,
   isValidDate,
   currentYear,
-  diff,
 } from './wxs'
 
 export function DatetimePicker(props: DatetimePickerProps) {
@@ -55,7 +54,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
     if (PickRef.current) {
       const { setColumnValues } = PickRef.current
       PickRef.current.setColumnValues = (...args: any) =>
-        setColumnValues.apply(PickRef.current, [...args, false])
+        setColumnValues.apply(PickRef.current, [args[1], args[2], false])
     }
     return PickRef.current
   }, [])
@@ -175,11 +174,9 @@ export function DatetimePicker(props: DatetimePickerProps) {
           formatter(column.type, value),
         ),
       }))
-      if (!diff(results, columns)) {
-        return setColumns(results)
-      }
+      return setColumns(results)
     },
-    [columns, formatter, getOriginColumns],
+    [formatter, getOriginColumns],
   )
 
   const updateColumnValue = useCallback(
@@ -213,7 +210,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
         setTimeout(() => {
           picker.setValues(values)
           resolve(value)
-        }, 6)
+        }, 16)
       })
     },
     [formatter, getPicker, type, updateColumns],
