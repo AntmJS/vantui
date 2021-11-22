@@ -52,7 +52,7 @@ export default class Index extends Component {
           <DemoBlock title="基础用法">
             <SwipeCell
               rightWidth={65}
-              leftWidth={65}
+              leftWidth={0}
               renderLeft={
                 <>
                   <View className="van-swipe-cell__left_">选择</View>
