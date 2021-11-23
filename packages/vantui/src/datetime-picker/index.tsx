@@ -59,45 +59,48 @@ export function DatetimePicker(props: DatetimePickerProps) {
     return PickRef.current
   }, [])
 
-  const getBoundary = useCallback(function (type, innerValue) {
-    const value = new Date(innerValue)
-    // const boundary = new Date(data[`${type}Date`])
-    const boundary = new Date()
-    let year = boundary.getFullYear() - 5
-    let month = 1
-    let date = 1
-    let hour = 0
-    let minute = 0
-    if (type === 'max') {
-      month = 12
-      date = getMonthEndDay(value.getFullYear(), value.getMonth() + 1)
-      hour = 23
-      minute = 59
-      year = year + 10
-    }
-    // if (value.getFullYear() === year) {
-    //   month = boundary.getMonth() + 1
-    //   if (value.getMonth() + 1 === month) {
-    //     date = boundary.getDate()
-    //     if (value.getDate() === date) {
-    //       hour = boundary.getHours()
-    //       if (value.getHours() === hour) {
-    //         minute = boundary.getMinutes()
-    //       }
-    //     }
-    //   }
-    // }
-    return {
-      [`${type}Year`]: year,
-      [`${type}Month`]: month,
-      [`${type}Date`]: date,
-      [`${type}Hour`]: hour,
-      [`${type}Minute`]: minute,
-    }
-  }, [])
+  const getBoundary = useCallback(
+    function (type, innerValue) {
+      const value = new Date(innerValue)
+      const yearDate = `${type}Date` === 'maxDate' ? maxDate : minDate
+      const boundary = new Date(yearDate)
+      const year = boundary.getFullYear()
+      let month = 1
+      let date = 1
+      let hour = 0
+      let minute = 0
+      if (type === 'max') {
+        month = 12
+        date = getMonthEndDay(value.getFullYear(), value.getMonth() + 1)
+        hour = 23
+        minute = 59
+      }
+      if (value.getFullYear() === year) {
+        month = boundary.getMonth() + 1
+        if (value.getMonth() + 1 === month) {
+          date = boundary.getDate()
+          if (value.getDate() === date) {
+            hour = boundary.getHours()
+            if (value.getHours() === hour) {
+              minute = boundary.getMinutes()
+            }
+          }
+        }
+      }
+
+      return {
+        [`${type}Year`]: year,
+        [`${type}Month`]: month,
+        [`${type}Date`]: date,
+        [`${type}Hour`]: hour,
+        [`${type}Minute`]: minute,
+      }
+    },
+    [maxDate, minDate],
+  )
 
   const getRanges = useCallback(
-    function (): any {
+    function (nowValue?: any): any {
       const res = [
         {
           type: 'hour',
@@ -113,11 +116,11 @@ export function DatetimePicker(props: DatetimePickerProps) {
       }
       const { maxYear, maxDate, maxMonth, maxHour, maxMinute } = getBoundary(
         'max',
-        innerValue,
+        nowValue || innerValue,
       )
       const { minYear, minDate, minMonth, minHour, minMinute } = getBoundary(
         'min',
-        innerValue,
+        nowValue || innerValue,
       )
       const result = [
         {
@@ -150,8 +153,8 @@ export function DatetimePicker(props: DatetimePickerProps) {
   )
 
   const getOriginColumns = useCallback(
-    function () {
-      const results = getRanges().map(({ type, range }: any) => {
+    function (nowValue?: any) {
+      const results = getRanges(nowValue).map(({ type, range }: any) => {
         let values = times(range[1] - range[0] + 1, (index: number) => {
           const value = range[0] + index
           return type === 'year' ? `${value}` : padZero(value)
@@ -168,8 +171,8 @@ export function DatetimePicker(props: DatetimePickerProps) {
   )
 
   const updateColumns = useCallback(
-    function () {
-      const results = getOriginColumns().map((column: any) => ({
+    function (nowValue?: any) {
+      const results = getOriginColumns(nowValue).map((column: any) => ({
         values: column.values.map((value: any) =>
           formatter(column.type, value),
         ),
@@ -204,13 +207,13 @@ export function DatetimePicker(props: DatetimePickerProps) {
         }
       }
       setInnerValue(value)
-      updateColumns()
+      updateColumns(value)
 
       return new Promise((resolve) => {
         setTimeout(() => {
           picker.setValues(values)
           resolve(value)
-        }, 16)
+        }, 66)
       })
     },
     [formatter, getPicker, type, updateColumns],
@@ -240,22 +243,28 @@ export function DatetimePicker(props: DatetimePickerProps) {
     [maxDate, maxHour, maxMinute, minDate, minHour, minMinute, type],
   )
 
-  useEffect(function () {
-    const val = correctValue(value)
-    updateColumnValue(val).then(() => {
-      if (onInput) {
-        onInput({
-          detail: val,
-          currentTarget: {
-            dataset: {
-              type: type,
-            },
-          },
-        } as any)
+  useEffect(
+    function () {
+      const val = correctValue(value)
+      const isEqual = val === innerValue
+      if (!isEqual) {
+        updateColumnValue(val).then(() => {
+          if (onInput) {
+            onInput({
+              detail: val,
+              currentTarget: {
+                dataset: {
+                  type: type,
+                },
+              },
+            } as any)
+          }
+        })
       }
-    })
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    [value, type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute],
+  )
 
   const onChange_ = function () {
     let value: any
