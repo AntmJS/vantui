@@ -1,5 +1,6 @@
 @import '../style/var.less';
 .van-button {
+  width: initial;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -226,4 +227,7 @@
       border-radius: 0;
     }
   }
+}
+.van-button + .van-button {
+  margin-top: 0;
 }

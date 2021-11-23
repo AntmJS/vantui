@@ -39,15 +39,6 @@ applyPolyfills().then(function () {
 })
 ```
 
-- src/index.less
-
-```less
-page,
-body {
-  font-size: 28px;
-}
-```
-
 - webpack.config.js
 
 ```js
