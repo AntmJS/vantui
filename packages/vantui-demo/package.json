@@ -89,6 +89,7 @@
   "author": "",
   "scripts": {
     "iconfont": "npx antm-icon --input-path https://at.alicdn.com/t/xxxx.css --output-path src/iconfont.less",
+    "watch:dd": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type dd --watch",
     "watch:weapp": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type weapp --watch",
     "watch:alipay": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type alipay --watch",
     "watch:tt": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type tt --watch",
@@ -124,6 +125,7 @@
     "@babel/core": "^7.8.0",
     "@tarojs/cli": "3.3.11",
     "@tarojs/mini-runner": "3.3.11",
+    "@tarojs/plugin-platform-alipay-dd": "^0.1.1",
     "@tarojs/webpack-runner": "3.3.11",
     "@types/react": "^17.0.2",
     "@types/webpack-env": "^1.13.6",

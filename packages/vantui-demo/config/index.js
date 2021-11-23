@@ -136,7 +136,10 @@ let config = {
       chunkFilename: 'assets/css/chunk/[name].css',
     },
   },
-  plugins: [[npath.join(process.cwd(), 'config/webpack/configPlugin')]],
+  plugins: [
+    '@tarojs/plugin-platform-alipay-dd',
+    [npath.join(process.cwd(), 'config/webpack/configPlugin')],
+  ],
 }
 
 module.exports = function (merge) {

@@ -14,6 +14,10 @@ const configName = {
     srcConfigName: 'project.tt.json',
     distConfigName: 'project.config.json',
   },
+  dd: {
+    srcConfigName: 'project.dd.json',
+    distConfigName: 'mini.project.json',
+  },
 }
 
 module.exports = function (ctx) {
