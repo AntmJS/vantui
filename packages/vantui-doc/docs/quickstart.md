@@ -15,7 +15,7 @@
 
 ## 安装
 
-### 通过 npm 安装
+### 通过 npm/yarn 安装
 
 ```bash
 # 通过 npm 安装
@@ -23,6 +23,31 @@ npm i @antmjs/vantui -S --production
 
 # 通过 yarn 安装
 yarn add @antmjs/vantui --production
+```
+
+> 由于引用 `node_modules` 的模块，默认不会编译，所以需要额外给 H5 配置 `esnextModules`，在 taro 项目的 `config/index.js` 中新增如下配置项：
+```js
+h5: {
+  esnextModules: ['@antmjs/vantui'],
+  postcss: {
+    autoprefixer: {
+      enable: true,
+      config: {
+      }
+    },
+    pxtransform: {
+      enable: true,
+      config: {},
+    },
+    cssModules: {
+      enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+      config: {
+        namingPattern: 'module', // 转换模式，取值为 global/module
+        generateScopedName: '[name]__[local]___[hash:base64:5]'
+      }
+    }
+  }
+}
 ```
 
 ### 示例工程
@@ -143,7 +168,7 @@ import '@antmjs/vantui/lib/index.css';
 > Tips: 配置按需引入后，将不允许直接导入所有组件。
 
 
-## 注意
+### 注意
 
 ```js
 // Taro小程序
