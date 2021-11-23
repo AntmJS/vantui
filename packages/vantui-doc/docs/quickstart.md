@@ -116,8 +116,6 @@ import Button from '@antmjs/vantui/es/button';
 import '@antmjs/vantui/es/button/style';
 ```
 
-> 如果你在使用 TypeScript，可以使用 [ts-import-plugin](https://github.com/Brooooooklyn/ts-import-plugin) 实现按需引入。
-
 ### 方式二. 在 Vite 项目中按需引入组件
 
 对于 vite 项目，可以使用 [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) 实现按需引入, 原理和 `babel-plugin-import` 类似。
