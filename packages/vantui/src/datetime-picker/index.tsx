@@ -240,26 +240,22 @@ export function DatetimePicker(props: DatetimePickerProps) {
     [maxDate, maxHour, maxMinute, minDate, minHour, minMinute, type],
   )
 
-  useEffect(
-    function () {
-      const val = correctValue(value)
-      const isEqual = val === innerValue
-      if (!isEqual) {
-        updateColumnValue(val).then(() => {
-          if (onInput)
-            onInput({
-              detail: val,
-              currentTarget: {
-                dataset: {
-                  type: type,
-                },
-              },
-            } as any)
-        })
+  useEffect(function () {
+    const val = correctValue(value)
+    updateColumnValue(val).then(() => {
+      if (onInput) {
+        onInput({
+          detail: val,
+          currentTarget: {
+            dataset: {
+              type: type,
+            },
+          },
+        } as any)
       }
-    },
-    [correctValue, innerValue, onInput, updateColumnValue, value, type],
-  )
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const onChange_ = function () {
     let value: any
