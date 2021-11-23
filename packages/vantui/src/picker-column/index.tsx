@@ -131,7 +131,7 @@ function Index(
         )
         setTimeout(() => {
           setIndex(index, true)
-        }, 16)
+        }, 5.5)
       }
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
