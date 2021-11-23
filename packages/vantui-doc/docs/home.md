@@ -76,7 +76,7 @@
 
 * Logo暂时还未获得使用许可，如有侵权，请及时联系我们。
 
-### 参与贡献的小伙伴
+### 以下是 @antmjs/vantui 的核心贡献者们
 
 [![hisanshao](https://avatars.githubusercontent.com/u/26359618?s=100&v=4)](https://github.com/hisanshao/) | [![Chitanda60](https://avatars.githubusercontent.com/u/16026533?s=100&v=4)](https://github.com/Chitanda60/) | [![zuolung](https://avatars.githubusercontent.com/u/19684540?s=100&v=4)](https://github.com/Banlangenn/) | [![hisanshao](https://avatars.githubusercontent.com/u/28145148?s=100&v=4)](https://github.com/zuolung/)
 :---:|:---:|:---:|:---:
