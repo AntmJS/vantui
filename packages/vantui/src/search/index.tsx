@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
-import Field from '../field'
+import { Field } from '../field'
 import { SearchProps } from '../../types/search'
 
 export function Search(props: SearchProps) {
