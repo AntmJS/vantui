@@ -93,7 +93,7 @@ export interface PickerEvents extends ITouchEvent {
  */
 export interface PickerChangeEvents extends ITouchEvent {
   /**
-   * @description 返回选项对应的值、picker实例和选项对应的下标
+   * @description 返回选项对应的值、picker实例和多列返回当前第多少列、单列返回选项对应值
    */
   detail: {
     value: number | number[]

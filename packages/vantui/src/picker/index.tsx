@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   useEffect,
-  useState,
   useCallback,
   useRef,
   forwardRef,
@@ -42,13 +41,10 @@ const Picker = forwardRef(function Index(
     ...others
   } = props
 
-  const [simple, setSimple] = useState(false)
   const children = useRef<Array<any>>([])
 
   useEffect(
     function () {
-      const simple = Boolean(columns && columns.length && !columns[0])
-      setSimple(simple)
       if (Array.isArray(children) && children.length) {
         setColumns().catch(() => {})
       }
@@ -58,6 +54,7 @@ const Picker = forwardRef(function Index(
 
   const emit = useCallback(function (event = {}) {
     const type = event?.currentTarget?.dataset['type']
+    const simple = columns && columns.length && !columns[0].values
     if (typeof event === 'number' || !type) {
       if (onChange) {
         const event_ = {}
@@ -126,19 +123,20 @@ const Picker = forwardRef(function Index(
 
   const setColumns = useCallback(
     function () {
+      const simple = columns && columns.length && !columns[0].values
       const columns_ = simple ? [{ values: columns }] : columns
       const stack = (columns_ || []).map((column, index) =>
         setColumnValues(index, column.values),
       )
       return Promise.all(stack)
     },
-    [columns, simple],
+    [columns],
   )
 
   const setColumnValues = useCallback(function (
     index,
     options,
-    needReset = true,
+    needReset = false,
   ) {
     const column = children.current[index]
     if (column == null) {

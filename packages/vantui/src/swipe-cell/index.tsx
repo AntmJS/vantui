@@ -246,7 +246,7 @@ function Index(
       {...others}
     >
       <View style={wrapperStyle as any}>
-        {leftWidth && (
+        {leftWidth ? (
           <View
             className="van-swipe-cell__left"
             data-key="left"
@@ -255,9 +255,11 @@ function Index(
           >
             {renderLeft}
           </View>
+        ) : (
+          ''
         )}
         {children}
-        {rightWidth && (
+        {rightWidth ? (
           <View
             className="van-swipe-cell__right"
             data-key="right"
@@ -266,6 +268,8 @@ function Index(
           >
             {renderRight}
           </View>
+        ) : (
+          ''
         )}
       </View>
     </View>
