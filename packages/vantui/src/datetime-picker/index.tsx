@@ -1,5 +1,12 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from 'react'
 import { ITouchEvent } from '@tarojs/components'
+import { PickerChangeEvents } from 'packages/vantui/types/picker'
 import VanPicker from '../picker/index'
 import {
   DatetimePickerProps,
@@ -213,7 +220,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
         setTimeout(() => {
           picker.setValues(values)
           resolve(value)
-        }, 66)
+        }, 16)
       })
     },
     [formatter, getPicker, type, updateColumns],
@@ -243,6 +250,12 @@ export function DatetimePicker(props: DatetimePickerProps) {
     [maxDate, maxHour, maxMinute, minDate, minHour, minMinute, type],
   )
 
+  useLayoutEffect(function () {
+    const val = correctValue(value)
+    updateColumnValue(val)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(
     function () {
       const val = correctValue(value)
@@ -266,10 +279,24 @@ export function DatetimePicker(props: DatetimePickerProps) {
     [value, type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute],
   )
 
-  const onChange_ = function () {
+  const onChange_ = function (e: PickerChangeEvents) {
+    const valueArr: any = e.detail.value
     let value: any
     const picker = getPicker()
-    const originColumns = getOriginColumns()
+    if (type === 'datetime') {
+      value = new Date(
+        `${valueArr[0]}-${valueArr[1]}-${valueArr[2]} ${valueArr[3]}:${valueArr[4]}`,
+      ).getTime()
+    } else if (type === 'date') {
+      value = new Date(`${valueArr[0]}-${valueArr[1]}-${valueArr[2]}`).getTime()
+    } else if (type === 'time') {
+      value = new Date(`${valueArr[0]}:${valueArr[1]}`).getTime()
+    } else if (type === 'year-month') {
+      value = new Date(`${valueArr[0]}-${valueArr[1]}`).getTime()
+    }
+
+    const originColumns = getOriginColumns(value)
+
     if (type === 'time') {
       const indexes = picker.getIndexes()
       value = `${+originColumns[0].values[indexes[0]]}:${+originColumns[1]
