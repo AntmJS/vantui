@@ -17,7 +17,7 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   style?: string
   loadingType?: 'spinner' | 'circular'
   color?: string
-  children: ReactNode
+  children?: ReactNode
 }
 
 declare const Button: ComponentClass<ButtonProps>
