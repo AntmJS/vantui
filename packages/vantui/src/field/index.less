@@ -1,4 +1,4 @@
-/* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-descending-specificity, selector-max-type */
 @import '../style/var.less';
 .van-field {
   .theme(--cell-icon-size,  '@field-icon-size');
@@ -20,6 +20,9 @@
       padding: 6px 0;
       line-height: 1.2em;
       .theme(min-height, '@cell-line-height');
+      textarea {
+        resize: none;
+      }
     }
   }
 
@@ -76,6 +79,15 @@
       align-items: center;
 
       .theme(min-height, '@cell-line-height');
+    }
+  }
+
+  .autosize {
+    height: auto;
+
+    textarea {
+      resize: none;
+      overflow: hidden;
     }
   }
 

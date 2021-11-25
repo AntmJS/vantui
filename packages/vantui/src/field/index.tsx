@@ -5,7 +5,10 @@ import * as utils from '../wxs/utils'
 import { FieldProps } from '../../types/field'
 import { Cell } from '../cell/index'
 import { Icon } from '../icon/index'
+import { resizeTextarea } from '../utils'
 import * as computed from './wxs'
+
+let FIELD_INDEX = 0
 
 export function Field(props: FieldProps) {
   const ref: React.MutableRefObject<{
@@ -16,6 +19,7 @@ export function Field(props: FieldProps) {
   const [state, setState] = useState({
     innerValue: '',
     showClear: false,
+    unitag: 'van-field',
   })
   const { innerValue, showClear } = state
   const {
@@ -81,6 +85,25 @@ export function Field(props: FieldProps) {
     onLineChange,
     onKeyboardHeightChange,
   } = props
+
+  useEffect(() => {
+    setState((state) => {
+      return {
+        ...state,
+        unitag: `van-field_uni_${FIELD_INDEX++}`,
+      }
+    })
+  }, [])
+
+  const adjustTextareaSize = () => {
+    // const input = inputRef.value
+    const taroTextarea: any = document.querySelector(`.${state.unitag}`)
+    const textarea = taroTextarea?.children?.[0]
+
+    if (type === 'textarea' && autosize && textarea) {
+      resizeTextarea(textarea, autosize)
+    }
+  }
 
   const emitChange = function (event?: any) {
     event = event || { detail: { value: '' } }
@@ -174,6 +197,14 @@ export function Field(props: FieldProps) {
     },
     [value],
   )
+
+  useEffect(() => {
+    if (process.env.TARO_ENV === 'h5') {
+      adjustTextareaSize()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [innerValue])
+
   return (
     <Cell
       size={size}
@@ -225,7 +256,7 @@ export function Field(props: FieldProps) {
                   disabled,
                   error,
                 },
-              ]) + ' input-class'
+              ]) + ` input-class ${autosize ? 'autosize' : ''} ${state.unitag}`
             }
             fixed={fixed}
             focus={focus}
@@ -240,6 +271,9 @@ export function Field(props: FieldProps) {
               error,
               disabled,
             })}
+            // eslint-disable-next-line
+            // @ts-ignore
+            nativeProps={autosize ? { rows: 1 } : {}}
             autoHeight={!!autosize}
             style={computed.inputStyle(autosize)}
             cursorSpacing={cursorSpacing}
