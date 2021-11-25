@@ -3,7 +3,7 @@
   "version": "1.2.4",
   "private": true,
   "dependencies": {
-    "@antmjs/vantui": "1.2.4",
+    "@antmjs/vantui": "^1.2.4",
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
