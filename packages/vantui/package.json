@@ -64,7 +64,7 @@
     "rollup-plugin-styles": "^3.14.1"
   },
   "devDependencies": {
-    "@antmjs/vantui-cli": "^1.15.4",
+    "@antmjs/vantui-cli": "^1.17.0",
     "@tarojs/components": "^3.3.9",
     "@tarojs/taro": "^3.3.9",
     "@types/lodash.flow": "^3.5.6",
