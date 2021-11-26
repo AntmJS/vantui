@@ -63,13 +63,6 @@ export function Circle(props: CircleProps) {
 
   useReady(() => {
     Taro.nextTick(() => {
-      if (process.env.TARO_ENV === 'h5') {
-        const taroCanvas = document.querySelector(`.${state.unitag}`)
-        const canvas = taroCanvas?.children?.[0]
-        canvas?.setAttribute('width', String(size))
-        canvas?.setAttribute('height', String(size))
-      }
-
       setState((state) => {
         return {
           ...state,
