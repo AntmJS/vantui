@@ -1,4 +1,4 @@
-import Taro, {
+import {
   createSelectorQuery,
   createCanvasContext,
   useReady,
@@ -62,13 +62,11 @@ export function Circle(props: CircleProps) {
   }, [])
 
   useReady(() => {
-    Taro.nextTick(() => {
-      setState((state) => {
-        return {
-          ...state,
-          ready: true,
-        }
-      })
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
+      }
     })
   })
 
@@ -77,21 +75,14 @@ export function Circle(props: CircleProps) {
     // @ts-ignore
     if (process.env.LIBRARY_ENV === 'react') {
       setTimeout(() => {
-        Taro.nextTick(() => {
-          if (process.env.TARO_ENV === 'h5') {
-            const taroCanvas = document.querySelector(`.${state.unitag}`)
-            const canvas = taroCanvas?.children?.[0]
-            canvas?.setAttribute('width', String(size))
-            canvas?.setAttribute('height', String(size))
-
-            setState((state) => {
-              return {
-                ...state,
-                ready: true,
-              }
-            })
-          }
-        })
+        if (process.env.TARO_ENV === 'h5') {
+          setState((state) => {
+            return {
+              ...state,
+              ready: true,
+            }
+          })
+        }
       }, 100)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -266,20 +257,6 @@ export function Circle(props: CircleProps) {
   }, [state.ready, color])
 
   useEffect(() => {
-    // if (process.env.TARO_ENV !== 'h5') {
-    //   if (state.ready) {
-    //     ref.current.currentValue = value
-    //     setHoverColor().then(() => {
-    //       // if (process.env.TARO_ENV === 'h5') {
-    //       // reRender()
-    //       // } else {
-    //       //   drawCircle(ref.current.currentValue)
-    //       // }
-    //       drawCircle(ref.current.currentValue)
-    //     })
-    //   }
-    // }
-
     return () => {
       clearMockInterval()
     }
