@@ -97,7 +97,11 @@ export function Circle(props: CircleProps) {
       Current.page = { path: `page-${state.unitag}` }
     }
     if (type === '' || process.env.TARO_ENV === 'h5') {
-      const ctx = createCanvasContext(state.unitag)
+      let ctx = null
+      try {
+        ctx = createCanvasContext(state.unitag)
+      } catch (error) {}
+
       return Promise.resolve(ctx)
     }
     const dpr = getSystemInfoSync().pixelRatio
@@ -125,18 +129,20 @@ export function Circle(props: CircleProps) {
     if (isObj(color)) {
       const _color = color as Record<string, string>
       return getContext().then((context: any) => {
-        const LinearColor = context.createLinearGradient(size, 0, 0, 0)
-        Object.keys(color)
-          .sort((a, b) => parseFloat(a) - parseFloat(b))
-          .map((key: any) =>
-            LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
-          )
-        setState((state) => {
-          return {
-            ...state,
-            hoverColor: LinearColor,
-          }
-        })
+        if (context) {
+          const LinearColor = context.createLinearGradient(size, 0, 0, 0)
+          Object.keys(color)
+            .sort((a, b) => parseFloat(a) - parseFloat(b))
+            .map((key: any) =>
+              LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
+            )
+          setState((state) => {
+            return {
+              ...state,
+              hoverColor: LinearColor,
+            }
+          })
+        }
       })
     }
     setState((state: any) => {
@@ -190,13 +196,15 @@ export function Circle(props: CircleProps) {
   const drawCircle = useCallback(
     (currentValue: any) => {
       getContext().then((context: any) => {
-        context.clearRect(0, 0, size, size)
-        renderLayerCircle(context)
-        const formatValue = format(currentValue)
-        if (formatValue !== 0) {
-          renderHoverCircle(context, formatValue)
+        if (context) {
+          context.clearRect(0, 0, size, size)
+          renderLayerCircle(context)
+          const formatValue = format(currentValue)
+          if (formatValue !== 0) {
+            renderHoverCircle(context, formatValue)
+          }
+          context.draw()
         }
-        context.draw()
       })
     },
     [getContext, renderHoverCircle, renderLayerCircle, size],
