@@ -51,6 +51,7 @@ export default class Index extends Component {
                 placeholder="请输入用户名"
                 border={false}
                 clearable
+                type="password"
               ></Field>
             </CellGroup>
           </DemoBlock>
