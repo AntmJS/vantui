@@ -6,7 +6,7 @@ import {
   forwardRef,
   memo,
 } from 'react'
-import { View } from '@tarojs/components'
+import { View, CustomWrapper } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { PickerColumnProps } from '../../types/picker-column'
 import { range } from '../common/utils'
@@ -210,41 +210,43 @@ function Index(
       ])}
       {...others}
     >
-      <View
-        style={computed.wrapperStyle({
-          offset,
-          itemHeight,
-          visibleItemCount,
-          duration,
-        })}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-        onTouchCancel={onTouchEnd}
-        catchMove
-      >
-        {options.map((option: any, index: number) => {
-          return (
-            <View
-              key={`picker-column__item${index}`}
-              data-index={index}
-              style={{ height: itemHeight + 'px' }}
-              className={
-                'van-ellipsis ' +
-                utils.bem('picker-column__item', {
-                  disabled: option && option.disabled,
-                  selected: index === currentIndex,
-                }) +
-                ' ' +
-                (index === currentIndex ? 'active-class' : '')
-              }
-              onClick={onClickItem}
-            >
-              {computed.optionText(option, valueKey)}
-            </View>
-          )
-        })}
-      </View>
+      <CustomWrapper>
+        <View
+          style={computed.wrapperStyle({
+            offset,
+            itemHeight,
+            visibleItemCount,
+            duration,
+          })}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onTouchCancel={onTouchEnd}
+          catchMove
+        >
+          {options.map((option: any, index: number) => {
+            return (
+              <View
+                key={`picker-column__item${index}`}
+                data-index={index}
+                style={{ height: itemHeight + 'px' }}
+                className={
+                  'van-ellipsis ' +
+                  utils.bem('picker-column__item', {
+                    disabled: option && option.disabled,
+                    selected: index === currentIndex,
+                  }) +
+                  ' ' +
+                  (index === currentIndex ? 'active-class' : '')
+                }
+                onClick={onClickItem}
+              >
+                {computed.optionText(option, valueKey)}
+              </View>
+            )
+          })}
+        </View>
+      </CustomWrapper>
     </View>
   )
 }
