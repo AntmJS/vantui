@@ -189,6 +189,10 @@ export default [
         path: '/tree-select',
         title: 'TreeSelect 分类选择',
       },
+      {
+        path: '/list',
+        title: 'List 列表',
+      },
     ],
   },
   {

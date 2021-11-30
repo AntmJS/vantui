@@ -90,7 +90,7 @@
   "scripts": {
     "iconfont": "npx antm-icon --input-path https://at.alicdn.com/t/xxxx.css --output-path src/iconfont.less",
     "watch:dd": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type dd --watch",
-    "watch:weapp": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type weapp --watch",
+    "watch:weapp": "cross-env NODE_ENV=production API_ENV=dev WATCHING=true npx taro build --type weapp --watch",
     "watch:alipay": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type alipay --watch",
     "watch:tt": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type tt --watch",
     "watch:h5": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type h5 --watch",
@@ -107,7 +107,7 @@
   },
   "dependencies": {
     "@antmjs/mini-fix": "^1.12.0",
-    "@antmjs/vantui": "1.2.5",
+    "@antmjs/vantui": "^1.2.5",
     "@babel/runtime-corejs3": "^7.14.7",
     "@tarojs/components": "3.3.11",
     "@tarojs/react": "3.3.11",
