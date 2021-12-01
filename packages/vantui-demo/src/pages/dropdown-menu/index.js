@@ -15,6 +15,7 @@ import './index.scss'
 export default class Index extends Component {
   constructor() {
     super()
+    this.instance = null
   }
 
   state = {
@@ -38,7 +39,7 @@ export default class Index extends Component {
   }
 
   onConfirm = () => {
-    this.selectComponent('#item').toggle()
+    this.instance.toggle()
   }
 
   onSwitch1Change = ({ detail }) => {
@@ -73,10 +74,13 @@ export default class Index extends Component {
           <DemoBlock className="white" title="自定义菜单内容">
             <DropdownMenu>
               <DropdownItem value={value1} options={option1}></DropdownItem>
-              <DropdownItem id="item" title={itemTitle}>
+              <DropdownItem
+                ref={(el) => (this.instance = el)}
+                title={itemTitle}
+              >
                 <Cell
                   title={switchTitle1}
-                  renderRighticon={
+                  renderRightIcon={
                     <>
                       <Switch
                         size="24px"
@@ -90,7 +94,7 @@ export default class Index extends Component {
                 ></Cell>
                 <Cell
                   title={switchTitle2}
-                  renderRighticon={
+                  renderRightIcon={
                     <>
                       <Switch
                         size="24px"

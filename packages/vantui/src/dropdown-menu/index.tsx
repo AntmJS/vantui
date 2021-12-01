@@ -10,6 +10,7 @@ import {
 } from 'react'
 import { DropdownMenuProps } from '../../types/dropdown-menu'
 import { addUnit, getRect, getSystemInfoSync } from '../common/utils'
+import { isArray } from '../utils/type'
 import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 
@@ -60,9 +61,12 @@ export function DropdownMenu(props: DropdownMenuProps) {
     [closeOnClickOutside, close],
   )
 
-  useLayoutEffect(function () {
-    updateItemListData()
-  }, [])
+  useLayoutEffect(
+    function () {
+      updateItemListData()
+    },
+    [others.children],
+  )
 
   useEffect(function () {
     return function () {
@@ -78,8 +82,10 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
   const updateItemListData = function () {
     setTimeout(() => {
-      setItemListData(childrenInstance.current.map((child) => child))
-    }, 33)
+      if (childrenInstance.current) {
+        setItemListData(childrenInstance.current.map((child) => child))
+      }
+    }, 333)
   }
 
   const toggleItem = useCallback(function (active: number) {
@@ -155,10 +161,14 @@ export function DropdownMenu(props: DropdownMenuProps) {
   const ResetChildren = useMemo(
     function () {
       const res: Array<JSX.Element> = []
-      if (others.children && Array.isArray(others.children)) {
-        others.children.forEach((child, index) => {
+      const children = isArray(others.children)
+        ? others.children
+        : [others.children]
+      if (children) {
+        ;(children as Array<any>).forEach((child, index) => {
           res.push(
             cloneElement(child as JSX.Element, {
+              direction,
               key: index,
               setChildrenInstance,
               index,
@@ -179,13 +189,13 @@ export function DropdownMenu(props: DropdownMenuProps) {
       return res
     },
     [
-      others.children,
       activeColor,
       closeOnClickOverlay,
       currentIndex,
       direction,
       duration,
       getChildWrapperStyle,
+      others.children,
       overlay,
       setChildrenInstance,
     ],
@@ -196,7 +206,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
       className={`van-dropdown-menu van-dropdown-menu${currentIndex} van-dropdown-menu--top-bottom  ${className}`}
       style={utils.style([style, { position: 'relative' }])}
     >
-      {itemListData.map((item: any, index: number) => {
+      {(itemListData || []).map((item: any, index: number) => {
         return (
           <View
             key={item.index}
