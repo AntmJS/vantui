@@ -4,7 +4,7 @@ function displayTitle(item: any) {
     return item.title
   }
 
-  var match = item.options.filter(function (option: any) {
+  var match = (item.options || []).filter(function (option: any) {
     return option.value === item.value
   })
   var displayTitle = match.length ? match[0].text : ''
