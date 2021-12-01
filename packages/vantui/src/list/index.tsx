@@ -60,24 +60,13 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
   )
   // ==LIST=======================================
   // 是否到底了
-  const isToDown = useRef(false)
-  const [loading, setLoading] = useState(false)
-
-  // const pageNo  = useRef()
+  const reachDownRef = useRef(false)
+  // 是否显示 loading
+  const loadingRef = useRef(false)
+  // 是否显示 报错
+  const [isError, setError] = useState(false)
+  // 是否滚动最上面了
   const reachTopRef = useRef(false)
-  // const scrollParent = useRef<onScrollDetail>({
-  //   /** 横向滚动条位置 */
-  //   scrollLeft: 0,
-  //   /** 竖向滚动条位置 */
-  //   scrollTop: 0,
-  //   /** 滚动条高度 */
-  //   scrollHeight: 0,
-  //   /** 滚动条宽度 */
-  //   scrollWidth: 0,
-  //   deltaX: 0,
-  //   deltaY: 0,
-  // })
-  // const scrollTopRef = useRef(0)
   const [status, setState] = useState<PullRefreshStatus>('normal')
   const [distance, setDistance] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -96,8 +85,8 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
       status !== 'loading' &&
       status !== 'success' &&
       !props.disabled &&
-      !loading,
-    [loading, props.disabled, status],
+      !loadingRef.current,
+    [props.disabled, status],
   )
 
   const ease = useCallback(
@@ -206,6 +195,7 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
   // list
   const doRefresh = useCallback(async () => {
     try {
+      setError(false)
       setStatus(+props.headHeight, true)
       await props.onRefresh?.()
       setDuration(+props.animationDuration)
@@ -216,12 +206,11 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
       }
       // 自动拉满屏幕
       if (props.immediateCheck) {
-        isToDown.current = false
+        reachDownRef.current = false
       }
     } catch (e) {
       setStatus(0, false)
-
-      throw e
+      // throw e
     }
   }, [props, setStatus, showSuccessTip])
   const onTouchEnd = useCallback(() => {
@@ -254,59 +243,52 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
 
   const scrollRef = useRef<TaroElement>()
 
-  // const onScroll = useRef(
-  //   debounce(() => {
-  //     // 如果小于100
-  //     // 检查一下高度
-  //     scrollOffset(scrollRef.current!).then((e) => {
-  //       scrollTopRef.current = e.scrollTop
-  //     })
-  //   }, 300),
-  // ).current
-
-  // usePageScroll(onScroll)
-
   // ==LIST=======================================
   const doLoadMore = useCallback(async () => {
     // console.log('doLoadMore', loading, isTouchable())
     if (props.finished || !isTouchable()) return
     try {
-      setLoading(true)
+      setError(false)
+      loadingRef.current = true
       await props?.onLoad?.()
-      setLoading(false)
+      loadingRef.current = false
     } catch (e) {
-      setLoading(false)
-
-      throw e
+      loadingRef.current = false
+      setError(true)
+      // 这里要主动触发刷新
+      // throw e
     }
   }, [isTouchable, props])
 
-  const check = useCallback(async () => {
-    if (props.finished || !isTouchable()) return
+  const check = useCallback(
+    async (isErrorFlag?: boolean) => {
+      // const error = isErrorFlag !== undefined ? isErrorFlag : isError
+      if (props.finished || !isTouchable() || (isError && isErrorFlag)) return
 
-    const scrollParentRect = await boundingClientRect(scrollRef.current!)
+      const scrollParentRect = await boundingClientRect(scrollRef.current!)
 
-    if (!scrollParentRect.height) {
-      return
-    }
+      if (!scrollParentRect.height) {
+        return
+      }
 
-    const placeholderRect = await boundingClientRect(placeholder.current!)
-    const isReachEdge =
-      placeholderRect.bottom - scrollParentRect.bottom <= props.offset
+      const placeholderRect = await boundingClientRect(placeholder.current!)
+      const isReachEdge =
+        placeholderRect.bottom - scrollParentRect.bottom <= props.offset
 
-    if (isReachEdge) {
-      await doLoadMore()
-    } else {
-      isToDown.current = true
-    }
-  }, [doLoadMore, isTouchable, props.finished, props.offset])
+      if (isReachEdge) {
+        await doLoadMore()
+      } else {
+        reachDownRef.current = true
+      }
+    },
+    [doLoadMore, isError, isTouchable, props.finished, props.offset],
+  )
 
   useEffect(() => {
-    if (props.immediateCheck && !props.finished && !isToDown.current) {
+    if (props.immediateCheck && !props.finished && !reachDownRef.current) {
       check()
     }
   }, [props.immediateCheck, props.finished, check])
-  // const [loading, setLoading] = useState(false)
   const placeholder = useRef<TaroElement>()
   const listBem = useCallback(
     (name?: string) => (name ? 'van-list__' + name : 'van-list'),
@@ -336,7 +318,7 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
   // }, [])
 
   const renderLoading = useCallback((): React.ReactNode => {
-    if (loading && !props.finished) {
+    if (!props.finished) {
       return (
         <View className={listBem('loading')}>
           {props?.renderLoading ? (
@@ -351,18 +333,45 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
       )
     }
     return null
-  }, [
-    listBem,
-    loading,
-    props.finished,
-    props.loadingText,
-    props?.renderLoading,
-  ])
+  }, [listBem, props.finished, props.loadingText, props?.renderLoading])
+
+  const clickErrorText = useCallback(() => {
+    setError(false)
+    check(false)
+  }, [check])
+
+  const renderErrorText = useCallback((): React.ReactNode => {
+    if (isError) {
+      const text = props.renderError ? props.renderError : props.errorText
+      if (text) {
+        return (
+          <View className={listBem('error-text')} onClick={clickErrorText}>
+            {text}
+          </View>
+        )
+      }
+    }
+    return null
+  }, [clickErrorText, isError, listBem, props.errorText, props.renderError])
   // 如果不定高 一直下拉
 
-  // useReachBottom(() => {
-  //   doLoadMore()
-  // })
+  const ListScrollContent = useCallback(() => {
+    if (isError) {
+      return renderErrorText()
+    }
+
+    if (props.finished) {
+      return renderFinishedText()
+    }
+
+    return renderLoading()
+  }, [
+    isError,
+    props.finished,
+    renderErrorText,
+    renderFinishedText,
+    renderLoading,
+  ])
 
   return (
     <ScrollView
@@ -387,9 +396,8 @@ export const PullRefresh: React.FC<ListProps> = (_props) => {
             {renderStatus()}
           </View>
           {props.children}
-          {renderLoading()}
-          {renderFinishedText()}
           <View ref={placeholder} className={listBem('placeholder')} />
+          {ListScrollContent()}
         </View>
       </View>
     </ScrollView>

@@ -34,6 +34,7 @@ export interface ListProps extends StandardProps, PullRefreshProps {
   immediateCheck?: boolean
   renderFinished?: React.ReactNode
   renderLoading?: React.ReactNode
+  renderError?: React.ReactNode
   onLoad?: () => Promise<any>
 }
 
