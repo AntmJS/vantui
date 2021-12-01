@@ -1,6 +1,6 @@
 import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
-
+import { ScrollViewProps } from '@tarojs/components/types/ScrollView'
 export type PullRefreshStatus =
   | 'normal'
   | 'loading'
@@ -25,7 +25,10 @@ interface PullRefreshProps {
   onRefresh?: () => Promise<any>
 }
 
-export interface ListProps extends StandardProps, PullRefreshProps {
+export interface ListProps
+  extends StandardProps,
+    PullRefreshProps,
+    ScrollViewProps {
   offset?: number // makeNumericProp(300),
   finished?: boolean
   errorText?: string
