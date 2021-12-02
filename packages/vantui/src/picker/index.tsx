@@ -42,6 +42,7 @@ const Picker = forwardRef(function Index(
   } = props
 
   const children = useRef<Array<any>>([])
+  const handleIndex = useRef<number>(-1)
 
   useEffect(
     function () {
@@ -57,6 +58,7 @@ const Picker = forwardRef(function Index(
     const simple = columns && columns.length && !columns[0].values
     if (typeof event === 'number' || !type) {
       if (onChange) {
+        handleIndex.current = event // 当前在操作第多少列
         const event_ = {}
         Object.defineProperties(event_, {
           detail: {
@@ -133,29 +135,34 @@ const Picker = forwardRef(function Index(
     [columns],
   )
 
-  const setColumnValues = useCallback(function (
-    index,
-    options,
-    needReset = false,
-  ) {
-    const column = children.current[index]
-    if (column == null) {
-      return Promise.reject(new Error('setColumnValues: 对应列不存在'))
-    }
-    const isSame =
-      JSON.stringify(column.props.options) === JSON.stringify(options)
-    if (isSame) {
-      return Promise.resolve()
-    }
-    return column.set({ options }).then(() => {
-      if (needReset) {
-        setTimeout(() => {
-          column.setIndex(0)
-        })
+  const setColumnValues = useCallback(
+    function (index, options) {
+      if (handleIndex.current === index || index < handleIndex.current) return
+      const column = children.current[index]
+      if (column == null) {
+        return Promise.reject(new Error('setColumnValues: 对应列不存在'))
       }
-    })
-  },
-  [])
+      const isSame =
+        JSON.stringify(column.props.options) === JSON.stringify(options)
+
+      if (isSame) {
+        return Promise.resolve()
+      }
+
+      console.info(handleIndex)
+
+      return column.set({ options }).then(() => {
+        const cIndex = column.getCurrentIndex()
+        setTimeout(() => {
+          // 在下标大于新数据的长度的时候
+          if (cIndex > options.length) {
+            column.setIndex(0)
+          }
+        }, 30)
+      })
+    },
+    [handleIndex],
+  )
 
   const getValues = useCallback(function () {
     return children.current.map((child) => child.getValue())
