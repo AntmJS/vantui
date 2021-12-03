@@ -216,6 +216,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     try {
       errorRef.current = false
       setStatus(+headHeight, true)
+      setError(false)
       await onScrollToUpper?.()
       setDuration(+animationDuration)
       if (successText) {
