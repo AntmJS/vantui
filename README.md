@@ -55,6 +55,7 @@
 
 ### 预览
 
+<img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-weapp.png" />
 <img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-h5.png" />
 
 ### 贡献代码
