@@ -1,6 +1,6 @@
 <div class="card">
   <div class="intro" style="text-align: center; padding: 20px;">
-    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
+    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
     <p>一套基于 vant-weapp 开发的在 Taro-React / React 框架中使用的多端 UI 组件库</p>
   </div>

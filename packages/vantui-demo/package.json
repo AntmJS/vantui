@@ -15,9 +15,9 @@
   },
   "appId": {
     "weapp": {
-      "real": "",
-      "pre": "",
-      "dev": ""
+      "real": "wx5902fa56c2961815",
+      "pre": "wx5902fa56c2961815",
+      "dev": "wx5902fa56c2961815"
     },
     "tt": {
       "real": "",
@@ -94,10 +94,12 @@
     "watch:alipay": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type alipay --watch",
     "watch:tt": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type tt --watch",
     "watch:h5": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type h5 --watch",
+    "dev:dd": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type dd",
     "dev:weapp": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type weapp",
     "dev:alipay": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type alipay",
     "dev:tt": "cross-env NODE_ENV=production API_ENV=dev npx taro build --type tt",
     "dev:h5": "cross-env NODE_ENV=production API_ENV=dev PUBLIC_PATH=https://x.x.com/${API_ENV}/${pkgName}/${version}/ npx taro build --type h5",
+    "real:dd": "cross-env NODE_ENV=production API_ENV=real npx taro build --type dd",
     "real:weapp": "cross-env NODE_ENV=production API_ENV=real npx taro build --type weapp",
     "real:alipay": "cross-env NODE_ENV=production API_ENV=real npx taro build --type alipay",
     "real:tt": "cross-env NODE_ENV=production API_ENV=real npx taro build --type tt",

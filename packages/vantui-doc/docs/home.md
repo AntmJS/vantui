@@ -1,6 +1,6 @@
 <div class="card">
   <div class="intro" style="text-align: center; padding: 20px;">
-    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
+    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
     <p>基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</p>
   </div>
@@ -55,7 +55,7 @@
 
 ### 预览
 
-正在全力建设中，需要看小程序的可以参见快速上手...
+<img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-h5.png" />
 
 ### 贡献代码
 
