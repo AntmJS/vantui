@@ -263,6 +263,10 @@ module.exports = {
             path: 'tag',
             title: 'Tag 标签',
           },
+          {
+            path: 'power-scroll-view',
+            title: 'PowerScrollView 滚动列表',
+          },
         ],
       },
       {

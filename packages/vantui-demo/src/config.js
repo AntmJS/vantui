@@ -190,8 +190,8 @@ export default [
         title: 'TreeSelect 分类选择',
       },
       {
-        path: '/list',
-        title: 'List 列表',
+        path: '/power-scroll-view',
+        title: 'PowerScrollView 滚动列表',
       },
     ],
   },

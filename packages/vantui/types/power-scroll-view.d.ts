@@ -18,18 +18,18 @@ interface PullRefreshProps {
   pullDistance?: number | string
   successDuration?: number | string
   animationDuration?: number | string
-  renderHead?: (
-    status: PullRefreshStatus,
-    distance: number,
-  ) => React.ReactNode | void
-  onRefresh?: () => Promise<any>
+  renderHead?: (params: {
+    status: PullRefreshStatus
+    distance: number
+  }) => React.ReactNode | void
+  onRefresh?: () => Promise<void>
 }
 
-export interface ListProps
+export interface PowerScrollViewProps
   extends StandardProps,
     PullRefreshProps,
-    ScrollViewProps {
-  offset?: number // makeNumericProp(300),
+    Omit<ScrollViewProps, 'onScrollToUpper' | 'onScrollToLower'> {
+  offset?: number
   finished?: boolean
   errorText?: string
   loadingText?: string
@@ -38,9 +38,12 @@ export interface ListProps
   renderFinished?: React.ReactNode
   renderLoading?: React.ReactNode
   renderError?: React.ReactNode
-  onLoad?: () => Promise<any>
+  onLoad?: () => Promise<void>
+  // Scroll
+  onScrollToUpper?: () => Promise<void>
+  onScrollToLower?: () => Promise<void>
 }
 
-declare const List: ComponentClass<ListProps>
+declare const PowerScrollView: ComponentClass<PowerScrollViewProps>
 
-export { List }
+export { PowerScrollView }

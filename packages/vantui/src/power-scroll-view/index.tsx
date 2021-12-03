@@ -4,7 +4,10 @@ import { TaroElement } from '@tarojs/runtime'
 import { Loading } from './../loading'
 import { useTouch } from './useTouch'
 import { scrollOffset, preventDefault, boundingClientRect } from './utils'
-import { ListProps, PullRefreshStatus } from './../../types/list'
+import {
+  PowerScrollViewProps,
+  PullRefreshStatus,
+} from './../../types/power-scroll-view'
 /**
  * bem helper
  * b() // 'button'
@@ -14,9 +17,10 @@ import { ListProps, PullRefreshStatus } from './../../types/list'
  * b(['disabled', 'primary']) // 'button button--disabled button--primary'
  */
 // const [name, bem, t] = createNamespace('pull-refresh')
-const pullRefreshBem = (name?: string) =>
-  name ? 'van-pull-refresh__' + name : 'van-pull-refresh'
-const listBem = (name?: string) => (name ? 'van-list__' + name : 'van-list')
+// const pullRefreshBem = (name?: string) =>
+//   name ? 'van-pull-refresh__' + name : 'van-pull-refresh'
+const bem = (name?: string) =>
+  name ? 'van-power-scroll-view__' + name : 'van-power-scroll-view'
 const sleep = (t: number) =>
   new Promise<void>((resolve) => {
     setTimeout(() => {
@@ -26,16 +30,17 @@ const sleep = (t: number) =>
 const DEFAULT_HEAD_HEIGHT = 50
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
 
-export const PullRefresh: React.FC<ListProps> = (props) => {
+export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
   const {
     headHeight = DEFAULT_HEAD_HEIGHT,
     successDuration = 500,
     animationDuration = 300,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     disabled,
-    pullDistance,
+    pullDistance = props.refresherThreshold || props.pullDistance,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onRefresh,
     renderHead,
-    scrollY = true,
     immediateCheck,
     successText,
     children,
@@ -43,28 +48,34 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
     loosingText = '释放即可刷新...',
     pullingText = '下拉即可刷新...',
     // -- list
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onLoad,
-    offset = 250,
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    offset,
     finishedText = '没有更多了',
     renderFinished,
     renderLoading,
     finished,
     renderError,
     errorText,
-    // 重复的属性  以 vant 为准
+    //命名以scrollView 为准
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     upperThreshold,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onScrollToLower,
+    lowerThreshold = props.lowerThreshold || props.offset || 250,
+    // 重复的属性  以 vant 为准
+    refresherEnabled = props.refresherEnabled ?? props.disabled ?? true,
+    onScrollToLower = props.onScrollToLower || props.onLoad,
+    onScrollToUpper = props.onScrollToUpper || props.onRefresh,
+    scrollY = props.scrollY ?? true,
     ...rest
   } = props
   // ==LIST=======================================
   // 是否到底了
-  const reachDownRef = useRef(false)
+  // const reachDownRef = useRef(false)
   // 是否显示 loading
   const loadingRef = useRef(false)
   // 是否显示 报错
+  const errorRef = useRef(false)
   const [isError, setError] = useState(false)
   // 是否滚动最上面了
   const reachTopRef = useRef(false)
@@ -81,14 +92,14 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
     return ''
   }, [headHeight])
 
-  const isTouchable = useCallback(
-    () =>
+  const isTouchable = useCallback(() => {
+    return (
       status !== 'loading' &&
       status !== 'success' &&
-      !disabled &&
-      !loadingRef.current,
-    [disabled, status],
-  )
+      refresherEnabled &&
+      !loadingRef.current
+    )
+  }, [refresherEnabled, status])
 
   const ease = useCallback(
     (distance: number) => {
@@ -111,11 +122,12 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
     (distance: number, isLoading?: boolean) => {
       const _pullDistance = +(pullDistance || headHeight)
       setDistance(distance)
-
       if (isLoading) {
         setState('loading')
+        loadingRef.current = true
       } else if (distance === 0) {
         setState('normal')
+        loadingRef.current = false
       } else if (distance < _pullDistance) {
         setState('pulling')
       } else {
@@ -135,24 +147,23 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
     if (status === 'pulling') {
       return pullingText
     }
+    if (status === 'success') {
+      return successText
+    }
     return ''
-  }, [loadingText, loosingText, pullingText, status])
+  }, [loadingText, loosingText, pullingText, status, successText])
 
   const renderStatus = useCallback((): React.ReactNode => {
-    const node = renderHead?.(status, distance)
+    const node = renderHead?.({ status, distance })
     if (node) {
       return node
     }
 
     if (TEXT_STATUS.includes(status)) {
-      return <View className={pullRefreshBem('text')}>{getStatusText()}</View>
+      return <View className={bem('text')}>{getStatusText()}</View>
     }
     if (status === 'loading') {
-      return (
-        <Loading className={pullRefreshBem('loading')}>
-          {getStatusText()}
-        </Loading>
-      )
+      return <Loading className={bem('loading')}>{getStatusText()}</Loading>
     }
     return ''
   }, [distance, getStatusText, status, renderHead])
@@ -161,15 +172,12 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
     // state.status = 'success'
     setState('success')
     await sleep(+successDuration)
-    setStatus(0)
-  }, [successDuration, setStatus])
+  }, [successDuration])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkPosition = useCallback(
     async (event: ITouchEvent) => {
       const { scrollTop } = await scrollOffset(scrollRef.current!)
-      // console.log('scrollTopscrollTop:', scrollTop)
-      // scrollTopRef.current
       reachTopRef.current = scrollTop === 0
       if (reachTopRef.current) {
         setDuration(0)
@@ -206,19 +214,16 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
   // list
   const doRefresh = useCallback(async () => {
     try {
-      setError(false)
+      errorRef.current = false
       setStatus(+headHeight, true)
-      await onRefresh?.()
+      await onScrollToUpper?.()
       setDuration(+animationDuration)
       if (successText) {
         await showSuccessTip()
-      } else {
-        setStatus(0, false)
       }
-      // 自动拉满屏幕
-      if (immediateCheck) {
-        reachDownRef.current = false
-      }
+      setStatus(0, false)
+
+      // 阻止下拉过程中 二次触发下拉
     } catch (e) {
       setStatus(0, false)
       // throw e
@@ -226,8 +231,7 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
   }, [
     animationDuration,
     headHeight,
-    immediateCheck,
-    onRefresh,
+    onScrollToUpper,
     setStatus,
     showSuccessTip,
     successText,
@@ -263,87 +267,76 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
   const scrollRef = useRef<TaroElement>()
 
   // ==LIST=======================================
+
+  const isBanLoad = useCallback(() => {
+    return (
+      finished || status !== 'normal' || loadingRef.current || errorRef.current
+    )
+  }, [finished, status])
   const doLoadMore = useCallback(async () => {
-    // console.log('doLoadMore', loading, isTouchable())
-    if (finished || !isTouchable()) return
+    if (isBanLoad()) return
     try {
-      setError(false)
       loadingRef.current = true
-      await onLoad?.()
+      await onScrollToLower?.()
       loadingRef.current = false
     } catch (e) {
       loadingRef.current = false
+      errorRef.current = true
       setError(true)
       // 这里要主动触发刷新
       // throw e
     }
-  }, [finished, isTouchable, onLoad])
+  }, [isBanLoad, onScrollToLower])
 
-  const check = useCallback(
-    async (isErrorFlag?: boolean) => {
-      const error = isErrorFlag !== undefined ? isErrorFlag : isError
-      if (finished || !isTouchable() || error) return
+  const check = useCallback(async () => {
+    if (!immediateCheck || !scrollY || isBanLoad()) return
+    const scrollParentRect = await boundingClientRect(scrollRef.current!)
 
-      const scrollParentRect = await boundingClientRect(scrollRef.current!)
+    if (!scrollParentRect?.height) {
+      return
+    }
 
-      if (!scrollParentRect?.height) {
-        return
-      }
+    const placeholderRect = await boundingClientRect(placeholder.current!)
+    const isReachEdge =
+      placeholderRect.bottom - scrollParentRect.bottom <= lowerThreshold
 
-      const placeholderRect = await boundingClientRect(placeholder.current!)
-      const isReachEdge =
-        placeholderRect.bottom - scrollParentRect.bottom <= offset
-
-      if (isReachEdge) {
-        await doLoadMore()
-      } else {
-        reachDownRef.current = true
-      }
-    },
-    [doLoadMore, isError, isTouchable, finished, offset],
-  )
+    if (isReachEdge) {
+      doLoadMore()
+    }
+  }, [immediateCheck, scrollY, isBanLoad, lowerThreshold, doLoadMore])
 
   useEffect(() => {
-    if (immediateCheck && !finished && !reachDownRef.current) {
-      check()
-    }
-  }, [immediateCheck, finished, check])
+    // finished || status !== 'normal' || loadingRef.current || errorRef.current
+    check()
+  }, [check, status])
 
   useEffect(() => {
     setTimeout(() => {
       check()
     }, 500)
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const placeholder = useRef<TaroElement>()
 
   const renderFinishedText = useCallback((): React.ReactNode => {
     if (finished) {
       const text = renderFinished ? renderFinished : finishedText
       if (text) {
-        return <View className={listBem('finished-text')}>{text}</View>
+        return <View className={bem('finished-text')}>{text}</View>
       }
     }
     return null
   }, [finished, renderFinished, finishedText])
 
-  // useEffect(() => {
-  //   nextTick(() => {
-  //     if (immediateCheck) {
-  //       console.log('onmount')
-  //       check()
-  //     }
-  //   })
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
-
   const renderLoadingText = useCallback((): React.ReactNode => {
-    if (!finished) {
+    if (!finished && scrollY) {
       return (
-        <View className={listBem('loading')}>
+        <View className={bem('loading')}>
           {renderLoading ? (
             renderLoading
           ) : (
-            <Loading className={listBem('loading-icon')}>
+            <Loading className={bem('loading-icon')}>
               {/* {loadingText || t('loading')} */}
               {loadingText}
             </Loading>
@@ -352,19 +345,21 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
       )
     }
     return null
-  }, [finished, loadingText, renderLoading])
+  }, [finished, loadingText, scrollY, renderLoading])
 
   const clickErrorText = useCallback(() => {
     setError(false)
-    check(false)
-  }, [check])
+    errorRef.current = false
+    doLoadMore()
+    // web 很奇怪的问题
+  }, [doLoadMore])
 
   const renderErrorText = useCallback((): React.ReactNode => {
     if (isError) {
       const text = renderError ? renderError : errorText
       if (text) {
         return (
-          <View className={listBem('error-text')} onClick={clickErrorText}>
+          <View className={bem('error-text')} onClick={clickErrorText}>
             {text}
           </View>
         )
@@ -395,25 +390,25 @@ export const PullRefresh: React.FC<ListProps> = (props) => {
   return (
     <ScrollView
       ref={scrollRef}
-      scrollY={scrollY}
-      lowerThreshold={offset}
+      lowerThreshold={lowerThreshold}
       onScrollToLower={doLoadMore}
+      scrollY={scrollY}
       {...rest}
     >
-      <View className={pullRefreshBem()}>
+      <View className={bem()}>
         <View
-          className={pullRefreshBem('track')}
+          className={bem('track')}
           style={trackStyle}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
           onTouchCancel={onTouchEnd}
           onTouchStart={onTouchStart}
         >
-          <View className={pullRefreshBem('head')} style={getHeadStyle()}>
+          <View className={bem('head')} style={getHeadStyle()}>
             {renderStatus()}
           </View>
           {children}
-          <View ref={placeholder} className={listBem('placeholder')} />
+          <View ref={placeholder} className={bem('placeholder')} />
           {ListScrollContent()}
         </View>
       </View>

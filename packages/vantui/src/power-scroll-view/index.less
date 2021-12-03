@@ -5,13 +5,13 @@
 @pull-refresh-head-font-size: @font-size-md;
 @pull-refresh-head-text-color: @gray-6;
 @pull-refresh-loading-icon-size: 32px;
-// --list
+// list
 @list-text-color: @gray-6;
 @list-text-font-size: @font-size-md;
 @list-text-line-height: 100px;
 @list-loading-icon-size: 32px;
 
-.van-pull-refresh {
+.van-power-scroll-view {
   // overflow: hidden;
   user-select: none;
   // height: 100%;
@@ -44,10 +44,8 @@
       .theme(height, '@pull-refresh-loading-icon-size');
     }
   }
-}
 
-// ---list
-.van-list {
+  // ---list
   &__loading,
   &__finished-text,
   &__error-text {
