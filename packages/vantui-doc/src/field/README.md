@@ -246,7 +246,7 @@ this.state = {
 | selectionEnd | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
 | adjustPosition | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | holdKeyboard | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"number"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"idcard"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"digit"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"textarea"<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"number"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"idcard"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"digit"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"textarea"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"password"<br/>_ | - | `false` |
 | password | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | confirmType | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"send"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"search"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"next"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"go"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"done"<br/>_ | - | `false` |
 | confirmHold | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |

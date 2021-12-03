@@ -149,8 +149,6 @@ const Picker = forwardRef(function Index(
         return Promise.resolve()
       }
 
-      console.info(handleIndex)
-
       return column.set({ options }).then(() => {
         const cIndex = column.getCurrentIndex()
         setTimeout(() => {

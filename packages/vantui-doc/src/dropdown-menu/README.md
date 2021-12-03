@@ -241,9 +241,9 @@ function onSwitch2Change({
 | onClose | 关闭下拉项触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 | onClosed | 展开下拉项完成触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 | onChange | 点击选项触发 | _&nbsp;&nbsp;(value?:&nbsp;number&nbsp;&brvbar;&nbsp;string)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| children | 传入的子元素 | _&nbsp;&nbsp;JSX.Element&nbsp;&brvbar;&nbsp;JSX.Element[]<br/>_ | - | `false` |
+| children | 传入的子元素 | _&nbsp;&nbsp;React.ReactNode&nbsp;&brvbar;&nbsp;React.ReactNode[]<br/>_ | - | `false` |
 
-### 菜单下拉选项 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
+### 菜单下拉选项DropdownMenuOption [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
 
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
