@@ -186,6 +186,7 @@ export function Uploader(props: UploaderProps) {
       const { index } = event.currentTarget.dataset
       const params = Object.assign(Object.assign({}, getDetail(index)), {
         file: fileList?.[index],
+        fileList: fileList && isArray(fileList) ? [...fileList] : fileList,
       })
       Object.defineProperty(event, 'detail', {
         value: params,

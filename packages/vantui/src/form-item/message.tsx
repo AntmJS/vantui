@@ -1,0 +1,58 @@
+import { useMemo } from 'react'
+
+type Iprops = {
+  status?: 'reject' | 'pendding' | 'resolve'
+  message?: string
+  required?: boolean
+  name?: string
+  value?: any
+  feedback?: 'success' | 'failed' | 'all' | 'hidden'
+}
+
+export default function Message(props: Iprops) {
+  const { status, message, required, name, value, feedback = 'failed' } = props
+  const config = useMemo(() => {
+    let mess = ''
+    let color = '#fff'
+    let ifShow = true
+    if (required && !value && status === 'reject') {
+      mess = `${name} 不能为空`
+      color = 'red'
+    } else if (status === 'reject') {
+      mess = message || ''
+      color = 'red'
+    } else if (status === 'pendding') {
+      mess = ''
+    } else if (status === 'resolve') {
+      mess = '校验通过'
+      color = 'green'
+    }
+
+    if (feedback === 'success' && status === 'resolve') {
+      ifShow = true
+    } else ifShow = false
+    if (feedback === 'failed' && status === 'reject') {
+      ifShow = true
+    } else ifShow = false
+    if (feedback === 'all') ifShow = true
+    if (feedback === 'hidden') ifShow = false
+
+    return {
+      color,
+      mess,
+      ifShow,
+    }
+  }, [status, message, required, name, value, feedback])
+
+  return (
+    <>
+      {config.ifShow ? (
+        <div className="react-form-design-message">
+          <span style={{ color: config.color }}>{config.mess}</span>
+        </div>
+      ) : (
+        ''
+      )}
+    </>
+  )
+}
