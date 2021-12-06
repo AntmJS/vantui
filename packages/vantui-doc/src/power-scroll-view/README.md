@@ -65,8 +65,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 
  <PowerScrollView
   <!-- -->
-  <!-- 通过 immediateCheck 可以设置自动加载满屏。 -->
-  immediateCheck
+
   <!-- 通过 finishedText 可以设置数据已全部加载完毕的底部提示文案。 -->
   finishedText="没有更多了"
   className="pull-basics"
@@ -112,6 +111,11 @@ basicsLoadMore = async (isRefresh = false) => {
     basicsList: [...this.state.basicsList, ...append],
     basicsFinished: append.length === 0,
   })
+}
+
+
+onLoad() {
+  this.basicsLoadMore()
 }
 ```
 
@@ -339,7 +343,6 @@ onLoad() {
 | loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
-| immediateCheck | 是否在初始化时立即执行滚动位置检查 | _boolean_ | `false` |
 
 ### 自定义Render
 

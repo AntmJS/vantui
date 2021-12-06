@@ -154,7 +154,7 @@ export default class Index extends Component {
   onLoad() {
     this.searchLoadMore()
     this.errorLoadMore()
-    // this.basicsLoadMore()
+    this.basicsLoadMore()
   }
 
   // 搜索
@@ -165,7 +165,6 @@ export default class Index extends Component {
         <Tabs animated>
           <Tab title="基础用法" key="basics">
             <PowerScrollView
-              immediateCheck
               finishedText="没有更多了"
               className={`${this.isMin ? 'min-' : ''}pull-basics`}
               successText="刷新成功"
@@ -244,6 +243,20 @@ export default class Index extends Component {
                     onScrollToLower={this.searchLoadMore}
                     finished={this.state.searchFinished}
                     lowerThreshold={300}
+                    headHeight="80"
+                    renderHead={({ distance, status }) => {
+                      return (
+                        <Image
+                          className="doge"
+                          src="https://img-blog.csdnimg.cn/20210515142150468.gif"
+                          style={
+                            status === 'pulling'
+                              ? { transform: `scale(${distance / 80})` }
+                              : ''
+                          }
+                        />
+                      )
+                    }}
                   >
                     {this.state.searchList.map((e, i) => (
                       <Cell key={i} title={e} />

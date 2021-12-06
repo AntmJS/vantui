@@ -25,12 +25,17 @@ interface PullRefreshProps {
   onRefresh?: () => Promise<void>
 }
 
+type eventType = {
+  page: number
+  pageSize: number
+}
+
 export interface PowerScrollViewProps
   extends StandardProps,
     PullRefreshProps,
     Omit<ScrollViewProps, 'onScrollToUpper' | 'onScrollToLower'> {
   offset?: number
-  finished?: boolean
+  // finished?: boolean
   errorText?: string
   loadingText?: string
   finishedText?: string
@@ -40,8 +45,8 @@ export interface PowerScrollViewProps
   renderError?: React.ReactNode
   onLoad?: () => Promise<void>
   // Scroll
-  onScrollToUpper?: () => Promise<void>
-  onScrollToLower?: () => Promise<void>
+  onScrollToUpper?: (event: eventType) => Promise<void>
+  onScrollToLower?: (event: eventType) => Promise<void>
 }
 
 declare const PowerScrollView: ComponentClass<PowerScrollViewProps>
