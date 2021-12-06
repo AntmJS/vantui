@@ -27,7 +27,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
   if (isRefresh) {
     startIndex = 0
   }
-  if (startIndex >= 50) {
+  if (startIndex >= 67) {
     return []
   }
   console.log(`${name}:请求~`, 'isRefresh:', isRefresh)
@@ -53,17 +53,15 @@ export default class Index extends Component {
   state = {
     // basics
     basicsList: [],
-    basicsFinished: false,
     // error
     errorList: [],
-    errorFinished: false,
     // search
     searchList: [],
-    searchFinished: false,
   }
 
   // 基础用法
-  basicsDoRefresh = async () => {
+  basicsDoRefresh = async (event) => {
+    console.log(event)
     const append = await mockRequest(
       this.state.basicsList.length,
       true,
@@ -71,11 +69,13 @@ export default class Index extends Component {
     )
     this.setState({
       basicsList: append,
-      basicsFinished: append.length === 0,
     })
   }
-  basicsLoadMore = async (isRefresh = false) => {
-    // debugger
+  basicsLoadMore = async (
+    event = { page: 1, pageSize: 20 },
+    isRefresh = false,
+  ) => {
+    console.log(event)
     const append = await mockRequest(
       this.state.basicsList.length,
       isRefresh,
@@ -83,12 +83,13 @@ export default class Index extends Component {
     )
     this.setState({
       basicsList: [...this.state.basicsList, ...append],
-      basicsFinished: append.length === 0,
+      // basicsFinished: append.length === 0,
     })
   }
 
   // 错误提示
-  errorDoRefresh = async () => {
+  errorDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
+    console.log(event)
     this.error = false
     const append = await mockRequest(
       this.state.errorList.length,
@@ -100,7 +101,11 @@ export default class Index extends Component {
       errorFinished: append.length === 0,
     })
   }
-  errorLoadMore = async (isRefresh = false) => {
+  errorLoadMore = async (
+    event = { page: 1, pageSize: 20 },
+    isRefresh = false,
+  ) => {
+    console.log(event)
     const append = await mockRequest(
       this.state.errorList.length,
       isRefresh,
@@ -125,10 +130,11 @@ export default class Index extends Component {
       searchList: [],
       searchFinished: false,
     })
-    await this.searchLoadMore(true)
+    await this.searchLoadMore(undefined, true)
   }
 
-  searchDoRefresh = async () => {
+  searchDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
+    console.log(event)
     const append = await mockRequest(
       this.state.searchList.length,
       true,
@@ -139,7 +145,11 @@ export default class Index extends Component {
       searchFinished: append.length === 0,
     })
   }
-  searchLoadMore = async (isRefresh = false) => {
+  searchLoadMore = async (
+    event = { page: 1, pageSize: 20 },
+    isRefresh = false,
+  ) => {
+    console.log(event)
     const append = await mockRequest(
       this.state.searchList.length,
       isRefresh,
@@ -171,7 +181,6 @@ export default class Index extends Component {
               successDuration={1500}
               onScrollToUpper={this.basicsDoRefresh}
               onScrollToLower={this.basicsLoadMore}
-              finished={this.state.basicsFinished}
             >
               {this.state.basicsList.map((e, i) => (
                 <Cell key={i} title={e} />
@@ -185,7 +194,6 @@ export default class Index extends Component {
               finishedText="没有更多了"
               onScrollToUpper={this.errorDoRefresh}
               onScrollToLower={this.errorLoadMore}
-              finished={this.state.errorFinished}
               lowerThreshold={300}
               headHeight="80"
               renderHead={({ status, distance }) => {
@@ -241,7 +249,6 @@ export default class Index extends Component {
                     finishedText="--- 我是有底线的 ---"
                     onScrollToUpper={this.searchDoRefresh}
                     onScrollToLower={this.searchLoadMore}
-                    finished={this.state.searchFinished}
                     lowerThreshold={300}
                     headHeight="80"
                     renderHead={({ distance, status }) => {
