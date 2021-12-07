@@ -6,6 +6,7 @@ import {
   CustomWrapper,
 } from '@tarojs/components'
 import { TaroElement } from '@tarojs/runtime'
+import { debounce } from 'lodash'
 import { Loading } from './../loading'
 import { useTouch } from './useTouch'
 import {
@@ -59,6 +60,8 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     // -- list
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onLoad,
+    onScroll: onScrollEvent,
+    scrollTop,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     offset,
     finishedText = '没有更多了',
@@ -68,7 +71,9 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     // finished: hasMore = false,
     renderError,
     errorText,
-    // power = true,
+    total,
+    current,
+    pageSize = 20,
     //命名以scrollView 为准
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     upperThreshold,
@@ -90,46 +95,50 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
   // 分页
   const paginationRef = useRef({
     page: 0,
-    pageSize: 20,
+    pageSize,
   })
 
   const [finished, setFinished] = useState(false)
 
-  // useEffect(() => {
-  //   if (!power) {
-  //     setFinished(hasMore)
-  //   }
-  // }, [hasMore, power])
-
-  const listCount = useRef(0)
   useEffect(() => {
-    // if (!power) return
-    if (children) {
-      const totalCount = Array.from(children as any).length
-      const { pageSize } = paginationRef.current
-      if (totalCount <= pageSize) {
-        // 被重置了
-        paginationRef.current.page = 1
-        listCount.current = 0
-        setFinished(false)
-      } else {
-        const addCount = totalCount - listCount.current
-        if (
-          listCount.current !== 0 &&
-          addCount > -1 &&
-          addCount < paginationRef.current.pageSize
-        ) {
-          setFinished(true)
-          // 最后一页
-        }
-      }
-
-      listCount.current = totalCount
+    const { pageSize } = paginationRef.current
+    if (current <= pageSize) {
+      paginationRef.current.page = 1
     }
-  }, [children])
+    if (current >= total) {
+      setFinished(true)
+    } else {
+      setFinished(false)
+    }
+  }, [total, current])
+
+  // const listCount = useRef(0)
+  // useEffect(() => {
+  //   if (children) {
+  //     const current = Array.from(children as any).length
+  //     const { pageSize } = paginationRef.current
+  //     if (current <= pageSize) {
+  //       // 被重置了
+  //       paginationRef.current.page = 1
+  //       listCount.current = 0
+  //       setFinished(false)
+  //     } else {
+  //       const addCount = current - listCount.current
+  //       if (
+  //         listCount.current !== 0 &&
+  //         addCount > -1 &&
+  //         addCount < paginationRef.current.pageSize
+  //       ) {
+  //         setFinished(true)
+  //         // 最后一页
+  //       }
+  //     }
+  //     listCount.current = current
+  //   }
+  // }, [children])
   const [isError, setError] = useState(false)
   // 是否滚动最上面了
-  const reachTopRef = useRef(false)
+  const reachTopRef = useRef(true)
   const [status, setState] = useState<PullRefreshStatus>('normal')
   const [distance, setDistance] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -225,11 +234,31 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     await sleep(+successDuration)
   }, [successDuration])
 
+  // 提前把reachTopRef.current的值 求出来
+  const debounceScrollOffset = useMemo(() => {
+    const getScrollTop = async () => {
+      const { scrollTop } = await scrollOffset(scrollRef.current!)
+      reachTopRef.current = scrollTop === 0
+    }
+    return debounce(getScrollTop, 400)
+  }, [])
+  // 如果这是了 scrollTop 要触发ScrollOffset计算
+  useEffect(() => {
+    debounceScrollOffset()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollTop])
+  const onScroll = useCallback(
+    (e) => {
+      onScrollEvent?.(e)
+      debounceScrollOffset()
+    },
+    [debounceScrollOffset, onScrollEvent],
+  )
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkPosition = useCallback(
     async (event: ITouchEvent) => {
-      const { scrollTop } = await scrollOffset(scrollRef.current!)
-      reachTopRef.current = scrollTop === 0
+      // const { scrollTop } = await scrollOffset(scrollRef.current!)
+      // reachTopRef.current = scrollTop === 0
       if (reachTopRef.current) {
         setDuration(0)
         touch.start(event)
@@ -450,6 +479,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     <ScrollView
       ref={scrollRef}
       lowerThreshold={lowerThreshold}
+      onScroll={onScroll}
       onScrollToLower={doLoadMore}
       scrollY={scrollY}
       {...rest}
