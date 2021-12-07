@@ -58,7 +58,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 
 - 开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则会自动渲染`renderFinished||finishedText`。
 
-- 组件内部会根据`total`和`current pageSize(有默认参考值)`管理分页和是否到最后一页 
+- 组件内部会根据`total`管理分页和数据是否已全部加载完毕
 
 
 ```html
@@ -73,9 +73,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
   successText="刷新成功"
   onScrollToUpper={this.basicsDoRefresh}
   onScrollToLower={this.basicsLoadMore}
-  current={this.state.basicsList.length}
   total={TOTAL}
-  pageSize={20}
 >
   {this.state.basicsList.map((e, i) => (
     <Cell key={i} title={e} />
@@ -140,9 +138,12 @@ function fetch() { // 正确
 ```
 
 
-### 自定义提示
+### 自定义提示和分页参数
 
-通过renderHead可以自定义下拉刷新过程中的提示内容。
+- 通过`renderHead`可以自定义下拉刷新过程中的提示内容。
+- 默认的`current`是通过`children.length`来计算的,也可以传入`current={list.length}`
+- 默认`pageSize`是`20`通常是需要铺满可滚动窗口的高度,也可以传入`pageSize={15}`
+
 
 ```html
 <PowerScrollView
@@ -151,12 +152,10 @@ function fetch() { // 正确
   finishedText="没有更多了"
   onScrollToUpper={this.errorDoRefresh}
   onScrollToLower={this.errorLoadMore}
-  lowerThreshold={300}
   headHeight="80"
   total={TOTAL}
-  <!-- -->
-  <!-- current={this.state.errorList.length} //默认children.length  -->
-  <!-- pageSize={20}  // 默认20 -->
+  current={this.state.errorList.length}
+  pageSize={15}
   renderHead={({status, distance}) => {
     if (status === 'pulling') {
         <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
