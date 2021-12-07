@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import {
   Tabs,
   Tab,
@@ -22,12 +22,14 @@ const sleep = (t) =>
     }, t)
   })
 
+const TOTAL = 70
+
 const mockRequest = async (_startIndex, isRefresh, name) => {
   let startIndex = _startIndex
   if (isRefresh) {
     startIndex = 0
   }
-  if (startIndex >= 67) {
+  if (startIndex >= TOTAL) {
     return []
   }
   console.log(`${name}:请求~`, 'isRefresh:', isRefresh)
@@ -36,7 +38,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
   for (let i = 0; i < 20; i++) {
     list.push(
       <View>
-        {name}
+        <Text style={{ marginRight: '20px' }}> {name}</Text>
         <Tag type="success">{`index:${startIndex + i}`}</Tag>
       </View>,
     )
@@ -83,7 +85,6 @@ export default class Index extends Component {
     )
     this.setState({
       basicsList: [...this.state.basicsList, ...append],
-      // basicsFinished: append.length === 0,
     })
   }
 
@@ -98,7 +99,6 @@ export default class Index extends Component {
     )
     this.setState({
       errorList: append,
-      errorFinished: append.length === 0,
     })
   }
   errorLoadMore = async (
@@ -120,7 +120,6 @@ export default class Index extends Component {
     }
     this.setState({
       errorList: [...this.state.errorList, ...append],
-      errorFinished: append.length === 0,
     })
   }
 
@@ -128,7 +127,6 @@ export default class Index extends Component {
   doSearch = async () => {
     this.setState({
       searchList: [],
-      searchFinished: false,
     })
     await this.searchLoadMore(undefined, true)
   }
@@ -142,7 +140,6 @@ export default class Index extends Component {
     )
     this.setState({
       searchList: append,
-      searchFinished: append.length === 0,
     })
   }
   searchLoadMore = async (
@@ -157,11 +154,10 @@ export default class Index extends Component {
     )
     this.setState({
       searchList: [...this.state.searchList, ...append],
-      searchFinished: append.length === 0,
     })
   }
 
-  onLoad() {
+  componentDidMount() {
     this.searchLoadMore()
     this.errorLoadMore()
     this.basicsLoadMore()
@@ -181,6 +177,8 @@ export default class Index extends Component {
               successDuration={1500}
               onScrollToUpper={this.basicsDoRefresh}
               onScrollToLower={this.basicsLoadMore}
+              current={this.state.basicsList.length}
+              total={TOTAL}
             >
               {this.state.basicsList.map((e, i) => (
                 <Cell key={i} title={e} />
@@ -196,6 +194,8 @@ export default class Index extends Component {
               onScrollToLower={this.errorLoadMore}
               lowerThreshold={300}
               headHeight="80"
+              current={this.state.errorList.length}
+              total={TOTAL}
               renderHead={({ status, distance }) => {
                 if (status === 'pulling') {
                   return (
@@ -251,6 +251,8 @@ export default class Index extends Component {
                     onScrollToLower={this.searchLoadMore}
                     lowerThreshold={300}
                     headHeight="80"
+                    current={this.state.searchList.length}
+                    total={TOTAL}
                     renderHead={({ distance, status }) => {
                       return (
                         <Image

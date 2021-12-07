@@ -480,6 +480,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
       ref={scrollRef}
       lowerThreshold={lowerThreshold}
       onScroll={onScroll}
+      scrollTop={scrollTop}
       onScrollToLower={doLoadMore}
       scrollY={scrollY}
       {...rest}

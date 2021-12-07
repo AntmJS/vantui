@@ -24,13 +24,13 @@ const sleep = (t) =>
       resolve()
     }, t)
   })
-
+const TOTAL = 70
 const mockRequest = async (_startIndex, isRefresh, name) => {
   let startIndex = _startIndex
   if (isRefresh) {
     startIndex = 0
   }
-  if (startIndex >= 50) {
+  if (startIndex >= TOTAL) {
     return []
   }
   console.log(`${name}:请求~`, 'isRefresh:', isRefresh)
@@ -54,12 +54,11 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 ### 基础用法
 
 
-开启下拉刷新`(refresherEnabled默认开启)`时, 下拉会触发 `onScrollToUpper` 事件，在事件的回调函数中可以进行异步操作
+开启下拉刷新`(refresherEnabled默认开启)`时, 下拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作
 
-开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则直接将 finished 设置成 true 即可。
+开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则会自动渲染`renderFinished||finishedText`。
 
-
-
+组件内部会根据`total current pageSize`管理分页和是否到最后一页
 
 ```html
 
@@ -73,7 +72,9 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
   successText="刷新成功"
   onScrollToUpper={this.basicsDoRefresh}
   onScrollToLower={this.basicsLoadMore}
-  finished={this.state.basicsFinished}
+  current={this.state.basicsList.length}
+  total={TOTAL}
+  pageSize={20}
 >
   {this.state.basicsList.map((e, i) => (
     <Cell key={i} title={e} />
@@ -86,11 +87,10 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 state = {
   // basics
   basicsList: [],
-  basicsFinished: false,
 }
 
 // 基础用法
-basicsDoRefresh = async () => {
+basicsDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
   const append = await mockRequest(
     this.state.basicsList.length,
     true,
@@ -98,10 +98,9 @@ basicsDoRefresh = async () => {
   )
   this.setState({
     basicsList: append,
-    basicsFinished: append.length === 0,
   })
 }
-basicsLoadMore = async (isRefresh = false) => {
+basicsLoadMore = async (event = { page: 1, pageSize: 20 }, isRefresh = false) => {
   const append = await mockRequest(
     this.state.basicsList.length,
     isRefresh,
@@ -109,7 +108,6 @@ basicsLoadMore = async (isRefresh = false) => {
   )
   this.setState({
     basicsList: [...this.state.basicsList, ...append],
-    basicsFinished: append.length === 0,
   })
 }
 
@@ -152,9 +150,10 @@ function fetch() { // 正确
   finishedText="没有更多了"
   onScrollToUpper={this.errorDoRefresh}
   onScrollToLower={this.errorLoadMore}
-  finished={this.state.errorFinished}
   lowerThreshold={300}
   headHeight="80"
+  current={this.state.errorList.length}
+  total={TOTAL}
   renderHead={({status, distance}) => {
     if (status === 'pulling') {
         <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
@@ -201,10 +200,9 @@ function fetch() { // 正确
 state = {
   // error
   errorList: [],
-  errorFinished: false,
 }
 error = false
-errorDoRefresh = async () => {
+errorDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
   this.error = false
   const append = await mockRequest(
     this.state.errorList.length,
@@ -213,10 +211,9 @@ errorDoRefresh = async () => {
   )
   this.setState({
     errorList: append,
-    errorFinished: append.length === 0,
   })
 }
-errorLoadMore = async (isRefresh = false) => {
+errorLoadMore = async (event = { page: 1, pageSize: 20 },isRefresh = false) => {
   const append = await mockRequest(
     this.state.errorList.length,
     isRefresh,
@@ -230,7 +227,6 @@ errorLoadMore = async (isRefresh = false) => {
   }
   this.setState({
     errorList: [...this.state.errorList, ...append],
-    errorFinished: append.length === 0,
   })
 }
 
@@ -263,8 +259,9 @@ onLoad() {
           finishedText="--- 我是有底线的 ---"
           onScrollToUpper={this.searchDoRefresh}
           onScrollToLower={this.searchLoadMore}
-          finished={this.state.searchFinished}
           lowerThreshold={300}
+          current={this.state.searchList.length}
+          total={TOTAL}
         >
           {this.state.searchList.map((e, i) => (
             <Cell key={i} title={e} />
@@ -287,18 +284,16 @@ onLoad() {
 state = {
   // error
   searchList: [],
-  searchFinished: false,
 }
   // 搜索
 doSearch = async () => {
   this.setState({
     searchList: [],
-    searchFinished: false,
   })
-  await this.searchLoadMore(true)
+  await this.searchLoadMore(undefined,true)
 }
 
-searchDoRefresh = async () => {
+searchDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
   const append = await mockRequest(
     this.state.searchList.length,
     true,
@@ -306,10 +301,9 @@ searchDoRefresh = async () => {
   )
   this.setState({
     searchList: append,
-    searchFinished: append.length === 0,
   })
 }
-searchLoadMore = async (isRefresh = false) => {
+searchLoadMore = async (event = { page: 1, pageSize: 20 },isRefresh = false) => {
   const append = await mockRequest(
     this.state.searchList.length,
     isRefresh,
@@ -317,7 +311,6 @@ searchLoadMore = async (isRefresh = false) => {
   )
   this.setState({
     searchList: [...this.state.searchList, ...append],
-    searchFinished: append.length === 0,
   })
 }
 onLoad() {
@@ -339,10 +332,10 @@ onLoad() {
 | animationDuration | 动画时长 | _number \| string_ | `300` |
 | headHeight | 顶部内容高度 | _number \| string_ | `50` |
 | pullDistance `v3.0.8` | 触发下拉刷新的距离 | _number \| string_ | 与 `headHeight` 一致 |
-| finished | 是否已加载完成，加载完成后不再触发 `onScrollToLower` 事件 | _boolean_ | `false` |
 | loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
+
 
 ### 自定义Render
 
@@ -368,8 +361,13 @@ status =
 |scrollY | 	允许纵向滚动 |`true`|
 |refresherEnabled | 开启下拉刷新|`true`|
 |lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 |  250|
-| onScrollToUpper | 下拉刷新时触发 | ` () => Promise<void> `     |
-| onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 |  `() => Promise<void> `    |
+|onScrollToUpper | 下拉刷新时触发 | ` () => Promise<void> `     |
+|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 |  `() => Promise<void> `    |
+| total | 列表总个数 | _number | - |
+| current | 当前列表个数 | _number | - |
+| pageSize | 一页条数 | _number | 20 |
+
+
 
 ### 类型定义
 
