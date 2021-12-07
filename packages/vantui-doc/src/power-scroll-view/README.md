@@ -58,7 +58,8 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 
 开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则会自动渲染`renderFinished||finishedText`。
 
-组件内部会根据`total current pageSize`管理分页和是否到最后一页
+组件内部会根据`total`和`current pageSize(有默认参考值)`管理分页和是否到最后一页 
+
 
 ```html
 
@@ -152,8 +153,10 @@ function fetch() { // 正确
   onScrollToLower={this.errorLoadMore}
   lowerThreshold={300}
   headHeight="80"
-  current={this.state.errorList.length}
   total={TOTAL}
+  <!-- -->
+  <!-- current={this.state.errorList.length} //默认children.length  -->
+  <!-- pageSize={20}  // 默认20 -->
   renderHead={({status, distance}) => {
     if (status === 'pulling') {
         <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
@@ -260,7 +263,6 @@ onLoad() {
           onScrollToUpper={this.searchDoRefresh}
           onScrollToLower={this.searchLoadMore}
           lowerThreshold={300}
-          current={this.state.searchList.length}
           total={TOTAL}
         >
           {this.state.searchList.map((e, i) => (
@@ -363,8 +365,8 @@ status =
 |lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 |  250|
 |onScrollToUpper | 下拉刷新时触发 | ` () => Promise<void> `     |
 |onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 |  `() => Promise<void> `    |
-| total | 列表总个数 | _number | - |
-| current | 当前列表个数 | _number | - |
+| total | 列表总个数 | _number | 0 |
+| current | 当前列表个数 | _number | children.length |
 | pageSize | 一页条数 | _number | 20 |
 
 

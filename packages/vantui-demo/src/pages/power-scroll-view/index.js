@@ -194,7 +194,6 @@ export default class Index extends Component {
               onScrollToLower={this.errorLoadMore}
               lowerThreshold={300}
               headHeight="80"
-              current={this.state.errorList.length}
               total={TOTAL}
               renderHead={({ status, distance }) => {
                 if (status === 'pulling') {
@@ -251,7 +250,6 @@ export default class Index extends Component {
                     onScrollToLower={this.searchLoadMore}
                     lowerThreshold={300}
                     headHeight="80"
-                    current={this.state.searchList.length}
                     total={TOTAL}
                     renderHead={({ distance, status }) => {
                       return (

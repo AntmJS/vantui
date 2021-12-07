@@ -71,7 +71,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     // finished: hasMore = false,
     renderError,
     errorText,
-    total,
+    total = 0,
     current,
     pageSize = 20,
     //命名以scrollView 为准
@@ -99,18 +99,18 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
   })
 
   const [finished, setFinished] = useState(false)
-
+  const currentCount = current ?? Array.from(children as any).length
   useEffect(() => {
     const { pageSize } = paginationRef.current
-    if (current <= pageSize) {
+    if (currentCount <= pageSize) {
       paginationRef.current.page = 1
     }
-    if (current >= total) {
+    if (currentCount >= total) {
       setFinished(true)
     } else {
       setFinished(false)
     }
-  }, [total, current])
+  }, [total, currentCount])
 
   // const listCount = useRef(0)
   // useEffect(() => {

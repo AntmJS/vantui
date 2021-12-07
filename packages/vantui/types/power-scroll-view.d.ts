@@ -35,8 +35,8 @@ export interface PowerScrollViewProps
     PullRefreshProps,
     Omit<ScrollViewProps, 'onScrollToUpper' | 'onScrollToLower'> {
   offset?: number
-  total: number
-  current: number
+  total?: number
+  current?: number
   pageSize?: number
   // finished?: boolean
   errorText?: string
