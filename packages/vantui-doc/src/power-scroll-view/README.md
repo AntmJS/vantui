@@ -336,6 +336,9 @@ onLoad() {
 | loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
+| total | 列表总个数 | _number_ | `0` | 
+| current | 当前列表个数 | _number_ | `children.length` |
+| pageSize | 一页个数 | _number_ | `20` |
 
 
 ### 自定义Render
@@ -364,10 +367,6 @@ status =
 |lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 | _number_ | `250` |
 |onScrollToUpper | 下拉刷新时触发 | _() => Promise<{page: number,paseSize:number}>_ | `()=>{}` |
 |onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 | _() => Promise<{page: number,paseSize:number}>_ | `() =>{}` |
-| total | 列表总个数 | _number_ | `0` | 
-| current | 当前列表个数 | _number_ | `children.length` |
-| pageSize | 一页个数 | _number_ | `20` |
-
 
 
 ### 类型定义
