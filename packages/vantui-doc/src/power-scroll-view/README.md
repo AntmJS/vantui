@@ -54,11 +54,11 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 ### 基础用法
 
 
-开启下拉刷新`(refresherEnabled默认开启)`时, 下拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作
+- 开启下拉刷新`(refresherEnabled默认开启)`时, 下拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作
 
-开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则会自动渲染`renderFinished||finishedText`。
+- 开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则会自动渲染`renderFinished||finishedText`。
 
-组件内部会根据`total`和`current pageSize(有默认参考值)`管理分页和是否到最后一页 
+- 组件内部会根据`total`和`current pageSize(有默认参考值)`管理分页和是否到最后一页 
 
 
 ```html
@@ -358,16 +358,16 @@ status =
 
 ### ScrollView 原有属性重写或补充
 
-| 事件名  | 说明           |默认值 |
-| ------- | -------------- | -------- |
-|scrollY | 	允许纵向滚动 |`true`|
-|refresherEnabled | 开启下拉刷新|`true`|
-|lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 |  250|
-|onScrollToUpper | 下拉刷新时触发 | ` () => Promise<void> `     |
-|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 |  `() => Promise<void> `    |
-| total | 列表总个数 | _number | 0 |
-| current | 当前列表个数 | _number | children.length |
-| pageSize | 一页条数 | _number | 20 |
+| 参数 | 说明 | 类型 | 默认值 |
+| ------- | -------------- | -------- | -------- |
+|scrollY | 	允许纵向滚动 |_boolean_| `true` |
+|refresherEnabled | 开启下拉刷新|_boolean_| `true` |
+|lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 | _number_ | `250` |
+|onScrollToUpper | 下拉刷新时触发 | _() => Promise<{page: number,paseSize:number}>_ | `()=>{}` |
+|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 | _() => Promise<{page: number,paseSize:number}>_ | `() =>{}` |
+| total | 列表总个数 | _number_ | `0` | 
+| current | 当前列表个数 | _number_ | `children.length` |
+| pageSize | 一页个数 | _number_ | `20` |
 
 
 
