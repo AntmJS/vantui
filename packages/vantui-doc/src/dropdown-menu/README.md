@@ -213,21 +213,47 @@ function onSwitch2Change({
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| direction | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| closeOnClickOutside | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| popupStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
-| wrapperStyle | - | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
-| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| options | - | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
-| value | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| activeColor | 选中选项后颜色 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| overlay | 是否展示蒙层 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | 弹出层zIndex | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| duration | 弹出层执行时间 | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| direction | 弹出层执行方向 | _&nbsp;&nbsp;"down"&nbsp;&brvbar;&nbsp;"up"<br/>_ | - | `false` |
+| closeOnClickOverlay | 点击蒙层是否关闭弹出层 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeOnClickOutside | 是否在点击外部 menu 后关闭菜单 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | 子元素,须为DropdownMenuItem | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `true` |
+
+### DropdownItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | 对应菜单选项的值 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| title | 未选择时候的按钮标题 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| disabled | 是否禁用 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| titleClass | 标题元素的class | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| options | 所有选项 | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_ | - | `true` |
+| popupStyle | 弹出层的样式 | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
+| direction | 弹出层方向 | _&nbsp;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_ | - | `false` |
+| duration | 弹出层执行时间（单位毫秒） | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| closeOnClickOverlay | 点击梦层是否关闭 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| activeColor | 选中项的颜色 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| onOpen | 展开下拉项触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onOpened | 展开下拉项完成时触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | 关闭下拉项触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClosed | 展开下拉项完成触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onChange | 点击选项触发 | _&nbsp;&nbsp;(value?:&nbsp;number&nbsp;&brvbar;&nbsp;string)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| children | 传入的子元素 | _&nbsp;&nbsp;React.ReactNode&nbsp;&brvbar;&nbsp;React.ReactNode[]<br/>_ | - | `false` |
+
+### 菜单下拉选项DropdownMenuOption [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
+
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| text | 展示的label | _&nbsp;&nbsp;string<br/>_ |
+| value | 对应的数值 | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
+| icon | 前缀图标 | _&nbsp;&nbsp;string<br/>_ |
+
+### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
+通过ref获取到的方法如下
+| 方法 | 说明 | 类型 |
+| --- | --- | --- |
+| toggle | 控制展开/收起菜单栏，传入参数show是否展开，options.immediate是否不需要动画 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;show?:&nbsp;boolean,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;{&nbsp;immediate:&nbsp;boolean&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 

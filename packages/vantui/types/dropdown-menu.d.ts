@@ -1,32 +1,144 @@
 import React, { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
+/**
+ * @title DropdownMenuProps
+ */
+export interface DropdownMenuProps extends StandardProps {
+  /**
+   * @description 选中选项后颜色
+   */
+  activeColor?: string
+  /**
+   * @description 是否展示蒙层
+   */
+  overlay?: boolean
+  /**
+   * @description 弹出层zIndex
+   */
+  zIndex?: number
+  /**
+   * @description 弹出层执行时间
+   */
+  duration?: number
+  /**
+   * @description 弹出层执行方向
+   */
+  direction?: 'down' | 'up'
+  /**
+   * @description 点击蒙层是否关闭弹出层
+   */
+  closeOnClickOverlay?: boolean
+  /**
+   * @description 是否在点击外部 menu 后关闭菜单
+   */
+  closeOnClickOutside?: boolean
+  /**
+   * @description 子元素,须为DropdownMenuItem
+   */
+  children: React.ReactNode
+}
 
-type DropdownMenuOption = {
+/**
+ * @title DropdownItemProps
+ */
+export interface DropdownItemProps extends StandardProps {
+  /**
+   * @description 对应菜单选项的值
+   */
+  value?: string | number
+  /**
+   * @description 未选择时候的按钮标题
+   */
+  title?: string
+  /**
+   * @description 是否禁用
+   */
+  disabled?: boolean
+  /**
+   * @description 标题元素的class
+   */
+  titleClass?: string
+  /**
+   * @description 所有选项
+   */
+  options: Array<DropdownMenuOption>
+  /**
+   * @description 弹出层的样式
+   */
+  popupStyle?: React.CSSProperties
+  /**
+   * @description 弹出层方向
+   */
+  direction?: 'up' | 'down'
+  /**
+   * @description 弹出层执行时间（单位毫秒）
+   */
+  duration?: number
+  /**
+   * @description 点击梦层是否关闭
+   */
+  closeOnClickOverlay?: boolean
+  /**
+   * @description 选中项的颜色
+   */
+  activeColor?: string
+  /**
+   * @description 展开下拉项触发
+   */
+  onOpen?: () => void
+  /**
+   * @description 展开下拉项完成时触发
+   */
+  onOpened?: () => void
+  /**
+   * @description 关闭下拉项触发
+   */
+  onClose?: () => void
+  /**
+   * @description 展开下拉项完成触发
+   */
+  onClosed?: () => void
+  /**
+   * @description 点击选项触发
+   */
+  onChange?: (value?: number | string) => void
+  /**
+   * @description 传入的子元素
+   */
+  children?: React.ReactNode | React.ReactNode[]
+}
+
+/**
+ * @title 菜单下拉选项DropdownMenuOption
+ */
+export type DropdownMenuOption = {
+  /**
+   * @description 展示的label
+   */
   text?: string
+  /**
+   * @description 对应的数值
+   */
   value: number | string
+  /**
+   * @description 前缀图标
+   */
   icon?: string
 }
 
-export interface DropdownMenuProps extends StandardProps {
-  activeColor?: string
-  overlay?: boolean
-  zIndex?: number
-  duration?: number
-  direction?: string
-  closeOnClickOverlay?: boolean
-  closeOnClickOutside?: boolean
-  popupStyle?: React.CSSProperties
-  wrapperStyle?: React.CSSProperties
-  onOpen?: () => void
-  onOpened?: () => void
-  onClose?: () => void
-  onClosed?: () => void
-  options?: Array<DropdownMenuOption>
-  children?: React.ReactNode
-  value?: string
-  disabled?: boolean
+/**
+ * @title 组件实例
+ * @description 通过ref获取到的方法如下
+ */
+export type IDropdownItemInstance = {
+  /**
+   * @description 控制展开/收起菜单栏，传入参数show是否展开，options.immediate是否不需要动画
+   */
+  toggle: (show?: boolean, options?: { immediate: boolean }) => void
 }
+
+declare const DropdownItem: ComponentClass<DropdownItemProps>
 
 declare const DropdownMenu: ComponentClass<DropdownMenuProps>
 
-export { DropdownMenu }
+export { DropdownMenu, DropdownItem }

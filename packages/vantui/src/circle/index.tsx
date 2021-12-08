@@ -1,4 +1,4 @@
-import Taro, {
+import {
   createSelectorQuery,
   createCanvasContext,
   useReady,
@@ -62,20 +62,11 @@ export function Circle(props: CircleProps) {
   }, [])
 
   useReady(() => {
-    Taro.nextTick(() => {
-      if (process.env.TARO_ENV === 'h5') {
-        const taroCanvas = document.querySelector(`.${state.unitag}`)
-        const canvas = taroCanvas?.children?.[0]
-        canvas?.setAttribute('width', String(size))
-        canvas?.setAttribute('height', String(size))
+    setState((state) => {
+      return {
+        ...state,
+        ready: true,
       }
-
-      setState((state) => {
-        return {
-          ...state,
-          ready: true,
-        }
-      })
     })
   })
 
@@ -84,21 +75,14 @@ export function Circle(props: CircleProps) {
     // @ts-ignore
     if (process.env.LIBRARY_ENV === 'react') {
       setTimeout(() => {
-        Taro.nextTick(() => {
-          if (process.env.TARO_ENV === 'h5') {
-            const taroCanvas = document.querySelector(`.${state.unitag}`)
-            const canvas = taroCanvas?.children?.[0]
-            canvas?.setAttribute('width', String(size))
-            canvas?.setAttribute('height', String(size))
-
-            setState((state) => {
-              return {
-                ...state,
-                ready: true,
-              }
-            })
-          }
-        })
+        if (process.env.TARO_ENV === 'h5') {
+          setState((state) => {
+            return {
+              ...state,
+              ready: true,
+            }
+          })
+        }
       }, 100)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,7 +97,11 @@ export function Circle(props: CircleProps) {
       Current.page = { path: `page-${state.unitag}` }
     }
     if (type === '' || process.env.TARO_ENV === 'h5') {
-      const ctx = createCanvasContext(state.unitag)
+      let ctx = null
+      try {
+        ctx = createCanvasContext(state.unitag)
+      } catch (error) {}
+
       return Promise.resolve(ctx)
     }
     const dpr = getSystemInfoSync().pixelRatio
@@ -141,18 +129,20 @@ export function Circle(props: CircleProps) {
     if (isObj(color)) {
       const _color = color as Record<string, string>
       return getContext().then((context: any) => {
-        const LinearColor = context.createLinearGradient(size, 0, 0, 0)
-        Object.keys(color)
-          .sort((a, b) => parseFloat(a) - parseFloat(b))
-          .map((key: any) =>
-            LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
-          )
-        setState((state) => {
-          return {
-            ...state,
-            hoverColor: LinearColor,
-          }
-        })
+        if (context) {
+          const LinearColor = context.createLinearGradient(size, 0, 0, 0)
+          Object.keys(color)
+            .sort((a, b) => parseFloat(a) - parseFloat(b))
+            .map((key: any) =>
+              LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
+            )
+          setState((state) => {
+            return {
+              ...state,
+              hoverColor: LinearColor,
+            }
+          })
+        }
       })
     }
     setState((state: any) => {
@@ -206,13 +196,15 @@ export function Circle(props: CircleProps) {
   const drawCircle = useCallback(
     (currentValue: any) => {
       getContext().then((context: any) => {
-        context.clearRect(0, 0, size, size)
-        renderLayerCircle(context)
-        const formatValue = format(currentValue)
-        if (formatValue !== 0) {
-          renderHoverCircle(context, formatValue)
+        if (context) {
+          context.clearRect(0, 0, size, size)
+          renderLayerCircle(context)
+          const formatValue = format(currentValue)
+          if (formatValue !== 0) {
+            renderHoverCircle(context, formatValue)
+          }
+          context.draw()
         }
-        context.draw()
       })
     },
     [getContext, renderHoverCircle, renderLayerCircle, size],
@@ -273,20 +265,6 @@ export function Circle(props: CircleProps) {
   }, [state.ready, color])
 
   useEffect(() => {
-    // if (process.env.TARO_ENV !== 'h5') {
-    //   if (state.ready) {
-    //     ref.current.currentValue = value
-    //     setHoverColor().then(() => {
-    //       // if (process.env.TARO_ENV === 'h5') {
-    //       // reRender()
-    //       // } else {
-    //       //   drawCircle(ref.current.currentValue)
-    //       // }
-    //       drawCircle(ref.current.currentValue)
-    //     })
-    //   }
-    // }
-
     return () => {
       clearMockInterval()
     }

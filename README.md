@@ -1,6 +1,6 @@
 <div class="card">
   <div class="intro" style="text-align: center; padding: 20px;">
-    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
+    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
     <p>基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</p>
   </div>
@@ -24,7 +24,7 @@
 
 - 使用 TypeScript 编写，提供完整的类型定义
 
-- 支持 Taro(H5、微信小程序、支付宝小程序、...)
+- 支持 Taro(H5、微信小程序、支付宝小程序、抖音小程序...)(注：React Native不支持)
 
 - 支持 React(webpack 兼容配置我们后续会统一起来，方便大家使用)
 
@@ -42,7 +42,7 @@
 
 - 其二，做这个组件库的想法就是一群志同道合的小伙伴们共同实现的，所以本质上是自发的项目，所以也会尽最大努力及时优化及修复；
 
-- 其三，我们没用选择重构是因为我们从一开始就知道我们短期内如果重构是没办法达到我们的理想中的效果的，所以在设计上我们的宗旨就是找优质组件库来改造，好在最终我们实现了，我们花了一些时间把 vant weapp 的 50+ 组件改造成了AntM的版本，同时保留了他们多年积累的组件的质量。
+- 其三，我们没有选择重构是因为我们从一开始就知道我们短期内如果重构是没办法达到我们的理想中的效果的，所以在设计上我们的宗旨就是找优质组件库来改造，好在最终我们实现了，我们花了一些时间把 vant weapp 的 50+ 组件改造成了AntM的版本，同时保留了他们多年积累的组件的质量。
 
 
 > 如果觉得不错，麻烦给个Star哦
@@ -55,7 +55,8 @@
 
 ### 预览
 
-正在全力建设中，需要看小程序的可以参见快速上手...
+<img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-weapp.png" />
+<img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-h5.png" />
 
 ### 贡献代码
 
@@ -85,6 +86,5 @@
 ### 快速沟通群
 
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v5.jpeg" />
-<img style="width:300px" src="https://antm-js.gitee.io/resource/dingding_v1.png" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v6.jpeg" />
 </div>

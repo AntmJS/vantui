@@ -302,6 +302,8 @@ export function Field(props: FieldProps) {
                 },
               ]) + ' input-class'
             }
+            // eslint-disable-next-line
+            // @ts-ignore
             type={type}
             focus={focus}
             cursor={cursor}
@@ -322,7 +324,7 @@ export function Field(props: FieldProps) {
             selectionEnd={selectionEnd}
             selectionStart={selectionStart}
             alwaysEmbed={alwaysEmbed}
-            password={password}
+            password={password || type === 'password'}
             onInput={_input}
             onClick={onClickInput}
             onBlur={_blur}

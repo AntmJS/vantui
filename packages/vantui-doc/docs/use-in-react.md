@@ -153,6 +153,7 @@ applyPolyfills().then(function () {
       ENABLE_SIZE_APIS: false,
     }),
     new webpack.EnvironmentPlugin({
+      LIBRARY_ENV: 'react',
       TARO_ENV: 'h5',
     }),
     // const VantUIPlugin = require('@antmjs/plugin-vantui')

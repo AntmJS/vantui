@@ -21,7 +21,7 @@ export interface FieldProps extends StandardProps {
   selectionEnd?: number
   adjustPosition?: boolean
   holdKeyboard?: boolean
-  type?: 'number' | 'text' | 'idcard' | 'digit' | 'textarea'
+  type?: 'number' | 'text' | 'idcard' | 'digit' | 'textarea' | 'password'
   password?: boolean
   confirmType?: 'send' | 'search' | 'next' | 'go' | 'done'
   confirmHold?: boolean

@@ -109,11 +109,7 @@ export type IPickerInstance = {
   /**
    * @description 设置每一列的值
    */
-  setColumnValues: (
-    index: number,
-    options: string[],
-    needReset: boolean,
-  ) => Promise<any>
+  setColumnValues: (index: number, options: string[]) => Promise<any>
   /**
    * @description 获取每一列的值
    * @default
