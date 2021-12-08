@@ -1,4 +1,4 @@
-# PowerScrollView 下拉刷新
+# PowerScrollView 滚动列表
 
 ### 介绍
 
@@ -8,7 +8,7 @@
 Tips: H5 中 ScrollView 组件是通过一个高度（或宽度）固定的容器内部滚动来实现的，因此务必正确的设置容器的高度。例如: 如果 ScrollView 的高度将 body 撑开，就会同时存在两个滚动条（body 下的滚动条，以及 ScrollView 的滚动条）
 
 
-> [参考文档](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html)
+> [参考文档](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.jsx)
 
 ### 引入
 
@@ -58,10 +58,13 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 
 - 开允许纵向滚动`(scrollY默认开启)`时, 当组件滚动到底部时,上拉会触发 `onScrollToUpper({page,pageSize})` 事件，在事件的回调函数中可以进行异步操作并更新数据, 若数据已全部加载完毕，则会自动渲染`renderFinished||finishedText`。
 
-- 组件内部会根据`total`管理分页和数据是否已全部加载完毕
+- 默认的`current`是通过`children.length`来计算的,也可以传入`current={list.length}`
 
+- 默认`pageSize`是`20`通常是需要铺满可滚动窗口的高度,也可以传入`pageSize={15}`
 
-```html
+- `props.total` 存在`onScrollToUpper/onScrollToUpper` 的入参是传入组件的`{page,pageSize}`, 不存在入参是传入组件的`current`
+
+```jsx
 
  <PowerScrollView
   <!-- -->
@@ -73,7 +76,8 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
   successText="刷新成功"
   onScrollToUpper={this.basicsDoRefresh}
   onScrollToLower={this.basicsLoadMore}
-  total={TOTAL}
+  current={this.state.basicsList.length}
+  finished={this.state.basicsFinished}
 >
   {this.state.basicsList.map((e, i) => (
     <Cell key={i} title={e} />
@@ -86,10 +90,11 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 state = {
   // basics
   basicsList: [],
+  basicsFinished： false
 }
 
 // 基础用法
-basicsDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
+basicsDoRefresh = async (event = 0) => {
   const append = await mockRequest(
     this.state.basicsList.length,
     true,
@@ -97,9 +102,10 @@ basicsDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
   )
   this.setState({
     basicsList: append,
+    basicsFinished: append.length === 0,
   })
 }
-basicsLoadMore = async (event = { page: 1, pageSize: 20 }, isRefresh = false) => {
+basicsLoadMore = async (event = 0, isRefresh = false) => {
   const append = await mockRequest(
     this.state.basicsList.length,
     isRefresh,
@@ -107,6 +113,7 @@ basicsLoadMore = async (event = { page: 1, pageSize: 20 }, isRefresh = false) =>
   )
   this.setState({
     basicsList: [...this.state.basicsList, ...append],
+    basicsFinished: append.length === 0,
   })
 }
 
@@ -141,11 +148,8 @@ function fetch() { // 正确
 ### 自定义提示和分页参数
 
 - 通过`renderHead`可以自定义下拉刷新过程中的提示内容。
-- 默认的`current`是通过`children.length`来计算的,也可以传入`current={list.length}`
-- 默认`pageSize`是`20`通常是需要铺满可滚动窗口的高度,也可以传入`pageSize={15}`
 
-
-```html
+```jsx
 <PowerScrollView
   className="pull-error"
   errorText="请求失败，点击重新加载"
@@ -240,11 +244,14 @@ onLoad() {
 
 ### 配合搜索使用
 
-```html
+```jsx
 <View>
   <View className="header">
     <View className="left">
-      <Search />
+      <Search 
+        defaultValue={this.state.searchValue}
+        onChange={this.handleChange} 
+      />
     </View>
     <View className="right">
       <Button size="small" type="primary" onClick={this.doSearch}>
@@ -254,7 +261,7 @@ onLoad() {
   </View>
   {
     <>
-      {this.state.searchList.length > 0 ? (
+      {this.state.searchFinished || this.state.searchList.length > 0 ? (
         <PowerScrollView
           className="pull-search"
           successText="刷新成功"
@@ -262,7 +269,8 @@ onLoad() {
           onScrollToUpper={this.searchDoRefresh}
           onScrollToLower={this.searchLoadMore}
           lowerThreshold={300}
-          total={TOTAL}
+          headHeight="80"
+          finished={this.state.searchFinished}
         >
           {this.state.searchList.map((e, i) => (
             <Cell key={i} title={e} />
@@ -285,11 +293,19 @@ onLoad() {
 state = {
   // error
   searchList: [],
+  searchFinished: false,
+  searchValue: 'empty',
+}
+handleChange = (e) => {
+  this.setState({
+    searchValue: e.detail,
+  })
 }
   // 搜索
 doSearch = async () => {
   this.setState({
     searchList: [],
+    searchFinished: this.state.searchValue === 'empty',
   })
   await this.searchLoadMore(undefined,true)
 }
@@ -333,13 +349,16 @@ onLoad() {
 | animationDuration | 动画时长 | _number \| string_ | `300` |
 | headHeight | 顶部内容高度 | _number \| string_ | `50` |
 | pullDistance `v3.0.8` | 触发下拉刷新的距离 | _number \| string_ | 与 `headHeight` 一致 |
+
+| finished | 是否已加载完成，加载完成后不再触发load事件 | _boolean_ | `false` |
 | loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
 | total | 列表总个数 | _number_ | `0` | 
 | current | 当前列表个数 | _number_ | `children.length` |
 | pageSize | 一页个数 | _number_ | `20` |
-
+| emptyImage | 没有内容时，图片类型，可选值为 error network search，支持传入图片 URL | _string_ | `default` |
+| emptyDescription | 没有内容时，图片下方的描述文字 |_string_ | - |
 
 ### 自定义Render
 
