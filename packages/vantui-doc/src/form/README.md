@@ -38,6 +38,7 @@ import { Form, FormItem } from "@antmjs/vantui";
   }
 ```
 FormItem需要代理下级表单组件的值和触发事件
+
 - 代理的表单组件触发事件为`onChange`, 通过`FormItem.trigger`重新设置
 - 代理的表单组件默认取值为`value`, 通过`FormItem.valueKey`重新设置
 - 代理的表单组件触发事件回调事件的默认取值`event.detail`, 通过`FormItem.valueFormat`重新设置
