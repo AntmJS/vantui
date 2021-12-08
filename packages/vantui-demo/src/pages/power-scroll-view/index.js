@@ -134,25 +134,24 @@ export default class Index extends Component {
   doSearch = async () => {
     this.setState({
       searchList: [],
-      searchFinished: this.state.searchValue === 'empty',
+      searchFinished: false,
     })
-
-    if (this.state.searchValue === 'empty') {
-      return
-    }
     await this.searchLoadMore(undefined, true)
   }
 
   searchDoRefresh = async (event = 0) => {
     console.log(event)
-    if (this.state.searchValue === 'empty') {
-      return
-    }
     const append = await mockRequest(
       this.state.searchList.length,
       true,
       '配合搜索使用',
     )
+    if (this.state.searchValue === 'empty') {
+      this.setState({
+        searchFinished: true,
+      })
+      return
+    }
 
     this.setState({
       searchList: append,
@@ -161,6 +160,11 @@ export default class Index extends Component {
   }
   searchLoadMore = async (event = 0, isRefresh = false) => {
     console.log(event)
+    const append = await mockRequest(
+      this.state.searchList.length,
+      isRefresh,
+      '配合搜索使用',
+    )
     if (this.state.searchValue === 'empty') {
       this.setState({
         searchList: [],
@@ -168,11 +172,6 @@ export default class Index extends Component {
       })
       return
     }
-    const append = await mockRequest(
-      this.state.searchList.length,
-      isRefresh,
-      '配合搜索使用',
-    )
 
     this.setState({
       searchList: [...this.state.searchList, ...append],

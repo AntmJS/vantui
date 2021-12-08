@@ -303,29 +303,46 @@ handleChange = (e) => {
 doSearch = async () => {
   this.setState({
     searchList: [],
-    searchFinished: this.state.searchValue === 'empty',
-  })
-  await this.searchLoadMore(undefined,true)
+    searchFinished: false,
+  })  
+
+  await this.searchLoadMore(undefined, true)
 }
 
-searchDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
+searchDoRefresh = async (event = 0) => {
   const append = await mockRequest(
     this.state.searchList.length,
     true,
     '配合搜索使用',
   )
+  if (this.state.searchValue === 'empty') {
+    this.setState({
+      searchList: [],
+      searchFinished: true,
+    })  
+    return
+  }
   this.setState({
     searchList: append,
   })
 }
-searchLoadMore = async (event = { page: 1, pageSize: 20 },isRefresh = false) => {
+searchLoadMore = async (event = 0,isRefresh = false) => {
   const append = await mockRequest(
     this.state.searchList.length,
     isRefresh,
     '配合搜索使用',
   )
+  
+  if (this.state.searchValue === 'empty') {
+    this.setState({
+      searchList: [],
+      searchFinished: true,
+    })  
+    return
+  }
   this.setState({
     searchList: [...this.state.searchList, ...append],
+    searchFinished: append.length === 0,
   })
 }
 onLoad() {
