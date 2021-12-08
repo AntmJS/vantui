@@ -351,7 +351,7 @@ onLoad() {
 | loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
-| total | 列表总个数 | _number_ | `0` | 
+| total | 列表总个数 | _number_ | - | 
 | current | 当前列表个数 | _number_ | `children.length` |
 | pageSize | 一页个数 | _number_ | `20` |
 | emptyImage | 没有内容时，图片类型，可选值为 error network search，支持传入图片 URL | _string_ | `default` |
