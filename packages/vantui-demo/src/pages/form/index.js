@@ -111,6 +111,9 @@ export default class Index extends Component {
               label="密码"
               name="password"
               required={true}
+              trigger="onInput"
+              validateTrigger="onBlur"
+              valueFormat={(e) => e.detail.value}
               renderRight={<Icon name="eye-o" />}
             >
               <Input placeholder="请输入密码" type="password" />

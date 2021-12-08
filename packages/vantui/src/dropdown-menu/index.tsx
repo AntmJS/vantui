@@ -141,6 +141,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
       return getRect(null, `.van-dropdown-menu${currentIndex}`).then(
         (rect: any) => {
           const { top = 0, bottom = 0 } = rect
+          console.info(rect)
           const offset = direction === 'down' ? bottom : windowHeight - top
           const wrapperStyle: React.CSSProperties = {
             zIndex: zIndex,

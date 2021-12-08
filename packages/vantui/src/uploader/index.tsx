@@ -37,7 +37,7 @@ export function Uploader(props: UploaderProps) {
     showUpload = true,
     previewImage = true,
     previewFullImage = true,
-    imageFit = 'scaleToFill',
+    imageFit = 'aspectFill',
     uploadIcon = 'photograph',
     capture,
     compressed,

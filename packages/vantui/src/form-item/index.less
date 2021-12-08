@@ -1,5 +1,10 @@
 @import '../style/var.less';
 
+.vant-form-formItem:last-child {
+  border-bottom: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
 .vant-form-formItem {
   line-height: @form-line-height;
   height: auto;
@@ -9,10 +14,6 @@
   padding: @form-space-vertical 0;
   background-color: @form-background-color;
   border-bottom: @form-border-bottom;
-
-  > :last-child {
-    border-bottom: none;
-  }
 
   &-wrapper {
     background-color: @form-background-color;

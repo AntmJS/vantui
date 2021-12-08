@@ -38,7 +38,7 @@ function Form_(
 
   return (
     <Form
-      className={className}
+      className={`${className} vant-form`}
       onReset={(e) => {
         e.preventDefault()
         e.stopPropagation()
