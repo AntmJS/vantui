@@ -22,7 +22,6 @@ interface PullRefreshProps {
     status: PullRefreshStatus
     distance: number
   }) => React.ReactNode | void
-  onRefresh?: () => Promise<void>
 }
 
 type eventType = {
@@ -30,15 +29,15 @@ type eventType = {
   pageSize: number
 }
 
-export interface PowerScrollViewProps
+export interface PowerScrollViewProps<T = number>
   extends StandardProps,
     PullRefreshProps,
     Omit<ScrollViewProps, 'onScrollToUpper' | 'onScrollToLower'> {
   offset?: number
-  total?: number
+  total?: T
   current?: number
   pageSize?: number
-  // finished?: boolean
+  finished?: boolean
   errorText?: string
   loadingText?: string
   finishedText?: string
@@ -46,10 +45,17 @@ export interface PowerScrollViewProps
   renderFinished?: React.ReactNode
   renderLoading?: React.ReactNode
   renderError?: React.ReactNode
-  onLoad?: () => Promise<void>
+  emptyDescription: string
+  emptyImage: 'error' | 'search' | 'default' | 'network' | string
+  onLoad?: (event: T extends number ? number : eventType) => Promise<void>
+  onRefresh?: (event: T extends number ? number : eventType) => Promise<void>
   // Scroll
-  onScrollToUpper?: (event: eventType) => Promise<void>
-  onScrollToLower?: (event: eventType) => Promise<void>
+  onScrollToUpper?: (
+    event: T extends number ? number : eventType,
+  ) => Promise<void>
+  onScrollToLower?: (
+    event: T extends number ? number : eventType,
+  ) => Promise<void>
 }
 
 declare const PowerScrollView: ComponentClass<PowerScrollViewProps>
