@@ -89,7 +89,7 @@ export default class Index extends Component {
             <Button
               plain
               type="primary"
-              icon="https://img.yzcdn.cn/vant/logo.png"
+              icon="https://antm-js.gitee.io/resource/antmjs-vantui.png"
             >
               按钮
             </Button>

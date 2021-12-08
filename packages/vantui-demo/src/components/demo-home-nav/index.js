@@ -15,6 +15,7 @@ export default class Index extends Component {
       Taro.navigateTo({ url })
     }
   }
+
   render() {
     const { group } = this.props
 

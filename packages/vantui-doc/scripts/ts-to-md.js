@@ -23,7 +23,7 @@ glob(READMES_PATH,
 
       if (
         fs.existsSync(`../vantui/types/${componentName}.d.ts`) &&
-        componentName !== 'index'
+        componentName !== 'index' && componentName!== 'power-scroll-view'
       ) {
         let tsInfo = fs.readFileSync(
           `../vantui/types/${componentName}.d.ts`,

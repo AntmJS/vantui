@@ -202,7 +202,7 @@ this.state = {
 通过ref获取到的方法如下
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
-| setColumnValues | 设置每一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;string[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;needReset:&nbsp;boolean<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<any><br/>_ |
+| setColumnValues | 设置每一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;string[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<any><br/>_ |
 | getColumnValues | 获取每一列的值 | _&nbsp;&nbsp;(index:&nbsp;number[])&nbsp;=>&nbsp;(number&nbsp;&brvbar;&nbsp;string)[]<br/>_ |
 | setColumnValue | 设置某一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
 | getColumnValue | 获取某一列的值 | _&nbsp;&nbsp;(index:&nbsp;number)&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |

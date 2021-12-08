@@ -1,6 +1,11 @@
 import { Icon } from '@antmjs/vantui'
 import { View } from '@tarojs/components'
-import { navigateBack, pageScrollTo, useRouter } from '@tarojs/taro'
+import {
+  navigateBack,
+  pageScrollTo,
+  useRouter,
+  useShareAppMessage,
+} from '@tarojs/taro'
 import React, { useEffect } from 'react'
 import './index.less'
 
@@ -8,7 +13,7 @@ export default function Page(props) {
   // eslint-disable-next-line react/prop-types
   const { title, className = '', children } = props
 
-  const router = useRouter()
+  const { path } = useRouter()
   useEffect(() => {
     if (process.env.LIBRARY_ENV === 'react') {
       document.body.scrollTop = document.documentElement.scrollTop = 0
@@ -18,7 +23,14 @@ export default function Page(props) {
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.path])
+  }, [path])
+
+  useShareAppMessage(() => {
+    return {
+      title: 'AntM 组件库演示',
+      path,
+    }
+  })
 
   return (
     <View className={`demo-page ${className}`}>

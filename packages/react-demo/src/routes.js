@@ -51,7 +51,15 @@ import Calendar from './pages/calendar/index'
 import ShareSheet from './pages/share-sheet/index'
 import ConfigProvider from './pages/config-provider/index'
 
+import PowerScrollView from './pages/power-scroll-view'
+
 export default [
+  {
+    title: 'power-scroll-view',
+    path: '/pages/power-scroll-view/index',
+    page: './pages/power-scroll-view/index',
+    component: PowerScrollView,
+  },
   {
     title: 'dashboard',
     path: '/pages/dashboard/index',

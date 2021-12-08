@@ -1,1 +1,4 @@
-export default { navigationBarTitleText: 'CountDown 倒计时' }
+export default {
+  navigationBarTitleText: 'CountDown 倒计时',
+  enableShareAppMessage: true,
+}

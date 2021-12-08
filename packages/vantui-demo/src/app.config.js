@@ -53,6 +53,7 @@ export default {
     'pages/share-sheet/index',
     'pages/config-provider/index',
     'pages/form/index',
+    'pages/power-scroll-view/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

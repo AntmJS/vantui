@@ -1,6 +1,6 @@
 <div class="card">
   <div class="intro" style="text-align: center; padding: 20px;">
-    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
+    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
     <p>基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</p>
   </div>
@@ -24,7 +24,7 @@
 
 - 使用 TypeScript 编写，提供完整的类型定义
 
-- 支持 Taro(H5、微信小程序、支付宝小程序、...)
+- 支持 Taro(H5、微信小程序、支付宝小程序、抖音小程序...)(注：React Native不支持)
 
 - 支持 React(webpack 兼容配置我们后续会统一起来，方便大家使用)
 
@@ -55,7 +55,8 @@
 
 ### 预览
 
-正在全力建设中，需要看小程序的可以参见快速上手...
+<img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-weapp.png" />
+<img style="width: 140px; height: 140px; box-shadow: none;" src="https://antm-js.gitee.io/resource/vantui-h5.png" />
 
 ### 贡献代码
 
@@ -85,5 +86,5 @@
 ### 快速沟通群
 
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v6.jpeg" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v7.jpeg" />
 </div>
