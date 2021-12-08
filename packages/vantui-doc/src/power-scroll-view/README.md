@@ -381,8 +381,8 @@ status =
 |scrollY | 	允许纵向滚动 |_boolean_| `true` |
 |refresherEnabled | 开启下拉刷新|_boolean_| `true` |
 |lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 | _number_ | `250` |
-|onScrollToUpper | 下拉刷新时触发 | _() => Promise<{page: number,paseSize:number}|number>_ | `()=>{}` |
-|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 | _() => Promise<{page: number,paseSize:number}|number>_ | `() =>{}` |
+|onScrollToUpper | 下拉刷新时触发 | _({page: number,paseSize:number}|number) => Promise<void>_ | `()=>{}` |
+|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 | _({page: number,paseSize:number}|number) => Promise<void>_ | `() =>{}` |
 
 
 ### 类型定义
