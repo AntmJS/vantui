@@ -1,11 +1,4 @@
-import {
-  useState,
-  useCallback,
-  useEffect,
-  useRef,
-  useLayoutEffect,
-} from 'react'
-import { ITouchEvent } from '@tarojs/components'
+import { useState, useCallback, useRef, useLayoutEffect } from 'react'
 import { PickerChangeEvents } from 'packages/vantui/types/picker'
 import VanPicker from '../picker/index'
 import {
@@ -250,13 +243,16 @@ export function DatetimePicker(props: DatetimePickerProps) {
     [maxDate, maxHour, maxMinute, minDate, minHour, minMinute, type],
   )
 
-  useLayoutEffect(function () {
-    const val = correctValue(value)
-    updateColumnValue(val)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useLayoutEffect(
+  //   function () {
+  //     const val = correctValue(value)
+  //     updateColumnValue(val)
+  //   },
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [correctValue],
+  // )
 
-  useEffect(
+  useLayoutEffect(
     function () {
       const val = correctValue(value)
       const isEqual = val === innerValue
@@ -276,7 +272,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [value, type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute],
+    [type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute],
   )
 
   const onChange_ = function (e: PickerChangeEvents) {
@@ -363,19 +359,15 @@ export function DatetimePicker(props: DatetimePickerProps) {
       confirmButtonText={confirmButtonText}
       cancelButtonText={cancelButtonText}
       onChange={onChange_}
-      onConfirm={useCallback(
-        function (event: ITouchEvent) {
-          if (onConfirm) {
-            Object.defineProperty(event, 'detail', {
-              value: {
-                innerValue,
-              },
-            })
-            onConfirm(event)
-          }
-        },
-        [innerValue, onConfirm],
-      )}
+      onConfirm={function (event) {
+        if (onConfirm)
+          onConfirm({
+            detail: {
+              ...event.detail,
+              value: innerValue,
+            },
+          } as any)
+      }}
       onCancel={onCancel}
     ></VanPicker>
   )

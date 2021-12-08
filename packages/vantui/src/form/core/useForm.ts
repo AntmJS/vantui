@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { IFormInstanceAPI } from '../../../types/form'
 import FormStore from './formstore'
 
@@ -8,6 +8,16 @@ export default function useForm(
 ): IFormInstanceAPI {
   const formRef: { current: IFormInstanceAPI | null } = useRef(null)
   const [, forceUpdate] = useState({})
+
+  useEffect(
+    function () {
+      if (formRef.current) {
+        formRef.current.setFields(defaultFormValue)
+      }
+    },
+    [defaultFormValue],
+  )
+
   if (!formRef.current) {
     if (form) {
       formRef.current = form

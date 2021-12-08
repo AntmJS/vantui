@@ -6,12 +6,13 @@ import {
   isValidElement,
   useMemo,
 } from 'react'
+import { View } from '@tarojs/components'
 import { FormItemProps, IFormInstanceAPI } from '../../types/form'
 import FormContext from '../form/core/formContext'
 import Label from './label'
 import Message from './message'
 
-const prefixCls = 'react-form-design-formItem'
+const prefixCls = 'vant-form-formItem'
 
 export default function FormItem(props: FormItemProps) {
   const {
@@ -31,11 +32,12 @@ export default function FormItem(props: FormItemProps) {
     feedback = 'failed',
     valueKey = 'value',
     renderRight,
-    valueFilter,
+    valueFormat,
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
   const [, forceUpdate] = useState({})
+
   const onStoreChange = useMemo(() => {
     const onStoreChange = {
       changeValue() {
@@ -49,6 +51,7 @@ export default function FormItem(props: FormItemProps) {
   useEffect(() => {
     /* 注册表单 */
     name && registerValidateFields(name, onStoreChange, { ...rules, required })
+
     return function () {
       name && unRegisterValidate(name)
     }
@@ -56,31 +59,31 @@ export default function FormItem(props: FormItemProps) {
   }, [onStoreChange])
 
   const getControlled = (child: any) => {
-    const mergeChildrenProps = { ...child.props }
-    if (!name) return mergeChildrenProps
+    const props = { ...child.props }
+    if (!name) return props
     const handleChange = async (e: any) => {
       let value = null
-      if (valueFilter) {
-        value = await valueFilter(e, name, formInstance)
+
+      if (valueFormat) {
+        value = await valueFormat(e, name, formInstance)
       } else {
-        value = Object.prototype.toString.call(e).includes('Event')
-          ? e.detail.value
-          : e
+        value = e.detail
       }
       dispatch({ type: 'setFieldsValue' }, name, value)
     }
-    mergeChildrenProps[trigger] = handleChange
+    props[trigger] = handleChange
     if (required || rules) {
-      mergeChildrenProps[validateTrigger] = async (e: any) => {
+      props[validateTrigger] = async (e: any) => {
         if (validateTrigger === trigger) {
           await handleChange(e)
         }
+
         dispatch({ type: 'validateFieldValue' }, name)
       }
     }
-    mergeChildrenProps[valueKey] =
-      dispatch({ type: 'getFieldValue' }, name) || ''
-    return mergeChildrenProps
+    props[valueKey] = dispatch({ type: 'getFieldValue' }, name)
+
+    return props
   }
 
   const renderChildren = isValidElement(children)
@@ -88,8 +91,8 @@ export default function FormItem(props: FormItemProps) {
     : children
 
   return (
-    <div className={`${prefixCls}-wrapper`}>
-      <div className={`${prefixCls} ${prefixCls}-${layout} ${className}`}>
+    <View className={`${prefixCls}-wrapper`}>
+      <View className={`${prefixCls} ${prefixCls}-${layout} ${className}`}>
         <Label
           label={label}
           required={required}
@@ -97,18 +100,18 @@ export default function FormItem(props: FormItemProps) {
           requiredClassName={requiredClassName}
           requiredIcon={requiredIcon}
         />
-        <div className={`${prefixCls}-controll ${controllClassName}`}>
-          <div className={`${prefixCls}-controll-item`}>
+        <View className={`${prefixCls}-controll ${controllClassName}`}>
+          <View className={`${prefixCls}-controll-item`}>
             {renderChildren}
             {renderRight}
-          </div>
+          </View>
           <Message
             name={label}
             feedback={feedback}
             {...dispatch({ type: 'getFieldModel' }, name)}
           />
-        </div>
-      </div>
-    </div>
+        </View>
+      </View>
+    </View>
   )
 }

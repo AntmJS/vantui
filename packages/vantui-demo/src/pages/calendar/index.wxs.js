@@ -11,7 +11,6 @@ function formatDate(date) {
 
 function formatFullDate(date) {
   if (date) {
-    console.info(date)
     date = getDate(date)
     return date.getFullYear() + '/' + formatDate(date)
   }

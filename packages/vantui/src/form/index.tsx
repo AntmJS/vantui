@@ -1,30 +1,33 @@
 import React, { useImperativeHandle, forwardRef } from 'react'
+import { Form } from '@tarojs/components'
 import { FormProps, IFormInstanceAPI } from '../../types/form'
 import FormContext from './core/formContext'
 import useForm from './core/useForm'
 
-function Form(
+function Form_(
   props: FormProps,
   ref: React.ForwardedRef<IFormInstanceAPI>,
 ): JSX.Element {
   const {
     form,
-    onFinish,
-    onFinishFailed,
     initialValues = {},
     children,
     className = '',
-  } = props
-  const formInstance = useForm(form, initialValues)
-  const { setCallback, ...providerFormInstance } = formInstance
-
-  setCallback({
     onFinish,
     onFinishFailed,
+  } = props
+  const formInstance = useForm(form, initialValues)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { setCallback, dispatch, ...formInstanceAPI } = formInstance
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  setCallback({
+    onFinish: onFinish,
+    onFinishFailed: onFinishFailed,
   })
 
-  useImperativeHandle(ref, () => providerFormInstance as IFormInstanceAPI, [
-    providerFormInstance,
+  useImperativeHandle(ref, () => formInstanceAPI as IFormInstanceAPI, [
+    formInstanceAPI,
   ])
 
   const RenderChildren = (
@@ -34,7 +37,7 @@ function Form(
   )
 
   return (
-    <form
+    <Form
       className={className}
       onReset={(e) => {
         e.preventDefault()
@@ -48,8 +51,8 @@ function Form(
       }}
     >
       {RenderChildren}
-    </form>
+    </Form>
   )
 }
 
-export default forwardRef(Form)
+export default forwardRef(Form_)

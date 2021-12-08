@@ -1,6 +1,7 @@
 import React from 'react'
+import { View, Text } from '@tarojs/components'
 
-const prefixCls = 'react-form-design'
+const prefixCls = 'vant-form'
 type Iprops = {
   label?: React.ReactNode
   required?: boolean
@@ -18,19 +19,19 @@ export default function Label(props: Iprops) {
     className = '',
   } = props
   return (
-    <div className={`${prefixCls}-label ${className}`}>
-      <div className={`${prefixCls}-required-box`}>
+    <View className={`${prefixCls}-label ${className}`}>
+      <View className={`${prefixCls}-required-box`}>
         {required ? (
           <>
             {requiredIcon || (
-              <span className={requiredClassName} style={{ color: 'red' }}>
+              <Text className={requiredClassName} style={{ color: 'red' }}>
                 *
-              </span>
+              </Text>
             )}
           </>
         ) : null}
-      </div>
-      <span>{label}</span>
-    </div>
+      </View>
+      <Text>{label}</Text>
+    </View>
   )
 }

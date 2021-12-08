@@ -17,10 +17,11 @@ const formInstanceApi = [
   'validateFields',
   'submit',
   'unRegisterValidate',
+  // 'getTriggerConfig',
+  // 'setTriggerConfig',
 ]
 
 const isReg = (value: any) => value instanceof RegExp
-
 class FormStore {
   static instance: FormStore
   public FormUpdate: () => any
@@ -193,14 +194,16 @@ class FormStore {
     })
   }
 
-  validateFields(callback: (errs: Array<string>) => void) {
+  validateFields(
+    callback: (errs: Array<string>, values: Record<string, string>) => void,
+  ) {
     const errorsMess: Array<string> = []
     Object.keys(this.model).forEach((modelName) => {
       const modelStates = this.validateFieldValue(modelName, true)
       if (modelStates === 'reject')
         errorsMess.push(this.model[modelName].message)
     })
-    callback(errorsMess)
+    callback(errorsMess, this.getFieldsValue())
   }
 
   submit(

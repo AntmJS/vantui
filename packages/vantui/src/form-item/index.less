@@ -1,19 +1,21 @@
-.react-form-design-formItem {
-  line-height: 50px;
+@import '../style/var.less';
+
+.vant-form-formItem {
+  line-height: @form-line-height;
   height: auto;
   display: flex;
   overflow: hidden;
-  margin: 0 24px;
-  padding: 24px 0;
-  background-color: #ffffff;
-  border-bottom: 2px solid #eeeeee;
+  margin: 0 @form-space-horizontal;
+  padding: @form-space-vertical 0;
+  background-color: @form-background-color;
+  border-bottom: @form-border-bottom;
 
-  :last-child {
+  > :last-child {
     border-bottom: none;
   }
 
   &-wrapper {
-    background-color: #ffffff;
+    background-color: @form-background-color;
     box-sizing: border-box;
   }
 
@@ -24,18 +26,19 @@
 
   &-vertical {
     flex-direction: column;
-    .react-form-design-formItem-controll-item {
-      margin-top: 20px;
+    .vant-form-formItem-controll-item {
+      margin-top: @form-vertical-controll-margin-top;
     }
 
-    .react-form-design-label {
+    .vant-form-label {
       width: auto;
     }
   }
 
   &-controll {
-    margin-left: 40px;
-    font-size: 32px;
+    margin-left: @form-controll-margin-left;
+    font-size: @form-controll-font-size;
+    flex: 1;
     /* stylelint-disable-next-line no-descending-specificity */
     &-item {
       display: flex;
@@ -47,25 +50,25 @@
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.react-form-design-label {
-  width: 146px;
-  font-size: 32px;
+.vant-form-label {
+  width: @form-label-width;
+  font-size: @form-label-font-size;
   flex: none;
   box-sizing: border-box;
-  color: #646566;
+  color: @form-label-color;
   text-align: left;
   word-wrap: break-word;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  line-height: 50px;
 }
 
-.react-form-design-required-box {
+.vant-form-required-box {
   min-width: 14px;
 }
 
-.react-form-design-message {
-  font-size: 24px;
-  margin-top: 8px;
+.vant-form-message {
+  font-size: @form-message-font-size;
+  margin-top: @form-message-margin-top;
+  color: @form-message-color;
 }
