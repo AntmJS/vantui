@@ -397,7 +397,7 @@ export function Tabs(props: TabsProps) {
   // 解决异步加载的时候默认的下划线不出现的问题
   useEffect(
     function () {
-      Taro.nextTick(() => {
+      nextTick(() => {
         resize()
       })
     },
