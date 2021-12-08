@@ -1,1 +1,4 @@
-export default { navigationBarTitleText: 'Grid 宫格' }
+export default {
+  navigationBarTitleText: 'Grid 宫格',
+  enableShareAppMessage: true,
+}

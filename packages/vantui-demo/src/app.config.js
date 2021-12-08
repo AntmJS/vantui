@@ -52,6 +52,7 @@ export default {
     'pages/calendar/index',
     'pages/share-sheet/index',
     'pages/config-provider/index',
+    'pages/power-scroll-view/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

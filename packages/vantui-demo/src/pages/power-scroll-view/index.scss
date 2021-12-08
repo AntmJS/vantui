@@ -1,0 +1,60 @@
+.taro_page,
+page,
+.van-tabs {
+  background-color: #fff;
+}
+page,
+.taro_page {
+  min-height: 100vh;
+}
+
+.doge {
+  width: 280px;
+  height: 144px;
+  margin-top: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pull-basics,
+.pull-error {
+  height: calc(100vh - 205px);
+}
+.pull-search {
+  height: calc(100vh - 338px);
+}
+
+.min-pull-basics,
+.min-pull-error {
+  height: calc(100vh - 92px);
+}
+.min-pull-search {
+  height: calc(100vh - 225px);
+}
+
+.header {
+  padding: 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  .left {
+    flex: auto;
+  }
+  .right {
+    flex: none;
+    padding-left: 12px;
+  }
+}
+
+.placeholder {
+  padding-top: 30vh;
+  text-align: center;
+  color: #ccc;
+  .loadingWrapper {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+}
