@@ -131,7 +131,7 @@ import { Form, FormItem } from "@antmjs/vantui";
 </Form>
 ```
 
-### 特殊组件处理和自定义校验
+### 异步处理和自定义校验
 
 ```js
 valueFormatUpload = (event, formName, instance) => {

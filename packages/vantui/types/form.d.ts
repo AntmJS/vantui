@@ -118,7 +118,10 @@ export interface FormItemProps extends StandardProps {
     message?: string
   }
 }
-
+/**
+ * @title IFormInstance
+ * @description 通过ref获取到的form的实例
+ */
 export type IFormInstanceAPI = {
   /**
    * @description 注册校验规则
