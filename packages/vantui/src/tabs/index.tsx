@@ -116,9 +116,11 @@ export function Tabs(props: TabsProps) {
     comIndex++
     indexRef.current = comIndex
   }, [])
+
   const tabs = useMemo(() => {
     return parseTabList(children)
   }, [children])
+
   const newChildren = useMemo(() => {
     return tabs.map((tab, index) => {
       return cloneElement(tab.node, {
@@ -130,6 +132,7 @@ export function Tabs(props: TabsProps) {
       })
     }) as any[]
   }, [animated, currentIndex, lazyRender, tabs])
+
   const trigger = function (
     eventName: 'onClick' | 'onChange' | 'onDisabled',
     child?: any,
@@ -389,6 +392,17 @@ export function Tabs(props: TabsProps) {
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [swipeThreshold],
+  )
+
+  // 解决异步加载的时候默认的下划线不出现的问题
+  useEffect(
+    function () {
+      Taro.nextTick(() => {
+        resize()
+      })
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [newChildren],
   )
 
   return (

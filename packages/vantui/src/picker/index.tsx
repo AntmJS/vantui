@@ -42,6 +42,7 @@ const Picker = forwardRef(function Index(
   } = props
 
   const children = useRef<Array<any>>([])
+  const handleIndex = useRef<number>(-1)
 
   useEffect(
     function () {
@@ -58,6 +59,7 @@ const Picker = forwardRef(function Index(
     if (typeof event === 'number' || !type) {
       if (onChange) {
         const event_ = {}
+        handleIndex.current = event
         Object.defineProperties(event_, {
           detail: {
             value: {
@@ -133,11 +135,8 @@ const Picker = forwardRef(function Index(
     [columns],
   )
 
-  const setColumnValues = useCallback(function (
-    index,
-    options,
-    needReset = false,
-  ) {
+  const setColumnValues = useCallback(function (index, options) {
+    if (index <= handleIndex.current) return
     const column = children.current[index]
     if (column == null) {
       return Promise.reject(new Error('setColumnValues: 对应列不存在'))
@@ -147,15 +146,16 @@ const Picker = forwardRef(function Index(
     if (isSame) {
       return Promise.resolve()
     }
+    const cIndex = column.getCurrentIndex()
     return column.set({ options }).then(() => {
-      if (needReset) {
+      if (cIndex > options.length) {
         setTimeout(() => {
           column.setIndex(0)
+          handleIndex.current = -1
         })
       }
     })
-  },
-  [])
+  }, [])
 
   const getValues = useCallback(function () {
     return children.current.map((child) => child.getValue())

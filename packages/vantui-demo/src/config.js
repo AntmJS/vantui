@@ -193,6 +193,10 @@ export default [
         path: '/tree-select',
         title: 'TreeSelect 分类选择',
       },
+      {
+        path: '/power-scroll-view',
+        title: 'PowerScrollView 滚动列表',
+      },
     ],
   },
   {

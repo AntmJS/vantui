@@ -44,7 +44,7 @@ export default class Index extends Component {
               <View className="demo-preview">
                 <Image
                   className="demo-preview-img"
-                  src="https://img.yzcdn.cn/vant/logo.png"
+                  src="https://antm-js.gitee.io/resource/antmjs-vantui.png"
                 ></Image>
                 <View className="demo-content">
                   <View className="demo-content-h3">关于 @antmjs/vantui</View>

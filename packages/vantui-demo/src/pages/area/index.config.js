@@ -1,1 +1,4 @@
-export default { navigationBarTitleText: 'Area 省市区选择' }
+export default {
+  navigationBarTitleText: 'Area 省市区选择',
+  enableShareAppMessage: true,
+}
