@@ -37,10 +37,10 @@ import { Form, FormItem } from "@antmjs/vantui";
     })
   }
 ```
-
-- 代理的表单组件触发事件为`onChange`, 通过`trigger`重新设置
-- 代理的表单组件默认取值为`value`, 通过`valueKey`重新设置
-- 代理的表单组件触发事件回调事件的默认取值`event.detail`, 通过`valueFormat`重新设置
+FormItem需要代理下级表单组件的值和触发事件
+- 代理的表单组件触发事件为`onChange`, 通过`FormItem.trigger`重新设置
+- 代理的表单组件默认取值为`value`, 通过`FormItem.valueKey`重新设置
+- 代理的表单组件触发事件回调事件的默认取值`event.detail`, 通过`FormItem.valueFormat`重新设置
 
 ```jsx
 <Form
@@ -64,6 +64,7 @@ import { Form, FormItem } from "@antmjs/vantui";
     }}
     trigger="onInput"
     validateTrigger="onBlur"
+    // taro的input的onInput事件返回对应表单的最终值为e.detail.value
     valueFormat={(e) => e.detail.value}
     renderRight={<Icon name="user-o" />}
   >
@@ -132,6 +133,9 @@ import { Form, FormItem } from "@antmjs/vantui";
 ```
 
 ### 异步处理和自定义校验
+
+- Uploader的onAfterRead事件只返回变更的文件，展示的是多个文件的话需要重新设置
+- 异步操作的时候返回Promise
 
 ```js
 valueFormatUpload = (event, formName, instance) => {
@@ -287,8 +291,8 @@ class DatetimePickerBox extends Component {
 | valueFormat | 根据表单交互回掉函数（时间）参数的重新定义 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;IFormInstance:&nbsp;IFormInstanceAPI<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | value | `false` |
 | rules | 正则校验值，或者自定义校验后call回掉函数返回错误信息 | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;rule:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;((<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call:&nbsp;(errMess:&nbsp;string)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;RegExp<br/>&nbsp;&nbsp;&nbsp;&nbsp;message?:&nbsp;string<br/>&nbsp;&nbsp;}<br/>_ | - | `false` |
 
-### IFormInstanceAPI [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)   
-
+### IFormInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)   
+通过ref获取到的form的实例
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
 | registerValidateFields | 注册校验规则 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;control:&nbsp;Record<string,&nbsp;any>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
