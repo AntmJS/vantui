@@ -67,7 +67,7 @@ export function Checkbox(
         disabled: parentDisabled,
       }: any = parentData
 
-      const value: any = parentValue?.indexOf(`${props.name}`) !== -1
+      const value: any = parentValue?.indexOf(`${props.name}`) > -1
 
       setState((state) => {
         return {
