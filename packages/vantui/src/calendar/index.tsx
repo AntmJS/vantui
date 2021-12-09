@@ -364,7 +364,6 @@ function Index(
           value: date || copyDates(currentDate),
         },
       } as ITouchEvent
-      console.info(e)
       if (onConfirm) onConfirm(e)
     },
     [checkRange, currentDate, onConfirm, type],

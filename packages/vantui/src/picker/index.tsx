@@ -53,7 +53,7 @@ const Picker = forwardRef(function Index(
     [columns, children],
   )
 
-  const emit = useCallback(function (event = {}) {
+  const emit = function (event: any) {
     const type = event?.currentTarget?.dataset['type']
     const simple = columns && columns.length && !columns[0].values
     if (typeof event === 'number' || !type) {
@@ -112,7 +112,7 @@ const Picker = forwardRef(function Index(
         onConfirm(event)
       }
     }
-  }, [])
+  }
 
   const getColumnValue = useCallback(function (index: number) {
     const column = children.current[index]

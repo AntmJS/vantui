@@ -37,7 +37,7 @@ export function Uploader(props: UploaderProps) {
     showUpload = true,
     previewImage = true,
     previewFullImage = true,
-    imageFit = 'scaleToFill',
+    imageFit = 'aspectFill',
     uploadIcon = 'photograph',
     capture,
     compressed,
@@ -186,6 +186,7 @@ export function Uploader(props: UploaderProps) {
       const { index } = event.currentTarget.dataset
       const params = Object.assign(Object.assign({}, getDetail(index)), {
         file: fileList?.[index],
+        fileList: fileList && isArray(fileList) ? [...fileList] : fileList,
       })
       Object.defineProperty(event, 'detail', {
         value: params,

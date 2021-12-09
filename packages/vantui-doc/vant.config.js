@@ -146,6 +146,10 @@ module.exports = {
             title: 'Field 输入框',
           },
           {
+            path: 'form',
+            title: 'Form 表单',
+          },
+          {
             path: 'picker',
             title: 'Picker 选择器',
           },

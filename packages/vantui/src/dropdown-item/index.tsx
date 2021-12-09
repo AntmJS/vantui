@@ -104,7 +104,7 @@ function DropdownItem(
           : parentInstance.getChildWrapperStyle().then((wrapperStyle: any) => {
               if (wrapperStyle) {
                 wrapperStyle.width = '100vw'
-                wrapperStyle.height = '100vh'
+                if (direction === 'down') wrapperStyle.height = '100vh'
               }
               setParentState({
                 ...parentState,
@@ -117,7 +117,7 @@ function DropdownItem(
         rerender()
       }
     },
-    [showPopup, parentInstance, parentState, rerender],
+    [showPopup, parentInstance, parentState, rerender, direction],
   )
 
   useEffect(
