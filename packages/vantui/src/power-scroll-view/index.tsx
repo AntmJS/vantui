@@ -86,6 +86,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     onScrollToLower = props.onScrollToLower || props.onLoad,
     onScrollToUpper = props.onScrollToUpper || props.onRefresh,
     scrollY = props.scrollY ?? true,
+    className,
     ...rest
   } = props
   // ==LIST=======================================
@@ -498,27 +499,28 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
       scrollTop={scrollTop}
       onScrollToLower={doLoadMore}
       scrollY={scrollY}
+      className={`${bem()} ${className || ''}`}
       {...rest}
     >
-      <View className={bem()}>
-        <View
-          className={bem('track')}
-          style={trackStyle}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          onTouchCancel={onTouchEnd}
-          onTouchStart={onTouchStart}
-        >
-          <CustomWrapper>
-            <View className={bem('head')} style={getHeadStyle()}>
-              {renderStatus()}
-            </View>
-          </CustomWrapper>
-          {children}
-          <View ref={placeholder} className={bem('placeholder')} />
-          {ListScrollContent()}
-        </View>
+      {/* <View className={bem()}> */}
+      <View
+        className={bem('track')}
+        style={trackStyle}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
+        onTouchStart={onTouchStart}
+      >
+        <CustomWrapper>
+          <View className={bem('head')} style={getHeadStyle()}>
+            {renderStatus()}
+          </View>
+        </CustomWrapper>
+        {children}
+        <View ref={placeholder} className={bem('placeholder')} />
+        {ListScrollContent()}
       </View>
+      {/* </View> */}
     </ScrollView>
   )
 }
