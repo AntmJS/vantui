@@ -71,6 +71,7 @@ export default class Index extends Component {
     )
     this.setState({
       basicsList: append,
+      basicsFinished: append.length === 0,
     })
   }
   basicsLoadMore = async (
