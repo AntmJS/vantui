@@ -72,9 +72,11 @@ export function Search(props: SearchProps) {
 
   useEffect(
     function () {
-      setInnerValue(value)
+      if (!noControlled) {
+        setInnerValue(value)
+      }
     },
-    [value],
+    [noControlled, value],
   )
 
   const searchValue = noControlled ? innerValue : (value as number)

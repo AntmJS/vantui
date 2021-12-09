@@ -8,6 +8,7 @@ import {
 import { TaroElement } from '@tarojs/runtime'
 import { debounce } from 'lodash'
 import { Loading } from './../loading'
+import { Empty } from './../empty'
 import { useTouch } from './useTouch'
 import {
   scrollOffset,
@@ -68,12 +69,14 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     renderFinished,
     renderLoading,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // finished: hasMore = false,
+    finished: _finished,
     renderError,
     errorText,
-    total = 0,
+    total,
     current,
     pageSize = 20,
+    emptyDescription,
+    emptyImage,
     //命名以scrollView 为准
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     upperThreshold,
@@ -83,12 +86,14 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     onScrollToLower = props.onScrollToLower || props.onLoad,
     onScrollToUpper = props.onScrollToUpper || props.onRefresh,
     scrollY = props.scrollY ?? true,
+    className,
     ...rest
   } = props
   // ==LIST=======================================
   // 是否到底了
   // const reachDownRef = useRef(false)
   // 是否显示 loading
+  // ts推断
   const loadingRef = useRef(false)
   // 是否显示 报错
   const errorRef = useRef(false)
@@ -98,44 +103,42 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     pageSize,
   })
 
-  const [finished, setFinished] = useState(false)
+  const [finished, setFinished] = useState<boolean>(_finished || false)
   const currentCount = current ?? Array.from(children as any).length
+  const listCount = useRef(0)
   useEffect(() => {
     const { pageSize } = paginationRef.current
     if (currentCount <= pageSize) {
       paginationRef.current.page = 1
+      setFinished(false)
     }
+    // 传入finished
+    if (_finished !== undefined) {
+      setFinished(_finished)
+      return
+    }
+    // 都没有传
+    if (total === undefined) {
+      const addCount = currentCount - listCount.current
+      if (
+        currentCount === 0 ||
+        (listCount.current !== 0 &&
+          addCount > -1 &&
+          addCount < paginationRef.current.pageSize)
+      ) {
+        setFinished(true)
+      }
+      listCount.current = currentCount
+      return
+    }
+    // 传入total
     if (currentCount >= total) {
       setFinished(true)
     } else {
       setFinished(false)
     }
-  }, [total, currentCount])
+  }, [total, currentCount, _finished])
 
-  // const listCount = useRef(0)
-  // useEffect(() => {
-  //   if (children) {
-  //     const current = Array.from(children as any).length
-  //     const { pageSize } = paginationRef.current
-  //     if (current <= pageSize) {
-  //       // 被重置了
-  //       paginationRef.current.page = 1
-  //       listCount.current = 0
-  //       setFinished(false)
-  //     } else {
-  //       const addCount = current - listCount.current
-  //       if (
-  //         listCount.current !== 0 &&
-  //         addCount > -1 &&
-  //         addCount < paginationRef.current.pageSize
-  //       ) {
-  //         setFinished(true)
-  //         // 最后一页
-  //       }
-  //     }
-  //     listCount.current = current
-  //   }
-  // }, [children])
   const [isError, setError] = useState(false)
   // 是否滚动最上面了
   const reachTopRef = useRef(true)
@@ -298,7 +301,10 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
       setStatus(+headHeight, true)
       setError(false)
       paginationRef.current.page = 1
-      await onScrollToUpper?.(paginationRef.current)
+      const event = total === undefined ? 0 : paginationRef.current
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      await onScrollToUpper?.(event)
       setDuration(+animationDuration)
       if (successText) {
         await showSuccessTip()
@@ -316,6 +322,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     setStatus,
     showSuccessTip,
     successText,
+    total,
   ])
   const onTouchEnd = useCallback(() => {
     // console.log('end', reachTopRef.current, touch.deltaY.current, isTouchable())
@@ -359,7 +366,10 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
     try {
       loadingRef.current = true
       paginationRef.current.page += 1
-      await onScrollToLower?.(paginationRef.current)
+      const event = total === undefined ? currentCount : paginationRef.current
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      await onScrollToLower?.(event)
       loadingRef.current = false
     } catch (e) {
       paginationRef.current.page -= 1
@@ -369,7 +379,7 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
       // 这里要主动触发刷新
       // throw e
     }
-  }, [isBanLoad, onScrollToLower])
+  }, [currentCount, isBanLoad, onScrollToLower, total])
 
   // const check = useCallback(async () => {
   //   if (!immediateCheck || !scrollY || isBanLoad()) return
@@ -458,6 +468,9 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
   // 如果不定高 一直下拉
 
   const ListScrollContent = useCallback(() => {
+    if (finished && currentCount === 0) {
+      return <Empty description={emptyDescription} image={emptyImage} />
+    }
     if (isError) {
       return renderErrorText()
     }
@@ -468,11 +481,14 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
 
     return renderLoadingText()
   }, [
-    isError,
     finished,
+    currentCount,
+    isError,
+    renderLoadingText,
+    emptyDescription,
+    emptyImage,
     renderErrorText,
     renderFinishedText,
-    renderLoadingText,
   ])
 
   return (
@@ -483,27 +499,28 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
       scrollTop={scrollTop}
       onScrollToLower={doLoadMore}
       scrollY={scrollY}
+      className={`${bem()} ${className || ''}`}
       {...rest}
     >
-      <View className={bem()}>
-        <View
-          className={bem('track')}
-          style={trackStyle}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          onTouchCancel={onTouchEnd}
-          onTouchStart={onTouchStart}
-        >
-          <CustomWrapper>
-            <View className={bem('head')} style={getHeadStyle()}>
-              {renderStatus()}
-            </View>
-          </CustomWrapper>
-          {children}
-          <View ref={placeholder} className={bem('placeholder')} />
-          {ListScrollContent()}
-        </View>
+      {/* <View className={bem()}> */}
+      <View
+        className={bem('track')}
+        style={trackStyle}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
+        onTouchStart={onTouchStart}
+      >
+        <CustomWrapper>
+          <View className={bem('head')} style={getHeadStyle()}>
+            {renderStatus()}
+          </View>
+        </CustomWrapper>
+        {children}
+        <View ref={placeholder} className={bem('placeholder')} />
+        {ListScrollContent()}
       </View>
+      {/* </View> */}
     </ScrollView>
   )
 }

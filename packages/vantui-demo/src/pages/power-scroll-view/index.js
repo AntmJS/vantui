@@ -55,10 +55,13 @@ export default class Index extends Component {
   state = {
     // basics
     basicsList: [],
+    basicsFinished: false,
     // error
     errorList: [],
     // search
     searchList: [],
+    searchFinished: false,
+    searchValue: 'empty',
   }
 
   // 基础用法
@@ -71,12 +74,10 @@ export default class Index extends Component {
     )
     this.setState({
       basicsList: append,
+      basicsFinished: append.length === 0,
     })
   }
-  basicsLoadMore = async (
-    event = { page: 1, pageSize: 20 },
-    isRefresh = false,
-  ) => {
+  basicsLoadMore = async (event = 0, isRefresh = false) => {
     console.log(event)
     const append = await mockRequest(
       this.state.basicsList.length,
@@ -85,11 +86,12 @@ export default class Index extends Component {
     )
     this.setState({
       basicsList: [...this.state.basicsList, ...append],
+      basicsFinished: append.length === 0,
     })
   }
 
   // 错误提示
-  errorDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
+  errorDoRefresh = async (event = 0) => {
     console.log(event)
     this.error = false
     const append = await mockRequest(
@@ -99,6 +101,7 @@ export default class Index extends Component {
     )
     this.setState({
       errorList: append,
+      basicsFinished: append.length === 0,
     })
   }
   errorLoadMore = async (
@@ -124,36 +127,56 @@ export default class Index extends Component {
   }
 
   // 搜索
+  handleChange = (e) => {
+    this.setState({
+      searchValue: e.detail,
+    })
+  }
   doSearch = async () => {
     this.setState({
       searchList: [],
+      searchFinished: false,
     })
     await this.searchLoadMore(undefined, true)
   }
 
-  searchDoRefresh = async (event = { page: 1, pageSize: 20 }) => {
+  searchDoRefresh = async (event = 0) => {
     console.log(event)
     const append = await mockRequest(
       this.state.searchList.length,
       true,
       '配合搜索使用',
     )
+    if (this.state.searchValue === 'empty') {
+      this.setState({
+        searchFinished: true,
+      })
+      return
+    }
+
     this.setState({
       searchList: append,
+      searchFinished: append.length === 0,
     })
   }
-  searchLoadMore = async (
-    event = { page: 1, pageSize: 20 },
-    isRefresh = false,
-  ) => {
+  searchLoadMore = async (event = 0, isRefresh = false) => {
     console.log(event)
     const append = await mockRequest(
       this.state.searchList.length,
       isRefresh,
       '配合搜索使用',
     )
+    if (this.state.searchValue === 'empty') {
+      this.setState({
+        searchList: [],
+        searchFinished: true,
+      })
+      return
+    }
+
     this.setState({
       searchList: [...this.state.searchList, ...append],
+      searchFinished: append.length === 0,
     })
   }
 
@@ -178,7 +201,7 @@ export default class Index extends Component {
               onScrollToUpper={this.basicsDoRefresh}
               onScrollToLower={this.basicsLoadMore}
               current={this.state.basicsList.length}
-              total={TOTAL}
+              finished={this.state.basicsFinished}
             >
               {this.state.basicsList.map((e, i) => (
                 <Cell key={i} title={e} />
@@ -231,7 +254,10 @@ export default class Index extends Component {
           <Tab title="配合搜索使用" key="search">
             <View className="header">
               <View className="left">
-                <Search />
+                <Search
+                  defaultValue={this.state.searchValue}
+                  onChange={this.handleChange}
+                />
               </View>
               <View className="right">
                 <Button size="small" type="primary" onClick={this.doSearch}>
@@ -241,7 +267,8 @@ export default class Index extends Component {
             </View>
             {
               <>
-                {this.state.searchList.length > 0 ? (
+                {this.state.searchFinished ||
+                this.state.searchList.length > 0 ? (
                   <PowerScrollView
                     className={`${this.isMin ? 'min-' : ''}pull-search`}
                     successText="刷新成功"
@@ -250,7 +277,7 @@ export default class Index extends Component {
                     onScrollToLower={this.searchLoadMore}
                     lowerThreshold={300}
                     headHeight="80"
-                    total={TOTAL}
+                    finished={this.state.searchFinished}
                     renderHead={({ distance, status }) => {
                       return (
                         <Image
