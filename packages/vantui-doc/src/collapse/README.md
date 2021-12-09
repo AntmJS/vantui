@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Collapse } from "vantui";
-import { CollapseItem } from "vantui"; 
+import { Collapse } from "@antmjs/vantui";
+import { CollapseItem } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

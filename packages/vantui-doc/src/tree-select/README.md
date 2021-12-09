@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { TreeSelect } from "vantui"; 
+import { TreeSelect } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

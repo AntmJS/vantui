@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { DropdownMenu } from "vantui";
-import { DropdownItem } from "vantui"; 
+import { DropdownMenu } from "@antmjs/vantui";
+import { DropdownItem } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

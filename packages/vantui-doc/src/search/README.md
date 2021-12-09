@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Search } from "vantui"; 
+import { Search } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Checkbox } from "vantui";
-import { CheckboxGroup } from "vantui"; 
+import { Checkbox } from "@antmjs/vantui";
+import { CheckboxGroup } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

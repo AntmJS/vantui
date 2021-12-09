@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Tab } from "vantui";
-import { Tabs } from "vantui"; 
+import { Tab } from "@antmjs/vantui";
+import { Tabs } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

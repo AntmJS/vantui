@@ -9,7 +9,7 @@ Sticky 组件与 CSS 中`position: sticky`属性实现的效果一致，当组�
 在 Taro 文件中引入组件
 
 ```js
-import { Sticky } from "vantui"; 
+import { Sticky } from "@antmjs/vantui"; 
 ```
 
 > Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)
