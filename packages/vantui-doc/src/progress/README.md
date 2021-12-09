@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Progress } from "vantui"; 
+import { Progress } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

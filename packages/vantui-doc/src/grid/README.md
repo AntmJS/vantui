@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Grid } from "vantui";
-import { GridItem } from "vantui"; 
+import { Grid } from "@antmjs/vantui";
+import { GridItem } from "@antmjs/vantui"; 
 ```
 
 > Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)

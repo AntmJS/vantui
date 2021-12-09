@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Radio } from "vantui";
-import { RadioGroup } from "vantui"; 
+import { Radio } from "@antmjs/vantui";
+import { RadioGroup } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示

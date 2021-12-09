@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Cell } from "vantui";
-import { CellGroup } from "vantui"; 
+import { Cell } from "@antmjs/vantui";
+import { CellGroup } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示
