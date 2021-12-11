@@ -19,10 +19,10 @@
 
 ```bash
 # 通过 npm 安装
-npm i @antmjs/vantui -S --production
+npm install @antmjs/vantui
 
 # 通过 yarn 安装
-yarn add @antmjs/vantui --production
+yarn add @antmjs/vantui
 ```
 
 > 由于引用 node_modules 的模块，默认不会编译，所以需要额外给 H5 配置 esnextModules，在 taro 项目的 config/index.js 中新增如下配置项：
