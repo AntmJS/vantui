@@ -1,4 +1,4 @@
-import { cloneElement, useCallback, useMemo } from 'react'
+import { cloneElement, useCallback, useMemo, Children } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 
 import { CollapseProps } from '../../types/collapse'
@@ -43,7 +43,7 @@ export function Collapse(props: CollapseProps) {
   )
 
   const newChildren: any = useMemo(() => {
-    return children?.map((child: any, index: number) => {
+    return Children.map(children, (child: any, index: number) => {
       return cloneElement(child, {
         key: index,
         parent: {
@@ -55,7 +55,7 @@ export function Collapse(props: CollapseProps) {
           },
         },
       })
-    })
+    }))
   }, [children, value, accordion, handleSwitch])
 
   return (
