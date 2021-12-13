@@ -55,7 +55,7 @@ export function Collapse(props: CollapseProps) {
           },
         },
       })
-    }))
+    })
   }, [children, value, accordion, handleSwitch])
 
   return (
