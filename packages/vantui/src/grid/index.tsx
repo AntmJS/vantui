@@ -12,7 +12,7 @@ export function Grid(props: GridProps) {
     center = true,
     border = true,
     direction,
-    iconSize = '28',
+    iconSize = '48',
     square,
     reverse = false,
     className = '',
