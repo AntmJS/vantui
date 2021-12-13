@@ -9,6 +9,8 @@ export interface GridItemProps extends StandardProps {
   info?: string | number | undefined
   badge?: string | number | undefined
   text?: string
+  url?: string
+  linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
   children?: React.ReactNode
 }
 

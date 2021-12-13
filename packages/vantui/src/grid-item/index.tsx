@@ -1,6 +1,7 @@
 import { View, Text } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import { GridItemProps } from '../../types/grid-item'
+import { jumpLink } from '../common/jumpLink'
 import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
 import * as computed from './wxs'
@@ -23,6 +24,8 @@ export function GridItem(
     setChildrenInstance,
     parentInstance,
     index,
+    url,
+    linkType,
     style,
     className,
     ...others
@@ -94,7 +97,10 @@ export function GridItem(
         }),
         style,
       ])}
-      onClick={others.onClick}
+      onClick={(e) => {
+        url && jumpLink(url, linkType)
+        others?.onClick?.(e)
+      }}
     >
       <View
         className={
