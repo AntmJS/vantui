@@ -51,6 +51,7 @@ export function Switch(props: SwitchProps) {
           checked,
           activeColor,
           inactiveColor,
+          activeValue,
         }),
         style,
       ])}
@@ -64,6 +65,7 @@ export function Switch(props: SwitchProps) {
               checked,
               activeColor,
               inactiveColor,
+              activeValue,
             })}
             className="van-switch__loading"
           ></VanLoading>
