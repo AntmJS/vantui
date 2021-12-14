@@ -25,6 +25,8 @@ function DropdownItem(
   ref: React.Ref<IDropdownItemInstance>,
 ) {
   const {
+    title,
+    titleClass,
     value,
     popupStyle,
     direction,
@@ -124,6 +126,8 @@ function DropdownItem(
     function () {
       setChildrenInstance(index, {
         updateDataFromParent,
+        title,
+        titleClass,
         disabled,
         transition,
         showPopup,
@@ -136,6 +140,8 @@ function DropdownItem(
       })
     },
     [
+      title,
+      titleClass,
       index,
       setChildrenInstance,
       disabled,
