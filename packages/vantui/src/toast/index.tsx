@@ -137,7 +137,7 @@ export function Toast(props: ToastProps) {
           id="van-toast"
           className={
             'van-toast van-toast--' +
-            (state.type === 'icon' ? 'icon' : 'text') +
+            (state.type === 'text' || state.type === 'html' ? 'text' : 'icon') +
             ` van-toast--${state.position} ${className}`
           }
           style={style}
