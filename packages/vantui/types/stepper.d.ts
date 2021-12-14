@@ -21,6 +21,7 @@ export interface StepperProps extends StandardProps {
   disableMinus?: boolean
   longPress?: boolean
   theme?: 'round'
+  alwaysEmbed?: boolean
   onFocus?: CommonEventFunction<InputProps.inputForceEventDetail>
   onChange?: (event: { detail: number | string }) => void
   onBlur?: CommonEventFunction<InputProps.inputForceEventDetail>

@@ -21,6 +21,7 @@ export function Stepper(props: StepperProps) {
     value,
     integer,
     disabled,
+    alwaysEmbed,
     inputWidth,
     buttonSize,
     asyncChange,
@@ -263,6 +264,7 @@ export function Stepper(props: StepperProps) {
           buttonSize,
           inputWidth,
         })}
+        alwaysEmbed={alwaysEmbed}
         value={currentValue}
         disabled={disabled || disableInput}
         onInput={_onInput}
