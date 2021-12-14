@@ -38,7 +38,7 @@ module.exports = {
       // syncPathFromSimulator: true,
     },
     title: '@antmjs/vantui',
-    logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.png',
+    logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
     links: [
       {
         logo: 'https://b.yzcdn.cn/vant/logo/github.svg',

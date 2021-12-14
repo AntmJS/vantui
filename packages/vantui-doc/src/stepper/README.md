@@ -187,6 +187,7 @@ function onChange(value) {
 | disableMinus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | longPress | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | theme | - | _&nbsp;&nbsp;"round"<br/>_ | - | `false` |
+| alwaysEmbed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | onFocus | - | _&nbsp;&nbsp;CommonEventFunction<InputProps.inputForceEventDetail><br/>_ | - | `false` |
 | onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 | onBlur | - | _&nbsp;&nbsp;CommonEventFunction<InputProps.inputForceEventDetail><br/>_ | - | `false` |

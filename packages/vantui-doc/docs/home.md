@@ -1,6 +1,6 @@
 <div class="card">
   <div class="intro" style="text-align: center; padding: 20px;">
-    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.png">
+    <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.jpg">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
     <p>基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</p>
   </div>
@@ -83,8 +83,16 @@
 :---:|:---:|:---:|:---:
 [hisanshao](https://github.com/hisanshao/) | [Chitanda60](https://github.com/Chitanda60/) | [Banlangenn](https://github.com/Banlangenn/) | [zuolung](https://github.com/zuolung/)
 
+### 贡献者们
+
+感谢以下小伙伴们为 @antmjs/vantui 发展做出的贡献：
+
+<a href="https://github.com/AntmJS/vantui/graphs/contributors">
+  <img src="https://opencollective.com/vantuiantmjs/contributors.svg?width=890&button=false" alt="contributors">
+</a>
+
 ### 快速沟通群
 
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v7.jpeg" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v8.jpeg" />
 </div>

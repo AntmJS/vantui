@@ -166,7 +166,7 @@ import { Button } from "@antmjs/vantui";
     按钮
   </Button>
   <Button
-    icon="https://antm-js.gitee.io/resource/antmjs-vantui.png"
+    icon="https://antm-js.gitee.io/resource/antmjs-vantui.jpg"
     type="info"
   >
     按钮
