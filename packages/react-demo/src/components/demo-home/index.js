@@ -18,7 +18,7 @@ export default class Index extends Component {
           <Image
             mode="aspectFit"
             className="demo-home__image"
-            src="https://antm-js.gitee.io/resource/antmjs-vantui.png"
+            src="https://antm-js.gitee.io/resource/antmjs-vantui.jpg"
           ></Image>
           <View className="demo-home__text">@antmjs/vantui</View>
         </View>
