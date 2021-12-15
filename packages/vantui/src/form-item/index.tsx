@@ -14,7 +14,7 @@ import Message from './message'
 
 const prefixCls = 'vant-form-formItem'
 
-export default function FormItem(props: FormItemProps) {
+export function FormItem(props: FormItemProps) {
   const {
     name,
     layout = 'horizontal',
@@ -115,3 +115,5 @@ export default function FormItem(props: FormItemProps) {
     </View>
   )
 }
+
+export default FormItem

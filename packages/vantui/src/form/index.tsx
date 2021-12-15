@@ -1,10 +1,10 @@
-import React, { useImperativeHandle, forwardRef } from 'react'
-import { Form } from '@tarojs/components'
+import React, { useImperativeHandle, forwardRef, memo } from 'react'
+import { Form as TaroForm } from '@tarojs/components'
 import { FormProps, IFormInstanceAPI } from '../../types/form'
 import FormContext from './core/formContext'
 import useForm from './core/useForm'
 
-function Form_(
+function Index(
   props: FormProps,
   ref: React.ForwardedRef<IFormInstanceAPI>,
 ): JSX.Element {
@@ -37,7 +37,7 @@ function Form_(
   )
 
   return (
-    <Form
+    <TaroForm
       className={`${className} vant-form`}
       onReset={(e) => {
         e.preventDefault()
@@ -51,8 +51,10 @@ function Form_(
       }}
     >
       {RenderChildren}
-    </Form>
+    </TaroForm>
   )
 }
 
-export default forwardRef(Form_)
+const Form = memo(forwardRef(Index))
+export { Form }
+export default Form

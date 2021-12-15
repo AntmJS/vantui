@@ -5,6 +5,7 @@ import {
   useCallback,
   useImperativeHandle,
   forwardRef,
+  memo,
 } from 'react'
 import Taro from '@tarojs/taro'
 import {
@@ -16,7 +17,7 @@ import VanIcon from '../icon/index'
 import VanCell from '../cell'
 import VanPopup from '../popup'
 
-function DropdownItem(
+function Index(
   props: DropdownItemProps & {
     setChildrenInstance?: any
     index?: number
@@ -246,4 +247,7 @@ function DropdownItem(
     <></>
   )
 }
-export default forwardRef(DropdownItem)
+
+const DropdownItem = memo(forwardRef(Index))
+export { DropdownItem }
+export default DropdownItem
