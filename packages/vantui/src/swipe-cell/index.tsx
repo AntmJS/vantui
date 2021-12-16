@@ -39,6 +39,7 @@ function Index(
     style,
     className,
     disabled,
+    name = '',
     onClick,
     onOpen,
     onClose,
@@ -155,7 +156,7 @@ function Index(
         onOpen(e)
       }
     },
-    [leftWidth, onOpen, rightWidth, swipeMove],
+    [leftWidth, onOpen, rightWidth, swipeMove, name],
   )
 
   const swipeLeaveTransition = useCallback(
@@ -179,6 +180,7 @@ function Index(
       Object.defineProperty(event, 'detail', {
         value: {
           position,
+          name: name,
           instance: {
             close,
             open,
