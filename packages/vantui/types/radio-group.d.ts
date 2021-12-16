@@ -5,7 +5,7 @@ export interface RadioGroupProps extends StandardProps {
   value?: any
   direction?: 'vertical' | 'horizontal'
   disabled?: boolean
-  children?: Array<ReactNode>
+  children?: ReactNode
   onChange?: (event: ITouchEvent) => any
 }
 
