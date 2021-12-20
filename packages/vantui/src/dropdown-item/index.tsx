@@ -172,7 +172,7 @@ function DropdownItem(
     if (onClose) onClose()
     rerender()
     if (shouldEmitChange) {
-      onChange()
+      onChange(option.value)
     }
   }
 
