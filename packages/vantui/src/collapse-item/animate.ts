@@ -82,7 +82,7 @@ export function setContentAnimate(
     .then((rect: any) => {
       return process.env.TARO_ENV === 'h5'
         ? ref.current.clientHeight
-        : rect.height
+        : rect?.height
     })
     .then((height) => {
       useAnimation(expanded, mounted, height, setState)

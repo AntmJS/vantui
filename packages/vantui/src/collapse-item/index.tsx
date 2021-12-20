@@ -55,14 +55,16 @@ export function CollapseItem(
     }
   })
   useEffect(() => {
-    if (process.env.TARO_ENV === 'h5') {
+    // if (process.env.TARO_ENV === 'h5') {
+    setTimeout(() => {
       setState((state) => {
         return {
           ...state,
           ready: true,
         }
       })
-    }
+    }, 0)
+    // }
   }, [])
 
   const refDom = useRef(null)
