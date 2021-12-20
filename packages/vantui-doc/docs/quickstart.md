@@ -51,6 +51,10 @@ h5: {
 }
 ```
 
+### 其他注意事项
+
+该组件在编译阶段默认已经使用了babel/runtime进行语法转换以及polyfill。目前使用taro的默认babel配置在支付宝和钉钉等环境会报错，解决方案可以参考[vantui-demo](https://github.com/AntmJS/vantui/tree/main/packages/vantui-demo)的配置。
+
 ### 示例工程
 
 - 拉取代码[VantUI](https://github.com/AntmJS/vantui)
