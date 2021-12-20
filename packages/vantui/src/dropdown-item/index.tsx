@@ -179,7 +179,7 @@ function Index(
     if (onClose) onClose()
     rerender()
     if (shouldEmitChange) {
-      onChange()
+      onChange(option.value)
     }
   }
 
