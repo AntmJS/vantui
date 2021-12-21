@@ -13,7 +13,17 @@
 - Taro需要使用3.0+的版本
 - 小程序参考Taro的最低支持程度
 
-## 安装
+### 示例工程
+
+- 拉取代码[VantUI](https://github.com/AntmJS/vantui)
+
+- 执行 yarn && yarn bootstrap && npx lerna run build --scope=@antmjs/vantui
+
+> 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn watch:weapp
+
+> 进入React版工程:react-demo即 cd packages/react-demo && yarn start
+
+## 开始使用
 
 ### 通过 npm/yarn 安装
 
@@ -53,17 +63,14 @@ h5: {
 
 ### 其他注意事项
 
+#### 需要注意开发者工具的项目设置：
+
+* 需要设置关闭 ES6 转 ES5 功能，开启可能报错
+* 需要设置关闭上传代码时样式自动补全，开启可能报错
+* 需要设置关闭代码压缩上传，开启可能报错
+
+#### 编译问题
 该组件在编译阶段默认已经使用了babel/runtime进行语法转换以及polyfill。目前使用taro的默认babel配置在支付宝和钉钉等环境会报错，解决方案可以参考[vantui-demo](https://github.com/AntmJS/vantui/tree/main/packages/vantui-demo)的配置。
-
-### 示例工程
-
-- 拉取代码[VantUI](https://github.com/AntmJS/vantui)
-
-- 执行 yarn && yarn bootstrap && npx lerna run build --scope=@antmjs/vantui
-
-> 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn watch:weapp
-
-> 进入React版工程:react-demo即 cd packages/react-demo && yarn start
 
 ## 引入组件
 
