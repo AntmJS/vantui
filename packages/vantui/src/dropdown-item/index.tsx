@@ -16,13 +16,13 @@ import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
 import VanCell from '../cell'
 import VanPopup from '../popup'
-import { addUnit, getRect } from '../common/utils'
 
 function Index(
   props: DropdownItemProps & {
     setChildrenInstance?: any
     index?: number
     parentInstance?: any
+    currentIndex?: number
   },
   ref: React.Ref<IDropdownItemInstance>,
 ) {
@@ -46,6 +46,7 @@ function Index(
     onChange = () => {},
     options = [],
     className = '',
+    currentIndex,
     style,
     ...others
   } = props
@@ -114,7 +115,8 @@ function Index(
               }
 
               if (direction === 'down') {
-                wrapperStyle.top = addUnit(rect.height * 2)
+                console.info(rect.height, currentIndex)
+                wrapperStyle.top = rect.height + 'PX'
                 wrapperStyle.height = '100vh'
 
                 setParentState({
@@ -126,25 +128,25 @@ function Index(
               }
 
               if (direction === 'up') {
-                getRect(null, `.dropdown-item__option_box${index}`).then(
-                  (re: any) => {
-                    wrapperStyle.height = addUnit(re.top * 2)
-                    wrapperStyle.top = addUnit(-re.top * 2)
-                    setParentState({
-                      ...parentState,
-                      wrapperStyle,
-                    })
-                    setShowWrapper(true)
-                    rerender()
-                  },
-                )
+                wrapperStyle.height = '100vh'
+                wrapperStyle.top = 0
+                wrapperStyle.transform = 'translateY(-100%)'
+                wrapperStyle.WebkitTransform = 'translateY(-100%)'
+                wrapperStyle.MozTransform = 'translateY(-100%)'
+                wrapperStyle.OTransform = 'translateY(-100%)'
+                setParentState({
+                  ...parentState,
+                  wrapperStyle,
+                })
+                setShowWrapper(true)
+                rerender()
               }
             })
       } else {
         rerender()
       }
     },
-    [showPopup, parentInstance, direction, parentState, rerender, index],
+    [showPopup, parentInstance, direction, currentIndex, parentState, rerender],
   )
 
   useEffect(
@@ -232,7 +234,7 @@ function Index(
         onAfterEnter={onOpened}
         onAfterLeave={onClosed_}
       >
-        <View className={`dropdown-item__option_box${index}`}>
+        <View>
           {(options || []).map((item: any, index: number) => (
             <VanCell
               key={`${index}VanCell`}
@@ -266,29 +268,6 @@ function Index(
           {others.children}
         </View>
       </VanPopup>
-      <View
-        className={`dropdown-item__option_box${index}`}
-        style={{ position: 'absolute', left: '-1000px' }}
-      >
-        {(options || []).map((item: any, index: number) => (
-          <VanCell
-            key={`${index}VanCell##`}
-            data-option={item}
-            className={utils.bem('dropdown-item__option', {
-              active: item.value === value_,
-            })}
-          >
-            {item.value === value_ && (
-              <VanIcon
-                name="success"
-                className="van-dropdown-item__icon"
-                color={activeColor}
-              ></VanIcon>
-            )}
-          </VanCell>
-        ))}
-        {others.children}
-      </View>
     </View>
   ) : (
     <></>
