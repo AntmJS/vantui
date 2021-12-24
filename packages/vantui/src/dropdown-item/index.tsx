@@ -22,6 +22,7 @@ function Index(
     setChildrenInstance?: any
     index?: number
     parentInstance?: any
+    currentIndex?: number
   },
   ref: React.Ref<IDropdownItemInstance>,
 ) {
@@ -45,6 +46,7 @@ function Index(
     onChange = () => {},
     options = [],
     className = '',
+    currentIndex,
     style,
     ...others
   } = props
@@ -105,22 +107,46 @@ function Index(
         !parentInstance
           ? void 0
           : parentInstance.getChildWrapperStyle().then((wrapperStyle: any) => {
+              const rect = wrapperStyle.rect
+              delete wrapperStyle.rect
               if (wrapperStyle) {
                 wrapperStyle.width = '100vw'
-                if (direction === 'down') wrapperStyle.height = '100vh'
+                wrapperStyle.position = 'absolute'
               }
-              setParentState({
-                ...parentState,
-                wrapperStyle,
-              })
-              setShowWrapper(true)
-              rerender()
+
+              if (direction === 'down') {
+                console.info(rect.height, currentIndex)
+                wrapperStyle.top = rect.height + 'PX'
+                wrapperStyle.height = '100vh'
+
+                setParentState({
+                  ...parentState,
+                  wrapperStyle,
+                })
+                setShowWrapper(true)
+                rerender()
+              }
+
+              if (direction === 'up') {
+                wrapperStyle.height = '100vh'
+                wrapperStyle.top = 0
+                wrapperStyle.transform = 'translateY(-100%)'
+                wrapperStyle.WebkitTransform = 'translateY(-100%)'
+                wrapperStyle.MozTransform = 'translateY(-100%)'
+                wrapperStyle.OTransform = 'translateY(-100%)'
+                setParentState({
+                  ...parentState,
+                  wrapperStyle,
+                })
+                setShowWrapper(true)
+                rerender()
+              }
             })
       } else {
         rerender()
       }
     },
-    [showPopup, parentInstance, parentState, rerender, direction],
+    [showPopup, parentInstance, direction, currentIndex, parentState, rerender],
   )
 
   useEffect(
@@ -208,7 +234,7 @@ function Index(
         onAfterEnter={onOpened}
         onAfterLeave={onClosed_}
       >
-        <>
+        <View>
           {(options || []).map((item: any, index: number) => (
             <VanCell
               key={`${index}VanCell`}
@@ -240,7 +266,7 @@ function Index(
             </VanCell>
           ))}
           {others.children}
-        </>
+        </View>
       </VanPopup>
     </View>
   ) : (
