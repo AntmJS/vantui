@@ -45,8 +45,8 @@ export interface PowerScrollViewProps<T = number>
   renderFinished?: React.ReactNode
   renderLoading?: React.ReactNode
   renderError?: React.ReactNode
-  emptyDescription: string
-  emptyImage: 'error' | 'search' | 'default' | 'network' | string
+  emptyDescription?: string
+  emptyImage?: 'error' | 'search' | 'default' | 'network' | string
   onLoad?: (event: T extends number ? number : eventType) => Promise<void>
   onRefresh?: (event: T extends number ? number : eventType) => Promise<void>
   // Scroll
