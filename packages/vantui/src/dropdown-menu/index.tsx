@@ -7,10 +7,10 @@ import {
   useEffect,
   useState,
   useLayoutEffect,
+  Children,
 } from 'react'
 import { DropdownMenuProps } from '../../types/dropdown-menu'
 import { getRect } from '../common/utils'
-import { isArray } from '../utils/type'
 import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 
@@ -71,12 +71,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
     }
   }, [])
 
-  const updateChildrenData = useCallback(function () {
-    childrenInstance.current.forEach((child) => {
-      child.updateDataFromParent()
-    })
-  }, [])
-
   const updateItemListData = function () {
     setTimeout(() => {
       if (childrenInstance.current) {
@@ -118,13 +112,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
     [toggleItem],
   )
 
-  useEffect(
-    function () {
-      updateChildrenData()
-    },
-    [updateChildrenData],
-  )
-
   const setChildrenInstance = useCallback(function (
     index: number,
     instance: any,
@@ -152,31 +139,26 @@ export function DropdownMenu(props: DropdownMenuProps) {
   const ResetChildren = useMemo(
     function () {
       const res: Array<JSX.Element> = []
-      const children = isArray(others.children)
-        ? others.children
-        : [others.children]
-      if (children) {
-        ;(children as Array<any>).forEach((child, index) => {
-          res.push(
-            cloneElement(child as JSX.Element, {
+      Children.map(others.children, (children, index) => {
+        res.push(
+          cloneElement(children as JSX.Element, {
+            direction,
+            key: index,
+            setChildrenInstance,
+            index,
+            currentIndex,
+            parentInstance: {
+              overlay,
+              duration,
+              activeColor,
+              closeOnClickOverlay,
               direction,
-              key: index,
-              setChildrenInstance,
-              index,
-              currentIndex,
-              parentInstance: {
-                overlay,
-                duration,
-                activeColor,
-                closeOnClickOverlay,
-                direction,
-                getChildWrapperStyle,
-                updateItemListData,
-              },
-            }),
-          )
-        })
-      }
+              getChildWrapperStyle,
+              updateItemListData,
+            },
+          }),
+        )
+      })
       return res
     },
     [

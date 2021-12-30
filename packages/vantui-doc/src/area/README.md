@@ -51,16 +51,16 @@ const areaList = {
 };
 ```
 
-### @vant/areaData
+### @vant/area-data
 
-Vant 官方提供了一份默认的省市区数据，可以通过 [@vant/areaData](https://github.com/youzan/vant/tree/dev/packages/vantAreaData) 引入。
+Vant 官方提供了一份默认的省市区数据，可以通过 [@vant/area-data](https://github.com/youzan/vant/tree/dev/packages/vant-area-data) 引入。
 
 ```bash
-yarn add @vant/areaData
+yarn add @vant/area-data
 ```
 
 ```js
-import { areaList } from '@vant/areaData';
+import { areaList } from '@vant/area-data';
 this.state = {
   areaList
 }; 
