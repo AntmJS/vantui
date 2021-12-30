@@ -7,10 +7,10 @@ import {
   useEffect,
   useState,
   useLayoutEffect,
+  Children,
 } from 'react'
 import { DropdownMenuProps } from '../../types/dropdown-menu'
-import { addUnit, getRect, getSystemInfoSync } from '../common/utils'
-import { isArray } from '../utils/type'
+import { getRect } from '../common/utils'
 import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 
@@ -32,7 +32,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
   } = props
 
   const [itemListData, setItemListData] = useState<Array<any>>([])
-  const [windowHeight, setWindowHeight] = useState(0)
   const childrenInstance = useRef<Array<any>>([])
   const TimerKey = useRef<Date>()
   const [currentIndex, setCurrentIndex] = useState<number>()
@@ -49,8 +48,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
   useLayoutEffect(
     function () {
-      const { windowHeight } = getSystemInfoSync()
-      setWindowHeight(windowHeight)
       TimerKey.current = new Date()
       ARRAY.push({
         closeOnClickOutside,
@@ -72,12 +69,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
     return function () {
       ARRAY = (ARRAY || []).filter((item) => item && item.TimerKey !== TimerKey)
     }
-  }, [])
-
-  const updateChildrenData = useCallback(function () {
-    childrenInstance.current.forEach((child) => {
-      child.updateDataFromParent()
-    })
   }, [])
 
   const updateItemListData = function () {
@@ -121,13 +112,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
     [toggleItem],
   )
 
-  useEffect(
-    function () {
-      updateChildrenData()
-    },
-    [updateChildrenData],
-  )
-
   const setChildrenInstance = useCallback(function (
     index: number,
     instance: any,
@@ -140,52 +124,41 @@ export function DropdownMenu(props: DropdownMenuProps) {
     function () {
       return getRect(null, `.van-dropdown-menu${currentIndex}`).then(
         (rect: any) => {
-          const { top = 0, bottom = 0 } = rect
-          const offset = direction === 'down' ? bottom : windowHeight - top
-          const wrapperStyle: React.CSSProperties = {
+          const wrapperStyle: any = {
             zIndex: zIndex,
-          }
-          if (direction === 'down') {
-            wrapperStyle.top = addUnit(offset * 2)
-          } else {
-            wrapperStyle.bottom = addUnit(offset * 2)
+            rect: rect,
           }
 
           return wrapperStyle
         },
       )
     },
-    [direction, windowHeight, zIndex, currentIndex],
+    [zIndex, currentIndex],
   )
 
   const ResetChildren = useMemo(
     function () {
       const res: Array<JSX.Element> = []
-      const children = isArray(others.children)
-        ? others.children
-        : [others.children]
-      if (children) {
-        ;(children as Array<any>).forEach((child, index) => {
-          res.push(
-            cloneElement(child as JSX.Element, {
+      Children.map(others.children, (children, index) => {
+        res.push(
+          cloneElement(children as JSX.Element, {
+            direction,
+            key: index,
+            setChildrenInstance,
+            index,
+            currentIndex,
+            parentInstance: {
+              overlay,
+              duration,
+              activeColor,
+              closeOnClickOverlay,
               direction,
-              key: index,
-              setChildrenInstance,
-              index,
-              currentIndex,
-              parentInstance: {
-                overlay,
-                duration,
-                activeColor,
-                closeOnClickOverlay,
-                direction,
-                getChildWrapperStyle,
-                updateItemListData,
-              },
-            }),
-          )
-        })
-      }
+              getChildWrapperStyle,
+              updateItemListData,
+            },
+          }),
+        )
+      })
       return res
     },
     [

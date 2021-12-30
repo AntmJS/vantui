@@ -22,6 +22,7 @@ function Index(
     setChildrenInstance?: any
     index?: number
     parentInstance?: any
+    currentIndex?: number
   },
   ref: React.Ref<IDropdownItemInstance>,
 ) {
@@ -30,11 +31,7 @@ function Index(
     titleClass,
     value,
     popupStyle,
-    direction,
     disabled = false,
-    duration,
-    closeOnClickOverlay,
-    activeColor,
     setChildrenInstance,
     parentInstance,
     index,
@@ -49,7 +46,7 @@ function Index(
     ...others
   } = props
 
-  const [parentState, setParentState] = useState<any>({})
+  const [wrapperStyle, setWrapperStyle] = useState<any>({})
   const [transition, setTransition] = useState(true)
   const [showPopup, setShowPopup] = useState(false)
   const [showWrapper, setShowWrapper] = useState(true)
@@ -61,22 +58,6 @@ function Index(
       setValue(value)
     },
     [value],
-  )
-
-  const updateDataFromParent = useCallback(
-    function () {
-      const { overlay, duration, activeColor, closeOnClickOverlay, direction } =
-        parentInstance
-
-      setParentState({
-        overlay,
-        duration,
-        activeColor,
-        closeOnClickOverlay,
-        direction,
-      })
-    },
-    [parentInstance],
   )
 
   const rerender = useCallback(
@@ -105,28 +86,43 @@ function Index(
         !parentInstance
           ? void 0
           : parentInstance.getChildWrapperStyle().then((wrapperStyle: any) => {
+              const rect = wrapperStyle.rect
+              delete wrapperStyle.rect
               if (wrapperStyle) {
                 wrapperStyle.width = '100vw'
-                if (direction === 'down') wrapperStyle.height = '100vh'
+                wrapperStyle.position = 'absolute'
               }
-              setParentState({
-                ...parentState,
-                wrapperStyle,
-              })
-              setShowWrapper(true)
-              rerender()
+
+              if (parentInstance.direction === 'down') {
+                wrapperStyle.top = rect.height + 'PX'
+                wrapperStyle.height = '100vh'
+                setWrapperStyle(wrapperStyle)
+                setShowWrapper(true)
+                rerender()
+              }
+
+              if (parentInstance.direction === 'up') {
+                wrapperStyle.height = '100vh'
+                wrapperStyle.top = 0
+                wrapperStyle.transform = 'translateY(-100%)'
+                wrapperStyle.WebkitTransform = 'translateY(-100%)'
+                wrapperStyle.MozTransform = 'translateY(-100%)'
+                wrapperStyle.OTransform = 'translateY(-100%)'
+                setWrapperStyle(wrapperStyle)
+                setShowWrapper(true)
+                rerender()
+              }
             })
       } else {
         rerender()
       }
     },
-    [showPopup, parentInstance, parentState, rerender, direction],
+    [showPopup, parentInstance, rerender],
   )
 
   useEffect(
     function () {
       setChildrenInstance(index, {
-        updateDataFromParent,
         title,
         titleClass,
         disabled,
@@ -153,15 +149,7 @@ function Index(
       options,
       value_,
       toggle,
-      updateDataFromParent,
     ],
-  )
-
-  useEffect(
-    function () {
-      updateDataFromParent()
-    },
-    [updateDataFromParent],
   )
 
   const onClosed_ = useCallback(
@@ -191,24 +179,26 @@ function Index(
 
   return showWrapper ? (
     <View
-      className={utils.bem('dropdown-item', direction) + ' ' + className}
-      style={utils.style([parentState.wrapperStyle, style])}
+      className={
+        utils.bem('dropdown-item', parentInstance.direction) + ' ' + className
+      }
+      style={utils.style([wrapperStyle, style])}
     >
       <VanPopup
         show={showPopup}
         style={utils.style([{ position: 'absolute' }, popupStyle])}
         overlayStyle="position: absolute;"
         overlay={!!parentInstance.overlay}
-        position={direction === 'down' ? 'top' : 'bottom'}
-        duration={transition ? duration : 0}
-        closeOnClickOverlay={closeOnClickOverlay}
+        position={parentInstance.direction === 'down' ? 'top' : 'bottom'}
+        duration={transition ? parentInstance.duration : 0}
+        closeOnClickOverlay={parentInstance.closeOnClickOverlay}
         onEnter={onOpen}
         onLeave={onClose}
         onClose={toggle}
         onAfterEnter={onOpened}
         onAfterLeave={onClosed_}
       >
-        <>
+        <View>
           {(options || []).map((item: any, index: number) => (
             <VanCell
               key={`${index}VanCell`}
@@ -223,7 +213,11 @@ function Index(
                 <Block>
                   <View
                     className="van-dropdown-item__title"
-                    style={item.value === value_ ? 'color:' + activeColor : ''}
+                    style={
+                      item.value === value_
+                        ? 'color:' + parentInstance.activeColor
+                        : ''
+                    }
                   >
                     {item.text}
                   </View>
@@ -234,13 +228,13 @@ function Index(
                 <VanIcon
                   name="success"
                   className="van-dropdown-item__icon"
-                  color={activeColor}
+                  color={parentInstance.activeColor}
                 ></VanIcon>
               )}
             </VanCell>
           ))}
           {others.children}
-        </>
+        </View>
       </VanPopup>
     </View>
   ) : (

@@ -67,22 +67,6 @@ export interface DropdownItemProps extends StandardProps {
    */
   popupStyle?: React.CSSProperties
   /**
-   * @description 弹出层方向
-   */
-  direction?: 'up' | 'down'
-  /**
-   * @description 弹出层执行时间（单位毫秒）
-   */
-  duration?: number
-  /**
-   * @description 点击梦层是否关闭
-   */
-  closeOnClickOverlay?: boolean
-  /**
-   * @description 选中项的颜色
-   */
-  activeColor?: string
-  /**
    * @description 展开下拉项触发
    */
   onOpen?: () => void
