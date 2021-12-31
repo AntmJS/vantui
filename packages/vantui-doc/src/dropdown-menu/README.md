@@ -232,10 +232,6 @@ function onSwitch2Change({
 | titleClass | 标题元素的class | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | options | 所有选项 | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_ | - | `true` |
 | popupStyle | 弹出层的样式 | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
-| direction | 弹出层方向 | _&nbsp;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_ | - | `false` |
-| duration | 弹出层执行时间（单位毫秒） | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| closeOnClickOverlay | 点击梦层是否关闭 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| activeColor | 选中项的颜色 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | onOpen | 展开下拉项触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 | onOpened | 展开下拉项完成时触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 | onClose | 关闭下拉项触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
