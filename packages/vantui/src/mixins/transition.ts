@@ -117,7 +117,13 @@ export function useTransition({
     })
   }, [classNames, display, duration, onBeforeLeave, onLeave, onTransitionEnd])
   useEffect(() => {
-    show ? _enter() : _leave()
+    if (show && (!classes || !classes.includes(classNames['enter-to']))) {
+      _enter()
+    }
+    if (!show) {
+      _leave()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_enter, _leave, show])
 
   return {
