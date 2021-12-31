@@ -127,6 +127,9 @@ export function IndexBar(props: IndexBarProps) {
 
   const _setListRect = useCallback(() => {
     return getRect(null, '.van-index-bar').then((rect: any) => {
+      if (!isDef(rect)) {
+        return
+      }
       rectRef.current = {
         height: rect.height,
         top: rect.top + scrollTopRef.current,

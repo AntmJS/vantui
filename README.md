@@ -60,7 +60,7 @@
 
 ### 贡献代码
 
-使用过程中发现任何问题都可以提 [Issue](https://github.com/antmjs/vantui/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/antmjs/vantui/pulls)，同时，到目前为止我们已经对vant-weapp的[commit](https://github.com/youzan/vant-weapp/commits/dev)记录同步到了2021-12-13的版本，我们也会持续同步
+使用过程中发现任何问题都可以提 [Issue](https://github.com/antmjs/vantui/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/antmjs/vantui/pulls)，同时，到目前为止我们已经对vant-weapp的[commit](https://github.com/youzan/vant-weapp/commits/dev)记录同步到了2021-12-23的版本，我们也会持续同步
 
 ### 开源协议
 

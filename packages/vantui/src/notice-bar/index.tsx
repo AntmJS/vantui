@@ -207,7 +207,6 @@ export function NoticeBar(props: NoticeBarProps) {
       >
         {leftIcon ? (
           <VanIcon
-            size={32}
             name={leftIcon}
             className="van-notice-bar__left-icon"
           ></VanIcon>
