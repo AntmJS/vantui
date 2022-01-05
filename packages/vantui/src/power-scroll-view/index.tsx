@@ -41,7 +41,7 @@ const sleep = (t: number) =>
 const DEFAULT_HEAD_HEIGHT = 50
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
 
-export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
+export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   const {
     headHeight = DEFAULT_HEAD_HEIGHT,
     successDuration = 500,
@@ -525,4 +525,4 @@ export const PullRefresh: React.FC<PowerScrollViewProps> = (props) => {
   )
 }
 
-export default PullRefresh
+export default PowerScrollView

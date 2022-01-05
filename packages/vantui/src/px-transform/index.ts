@@ -1,4 +1,6 @@
-import { pxTransform } from '@tarojs/taro'
+import { pxTransform as TaroPxTransform } from '@tarojs/taro'
 
-export { pxTransform }
-export default pxTransform
+export function pxTransform(size: number, designWidth?: number | undefined) {
+  TaroPxTransform(size, designWidth)
+}
+export default TaroPxTransform
