@@ -15,6 +15,7 @@ import { Toast } from "@antmjs/vantui";
 ## 代码演示
 
 ### 文字提示
+须要在JSX里面申明后，才能用命令式调用
 
 ```javascript
 import { Toast } from 'vantui';

@@ -491,6 +491,12 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     renderFinishedText,
   ])
 
+  const renderStatusBody = (
+    <View className={bem('head')} style={getHeadStyle()}>
+      {renderStatus()}
+    </View>
+  )
+
   return (
     <ScrollView
       ref={scrollRef}
@@ -511,11 +517,11 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
         onTouchCancel={onTouchEnd}
         onTouchStart={onTouchStart}
       >
-        <CustomWrapper>
-          <View className={bem('head')} style={getHeadStyle()}>
-            {renderStatus()}
-          </View>
-        </CustomWrapper>
+        {process.env.TARO_ENV === 'weapp' ? (
+          <CustomWrapper>{renderStatusBody}</CustomWrapper>
+        ) : (
+          <>{renderStatusBody}</>
+        )}
         {children}
         <View ref={placeholder} className={bem('placeholder')} />
         {ListScrollContent()}

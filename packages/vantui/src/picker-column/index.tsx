@@ -198,6 +198,45 @@ function Index(
     }
   })
 
+  const renderColumn = (
+    <View
+      style={computed.wrapperStyle({
+        offset,
+        itemHeight,
+        visibleItemCount,
+        duration,
+      })}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onTouchCancel={onTouchEnd}
+      catchMove
+    >
+      {options.map((option: any, index: number) => {
+        return (
+          <View
+            disable-scroll
+            key={`picker-column__item${index}`}
+            data-index={index}
+            style={{ height: itemHeight + 'px' }}
+            className={
+              'van-ellipsis ' +
+              utils.bem('picker-column__item', {
+                disabled: option && option.disabled,
+                selected: index === currentIndex,
+              }) +
+              ' ' +
+              (index === currentIndex ? 'active-class' : '')
+            }
+            onClick={onClickItem}
+          >
+            {computed.optionText(option, valueKey)}
+          </View>
+        )
+      })}
+    </View>
+  )
+
   return (
     <View
       className={`van-picker-column  ${className}`}
@@ -210,43 +249,11 @@ function Index(
       ])}
       {...others}
     >
-      <CustomWrapper>
-        <View
-          style={computed.wrapperStyle({
-            offset,
-            itemHeight,
-            visibleItemCount,
-            duration,
-          })}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          onTouchCancel={onTouchEnd}
-          catchMove
-        >
-          {options.map((option: any, index: number) => {
-            return (
-              <View
-                key={`picker-column__item${index}`}
-                data-index={index}
-                style={{ height: itemHeight + 'px' }}
-                className={
-                  'van-ellipsis ' +
-                  utils.bem('picker-column__item', {
-                    disabled: option && option.disabled,
-                    selected: index === currentIndex,
-                  }) +
-                  ' ' +
-                  (index === currentIndex ? 'active-class' : '')
-                }
-                onClick={onClickItem}
-              >
-                {computed.optionText(option, valueKey)}
-              </View>
-            )
-          })}
-        </View>
-      </CustomWrapper>
+      {process.env.TARO_ENV === 'weapp' ? (
+        <CustomWrapper>{renderColumn}</CustomWrapper>
+      ) : (
+        <>{renderColumn}</>
+      )}
     </View>
   )
 }
