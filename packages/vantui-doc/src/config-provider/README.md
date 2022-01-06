@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于配置 Vant Weapp 组件的主题样式，从 `v1.7.0` 版本开始支持。
+用于配置 Vant Weapp 组件的主题样式。
 
 ### 引入
 
@@ -57,24 +57,22 @@ page {
       <Field
         label="评分"
         renderInput={
-          <>
-            <View style="width: 100%">
-              <Rate
-                value={rate}
-                onChange={(e) => {
-                  this.onChange({
-                    detail: e.detail,
-                    currentTarget: {
-                      dataset: { key: 'rate' },
-                    },
-                    target: {
-                      dataset: { key: 'rate' },
-                    },
-                  })
-                }}
-              ></Rate>
-            </View>
-          </>
+          <View style="width: 100%">
+            <Rate
+              value={rate}
+              onChange={(e) => {
+                this.onChange({
+                  detail: e.detail,
+                  currentTarget: {
+                    dataset: { key: 'rate' },
+                  },
+                  target: {
+                    dataset: { key: 'rate' },
+                  },
+                })
+              }}
+            ></Rate>
+          </View>
         }
       ></Field>
       <Field
@@ -112,7 +110,6 @@ page {
 ```
 
 ```js
-import Page from '../../common/page';
 this.state = {
   rate: 4,
   slider: 50,

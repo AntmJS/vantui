@@ -9,8 +9,7 @@ Layout 提供了`vanRow`和`vanCol`两个组件来进行行列布局。
 在 Taro 文件中引入组件
 
 ```js
-import { Row } from "@antmjs/vantui";
-import { Col } from "@antmjs/vantui"; 
+import { Row, Col } from "@antmjs/vantui";
 ```
 
 ## 代码演示
