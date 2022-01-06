@@ -143,19 +143,19 @@ function onClose() {
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| closeable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| overlayStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| transition | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| overlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| closeIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| closeIconPosition | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| position | - | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_ | - | `false` |
-| safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| round | 是否显示圆角 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeable | 是否显示关闭图标 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| overlayStyle | 自定义遮罩层样式 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| transition | 执行 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| zIndex | 弹出层的层级 | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| overlay | 是否显示遮罩层 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| closeIcon | 关闭图标名称或图片链接 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| closeIconPosition | 关闭图标名称或图片链接的位置 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| position | 弹出位置 | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_ | center | `false` |
+| safeAreaInsetBottom | 是否为 iPhoneX 留出底部安全距离 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| safeAreaInsetTop | 是否留出顶部安全距离（状态栏高度） | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
 | children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| onClickOverlay | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickOverlay | 点击蒙层触发的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | 蒙层关闭触发的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 

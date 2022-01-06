@@ -110,11 +110,11 @@ import { Icon } from "@antmjs/vantui";
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| info | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
-| size | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
-| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| classPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| name | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| dot | 是否显示图标右上角小红点 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| info | 图标右上角文字提示 | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | false | `false` |
+| size | 图标大小，如 20px，单位为px | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| color | 图标颜色 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | 自定义样式 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| classPrefix | 类名前缀 | _&nbsp;&nbsp;string<br/>_ | vant-icon | `false` |
+| name | 图标名称或图片链接 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 

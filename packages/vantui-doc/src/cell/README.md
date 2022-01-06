@@ -154,30 +154,39 @@ import { Cell, CellGroup } from '@antmjs/vantui'
   <Cell center={true} title="单元格" value="内容" label="描述信息" />
 </View>
 ```
+### CellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cell.d.ts)   
 
-### CellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cell.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| url | 点击后跳转的链接地址 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| linkType | 点击后跳转的链接地址 | _&nbsp;&nbsp;"navigateTo"&nbsp;&brvbar;&nbsp;"reLaunch"&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | navigateTo | `false` |
+| title | 左侧标题 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| value | 右侧内容 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| icon | 标题下方的描述信息 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| size | 单元格大小，可选值为 large | _&nbsp;&nbsp;"large"<br/>_ | - | `false` |
+| label | 标题下方的描述信息 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| center | 是否使内容垂直居中 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| isLink | 是否展示右侧箭头并开启点击反馈 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| required | 是否显示表单必填星号 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| clickable | 是否开启点击反馈 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| titleWidth | 标题宽度，须包含单位 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| arrowDirection | 箭头方向 | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_ | - | `false` |
+| border | 是否显示下边框 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| titleStyle | 标题样式 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderTitle | 自定义渲染标题 | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderIcon | 自定义渲染左侧icon | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLabel | 自定义label显示内容 | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRightIcon | 自定义icon显示内容 | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderExtra | 自定义右边内容后跟随的内容 | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-| 参数            | 说明 | 类型                                                                                          | 默认值 | 必填    |
-| --------------- | ---- | --------------------------------------------------------------------------------------------- | ------ | ------- |
-| url             | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
-| linkType        | -    | _&nbsp;&nbsp;"navigateTo"&nbsp;&brvbar;&nbsp;"reLaunch"&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | -      | `false` |
-| title           | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                           | -      | `false` |
-| value           | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                           | -      | `false` |
-| icon            | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
-| size            | -    | _&nbsp;&nbsp;"large"<br/>_                                                                    | -      | `false` |
-| label           | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
-| center          | -    | _&nbsp;&nbsp;boolean<br/>_                                                                    | -      | `false` |
-| isLink          | -    | _&nbsp;&nbsp;boolean<br/>_                                                                    | -      | `false` |
-| required        | -    | _&nbsp;&nbsp;boolean<br/>_                                                                    | -      | `false` |
-| clickable       | -    | _&nbsp;&nbsp;boolean<br/>_                                                                    | -      | `false` |
-| titleWidth      | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
-| style           | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
-| arrowDirection  | -    | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_                   | -      | `false` |
-| border          | -    | _&nbsp;&nbsp;boolean<br/>_                                                                    | -      | `false` |
-| titleStyle      | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
-| renderTitle     | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -      | `false` |
-| renderIcon      | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -      | `false` |
-| renderLabel     | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -      | `false` |
-| renderRightIcon | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -      | `false` |
-| renderExtra     | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -      | `false` |
-| children        | -    | _&nbsp;&nbsp;ReactNode&nbsp;&brvbar;&nbsp;JSX.Element&nbsp;&brvbar;&nbsp;JSX.Element[]<br/>_  | -      | `false` |
+### CellGroup Props [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cell.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| title | 标题 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| border | 是否显示外边框 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| inset | 是否展示为圆角卡片风格 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+
