@@ -96,7 +96,11 @@ export function Circle(props: CircleProps) {
       // @ts-ignore
       Current.page = { path: `page-${state.unitag}` }
     }
-    if (type === '' || process.env.TARO_ENV === 'h5') {
+    if (
+      type === '' ||
+      process.env.TARO_ENV === 'h5' ||
+      process.env.TARO_ENV === 'dd'
+    ) {
       let ctx = null
       try {
         ctx = createCanvasContext(state.unitag)
@@ -292,6 +296,8 @@ export function Circle(props: CircleProps) {
       ></Canvas>
       {!text ? (
         <View className="van-circle__text">{children}</View>
+      ) : process.env.TARO_ENV === 'dd' ? (
+        <View className="van-circle__text">{text}</View>
       ) : (
         <CoverView className="van-circle__text">{text}</CoverView>
       )}
