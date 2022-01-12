@@ -278,7 +278,6 @@ export default class Index extends Component {
                     headHeight="80"
                     finished={this.state.searchFinished}
                     renderHead={({ distance, status }) => {
-                      console.log(status, distance)
                       return (
                         <Image
                           className="doge"
