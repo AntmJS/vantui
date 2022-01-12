@@ -130,10 +130,10 @@
   resolved "https://registry.npmmirror.com/@antmjs/iconfont/download/@antmjs/iconfont-1.9.4.tgz#afc0ba1a46ac57dc3fd53a32bd77a3d8fedceaf7"
   integrity sha1-r8C6GkasV9w/1ToyvXej2P7c6vc=
 
-"@antmjs/vantui-cli@^1.17.1":
-  version "1.17.1"
-  resolved "https://registry.npmmirror.com/@antmjs/vantui-cli/download/@antmjs/vantui-cli-1.17.1.tgz#1e1e11dd2108785e052a2231681b50267e3d485d"
-  integrity sha512-diFVqhvHCneuOd983/eE14XI9YM+71oV5PZjK59c0h6/vXq3Arb6xv+YGC/IIb0X2zaeU8JBuDz4Qll0IK1+vQ==
+"@antmjs/vantui-cli@^1.17.4":
+  version "1.17.4"
+  resolved "https://registry.npmmirror.com/@antmjs/vantui-cli/download/@antmjs/vantui-cli-1.17.4.tgz#e42c0f5e9848b2d0567da87b6939479bf112d9de"
+  integrity sha512-0pSoPkSd+kbjGiWS7PVuwINMl0f8idsz3UhJrBpTpALfwTX36Fby/n/SgAyrfv4c7mj0CHfevUdweBmtBQrTvA==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/preset-env" "^7.16.0"
