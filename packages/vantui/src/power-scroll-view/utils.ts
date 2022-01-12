@@ -98,9 +98,9 @@ export const debounce = <T extends any[]>(
       fn(..._lastArgs)
     }
   }
-  ret.cancel = () => {
-    lastArgs = null
-    clearTimeout(handle)
-  }
+  // ret.cancel = () => {
+  //   lastArgs = null
+  //   clearTimeout(handle)
+  // }
   return ret
 }
