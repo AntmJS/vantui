@@ -62,7 +62,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 
 - 默认`pageSize`是`20`通常是需要铺满可滚动窗口的高度,也可以传入`pageSize={15}`
 
-- `props.total` 存在`onScrollToUpper/onScrollToUpper` 的入参是传入组件的`{page,pageSize}`, 不存在入参是传入组件的`current`
+- `props.total` 存在`onScrollToUpper/onScrollToLower` 的入参是传入组件的`{page,pageSize}`, 不存在入参是传入组件的`current`
 
 ```jsx
 

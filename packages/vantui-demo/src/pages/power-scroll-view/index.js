@@ -271,7 +271,6 @@ export default class Index extends Component {
                 this.state.searchList.length > 0 ? (
                   <PowerScrollView
                     className={`${this.isMin ? 'min-' : ''}pull-search`}
-                    successText="刷新成功"
                     finishedText="--- 我是有底线的 ---"
                     onScrollToUpper={this.searchDoRefresh}
                     onScrollToLower={this.searchLoadMore}
@@ -279,6 +278,7 @@ export default class Index extends Component {
                     headHeight="80"
                     finished={this.state.searchFinished}
                     renderHead={({ distance, status }) => {
+                      console.log(status, distance)
                       return (
                         <Image
                           className="doge"
