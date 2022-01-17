@@ -107,7 +107,7 @@ let config = {
         'Access-Control-Allow-Origin': '*', // 表示允许跨域
       },
     },
-    esnextModules: ['@antmjs/vantui'],
+    esnextModules: [/@antmjs[\\/]vantui/],
     proxy: {},
     // lessLoaderOption: {
     //   additionalData: "@import '~/src/style/index.less';",

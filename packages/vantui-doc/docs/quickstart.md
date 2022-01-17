@@ -45,7 +45,7 @@ yarn add @antmjs/vantui
 
 ```js
 h5: {
-  esnextModules: ['@antmjs/vantui'],
+  esnextModules: [/@antmjs[\\/]vantui/],
   postcss: {
     autoprefixer: {
       enable: true,
