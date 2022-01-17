@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@antmjs/babel-preset@^1.12.0":
-  version "1.14.0"
-  resolved "https://registry.npmjs.org/@antmjs/babel-preset/-/babel-preset-1.14.0.tgz#d2ea2021da1cc8e87e4f16fb6be1976d11ea1dfb"
-  integrity sha512-DmIrzlEHXI8wzvbQiX6pDIkGvek243RIDu9xTGOH3sA1Ox8Y6LA9qhjCbmAwgbaMEwLAsWec6VDUp45qXrxohw==
+"@antmjs/babel-preset@^1.17.5":
+  version "1.17.5"
+  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/download/@antmjs/babel-preset-1.17.5.tgz#be28e89154a2a6dd2a8e8e6caa2b6c683611b3c7"
+  integrity sha512-xGXv9ux1gbf199if2fqRoTTAE7fLaqDV/gg1pJ8R+BYuBXZgXD3bZItqh2921OJacyECRrIhFJjSbPVqTatXZQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.14.5"
     "@babel/plugin-proposal-decorators" "^7.14.5"
@@ -19,10 +19,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/eslint@^1.12.0":
-  version "1.14.0"
-  resolved "https://registry.npmjs.org/@antmjs/eslint/-/eslint-1.14.0.tgz#d15c2c642adf46d7f702f6d2fbc67a8f9662dc38"
-  integrity sha512-QmPGqoHnBuTVcEChjO2O2cUQTWRGrmpMzu7eoCOoC4HlO088F+tCV2monc26gMuHKWfHwz1baTcM6wM+pf038g==
+"@antmjs/eslint@^1.17.5":
+  version "1.17.5"
+  resolved "https://registry.npmmirror.com/@antmjs/eslint/download/@antmjs/eslint-1.17.5.tgz#09168848198fe1d7ad6f50f33e63c2e004d8f5c9"
+  integrity sha512-G5yH7f2y8ak8J3ITvmsOMDMDPBZiVs2rHc2f8rFJ/wCOAnUlPuGosayvUQY2AOU0bP7mXTfh1KlDEhCcuSdp6g==
   dependencies:
     "@graphql-eslint/eslint-plugin" "^2.1.0"
     "@typescript-eslint/eslint-plugin" "^4.28.3"
@@ -34,10 +34,10 @@
     eslint-plugin-react "^7.24.0"
     eslint-plugin-react-hooks "^4.2.0"
 
-"@antmjs/stylelint@^1.12.0":
-  version "1.14.0"
-  resolved "https://registry.npmjs.org/@antmjs/stylelint/-/stylelint-1.14.0.tgz#d14f18faaf2f58937daaed6c6e4e2a57ed52662c"
-  integrity sha512-ks0YltyYJvgAa+V1ZX/yFtgWYsw/ai7+8yqNkgjOR8wSKsfwBSAMINZKimarZQSDyRZdNOPP3e+pI0/C/0Vi5Q==
+"@antmjs/stylelint@^1.17.5":
+  version "1.17.5"
+  resolved "https://registry.npmmirror.com/@antmjs/stylelint/download/@antmjs/stylelint-1.17.5.tgz#5ad132f51cbed29915eb64de562c8c7c4f74cdad"
+  integrity sha512-bFBKponMuojzxtUsyt4QMJ2IaAYe11OCRxYl+xTJCS0hBeN79BG3VjdVHsG1G5hpMM8NH9WrRya5W5+VqYk9uQ==
   dependencies:
     stylelint-config-prettier "^8.0.2"
     stylelint-config-standard "^22.0.0"
