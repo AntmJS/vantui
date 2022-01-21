@@ -11,8 +11,7 @@ import { View, Block } from '@tarojs/components'
 import { Tabbar as InnerTabbar } from '../common/zIndex'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
-import { TabbarProps } from '../../types/tabbar'
-import { TabbarItemProps } from '../../types/tabbar-item'
+import { TabbarProps, TabbarItemProps } from '../../types/tabbar'
 
 function parseTabList(children: React.ReactNode): any[] {
   return toArray(children)

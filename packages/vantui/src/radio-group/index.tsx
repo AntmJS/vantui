@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
-import { RadioGroupProps } from '../../types/radio-group'
+import { RadioGroupProps } from '../../types/radio'
 import RadioGroupContext from './context'
 
 export function RadioGroup(props: RadioGroupProps) {
