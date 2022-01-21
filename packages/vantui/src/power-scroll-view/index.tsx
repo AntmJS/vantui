@@ -415,7 +415,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [])
 
-  const placeholder = useRef<TaroElement>()
+  // const placeholder = useRef<TaroElement>()
 
   const renderFinishedText = useCallback((): React.ReactNode => {
     if (finished) {
@@ -523,7 +523,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
           <>{renderStatusBody}</>
         )}
         {children}
-        <View ref={placeholder} className={bem('placeholder')} />
+        {/* <View ref={placeholder} className={bem('placeholder')} /> */}
         {ListScrollContent()}
       </View>
       {/* </View> */}
