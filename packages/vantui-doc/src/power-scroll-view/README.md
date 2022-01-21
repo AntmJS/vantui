@@ -62,7 +62,7 @@ const mockRequest = async (_startIndex, isRefresh, name) => {
 
 - 默认`pageSize`是`20`通常是需要铺满可滚动窗口的高度,也可以传入`pageSize={15}`
 
-- `props.total` 存在`onScrollToUpper/onScrollToUpper` 的入参是传入组件的`{page,pageSize}`, 不存在入参是传入组件的`current`
+- `props.total` 存在`onScrollToUpper/onScrollToLower` 的入参是传入组件的`{page,pageSize}`, 不存在入参是传入组件的`current`
 
 ```jsx
 
@@ -398,15 +398,8 @@ status =
 |scrollY | 	允许纵向滚动 |_boolean_| `true` |
 |refresherEnabled | 开启下拉刷新|_boolean_| `true` |
 |lowerThreshold | 距底部/右边多远时（单位px），触发`onScrolltolower` 事件 | _number_ | `250` |
-|onScrollToUpper | 下拉刷新时触发 | _({page: number,paseSize:number}|number) => Promise<void>_ | `()=>{}` |
-|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 | _({page: number,paseSize:number}|number) => Promise<void>_ | `() =>{}` |
+|onScrollToUpper | 下拉刷新时触发 | _({page: number,paseSize:number}\|number) => Promise\<void\>_ | `()=>{}` |
+|onScrollToLower | 滚动条与底部距离小于 lowerThreshold 时触发 | _({page: number,paseSize:number}\|number) => Promise\<void\>_ | `() =>{}` |
 
 
-### 类型定义
-
-组件导出以下类型定义：
-
-```ts
-import type { PowerScrollView } from '@antmjs/vantui';
-```
 

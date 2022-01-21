@@ -101,9 +101,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@antmjs/babel-preset": "^1.12.0",
-    "@antmjs/eslint": "^1.12.0",
-    "@antmjs/stylelint": "^1.12.0",
+    "@antmjs/babel-preset": "^1.17.5",
+    "@antmjs/eslint": "^1.17.5",
+    "@antmjs/stylelint": "^1.17.5",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@octokit/core": "^3.4.0",

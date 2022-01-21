@@ -1,4 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  Fragment,
+} from 'react'
 import {
   View,
   ITouchEvent,
@@ -6,15 +13,10 @@ import {
   CustomWrapper,
 } from '@tarojs/components'
 import { TaroElement } from '@tarojs/runtime'
-import { debounce } from 'lodash'
 import { Loading } from './../loading'
 import { Empty } from './../empty'
 import { useTouch } from './useTouch'
-import {
-  scrollOffset,
-  preventDefault,
-  // boundingClientRect
-} from './utils'
+import { scrollOffset, preventDefault, debounce } from './utils'
 import {
   PowerScrollViewProps,
   PullRefreshStatus,
@@ -40,7 +42,10 @@ const sleep = (t: number) =>
   })
 const DEFAULT_HEAD_HEIGHT = 50
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
+const CustomWrapperRef =
+  process.env.TARO_ENV === 'weapp' ? CustomWrapper : Fragment
 
+// const RenderStatus: React.FC<{}> = (props) => {}
 export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   const {
     headHeight = DEFAULT_HEAD_HEIGHT,
@@ -247,7 +252,8 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   }, [])
   // 如果这是了 scrollTop 要触发ScrollOffset计算
   useEffect(() => {
-    debounceScrollOffset()
+    // 立马执行一次
+    debounceScrollOffset.flush()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollTop])
   const onScroll = useCallback(
@@ -306,7 +312,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
       // @ts-ignore
       await onScrollToUpper?.(event)
       setDuration(+animationDuration)
-      if (successText) {
+      if (successText || renderHead?.({ status: 'success', distance })) {
         await showSuccessTip()
       }
       setStatus(0, false)
@@ -317,8 +323,10 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     }
   }, [
     animationDuration,
+    distance,
     headHeight,
     onScrollToUpper,
+    renderHead,
     setStatus,
     showSuccessTip,
     successText,
@@ -491,12 +499,6 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     renderFinishedText,
   ])
 
-  const renderStatusBody = (
-    <View className={bem('head')} style={getHeadStyle()}>
-      {renderStatus()}
-    </View>
-  )
-
   return (
     <ScrollView
       ref={scrollRef}
@@ -517,11 +519,12 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
         onTouchCancel={onTouchEnd}
         onTouchStart={onTouchStart}
       >
-        {process.env.TARO_ENV === 'weapp' ? (
-          <CustomWrapper>{renderStatusBody}</CustomWrapper>
-        ) : (
-          <>{renderStatusBody}</>
-        )}
+        <CustomWrapperRef>
+          <View className={bem('head')} style={getHeadStyle()}>
+            {renderStatus()}
+          </View>
+        </CustomWrapperRef>
+
         {children}
         {/* <View ref={placeholder} className={bem('placeholder')} /> */}
         {ListScrollContent()}

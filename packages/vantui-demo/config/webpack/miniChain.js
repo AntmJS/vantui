@@ -6,7 +6,7 @@ module.exports = function (chain) {
   chain.plugin('MiniFixPlugin').use(new MiniFixPlugin())
   chain.module
     .rule('global-loader')
-    .test(/node_modules\/webpack\/buildin\/global\.js/i)
+    .test(/node_modules[\\/]webpack[\\/]buildin[\\/]global\.js/i)
     .pre()
     .use('global-loader')
     .loader(npath.join(process.cwd(), 'config/webpack/globalLoader'))
@@ -19,7 +19,7 @@ module.exports = function (chain) {
   // node_modules需要二次编译的在这里处理，taro相关的包不能加载polyfill
   chain.module
     .rule('compile-node-modules')
-    .test(/node_modules\/@tarojs(.+?)\.[tj]sx?$/i)
+    .test(/node_modules[\\/]@tarojs(.+?)\.[tj]sx?$/i)
     .use('taro-loader')
     .loader(npath.join(process.cwd(), 'node_modules/babel-loader/lib/index.js'))
     .options({

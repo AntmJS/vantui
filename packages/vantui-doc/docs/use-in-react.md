@@ -65,7 +65,7 @@ applyPolyfills().then(function () {
     rules: [
       {
         // 这里其实可以在自己的webpack内配置，核心就是匹配到test的部分不触发polyfill，仅仅更新下语法就行，否则会报错
-        test: /node_modules\/@tarojs(.+?)\.[tj]sx?$/i,
+        test: /node_modules[\\/]@tarojs(.+?)\.[tj]sx?$/i,
         loader: require.resolve('babel-loader'),
         options: {
           presets: [
