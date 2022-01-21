@@ -36,12 +36,12 @@ export function FormItem(props: FormItemProps) {
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
-  const [, forceUpdate] = useState({})
+  const [, forceUpdate_] = useState({})
 
   const onStoreChange = useMemo(() => {
     const onStoreChange = {
       changeValue() {
-        forceUpdate({})
+        forceUpdate_({})
       },
     }
     return onStoreChange
@@ -61,6 +61,8 @@ export function FormItem(props: FormItemProps) {
   const getControlled = (child: any) => {
     const props = { ...child.props }
     if (!name) return props
+    const trigger_ = props[trigger]
+
     const handleChange = async (e: any) => {
       let value = null
 
@@ -70,6 +72,7 @@ export function FormItem(props: FormItemProps) {
         value = e.detail
       }
       dispatch({ type: 'setFieldsValue' }, name, value)
+      if (trigger_) trigger_(e)
     }
     props[trigger] = handleChange
     if (required || rules) {
