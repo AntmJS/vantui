@@ -151,7 +151,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   const [distance, setDistance] = useState(0)
   const [duration, setDuration] = useState(0)
   const touch = useTouch()
-  const getHeadStyle = useCallback((): { height: string } | string => {
+  const headStyle = useMemo((): { height: string } | string => {
     if (headHeight !== DEFAULT_HEAD_HEIGHT) {
       return {
         height: `${headHeight}px`,
@@ -205,7 +205,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     [headHeight, pullDistance],
   )
 
-  const getStatusText = useCallback(() => {
+  const statusText = useMemo(() => {
     if (status === 'loading') {
       return loadingText
     }
@@ -221,20 +221,20 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     return ''
   }, [loadingText, loosingText, pullingText, status, successText])
 
-  const renderStatus = useCallback((): React.ReactNode => {
+  const renderStatus = useMemo((): React.ReactNode => {
     const node = renderHead?.({ status, distance })
     if (node) {
       return node
     }
 
     if (TEXT_STATUS.includes(status)) {
-      return <View className={bem('text')}>{getStatusText()}</View>
+      return <View className={bem('text')}>{statusText}</View>
     }
     if (status === 'loading') {
-      return <Loading className={bem('loading')}>{getStatusText()}</Loading>
+      return <Loading className={bem('loading')}>{statusText}</Loading>
     }
     return ''
-  }, [distance, getStatusText, status, renderHead])
+  }, [distance, statusText, status, renderHead])
 
   const showSuccessTip = useCallback(async () => {
     // state.status = 'success'
@@ -425,7 +425,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
 
   // const placeholder = useRef<TaroElement>()
 
-  const renderFinishedText = useCallback((): React.ReactNode => {
+  const renderFinishedText = useMemo((): React.ReactNode => {
     if (finished) {
       const text = renderFinished ? renderFinished : finishedText
       if (text) {
@@ -435,7 +435,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     return null
   }, [finished, renderFinished, finishedText])
 
-  const renderLoadingText = useCallback((): React.ReactNode => {
+  const renderLoadingText = useMemo((): React.ReactNode => {
     if (!finished && scrollY) {
       return (
         <View className={bem('loading')}>
@@ -453,41 +453,41 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     return null
   }, [finished, loadingText, scrollY, renderLoading])
 
-  const clickErrorText = useCallback(() => {
+  const clickErrorTextHandle = useCallback(() => {
     setError(false)
     errorRef.current = false
     doLoadMore()
     // web 很奇怪的问题
   }, [doLoadMore])
 
-  const renderErrorText = useCallback((): React.ReactNode => {
+  const renderErrorText = useMemo((): React.ReactNode => {
     if (isError) {
       const text = renderError ? renderError : errorText
       if (text) {
         return (
-          <View className={bem('error-text')} onClick={clickErrorText}>
+          <View className={bem('error-text')} onClick={clickErrorTextHandle}>
             {text}
           </View>
         )
       }
     }
     return null
-  }, [clickErrorText, isError, errorText, renderError])
+  }, [clickErrorTextHandle, isError, errorText, renderError])
   // 如果不定高 一直下拉
 
-  const ListScrollContent = useCallback(() => {
+  const ListScrollContent = useMemo(() => {
     if (finished && currentCount === 0) {
       return <Empty description={emptyDescription} image={emptyImage} />
     }
     if (isError) {
-      return renderErrorText()
+      return renderErrorText
     }
 
     if (finished) {
-      return renderFinishedText()
+      return renderFinishedText
     }
 
-    return renderLoadingText()
+    return renderLoadingText
   }, [
     finished,
     currentCount,
@@ -520,14 +520,14 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
         onTouchStart={onTouchStart}
       >
         <CustomWrapperRef>
-          <View className={bem('head')} style={getHeadStyle()}>
-            {renderStatus()}
+          <View className={bem('head')} style={headStyle}>
+            {renderStatus}
           </View>
         </CustomWrapperRef>
 
         {children}
         {/* <View ref={placeholder} className={bem('placeholder')} /> */}
-        {ListScrollContent()}
+        {ListScrollContent}
       </View>
       {/* </View> */}
     </ScrollView>
