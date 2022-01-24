@@ -1,4 +1,8 @@
-import { previewImage as TaroPreviewImage, showToast } from '@tarojs/taro'
+import {
+  previewImage as TaroPreviewImage,
+  showToast,
+  openDocument,
+} from '@tarojs/taro'
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import {
   View,
@@ -238,7 +242,7 @@ export function Uploader(props: UploaderProps) {
   const onPreviewFile = useCallback(
     (event: ITouchEvent) => {
       const { index } = event.currentTarget.dataset
-      Taro.openDocument({
+      openDocument({
         filePath: state.lists[index].url,
         showMenu: true,
       })
