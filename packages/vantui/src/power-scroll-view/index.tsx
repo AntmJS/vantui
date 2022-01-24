@@ -16,7 +16,12 @@ import { TaroElement } from '@tarojs/runtime'
 import { Loading } from './../loading'
 import { Empty } from './../empty'
 import { useTouch } from './useTouch'
-import { scrollOffset, preventDefault, debounce } from './utils'
+import {
+  scrollOffset,
+  preventDefault,
+  debounce,
+  boundingClientRect,
+} from './utils'
 import {
   PowerScrollViewProps,
   PullRefreshStatus,
@@ -97,7 +102,8 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   // ==LIST=======================================
   // 是否到底了
   // const reachDownRef = useRef(false)
-  // 是否显示 loading
+  // pull是否显示 loading
+  const [showDownLoading, setShowDownLoading] = useState(true)
   // ts推断
   const loadingRef = useRef(false)
   // 是否显示 报错
@@ -299,10 +305,27 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     },
     [ease, isTouchable, setStatus, touch],
   )
+  const check = useCallback(async () => {
+    if (!scrollY) return
+    const scrollParentRect = await boundingClientRect(scrollRef.current!)
+
+    if (!scrollParentRect?.height) {
+      return
+    }
+
+    const placeholderRect = await boundingClientRect(placeholder.current!)
+    const isReachEdge =
+      placeholderRect.bottom - scrollParentRect.bottom <= lowerThreshold
+
+    if (!isReachEdge) {
+      setShowDownLoading(true)
+    }
+  }, [scrollY, lowerThreshold])
 
   // list
   const doRefresh = useCallback(async () => {
     try {
+      setShowDownLoading(false)
       errorRef.current = false
       setStatus(+headHeight, true)
       setError(false)
@@ -315,6 +338,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
       if (successText || renderHead?.({ status: 'success', distance })) {
         await showSuccessTip()
       }
+      await check()
       setStatus(0, false)
       // 阻止下拉过程中 二次触发下拉
     } catch (e) {
@@ -323,6 +347,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     }
   }, [
     animationDuration,
+    check,
     distance,
     headHeight,
     onScrollToUpper,
@@ -372,6 +397,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   const doLoadMore = useCallback(async () => {
     if (isBanLoad()) return
     try {
+      setShowDownLoading(true)
       loadingRef.current = true
       paginationRef.current.page += 1
       const event = total === undefined ? currentCount : paginationRef.current
@@ -389,25 +415,6 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     }
   }, [currentCount, isBanLoad, onScrollToLower, total])
 
-  // const check = useCallback(async () => {
-  //   if (!immediateCheck || !scrollY || isBanLoad()) return
-  //   const scrollParentRect = await boundingClientRect(scrollRef.current!)
-
-  //   if (!scrollParentRect?.height) {
-  //     return
-  //   }
-
-  //   const placeholderRect = await boundingClientRect(placeholder.current!)
-  //   const isReachEdge =
-  //     placeholderRect.bottom - scrollParentRect.bottom <= lowerThreshold
-
-  //   if (isReachEdge) {
-  //     doLoadMore()
-  //   } else {
-  //     reachDownRef.current = true
-  //   }
-  // }, [immediateCheck, scrollY, isBanLoad, lowerThreshold, doLoadMore])
-
   // useEffect(() => {
   //   // finished || status !== 'normal' || loadingRef.current || errorRef.current
   //   if (reachDownRef.current) return
@@ -423,7 +430,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [])
 
-  // const placeholder = useRef<TaroElement>()
+  const placeholder = useRef<TaroElement>()
 
   const renderFinishedText = useMemo((): React.ReactNode => {
     if (finished) {
@@ -435,8 +442,8 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     return null
   }, [finished, renderFinished, finishedText])
 
-  const renderLoadingText = useMemo((): React.ReactNode => {
-    if (!finished && scrollY) {
+  const renderLoadingText = useCallback((): React.ReactNode => {
+    if (!finished && scrollY && showDownLoading) {
       return (
         <View className={bem('loading')}>
           {renderLoading ? (
@@ -451,7 +458,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
       )
     }
     return null
-  }, [finished, loadingText, scrollY, renderLoading])
+  }, [finished, scrollY, showDownLoading, renderLoading, loadingText])
 
   const clickErrorTextHandle = useCallback(() => {
     setError(false)
@@ -487,7 +494,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
       return renderFinishedText
     }
 
-    return renderLoadingText
+    return renderLoadingText()
   }, [
     finished,
     currentCount,
@@ -526,7 +533,7 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
         </CustomWrapperRef>
 
         {children}
-        {/* <View ref={placeholder} className={bem('placeholder')} /> */}
+        <View ref={placeholder} className={bem('placeholder')} />
         {ListScrollContent}
       </View>
       {/* </View> */}
