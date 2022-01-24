@@ -2,7 +2,7 @@ import { ComponentClass, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface CollapseProps extends StandardProps {
-  value?: Array<string | number>
+  value?: Array<string | number> | string
   accordion?: boolean
   border?: boolean
   children?: Array<ReactNode>
