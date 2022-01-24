@@ -2,7 +2,7 @@ import { View, Block } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
 import { Info } from '../info'
-import { TabbarItemProps } from '../../types/tabbar-item'
+import { TabbarItemProps } from '../../types/tabbar'
 
 export function TabbarItem(
   props: TabbarItemProps & {

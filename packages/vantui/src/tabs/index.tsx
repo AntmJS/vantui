@@ -15,8 +15,7 @@ import { isDef } from '../common/validator'
 import { Sticky } from '../sticky/index'
 import { getRect, getAllRect, requestAnimationFrame } from '../common/utils'
 import { Info } from '../info/index'
-import { TabsProps } from '../../types/tabs'
-import { TabProps } from '../../types/tab'
+import { TabsProps, TabProps } from '../../types/tabs'
 import * as computed from './wxs'
 
 const MIN_DISTANCE = 10

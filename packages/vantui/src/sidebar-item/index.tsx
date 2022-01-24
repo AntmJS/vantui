@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components'
 import { useCallback, useState, useEffect } from 'react'
 import * as utils from '../wxs/utils'
-import { SidebarItemProps } from '../../types/sidebar-item'
+import { SidebarItemProps } from '../../types/sidebar'
 import VanInfo from '../info/index'
 
 export function SidebarItem(

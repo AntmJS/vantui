@@ -190,6 +190,8 @@ function Index(
       if (onClick) onClick(event)
       if (asyncClose && onClose) {
         onClose(event)
+      } else if (onClose) {
+        onClose(event)
         swipeMove(0)
       } else {
         swipeMove(0)

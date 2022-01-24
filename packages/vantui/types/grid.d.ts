@@ -14,6 +14,21 @@ export interface GridProps extends StandardProps {
   children?: React.ReactNode
 }
 
+export interface GridItemProps extends StandardProps {
+  icon?: string
+  iconColor?: string
+  iconPrefix?: string
+  dot?: boolean
+  info?: string | number | undefined
+  badge?: string | number | undefined
+  text?: string
+  url?: string
+  linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
+  children?: React.ReactNode
+}
+
+declare const GridItem: ComponentClass<GridItemProps>
+
 declare const Grid: ComponentClass<GridProps>
 
-export { Grid }
+export { Grid, GridItem }

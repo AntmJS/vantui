@@ -30,5 +30,6 @@ export interface RowProps extends StandardProps {
 }
 
 declare const Col: ComponentClass<ColProps>
+declare const Row: ComponentClass<RowProps>
 
-export { Col }
+export { Col, Row }

@@ -76,6 +76,7 @@ export default class Index extends Component {
   }
 
   render() {
+    console.info('render')
     return (
       <DemoPage title="Form 表单">
         <Dialog id="vanDialog" />
@@ -104,7 +105,10 @@ export default class Index extends Component {
               valueFormat={(e) => e.detail.value}
               renderRight={<Icon name="user-o" />}
             >
-              <Input placeholder="请输入用户名（中文）" />
+              <Input
+                placeholder="请输入用户名（中文）"
+                onInput={() => this.forceUpdate()}
+              />
             </FormItem>
 
             <FormItem

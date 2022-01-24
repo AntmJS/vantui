@@ -15,6 +15,16 @@ export interface RadioProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
+export interface RadioGroupProps extends StandardProps {
+  value?: any
+  direction?: 'vertical' | 'horizontal'
+  disabled?: boolean
+  children?: ReactNode
+  onChange?: (event: ITouchEvent) => any
+}
+
+declare const RadioGroup: ComponentClass<RadioGroupProps>
+
 declare const Radio: ComponentClass<RadioProps>
 
-export { Radio }
+export { Radio, RadioGroup }

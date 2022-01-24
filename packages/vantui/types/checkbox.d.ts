@@ -15,6 +15,17 @@ export interface CheckboxProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
+export interface CheckboxGroupProps extends StandardProps {
+  max?: number
+  value?: Array<any>
+  disabled?: boolean
+  direction?: 'horizontal' | 'vertical'
+  children?: Array<ReactNode>
+  onChange?: (event: ITouchEvent) => any
+}
+
+declare const CheckboxGroup: ComponentClass<CheckboxGroupProps>
+
 declare const Checkbox: ComponentClass<CheckboxProps>
 
-export { Checkbox }
+export { Checkbox, CheckboxGroup }

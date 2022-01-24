@@ -33,6 +33,18 @@ export interface TabsProps extends Omit<StandardProps, 'onClick'> {
   onDisabled?: (event: eventDetail) => void
 }
 
+export interface TabProps extends StandardProps {
+  dot?: boolean
+  info?: string | number
+  title?: string
+  disabled?: boolean
+  titleStyle?: string
+  name?: string | number
+  children: ReactNode
+}
+
+declare const Tab: ComponentClass<TabProps>
+
 declare const Tabs: ComponentClass<TabsProps>
 
-export { Tabs }
+export { Tabs, Tab }
