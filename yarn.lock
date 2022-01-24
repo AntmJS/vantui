@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@antmjs/babel-preset@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/download/@antmjs/babel-preset-1.12.0.tgz#6e8a1d7c01b32d1023e59c01026e7e4e6f7fc185"
-  integrity sha1-boodfAGzLRAj5ZwBAm5+Tm9/wYU=
+"@antmjs/babel-preset@^1.17.5":
+  version "1.17.5"
+  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/download/@antmjs/babel-preset-1.17.5.tgz#be28e89154a2a6dd2a8e8e6caa2b6c683611b3c7"
+  integrity sha512-xGXv9ux1gbf199if2fqRoTTAE7fLaqDV/gg1pJ8R+BYuBXZgXD3bZItqh2921OJacyECRrIhFJjSbPVqTatXZQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.14.5"
     "@babel/plugin-proposal-decorators" "^7.14.5"
@@ -19,10 +19,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/eslint@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.npmmirror.com/@antmjs/eslint/download/@antmjs/eslint-1.12.0.tgz#7aecae2b8e485107d8a7a3b16ca9afd1da2fe5c3"
-  integrity sha1-euyuK45IUQfYp6OxbKmv0dov5cM=
+"@antmjs/eslint@^1.17.5":
+  version "1.17.5"
+  resolved "https://registry.npmmirror.com/@antmjs/eslint/download/@antmjs/eslint-1.17.5.tgz#09168848198fe1d7ad6f50f33e63c2e004d8f5c9"
+  integrity sha512-G5yH7f2y8ak8J3ITvmsOMDMDPBZiVs2rHc2f8rFJ/wCOAnUlPuGosayvUQY2AOU0bP7mXTfh1KlDEhCcuSdp6g==
   dependencies:
     "@graphql-eslint/eslint-plugin" "^2.1.0"
     "@typescript-eslint/eslint-plugin" "^4.28.3"
@@ -34,10 +34,10 @@
     eslint-plugin-react "^7.24.0"
     eslint-plugin-react-hooks "^4.2.0"
 
-"@antmjs/stylelint@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.npmmirror.com/@antmjs/stylelint/download/@antmjs/stylelint-1.12.0.tgz#a6e390a4fcdcb7c338a6c41fc2e45e11f00161af"
-  integrity sha1-puOQpPzct8M4psQfwuReEfABYa8=
+"@antmjs/stylelint@^1.17.5":
+  version "1.17.5"
+  resolved "https://registry.npmmirror.com/@antmjs/stylelint/download/@antmjs/stylelint-1.17.5.tgz#5ad132f51cbed29915eb64de562c8c7c4f74cdad"
+  integrity sha512-bFBKponMuojzxtUsyt4QMJ2IaAYe11OCRxYl+xTJCS0hBeN79BG3VjdVHsG1G5hpMM8NH9WrRya5W5+VqYk9uQ==
   dependencies:
     stylelint-config-prettier "^8.0.2"
     stylelint-config-standard "^22.0.0"

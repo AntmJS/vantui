@@ -404,7 +404,7 @@ module.exports = function (webpackEnv) {
               },
             },
             {
-              test: /node_modules\/@tarojs(.+?)\.[tj]sx?$/i,
+              test: /node_modules[\\/]@tarojs(.+?)\.[tj]sx?$/i,
               loader: require.resolve('babel-loader'),
               options: {
                 presets: [

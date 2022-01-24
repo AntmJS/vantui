@@ -20,7 +20,7 @@ export function Collapse(props: CollapseProps) {
   const handleSwitch = useCallback(
     (event: ITouchEvent, name: any, expanded: any) => {
       const changeItem = name
-      if (!accordion) {
+      if (!accordion && Array.isArray(value)) {
         name = expanded
           ? (value || []).concat(name)
           : (value || []).filter((activeName) => activeName !== name)

@@ -155,6 +155,12 @@ export default class Index extends Component {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
                     <View className="content">{'内容' + item}</View>
+
+                    {/* {new Array(50)
+                      .fill(`我是内容${item}, 我内容很多`)
+                      .map((e, i) => {
+                        return <View  className="content" key={i}>{e}</View>
+                      })} */}
                   </Tab>
                 )
               })}

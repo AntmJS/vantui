@@ -319,6 +319,7 @@ export function Tabs(props: TabsProps) {
 
   const onTouchStart = function (event: any) {
     if (!swipeable) return
+    ref.current.swiping = true
     touchStart(event)
   }
 

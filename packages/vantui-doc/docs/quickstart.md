@@ -13,15 +13,21 @@
 - Taro需要使用3.0+的版本
 - 小程序参考Taro的最低支持程度
 
-### 示例工程
+### 如何修复/开发新的组件库
 
-- 拉取代码[VantUI](https://github.com/AntmJS/vantui)
+- Fork代码：[VantUI](https://github.com/AntmJS/vantui)
 
-- 执行 yarn && yarn bootstrap && npx lerna run build --scope=@antmjs/vantui
+- 进入根目录：执行 yarn && yarn bootstrap
 
-> 进入Taro版工程:vantui-demo即 cd packages/vantui-demo && yarn watch:weapp
+- 进入组件库目录：cd packages/vantui && yarn watch
 
-> 进入React版工程:react-demo即 cd packages/react-demo && yarn start
+- 进入Taro版工程vantui-demo： cd packages/vantui-demo && yarn watch:weapp
+
+### 使用模版快速开发
+
+- Pull代码：[temptaro](https://github.com/AntmJS/temptaro)
+
+- 进入根目录：执行 yarn && yarn watch:weapp
 
 ## 开始使用
 
@@ -39,7 +45,7 @@ yarn add @antmjs/vantui
 
 ```js
 h5: {
-  esnextModules: ['@antmjs/vantui'],
+  esnextModules: [/@antmjs[\\/]vantui/],
   postcss: {
     autoprefixer: {
       enable: true,
@@ -70,7 +76,7 @@ h5: {
 * 需要设置关闭代码压缩上传，开启可能报错
 
 #### 编译问题
-该组件在编译阶段默认已经使用了babel/runtime进行语法转换以及polyfill。目前使用taro的默认babel配置在支付宝和钉钉等环境会报错，解决方案可以参考[vantui-demo](https://github.com/AntmJS/vantui/tree/main/packages/vantui-demo)的配置。
+该组件在编译阶段默认已经使用了babel/runtime进行语法转换以及polyfill。目前使用taro的默认babel配置在支付宝和钉钉等环境会报错，解决方案可以参考[temptaro](https://github.com/AntmJS/temptaro)的配置。
 
 ## 引入组件
 
@@ -172,7 +178,10 @@ import '@antmjs/vantui/es/button/style';
 Vant 支持一次性导入所有组件，引入所有组件会增加代码包体积，因此不推荐这种做法。
 
 ```js
+// 不需要更改主题，引用它
 import '@antmjs/vantui/lib/index.css';
+// 需要通过less变量/var()更改主题，引用它
+import '@antmjs/vantui/lib/index.less'
 ```
 
 > Tips: 配置按需引入后，将不允许直接导入所有组件。

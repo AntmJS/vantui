@@ -11,7 +11,7 @@ module.exports = function (chain) {
   // node_modules需要二次编译的在这里处理，taro相关的包不能加载polyfill
   chain.module
     .rule('compile-node-modules')
-    .test(/node_modules\/@tarojs(.+?)\.[tj]sx?$/i)
+    .test(/node_modules[\\/]@tarojs(.+?)\.[tj]sx?$/i)
     .use('taro-loader')
     .loader(npath.join(process.cwd(), 'node_modules/babel-loader/lib/index.js'))
     .options({
