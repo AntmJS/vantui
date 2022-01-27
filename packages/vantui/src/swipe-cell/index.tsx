@@ -1,4 +1,4 @@
-import { ITouchEvent, View } from '@tarojs/components'
+import { ITouchEvent, View, CustomWrapper } from '@tarojs/components'
 import {
   useEffect,
   useState,
@@ -80,20 +80,26 @@ function Index(
   useEffect(
     function () {
       const k = new Date()
-      if (!instanceKey) {
+      if (JSON.stringify(instanceKey) === '{}') {
         setInstanceKey({
           key: k,
           close,
         })
-        ARRAY.push(k)
-      }
-
-      return function () {
-        ARRAY = ARRAY.filter((item) => item.key !== instanceKey.key)
+        ARRAY.push({
+          key: k,
+          close,
+        })
       }
     },
     [close, instanceKey],
   )
+
+  useEffect(function () {
+    return function () {
+      ARRAY = ARRAY.filter((item) => item.key !== instanceKey.key)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const resetTouchStatus = useCallback(
     function () {
@@ -237,7 +243,7 @@ function Index(
     }
   })
 
-  return (
+  const MAIN_RENDER = (
     <View
       className={`van-swipe-cell  ${className}`}
       data-key="cell"
@@ -278,6 +284,10 @@ function Index(
       </View>
     </View>
   )
+
+  if (process.env.TARO_ENV === 'weapp') {
+    return <CustomWrapper>{MAIN_RENDER}</CustomWrapper>
+  } else return <>{MAIN_RENDER}</>
 }
 
 const SwipeCell = forwardRef(Index)
