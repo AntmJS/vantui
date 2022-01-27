@@ -291,3 +291,17 @@ function onClick(event) {
 | children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 | onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
+### TabbarItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tabbar.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| info | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| iconPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderIconActive | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(name:&nbsp;string&nbsp;&brvbar;&nbsp;number)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+
