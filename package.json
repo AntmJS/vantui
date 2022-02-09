@@ -139,5 +139,8 @@
     "run-s": "^0.0.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@antmjs/warning": "^1.17.6"
   }
 }
