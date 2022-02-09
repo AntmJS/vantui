@@ -251,8 +251,8 @@ const config = {
           const newUse = {
             loader: use.loader,
             options: {
+              sourceMap: use.options.sourceMap,
               postcssOptions: {
-                sourceMap: use.options.postcssOptions.sourceMap,
                 plugins: []
               }
             }
