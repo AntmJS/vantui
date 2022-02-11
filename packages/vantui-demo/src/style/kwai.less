@@ -1,0 +1,5 @@
+// 快手不支持css变量var，所以这里重写主题方法，通过config/index的lessOptions注入进去
+.theme(@property, @imp) {
+  @{property}: e(replace(@imp, '@([^() ]+)', '@{$1}', 'ig'));
+  // @{property}: e(replace(@imp, '@([^() ]+)', 'var(--$1, @{$1})', 'ig'));
+}

@@ -15,13 +15,21 @@ module.exports = function (chain) {
   chain.module
     .rule('script')
     .exclude.clear()
-    .add((filename) => /node_modules/.test(filename))
+    .add(
+      (filename) =>
+        /css-loader/.test(filename) ||
+        (/node_modules/.test(filename) &&
+          !(
+            /taro/.test(filename) &&
+            !/tarojs[\\/](runtime|shared)/.test(filename)
+          )),
+    )
   // node_modules需要二次编译的在这里处理，taro相关的包不能加载polyfill
   chain.module
     .rule('compile-node-modules')
-    .test(/node_modules[\\/]@tarojs(.+?)\.[tj]sx?$/i)
+    .test(/tarojs[\\/](runtime|shared)/i)
     .use('taro-loader')
-    .loader(npath.join(process.cwd(), 'node_modules/babel-loader/lib/index.js'))
+    .loader(require.resolve('babel-loader'))
     .options({
       presets: [
         [

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const npath = require('path')
+const path = require('path')
 const pkg = require('../package.json')
 const miniChain = require('./webpack/miniChain')
 const h5Chain = require('./webpack/h5Chain')
@@ -34,17 +34,30 @@ let config = {
     DEPLOY_VERSION: JSON.stringify(version),
   },
   alias: {
-    '@': npath.resolve(process.cwd(), 'src'),
-    react: npath.resolve(process.cwd(), './node_modules/react'),
+    '@': path.resolve(process.cwd(), 'src'),
+    react: path.resolve(process.cwd(), './node_modules/react'),
   },
   framework: 'react',
   mini: {
     webpackChain(chain) {
       miniChain(chain)
     },
-    // lessLoaderOption: {
-    //   additionalData: "@import '~/src/style/index.less';",
-    // },
+    lessLoaderOption: {
+      lessOptions: {
+        modifyVars: {
+          hack: `true; @import "${path.join(
+            process.cwd(),
+            'src/style/index.less',
+          )}";${
+            process.env.TARO_ENV === 'kwai'
+              ? `@import "${path.join(process.cwd(), 'src/style/kwai.less')}";`
+              : ''
+          }`,
+        },
+      },
+      // 适用于全局引入样式
+      // additionalData: "@import '~/src/style/index.less';",
+    },
     postcss: {
       autoprefixer: {
         enable: true,
@@ -76,7 +89,7 @@ let config = {
         chain.mode('production')
         chain.devtool('hidden-source-map')
         chain.output
-          .path(npath.resolve('./build'))
+          .path(path.resolve('./build'))
           .filename('assets/js/[name].js')
           .chunkFilename('assets/js/chunk/[name].js')
           .publicPath(publicPath.replace('VERSION', version))
@@ -84,7 +97,7 @@ let config = {
         chain.mode('development')
         chain.devtool('eval-cheap-module-source-map')
         chain.output
-          .path(npath.resolve('./build'))
+          .path(path.resolve('./build'))
           .filename('assets/js/[name].js')
           .chunkFilename('assets/js/chunk/[name].js')
           .publicPath(publicPath.replace('VERSION', version))
@@ -109,9 +122,18 @@ let config = {
     },
     esnextModules: [/@antmjs[\\/]vantui/],
     proxy: {},
-    // lessLoaderOption: {
-    //   additionalData: "@import '~/src/style/index.less';",
-    // },
+    lessLoaderOption: {
+      lessOptions: {
+        modifyVars: {
+          hack: `true; @import "${path.join(
+            process.cwd(),
+            'src/style/index.less',
+          )}";`,
+        },
+      },
+      // 适用于全局引入样式
+      // additionalData: "@import '~/src/style/index.less';",
+    },
     postcss: {
       autoprefixer: {
         enable: true,
@@ -139,7 +161,8 @@ let config = {
   },
   plugins: [
     '@tarojs/plugin-platform-alipay-dd',
-    [npath.join(process.cwd(), 'config/webpack/configPlugin')],
+    '@tarojs/plugin-platform-kwai',
+    [path.join(process.cwd(), 'config/webpack/configPlugin')],
   ],
 }
 
