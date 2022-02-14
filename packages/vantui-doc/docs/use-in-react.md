@@ -171,4 +171,9 @@ applyPolyfills().then(function () {
 }
 
 ```
+
+```bash
+TARO_ENV=h5 yarn start
+```
+
 > 愉快的玩耍吧！

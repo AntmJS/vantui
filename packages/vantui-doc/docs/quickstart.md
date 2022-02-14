@@ -23,11 +23,15 @@
 
 - 进入Taro版工程vantui-demo： cd packages/vantui-demo && yarn watch:weapp
 
-### 使用模版快速开发
+### 使用模版快速开发Taro应用
 
-- Pull代码：[temptaro](https://github.com/AntmJS/temptaro)
-
+- Pull代码：[纯净版React In Taro模版工程](https://github.com/AntmJS/pure-project-vantui)
 - 进入根目录：执行 yarn && yarn watch:weapp
+
+### 使用模版快速开发React应用
+
+- Pull代码：[纯净版React模版工程](https://github.com/AntmJS/create-react-app-vantui)
+- 进入根目录：执行 yarn && TARO_ENV=h5 yarn start
 
 ## 开始使用
 
