@@ -3438,7 +3438,7 @@ babel-plugin-transform-taroapi@3.4.1:
   resolved "https://registry.npmmirror.com/babel-plugin-transform-taroapi/-/babel-plugin-transform-taroapi-3.4.1.tgz#7d5397bc546c5f7c34cd4bde1b9af740ef10225c"
   integrity sha512-ve+tOxgr/ZAw4pxqeTgOE1YJek8xHwxvGYb7UJV9B51s8Q2+tVSQGzDQ6LZqyR0l7XW8RAuWESaeK1V5+2oxNA==
 
-babel-preset-taro@3.4.1:
+babel-preset-taro@3.4.1, babel-preset-taro@^3.4.1:
   version "3.4.1"
   resolved "https://registry.npmmirror.com/babel-preset-taro/-/babel-preset-taro-3.4.1.tgz#6e71a3358c12d60ec1ae44eba3cd5fe678007c4f"
   integrity sha512-tJIT8FryN1AxdV0ed21zeYC3RlbyowPF2SbUY7K4TgCOWBF96b0jTFYn8XTLBCYNdyCemuqsm//HhKJIaD4kLw==
@@ -8769,8 +8769,8 @@ lodash.truncate@^4.4.2:
 
 "lodash@4.6.1 || ^4.16.1", lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.21"
-  resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1624543041613&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flodash%2Fdownload%2Flodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
+  resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^2.2.0:
   version "2.2.0"

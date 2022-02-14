@@ -160,6 +160,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-import": "^1.13.3",
     "babel-plugin-transform-taroapi": "3.4.1",
+    "babel-preset-taro": "^3.4.1",
     "cross-env": "^7.0.3",
     "eslint": "^7.30.0",
     "prettier": "^2.3.2",
