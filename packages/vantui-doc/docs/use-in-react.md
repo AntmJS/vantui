@@ -33,6 +33,7 @@ yarn add @antmjs/babel-preset --dev
 ```js
 import { init } from '@antmjs/vantui'
 import { defineCustomElements, applyPolyfills } from '@tarojs/components/loader'
+
 init()
 applyPolyfills().then(function () {
   defineCustomElements(window)

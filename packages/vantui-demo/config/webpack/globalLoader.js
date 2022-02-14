@@ -1,7 +1,11 @@
 // Taro不支持改编译中文件的插件HOOK，先用loader解决
 module.exports = function (source) {
   let newSource = source
-  if (process.env.TARO_ENV === 'alipay' || process.env.TARO_ENV === 'dd') {
+  if (
+    process.env.TARO_ENV === 'alipay' ||
+    process.env.TARO_ENV === 'dd' ||
+    process.env.TARO_ENV === 'swan'
+  ) {
     newSource = newSource.replace(
       'module.exports = g;',
       `

@@ -1,0 +1,17 @@
+{
+  "projectname": "temptaro",
+  "miniprogramRoot": "./",
+  "compilation-args": {
+    "common": {
+      "ignorePrefixCss": true,
+      "ignoreTransJs": true,
+      "ignoreUglify": true
+    }
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "minified": false,
+    "postcss": false
+  }
+}

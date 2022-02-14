@@ -64,4 +64,5 @@ export default {
     titleBarColor: 'black',
   },
   sitemapLocation: 'sitemap.json',
+  animation: false,
 }
