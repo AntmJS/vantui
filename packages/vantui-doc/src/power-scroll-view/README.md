@@ -250,8 +250,10 @@ onLoad() {
   .scroll-container-content {
     flex: 1;
     overflow: scroll;
-    scroll-view {
-      height: 100%;
+    & > scroll-view,
+    // h5
+    & > taro-scroll-view-core {
+       height: 100%;
     }
   }
 }

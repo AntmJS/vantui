@@ -17,7 +17,7 @@ page,
 }
 
 .pull-container {
-  height: calc(100vh - 205px);
+  height: calc(100vh - 200px);
 }
 .min-pull-container {
   height: calc(100vh - 92px);
@@ -67,7 +67,8 @@ page,
   .scroll-container-content {
     flex: 1;
     overflow: scroll;
-    scroll-view {
+    & > scroll-view,
+    & > taro-scroll-view-core {
       height: 100%;
     }
   }
