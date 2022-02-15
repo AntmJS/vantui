@@ -281,7 +281,7 @@ const ScrollContainer = (props) => {
 
 ```jsx
 <ScrollContainer
-  className={`${this.isMin ? 'min-' : ''}pull-container`}
+  className={`pull-search`}
   header={
     <View className="header">
       <View className="left">
@@ -419,7 +419,6 @@ onLoad() {
 | headHeight | 顶部内容高度 | _number \| string_ | `50` |
 | pullDistance `v3.0.8` | 触发下拉刷新的距离 | _number \| string_ | 与 `headHeight` 一致 |
 | finished | 是否已加载完成，加载完成后不再触发load事件 | _boolean_ | `false` |
-| loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
 | total | 列表总个数 | _number_ | - | 
@@ -430,8 +429,7 @@ onLoad() {
 
 ### 自定义Render
 
-status =
-  | 'normal'
+status = 'normal'
   | 'loading'
   | 'loosing'
   | 'pulling'
