@@ -16,20 +16,11 @@ page,
   overflow: hidden;
 }
 
-.pull-basics,
-.pull-error {
+.pull-container {
   height: calc(100vh - 205px);
 }
-.pull-search {
-  height: calc(100vh - 338px);
-}
-
-.min-pull-basics,
-.min-pull-error {
+.min-pull-container {
   height: calc(100vh - 92px);
-}
-.min-pull-search {
-  height: calc(100vh - 225px);
 }
 
 .header {
@@ -56,5 +47,28 @@ page,
   .loadingWrapper {
     font-size: 24px;
     margin-bottom: 24px;
+  }
+}
+
+.footer {
+  line-height: 50px;
+  font-size: 30px;
+  background-color: lightgreen;
+  color: #fff;
+  text-align: center;
+  padding-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+  padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
+}
+
+// 自适应scroll布局
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  .scroll-container-content {
+    flex: 1;
+    overflow: scroll;
+    scroll-view {
+      height: 100%;
+    }
   }
 }
