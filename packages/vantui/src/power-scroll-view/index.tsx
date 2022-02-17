@@ -46,9 +46,10 @@ const DEFAULT_HEAD_HEIGHT = 100
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
 const CustomWrapperRef =
   process.env.TARO_ENV === 'weapp' ? CustomWrapper : Fragment
-
 // const RenderStatus: React.FC<{}> = (props) => {}
-export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
+export function PowerScrollView<T extends number | undefined>(
+  props: PowerScrollViewProps<T>,
+) {
   const {
     headHeight = DEFAULT_HEAD_HEIGHT,
     successDuration = 500,
