@@ -11,6 +11,8 @@ import {
   ITouchEvent,
   ScrollView,
   CustomWrapper,
+  BaseEventOrig,
+  ScrollViewProps,
 } from '@tarojs/components'
 import { TaroElement } from '@tarojs/runtime'
 import { Loading } from './../loading'
@@ -40,7 +42,7 @@ const sleep = (t: number) =>
       resolve()
     }, t)
   })
-const DEFAULT_HEAD_HEIGHT = 50
+const DEFAULT_HEAD_HEIGHT = 100
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
 const CustomWrapperRef =
   process.env.TARO_ENV === 'weapp' ? CustomWrapper : Fragment
@@ -257,8 +259,10 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollTop])
   const onScroll = useCallback(
-    (e) => {
+    (e: BaseEventOrig<ScrollViewProps.onScrollDetail>) => {
       onScrollEvent?.(e)
+      // 模拟器 上 滑到顶  e.detail.scrollTop 不等于0, 低端机可能会出现
+      // reachTopRef.current = e.detail.scrollTop === 0
       debounceScrollOffset()
     },
     [debounceScrollOffset, onScrollEvent],
@@ -333,7 +337,6 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
     total,
   ])
   const onTouchEnd = useCallback(() => {
-    // console.log('end', reachTopRef.current, touch.deltaY.current, isTouchable())
     if (reachTopRef.current && touch.deltaY.current && isTouchable()) {
       // state.duration = +animationDuration
       setDuration(+animationDuration)
@@ -343,6 +346,8 @@ export const PowerScrollView: React.FC<PowerScrollViewProps> = (props) => {
       } else {
         setStatus(0)
       }
+    } else {
+      setStatus(0)
     }
   }, [
     doRefresh,
