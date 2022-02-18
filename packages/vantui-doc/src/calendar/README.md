@@ -54,7 +54,7 @@ function onClose() {
 
 function formatDate(date) {
   date = new Date(date);
-  return date.getMonth() + 1}/${date.getDate();
+  return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
 function onConfirm(event) {
@@ -153,14 +153,14 @@ function onClose() {
 
 function formatDate(date) {
   date = new Date(date);
-  return date.getMonth() + 1}/${date.getDate();
+  return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
 function onConfirm(event) {
   const [start, end] = event.detail;
   this.setState({
     show: false,
-    date: this.formatDate(start)} - ${this.formatDate(end)
+    date: `${this.formatDate(start)} - ${this.formatDate(end)}`
   });
 } 
 ```
