@@ -96,9 +96,9 @@ import { Image } from "@antmjs/vantui";
 | --- | --- | --- | --- | --- |
 | src | 图片链接 | _&nbsp;&nbsp;string<br/>_ | - | `true` |
 | round | 是否圆角 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
-| width | 宽度，单位为px | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| height | 高度，单位为px | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| radius | 圆角大小 | _&nbsp;&nbsp;number<br/>_ | 0 | `false` |
+| width | 宽度，单位为px | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| height | 高度，单位为px | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| radius | 圆角大小 | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | 0 | `false` |
 | lazyLoad | 是否懒加载 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
 | showMenuByLongpress | 是否开启长按图片显示识别小程序码菜单 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
 | fit | 图片填充模式 | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"contain"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"cover"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"fill"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"widthFix"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"heightFix"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"none"<br/>_ | fill | `false` |
