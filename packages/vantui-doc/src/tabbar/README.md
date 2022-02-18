@@ -280,7 +280,7 @@ function onClick(event) {
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| active | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| active | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
 | activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
