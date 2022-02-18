@@ -42,7 +42,8 @@ const sleep = (t: number) =>
       resolve()
     }, t)
   })
-const DEFAULT_HEAD_HEIGHT = 100
+const DEFAULT_HEAD_HEIGHT = 70
+const MIN_TRIGGER_DISTANCE = 150
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
 const CustomWrapperRef =
   process.env.TARO_ENV === 'weapp' ? CustomWrapper : Fragment
@@ -111,6 +112,8 @@ export function PowerScrollView<T extends number | undefined>(
     pageSize,
   })
 
+  const startTop = useRef(0)
+
   const [finished, setFinished] = useState<boolean>(_finished || false)
   const currentCount = current ?? Array.from(children as any).length
   const listCount = useRef(0)
@@ -162,6 +165,11 @@ export function PowerScrollView<T extends number | undefined>(
     }
     return ''
   }, [headHeight])
+
+  const getScrollTop = useCallback(async () => {
+    const { scrollTop } = await scrollOffset(scrollRef.current!)
+    return scrollTop
+  }, [])
 
   const isTouchable = useCallback(() => {
     return (
@@ -247,17 +255,19 @@ export function PowerScrollView<T extends number | undefined>(
 
   // 提前把reachTopRef.current的值 求出来
   const debounceScrollOffset = useMemo(() => {
-    const getScrollTop = async () => {
-      const { scrollTop } = await scrollOffset(scrollRef.current!)
-      reachTopRef.current = scrollTop === 0
+    const _getScrollTop = async () => {
+      const _scrollTop = await getScrollTop()
+      reachTopRef.current = _scrollTop === 0
+      return _scrollTop
     }
-    return debounce(getScrollTop, 400)
-  }, [])
+    return debounce(_getScrollTop, 200)
+  }, [getScrollTop])
   // 如果这是了 scrollTop 要触发ScrollOffset计算
   useEffect(() => {
     // 立马执行一次
-    debounceScrollOffset.flush()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (scrollTop) {
+      reachTopRef.current = false
+    }
   }, [scrollTop])
   const onScroll = useCallback(
     (e: BaseEventOrig<ScrollViewProps.onScrollDetail>) => {
@@ -282,18 +292,21 @@ export function PowerScrollView<T extends number | undefined>(
   )
 
   const onTouchStart = useCallback(
-    (event: ITouchEvent): void => {
+    async (event: ITouchEvent) => {
       if (isTouchable()) {
+        const data = await getScrollTop()
+        console.log('start_top: ', data)
+        startTop.current = data
         checkPosition(event)
       }
     },
-    [checkPosition, isTouchable],
+    [checkPosition, getScrollTop, isTouchable],
   )
 
   // list
   const onTouchMove = useCallback(
     (event: ITouchEvent): void => {
-      if (isTouchable()) {
+      if (isTouchable() && startTop.current < MIN_TRIGGER_DISTANCE) {
         const { deltaY } = touch
         touch.move(event)
         if (reachTopRef.current && deltaY.current >= 0 && touch.isVertical()) {
@@ -338,6 +351,7 @@ export function PowerScrollView<T extends number | undefined>(
     total,
   ])
   const onTouchEnd = useCallback(() => {
+    startTop.current = 0
     if (reachTopRef.current && touch.deltaY.current && isTouchable()) {
       // state.duration = +animationDuration
       setDuration(+animationDuration)
