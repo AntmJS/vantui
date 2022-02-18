@@ -23,7 +23,7 @@ export function GoodsActionIcon(props: GoodsActionIconProps) {
   const _click: (event: ITouchEvent) => void = useCallback(
     function (event) {
       onClick?.(event)
-      if (url && linkType) jumpLink(url, linkType)
+      if (url) jumpLink(url, linkType)
     },
     [linkType, onClick, url],
   )
