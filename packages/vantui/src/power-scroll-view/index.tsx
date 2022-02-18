@@ -43,7 +43,7 @@ const sleep = (t: number) =>
     }, t)
   })
 const DEFAULT_HEAD_HEIGHT = 70
-const MIN_TRIGGER_DISTANCE = 150
+const MIN_TRIGGER_TOP_DISTANCE = 150
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
 const CustomWrapperRef =
   process.env.TARO_ENV === 'weapp' ? CustomWrapper : Fragment
@@ -52,6 +52,7 @@ export function PowerScrollView<T extends number | undefined>(
   props: PowerScrollViewProps<T>,
 ) {
   const {
+    minTriggerTopDistance = MIN_TRIGGER_TOP_DISTANCE,
     headHeight = DEFAULT_HEAD_HEIGHT,
     successDuration = 500,
     animationDuration = 300,
@@ -306,7 +307,7 @@ export function PowerScrollView<T extends number | undefined>(
   // list
   const onTouchMove = useCallback(
     (event: ITouchEvent): void => {
-      if (isTouchable() && startTop.current < MIN_TRIGGER_DISTANCE) {
+      if (isTouchable() && startTop.current < minTriggerTopDistance) {
         const { deltaY } = touch
         touch.move(event)
         if (reachTopRef.current && deltaY.current >= 0 && touch.isVertical()) {
@@ -315,7 +316,7 @@ export function PowerScrollView<T extends number | undefined>(
         }
       }
     },
-    [ease, isTouchable, setStatus, touch],
+    [ease, isTouchable, minTriggerTopDistance, setStatus, touch],
   )
 
   // list
