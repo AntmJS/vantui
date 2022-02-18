@@ -117,6 +117,7 @@ function Index(
 
   const getInitialDate = useCallback(
     function (defaultDate = null) {
+      console.info(defaultDate)
       const now = getToday().getTime()
       if (type === 'range') {
         if (!Array.isArray(defaultDate)) {
@@ -151,6 +152,7 @@ function Index(
   const scrollIntoViewFn = useCallback(
     function () {
       requestAnimationFrame(() => {
+        if (!currentDate) return
         const targetDate = type === 'single' ? currentDate : currentDate[0]
         const displayed = show || !poppable
         if (!targetDate || !displayed) {
@@ -171,10 +173,10 @@ function Index(
 
   const reset = useCallback(
     function () {
-      setCurrentDate(getInitialDate())
+      setCurrentDate(getInitialDate(defaultDate))
       scrollIntoViewFn()
     },
-    [getInitialDate, scrollIntoViewFn],
+    [getInitialDate, scrollIntoViewFn, defaultDate],
   )
 
   const initRectH5 = useCallback(function () {
@@ -371,8 +373,9 @@ function Index(
 
   useLayoutEffect(
     function () {
-      if (defaultDate)
+      if (defaultDate) {
         setCurrentDate(getInitialDate(defaultDate || new Date().getTime()))
+      }
     },
     [defaultDate, getInitialDate],
   )
