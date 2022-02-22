@@ -31,6 +31,7 @@ export default class Index extends Component {
               leftArrow
               onClickLeft={this.onClickLeft}
               onClickRight={this.onClickRight}
+              safeAreaInsetTop={false}
             ></NavBar>
           </DemoBlock>
           <DemoBlock title="高级用法">
