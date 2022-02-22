@@ -23,16 +23,16 @@ import { TabbarItem } from "@antmjs/vantui";
     active={ this.state.active }
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签
     </TabbarItem>
     <TabbarItem icon="search">
       标签
     </TabbarItem>
-    <TabbarItem icon="friendsO">
+    <TabbarItem icon="friends-o">
       标签
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签
     </TabbarItem>
   </Tabbar>
@@ -65,7 +65,7 @@ function onChange(event) {
   >
     <TabbarItem
       name="home"
-      icon="homeO"
+      icon="home-o"
     >
       标签
     </TabbarItem>
@@ -77,13 +77,13 @@ function onChange(event) {
     </TabbarItem>
     <TabbarItem
       name="friends"
-      icon="friendsO"
+      icon="friends-o"
     >
       标签
     </TabbarItem>
     <TabbarItem
       name="setting"
-      icon="settingO"
+      icon="setting-o"
     >
       标签
     </TabbarItem>
@@ -112,7 +112,7 @@ function onChange(event) {
     active={ this.state.active }
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签
     </TabbarItem>
     <TabbarItem
@@ -122,13 +122,13 @@ function onChange(event) {
       标签
     </TabbarItem>
     <TabbarItem
-      icon="friendsO"
+      icon="friends-o"
       info="5"
     >
       标签
     </TabbarItem>
     <TabbarItem
-      icon="settingO"
+      icon="setting-o"
       info="20"
     >
       标签
@@ -172,7 +172,7 @@ function onChange(event) {
     <TabbarItem icon="search">
       标签
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签
     </TabbarItem>
   </Tabbar>
@@ -206,16 +206,16 @@ function onChange(event) {
     inactiveColor="#000"
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签
     </TabbarItem>
     <TabbarItem icon="search">
       标签
     </TabbarItem>
-    <TabbarItem icon="friendsO">
+    <TabbarItem icon="friends-o">
       标签
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签
     </TabbarItem>
   </Tabbar>
@@ -243,16 +243,16 @@ function onChange(event) {
     active={ this.state.active }
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签1
     </TabbarItem>
     <TabbarItem icon="search">
       标签2
     </TabbarItem>
-    <TabbarItem icon="friendsO">
+    <TabbarItem icon="friends-o">
       标签3
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签4
     </TabbarItem>
   </Tabbar>

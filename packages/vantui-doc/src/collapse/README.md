@@ -175,7 +175,7 @@ function onClose(event) {
       renderTitle={(
         <View>
           有赞微商城
-          <Icon name="questionO" />
+          <Icon name="question-o" />
         </View>
       )}
       >
@@ -184,7 +184,7 @@ function onClose(event) {
     <CollapseItem
       title="有赞零售"
       name="2"
-      icon="shopO"
+      icon="shop-o"
     >
       网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
     </CollapseItem>
