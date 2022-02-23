@@ -14,16 +14,16 @@ export interface ImageProps extends StandardProps {
   /**
    * @description 宽度，单位为px
    */
-  width?: number
+  width?: number | string
   /**
    * @description 高度，单位为px
    */
-  height?: number
+  height?: number | string
   /**
    * @description 圆角大小
    * @default 0
    */
-  radius?: number
+  radius?: number | string
   /**
    * @description 是否懒加载
    * @default false

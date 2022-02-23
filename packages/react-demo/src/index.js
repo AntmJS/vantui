@@ -1,4 +1,5 @@
 import { defineCustomElements, applyPolyfills } from '@tarojs/components/loader'
+
 import { init } from '@antmjs/vantui'
 import React from 'react'
 import { render } from 'react-dom'

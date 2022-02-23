@@ -68,54 +68,62 @@ export function Toast(props: ToastProps) {
     toastOptions?.onClose?.()
   }, [])
 
-  useEffect(() => {
-    on('toast_show', (toastOptions) => {
-      const options = Object.assign(
-        Object.assign({}, currentOptions),
-        parseOptions(toastOptions),
-      )
+  const tShowListener = useCallback((toastOptions) => {
+    const options = Object.assign(
+      Object.assign({}, currentOptions),
+      parseOptions(toastOptions),
+    )
 
-      if (options.id === state.id || (!options.id && state.id === defaultId)) {
-        // queue.push(toastOptions)
-        setState((state) => {
-          return {
-            ...state,
-            ...options,
-          }
-        })
-
-        clearTimeout(timer)
-        if (options.duration != null && options.duration > 0) {
-          timer = setTimeout(() => {
-            // clear(toastOptions)
-            trigger('toast_clear', toastOptions)
-            // queue = queue.filter((item: any) => item.sel !== toast)
-          }, options.duration)
+    if (options.id === state.id || (!options.id && state.id === defaultId)) {
+      // queue.push(toastOptions)
+      setState((state) => {
+        return {
+          ...state,
+          ...options,
         }
+      })
+
+      clearTimeout(timer)
+      if (options.duration != null && options.duration > 0) {
+        timer = setTimeout(() => {
+          // clear(toastOptions)
+          trigger('toast_clear', toastOptions)
+          // queue = queue.filter((item: any) => item.sel !== toast)
+        }, options.duration)
       }
-    })
+    }
+  }, [])
 
-    on('toast_clear', (toastOptions) => {
-      clear(toastOptions)
-      // queue.forEach((toast: any) => {
-      //   toast.clear()
-      // })
-      // queue = []
-    })
+  const tClearListener = useCallback((toastOptions) => {
+    clear(toastOptions)
+    // queue.forEach((toast: any) => {
+    //   toast.clear()
+    // })
+    // queue = []
+  }, [])
 
-    on('toast_setDefaultOptions', (options: any) => {
-      currentOptions = Object.assign(currentOptions, options)
-    })
+  const tSetDftOptsListener = useCallback((options: any) => {
+    currentOptions = Object.assign(currentOptions, options)
+  }, [])
 
-    on('toast_resetDefaultOptions', () => {
-      currentOptions = Object.assign({}, defaultOptions)
-    })
+  const tResetDftOptsListener = useCallback(() => {
+    currentOptions = Object.assign({}, defaultOptions)
+  }, [])
+
+  useEffect(() => {
+    on('toast_show', tShowListener)
+
+    on('toast_clear', tClearListener)
+
+    on('toast_setDefaultOptions', tSetDftOptsListener)
+
+    on('toast_resetDefaultOptions', tResetDftOptsListener)
 
     return () => {
-      off('toast_show')
-      off('toast_clear')
-      off('toast_setDefaultOptions')
-      off('toast_resetDefaultOptions')
+      off('toast_show', tShowListener)
+      off('toast_clear', tClearListener)
+      off('toast_setDefaultOptions', tSetDftOptsListener)
+      off('toast_resetDefaultOptions', tResetDftOptsListener)
     }
     /* eslint-disable-next-line */
   }, [])

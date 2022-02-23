@@ -8,7 +8,7 @@
 Tips: H5 中 ScrollView 组件是通过一个高度（或宽度）固定的容器内部滚动来实现的，因此务必正确的设置容器的高度。例如: 如果 ScrollView 的高度将 body 撑开，就会同时存在两个滚动条（body 下的滚动条，以及 ScrollView 的滚动条）
 
 
-> [参考文档](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.jsx)
+> [参考文档](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html)
 
 ### 引入
 
@@ -239,36 +239,90 @@ onLoad() {
 }
 
 ```
+###  自适应高度
+ 
+给`ScrollContainer`容器设置高度，内部渲染 `header/footer`之后，`PowerScrollView`会自动撑满空缺部分作为自己高度。
+
+```scss
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  .scroll-container-content {
+    flex: 1;
+    overflow: scroll;
+    & > scroll-view,
+    // h5
+    & > taro-scroll-view-core {
+       height: 100%;
+    }
+  }
+}
+```
+
+```jsx
+
+const ScrollContainer = (props) => {
+  const { header, footer, children, className, ...rest } = props
+  return (
+    <View className={`scroll-container ${className || ''}`} {...rest}>
+      {header && <View className="scroll-container-header">{header}</View>}
+      <View className="scroll-container-content">{children}</View>
+      {footer && <View className="scroll-container-footer">{footer}</View>}
+    </View>
+  )
+}
+
+<ScrollContainer>
+  <PowerScrollView/>
+</ScrollContainer>
+```
 
 ### 配合搜索使用
 
 ```jsx
-<View>
-  <View className="header">
-    <View className="left">
-      <Search 
-        defaultValue={this.state.searchValue}
-        onChange={this.handleChange} 
-      />
+<ScrollContainer
+  className={`pull-search`}
+  header={
+    <View className="header">
+      <View className="left">
+        <Search
+          defaultValue={this.state.searchValue}
+          onChange={this.handleChange}
+        />
+      </View>
+      <View className="right">
+        <Button size="small" type="primary" onClick={this.doSearch}>
+          搜索
+        </Button>
+      </View>
     </View>
-    <View className="right">
-      <Button size="small" type="primary" onClick={this.doSearch}>
-        搜索
-      </Button>
-    </View>
-  </View>
+  }
+  footer={<View className="footer">自适应scroll-footer</View>}
+>
   {
     <>
-      {this.state.searchFinished || this.state.searchList.length > 0 ? (
+      {this.state.searchFinished ||
+      this.state.searchList.length > 0 ? (
         <PowerScrollView
-          className="pull-search"
-          successText="刷新成功"
           finishedText="--- 我是有底线的 ---"
           onScrollToUpper={this.searchDoRefresh}
           onScrollToLower={this.searchLoadMore}
           lowerThreshold={300}
           headHeight="80"
           finished={this.state.searchFinished}
+          renderHead={({ distance, status }) => {
+            return (
+              <Image
+                className="doge"
+                src="https://img-blog.csdnimg.cn/20210515142150468.gif"
+                style={
+                  status === 'pulling'
+                    ? { transform: `scale(${distance / 80})` }
+                    : ''
+                }
+              />
+            )
+          }}
         >
           {this.state.searchList.map((e, i) => (
             <Cell key={i} title={e} />
@@ -284,7 +338,7 @@ onLoad() {
       )}
     </>
   }
-</View>
+</ScrollContainer>
 ```
 
 ```js
@@ -365,7 +419,6 @@ onLoad() {
 | headHeight | 顶部内容高度 | _number \| string_ | `50` |
 | pullDistance `v3.0.8` | 触发下拉刷新的距离 | _number \| string_ | 与 `headHeight` 一致 |
 | finished | 是否已加载完成，加载完成后不再触发load事件 | _boolean_ | `false` |
-| loadingText | 加载过程中的提示文案 | _string_ | `加载中...` |
 | finishedText | 加载完成后的提示文案 | _string_ | - |
 | errorText | 加载失败后的提示文案 | _string_ | - |
 | total | 列表总个数 | _number_ | - | 
@@ -376,8 +429,7 @@ onLoad() {
 
 ### 自定义Render
 
-status =
-  | 'normal'
+status = 'normal'
   | 'loading'
   | 'loosing'
   | 'pulling'

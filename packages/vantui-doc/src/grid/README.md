@@ -25,19 +25,19 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid>
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
   </Grid>
@@ -53,7 +53,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid columnNum="3">
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     /> )) }
   </Grid>
@@ -93,7 +93,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid square={ true }>
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     /> )) }
   </Grid>
@@ -109,7 +109,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid gutter={  10 }>
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     /> )) }
   </Grid>
@@ -128,15 +128,15 @@ import { GridItem } from "@antmjs/vantui";
     columnNum="2"
   >
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
   </Grid>
@@ -179,7 +179,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid columnNum="2">
     <GridItem
-      icon="homeO"
+      icon="home-o"
       text="文字"
       dot={ true }
     />
@@ -205,5 +205,20 @@ import { GridItem } from "@antmjs/vantui";
 | direction | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | iconSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
 | reverse | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+
+### GridItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/grid.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| iconColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| iconPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| info | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `false` |
+| badge | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number&nbsp;&brvbar;&nbsp;undefined<br/>_ | - | `false` |
+| text | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| url | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| linkType | - | _&nbsp;&nbsp;"navigateTo"&nbsp;&brvbar;&nbsp;"reLaunch"&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | - | `false` |
 | children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
 

@@ -194,6 +194,6 @@ function onClose() {
 | showConfirmButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | showCancelButton | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | closeOnClickOverlay | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| confirmButtonOpenType | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| confirmButtonOpenType | - | _&nbsp;&nbsp;TaroButtonProps.openType<br/>_ | - | `false` |
 | renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 

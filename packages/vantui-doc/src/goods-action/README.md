@@ -24,12 +24,12 @@ import { GoodsActionButton } from "@antmjs/vantui";
 <View>
   <GoodsAction>
     <GoodsActionIcon
-      icon="chatO"
+      icon="chat-o"
       text="客服"
       onClick={ onClickIcon }
     />
     <GoodsActionIcon
-      icon="cartO"
+      icon="cart-o"
       text="购物车"
       onClick={ onClickIcon }
     />
@@ -61,17 +61,17 @@ function onClickButton() {
 <View>
   <GoodsAction>
     <GoodsActionIcon
-      icon="chatO"
+      icon="chat-o"
       text="客服"
       dot={ true }
     />
     <GoodsActionIcon
-      icon="cartO"
+      icon="cart-o"
       text="购物车"
       info="5"
     />
     <GoodsActionIcon
-      icon="shopO"
+      icon="shop-o"
       text="店铺"
     />
     <GoodsActionButton
@@ -92,16 +92,16 @@ function onClickButton() {
 <View>
   <GoodsAction>
     <GoodsActionIcon
-      icon="chatO"
+      icon="chat-o"
       text="客服"
     />
     <GoodsActionIcon
-      icon="cartO"
+      icon="cart-o"
       text="购物车"
       info="5"
     />
     <GoodsActionIcon
-      icon="shopO"
+      icon="shop-o"
       text="店铺"
     />
     <GoodsActionButton
@@ -126,16 +126,16 @@ function onClickButton() {
 <View>
   <GoodsAction>
     <GoodsActionIcon
-      icon="chatO"
+      icon="chat-o"
       text="客服"
     />
     <GoodsActionIcon
-      icon="cartO"
+      icon="cart-o"
       text="购物车"
       info="5"
     />
     <GoodsActionIcon
-      icon="shopO"
+      icon="shop-o"
       text="店铺"
     />
     <GoodsActionButton

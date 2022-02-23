@@ -37,7 +37,7 @@
   }
 
   &--fixed {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -49,6 +49,12 @@
     .theme(color, '@nav-bar-title-text-color');
     .theme(font-weight, '@font-weight-bold');
     .theme(font-size, '@nav-bar-title-font-size');
+  }
+  &__title-h5 {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
   &__left,

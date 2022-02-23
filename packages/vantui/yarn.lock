@@ -1051,10 +1051,17 @@
     core-js-pure "^3.16.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.7.6":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.7.6":
   version "7.15.4"
   resolved "https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.15.4.tgz?cache=0&sync_timestamp=1630618785994&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha1-/RfRa/34eObdAtGXU6OfqKjZyEo=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.14.5":
+  version "7.17.2"
+  resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
+  integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1289,21 +1296,21 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tarojs/api@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/api/download/@tarojs/api-3.3.19.tgz#af0c15adcb793b6c2a1a306ba4db6a384e0b873b"
-  integrity sha512-saQ61hrLoqWH8GHWa2KaW39FDEmstGUJLUrGwg5Xd/n7pYJzQ1WusjsMJPlJXA6GtdBHQiqeh8iUjSv6UUntkw==
+"@tarojs/api@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/api/-/api-3.4.1.tgz#4a90cf48161eb627fa4abfd6d4b497a683a5aa55"
+  integrity sha512-Gmh0e9cp3rCofCCGQNlmTpdpSvgnHGDKGNwkQzzSTpuqMNih6a0jVQaG6zk3lh5mETVTcf+8tF5q4MTFppRL/g==
   dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@tarojs/runtime" "3.3.19"
+    "@babel/runtime" "^7.14.5"
+    "@tarojs/runtime" "3.4.1"
 
-"@tarojs/components@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/components/download/@tarojs/components-3.3.19.tgz#af587ef0c406422e8b6abd82a32068fe2bc9bd1d"
-  integrity sha512-+0aL5/KlQS+2/rmdtvbEy1+L9LenTSDYGWBYMZJ5vTg3mS1rWqhYVwwnpE2Jf/j13Ak/0XHyQP7VTNhbNCDbTw==
+"@tarojs/components@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/components/-/components-3.4.1.tgz#ba5fbe9308b8ea1501688f8a33ef894a76c8372c"
+  integrity sha512-2w/VdaiPoeJA6moFYVIfNg2WV8sUYwPxS5sHwKyH4iH/IoKOY34xFDh327ePKnqKW1q4plQMEMaUAB85JWWDAA==
   dependencies:
     "@stencil/core" "2.9.0"
-    "@tarojs/taro" "3.3.19"
+    "@tarojs/taro" "3.4.1"
     better-scroll "^1.14.1"
     classnames "^2.2.5"
     intersection-observer "^0.7.0"
@@ -1312,56 +1319,55 @@
     swiper "6.8.0"
     weui "^1.1.2"
 
-"@tarojs/router@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/router/download/@tarojs/router-3.3.19.tgz#d788272d8dd48e061c33241162205a33cabe9124"
-  integrity sha512-JDNS6aVDtCHOfJqHThw6l8xAqXQ5uu2YGD0dcheo1K2UQrhT+Hg0Zbpy/yek3VtwHlci8dmLNUckAkYWDS1nWg==
+"@tarojs/router@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/router/-/router-3.4.1.tgz#f53ca1cdde19dc98c0426876e9c28afed5df711d"
+  integrity sha512-u0siXz8B6gvhI3g5EGpgBdzP2XCLfoD8SVIg6ZackzW0NMm4qFM73qGS7ZSIrasVqVRNAh3EEOdfjEKUH9EFXw==
   dependencies:
-    "@tarojs/runtime" "3.3.19"
-    "@tarojs/taro" "3.3.19"
+    "@tarojs/runtime" "3.4.1"
+    "@tarojs/taro" "3.4.1"
     history "^5.1.0"
     query-string "^6.13.8"
     universal-router "^8.3.0"
     url-parse "^1.4.7"
 
-"@tarojs/runtime@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/runtime/download/@tarojs/runtime-3.3.19.tgz#91de65f33cdd83f10bea26af3083c4653673c3e3"
-  integrity sha512-JgaiMozHD8ZAlaYn2hk5XAFJJN73bptVMI1aYqrWBXh+AVnI7LJE4eVmp1qEJFAap8Wx5w1vcb2kLgV+qpZ+mw==
+"@tarojs/runtime@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/runtime/-/runtime-3.4.1.tgz#71c2239771e7755a076367ac284e0a487d8a9c1c"
+  integrity sha512-jPh1P/S6JU9lZyC1KOEJy0sE2QRBpDZKQJqRnOu5nCylZzxaZ2TU1ACmnfuNnUX7/CwWt5f/y+h0mVFpvv9hwA==
   dependencies:
-    "@tarojs/shared" "3.3.19"
+    "@tarojs/shared" "3.4.1"
     inversify "5.1.1"
     lodash-es "4.17.15"
     reflect-metadata "^0.1.13"
 
-"@tarojs/shared@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/shared/download/@tarojs/shared-3.3.19.tgz#e75d8d3fe7cb7721218bad0fd568be3442e3b853"
-  integrity sha512-DXlPltpIV8pTy/4jp69zhT65ltdeaKjAw7NJI887tLEac5KdKVKlaeffHOSWyS0snsMQ6MyR8ZNlNlV4sykpDg==
+"@tarojs/shared@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/shared/-/shared-3.4.1.tgz#529ff63f52b936573d225856c4f7c6902848592f"
+  integrity sha512-X9LBS/TPBRsDjXj9+wynWQepdCY2jcPEJrpKdOL9Z+lEbvRABhnTOUjuaRKIkBJ+lLRg3/Xf8y1Oln+gnajKQQ==
 
-"@tarojs/taro-h5@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/taro-h5/download/@tarojs/taro-h5-3.3.19.tgz#c013d002de7bb7e2269a2ea240921c2be1251ef7"
-  integrity sha512-K3aB3v3Blt7ga9MViEMyzOIvjAxfsc/WDMf7MCXhcl8yXtBqmqDeXjFD7KFxoViTywAZUHY5EbHvxUdIVkktng==
+"@tarojs/taro-h5@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/taro-h5/-/taro-h5-3.4.1.tgz#ad6ae7d88eb4afd9548d78d03010edf066a82a6c"
+  integrity sha512-hvwnWJ/EWzHNO5+3QVp6Nb6mJ5e4YCETVeTe2dQrKqbjew8w/DHxu6OzHJP6WlVw+WZHrlIUc5FfSuSIeDisbw==
   dependencies:
-    "@tarojs/api" "3.3.19"
-    "@tarojs/router" "3.3.19"
-    "@tarojs/runtime" "3.3.19"
-    "@tarojs/taro" "3.3.19"
+    "@tarojs/api" "3.4.1"
+    "@tarojs/router" "3.4.1"
+    "@tarojs/runtime" "3.4.1"
+    "@tarojs/taro" "3.4.1"
     base64-js "^1.3.0"
     jsonp-retry "^1.0.3"
     mobile-detect "^1.4.2"
-    raf "^3.4.1"
     whatwg-fetch "^3.4.0"
 
-"@tarojs/taro@3.3.19":
-  version "3.3.19"
-  resolved "https://registry.npmmirror.com/@tarojs/taro/download/@tarojs/taro-3.3.19.tgz#fed91ed798f2dd8835afd9bf056977b9f84ebdd1"
-  integrity sha512-DRRSShMyEnHiLxiRiUDjEN44fJLM1pZlWe3d/64xoQtBJ0T7JoBUnhkDY3CmIbf85gxMLWcBhLXeGo9bR4Mg/Q==
+"@tarojs/taro@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmmirror.com/@tarojs/taro/-/taro-3.4.1.tgz#05b34cfdb363216985c428cc84b2067c0ec7dec0"
+  integrity sha512-10ubTVi4cAgFws1mMJPOgDTWyW+eeMTVwJkB0EfLe3nsZ/tK0w2+ulwMh5At60Tj4mWGzrSF6U4SWZRY4H5Ldw==
   dependencies:
-    "@tarojs/api" "3.3.19"
-    "@tarojs/runtime" "3.3.19"
-    "@tarojs/taro-h5" "3.3.19"
+    "@tarojs/api" "3.4.1"
+    "@tarojs/runtime" "3.4.1"
+    "@tarojs/taro-h5" "3.4.1"
 
 "@types/cacheable-request@^6.0.1":
   version "6.0.2"
@@ -3948,11 +3954,6 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
-lodash.flow@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.npm.taobao.org/lodash.flow/download/lodash.flow-3.5.0.tgz#87bf40292b8cf83e4e8ce1a3ae4209e20071675a"
-  integrity sha1-h79AKSuM+D5OjOGjrkIJ4gBxZ1o=
-
 lodash.ismatch@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
@@ -3989,7 +3990,7 @@ log-symbols@^5.0.0:
     chalk "^4.1.0"
     is-unicode-supported "^1.0.0"
 
-loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.1.0:
   version "1.4.0"
   resolved "https://registry.nlark.com/loose-envify/download/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=
@@ -4636,11 +4637,6 @@ path-type@^4.0.0:
   resolved "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-performance-now@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.nlark.com/performance-now/download/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
-  integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
-
 picocolors@^0.2.1:
   version "0.2.1"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-0.2.1.tgz#570670f793646851d1ba135996962abad587859f"
@@ -5022,15 +5018,6 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-prop-types@^15.7.2:
-  version "15.7.2"
-  resolved "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
-  integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
-  dependencies:
-    loose-envify "^1.4.0"
-    object-assign "^4.1.1"
-    react-is "^16.8.1"
-
 protocols@^1.1.0, protocols@^1.4.0:
   version "1.4.8"
   resolved "https://registry.npmjs.org/protocols/-/protocols-1.4.8.tgz#48eea2d8f58d9644a4a32caae5d5db290a075ce8"
@@ -5098,13 +5085,6 @@ quick-lru@^5.1.1:
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-raf@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.nlark.com/raf/download/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
-  integrity sha1-B0LpmkplUvRF1z4+4DKK8P8e3jk=
-  dependencies:
-    performance-now "^2.1.0"
-
 rc-util@^5.14.0:
   version "5.14.0"
   resolved "https://registry.nlark.com/rc-util/download/rc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
@@ -5133,7 +5113,7 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-is@^16.12.0, react-is@^16.8.1:
+react-is@^16.12.0:
   version "16.13.1"
   resolved "https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=

@@ -2,7 +2,7 @@ import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface TabbarProps extends StandardProps {
-  active?: number
+  active?: string | number
   activeColor?: string
   inactiveColor?: string
   fixed?: boolean

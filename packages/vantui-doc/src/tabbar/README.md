@@ -23,16 +23,16 @@ import { TabbarItem } from "@antmjs/vantui";
     active={ this.state.active }
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签
     </TabbarItem>
     <TabbarItem icon="search">
       标签
     </TabbarItem>
-    <TabbarItem icon="friendsO">
+    <TabbarItem icon="friends-o">
       标签
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签
     </TabbarItem>
   </Tabbar>
@@ -65,7 +65,7 @@ function onChange(event) {
   >
     <TabbarItem
       name="home"
-      icon="homeO"
+      icon="home-o"
     >
       标签
     </TabbarItem>
@@ -77,13 +77,13 @@ function onChange(event) {
     </TabbarItem>
     <TabbarItem
       name="friends"
-      icon="friendsO"
+      icon="friends-o"
     >
       标签
     </TabbarItem>
     <TabbarItem
       name="setting"
-      icon="settingO"
+      icon="setting-o"
     >
       标签
     </TabbarItem>
@@ -112,7 +112,7 @@ function onChange(event) {
     active={ this.state.active }
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签
     </TabbarItem>
     <TabbarItem
@@ -122,13 +122,13 @@ function onChange(event) {
       标签
     </TabbarItem>
     <TabbarItem
-      icon="friendsO"
+      icon="friends-o"
       info="5"
     >
       标签
     </TabbarItem>
     <TabbarItem
-      icon="settingO"
+      icon="setting-o"
       info="20"
     >
       标签
@@ -172,7 +172,7 @@ function onChange(event) {
     <TabbarItem icon="search">
       标签
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签
     </TabbarItem>
   </Tabbar>
@@ -206,16 +206,16 @@ function onChange(event) {
     inactiveColor="#000"
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签
     </TabbarItem>
     <TabbarItem icon="search">
       标签
     </TabbarItem>
-    <TabbarItem icon="friendsO">
+    <TabbarItem icon="friends-o">
       标签
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签
     </TabbarItem>
   </Tabbar>
@@ -243,16 +243,16 @@ function onChange(event) {
     active={ this.state.active }
     onChange={ this.onChange }
   >
-    <TabbarItem icon="homeO">
+    <TabbarItem icon="home-o">
       标签1
     </TabbarItem>
     <TabbarItem icon="search">
       标签2
     </TabbarItem>
-    <TabbarItem icon="friendsO">
+    <TabbarItem icon="friends-o">
       标签3
     </TabbarItem>
-    <TabbarItem icon="settingO">
+    <TabbarItem icon="setting-o">
       标签4
     </TabbarItem>
   </Tabbar>
@@ -280,7 +280,7 @@ function onClick(event) {
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| active | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| active | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
 | activeColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | inactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
@@ -290,4 +290,18 @@ function onClick(event) {
 | safeAreaInsetBottom | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 | onChange | - | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+
+### TabbarItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tabbar.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| info | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| iconPrefix | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderIconActive | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(name:&nbsp;string&nbsp;&brvbar;&nbsp;number)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 

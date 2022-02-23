@@ -305,3 +305,14 @@ toggle = (event) => {
 | renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 | onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 
+### CheckboxGroupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/checkbox.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| max | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;Array<any><br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| direction | - | _&nbsp;&nbsp;"horizontal"&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;Array<ReactNode><br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+

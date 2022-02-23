@@ -175,7 +175,7 @@ function onClose(event) {
       renderTitle={(
         <View>
           有赞微商城
-          <Icon name="questionO" />
+          <Icon name="question-o" />
         </View>
       )}
       >
@@ -184,7 +184,7 @@ function onClose(event) {
     <CollapseItem
       title="有赞零售"
       name="2"
-      icon="shopO"
+      icon="shop-o"
     >
       网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
     </CollapseItem>
@@ -208,11 +208,30 @@ function onChange(event) {
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
-| value | - | _&nbsp;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number><br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
 | accordion | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | children | - | _&nbsp;&nbsp;Array<ReactNode><br/>_ | - | `false` |
 | onChange | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 | onOpen | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 | onClose | - | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+
+### CollapseItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)   
+
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| icon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| label | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| clickable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| isLink | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderValue | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
