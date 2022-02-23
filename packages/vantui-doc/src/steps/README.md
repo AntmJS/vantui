@@ -79,22 +79,22 @@ this.state = {
   steps: [{
     text: '步骤一',
     desc: '描述信息',
-    inactiveIcon: 'locationO',
+    inactiveIcon: 'location-o',
     activeIcon: 'success'
   }, {
     text: '步骤二',
     desc: '描述信息',
-    inactiveIcon: 'likeO',
+    inactiveIcon: 'like-o',
     activeIcon: 'plus'
   }, {
     text: '步骤三',
     desc: '描述信息',
-    inactiveIcon: 'starO',
+    inactiveIcon: 'star-o',
     activeIcon: 'cross'
   }, {
     text: '步骤四',
     desc: '描述信息',
-    inactiveIcon: 'phoneO',
+    inactiveIcon: 'phone-o',
     activeIcon: 'fail'
   }]
 }; 

@@ -12,8 +12,20 @@ import {
   Image,
 } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
+{
+  /* eslint-disable react/prop-types */
+}
 
-// import DemoBlock from '../../components/demo-block/index'
+const ScrollContainer = (props) => {
+  const { header, footer, children, className, ...rest } = props
+  return (
+    <View className={`scroll-container ${className || ''}`} {...rest}>
+      {header && <View className="scroll-container-header">{header}</View>}
+      <View className="scroll-container-content">{children}</View>
+      {footer && <View className="scroll-container-footer">{footer}</View>}
+    </View>
+  )
+}
 import './index.scss'
 const sleep = (t) =>
   new Promise((resolve) => {
@@ -50,6 +62,7 @@ export default class Index extends Component {
   constructor() {
     super()
   }
+
   error = false
   isMin = process.env.TARO_ENV !== 'h5'
   state = {
@@ -194,8 +207,8 @@ export default class Index extends Component {
         <Tabs animated>
           <Tab title="基础用法" key="basics">
             <PowerScrollView
+              className={`${this.isMin ? 'min-' : ''}pull-container`}
               finishedText="没有更多了"
-              className={`${this.isMin ? 'min-' : ''}pull-basics`}
               successText="刷新成功"
               successDuration={1500}
               onScrollToUpper={this.basicsDoRefresh}
@@ -210,7 +223,7 @@ export default class Index extends Component {
           </Tab>
           <Tab title="错误提示" key="error">
             <PowerScrollView
-              className={`${this.isMin ? 'min-' : ''}pull-error`}
+              className={`${this.isMin ? 'min-' : ''}pull-container`}
               errorText="请求失败，点击重新加载"
               finishedText="没有更多了"
               onScrollToUpper={this.errorDoRefresh}
@@ -252,59 +265,65 @@ export default class Index extends Component {
             </PowerScrollView>
           </Tab>
           <Tab title="配合搜索使用" key="search">
-            <View className="header">
-              <View className="left">
-                <Search
-                  defaultValue={this.state.searchValue}
-                  onChange={this.handleChange}
-                />
-              </View>
-              <View className="right">
-                <Button size="small" type="primary" onClick={this.doSearch}>
-                  搜索
-                </Button>
-              </View>
-            </View>
-            {
-              <>
-                {this.state.searchFinished ||
-                this.state.searchList.length > 0 ? (
-                  <PowerScrollView
-                    className={`${this.isMin ? 'min-' : ''}pull-search`}
-                    finishedText="--- 我是有底线的 ---"
-                    onScrollToUpper={this.searchDoRefresh}
-                    onScrollToLower={this.searchLoadMore}
-                    lowerThreshold={300}
-                    headHeight="80"
-                    finished={this.state.searchFinished}
-                    renderHead={({ distance, status }) => {
-                      return (
-                        <Image
-                          className="doge"
-                          src="https://img-blog.csdnimg.cn/20210515142150468.gif"
-                          style={
-                            status === 'pulling'
-                              ? { transform: `scale(${distance / 80})` }
-                              : ''
-                          }
-                        />
-                      )
-                    }}
-                  >
-                    {this.state.searchList.map((e, i) => (
-                      <Cell key={i} title={e} />
-                    ))}
-                  </PowerScrollView>
-                ) : (
-                  <View className="placeholder">
-                    <View className="loadingWrapper">
-                      <Loading />
-                    </View>
-                    正在拼命加载数据
+            <ScrollContainer
+              className={`${this.isMin ? 'min-' : ''}pull-container`}
+              header={
+                <View className="header">
+                  <View className="left">
+                    <Search
+                      defaultValue={this.state.searchValue}
+                      onChange={this.handleChange}
+                    />
                   </View>
-                )}
-              </>
-            }
+                  <View className="right">
+                    <Button size="small" type="primary" onClick={this.doSearch}>
+                      搜索
+                    </Button>
+                  </View>
+                </View>
+              }
+              footer={<View className="footer">自适应scroll-footer</View>}
+            >
+              {
+                <>
+                  {this.state.searchFinished ||
+                  this.state.searchList.length > 0 ? (
+                    <PowerScrollView
+                      finishedText="--- 我是有底线的 ---"
+                      onScrollToUpper={this.searchDoRefresh}
+                      onScrollToLower={this.searchLoadMore}
+                      lowerThreshold={300}
+                      headHeight="80"
+                      finished={this.state.searchFinished}
+                      renderHead={({ distance, status }) => {
+                        return (
+                          <Image
+                            className="doge"
+                            src="https://img-blog.csdnimg.cn/20210515142150468.gif"
+                            style={
+                              status === 'pulling'
+                                ? { transform: `scale(${distance / 80})` }
+                                : ''
+                            }
+                          />
+                        )
+                      }}
+                    >
+                      {this.state.searchList.map((e, i) => (
+                        <Cell key={i} title={e} />
+                      ))}
+                    </PowerScrollView>
+                  ) : (
+                    <View className="placeholder">
+                      <View className="loadingWrapper">
+                        <Loading />
+                      </View>
+                      正在拼命加载数据
+                    </View>
+                  )}
+                </>
+              }
+            </ScrollContainer>
           </Tab>
         </Tabs>
       </DemoPage>

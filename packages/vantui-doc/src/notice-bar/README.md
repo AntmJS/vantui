@@ -19,7 +19,7 @@ import { NoticeBar } from "@antmjs/vantui";
 ```jsx
 <View>
   <NoticeBar
-    leftIcon="volumeO"
+    leftIcon="volume-o"
     text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
   />
 </View>
@@ -90,7 +90,7 @@ import { NoticeBar } from "@antmjs/vantui";
   <NoticeBar
     color="#1989fa"
     background="#ecf9ff"
-    leftIcon="infoO"
+    leftIcon="info-o"
     text="技术是开发它的人的共同灵魂。"
   />
 </View>

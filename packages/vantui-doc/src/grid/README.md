@@ -25,19 +25,19 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid>
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
   </Grid>
@@ -53,7 +53,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid columnNum="3">
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     /> )) }
   </Grid>
@@ -93,7 +93,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid square={ true }>
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     /> )) }
   </Grid>
@@ -109,7 +109,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid gutter={  10 }>
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     /> )) }
   </Grid>
@@ -128,15 +128,15 @@ import { GridItem } from "@antmjs/vantui";
     columnNum="2"
   >
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
     <GridItem
-      icon="photoO"
+      icon="photo-o"
       text="文字"
     />
   </Grid>
@@ -179,7 +179,7 @@ import { GridItem } from "@antmjs/vantui";
 <View>
   <Grid columnNum="2">
     <GridItem
-      icon="homeO"
+      icon="home-o"
       text="文字"
       dot={ true }
     />

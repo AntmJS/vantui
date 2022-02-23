@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+// import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { ScrollViewProps } from '@tarojs/components/types/ScrollView'
 export type PullRefreshStatus =
@@ -29,12 +29,13 @@ type eventType = {
   pageSize: number
 }
 
-export interface PowerScrollViewProps<T = number>
+export interface PowerScrollViewProps<T extends number | undefined>
   extends StandardProps,
     PullRefreshProps,
     Omit<ScrollViewProps, 'onScrollToUpper' | 'onScrollToLower'> {
   offset?: number
   total?: T
+  children: React.ReactNode
   current?: number
   pageSize?: number
   finished?: boolean
@@ -47,17 +48,20 @@ export interface PowerScrollViewProps<T = number>
   renderError?: React.ReactNode
   emptyDescription?: string
   emptyImage?: 'error' | 'search' | 'default' | 'network' | string
-  onLoad?: (event: T extends number ? number : eventType) => Promise<void>
-  onRefresh?: (event: T extends number ? number : eventType) => Promise<void>
+  onLoad?: (event: T extends number ? eventType : number) => Promise<void>
+  onRefresh?: (event: T extends number ? eventType : number) => Promise<void>
   // Scroll
   onScrollToUpper?: (
-    event: T extends number ? number : eventType,
+    event: T extends number ? eventType : number,
   ) => Promise<void>
   onScrollToLower?: (
-    event: T extends number ? number : eventType,
+    event: T extends number ? eventType : number,
   ) => Promise<void>
 }
 
-declare const PowerScrollView: ComponentClass<PowerScrollViewProps>
+// declare const PowerScrollView: ComponentClass<PowerScrollViewProps>
+declare const PowerScrollView: <T extends number | undefined>(
+  props: PowerScrollViewProps<T>,
+) => React.ReactElement
 
 export { PowerScrollView }
