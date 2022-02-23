@@ -42,13 +42,14 @@
     stylelint-config-prettier "^8.0.2"
     stylelint-config-standard "^22.0.0"
 
-"@antmjs/warning@^1.17.6":
-  version "1.17.6"
-  resolved "https://registry.npmmirror.com/@antmjs/warning/-/warning-1.17.6.tgz#3903fb7b6d5cdbcc9fe04140fecf316a71cad77d"
-  integrity sha512-vY+mW06MRwIeE6aPc8LhOQu1YKej3z2qez7AenEMJmnSuWpYBCv+k6L4QznoyJU5F3gc5bxtRRl/t+FIHaW2RA==
+"@antmjs/warning@^1.17.7":
+  version "1.17.7"
+  resolved "https://registry.npmmirror.com/@antmjs/warning/-/warning-1.17.7.tgz#39a713cd7396819637f6552c8b091e6b691e9a5f"
+  integrity sha512-7wbecwAcPbYcgkYWxQpZqiBZaACmio6tPv/JW1VFWFg0rK1ZPgvPf6a0VGjQHMlFBzqdK5hG8jXIy1Y3Awa8ZQ==
   dependencies:
     chalk "^4.1.2"
     commander "^8.1.0"
+    glob "^7.2.0"
     nodemailer "^6.6.3"
 
 "@babel/code-frame@7.12.11":
@@ -4866,7 +4867,7 @@ glob@7.1.4:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7:
+glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
   integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==

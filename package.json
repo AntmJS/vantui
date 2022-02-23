@@ -141,6 +141,6 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
-    "@antmjs/warning": "^1.17.6"
+    "@antmjs/warning": "^1.17.7"
   }
 }

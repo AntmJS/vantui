@@ -3,4 +3,4 @@
 
 yarn lint-staged
 
-antm-warning webhooks
+npx antm-warning webhooks
