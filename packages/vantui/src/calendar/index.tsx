@@ -377,7 +377,8 @@ function Index(
         setCurrentDate(getInitialDate(defaultDate || new Date().getTime()))
       }
     },
-    [defaultDate, getInitialDate],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   )
 
   useEffect(
