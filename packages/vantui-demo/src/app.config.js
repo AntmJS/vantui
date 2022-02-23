@@ -54,6 +54,7 @@ export default {
     'pages/config-provider/index',
     'pages/form/index',
     'pages/power-scroll-view/index',
+    'pages/number-keyboard/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',
