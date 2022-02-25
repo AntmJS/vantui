@@ -545,7 +545,9 @@ function Index(
                 return (
                   <Month
                     key={`van-calendar-month___${index}`}
-                    id={`month${index} month${item}`}
+                    id={`month${formatMonthTitle(item)
+                      .replace('年', '_')
+                      .replace('月', '-')}`}
                     className="month"
                     date={item}
                     type={type}
