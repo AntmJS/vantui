@@ -197,6 +197,10 @@ export default [
         path: '/power-scroll-view',
         title: 'PowerScrollView 滚动列表',
       },
+      {
+        path: '/number-keyboard',
+        title: 'NumberKeyboard 数字键盘',
+      },
     ],
   },
   {
