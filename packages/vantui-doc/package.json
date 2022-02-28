@@ -16,7 +16,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vant/cli": "^4.0.0",
+    "@vant/cli": "^3.9.0",
     "@vue/compiler-sfc": "^3.0.0",
     "ast-to-markdown": "^1.0.0",
     "cross-env": "^7.0.3",
