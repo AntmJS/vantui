@@ -296,7 +296,6 @@ export function PowerScrollView<T extends number | undefined>(
     async (event: ITouchEvent) => {
       if (isTouchable()) {
         const data = await getScrollTop()
-        console.log('start_top: ', data)
         startTop.current = data
         checkPosition(event)
       }
@@ -352,7 +351,6 @@ export function PowerScrollView<T extends number | undefined>(
     total,
   ])
   const onTouchEnd = useCallback(() => {
-    startTop.current = 0
     if (reachTopRef.current && touch.deltaY.current && isTouchable()) {
       // state.duration = +animationDuration
       setDuration(+animationDuration)
