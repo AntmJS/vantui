@@ -56,7 +56,7 @@ Empty 组件内置了多种占位图片类型，可以在不同业务场景下�
 <View>
   <Empty
     class="customImage"
-    image="https://img.yzcdn.cn/vant/customEmptyImage.png"
+    image="https://img.yzcdn.cn/vant/custom-empty-image.png"
     description="描述文字"
   />
 </View>

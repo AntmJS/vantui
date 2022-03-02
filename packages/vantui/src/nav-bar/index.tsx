@@ -9,7 +9,7 @@ import * as computed from './wxs'
 
 export function NavBar(props: NavBarProps) {
   const [height, setHeight] = useState(46)
-  const [statusBarHeight, setStatusBarHeight] = useState(44)
+  const [statusBarHeight, setStatusBarHeight] = useState(22)
   const {
     fixed,
     placeholder,
@@ -37,7 +37,7 @@ export function NavBar(props: NavBarProps) {
       }
       getRect(null, '.van-nav-bar').then((res: any) => {
         if (res && 'height' in res) {
-          setHeight(res.height)
+          setHeight(res.height || 46 + 22)
         }
       })
     },
@@ -45,7 +45,8 @@ export function NavBar(props: NavBarProps) {
   )
 
   useEffect(function () {
-    const { statusBarHeight } = getSystemInfoSync()
+    let { statusBarHeight = 22 } = getSystemInfoSync()
+    if (isNaN(statusBarHeight)) statusBarHeight = 22
     setHeight(46 + statusBarHeight)
     setStatusBarHeight(statusBarHeight)
   }, [])
@@ -76,6 +77,8 @@ export function NavBar(props: NavBarProps) {
             zIndex,
             statusBarHeight,
             safeAreaInsetTop,
+            fromTop: 0,
+            height,
           }) +
             '; ' +
             style,
@@ -107,7 +110,7 @@ export function NavBar(props: NavBarProps) {
               renderLeft
             )}
           </View>
-          <View className="van-nav-bar__title title-class van-ellipsis">
+          <View className="van-nav-bar__title van-nav-bar__title-h5  title-class van-ellipsis">
             {title ? <Block>{title}</Block> : renderTitle}
           </View>
           <View className="van-nav-bar__right" onClick={onClickRight}>

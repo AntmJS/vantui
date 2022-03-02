@@ -132,12 +132,12 @@ function onChange(e) {
   >
     <GridItem
       text="开始"
-      icon="playCircleO"
+      icon="playCircle-o"
       bindclick="start"
     />
     <GridItem
       text="暂停"
-      icon="pauseCircleO"
+      icon="pauseCircle-o"
       bindclick="pause"
     />
     <GridItem
