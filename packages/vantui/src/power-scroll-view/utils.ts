@@ -76,8 +76,8 @@ export function preventDefault(
   }
 }
 
-export const debounce = <T extends any[]>(
-  fn: (...args: T) => void,
+export const debounce = <T extends any[], R>(
+  fn: (...args: T) => R,
   timeout: number,
 ) => {
   let handle = 0
@@ -90,12 +90,12 @@ export const debounce = <T extends any[]>(
       fn(...args)
     }, timeout) as unknown as number
   }
-  ret.flush = () => {
+  ret.flush = (): R | void => {
     clearTimeout(handle)
     if (lastArgs) {
       const _lastArgs = lastArgs
       lastArgs = null
-      fn(..._lastArgs)
+      return fn(..._lastArgs)
     }
   }
   // ret.cancel = () => {

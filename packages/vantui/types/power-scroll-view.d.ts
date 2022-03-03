@@ -38,6 +38,7 @@ export interface PowerScrollViewProps<T extends number | undefined>
   children: React.ReactNode
   current?: number
   pageSize?: number
+  minTriggerTopDistance?: number
   finished?: boolean
   errorText?: string
   loadingText?: string
