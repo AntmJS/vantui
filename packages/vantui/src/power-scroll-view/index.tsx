@@ -1,11 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  Fragment,
-} from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   View,
   ITouchEvent,
@@ -42,10 +35,9 @@ const sleep = (t: number) =>
       resolve()
     }, t)
   })
-const DEFAULT_HEAD_HEIGHT = 100
+const DEFAULT_HEAD_HEIGHT = 50
 const TEXT_STATUS = ['pulling', 'loosing', 'success']
-const CustomWrapperRef =
-  process.env.TARO_ENV === 'weapp' ? CustomWrapper : Fragment
+
 // const RenderStatus: React.FC<{}> = (props) => {}
 export function PowerScrollView<T extends number | undefined>(
   props: PowerScrollViewProps<T>,
@@ -198,7 +190,6 @@ export function PowerScrollView<T extends number | undefined>(
         loadingRef.current = true
       } else if (distance === 0) {
         setState('normal')
-        loadingRef.current = false
       } else if (distance < _pullDistance) {
         setState('pulling')
       } else {
@@ -249,14 +240,15 @@ export function PowerScrollView<T extends number | undefined>(
   const debounceScrollOffset = useMemo(() => {
     const getScrollTop = async () => {
       const { scrollTop } = await scrollOffset(scrollRef.current!)
-      reachTopRef.current = scrollTop === 0
+
+      reachTopRef.current = scrollTop <= 0
     }
-    return debounce(getScrollTop, 400)
+    return debounce(getScrollTop, 100)
   }, [])
   // 如果这是了 scrollTop 要触发ScrollOffset计算
   useEffect(() => {
     // 立马执行一次
-    debounceScrollOffset.flush()
+    debounceScrollOffset()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollTop])
   const onScroll = useCallback(
@@ -321,6 +313,7 @@ export function PowerScrollView<T extends number | undefined>(
         await showSuccessTip()
       }
       setStatus(0, false)
+      loadingRef.current = false
       // 阻止下拉过程中 二次触发下拉
     } catch (e) {
       setStatus(0, false)
@@ -384,14 +377,14 @@ export function PowerScrollView<T extends number | undefined>(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       await onScrollToLower?.(event)
-      loadingRef.current = false
     } catch (e) {
       paginationRef.current.page -= 1
-      loadingRef.current = false
       errorRef.current = true
       setError(true)
       // 这里要主动触发刷新
       // throw e
+    } finally {
+      loadingRef.current = false
     }
   }, [currentCount, isBanLoad, onScrollToLower, total])
 
@@ -505,6 +498,18 @@ export function PowerScrollView<T extends number | undefined>(
     renderFinishedText,
   ])
 
+  const renderStatusBody = (
+    <View className={bem('head')} style={headStyle}>
+      {renderStatus}
+    </View>
+  )
+  const headElement =
+    process.env.TARO_ENV === 'weapp' ? (
+      <CustomWrapper>{renderStatusBody}</CustomWrapper>
+    ) : (
+      renderStatusBody
+    )
+
   return (
     <ScrollView
       ref={scrollRef}
@@ -525,12 +530,7 @@ export function PowerScrollView<T extends number | undefined>(
         onTouchCancel={onTouchEnd}
         onTouchStart={onTouchStart}
       >
-        <CustomWrapperRef>
-          <View className={bem('head')} style={headStyle}>
-            {renderStatus}
-          </View>
-        </CustomWrapperRef>
-
+        {headElement}
         {children}
         {/* <View ref={placeholder} className={bem('placeholder')} /> */}
         {ListScrollContent}
