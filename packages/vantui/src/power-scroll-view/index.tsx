@@ -310,14 +310,13 @@ export function PowerScrollView<T extends number | undefined>(
       await onScrollToUpper?.(event)
       setDuration(+animationDuration)
       if (successText || renderHead?.({ status: 'success', distance })) {
+        // 添加等待时间
         await showSuccessTip()
       }
+      // 阻止下拉过程中 二次触发下拉
+    } finally {
       setStatus(0, false)
       loadingRef.current = false
-      // 阻止下拉过程中 二次触发下拉
-    } catch (e) {
-      setStatus(0, false)
-      // throw e
     }
   }, [
     animationDuration,
