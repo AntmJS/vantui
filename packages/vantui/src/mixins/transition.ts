@@ -86,10 +86,11 @@ export function useTransition({
           return
         }
         transitionEnded.current = false
+        setTimeout(() => onTransitionEnd(), currentDuration)
         setClasses(classNames['enter-to'])
       })
     })
-  }, [duration, onBeforeEnter, onEnter, classNames])
+  }, [duration, onBeforeEnter, onEnter, classNames, onTransitionEnd])
   const _leave = useCallback(() => {
     if (!display) {
       return
@@ -124,7 +125,7 @@ export function useTransition({
       _leave()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [_enter, _leave, show])
+  }, [show])
 
   return {
     display,

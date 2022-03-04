@@ -25,7 +25,7 @@ export function Transition(props: TransitionPropsCom) {
     leaveToClass,
     ...others
   } = props
-  const { currentDuration, classes, display, onTransitionEnd } = useTransition({
+  const { currentDuration, classes, display } = useTransition({
     show,
     duration: duration,
     name: name,
@@ -54,7 +54,6 @@ export function Transition(props: TransitionPropsCom) {
           }),
           style,
         ])}
-        onTransitionEnd={onTransitionEnd}
         {...others}
         catchMove
       >
