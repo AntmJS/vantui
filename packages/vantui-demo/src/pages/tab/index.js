@@ -16,7 +16,7 @@ export default class Index extends Component {
     tabs2: [1, 2],
     tabs3: [1, 2, 3, 5, 6],
     tabs4: [1, 2, 3, 4],
-    tabs6: [1, 2, 3, 4, 5, 6],
+    tabs6: [1, 2, 3, 4, 5, 6, 7, 8],
     tabsWithName: [
       { name: 'a', index: 1 },
       { name: 'b', index: 2 },
@@ -80,7 +80,7 @@ export default class Index extends Component {
             </Tabs>
           </DemoBlock>
           <DemoBlock title="横向滚动">
-            <Tabs>
+            <Tabs active={6}>
               {tabs6.map((item, index) => {
                 return (
                   <Tab key={index} title={'标签 ' + item}>
