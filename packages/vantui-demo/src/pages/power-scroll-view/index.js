@@ -294,6 +294,7 @@ export default class Index extends Component {
                       onScrollToLower={this.searchLoadMore}
                       lowerThreshold={300}
                       headHeight="80"
+                      minTriggerTopDistance="150"
                       finished={this.state.searchFinished}
                       renderHead={({ distance, status }) => {
                         return (
