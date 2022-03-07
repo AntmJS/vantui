@@ -353,15 +353,22 @@ export function Tabs(props: TabsProps) {
           ),
       }
     })
-    setTimeout(() => {
-      resize()
-      scrollIntoView()
-      if (active !== getCurrentName()) {
-        setCurrentIndexByName(active)
-      }
-    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(
+    function () {
+      setTimeout(() => {
+        resize()
+        scrollIntoView()
+        if (active !== getCurrentName() && !ref.current?.swiping) {
+          setCurrentIndexByName(active)
+        }
+      }, 16)
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [getCurrentName()],
+  )
 
   useEffect(
     function () {
