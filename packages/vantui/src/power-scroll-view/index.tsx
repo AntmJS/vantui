@@ -108,6 +108,7 @@ export function PowerScrollView<T extends number | undefined>(
   const startTop = useRef(0)
 
   const [finished, setFinished] = useState<boolean>(_finished || false)
+  const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false)
   const currentCount = current ?? Array.from(children as any).length
   const listCount = useRef(0)
   useEffect(() => {
@@ -383,6 +384,7 @@ export function PowerScrollView<T extends number | undefined>(
     if (isBanLoad()) return
     try {
       loadingRef.current = true
+      setIsLoadingMore(true)
       paginationRef.current.page += 1
       const event = total === undefined ? currentCount : paginationRef.current
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -395,6 +397,7 @@ export function PowerScrollView<T extends number | undefined>(
       // 这里要主动触发刷新
       // throw e
     } finally {
+      setIsLoadingMore(false)
       loadingRef.current = false
     }
   }, [currentCount, isBanLoad, onScrollToLower, total])
@@ -497,7 +500,11 @@ export function PowerScrollView<T extends number | undefined>(
       return renderFinishedText
     }
 
-    return renderLoadingText
+    if(isLoadingMore) {
+      return renderLoadingText
+    }
+
+    return <></>
   }, [
     finished,
     currentCount,
@@ -507,6 +514,7 @@ export function PowerScrollView<T extends number | undefined>(
     emptyImage,
     renderErrorText,
     renderFinishedText,
+    isLoadingMore
   ])
 
   const renderStatusBody = (
