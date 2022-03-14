@@ -18,6 +18,8 @@ export function Tab(
     active,
     lazyRender,
     animated,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    title,
     ...others
   } = props
   useEffect(
