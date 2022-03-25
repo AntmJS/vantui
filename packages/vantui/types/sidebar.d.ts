@@ -2,14 +2,10 @@ import { ComponentClass } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 interface onChangeEvent {
-  event: {
-    detail?: number
-  }
+  detail?: number
 }
 interface onChangeEvent {
-  event: {
-    detail?: number
-  }
+  detail?: number
 }
 export interface SidebarItemProps extends StandardProps {
   dot?: boolean
