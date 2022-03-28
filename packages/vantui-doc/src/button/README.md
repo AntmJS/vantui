@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Button } from "@antmjs/vantui"; 
+import { Button, MiniLoginButton, MiniPhoneButton, MiniUserButton } from "@antmjs/vantui"; 
 ```
 
 ## 代码演示
