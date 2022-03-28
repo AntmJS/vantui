@@ -36,7 +36,7 @@ export interface TabsProps extends Omit<StandardProps, 'onClick'> {
 export interface TabProps extends StandardProps {
   dot?: boolean
   info?: string | number
-  title?: string
+  title?: ReactNode
   disabled?: boolean
   titleStyle?: string
   name?: string | number
