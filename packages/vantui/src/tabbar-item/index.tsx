@@ -66,7 +66,6 @@ export function TabbarItem(
         {icon ? (
           <Icon
             size={38}
-            info={info}
             name={icon}
             classPrefix={iconPrefix}
             className="van-tabbar-item__icon__inner"
@@ -76,7 +75,7 @@ export function TabbarItem(
             {active === (name ?? index) ? renderIconActive : renderIcon}
           </Block>
         )}
-        <Info dot={dot} className="van-tabbar-item__info"></Info>
+        <Info dot={dot} info={info} className="van-tabbar-item__info"></Info>
       </View>
       <View className="van-tabbar-item__text">{children}</View>
     </View>
