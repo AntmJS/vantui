@@ -139,6 +139,7 @@ db.collection('region')
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
+| showToolbar | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | value | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | areaList | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;province_list:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x:&nbsp;number&nbsp;&brvbar;&nbsp;string]:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;city_list:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x:&nbsp;number&nbsp;&brvbar;&nbsp;string]:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;county_list:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x:&nbsp;number&nbsp;&brvbar;&nbsp;string]:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>_ | - | `false` |
 | columnsNum | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |

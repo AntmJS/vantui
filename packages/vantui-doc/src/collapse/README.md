@@ -234,4 +234,5 @@ function onChange(event) {
 | renderIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 | renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 | renderValue | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| size | - | _&nbsp;&nbsp;"large"<br/>_ | - | `false` |
 
