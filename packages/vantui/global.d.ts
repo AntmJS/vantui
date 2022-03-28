@@ -12,5 +12,6 @@ declare namespace NodeJS {
       | 'qywx'
       | 'jd'
       | 'iot'
+      | 'kwai'
   }
 }

@@ -1,7 +1,41 @@
 import type ANTMUI from '../../types/normal'
 import { useCallback, useRef, useState } from 'react'
 import { nextTick, createSelectorQuery, SelectorQuery } from '@tarojs/taro'
-import { isObject } from './type'
+import { isObject, isString } from './type'
+
+export function parse(str: string, decode = true): any {
+  const params: any = {}
+  if (!isString(str)) {
+    return params
+  }
+  const trimStr: string = str.trim()
+  if (trimStr === '') {
+    return params
+  }
+
+  const newStr: string[] = trimStr.split('&')
+
+  for (let i = 0; i < newStr.length; i++) {
+    const [key, value]: string[] = newStr[i]!.split('=')
+    if (decode) {
+      const kkey = decodeURIComponent(key!)
+      const vvalue = decodeURIComponent(value!)
+      if (isString(vvalue)) {
+        try {
+          params[kkey] = JSON.parse(vvalue)
+        } catch (error) {
+          params[kkey] = vvalue
+        }
+      } else {
+        params[kkey] = vvalue
+      }
+    } else {
+      params[key!] = value
+    }
+  }
+
+  return params
+}
 
 export function useFadeIn(ref: any) {
   return useCallback(
