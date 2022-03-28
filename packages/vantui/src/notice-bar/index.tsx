@@ -102,14 +102,14 @@ export function NoticeBar(props: NoticeBarProps) {
     /* eslint-disable-next-line */
   }, [text, speed, state.ready])
 
-  const scroll = useCallback(() => {
+  const scroll = useCallback((isInit = false) => {
     ref.current.timer && clearTimeout(ref.current.timer)
     ref.current.timer = null
     setState((state) => {
       return {
         ...state,
         animationData: ref.current.resetAnimation
-          .translateX(ref.current.wrapWidth)
+          .translateX(isInit ? 0 : ref.current.wrapWidth)
           .step()
           .export(),
       }
@@ -161,7 +161,7 @@ export function NoticeBar(props: NoticeBarProps) {
               timingFunction: 'linear',
               delay,
             })
-            scroll()
+            scroll(true)
           }
         })
       })

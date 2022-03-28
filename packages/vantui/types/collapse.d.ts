@@ -26,6 +26,7 @@ export interface CollapseItemProps extends StandardProps {
   renderIcon?: ReactNode
   renderRightIcon?: ReactNode
   renderValue?: ReactNode
+  size?: 'large'
 }
 
 declare const CollapseItem: ComponentClass<CollapseItemProps>

@@ -4,6 +4,7 @@ import { PickerProps, IPickerInstance } from './picker'
 export interface AreaProps
   extends Omit<PickerProps, 'columns' | 'onChange'>,
     ComponentClass {
+  showToolbar?: boolean
   value?: string
   areaList?: {
     province_list: {

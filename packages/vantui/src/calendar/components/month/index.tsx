@@ -242,7 +242,7 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
                 currentDate === item.date.getTime() ? (
                   <View
                     className="van-calendar__selected-day"
-                    style={'background: ' + color}
+                    style={`width: ${rowHeight}px; height: ${rowHeight}px;background:${color}`}
                   >
                     {item.topInfo && (
                       <View className="van-calendar__top-info">

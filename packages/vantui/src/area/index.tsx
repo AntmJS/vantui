@@ -15,6 +15,7 @@ import { PickerEvents } from './../../types/picker'
 const EMPTY_CODE = '000000'
 function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   const {
+    showToolbar = true,
     value,
     areaList,
     columnsNum = 3,
@@ -300,7 +301,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     <VanPicker
       ref={pickerRef as any}
       className="van-area__picker"
-      showToolbar
+      showToolbar={showToolbar}
       valueKey="name"
       title={title}
       loading={loading}

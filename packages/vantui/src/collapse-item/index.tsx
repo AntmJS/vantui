@@ -24,6 +24,7 @@ export function CollapseItem(
   })
 
   const {
+    size,
     parent,
     name = null,
     title = '',
@@ -132,6 +133,7 @@ export function CollapseItem(
         label={label}
         isLink={isLink}
         clickable={clickable}
+        size={size}
         border={border && state.expanded}
         className={
           utils.bem('collapse-item__title', {

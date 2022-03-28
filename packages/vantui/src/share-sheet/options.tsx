@@ -21,15 +21,15 @@ export default function Index(props: ShareSheetOption) {
               src={computed.getIconURL(item.icon)}
               className="van-share-sheet__icon"
             />
+            {item.name && (
+              <View className="van-share-sheet__name">{item.name}</View>
+            )}
+            {item.description && (
+              <View className="van-share-sheet__option-description">
+                {item.description}
+              </View>
+            )}
           </Button>
-          {item.name && (
-            <View className="van-share-sheet__name">{item.name}</View>
-          )}
-          {item.description && (
-            <View className="van-share-sheet__option-description">
-              {item.description}
-            </View>
-          )}
         </View>
       ))}
     </View>
