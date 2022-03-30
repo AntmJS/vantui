@@ -41,7 +41,7 @@ export interface PopupProps
   /**
    * @description 关闭图标名称或图片链接的位置
    */
-  closeIconPosition?: string
+  closeIconPosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
   /**
    * @description 是否在点击遮罩层后关闭
    * @default true
