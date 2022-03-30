@@ -92,6 +92,7 @@ export function Toast(props: ToastProps) {
         }, options.duration)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const tClearListener = useCallback((toastOptions) => {
@@ -100,6 +101,7 @@ export function Toast(props: ToastProps) {
     //   toast.clear()
     // })
     // queue = []
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const tSetDftOptsListener = useCallback((options: any) => {

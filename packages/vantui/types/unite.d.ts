@@ -117,7 +117,10 @@ declare function Unite<
 >(
   config: Unite.Option<TState, TAll, TProps>,
   render: (data: Unite.Response<TState, TAll>, props: TProps) => JSX.Element,
-  options: { stopPullDownRefreshAfterPull?: boolean },
+  options?: {
+    page?: boolean
+    stopPullDownRefreshAfterPull?: boolean
+  },
 ): (props: TProps) => any
 
 export { Unite }
