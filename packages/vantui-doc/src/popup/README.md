@@ -150,7 +150,7 @@ function onClose() {
 | zIndex | 弹出层的层级 | _&nbsp;&nbsp;number<br/>_ | - | `false` |
 | overlay | 是否显示遮罩层 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | closeIcon | 关闭图标名称或图片链接 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| closeIconPosition | 关闭图标名称或图片链接的位置 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| closeIconPosition | 关闭图标名称或图片链接的位置 | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"top-left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"top-right"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"bottom-left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"bottom-right"<br/>_ | - | `false` |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
 | position | 弹出位置 | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_ | center | `false` |
 | safeAreaInsetBottom | 是否为 iPhoneX 留出底部安全距离 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
