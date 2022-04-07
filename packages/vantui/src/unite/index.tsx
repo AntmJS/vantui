@@ -1,25 +1,22 @@
+import React, { useEffect, useRef, useState } from 'react'
 import {
+  nextTick,
   useDidHide,
   useDidShow,
-  usePullDownRefresh,
-  useReachBottom,
   useReady,
   useRouter,
-  stopPullDownRefresh,
-  startPullDownRefresh,
 } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { parse } from '../utils'
 import { UniteContext } from '../unite-context'
+import { parse } from '../utils'
 
-function useContainer(config: any, props: any, options: any) {
+function useContainer(config: any, props: any) {
   // 兼容react-refresh
   const cfgRef = useRef({}) as React.MutableRefObject<any>
   cfgRef.current = config
 
   // 通过ref初始化实例对象
-  const insRef = useRef({}) as React.MutableRefObject<any>
+  const insRef = useRef({ hooks: {} }) as React.MutableRefObject<any>
 
   // 初始化state
   const [state, setState]: any = useState(cfgRef.current.state)
@@ -28,13 +25,10 @@ function useContainer(config: any, props: any, options: any) {
   const [error, setError]: any = useState()
 
   // 定义加载收集器
-  const [loading, setLoading]: any = useState({
-    pullDownRefresh: false,
-  })
+  const [loading, setLoading]: any = useState({})
 
   // 通过ref定义一些开关
   const flagRef = useRef({
-    _pullDownRefresh: false,
     __mounted: false,
     __init: false,
     __refactor: function () {
@@ -79,7 +73,7 @@ function useContainer(config: any, props: any, options: any) {
               const loadingFalse = {
                 [item]: false,
               } as any
-              return new Promise(function (resolve, reject) {
+              return new Promise(function (resolve) {
                 _setLoading(loadingTrue)
                 res
                   .then(function (result: any) {
@@ -93,9 +87,6 @@ function useContainer(config: any, props: any, options: any) {
                       message: err.message || '语法出现了小故障',
                       data: err.data || err,
                     })
-                    if (flagRef.current._pullDownRefresh) {
-                      reject('close pullDownRefresh')
-                    }
                   })
               })
             } catch (err) {
@@ -110,6 +101,79 @@ function useContainer(config: any, props: any, options: any) {
         } else if (item !== 'state') {
           insRef.current[item] = cfgRef.current[item]
         }
+      }
+      insRef.current.onRefresh = function () {
+        return new Promise((resolve: (value?: any) => void) => {
+          let isPromise = false
+          let asyncFuncCount = 0
+          let execAsyncFuncCount = 0
+          if (typeof insRef.current?.onLoad === 'function') {
+            const res = insRef.current?.onLoad()
+            if (res.then) {
+              isPromise = true
+              asyncFuncCount++
+              res
+                .then(() => {
+                  execAsyncFuncCount++
+                  if (execAsyncFuncCount === asyncFuncCount) {
+                    resolve()
+                  }
+                })
+                .catch(() => {
+                  execAsyncFuncCount++
+                  if (execAsyncFuncCount === asyncFuncCount) {
+                    resolve()
+                  }
+                })
+            }
+          }
+          if (typeof insRef.current?.onReady === 'function') {
+            const res = insRef.current?.onReady()
+            if (res.then) {
+              isPromise = true
+              asyncFuncCount++
+              res
+                .then(() => {
+                  execAsyncFuncCount++
+                  if (execAsyncFuncCount === asyncFuncCount) {
+                    resolve()
+                  }
+                })
+                .catch(() => {
+                  execAsyncFuncCount++
+                  if (execAsyncFuncCount === asyncFuncCount) {
+                    resolve()
+                  }
+                })
+            }
+          }
+          if (typeof insRef.current?.onShow === 'function') {
+            const res = insRef.current?.onShow()
+            if (res.then) {
+              isPromise = true
+              asyncFuncCount++
+              res
+                .then(() => {
+                  execAsyncFuncCount++
+                  if (execAsyncFuncCount === asyncFuncCount) {
+                    resolve()
+                  }
+                })
+                .catch(() => {
+                  execAsyncFuncCount++
+                  if (execAsyncFuncCount === asyncFuncCount) {
+                    resolve()
+                  }
+                })
+            }
+          }
+          if (!isPromise) {
+            resolve()
+          }
+        })
+      }
+      insRef.current.setHooks = function (hooks: any) {
+        insRef.current.hooks = Object.assign(insRef.current.hooks, hooks)
       }
     },
   }) as React.MutableRefObject<any>
@@ -141,21 +205,12 @@ function useContainer(config: any, props: any, options: any) {
   // 一般不需要用到，因为页面级的错误通常是传递给render函数去渲染错误页面即可
   insRef.current.error = error
 
-  const startReload = useCallback(() => {
-    insRef.current?.onLoad?.()
-    insRef.current?.onReady?.()
-    insRef.current?.onShow?.()
-  }, [])
-
   useEffect(function () {
     const onUnload = flagRef.current?.onUnload
     flagRef.current.__mounted = true
     insRef.current?.onLoad?.()
 
     return function (): void {
-      if (loading.pullDownRefresh) {
-        stopPullDownRefresh()
-      }
       setError(undefined)
       onUnload?.()
     }
@@ -168,115 +223,18 @@ function useContainer(config: any, props: any, options: any) {
 
   useDidShow(function () {
     flagRef.current.__mounted = true
-    insRef.current?.onShow?.()
+    nextTick(() => {
+      insRef.current?.onShow?.()
+    })
   })
 
   useDidHide(function () {
     insRef.current?.onHide?.()
   })
 
-  usePullDownRefresh(async function () {
-    if (!flagRef.current._pullDownRefresh) {
-      setError(undefined)
-      flagRef.current._pullDownRefresh = true
-      setLoading((preState: any) => {
-        return { ...preState, pullDownRefresh: true }
-      })
-      let isPromise = false
-      let asyncFuncCount = 0
-      let execAsyncFuncCount = 0
-      function _stopPullDownRefresh() {
-        if (options.stopPullDownRefreshAfterPull) {
-          stopPullDownRefresh()
-          if (process.env.TARO_ENV === 'alipay') {
-            setTimeout(() => {
-              flagRef.current._pullDownRefresh = false
-              setLoading((preState: any) => {
-                return { ...preState, pullDownRefresh: false }
-              })
-            }, 500)
-          } else {
-            flagRef.current._pullDownRefresh = false
-            setLoading((preState: any) => {
-              return { ...preState, pullDownRefresh: false }
-            })
-          }
-        }
-      }
-      if (typeof insRef.current?.onLoad === 'function') {
-        const res = insRef.current?.onLoad()
-        if (res.then) {
-          isPromise = true
-          asyncFuncCount++
-          res
-            .then(() => {
-              execAsyncFuncCount++
-              if (execAsyncFuncCount === asyncFuncCount) {
-                _stopPullDownRefresh()
-              }
-            })
-            .catch(() => {
-              execAsyncFuncCount++
-              if (execAsyncFuncCount === asyncFuncCount) {
-                _stopPullDownRefresh()
-              }
-            })
-        }
-      }
-      if (typeof insRef.current?.onReady === 'function') {
-        const res = insRef.current?.onReady()
-        if (res.then) {
-          isPromise = true
-          asyncFuncCount++
-          res
-            .then(() => {
-              execAsyncFuncCount++
-              if (execAsyncFuncCount === asyncFuncCount) {
-                _stopPullDownRefresh()
-              }
-            })
-            .catch(() => {
-              execAsyncFuncCount++
-              if (execAsyncFuncCount === asyncFuncCount) {
-                _stopPullDownRefresh()
-              }
-            })
-        }
-      }
-      if (typeof insRef.current?.onShow === 'function') {
-        const res = insRef.current?.onShow()
-        if (res.then) {
-          isPromise = true
-          asyncFuncCount++
-          res
-            .then(() => {
-              execAsyncFuncCount++
-              if (execAsyncFuncCount === asyncFuncCount) {
-                _stopPullDownRefresh()
-              }
-            })
-            .catch(() => {
-              execAsyncFuncCount++
-              if (execAsyncFuncCount === asyncFuncCount) {
-                _stopPullDownRefresh()
-              }
-            })
-        }
-      }
-      if (!isPromise) {
-        _stopPullDownRefresh()
-      }
-    }
-  })
-
-  useReachBottom(function () {
-    insRef.current?.onReachBottom?.()
-  })
-
   return {
-    startReload: startReload,
+    onRefresh: insRef.current.onRefresh,
     renderData: { state, events: insRef.current, loading, error: error },
-    flagRef: flagRef,
   }
 }
 
@@ -288,17 +246,7 @@ function HackComponent(props: any) {
 export function Unite(config: any, render: any, options: any = {}) {
   // 返回函数式组件
   return function Index(props: any) {
-    const { renderData, startReload, flagRef } = useContainer(
-      config,
-      props,
-      options,
-    )
-    const onPullDownRefresh = useCallback(function () {
-      if (!flagRef.current._pullDownRefresh) {
-        startPullDownRefresh()
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const { renderData, onRefresh } = useContainer(config, props)
 
     // 执行业务侧函数式组件
     return (
@@ -306,12 +254,8 @@ export function Unite(config: any, render: any, options: any = {}) {
         value={{
           uniteConfig: options,
           error: renderData.error,
-          pullDownRefresh: renderData.loading.pullDownRefresh,
           setError: renderData.events.setError,
-          startReload: startReload,
-          startPullDownRefresh: options.stopPullDownRefreshAfterPull
-            ? onPullDownRefresh
-            : undefined,
+          onRefresh: onRefresh,
         }}
       >
         <View className={options.page ? 'antmjs-vantui-unite' : ''}>

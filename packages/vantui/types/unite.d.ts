@@ -8,9 +8,9 @@ declare namespace Unite {
     state: StateOpt<TState>
   }
   interface ILifetime {
-    onLoad(): void | Promise<void>
-    onShow(): void | Promise<void>
-    onReady(): void | Promise<void>
+    onLoad(): Promise<void>
+    onShow(): Promise<void>
+    onReady(): Promise<void>
     onHide(): void | Promise<void>
     onUnload(): void | Promise<void>
     onReachBottom(): void | Promise<void>
@@ -29,6 +29,8 @@ declare namespace Unite {
       state: Partial<StateOpt<TState>> | React.SetStateAction<StateOpt<TState>>,
     ) => void
     setError: React.Dispatch<React.SetStateAction<IError | undefined>>
+    onRefresh: () => void
+    setHooks: (hooks: IAnyObject) => void
   }
   interface InstanceProperty<
     TAll extends IAnyObject,
@@ -36,6 +38,7 @@ declare namespace Unite {
   > {
     error: IError
     props: TProps
+    hooks: IAnyObject
     location: Taro.RouterInfo
     loading: Partial<
       { [K in keyof PromiseProperties<TAll>]: boolean } & {
@@ -93,7 +96,7 @@ declare namespace Unite {
       TAll,
       Inner<TAll> & InstanceMethods<TState> & InstanceProperty<TAll, TProps>
     > &
-    ThisType<Instance<TState, TAll, TProps>>
+    ThisType<Omit<Instance<TState, TAll, TProps>, 'setHooks'>>
 
   type EventEnhancementResponse<
     TAll extends IAnyObject,
@@ -119,7 +122,6 @@ declare function Unite<
   render: (data: Unite.Response<TState, TAll>, props: TProps) => JSX.Element,
   options?: {
     page?: boolean
-    stopPullDownRefreshAfterPull?: boolean
   },
 ): (props: TProps) => any
 

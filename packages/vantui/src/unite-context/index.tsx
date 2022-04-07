@@ -1,26 +1,22 @@
 import { createContext } from 'react'
 
 export const UniteContext = createContext({
-  pullDownRefresh: false,
-  error: undefined,
   uniteConfig: {
     page: false,
-    stopPullDownRefreshAfterPull: false,
   },
+  onRefresh: () => {
+    return Promise.resolve()
+  },
+  error: undefined,
   setError: (value: any) => {
     console.log(value)
   },
-  startPullDownRefresh: () => {},
-  startReload: () => {},
 }) as React.Context<{
-  pullDownRefresh: boolean
-  error?: { code: string; message: string; data: any }
   uniteConfig: {
     page?: boolean
-    stopPullDownRefreshAfterPull?: boolean
   }
-  startPullDownRefresh?: () => void
-  startReload: () => void
+  onRefresh: () => Promise<void>
+  error?: { code: string; message: string; data: any }
   setError: React.Dispatch<
     React.SetStateAction<
       { code: string; message: string; data: any } | undefined
