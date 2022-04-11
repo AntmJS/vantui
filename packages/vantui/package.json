@@ -3,6 +3,10 @@
   "version": "1.7.0",
   "main": "lib/index.js",
   "module": "es/index.esm.js",
+  "files": [
+    "es",
+    "lib"
+  ],
   "style": "lib/index.css",
   "typings": "types/index.d.ts",
   "author": "三少 <hi_sanshao@outlook.com>",
@@ -53,15 +57,16 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
-    "@antmjs/iconfont": "1.17.5",
+    "@antmjs/iconfont": "1.18.1",
     "@babel/runtime-corejs3": "^7.14.7",
+    "@react-spring/web": "^9.4.4",
     "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
     "rc-util": "^5.14.0"
   },
   "devDependencies": {
-    "@antmjs/vantui-cli": "^1.17.5",
+    "@antmjs/vantui-cli": "^1.18.1",
     "@tarojs/components": "3.4.1",
     "@tarojs/taro": "3.4.1",
     "@types/lodash.flow": "^3.5.6",

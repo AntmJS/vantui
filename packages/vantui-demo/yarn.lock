@@ -9,28 +9,28 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@antmjs/iconfont@^1.17.5":
-  version "1.17.5"
-  resolved "https://registry.npmmirror.com/@antmjs/iconfont/-/iconfont-1.17.5.tgz#4c52b0f9eb0b68a4717f7dab3b357b039f0d5f19"
-  integrity sha512-ZlLw9V3KF1aAmwsZBKvH/jZs0z5ByTd34hO+KXFB4peR8D5FFm2ivJB2AlzITyQBhioF2Gh0DRHVJAWZej7HcQ==
+"@antmjs/iconfont@^1.18.2":
+  version "1.18.2"
+  resolved "https://registry.npmmirror.com/@antmjs/iconfont/-/iconfont-1.18.2.tgz#d6f5e8226b973ff686c158bd2846da87b8de9939"
+  integrity sha512-9EDZIFfytxo771+2dlLnwb3+KHGpt9EG6QO0gjNG7HzXfZnl4ShXFNJYcMEYcbIYNJWCu/WI7MAMxGNnKeGd0w==
 
-"@antmjs/mini-fix@^1.17.5":
-  version "1.17.5"
-  resolved "https://registry.npmmirror.com/@antmjs/mini-fix/download/@antmjs/mini-fix-1.17.5.tgz#330816b0395f532bf31faa04eb9e2cdd31e65ae5"
-  integrity sha512-BS7QpLmhKNgJvlKLh0CBJe2vjrXfQUFBaNl5sRsvmvcfmp1vSbRhJfUpe3poKflgQtvMXSzwo5oUREMFDnP8bQ==
+"@antmjs/mini-fix@^1.18.2":
+  version "1.18.2"
+  resolved "https://registry.npmmirror.com/@antmjs/mini-fix/-/mini-fix-1.18.2.tgz#546e393d06de1c2de7608cbdc7a1148cc557eeda"
+  integrity sha512-GsVG2VN47ddpS4u/xonjz2D/9TzTQX+PghUhtAXKkTCgu12mDbN+yIi1qKnZC+71Ac9KPqnlj00ABGmtClzW7w==
   dependencies:
-    "@antmjs/utils" "1.17.5"
+    "@antmjs/utils" "1.18.2"
     "@babel/runtime-corejs3" "^7.14.7"
 
-"@antmjs/plugin-mini-fix@^1.17.5":
-  version "1.17.5"
-  resolved "https://registry.npmmirror.com/@antmjs/plugin-mini-fix/download/@antmjs/plugin-mini-fix-1.17.5.tgz#3bf54cb0d3bc2a4c64fc9428d75f66368264fe27"
-  integrity sha512-VzKDXQaSjHJbnBuCDy1Np4YeTXAogcIjpPUfso+dbffvx2wkdbT+Yx8OKfg+Uf1+/XYf+PxeWgZQ5gLfWTAmtQ==
+"@antmjs/plugin-mini-fix@^1.18.2":
+  version "1.18.2"
+  resolved "https://registry.npmmirror.com/@antmjs/plugin-mini-fix/-/plugin-mini-fix-1.18.2.tgz#7bac15414bb07386eb35234fef0f6b397f233007"
+  integrity sha512-UGmmldAn0Ps6spsng+Tww6y/NVwjhSGukukM2xW/qPyzFiYZUIQmDwuRiMRnk5NXWf9NqPJKN3up14nUTCEi5g==
 
-"@antmjs/utils@1.17.5":
-  version "1.17.5"
-  resolved "https://registry.npmmirror.com/@antmjs/utils/download/@antmjs/utils-1.17.5.tgz#ea0914ae4ec5bab4e8dd9de29d8e2a8797599b3e"
-  integrity sha512-+ALwB8be8vljrP+jHXPCCiGCeYoPgsj0AFtHIMPld9MFayIZP+7InB7n8N5O4KdF9gr2twRBMGzdLXw1gOr0rA==
+"@antmjs/utils@1.18.2":
+  version "1.18.2"
+  resolved "https://registry.npmmirror.com/@antmjs/utils/-/utils-1.18.2.tgz#6e68359befef29476acdd714e6705e4c1e29d2ad"
+  integrity sha512-zg7oHKtYQIa8ZNsJ72RXuXzrqWgBTel07A9nQ9wmeWOBL5Ocf+kDfR3O0DVCDWtO+w+LeTqrlhF+8sJvE69ccg==
   dependencies:
     "@babel/runtime-corejs3" "^7.14.7"
 

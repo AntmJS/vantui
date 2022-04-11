@@ -132,7 +132,7 @@
     "build": "cross-env NODE_ENV=production npx taro build"
   },
   "dependencies": {
-    "@antmjs/mini-fix": "^1.17.5",
+    "@antmjs/mini-fix": "^1.18.2",
     "@antmjs/vantui": "1.7.0",
     "@babel/runtime-corejs3": "^7.14.7",
     "@tarojs/components": "3.4.1",
@@ -146,8 +146,8 @@
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
-    "@antmjs/iconfont": "^1.17.5",
-    "@antmjs/plugin-mini-fix": "^1.17.5",
+    "@antmjs/iconfont": "^1.18.2",
+    "@antmjs/plugin-mini-fix": "^1.18.2",
     "@babel/core": "^7.8.0",
     "@tarojs/cli": "3.4.1",
     "@tarojs/mini-runner": "3.4.1",

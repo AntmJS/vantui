@@ -1,5 +1,5 @@
 export default {
-  name: 'antm.vantui',
+  name: 'antmjs.vantui',
   build: {
     srcDir: 'src',
     namedExport: true,
