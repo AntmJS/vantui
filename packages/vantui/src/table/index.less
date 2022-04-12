@@ -1,0 +1,182 @@
+@import '../style/var.less';
+
+@head_height: 68px;
+
+.van-table {
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: scroll;
+  position: relative;
+
+  .van-empty__image {
+    width: 200px;
+    height: 200px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .van-table_table {
+    min-height: 100%;
+    min-width: 100%;
+
+    .van-table_empty {
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: #cccccc;
+      min-height: 288px;
+      line-height: 288px;
+    }
+
+    .van-table_head {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: max-content;
+      min-width: 100%;
+      height: @head_height;
+      box-sizing: border-box;
+
+      &.van-table_scroll {
+        position: sticky;
+        top: 0;
+        z-index: 93;
+      }
+
+      > .van-table_title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: @head_height;
+        font-size: 24px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        border-top: 2px #f0f1f3 solid;
+        border-bottom: 2px #f0f1f3 solid;
+
+        &:active {
+          opacity: 0.7;
+        }
+
+        &.van-table_fixed {
+          position: sticky;
+          top: 0;
+          box-shadow: 3px 0 10px -10px #8a8787;
+        }
+
+        > .van-table_sortBtn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-left: 4px;
+
+          > .van-table_btn {
+            @color: #e2e2e2;
+            @active-color: @table-primary-color;
+            @size: 8px;
+
+            height: 0;
+            width: 0;
+
+            &.van-table_ascend {
+              border-top: @size solid transparent;
+              border-left: @size solid transparent;
+              border-right: @size solid transparent;
+              border-bottom: @size solid @color;
+              margin-bottom: 4px;
+
+              &.van-table_active {
+                border-bottom-color: @active-color;
+              }
+            }
+
+            &.van-table_descend {
+              border-top: @size solid @color;
+              border-left: @size solid transparent;
+              border-right: @size solid transparent;
+              border-bottom: @size solid transparent;
+
+              &.van-table_active {
+                border-top-color: @active-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .van-table_body {
+      @min-height: 120px;
+
+      min-height: @min-height;
+
+      > .van-table_row {
+        min-height: @min-height;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: max-content;
+        width: max-content;
+        min-width: 100%;
+        background-color: #ffffff;
+        border-top: unit(1, rpx) solid rgba(67, 120, 190, 0.1);
+        border-bottom: 2px #f0f1f3 solid;
+
+        &:first-child {
+          border-top: none;
+        }
+
+        > .van-table_col {
+          min-height: @min-height;
+          background-color: #ffffff;
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          // stylelint-disable-next-line
+          taro-text-core {
+            font-size: 24px;
+            line-height: 36px;
+            color: @table-primary-color;
+            min-width: 100%;
+
+            // 收起
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          // 展开
+          &.van-table_expansion {
+            height: 100%;
+            // stylelint-disable-next-line
+            taro-text-core {
+              overflow: auto;
+              text-overflow: unset;
+              white-space: normal;
+              word-wrap: break-word;
+              word-break: break-all;
+            }
+          }
+
+          &.van-table_fixed {
+            position: sticky;
+            top: 0;
+            z-index: 92;
+            box-shadow: 3px 0 10px -10px #8a8787;
+          }
+        }
+      }
+    }
+  }
+}
+
+.van-table-loading {
+  position: absolute;
+  z-index: 99;
+  left: 44%;
+  top: 38%;
+}
