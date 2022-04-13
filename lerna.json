@@ -5,13 +5,7 @@
       "message": "chore(release): publish %s"
     }
   },
-  "packages": [
-    "packages/*"
-  ],
-  "ignoreChanges": [
-    "packages/vantui-demo/**",
-    "**/*.md",
-    "**/__test__/**"
-  ],
-  "version": "1.8.1"
+  "packages": ["packages/*"],
+  "ignoreChanges": ["packages/vantui-demo/**", "**/*.md", "**/__test__/**"],
+  "version": "1.8.0"
 }
