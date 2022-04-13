@@ -3,10 +3,6 @@
   "version": "1.8.1",
   "main": "lib/index.js",
   "module": "es/index.esm.js",
-  "files": [
-    "es",
-    "lib"
-  ],
   "style": "lib/index.css",
   "typings": "types/index.d.ts",
   "author": "三少 <hi_sanshao@outlook.com>",
