@@ -17,7 +17,6 @@ const defaultOptions = {
   type: 'danger',
   color: '#fff',
   duration: 3000,
-  zIndex: 110,
   safeAreaInsetTop: false,
   top: 0,
   id: defaultId,
@@ -39,7 +38,6 @@ export function Notify(props: NotifyProps) {
     type: 'danger',
     color: '#fff',
     duration: 3000,
-    zIndex: 110,
     safeAreaInsetTop: false,
     top: 0,
     id: defaultId,
@@ -48,7 +46,7 @@ export function Notify(props: NotifyProps) {
     onClose: () => {},
   })
 
-  const { style, className, ...others } = props
+  const { style, className, zIndex, ...others } = props
 
   useEffect(() => {
     setState((state) => {
@@ -144,10 +142,14 @@ export function Notify(props: NotifyProps) {
       show={state.show}
       className={`van-notify__container ${className}`}
       style={utils.style([
-        computed.rootStyle({
-          zIndex: state.zIndex,
-          top: state.top,
-        }),
+        computed.rootStyle(
+          zIndex
+            ? {
+                zIndex: zIndex,
+                top: state.top,
+              }
+            : { top: state.top },
+        ),
         style,
       ])}
       onClick={onTap}

@@ -11,6 +11,31 @@ function kebabCase(word: any) {
   return newWord
 }
 
+function cssStyle(styles: any): Record<string, any> {
+  if (array.isArray(styles)) {
+    const obj: any = {}
+    styles
+      .filter(function (item: any) {
+        return item != null && item !== ''
+      })
+      .map(function (item: any) {
+        Object.assign(obj, cssStyle(item))
+      })
+    return obj
+  }
+
+  if (toString.call(styles) === '[object String]') {
+    const obj: any = {}
+    styles.split(';').map((item: string) => {
+      const property = item.split(':')
+      obj[property[0]?.trim() || ''] = property[1]?.trim()
+    })
+    return obj
+  }
+
+  return styles
+}
+
 function style(styles: any): string {
   if (array.isArray(styles)) {
     return styles
@@ -38,4 +63,4 @@ function style(styles: any): string {
   return styles
 }
 
-export { style }
+export { style, cssStyle }

@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { View, Block } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
-import { Navbar } from '../common/zIndex'
 import {
   getSystemInfoSync,
   getMenuButtonBoundingClientRect,
@@ -24,7 +23,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
     fixed = true,
     placeholder = true,
     border = true,
-    zIndex = Navbar,
+    zIndex,
     renderTitle,
     homeUrl,
     buttonColor = 'white',

@@ -14,7 +14,6 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   disabled?: boolean
   loadingText?: string
   loadingSize?: string
-  style?: string
   loadingType?: 'spinner' | 'circular'
   color?: string
   children?: ReactNode

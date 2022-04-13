@@ -12,35 +12,52 @@
   -webkit-appearance: none;
   -webkit-text-size-adjust: 100%;
 
-  .theme(height, '@button-default-height');
-  .theme(line-height, '@button-line-height');
-  .theme(font-size, '@button-default-font-size');
-  .theme(transition, 'opacity @animation-duration-fast');
-  .theme(border-radius, '@button-border-radius');
-
-  &::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    border: inherit;
-    border-radius: inherit; /* inherit parent's border radius */
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    content: ' ';
-
-    .theme(background-color, '@black');
-    .theme(border-color, '@black');
-  }
-
   // reset weapp default border
   &::after {
-    border-width: 0;
+    border: none;
+    border-radius: initial;
   }
 
-  &--active:not(&--disabled)::before {
-    opacity: 0.15;
+  .theme(line-height, '@button-line-height');
+
+  // mini图标默认宽度100px，文字不能超过4个
+  &--mini {
+    display: inline-block;
+    .theme(padding, '0 @padding-base');
+    .theme(height, '@button-mini-height');
+    .theme(font-size, '@button-mini-font-size');
+    .theme(min-width, '@button-mini-min-width');
+    .theme(border-radius, '@button-mini-border-radius');
+
+    & + .van-button--mini {
+      margin-left: 10px;
+    }
+  }
+
+  &--small {
+    .theme(padding, '0 @padding-xs');
+    .theme(height, '@button-small-height');
+    .theme(font-size, '@button-small-font-size');
+    .theme(min-width, '@button-small-min-width');
+    .theme(border-radius, '@button-small-border-radius');
+  }
+
+  &--normal {
+    .theme(padding, '0 @padding-md');
+    .theme(height, '@button-normal-height');
+    .theme(font-size, '@button-normal-font-size');
+    .theme(border-radius, '@button-normal-border-radius');
+  }
+
+  &--large {
+    width: 100%;
+    .theme(height, '@button-large-height');
+    .theme(font-size, '@button-large-font-size');
+    .theme(border-radius, '@button-normal-border-radius');
+  }
+
+  &--active:not(&--disabled) {
+    filter: brightness(0.9);
   }
 
   &--unclickable::after {
@@ -50,56 +67,26 @@
   &--default {
     .theme(color, '@button-default-color');
     .theme(background, '@button-default-background-color');
-    .theme(border, '@button-border-width solid @button-default-border-color');
-
-    &:not(&--disabled):active {
-      .theme(color, '@button-default-color');
-      .theme(background, '@button-default-background-color');
-    }
   }
 
   &--primary {
     .theme(color, '@button-primary-color');
     .theme(background, '@button-primary-background-color');
-    .theme(border, '@button-border-width solid @button-primary-border-color');
-
-    &:not(&--disabled):active {
-      .theme(color, '@button-primary-color');
-      .theme(background, '@button-primary-background-color');
-    }
   }
 
   &--info {
     .theme(color, '@button-info-color');
     .theme(background, '@button-info-background-color');
-    .theme(border, '@button-border-width solid @button-info-border-color');
-
-    &:not(&--disabled):active {
-      .theme(color, '@button-info-color');
-      .theme(background, '@button-info-background-color');
-    }
   }
 
   &--danger {
     .theme(color, '@button-danger-color');
     .theme(background, '@button-danger-background-color');
-    .theme(border, '@button-border-width solid @button-danger-border-color');
-
-    &:not(&--disabled):active {
-      .theme(color, '@button-danger-color');
-      .theme(background, '@button-danger-background-color');
-    }
   }
 
   &--warning {
     .theme(color, '@button-warning-color');
     .theme(background, '@button-warning-background-color');
-    .theme(border, '@button-border-width solid @button-warning-border-color');
-
-    &:not(&--disabled):active {
-      .theme(color, '@button-warning-color');
-      .theme(background, '@button-warning-background-color');
-    }
   }
 
   &--plain {
@@ -109,71 +96,18 @@
 
     &.van-button--primary {
       .theme(color, '@button-primary-background-color');
-
-      &:active {
-        .theme(color, '@button-primary-background-color');
-
-        background-color: #dedede;
-      }
     }
 
     &.van-button--info {
       .theme(color, '@button-info-background-color');
-
-      &:active {
-        .theme(color, '@button-info-background-color');
-
-        background-color: #dedede;
-      }
     }
 
     &.van-button--danger {
       .theme(color, '@button-danger-background-color');
-
-      &:active {
-        .theme(color, '@button-danger-background-color');
-
-        background-color: #dedede;
-      }
     }
 
     &.van-button--warning {
       .theme(color, '@button-warning-background-color');
-
-      &:active {
-        .theme(color, '@button-warning-background-color');
-
-        background-color: #dedede;
-      }
-    }
-  }
-
-  &--large {
-    width: 100%;
-    .theme(height, '@button-large-height');
-  }
-
-  &--normal {
-    padding: 0 30px;
-    .theme(font-size, '@button-normal-font-size');
-  }
-
-  &--small {
-    .theme(min-width, '@button-small-min-width');
-    .theme(height, '@button-small-height');
-    .theme(padding, '0 @padding-xs');
-    .theme(font-size, '@button-small-font-size');
-  }
-
-  // mini图标默认宽度100px，文字不能超过4个
-  &--mini {
-    display: inline-block;
-    .theme(min-width, '@button-mini-min-width');
-    .theme(height, '@button-mini-height');
-    .theme(font-size, '@button-mini-font-size');
-
-    & + .van-button--mini {
-      margin-left: 10px;
     }
   }
 
@@ -210,21 +144,20 @@
   }
 
   &--hairline {
-    padding-top: 2px; // add 2px padding for text vertical align middle
-    border-width: 0;
-
-    &::after {
-      border-color: inherit;
-      border-width: 2px;
-      .theme(border-radius, 'calc(@button-border-radius * 2)');
+    &.van-button--primary {
+      .theme(border, '@button-border-width solid @button-primary-background-color');
     }
 
-    &.van-button--round::after {
-      .theme(border-radius, '@button-round-border-radius');
+    &.van-button--info {
+      .theme(border, '@button-border-width solid @button-info-background-color');
     }
 
-    &.van-button--square::after {
-      border-radius: 0;
+    &.van-button--danger {
+      .theme(border, '@button-border-width solid @button-danger-background-color');
+    }
+
+    &.van-button--warning {
+      .theme(border, '@button-border-width solid @button-warning-background-color');
     }
   }
 }

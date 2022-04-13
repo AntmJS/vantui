@@ -4,8 +4,9 @@
   box-sizing: border-box;
   max-height: 100%;
   overflow-y: auto;
-  transition-timing-function: ease;
+  transition-timing-function: ease-out;
   animation: ease both;
+  z-index: @popup-z-index;
   -webkit-overflow-scrolling: touch;
   .theme(background-color, '@popup-background-color');
 
@@ -60,9 +61,11 @@
   }
 
   &--bottom&--safe {
-    padding-bottom: constant(safe-area-inset-bottom);
+    /* prettier-ignore */
+    padding-bottom: 34PX;
+    // padding-bottom: constant(safe-area-inset-bottom);
     /* stylelint-disable-next-line */
-    padding-bottom: env(safe-area-inset-bottom);
+    // padding-bottom: env(safe-area-inset-bottom);
   }
 
   &--safeTop {

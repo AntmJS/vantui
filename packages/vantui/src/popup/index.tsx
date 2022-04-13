@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 import { View } from '@tarojs/components'
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { PopupProps } from '../../types/popup'
-import { Popup as InnerPopup } from '../common/zIndex'
 import VanIcon from './../icon'
 import * as computed from './wxs'
 import { useTransition } from './../mixins/transition'
 import VanOverlay from './../overlay'
 
-export function Popup(this: any, props: PopupProps) {
+export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
   const {
     show,
     duration = 300,
@@ -17,7 +16,7 @@ export function Popup(this: any, props: PopupProps) {
     closeable,
     overlayStyle,
     transition,
-    zIndex = InnerPopup,
+    zIndex,
     overlay = true,
     closeIcon = 'cross',
     closeIconPosition = 'top-right',
@@ -35,10 +34,16 @@ export function Popup(this: any, props: PopupProps) {
     onEnter,
     onLeave,
     onClose,
+    setOuterShow,
     style,
     className,
     ...others
   } = props
+  const _onAfterLeave = useCallback(() => {
+    onAfterLeave?.()
+    setOuterShow()
+  }, [onAfterLeave, setOuterShow])
+
   const _onClickCloseIcon = useCallback(() => {
     onClose?.()
   }, [onClose])
@@ -50,38 +55,18 @@ export function Popup(this: any, props: PopupProps) {
     }
   }, [closeOnClickOverlay, onClickOverlay, onClose])
 
-  const [_name, setName] = useState<any>('')
-  const [_duration, setDuration] = useState(duration)
-  const originDuration = useRef<any>(null)
-
-  useEffect(() => {
-    setName(transition || position)
-    if (transition === 'none') {
-      setDuration(0)
-      originDuration.current = duration
-    } else if (originDuration.current != null) {
-      setDuration(originDuration.current)
-    }
-  }, [duration, position, transition])
   const { inited, currentDuration, classes, display, onTransitionEnd } =
     useTransition({
       show,
-      duration: _duration,
-      name: _name,
+      duration: transition === 'none' ? 0 : duration,
+      name: transition || position,
       onBeforeEnter,
       onBeforeLeave,
       onAfterEnter,
-      onAfterLeave,
+      onAfterLeave: _onAfterLeave,
       onEnter,
       onLeave,
     })
-
-  // observeShow(value, old) {
-  //   if (value === old) {
-  //     return
-  //   }
-  //   value ? this.enter() : this.leave()
-  // },
 
   const getClassName = useCallback((name) => {
     return name.replace(/([A-Z])/g, (_: string, $1: string) => {
@@ -144,4 +129,16 @@ export function Popup(this: any, props: PopupProps) {
     </>
   )
 }
-export default Popup
+
+export default function Index(props: PopupProps) {
+  const { show } = props
+  const [innerShow, setInnerShow] = useState(false)
+  useEffect(() => {
+    if (show) {
+      setInnerShow(true)
+    }
+  }, [show])
+  return (
+    <>{innerShow ? <Popup setOuterShow={setInnerShow} {...props} /> : <></>}</>
+  )
+}

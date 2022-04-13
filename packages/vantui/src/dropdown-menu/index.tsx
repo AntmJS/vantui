@@ -21,7 +21,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
   const {
     activeColor,
     overlay = true,
-    zIndex = 10,
+    zIndex,
     duration = 200,
     direction = 'down',
     closeOnClickOverlay = true,
@@ -125,8 +125,10 @@ export function DropdownMenu(props: DropdownMenuProps) {
       return getRect(null, `.van-dropdown-menu${currentIndex}`).then(
         (rect: any) => {
           const wrapperStyle: any = {
-            zIndex: zIndex,
             rect: rect,
+          }
+          if (typeof zIndex === 'number') {
+            wrapperStyle.zIndex = zIndex
           }
 
           return wrapperStyle

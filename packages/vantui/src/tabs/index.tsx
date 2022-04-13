@@ -9,7 +9,6 @@ import {
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View, ScrollView } from '@tarojs/components'
-import { Tabs as InnerTabs } from '../common/zIndex'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
 import { Sticky } from '../sticky/index'
@@ -87,7 +86,7 @@ export function Tabs(props: TabsProps) {
     lazyRender = true,
     type = 'line',
     sticky,
-    zIndex = InnerTabs,
+    zIndex,
     offsetTop = 0,
     border,
     color,

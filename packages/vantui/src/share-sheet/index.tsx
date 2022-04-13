@@ -14,7 +14,7 @@ export function ShareSheet(props: ShareSheetProps) {
     closeOnClickOverlay = true,
     safeAreaInsetBottom = true,
     overlay = true,
-    zIndex = 100,
+    zIndex,
     overlayStyle,
     title,
     cancelText = '取消',

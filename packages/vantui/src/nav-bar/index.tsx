@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { View, Block } from '@tarojs/components'
 import * as utils from '../wxs/utils'
-import { Navbar } from '../common/zIndex'
 import { getRect, getSystemInfoSync } from '../common/utils'
 import { NavBarProps } from '../../types/nav-bar'
 import { Icon } from '../icon/index'
@@ -14,7 +13,7 @@ export function NavBar(props: NavBarProps) {
     fixed,
     placeholder,
     border = true,
-    zIndex = Navbar,
+    zIndex,
     safeAreaInsetTop = true,
     leftArrow,
     leftText,

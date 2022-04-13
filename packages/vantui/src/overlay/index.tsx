@@ -1,16 +1,16 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import * as utils from '../wxs/utils'
-import { Overlay as InnerOverlay } from '../common/zIndex'
 import { OverlayProps } from '../../types/overlay'
 import VanTransition from './../transition'
-export function Overlay(props: OverlayProps) {
+export function Overlay(props: OverlayProps & { setOuterShow?: any }) {
   const {
     show,
-    zIndex = InnerOverlay,
+    zIndex,
     style,
     className,
     lockScroll = true,
     duration = 300,
+    setOuterShow,
     children,
     ...others
   } = props
@@ -25,6 +25,7 @@ export function Overlay(props: OverlayProps) {
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
       onTouchMove={_noop}
+      onAfterLeave={() => setOuterShow(false)}
       {...others}
     >
       {children}
@@ -35,10 +36,24 @@ export function Overlay(props: OverlayProps) {
       className={'van-overlay' + `  ${className || ''}`}
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
+      onAfterLeave={() => setOuterShow(false)}
       {...others}
     >
       {children}
     </VanTransition>
   )
 }
-export default Overlay
+export default function Index(props: OverlayProps) {
+  const { show } = props
+  const [innerShow, setInnerShow] = useState(false)
+  useEffect(() => {
+    if (show) {
+      setInnerShow(true)
+    }
+  }, [show])
+  return (
+    <>
+      {innerShow ? <Overlay setOuterShow={setInnerShow} {...props} /> : <></>}
+    </>
+  )
+}

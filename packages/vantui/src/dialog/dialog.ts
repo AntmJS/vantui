@@ -6,7 +6,6 @@ const _defaultOptions = {
   width: null,
   theme: 'default',
   message: '',
-  zIndex: 100,
   overlay: true,
   className: '',
   asyncClose: false,

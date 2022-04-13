@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
-import { Sticky as InnerSticky } from '../common/zIndex'
 import { isDef } from '../common/validator'
 import { StickyProps } from '../../types/sticky'
 import { usePageScroll } from './../mixins/page-scroll'
@@ -11,7 +10,7 @@ export function Sticky(props: StickyProps) {
   const indexRef = useRef(+new Date())
   const [state, setState] = useState({ height: 0, fixed: false, transform: 0 })
   const {
-    zIndex = InnerSticky,
+    zIndex,
     offsetTop = 0,
     scrollTop,
     disabled,

@@ -5,6 +5,7 @@
   display: flex;
   box-sizing: border-box;
   width: 100%;
+  align-items: center;
   flex: 1; // 10.15新加
   .theme(padding, '@cell-vertical-padding @cell-horizontal-padding');
   .theme(font-size, '@cell-font-size');
@@ -27,7 +28,6 @@
   &__label {
     .theme(margin-top, '@cell-label-margin-top');
     .theme(font-size, '@cell-label-font-size');
-    // .theme(line-height, '@cell-label-line-height');
     .theme(color, '@cell-label-color');
     // 10.15新加
     display: flex;
@@ -77,7 +77,7 @@
   }
 
   &--clickable&--hover {
-    .theme(background-color, '@cell-active-color');
+    filter: brightness(0.95);
   }
 
   &--required {

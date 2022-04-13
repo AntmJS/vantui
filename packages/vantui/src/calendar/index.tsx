@@ -421,104 +421,95 @@ function Index(
   return (
     <Block>
       {poppable ? (
-        <>
-          {show ? (
-            <VanPopup
-              className={'van-calendar__popup--' + position}
-              show={show}
-              round={round}
-              position={position}
-              closeable={showTitle || showSubtitle}
-              closeOnClickOverlay={closeOnClickOverlay}
-              onEnter={onOpen}
-              onClose={onClose}
-              onAfterEnter={onOpened}
-              onAfterLeave={onClosed}
+        <VanPopup
+          className={'van-calendar__popup--' + position}
+          show={show}
+          round={round}
+          position={position}
+          closeable={showTitle || showSubtitle}
+          closeOnClickOverlay={closeOnClickOverlay}
+          onEnter={onOpen}
+          onClose={onClose}
+          onAfterEnter={onOpened}
+          onAfterLeave={onClosed}
+        >
+          <View
+            className={`van-calendar ${className || ''}`}
+            style={utils.style([style])}
+            {...others}
+          >
+            <Header
+              title={title}
+              showTitle={showTitle}
+              subtitle={subtitle}
+              showSubtitle={showSubtitle}
+              firstDayOfWeek={firstDayOfWeek}
+              onClickSubtitle={() => {
+                if (onClickSubtitle) onClickSubtitle
+              }}
+              renderTitle={renderTitle}
+            ></Header>
+            <ScrollView
+              className={`van-calendar__body  van-calendar__body${compIndex}`}
+              scrollY
+              scrollIntoView={scrollIntoView}
             >
-              <View
-                className={`van-calendar ${className || ''}`}
-                style={utils.style([style])}
-                {...others}
-              >
-                <Header
-                  title={title}
-                  showTitle={showTitle}
-                  subtitle={subtitle}
-                  showSubtitle={showSubtitle}
-                  firstDayOfWeek={firstDayOfWeek}
-                  onClickSubtitle={() => {
-                    if (onClickSubtitle) onClickSubtitle
-                  }}
-                  renderTitle={renderTitle}
-                ></Header>
-                <ScrollView
-                  className={`van-calendar__body  van-calendar__body${compIndex}`}
-                  scrollY
-                  scrollIntoView={scrollIntoView}
+              {computed.getMonths(minDate, maxDate).map((item: any, index) => {
+                return (
+                  <Month
+                    key={`van-calendar-month___${index}`}
+                    id={`month${formatMonthTitle(item)
+                      .replace('年', '_')
+                      .replace('月', '-')}`}
+                    className="month"
+                    date={item}
+                    type={type}
+                    color={color}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    showMark={showMark}
+                    formatter={formatter}
+                    rowHeight={rowHeight}
+                    currentDate={currentDate}
+                    showSubtitle={showSubtitle}
+                    allowSameDay={allowSameDay}
+                    showMonthTitle={index !== 0 || !showSubtitle}
+                    firstDayOfWeek={firstDayOfWeek}
+                    onClick={onClickDay}
+                  ></Month>
+                )
+              })}
+            </ScrollView>
+            <View
+              className={utils.bem('calendar__footer', {
+                safeAreaInsetBottom,
+              })}
+            >
+              {renderFooter}
+            </View>
+            <View
+              className={utils.bem('calendar__footer', {
+                safeAreaInsetBottom,
+              })}
+            >
+              {showConfirm && (
+                <VanButton
+                  block
+                  type="danger"
+                  color={color}
+                  className="van-calendar__confirm"
+                  disabled={computed.getButtonDisabled(type, currentDate)}
+                  // nativeType="text"
+                  onClick={onConfirm_}
                 >
-                  {computed
-                    .getMonths(minDate, maxDate)
-                    .map((item: any, index) => {
-                      return (
-                        <Month
-                          key={`van-calendar-month___${index}`}
-                          id={`month${formatMonthTitle(item)
-                            .replace('年', '_')
-                            .replace('月', '-')}`}
-                          className="month"
-                          date={item}
-                          type={type}
-                          color={color}
-                          minDate={minDate}
-                          maxDate={maxDate}
-                          showMark={showMark}
-                          formatter={formatter}
-                          rowHeight={rowHeight}
-                          currentDate={currentDate}
-                          showSubtitle={showSubtitle}
-                          allowSameDay={allowSameDay}
-                          showMonthTitle={index !== 0 || !showSubtitle}
-                          firstDayOfWeek={firstDayOfWeek}
-                          onClick={onClickDay}
-                        ></Month>
-                      )
-                    })}
-                </ScrollView>
-                <View
-                  className={utils.bem('calendar__footer', {
-                    safeAreaInsetBottom,
-                  })}
-                >
-                  {renderFooter}
-                </View>
-                <View
-                  className={utils.bem('calendar__footer', {
-                    safeAreaInsetBottom,
-                  })}
-                >
-                  {showConfirm && (
-                    <VanButton
-                      round
-                      block
-                      type="danger"
-                      color={color}
-                      className="van-calendar__confirm"
-                      disabled={computed.getButtonDisabled(type, currentDate)}
-                      // nativeType="text"
-                      onClick={onConfirm_}
-                    >
-                      {computed.getButtonDisabled(type, currentDate)
-                        ? confirmDisabledText
-                        : confirmText}
-                    </VanButton>
-                  )}
-                </View>
-              </View>
-            </VanPopup>
-          ) : (
-            ''
-          )}
-        </>
+                  {computed.getButtonDisabled(type, currentDate)
+                    ? confirmDisabledText
+                    : confirmText}
+                </VanButton>
+              )}
+            </View>
+          </View>
+        </VanPopup>
       ) : (
         <View
           className={`van-calendar ${className || ''}`}
@@ -581,7 +572,6 @@ function Index(
           >
             {showConfirm && (
               <VanButton
-                round
                 block
                 type="danger"
                 color={color}

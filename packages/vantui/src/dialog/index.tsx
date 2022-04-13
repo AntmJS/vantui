@@ -1,7 +1,6 @@
 import { Block, View, Text } from '@tarojs/components'
 import { useState, useCallback, useEffect } from 'react'
 import Taro from '@tarojs/taro'
-import { GRAY, RED } from '../common/color'
 import { toPromise } from '../common/utils'
 import VanGoodsActionButton from '../goods-action-button/index'
 import VanGoodsAction from '../goods-action/index'
@@ -17,9 +16,8 @@ export function Dialog(props: DialogProps) {
   const {
     show: _show,
     overlay = true,
-    transition = 'scale',
     theme = 'default',
-    zIndex = 2000,
+    zIndex,
     width,
     overlayStyle,
     closeOnClickOverlay,
@@ -27,8 +25,8 @@ export function Dialog(props: DialogProps) {
     title,
     messageAlign,
     showCancelButton,
-    cancelButtonColor = GRAY,
-    confirmButtonColor = RED,
+    cancelButtonColor,
+    confirmButtonColor,
     cancelButtonText = '取消',
     showConfirmButton = true,
     confirmButtonOpenType,
@@ -180,7 +178,6 @@ export function Dialog(props: DialogProps) {
       show={show}
       zIndex={zIndex}
       overlay={overlay}
-      transition={transition}
       className={'van-dialog van-dialog--' + theme + ' ' + `${className || ''}`}
       style={utils.style(['width: ' + utils.addUnit(width) + ';', style])}
       overlayStyle={overlayStyle}
@@ -219,7 +216,7 @@ export function Dialog(props: DialogProps) {
             <VanGoodsActionButton
               loading={cancelLoading}
               className="van-dialog__button van-hairline--right van-dialog__cancel"
-              style={'color: ' + cancelButtonColor}
+              style={cancelButtonColor ? { color: cancelButtonColor } : {}}
               onClick={_onCancel}
             >
               {cancelButtonText}
@@ -228,7 +225,7 @@ export function Dialog(props: DialogProps) {
           {showConfirmButton && (
             <VanGoodsActionButton
               className="van-dialog__button van-dialog__confirm"
-              style={'color: ' + confirmButtonColor}
+              style={confirmButtonColor ? { color: confirmButtonColor } : {}}
               loading={confirmLoading}
               openType={confirmButtonOpenType}
               sessionFrom={sessionFrom}
@@ -250,7 +247,7 @@ export function Dialog(props: DialogProps) {
               size="large"
               loading={cancelLoading}
               className="van-dialog__button van-dialog__cancel"
-              style={'color: ' + cancelButtonColor}
+              style={cancelButtonColor ? { color: cancelButtonColor } : {}}
               onClick={_onCancel}
             >
               {cancelButtonText}
@@ -263,7 +260,7 @@ export function Dialog(props: DialogProps) {
                 showCancelButton ? 'van-hairline--left' : ''
               }`}
               loading={confirmLoading}
-              style={'color: ' + confirmButtonColor}
+              style={confirmButtonColor ? { color: confirmButtonColor } : {}}
               openType={confirmButtonOpenType}
               sessionFrom={sessionFrom}
               sendMessageTitle={sendMessageTitle}

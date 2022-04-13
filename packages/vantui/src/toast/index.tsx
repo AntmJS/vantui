@@ -12,7 +12,6 @@ import toast from './toast'
 const defaultId = 'van-toast'
 const defaultOptions = {
   show: true,
-  zIndex: 1000,
   duration: 2000,
   mask: false,
   forbidClick: false,
@@ -33,7 +32,6 @@ function parseOptions(message: any) {
 export function Toast(props: ToastProps) {
   const [state, setState] = useState({
     show: false,
-    zIndex: 1000,
     duration: 2000,
     mask: false,
     forbidClick: false,
@@ -46,7 +44,7 @@ export function Toast(props: ToastProps) {
   })
 
   /* eslint-disable-next-line */
-  const { style, className, children, ...others } = props
+  const { style, className, children, zIndex, ...others } = props
 
   useEffect(() => {
     setState((state) => {
@@ -134,13 +132,13 @@ export function Toast(props: ToastProps) {
       {(state.mask || state.forbidClick) && (
         <VanOverlay
           show={state.show}
-          zIndex={state.zIndex}
+          zIndex={zIndex}
           style={state.mask ? '' : 'background-color: transparent;'}
         ></VanOverlay>
       )}
       <VanTransition
         show={state.show}
-        style={'z-index: ' + state.zIndex}
+        style={zIndex ? { zIndex: zIndex } : {}}
         className="van-toast__container"
       >
         <View

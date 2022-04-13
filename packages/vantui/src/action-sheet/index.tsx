@@ -9,7 +9,7 @@ import VanIcon from '../icon/index'
 export function ActionSheet(props: ActionSheetProps) {
   const {
     round = true,
-    zIndex = 100,
+    zIndex,
     overlay = true,
     closeOnClickOverlay = true,
     closeOnClickAction = true,

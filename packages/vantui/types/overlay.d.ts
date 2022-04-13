@@ -3,7 +3,7 @@ import { ComponentClass, ReactNode } from 'react'
 export interface OverlayProps extends StandardProps {
   show?: boolean
   lockScroll?: boolean
-  zIndex?: string | number
+  zIndex?: number
   duration?:
     | string
     | number

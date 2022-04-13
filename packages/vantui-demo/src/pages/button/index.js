@@ -114,7 +114,7 @@ export default class Index extends Component {
             </Button>
           </DemoBlock>
           <DemoBlock title="块级元素" padding>
-            <Button type="primary" className="demo-margin-bottom">
+            <Button type="primary" className="demo-margin-bottom" block>
               普通按钮
             </Button>
             <Button type="primary" block>

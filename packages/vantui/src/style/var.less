@@ -1,5 +1,5 @@
 // Color Palette
-@black: #000;
+@black: #1a1a1a;
 @white: #fff;
 @gray-1: #f7f8fa;
 @gray-2: #f2f3f5;
@@ -15,6 +15,19 @@
 @orange-dark: #ed6a0c;
 @orange-light: #fffbe8;
 @green: #07c160;
+@page-back: @white;
+
+// z-index
+@sticky-z-index: 800;
+@tabbar-z-index: 805;
+@navbar-z-index: 805;
+@goods-action-z-index: 806;
+@submit-bar-z-index: 806;
+@overlay-z-index: 1000;
+@dropdown-z-index: 1000;
+@popup-z-index: 1010;
+@popup-close-icon-z-index: 1010;
+@notify-z-index: 1500;
 
 // Gradient Colors
 @gradient-red: linear-gradient(to right, #ff6034, #ee0a24);
@@ -88,34 +101,42 @@
 @action-sheet-cancel-padding-color: @background-color;
 
 // Button
+@button-line-height: 40px;
+
+@button-normal-height: 80px;
+@button-normal-font-size: @font-size-md;
+@button-normal-border-radius: @border-radius-lg;
+
 @button-mini-height: 44px;
-@button-mini-min-width: 100px;
 @button-mini-font-size: @font-size-xs;
+@button-mini-border-radius: @border-radius-sm;
+@button-mini-min-width: 100px;
+
 @button-small-height: 60px;
 @button-small-font-size: @font-size-sm;
+@button-small-border-radius: @border-radius-md;
 @button-small-min-width: 120px;
-@button-normal-font-size: @font-size-md;
+
 @button-large-height: 100px;
+@button-large-font-size: @font-size-lg;
+@button-large-border-radius: @border-radius-lg;
+
 @button-default-color: @text-color;
-@button-default-height: 88px;
-@button-default-font-size: @font-size-lg;
 @button-default-background-color: @white;
-@button-default-border-color: @border-color;
+
 @button-primary-color: @white;
 @button-primary-background-color: @green;
-@button-primary-border-color: @green;
+
 @button-info-color: @white;
 @button-info-background-color: @blue;
-@button-info-border-color: @blue;
+
 @button-danger-color: @white;
 @button-danger-background-color: @red;
-@button-danger-border-color: @red;
+
 @button-warning-color: @white;
 @button-warning-background-color: @orange;
-@button-warning-border-color: @orange;
-@button-line-height: 40px;
+
 @button-border-width: 2px;
-@button-border-radius: @border-radius-sm;
 @button-round-border-radius: @border-radius-max;
 @button-plain-background-color: @white;
 @button-disabled-opacity: @disabled-opacity;
@@ -168,19 +189,17 @@
 // Cell
 @cell-font-size: @font-size-md;
 @cell-line-height: 48px;
-@cell-vertical-padding: 20px;
+@cell-vertical-padding: @padding-sm;
 @cell-horizontal-padding: @padding-md;
 @cell-text-color: @text-color;
 @cell-background-color: @white;
 @cell-border-color: @border-color;
-@cell-active-color: @active-color;
 @cell-required-color: @red;
 @cell-label-color: @gray-6;
 @cell-label-font-size: @font-size-sm;
-@cell-label-line-height: 36px;
 @cell-label-margin-top: 6px;
 @cell-value-color: @gray-6;
-@cell-icon-size: 32px;
+@cell-icon-size: @font-size-lg;
 @cell-right-icon-color: @gray-6;
 @cell-large-vertical-padding: @padding-sm;
 @cell-large-title-font-size: @font-size-lg;
@@ -242,6 +261,8 @@
 @dialog-message-max-height: 60vh;
 @dialog-has-title-message-text-color: @gray-7;
 @dialog-has-title-message-padding-top: @padding-xs;
+@dialog-cancel-button-color: @gray-7;
+@dialog-confirm-button-color: @text-link-color;
 
 // Form
 @form-background-color: @white;
@@ -279,7 +300,6 @@
 @field-disabled-text-color: @gray-5;
 
 // GoodsAction
-@goods-action-z-index: 805;
 @goods-action-background-color: @white;
 @goods-action-height: 100px;
 @goods-action-icon-width: 96px;
@@ -377,12 +397,11 @@
 @picker-option-selected-text-color: @text-color;
 
 // Popup
-@popup-background-color: @white;
+@popup-background-color: @page-back;
 @popup-round-border-radius: 32px;
 @popup-close-icon-size: 36px;
 @popup-close-icon-color: @gray-6;
 @popup-close-icon-margin: 32px;
-@popup-close-icon-z-index: 1010;
 
 // Progress
 @progress-height: 8px;
@@ -516,7 +535,7 @@
 
 // SubmitBar
 @submit-bar-height: 100px;
-@submit-bar-z-index: 805;
+
 @submit-bar-background-color: @white;
 @submit-bar-button-width: 220px;
 @submit-bar-price-color: @red;
