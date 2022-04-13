@@ -114,7 +114,7 @@ function noop() {}
 | --- | --- | --- | --- | --- |
 | show | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | lockScroll | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| zIndex | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
 | duration | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enter:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leave:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>_ | - | `false` |
 | children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 

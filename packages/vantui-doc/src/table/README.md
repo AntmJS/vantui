@@ -100,7 +100,7 @@ componentDidMount() {
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
 | columns | 表格列配置描述 | _&nbsp;&nbsp;IColumns[]<br/>_ | - | `true` |
-| dataSource | 数据源 | _&nbsp;&nbsp;Record<string,&nbsp;any>[]&nbsp;//&nbsp;数据源<br/>_ | - | `true` |
+| dataSource | 数据源 | _&nbsp;&nbsp;Record<string,&nbsp;any>[]<br/>_ | - | `true` |
 | rowKey | 表哥行 key 的取值 | _&nbsp;&nbsp;string&nbsp;//&nbsp;表格行&nbsp;key&nbsp;的取值<br/>_ | - | `true` |
 | className | 最外层包裹节点 css 类名 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | style | 最外层包裹节点内联样式 | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
@@ -111,7 +111,7 @@ componentDidMount() {
 | titleStyle | 统一设置表头样式 | _&nbsp;&nbsp;React.CSSProperties<br/>_ | - | `false` |
 | titleClassName | 统一设置表头单元格 css 类名 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | loading | 是否加载中 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
-| sortChange | 排序变化 | _&nbsp;&nbsp;(columns:&nbsp;IColumns)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| sortChange | 排序变化 | _&nbsp;&nbsp;(columns:&nbsp;IColumns)&nbsp;=>&nbsp;void<br/>_ | () => void | `false` |
 | placeholder | 数据为空的时候的占位字符 | _&nbsp;&nbsp;React.ReactNode<br/>_ | '--' | `false` |
 | scroll | 表格是否可滚动，也可以指定滚动区域的宽、高 | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;x?:&nbsp;number&nbsp;&brvbar;&nbsp;string&nbsp;&brvbar;&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;y?:&nbsp;number&nbsp;&brvbar;&nbsp;string&nbsp;&brvbar;&nbsp;boolean<br/>&nbsp;&nbsp;}<br/>_ | - | `false` |
 
@@ -131,8 +131,6 @@ componentDidMount() {
 | width | 列宽，单位px | _&nbsp;&nbsp;number<br/>_ |
 | sort | 表头是否显示排序按钮 | _&nbsp;&nbsp;boolean<br/>_ |
 | sortOrder | 排序的受控属性 | _&nbsp;&nbsp;"ascend"&nbsp;&brvbar;&nbsp;"descend"&nbsp;&brvbar;&nbsp;undefined<br/>_ |
-| sortLevel | 多列排序优先级 | _&nbsp;&nbsp;number<br/>_ |
-| onSort | 点击排序按钮钩子，常用于服务端排序 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;sortOrder:&nbsp;"ascend"&nbsp;&brvbar;&nbsp;"descend"&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | fixed | 固定列 | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"<br/>_ |
 | expandable | 该列是否启用点击展开收起功能，默认 true | _&nbsp;&nbsp;boolean<br/>_ |
 

@@ -209,5 +209,15 @@ this.state = {
 
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
-| detail | 包含每项的值columns、当前时间innerValue、手动设置列数据setColumns、更新某列值updateColumnValue | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;datetimePicker:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setColumns:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerValue:&nbsp;Date<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateColumnValue:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<string><br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>_ |
+| detail | 包含每项的值columns、当前时间innerValue、手动设置列数据setColumns、更新某列值updateColumnValue | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;datetimePicker:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setColumns:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerValue:&nbsp;Date<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateColumnValue:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<string><br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>_ |
+
+### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)   
+
+| 方法 | 说明 | 类型 |
+| --- | --- | --- |
+| columns | - | _&nbsp;&nbsp;(string&nbsp;&brvbar;&nbsp;number)[]<br/>_ |
+| setColumns | - | _&nbsp;&nbsp;(columns:&nbsp;(string&nbsp;&brvbar;&nbsp;number)[])&nbsp;=>&nbsp;void<br/>_ |
+| innerValue | - | _&nbsp;&nbsp;Date<br/>_ |
+| updateColumnValue | - | _&nbsp;&nbsp;(value:&nbsp;string)&nbsp;=>&nbsp;Promise<string><br/>_ |
+| pickerInstance | - | _&nbsp;&nbsp;IPickerInstance<br/>_ |
 

@@ -262,7 +262,6 @@ import { Button, MiniLoginButton, MiniPhoneButton, MiniUserButton } from "@antmj
 | disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | loadingText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | loadingSize | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | loadingType | - | _&nbsp;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;"circular"<br/>_ | - | `false` |
 | color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
