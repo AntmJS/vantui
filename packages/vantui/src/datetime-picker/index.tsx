@@ -1,9 +1,21 @@
-import { useState, useCallback, useRef, useLayoutEffect } from 'react'
-import { PickerChangeEvents } from 'packages/vantui/types/picker'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import {
+  useState,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+  forwardRef,
+  useImperativeHandle,
+  ForwardedRef,
+} from 'react'
+import {
+  IPickerInstance,
+  PickerChangeEvents,
+} from 'packages/vantui/types/picker'
 import VanPicker from '../picker/index'
 import {
   DatetimePickerProps,
-  DatetimePickerEventsByInstance,
+  IDatetimePickerInstance,
 } from '../../types/datetime-picker'
 import * as utils from '../wxs/utils'
 import {
@@ -17,7 +29,10 @@ import {
   currentYear,
 } from './wxs'
 
-export function DatetimePicker(props: DatetimePickerProps) {
+export function DatetimePicker(
+  props: DatetimePickerProps,
+  ref: ForwardedRef<IDatetimePickerInstance>,
+) {
   const {
     value = null,
     filter,
@@ -42,9 +57,9 @@ export function DatetimePicker(props: DatetimePickerProps) {
     ...others
   } = props
 
-  const PickRef = useRef<any>(null)
+  const PickRef = useRef<IPickerInstance & any>({})
   const [innerValue, setInnerValue] = useState<any>(Date.now())
-  const [columns, setColumns] = useState<any[]>([])
+  const [columns, setColumns] = useState<(string | number)[]>([])
   const minHour_ = minHour
   const maxHour_ = maxHour
   const minMinute_ = minMinute
@@ -54,6 +69,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
     if (PickRef.current) {
       const { setColumnValues } = PickRef.current
       PickRef.current.setColumnValues = (...args: any) =>
+        // @ts-ignore
         setColumnValues.apply(PickRef.current, [args[1], args[2], false])
     }
     return PickRef.current
@@ -183,7 +199,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
   )
 
   const updateColumnValue = useCallback(
-    function (value: string) {
+    function (value: string): Promise<string> {
       let values: Array<any> = []
       const picker = getPicker()
       if (type === 'time') {
@@ -212,7 +228,7 @@ export function DatetimePicker(props: DatetimePickerProps) {
       return new Promise((resolve) => {
         setTimeout(() => {
           picker.setValues(values)
-          resolve(value)
+          resolve(`${value}`)
         }, 16)
       })
     },
@@ -294,9 +310,10 @@ export function DatetimePicker(props: DatetimePickerProps) {
     const originColumns = getOriginColumns(value)
 
     if (type === 'time') {
-      const indexes = picker.getIndexes()
-      value = `${+originColumns[0].values[indexes[0]]}:${+originColumns[1]
-        .values[indexes[1]]}`
+      const indexes: number[] = picker.getIndexes()
+      value = `${+originColumns[0].values[
+        indexes[0] as number
+      ]}:${+originColumns[1].values[indexes[1] as number]}`
     } else {
       const indexes = picker.getIndexes()
       const values = indexes.map(
@@ -340,11 +357,21 @@ export function DatetimePicker(props: DatetimePickerProps) {
               updateColumnValue,
             },
           },
-        } as DatetimePickerEventsByInstance
+        }
         onChange(e)
       }
     })
   }
+
+  useImperativeHandle(ref, () => {
+    return {
+      pickerInstance: PickRef.current,
+      columns,
+      setColumns,
+      innerValue,
+      updateColumnValue,
+    }
+  })
 
   return (
     <VanPicker
@@ -373,4 +400,4 @@ export function DatetimePicker(props: DatetimePickerProps) {
   )
 }
 
-export default DatetimePicker
+export default forwardRef(DatetimePicker)

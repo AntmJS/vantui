@@ -1,6 +1,6 @@
 import { ComponentClass } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
-import { PickerProps } from './picker'
+import { PickerProps, IPickerInstance } from './picker'
 
 /**
  * @title DatetimePickerProps
@@ -104,11 +104,22 @@ export type DatetimePickerEventsByInstance = {
   detail: {
     datetimePicker: {
       columns: (string | number)[]
-      setColumns: (columns: (string | number)[]) => (string | number)[]
+      setColumns: (columns: (string | number)[]) => void
       innerValue: Date
       updateColumnValue: (value: string) => Promise<string>
     }
   }
+}
+
+/**
+ * @title 组件实例
+ */
+export type IDatetimePickerInstance = {
+  columns: (string | number)[]
+  setColumns: (columns: (string | number)[]) => void
+  innerValue: Date
+  updateColumnValue: (value: string) => Promise<string>
+  pickerInstance: IPickerInstance
 }
 
 type DefinedExculdeNoMatch<TObject, T> = {
