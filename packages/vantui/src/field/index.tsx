@@ -142,7 +142,7 @@ export function Field(props: FieldProps) {
     ref.current.focused = true
     setTimeout(() => {
       setShowClear(innerValue)
-    }, 32)
+    })
     Object.defineProperty(event, 'detail', {
       value: event.detail.value,
     })

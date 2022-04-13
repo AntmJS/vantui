@@ -122,8 +122,10 @@ export default class Index extends Component {
                 label="留言"
                 type="textarea"
                 placeholder="请输入留言"
-                rows="1"
+                rows="2"
                 autosize
+                clearable
+                rightIcon="question-o"
                 border={false}
               ></Field>
             </CellGroup>
