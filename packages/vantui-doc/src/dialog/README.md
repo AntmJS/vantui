@@ -60,11 +60,8 @@ Dialog.confirm({
   title: '标题',
   message: '弹窗内容',
 })
-  .then(() => {
+  .then((action: 'confirm' | 'cancel') => {
     // on confirm
-  })
-  .catch(() => {
-    // on cancel
   });
 ```
 

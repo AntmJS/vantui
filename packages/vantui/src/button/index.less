@@ -1,4 +1,62 @@
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable selector-max-attribute */
+/* stylelint-disable selector-max-type */
 @import '../style/var.less';
+taro-button-core {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  width: 100%;
+  border-width: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+taro-button-core:focus {
+  outline: 0;
+}
+
+taro-button-core::after {
+  content: ' ';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+taro-button-core + taro-button-core {
+  /* prettier-ignore */
+  margin-top: 15px;
+}
+
+taro-button-core[size='mini'] {
+  width: auto;
+  display: inline-block;
+  padding: 0 1.32em;
+  line-height: 2.3;
+
+  /* prettier-ignore */
+  font-size: 13px;
+}
+
+taro-button-core[loading] .weui-loading {
+  margin: -0.2em 0.34em 0 0;
+}
+
 .van-button {
   width: initial;
   position: relative;
@@ -54,14 +112,6 @@
     .theme(height, '@button-large-height');
     .theme(font-size, '@button-large-font-size');
     .theme(border-radius, '@button-normal-border-radius');
-  }
-
-  &--active:not(&--disabled) {
-    filter: brightness(0.9);
-  }
-
-  &--unclickable::after {
-    display: none;
   }
 
   &--default {
@@ -159,6 +209,13 @@
     &.van-button--warning {
       .theme(border, '@button-border-width solid @button-warning-background-color');
     }
+  }
+  &--active:not(&--disabled) {
+    filter: brightness(0.9);
+  }
+
+  &--unclickable::after {
+    display: none;
   }
 }
 .van-button + .van-button {

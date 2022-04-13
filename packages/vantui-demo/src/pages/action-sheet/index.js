@@ -111,6 +111,7 @@ export default class Index extends Component {
               actions={action1}
               cancelText="取消"
               onClose={this.toggleActionSheet3}
+              onCancel={this.toggleActionSheet3}
             ></ActionSheet>
           </DemoBlock>
           <DemoBlock title="展示描述信息" padding>

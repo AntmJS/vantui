@@ -5,6 +5,30 @@ import * as utils from '../wxs/utils'
 import { Icon } from '../icon/index'
 import { Loading } from '../loading/index'
 import * as computed from './wxs'
+let removed = false
+// 次输是为了在开发环境有一个中止状态
+let time = 10
+// 动态删除taro-button-core的style
+if (process.env.TARO_ENV === 'h5' && !removed) {
+  const _timer = setInterval(() => {
+    time--
+    if (time > 0) {
+      const allStyle = document.getElementsByTagName('style')
+      for (let i = allStyle.length - 1; i >= 0; i--) {
+        const sty: any = allStyle[i]
+        const htm = sty.getInnerHTML()
+        if (/^taro-button-core{/.test(htm)) {
+          sty.remove()
+          removed = true
+          _timer && clearInterval(_timer)
+          break
+        }
+      }
+    } else {
+      _timer && clearInterval(_timer)
+    }
+  }, 200)
+}
 
 export function Button(props: ButtonProps) {
   const {

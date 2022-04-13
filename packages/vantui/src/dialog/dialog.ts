@@ -22,15 +22,15 @@ const _defaultOptions = {
 export default {
   defaultOptions: { ..._defaultOptions },
   alert(options: DialogProps) {
-    const p = new Promise<void>((resolve, reject) => {
+    const p = new Promise((resolve: (value: 'confirm' | 'cancel') => void) => {
       const confirmFn = () => {
         off('confirm', confirmFn)
-        resolve()
+        resolve('confirm')
       }
 
       const cancelFn = () => {
         off('cancel', cancelFn)
-        reject()
+        resolve('cancel')
       }
       on('confirm', confirmFn)
       on('cancel', cancelFn)

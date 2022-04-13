@@ -55,7 +55,6 @@
   "dependencies": {
     "@antmjs/iconfont": "1.18.1",
     "@babel/runtime-corejs3": "^7.14.7",
-    "@react-spring/web": "^9.4.4",
     "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
