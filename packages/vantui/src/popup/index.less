@@ -5,7 +5,7 @@
   max-height: 100%;
   overflow-y: auto;
   transition-timing-function: ease-out;
-  animation: ease both;
+  animation: ease-out both;
   z-index: @popup-z-index;
   -webkit-overflow-scrolling: touch;
   .theme(background-color, '@popup-background-color');
@@ -129,12 +129,13 @@
 
 .van-center-enter-active,
 .van-center-leave-active {
-  transition-property: opacity;
+  transition-property: opacity transform;
 }
 
 .van-center-enter,
 .van-center-leave-to {
   opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0);
 }
 
 .van-bottom-enter-active,
