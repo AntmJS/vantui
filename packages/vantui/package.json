@@ -63,7 +63,8 @@
     "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
-    "rc-util": "^5.14.0"
+    "rc-util": "^5.14.0",
+    "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
     "@antmjs/vantui-cli": "^1.18.1",

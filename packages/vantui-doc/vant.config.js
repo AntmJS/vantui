@@ -224,6 +224,10 @@ module.exports = {
         title: '展示组件',
         items: [
           {
+            path: 'table',
+            title: 'Table 表格',
+          },
+          {
             path: 'circle',
             title: 'Circle 环形进度条',
           },

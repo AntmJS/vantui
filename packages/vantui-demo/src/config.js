@@ -142,6 +142,10 @@ export default [
     icon: 'photo-o',
     list: [
       {
+        path: '/table',
+        title: 'Table 表格',
+      },
+      {
         path: '/circle',
         title: 'Circle 进度条',
       },
