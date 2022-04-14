@@ -138,7 +138,8 @@
     "rollup-plugin-styles": "^3.14.1",
     "run-s": "^0.0.0",
     "stylelint": "^13.13.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
     "@antmjs/warning": "^1.17.7"
