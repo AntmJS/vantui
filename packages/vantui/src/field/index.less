@@ -42,6 +42,12 @@
     background-color: transparent;
     border: 0;
     resize: none;
+    font-size: @field-font-size;
+
+    textarea,
+    input {
+      font-size: @field-font-size;
+    }
 
     .theme(color, '@field-input-text-color');
     .theme(height, '@cell-line-height');
@@ -82,9 +88,11 @@
     }
   }
 
-  .autosize {
+  .autosize-height {
     height: auto;
+  }
 
+  .autosize {
     textarea {
       resize: none;
       overflow: hidden;

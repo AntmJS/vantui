@@ -13,11 +13,11 @@ if (process.env.TARO_ENV === 'h5' && !removed) {
   const _timer = setInterval(() => {
     time--
     if (time > 0) {
-      const allStyle = document.getElementsByTagName('style')
+      const allStyle = document.getElementsByTagName('style') || []
       for (let i = allStyle.length - 1; i >= 0; i--) {
         const sty: any = allStyle[i]
-        const htm = sty.getInnerHTML()
-        if (/^taro-button-core{/.test(htm)) {
+        const htm = sty.innerHTML
+        if (htm && /^taro-button-core{/.test(htm)) {
           sty.remove()
           removed = true
           _timer && clearInterval(_timer)

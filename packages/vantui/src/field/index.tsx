@@ -17,11 +17,12 @@ export function Field(props: FieldProps) {
     focused: false,
   })
   const [state, setState] = useState({
-    innerValue: '',
+    // innerValue: '',
     showClear: false,
     unitag: 'van-field',
   })
-  const { innerValue, showClear } = state
+  const [innerValue, setInnerValue] = useState('')
+  const { showClear } = state
   const {
     size,
     leftIcon,
@@ -110,9 +111,7 @@ export function Field(props: FieldProps) {
     Object.defineProperty(event, 'detail', {
       value: event.detail.value,
     })
-    setState((pre: any) => {
-      return { ...pre, innerValue: event.detail }
-    })
+    setInnerValue(event.detail)
     Taro.nextTick(() => {
       onInput?.(event)
       onChange?.(event)
@@ -149,6 +148,7 @@ export function Field(props: FieldProps) {
     onFocus?.(event)
   }
   const _blur = function (event: any) {
+    console.info('blur')
     ref.current.focused = false
     setShowClear(innerValue)
     Object.defineProperty(event, 'detail', {
@@ -157,9 +157,7 @@ export function Field(props: FieldProps) {
     onBlur?.(event)
   }
   const _clear = function () {
-    setState((pre: any) => {
-      return { ...pre, innerValue: '' }
-    })
+    setInnerValue('')
     setShowClear('')
     Taro.nextTick(() => {
       emitChange()
@@ -193,9 +191,7 @@ export function Field(props: FieldProps) {
 
   useEffect(
     function () {
-      setState((pre: any) => {
-        return { ...pre, innerValue: value }
-      })
+      setInnerValue(value as string)
     },
     [value],
   )
@@ -258,7 +254,13 @@ export function Field(props: FieldProps) {
                   disabled,
                   error,
                 },
-              ]) + ` input-class ${autosize ? 'autosize' : ''} ${state.unitag}`
+              ]) +
+              ` input-class ${autosize ? 'autosize' : ''} ${state.unitag}` +
+              `${
+                process.env.TARO_ENV !== 'weapp' && autosize
+                  ? ' autosize-height'
+                  : ''
+              }`
             }
             fixed={fixed}
             focus={focus}
