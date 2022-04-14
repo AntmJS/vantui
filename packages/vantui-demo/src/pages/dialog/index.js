@@ -43,6 +43,8 @@ export default class Index extends Component {
     Dialog.alert({
       title: '标题',
       message,
+    }).then((value) => {
+      console.log('dialog result', value)
     })
   }
 
@@ -56,6 +58,8 @@ export default class Index extends Component {
     Dialog.confirm({
       title: '标题',
       message,
+    }).then((value) => {
+      console.log('dialog result', value)
     })
   }
 

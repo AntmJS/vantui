@@ -4,6 +4,8 @@
 
 弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作，支持函数调用和组件调用两种方式。
 
+> 注意：1.8.0以下的版本取消按钮会触发catch。1.8.0及以后的版本取消按钮会触发then 需要通过返回的value为confirm或者cancel来判断是否点了确认还是取消
+
 ### 引入
 
 在 Taro 文件中引入组件
@@ -31,14 +33,14 @@ import { Dialog } from 'vantui';
 Dialog.alert({
   title: '标题',
   message: '弹窗内容',
-}).then(() => {
-  // on close
+}).then((value) => {
+  console.log('dialog result', value)
 });
 
 Dialog.alert({
   message: '弹窗内容',
-}).then(() => {
-  // on close
+}).then((value) => {
+  console.log('dialog result', value)
 });
 ```
 
@@ -59,10 +61,9 @@ import { Dialog } from 'vantui';
 Dialog.confirm({
   title: '标题',
   message: '弹窗内容',
-})
-  .then((action: 'confirm' | 'cancel') => {
-    // on confirm
-  });
+}).then((value) => {
+  console.log('dialog result', value)
+});
 ```
 
 ### 圆角按钮风格
@@ -83,15 +84,15 @@ Dialog.alert({
   title: '标题',
   message: '弹窗内容',
   theme: 'roundButton',
-}).then(() => {
-  // on close
+}).then((value) => {
+  console.log('dialog result', value)
 });
 
 Dialog.alert({
   message: '弹窗内容',
   theme: 'roundButton',
-}).then(() => {
-  // on close
+}).then((value) => {
+  console.log('dialog result', value)
 });
 ```
 

@@ -47,8 +47,8 @@ export interface DialogProps
 }
 
 interface dialog {
-  alert(options: DialogProps): Promise<void>
-  confirm(options: DialogProps): Promise<void>
+  alert(options: DialogProps): Promise<'confirm' | 'cancel'>
+  confirm(options: DialogProps): Promise<'confirm' | 'cancel'>
   setDefaultOptions(options: DialogProps): void
   resetDefaultOptions(): void
   close(): void

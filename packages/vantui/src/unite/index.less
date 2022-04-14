@@ -5,4 +5,7 @@
   min-height: 100vh;
   width: 100%;
   flex: 1;
+  padding-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
+  padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
 }

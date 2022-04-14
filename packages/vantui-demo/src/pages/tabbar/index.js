@@ -46,7 +46,6 @@ export default class Index extends Component {
             <Tabbar
               active={active}
               className="tabbar-position"
-              safeAreaInsetBottom={false}
               onChange={(e) => {
                 this.onChange({
                   detail: e.detail,
