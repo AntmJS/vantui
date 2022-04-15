@@ -95,7 +95,9 @@ componentDidMount() {
   }, 2000)
 }
 ```
+
 排序方法
+
 ```js
   sortAction = (col) => {
     const { sortOrder, dataIndex } = col
