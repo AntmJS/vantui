@@ -63,6 +63,9 @@ function useContainer(config: any, props: any) {
           const _defined = function (this: any, ...args: any[]): any {
             let res: any
             try {
+              if (insRef.current.loading[item]) {
+                return new Promise(() => {})
+              }
               res = copyFunc!.call(this, ...args)
               if (typeof res?.then !== 'function') {
                 return res
@@ -74,13 +77,16 @@ function useContainer(config: any, props: any) {
                 [item]: false,
               } as any
               return new Promise(function (resolve) {
+                insRef.current.loading[item] = true
                 _setLoading(loadingTrue)
                 res
                   .then(function (result: any) {
+                    insRef.current.loading[item] = false
                     _setLoading(loadingFalse)
                     resolve(result)
                   })
                   .catch(function (err: any) {
+                    insRef.current.loading[item] = false
                     _setLoading(loadingFalse)
                     setError({
                       code: err.code || 'JSError',
