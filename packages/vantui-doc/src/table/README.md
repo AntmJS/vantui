@@ -95,6 +95,26 @@ componentDidMount() {
   }, 2000)
 }
 ```
+排序方法
+```js
+  sortAction = (col) => {
+    const { sortOrder, dataIndex } = col
+    const { dataSource } = this.state
+    if (sortOrder !== 'descend') {
+      dataSource.sort(function (a, b) {
+        return a[dataIndex] - b[dataIndex]
+      })
+    } else {
+      dataSource.sort(function (a, b) {
+        return b[dataIndex] - a[dataIndex]
+      })
+    }
+
+    this.setState({
+      dataSource: [...dataSource],
+    })
+  }
+```
 ### ITableProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/table.d.ts)   
 
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
