@@ -56,6 +56,7 @@ export default {
     'pages/power-scroll-view/index',
     'pages/number-keyboard/index',
     'pages/table/index',
+    'pages/pagination/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

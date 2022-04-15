@@ -212,6 +212,10 @@ export default [
     icon: 'https://img.yzcdn.cn/vant/nav-0401.svg',
     list: [
       {
+        path: '/pagination',
+        title: 'Pagination 分页',
+      },
+      {
         path: '/grid',
         title: 'Grid 宫格',
       },

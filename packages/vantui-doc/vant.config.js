@@ -285,6 +285,10 @@ module.exports = {
         title: '导航组件',
         items: [
           {
+            path:'pagination',
+            title: 'Pagination 分页',
+          },
+          {
             path: 'grid',
             title: 'Grid 宫格',
           },
