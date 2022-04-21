@@ -1,6 +1,6 @@
 import { Block, View, Text } from '@tarojs/components'
 import { useState, useCallback, useEffect } from 'react'
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { toPromise } from '../common/utils'
 import VanGoodsActionButton from '../goods-action-button/index'
 import VanGoodsAction from '../goods-action/index'
@@ -57,7 +57,7 @@ export function Dialog(props: DialogProps) {
     (action: 'confirm' | 'cancel' | 'overlay' | 'close') => {
       setShow(false)
 
-      Taro.nextTick(() => {
+      nextTick(() => {
         onClose?.({ detail: action })
       })
     },

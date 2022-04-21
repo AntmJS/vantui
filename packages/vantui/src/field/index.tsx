@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { useState, useEffect, useRef } from 'react'
 import { View, Block, Textarea, Input } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -112,7 +112,7 @@ export function Field(props: FieldProps) {
       value: event.detail.value,
     })
     setInnerValue(event.detail)
-    Taro.nextTick(() => {
+    nextTick(() => {
       onInput?.(event)
       onChange?.(event)
     })
@@ -159,7 +159,7 @@ export function Field(props: FieldProps) {
   const _clear = function () {
     setInnerValue('')
     setShowClear('')
-    Taro.nextTick(() => {
+    nextTick(() => {
       emitChange()
       onClear?.()
     })

@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import {
   useState,
   isValidElement,
@@ -92,7 +92,7 @@ export function Tabbar(props: TabbarProps) {
       if (!fixed || !placeholder) {
         return
       }
-      Taro.nextTick(() => {
+      nextTick(() => {
         getRect(null, '.van-tabbar').then((res: any) => {
           setState((pre: any) => {
             return {

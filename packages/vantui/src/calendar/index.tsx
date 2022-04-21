@@ -8,7 +8,7 @@ import {
   forwardRef,
   useImperativeHandle,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { getCurrentPages, createIntersectionObserver } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import Toast from '../toast/toast'
 import { requestAnimationFrame } from '../common/utils'
@@ -223,14 +223,15 @@ function Index(
       if (contentObserver.current != null) {
         contentObserver.current.disconnect()
       }
-      const pages: any = Taro.getCurrentPages()
-      let curePage = pages[pages.length - 1]
+      const pages: any = getCurrentPages()
+      const curePage = pages[pages.length - 1]
+      let _createIntersectionObserver = curePage.createIntersectionObserver
 
       if (process.env.TARO_ENV === 'alipay') {
-        curePage = Taro
+        _createIntersectionObserver = createIntersectionObserver
       }
 
-      const contentObserver_ = curePage.createIntersectionObserver({
+      const contentObserver_ = _createIntersectionObserver({
         thresholds: [0.5, 0.8, 1],
         observeAll: true,
         selectAll: true,

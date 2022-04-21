@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -11,7 +11,7 @@ export function Progress(props: ProgressProps) {
   const [right, setRight] = useState(0)
   useEffect(
     function () {
-      Taro.nextTick(() => {
+      nextTick(() => {
         Promise.all([
           getRect(null, '.van-progress'),
           getRect(null, '.van-progress__pivot'),

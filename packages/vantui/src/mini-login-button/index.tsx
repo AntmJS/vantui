@@ -1,5 +1,5 @@
 import type { MiniLoginButtonProps } from '../../types/mini-login-button'
-import Taro from '@tarojs/taro'
+import { login as TaroLogin } from '@tarojs/taro'
 import { Button } from '../button'
 
 declare const my: any
@@ -30,7 +30,7 @@ export function MiniLoginButton(props: MiniLoginButtonProps): JSX.Element {
         },
       })
     } else {
-      Taro.login({
+      TaroLogin({
         success(res) {
           onGetLoginCode(res)
         },
