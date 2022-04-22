@@ -2,7 +2,7 @@ declare const UniteContext: React.Context<{
   uniteConfig: {
     page?: boolean
   }
-  onRefresh: () => Promise<void>
+  onRefresh: () => Promise<{ code: string; message: string; data: any }>
   error?: { code: string; message: string; data: any }
   setError: React.Dispatch<
     React.SetStateAction<

@@ -6,11 +6,10 @@ import {
   useReady,
   useRouter,
 } from '@tarojs/taro'
-import { View } from '@tarojs/components'
 import { UniteContext } from '../unite-context'
 import { parse } from '../utils'
 
-function useContainer(config: any, props: any) {
+function useContainer(config: any, props: any, options: any) {
   // 兼容react-refresh
   const cfgRef = useRef({}) as React.MutableRefObject<any>
   cfgRef.current = config
@@ -29,6 +28,7 @@ function useContainer(config: any, props: any) {
 
   // 通过ref定义一些开关
   const flagRef = useRef({
+    __refresh: false,
     __mounted: false,
     __init: false,
     __refactor: function () {
@@ -63,8 +63,10 @@ function useContainer(config: any, props: any) {
           const _defined = function (this: any, ...args: any[]): any {
             let res: any
             try {
-              if (insRef.current.loading[item]) {
-                return new Promise(() => {})
+              if (!options?.cancelInterception?.[item]) {
+                if (insRef.current.loading[item]) {
+                  return new Promise(() => {})
+                }
               }
               res = copyFunc!.call(this, ...args)
               if (typeof res?.then !== 'function') {
@@ -76,7 +78,7 @@ function useContainer(config: any, props: any) {
               const loadingFalse = {
                 [item]: false,
               } as any
-              return new Promise(function (resolve) {
+              return new Promise(function (resolve, reject) {
                 insRef.current.loading[item] = true
                 _setLoading(loadingTrue)
                 res
@@ -88,19 +90,45 @@ function useContainer(config: any, props: any) {
                   .catch(function (err: any) {
                     insRef.current.loading[item] = false
                     _setLoading(loadingFalse)
-                    setError({
-                      code: err.code || 'JSError',
-                      message: err.message || '语法出现了小故障',
-                      data: err.data || err,
-                    })
+                    if (
+                      flagRef.current.__refresh &&
+                      (item === 'onLoad' ||
+                        item === 'onReady' ||
+                        item === 'onShow')
+                    ) {
+                      flagRef.current.__refresh = false
+                      reject({
+                        code: err.code || 'JSError',
+                        message: err.message || '语法出现了小故障',
+                        data: err.data || err,
+                      })
+                    } else {
+                      setError({
+                        code: err.code || 'JSError',
+                        message: err.message || '语法出现了小故障',
+                        data: err.data || err,
+                      })
+                    }
                   })
               })
             } catch (err) {
-              setError({
-                code: 'JSError',
-                message: '语法出现了小故障',
-                data: err,
-              })
+              if (
+                flagRef.current.__refresh &&
+                (item === 'onLoad' || item === 'onReady' || item === 'onShow')
+              ) {
+                flagRef.current.__refresh = false
+                throw {
+                  code: 'JSError',
+                  message: '语法出现了小故障',
+                  data: err,
+                }
+              } else {
+                setError({
+                  code: 'JSError',
+                  message: '语法出现了小故障',
+                  data: err,
+                })
+              }
             }
           }
           insRef.current[item] = _defined.bind(insRef.current)
@@ -109,72 +137,73 @@ function useContainer(config: any, props: any) {
         }
       }
       insRef.current.onRefresh = function () {
+        flagRef.current.__refresh = true
         return new Promise((resolve: (value?: any) => void) => {
           let isPromise = false
           let asyncFuncCount = 0
           let execAsyncFuncCount = 0
-          if (typeof insRef.current?.onLoad === 'function') {
-            const res = insRef.current?.onLoad()
-            if (res.then) {
-              isPromise = true
-              asyncFuncCount++
-              res
-                .then(() => {
-                  execAsyncFuncCount++
-                  if (execAsyncFuncCount === asyncFuncCount) {
-                    resolve()
-                  }
-                })
-                .catch(() => {
-                  execAsyncFuncCount++
-                  if (execAsyncFuncCount === asyncFuncCount) {
-                    resolve()
-                  }
-                })
+          try {
+            if (typeof insRef.current?.onLoad === 'function') {
+              const res = insRef.current.onLoad()
+              if (res.then) {
+                isPromise = true
+                asyncFuncCount++
+                res
+                  .then((data: any) => {
+                    execAsyncFuncCount++
+                    if (execAsyncFuncCount === asyncFuncCount) {
+                      resolve({ code: '200', message: '请求成功', data: data })
+                    }
+                  })
+                  .catch((e: any) => {
+                    resolve({ code: e.code, message: e.message, data: e.data })
+                  })
+              }
             }
-          }
-          if (typeof insRef.current?.onReady === 'function') {
-            const res = insRef.current?.onReady()
-            if (res.then) {
-              isPromise = true
-              asyncFuncCount++
-              res
-                .then(() => {
-                  execAsyncFuncCount++
-                  if (execAsyncFuncCount === asyncFuncCount) {
-                    resolve()
-                  }
-                })
-                .catch(() => {
-                  execAsyncFuncCount++
-                  if (execAsyncFuncCount === asyncFuncCount) {
-                    resolve()
-                  }
-                })
+            if (typeof insRef.current?.onReady === 'function') {
+              const res = insRef.current.onReady()
+              if (res.then) {
+                isPromise = true
+                asyncFuncCount++
+                res
+                  .then((data: any) => {
+                    execAsyncFuncCount++
+                    if (execAsyncFuncCount === asyncFuncCount) {
+                      resolve({ code: '200', message: '请求成功', data: data })
+                    }
+                  })
+                  .catch((e: any) => {
+                    resolve({ code: e.code, message: e.message, data: e.data })
+                  })
+              }
             }
-          }
-          if (typeof insRef.current?.onShow === 'function') {
-            const res = insRef.current?.onShow()
-            if (res.then) {
-              isPromise = true
-              asyncFuncCount++
-              res
-                .then(() => {
-                  execAsyncFuncCount++
-                  if (execAsyncFuncCount === asyncFuncCount) {
-                    resolve()
-                  }
-                })
-                .catch(() => {
-                  execAsyncFuncCount++
-                  if (execAsyncFuncCount === asyncFuncCount) {
-                    resolve()
-                  }
-                })
+            if (typeof insRef.current?.onShow === 'function') {
+              const res = insRef.current.onShow()
+              if (res.then) {
+                isPromise = true
+                asyncFuncCount++
+                res
+                  .then((data: any) => {
+                    execAsyncFuncCount++
+                    if (execAsyncFuncCount === asyncFuncCount) {
+                      resolve({ code: '200', message: '请求成功', data: data })
+                    }
+                  })
+                  .catch((e: any) => {
+                    resolve({ code: e.code, message: e.message, data: e.data })
+                  })
+              }
             }
+          } catch (error: any) {
+            resolve({
+              code: error.code || 'JSError',
+              message: error.message || '语法出现了小故障',
+              data: error.data,
+            })
           }
           if (!isPromise) {
-            resolve()
+            flagRef.current.__refresh = false
+            resolve({ code: '200', message: '请求成功', data: null })
           }
         })
       }
@@ -252,7 +281,7 @@ function HackComponent(props: any) {
 export function Unite(config: any, render: any, options: any = {}) {
   // 返回函数式组件
   return function Index(props: any) {
-    const { renderData, onRefresh } = useContainer(config, props)
+    const { renderData, onRefresh } = useContainer(config, props, options)
 
     // 执行业务侧函数式组件
     return (
@@ -264,9 +293,7 @@ export function Unite(config: any, render: any, options: any = {}) {
           onRefresh: onRefresh,
         }}
       >
-        <View className={options.page ? 'antmjs-vantui-unite' : ''}>
-          <HackComponent data={renderData} render={render} prevProps={props} />
-        </View>
+        <HackComponent data={renderData} render={render} prevProps={props} />
       </UniteContext.Provider>
     )
   }

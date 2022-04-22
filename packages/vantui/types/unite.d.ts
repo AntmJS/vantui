@@ -29,7 +29,7 @@ declare namespace Unite {
       state: Partial<StateOpt<TState>> | React.SetStateAction<StateOpt<TState>>,
     ) => void
     setError: React.Dispatch<React.SetStateAction<IError | undefined>>
-    onRefresh: () => void
+    onRefresh: () => Promise<{ code: string; message: string; data: any }>
     setHooks: (hooks: IAnyObject) => void
   }
   interface InstanceProperty<
@@ -122,6 +122,8 @@ declare function Unite<
   render: (data: Unite.Response<TState, TAll>, props: TProps) => JSX.Element,
   options?: {
     page?: boolean
+    cancelInterception?: Unite.FunctionProperties<TAll> &
+      Unite.InstanceMethods<TState>
   },
 ): (props: TProps) => any
 
