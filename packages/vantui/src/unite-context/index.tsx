@@ -4,9 +4,7 @@ export const UniteContext = createContext({
   uniteConfig: {
     page: false,
   },
-  onRefresh: () => {
-    return Promise.resolve({ code: '200', message: '请求成功', data: null })
-  },
+  onRefresh: () => {},
   error: undefined,
   setError: (value: any) => {
     console.log(value)
@@ -15,7 +13,11 @@ export const UniteContext = createContext({
   uniteConfig: {
     page?: boolean
   }
-  onRefresh: () => Promise<{ code: string; message: string; data: any }>
+  onRefresh: <T extends boolean>(
+    catchRefresh?: T,
+  ) => T extends true
+    ? Promise<{ code: string; message: string; data: any }>
+    : void
   error?: { code: string; message: string; data: any }
   setError: React.Dispatch<
     React.SetStateAction<

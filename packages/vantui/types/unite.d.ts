@@ -29,7 +29,11 @@ declare namespace Unite {
       state: Partial<StateOpt<TState>> | React.SetStateAction<StateOpt<TState>>,
     ) => void
     setError: React.Dispatch<React.SetStateAction<IError | undefined>>
-    onRefresh: () => Promise<{ code: string; message: string; data: any }>
+    onRefresh: <T extends boolean>(
+      catchRefresh?: T,
+    ) => T extends true
+      ? Promise<{ code: string; message: string; data: any }>
+      : void
     setHooks: (hooks: IAnyObject) => void
   }
   interface InstanceProperty<

@@ -136,8 +136,10 @@ function useContainer(config: any, props: any, options: any) {
           insRef.current[item] = cfgRef.current[item]
         }
       }
-      insRef.current.onRefresh = function () {
-        flagRef.current.__refresh = true
+      insRef.current.onRefresh = function (catchRefresh?: boolean) {
+        if (catchRefresh) {
+          flagRef.current.__refresh = true
+        }
         return new Promise((resolve: (value?: any) => void) => {
           let isPromise = false
           let asyncFuncCount = 0
