@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
-import { TabProps } from '../../types/tabs'
+import { TabProps } from '../../types/tab'
 
 export function Tab(
   props: TabProps & {
