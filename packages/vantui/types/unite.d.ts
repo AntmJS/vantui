@@ -122,8 +122,9 @@ declare function Unite<
   render: (data: Unite.Response<TState, TAll>, props: TProps) => JSX.Element,
   options?: {
     page?: boolean
-    cancelInterception?: Unite.FunctionProperties<TAll> &
-      Unite.InstanceMethods<TState>
+    cancelInterception?: Partial<{
+      [K in keyof Unite.PromiseProperties<TAll>]: boolean
+    }>
   },
 ): (props: TProps) => any
 
