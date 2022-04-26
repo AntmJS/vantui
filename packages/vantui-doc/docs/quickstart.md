@@ -233,9 +233,9 @@ import { pxTransform } from '@antmjs/vantui'
 pxTransform(10)
 ```
 
-### 同时兼容Vant Weapp
+### 兼容Vant Weapp 以及 兼容项目配置的尺寸设置为非750导致组件库的样式偏大偏小问题
 
-Vant Weapp要求pxTransform的selectorBlackList要设置成 [/van-/]以免组件被转换成rpx之后缩小一倍。而vantui组件默认适配的rpx，所以尺寸都是按照750的设计稿比例转换过的，但是类名和Vant Weapp是一致的，所以设置selectorBlackList: [/van-/] 也会影响到vantui使其组件视觉上看去放大了一倍。针对这个问题，以下配置可以解决这个问题
+Vant Weapp要求pxTransform的selectorBlackList要设置成 [/van-/]以免组件被转换成rpx之后缩小一倍。而vantui组件默认适配的rpx，所以尺寸都是按照750的设计稿比例转换过的，但是类名和Vant Weapp是一致的，所以设置selectorBlackList: [/van-/] 也会影响到vantui使其组件视觉上看去放大了一倍。针对这个问题，以下配置可以解决这个问题。同时也能兼容项目配置的尺寸设置为非750导致组件库的样式偏大偏小问题
 
 ```js
 // 这个不用安装，taro已经装过了，直接require就好了
@@ -266,9 +266,7 @@ const config = {
               newUse.options.postcssOptions.plugins.push(
                 pxtransform({
                   platform: process.env.TARO_ENV,
-                  // 这里和你config的配置保持一致
                   designWidth: 750,
-                  // 这里和你config的配置保持一致
                   deviceRatio: {
                     640: 2.34 / 2,
                     750: 1,
