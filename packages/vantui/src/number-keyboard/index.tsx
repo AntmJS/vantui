@@ -46,7 +46,9 @@ export const NumberKeyboard: React.FC<NumberKeyboardProps> = (props) => {
 
   const onDelete = useCallback(() => {
     props.onDelete?.()
-  }, [props])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.onDelete])
 
   const onBackspacePressStart = () => {
     timeoutRef.current = window.setTimeout(() => {
@@ -171,14 +173,14 @@ export const NumberKeyboard: React.FC<NumberKeyboardProps> = (props) => {
                   onKeyPress(e, 'BACKSPACE')
                   onBackspacePressEnd()
                 }}
-                onClick={(e) => onKeyPress(e, 'BACKSPACE')}
+                // onClick={(e) => onKeyPress(e, 'BACKSPACE')}
               >
                 <Icon name="close" size={40} />
               </View>
               <View
                 className={`${classPrefix}-key extra-key ok-key`}
                 onTouchEnd={(e) => onKeyPress(e, 'OK')}
-                onClick={(e) => onKeyPress(e, 'OK')}
+                // onClick={(e) => onKeyPress(e, 'OK')}
               >
                 {confirmText}
               </View>

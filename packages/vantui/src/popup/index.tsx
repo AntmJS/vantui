@@ -41,7 +41,7 @@ export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
   } = props
   const _onAfterLeave = useCallback(() => {
     onAfterLeave?.()
-    setOuterShow()
+    setOuterShow?.()
   }, [onAfterLeave, setOuterShow])
 
   const _onClickCloseIcon = useCallback(() => {
