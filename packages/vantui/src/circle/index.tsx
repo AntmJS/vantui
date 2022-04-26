@@ -1,16 +1,16 @@
 import {
-  createSelectorQuery,
+  // createSelectorQuery,
   createCanvasContext,
-  useReady,
+  // useReady,
 } from '@tarojs/taro'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { View, Canvas, CoverView } from '@tarojs/components'
 import { Current } from '@tarojs/runtime'
 
 import { CircleProps } from '../../types/circle'
-import { getSystemInfoSync } from '../common/utils'
+// import { getSystemInfoSync } from '../common/utils'
 import { isObj } from '../common/validator'
-import { adaptor } from './canvas'
+// import { adaptor } from './canvas'
 
 function format(rate: number) {
   return Math.min(Math.max(rate, 0), 100)
@@ -61,14 +61,14 @@ export function Circle(props: CircleProps) {
     })
   }, [])
 
-  useReady(() => {
+  useEffect(() => {
     setState((state) => {
       return {
         ...state,
         ready: true,
       }
     })
-  })
+  }, [])
 
   useEffect(() => {
     /* eslint-disable-next-line */
@@ -96,38 +96,32 @@ export function Circle(props: CircleProps) {
       // @ts-ignore
       Current.page = { path: `page-${state.unitag}` }
     }
-    if (
-      type === '' ||
-      process.env.TARO_ENV === 'h5' ||
-      process.env.TARO_ENV === 'dd'
-    ) {
-      let ctx = null
-      try {
-        ctx = createCanvasContext(state.unitag)
-      } catch (error) {}
+    let ctx = null
+    try {
+      ctx = createCanvasContext(state.unitag)
+    } catch (error) {}
 
-      return Promise.resolve(ctx)
-    }
-    const dpr = getSystemInfoSync().pixelRatio
-    return new Promise((resolve: any) => {
-      createSelectorQuery()
-        .select(`.${state.unitag}`)
-        .node()
-        .exec((res: any) => {
-          const canvas = res[0].node
-          if (canvas) {
-            const ctx = canvas.getContext(type)
-            if (!ref.current.inited) {
-              ref.current.inited = true
-              canvas.width = size * dpr
-              canvas.height = size * dpr
-              ctx.scale(dpr, dpr)
-            }
-            resolve(adaptor(ctx))
-          }
-        })
-    })
-  }, [size, type, state.unitag])
+    return Promise.resolve(ctx)
+    // const dpr = getSystemInfoSync().pixelRatio
+    // return new Promise((resolve: any) => {
+    //   createSelectorQuery()
+    //     .select(`.${state.unitag}`)
+    //     .node()
+    //     .exec((res: any) => {
+    //       const canvas = res[0].node
+    //       if (canvas) {
+    //         const ctx = canvas.getContext(type)
+    //         if (!ref.current.inited) {
+    //           ref.current.inited = true
+    //           canvas.width = size * dpr
+    //           canvas.height = size * dpr
+    //           ctx.scale(dpr, dpr)
+    //         }
+    //         resolve(adaptor(ctx))
+    //       }
+    //     })
+    // })
+  }, [state.unitag])
 
   const setHoverColor = function () {
     if (isObj(color)) {
@@ -289,7 +283,7 @@ export function Circle(props: CircleProps) {
         height={size}
         nativeProps={{ width: size, height: size }}
         className={`van-circle__canvas ${state.unitag}`}
-        type={type}
+        // type={type}
         style={'width: ' + `${size}px` + ';height:' + `${size}px`}
         id={state.unitag}
         canvasId={state.unitag}
