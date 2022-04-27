@@ -436,8 +436,6 @@ export function Tabs(props: TabsProps) {
           '.' + utils.bem('renderNavRight' + comIndex),
         )
 
-        console.info(res, '1!!')
-
         if (res.length) othersWidth += res[0].width
       }
 
