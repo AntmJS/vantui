@@ -7,7 +7,7 @@ import {
   forwardRef,
   memo,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import {
   DropdownItemProps,
   IDropdownItemInstance,
@@ -62,7 +62,7 @@ function Index(
 
   const rerender = useCallback(
     function () {
-      Taro.nextTick(() => {
+      nextTick(() => {
         if (parentInstance) {
           parentInstance.updateItemListData()
         }

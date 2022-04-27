@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { View } from '@tarojs/components'
 import { Component } from 'react'
-import Taro from '@tarojs/taro'
+import { getCurrentPages, redirectTo, navigateTo } from '@tarojs/taro'
 
 import { Icon } from '@antmjs/vantui'
 import './index.less'
@@ -9,10 +9,10 @@ import './index.less'
 export default class Index extends Component {
   onClick = (event) => {
     const { url } = event.target.dataset
-    if (Taro.getCurrentPages().length > 9) {
-      Taro.redirectTo({ url })
+    if (getCurrentPages().length > 9) {
+      redirectTo({ url })
     } else {
-      Taro.navigateTo({ url })
+      navigateTo({ url })
     }
   }
 

@@ -1,6 +1,10 @@
 import type { MiniUserButtonProps } from '../../types/mini-user-button'
 import { useEffect, useState } from 'react'
-import Taro from '@tarojs/taro'
+import {
+  canIUse as TaroCanIUse,
+  getUserProfile as TaroGetUserProfile,
+  getUserInfo as TaroGetUserInfo,
+} from '@tarojs/taro'
 import { ButtonProps, CommonEventFunction } from '@tarojs/components'
 import { Button } from '../button'
 
@@ -14,14 +18,14 @@ export function MiniUserButton(props: MiniUserButtonProps): JSX.Element {
     let canIUse = false
     if (process.env.TARO_ENV !== 'h5') {
       try {
-        canIUse = Taro.canIUse('getUserProfile')
+        canIUse = TaroCanIUse('getUserProfile')
       } catch {}
     }
     setUserProfile(canIUse)
   }, [])
 
   const getUserProfile = function () {
-    Taro.getUserProfile({
+    TaroGetUserProfile({
       desc: desc || '用于快速登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success(res) {
         onGetUserInfo(res)
@@ -33,7 +37,7 @@ export function MiniUserButton(props: MiniUserButtonProps): JSX.Element {
   }
 
   const getTTUserInfo = function () {
-    Taro.getUserInfo({
+    TaroGetUserInfo({
       success(res) {
         onGetUserInfo(res)
       },

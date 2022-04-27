@@ -1,5 +1,5 @@
 import type { ButtonProps } from '../../types/button.d'
-import Taro from '@tarojs/taro'
+import { pxTransform } from '@tarojs/taro'
 import { Button as TaroButton, Block, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon/index'
@@ -42,7 +42,7 @@ export function Button(props: ButtonProps) {
     disabled,
     hairline,
     color,
-    loadingSize = Taro.pxTransform(40),
+    loadingSize = pxTransform(40),
     loadingType = 'circular',
     loadingText,
     icon,

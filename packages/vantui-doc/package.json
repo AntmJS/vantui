@@ -1,7 +1,7 @@
 {
   "name": "vantui-doc",
   "private": true,
-  "version": "1.8.3",
+  "version": "1.9.1",
   "description": "",
   "scripts": {
     "dev": "node ./scripts/ts-to-md && npx vant-cli dev",

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Taro from '@tarojs/taro'
+import { pxTransform } from '@tarojs/taro'
 import classnames from 'classnames'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 import { ScrollView, Text, View } from '@tarojs/components'
@@ -229,7 +229,7 @@ export default memo(Table)
 
 const getSize = (size: string | number): string => {
   if (typeof size === 'number') {
-    return Taro.pxTransform((size as number) * 2)
+    return pxTransform((size as number) * 2)
   }
 
   return String(size)

@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { pxTransform } from '@tarojs/taro'
 import { useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -15,7 +15,7 @@ export function Skeleton(props: SkeletonProps) {
     animate = true,
     avatar,
     avatarShape = 'round',
-    avatarSize = Taro.pxTransform(64),
+    avatarSize = pxTransform(64),
     titleWidth = '40%',
     title,
     rowWidth = '100%',

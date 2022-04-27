@@ -1,4 +1,9 @@
-import Taro from '@tarojs/taro'
+import {
+  chooseImage,
+  chooseMedia,
+  chooseVideo,
+  chooseMessageFile,
+} from '@tarojs/taro'
 import { pickExclude } from '../common/utils'
 import { isImageUrl, isVideoUrl } from '../common/validator'
 export function isImageFile(item: any) {
@@ -89,7 +94,7 @@ export function chooseFile({
   return new Promise((resolve, reject) => {
     switch (accept) {
       case 'image':
-        Taro.chooseImage({
+        chooseImage({
           count: multiple ? Math.min(maxCount, 9) : 1,
           sourceType: capture || ['album', 'camera'],
           sizeType: sizeType || ['original', 'compressed'],
@@ -98,7 +103,7 @@ export function chooseFile({
         })
         break
       case 'media':
-        Taro.chooseMedia({
+        chooseMedia({
           count: multiple ? Math.min(maxCount, 9) : 1,
           sourceType: capture || ['album', 'camera'],
           maxDuration,
@@ -109,7 +114,7 @@ export function chooseFile({
         })
         break
       case 'video':
-        Taro.chooseVideo({
+        chooseVideo({
           sourceType: capture || ['album', 'camera'],
           compressed,
           maxDuration: maxDuration || 60,
@@ -119,7 +124,7 @@ export function chooseFile({
         })
         break
       default:
-        Taro.chooseMessageFile({
+        chooseMessageFile({
           count: multiple ? maxCount : 1,
           type: accept,
           success: (res) => resolve(formatFile(res)),

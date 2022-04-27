@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { useState, useEffect, useCallback } from 'react'
 import { View, Text, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -104,7 +104,7 @@ export function Notify(props: NotifyProps) {
         show: false,
       }
     })
-    Taro.nextTick(() => {
+    nextTick(() => {
       notifyOptions?.onClose?.()
     })
   }, [])
@@ -117,7 +117,7 @@ export function Notify(props: NotifyProps) {
           show: true,
         }
       })
-      Taro.nextTick(() => {
+      nextTick(() => {
         notifyOptions?.onOpened?.()
       })
       if (state.duration > 0 && state.duration !== Infinity) {

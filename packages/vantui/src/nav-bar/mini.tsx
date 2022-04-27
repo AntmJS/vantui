@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import { navigateBack, reLaunch, getCurrentPages } from '@tarojs/taro'
 import { useState, useEffect, useCallback } from 'react'
 import { View, Block } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -37,13 +37,13 @@ export function MiniNavBar(props: MiniNavBarProps) {
     state
 
   const handleGoBack = useCallback(() => {
-    Taro.navigateBack({
+    navigateBack({
       delta: 1,
     })
   }, [])
 
   const handleGoHome = useCallback(() => {
-    Taro.reLaunch({
+    reLaunch({
       url: homeUrl,
     })
   }, [homeUrl])
@@ -53,7 +53,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
 
   useEffect(
     function () {
-      const pages = Taro.getCurrentPages()
+      const pages = getCurrentPages()
       if (pages.length >= 1) {
         const ins: any = pages[pages.length - 1]
         const url = ins.route || ins.__route__ || ins['$taroPath']
