@@ -40,7 +40,7 @@ export interface TabProps extends StandardProps {
   disabled?: boolean
   titleStyle?: string
   name?: string | number
-  children: ReactNode
+  children?: ReactNode
 }
 
 declare const Tab: ComponentClass<TabProps>

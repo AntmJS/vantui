@@ -327,5 +327,5 @@ function onChange(event) {
 | disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
 | titleStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 | name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `true` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 

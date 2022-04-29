@@ -103,7 +103,7 @@ import { Search } from "@antmjs/vantui";
     onSearch={ this.onSearch }
     renderAction={ (
           <View
-            onTap={ this.onClick }
+            onClick={ this.onClick }
           >
             搜索
           </View>
