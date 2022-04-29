@@ -133,7 +133,7 @@
   },
   "dependencies": {
     "@antmjs/mini-fix": "^1.18.2",
-    "@antmjs/vantui": "1.9.1",
+    "@antmjs/vantui": "^1.9.1",
     "@babel/runtime-corejs3": "^7.14.7",
     "@tarojs/components": "3.4.1",
     "@tarojs/react": "3.4.1",
