@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import {
   useState,
@@ -6,6 +7,7 @@ import {
   useEffect,
   useRef,
   useMemo,
+  useCallback,
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View, ScrollView } from '@tarojs/components'
@@ -60,6 +62,8 @@ export function Tabs(props: TabsProps) {
   })
 
   const indexRef = useRef(comIndex)
+  const [isInited, setIsInited] = useState(false)
+  const [scrollWidth, setScrollWidth] = useState('100%')
   const [state, setState]: any = useState({
     tabs: [],
     scrollLeft: 0,
@@ -113,6 +117,7 @@ export function Tabs(props: TabsProps) {
   useEffect(() => {
     comIndex++
     indexRef.current = comIndex
+    setIsInited(true)
   }, [])
 
   const tabs = useMemo(() => {
@@ -357,13 +362,13 @@ export function Tabs(props: TabsProps) {
 
   useEffect(
     function () {
-      setTimeout(() => {
+      nextTick(() => {
         resize()
         scrollIntoView()
         if (active !== getCurrentName() && !ref.current?.swiping) {
           setCurrentIndexByName(active)
         }
-      }, 16)
+      })
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [getCurrentName()],
@@ -411,6 +416,43 @@ export function Tabs(props: TabsProps) {
     [newChildren],
   )
 
+  const getScrollWrapWidth = useCallback(
+    async function () {
+      let othersWidth = 0
+      if (renderNavLeft && isInited) {
+        const res: any = await getAllRect(
+          null,
+          // @ts-ignore
+          '.' + utils.bem('renderNavLeft' + comIndex),
+        )
+
+        if (res.length) othersWidth += res[0].width
+      }
+
+      if (renderNavRight && isInited) {
+        const res: any = await getAllRect(
+          null,
+          // @ts-ignore
+          '.' + utils.bem('renderNavRight' + comIndex),
+        )
+
+        if (res.length) othersWidth += res[0].width
+      }
+
+      if (othersWidth) setScrollWidth(`calc(100% - ${othersWidth}px)`)
+    },
+    [renderNavLeft, isInited, renderNavRight],
+  )
+
+  useEffect(
+    function () {
+      setTimeout(() => {
+        getScrollWrapWidth()
+      })
+    },
+    [getScrollWrapWidth, isInited],
+  )
+
   return (
     <View
       className={
@@ -437,13 +479,18 @@ export function Tabs(props: TabsProps) {
             (type === 'line' && border ? 'van-hairline--top-bottom' : '')
           }
         >
-          {renderNavLeft}
+          <View className={utils.bem('renderNavLeft' + comIndex)}>
+            {renderNavLeft}
+          </View>
           <ScrollView
             scrollX={scrollable}
             scrollWithAnimation={scrollWithAnimation}
             scrollLeft={scrollLeft}
             className={utils.bem('tabs__scroll', [type])}
-            style={color ? 'border-color: ' + color : ''}
+            style={{
+              width: scrollWidth,
+              borderColor: color,
+            }}
           >
             <View
               className={
@@ -514,7 +561,9 @@ export function Tabs(props: TabsProps) {
               })}
             </View>
           </ScrollView>
-          {renderNavRight}
+          <View className={utils.bem('renderNavRight' + comIndex)}>
+            {renderNavRight}
+          </View>
         </View>
       </Sticky>
       <View
