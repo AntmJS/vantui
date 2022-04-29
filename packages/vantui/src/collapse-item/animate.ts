@@ -36,7 +36,7 @@ function useAnimation(expanded: any, mounted: any, height: any, setState: any) {
     timingFunction: 'ease-in-out',
   })
   if (expanded) {
-    if (height === 0) {
+    if (height === 0 || height === null || height === undefined) {
       animation.height('auto').top(1).step()
     } else {
       animation
