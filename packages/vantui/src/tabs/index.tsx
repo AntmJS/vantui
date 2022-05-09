@@ -365,7 +365,11 @@ export function Tabs(props: TabsProps) {
       nextTick(() => {
         resize()
         scrollIntoView()
-        if (active !== getCurrentName() && !ref.current?.swiping) {
+        if (
+          active !== getCurrentName() &&
+          !ref.current?.swiping &&
+          !swipeable
+        ) {
           setCurrentIndexByName(active)
         }
       })
