@@ -157,7 +157,7 @@ function onChange(event) {
         ></Image>
       </Block>
     }
-    renderIconactive={
+    renderIconActive={
       <Block>
         <Image
           src={this.state.icon.active}
@@ -184,8 +184,8 @@ function onChange(event) {
 this.state = {
   active: 0,
   icon: {
-    normal: 'https://img.yzcdn.cn/vant/userInactive.png',
-    active: 'https://img.yzcdn.cn/vant/userActive.png'
+    normal: 'https://img.yzcdn.cn/vant/user-inactive.png',
+    active: 'https://img.yzcdn.cn/vant/user-active.png'
   }
 };
 
