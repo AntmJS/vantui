@@ -65,12 +65,14 @@ export function Stepper(props: StepperProps) {
   const _format = useCallback(
     (value) => {
       value = _filter(value)
-      // format range
-      value = value === '' ? 0 : +value
-      value = Math.max(Math.min(+max, value), +min)
-      // format decimal
-      if (isDef(decimalLength)) {
-        value = value.toFixed(decimalLength)
+      if (!/(.+?)\.$/.test(String(value))) {
+        // format range
+        value = value === '' ? 0 : +value
+        value = Math.max(Math.min(+max, value), +min)
+        // format decimal
+        if (isDef(decimalLength)) {
+          value = value.toFixed(decimalLength)
+        }
       }
       return value
     },
