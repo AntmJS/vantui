@@ -4,7 +4,7 @@
   "version": "1.9.2",
   "description": "",
   "scripts": {
-    "dev": "node ./scripts/ts-to-md && npx vant-cli dev",
+    "dev": "node ./scripts/ts-to-md && npx vantui-cli docs --mode development",
     "test:coverage": "open test/coverage/index.html",
     "build": "node ./scripts/ts-to-md && sh ./build.sh",
     "release": "npx gh-pages -d site",
@@ -12,18 +12,15 @@
   },
   "author": "sanshao",
   "license": "MIT",
-  "peerDependencies": {
-    "vue": "^3.0.0"
-  },
   "devDependencies": {
-    "@vant/cli": "^3.9.0",
+    "@antmjs/vantui-cli": "^1.18.4",
     "@vue/compiler-sfc": "^3.0.0",
     "ast-to-markdown": "^1.0.0",
     "cross-env": "^7.0.3",
     "glob": "^7.2.0",
     "markdown-to-ast": "^6.0.3",
-    "prettier": "^2.4.1",
-    "vue": "^3.0.0"
+    "ora": "5.4.1",
+    "prettier": "^2.4.1"
   },
   "browserslist": [
     "Chrome >= 51",
