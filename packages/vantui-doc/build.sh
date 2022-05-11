@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npx vantui-cli docs --mode production
+npx antm-vantui-cli docs --mode production
 
 
 cd ./../vantui-demo

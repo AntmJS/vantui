@@ -62,7 +62,7 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/vantui-cli": "^1.18.1",
+    "@antmjs/vantui-cli": "^1.18.4",
     "@tarojs/components": "3.4.1",
     "@tarojs/taro": "3.4.1",
     "@types/lodash.flow": "^3.5.6",
