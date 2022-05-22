@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { ConfigProvider } from "@antmjs/vantui"; 
+import { ConfigProvider } from '@antmjs/vantui'
 ```
 
 ## 定制主题
@@ -46,97 +46,89 @@ page {
 }
 ```
 
-#### 通过 ConfigProvider 覆盖
+### 通过 ConfigProvider 覆盖
 
 `ConfigProvider` 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 `ConfigProvider` 组件，并通过 `themeVars` 属性来配置一些主题变量。
 
 ```jsx
-<View>
-  <ConfigProvider themeVars={themeVars}>
-    <CellGroup>
-      <Field
-        label="评分"
-        renderInput={
-          <View style="width: 100%">
-            <Rate
-              value={rate}
-              onChange={(e) => {
-                this.onChange({
-                  detail: e.detail,
-                  currentTarget: {
-                    dataset: { key: 'rate' },
-                  },
-                  target: {
-                    dataset: { key: 'rate' },
-                  },
-                })
-              }}
-            ></Rate>
-          </View>
-        }
-      ></Field>
-      <Field
-        label="滑块"
-        border={false}
-        renderInput={
-          <>
-            <View style="width: 100%">
-              <Slider
-                value={slider}
-                onChange={(e) => {
-                  this.onChange({
-                    detail: e.detail,
-                    currentTarget: {
-                      dataset: { key: 'slider' },
-                    },
-                    target: {
-                      dataset: { key: 'slider' },
-                    },
-                  })
-                }}
-              ></Slider>
-            </View>
-          </>
-        }
-      ></Field>
-    </CellGroup>
-    <View style="margin: 16px">
-      <Button round block type="primary">
-        提交
-      </Button>
-    </View>
-  </ConfigProvider>
-</View>
+const themeVars = {
+  rateIconFullColor: '#e19a9a',
+  sliderBarHeight: '4px',
+  sliderButtonWidth: '20px',
+  sliderButtonHeight: '20px',
+  sliderActiveBackgroundColor: '#e19a9a',
+  buttonPrimaryBorderColor: '#e19a9a',
+  buttonPrimaryBackgroundColor: '#e19a9a',
+}
+
+function Demo() {
+  const [rate, setRate] = react.useState(4)
+  const [slider, setSlider] = react.useState(50)
+
+  return (
+    <>
+      <ConfigProvider themeVars={themeVars}>
+        <CellGroup>
+          <Field
+            label="评分"
+            renderInput={
+              <Rate value={rate} onChange={(e) => setRate(e.detail)}></Rate>
+            }
+          ></Field>
+          <Field
+            label="滑块"
+            border={false}
+            renderInput={
+              <View style="width: 100%">
+                <Slider
+                  value={slider}
+                  onChange={(e) => setSlider(e.detail)}
+                ></Slider>
+              </View>
+            }
+          ></Field>
+        </CellGroup>
+        <View style="margin: 16px">
+          <Button round block type="primary">
+            提交
+          </Button>
+        </View>
+      </ConfigProvider>
+      <ConfigProvider>
+        <CellGroup>
+          <Field
+            label="评分"
+            renderInput={
+              <Rate value={rate} onChange={(e) => setRate(e.detail)}></Rate>
+            }
+          ></Field>
+          <Field
+            label="滑块"
+            border={false}
+            renderInput={
+              <View style="width: 100%">
+                <Slider
+                  value={slider}
+                  onChange={(e) => setSlider(e.detail)}
+                ></Slider>
+              </View>
+            }
+          ></Field>
+        </CellGroup>
+        <View style="margin: 16px">
+          <Button round block type="primary">
+            提交
+          </Button>
+        </View>
+      </ConfigProvider>
+    </>
+  )
+}
 ```
 
-```js
-this.state = {
-  rate: 4,
-  slider: 50,
-  themeVars: {
-    rateIconFullColor: '#07c160',
-    sliderBarHeight: '4px',
-    sliderButtonWidth: '20px',
-    sliderButtonHeight: '20px',
-    sliderActiveBackgroundColor: '#07c160',
-    buttonPrimaryBorderColor: '#07c160',
-    buttonPrimaryBackgroundColor: '#07c160'
-  }
-};
+### ConfigProviderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/config-provider.d.ts)
 
-function onChange(event) {
-  const {
-    key
-  } = event.currentTarget.dataset;
-  this.setState({
-    [key]: event.detail
-  });
-} 
-```
-### ConfigProviderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/config-provider.d.ts)   
-
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| themeVars | 自定义主题变量 | _&nbsp;&nbsp;Normal.IAnyObject<br/>_ | - | `true` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `true` |
-
+| 参数      | 说明           | 类型                                 | 默认值 | 必填   |
+| --------- | -------------- | ------------------------------------ | ------ | ------ |
+| themeVars | 自定义主题变量 | _&nbsp;&nbsp;Normal.IAnyObject<br/>_ | -      | `true` |
+| children  | -              | _&nbsp;&nbsp;ReactNode<br/>_         | -      | `true` |

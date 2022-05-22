@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Picker } from "@antmjs/vantui"; 
+import { Picker } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,29 +17,19 @@ import { Picker } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <Picker
-    columns={ this.columns }
-    onChange={ this.onChange }
-  />
-</View>
- 
-```
-
-```js
-import { toast } from 'vantui';
-this.state = {
-  columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
-};
-
-function onChange(event) {
-  const {
-    picker,
-    value,
-    index
-  } = event.detail;
-  toast(`当前值：${value}, 当前索引：${index}`);
-} 
+const columns = ['杭州', '宁波', '温州', '嘉兴', '湖州']
+function Demo() {
+  const onChange = (event) => {
+    const { picker, value, index } = event.detail
+    Toast.show(`当前值：${value}, 当前索引：${index}`)
+  }
+  return (
+    <>
+      <Toast />
+      <Picker columns={columns} onChange={onChange} />
+    </>
+  )
+}
 ```
 
 ### 默认选中项
@@ -47,87 +37,78 @@ function onChange(event) {
 单列选择器可以直接通过`defaultIndex`属性设置初始选中项的索引值。
 
 ```jsx
-<View>
-  <Picker
-    columns={ this.state.columns }
-    defaultIndex={ 2 }
-    onChange={ this.onChange }
-  />
-</View>
- 
+const columns = ['杭州', '宁波', '温州', '嘉兴', '湖州']
+function Demo() {
+  const onChange = (event) => {
+    const { picker, value, index } = event.detail
+    Toast.show(`当前值：${value}, 当前索引：${index}`)
+  }
+  return (
+    <>
+      <Toast />
+      <Picker defaultIndex={2} columns={columns} onChange={onChange} />
+    </>
+  )
+}
 ```
 
 ### 展示顶部栏
 
 ```jsx
-<View>
-  <Picker
-    showToolbar={ true }
-    title="标题"
-    columns={ this.state.columns }
-    onCancel={ this.onCancel }
-    onConfirm={ this.onConfirm }
-  />
-</View>
- 
-```
-
-```js
-import { toast } from 'vantui';
-this.state = {
-  columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
-};
-
-function onConfirm(event) {
-  const {
-    picker,
-    value,
-    index
-  } = event.detail;
-  toast(`当前值：${value}, 当前索引：${index}`);
+const columns = ['杭州', '宁波', '温州', '嘉兴', '湖州']
+function Demo() {
+  const onChange = (event) => {
+    const { picker, value, index } = event.detail
+    Toast.show(`当前值：${value}, 当前索引：${index}`)
+  }
+  return (
+    <>
+      <Toast />
+      <Picker
+        showToolbar
+        title="标题"
+        defaultIndex={2}
+        columns={columns}
+        onChange={onChange}
+        onCancel={() => Toast.show('onCancel')}
+        onConfirm={() => Toast.show('onConfirm')}
+      />
+    </>
+  )
 }
-
-function onCancel() {
-  toast('取消');
-} 
 ```
 
 ### 多列联动
 
 ```jsx
-<View>
-  <Picker
-    columns={ this.state.columns }
-    onChange={ this.onChange }
-  />
-</View>
- 
-```
-
-```js
 const citys = {
   浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-  福建: ['福州', '厦门', '莆田', '三明', '泉州']
-};
-this.state = {
-  columns: [{
-    values: Object.keys(citys),
-    className: 'column1'
-  }, {
-    values: citys['浙江'],
-    className: 'column2',
-    defaultIndex: 2
-  }]
-};
+  福建: ['福州', '厦门', '莆田', '三明', '泉州'],
+}
+function Demo() {
+  const [columns, setColumns] = react.useState([
+    {
+      values: Object.keys(citys),
+      className: 'column1',
+    },
+    {
+      values: citys['浙江'],
+      className: 'column2',
+      defaultIndex: 2,
+    },
+  ])
 
-function onChange(event) {
-  const {
-    picker,
-    value,
-    index
-  } = event.detail;
-  picker.setColumnValues(1, citys[value[0]]);
-} 
+  const onChange = (event) => {
+    const { picker, value, index } = event.detail
+    picker.setColumnValues(1, citys[value[0]])
+  }
+  return (
+    <>
+      <Toast />
+      <Picker columns={columns} onChange={onChange} />
+    </>
+  )
+}
 ```
 
 ### 禁用选项
@@ -135,23 +116,21 @@ function onChange(event) {
 选项可以为对象结构，通过设置 disabled 来禁用该选项。
 
 ```jsx
-<View>
-  <Picker columns={ this.state.columns } />
-</View>
- 
-```
-
-```js
-this.state = {
-  columns: [{
+const columns = [
+  {
     text: '杭州',
-    disabled: true
-  }, {
-    text: '宁波'
-  }, {
-    text: '温州'
-  }]
-}; 
+    disabled: true,
+  },
+  {
+    text: '宁波',
+  },
+  {
+    text: '温州',
+  },
+]
+function Demo() {
+  return <Picker columns={columns} />
+}
 ```
 
 ### 加载状态
@@ -159,13 +138,20 @@ this.state = {
 当 Picker 数据是通过异步获取时，可以通过 `loading` 属性显示加载提示。
 
 ```jsx
-<View>
-  <Picker
-    columns={ this.state.columns }
-    loading={ true }
-  />
-</View>
- 
+const columns = [
+  {
+    text: '宁波',
+  },
+  {
+    text: '温州',
+  },
+  {
+    text: '长沙',
+  },
+]
+function Demo() {
+  return <Picker columns={columns} loading />
+}
 ```
 ### PickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)   
 

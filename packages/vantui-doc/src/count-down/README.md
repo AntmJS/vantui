@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { CountDown } from "@antmjs/vantui"; 
+import { CountDown } from '@antmjs/vantui'
 ```
 
 > Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)。
@@ -21,16 +21,11 @@ import { CountDown } from "@antmjs/vantui";
 `time`属性表示倒计时总时长，单位为毫秒。
 
 ```jsx
-<View>
-  <CountDown time={ this.state.time } />
-</View>
- 
-```
+function Demo() {
+  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
 
-```js
-this.state = {
-  time: 30 * 60 * 60 * 1000
-}; 
+  return <CountDown time={value} />
+}
 ```
 
 ### 自定义格式
@@ -38,13 +33,11 @@ this.state = {
 通过`format`属性设置倒计时文本的内容。
 
 ```jsx
-<View>
-  <CountDown
-    time={ this.state.time }
-    format="DD 天 HH 时 mm 分 ss 秒"
-  />
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
+
+  return <CountDown time={value} format="DD 天 HH 时 mm 分 ss 秒" />
+}
 ```
 
 ### 毫秒级渲染
@@ -52,14 +45,11 @@ this.state = {
 倒计时默认每秒渲染一次，设置`millisecond`属性可以开启毫秒级渲染。
 
 ```jsx
-<View>
-  <CountDown
-    millisecond={ true }
-    time={ this.state.time }
-    format="HH:mm:ss:SSS"
-  />
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
+
+  return <CountDown millisecond time={value} format="HH:mm:ss:SSS" />
+}
 ```
 
 ### 自定义样式
@@ -67,103 +57,64 @@ this.state = {
 通过`onChange`事件获取`timeData`对象并自行渲染，格式见下方表格。
 
 ```jsx
-<View>
-  <CountDown
-    time={ this.state.time }
-    onChange={ this.onChange }
-  >
-    <Text class="item">
-      { timeData.hours }
-    </Text>
-    <Text class="item">
-      { timeData.minutes }
-    </Text>
-    <Text class="item">
-      { timeData.seconds }
-    </Text>
-  </CountDown>
-</View>
- 
-```
+function Demo() {
+  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
+  const [timeData, setTimeData] = react.useState({})
 
-```js
-this.state = {
-  time: 30 * 60 * 60 * 1000,
-  timeData: {}
-};
-
-function onChange(e) {
-  this.setState({
-    timeData: e.detail
-  });
-} 
-```
-
-```css
-.item {
-  display: inlineBlock;
-  width: 22px;
-  marginRight: 5px;
-  color: #fff;
-  fontSize: 12px;
-  textAlign: center;
-  backgroundColor: #1989fa;
-  borderRadius: 2px;
+  return (
+    <CountDown time={value} onChange={(e) => setTimeData({ ...e.detail })}>
+      <Text style={{ color: 'blue' }}>{timeData.hours}</Text>时
+      <Text style={{ color: 'green' }}>{timeData.minutes}</Text>分
+      <Text style={{ color: 'red' }}>{timeData.seconds}</Text>秒
+    </CountDown>
+  )
 }
 ```
 
-### 手动控制
+### 手动控制 (hooks 下面存在问题!)
 
-通过 `selectComponent` 选择器获取到组件实例后，可以调用`start`、`pause`、`reset`方法。
+通过 `ref` 选择器获取到组件实例后，可以调用`start`、`pause`、`reset`方法。
 
 ```jsx
-<View>
-  <CountDown
-    class="controlCountDown"
-    millisecond={ true }
-    time={ 3000 }
-    autoStart={ false }
-    format="ss:SSS"
-    onFinish={ finished }
-  />
-  <Grid
-    clickable={ true }
-    columnNum="3"
-  >
-    <GridItem
-      text="开始"
-      icon="playCircle-o"
-      bindclick="start"
-    />
-    <GridItem
-      text="暂停"
-      icon="pauseCircle-o"
-      bindclick="pause"
-    />
-    <GridItem
-      text="重置"
-      icon="replay"
-      bindclick="reset"
-    />
-  </Grid>
-</View>
- 
-```
+function Demo() {
+  const it = react.useRef()
 
-```js
-function pause() {
-  const countDown = this.selectComponent('.controlCountDown');
-  countDown.pause();
+  return (
+    <View>
+      <Toast id="controlCountDown-mess" />
+      <CountDown
+        onChange={(e) => console.info(e)}
+        ref={(el) => (it.current = el)}
+        class="controlCountDown"
+        millisecond
+        time={4000}
+        autoStart={false}
+        format="ss:SSS"
+        onFinish={() => Toast.show('end')}
+      />
+      <Grid clickable columnNum="3">
+        <GridItem
+          text="开始"
+          icon="play-circle-o"
+          onClick={() => it.current.start()}
+        />
+        <GridItem
+          text="暂停"
+          icon="pause-circle-o"
+          onClick={() => it.current.pause()}
+        />
+        <GridItem
+          text="重置"
+          icon="replay"
+          onClick={() => {
+            console.info(it)
+            it.current.reset()
+          }}
+        />
+      </Grid>
+    </View>
+  )
 }
-
-function reset() {
-  const countDown = this.selectComponent('.controlCountDown');
-  countDown.reset();
-}
-
-function finished() {
-  Toast('倒计时结束');
-} 
 ```
 ### ICountDownRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)   
 

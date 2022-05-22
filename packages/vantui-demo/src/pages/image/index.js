@@ -1,117 +1,47 @@
-import { View, Text } from '@tarojs/components'
+/* eslint-disable */
+
 import { Component } from 'react'
-
-import { Row, Loading, Image, Col } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
-
 import DemoBlock from '../../components/demo-block/index'
-import './index.scss'
+import Demo1 from './demo1'
+import Demo2 from './demo2'
+import Demo3 from './demo3'
+import Demo4 from './demo4'
+import Demo5 from './demo5'
+import Demo6 from './demo6'
 
 export default class Index extends Component {
   constructor() {
     super()
   }
-
-  state = {
-    fits: [
-      'contain',
-      'cover',
-      'fill',
-      'none',
-      'scaleDown',
-      'widthFix',
-      'heightFix',
-    ],
-    src: 'https://img.yzcdn.cn/vant/cat.jpeg',
-  }
+  state = {}
 
   render() {
-    const { src, fits } = this.state
     return (
-      <DemoPage title="Image 图片">
-        <>
-          <DemoBlock title="基础用法" padding>
-            <Row>
-              <Image width="100" height="100" src={src}></Image>
-            </Row>
-          </DemoBlock>
-          <DemoBlock title="填充模式" padding>
-            <Row gutter="20">
-              {fits.map((fit) => {
-                return (
-                  <Col key={fit.fit} span="8">
-                    <Image
-                      fit={fit}
-                      width="100%"
-                      height="27vw"
-                      src={src}
-                    ></Image>
-                    <View className="text">{fit}</View>
-                  </Col>
-                )
-              })}
-            </Row>
-          </DemoBlock>
-          <DemoBlock title="圆形图片" padding>
-            <Row gutter="20">
-              {fits.map((fit) => {
-                return (
-                  <Col key={fit.fit} span="8">
-                    <Image
-                      round
-                      fit={fit}
-                      width="100%"
-                      height="27vw"
-                      src={src}
-                    ></Image>
-                    <View className="text">{fit}</View>
-                  </Col>
-                )
-              })}
-            </Row>
-          </DemoBlock>
-          <DemoBlock title="加载中提示" padding>
-            <Row gutter="20">
-              <Col span="8">
-                <Image width="100%" height="27vw"></Image>
-                <View className="text">默认提示</View>
-              </Col>
-              <Col span="8">
-                <Image
-                  width="100%"
-                  height="27vw"
-                  renderLoading={
-                    <>
-                      <Loading type="spinner" size="20" vertical></Loading>
-                    </>
-                  }
-                ></Image>
-                <View className="text">自定义提示</View>
-              </Col>
-            </Row>
-          </DemoBlock>
-          <DemoBlock title="加载失败提示" padding>
-            <Row gutter="20">
-              <Col span="8">
-                <Image width="100%" height="27vw" src="x"></Image>
-                <View className="text">默认提示</View>
-              </Col>
-              <Col span="8">
-                <Image
-                  width="100%"
-                  height="27vw"
-                  src="x"
-                  renderError={
-                    <>
-                      <Text>加载失败</Text>
-                    </>
-                  }
-                ></Image>
-                <View className="text">自定义提示</View>
-              </Col>
-            </Row>
-          </DemoBlock>
-        </>
+      <DemoPage title="Image 图片" className="pages-image-index">
+        <DemoBlock title="基础用法" padding>
+          <Demo1 />
+        </DemoBlock>
+
+        <DemoBlock title="填充模式" padding>
+          <Demo2 />
+        </DemoBlock>
+
+        <DemoBlock title="圆形图片" padding>
+          <Demo3 />
+        </DemoBlock>
+
+        <DemoBlock title="图片懒加载" padding>
+          <Demo4 />
+        </DemoBlock>
+
+        <DemoBlock title="加载中提示" padding>
+          <Demo5 />
+        </DemoBlock>
+
+        <DemoBlock title="加载失败提示" padding>
+          <Demo6 />
+        </DemoBlock>
       </DemoPage>
     )
   }

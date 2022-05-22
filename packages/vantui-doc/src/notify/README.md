@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Notify } from "@antmjs/vantui"; 
+import { Notify } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,70 +17,127 @@ import { Notify } from "@antmjs/vantui";
 ### 基础用法
 
 ```js
-import { Notify } from 'vantui';
-
-Notify.show('通知内容');
+import { Notify } from 'vantui'
 ```
 
 ```jsx
-<View>
-  {/*  在页面内添加对应的节点  */}
-  <Notify id="vanNotify" />
-</View>
- 
+function Demo() {
+  const show = () => Notify.show('通知内容')
+
+  return (
+    <View>
+      {/*  在页面内添加对应的节点  */}
+      <Button onClick={show} type="danger">
+        基础用法
+      </Button>
+      <Notify id="vanNotify" />
+    </View>
+  )
+}
 ```
 
 ### 通知类型
 
 支持`primary`、`success`、`warning`、`danger`四种通知类型，默认为`danger`。
 
-```js
-// 主要通知
-Notify.show({ type: 'primary', message: '通知内容' });
+```jsx
+function Demo() {
+  const primaryShow = () => {
+    Notify.show({
+      message: '-----通知内容-----',
+      type: 'primary',
+    })
+  }
 
-// 成功通知
-Notify.show({ type: 'success', message: '通知内容' });
+  const successShow = () => {
+    Notify.show({
+      message: '-----通知内容-----',
+      type: 'success',
+    })
+  }
 
-// 危险通知
-Notify.show({ type: 'danger', message: '通知内容' });
+  const dangerShow = () => {
+    Notify.show({
+      message: '-----通知内容-----',
+      type: 'danger',
+    })
+  }
 
-// 警告通知
-Notify.show({ type: 'warning', message: '通知内容' });
+  const warningShow = () => {
+    Notify.show({
+      message: '通知内容!',
+      type: 'warning',
+    })
+  }
+
+  return (
+    <View>
+      {/*  在页面内添加对应的节点  */}
+      <Button onClick={primaryShow} type="info">
+        主要通知
+      </Button>
+      <Button onClick={primaryShow} type="primary">
+        成功通知
+      </Button>
+      <Button onClick={dangerShow} type="danger">
+        危险通知
+      </Button>
+      <Button onClick={warningShow} type="warning">
+        警告用法
+      </Button>
+      <Notify id="vanNotify" />
+    </View>
+  )
+}
 ```
 
 ### 自定义通知
 
 自定义消息通知的颜色和展示时长。
 
-```js
-Notify.show({
-  message: '自定义颜色',
-  color: '#ad0000',
-  background: '#ffe1e1',
-});
+```jsx
+function Demo() {
+  const show = () => {
+    Notify.show({
+      message: '自定义颜色',
+      color: '#ad0000',
+      background: '#ffe1e1',
+      duration: 1000,
+    })
+  }
 
-Notify.show({
-  message: '自定义时长',
-  duration: 1000,
-});
+  return (
+    <View>
+      <Button onClick={show} type="primary">
+        自定义颜色和时长
+      </Button>
+      <Notify id="vanNotify" />
+    </View>
+  )
+}
 ```
 
 ### 自定义选择器
 
-```js
-Notify.show({
-  message: '自定义节点选择器',
-  duration: 1000,
-  selector: '#customSelector',
-});
-```
-
 ```jsx
-<View>
-  {/*  在页面内添加自定义节点  */}
-  <Notify id="customSelector" />
-</View>
- 
+function Demo() {
+  const show = () => {
+    Notify.show({
+      message: '自定义节点选择器',
+      duration: 1000,
+      selector: '#customSelector',
+    })
+  }
+
+  return (
+    <View>
+      <Button onClick={show} type="primary">
+        自定义选择器
+      </Button>
+      <Notify id="customSelector" />
+    </View>
+  )
+}
 ```
 ### NotifyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notify.d.ts)   
 

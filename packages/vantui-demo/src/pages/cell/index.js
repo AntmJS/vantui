@@ -1,10 +1,17 @@
-import { Component } from 'react'
-import { View } from '@tarojs/components'
-import { Tag, Icon, CellGroup, Cell } from '@antmjs/vantui'
-import DemoPage from '../../components/demo-page/index'
+/* eslint-disable */
 
+import { Component } from 'react'
+import DemoPage from '../../components/demo-page/index'
 import DemoBlock from '../../components/demo-block/index'
-import './index.scss'
+import Demo1 from './demo1'
+import Demo2 from './demo2'
+import Demo3 from './demo3'
+import Demo4 from './demo4'
+import Demo5 from './demo5'
+import Demo6 from './demo6'
+import Demo7 from './demo7'
+import Demo8 from './demo8'
+import Demo9 from './demo9'
 
 export default class Index extends Component {
   constructor() {
@@ -14,105 +21,42 @@ export default class Index extends Component {
 
   render() {
     return (
-      <DemoPage title="Cell 单元格">
-        <>
-          <DemoBlock title="基础用法">
-            <CellGroup>
-              <Cell title="单元格" value="内容"></Cell>
-              <Cell
-                title="单元格"
-                value="内容"
-                label="描述信息"
-                border={false}
-              ></Cell>
-            </CellGroup>
-          </DemoBlock>
-          <DemoBlock title="卡片风格">
-            <CellGroup inset>
-              <Cell title="单元格" value="内容"></Cell>
-              <Cell title="单元格" value="内容" label="描述信息"></Cell>
-            </CellGroup>
-          </DemoBlock>
-          <DemoBlock title="单元格大小">
-            <CellGroup>
-              <Cell title="单元格" value="内容" size="large"></Cell>
-              <Cell
-                title="单元格"
-                value="内容"
-                size="large"
-                border={false}
-                renderLabel={
-                  <>
-                    <View>描述信息</View>
-                  </>
-                }
-              ></Cell>
-            </CellGroup>
-          </DemoBlock>
-          <DemoBlock title="展示图标">
-            <Cell
-              title="单元格"
-              value="内容"
-              icon="location-o"
-              border={false}
-            ></Cell>
-          </DemoBlock>
-          <DemoBlock title="展示箭头">
-            <Cell title="单元格" isLink></Cell>
-            <Cell title="单元格" value="内容" isLink></Cell>
-            <Cell
-              title="单元格"
-              isLink
-              arrowDirection="down"
-              value="内容"
-              border={false}
-            ></Cell>
-          </DemoBlock>
-          <DemoBlock title="页面跳转">
-            <Cell title="单元格" isLink url="/pages/dashboard/index"></Cell>
-            <Cell
-              title="单元格"
-              isLink
-              url="/pages/dashboard/index"
-              linkType="redirectTo"
-            ></Cell>
-          </DemoBlock>
-          <DemoBlock title="分组标题">
-            <CellGroup title="分组 1">
-              <Cell title="单元格" value="内容"></Cell>
-            </CellGroup>
-            <CellGroup title="分组 2">
-              <Cell title="单元格" value="内容"></Cell>
-            </CellGroup>
-          </DemoBlock>
-          <DemoBlock title="使用插槽">
-            <Cell
-              value="内容"
-              icon="shop-o"
-              isLink
-              renderTitle={
-                <>
-                  <View>
-                    <View className="title">单元格</View>
-                    <Tag type="danger">标签</Tag>
-                  </View>
-                </>
-              }
-            ></Cell>
-            <Cell
-              title="单元格"
-              border={false}
-              renderRightIcon={
-                <>
-                  <Icon name="search"></Icon>
-                </>
-              }
-            ></Cell>
-          </DemoBlock>
-          <DemoBlock title="垂直居中">
-            <Cell center title="单元格" value="内容" label="描述信息"></Cell>
-          </DemoBlock>
-        </>
+      <DemoPage title="Cell 单元格" className="pages-cell-index">
+        <DemoBlock title="基础用法" padding>
+          <Demo1 />
+        </DemoBlock>
+
+        <DemoBlock title="卡片风格" padding>
+          <Demo2 />
+        </DemoBlock>
+
+        <DemoBlock title="单元格大小" padding>
+          <Demo3 />
+        </DemoBlock>
+
+        <DemoBlock title="展示图标" padding>
+          <Demo4 />
+        </DemoBlock>
+
+        <DemoBlock title="展示箭头" padding>
+          <Demo5 />
+        </DemoBlock>
+
+        <DemoBlock title="页面跳转" padding>
+          <Demo6 />
+        </DemoBlock>
+
+        <DemoBlock title="分组标题" padding>
+          <Demo7 />
+        </DemoBlock>
+
+        <DemoBlock title="自定义渲染内容" padding>
+          <Demo8 />
+        </DemoBlock>
+
+        <DemoBlock title="垂直居中" padding>
+          <Demo9 />
+        </DemoBlock>
       </DemoPage>
     )
   }

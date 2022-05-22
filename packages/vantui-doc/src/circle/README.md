@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Circle } from "@antmjs/vantui"; 
+import { Circle } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -19,69 +19,47 @@ import { Circle } from "@antmjs/vantui";
 `value`属性表示进度条的目标进度。
 
 ```jsx
-<View>
-  <Circle
-    value={ 30 }
-    text="text"
-  />
-</View>
- 
+function Demo() {
+  return <Circle value={30} text="text" />
+}
 ```
 
-### 宽度定制
+### 样式定制
 
-通过`strokeWidth`属性来控制进度条宽度。
+- 通过`strokeWidth`属性来控制进度条宽度。
+- 通过`color`属性来控制进度条颜色，`layerColor`属性来控制轨道颜色。
+- `color`属性支持传入对象格式来定义渐变色。
+- 通过`size`属性设置圆环直径。
 
 ```jsx
-<View>
-  <Circle
-    value={ this.state.value }
-    strokeWidth="6"
-    text="宽度定制"
-  />
-</View>
- 
-```
+function Demo() {
+  const [value, setValue] = react.useState(50)
+  return (
+    <View>
+      <Circle value={value} strokeWidth="6" text="宽度定制" />
+      <Circle
+        value={value}
+        layerColor="#eeeeee"
+        color="#ee0a24"
+        text="颜色定制"
+      />
+      <Circle
+        type="2d"
+        value={value}
+        wait
+        solve
+        color={{
+          '0%': '#ffd01e',
+          '100%': '#ee0a24',
+        }}
+        text="渐变色"
+      />
+      <Circle value={value} size="120" text="大小定制" />
 
-### 颜色定制
-
-通过`color`属性来控制进度条颜色，`layerColor`属性来控制轨道颜色。
-
-```jsx
-<View>
-  <Circle
-    value={ this.state.value }
-    layerColor="#eeeeee"
-    color="#ee0a24"
-    text="颜色定制"
-  />
-</View>
- 
-```
-
-### 渐变色
-
-`color`属性支持传入对象格式来定义渐变色。
-
-```jsx
-<View>
-  <Circle
-    value={ this.state.value }
-    color={ this.state.gradientColor }
-    text="渐变色"
-  />
-</View>
- 
-```
-
-```js
-this.state = {
-  value: 25,
-  gradientColor: {
-    '0%': '#ffd01e',
-    '100%': '#ee0a24'
-  }
-}; 
+      <Button onClick={() => setValue(value + 10)}>增加</Button>
+    </View>
+  )
+}
 ```
 
 ### 逆时针方向
@@ -89,30 +67,16 @@ this.state = {
 将`clockwise`设置为`false`，进度会从逆时针方向开始。
 
 ```jsx
-<View>
-  <Circle
-    value={ this.state.value }
-    color="#07c160"
-    clockwise={ false }
-    text="逆时针"
-  />
-</View>
- 
-```
+function Demo() {
+  const [value, setValue] = react.useState(50)
 
-### 大小定制
-
-通过`size`属性设置圆环直径。
-
-```jsx
-<View>
-  <Circle
-    value={ this.state.value }
-    size="120"
-    text="大小定制"
-  />
-</View>
- 
+  return (
+    <>
+      <Circle value={value} color="#07c160" clockwise={false} text="逆时针" />
+      <Button onClick={() => setValue(value + 10)}>增加</Button>
+    </>
+  )
+}
 ```
 ### CircleProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/circle.d.ts)   
 

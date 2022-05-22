@@ -9,66 +9,73 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Transition } from "@antmjs/vantui"; 
+import { Transition } from '@antmjs/vantui'
 ```
 
 ## 代码演示
 
 ### 基础用法
 
-将元素包裹在 transition 组件内，在元素展示/隐藏时，会有相应的过渡动画。
+- 将元素包裹在 transition 组件内，在元素展示/隐藏时，会有相应的过渡动画。
+- transition 组件内置了多种动画，可以通过`name`字段指定动画类型。
 
 ```jsx
-<View>
-  <Transition
-    show={ this.state.show }
-    className="block"
-  >
-    内容
-  </Transition>
-</View>
- 
-```
+const animations = [
+  'fade',
+  'fade-up',
+  'fade-down',
+  'fade-left',
+  'fade-right',
+  'slide-up',
+  'slide-down',
+  'slide-left',
+  'slide-right',
+]
+function Demo() {
+  const [show, setShow] = react.useState()
+  const animationAction = (ss) => {
+    setShow(ss)
+    setTimeout(() => {
+      setShow(false)
+    }, 1000)
+  }
 
-### 动画类型
-
-transition 组件内置了多种动画，可以通过`name`字段指定动画类型。
-
-```jsx
-<View>
-  <Transition name="fadeUp" />
-</View>
- 
-```
-
-### 高级用法
-
-可以通过外部样式类自定义过渡效果，还可以定制进入和移出的持续时间。
-
-```jsx
-<View>
-  <Transition
-    show={ this.state.show }
-    name=""
-    duration={ { enter: 300, leave: 1000 } }
-    enterClass="vanEnterClass"
-    enterActiveClass="vanEnterActiveClass"
-    leaveActiveClass="vanLeaveActiveClass"
-    leaveToClass="vanLeaveToClass"
-  />
-</View>
- 
+  return (
+    <View>
+      {animations.map((item) => (
+        <Cell
+          title={item}
+          key={item}
+          onClick={() => animationAction(item)}
+        ></Cell>
+      ))}
+      {animations.map((item) => (
+        <Transition
+          duration={{ enter: 300, leave: 1000 }}
+          className="center-x"
+          enterClass="vanEnterClass"
+          enterActiveClass="vanEnterActiveClass"
+          leaveActiveClass="vanLeaveActiveClass"
+          leaveToClass="vanLeaveToClass"
+          key={`${item}tran`}
+          show={show === item}
+          name={item}
+        />
+      ))}
+    </View>
+  )
+}
 ```
 
 ```css
 .vanEnterActiveClass,
 .vanLeaveActiveClass {
-  transitionProperty: backgroundColor, transform;
+  transitionproperty: backgroundColor, transform;
 }
 
 .vanEnterClass,
 .vanLeaveToClass {
-  backgroundColor: red;
+  backgroundcolor: red;
   transform: rotate(-360deg) translate3d(-100%, -100%, 0);
 }
 ```

@@ -1,9 +1,5 @@
 import { Component } from 'react'
-
-import {} from '@antmjs/vantui'
-
-import list from '../../config'
-
+import list from '../../config.json'
 import DemoHome from '../../components/demo-home/index'
 
 export default class Index extends Component {
@@ -17,6 +13,7 @@ export default class Index extends Component {
 
   render() {
     const { list } = this.state
-    return <DemoHome list={list}></DemoHome>
+
+    return <DemoHome list={list || []}></DemoHome>
   }
 }

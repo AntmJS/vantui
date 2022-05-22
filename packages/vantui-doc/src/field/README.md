@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Field } from "@antmjs/vantui"; 
+import { Field } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,52 +17,20 @@ import { Field } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value={ this.state.value }
-      placeholder="请输入用户名"
-      border={ false }
-      onChange={ this.onChange }
-    />
-  </CellGroup>
-</View>
- 
-```
+function Demo() {
+  const [value, setValue] = react.useState()
 
-```js
-this.state = {
-  value: ''
-};
-
-function onChange(event) {
-  // event.detail 为当前输入的值
-  console.log(event.detail);
-} 
-```
-
-### 双向绑定
-
-最低基础库版本在 2.9.3 以上时，可以使用[简易双向绑定](https://developers.weixin.qq.com/miniprogram/dev/framework/view/twoWayBindings.html)。
-
-```jsx
-<View>
-  <CellGroup>
-    <Field
-      model={ true }
-      value={ this.state.value }
-      placeholder="请输入用户名"
-      border={ false }
-    />
-  </CellGroup>
-</View>
- 
-```
-
-```js
-this.state = {
-  value: ''
-}; 
+  return (
+    <CellGroup>
+      <Field
+        value={value}
+        placeholder="请输入用户名"
+        border={false}
+        onChange={(e) => setValue(e.detail)}
+      />
+    </CellGroup>
+  )
+}
 ```
 
 ### 自定义类型
@@ -70,45 +38,45 @@ this.state = {
 根据`type`属性定义不同类型的输入框。
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value={ this.state.username }
-      required={ true }
-      clearable={ true }
-      label="用户名"
-      icon="questionO"
-      placeholder="请输入用户名"
-      onClickIcon={ onClickIcon }
-    />
-    <Field
-      value={ this.state.password }
-      type="password"
-      label="密码"
-      placeholder="请输入密码"
-      required={ true }
-      border={ false }
-    />
-  </CellGroup>
-</View>
- 
+function Demo() {
+  return (
+    <CellGroup>
+      <Toast id="Field-demo2" />
+      <Field
+        required
+        clearable
+        label="用户名"
+        icon="questionO"
+        placeholder="请输入用户名"
+      />
+      <Field
+        type="password"
+        label="密码"
+        placeholder="请输入密码"
+        required
+        border
+      />
+    </CellGroup>
+  )
+}
 ```
 
 ### 禁用输入框
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value="输入框已禁用"
-      label="用户名"
-      leftIcon="contact"
-      disabled={ true }
-      border={ false }
-    />
-  </CellGroup>
-</View>
- 
+function Demo() {
+  return (
+    <CellGroup>
+      <Field
+        value="输入框已禁用"
+        label="用户名"
+        leftIcon="contact"
+        disabled
+        border={false}
+      />
+    </CellGroup>
+  )
+}
 ```
 
 ### 错误提示
@@ -116,24 +84,29 @@ this.state = {
 通过`error`或者`errorMessage`属性增加对应的错误提示。
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value={ this.state.username }
-      label="用户名"
-      placeholder="请输入用户名"
-      error={ true }
-    />
-    <Field
-      value={ this.state.phone }
-      label="手机号"
-      placeholder="请输入手机号"
-      errorMessage="手机号格式错误"
-      border={ false }
-    />
-  </CellGroup>
-</View>
- 
+function Demo() {
+  const [state, setState] = react.useState({
+    username: '',
+    phone: '',
+  })
+  return (
+    <CellGroup>
+      <Field
+        value={state.username}
+        label="用户名"
+        placeholder="请输入用户名"
+        error
+      />
+      <Field
+        value={state.phone}
+        label="手机号"
+        placeholder="请输入手机号"
+        errorMessage="手机号格式错误"
+        border={false}
+      />
+    </CellGroup>
+  )
+}
 ```
 
 ### 内容对齐方式
@@ -141,17 +114,13 @@ this.state = {
 可以通过`inputAlign`属性设置内容的对齐方式。
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value={ this.state.username3 }
-      label="用户名"
-      placeholder="请输入用户名"
-      inputAlign="right"
-    />
-  </CellGroup>
-</View>
- 
+function Demo() {
+  return (
+    <CellGroup>
+      <Field label="用户名" placeholder="请输入用户名" inputAlign="right" />
+    </CellGroup>
+  )
+}
 ```
 
 ### 高度自适应
@@ -159,46 +128,42 @@ this.state = {
 对于 textarea，可以通过`autosize`属性设置高度自适应。
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value={ this.state.message }
-      label="留言"
-      type="textarea"
-      placeholder="请输入留言"
-      autosize={ true }
-      border={ false }
-    />
-  </CellGroup>
-</View>
- 
+function Demo() {
+  return (
+    <CellGroup>
+      <Field
+        label="留言"
+        type="textarea"
+        placeholder="请输入留言"
+        autosize
+        border={false}
+      />
+    </CellGroup>
+  )
+}
 ```
 
 ### 插入按钮
 
 ```jsx
-<View>
-  <CellGroup>
-    <Field
-      value={ this.state.sms }
-      center={ true }
-      clearable={ true }
-      label="短信验证码"
-      placeholder="请输入短信验证码"
-      border={ false }
-      renderButton={ (
-          <Button 
-            size="small" 
-            type="primary"
-          >
+function Demo() {
+  return (
+    <CellGroup>
+      <Field
+        center
+        clearable
+        label="短信验证码"
+        placeholder="请输入短信验证码"
+        border
+        renderButton={
+          <Button size="small" type="primary">
             发送验证码
           </Button>
-
-        ) }
-    />
-  </CellGroup>
-</View>
- 
+        }
+      />
+    </CellGroup>
+  )
+}
 ```
 
 ## 常见问题

@@ -1,105 +1,42 @@
-import { Text } from '@tarojs/components'
+/* eslint-disable */
+
 import { Component } from 'react'
-
-import { GridItem, Grid, Toast, CountDown } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
-
 import DemoBlock from '../../components/demo-block/index'
-import './index.scss'
+import Demo1 from './demo1'
+import Demo2 from './demo2'
+import Demo3 from './demo3'
+import Demo4 from './demo4'
+import Demo5 from './demo5'
 
 export default class Index extends Component {
   constructor() {
     super()
   }
-
-  state = {
-    time: 30 * 60 * 60 * 1000,
-    timeData: {},
-  }
-
-  onChange = (e) => {
-    this.setState({
-      timeData: e.detail,
-    })
-  }
-
-  start = () => {
-    const countDown = this.controlCountDown
-
-    countDown.start()
-  }
-
-  pause = () => {
-    const countDown = this.controlCountDown
-    countDown.pause()
-  }
-
-  reset = () => {
-    const countDown = this.controlCountDown
-    countDown.reset()
-  }
-
-  finished = () => {
-    Toast.show('倒计时结束')
-  }
+  state = {}
 
   render() {
-    const { time, timeData } = this.state
     return (
-      <DemoPage title="CountDown 倒计时">
-        <>
-          <DemoBlock title="基础用法">
-            <CountDown time={time}></CountDown>
-          </DemoBlock>
-          <DemoBlock title="自定义格式">
-            <CountDown time={time} format="DD 天 HH 时 mm 分 ss 秒"></CountDown>
-          </DemoBlock>
-          <DemoBlock title="毫秒级渲染">
-            <CountDown
-              millisecond
-              time={time}
-              format="HH:mm:ss:SSS"
-            ></CountDown>
-          </DemoBlock>
-          <DemoBlock title="自定义样式">
-            <CountDown time={time} onChange={this.onChange}>
-              <Text className="item">{timeData.hours}</Text>
-              <Text className="item">{timeData.minutes}</Text>
-              <Text className="item">{timeData.seconds}</Text>
-            </CountDown>
-          </DemoBlock>
-          <DemoBlock title="手动控制">
-            <CountDown
-              className="control-count-down"
-              ref={(c) => {
-                this.controlCountDown = c
-              }}
-              millisecond
-              time={3000}
-              autoStart={false}
-              format="ss:SSS"
-              onFinish={this.finished}
-            ></CountDown>
-            <Grid clickable columnNum="3">
-              <GridItem
-                text="开始"
-                icon="play-circle-o"
-                onClick={this.start}
-              ></GridItem>
-              <GridItem
-                text="暂停"
-                icon="pause-circle-o"
-                onClick={this.pause}
-              ></GridItem>
-              <GridItem
-                text="重置"
-                icon="replay"
-                onClick={this.reset}
-              ></GridItem>
-            </Grid>
-          </DemoBlock>
-          <Toast id="van-toast"></Toast>
-        </>
+      <DemoPage title="CountDown 倒计时" className="pages-count-down-index">
+        <DemoBlock title="基本用法" padding>
+          <Demo1 />
+        </DemoBlock>
+
+        <DemoBlock title="自定义格式" padding>
+          <Demo2 />
+        </DemoBlock>
+
+        <DemoBlock title="毫秒级渲染" padding>
+          <Demo3 />
+        </DemoBlock>
+
+        <DemoBlock title="自定义样式" padding>
+          <Demo4 />
+        </DemoBlock>
+
+        <DemoBlock title="手动控制 (hooks 下面存在问题!)" padding>
+          <Demo5 />
+        </DemoBlock>
       </DemoPage>
     )
   }

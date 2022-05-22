@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { NoticeBar } from "@antmjs/vantui"; 
+import { NoticeBar } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,13 +17,14 @@ import { NoticeBar } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <NoticeBar
-    leftIcon="volume-o"
-    text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <NoticeBar
+      leftIcon="volume-o"
+      text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+    />
+  )
+}
 ```
 
 ### 滚动播放
@@ -31,19 +32,19 @@ import { NoticeBar } from "@antmjs/vantui";
 通知栏的内容长度溢出时会自动开启滚动播放，通过 `scrollable` 属性可以控制该行为。
 
 ```jsx
-<View>
-  {/*  文字较短时，通过设置 scrollable 属性开启滚动播放  */}
-  <NoticeBar
-    scrollable={ true }
-    text="技术是开发它的人的共同灵魂。"
-  /> 
-  {/*  文字较长时，通过禁用 scrollable 属性关闭滚动播放  */}
-  <NoticeBar
-    scrollable={ false }
-    text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <View>
+      {/*  文字较短时，通过设置 scrollable 属性开启滚动播放  */}
+      <NoticeBar scrollable text="技术是开发它的人的共同灵魂。" />
+      {/*  文字较长时，通过禁用 scrollable 属性关闭滚动播放  */}
+      <NoticeBar
+        scrollable={false}
+        text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+      />
+    </View>
+  )
+}
 ```
 
 ### 多行展示
@@ -51,14 +52,15 @@ import { NoticeBar } from "@antmjs/vantui";
 文字较长时，可以通过设置 `wrapable` 属性来开启多行展示。
 
 ```jsx
-<View>
-  <NoticeBar
-    wrapable={ true }
-    scrollable={ false }
-    text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <NoticeBar
+      wrapable={true}
+      scrollable={false}
+      text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+    />
+  )
+}
 ```
 
 ### 通知栏模式
@@ -66,19 +68,16 @@ import { NoticeBar } from "@antmjs/vantui";
 通知栏支持 `closeable` 和 `link` 两种模式。
 
 ```jsx
-<View>
-  {/*  closeable 模式，在右侧显示关闭按钮  */}
-  <NoticeBar
-    mode="closeable"
-    text="技术是开发它的人的共同灵魂。"
-  /> 
-  {/*  link 模式，在右侧显示链接箭头  */}
-  <NoticeBar
-    mode="link"
-    text="技术是开发它的人的共同灵魂。"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <View>
+      {/*  closeable 模式，在右侧显示关闭按钮  */}
+      <NoticeBar mode="closeable" text="技术是开发它的人的共同灵魂。" />
+      {/*  link 模式，在右侧显示链接箭头  */}
+      <NoticeBar mode="link" text="技术是开发它的人的共同灵魂。" />
+    </View>
+  )
+}
 ```
 
 ### 自定义样式
@@ -86,15 +85,16 @@ import { NoticeBar } from "@antmjs/vantui";
 通过 `color` 属性设置文本颜色，通过 `background` 属性设置背景色。
 
 ```jsx
-<View>
-  <NoticeBar
-    color="#1989fa"
-    background="#ecf9ff"
-    leftIcon="info-o"
-    text="技术是开发它的人的共同灵魂。"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <NoticeBar
+      color="#1989fa"
+      background="#ecf9ff"
+      leftIcon="info-o"
+      text="技术是开发它的人的共同灵魂。"
+    />
+  )
+}
 ```
 
 ### 自定义滚动速率
@@ -102,14 +102,14 @@ import { NoticeBar } from "@antmjs/vantui";
 使用`speed`属性控制滚动速率。
 
 ```jsx
-<View>
-  <NoticeBar
-    text={ text }
-    speed={speedValue}
-    leftIcon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <NoticeBar
+      text={'技术是开发它的人的共同灵魂。技术是开发它的人的共同灵魂。'}
+      speed={20}
+    />
+  )
+}
 ```
 ### NoticeBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notice-bar.d.ts)   
 

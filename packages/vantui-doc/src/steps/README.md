@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Steps } from "@antmjs/vantui"; 
+import { Steps } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,31 +17,27 @@ import { Steps } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <Steps
-    steps={ this.state.steps }
-    active={ this.state.active }
-  />
-</View>
- 
-```
-
-```js
-this.state = {
-  steps: [{
+const steps = [
+  {
     text: '步骤一',
-    desc: '描述信息'
-  }, {
+    desc: '描述信息',
+  },
+  {
     text: '步骤二',
-    desc: '描述信息'
-  }, {
+    desc: '描述信息',
+  },
+  {
     text: '步骤三',
-    desc: '描述信息'
-  }, {
+    desc: '描述信息',
+  },
+  {
     text: '步骤四',
-    desc: '描述信息'
-  }]
-}; 
+    desc: '描述信息',
+  },
+]
+function Demo() {
+  return <Steps steps={steps} active={2} />
+}
 ```
 
 ### 自定义样式
@@ -49,15 +45,29 @@ this.state = {
 可以通过 `activeIcon` 和 `activeColor` 属性设置激活状态下的图标和颜色。
 
 ```jsx
-<View>
-  <Steps
-    steps={ this.state.steps }
-    active={ this.state.active }
-    activeIcon="success"
-    activeColor="#38f"
-  />
-</View>
- 
+const steps = [
+  {
+    text: '步骤一',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤二',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤三',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤四',
+    desc: '描述信息',
+  },
+]
+function Demo() {
+  return (
+    <Steps steps={steps} active={1} activeIcon="success" activeColor="#38f" />
+  )
+}
 ```
 
 ### 自定义图标
@@ -65,39 +75,29 @@ this.state = {
 可以通过 `inactiveIcon` 和 `activeIcon` 属性分别设置每一项的图标。
 
 ```jsx
-<View>
-  <Steps
-    steps={ this.state.steps }
-    active={ this.state.active }
-  />
-</View>
- 
-```
-
-```js
-this.state = {
-  steps: [{
+const steps = [
+  {
     text: '步骤一',
     desc: '描述信息',
     inactiveIcon: 'location-o',
-    activeIcon: 'success'
-  }, {
+    activeIcon: 'success',
+  },
+  {
     text: '步骤二',
     desc: '描述信息',
     inactiveIcon: 'like-o',
-    activeIcon: 'plus'
-  }, {
+    activeIcon: 'plus',
+  },
+  {
     text: '步骤三',
     desc: '描述信息',
     inactiveIcon: 'star-o',
-    activeIcon: 'cross'
-  }, {
-    text: '步骤四',
-    desc: '描述信息',
-    inactiveIcon: 'phone-o',
-    activeIcon: 'fail'
-  }]
-}; 
+    activeIcon: 'cross',
+  },
+]
+function Demo() {
+  return <Steps steps={steps} active={2} />
+}
 ```
 
 ### 竖向步骤条
@@ -105,15 +105,30 @@ this.state = {
 可以通过设置`direction`属性来改变步骤条的显示方式。
 
 ```jsx
-<View>
-  <Steps
-    steps={ this.state.steps }
-    active={ this.state.active }
-    direction="vertical"
-    activeColor="#ee0a24"
-  />
-</View>
- 
+const steps = [
+  {
+    text: '步骤一',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤二',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤三',
+    desc: '描述信息',
+  },
+]
+function Demo() {
+  return (
+    <Steps
+      steps={steps}
+      active={1}
+      direction="vertical"
+      activeColor="#ee0a24"
+    />
+  )
+}
 ```
 ### StepsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/steps.d.ts)   
 

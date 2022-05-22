@@ -1,7 +1,7 @@
 import { View, Image } from '@tarojs/components'
 import { Component } from 'react'
 
-import list from '../../config'
+import list from '../../config.json'
 /* eslint-disable react/prop-types */
 import DemoHomeNav from '../demo-home-nav/index'
 import './index.less'
@@ -29,7 +29,7 @@ export default class Index extends Component {
           <View>已支持通过Taro编译的小程序、H5</View>
           <View>已支持React应用</View>
         </View>
-        {list.map((group, index) => {
+        {(list || []).map((group, index) => {
           return (
             <View key={index}>
               <DemoHomeNav group={group}></DemoHomeNav>

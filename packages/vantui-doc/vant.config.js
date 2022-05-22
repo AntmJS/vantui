@@ -1,21 +1,17 @@
+const path = require('path')
+
 module.exports = {
-  name: 'vantui-doc',
-  build: {
-    srcDir: '',
-    css: {
-      preprocessor: 'less',
-    },
-    site: {
-      publicPath: '/vantui/',
-      searchConfig: {},
-    },
-  },
+  name: '@antmjs/vantui',
   site: {
     simulator: {
       url: {
         development: 'http://localhost:10086',
-        production: ''
-      }
+        production: '',
+      },
+      pagePath: path.join(__dirname, '../vantui-demo/src/pages'),
+      configPath: path.join(__dirname, '../vantui-demo/src/config.json'),
+      appConfigPath: path.join(__dirname, '../vantui-demo/src/app.config.js'),
+      withTabPages: ['icon', 'power-scroll-view'],
     },
     title: '@antmjs/vantui',
     logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
@@ -265,7 +261,7 @@ module.exports = {
         title: '导航组件',
         items: [
           {
-            path:'pagination',
+            path: 'pagination',
             title: 'Pagination 分页',
           },
           {

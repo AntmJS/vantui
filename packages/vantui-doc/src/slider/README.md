@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Slider } from "@antmjs/vantui"; 
+import { Slider } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,17 +17,13 @@ import { Slider } from "@antmjs/vantui";
 ### 基本用法
 
 ```jsx
-<View>
-  <Slider
-    value="50"
-    onChange={ this.onChange }
-  />
-</View>
- 
+function Demo() {
+  return <Slider value="50" />
+}
 ```
 
 ```js
- 
+
 ```
 
 ### 双滑块
@@ -35,126 +31,80 @@ import { Slider } from "@antmjs/vantui";
 添加 `range` 属性就可以开启双滑块模式，确保 `value` 的值是一个数组。
 
 ```jsx
-<View>
-  <Slider
-    value={ 10, 50 }
-    range={ true }
-    change={this.onChange}
-  />
-</View>
- 
+function Demo() {
+  return <Slider value={(10, 50)} range />
+}
 ```
 
 ```js
- 
+
 ```
 
 ### 指定选择范围
 
 ```jsx
-<View>
-  <Slider
-    min="-50"
-    max="50"
-  />
-</View>
- 
+function Demo() {
+  return <Slider min="-50" max="50" />
+}
 ```
 
 ### 禁用
 
 ```jsx
-<View>
-  <Slider
-    value="50"
-    disabled={ true }
-  />
-</View>
- 
+function Demo() {
+  return <Slider value="50" disabled />
+}
 ```
 
 ### 指定步长
 
 ```jsx
-<View>
-  <Slider
-    value="50"
-    step="10"
-  />
-</View>
- 
+function Demo() {
+  return <Slider value="50" step="10" />
+}
 ```
 
 ### 自定义样式
 
 ```jsx
-<View>
-  <Slider
-    value="50"
-    barHeight="4px"
-    activeColor="#ee0a24"
-  />
-</View>
- 
+function Demo() {
+  return <Slider value="50" barHeight="4px" activeColor="#ee0a24" />
+}
 ```
 
-### 自定义按钮
+### 自定义按钮(已修复待发布)
 
 ```jsx
-<View>
-  <Slider
-    value={ this.state.currentValue }
-    onDrag={ this.onDrag }
-    renderButton={ (
-      <View
-        class="customButton"
-      >
-        { this.state.currentValue }/100
-      </View>
-    )}
-  />
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState(50)
+  return (
+    <Slider
+      value={value}
+      onDrag={(e) => {
+        console.info(e.detail)
+        setValue(e.detail.value)
+      }}
+      renderButton={function D() {
+        return <View class="customButton">{value}/100</View>
+      }}
+    />
+  )
+}
 ```
 
-```js
-this.state = {
-  currentValue: 50
-};
-
-function onDrag(event) {
-  this.setState({
-    currentValue: event.detail.value
-  });
-} 
-```
-
-### 垂直方向
+### 垂直方向(待修复)
 
 设置 `vertical` 属性后，滑块会垂直展示，且高度为 100% 父元素高度。
 
 ```jsx
-<View>
-  <View style="height: 150px;">
-    <Slider
-      value="50"
-      vertical={ true }
-      onChange={ this.onChange }
-    />
-    <Slider
-      value={ [10, 50] }
-      range={ true }
-      vertical={ true }
-      style="marginLeft: 100px;"
-      onChange={ this.onChange }
-    />
-  </View>
-</View>
- 
-```
-
-```js
- 
+function Demo() {
+  return (
+    <View style={{ height: '100px' }}>
+      <Slider value="40" />
+      <Slider value="20" vertical={true} />
+    </View>
+  )
+}
 ```
 ### SliderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/slider.d.ts)   
 

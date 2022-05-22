@@ -17,15 +17,17 @@ import { Card } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <Card
-    num="2"
-    price="2.00"
-    desc="描述信息"
-    title="商品标题"
-    thumb={ imageURL }
-  />
-</View>
+function Demo() {
+  return (
+    <Card
+      num="2"
+      price="2.00"
+      desc="描述信息"
+      title="商品标题"
+      thumb="https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg"
+    />
+  )
+}
  
 ```
 
@@ -34,26 +36,28 @@ import { Card } from "@antmjs/vantui";
 可以通过插槽添加定制内容。
 
 ```jsx
-<View>
-  <Card
-    num="2"
-    tag="标签"
-    price="10.00"
-    desc="描述信息"
-    title="商品标题"
-    thumb={  imageURL  }
-    renderFooter={(
-      <View>
-        <Button size="mini">
-          按钮
-        </Button>
-        <Button size="mini">
-          按钮
-        </Button>
-      </View>
-    )}
-  />
-</View>
+function Demo() {
+  return (
+    <Card
+      num="2"
+      tag="标签"
+      price="10.00"
+      desc="描述信息"
+      title="商品标题"
+      thumb="https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg"
+      renderFooter={(
+        <View>
+          <Button size="mini">
+            按钮1
+          </Button>
+          <Button size="mini">
+            按钮2
+          </Button>
+        </View>
+      )}
+    />
+  )
+}
  
 ```
 ### CardProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/card.d.ts)   

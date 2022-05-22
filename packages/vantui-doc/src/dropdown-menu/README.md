@@ -9,8 +9,8 @@
 在 Taro 文件中引入组件
 
 ```js
-import { DropdownMenu } from "@antmjs/vantui";
-import { DropdownItem } from "@antmjs/vantui"; 
+import { DropdownMenu } from '@antmjs/vantui'
+import { DropdownItem } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -18,196 +18,188 @@ import { DropdownItem } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <DropdownMenu>
-    <DropdownItem
-      value={ this.state.value1 }
-      options={ this.state.option1 }
-    />
-    <DropdownItem
-      value={ this.state.value2 }
-      options={ this.state.option2 }
-    />
-  </DropdownMenu>
-</View>
- 
-```
-
-```js
-this.state = {
-  option1: [{
-    text: '全部商品',
-    value: 0
-  }, {
-    text: '新款商品',
-    value: 1
-  }, {
-    text: '活动商品',
-    value: 2
-  }],
-  option2: [{
-    text: '默认排序',
-    value: 'a'
-  }, {
-    text: '好评排序',
-    value: 'b'
-  }, {
-    text: '销量排序',
-    value: 'c'
-  }],
-  value1: 0,
-  value2: 'a'
-}; 
+function Demo() {
+  const [state, setState] = react.useState({
+    option1: [
+      {
+        text: '全部商品',
+        value: 0,
+      },
+      {
+        text: '新款商品',
+        value: 1,
+      },
+      {
+        text: '活动商品',
+        value: 2,
+      },
+    ],
+    option2: [
+      {
+        text: '默认排序',
+        value: 'a',
+      },
+      {
+        text: '好评排序',
+        value: 'b',
+      },
+      {
+        text: '销量排序',
+        value: 'c',
+      },
+    ],
+    value1: 0,
+    value2: 'a',
+  })
+  return (
+    <View>
+      <DropdownMenu>
+        <DropdownItem value={state.value1} options={state.option1} />
+        <DropdownItem value={state.value2} options={state.option2} />
+      </DropdownMenu>
+    </View>
+  )
+}
 ```
 
 ### 自定义菜单内容
 
 ```jsx
-<View>
-  <DropdownMenu>
-    <DropdownItem
-      value={ this.state.value1 }
-      options={ this.state.option1 }
-    />
-    <DropdownItem
-      id="item"
-      title={ this.state.itemTitle }
-    >
-      <Cell 
-        title={ this.state.switchTitle1 }
-        renderRightIcon={(
-          <Switch
-            size="24px"
-            style="height: 26px"
-            checked={ this.state.switch1 }
-            activeColor="#ee0a24"
-            onChange={ this.onSwitch1Change }
-          />
-        )}
-      >
-      </Cell>
-      <Cell 
-        title={ this.state.switchTitle2 }
-        renderRightIcon={(
-          <Switch
-            size="24px"
-            style="height: 26px"
-            checked={ this.state.switch2 }
-            activeColor="#ee0a24"
-            onChange={ this.onSwitch2Change }
-          />
-        )}
-      >
-      </Cell>
-      <View style="padding: 5px 16px;">
-        <Button
-          type="danger"
-          block={ true }
-          round={ true }
-          onClick={ this.onConfirm }
-        >
-          确认
-        </Button>
-      </View>
-    </DropdownItem>
-  </DropdownMenu>
-</View>
- 
-```
+function Demo() {
+  const it = react.useRef(null)
+  const [state, setState] = react.useState({
+    option1: [
+      {
+        text: '全部商品',
+        value: 0,
+      },
+      {
+        text: '新款商品',
+        value: 1,
+      },
+    ],
+    value1: 0,
+    switch: false,
+    result: '',
+  })
 
-```js
-this.state = {
-  switchTitle1: '包邮',
-  switchTitle2: '团购',
-  itemTitle: '筛选',
-  option1: [{
-    text: '全部商品',
-    value: 0
-  }, {
-    text: '新款商品',
-    value: 1
-  }, {
-    text: '活动商品',
-    value: 2
-  }],
-  value1: 0
-};
+  const changeState = react.useCallback(
+    function (type, value) {
+      setState({
+        ...state,
+        [type]: value,
+      })
+    },
+    [state],
+  )
 
-function onConfirm() {
-  this.selectComponent('#item').toggle();
+  const onConfirm = react.useCallback(
+    function () {
+      it.current.toggle()
+      changeState('result', state.switch ? '打开状态' : '关闭状态')
+    },
+    [it, changeState],
+  )
+
+  return (
+    <DropdownMenu>
+      <DropdownItem value={state.value1} options={state.option1} />
+      <DropdownItem ref={it} title={state.result}>
+        <Cell
+          title="选择开关"
+          renderRightIcon={
+            <Switch
+              size="24px"
+              style="height: 26px"
+              checked={state.switch}
+              activeColor="#ee0a24"
+              onChange={() => changeState('switch', !state.switch)}
+            />
+          }
+        ></Cell>
+        <View style="padding: 5px 16px;">
+          <Button type="danger" block round onClick={onConfirm}>
+            确认
+          </Button>
+        </View>
+      </DropdownItem>
+    </DropdownMenu>
+  )
 }
-
-function onSwitch1Change({
-  detail
-}) {
-  this.setState({
-    switch1: detail
-  });
-}
-
-function onSwitch2Change({
-  detail
-}) {
-  this.setState({
-    switch2: detail
-  });
-} 
 ```
 
 ### 自定义选中状态颜色
 
 ```jsx
-<View>
-  <DropdownMenu activeColor="#1989fa">
-    <DropdownItem
-      value={ this.state.value1 }
-      options={ this.state.option1 }
-    />
-    <DropdownItem
-      value={ this.state.value2 }
-      options={ this.state.option2 }
-    />
-  </DropdownMenu>
-</View>
- 
+function Demo() {
+  const [state, setState] = react.useState({
+    option1: [
+      {
+        text: '全部商品',
+        value: 0,
+      },
+      {
+        text: '新款商品',
+        value: 1,
+      },
+    ],
+    option2: [
+      {
+        text: '默认排序',
+        value: 'a',
+      },
+      {
+        text: '好评排序',
+        value: 'b',
+      },
+    ],
+    value1: 0,
+    value2: 'a',
+  })
+  return (
+    <DropdownMenu activeColor="#1989fa">
+      <DropdownItem value={state.value1} options={state.option1} />
+      <DropdownItem value={state.value2} options={state.option2} />
+    </DropdownMenu>
+  )
+}
 ```
 
 ### 向上展开
 
 ```jsx
-<View>
-  <DropdownMenu direction="up">
-    <DropdownItem
-      value={ this.state.value1 }
-      options={ this.state.option1 }
-    />
-    <DropdownItem
-      value={ this.state.value2 }
-      options={ this.state.option2 }
-    />
-  </DropdownMenu>
-</View>
- 
-```
-
-### 禁用菜单
-
-```jsx
-<View>
-  <DropdownMenu>
-    <DropdownItem
-      value={ this.state.value1 }
-      disabled={ true }
-      options={ this.state.option1 }
-    />
-    <DropdownItem
-      value={ this.state.value2 }
-      disabled={ true }
-      options={ this.state.option2 }
-    />
-  </DropdownMenu>
-</View>
- 
+function Demo() {
+  const [state, setState] = react.useState({
+    option1: [
+      {
+        text: '全部商品',
+        value: 0,
+      },
+      {
+        text: '新款商品',
+        value: 1,
+      },
+    ],
+    option2: [
+      {
+        text: '默认排序',
+        value: 'a',
+      },
+      {
+        text: '好评排序',
+        value: 'b',
+      },
+    ],
+    value1: 0,
+    value2: 'a',
+  })
+  return (
+    <DropdownMenu direction="up">
+      <DropdownItem value={state.value1} options={state.option1} />
+      <DropdownItem value={state.value2} options={state.option2} />
+    </DropdownMenu>
+  )
+}
 ```
 ### DropdownMenuProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)   
 

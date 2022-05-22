@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Popup } from "@antmjs/vantui"; 
+import { Popup } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -19,38 +19,17 @@ import { Popup } from "@antmjs/vantui";
 通过`show`属性控制弹出层是否展示。
 
 ```jsx
-<View>
-  <Cell
-    title="展示弹出层"
-    isLink={ true }
-    onClick={ this.showPopup }
-  />
-  <Popup
-    show={ this.state.show }
-    onClose={ this.onClose }
-  >
-    内容
-  </Popup>
-</View>
- 
-```
-
-```js
-this.state = {
-  show: false
-};
-
-function showPopup() {
-  this.setState({
-    show: true
-  });
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  return (
+    <View>
+      <Cell title="展示弹出层" isLink onClick={() => setShow(true)} />
+      <Popup show={show} onClose={() => setShow(false)}>
+        内容
+      </Popup>
+    </View>
+  )
 }
-
-function onClose() {
-  this.setState({
-    show: false
-  });
-} 
 ```
 
 ### 弹出位置
@@ -58,15 +37,27 @@ function onClose() {
 通过`position`属性设置弹出位置，默认居中弹出，可以设置为`top`、`bottom`、`left`、`right`。
 
 ```jsx
-<View>
-  <Popup
-    show={ this.state.show }
-    position="top"
-    style="height: 20%;"
-    onClose={ this.onClose }
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [position, setPosition] = react.useState('top')
+
+  const showAction = function (position) {
+    setPosition(position)
+    setShow(true)
+  }
+
+  return (
+    <View>
+      <Cell title="顶部弹出" isLink onClick={() => showAction('top')} />
+      <Cell title="底部弹出" isLink onClick={() => showAction('bottom')} />
+      <Cell title="左侧弹出" isLink onClick={() => showAction('left')} />
+      <Cell title="右侧弹出" isLink onClick={() => showAction('right')} />
+      <Popup show={show} position={position} onClose={() => setShow(false)}>
+        内容{position}
+      </Popup>
+    </View>
+  )
+}
 ```
 
 ### 关闭图标
@@ -74,34 +65,23 @@ function onClose() {
 设置`closeable`属性后，会在弹出层的右上角显示关闭图标，并且可以通过`closeIcon`属性自定义图标，使用`closeIconPosition`属性可以自定义图标位置。
 
 ```jsx
-<View>
-  <Popup
-    show={ this.state.show }
-    closeable={ true }
-    position="bottom"
-    style="height: 20%"
-    onClose={ this.onClose }
-  />
-   {/*  自定义图标  */}
-  <Popup
-    show={ this.state.show }
-    closeable={ true }
-    closeIcon="close"
-    position="bottom"
-    style="height: 20%"
-    onClose={ this.onClose }
-  /> 
-  {/*  图标位置  */}
-  <Popup
-    show={ this.state.show }
-    closeable={ true }
-    closeIconPosition="topLeft"
-    position="bottom"
-    style="height: 20%"
-    onClose={ this.onClose }
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  return (
+    <View>
+      <Cell title="关闭图标" isLink onClick={() => setShow(true)} />
+      <Popup
+        closeable
+        closeIcon="close"
+        show={show}
+        onClose={() => setShow(false)}
+        closeIconPosition="bottomLeft"
+      >
+        内容
+      </Popup>
+    </View>
+  )
+}
 ```
 
 ### 圆角弹窗
@@ -109,16 +89,17 @@ function onClose() {
 设置`round`属性后，弹窗会根据弹出位置添加不同的圆角样式。
 
 ```jsx
-<View>
-  <Popup
-    show={ this.state.show }
-    round={ true }
-    position="bottom"
-    style="height: 20%"
-    onClose={ this.onClose }
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  return (
+    <View>
+      <Cell title="圆角弹窗" isLink onClick={() => setShow(true)} />
+      <Popup round show={show} onClose={() => setShow(false)}>
+        内容
+      </Popup>
+    </View>
+  )
+}
 ```
 
 ### 禁止滚动穿透
@@ -134,28 +115,27 @@ function onClose() {
 ```jsx
 <View>
   {/*  pageMeta 只能是页面内的第一个节点  */}
-  <pageMeta pageStyle={ this.state.show ? 'overflow: hidden;' : '' } />
-  <Popup show={ this.state.show } />
+  <pageMeta pageStyle={state.show ? 'overflow: hidden;' : ''} />
+  <Popup show={state.show} />
 </View>
- 
 ```
-### PopupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/popup.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| round | 是否显示圆角 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| closeable | 是否显示关闭图标 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| overlayStyle | 自定义遮罩层样式 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| transition | 执行 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| zIndex | 弹出层的层级 | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| overlay | 是否显示遮罩层 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| closeIcon | 关闭图标名称或图片链接 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| closeIconPosition | 关闭图标名称或图片链接的位置 | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"top-left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"top-right"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"bottom-left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"bottom-right"<br/>_ | - | `false` |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
-| position | 弹出位置 | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_ | center | `false` |
-| safeAreaInsetBottom | 是否为 iPhoneX 留出底部安全距离 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
-| safeAreaInsetTop | 是否留出顶部安全距离（状态栏高度） | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| onClickOverlay | 点击蒙层触发的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
-| onClose | 蒙层关闭触发的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+### PopupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/popup.d.ts)
 
+| 参数                | 说明                               | 类型                                                                                                                                                                                                                                                 | 默认值 | 必填    |
+| ------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| round               | 是否显示圆角                       | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                           | -      | `false` |
+| closeable           | 是否显示关闭图标                   | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                           | -      | `false` |
+| overlayStyle        | 自定义遮罩层样式                   | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                            | -      | `false` |
+| transition          | 执行                               | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                            | -      | `false` |
+| zIndex              | 弹出层的层级                       | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                            | -      | `false` |
+| overlay             | 是否显示遮罩层                     | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                           | -      | `false` |
+| closeIcon           | 关闭图标名称或图片链接             | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                            | -      | `false` |
+| closeIconPosition   | 关闭图标名称或图片链接的位置       | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"top-left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"top-right"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"bottom-left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"bottom-right"<br/>_ | -      | `false` |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                           | true   | `false` |
+| position            | 弹出位置                           | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"left"<br/>_                                                                                                                                            | center | `false` |
+| safeAreaInsetBottom | 是否为 iPhoneX 留出底部安全距离    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                           | true   | `false` |
+| safeAreaInsetTop    | 是否留出顶部安全距离（状态栏高度） | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                           | false  | `false` |
+| children            | -                                  | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                         | -      | `false` |
+| onClickOverlay      | 点击蒙层触发的方法                 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                              | -      | `false` |
+| onClose             | 蒙层关闭触发的方法                 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                              | -      | `false` |

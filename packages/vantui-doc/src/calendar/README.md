@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Calendar } from "@antmjs/vantui"; 
+import { Calendar } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -19,50 +19,35 @@ import { Calendar } from "@antmjs/vantui";
 下面演示了结合单元格来使用日历组件的用法，日期选择完成后会触发`confirm`事件。
 
 ```jsx
-<View>
-  <Cell
-    title="选择单个日期"
-    value={  this.state.date  }
-    onClick={ this.onDisplay }
-  />
-  <Calendar
-    show={  this.state.show  }
-    onClose={ this.onClose }
-    onConfirm={ this.onConfirm }
-  />
-</View>
- 
-```
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
 
-```js
-this.state = {
-  date: '',
-  show: false
-};
+  const formatDate = react.useCallback((d) => {
+    const res = new Date(d)
+    return d
+      ? `${res.getFullYear()}-${res.getMonth() + 1}-${res.getDate()}`
+      : ''
+  }, [])
 
-function onDisplay() {
-  this.setState({
-    show: true
-  });
+  return (
+    <View>
+      <Cell
+        title="选择单个日期"
+        value={formatDate(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.valueOf())
+          setShow(false)
+        }}
+      />
+    </View>
+  )
 }
-
-function onClose() {
-  this.setState({
-    show: false
-  });
-}
-
-function formatDate(date) {
-  date = new Date(date);
-  return `${date.getMonth() + 1}/${date.getDate()}`;
-}
-
-function onConfirm(event) {
-  this.setState({
-    show: false,
-    date: this.formatDate(event.detail)
-  });
-} 
 ```
 
 ### 选择多个日期
@@ -70,46 +55,29 @@ function onConfirm(event) {
 设置`type`为`multiple`后可以选择多个日期，此时`confirm`事件返回的 date 为数组结构，数组包含若干个选中的日期。
 
 ```jsx
-<View>
-  <Cell
-    title="选择多个日期"
-    value={  this.state.text  }
-    onClick={ this.onDisplay }
-  />
-  <Calendar
-    show={  this.state.show  }
-    type="multiple"
-    onClose={ this.onClose }
-    onConfirm={ this.onConfirm }
-  />
-</View>
- 
-```
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
 
-```js
-this.state = {
-  text: '',
-  show: false
-};
-
-function onDisplay() {
-  this.setState({
-    show: true
-  });
+  return (
+    <View>
+      <Cell
+        title="选择多个日期"
+        value={`${date ? `选择了${date.length}个日期` : ''}`}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        show={show}
+        type="multiple"
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.map((date) => date?.valueOf()))
+          setShow(false)
+        }}
+      />
+    </View>
+  )
 }
-
-function onClose() {
-  this.setState({
-    show: false
-  });
-}
-
-function onConfirm(event) {
-  this.setState({
-    show: false,
-    date: `选择了 ${event.detail.length} 个日期`
-  });
-} 
 ```
 
 ### 选择日期区间
@@ -117,52 +85,41 @@ function onConfirm(event) {
 设置`type`为`range`后可以选择日期区间，此时`confirm`事件返回的 date 为数组结构，数组第一项为开始时间，第二项为结束时间。
 
 ```jsx
-<View>
-  <Cell
-    title="选择日期区间"
-    value={  this.state.date  }
-    onClick={ this.onDisplay }
-  />
-  <Calendar
-    show={  this.state.show  }
-    type="range"
-    onClose={ this.onClose }
-    onConfirm={ this.onConfirm }
-  />
-</View>
- 
-```
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
 
-```js
-this.state = {
-  date: '',
-  show: false
-};
+  const formatDates = react.useCallback((d) => {
+    if (d && d.length) {
+      let text = []
+      d.forEach((item) => {
+        const res = new Date(item)
+        text.push(`${res.getMonth()}-${res.getDate()}`)
+      })
 
-function onDisplay() {
-  this.setState({
-    show: true
-  });
+      return text.join(` 至 `)
+    }
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="选择多个日期"
+        value={formatDates(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        show={show}
+        type="range"
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.map((date) => date?.valueOf()))
+          setShow(false)
+        }}
+      />
+    </View>
+  )
 }
-
-function onClose() {
-  this.setState({
-    show: false
-  });
-}
-
-function formatDate(date) {
-  date = new Date(date);
-  return `${date.getMonth() + 1}/${date.getDate()}`;
-}
-
-function onConfirm(event) {
-  const [start, end] = event.detail;
-  this.setState({
-    show: false,
-    date: `${this.formatDate(start)} - ${this.formatDate(end)}`
-  });
-} 
 ```
 
 > Tips: 默认情况下，日期区间的起止时间不能为同一天，可以通过设置 allowSameDay 属性来允许选择同一天。
@@ -172,13 +129,36 @@ function onConfirm(event) {
 将`showConfirm`设置为`false`可以隐藏确认按钮，这种情况下选择完成后会立即触发`confirm`事件。
 
 ```jsx
-<View>
-  <Calendar
-    show={  this.state.show  }
-    showConfirm={  false  }
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState(Date.now())
+
+  const formatDate = react.useCallback((d) => {
+    const res = new Date(d)
+    return d
+      ? `${res.getFullYear()}-${res.getMonth() + 1}-${res.getDate()}`
+      : ''
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="选择单个日期"
+        value={formatDate(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        showConfirm={false}
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.valueOf())
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 自定义颜色
@@ -186,13 +166,37 @@ function onConfirm(event) {
 通过`color`属性可以自定义日历的颜色，对选中日期和底部按钮生效。
 
 ```jsx
-<View>
-  <Calendar
-    show={  this.state.show  }
-    color="#07c160"
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState(Date.now())
+
+  const formatDate = react.useCallback((d) => {
+    const res = new Date(d)
+    return d
+      ? `${res.getFullYear()}-${res.getMonth() + 1}-${res.getDate()}`
+      : ''
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="选择单个日期"
+        value={formatDate(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        color="#07c160"
+        showConfirm={false}
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.valueOf())
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 自定义日期范围
@@ -200,22 +204,43 @@ function onConfirm(event) {
 通过`minDate`和`maxDate`定义日历的范围，需要注意的是`minDate`和`maxDate`的区间不宜过大，否则会造成严重的性能问题。
 
 ```jsx
-<View>
-  <Calendar
-    show={  this.state.show  }
-    minDate={  this.state.minDate  }
-    maxDate={  this.state.maxDate  }
-  />
-</View>
- 
-```
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
 
-```js
-this.state = {
-  show: false,
-  minDate: new Date(2010, 0, 1).getTime(),
-  maxDate: new Date(2010, 0, 31).getTime()
-}; 
+  const formatDates = react.useCallback((d) => {
+    if (d && d.length) {
+      let text = []
+      d.forEach((item) => {
+        const res = new Date(item)
+        text.push(`${res.getMonth() + 1}-${res.getDate()}`)
+      })
+
+      return text.join(` 至 `)
+    }
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="自定义范围选择"
+        value={formatDates(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        minDate={new Date(2010, 0, 1).getTime()}
+        maxDate={new Date(2010, 1, 28).getTime()}
+        show={show}
+        type="range"
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.map((date) => date?.valueOf()))
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 自定义按钮文字
@@ -223,15 +248,44 @@ this.state = {
 通过`confirmText`设置按钮文字，通过`confirmDisabledText`设置按钮禁用时的文字。
 
 ```jsx
-<View>
-  <Calendar
-    show={  this.state.show  }
-    type="range"
-    confirmText="完成"
-    confirmDisabledText="请选择结束时间"
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
+
+  const formatDates = react.useCallback((d) => {
+    if (d && d.length) {
+      let text = []
+      d.forEach((item) => {
+        const res = new Date(item)
+        text.push(`${res.getMonth() + 1}-${res.getDate()}`)
+      })
+
+      return text.join(` 至 `)
+    }
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="自定按钮文字"
+        value={formatDates(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        confirmText="点击确认"
+        minDate={new Date(2010, 0, 1).getTime()}
+        maxDate={new Date(2010, 1, 28).getTime()}
+        show={show}
+        type="range"
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.map((date) => date?.valueOf()))
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 自定义日期文案
@@ -239,42 +293,51 @@ this.state = {
 通过传入`formatter`函数来对日历上每一格的内容进行格式化
 
 ```jsx
-<View>
-  <Calendar
-    show={  this.state.show  }
-    type="range"
-    formatter={  this.state.formatter  }
-  />
-</View>
- 
-```
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
 
-```js
-this.state = {
-  formatter(day) {
-    const month = day.date.getMonth() + 1;
-    const date = day.date.getDate();
+  const formatDate = react.useCallback((d) => {
+    const res = new Date(d)
+    return d
+      ? `${res.getFullYear()}-${res.getMonth() + 1}-${res.getDate()}`
+      : ''
+  }, [])
 
-    if (month === 5) {
-      if (date === 1) {
-        day.topInfo = '劳动节';
-      } else if (date === 4) {
-        day.topInfo = '五四青年节';
-      } else if (date === 11) {
-        day.text = '今天';
-      }
-    }
+  return (
+    <View>
+      <Cell
+        title="自定义日期文案"
+        value={formatDate(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.valueOf())
+          setShow(false)
+        }}
+        formatter={(day) => {
+          const month = day.date.getMonth() + 1
+          const date = day.date.getDate()
 
-    if (day.type === 'start') {
-      day.bottomInfo = '入住';
-    } else if (day.type === 'end') {
-      day.bottomInfo = '离店';
-    }
+          if (month === 5) {
+            if (date === 1) {
+              day.topInfo = <View style={{ color: 'green' }}>劳动节</View>
+            } else if (date === 4) {
+              day.topInfo = '54青年节'
+            } else if (date === 11) {
+              day.text = '今天'
+            }
+          }
 
-    return day;
-  }
-
-}; 
+          return day
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 自定义弹出位置
@@ -282,14 +345,37 @@ this.state = {
 通过`position`属性自定义弹出层的弹出位置，可选值为`top`、`left`、`right`。
 
 ```jsx
-<View>
-  <Calendar
-    show={  this.state.show  }
-    round="false"
-    position="right"
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
+
+  const formatDate = react.useCallback((d) => {
+    const res = new Date(d)
+    return d
+      ? `${res.getFullYear()}-${res.getMonth() + 1}-${res.getDate()}`
+      : ''
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="自定义弹出位置"
+        value={formatDate(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        round="false"
+        position="right"
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.valueOf())
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 日期区间最大范围
@@ -297,13 +383,42 @@ this.state = {
 选择日期区间时，可以通过`maxRange`属性来指定最多可选天数，选择的范围超过最多可选天数时，会弹出相应的提示文案。
 
 ```jsx
-<View>
-  <Calendar
-    type="range"
-    maxRange={  3  }
-  />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
+
+  const formatDates = react.useCallback((d) => {
+    if (d && d.length) {
+      let text = []
+      d.forEach((item) => {
+        const res = new Date(item)
+        text.push(`${res.getMonth()}-${res.getDate()}`)
+      })
+
+      return text.join(` 至 `)
+    }
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="日期区间最大范围"
+        value={formatDates(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        maxRange={3}
+        type="range"
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.map((date) => date?.valueOf()))
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 自定义周起始日
@@ -311,10 +426,36 @@ this.state = {
 通过 `firstDayOfWeek` 属性设置一周从哪天开始。
 
 ```jsx
-<View>
-  <Calendar firstDayOfWeek={  1  } />
-</View>
- 
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [date, setDate] = react.useState()
+
+  const formatDate = react.useCallback((d) => {
+    const res = new Date(d)
+    return d
+      ? `${res.getFullYear()}-${res.getMonth() + 1}-${res.getDate()}`
+      : ''
+  }, [])
+
+  return (
+    <View>
+      <Cell
+        title="自定义周起始日"
+        value={formatDate(date)}
+        onClick={() => setShow(true)}
+      />
+      <Calendar
+        firstDayOfWeek={1}
+        show={show}
+        onClose={() => setShow(false)}
+        onConfirm={(e) => {
+          setDate(e.detail.value.valueOf())
+          setShow(false)
+        }}
+      />
+    </View>
+  )
+}
 ```
 
 ### 平铺展示
@@ -322,15 +463,17 @@ this.state = {
 将`poppable`设置为`false`，日历会直接展示在页面内，而不是以弹层的形式出现。
 
 ```jsx
-<View>
-  <Calendar
-    title="日历"
-    poppable={  false  }
-    showConfirm={  false  }
-    class="calendar"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <Calendar
+      title="日历"
+      poppable={false}
+      showConfirm={false}
+      minDate={new Date(2012, 0, 10).getTime()}
+      maxDate={new Date(2012, 2, 20).getTime()}
+    />
+  )
+}
 ```
 
 ```css

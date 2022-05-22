@@ -5,6 +5,8 @@
   "description": "",
   "scripts": {
     "dev": "node ./scripts/ts-to-md && npx antm-vantui-cli docs --mode development",
+    "mdcode-create": "npx antm-vantui-cli mdcode --mode create",
+    "mdcode-watch": "npx antm-vantui-cli mdcode --mode watch",
     "test:coverage": "open test/coverage/index.html",
     "build": "node ./scripts/ts-to-md && sh ./build.sh",
     "release": "npx gh-pages -d site",

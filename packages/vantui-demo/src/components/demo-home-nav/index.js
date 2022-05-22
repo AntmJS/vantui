@@ -10,9 +10,9 @@ export default class Index extends Component {
   onClick = (event) => {
     const { url } = event.target.dataset
     if (getCurrentPages().length > 9) {
-      redirectTo({ url })
+      redirectTo({ url: `${url}` })
     } else {
-      navigateTo({ url })
+      navigateTo({ url: `${url}` })
     }
   }
 
@@ -21,14 +21,16 @@ export default class Index extends Component {
 
     return (
       <View className="demo-home-nav">
-        <View className="demo-home-nav__title">{group.groupName}</View>
+        <View className="demo-home-nav__title">
+          {group.groupName || group.title}
+        </View>
         <View className="demo-home-nav__group">
-          {group.list.map((item) => {
+          {group.items.map((item) => {
             return (
               <View
                 key={item.title}
                 className="demo-home-nav__block"
-                data-url={'/pages' + item.path + '/index'}
+                data-url={'/pages/' + item.path + '/index'}
                 onClick={this.onClick}
               >
                 {item.title}

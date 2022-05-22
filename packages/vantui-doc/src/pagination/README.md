@@ -1,4 +1,4 @@
-#  Pagination 分页
+# Pagination 分页
 
 ### 介绍
 
@@ -6,22 +6,19 @@
 
 ### 安装
 
-``` javascript
-import { Pagination } from '@antmjs/vantui';
-```    
+```javascript
+import { Pagination } from '@antmjs/vantui'
+```
 
 ### 基础用法
 
-通过modelValue来绑定当前页码时，组件为受控状态，分页显示取决于传入的modelValue，一般搭配onChange使用。
-不需要受控时，可通过defaultCurrentPage指定当前页码
+通过 modelValue 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 modelValue，一般搭配 onChange 使用。
+不需要受控时，可通过 defaultCurrentPage 指定当前页码
 
-``` jsx
-import React, { useState } from 'react'
-import { Pagination } from '@antmjs/vantui';
-
-const App = () => {
-  const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: any) => {
+```jsx
+function Demo() {
+  const [currentPage1, setCurrentPage1] = react.useState(1)
+  const pageChange1 = (v) => {
     const c = v
     setCurrentPage1(c)
   }
@@ -34,49 +31,43 @@ const App = () => {
     />
   )
 }
-export default App;
 ```
 
 ### 简单模式
 
 将 mode 设置为 "simple" 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 
-``` tsx
-import React, { useState } from 'react'
-import { Pagination } from '@antmjs/vantui';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: any) => {
+```jsx
+function Demo() {
+  const [currentPage2, setCurrentPage2] = react.useState(1)
+  const pageChange2 = (v) => {
     const c = v
     setCurrentPage2(c)
   }
+
   return (
     <Pagination
-      modelValue={currentPage2} 
-      pageCount={12} 
-      mode="simple" 
-      onChange={pageChange2} 
+      modelValue={currentPage2}
+      pageCount={12}
+      mode="simple"
+      onChange={pageChange2}
     />
   )
 }
-export default App;
 ```
 
 ### 显示省略号
 
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
 
-``` tsx
-import React, { useState } from 'react'
-import { Pagination } from '@antmjs/vantui';
-
-const App = () => {
-  const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: any) => {
+```jsx
+function Demo() {
+  const [currentPage3, setCurrentPage3] = react.useState(1)
+  const pageChange3 = (v) => {
     const c = v
     setCurrentPage3(c)
   }
+
   return (
     <Pagination
       modelValue={currentPage3}
@@ -87,39 +78,36 @@ const App = () => {
     />
   )
 }
-export default App;
 ```
 
 ### 自定义按钮
 
-通过pageNodeRender传入自定义方法
+通过 pageNodeRender 传入自定义方法
 
-``` tsx
-import React, { useState } from 'react'
-import { Pagination,Icon } from '@antmjs/vantui';
-
-const App = () => {
-  const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: any) => {
+```jsx
+function Demo() {
+  const [currentPage4, setCurrentPage4] = react.useState(1)
+  const pageChange4 = (v) => {
     const c = v
     setCurrentPage4(c)
   }
-  const pageNodeRender = (page: any) => {
+
+  const pageNodeRender = (page) => {
     return <div>{page.number == 3 ? 'hot' : page.text}</div>
   }
+
   return (
     <Pagination
       modelValue={currentPage4}
       totalItems="500"
       showPageSize="5"
       onChange={pageChange4}
-      pageNodeRender={pageNodeRender} 
-      prevText={<Icon name="left"/>} 
-      nextText={<Icon name="right"/>}
+      pageNodeRender={pageNodeRender}
+      prevText={<Icon name="arrow-left" />}
+      nextText={<Icon name="arrow" />}
     />
   )
 }
-export default App;
 ```
 ### PaginationProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/pagination.d.ts)   
 

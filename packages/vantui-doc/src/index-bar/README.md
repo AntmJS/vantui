@@ -9,8 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { IndexBar } from "@antmjs/vantui";
-import { IndexAnchor } from "@antmjs/vantui"; 
+import { IndexBar, IndexAnchor } from '@antmjs/vantui'
 ```
 
 > Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)
@@ -22,20 +21,25 @@ import { IndexAnchor } from "@antmjs/vantui";
 点击索引栏时，会自动跳转到对应的`IndexAnchor`锚点位置。
 
 ```jsx
-<View>
-  <IndexBar>
-    <IndexAnchor index="A" />
-    <Cell title="文本" />
-    <Cell title="文本" />
-    <Cell title="文本" />
-    <IndexAnchor index="B" />
-    <Cell title="文本" />
-    <Cell title="文本" />
-    <Cell title="文本" />
-    ...
-  </IndexBar>
-</View>
- 
+const arr = []
+const charCodeOfA = 'A'.charCodeAt(0)
+for (let i = 0; i < 26; i++) {
+  arr.push(String.fromCharCode(charCodeOfA + i))
+}
+function Demo() {
+  return (
+    <IndexBar>
+      {arr.map((item) => (
+        <Block key={item.item}>
+          <IndexAnchor index={item}></IndexAnchor>
+          <Cell title="文本"></Cell>
+          <Cell title="文本"></Cell>
+          <Cell title="文本"></Cell>
+        </Block>
+      ))}
+    </IndexBar>
+  )
+}
 ```
 
 ### 自定义索引列表
@@ -44,29 +48,18 @@ import { IndexAnchor } from "@antmjs/vantui";
 
 ```jsx
 <View>
-  <IndexBar indexList={ this.state.indexList }>
-    <IndexAnchor index="1">
-      标题1
-    </IndexAnchor>
+  <IndexBar indexList={[1,2,...]}>
+    <IndexAnchor index="1">标题1</IndexAnchor>
     <Cell title="文本" />
     <Cell title="文本" />
     <Cell title="文本" />
-    <IndexAnchor index="2">
-      标题2
-    </IndexAnchor>
+    <IndexAnchor index="2">标题2</IndexAnchor>
     <Cell title="文本" />
     <Cell title="文本" />
     <Cell title="文本" />
     ...
   </IndexBar>
 </View>
- 
-```
-
-```js
-this.state = {
-  indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}; 
 ```
 ### IndexBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/index-bar.d.ts)   
 

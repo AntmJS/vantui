@@ -9,7 +9,7 @@ Sticky 组件与 CSS 中`position: sticky`属性实现的效果一致，当组�
 在 Taro 文件中引入组件
 
 ```js
-import { Sticky } from "@antmjs/vantui"; 
+import { Sticky } from '@antmjs/vantui'
 ```
 
 > Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)
@@ -21,14 +21,15 @@ import { Sticky } from "@antmjs/vantui";
 将内容包裹在`Sticky`组件内即可。
 
 ```jsx
-<View>
-  <Sticky>
-    <Button type="primary">
-      基础用法
-    </Button>
-  </Sticky>
-</View>
- 
+function Demo() {
+  return (
+    <Sticky>
+      <Button type="primary" style="margin-left: 15px">
+        基础用法
+      </Button>
+    </Sticky>
+  )
+}
 ```
 
 ### 吸顶距离
@@ -36,89 +37,13 @@ import { Sticky } from "@antmjs/vantui";
 通过`offsetTop`属性可以设置组件在吸顶时与顶部的距离。
 
 ```jsx
-<View>
-  <Sticky offsetTop={ 50 }>
-    <Button type="info">
-      吸顶距离
-    </Button>
-  </Sticky>
-</View>
- 
-```
-
-### 指定容器
-
-通过`container`属性可以指定组件的容器，页面滚动时，组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。
-
-```jsx
-<View>
-  <View
-    id="container"
-    style="height: 150px;"
-  >
-    <Sticky container={ this.state.container }>
-      <Button type="warning">
-        指定容器
-      </Button>
+function Demo() {
+  return (
+    <Sticky offsetTop={50}>
+      <Button type="primary">吸顶距离</Button>
     </Sticky>
-  </View>
-</View>
- 
-```
-
-```js
-this.state = {
-  container: null
-};
-
-function onReady() {
-  this.setState({
-    container: () => wx.createSelectorQuery().select('#container')
-  });
-} 
-```
-
-### 嵌套在 scrollView 内使用
-
-通过 `scrollTop` 与 `offsetTop` 属性可以实现在 scrollView 内嵌套使用。
-
-```jsx
-<View>
-  <scrollView
-    onScroll={ this.state.onScroll }
-    scrollY={ true }
-    id="scroller"
-    style="height: 200px;"
-  >
-    <View style="height: 400px; paddingTop: 50px;">
-      <Sticky
-        scrollTop={ this.state.scrollTop }
-        offsetTop={ this.state.offsetTop }
-      >
-        <Button type="warning">
-          嵌套在 scrollView 内
-        </Button>
-      </Sticky>
-    </View>
-  </scrollView>
-</View>
- 
-```
-
-```js
-this.state = {
-  scrollTop: 0,
-  offsetTop: 0
-};
-
-function onScroll(event) {
-  wx.createSelectorQuery().select('#scroller').boundingClientRect(res => {
-    this.setState({
-      scrollTop: event.detail.scrollTop,
-      offsetTop: res.top
-    });
-  }).exec();
-} 
+  )
+}
 ```
 ### StickyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sticky.d.ts)   
 

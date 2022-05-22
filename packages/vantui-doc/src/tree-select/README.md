@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { TreeSelect } from "@antmjs/vantui"; 
+import { TreeSelect } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -19,111 +19,170 @@ import { TreeSelect } from "@antmjs/vantui";
 可以在任意位置上使用 vanTreeSelect 标签。传入对应的数据即可。此组件支持单选或多选，具体行为完全基于事件 clickItem 的实现逻辑如何为属性 activeId 赋值，当 activeId 为数组时即为多选状态。
 
 ```jsx
-<View>
-  <TreeSelect
-    items={ this.state.items }
-    mainActiveIndex={ this.state.mainActiveIndex }
-    activeId={ this.state.activeId }
-    onClickNav={ this.onClickNav }
-    onClickItem={ this.onClickItem }
-  />
-</View>
- 
+function Demo() {
+  const { items } = COMMON
+  const [state, changeState] = react.useState({
+    mainActiveIndex: 0,
+    activeId: null,
+  })
+
+  const setState = (newState) => {
+    changeState({
+      ...state,
+      ...newState,
+    })
+  }
+
+  const onClickNav = ({ detail = {} }) => {
+    setState({
+      mainActiveIndex: detail.index || 0,
+    })
+  }
+
+  const onClickItem = ({ detail = {} }) => {
+    const activeId = state.activeId === detail.id ? null : detail.id
+    setState({
+      activeId,
+    })
+  }
+
+  return (
+    <TreeSelect
+      items={items}
+      mainActiveIndex={state.mainActiveIndex}
+      activeId={state.activeId}
+      onClickNav={onClickNav}
+      onClickItem={onClickItem}
+    />
+  )
+}
 ```
 
-```js
-this.state = {
-  mainActiveIndex: 0,
-  activeId: null
-};
+传入数据结构
 
-function onClickNav({
-  detail = {}
-}) {
-  this.setState({
-    mainActiveIndex: detail.index || 0
-  });
-}
-
-function onClickItem({
-  detail = {}
-}) {
-  const activeId = this.data.activeId === detail.id ? null : detail.id;
-  this.setState({
-    activeId
-  });
-} 
+```js common
+const items = [
+  {
+    text: '浙江',
+    children: [
+      {
+        text: '杭州',
+        id: 1,
+      },
+      {
+        text: '温州',
+        id: 2,
+      },
+      {
+        text: '宁波',
+        id: 3,
+        disabled: true,
+      },
+      {
+        text: '义乌',
+        id: 4,
+      },
+    ],
+  },
+  {
+    text: '江苏',
+    children: [
+      {
+        text: '南京',
+        id: 5,
+      },
+      {
+        text: '无锡',
+        id: 6,
+      },
+      {
+        text: '徐州',
+        id: 7,
+      },
+      {
+        text: '苏州',
+        id: 8,
+      },
+    ],
+  },
+  {
+    text: '福建',
+    children: [
+      {
+        text: '泉州',
+        id: 9,
+      },
+      {
+        text: '厦门',
+        id: 10,
+      },
+    ],
+  },
+]
 ```
 
 ### 多选模式
 
 ```jsx
-<View>
-  <TreeSelect
-    items={ this.state.items }
-    mainActiveIndex={ this.state.mainActiveIndex }
-    activeId={ this.state.activeId }
-    max={ this.state.max }
-    onClickNav={ this.onClickNav }
-    onClickItem={ this.onClickItem }
-  />
-</View>
- 
-```
+function Demo() {
+  const { items } = COMMON
+  const [state, changeState] = react.useState({
+    mainActiveIndex: 0,
+    activeIds: [],
+  })
 
-```js
-this.state = {
-  mainActiveIndex: 0,
-  activeId: [],
-  max: 2
-};
-
-function onClickNav({
-  detail = {}
-}) {
-  this.setState({
-    mainActiveIndex: detail.index || 0
-  });
-}
-
-function onClickItem({
-  detail = {}
-}) {
-  const {
-    activeId
-  } = this.data;
-  const index = activeId.indexOf(detail.id);
-
-  if (index > -1) {
-    activeId.splice(index, 1);
-  } else {
-    activeId.push(detail.id);
+  const setState = (newState) => {
+    changeState({
+      ...state,
+      ...newState,
+    })
   }
 
-  this.setState({
-    activeId
-  });
-} 
+  const onClickNav = ({ detail = {} }) => {
+    setState({
+      mainActiveIndex: detail.index || 0,
+    })
+  }
+
+  const onClickItem = ({ detail = {} }) => {
+    const { activeIds } = state
+    if (activeIds.includes(detail.id)) {
+      activeIds.splice(activeIds.indexOf(detail.id), 1)
+    } else {
+      activeIds.push(detail.id)
+    }
+    console.info(activeIds)
+    setState({
+      activeIds: [...activeIds],
+    })
+  }
+
+  return (
+    <TreeSelect
+      items={items}
+      mainActiveIndex={state.mainActiveIndex}
+      activeId={state.activeIds}
+      onClickNav={onClickNav}
+      onClickItem={onClickItem}
+      max={2}
+    />
+  )
+}
 ```
 
 ### 自定义内容
 
 ```jsx
-<View>
-  <TreeSelect
-    items={ this.state.items }
-    height="55vw"
-    mainActiveIndex={ this.state.mainActiveIndex }
-    activeId={ this.state.activeId }
-    onClickNav={ this.onClickNav }
-    onClickItem={ this.onClickItem }
-  >
-    <Image
-      src="https://img.yzcdn.cn/vant/apple-1.jpg"
+function Demo() {
+  return (
+    <TreeSelect
+      items={[{ text: '自定义' }]}
+      height="55vw"
+      mainActiveIndex={0}
+      renderContent={<Image src="https://img.yzcdn.cn/vant/apple-1.jpg" />}
     />
-  </TreeSelect>
-</View>
- 
+  )
+}
 ```
 ### TreeSelectProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tree-select.d.ts)   
 
