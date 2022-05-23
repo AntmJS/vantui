@@ -4,6 +4,7 @@ const glob = require('glob')
 const parser = require('./utils/ts-parser')
 const markdownToAst = require('markdown-to-ast')
 const astToMarkdown = require('ast-to-markdown')
+const Prettier = require('prettier')
 const ora = require('ora')
 
 const GITHUB_TYPESHS = `https://github.com/AntmJS/vantui/tree/main/packages/vantui/types`
@@ -31,7 +32,7 @@ glob(READMES_PATH, function (err, path_) {
       )
       const res = parser(tsInfo)
 
-      fs.writeFileSync(item, content + createMd(res, componentName))
+      fs.writeFileSync(item, content + `\n` + createMd(res, componentName))
       spinner.stop(`${componentName}文档 API 同步完成`)
     }
   })
@@ -101,7 +102,12 @@ function createMd(obj, compName) {
     })
     mdRes += `\n`
   }
-  return mdRes
+  return Prettier.format(mdRes, {
+    singleQuote: true,
+    trailingComma: 'all',
+    semi: false,
+    parser: 'markdown',
+  })
 }
 
 function removeOldTable(md) {
