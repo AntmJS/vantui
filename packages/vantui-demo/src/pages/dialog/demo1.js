@@ -1,9 +1,10 @@
 /* eslint-disable */
 import react from 'react'
-import { View } from '@tarojs/components'
+import { Input, View } from '@tarojs/components'
 import { Dialog, Cell } from '@antmjs/vantui'
 
 export default function Demo() {
+  const [value, setValue] = react.useState('')
   const alert = react.useCallback((title) => {
     Dialog.alert({
       title: title || '',
@@ -16,13 +17,20 @@ export default function Demo() {
 
   const confirm = react.useCallback(() => {
     Dialog.confirm({
-      title: '标题',
-      message: '弹窗内容',
+      renderTitle: '标题',
+      // message: '弹窗内容',
+      message: (
+        <Input
+          placeholder="xxxx111"
+          value={value}
+          onChange={(e) => setValue(e.detail.value)}
+        />
+      ),
       selector: 'vanDialog0',
     }).then((value) => {
       console.log('dialog result', value)
     })
-  })
+  }, [value])
 
   return (
     <View>

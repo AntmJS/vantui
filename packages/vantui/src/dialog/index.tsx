@@ -122,12 +122,13 @@ export function Dialog(props: DialogProps) {
 
   useEffect(() => {
     setOptions({
+      ...options,
       ...props,
     })
     if (!props.show) {
       _stopLoading()
     }
-    setShow(props.show)
+    setShow(options.show || props.show)
     // eslint-disable-next-line
   }, [props])
 
@@ -172,6 +173,8 @@ export function Dialog(props: DialogProps) {
       off('stopLoading')
     }
   }, [])
+
+  console.info(show)
 
   return (
     <VanPopup

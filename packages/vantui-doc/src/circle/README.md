@@ -78,20 +78,20 @@ function Demo() {
   )
 }
 ```
-### CircleProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/circle.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| text | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| lineCap | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| value | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| speed | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| size | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| fill | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| layerColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| color | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Record<string,&nbsp;string><br/>_ | - | `false` |
-| type | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| strokeWidth | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| clockwise | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+### CircleProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/circle.d.ts)
 
+| 参数        | 说明 | 类型                                                                     | 默认值 | 必填    |
+| ----------- | ---- | ------------------------------------------------------------------------ | ------ | ------- |
+| text        | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
+| lineCap     | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
+| value       | -    | _&nbsp;&nbsp;number<br/>_                                                | -      | `false` |
+| speed       | -    | _&nbsp;&nbsp;number<br/>_                                                | -      | `false` |
+| size        | -    | _&nbsp;&nbsp;number<br/>_                                                | -      | `false` |
+| fill        | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
+| layerColor  | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
+| color       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Record<string,&nbsp;string><br/>_ | -      | `false` |
+| type        | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
+| strokeWidth | -    | _&nbsp;&nbsp;number<br/>_                                                | -      | `false` |
+| clockwise   | -    | _&nbsp;&nbsp;boolean<br/>_                                               | -      | `false` |
+| children    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                             | -      | `false` |

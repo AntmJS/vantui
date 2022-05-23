@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Card } from "@antmjs/vantui"; 
+import { Card } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -28,7 +28,6 @@ function Demo() {
     />
   )
 }
- 
 ```
 
 ### 高级用法
@@ -45,46 +44,41 @@ function Demo() {
       desc="描述信息"
       title="商品标题"
       thumb="https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg"
-      renderFooter={(
+      renderFooter={
         <View>
-          <Button size="mini">
-            按钮1
-          </Button>
-          <Button size="mini">
-            按钮2
-          </Button>
+          <Button size="mini">按钮1</Button>
+          <Button size="mini">按钮2</Button>
         </View>
-      )}
+      }
     />
   )
 }
- 
 ```
-### CardProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/card.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| tag | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| num | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| desc | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| thumb | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| price | - | _&nbsp;&nbsp;string<br/>_ | - | `true` |
-| centered | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| lazyLoad | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| thumbLink | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| originPrice | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| thumbMode | - | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode<br/>_ | - | `false` |
-| currency | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| renderFooter | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderBottom | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderNum | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderOriginPrice | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderPrice | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderPriceTop | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderTags | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderDesc | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderTag | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderThumb | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+### CardProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/card.d.ts)
 
+| 参数              | 说明 | 类型                                          | 默认值 | 必填    |
+| ----------------- | ---- | --------------------------------------------- | ------ | ------- |
+| tag               | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| num               | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| desc              | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| thumb             | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| title             | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| price             | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `true`  |
+| centered          | -    | _&nbsp;&nbsp;boolean<br/>_                    | -      | `false` |
+| lazyLoad          | -    | _&nbsp;&nbsp;boolean<br/>_                    | -      | `false` |
+| thumbLink         | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| originPrice       | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| thumbMode         | -    | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode<br/>_ | -      | `false` |
+| currency          | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
+| renderFooter      | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderBottom      | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderNum         | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderOriginPrice | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderPrice       | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderPriceTop    | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderTags        | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderDesc        | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderTitle       | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderTag         | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+| renderThumb       | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |

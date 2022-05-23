@@ -103,8 +103,7 @@ export const Table = (props: ITableProps): JSX.Element | null => {
       })
       setColumns(temp)
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [columns],
+    [columns, sortChange],
   )
 
   /**

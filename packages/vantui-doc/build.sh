@@ -1,7 +1,7 @@
 #!/bin/bash
+npx antm-vantui-cli mdcode --mode create
 
 npx antm-vantui-cli docs --mode production
-
 
 cd ./../vantui-demo
 

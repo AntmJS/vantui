@@ -92,7 +92,9 @@ export default function Demo() {
       })
     }
 
-    setState('dataSource', [...dataSource])
+    setState({
+      dataSource,
+    })
   }
   return (
     <Table
