@@ -1,1 +1,15 @@
-.dark,.light{color:#fff;font-size:.55467rem;line-height:1.28rem;text-align:center;margin-bottom:.42667rem;background-clip:content-box}.dark{background-color:#39a9ed}.light{background-color:#66c6f2}
+.dark,
+.light {
+  color: #fff;
+  font-size: 0.55467rem;
+  line-height: 1.28rem;
+  text-align: center;
+  margin-bottom: 0.42667rem;
+  background-clip: content-box;
+}
+.dark {
+  background-color: #39a9ed;
+}
+.light {
+  background-color: #66c6f2;
+}
