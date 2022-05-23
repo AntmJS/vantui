@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   name: 'antmjs.vantui',
   build: {
     srcDir: 'src',
