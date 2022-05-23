@@ -17,11 +17,11 @@ export default function Demo() {
 
   const confirm = react.useCallback(() => {
     Dialog.confirm({
-      // title: '标题',
+      renderTitle: '标题',
       // message: '弹窗内容',
-      renderTitle: (
+      message: (
         <Input
-          placeholder="xxxx"
+          placeholder="xxxx111"
           value={value}
           onChange={(e) => setValue(e.detail.value)}
         />
@@ -30,7 +30,7 @@ export default function Demo() {
     }).then((value) => {
       console.log('dialog result', value)
     })
-  })
+  }, [value])
 
   return (
     <View>
