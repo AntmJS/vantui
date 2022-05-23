@@ -213,44 +213,44 @@ function Demo() {
   )
 }
 ```
+### TabsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tab.d.ts)   
 
-### TabsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tab.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| sticky | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| swipeable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| titleActiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| titleInactiveColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| animated | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| lineWidth | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| lineHeight | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| active | - | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| type | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| ellipsis | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| duration | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| swipeThreshold | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| offsetTop | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| lazyRender | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `true` |
+| renderNavLeft | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderNavRight | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onScroll | - | _&nbsp;&nbsp;(data:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrollTop?:&nbsp;number&nbsp;&brvbar;&nbsp;null<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isFixed?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(event:&nbsp;eventDetail)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(event:&nbsp;eventDetail)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onDisabled | - | _&nbsp;&nbsp;(event:&nbsp;eventDetail)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-| 参数               | 说明 | 类型                                                                                                                                                                                                                                                                                                  | 默认值 | 必填    |
-| ------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| sticky             | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                            | -      | `false` |
-| border             | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                            | -      | `false` |
-| swipeable          | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                            | -      | `false` |
-| titleActiveColor   | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| titleInactiveColor | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| color              | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| animated           | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                            | -      | `false` |
-| lineWidth          | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                                                                   | -      | `false` |
-| lineHeight         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                                                                   | -      | `false` |
-| active             | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                                                                   | -      | `false` |
-| type               | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| ellipsis           | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                            | -      | `false` |
-| duration           | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| zIndex             | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| swipeThreshold     | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| offsetTop          | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                                             | -      | `false` |
-| lazyRender         | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                            | -      | `false` |
-| children           | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                          | -      | `true`  |
-| renderNavLeft      | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                          | -      | `false` |
-| renderNavRight     | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                          | -      | `false` |
-| onScroll           | -    | _&nbsp;&nbsp;(data:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrollTop?:&nbsp;number&nbsp;&brvbar;&nbsp;null<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isFixed?:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onClick            | -    | _&nbsp;&nbsp;(event:&nbsp;eventDetail)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                        | -      | `false` |
-| onChange           | -    | _&nbsp;&nbsp;(event:&nbsp;eventDetail)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                        | -      | `false` |
-| onDisabled         | -    | _&nbsp;&nbsp;(event:&nbsp;eventDetail)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                        | -      | `false` |
+### TabProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tab.d.ts)   
 
-### TabProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tab.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| info | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| titleStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| name | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
 
-| 参数       | 说明 | 类型                                                | 默认值 | 必填    |
-| ---------- | ---- | --------------------------------------------------- | ------ | ------- |
-| dot        | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| info       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| title      | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| disabled   | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| titleStyle | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| name       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| children   | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |

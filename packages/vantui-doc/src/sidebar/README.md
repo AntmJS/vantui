@@ -88,24 +88,24 @@ function Demo() {
   )
 }
 ```
+### SidebarItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sidebar.d.ts)   
 
-### SidebarItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sidebar.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| dot | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| badge | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| info | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| onClick | - | _&nbsp;&nbsp;(a:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(a:&nbsp;OnChangeEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;(a:&nbsp;any)&nbsp;=>&nbsp;React.ReactNode<br/>_ | - | `false` |
 
-| 参数        | 说明 | 类型                                                          | 默认值 | 必填    |
-| ----------- | ---- | ------------------------------------------------------------- | ------ | ------- |
-| dot         | -    | _&nbsp;&nbsp;boolean<br/>_                                    | -      | `false` |
-| badge       | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
-| info        | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
-| title       | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
-| disabled    | -    | _&nbsp;&nbsp;boolean<br/>_                                    | -      | `false` |
-| onClick     | -    | _&nbsp;&nbsp;(a:&nbsp;any)&nbsp;=>&nbsp;void<br/>_            | -      | `false` |
-| onChange    | -    | _&nbsp;&nbsp;(a:&nbsp;OnChangeEvent)&nbsp;=>&nbsp;void<br/>_  | -      | `false` |
-| renderTitle | -    | _&nbsp;&nbsp;(a:&nbsp;any)&nbsp;=>&nbsp;React.ReactNode<br/>_ | -      | `false` |
+### SidebarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sidebar.d.ts)   
 
-### SidebarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sidebar.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| onChange | - | _&nbsp;&nbsp;(a:&nbsp;OnChangeEvent)&nbsp;=>&nbsp;any<br/>_ | - | `false` |
+| activeKey | - | _&nbsp;&nbsp;number<br/>_ | - | `true` |
+| children | - | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `true` |
 
-| 参数      | 说明 | 类型                                                        | 默认值 | 必填    |
-| --------- | ---- | ----------------------------------------------------------- | ------ | ------- |
-| onChange  | -    | _&nbsp;&nbsp;(a:&nbsp;OnChangeEvent)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
-| activeKey | -    | _&nbsp;&nbsp;number<br/>_                                   | -      | `true`  |
-| children  | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                          | -      | `true`  |

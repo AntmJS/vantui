@@ -105,20 +105,20 @@ function Demo() {
   )
 }
 ```
+### NumberKeyboardProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/number-keyboard.d.ts)   
 
-### NumberKeyboardProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/number-keyboard.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| visible | 是否展示 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| title | 键盘标题 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| confirmText | 完成按钮文案，null 不展示 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;null<br/>_ | null | `false` |
+| customKey | 自定义按钮 | _&nbsp;&nbsp;"-"&nbsp;&brvbar;&nbsp;"."&nbsp;&brvbar;&nbsp;"X"<br/>_ | - | `false` |
+| randomOrder | 是否乱序键盘 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| showCloseButton | 是否展示收起键盘箭头 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| onInput | 输入内容回调 | _&nbsp;&nbsp;(v:&nbsp;string)&nbsp;=>&nbsp;void<br/>_ | true | `false` |
+| onDelete | 删除内容回调 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | 点击关闭时触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onConfirm | 点击确定按钮时触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| afterClose | 键盘完全收起回调 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| closeOnConfirm | 是否在点击确定按钮时自动关闭 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
 
-| 参数            | 说明                         | 类型                                                                 | 默认值 | 必填    |
-| --------------- | ---------------------------- | -------------------------------------------------------------------- | ------ | ------- |
-| visible         | 是否展示                     | _&nbsp;&nbsp;boolean<br/>_                                           | -      | `false` |
-| title           | 键盘标题                     | _&nbsp;&nbsp;string<br/>_                                            | -      | `false` |
-| confirmText     | 完成按钮文案，null 不展示    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;null<br/>_                    | null   | `false` |
-| customKey       | 自定义按钮                   | _&nbsp;&nbsp;"-"&nbsp;&brvbar;&nbsp;"."&nbsp;&brvbar;&nbsp;"X"<br/>_ | -      | `false` |
-| randomOrder     | 是否乱序键盘                 | _&nbsp;&nbsp;boolean<br/>_                                           | false  | `false` |
-| showCloseButton | 是否展示收起键盘箭头         | _&nbsp;&nbsp;boolean<br/>_                                           | true   | `false` |
-| onInput         | 输入内容回调                 | _&nbsp;&nbsp;(v:&nbsp;string)&nbsp;=>&nbsp;void<br/>_                | true   | `false` |
-| onDelete        | 删除内容回调                 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                              | -      | `false` |
-| onClose         | 点击关闭时触发               | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                              | -      | `false` |
-| onConfirm       | 点击确定按钮时触发           | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                              | -      | `false` |
-| afterClose      | 键盘完全收起回调             | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                              | -      | `false` |
-| closeOnConfirm  | 是否在点击确定按钮时自动关闭 | _&nbsp;&nbsp;boolean<br/>_                                           | true   | `false` |

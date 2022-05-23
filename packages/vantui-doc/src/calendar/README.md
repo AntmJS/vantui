@@ -481,77 +481,74 @@ function Demo() {
   --calendarHeight: 500px;
 }
 ```
+### CalendarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
 
-### CalendarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| title | 日历标题 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| color | 主题色，对底部按钮和选中日期生效 | _&nbsp;&nbsp;string<br/>_ | #ee0a24 | `false` |
+| show | 是否显示日历弹窗 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| formatter | 日期格式化函数 | _&nbsp;&nbsp;(day:&nbsp;Day)&nbsp;=>&nbsp;Day<br/>_ | - | `false` |
+| confirmText | 确认按钮的文字 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| rangePrompt | 范围选择超过最多可选天数时的提示文案 | _&nbsp;&nbsp;string<br/>_ | 选择天数不能超过xx天 | `false` |
+| showRangePrompt | 范围选择超过最多可选天数时，是否展示提示文案 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| defaultDate | 默认选中的日期，type为multiple或range时为数组 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | 今天 | `false` |
+| allowSameDay | 是否允许日期范围的起止时间为同一天 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| confirmDisabledText | 确认按钮处于禁用状态时的文字 | _&nbsp;&nbsp;string<br/>_ | 确定 | `false` |
+| type | 类型 | _&nbsp;&nbsp;"single"&nbsp;&brvbar;&nbsp;"multiple"&nbsp;&brvbar;&nbsp;"range"<br/>_ | - | `false` |
+| minDate | 可选择的最小日期 | _&nbsp;&nbsp;number<br/>_ | 当前日期 | `false` |
+| maxDate | 可选择的最大日期 | _&nbsp;&nbsp;number<br/>_ | 当前日期六个月后 | `false` |
+| position | 弹窗弹出的位置 | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"top"<br/>_ | bottom | `false` |
+| rowHeight | 日期行高 | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | 64 | `false` |
+| round | 弹窗是否圆角 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| poppable | 是否以弹层的形式展示日历 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| showMark | 是否显示月份背景水印 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| showTitle | 是否展示日历标题 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| showConfirm | 是否展示确认按钮 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| showSubtitle | 是否展示日历副标题（年月） | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| safeAreaInsetBottom | 是否开启底部安全区适配 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭 | _&nbsp;&nbsp;boolean<br/>_ | true | `false` |
+| maxRange | 日期区间最多可选天数，默认无限制 | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| firstDayOfWeek | 设置周起始日 | _&nbsp;&nbsp;0&nbsp;&brvbar;&nbsp;1&nbsp;&brvbar;&nbsp;2&nbsp;&brvbar;&nbsp;3&nbsp;&brvbar;&nbsp;4&nbsp;&brvbar;&nbsp;5&nbsp;&brvbar;&nbsp;6<br/>_ | 0 | `false` |
+| onOpen | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClose | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onOpened | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClosed | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onConfirm | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| overRange | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onUnselect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEventsSingle)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onSelect | - | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickSubtitle | - | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| renderTitle | 自定义标题 | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
+| renderFooter | 自定义底部区域内容 | _&nbsp;&nbsp;React.ReactNode<br/>_ | - | `false` |
 
-| 参数                | 说明                                               | 类型                                                                                                                                               | 默认值                 | 必填    |
-| ------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------- |
-| title               | 日历标题                                           | _&nbsp;&nbsp;string<br/>_                                                                                                                          | -                      | `false` |
-| color               | 主题色，对底部按钮和选中日期生效                   | _&nbsp;&nbsp;string<br/>_                                                                                                                          | #ee0a24                | `false` |
-| show                | 是否显示日历弹窗                                   | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | false                  | `false` |
-| formatter           | 日期格式化函数                                     | _&nbsp;&nbsp;(day:&nbsp;Day)&nbsp;=>&nbsp;Day<br/>_                                                                                                | -                      | `false` |
-| confirmText         | 确认按钮的文字                                     | _&nbsp;&nbsp;string<br/>_                                                                                                                          | -                      | `false` |
-| rangePrompt         | 范围选择超过最多可选天数时的提示文案               | _&nbsp;&nbsp;string<br/>_                                                                                                                          | 选择天数不能超过 xx 天 | `false` |
-| showRangePrompt     | 范围选择超过最多可选天数时，是否展示提示文案       | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| defaultDate         | 默认选中的日期，type 为 multiple 或 range 时为数组 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_                                                                                              | 今天                   | `false` |
-| allowSameDay        | 是否允许日期范围的起止时间为同一天                 | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | false                  | `false` |
-| confirmDisabledText | 确认按钮处于禁用状态时的文字                       | _&nbsp;&nbsp;string<br/>_                                                                                                                          | 确定                   | `false` |
-| type                | 类型                                               | _&nbsp;&nbsp;"single"&nbsp;&brvbar;&nbsp;"multiple"&nbsp;&brvbar;&nbsp;"range"<br/>_                                                               | -                      | `false` |
-| minDate             | 可选择的最小日期                                   | _&nbsp;&nbsp;number<br/>_                                                                                                                          | 当前日期               | `false` |
-| maxDate             | 可选择的最大日期                                   | _&nbsp;&nbsp;number<br/>_                                                                                                                          | 当前日期六个月后       | `false` |
-| position            | 弹窗弹出的位置                                     | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"&nbsp;&brvbar;&nbsp;"bottom"&nbsp;&brvbar;&nbsp;"top"<br/>_                                          | bottom                 | `false` |
-| rowHeight           | 日期行高                                           | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                | 64                     | `false` |
-| round               | 弹窗是否圆角                                       | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| poppable            | 是否以弹层的形式展示日历                           | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| showMark            | 是否显示月份背景水印                               | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| showTitle           | 是否展示日历标题                                   | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| showConfirm         | 是否展示确认按钮                                   | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| showSubtitle        | 是否展示日历副标题（年月）                         | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| safeAreaInsetBottom | 是否开启底部安全区适配                             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭                             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                         | true                   | `false` |
-| maxRange            | 日期区间最多可选天数，默认无限制                   | _&nbsp;&nbsp;number<br/>_                                                                                                                          | -                      | `false` |
-| firstDayOfWeek      | 设置周起始日                                       | _&nbsp;&nbsp;0&nbsp;&brvbar;&nbsp;1&nbsp;&brvbar;&nbsp;2&nbsp;&brvbar;&nbsp;3&nbsp;&brvbar;&nbsp;4&nbsp;&brvbar;&nbsp;5&nbsp;&brvbar;&nbsp;6<br/>_ | 0                      | `false` |
-| onOpen              | -                                                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                            | -                      | `false` |
-| onClose             | -                                                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                            | -                      | `false` |
-| onOpened            | -                                                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                            | -                      | `false` |
-| onClosed            | -                                                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                            | -                      | `false` |
-| onConfirm           | -                                                  | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_                                                                                      | -                      | `false` |
-| overRange           | -                                                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                            | -                      | `false` |
-| onUnselect          | -                                                  | _&nbsp;&nbsp;(e:&nbsp;CalendarEventsSingle)&nbsp;=>&nbsp;void<br/>_                                                                                | -                      | `false` |
-| onSelect            | -                                                  | _&nbsp;&nbsp;(e:&nbsp;CalendarEvents)&nbsp;=>&nbsp;void<br/>_                                                                                      | -                      | `false` |
-| onClickSubtitle     | -                                                  | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_                                                                                                | -                      | `false` |
-| renderTitle         | 自定义标题                                         | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                 | -                      | `false` |
-| renderFooter        | 自定义底部区域内容                                 | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                 | -                      | `false` |
+### formatter回调参数Day [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
 
-### formatter 回调参数 Day [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| date | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"selected"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"start"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"middle"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"end"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"disabled"<br/>_ |
+| type | - | _&nbsp;&nbsp;string<br/>_ |
+| text | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ |
+| bottomInfo | - | _&nbsp;&nbsp;string<br/>_ |
+| className | - | _&nbsp;&nbsp;string<br/>_ |
+| topInfo | - | _&nbsp;&nbsp;string<br/>_ |
 
-| 参数       | 说明 | 类型                                                                                                                                                                                                                                                                                    |
-| ---------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| date       | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"selected"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"start"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"middle"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"end"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"disabled"<br/>_ |
-| type       | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                               |
-| text       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                                                                                     |
-| bottomInfo | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                               |
-| className  | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                               |
-| topInfo    | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                               |
-
-### ICalendarInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
-
-使用 ref 获取到的组件实例
+### ICalendarInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+使用ref获取到的组件实例
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
 | reset | - | _&nbsp;&nbsp;(date?:&nbsp;Date&nbsp;&brvbar;&nbsp;Date[])&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;//<br/>_ |
 | scrollToDate | - | _&nbsp;&nbsp;(date:&nbsp;Date)&nbsp;=>&nbsp;void<br/>_ |
 
-### CalendarEvents [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
-
-onConfirm 和 onSelect 的回调函数参数
+### CalendarEvents [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+onConfirm和onSelect的回调函数参数
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | detail | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;Date&nbsp;&brvbar;&nbsp;Date[]<br/>&nbsp;&nbsp;}<br/>_ |
 
-### CalendarEvents [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
-
-onUnselect 的回调函数参数
+### CalendarEvents [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)   
+onUnselect的回调函数参数
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | detail | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;Date<br/>&nbsp;&nbsp;}<br/>_ |
+

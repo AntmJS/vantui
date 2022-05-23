@@ -50,23 +50,23 @@ function Demo() {
   )
 }
 ```
+### NavBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/nav-bar.d.ts)   
 
-### NavBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/nav-bar.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| title | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| fixed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| placeholder | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| rightText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| leftArrow | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| border | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| zIndex | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| safeAreaInsetTop | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| renderTitle | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLeft | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRight | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClickLeft | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickRight | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-| 参数             | 说明 | 类型                                                       | 默认值 | 必填    |
-| ---------------- | ---- | ---------------------------------------------------------- | ------ | ------- |
-| title            | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| fixed            | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| placeholder      | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| leftText         | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| rightText        | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| style            | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| leftArrow        | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| border           | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| zIndex           | -    | _&nbsp;&nbsp;number<br/>_                                  | -      | `false` |
-| safeAreaInsetTop | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| renderTitle      | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| renderLeft       | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| renderRight      | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| onClickLeft      | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onClickRight     | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |

@@ -108,39 +108,39 @@ function Demo() {
   )
 }
 ```
+### SearchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/search.d.ts)   
 
-### SearchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/search.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| value | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| defaultValue | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
+| label | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| focus | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| error | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| disabled | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| readonly | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| inputAlign | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| showAction | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| leftIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| rightIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| placeholder | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| placeholderStyle | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| actionText | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| background | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| maxlength | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
+| shape | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| clearable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| clearTrigger | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| clearIcon | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| renderLabel | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderLeftIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderRightIcon | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| renderAction | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onChange | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onSearch | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onFocus | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onBlur | - | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClear | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onCancel | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+| onClickInput | - | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `false` |
 
-| 参数             | 说明 | 类型                                                       | 默认值 | 必填    |
-| ---------------- | ---- | ---------------------------------------------------------- | ------ | ------- |
-| value            | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_        | -      | `false` |
-| defaultValue     | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_        | -      | `false` |
-| label            | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| focus            | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| error            | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| disabled         | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| readonly         | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| inputAlign       | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| showAction       | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| leftIcon         | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| rightIcon        | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| placeholder      | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| placeholderStyle | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| actionText       | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| background       | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| maxlength        | -    | _&nbsp;&nbsp;number<br/>_                                  | -      | `false` |
-| shape            | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| clearable        | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| clearTrigger     | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| clearIcon        | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| renderLabel      | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| renderLeftIcon   | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| renderRightIcon  | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| renderAction     | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
-| onChange         | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onSearch         | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onFocus          | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onBlur           | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onClear          | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                    | -      | `false` |
-| onCancel         | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                    | -      | `false` |
-| onClickInput     | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                    | -      | `false` |

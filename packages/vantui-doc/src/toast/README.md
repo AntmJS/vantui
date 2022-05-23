@@ -160,27 +160,25 @@ Toast.show({
   },
 })
 ```
+### ToastProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/toast.d.ts)   
 
-### ToastProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/toast.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| zIndex | 弹出层的层级 | _&nbsp;&nbsp;number<br/>_ | 1000 | `false` |
+| duration | 展示时长(ms)，值为 0 时，toast 不会消失 | _&nbsp;&nbsp;number<br/>_ | 2000 | `false` |
+| mask | 是否有蒙层 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| forbidClick | 是否禁止背景点击 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
+| type | 提示类型 | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"loading"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"fail"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"html"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>_ | text | `false` |
+| position | 展示位置 | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"middle"&nbsp;&brvbar;&nbsp;"bottom"<br/>_ | middle | `false` |
+| message | 内容 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_ | - | `false` |
+| loadingType | 加载图标类型 | _&nbsp;&nbsp;"circular"&nbsp;&brvbar;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;undefined<br/>_ | spinner | `false` |
+| selector | 自定义选择器, 对应元素id | _&nbsp;&nbsp;string<br/>_ | van-toast | `false` |
+| id | 设置id,配合selector使用 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+| onClose | 关闭时的回调函数 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ | - | `false` |
 
-| 参数        | 说明                                    | 类型                                                                                                                                                                                                                                                                                | 默认值    | 必填    |
-| ----------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
-| zIndex      | 弹出层的层级                            | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                           | 1000      | `false` |
-| duration    | 展示时长(ms)，值为 0 时，toast 不会消失 | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                           | 2000      | `false` |
-| mask        | 是否有蒙层                              | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                          | false     | `false` |
-| forbidClick | 是否禁止背景点击                        | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                          | false     | `false` |
-| type        | 提示类型                                | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"loading"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"fail"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"html"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"text"<br/>_ | text      | `false` |
-| position    | 展示位置                                | _&nbsp;&nbsp;"top"&nbsp;&brvbar;&nbsp;"middle"&nbsp;&brvbar;&nbsp;"bottom"<br/>_                                                                                                                                                                                                    | middle    | `false` |
-| message     | 内容                                    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                              | -         | `false` |
-| loadingType | 加载图标类型                            | _&nbsp;&nbsp;"circular"&nbsp;&brvbar;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;undefined<br/>_                                                                                                                                                                                             | spinner   | `false` |
-| selector    | 自定义选择器, 对应元素 id               | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                           | van-toast | `false` |
-| id          | 设置 id,配合 selector 使用              | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                           | -         | `false` |
-| children    | -                                       | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                        | -         | `false` |
-| onClose     | 关闭时的回调函数                        | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                                                                                              | -         | `false` |
-
-### Toast 下命令式调用方法 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/toast.d.ts)
-
-调用方式传入 ToastProps 或者 ToastProps.message 执行
+### Toast下命令式调用方法 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/toast.d.ts)   
+调用方式传入ToastProps或者ToastProps.message执行
 | 参数 | 说明 | 类型 | 默认值 | 必填 |
 | --- | --- | --- | --- | --- |
 | show | - | _&nbsp;&nbsp;(options:&nbsp;ToastProps&nbsp;&brvbar;&nbsp;string)&nbsp;=>&nbsp;any<br/>_ | - | `true` |
@@ -190,3 +188,4 @@ Toast.show({
 | clear | - | _&nbsp;&nbsp;(options?:&nbsp;ToastProps)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | setDefaultOptions | - | _&nbsp;&nbsp;(options:&nbsp;ToastProps)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | resetDefaultOptions | - | _&nbsp;&nbsp;(options:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
+

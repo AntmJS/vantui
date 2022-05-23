@@ -185,15 +185,15 @@ function Demo() {
   )
 }
 ```
+### IconProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/icon.d.ts)   
 
-### IconProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/icon.d.ts)
+| 参数 | 说明 | 类型 | 默认值 | 必填 |
+| --- | --- | --- | --- | --- |
+| dot | 是否显示图标右上角小红点 | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
+| info | 图标右上角文字提示 | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | false | `false` |
+| size | 图标大小，如 20px，单位为px | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
+| color | 图标颜色 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| style | 自定义样式 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
+| classPrefix | 类名前缀 | _&nbsp;&nbsp;string<br/>_ | vant-icon | `false` |
+| name | 图标名称或图片链接 | _&nbsp;&nbsp;string<br/>_ | - | `false` |
 
-| 参数        | 说明                         | 类型                                                | 默认值    | 必填    |
-| ----------- | ---------------------------- | --------------------------------------------------- | --------- | ------- |
-| dot         | 是否显示图标右上角小红点     | _&nbsp;&nbsp;boolean<br/>_                          | -         | `false` |
-| info        | 图标右上角文字提示           | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | false     | `false` |
-| size        | 图标大小，如 20px，单位为 px | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -         | `false` |
-| color       | 图标颜色                     | _&nbsp;&nbsp;string<br/>_                           | -         | `false` |
-| style       | 自定义样式                   | _&nbsp;&nbsp;string<br/>_                           | -         | `false` |
-| classPrefix | 类名前缀                     | _&nbsp;&nbsp;string<br/>_                           | vant-icon | `false` |
-| name        | 图标名称或图片链接           | _&nbsp;&nbsp;string<br/>_                           | -         | `false` |
