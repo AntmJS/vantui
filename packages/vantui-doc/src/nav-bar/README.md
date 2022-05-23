@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { NavBar, MiniNavBar } from "@antmjs/vantui"; 
+import { NavBar, MiniNavBar } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,45 +17,38 @@ import { NavBar, MiniNavBar } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <NavBar
-    title="标题"
-    leftText="返回"
-    rightText="按钮"
-    leftArrow={ true }
-    onClickLeft={ onClickLeft }
-    onClickRight={ this.onClickRight }
-  />
-</View>
- 
-```
-
-```js
-function onClickRight() {
-  wx.showToast({
-    title: '点击按钮',
-    icon: 'none'
-  });
-} 
+function Demo() {
+  return (
+    <View>
+      <NavBar
+        title="标题"
+        leftText="返回"
+        rightText="按钮"
+        leftArrow
+        onClickLeft={() => Toast.show({ message: '点击按钮 返回' })}
+        onClickRight={() => Toast.show({ message: '点击按钮 right' })}
+      />
+      <Toast />
+    </View>
+  )
+}
 ```
 
 ### 高级用法
 
 ```jsx
-<View>
-  <NavBar
-    title="标题"
-    leftText="返回"
-    leftArrow={ true }
-    renderRight={
-      <Block>
-        <Icon name="search" className="icon" size="36"></Icon>
-      </Block>
-    }
-  >
-  </NavBar>
-</View>
- 
+function Demo() {
+  return (
+    <View>
+      <NavBar
+        title="标题"
+        leftText="返回"
+        leftArrow
+        renderRight={<Icon name="search" className="icon" size="36"></Icon>}
+      />
+    </View>
+  )
+}
 ```
 ### NavBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/nav-bar.d.ts)   
 

@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Switch } from "@antmjs/vantui"; 
+import { Switch } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,111 +17,82 @@ import { Switch } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <Switch
-    checked={ this.state.checked }
-    onChange={ this.onChange }
-  />
-</View>
- 
-```
-
-```js
-this.state = {
-  checked: true
-};
-
-function onChange({
-  detail
-}) {
-  // 需要手动对 checked 状态进行更新
-  this.setState({
-    checked: detail
-  });
-} 
+function Demo() {
+  const [value, setValue] = react.useState(false)
+  return <Switch checked={value} onChange={(e) => setValue(e.detail)} />
+}
 ```
 
 ### 禁用状态
 
 ```jsx
-<View>
-  <Switch
-    checked={ this.state.checked }
-    disabled={ true }
-  />
-</View>
- 
+function Demo() {
+  return <Switch disbled />
+}
 ```
 
 ### 加载状态
 
 ```jsx
-<View>
-  <Switch
-    checked={ this.state.checked }
-    loading={ true }
-  />
-</View>
- 
+function Demo() {
+  return <Switch loading checked={true} />
+}
 ```
 
 ### 自定义大小
 
 ```jsx
-<View>
-  <Switch
-    checked={ this.state.checked }
-    size="24px"
-  />
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState(false)
+  return (
+    <Switch size="32px" checked={value} onChange={(e) => setValue(e.detail)} />
+  )
+}
 ```
 
 ### 自定义颜色
 
 ```jsx
-<View>
-  <Switch
-    checked={ this.state.checked }
-    activeColor="#07c160"
-    inactiveColor="#ee0a24"
-  />
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState(false)
+  return (
+    <Switch
+      activeColor="#07c160"
+      inactiveColor="#ee0a24"
+      checked={value}
+      onChange={(e) => setValue(e.detail)}
+    />
+  )
+}
 ```
 
 ### 异步控制
 
 ```jsx
-<View>
-  <Switch
-    checked={ this.state.checked }
-    onChange={ this.onChange }
-  />
-</View>
- 
-```
+function Demo() {
+  const [value, setValue] = react.useState(false)
 
-```js
-this.state = {
-  checked: true
-};
+  const action = (e) => {
+    Dialog.confirm({
+      selector: '#switch-demo',
+      title: '提示',
+      message: '是否切换开关？',
+    })
+      .then(() => {
+        setValue(e.detail)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
 
-function onChange({
-  detail
-}) {
-  wx.showModal({
-    title: '提示',
-    content: '是否切换开关？',
-    success: res => {
-      if (res.confirm) {
-        this.setState({
-          checked2: detail
-        });
-      }
-    }
-  });
-} 
+  return (
+    <>
+      <Dialog id="switch-demo" />
+      <Switch checked={value} onChange={action} />
+    </>
+  )
+}
 ```
 ### SwitchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/switch.d.ts)   
 

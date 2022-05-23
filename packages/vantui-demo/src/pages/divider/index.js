@@ -1,10 +1,14 @@
+/* eslint-disable */
+
 import { Component } from 'react'
-
-import { Divider } from '@antmjs/vantui'
 import DemoPage from '../../components/demo-page/index'
-
 import DemoBlock from '../../components/demo-block/index'
-import './index.scss'
+import Demo1 from './demo1'
+import Demo2 from './demo2'
+import Demo3 from './demo3'
+import Demo4 from './demo4'
+import Demo5 from './demo5'
+import Demo6 from './demo6'
 
 export default class Index extends Component {
   constructor() {
@@ -14,28 +18,30 @@ export default class Index extends Component {
 
   render() {
     return (
-      <DemoPage title="Divider 分割线">
-        <>
-          <DemoBlock className="white" title="基础用法" padding>
-            <Divider></Divider>
-          </DemoBlock>
-          <DemoBlock className="white" title="内容位置" padding>
-            <Divider contentPosition="center">文本</Divider>
-            <Divider contentPosition="left">文本</Divider>
-            <Divider contentPosition="right">文本</Divider>
-          </DemoBlock>
-          <DemoBlock className="white" title="虚线" padding>
-            <Divider dashed></Divider>
-          </DemoBlock>
-          <DemoBlock className="white" title="自定义样式" padding>
-            <Divider
-              contentPosition="center"
-              style="color: #1989fa;border-color: #1989fa;font-size: 18px;"
-            >
-              文本
-            </Divider>
-          </DemoBlock>
-        </>
+      <DemoPage title="Divider 分割线" className="pages-divider-index">
+        <DemoBlock title="基础用法" padding>
+          <Demo1 />
+        </DemoBlock>
+
+        <DemoBlock title="使用 hairline" padding>
+          <Demo2 />
+        </DemoBlock>
+
+        <DemoBlock title="虚线" padding>
+          <Demo3 />
+        </DemoBlock>
+
+        <DemoBlock title="文本位置" padding>
+          <Demo4 />
+        </DemoBlock>
+
+        <DemoBlock title="自定义属性" padding>
+          <Demo5 />
+        </DemoBlock>
+
+        <DemoBlock title="自定义样式" padding>
+          <Demo6 />
+        </DemoBlock>
       </DemoPage>
     )
   }

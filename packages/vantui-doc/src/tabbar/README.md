@@ -9,8 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Tabbar } from "@antmjs/vantui";
-import { TabbarItem } from "@antmjs/vantui"; 
+import { Tabbar, TabbarItem } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -18,39 +17,17 @@ import { TabbarItem } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <Tabbar
-    active={ this.state.active }
-    onChange={ this.onChange }
-  >
-    <TabbarItem icon="home-o">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="search">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="friends-o">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="setting-o">
-      标签
-    </TabbarItem>
-  </Tabbar>
-</View>
- 
-```
-
-```js
-this.state = {
-  active: 0
-};
-
-function onChange(event) {
-  // event.detail 的值为当前选中项的索引
-  this.setState({
-    active: event.detail
-  });
-} 
+function Demo() {
+  const [active, setActive] = react.useState(0)
+  return (
+    <Tabbar active={active} onChange={(e) => e.detail}>
+      <TabbarItem icon="home-o">标签</TabbarItem>
+      <TabbarItem icon="search">标签</TabbarItem>
+      <TabbarItem icon="friends-o">标签</TabbarItem>
+      <TabbarItem icon="setting-o">标签</TabbarItem>
+    </Tabbar>
+  )
+}
 ```
 
 ### 通过名称匹配
@@ -58,219 +35,102 @@ function onChange(event) {
 在标签指定`name`属性的情况下，`vModel`的值为当前标签的`name`。
 
 ```jsx
-<View>
-  <Tabbar
-    active={ this.state.active }
-    onChange={ this.onChange }
-  >
-    <TabbarItem
-      name="home"
-      icon="home-o"
-    >
-      标签
-    </TabbarItem>
-    <TabbarItem
-      name="search"
-      icon="search"
-    >
-      标签
-    </TabbarItem>
-    <TabbarItem
-      name="friends"
-      icon="friends-o"
-    >
-      标签
-    </TabbarItem>
-    <TabbarItem
-      name="setting"
-      icon="setting-o"
-    >
-      标签
-    </TabbarItem>
-  </Tabbar>
-</View>
- 
-```
-
-```js
-this.state = {
-  active: 'home'
-};
-
-function onChange(event) {
-  this.setState({
-    active: event.detail
-  });
-} 
+function Demo() {
+  const [active, setActive] = react.useState('home')
+  return (
+    <Tabbar active={active} onChange={(e) => e.detail}>
+      <TabbarItem name="home" icon="home-o">
+        标签
+      </TabbarItem>
+      <TabbarItem name="search" icon="search">
+        标签
+      </TabbarItem>
+      <TabbarItem name="friends" icon="friends-o">
+        标签
+      </TabbarItem>
+      <TabbarItem name="setting" icon="setting-o">
+        标签
+      </TabbarItem>
+    </Tabbar>
+  )
+}
 ```
 
 ### 显示徽标
 
 ```jsx
-<View>
-  <Tabbar
-    active={ this.state.active }
-    onChange={ this.onChange }
-  >
-    <TabbarItem icon="home-o">
-      标签
-    </TabbarItem>
-    <TabbarItem
-      icon="search"
-      dot={ true }
-    >
-      标签
-    </TabbarItem>
-    <TabbarItem
-      icon="friends-o"
-      info="5"
-    >
-      标签
-    </TabbarItem>
-    <TabbarItem
-      icon="setting-o"
-      info="20"
-    >
-      标签
-    </TabbarItem>
-  </Tabbar>
-</View>
- 
+function Demo() {
+  const [active, setActive] = react.useState('home')
+  return (
+    <Tabbar active={active} onChange={(e) => e.detail}>
+      <TabbarItem icon="home-o">标签</TabbarItem>
+      <TabbarItem icon="search" dot>
+        标签
+      </TabbarItem>
+      <TabbarItem icon="friends-o" info="5">
+        标签
+      </TabbarItem>
+      <TabbarItem icon="setting-o" info="20">
+        标签
+      </TabbarItem>
+    </Tabbar>
+  )
+}
 ```
 
 ### 自定义图标
 
 ```jsx
-<View>
-  <Tabbar
-    active={ this.state.active }
-    onChange={ this.onChange }
-  >
-  <TabbarItem
-    info="3"
-    renderIcon={
-      <Block>
-        <Image
-          src={this.state.icon.normal}
-          mode="aspectFit"
-          style="width: 30px; height: 18px;"
-        ></Image>
-      </Block>
-    }
-    renderIconActive={
-      <Block>
-        <Image
-          src={this.state.icon.active}
-          mode="aspectFit"
-          style="width: 30px; height: 18px;"
-        ></Image>
-      </Block>
-    }
-  >
-    自定义
-  </TabbarItem>
-    <TabbarItem icon="search">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="setting-o">
-      标签
-    </TabbarItem>
-  </Tabbar>
-</View>
- 
-```
+function Demo() {
+  const [active, setActive] = react.useState('home')
 
-```js
-this.state = {
-  active: 0,
-  icon: {
-    normal: 'https://img.yzcdn.cn/vant/user-inactive.png',
-    active: 'https://img.yzcdn.cn/vant/user-active.png'
-  }
-};
-
-function onChange(event) {
-  this.setState({
-    active: event.detail
-  });
-} 
+  return (
+    <Tabbar active={active} onChange={(e) => setActive(e.detail)}>
+      <TabbarItem
+        info="3"
+        renderIcon={
+          <Image
+            src="https://img.yzcdn.cn/vant/user-inactive.png"
+            mode="aspectFit"
+            style="width: 30px; height: 18px;"
+          ></Image>
+        }
+        renderIconactive={
+          <Image
+            src="https://img.yzcdn.cn/vant/user-active.png"
+            mode="aspectFit"
+            style="width: 30px; height: 18px;"
+          ></Image>
+        }
+      >
+        自定义
+      </TabbarItem>
+      <TabbarItem icon="search">标签</TabbarItem>
+      <TabbarItem icon="setting-o">标签</TabbarItem>
+    </Tabbar>
+  )
+}
 ```
 
 ### 自定义颜色
 
 ```jsx
-<View>
-  <Tabbar
-    active={ this.state.active }
-    activeColor="#07c160"
-    inactiveColor="#000"
-    onChange={ this.onChange }
-  >
-    <TabbarItem icon="home-o">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="search">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="friends-o">
-      标签
-    </TabbarItem>
-    <TabbarItem icon="setting-o">
-      标签
-    </TabbarItem>
-  </Tabbar>
-</View>
- 
-```
-
-```js
-this.state = {
-  active: 0
-};
-
-function onChange(event) {
-  this.setState({
-    active: event.detail
-  });
-} 
-```
-
-### 切换标签事件
-
-```jsx
-<View>
-  <Tabbar
-    active={ this.state.active }
-    onChange={ this.onChange }
-  >
-    <TabbarItem icon="home-o">
-      标签1
-    </TabbarItem>
-    <TabbarItem icon="search">
-      标签2
-    </TabbarItem>
-    <TabbarItem icon="friends-o">
-      标签3
-    </TabbarItem>
-    <TabbarItem icon="setting-o">
-      标签4
-    </TabbarItem>
-  </Tabbar>
-</View>
- 
-```
-
-```js
-this.state = {
-  active: 0
-};
-
-function onClick(event) {
-  wx.showToast({
-    title: `点击标签 ${event.detail + 1}`,
-    icon: 'none'
-  });
-} 
+function Demo() {
+  const [active, setActive] = react.useState(0)
+  return (
+    <Tabbar
+      activeColor="#07c160"
+      inactiveColor="#000"
+      active={active}
+      onChange={(e) => e.detail}
+    >
+      <TabbarItem icon="home-o">标签</TabbarItem>
+      <TabbarItem icon="search">标签</TabbarItem>
+      <TabbarItem icon="friends-o">标签</TabbarItem>
+      <TabbarItem icon="setting-o">标签</TabbarItem>
+    </Tabbar>
+  )
+}
 ```
 
 ### 结合自定义 tabBar

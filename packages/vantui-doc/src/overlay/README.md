@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Overlay } from "@antmjs/vantui"; 
+import { Overlay } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,37 +17,17 @@ import { Overlay } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <Button
-    type="primary"
-    onClick={ this.onClickShow }
-  >
-    显示遮罩层
-  </Button>
-  <Overlay
-    show={ this.state.show }
-    onClick={ this.onClickHide }
-  />
-</View>
- 
-```
-
-```js
-this.state = {
-  show: false
-};
-
-function onClickShow() {
-  this.setState({
-    show: true
-  });
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  return (
+    <View>
+      <Button type="primary" onClick={() => setShow(true)}>
+        显示遮罩层
+      </Button>
+      <Overlay show={show} onClick={() => setShow(false)} />
+    </View>
+  )
 }
-
-function onClickHide() {
-  this.setState({
-    show: false
-  });
-} 
 ```
 
 ### 嵌入内容
@@ -55,57 +35,20 @@ function onClickHide() {
 通过默认插槽可以在遮罩层上嵌入任意内容。
 
 ```jsx
-<View>
-  <Button
-    type="primary"
-    onClick={ this.onClickShow }
-  >
-    嵌入内容
-  </Button>
-  <Overlay
-    show={ this.state.show }
-    onClick={ this.onClickHide }
-  >
-    <View class="wrapper">
-      <View class="block" />
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  return (
+    <View>
+      <Button type="primary" onClick={() => setShow(true)}>
+        嵌入内容
+      </Button>
+      <Overlay show={show} onClick={() => setShow(false)}>
+        <View class="wrapper">
+          <View class="block" />
+        </View>
+      </Overlay>
     </View>
-  </Overlay>
-</View>
- 
-```
-
-```js
-this.state = {
-  show: false
-};
-
-function onClickShow() {
-  this.setState({
-    show: true
-  });
-}
-
-function onClickHide() {
-  this.setState({
-    show: false
-  });
-}
-
-function noop() {} 
-```
-
-```css
-.wrapper {
-  display: flex;
-  alignItems: center;
-  justifyContent: center;
-  height: 100%;
-}
-
-.block {
-  width: 120px;
-  height: 120px;
-  backgroundColor: #fff;
+  )
 }
 ```
 ### OverlayProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/overlay.d.ts)   

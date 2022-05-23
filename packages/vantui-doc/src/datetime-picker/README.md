@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { DatetimePicker } from "@antmjs/vantui"; 
+import { DatetimePicker } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -19,32 +19,34 @@ import { DatetimePicker } from "@antmjs/vantui";
 `value` 为时间戳。
 
 ```jsx
-<View>
-  <DatetimePicker
-    type="datetime"
-    value={ this.state.currentDate }
-    minDate={ this.state.minDate }
-    maxDate={ this.state.maxDate }
-    onInput={ this.onInput }
-  />
-</View>
- 
-```
+function Demo() {
+  const [state, setState] = react.useState({
+    minHour: 10,
+    maxHour: 20,
+    minDate: new Date(2009, 10, 1).getTime(),
+    maxDate: new Date(2011, 10, 1).getTime(),
+    currentDate: new Date().getTime(),
+  })
 
-```js
-this.state = {
-  minHour: 10,
-  maxHour: 20,
-  minDate: new Date().getTime(),
-  maxDate: new Date(2019, 10, 1).getTime(),
-  currentDate: new Date().getTime()
-};
+  const onInput = react.useCallback(
+    function (event) {
+      setState({
+        currentDate: event.detail,
+      })
+    },
+    [state],
+  )
 
-function onInput(event) {
-  this.setState({
-    currentDate: event.detail
-  });
-} 
+  return (
+    <DatetimePicker
+      type="datetime"
+      value={state.currentDate}
+      minDate={state.minDate}
+      maxDate={state.maxDate}
+      onInput={onInput}
+    />
+  )
+}
 ```
 
 ### 选择日期（年月日）
@@ -52,42 +54,45 @@ function onInput(event) {
 `value` 为时间戳，通过传入 `formatter` 函数对选项文字进行处理。
 
 ```jsx
-<View>
-  <DatetimePicker
-    type="date"
-    value={ this.state.currentDate }
-    onInput={ this.state.onInput }
-    minDate={ this.state.minDate }
-    formatter={ this.state.formatter }
-  />
-</View>
- 
-```
+function Demo() {
+  const [state, setState] = react.useState({
+    minDate: new Date(2018, 0, 1).getTime(),
+    currentDate: null,
+  })
 
-```js
-this.state = {
-  currentDate: new Date().getTime(),
-  minDate: new Date().getTime(),
+  const onInput = react.useCallback(
+    function (event) {
+      setState({
+        ...state,
+        currentDate: event.detail,
+      })
+    },
+    [state],
+  )
 
-  formatter(type, value) {
+  const formatter = react.useCallback(function (type, value) {
     if (type === 'year') {
-      returnvalue}年`;
+      return `${value}年`
     }
 
     if (type === 'month') {
-      returnvalue}月`;
+      return `${value}月`
     }
 
-    return value;
-  }
+    return value
+  })
 
-};
-
-function onInput(event) {
-  this.setState({
-    currentDate: event.detail
-  });
-} 
+  return (
+    <DatetimePicker
+      type="datetime"
+      value={state.currentDate}
+      minDate={state.minDate}
+      maxDate={state.maxDate}
+      onInput={onInput}
+      formatter={formatter}
+    />
+  )
+}
 ```
 
 ### 选择日期（年月）
@@ -95,28 +100,30 @@ function onInput(event) {
 `value` 为时间戳。
 
 ```jsx
-<View>
-  <DatetimePicker
-    type="year-month"
-    value={ this.state.currentDate }
-    minDate={ this.state.minDate }
-    onInput={ this.onInput }
-  />
-</View>
- 
-```
+function Demo() {
+  const [state, setState] = react.useState({
+    currentDate: new Date(2018, 0, 1),
+    minDate: new Date(2018, 0, 1).getTime(),
+  })
 
-```js
-this.state = {
-  currentDate: new Date().getTime(),
-  minDate: new Date().getTime()
-};
+  const onInput = react.useCallback(
+    function (event) {
+      setState({
+        currentDate: event.detail,
+      })
+    },
+    [state],
+  )
 
-function onInput(event) {
-  this.setState({
-    currentDate: event.detail
-  });
-} 
+  return (
+    <DatetimePicker
+      type="year-month"
+      value={state.currentDate}
+      minDate={state.minDate}
+      onInput={onInput}
+    />
+  )
+}
 ```
 
 ### 选择时间
@@ -124,30 +131,32 @@ function onInput(event) {
 `value` 为字符串。
 
 ```jsx
-<View>
-  <DatetimePicker
-    type="time"
-    value={ this.state.currentDate }
-    minHour={ this.state.minHour }
-    maxHour={ this.state.maxHour }
-    onInput={ this.onInput }
-  />
-</View>
- 
-```
+function Demo() {
+  const [state, setState] = react.useState({
+    currentDate: '12:00',
+    minHour: 10,
+    maxHour: 20,
+  })
 
-```js
-this.state = {
-  currentDate: '12:00',
-  minHour: 10,
-  maxHour: 20
-};
+  const onInput = react.useCallback(
+    function (event) {
+      setState({
+        currentDate: event.detail,
+      })
+    },
+    [state],
+  )
 
-function onInput(event) {
-  this.setState({
-    currentDate: event.detail
-  });
-} 
+  return (
+    <DatetimePicker
+      type="time"
+      value={state.currentDate}
+      minHour={state.minHour}
+      maxHour={state.maxHour}
+      onInput={onInput}
+    />
+  )
+}
 ```
 
 ### 选项过滤器
@@ -155,29 +164,39 @@ function onInput(event) {
 通过传入 `filter` 函数，可以对选项数组进行过滤，实现自定义时间间隔。
 
 ```jsx
-<View>
-  <DatetimePicker
-    type="time"
-    value={ this.state.currentDate }
-    filter={ this.state.filter }
-  />
-</View>
- 
-```
+function Demo() {
+  const [state, setState] = react.useState({
+    currentDate: '12:00',
+    minHour: 10,
+    maxHour: 20,
+  })
 
-```js
-this.state = {
-  currentDate: '12:00',
+  const onInput = react.useCallback(
+    function (event) {
+      setState({
+        currentDate: event.detail,
+      })
+    },
+    [state],
+  )
 
-  filter(type, options) {
-    if (type === 'minute') {
-      return options.filter(option => option % 5 === 0);
-    }
+  return (
+    <DatetimePicker
+      type="time"
+      value={state.currentDate}
+      minHour={state.minHour}
+      maxHour={state.maxHour}
+      onInput={onInput}
+      filter={(type, options) => {
+        if (type === 'minute') {
+          return options.filter((option) => option % 5 === 0)
+        }
 
-    return options;
-  }
-
-}; 
+        return options
+      }}
+    />
+  )
+}
 ```
 ### DatetimePickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)   
 

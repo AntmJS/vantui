@@ -1,5 +1,4 @@
 *.log
-*.md
 *.lock
 *.swp
 
@@ -44,4 +43,3 @@ packages/react-demo/dist
 packages/react-demo/config
 packages/react-demo/scripts
 packages/react-demo/public
-packages/vantui-doc

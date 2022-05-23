@@ -4,66 +4,54 @@
 
 弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作，支持函数调用和组件调用两种方式。
 
-> 注意：1.8.0以下的版本取消按钮会触发catch。1.8.0及以后的版本取消按钮会触发then 需要通过返回的value为confirm或者cancel来判断是否点了确认还是取消
+> 注意：1.8.0 以下的版本取消按钮会触发 catch。1.8.0 及以后的版本取消按钮会触发 then 需要通过返回的 value 为 confirm 或者 cancel 来判断是否点了确认还是取消
 
 ### 引入
 
 在 Taro 文件中引入组件
 
 ```js
-import { Dialog } from "@antmjs/vantui"; 
+import { Dialog } from '@antmjs/vantui'
 ```
 
 ## 代码演示
 
-### 消息提示
+### 提示弹窗
 
-用于提示一些消息，只包含一个确认按钮。
-
-```jsx
-<View>
-  <Dialog id="vanDialog" />
-</View>
- 
-```
-
-```javascript
-import { Dialog } from 'vantui';
-
-Dialog.alert({
-  title: '标题',
-  message: '弹窗内容',
-}).then((value) => {
-  console.log('dialog result', value)
-});
-
-Dialog.alert({
-  message: '弹窗内容',
-}).then((value) => {
-  console.log('dialog result', value)
-});
-```
-
-### 消息确认
-
-用于确认消息，包含取消和确认按钮。
+- alart 用于提示一些消息，只包含一个确认按钮。
+- confirm 用于确认消息，包含取消和确认按钮。
 
 ```jsx
-<View>
-  <Dialog id="vanDialog" />
-</View>
- 
-```
+function Demo() {
+  const alert = react.useCallback((title) => {
+    Dialog.alert({
+      title: title || '',
+      message: '弹窗内容',
+      selector: 'vanDialog0',
+    }).then((value) => {
+      console.log('dialog result', value)
+    })
+  })
 
-```javascript
-import { Dialog } from 'vantui';
+  const confirm = react.useCallback(() => {
+    Dialog.confirm({
+      title: '标题',
+      message: '弹窗内容',
+      selector: 'vanDialog0',
+    }).then((value) => {
+      console.log('dialog result', value)
+    })
+  })
 
-Dialog.confirm({
-  title: '标题',
-  message: '弹窗内容',
-}).then((value) => {
-  console.log('dialog result', value)
-});
+  return (
+    <View>
+      <Dialog id="vanDialog0" />
+      <Cell title="提示弹窗" onClick={() => alert('提示一下')} />
+      <Cell title="提示弹窗（无标题）" onClick={() => alert()} />
+      <Cell title="确认弹窗" onClick={confirm} />
+    </View>
+  )
+}
 ```
 
 ### 圆角按钮风格
@@ -71,29 +59,26 @@ Dialog.confirm({
 将 theme 选项设置为 `roundButton` 可以展示圆角按钮风格的弹窗。
 
 ```jsx
-<View>
-  <Dialog id="vanDialog" />
-</View>
- 
-```
+function Demo() {
+  const alert = react.useCallback((title) => {
+    Dialog.alert({
+      title: title || '',
+      message: '弹窗内容',
+      theme: 'roundButton',
+      selector: '#vanDialog1',
+    }).then((value) => {
+      console.log('dialog result', value)
+    })
+  })
 
-```javascript
-import { Dialog } from 'vantui';
-
-Dialog.alert({
-  title: '标题',
-  message: '弹窗内容',
-  theme: 'roundButton',
-}).then((value) => {
-  console.log('dialog result', value)
-});
-
-Dialog.alert({
-  message: '弹窗内容',
-  theme: 'roundButton',
-}).then((value) => {
-  console.log('dialog result', value)
-});
+  return (
+    <View>
+      <Dialog id="vanDialog1" />
+      <Cell title="提示弹窗" onClick={() => alert('提示一下')} />
+      <Cell title="提示弹窗（无标题）" onClick={() => alert()} />
+    </View>
+  )
+}
 ```
 
 ### 异步关闭
@@ -101,31 +86,37 @@ Dialog.alert({
 通过 `beforeClose` 属性可以传入一个回调函数，在弹窗关闭前进行特定操作。
 
 ```jsx
-<View>
-  <Dialog id="vanDialog" />
-</View>
- 
-```
+function Demo() {
+  const alert = react.useCallback((title) => {
+    const beforeClose = (action) =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          if (action === 'confirm') {
+            resolve(true)
+          } else {
+            // 拦截取消操作
+            resolve(false)
+          }
+        }, 1000)
+      })
+    Dialog.alert({
+      title: title || '',
+      message: '弹窗内容',
+      theme: 'roundButton',
+      selector: 'vanDialog2',
+      beforeClose,
+    }).then((value) => {
+      console.log('dialog result', value)
+    })
+  })
 
-```javascript
-import { Dialog } from 'vantui';
-
-const beforeClose = (action) => new Promise((resolve) => {
-  setTimeout(() => {
-    if (action === 'confirm') {
-      resolve(true);
-    } else {
-      // 拦截取消操作
-      resolve(false);
-    }
-  }, 1000);
-});
-
-Dialog.confirm({
-  title: '标题',
-  message: '弹窗内容'
-  beforeClose
-});
+  return (
+    <View>
+      <Dialog id="vanDialog2" />
+      <Cell title="异步关闭" onClick={() => alert('点击等待1s关闭')} />
+    </View>
+  )
+}
 ```
 
 ### 组件调用
@@ -133,35 +124,31 @@ Dialog.confirm({
 如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
 
 ```jsx
-<View>
-  <Dialog
-    title="标题"
-    show={ this.state.show }
-    showCancelButton={ true }
-    confirmButtonOpenType="getUserInfo"
-    onClose={ this.onClose }
-    onGetuserinfo={ getUserInfo }
-  >
-    <Image src="https://img.yzcdn.cn/1.jpg" />
-  </Dialog>
-</View>
- 
-```
+function Demo() {
+  const [show, setShow] = react.useState(false)
+  const [value, setValue] = react.useState('')
 
-```js
-this.state = {
-  show: true
-};
-
-function getUserInfo(event) {
-  console.log(event.detail);
+  return (
+    <View>
+      <Dialog
+        id="vanDialog3"
+        title="标题"
+        showCancelButton
+        confirmButtonOpenType="getUserInfo"
+        show={show}
+        onClose={() => setShow(false)}
+      >
+        <Input placeholder="请输入内容" onChange={(e) => setValue(e.detail)} />
+        <Image
+          className="demo-image"
+          height="240px"
+          src="https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
+        ></Image>
+      </Dialog>
+      <Cell title="组件调用" onClick={() => setShow(true)} />
+    </View>
+  )
 }
-
-function onClose() {
-  this.setState({
-    show: false
-  });
-} 
 ```
 ### DialogProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dialog.d.ts)   
 

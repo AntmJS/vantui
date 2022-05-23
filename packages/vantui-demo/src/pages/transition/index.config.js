@@ -1,4 +1,4 @@
 export default {
-  navigationBarTitleText: 'Transition 动画',
+  navigationBarTitleText: 'transition 动画',
   enableShareAppMessage: true,
 }

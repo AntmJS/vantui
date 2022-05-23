@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { SubmitBar } from "@antmjs/vantui"; 
+import { SubmitBar } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,14 +17,15 @@ import { SubmitBar } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-<View>
-  <SubmitBar
-    price={ 3050 }
-    buttonText="提交订单"
-    onSubmit={ this.onSubmit }
-  />
-</View>
- 
+function Demo() {
+  return (
+    <SubmitBar
+      price={3050}
+      buttonText="提交订单"
+      onSubmit={() => console.info('提交')}
+    />
+  )
+}
 ```
 
 ### 禁用状态
@@ -32,17 +33,18 @@ import { SubmitBar } from "@antmjs/vantui";
 禁用状态下不会触发`submit`事件。
 
 ```jsx
-<View>
-  <SubmitBar
-    disabled={ true }
-    price={ 3050 }
-    buttonText="提交订单"
-    tip="您的收货地址不支持同城送, 我们已为您推荐快递"
-    tipIcon="infoO"
-    onSubmit={ this.onSubmit }
-  />
-</View>
- 
+function Demo() {
+  return (
+    <SubmitBar
+      disabled={true}
+      price={3050}
+      buttonText="提交订单"
+      tip="您的收货地址不支持同城送, 我们已为您推荐快递"
+      tipIcon="infoO"
+      onSubmit={() => console.info('提交')}
+    />
+  )
+}
 ```
 
 ### 加载状态
@@ -50,15 +52,16 @@ import { SubmitBar } from "@antmjs/vantui";
 加载状态下不会触发`submit`事件。
 
 ```jsx
-<View>
-  <SubmitBar
-    loading={ true }
-    price={ 3050 }
-    buttonText="提交订单"
-    onSubmit={ this.onSubmit }
-  />
-</View>
- 
+function Demo() {
+  return (
+    <SubmitBar
+      loading={true}
+      price={3050}
+      buttonText="提交订单"
+      onSubmit={() => console.info('提交')}
+    />
+  )
+}
 ```
 
 ### 高级用法
@@ -66,27 +69,23 @@ import { SubmitBar } from "@antmjs/vantui";
 通过插槽插入自定义内容。
 
 ```jsx
-<View>
-  <SubmitBar
-    price={ 3050 }
-    buttonText="提交订单"
-    onSubmit={ this.onClickButton }
-    tip={ true }
-    renderTip={(
-      <View >
-        您的收货地址不支持同城送,
-        <Text>
-          修改地址
-        </Text>
-      </View>
-    )}
-  >
-    <Tag type="primary">
-      标签
-    </Tag>
-  </SubmitBar>
-</View>
- 
+function Demo() {
+  return (
+    <SubmitBar
+      price={3050}
+      buttonText="提交订单"
+      tip={true}
+      renderTip={
+        <View>
+          您的收货地址不支持同城送,
+          <Text>修改地址</Text>
+        </View>
+      }
+    >
+      <Tag type="primary">标签</Tag>
+    </SubmitBar>
+  )
+}
 ```
 ### SubmitBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/submit-bar.d.ts)   
 

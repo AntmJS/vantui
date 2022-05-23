@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Table } from "@antmjs/vantui";
+import { Table } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,17 +17,6 @@ import { Table } from "@antmjs/vantui";
 ### 基础用法
 
 ```jsx
-  <Table
-    columns={columns}
-    dataSource={this.state.dataSource}
-    sortChange={this.sortAction}
-    loading={this.state.loading}
-  />
-```
-
-表格列的配置
-
-```js
 const columns = [
   {
     title: '姓名',
@@ -55,53 +44,58 @@ const columns = [
     dataIndex: 'hobby',
   },
 ]
-```
+function Demo() {
+  const [state, changeState] = react.useState({
+    dataSource: [],
+    loading: false,
+  })
 
-模拟初始化数据
-
-```js
-componentDidMount() {
-  setTimeout(() => {
-    this.setState({
-      loading: false,
-      dataSource: [
-        {
-          key: '1',
-          name: '胡彦斌',
-          age: 37,
-          account: 20000,
-          address: '西湖区湖底公园1号',
-          hobby: '唱歌跳舞唱歌跳舞',
-        },
-        {
-          key: '2',
-          name: '吴亦凡',
-          age: 32,
-          account: 50000,
-          address: '朝阳区派出所',
-          hobby: '嗨嗨啊嗨嗨嗨啊嗨',
-        },
-        {
-          key: '36',
-          name: '王宝强',
-          age: 31,
-          account: 40000,
-          address: '嘟嘟嘟嘟一号',
-          width: 200,
-          hobby: '休息♨️休息♨️休息♨️休息♨️休息♨️',
-        },
-      ],
+  const setState = (stateNew) => {
+    changeState({
+      ...state,
+      ...stateNew,
     })
-  }, 2000)
-}
-```
+  }
 
-排序方法
+  react.useEffect(() => {
+    setState({ loading: true })
+    setTimeout(() => {
+      setState({
+        loading: false,
+        dataSource: [
+          {
+            key: '1',
+            name: '胡彦斌',
+            age: 37,
+            account: 20000,
+            address: '西湖区湖底公园1号',
+            hobby: '唱歌跳舞唱歌跳舞',
+          },
+          {
+            key: '2',
+            name: '吴亦凡',
+            age: 32,
+            account: 50000,
+            address: '朝阳区派出所',
+            hobby: '嗨嗨啊嗨嗨嗨啊嗨',
+          },
+          {
+            key: '36',
+            name: '王宝强',
+            age: 31,
+            account: 40000,
+            address: '嘟嘟嘟嘟一号',
+            width: 200,
+            hobby: '休息♨️休息♨️休息♨️休息♨️休息♨️',
+          },
+        ],
+      })
+    }, 2000)
+  }, [])
 
-```js
-  sortAction = (col) => {
+  const sortAction = (col) => {
     const { sortOrder, dataIndex } = col
-    const { dataSource } = this.state
+    const { dataSource } = state
     if (sortOrder !== 'descend') {
       dataSource.sort(function (a, b) {
         return a[dataIndex] - b[dataIndex]
@@ -112,10 +106,17 @@ componentDidMount() {
       })
     }
 
-    this.setState({
-      dataSource: [...dataSource],
-    })
+    setState('dataSource', [...dataSource])
   }
+  return (
+    <Table
+      columns={columns}
+      dataSource={state.dataSource}
+      sortChange={sortAction}
+      loading={state.loading}
+    />
+  )
+}
 ```
 ### ITableProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/table.d.ts)   
 

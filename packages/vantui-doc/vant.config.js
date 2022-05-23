@@ -1,41 +1,17 @@
+const path = require('path')
+
 module.exports = {
-  name: 'vantui-doc',
-  build: {
-    srcDir: '',
-    css: {
-      preprocessor: 'less',
-    },
-    site: {
-      publicPath: '/vantui/',
-      searchConfig: {},
-    },
-  },
+  name: '@antmjs/vantui',
   site: {
     simulator: {
-      url:
-        // process && process.env && process.env.SITE_ENV === 'real'
-        //   ? ''
-        //   : 'http://0.0.0.0:10086/',
-        // 'http://localhost:10086/',
-        process.env.NODE_ENV === 'development' ? 'http://localhost:10086/' : '',
-      // routeMapper: (path) => {
-      //   let pathApply = `/page${path}/index`
-      //   const devGuidePaths = [
-      //     '/home',
-      //     '/quickstart',
-      //     '/custom-style',
-      //     '/theme',
-      //   ]
-      //   if (devGuidePaths.includes(path)) {
-      //     pathApply = `/pages/dashboard/index`
-      //   }
-      //   console.info(
-      //     pathApply,
-      //     'pathApplypathApplypathApplypathApplypathApplypathApplypathApply',
-      //   )
-      //   return pathApply
-      // },
-      // syncPathFromSimulator: true,
+      url: {
+        development: 'http://localhost:10086',
+        production: '',
+      },
+      pagePath: path.join(__dirname, '../vantui-demo/src/pages'),
+      configPath: path.join(__dirname, '../vantui-demo/src/config.json'),
+      appConfigPath: path.join(__dirname, '../vantui-demo/src/app.config.js'),
+      withTabPages: ['icon', 'power-scroll-view'],
     },
     title: '@antmjs/vantui',
     logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
@@ -285,7 +261,7 @@ module.exports = {
         title: '导航组件',
         items: [
           {
-            path:'pagination',
+            path: 'pagination',
             title: 'Pagination 分页',
           },
           {

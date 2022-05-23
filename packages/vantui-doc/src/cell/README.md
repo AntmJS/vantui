@@ -19,10 +19,16 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 `Cell`可以单独使用，也可以与`CellGroup`搭配使用。`CellGroup`可以为`Cell`提供上下外边框。
 
 ```jsx
-<CellGroup>
-  <Cell title="单元格" value="内容" />
-  <Cell title="单元格" value="内容" label="描述信息" border={false} />
-</CellGroup>
+function Demo() {
+  return (
+    <View>
+      <CellGroup>
+        <Cell title="单元格" value="内容" />
+        <Cell title="单元格" value="内容" label="描述信息" border={false} />
+      </CellGroup>
+    </View>
+  )
+}
 ```
 
 ### 卡片风格
@@ -30,10 +36,16 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 通过 CellGroup 的 `inset` 属性，可以将单元格转换为圆角卡片风格。
 
 ```jsx
-<CellGroup inset>
-  <Cell title="单元格" value="内容" />
-  <Cell title="单元格" value="内容" label="描述信息" />
-</CellGroup>
+function Demo() {
+  return (
+    <View>
+      <CellGroup inset>
+        <Cell title="单元格" value="内容" />
+        <Cell title="单元格" value="内容" label="描述信息" />
+      </CellGroup>
+    </View>
+  )
+}
 ```
 
 ### 单元格大小
@@ -41,17 +53,14 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 通过`size`属性可以控制单元格的大小。
 
 ```jsx
-<Cell
-  title="单元格"
-  value="内容"
-  size="large"
-/>
-<Cell
-  title="单元格"
-  value="内容"
-  size="large"
-  label="描述信息"
-/>
+function Demo() {
+  return (
+    <View>
+      <Cell title="单元格" value="内容" size="large" />
+      <Cell title="单元格" value="内容" size="large" label="描述信息" />
+    </View>
+  )
+}
 ```
 
 ### 展示图标
@@ -59,7 +68,13 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 通过`icon`属性在标题左侧展示图标。
 
 ```jsx
-<Cell title="单元格" icon="locationO" />
+function Demo() {
+  return (
+    <View>
+      <Cell title="单元格" icon="locationO" />
+    </View>
+  )
+}
 ```
 
 ### 展示箭头
@@ -67,21 +82,15 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 设置`isLink`属性后会在单元格右侧显示箭头，并且可以通过`arrowDirection`属性控制箭头方向。
 
 ```jsx
-<Cell
-  title="单元格"
-  isLink
-/>
-<Cell
-  title="单元格"
-  isLink
-  value="内容"
-/>
-<Cell
-  title="单元格"
-  isLink
-  value="内容"
-  arrowDirection="down"
-/>
+function Demo() {
+  return (
+    <View>
+      <Cell title="单元格" isLink />
+      <Cell title="单元格" isLink value="内容" />
+      <Cell title="单元格" isLink value="内容" arrowDirection="down" />
+    </View>
+  )
+}
 ```
 
 ### 页面跳转
@@ -89,12 +98,18 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 可以通过`url`属性进行页面跳转，通过`linkType`属性控制跳转类型。
 
 ```jsx
-<Cell
-  isLink
-  title="单元格"
-  linkType="navigateTo"
-  url="/pages/dashboard/index"
-/>
+function Demo() {
+  return (
+    <View>
+      <Cell
+        isLink
+        title="单元格"
+        linkType="navigateTo"
+        url="/pages/dashboard/index"
+      />
+    </View>
+  )
+}
 ```
 
 ### 分组标题
@@ -102,18 +117,18 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 通过`CellGroup`的`title`属性可以指定分组标题。
 
 ```jsx
-<CellGroup title="分组1">
-  <Cell
-    title="单元格"
-    value="内容"
-  />
-</CellGroup>
-<CellGroup title="分组2">
-  <Cell
-    title="单元格"
-    value="内容"
-  />
-</CellGroup>
+function Demo() {
+  return (
+    <View>
+      <CellGroup title="分组1">
+        <Cell title="单元格" value="内容" />
+      </CellGroup>
+      <CellGroup title="分组2">
+        <Cell title="单元格" value="内容" />
+      </CellGroup>
+    </View>
+  )
+}
 ```
 
 ### 自定义渲染内容
@@ -121,28 +136,28 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 如以上用法不能满足你的需求，可以使用`renderTitle`和`renderRightIcon`来渲染内容
 
 ```jsx
-<Cell
-  value="内容"
-  icon="shop-o"
-  isLink
-  renderTitle={
-    <>
-      <View>
-        <View className="title">单元格</View>
-        <Tag type="danger">标签</Tag>
-      </View>
-    </>
-  }
-></Cell>
-<Cell
-  title="单元格"
-  border={false}
-  renderRightIcon={
-    <>
-      <Icon name="search"></Icon>
-    </>
-  }
-></Cell>
+function Demo() {
+  return (
+    <View>
+      <Cell
+        value="内容"
+        icon="shop-o"
+        isLink
+        renderTitle={
+          <View>
+            <View className="title">单元格</View>
+            <Tag type="danger">标签</Tag>
+          </View>
+        }
+      />
+      <Cell
+        title="单元格"
+        border={false}
+        renderRightIcon={<Icon name="search"></Icon>}
+      />
+    </View>
+  )
+}
 ```
 
 ### 垂直居中
@@ -150,9 +165,13 @@ import { Cell, CellGroup } from '@antmjs/vantui'
 通过`center`属性可以让`Cell`的左右内容都垂直居中。
 
 ```jsx
-<View>
-  <Cell center={true} title="单元格" value="内容" label="描述信息" />
-</View>
+function Demo() {
+  return (
+    <View>
+      <Cell center={true} title="单元格" value="内容" label="描述信息" />
+    </View>
+  )
+}
 ```
 ### CellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cell.d.ts)   
 

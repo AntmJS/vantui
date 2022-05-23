@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Loading } from "@antmjs/vantui"; 
+import { Loading } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -17,49 +17,47 @@ import { Loading } from "@antmjs/vantui";
 ### 加载类型
 
 ```jsx
-<View>
-  <Loading />
-  <Loading type="spinner" />
-</View>
- 
+function Demo() {
+  return (
+    <>
+      <Loading />
+      <Loading type="spinner" />
+    </>
+  )
+}
 ```
 
 ### 自定义颜色
 
 ```jsx
-<View>
-  <Loading color="#1989fa" />
-  <Loading
-    type="spinner"
-    color="#1989fa"
-  />
-</View>
- 
+function Demo() {
+  return (
+    <>
+      <Loading color="#1989fa" />
+      <Loading type="spinner" color="#1989fa" />
+    </>
+  )
+}
 ```
 
 ### 加载文案
 
 ```jsx
-<View>
-  <Loading size="24px">
-    加载中...
-  </Loading>
-</View>
- 
+function Demo() {
+  return <Loading size="24px">加载中...</Loading>
+}
 ```
 
 ### 垂直排列
 
 ```jsx
-<View>
-  <Loading
-    size="24px"
-    vertical={ true }
-  >
-    加载中...
-  </Loading>
-</View>
- 
+function Demo() {
+  return (
+    <Loading size="24px" vertical>
+      加载中...
+    </Loading>
+  )
+}
 ```
 ### LoadingProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/loading.d.ts)   
 

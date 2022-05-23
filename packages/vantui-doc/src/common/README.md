@@ -9,7 +9,7 @@ Vant 中默认包含了一些常用样式，可以直接通过 className 的方�
 在 Taro 文件中引入组件
 
 ```css
-@import 'vantui/dist/style/common.less';
+@import '@antmjs/vantui/es/style/base.less';
 ```
 
 ## 代码演示
@@ -18,44 +18,61 @@ Vant 中默认包含了一些常用样式，可以直接通过 className 的方�
 
 当文本内容长度超过容器最大宽度时，自动省略多余的文本。
 
-```xml
-<View class="vanEllipsis">
-  这是一段宽度限制 250px 的文字，后面的内容会省略。
-</View>
+```jsx
+function Demo() {
+  return (
+    <>
+      <View
+        class="van-ellipsis"
+        style={{ width: '200px', marginBottom: '20px' }}
+      >
+        这是一段宽度限制 250px 的文字，后面的内容会省略。
+      </View>
 
-<!-- 最多显示两行 -->
-<View class="vanMultiEllipsis--l2">
-  这是一段最多显示两行的文字，后面的内容会省略。
-</View>
+      {/**  最多显示两行**/}
+      <View
+        class="van-multi-ellipsis--l2"
+        style={{ width: '200px', marginBottom: '20px' }}
+      >
+        这是一段最多显示两行的文字，后面的内容会省略。
+        这是一段最多显示两行的文字，后面的内容会省略。
+      </View>
 
-<!-- 最多显示三行 -->
-<View class="vanMultiEllipsis--l3">
-  这是一段最多显示三行的文字，后面的内容会省略。
-</View>
+      {/**  最多显示三行**/}
+      <View class="van-multi-ellipsis--l3" style={{ width: '200px' }}>
+        这是一段最多显示三行的文字，后面的内容会省略。
+        这是一段最多显示两行的文字，后面的内容会省略。
+        这是一段最多显示两行的文字，后面的内容会省略。
+      </View>
+    </>
+  )
+}
 ```
 
 ### 1px 边框
 
 为元素添加 Retina 屏幕下的 1px 边框（即 hairline），基于伪类 transform 实现。
 
-```xml
-<!-- 上边框 -->
-<View class="vanHairline--top"></View>
+```jsx
+function Demo() {
+  return (
+    <>
+      {/**  上边框,可选各个方向 **/}
+      <View
+        class="van-hairline--top"
+        style={{ width: '200px', marginBottom: '20px' }}
+      ></View>
 
-<!-- 下边框 -->
-<View class="vanHairline--bottom"></View>
-
-<!-- 左边框 -->
-<View class="vanHairline--left"></View>
-
-<!-- 右边框 -->
-<View class="vanHairline--right"></View>
-
-<!-- 上下边框 -->
-<View class="vanHairline--topBottom"></View>
-
-<!-- 全边框 -->
-<View class="vanHairline--surround"></View>
+      {/**  全边框 **/}
+      <View
+        class="van-hairline--surround"
+        style={{ width: '200px', marginBottom: '20px', height: '200px' }}
+      >
+        全边框
+      </View>
+    </>
+  )
+}
 ```
 
 ### 全局字体
@@ -64,7 +81,7 @@ Vant 中默认包含了一些常用样式，可以直接通过 className 的方�
 
 ```css
 page {
-  fontFamily: -appleSystem, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+  fontfamily: -appleSystem, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
     Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
     sansSerif;
 }

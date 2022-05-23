@@ -9,8 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Radio } from "@antmjs/vantui";
-import { RadioGroup } from "@antmjs/vantui"; 
+import { Radio, RadioGroup } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -20,32 +19,15 @@ import { RadioGroup } from "@antmjs/vantui";
 通过`value`绑定值当前选中项的 name 。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
-    <Radio name="1">
-      单选框 1
-    </Radio>
-    <Radio name="2">
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
-```
-
-```js
-this.state = {
-  radio: '1'
-};
-
-function onChange(event) {
-  this.setState({
-    radio: event.detail
-  });
-} 
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup value={value} onChange={(e) => setValue(e.detail)}>
+      <Radio name="1">单选框 1</Radio>
+      <Radio name="2">单选框 2</Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 水平排列
@@ -53,21 +35,19 @@ function onChange(event) {
 将`direction`属性设置为`horizontal`后，单选框组会变成水平排列。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-    direction="horizontal"
-  >
-    <Radio name="1">
-      单选框 1
-    </Radio>
-    <Radio name="2">
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup
+      direction="horizontal"
+      value={value}
+      onChange={(e) => setValue(e.detail)}
+    >
+      <Radio name="1">单选框 1</Radio>
+      <Radio name="2">单选框 2</Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 禁用状态
@@ -75,21 +55,15 @@ function onChange(event) {
 通过`disabled`属性禁止选项切换，在`Radio`上设置`diabled`可以禁用单个选项。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    disabled={ true }
-    onChange={ this.onChange }
-  >
-    <Radio name="1">
-      单选框 1
-    </Radio>
-    <Radio name="2">
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup disabled value={value} onChange={(e) => setValue(e.detail)}>
+      <Radio name="1">单选框 1</Radio>
+      <Radio name="2">单选框 2</Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 自定义形状
@@ -97,26 +71,19 @@ function onChange(event) {
 将`shape`属性设置为`square`，单选框的形状会变成方形。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
-    <Radio
-      name="1"
-      shape="square"
-    >
-      单选框 1
-    </Radio>
-    <Radio
-      name="2"
-      shape="square"
-    >
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup value={value} onChange={(e) => setValue(e.detail)}>
+      <Radio name="1" shape="square">
+        单选框 1
+      </Radio>
+      <Radio name="2" shape="square">
+        单选框 2
+      </Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 自定义颜色
@@ -124,26 +91,19 @@ function onChange(event) {
 通过`checkedColor`属性设置选中状态的图标颜色。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
-    <Radio
-      name="1"
-      checkedColor="#07c160"
-    >
-      单选框 1
-    </Radio>
-    <Radio
-      name="2"
-      checkedColor="#07c160"
-    >
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup value={value} onChange={(e) => setValue(e.detail)}>
+      <Radio name="1" checkedColor="#07c160" shape="square">
+        单选框 1
+      </Radio>
+      <Radio name="2" checkedColor="#07c160" shape="square">
+        单选框 2
+      </Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 自定义大小
@@ -151,79 +111,63 @@ function onChange(event) {
 通过`iconSize`属性可以自定义图标的大小。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
-    <Radio
-      name="1"
-      iconSize="24px"
-    >
-      单选框 1
-    </Radio>
-    <Radio
-      name="2"
-      iconSize="24px"
-    >
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup value={value} onChange={(e) => setValue(e.detail)}>
+      <Radio name="1" iconSize="24px" shape="square">
+        单选框 1
+      </Radio>
+      <Radio name="2" iconSize="24px" shape="square">
+        单选框 2
+      </Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 自定义图标
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
-    <Radio
-      value={ this.state.radio }
-      name="1"
-      renderIcon={ (
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup value={value} onChange={(e) => setValue(e.detail)}>
+      <Radio
+        name="1"
+        renderIcon={
           <Image
-            src={ this.state.radio === '1' ? this.state.icon.active : this.state.icon.normal }
+            style={{ width: '32px', height: '32px' }}
+            src={
+              value === '2'
+                ? 'https://img.yzcdn.cn/public_files/2017/10/13/c547715be149dd3faa817e4a948b40c4.png'
+                : 'https://img.yzcdn.cn/public_files/2017/10/13/793c77793db8641c4c325b7f25bf130d.png'
+            }
           />
-
-        ) }
-    >
-      自定义图标
-    </Radio>
-    <Radio
-      value={ this.state.radio }
-      name="2"
-      renderIcon={ (
+        }
+        shape="square"
+      >
+        单选框 1
+      </Radio>
+      <Radio
+        name="2"
+        renderIcon={
           <Image
-            src={ this.state.radio === '2' ? this.state.icon.active : this.state.icon.normal }
+            style={{ width: '32px', height: '32px' }}
+            src={
+              value === '1'
+                ? 'https://img.yzcdn.cn/public_files/2017/10/13/c547715be149dd3faa817e4a948b40c4.png'
+                : 'https://img.yzcdn.cn/public_files/2017/10/13/793c77793db8641c4c325b7f25bf130d.png'
+            }
           />
-
-        ) }
-    >
-      自定义图标
-    </Radio>
-  </RadioGroup>
-</View>
- 
-```
-
-```js
-this.state = {
-  radio: true,
-  icon: {
-    normal: '//img.yzcdn.cn/iconNormal.png',
-    active: '//img.yzcdn.cn/iconActive.png'
-  }
-};
-
-function onChange(event) {
-  this.setState({
-    radio: event.detail
-  });
-} 
+        }
+        shape="square"
+      >
+        单选框 2
+      </Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 禁用文本点击
@@ -231,26 +175,23 @@ function onChange(event) {
 通过设置`labelDisabled`属性可以禁用单选框文本点击。
 
 ```jsx
-<View>
-  <RadioGroup
-    value={ this.state.radio }
-    onChange={ this.onChange }
-  >
-    <Radio
-      name="1"
-      labelDisabled={ true }
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup
+      direction="horizontal"
+      value={value}
+      onChange={(e) => setValue(e.detail)}
     >
-      单选框 1
-    </Radio>
-    <Radio
-      name="2"
-      labelDisabled={ true }
-    >
-      单选框 2
-    </Radio>
-  </RadioGroup>
-</View>
- 
+      <Radio name="1" labelDisabled>
+        单选框 1
+      </Radio>
+      <Radio name="2" labelDisabled>
+        单选框 2
+      </Radio>
+    </RadioGroup>
+  )
+}
 ```
 
 ### 与 Cell 组件一起使用
@@ -258,74 +199,27 @@ function onChange(event) {
 此时你需要再引入`Cell`和`CellGroup`组件。
 
 ```jsx
-<View>
-  <RadioGroup value={radio5}>
-    <CellGroup>
-      <Cell
-        title="单选框 1"
-        clickable
-        onClick={(e) => {
-          this.onClick({
-            detail: e.detail,
-            currentTarget: {
-              dataset: { name: '1', key: 'radio5' },
-            },
-            target: {
-              dataset: { name: '1', key: 'radio5' },
-            },
-          })
-        }}
-        renderRightIcon={
-          <>
-            <Radio value={radio5} name="1"></Radio>
-          </>
-        }
-      ></Cell>
-      <Cell
-        title="单选框 2"
-        clickable
-        onClick={(e) => {
-          this.onClick({
-            detail: e.detail,
-            currentTarget: {
-              dataset: { name: '2', key: 'radio5' },
-            },
-            target: {
-              dataset: { name: '2', key: 'radio5' },
-            },
-          })
-        }}
-        renderRightIcon={
-          <>
-            <Radio value={radio5} name="2"></Radio>
-          </>
-        }
-      ></Cell>
-    </CellGroup>
-  </RadioGroup>
-</View>
- 
-```
-
-```js
-this.state = {
-  radio: '1'
-};
-
-function onChange(event) {
-  this.setState({
-    radio: event.detail
-  });
+function Demo() {
+  const [value, setValue] = react.useState('1')
+  return (
+    <RadioGroup value={value}>
+      <CellGroup>
+        <Cell
+          title="单选框 1"
+          clickable
+          onClick={() => setValue('1')}
+          renderRightIcon={<Radio name="1"></Radio>}
+        ></Cell>
+        <Cell
+          title="单选框 2"
+          clickable
+          onClick={() => setValue('2')}
+          renderRightIcon={<Radio name="2"></Radio>}
+        ></Cell>
+      </CellGroup>
+    </RadioGroup>
+  )
 }
-
-function onClick(event) {
-  const {
-    name
-  } = event.currentTarget.dataset;
-  this.setState({
-    radio: name
-  });
-} 
 ```
 ### RadioProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/radio.d.ts)   
 
