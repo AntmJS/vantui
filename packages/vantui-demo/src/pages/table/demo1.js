@@ -82,7 +82,6 @@ export default function Demo() {
   const sortAction = (col) => {
     const { sortOrder, dataIndex } = col
     const { dataSource } = state
-    console.info(state)
 
     if (sortOrder !== 'descend') {
       dataSource.sort(function (a, b) {
