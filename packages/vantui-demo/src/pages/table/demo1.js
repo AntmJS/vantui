@@ -82,6 +82,8 @@ export default function Demo() {
   const sortAction = (col) => {
     const { sortOrder, dataIndex } = col
     const { dataSource } = state
+    console.info(state)
+
     if (sortOrder !== 'descend') {
       dataSource.sort(function (a, b) {
         return a[dataIndex] - b[dataIndex]
@@ -92,7 +94,7 @@ export default function Demo() {
       })
     }
 
-    setState('dataSource', [...dataSource])
+    setState([...dataSource])
   }
   return (
     <Table
