@@ -125,10 +125,10 @@ function Demo() {
   )
 }
 ```
-### ConfigProviderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/config-provider.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| themeVars | 自定义主题变量 | _&nbsp;&nbsp;Normal.IAnyObject<br/>_ | - | `true` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `true` |
+### ConfigProviderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/config-provider.d.ts)
 
+| 参数      | 说明           | 类型                                 | 默认值 | 必填   |
+| --------- | -------------- | ------------------------------------ | ------ | ------ |
+| themeVars | 自定义主题变量 | _&nbsp;&nbsp;Normal.IAnyObject<br/>_ | -      | `true` |
+| children  | -              | _&nbsp;&nbsp;ReactNode<br/>_         | -      | `true` |

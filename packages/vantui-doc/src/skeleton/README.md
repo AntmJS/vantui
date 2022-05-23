@@ -56,18 +56,18 @@ function Demo() {
   )
 }
 ```
-### SkeletonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/skeleton.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| row | - | _&nbsp;&nbsp;number<br/>_ | - | `false` |
-| title | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| avatar | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| loading | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| animate | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| avatarSize | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
-| avatarShape | - | _&nbsp;&nbsp;"square"&nbsp;&brvbar;&nbsp;"round"<br/>_ | - | `false` |
-| titleWidth | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | - | `false` |
-| rowWidth | - | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+### SkeletonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/skeleton.d.ts)
 
+| 参数        | 说明 | 类型                                                   | 默认值 | 必填    |
+| ----------- | ---- | ------------------------------------------------------ | ------ | ------- |
+| row         | -    | _&nbsp;&nbsp;number<br/>_                              | -      | `false` |
+| title       | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
+| avatar      | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
+| loading     | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
+| animate     | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
+| avatarSize  | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | -      | `false` |
+| avatarShape | -    | _&nbsp;&nbsp;"square"&nbsp;&brvbar;&nbsp;"round"<br/>_ | -      | `false` |
+| titleWidth  | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | -      | `false` |
+| rowWidth    | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_  | -      | `false` |
+| children    | -    | _&nbsp;&nbsp;ReactNode<br/>_                           | -      | `false` |

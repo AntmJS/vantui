@@ -80,13 +80,13 @@ function Demo() {
   )
 }
 ```
-### EmptyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/empty.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| description | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| image | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"error"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"search"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"network"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderImage | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| renderDescription | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+### EmptyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/empty.d.ts)
 
+| 参数              | 说明 | 类型                                                                                                                                                                                                                                                                                   | 默认值 | 必填    |
+| ----------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| description       | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                              | -      | `false` |
+| image             | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"error"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"search"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"network"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
+| children          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                           | -      | `false` |
+| renderImage       | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                           | -      | `false` |
+| renderDescription | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                           | -      | `false` |
