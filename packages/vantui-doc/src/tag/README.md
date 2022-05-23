@@ -182,18 +182,18 @@ function Demo() {
   )
 }
 ```
-### TagProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tag.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| size | - | _&nbsp;&nbsp;"large"&nbsp;&brvbar;&nbsp;"medium"<br/>_ | - | `false` |
-| mark | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| color | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| plain | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| round | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| textColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| type | - | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"primary"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"danger"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"warning"<br/>_ | - | `false` |
-| closeable | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
-| onClose | - | _&nbsp;&nbsp;(e:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+### TagProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tag.d.ts)
 
+| 参数      | 说明 | 类型                                                                                                                                                                                                                                                                                        | 默认值 | 必填    |
+| --------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| size      | -    | _&nbsp;&nbsp;"large"&nbsp;&brvbar;&nbsp;"medium"<br/>_                                                                                                                                                                                                                                      | -      | `false` |
+| mark      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                  | -      | `false` |
+| color     | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                   | -      | `false` |
+| plain     | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                  | -      | `false` |
+| round     | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                  | -      | `false` |
+| textColor | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                   | -      | `false` |
+| type      | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"default"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"primary"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"success"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"danger"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"warning"<br/>_ | -      | `false` |
+| closeable | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                  | -      | `false` |
+| children  | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                | -      | `false` |
+| onClose   | -    | _&nbsp;&nbsp;(e:&nbsp;any)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                          | -      | `false` |

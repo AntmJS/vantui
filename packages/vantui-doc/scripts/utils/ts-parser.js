@@ -69,7 +69,8 @@ function parseTokens(TOKENS) {
       count--
       if (count === 0) {
         status = STATUS.EXPORT_1
-        if (attrName && exportName) res[exportName][attrName]['value'] = formatTsValue(value)
+        if (attrName && exportName)
+          res[exportName][attrName]['value'] = formatTsValue(value)
         value = ''
         attrNamePrev = ''
         attrName = ''
@@ -191,7 +192,8 @@ attr:${tsValue}
       semi: false,
       printWidth: 48,
     },
-  ).replace('type temp = {\n', '')
+  )
+    .replace('type temp = {\n', '')
     .replace('attr: ', '')
     .replace(
       `}
@@ -201,4 +203,3 @@ attr:${tsValue}
 
   return res
 }
-

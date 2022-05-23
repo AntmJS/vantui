@@ -1,16 +1,20 @@
-## ts同步到文档说明
+## ts 同步到文档说明
 
-### vantui-doc下执行同步命令
-将vantui/types中d.ts的类型描述转换为文档中的API props
+### vantui-doc 下执行同步命令
+
+将 vantui/types 中 d.ts 的类型描述转换为文档中的 API props
+
 ```bash
 yarn docs-ts
 ```
 
-### ts中注释
-- 只转换export的属性
-- 导出类型的注释描述只支持@title和@description
-- 属性类型的注释描述只支持@default和@description
-- 转换后文档的组件API说明 展示的顺序和ts的export的顺序一致，所以d.ts中组件参数的export尽量放在最开始
+### ts 中注释
+
+- 只转换 export 的属性
+- 导出类型的注释描述只支持@title 和@description
+- 属性类型的注释描述只支持@default 和@description
+- 转换后文档的组件 API 说明 展示的顺序和 ts 的 export 的顺序一致，所以 d.ts 中组件参数的 export 尽量放在最开始
+
 ```ts
 /**
  * @title 组件实例

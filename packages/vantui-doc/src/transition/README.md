@@ -79,9 +79,9 @@ function Demo() {
   transform: rotate(-360deg) translate3d(-100%, -100%, 0);
 }
 ```
-### TransitionPropsCom [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/transition.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+### TransitionPropsCom [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/transition.d.ts)
 
+| 参数     | 说明 | 类型                         | 默认值 | 必填    |
+| -------- | ---- | ---------------------------- | ------ | ------- |
+| children | -    | _&nbsp;&nbsp;ReactNode<br/>_ | -      | `false` |

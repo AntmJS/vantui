@@ -1,4 +1,4 @@
-## Taro快速开发模版
+## Taro 快速开发模版
 
 ### 选型
 
@@ -6,8 +6,8 @@ Taro + React + Less
 
 ### 特性
 
-- 非UI全局缓存能力
-- UI全局缓存能力
+- 非 UI 全局缓存能力
+- UI 全局缓存能力
 
 ### 规范
 
@@ -19,7 +19,6 @@ Commitlint + Husky + lint-staged + Prettier + Eslint + Stylelint + TSC
 ### Vscode
 
 Prettier - Code formatter + Eslint + stylelint
-
 
 ### 工程使用
 
@@ -47,23 +46,23 @@ project.weapp.json - projectname description
 
 project.tt.json - projectname description
 
-package.json - name description appId(环境对应API_ENV) Taro版本
+package.json - name description appId(环境对应 API_ENV) Taro 版本
 
 config/index.js - projectName date h5.webpackChain.publicPath
 
 src/app.config.ts - window.navigationBarTitleText
 
-src/utils/request/innerRequest/index.ts - statusCode为200的判断依据返回是否和约定一致，其他均为失败
+src/utils/request/innerRequest/index.ts - statusCode 为 200 的判断依据返回是否和约定一致，其他均为失败
 
-src/components/container.tsx - MiniBar的homeUrl
+src/components/container.tsx - MiniBar 的 homeUrl
 
 ### 注意事项
 
 - 路径引用可以使用 '@/xxx'
-- 主题可以放在src/style/index.less下面
+- 主题可以放在 src/style/index.less 下面
 - API_ENV: stable real pre dev
 
-### 执行顺序 useDidShow 优先于useEffect执行
+### 执行顺序 useDidShow 优先于 useEffect 执行
 
 - app show
 - app launch
@@ -97,7 +96,7 @@ src/components/container.tsx - MiniBar的homeUrl
 
 - hack Taro API
 - Boundary Error
-- request loading error 结合React
+- request loading error 结合 React
 - theme
 - action ts
 - 分页快速模版

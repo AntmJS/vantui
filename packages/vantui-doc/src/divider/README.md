@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { Divider } from "@antmjs/vantui"; 
+import { Divider } from '@antmjs/vantui'
 ```
 
 > Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)。
@@ -26,7 +26,6 @@ function Demo() {
     </View>
   )
 }
-
 ```
 
 ### 使用 hairline
@@ -39,7 +38,6 @@ function Demo() {
     </View>
   )
 }
-
 ```
 
 ### 虚线
@@ -52,7 +50,6 @@ function Demo() {
     </View>
   )
 }
-
 ```
 
 ### 文本位置
@@ -67,7 +64,6 @@ function Demo() {
     </View>
   )
 }
-
 ```
 
 ### 自定义属性
@@ -88,7 +84,6 @@ function Demo() {
     </View>
   )
 }
-
 ```
 
 ### 自定义样式
@@ -106,17 +101,16 @@ function Demo() {
     </View>
   )
 }
-
 ```
-### DividerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/divider.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| dashed | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| hairline | - | _&nbsp;&nbsp;boolean<br/>_ | - | `false` |
-| contentPosition | - | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"center"&nbsp;&brvbar;&nbsp;"right"<br/>_ | - | `false` |
-| fontSize | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| borderColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| textColor | - | _&nbsp;&nbsp;string<br/>_ | - | `false` |
-| children | - | _&nbsp;&nbsp;ReactNode<br/>_ | - | `false` |
+### DividerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/divider.d.ts)
 
+| 参数            | 说明 | 类型                                                                             | 默认值 | 必填    |
+| --------------- | ---- | -------------------------------------------------------------------------------- | ------ | ------- |
+| dashed          | -    | _&nbsp;&nbsp;boolean<br/>_                                                       | -      | `false` |
+| hairline        | -    | _&nbsp;&nbsp;boolean<br/>_                                                       | -      | `false` |
+| contentPosition | -    | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"center"&nbsp;&brvbar;&nbsp;"right"<br/>_ | -      | `false` |
+| fontSize        | -    | _&nbsp;&nbsp;string<br/>_                                                        | -      | `false` |
+| borderColor     | -    | _&nbsp;&nbsp;string<br/>_                                                        | -      | `false` |
+| textColor       | -    | _&nbsp;&nbsp;string<br/>_                                                        | -      | `false` |
+| children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                     | -      | `false` |

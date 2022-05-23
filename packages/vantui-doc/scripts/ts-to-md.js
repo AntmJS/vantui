@@ -10,35 +10,34 @@ const GITHUB_TYPESHS = `https://github.com/AntmJS/vantui/tree/main/packages/vant
 const READMES_PATH = `${path.resolve(process.cwd(), './src/**/README.md')}`
 const spinner = ora(`文档 API 同步开始`)
 
-glob(READMES_PATH,
-  function (err, path_) {
-    path_.map((item) => {
-      const componentName = item.split('/').reverse()[1]
-      let content = fs.readFileSync(item, 'utf-8')
-      spinner.start(`${componentName}文档 API 同步中...`)
+glob(READMES_PATH, function (err, path_) {
+  path_.map((item) => {
+    const componentName = item.split('/').reverse()[1]
+    let content = fs.readFileSync(item, 'utf-8')
+    spinner.start(`${componentName}文档 API 同步中...`)
 
-      if (content) {
-        content = removeOldTable(content)
-      }
+    if (content) {
+      content = removeOldTable(content)
+    }
 
-      if (
-        fs.existsSync(`../vantui/types/${componentName}.d.ts`) &&
-        componentName !== 'index' && componentName!== 'power-scroll-view'
-      ) {
-        let tsInfo = fs.readFileSync(
-          `../vantui/types/${componentName}.d.ts`,
-          'utf-8',
-        )
-        const res = parser(tsInfo)
+    if (
+      fs.existsSync(`../vantui/types/${componentName}.d.ts`) &&
+      componentName !== 'index' &&
+      componentName !== 'power-scroll-view'
+    ) {
+      let tsInfo = fs.readFileSync(
+        `../vantui/types/${componentName}.d.ts`,
+        'utf-8',
+      )
+      const res = parser(tsInfo)
 
-        fs.writeFileSync(item, content + createMd(res, componentName))
-        spinner.stop(`${componentName}文档 API 同步完成`)
-      }
-    })
+      fs.writeFileSync(item, content + createMd(res, componentName))
+      spinner.stop(`${componentName}文档 API 同步完成`)
+    }
+  })
 
-    spinner.succeed(`文档 API 同步完成`)
-  },
-)
+  spinner.succeed(`文档 API 同步完成`)
+})
 
 function createMd(obj, compName) {
   let mdRes = ``
@@ -46,9 +45,10 @@ function createMd(obj, compName) {
     const item = obj[Dkey]
     if (!Object.keys(item).length) continue
     mdRes +=
-      `### ${item['title__'] && typeof item['title__'] === 'string'
-        ? item['title__']
-        : Dkey
+      `### ${
+        item['title__'] && typeof item['title__'] === 'string'
+          ? item['title__']
+          : Dkey
       }` +
       ` [[详情]](${GITHUB_TYPESHS}/${compName}.d.ts)   
 `
@@ -123,7 +123,8 @@ function removeOldTable(md) {
   // 处理第一版ts的展示
   if (shouldRmoveIndex === undefined) {
     ast.children.forEach((as, index) => {
-      if (as.type === 'Header' &&
+      if (
+        as.type === 'Header' &&
         as.raw === '### TS信息' &&
         shouldRmoveIndex === undefined
       ) {

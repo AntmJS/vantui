@@ -1,6 +1,6 @@
-# 如何在React中使用（单纯的React应用，非Taro应用）
+# 如何在 React 中使用（单纯的 React 应用，非 Taro 应用）
 
-### 在React应用中使用需要在如下文件中添加代码
+### 在 React 应用中使用需要在如下文件中添加代码
 
 ```bash
 yarn add @tarojs/taro @tarojs/components @antmjs/vantui

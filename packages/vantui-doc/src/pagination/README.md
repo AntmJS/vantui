@@ -109,21 +109,21 @@ function Demo() {
   )
 }
 ```
-### PaginationProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/pagination.d.ts)   
 
-| 参数 | 说明 | 类型 | 默认值 | 必填 |
-| --- | --- | --- | --- | --- |
-| defaultValue | 默认页码 | _&nbsp;&nbsp;number<br/>_ | 1 | `false` |
-| modelValue | 当前页码 | _&nbsp;&nbsp;number<br/>_ | 1 | `true` |
-| mode | - | _&nbsp;&nbsp;"multi"&nbsp;&brvbar;&nbsp;"simple"<br/>_ | multi | `false` |
-| prevText | 自定义上一页按钮内容 | _&nbsp;&nbsp;React.ReactNode<br/>_ | 上一页 | `false` |
-| nextText | 自定义下一页按钮内容 | _&nbsp;&nbsp;React.ReactNode<br/>_ | 下一页 | `false` |
-| pageCount | 总页数 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | 传入或者根据数据量计算 | `true` |
-| totalItems | 总记录数 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | 0 | `false` |
-| itemsPerPage | 每页数量 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | 10 | `false` |
-| showPageSize | 显示页码个数 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | 5 | `false` |
-| forceEllipses | 是否展示省略号 | _&nbsp;&nbsp;boolean<br/>_ | false | `false` |
-| pageNodeRender | 自定义渲染页码结构, 入参数为number页数、text文本、 active选中状态 | _&nbsp;&nbsp;(page:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;number:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;active:&nbsp;boolean<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;React.ReactNode<br/>_ | - | `false` |
-| onChange | 页码改变的时候触发 | _&nbsp;&nbsp;(currPage:&nbsp;number)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
-| updatecurrent | - | _&nbsp;&nbsp;(currPage:&nbsp;number)&nbsp;=>&nbsp;void<br/>_ | - | `false` |
+### PaginationProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/pagination.d.ts)
 
+| 参数           | 说明                                                                  | 类型                                                                                                                                                                                                                            | 默认值                 | 必填    |
+| -------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------- |
+| defaultValue   | 默认页码                                                              | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                       | 1                      | `false` |
+| modelValue     | 当前页码                                                              | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                       | 1                      | `true`  |
+| mode           | -                                                                     | _&nbsp;&nbsp;"multi"&nbsp;&brvbar;&nbsp;"simple"<br/>_                                                                                                                                                                          | multi                  | `false` |
+| prevText       | 自定义上一页按钮内容                                                  | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                              | 上一页                 | `false` |
+| nextText       | 自定义下一页按钮内容                                                  | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                              | 下一页                 | `false` |
+| pageCount      | 总页数                                                                | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                             | 传入或者根据数据量计算 | `true`  |
+| totalItems     | 总记录数                                                              | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                             | 0                      | `false` |
+| itemsPerPage   | 每页数量                                                              | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                             | 10                     | `false` |
+| showPageSize   | 显示页码个数                                                          | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                             | 5                      | `false` |
+| forceEllipses  | 是否展示省略号                                                        | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                      | false                  | `false` |
+| pageNodeRender | 自定义渲染页码结构, 入参数为 number 页数、text 文本、 active 选中状态 | _&nbsp;&nbsp;(page:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;number:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;active:&nbsp;boolean<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;React.ReactNode<br/>_ | -                      | `false` |
+| onChange       | 页码改变的时候触发                                                    | _&nbsp;&nbsp;(currPage:&nbsp;number)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                    | -                      | `true`  |
+| updatecurrent  | -                                                                     | _&nbsp;&nbsp;(currPage:&nbsp;number)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                    | -                      | `false` |
