@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "main": "lib/index.js",
   "module": "es/index.esm.js",
   "style": "lib/index.css",

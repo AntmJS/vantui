@@ -91,5 +91,5 @@
 ### 快速沟通群
 
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v28.jpeg" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v30.jpeg" />
 </div>
