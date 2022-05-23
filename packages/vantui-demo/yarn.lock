@@ -10,11 +10,6 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@antmjs/iconfont@1.18.1":
-  version "1.18.1"
-  resolved "https://registry.npmmirror.com/@antmjs/iconfont/-/iconfont-1.18.1.tgz#9c8e33560636348238e1436297817662b3469829"
-  integrity sha512-QfrkwaEQhCW6KdA5pRSToTnLcK9gvoCr2b0hTXxeVXD8muK+QES+jAGLCdk+NO9QiNQxMXSEmPVQ81nHipyc5g==
-
 "@antmjs/iconfont@^1.18.2":
   version "1.18.4"
   resolved "https://registry.npmmirror.com/@antmjs/iconfont/-/iconfont-1.18.4.tgz#a0fc6e3751f5bf71ac943fc6f4f13c8656219606"
@@ -39,19 +34,6 @@
   integrity sha512-wJrO7AkYgtbGWyA0zXUw0O/KYURiWoQdvGxlYxjE+H2nMjNOf0h8+XSdxCOOxoJaNRGNO9noOF+yupopYBG0HQ==
   dependencies:
     "@babel/runtime-corejs3" "^7.14.7"
-
-"@antmjs/vantui@1.9.2":
-  version "1.9.2"
-  resolved "https://registry.npmmirror.com/@antmjs/vantui/-/vantui-1.9.2.tgz#70b2d817ae117deb68c5cf030d7c29d62d307c43"
-  integrity sha512-pxmPIRx2jvswGB5bKiOWsxegG7ynfqbnk/bkVW8k03t00hp+cYD7xZfYVe5v60gcC6p21TcnKWM0OLZLAQcJmw==
-  dependencies:
-    "@antmjs/iconfont" "1.18.1"
-    "@babel/runtime-corejs3" "^7.14.7"
-    "@vant/icons" "^1.7.1"
-    classnames "^2.3.1"
-    dayjs "^1.10.6"
-    rc-util "^5.14.0"
-    use-deep-compare-effect "^1.8.1"
 
 "@babel/code-frame@7.0.0-beta.44":
   version "7.0.0-beta.44"
@@ -1127,7 +1109,7 @@
     core-js-pure "^3.20.2"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.14.5", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.14.5", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4":
   version "7.17.9"
   resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.17.9.tgz#d19fbf802d01a8cb6cf053a64e472d42c434ba72"
   integrity sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==
@@ -4116,7 +4098,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5, classnames@^2.3.1:
+classnames@^2.2.5:
   version "2.3.1"
   resolved "https://registry.npmmirror.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -4878,11 +4860,6 @@ data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-dayjs@^1.10.6:
-  version "1.11.2"
-  resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.2.tgz#fa0f5223ef0d6724b3d8327134890cfe3d72fbe5"
-  integrity sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==
-
 de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmmirror.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
@@ -5136,11 +5113,6 @@ deps-regex@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmmirror.com/deps-regex/-/deps-regex-0.1.4.tgz#518667b7691460a5e7e0a341be76eb7ce8090184"
   integrity sha512-3tzwGYogSJi8HoG93R5x9NrdefZQOXgHgGih/7eivloOq6yC6O+yoFxZnkgP661twvfILONfoKRdF9GQOGx2RA==
-
-dequal@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmmirror.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
-  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
 
 des.js@^1.0.0:
   version "1.0.1"
@@ -10892,15 +10864,6 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-rc-util@^5.14.0:
-  version "5.21.4"
-  resolved "https://registry.npmmirror.com/rc-util/-/rc-util-5.21.4.tgz#61e24ad297f679ca0796b618a3ef30eca959d904"
-  integrity sha512-rq11ap3NnOIdywFhcMQ9J7DXRJJ1c1Id1Hvr/1Dphr+5X75ERJBJybuh779DdurP4LJQqAhT6Aie0AjrBc5Vqw==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    react-is "^16.12.0"
-    shallowequal "^1.1.0"
-
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.8:
   version "1.2.8"
   resolved "https://registry.npmmirror.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -10920,7 +10883,7 @@ react-dom@^17.0.0:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-is@^16.12.0, react-is@^16.13.1:
+react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -11824,11 +11787,6 @@ shallow-clone@^3.0.0:
   integrity sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==
   dependencies:
     kind-of "^6.0.2"
-
-shallowequal@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmmirror.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
-  integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -13337,14 +13295,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-deep-compare-effect@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.npmmirror.com/use-deep-compare-effect/-/use-deep-compare-effect-1.8.1.tgz#ef0ce3b3271edb801da1ec23bf0754ef4189d0c6"
-  integrity sha512-kbeNVZ9Zkc0RFGpfMN3MNfaKNvcLNyxOAAd9O4CBZ+kCBXXscn9s/4I+8ytUER4RDpEYs5+O6Rs4PqiZ+rHr5Q==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    dequal "^2.0.2"
 
 use@^3.1.0:
   version "3.1.1"

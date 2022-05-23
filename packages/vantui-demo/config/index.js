@@ -27,11 +27,7 @@ let config = {
     828: 1.81 / 2,
   },
   sourceRoot: 'src',
-  outputRoot: path.join(
-    process.cwd() + process.env.TARO_ENV === 'h5'
-      ? 'build'
-      : process.env.TARO_ENV,
-  ),
+  outputRoot: process.env.TARO_ENV === 'h5' ? 'build' : process.env.TARO_ENV,
   env: {
     API_ENV: JSON.stringify(process.env.API_ENV),
     WATCHING: JSON.stringify(process.env.WATCHING || 'false'),
