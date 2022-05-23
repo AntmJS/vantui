@@ -107,7 +107,9 @@ function Demo() {
       })
     }
 
-    setState([...dataSource])
+    setState({
+      dataSource,
+    })
   }
   return (
     <Table

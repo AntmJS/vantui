@@ -93,8 +93,14 @@ export default function Demo() {
       })
     }
 
-    setState([...dataSource])
+    console.info(state, 'dataSource', dataSource, dataIndex)
+
+    setState({
+      dataSource,
+    })
   }
+
+  console.info(state)
   return (
     <Table
       columns={columns}
