@@ -979,7 +979,7 @@
 
 "@babel/plugin-transform-runtime@^7.14.5", "@babel/plugin-transform-runtime@^7.17.10":
   version "7.18.0"
-  resolved "https://registry.npmmirror.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.18.0.tgz#894cdab4b353dcb7639f03fb74c59db1d344f71c"
+  resolved "https://registry.npmmirror.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.18.0.tgz"
   integrity sha512-7kM/jJ3DD/y1hDPn0jov12DoUIFsxLiItprhNydUSibxaywaxNqKwq+ODk72J9ePn4LWobIc5ik6TAJhVl8IkQ==
   dependencies:
     "@babel/helper-module-imports" "^7.16.7"
@@ -1027,7 +1027,7 @@
 
 "@babel/plugin-transform-typescript@^7.16.8", "@babel/plugin-transform-typescript@^7.17.12":
   version "7.18.1"
-  resolved "https://registry.npmmirror.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.18.1.tgz#5fd8b86130bad95c4a24377b41ab989a9ccad22d"
+  resolved "https://registry.npmmirror.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.18.1.tgz"
   integrity sha512-F+RJmL479HJmC0KeqqwEGZMg1P7kWArLGbAKfEi9yPthJyMNjF+DjxFF/halfQvq1Q9GFM4TUbYDNV8xe4Ctqg==
   dependencies:
     "@babel/helper-create-class-features-plugin" "^7.18.0"
@@ -1051,7 +1051,7 @@
 
 "@babel/preset-env@^7.14.7", "@babel/preset-env@^7.17.10":
   version "7.18.0"
-  resolved "https://registry.npmmirror.com/@babel/preset-env/-/preset-env-7.18.0.tgz#ec7e51f4c6e026816000b230ed7cf74a1530d91d"
+  resolved "https://registry.npmmirror.com/@babel/preset-env/-/preset-env-7.18.0.tgz"
   integrity sha512-cP74OMs7ECLPeG1reiCQ/D/ypyOxgfm8uR6HRYV23vTJ7Lu1nbgj9DQDo/vH59gnn7GOAwtTDPPYV4aXzsMKHA==
   dependencies:
     "@babel/compat-data" "^7.17.10"
@@ -1155,7 +1155,7 @@
 
 "@babel/preset-typescript@^7.14.5", "@babel/preset-typescript@^7.16.0":
   version "7.17.12"
-  resolved "https://registry.npmmirror.com/@babel/preset-typescript/-/preset-typescript-7.17.12.tgz#40269e0a0084d56fc5731b6c40febe1c9a4a3e8c"
+  resolved "https://registry.npmmirror.com/@babel/preset-typescript/-/preset-typescript-7.17.12.tgz"
   integrity sha512-S1ViF8W2QwAKUGJXxP9NAfNaqGDdEBJKpYkxHf5Yy2C4NPPzXGeR3Lhk7G8xJaaLcFTRfNjVbtbVtm8Gb0mqvg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.17.12"
