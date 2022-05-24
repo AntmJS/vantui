@@ -1,0 +1,15 @@
+*.log
+*.swp
+
+.github
+.cache
+.temp
+.idea
+.rn_temp
+.DS_Store
+
+CHANGELOG.md
+package-lock.json
+
+node_modules
+coverage

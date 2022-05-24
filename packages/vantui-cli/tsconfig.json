@@ -19,10 +19,8 @@
     "module": "esnext",
     // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
     "moduleResolution": "Node",
-    "target": "ES2019",
+    "outDir": "./lib",
     "lib": ["ESNext", "dom"],
-    /** emit */
-    "noEmit": true,
     /** Interop Constraints */
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -31,23 +29,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     // declaration和allowJs不能同时设为true
-    "allowJs": true,
+    // "allowJs": true,
     "jsx": "react-jsx",
-    "skipLibCheck": false
-    // "paths": {
-    //   // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
-    //   "@/*": ["./src/*"]
-    // }
+    "skipLibCheck": false,
+
+    "target": "ES2019",
+    "declaration": true
   },
-  "include": [
-    "*.js",
-    "packages/*/*.js",
-    "packages/*/*.d.ts",
-    "packages/**/src",
-    "packages/**/lib",
-    "packages/**/types",
-    "packages/**/__test__",
-    "packages/vantui-demo/config"
-  ],
-  "compileOnSave": false
+  "include": ["src/**/*"]
 }

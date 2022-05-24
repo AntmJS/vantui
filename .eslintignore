@@ -52,3 +52,6 @@ packages/react-demo/scripts
 packages/react-demo/public
 packages/react-demo/src/pages
 packages/vantui-doc
+
+packages/vantui-cli/lib
+packages/vantui-cli/dist
