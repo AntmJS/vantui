@@ -1,6 +1,6 @@
 /* eslint-disable */
 import react from 'react'
-import { div, Pagination, Icon } from '@antmjs/vantui'
+import { Pagination, Icon } from '@antmjs/vantui'
 
 export default function Demo() {
   const [currentPage4, setCurrentPage4] = react.useState(1)
@@ -10,7 +10,7 @@ export default function Demo() {
   }
 
   const pageNodeRender = (page) => {
-    return <div>{page.number == 3 ? 'hot' : page.text}</div>
+    return <>{page.number == 3 ? 'hot' : page.text}</>
   }
 
   return (
