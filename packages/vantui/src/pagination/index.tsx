@@ -1,3 +1,4 @@
+import { View } from '@tarojs/components'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { PaginationProps } from '../../types/pagination'
 
@@ -119,20 +120,20 @@ export const Pagination: FunctionComponent<
     }
   }
   return (
-    <div className={`${clsPrefix} ${className}`} {...rest}>
-      <div
+    <View className={`${clsPrefix} ${className}`} {...rest}>
+      <View
         className={`${clsPrefix}-prev  ${
           mode == 'multi' ? '' : 'simple-border'
         } ${currentPage == 1 ? 'disabled' : ''}`}
         onClick={() => selectPage(Number(currentPage) - 1, true)}
       >
         {prevText}
-      </div>
+      </View>
       {mode == 'multi' ? (
-        <div className={`${clsPrefix}-contain`}>
+        <View className={`${clsPrefix}-contain`}>
           {pages.map((item: any, index: number) => {
             return (
-              <div
+              <View
                 key={`${index}pagination`}
                 className={`${clsPrefix}-item ${item.active ? 'active' : ''}`}
                 onClick={() =>
@@ -140,31 +141,31 @@ export const Pagination: FunctionComponent<
                 }
               >
                 {pageNodeRender ? pageNodeRender(item) : item.text}
-              </div>
+              </View>
             )
           })}
-        </div>
+        </View>
       ) : (
         ''
       )}
       {mode == 'simple' ? (
-        <div className={`${clsPrefix}-contain`}>
-          <div className={`${clsPrefix}-simple`}>
+        <View className={`${clsPrefix}-contain`}>
+          <View className={`${clsPrefix}-simple`}>
             {currentPage}/{countRef}
-          </div>
-        </div>
+          </View>
+        </View>
       ) : (
         ''
       )}
-      <div
+      <View
         className={`${clsPrefix}-next  ${
           Number(currentPage) >= countRef ? 'disabled' : ''
         }`}
         onClick={() => selectPage(Number(currentPage) + 1, true)}
       >
         {nextText}
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 
