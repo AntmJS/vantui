@@ -6,7 +6,7 @@ module.exports = {
     simulator: {
       url: {
         development: 'http://localhost:10086',
-        production: '/mobile.html',
+        production: '/vantui/mobile.html',
       },
       pagePath: path.join(__dirname, '../vantui-demo/src/pages'),
       configPath: path.join(__dirname, '../vantui-demo/src/config.json'),
