@@ -133,10 +133,10 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@antmjs/babel-preset@1.19.1":
-  version "1.19.1"
-  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/-/babel-preset-1.19.1.tgz#52c99f4d2edc0e47efbdd51df009678faee43858"
-  integrity sha512-imdW7HzO4jLbi8zJBstdjFXP2goZ4LO0rgJgQ3Xr2AA4BgFGFTZ7BepcSmdEcZTkwPl5JMHh6cat00oJC3H3Ig==
+"@antmjs/babel-preset@1.19.2":
+  version "1.19.2"
+  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/-/babel-preset-1.19.2.tgz#53d4abe40f6a03ba94267aca4617584a5ed99092"
+  integrity sha512-et3vw7ZtvTrWFdKUcuvWK3CPLPW/HwQ5HXn/yN/hV29w+XZ8+cuE4HyPD5Rn4rq1jPV7Zsn8HWA1J7Y3wAVQug==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.14.5"
     "@babel/plugin-proposal-decorators" "^7.14.5"
@@ -150,12 +150,12 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/vantui-cli@^1.19.1":
-  version "1.19.1"
-  resolved "https://registry.npmmirror.com/@antmjs/vantui-cli/-/vantui-cli-1.19.1.tgz#bad8d070d0a2de081d2c035cadab33855840d2c0"
-  integrity sha512-3BfBNV4H+QueMsNHBVEE6ywMNqPgjVnmILQyykkTi8SCfAgd5zIHP7s8U5YMPrs+r34egWTCRNapwO8IP3pL8A==
+"@antmjs/vantui-cli@^1.19.2":
+  version "1.19.2"
+  resolved "https://registry.npmmirror.com/@antmjs/vantui-cli/-/vantui-cli-1.19.2.tgz#900b0a32726631a0236ba63219ec75469d1c63b7"
+  integrity sha512-6+DfvLioWgYZKWXy0dJRWOnEKcjdeYUd4tzlDUQBL0NxLSSc2kmsiqH7U3YN1SeTE0D/NdE87wXZQDmWKiNrTw==
   dependencies:
-    "@antmjs/babel-preset" "1.19.1"
+    "@antmjs/babel-preset" "1.19.2"
     "@babel/core" "^7.16.0"
     "@babel/plugin-transform-runtime" "^7.17.10"
     "@babel/plugin-transform-typescript" "^7.16.8"
