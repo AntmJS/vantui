@@ -89,6 +89,7 @@ function Demo() {
           label="密码"
           name="password"
           required
+          valueFormat={(e) => e.detail.value}
           renderRight={<Icon name="eye-o" />}
         >
           <Input placeholder="请输入密码" type="password" />
