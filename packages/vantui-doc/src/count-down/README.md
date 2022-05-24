@@ -71,7 +71,7 @@ function Demo() {
 }
 ```
 
-### 手动控制 (hooks 下面存在问题!)
+### 手动控制
 
 通过 `ref` 选择器获取到组件实例后，可以调用`start`、`pause`、`reset`方法。
 

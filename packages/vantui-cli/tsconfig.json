@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    /** type checking */
+    "strict": true,
+    // 默认false,是否检测定义了但是没使用的变量
+    "noUnusedLocals": true,
+    // 用于检查是否有在函数体中没有使用的参数
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": false,
+    "noImplicitReturns": true,
+    // "noImplicitAny": false,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    /** module */
+    "baseUrl": "./",
+    "module": "esnext",
+    // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
+    "moduleResolution": "Node",
+    "outDir": "./lib",
+    "lib": ["ESNext", "dom"],
+    /** Interop Constraints */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    // declaration和allowJs不能同时设为true
+    // "allowJs": true,
+    "jsx": "react-jsx",
+    "skipLibCheck": false,
+
+    "target": "ES2019",
+    "declaration": true
+  },
+  "include": ["src/**/*"]
+}

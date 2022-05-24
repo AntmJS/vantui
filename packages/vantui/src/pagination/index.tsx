@@ -1,12 +1,13 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import { View } from '@tarojs/components'
+import React, { useCallback, useEffect, useState } from 'react'
 import { PaginationProps } from '../../types/pagination'
 
 const clsPrefix = 'van-pagination'
 
-export const Pagination: FunctionComponent<
-  Partial<PaginationProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export function Pagination(
+  props: Partial<PaginationProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+) {
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     modelValue,
@@ -27,7 +28,6 @@ export const Pagination: FunctionComponent<
       return item.text
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    children,
     ...rest
   } = props
 
@@ -36,11 +36,11 @@ export const Pagination: FunctionComponent<
   const [countRef, setCountRef] = useState(Number(pageCount))
   // 计算页面的数量
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const computedCountRef = () => {
+  const computedCountRef = useCallback(() => {
     const num =
       Number(pageCount) || Math.ceil(Number(totalItems) / Number(itemsPerPage))
-    return isNaN(num) ? 1 : Math.max(1, num)
-  }
+    return num + '' === 'NaN' ? 1 : Math.max(1, num)
+  }, [itemsPerPage, pageCount, totalItems])
 
   // 生成pages数组，用来遍历
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -109,7 +109,8 @@ export const Pagination: FunctionComponent<
     const pageCount = computedCountRef()
     setCountRef(pageCount)
     setPages(computedPages(currentValue, pageCount))
-  }, [computedCountRef, computedPages, props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props, computedCountRef])
 
   if ('modelValue' in props) {
     const current = props.modelValue ? Number(props.modelValue) : 1
@@ -118,21 +119,22 @@ export const Pagination: FunctionComponent<
       setPages(computedPages(Number(current)))
     }
   }
+
   return (
-    <div className={`${clsPrefix} ${className}`} {...rest}>
-      <div
+    <View className={`${clsPrefix} ${className}`} {...rest}>
+      <View
         className={`${clsPrefix}-prev  ${
           mode == 'multi' ? '' : 'simple-border'
         } ${currentPage == 1 ? 'disabled' : ''}`}
         onClick={() => selectPage(Number(currentPage) - 1, true)}
       >
         {prevText}
-      </div>
+      </View>
       {mode == 'multi' ? (
-        <div className={`${clsPrefix}-contain`}>
+        <View className={`${clsPrefix}-contain`}>
           {pages.map((item: any, index: number) => {
             return (
-              <div
+              <View
                 key={`${index}pagination`}
                 className={`${clsPrefix}-item ${item.active ? 'active' : ''}`}
                 onClick={() =>
@@ -140,31 +142,31 @@ export const Pagination: FunctionComponent<
                 }
               >
                 {pageNodeRender ? pageNodeRender(item) : item.text}
-              </div>
+              </View>
             )
           })}
-        </div>
+        </View>
       ) : (
         ''
       )}
       {mode == 'simple' ? (
-        <div className={`${clsPrefix}-contain`}>
-          <div className={`${clsPrefix}-simple`}>
+        <View className={`${clsPrefix}-contain`}>
+          <View className={`${clsPrefix}-simple`}>
             {currentPage}/{countRef}
-          </div>
-        </div>
+          </View>
+        </View>
       ) : (
         ''
       )}
-      <div
+      <View
         className={`${clsPrefix}-next  ${
           Number(currentPage) >= countRef ? 'disabled' : ''
         }`}
         onClick={() => selectPage(Number(currentPage) + 1, true)}
       >
         {nextText}
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 

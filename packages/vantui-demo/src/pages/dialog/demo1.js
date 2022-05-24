@@ -17,11 +17,10 @@ export default function Demo() {
 
   const confirm = react.useCallback(() => {
     Dialog.confirm({
-      renderTitle: '标题',
-      // message: '弹窗内容',
+      title: '标题',
       message: (
         <Input
-          placeholder="xxxx111"
+          placeholder="请输入内容"
           value={value}
           onChange={(e) => setValue(e.detail.value)}
         />

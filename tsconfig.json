@@ -16,10 +16,10 @@
     "noUncheckedIndexedAccess": true,
     /** module */
     "baseUrl": "./",
-    "module": "commonjs",
+    "module": "esnext",
     // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
     "moduleResolution": "Node",
-    "target": "es6",
+    "target": "ES2019",
     "lib": ["ESNext", "dom"],
     /** emit */
     "noEmit": true,

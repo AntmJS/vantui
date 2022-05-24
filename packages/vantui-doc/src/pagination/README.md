@@ -93,7 +93,7 @@ function Demo() {
   }
 
   const pageNodeRender = (page) => {
-    return <div>{page.number == 3 ? 'hot' : page.text}</div>
+    return <>{page.number == 3 ? 'hot' : page.text}</>
   }
 
   return (

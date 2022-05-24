@@ -15,10 +15,12 @@ packages/**/coverage
 packages/**/dist
 packages/vantui/lib
 packages/vantui/es
+
 packages/vantui-doc/lib
 packages/vantui-doc/es
 packages/vantui-doc/dist
 packages/vantui-doc/site
+
 packages/vantui-demo/weapp
 packages/vantui-demo/alipay
 packages/vantui-demo/swan
@@ -35,3 +37,6 @@ packages/vantui-demo/dist
 packages/react-demo/build
 packages/react-demo/dist
 packages/react-demo/src/pages
+
+packages/vantui-cli/lib
+packages/vantui-cli/dist

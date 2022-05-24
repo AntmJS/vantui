@@ -34,7 +34,7 @@ export default class Index extends Component {
           <Demo4 />
         </DemoBlock>
 
-        <DemoBlock title="手动控制 (hooks 下面存在问题!)" padding>
+        <DemoBlock title="手动控制" padding>
           <Demo5 />
         </DemoBlock>
       </DemoPage>
