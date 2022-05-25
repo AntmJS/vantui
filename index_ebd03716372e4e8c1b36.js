@@ -1,4 +1,4 @@
-/*! For license information please see index_db16f3ebfac82f4dda1c.js.LICENSE.txt */
+/*! For license information please see index_ebd03716372e4e8c1b36.js.LICENSE.txt */
 ;(self.webpackChunkvantui_doc = self.webpackChunkvantui_doc || []).push([
   [826],
   {
@@ -55874,8 +55874,8 @@
                   l || d.isHideSimulator || (l = d.path)
               }
               return s
-                ? ''.concat(a, '#/pages/').concat(l, '/index')
-                : ''.concat(a, '#/pages/').concat(o, '/index')
+                ? ''.concat(a, '/#/pages/').concat(l, '/index')
+                : ''.concat(a, '/#/pages/').concat(o, '/index')
             })()
           },
           [a],

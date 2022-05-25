@@ -1,1 +1,158 @@
-.demo-nav{position:relative;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;height:2.38933rem;background-color:#fff}.demo-nav__back{position:absolute;top:.68267rem;left:.68267rem;font-size:1.024rem;color:#969799;cursor:pointer}.demo-nav__title{font-size:.68267rem;font-weight:600;text-transform:capitalize}.demo-page{box-sizing:border-box;min-height:100vh;padding-bottom:.21333rem}.demo-block__title{margin:0;padding:.85333rem .64rem .64rem;color:rgba(69,90,100,.6);font-weight:400;font-size:.59733rem}.demo-block__card{overflow:hidden;border-radius:.34133rem}.demo-block--padding{padding:0 .64rem}.demo-block--padding .demo-block__title{padding-left:0}.van-divider{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;border-style:solid;border-width:0;margin:.68267rem 0;margin:var(--divider-margin, 0.68267rem 0);color:#969799;color:var(--divider-text-color, #969799);font-size:.59733rem;font-size:var(--divider-font-size, 0.59733rem);line-height:1.024rem;line-height:var(--divider-line-height, 1.024rem);border-color:#ebedf0;border-color:var(--divider-border-color, #ebedf0)}.van-divider::after,.van-divider::before{display:block;-webkit-flex:1;flex:1;box-sizing:border-box;height:.04267rem;border-color:inherit;border-style:inherit;border-width:.04267rem 0 0}.van-divider::before{content:''}.van-divider--hairline::after,.van-divider--hairline::before{-webkit-transform:scaleY(.5);transform:scaleY(.5)}.van-divider--dashed{border-style:dashed}.van-divider--center::before,.van-divider--left::before,.van-divider--right::before{margin-right:.68267rem;margin-right:var(--divider-content-padding, 0.68267rem)}.van-divider--center::after,.van-divider--left::after,.van-divider--right::after{content:'';margin-left:.68267rem;margin-left:var(--divider-content-padding, 0.68267rem)}.van-divider--left::before{max-width:10%;max-width:var(--divider-content-left-width, 10%)}.van-divider--right::after{max-width:10%;max-width:var(--divider-content-right-width, 10%)}
+.van-steps {
+  overflow: hidden;
+  background-color: #fff;
+  background-color: var(--steps-background-color, #fff);
+}
+.van-steps--horizontal {
+  padding: 0.42667rem;
+}
+.van-steps--horizontal .van-step__wrapper {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  overflow: hidden;
+}
+.van-steps--vertical {
+  padding-left: 0.42667rem;
+}
+.van-steps--vertical .van-step__wrapper {
+  padding: 0 0 0 0.85333rem;
+}
+.van-step {
+  position: relative;
+  -webkit-flex: 1;
+  flex: 1;
+  font-size: 0.59733rem;
+  font-size: var(--step-font-size, 0.59733rem);
+  color: #969799;
+  color: var(--step-text-color, #969799);
+}
+.van-step--finish {
+  color: #323233;
+  color: var(--step-finish-text-color, #323233);
+}
+.van-step__circle {
+  border-radius: 50%;
+  width: 0.21333rem;
+  width: var(--step-circle-size, 0.21333rem);
+  height: 0.21333rem;
+  height: var(--step-circle-size, 0.21333rem);
+  background-color: #969799;
+  background-color: var(--step-circle-color, #969799);
+}
+.van-step--horizontal {
+  padding-bottom: 0.59733rem;
+}
+.van-step--horizontal:first-child .van-step__title {
+  -webkit-transform: none;
+  transform: none;
+}
+.van-step--horizontal:first-child .van-step__circle-container {
+  padding: 0 0.34133rem 0 0;
+  -webkit-transform: translate3d(0, 50%, 0);
+  transform: translate3d(0, 50%, 0);
+}
+.van-step--horizontal:last-child {
+  position: absolute;
+  right: 0;
+  width: auto;
+}
+.van-step--horizontal:last-child .van-step__title {
+  text-align: right;
+  -webkit-transform: none;
+  transform: none;
+}
+.van-step--horizontal:last-child .van-step__circle-container {
+  right: 0;
+  padding: 0 0 0 0.34133rem;
+  -webkit-transform: translate3d(0, 50%, 0);
+  transform: translate3d(0, 50%, 0);
+}
+.van-step--horizontal .van-step__circle-container {
+  position: absolute;
+  bottom: 0.256rem;
+  z-index: 1;
+  -webkit-transform: translate3d(-50%, 50%, 0);
+  transform: translate3d(-50%, 50%, 0);
+  background-color: #fff;
+  background-color: var(--white, #fff);
+  padding: 0 0.34133rem;
+  padding: 0 var(--padding-xs, 0.34133rem);
+}
+.van-step--horizontal .van-step__title {
+  display: inline-block;
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+  font-size: 0.512rem;
+  font-size: var(--step-horizontal-title-font-size, 0.512rem);
+}
+.van-step--horizontal .van-step__line {
+  position: absolute;
+  right: 0;
+  bottom: 0.256rem;
+  left: 0;
+  height: 0.04267rem;
+  -webkit-transform: translate3d(0, 50%, 0);
+  transform: translate3d(0, 50%, 0);
+  background-color: #ebedf0;
+  background-color: var(--step-line-color, #ebedf0);
+}
+.van-step--horizontal.van-step--process {
+  color: #323233;
+  color: var(--step-process-text-color, #323233);
+}
+.van-step--horizontal.van-step--process .van-step__icon {
+  display: block;
+  line-height: 1;
+  font-size: 0.512rem;
+  font-size: var(--step-icon-size, 0.512rem);
+}
+.van-step--vertical {
+  padding: 0.42667rem 0.42667rem 0.42667rem 0;
+  line-height: 0.768rem;
+}
+.van-step--vertical::after {
+  border-bottom-width: 0.04267rem;
+}
+.van-step--vertical:last-child::after {
+  border-bottom-width: none;
+}
+.van-step--vertical:first-child::before {
+  position: absolute;
+  top: 0;
+  left: -0.64rem;
+  z-index: 1;
+  width: 0.04267rem;
+  height: 0.85333rem;
+  content: '';
+  background-color: #fff;
+  background-color: var(--white, #fff);
+}
+.van-step--vertical .van-step__circle,
+.van-step--vertical .van-step__icon {
+  position: absolute;
+  top: 0.81067rem;
+  left: -0.59733rem;
+  z-index: 2;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+.van-step--vertical .van-step__line {
+  position: absolute;
+  top: 0.81067rem;
+  left: -0.59733rem;
+}
+.van-step--vertical .van-step__icon {
+  line-height: 1;
+  font-size: 0.512rem;
+  font-size: var(--step-icon-size, 0.512rem);
+}
+.van-step--vertical .van-step__line {
+  z-index: 1;
+  width: 0.04267rem;
+  height: 100%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+  background-color: #ebedf0;
+  background-color: var(--step-line-color, #ebedf0);
+}

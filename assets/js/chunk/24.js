@@ -1,1 +1,901 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{"568":function(e,t,r){"use strict";r.d(t,"n",(function(){return $})),r.d(t,"i",(function(){return G})),r.d(t,"k",(function(){return Q})),r.d(t,"b",(function(){return X})),r.d(t,"e",(function(){return ee})),r.d(t,"g",(function(){return te})),r.d(t,"l",(function(){return re})),r.d(t,"d",(function(){return oe})),r.d(t,"j",(function(){return ne})),r.d(t,"h",(function(){return ce})),r.d(t,"f",(function(){return ae})),r.d(t,"m",(function(){return ie})),r.d(t,"c",(function(){return se})),r.d(t,"a",(function(){return ue}));var o=r(64),n=r.n(o),c=r(24),a=r.n(c),i=r(571),s=r.n(i),u=r(32),l=r.n(u),p=r(570),f=r.n(p),d=r(27),v=r.n(d),x=r(173),m=r.n(x),b=r(116),y=r.n(b),h=r(55),j=r.n(h),_=r(177),O=r.n(_),g=r(595),w=r.n(g),P=r(28),S=r.n(P),I=r(6),k=r.n(I),T=r(26),M=r.n(T),E=r(120),N=r.n(E),D=r(35),C=r.n(D),R=r(70),L=r.n(R),A=r(71),H=r.n(A),B=r(659),F=r.n(B),K=r(661),W=r.n(K),q=r(663),U=r.n(q),V=r(54),z=r.n(V);function ownKeys(e,t){var r=a()(e);if(s.a){var o=s()(e);t&&(o=l()(o).call(o,(function(t){return f()(e,t).enumerable}))),r.push.apply(r,o)}return r}function _objectSpread(e){for(var t=1;t<arguments.length;t++){var r,o=null!=arguments[t]?arguments[t]:{};if(t%2)v()(r=ownKeys(Object(o),!0)).call(r,(function(t){M()(e,t,o[t])}));else if(m.a)y()(e,m()(o));else{var n;v()(n=ownKeys(Object(o))).call(n,(function(t){j()(e,t,f()(o,t))}))}}return e}function _createSuper(e){var t=function _isNativeReflectConstruct(){if("undefined"==typeof Reflect||!O.a)return!1;if(O.a.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(O()(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function _createSuperInternal(){var r,o=U()(e);if(t){var n=U()(this).constructor;r=O()(o,arguments,n)}else r=o.apply(this,arguments);return W()(this,r)}}n.a.createElement;function updateStyle(e,t,r){/^--/.test(t)?e.style.setProperty(t,r):e.style[t]=r}function updateProp(e,t,r,o,n){var c=e.ref.current,a=n[r],i=o?o[r]:void 0;if("children"!==r)if("classname"!==r.toLowerCase()){if("style"!==r){if(/^data-.+/.test(r)&&c.setAttribute(r,a),"taro-scroll-view-core"===t){if("scrollTop"===r)return void(c.mpScrollTop=a);if("scrollLeft"===r)return void(c.mpScrollLeft=a);if("scrollIntoView"===r)return void(c.mpScrollIntoView=a)}if("function"==typeof a&&r.match(/^on[A-Z]/)){var s=r.substr(2).toLowerCase(),u=a;return"taro-scroll-view-core"===t&&"scroll"===s&&(u=function fn(e){e instanceof CustomEvent&&a.apply(null,w()(arguments))}),e.eventHandlers.push([s,u]),c.addEventListener(s,u)}return"string"==typeof a||"number"==typeof a?(c.setAttribute(r,a),void(c[r]=a)):"boolean"==typeof a?a?(c[r]=!0,c.setAttribute(r,a)):(c[r]=!1,c.removeAttribute(r)):void(c[r]=a)}if("string"==typeof a)return void c.setAttribute(r,a);if(!a)return void c.removeAttribute(r);if(o)if("string"==typeof i)c.style.cssText="";else for(var p in i)updateStyle(c,p,"");for(var f in a)updateStyle(c,f,a[f])}else c.className=o?function getClassName(e,t,r){var o,n=w()(e.classList),c=(t.className||t.class||"").split(" "),a=(r.className||r.class||"").split(" "),i=[];return v()(n).call(n,(function(e){S()(a).call(a,e)>-1?(i.push(e),a=l()(a).call(a,(function(t){return t!==e}))):-1===S()(c).call(c,e)&&i.push(e)})),(i=k()(o=[]).call(o,z()(i),z()(a))).join(" ")}(c,o,n):a}var J=function reactifyWebComponent(e){var t=function(t){F()(Index,t);var r=_createSuper(Index);function Index(e){var t;return L()(this,Index),(t=r.call(this,e)).eventHandlers=[],t.ref=Object(o.createRef)(),t}return H()(Index,[{"key":"update","value":function update(t){var r,o,n=this;this.clearEventHandlers(),this.ref.current&&(v()(r=a()(t||{})).call(r,(function(r){"children"===r||"key"===r||r in n.props||updateProp(n,e,r,t,n.props)})),v()(o=a()(this.props)).call(o,(function(r){updateProp(n,e,r,t,n.props)})))}},{"key":"componentDidUpdate","value":function componentDidUpdate(e){this.update(e)}},{"key":"componentDidMount","value":function componentDidMount(){var e=this.props.forwardRef;"function"==typeof e?e(this.ref.current):e&&"object"===C()(e)&&e.hasOwnProperty("current")?e.current=this.ref.current:"string"==typeof e&&console.warn("内置组件不支持字符串 ref"),this.update()}},{"key":"componentWillUnmount","value":function componentWillUnmount(){this.clearEventHandlers()}},{"key":"clearEventHandlers","value":function clearEventHandlers(){var e,t=this;v()(e=this.eventHandlers).call(e,(function(e){var r=N()(e,2),o=r[0],n=r[1];t.ref.current&&t.ref.current.removeEventListener(o,n)})),this.eventHandlers=[]}},{"key":"render","value":function render(){var t=this.props,r=t.children,n=t.dangerouslySetInnerHTML,c={"ref":this.ref};return n&&(c.dangerouslySetInnerHTML=n),Object(o.createElement)(e,c,r)}}]),Index}(n.a.Component);return n.a.forwardRef((function(e,r){return n.a.createElement(t,_objectSpread(_objectSpread({},e),{},{"forwardRef":r}))}))};function input_ownKeys(e,t){var r=a()(e);if(s.a){var o=s()(e);t&&(o=l()(o).call(o,(function(t){return f()(e,t).enumerable}))),r.push.apply(r,o)}return r}function input_objectSpread(e){for(var t=1;t<arguments.length;t++){var r,o=null!=arguments[t]?arguments[t]:{};if(t%2)v()(r=input_ownKeys(Object(o),!0)).call(r,(function(t){M()(e,t,o[t])}));else if(m.a)y()(e,m()(o));else{var n;v()(n=input_ownKeys(Object(o))).call(n,(function(t){j()(e,t,f()(o,t))}))}}return e}var Y=J("taro-input-core"),Z=(n.a.createElement,n.a.forwardRef((function(e,t){var r=input_objectSpread({},e);return r.hasOwnProperty("focus")&&(r.autoFocus=Boolean(r.focus),delete r.focus),n.a.createElement(Y,input_objectSpread(input_objectSpread({},r),{},{"ref":t}))}))),$=J("taro-view-core"),G=(J("taro-icon-core"),J("taro-progress-core"),J("taro-rich-text-core")),Q=J("taro-text-core"),X=J("taro-button-core"),ee=(J("taro-checkbox-core"),J("taro-checkbox-group-core"),J("taro-editor-core"),J("taro-form-core")),te=Z,re=(J("taro-label-core"),J("taro-picker-core"),J("taro-picker-view-core"),J("taro-picker-view-column-core"),J("taro-radio-core"),J("taro-radio-group-core"),J("taro-slider-core"),J("taro-switch-core"),J("taro-cover-image-core"),J("taro-textarea-core")),oe=J("taro-cover-view-core"),ne=(J("taro-movable-area-core"),J("taro-movable-view-core"),J("taro-scroll-view-core")),ce=(J("taro-swiper-core"),J("taro-swiper-item-core"),J("taro-functional-page-navigator-core"),J("taro-navigator-core")),ae=(J("taro-audio-core"),J("taro-camera-core"),J("taro-image-core")),ie=(J("taro-live-player-core"),J("taro-video-core")),se=(J("taro-map-core"),J("taro-canvas-core")),ue=(J("taro-ad-core"),J("taro-official-account-core"),J("taro-open-data-core"),J("taro-web-view-core"),J("taro-navigation-bar-core"),o.Fragment);J("taro-custom-wrapper-core")},"570":function(e,t,r){e.exports=r(607)},"571":function(e,t,r){e.exports=r(613)},"572":function(e,t,r){var o=r(67);e.exports=function _defineProperty(e,t,r){return t in e?o(e,t,{"value":r,"enumerable":!0,"configurable":!0,"writable":!0}):e[t]=r,e},e.exports.__esModule=!0,e.exports.default=e.exports},"573":function(e,t,r){var o=r(608),n=r(609),c=r(655);e.exports=function _objectWithoutProperties(e,t){if(null==e)return{};var r,a,i=c(e,t);if(o){var s=o(e);for(a=0;a<s.length;a++)r=s[a],n(t).call(t,r)>=0||Object.prototype.propertyIsEnumerable.call(e,r)&&(i[r]=e[r])}return i},e.exports.__esModule=!0,e.exports.default=e.exports},"578":function(e,t,r){"use strict";(function(e){r.d(t,"a",(function(){return Page}));r(590);var o=r(574),n=r(568),c=r(90),a=r(737),i=r(77),s=r(64),u=(r(581),r(115));function Page(t){var r=t.title,l=t.className,p=void 0===l?"":l,f=t.children,d=c.a.useRouter().path;return Object(s.useEffect)((function(){"react"===e.env.LIBRARY_ENV?document.body.scrollTop=document.documentElement.scrollTop=0:Object(a.a)({"scrollTop":0})}),[d]),c.a.useShareAppMessage((function(){return{"title":"AntM 组件库演示","path":d}})),Object(u.jsxs)(n.n,{"className":"demo-page ".concat(p),"children":[Object(u.jsxs)(n.n,{"className":"demo-nav","children":[Object(u.jsx)(o.b,{"name":"arrow-left","className":"demo-nav__back","onClick":function onClick(){return Object(i.d)()}}),Object(u.jsxs)(n.n,{"className":"demo-nav__title","children":[r," "]})]}),f]})}}).call(this,r(236))},"579":function(e,t,r){"use strict";r.d(t,"a",(function(){return l}));var o=r(39),n=r(40),c=r(66),a=r(65),i=r(568),s=r(64),u=(r(582),r(115)),l=function(e){Object(c.a)(Index,e);var t=Object(a.a)(Index);function Index(){return Object(o.a)(this,Index),t.call(this)}return Object(n.a)(Index,[{"key":"render","value":function render(){var e=this.props,t=e.padding,r=e.title,o=e.card;return Object(u.jsxs)(i.n,{"className":"custom-class demo-block van-clearfix "+(t?"demo-block--padding":""),"children":[r&&Object(u.jsx)(i.n,{"className":"demo-block__title","children":r}),o?Object(u.jsx)(i.n,{"className":"demo-block__card","children":this.props.children}):this.props.children]})}}]),Index}(s.Component)},"581":function(e,t,r){},"582":function(e,t,r){},"591":function(e,t,r){var o=r(45),n=r(176);function _typeof(t){return e.exports=_typeof="function"==typeof o&&"symbol"==typeof n?function(e){return typeof e}:function(e){return e&&"function"==typeof o&&e.constructor===o&&e!==o.prototype?"symbol":typeof e},e.exports.__esModule=!0,e.exports.default=e.exports,_typeof(t)}e.exports=_typeof,e.exports.__esModule=!0,e.exports.default=e.exports},"595":function(e,t,r){e.exports=r(237)},"607":function(e,t,r){var o=r(622);e.exports=o},"608":function(e,t,r){e.exports=r(649)},"609":function(e,t,r){e.exports=r(652)},"610":function(e,t,r){e.exports=r(656)},"613":function(e,t,r){var o=r(648);e.exports=o},"622":function(e,t,r){r(623);var o=r(11).Object,n=e.exports=function getOwnPropertyDescriptor(e,t){return o.getOwnPropertyDescriptor(e,t)};o.getOwnPropertyDescriptor.sham&&(n.sham=!0)},"623":function(e,t,r){var o=r(3),n=r(9),c=r(41),a=r(68).f,i=r(22),s=n((function(){a(1)}));o({"target":"Object","stat":!0,"forced":!i||s,"sham":!i},{"getOwnPropertyDescriptor":function getOwnPropertyDescriptor(e,t){return a(c(e),t)}})},"648":function(e,t,r){r(241);var o=r(11);e.exports=o.Object.getOwnPropertySymbols},"649":function(e,t,r){e.exports=r(650)},"650":function(e,t,r){var o=r(651);e.exports=o},"651":function(e,t,r){var o=r(613);e.exports=o},"652":function(e,t,r){e.exports=r(653)},"653":function(e,t,r){var o=r(654);e.exports=o},"654":function(e,t,r){var o=r(242);e.exports=o},"655":function(e,t,r){var o=r(610),n=r(609);e.exports=function _objectWithoutPropertiesLoose(e,t){if(null==e)return{};var r,c,a={},i=o(e);for(c=0;c<i.length;c++)r=i[c],n(t).call(t,r)>=0||(a[r]=e[r]);return a},e.exports.__esModule=!0,e.exports.default=e.exports},"656":function(e,t,r){e.exports=r(657)},"657":function(e,t,r){var o=r(658);e.exports=o},"658":function(e,t,r){var o=r(243);e.exports=o},"659":function(e,t,r){var o=r(660);e.exports=function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{"constructor":{"value":e,"writable":!0,"configurable":!0}}),Object.defineProperty(e,"prototype",{"writable":!1}),t&&o(e,t)},e.exports.__esModule=!0,e.exports.default=e.exports},"660":function(e,t){function _setPrototypeOf(t,r){return e.exports=_setPrototypeOf=Object.setPrototypeOf||function _setPrototypeOf(e,t){return e.__proto__=t,e},e.exports.__esModule=!0,e.exports.default=e.exports,_setPrototypeOf(t,r)}e.exports=_setPrototypeOf,e.exports.__esModule=!0,e.exports.default=e.exports},"661":function(e,t,r){var o=r(35).default,n=r(662);e.exports=function _possibleConstructorReturn(e,t){if(t&&("object"===o(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return n(e)},e.exports.__esModule=!0,e.exports.default=e.exports},"662":function(e,t){e.exports=function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e},e.exports.__esModule=!0,e.exports.default=e.exports},"663":function(e,t){function _getPrototypeOf(t){return e.exports=_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function _getPrototypeOf(e){return e.__proto__||Object.getPrototypeOf(e)},e.exports.__esModule=!0,e.exports.default=e.exports,_getPrototypeOf(t)}e.exports=_getPrototypeOf,e.exports.__esModule=!0,e.exports.default=e.exports},"737":function(e,t,r){"use strict";r.d(t,"a",(function(){return u}));var o,n=r(5),c=r.n(n),a=r(4),i=r(49),s=r(16),u=function pageScrollTo(e){var t,r=e.scrollTop,n=e.selector,u=void 0===n?"":n,l=e.duration,p=void 0===l?300:l,f=e.success,d=e.fail,v=e.complete,x=new i.a({"name":"pageScrollTo","success":f,"fail":d,"complete":v});return new c.a((function(e,n){var c,i;try{if(void 0===r&&!u)return x.fail({"errMsg":'scrollTop" 或 "selector" 需要其之一'},n);var l=null===(i=null===(c=a.a.page)||void 0===c?void 0:c.path)||void 0===i?void 0:i.replace(/([^a-z0-9\u00a0-\uffff_-])/gi,"\\$1"),f=l?document.querySelector(".taro_page#".concat(l)):document.querySelector(".taro_page")||document.querySelector(".taro_router");t||(t=f?function scrollFunc(e){if(void 0===e)return f.scrollTop;f.scrollTop=e}:function scrollFunc(e){if(void 0===e)return window.pageYOffset;window.scrollTo(0,e)}),r&&u&&console.warn('"scrollTop" 或 "selector" 建议只设一个值，全部设置会忽略selector');var d,v=t();if("number"==typeof r)d=r;else{var m=document.querySelector(u);d=(null==m?void 0:m.offsetTop)||0}var b=d-v,y=p/17,h=Object(s.d)(s.a,y);!function scroll(){var r=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0,n=v+b*h(r);if(t(n),!(r<y))return x.success({},e);o&&clearTimeout(o),o=setTimeout((function(){scroll(r+1)}),17)}()}catch(e){return x.fail({"errMsg":e.message},n)}}))}},"930":function(e,t,r){"use strict";r.r(t),r.d(t,"default",(function(){return v}));var o=r(39),n=r(40),c=r(175),a=r(66),i=r(65),s=r(91),u=r(64),l=r(578),p=r(579),f=r(568),d=r(115);function Demo(){return Object(d.jsxs)(d.Fragment,{"children":[Object(d.jsx)(f.n,{"class":"van-ellipsis","style":{"width":"200px","marginBottom":"20px"},"children":"这是一段宽度限制 250px 的文字，后面的内容会省略。"}),Object(d.jsx)(f.n,{"class":"van-multi-ellipsis--l2","style":{"width":"200px","marginBottom":"20px"},"children":"这是一段最多显示两行的文字，后面的内容会省略。 这是一段最多显示两行的文字，后面的内容会省略。"}),Object(d.jsx)(f.n,{"class":"van-multi-ellipsis--l3","style":{"width":"200px"},"children":"这是一段最多显示三行的文字，后面的内容会省略。 这是一段最多显示两行的文字，后面的内容会省略。 这是一段最多显示两行的文字，后面的内容会省略。"})]})}function demo2_Demo(){return Object(d.jsxs)(d.Fragment,{"children":[Object(d.jsx)(f.n,{"class":"van-hairline--top","style":{"width":"200px","marginBottom":"20px"}}),Object(d.jsx)(f.n,{"class":"van-hairline--surround","style":{"width":"200px","marginBottom":"20px","height":"200px"},"children":"全边框"})]})}var v=function(e){Object(a.a)(Index,e);var t=Object(i.a)(Index);function Index(){var e;return Object(o.a)(this,Index),e=t.call(this),Object(s.a)(Object(c.a)(e),"state",{}),e}return Object(n.a)(Index,[{"key":"render","value":function render(){return Object(d.jsxs)(l.a,{"title":"Style 内置样式","className":"pages-common-index","children":[Object(d.jsx)(p.a,{"title":"文字省略","padding":!0,"children":Object(d.jsx)(Demo,{})}),Object(d.jsx)(p.a,{"title":"1px 边框","padding":!0,"children":Object(d.jsx)(demo2_Demo,{})})]})}}]),Index}(u.Component)}}]);
+;(window.webpackJsonp = window.webpackJsonp || []).push([
+  [24],
+  {
+    611: function (e, n, t) {
+      'use strict'
+      t.d(n, 'a', function () {
+        return _objectSpread2
+      })
+      var c = t(608),
+        a = t.n(c),
+        i = t(606),
+        r = t.n(i),
+        s = t(629),
+        o = t.n(s),
+        l = t(633),
+        d = t.n(l),
+        u = t(622),
+        v = t.n(u),
+        b = t(637),
+        f = t.n(b),
+        j = t(641),
+        x = t.n(j),
+        h = t(67),
+        m = t.n(h),
+        O = t(91)
+      function ownKeys(e, n) {
+        var t = a()(e)
+        if (r.a) {
+          var c = r()(e)
+          n &&
+            (c = o()(c).call(c, function (n) {
+              return d()(e, n).enumerable
+            })),
+            t.push.apply(t, c)
+        }
+        return t
+      }
+      function _objectSpread2(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            c,
+            a = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? v()((t = ownKeys(Object(a), !0))).call(t, function (n) {
+                Object(O.a)(e, n, a[n])
+              })
+            : f.a
+            ? x()(e, f()(a))
+            : v()((c = ownKeys(Object(a)))).call(c, function (n) {
+                m()(e, n, d()(a, n))
+              })
+        }
+        return e
+      }
+    },
+    615: function (e, n, t) {
+      'use strict'
+      t(574), t(580), t(581), t(664)
+    },
+    616: function (e, n, t) {
+      'use strict'
+      var c = t(24),
+        a = t.n(c),
+        i = t(571),
+        r = t.n(i),
+        s = t(32),
+        o = t.n(s),
+        l = t(570),
+        d = t.n(l),
+        u = t(27),
+        v = t.n(u),
+        b = t(173),
+        f = t.n(b),
+        j = t(116),
+        x = t.n(j),
+        h = t(55),
+        m = t.n(h),
+        O = t(572),
+        p = t.n(O),
+        g = t(576),
+        y = t.n(g),
+        C = t(573),
+        _ = t.n(C),
+        w = t(64),
+        I = t(568),
+        k = t(569),
+        N = t(577),
+        A = t(578)
+      var S = {
+        none: 'scaleToFill',
+        fill: 'scaleToFill',
+        cover: 'aspectFill',
+        contain: 'aspectFit',
+        widthFix: 'widthFix',
+        heightFix: 'heightFix',
+        scaleDown: 'aspectFit',
+      }
+      function mode(e) {
+        return S[e]
+      }
+      var K = t(115),
+        F = [
+          'src',
+          'round',
+          'width',
+          'height',
+          'radius',
+          'lazyLoad',
+          'showMenuByLongpress',
+          'fit',
+          'showError',
+          'showLoading',
+          'className',
+          'style',
+          'renderError',
+          'renderLoading',
+        ]
+      function ownKeys(e, n) {
+        var t = a()(e)
+        if (r.a) {
+          var c = r()(e)
+          n &&
+            (c = o()(c).call(c, function (n) {
+              return d()(e, n).enumerable
+            })),
+            t.push.apply(t, c)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            c,
+            a = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? v()((t = ownKeys(Object(a), !0))).call(t, function (n) {
+                p()(e, n, a[n])
+              })
+            : f.a
+            ? x()(e, f()(a))
+            : v()((c = ownKeys(Object(a)))).call(c, function (n) {
+                m()(e, n, d()(a, n))
+              })
+        }
+        return e
+      }
+      n.a = function Image(e) {
+        var n = e.src,
+          t = e.round,
+          c = e.width,
+          a = e.height,
+          i = e.radius,
+          r = e.lazyLoad,
+          s = e.showMenuByLongpress,
+          o = e.fit,
+          l = e.showError,
+          d = void 0 === l || l,
+          u = e.showLoading,
+          v = void 0 === u || u,
+          b = e.className,
+          f = e.style,
+          j = e.renderError,
+          x = e.renderLoading,
+          h = _()(e, F),
+          m = Object(w.useState)(),
+          O = y()(m, 2),
+          p = O[0],
+          g = O[1],
+          C = Object(w.useState)(!1),
+          S = y()(C, 2),
+          L = S[0],
+          E = S[1]
+        Object(w.useEffect)(
+          function () {
+            void 0 === p && g(!0), E(!1)
+          },
+          [p],
+        )
+        var D,
+          T = Object(w.useCallback)(function () {
+            g(!1)
+          }, []),
+          z = Object(w.useCallback)(function () {
+            E(!0)
+          }, []),
+          M = Object(w.useMemo)(
+            function () {
+              var e = {}
+              return (
+                ('heightFix' !== o && 'widthFix' !== o) ||
+                  (e = {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }),
+                e
+              )
+            },
+            [o],
+          )
+        return Object(K.jsxs)(
+          I.n,
+          _objectSpread(
+            _objectSpread(
+              {
+                style: k.c([
+                  ((D = { width: c, height: a, radius: i }),
+                  Object(k.c)([
+                    {
+                      width: Object(A.a)(D.width),
+                      height: Object(A.a)(D.height),
+                      'border-radius': Object(A.a)(D.radius),
+                    },
+                    D.radius ? 'overflow: hidden' : null,
+                  ])),
+                  f,
+                ]),
+                className: ' ' + k.b('image', { round: t }) + ' ' + b,
+                onClick: h.onClick,
+              },
+              h,
+            ),
+            {},
+            {
+              children: [
+                !L &&
+                  Object(K.jsx)(I.f, {
+                    src: n,
+                    mode: mode(o || 'none'),
+                    lazyLoad: r,
+                    className: 'image-class van-image__img',
+                    showMenuByLongpress: s,
+                    onLoad: T,
+                    onError: z,
+                    style: M,
+                  }),
+                p &&
+                  v &&
+                  Object(K.jsx)(I.n, {
+                    className: 'loading-class van-image__loading',
+                    children:
+                      x ||
+                      Object(K.jsx)(N.b, {
+                        name: 'photo',
+                        className: 'van-image__loading-icon',
+                      }),
+                  }),
+                L &&
+                  d &&
+                  Object(K.jsx)(I.n, {
+                    className: 'error-class van-image__error',
+                    children:
+                      j ||
+                      Object(K.jsx)(N.b, {
+                        name: 'photo-fail',
+                        className: 'van-image__error-icon',
+                      }),
+                  }),
+              ],
+            },
+          ),
+        )
+      }
+    },
+    622: function (e, n, t) {
+      e.exports = t(677)
+    },
+    629: function (e, n, t) {
+      e.exports = t(630)
+    },
+    630: function (e, n, t) {
+      e.exports = t(631)
+    },
+    631: function (e, n, t) {
+      var c = t(632)
+      e.exports = c
+    },
+    632: function (e, n, t) {
+      var c = t(237)
+      e.exports = c
+    },
+    633: function (e, n, t) {
+      e.exports = t(634)
+    },
+    634: function (e, n, t) {
+      e.exports = t(635)
+    },
+    635: function (e, n, t) {
+      var c = t(636)
+      e.exports = c
+    },
+    636: function (e, n, t) {
+      var c = t(604)
+      e.exports = c
+    },
+    637: function (e, n, t) {
+      e.exports = t(638)
+    },
+    638: function (e, n, t) {
+      e.exports = t(639)
+    },
+    639: function (e, n, t) {
+      var c = t(640)
+      e.exports = c
+    },
+    640: function (e, n, t) {
+      var c = t(239)
+      e.exports = c
+    },
+    641: function (e, n, t) {
+      e.exports = t(642)
+    },
+    642: function (e, n, t) {
+      e.exports = t(643)
+    },
+    643: function (e, n, t) {
+      var c = t(644)
+      e.exports = c
+    },
+    644: function (e, n, t) {
+      var c = t(238)
+      e.exports = c
+    },
+    664: function (e, n, t) {},
+    677: function (e, n, t) {
+      e.exports = t(678)
+    },
+    678: function (e, n, t) {
+      var c = t(679)
+      e.exports = c
+    },
+    679: function (e, n, t) {
+      var c = t(243)
+      e.exports = c
+    },
+    740: function (e, n, t) {
+      'use strict'
+      var c = t(572),
+        a = t.n(c),
+        i = t(573),
+        r = t.n(i),
+        s = t(5),
+        o = t.n(s),
+        l = t(27),
+        d = t.n(l),
+        u = t(24),
+        v = t.n(u),
+        b = t(571),
+        f = t.n(b),
+        j = t(32),
+        x = t.n(j),
+        h = t(570),
+        m = t.n(h),
+        O = t(173),
+        p = t.n(O),
+        g = t(116),
+        y = t.n(g),
+        C = t(55),
+        _ = t.n(C),
+        w = t(568),
+        I = t(64),
+        k = t(569),
+        N = t(115),
+        A = ['activeKey', 'onChange', 'className', 'children', 'style']
+      function ownKeys(e, n) {
+        var t = v()(e)
+        if (f.a) {
+          var c = f()(e)
+          n &&
+            (c = x()(c).call(c, function (n) {
+              return m()(e, n).enumerable
+            })),
+            t.push.apply(t, c)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            c,
+            i = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? d()((t = ownKeys(Object(i), !0))).call(t, function (n) {
+                a()(e, n, i[n])
+              })
+            : p.a
+            ? y()(e, p()(i))
+            : d()((c = ownKeys(Object(i)))).call(c, function (n) {
+                _()(e, n, m()(i, n))
+              })
+        }
+        return e
+      }
+      n.a = function Sidebar(e) {
+        var n = e.activeKey,
+          t = e.onChange,
+          c = e.className,
+          a = e.children,
+          i = e.style,
+          s = r()(e, A),
+          l = Object(I.useRef)([]),
+          u = Object(I.useCallback)(function (e) {
+            var n = l.current
+            return n && n.length
+              ? (d()(n).call(n, function (e) {
+                  e.setActive(!1)
+                }),
+                n[e] && n[e].setActive(!0),
+                o.a.resolve())
+              : o.a.resolve()
+          }, [])
+        Object(I.useEffect)(
+          function () {
+            u(n)
+          },
+          [u, n],
+        )
+        var v = Object(I.useCallback)(function (e, n) {
+            l.current[e] = n
+          }, []),
+          b = Object(I.useMemo)(
+            function () {
+              var e = []
+              return (
+                a &&
+                  Array.isArray(a) &&
+                  d()(a).call(a, function (n, c) {
+                    e.push(
+                      Object(I.cloneElement)(n, {
+                        key: c,
+                        setChildren: v,
+                        index: c,
+                        setAction: u,
+                        onChange: t,
+                      }),
+                    )
+                  }),
+                e
+              )
+            },
+            [a, t, u, v],
+          )
+        return Object(N.jsx)(
+          w.n,
+          _objectSpread(
+            _objectSpread(
+              { style: k.c([i]), className: 'van-sidebar  '.concat(c) },
+              s,
+            ),
+            {},
+            { children: b },
+          ),
+        )
+      }
+    },
+    741: function (e, n, t) {
+      'use strict'
+      var c = t(24),
+        a = t.n(c),
+        i = t(571),
+        r = t.n(i),
+        s = t(32),
+        o = t.n(s),
+        l = t(570),
+        d = t.n(l),
+        u = t(27),
+        v = t.n(u),
+        b = t(173),
+        f = t.n(b),
+        j = t(116),
+        x = t.n(j),
+        h = t(55),
+        m = t.n(h),
+        O = t(572),
+        p = t.n(O),
+        g = t(576),
+        y = t.n(g),
+        C = t(573),
+        _ = t.n(C),
+        w = t(568),
+        I = t(64),
+        k = t(569),
+        N = t(657),
+        A = t(115),
+        S = [
+          'dot',
+          'badge',
+          'index',
+          'renderTitle',
+          'setChildren',
+          'setAction',
+          'onClick',
+          'onChange',
+          'info',
+          'title',
+          'disabled',
+          'className',
+          'style',
+        ]
+      function ownKeys(e, n) {
+        var t = a()(e)
+        if (r.a) {
+          var c = r()(e)
+          n &&
+            (c = o()(c).call(c, function (n) {
+              return d()(e, n).enumerable
+            })),
+            t.push.apply(t, c)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            c,
+            a = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? v()((t = ownKeys(Object(a), !0))).call(t, function (n) {
+                p()(e, n, a[n])
+              })
+            : f.a
+            ? x()(e, f()(a))
+            : v()((c = ownKeys(Object(a)))).call(c, function (n) {
+                m()(e, n, d()(a, n))
+              })
+        }
+        return e
+      }
+      n.a = function SidebarItem(e) {
+        var n = e.dot,
+          t = e.badge,
+          c = e.index,
+          a = e.renderTitle,
+          i = e.setChildren,
+          r = e.setAction,
+          s = e.onClick,
+          o = e.onChange,
+          l = e.info,
+          d = e.title,
+          u = e.disabled,
+          v = e.className,
+          b = e.style,
+          f = _()(e, S),
+          j = Object(I.useState)(),
+          x = y()(j, 2),
+          h = x[0],
+          m = x[1],
+          O = Object(I.useCallback)(function (e) {
+            return m(e)
+          }, [])
+        Object(I.useEffect)(
+          function () {
+            null == i || i(c, { setActive: O, selected: h })
+          },
+          [O, c, i, h],
+        )
+        var p = Object(I.useCallback)(
+          function () {
+            u ||
+              r(c).then(function () {
+                null == o || o({ detail: c }), null == s || s(c)
+              })
+          },
+          [u, c, o, s, r],
+        )
+        return Object(A.jsx)(
+          w.n,
+          _objectSpread(
+            _objectSpread(
+              {
+                className:
+                  k.b('sidebar-item', { selected: h, disabled: u }) +
+                  ' ' +
+                  (h ? 'active-class' : '') +
+                  ' ' +
+                  (u ? 'disabled-class' : '') +
+                  ' custom-class ' +
+                  v,
+                hoverClass: 'van-sidebar-item--hover',
+                hoverStayTime: 70,
+                onClick: p,
+                style: k.c([b]),
+              },
+              f,
+            ),
+            {},
+            {
+              children: Object(A.jsxs)(w.n, {
+                className: 'van-sidebar-item__text',
+                children: [
+                  (null != t || null !== l || n) &&
+                    Object(A.jsx)(N.b, { dot: n, info: null != t ? t : l }),
+                  d ? Object(A.jsx)(w.n, { children: d }) : a,
+                ],
+              }),
+            },
+          ),
+        )
+      }
+    },
+    784: function (e, n, t) {},
+    785: function (e, n, t) {},
+    846: function (e, n, t) {},
+    898: function (e, n, t) {
+      'use strict'
+      t.r(n),
+        t.d(n, 'default', function () {
+          return z
+        })
+      var c = t(39),
+        a = t(40),
+        i = t(175),
+        r = t(66),
+        s = t(65),
+        o = t(91),
+        l = t(64),
+        d = t.n(l),
+        u = t(587),
+        v = t(588),
+        b = (t(574), t(580), t(785), t(581), t(784), t(846), t(576)),
+        f = t.n(b),
+        j = t(21),
+        x = t.n(j),
+        h = t(55),
+        m = t.n(h),
+        O = t(10),
+        p = t.n(O),
+        g = t(568),
+        y = t(569),
+        C = t(741),
+        _ = t(740),
+        w = t(577),
+        I = t(28),
+        k = t.n(I)
+      function isActive(e, n) {
+        return Array.isArray(e) ? k()(e).call(e, n) > -1 : e === n
+      }
+      var N = t(115)
+      var A = function TreeSelect(e) {
+          var n = e.items,
+            t = void 0 === n ? [] : n,
+            c = e.selectedIcon,
+            a = void 0 === c ? 'success' : c,
+            i = e.height,
+            r = void 0 === i ? 300 : i,
+            s = e.mainActiveIndex,
+            o = void 0 === s ? 0 : s,
+            d = e.activeId,
+            u = e.max,
+            v = void 0 === u ? 1 / 0 : u,
+            b = e.onClickItem,
+            j = e.onClickNav,
+            h = e.renderContent,
+            O = Object(l.useState)([]),
+            I = f()(O, 2),
+            k = I[0],
+            A = I[1],
+            S = Object(l.useCallback)(
+              function (e, n) {
+                var t,
+                  c = Array.isArray(d),
+                  a = c && d.length >= v,
+                  i = c ? x()((t = d)).call(t, n.id) : d === n.id
+                n.disabled ||
+                  (a && !i) ||
+                  (m()(e, 'detail', { value: n }), null == b || b(e))
+              },
+              [d, v, b],
+            ),
+            K = Object(l.useCallback)(
+              function (e) {
+                var n = e.detail,
+                  c = t[n]
+                ;(null != c && c.disabled) ||
+                  null == j ||
+                  j({ detail: { index: n } })
+              },
+              [j, t],
+            )
+          return (
+            Object(l.useEffect)(
+              function () {
+                var e = (t[o] || {}).children
+                A(void 0 === e ? [] : e)
+              },
+              [t, o, A],
+            ),
+            Object(N.jsxs)(g.n, {
+              className: 'van-tree-select',
+              style: 'height: ' + y.a(r),
+              children: [
+                Object(N.jsx)(g.j, {
+                  scrollY: !0,
+                  className: 'van-tree-select__nav',
+                  children: Object(N.jsx)(_.a, {
+                    activeKey: o,
+                    onChange: K,
+                    className: 'van-tree-select__nav__inner',
+                    children: p()(t).call(t, function (e, n) {
+                      return Object(N.jsx)(
+                        C.a,
+                        {
+                          className: 'main-item-class',
+                          badge: e.badge,
+                          dot: e.dot,
+                          title: e.text,
+                          disabled: e.disabled,
+                        },
+                        n,
+                      )
+                    }),
+                  }),
+                }),
+                Object(N.jsxs)(g.j, {
+                  scrollY: !0,
+                  className: 'van-tree-select__content',
+                  children: [
+                    h,
+                    p()(k).call(k, function (e) {
+                      return Object(N.jsxs)(
+                        g.n,
+                        {
+                          className:
+                            'van-ellipsis content-item-class ' +
+                            y.b('tree-select__item', {
+                              active: isActive(d, e.id),
+                              disabled: e.disabled,
+                            }) +
+                            ' ' +
+                            (isActive(d, e.id) ? 'content-active-class' : '') +
+                            ' ' +
+                            (e.disabled ? 'content-disabled-class' : ''),
+                          'data-item': e,
+                          onClick: function onClick(n) {
+                            S(n, e)
+                          },
+                          children: [
+                            e.text,
+                            isActive(d, e.id) &&
+                              Object(N.jsx)(w.b, {
+                                name: a,
+                                size: '16px',
+                                className: 'van-tree-select__selected',
+                              }),
+                          ],
+                        },
+                        e.id,
+                      )
+                    }),
+                  ],
+                }),
+              ],
+            })
+          )
+        },
+        S = t(611),
+        K = t(174),
+        F = [
+          {
+            text: '浙江',
+            children: [
+              { text: '杭州', id: 1 },
+              { text: '温州', id: 2 },
+              { text: '宁波', id: 3, disabled: !0 },
+              { text: '义乌', id: 4 },
+            ],
+          },
+          {
+            text: '江苏',
+            children: [
+              { text: '南京', id: 5 },
+              { text: '无锡', id: 6 },
+              { text: '徐州', id: 7 },
+              { text: '苏州', id: 8 },
+            ],
+          },
+          {
+            text: '福建',
+            children: [
+              { text: '泉州', id: 9 },
+              { text: '厦门', id: 10 },
+            ],
+          },
+        ]
+      function Demo() {
+        var e = F,
+          n = d.a.useState({ mainActiveIndex: 0, activeId: null }),
+          t = Object(K.a)(n, 2),
+          c = t[0],
+          a = t[1],
+          i = function setState(e) {
+            a(Object(S.a)(Object(S.a)({}, c), e))
+          }
+        return Object(N.jsx)(A, {
+          items: e,
+          mainActiveIndex: c.mainActiveIndex,
+          activeId: c.activeId,
+          onClickNav: function onClickNav(e) {
+            var n = e.detail
+            i({ mainActiveIndex: (void 0 === n ? {} : n).index || 0 })
+          },
+          onClickItem: function onClickItem(e) {
+            var n = e.detail,
+              t = void 0 === n ? {} : n,
+              a = c.activeId === t.id ? null : t.id
+            i({ activeId: a })
+          },
+        })
+      }
+      var L = t(93),
+        E = t(118),
+        D = t.n(E)
+      function demo2_Demo() {
+        var e = F,
+          n = d.a.useState({ mainActiveIndex: 0, activeIds: [] }),
+          t = Object(K.a)(n, 2),
+          c = t[0],
+          a = t[1],
+          i = function setState(e) {
+            a(Object(S.a)(Object(S.a)({}, c), e))
+          }
+        return Object(N.jsx)(A, {
+          items: e,
+          mainActiveIndex: c.mainActiveIndex,
+          activeId: c.activeIds,
+          onClickNav: function onClickNav(e) {
+            var n = e.detail
+            i({ mainActiveIndex: (void 0 === n ? {} : n).index || 0 })
+          },
+          onClickItem: function onClickItem(e) {
+            var n = e.detail,
+              t = void 0 === n ? {} : n,
+              a = c.activeIds
+            x()(a).call(a, t.id)
+              ? D()(a).call(a, k()(a).call(a, t.id), 1)
+              : a.push(t.id),
+              console.info(a),
+              i({ activeIds: Object(L.a)(a) })
+          },
+          max: 2,
+        })
+      }
+      t(615)
+      var T = t(616)
+      function demo3_Demo() {
+        return Object(N.jsx)(A, {
+          items: [{ text: '自定义' }],
+          height: '55vw',
+          mainActiveIndex: 0,
+          renderContent: Object(N.jsx)(T.a, {
+            src: 'https://img.yzcdn.cn/vant/apple-1.jpg',
+          }),
+        })
+      }
+      var z = (function (e) {
+        Object(r.a)(Index, e)
+        var n = Object(s.a)(Index)
+        function Index() {
+          var e
+          return (
+            Object(c.a)(this, Index),
+            (e = n.call(this)),
+            Object(o.a)(Object(i.a)(e), 'state', {}),
+            e
+          )
+        }
+        return (
+          Object(a.a)(Index, [
+            {
+              key: 'render',
+              value: function render() {
+                return Object(N.jsxs)(u.a, {
+                  title: 'TreeSelect 分类选择',
+                  className: 'pages-tree-select-index',
+                  children: [
+                    Object(N.jsx)(v.a, {
+                      title: '单选模式',
+                      padding: !0,
+                      children: Object(N.jsx)(Demo, {}),
+                    }),
+                    Object(N.jsx)(v.a, {
+                      title: '多选模式',
+                      padding: !0,
+                      children: Object(N.jsx)(demo2_Demo, {}),
+                    }),
+                    Object(N.jsx)(v.a, {
+                      title: '自定义内容',
+                      padding: !0,
+                      children: Object(N.jsx)(demo3_Demo, {}),
+                    }),
+                  ],
+                })
+              },
+            },
+          ]),
+          Index
+        )
+      })(l.Component)
+    },
+  },
+])

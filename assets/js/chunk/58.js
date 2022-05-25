@@ -1,1 +1,633 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[58],{"575":function(e,t,n){"use strict";n.d(t,"e",(function(){return isPlainObject})),n.d(t,"f",(function(){return isPromise})),n.d(t,"b",(function(){return isDef})),n.d(t,"d",(function(){return isObj})),n.d(t,"a",(function(){return isBoolean})),n.d(t,"c",(function(){return isImageUrl})),n.d(t,"g",(function(){return isVideoUrl}));var r=n(591),c=n.n(r);function isFunction(e){return"function"==typeof e}function isPlainObject(e){return null!==e&&"object"===c()(e)&&!Array.isArray(e)}function isPromise(e){return isPlainObject(e)&&isFunction(e.then)&&isFunction(e.catch)}function isDef(e){return null!=e}function isObj(e){var t=c()(e);return null!==e&&("object"===t||"function"===t)}function isBoolean(e){return"boolean"==typeof e}var o=/\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i,i=/\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i;function isImageUrl(e){return o.test(e)}function isVideoUrl(e){return i.test(e)}},"578":function(e,t,n){"use strict";(function(e){n.d(t,"a",(function(){return Page}));n(590);var r=n(574),c=n(568),o=n(90),i=n(737),a=n(77),u=n(64),s=(n(581),n(115));function Page(t){var n=t.title,l=t.className,d=void 0===l?"":l,f=t.children,p=o.a.useRouter().path;return Object(u.useEffect)((function(){"react"===e.env.LIBRARY_ENV?document.body.scrollTop=document.documentElement.scrollTop=0:Object(i.a)({"scrollTop":0})}),[p]),o.a.useShareAppMessage((function(){return{"title":"AntM 组件库演示","path":p}})),Object(s.jsxs)(c.n,{"className":"demo-page ".concat(d),"children":[Object(s.jsxs)(c.n,{"className":"demo-nav","children":[Object(s.jsx)(r.b,{"name":"arrow-left","className":"demo-nav__back","onClick":function onClick(){return Object(a.d)()}}),Object(s.jsxs)(c.n,{"className":"demo-nav__title","children":[n," "]})]}),f]})}}).call(this,n(236))},"579":function(e,t,n){"use strict";n.d(t,"a",(function(){return l}));var r=n(39),c=n(40),o=n(66),i=n(65),a=n(568),u=n(64),s=(n(582),n(115)),l=function(e){Object(o.a)(Index,e);var t=Object(i.a)(Index);function Index(){return Object(r.a)(this,Index),t.call(this)}return Object(c.a)(Index,[{"key":"render","value":function render(){var e=this.props,t=e.padding,n=e.title,r=e.card;return Object(s.jsxs)(a.n,{"className":"custom-class demo-block van-clearfix "+(t?"demo-block--padding":""),"children":[n&&Object(s.jsx)(a.n,{"className":"demo-block__title","children":n}),r?Object(s.jsx)(a.n,{"className":"demo-block__card","children":this.props.children}):this.props.children]})}}]),Index}(u.Component)},"581":function(e,t,n){},"582":function(e,t,n){},"593":function(e,t,n){"use strict";n.d(t,"g",(function(){return range})),n.d(t,"d",(function(){return getSystemInfoSync})),n.d(t,"a",(function(){return addUnit})),n.d(t,"h",(function(){return requestAnimationFrame})),n.d(t,"f",(function(){return pickExclude})),n.d(t,"c",(function(){return getRect})),n.d(t,"b",(function(){return getAllRect})),n.d(t,"i",(function(){return toPromise}));var r,c=n(148),o=n.n(c),i=n(24),a=n.n(i),u=n(21),s=n.n(u),l=n(5),d=n.n(l),f=(n(567),n(863)),p=(n(866),n(90)),b=n(790),j=(n(77),n(575));n(596);function range(e,t,n){return Math.min(Math.max(e,t),n)}function getSystemInfoSync(){return null==r&&(r=Object(f.a)()),r}function addUnit(e){if(Object(j.b)(e))return/^-?\d+(\.\d+)?$/.test(""+e)?p.a.pxTransform(e):e}function requestAnimationFrame(e){return"devtools"===getSystemInfoSync().platform?setTimeout((function(){e()}),33.333333333333336):Object(b.a)().selectViewport().boundingClientRect().exec((function(){e()}))}function pickExclude(e,t){var n;return Object(j.e)(e)?o()(n=a()(e)).call(n,(function(n,r){return s()(t).call(t,r)||(n[r]=e[r]),n}),{}):{}}function getRect(e,t){return new d.a((function(n){var r=Object(b.a)();e&&(r=r.in(e)),r.select(t).boundingClientRect().exec((function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[];return n(e[0])}))}))}function getAllRect(e,t){return new d.a((function(n){var r=Object(b.a)();e&&(r=r.in(e)),r.selectAll(t).boundingClientRect().exec((function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[];return n(e[0])}))}))}function toPromise(e){return Object(j.f)(e)?e:d.a.resolve(e)}n.d(t,"e",(function(){return j.b}))},"596":function(e,t,n){"use strict";n.d(t,"a",(function(){return canIUseModel})),n.d(t,"b",(function(){return canIUseNextTick}));var r,c=n(117),o=n.n(c),i=n(863),a=n(864);n(865);function gte(e){return function compareVersion(e,t){e=e.split("."),t=t.split(".");for(var n=Math.max(e.length,t.length);e.length<n;)e.push("0");for(;t.length<n;)t.push("0");for(var r=0;r<n;r++){var c=o()(e[r],10),i=o()(t[r],10);if(c>i)return 1;if(c<i)return-1}return 0}(function getSystemInfoSync(){return null==r&&(r=Object(i.a)()),r}().SDKVersion,e)>=0}function canIUseModel(){return gte("2.9.3")}function canIUseNextTick(){return Object(a.a)("nextTick")}},"761":function(e,t,n){"use strict";n.d(t,"a",(function(){return r})),n.d(t,"c",(function(){return c})),n.d(t,"b",(function(){return o}));var r="#1989fa",c="#07c160",o="#969799"},"835":function(e,t,n){},"896":function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return J}));var r=n(39),c=n(40),o=n(175),i=n(66),a=n(65),u=n(91),s=n(64),l=n(578),d=n(579),f=(n(576),n(835),n(116)),p=n.n(f),b=n(55),j=n.n(b),v=n(572),g=n.n(v),m=n(573),x=n.n(m),h=n(577),O=n.n(h),k=n(5),y=n.n(k),_=n(24),I=n.n(_),w=n(571),C=n.n(w),S=n(32),N=n.n(S),T=n(570),P=n.n(T),D=n(27),A=n.n(D),R=n(173),U=n.n(R),M=n(567),E=n(568),V=n(569),W=n(761),F=n(593);function wxs_pivotText(e,t){return e||t+"%"}function portionStyle(e){return V.c({"background":e.inactive?"#cacaca":e.color,"width":e.percentage?e.percentage+"%":""})}function pivotStyle(e){return V.c({"color":e.textColor,"visibility":0===e.right?"hidden":"visible","right":e.right+"px","background":e.pivotColor?e.pivotColor:e.inactive?"#cacaca":e.color})}var K=n(115),B=["strokeWidth","trackColor","percentage","inactive","color","textColor","pivotColor","pivotText","showPivot","style","className"];function ownKeys(e,t){var n=I()(e);if(C.a){var r=C()(e);t&&(r=N()(r).call(r,(function(t){return P()(e,t).enumerable}))),n.push.apply(n,r)}return n}function _objectSpread(e){for(var t=1;t<arguments.length;t++){var n,r=null!=arguments[t]?arguments[t]:{};if(t%2)A()(n=ownKeys(Object(r),!0)).call(n,(function(t){g()(e,t,r[t])}));else if(U.a)p()(e,U()(r));else{var c;A()(c=ownKeys(Object(r))).call(c,(function(t){j()(e,t,P()(r,t))}))}}return e}var q=function Progress(e){var t=Object(s.useState)(0),n=O()(t,2),r=n[0],c=n[1];Object(s.useEffect)((function(){Object(M.a)((function(){y.a.all([Object(F.c)(null,".van-progress"),Object(F.c)(null,".van-progress__pivot")]).then((function(t){var n=O()(t,2),r=n[0],o=n[1];r&&o&&c(o.width*(e.percentage-100)/100)}))}))}),[e.percentage]);var o,i=e.strokeWidth,a=void 0===i?4:i,u=e.trackColor,l=e.percentage,d=e.inactive,f=e.color,p=void 0===f?W.a:f,b=e.textColor,j=void 0===b?"#ffffff":b,v=e.pivotColor,g=e.pivotText,m=e.showPivot,h=void 0===m||m,k=e.style,_=e.className,I=x()(e,B);return Object(K.jsx)(E.n,_objectSpread(_objectSpread({"className":"van-progress  "+_,"style":V.c([(o={"strokeWidth":a,"trackColor":u},V.c({"height":o.strokeWidth?V.a(o.strokeWidth):"","background":o.trackColor})),k])},I),{},{"children":Object(K.jsx)(E.n,{"className":"van-progress__portion","style":portionStyle({"percentage":l,"inactive":d,"color":p}),"children":h&&wxs_pivotText(g,l)&&Object(K.jsx)(E.n,{"style":pivotStyle({"textColor":j,"pivotColor":v,"inactive":d,"color":p,"right":r}),"className":"van-progress__pivot","children":wxs_pivotText(g,l)})})}))};function Demo(){return Object(K.jsx)(q,{"percentage":"50"})}function demo2_Demo(){return Object(K.jsx)(q,{"percentage":"50","strokeWidth":"8"})}function demo3_Demo(){return Object(K.jsx)(q,{"inactive":!0,"percentage":"50"})}function demo4_Demo(){return Object(K.jsxs)(E.n,{"children":[Object(K.jsx)(q,{"pivotText":"橙色","color":"#f2826a","percentage":"25"}),Object(K.jsx)(q,{"pivotText":"红色","color":"#ee0a24","percentage":"50"}),Object(K.jsx)(q,{"percentage":"75","pivotText":"紫色","pivotColor":"#7232dd","color":"linearGradient(to right, #be99ff, #7232dd)"})]})}var J=function(e){Object(i.a)(Index,e);var t=Object(a.a)(Index);function Index(){var e;return Object(r.a)(this,Index),e=t.call(this),Object(u.a)(Object(o.a)(e),"state",{}),e}return Object(c.a)(Index,[{"key":"render","value":function render(){return Object(K.jsxs)(l.a,{"title":"Progress 进度条","className":"pages-progress-index","children":[Object(K.jsx)(d.a,{"title":"基础用法","padding":!0,"children":Object(K.jsx)(Demo,{})}),Object(K.jsx)(d.a,{"title":"线条粗细","padding":!0,"children":Object(K.jsx)(demo2_Demo,{})}),Object(K.jsx)(d.a,{"title":"置灰","padding":!0,"children":Object(K.jsx)(demo3_Demo,{})}),Object(K.jsx)(d.a,{"title":"样式定制","padding":!0,"children":Object(K.jsx)(demo4_Demo,{})})]})}}]),Index}(s.Component)}}]);
+;(window.webpackJsonp = window.webpackJsonp || []).push([
+  [58],
+  {
+    582: function (e, n, t) {
+      'use strict'
+      t.d(n, 'a', function () {
+        return Loading
+      })
+      var c = t(572),
+        i = t.n(c),
+        r = t(576),
+        a = t.n(r),
+        l = t(573),
+        o = t.n(l),
+        s = t(592),
+        d = t.n(s),
+        j = t(10),
+        b = t.n(j),
+        u = t(24),
+        p = t.n(u),
+        x = t(571),
+        O = t.n(x),
+        h = t(32),
+        m = t.n(h),
+        y = t(570),
+        f = t.n(y),
+        v = t(27),
+        g = t.n(v),
+        _ = t(173),
+        z = t.n(_),
+        D = t(116),
+        S = t.n(D),
+        N = t(55),
+        w = t.n(N),
+        k = t(568),
+        I = t(64),
+        T = t(569),
+        K = t(578)
+      function textStyle(e) {
+        return Object(T.c)({ 'font-size': Object(K.a)(e.textSize) })
+      }
+      var B = t(115),
+        C = [
+          'vertical',
+          'type',
+          'color',
+          'size',
+          'textSize',
+          'className',
+          'children',
+          'style',
+        ]
+      function ownKeys(e, n) {
+        var t = p()(e)
+        if (O.a) {
+          var c = O()(e)
+          n &&
+            (c = m()(c).call(c, function (n) {
+              return f()(e, n).enumerable
+            })),
+            t.push.apply(t, c)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            c,
+            r = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? g()((t = ownKeys(Object(r), !0))).call(t, function (n) {
+                i()(e, n, r[n])
+              })
+            : z.a
+            ? S()(e, z()(r))
+            : g()((c = ownKeys(Object(r)))).call(c, function (n) {
+                w()(e, n, f()(r, n))
+              })
+        }
+        return e
+      }
+      function Loading(e) {
+        var n,
+          t = e.vertical,
+          c = e.type,
+          i = void 0 === c ? 'circular' : c,
+          r = e.color,
+          l = e.size,
+          s = e.textSize,
+          j = e.className,
+          u = e.children,
+          p = e.style,
+          x = o()(e, C),
+          O = Object(I.useState)(d()({ length: 12 })),
+          h = a()(O, 1)[0]
+        return Object(B.jsxs)(
+          k.n,
+          _objectSpread(
+            _objectSpread(
+              {
+                className: ' ' + T.b('loading', { vertical: t }) + ' ' + j,
+                style: T.c([p]),
+              },
+              x,
+            ),
+            {},
+            {
+              children: [
+                Object(B.jsx)(k.n, {
+                  className: 'van-loading__spinner van-loading__spinner--' + i,
+                  style:
+                    ((n = { color: r, size: l }),
+                    Object(T.c)({
+                      color: n.color,
+                      width: Object(K.a)(n.size),
+                      height: Object(K.a)(n.size),
+                    })),
+                  children:
+                    'spinner' === i &&
+                    Object(B.jsx)(k.a, {
+                      children: b()(h).call(h, function (e, n) {
+                        return Object(B.jsx)(
+                          k.n,
+                          { className: 'van-loading__dot' },
+                          'van-loading__dot_'.concat(n),
+                        )
+                      }),
+                    }),
+                }),
+                Object(B.jsx)(k.n, {
+                  className: 'van-loading__text',
+                  style: textStyle({ textSize: s }),
+                  children: u,
+                }),
+              ],
+            },
+          ),
+        )
+      }
+      n.b = Loading
+    },
+    583: function (e, n, t) {},
+    584: function (e, n, t) {
+      'use strict'
+      t.d(n, 'a', function () {
+        return Button
+      })
+      var c = t(24),
+        i = t.n(c),
+        r = t(571),
+        a = t.n(r),
+        l = t(32),
+        o = t.n(l),
+        s = t(570),
+        d = t.n(s),
+        j = t(27),
+        b = t.n(j),
+        u = t(173),
+        p = t.n(u),
+        x = t(116),
+        O = t.n(x),
+        h = t(55),
+        m = t.n(h),
+        y = t(572),
+        f = t.n(y),
+        v = t(573),
+        g = t.n(v),
+        _ = t(90),
+        z = t(568),
+        D = t(569),
+        S = t(577),
+        N = t(582),
+        w = t(28),
+        k = t.n(w),
+        I = t(579)
+      function rootStyle(e) {
+        var n
+        if (!e.color) return ''
+        var t = {
+          color: e.plain ? e.color : '#fff',
+          background: e.plain ? null : e.color,
+        }
+        return (
+          -1 !== k()((n = e.color)).call(n, 'gradient')
+            ? (t.border = 0)
+            : (t['border-color'] = e.color),
+          Object(I.a)([t])
+        )
+      }
+      var T = t(115),
+        K = [
+          'type',
+          'size',
+          'block',
+          'round',
+          'plain',
+          'square',
+          'loading',
+          'disabled',
+          'hairline',
+          'color',
+          'loadingSize',
+          'loadingType',
+          'loadingText',
+          'icon',
+          'classPrefix',
+          'onClick',
+          'children',
+          'style',
+          'className',
+        ]
+      function ownKeys(e, n) {
+        var t = i()(e)
+        if (a.a) {
+          var c = a()(e)
+          n &&
+            (c = o()(c).call(c, function (n) {
+              return d()(e, n).enumerable
+            })),
+            t.push.apply(t, c)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            c,
+            i = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? b()((t = ownKeys(Object(i), !0))).call(t, function (n) {
+                f()(e, n, i[n])
+              })
+            : p.a
+            ? O()(e, p()(i))
+            : b()((c = ownKeys(Object(i)))).call(c, function (n) {
+                m()(e, n, d()(i, n))
+              })
+        }
+        return e
+      }
+      var B = !1,
+        C = 10
+      if (!B)
+        var q = setInterval(function () {
+          if (--C > 0)
+            for (
+              var e = document.getElementsByTagName('style') || [],
+                n = e.length - 1;
+              n >= 0;
+              n--
+            ) {
+              var t = e[n],
+                c = t.innerHTML
+              if (c && /^taro-button-core{/.test(c)) {
+                t.remove(), (B = !0), q && clearInterval(q)
+                break
+              }
+            }
+          else q && clearInterval(q)
+        }, 200)
+      function Button(e) {
+        var n,
+          t = e.type,
+          c = void 0 === t ? 'default' : t,
+          i = e.size,
+          r = void 0 === i ? 'normal' : i,
+          a = e.block,
+          l = e.round,
+          o = e.plain,
+          s = e.square,
+          d = e.loading,
+          j = e.disabled,
+          b = e.hairline,
+          u = e.color,
+          p = e.loadingSize,
+          x = void 0 === p ? _.a.pxTransform(40) : p,
+          O = e.loadingType,
+          h = void 0 === O ? 'circular' : O,
+          m = e.loadingText,
+          y = e.icon,
+          f = e.classPrefix,
+          v = void 0 === f ? 'van-icon' : f,
+          w = e.onClick,
+          k = e.children,
+          I = e.style,
+          B = e.className,
+          C = g()(e, K)
+        return Object(T.jsx)(
+          z.b,
+          _objectSpread(
+            _objectSpread(
+              {
+                className:
+                  ' ' +
+                  D.b('button', [
+                    c,
+                    r,
+                    {
+                      block: a,
+                      round: l,
+                      plain: o,
+                      square: s,
+                      loading: d,
+                      disabled: j,
+                      hairline: b,
+                      unclickable: j || d,
+                    },
+                  ]) +
+                  ' ' +
+                  (b ? 'van-hairline--surround' : '') +
+                  ' '.concat(B || ''),
+                hoverClass: 'van-button--active hover-class',
+                style: D.c([rootStyle({ plain: o, color: u }), I]),
+                onClick: j || d ? void 0 : w,
+              },
+              C,
+            ),
+            {},
+            {
+              children: d
+                ? Object(T.jsxs)(z.n, {
+                    style: 'display: flex',
+                    children: [
+                      Object(T.jsx)(N.a, {
+                        className: 'loading-class',
+                        size: x,
+                        type: h,
+                        color:
+                          ((n = { type: c, color: u, plain: o }),
+                          n.plain
+                            ? n.color
+                              ? n.color
+                              : '#c9c9c9'
+                            : 'default' === n.type
+                            ? '#c9c9c9'
+                            : '#fff'),
+                      }),
+                      m &&
+                        Object(T.jsx)(z.n, {
+                          className: 'van-button__loading-text',
+                          children: m,
+                        }),
+                    ],
+                  })
+                : Object(T.jsxs)(z.a, {
+                    children: [
+                      y &&
+                        Object(T.jsx)(S.a, {
+                          size: '1.2em',
+                          name: y,
+                          classPrefix: v,
+                          className: 'van-button__icon',
+                          style: 'line-height: inherit;',
+                        }),
+                      Object(T.jsx)(z.n, {
+                        className: 'van-button__text',
+                        children: k,
+                      }),
+                    ],
+                  }),
+            },
+          ),
+        )
+      }
+      n.b = Button
+    },
+    591: function (e, n, t) {
+      'use strict'
+      t(574), t(583), t(580), t(581), t(595)
+    },
+    595: function (e, n, t) {},
+    875: function (e, n, t) {
+      'use strict'
+      t.r(n),
+        t.d(n, 'default', function () {
+          return x
+        })
+      var c = t(39),
+        i = t(40),
+        r = t(175),
+        a = t(66),
+        l = t(65),
+        o = t(91),
+        s = t(64),
+        d = t(587),
+        j = t(588),
+        b = (t(591), t(584)),
+        u = t(568),
+        p = t(115)
+      function Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, { type: 'default', children: '默认按钮' }),
+            Object(p.jsx)(b.b, { type: 'primary', children: '主要按钮' }),
+            Object(p.jsx)(b.b, { type: 'info', children: '信息按钮' }),
+            Object(p.jsx)(b.b, { type: 'warning', children: '警告按钮' }),
+            Object(p.jsx)(b.b, { type: 'danger', children: '危险按钮' }),
+          ],
+        })
+      }
+      function demo2_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, {
+              plain: !0,
+              type: 'primary',
+              children: '朴素按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              plain: !0,
+              type: 'info',
+              children: '朴素按钮',
+            }),
+          ],
+        })
+      }
+      function demo3_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, {
+              plain: !0,
+              hairline: !0,
+              type: 'primary',
+              children: '细边框按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              plain: !0,
+              hairline: !0,
+              type: 'info',
+              children: '细边框按钮',
+            }),
+          ],
+        })
+      }
+      function demo4_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, {
+              disabled: !0,
+              type: 'primary',
+              children: '禁用状态',
+            }),
+            Object(p.jsx)(b.b, {
+              disabled: !0,
+              type: 'info',
+              children: '禁用状态',
+            }),
+          ],
+        })
+      }
+      function demo5_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, { loading: !0, type: 'primary' }),
+            Object(p.jsx)(b.b, {
+              loading: !0,
+              type: 'primary',
+              loadingType: 'spinner',
+            }),
+            Object(p.jsx)(b.b, {
+              loading: !0,
+              type: 'info',
+              loadingText: '加载中...',
+            }),
+          ],
+        })
+      }
+      function demo6_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, {
+              square: !0,
+              type: 'primary',
+              children: '方形按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              round: !0,
+              type: 'info',
+              children: '圆形按钮',
+            }),
+          ],
+        })
+      }
+      function demo7_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, { icon: 'starO', type: 'primary' }),
+            Object(p.jsx)(b.b, {
+              icon: 'starO',
+              type: 'primary',
+              children: '按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              icon: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
+              type: 'info',
+              children: '按钮',
+            }),
+          ],
+        })
+      }
+      function demo8_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, {
+              type: 'primary',
+              size: 'large',
+              children: '大号按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              type: 'primary',
+              size: 'normal',
+              children: '普通按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              type: 'primary',
+              size: 'small',
+              children: '小型按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              type: 'primary',
+              size: 'mini',
+              children: '迷你按钮',
+            }),
+          ],
+        })
+      }
+      function demo9_Demo() {
+        return Object(p.jsx)(u.n, {
+          children: Object(p.jsx)(b.b, {
+            type: 'primary',
+            block: !0,
+            children: '块级元素',
+          }),
+        })
+      }
+      function demo10_Demo() {
+        return Object(p.jsxs)(u.n, {
+          children: [
+            Object(p.jsx)(b.b, { color: '#7232dd', children: '单色按钮' }),
+            Object(p.jsx)(b.b, {
+              color: '#7232dd',
+              plain: !0,
+              children: '单色按钮',
+            }),
+            Object(p.jsx)(b.b, {
+              color: 'linear-gradient(to right, #4bb0ff, #6149f6)',
+              children: '渐变色按钮',
+            }),
+          ],
+        })
+      }
+      var x = (function (e) {
+        Object(a.a)(Index, e)
+        var n = Object(l.a)(Index)
+        function Index() {
+          var e
+          return (
+            Object(c.a)(this, Index),
+            (e = n.call(this)),
+            Object(o.a)(Object(r.a)(e), 'state', {}),
+            e
+          )
+        }
+        return (
+          Object(i.a)(Index, [
+            {
+              key: 'render',
+              value: function render() {
+                return Object(p.jsxs)(d.a, {
+                  title: 'Button 按钮',
+                  className: 'pages-button-index',
+                  children: [
+                    Object(p.jsx)(j.a, {
+                      title: '按钮类型',
+                      padding: !0,
+                      children: Object(p.jsx)(Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '朴素按钮',
+                      padding: !0,
+                      children: Object(p.jsx)(demo2_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '细边框',
+                      padding: !0,
+                      children: Object(p.jsx)(demo3_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '禁用状态',
+                      padding: !0,
+                      children: Object(p.jsx)(demo4_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '加载状态',
+                      padding: !0,
+                      children: Object(p.jsx)(demo5_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '按钮形状',
+                      padding: !0,
+                      children: Object(p.jsx)(demo6_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '图标按钮',
+                      padding: !0,
+                      children: Object(p.jsx)(demo7_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '按钮尺寸',
+                      padding: !0,
+                      children: Object(p.jsx)(demo8_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '块级元素',
+                      padding: !0,
+                      children: Object(p.jsx)(demo9_Demo, {}),
+                    }),
+                    Object(p.jsx)(j.a, {
+                      title: '自定义颜色',
+                      padding: !0,
+                      children: Object(p.jsx)(demo10_Demo, {}),
+                    }),
+                  ],
+                })
+              },
+            },
+          ]),
+          Index
+        )
+      })(s.Component)
+    },
+  },
+])

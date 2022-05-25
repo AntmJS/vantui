@@ -1,1 +1,726 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[48],{"578":function(e,n,t){"use strict";(function(e){t.d(n,"a",(function(){return Page}));t(590);var c=t(574),a=t(568),r=t(90),i=t(737),o=t(77),l=t(64),s=(t(581),t(115));function Page(n){var t=n.title,u=n.className,d=void 0===u?"":u,b=n.children,j=r.a.useRouter().path;return Object(l.useEffect)((function(){"react"===e.env.LIBRARY_ENV?document.body.scrollTop=document.documentElement.scrollTop=0:Object(i.a)({"scrollTop":0})}),[j]),r.a.useShareAppMessage((function(){return{"title":"AntM 组件库演示","path":j}})),Object(s.jsxs)(a.n,{"className":"demo-page ".concat(d),"children":[Object(s.jsxs)(a.n,{"className":"demo-nav","children":[Object(s.jsx)(c.b,{"name":"arrow-left","className":"demo-nav__back","onClick":function onClick(){return Object(o.d)()}}),Object(s.jsxs)(a.n,{"className":"demo-nav__title","children":[t," "]})]}),b]})}}).call(this,t(236))},"579":function(e,n,t){"use strict";t.d(n,"a",(function(){return u}));var c=t(39),a=t(40),r=t(66),i=t(65),o=t(568),l=t(64),s=(t(582),t(115)),u=function(e){Object(r.a)(Index,e);var n=Object(i.a)(Index);function Index(){return Object(c.a)(this,Index),n.call(this)}return Object(a.a)(Index,[{"key":"render","value":function render(){var e=this.props,n=e.padding,t=e.title,c=e.card;return Object(s.jsxs)(o.n,{"className":"custom-class demo-block van-clearfix "+(n?"demo-block--padding":""),"children":[t&&Object(s.jsx)(o.n,{"className":"demo-block__title","children":t}),c?Object(s.jsx)(o.n,{"className":"demo-block__card","children":this.props.children}):this.props.children]})}}]),Index}(l.Component)},"581":function(e,n,t){},"582":function(e,n,t){},"586":function(e,n,t){"use strict";t.d(n,"a",(function(){return Loading}));var c=t(116),a=t.n(c),r=t(55),i=t.n(r),o=t(572),l=t.n(o),s=t(577),u=t.n(s),d=t(573),b=t.n(d),j=t(595),f=t.n(j),p=t(10),m=t.n(p),v=t(24),x=t.n(v),h=t(571),O=t.n(h),_=t(32),y=t.n(_),g=t(570),S=t.n(g),N=t(27),k=t.n(N),T=t(173),I=t.n(T),w=t(568),z=t(64),C=t(569),K=t(580);function textStyle(e){return Object(C.c)({"font-size":Object(K.a)(e.textSize)})}var B=t(115),L=["vertical","type","color","size","textSize","className","children","style"];function ownKeys(e,n){var t=x()(e);if(O.a){var c=O()(e);n&&(c=y()(c).call(c,(function(n){return S()(e,n).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(e){for(var n=1;n<arguments.length;n++){var t,c=null!=arguments[n]?arguments[n]:{};if(n%2)k()(t=ownKeys(Object(c),!0)).call(t,(function(n){l()(e,n,c[n])}));else if(I.a)a()(e,I()(c));else{var r;k()(r=ownKeys(Object(c))).call(r,(function(n){i()(e,n,S()(c,n))}))}}return e}function Loading(e){var n,t=e.vertical,c=e.type,a=void 0===c?"circular":c,r=e.color,i=e.size,o=e.textSize,l=e.className,s=e.children,d=e.style,j=b()(e,L),p=Object(z.useState)(f()({"length":12})),v=u()(p,1)[0];return Object(B.jsxs)(w.n,_objectSpread(_objectSpread({"className":" "+C.b("loading",{"vertical":t})+" "+l,"style":C.c([d])},j),{},{"children":[Object(B.jsx)(w.n,{"className":"van-loading__spinner van-loading__spinner--"+a,"style":(n={"color":r,"size":i},Object(C.c)({"color":n.color,"width":Object(K.a)(n.size),"height":Object(K.a)(n.size)})),"children":"spinner"===a&&Object(B.jsx)(w.a,{"children":m()(v).call(v,(function(e,n){return Object(B.jsx)(w.n,{"className":"van-loading__dot"},"van-loading__dot_".concat(n))}))})}),Object(B.jsx)(w.n,{"className":"van-loading__text","style":textStyle({"textSize":o}),"children":s})]}))}n.b=Loading},"587":function(e,n,t){},"588":function(e,n,t){"use strict";t.d(n,"a",(function(){return Button}));var c=t(116),a=t.n(c),r=t(55),i=t.n(r),o=t(24),l=t.n(o),s=t(571),u=t.n(s),d=t(32),b=t.n(d),j=t(570),f=t.n(j),p=t(27),m=t.n(p),v=t(173),x=t.n(v),h=t(572),O=t.n(h),_=t(573),y=t.n(_),g=t(90),S=t(568),N=t(569),k=t(574),T=t(586),I=t(28),w=t.n(I),z=t(583);function rootStyle(e){var n;if(!e.color)return"";var t={"color":e.plain?e.color:"#fff","background":e.plain?null:e.color};return-1!==w()(n=e.color).call(n,"gradient")?t.border=0:t["border-color"]=e.color,Object(z.a)([t])}var C=t(115),K=["type","size","block","round","plain","square","loading","disabled","hairline","color","loadingSize","loadingType","loadingText","icon","classPrefix","onClick","children","style","className"];function ownKeys(e,n){var t=l()(e);if(u.a){var c=u()(e);n&&(c=b()(c).call(c,(function(n){return f()(e,n).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(e){for(var n=1;n<arguments.length;n++){var t,c=null!=arguments[n]?arguments[n]:{};if(n%2)m()(t=ownKeys(Object(c),!0)).call(t,(function(n){O()(e,n,c[n])}));else if(x.a)a()(e,x()(c));else{var r;m()(r=ownKeys(Object(c))).call(r,(function(n){i()(e,n,f()(c,n))}))}}return e}var B=!1,L=10;if(!B)var D=setInterval((function(){if(--L>0)for(var e=document.getElementsByTagName("style")||[],n=e.length-1;n>=0;n--){var t=e[n],c=t.innerHTML;if(c&&/^taro-button-core{/.test(c)){t.remove(),B=!0,D&&clearInterval(D);break}}else D&&clearInterval(D)}),200);function Button(e){var n,t=e.type,c=void 0===t?"default":t,a=e.size,r=void 0===a?"normal":a,i=e.block,o=e.round,l=e.plain,s=e.square,u=e.loading,d=e.disabled,b=e.hairline,j=e.color,f=e.loadingSize,p=void 0===f?g.a.pxTransform(40):f,m=e.loadingType,v=void 0===m?"circular":m,x=e.loadingText,h=e.icon,O=e.classPrefix,_=void 0===O?"van-icon":O,I=e.onClick,w=e.children,z=e.style,B=e.className,L=y()(e,K);return Object(C.jsx)(S.b,_objectSpread(_objectSpread({"className":" "+N.b("button",[c,r,{"block":i,"round":o,"plain":l,"square":s,"loading":u,"disabled":d,"hairline":b,"unclickable":d||u}])+" "+(b?"van-hairline--surround":"")+" ".concat(B||""),"hoverClass":"van-button--active hover-class","style":N.c([rootStyle({"plain":l,"color":j}),z]),"onClick":d||u?void 0:I},L),{},{"children":u?Object(C.jsxs)(S.n,{"style":"display: flex","children":[Object(C.jsx)(T.a,{"className":"loading-class","size":p,"type":v,"color":(n={"type":c,"color":j,"plain":l},n.plain?n.color?n.color:"#c9c9c9":"default"===n.type?"#c9c9c9":"#fff")}),x&&Object(C.jsx)(S.n,{"className":"van-button__loading-text","children":x})]}):Object(C.jsxs)(S.a,{"children":[h&&Object(C.jsx)(k.a,{"size":"1.2em","name":h,"classPrefix":_,"className":"van-button__icon","style":"line-height: inherit;"}),Object(C.jsx)(S.n,{"className":"van-button__text","children":w})]})}))}n.b=Button},"598":function(e,n,t){},"647":function(e,n,t){"use strict";t.d(n,"a",(function(){return Tag}));var c=t(116),a=t.n(c),r=t(55),i=t.n(r),o=t(24),l=t.n(o),s=t(571),u=t.n(s),d=t(32),b=t.n(d),j=t(570),f=t.n(j),p=t(27),m=t.n(p),v=t(173),x=t.n(v),h=t(572),O=t.n(h),_=t(573),y=t.n(_),g=t(568),S=t(569),N=t(574),k=t(583);var T=t(115),I=["type","size","mark","plain","round","color","textColor","closeable","children","onClose","style","className"];function ownKeys(e,n){var t=l()(e);if(u.a){var c=u()(e);n&&(c=b()(c).call(c,(function(n){return f()(e,n).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(e){for(var n=1;n<arguments.length;n++){var t,c=null!=arguments[n]?arguments[n]:{};if(n%2)m()(t=ownKeys(Object(c),!0)).call(t,(function(n){O()(e,n,c[n])}));else if(x.a)a()(e,x()(c));else{var r;m()(r=ownKeys(Object(c))).call(r,(function(n){i()(e,n,f()(c,n))}))}}return e}function Tag(e){var n,t=e.type,c=void 0===t?"default":t,a=e.size,r=e.mark,i=e.plain,o=e.round,l=e.color,s=e.textColor,u=e.closeable,d=e.children,b=e.onClose,j=e.style,f=e.className,p=y()(e,I);return Object(T.jsxs)(g.n,_objectSpread(_objectSpread({"className":" "+S.b("tag",[c,a,{"mark":r,"plain":i,"round":o}])+" ".concat(f||""),"style":S.c([(n={"plain":i,"color":l,"textColor":s},Object(k.a)({"background-color":n.plain?"":n.color,"color":n.textColor||n.plain?n.textColor||n.color:""})),j])},p),{},{"children":[d,u&&Object(T.jsx)(N.a,{"name":"cross","className":"van-tag__close","onClick":b})]}))}n.b=Tag},"664":function(e,n,t){"use strict";t(576),t(584),t(585),t(701)},"701":function(e,n,t){},"849":function(e,n,t){},"906":function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return R}));var c=t(39),a=t(40),r=t(175),i=t(66),o=t(65),l=t(91),s=t(64),u=t(578),d=t(579),b=(t(576),t(587),t(584),t(585),t(598),t(849),t(116)),j=t.n(b),f=t(55),p=t.n(f),m=t(24),v=t.n(m),x=t(571),h=t.n(x),O=t(32),_=t.n(O),y=t(570),g=t.n(y),S=t(27),N=t.n(S),k=t(173),T=t.n(k),I=t(572),w=t.n(I),z=t(577),C=t.n(z),K=t(573),B=t.n(K),L=t(568),D=t(574),P=t(588),E=t(115),A=["tipIcon","tip","label","currency","suffixLabel","buttonType","price","loading","disabled","buttonText","safeAreaInsetBottom","renderTop","renderTip","decimalLength","onSubmit","children","style","className"];function ownKeys(e,n){var t=v()(e);if(h.a){var c=h()(e);n&&(c=_()(c).call(c,(function(n){return g()(e,n).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(e){for(var n=1;n<arguments.length;n++){var t,c=null!=arguments[n]?arguments[n]:{};if(n%2)N()(t=ownKeys(Object(c),!0)).call(t,(function(n){w()(e,n,c[n])}));else if(T.a)j()(e,T()(c));else{var a;N()(a=ownKeys(Object(c))).call(a,(function(n){p()(e,n,g()(c,n))}))}}return e}var q=function SubmitBar(e){var n=e.tipIcon,t=e.tip,c=e.label,a=e.currency,r=void 0===a?"¥":a,i=e.suffixLabel,o=e.buttonType,l=void 0===o?"danger":o,u=e.price,d=e.loading,b=e.disabled,j=e.buttonText,f=e.safeAreaInsetBottom,p=void 0===f||f,m=e.renderTop,v=e.renderTip,x=e.decimalLength,h=e.onSubmit,O=e.children,_=e.style,y=e.className,g=B()(e,A),S=Object(s.useState)({"hasTip":!1,"integerStr":"","decimalStr":"","hasPrice":!1}),N=C()(S,2),k=N[0],T=N[1],I=k.hasTip,w=k.integerStr,z=k.decimalStr,K=k.hasPrice;return Object(s.useEffect)((function(){T((function(e){return _objectSpread(_objectSpread({},e),{},{"hasTip":"string"==typeof t})}))}),[t]),Object(s.useEffect)((function(){var e="number"==typeof u&&(u/100).toFixed(x).split(".");T((function(n){return _objectSpread(_objectSpread({},n),{},{"hasPrice":"number"==typeof u,"integerStr":e&&e[0],"decimalStr":x&&e?".".concat(e[1]):""})}))}),[x,u]),Object(E.jsxs)(L.n,_objectSpread(_objectSpread({"className":"van-submit-bar  ".concat(y||""),"style":_},g),{},{"children":[m,Object(E.jsxs)(L.n,{"className":"van-submit-bar__tip","children":[n&&Object(E.jsx)(D.a,{"size":"12px","name":n,"className":"van-submit-bar__tip-icon"}),I&&Object(E.jsx)(L.n,{"className":"van-submit-bar__tip-text","children":t}),v]}),Object(E.jsxs)(L.n,{"className":"bar-class van-submit-bar__bar","children":[O,K&&Object(E.jsxs)(L.n,{"className":"van-submit-bar__text","children":[Object(E.jsx)(L.k,{"children":c||"合计："}),Object(E.jsxs)(L.k,{"className":"van-submit-bar__price price-class","children":[Object(E.jsx)(L.k,{"className":"van-submit-bar__currency","children":r}),Object(E.jsx)(L.k,{"className":"van-submit-bar__price-integer","children":w}),Object(E.jsx)(L.k,{"children":z})]}),Object(E.jsx)(L.k,{"className":"van-submit-bar__suffix-label","children":i})]}),Object(E.jsx)(P.a,{"round":!0,"type":l,"loading":d,"disabled":b,"className":"van-submit-bar__button button-class","onClick":h,"children":d?"":j})]}),p&&Object(E.jsx)(L.n,{"className":"van-submit-bar__safe"})]}))};function Demo(){return Object(E.jsx)(q,{"price":3050,"buttonText":"提交订单","onSubmit":function onSubmit(){return console.info("提交")}})}function demo2_Demo(){return Object(E.jsx)(q,{"disabled":!0,"price":3050,"buttonText":"提交订单","tip":"您的收货地址不支持同城送, 我们已为您推荐快递","tipIcon":"infoO","onSubmit":function onSubmit(){return console.info("提交")}})}function demo3_Demo(){return Object(E.jsx)(q,{"loading":!0,"price":3050,"buttonText":"提交订单","onSubmit":function onSubmit(){return console.info("提交")}})}t(664);var M=t(647);function demo4_Demo(){return Object(E.jsx)(q,{"price":3050,"buttonText":"提交订单","tip":!0,"renderTip":Object(E.jsxs)(L.n,{"children":["您的收货地址不支持同城送,",Object(E.jsx)(L.k,{"children":"修改地址"})]}),"children":Object(E.jsx)(M.b,{"type":"primary","children":"标签"})})}var R=function(e){Object(i.a)(Index,e);var n=Object(o.a)(Index);function Index(){var e;return Object(c.a)(this,Index),e=n.call(this),Object(l.a)(Object(r.a)(e),"state",{}),e}return Object(a.a)(Index,[{"key":"render","value":function render(){return Object(E.jsxs)(u.a,{"title":"SubmitBar 提交订单栏","className":"pages-submit-bar-index","children":[Object(E.jsx)(d.a,{"title":"基础用法","padding":!0,"children":Object(E.jsx)(Demo,{})}),Object(E.jsx)(d.a,{"title":"禁用状态","padding":!0,"children":Object(E.jsx)(demo2_Demo,{})}),Object(E.jsx)(d.a,{"title":"加载状态","padding":!0,"children":Object(E.jsx)(demo3_Demo,{})}),Object(E.jsx)(d.a,{"title":"高级用法","padding":!0,"children":Object(E.jsx)(demo4_Demo,{})})]})}}]),Index}(s.Component)}}]);
+;(window.webpackJsonp = window.webpackJsonp || []).push([
+  [48],
+  {
+    594: function (e, t, n) {
+      'use strict'
+      n.d(t, 'a', function () {
+        return jumpLink
+      })
+      var c = n(77)
+      function jumpLink(e, t) {
+        var n
+        if (((t = null !== (n = t) && void 0 !== n ? n : 'navigateTo'), e))
+          if ('navigateTo' === t && Object(c.b)().length > 9)
+            Object(c.g)({ url: e })
+          else
+            switch (t) {
+              case 'navigateTo':
+                Object(c.e)({ url: e })
+                break
+              case 'reLaunch':
+                Object(c.f)({ url: e })
+                break
+              case 'redirectTo':
+                Object(c.g)({ url: e })
+            }
+      }
+    },
+    615: function (e, t, n) {
+      'use strict'
+      n(574), n(580), n(581), n(664)
+    },
+    616: function (e, t, n) {
+      'use strict'
+      var c = n(24),
+        o = n.n(c),
+        i = n(571),
+        r = n.n(i),
+        a = n(32),
+        s = n.n(a),
+        l = n(570),
+        u = n.n(l),
+        d = n(27),
+        j = n.n(d),
+        b = n(173),
+        h = n.n(b),
+        x = n(116),
+        m = n.n(x),
+        O = n(55),
+        g = n.n(O),
+        v = n(572),
+        f = n.n(v),
+        p = n(576),
+        y = n.n(p),
+        N = n(573),
+        _ = n.n(N),
+        k = n(64),
+        w = n(568),
+        q = n(569),
+        C = n(577),
+        D = n(578)
+      var I = {
+        none: 'scaleToFill',
+        fill: 'scaleToFill',
+        cover: 'aspectFill',
+        contain: 'aspectFit',
+        widthFix: 'widthFix',
+        heightFix: 'heightFix',
+        scaleDown: 'aspectFit',
+      }
+      function mode(e) {
+        return I[e]
+      }
+      var S = n(115),
+        L = [
+          'src',
+          'round',
+          'width',
+          'height',
+          'radius',
+          'lazyLoad',
+          'showMenuByLongpress',
+          'fit',
+          'showError',
+          'showLoading',
+          'className',
+          'style',
+          'renderError',
+          'renderLoading',
+        ]
+      function ownKeys(e, t) {
+        var n = o()(e)
+        if (r.a) {
+          var c = r()(e)
+          t &&
+            (c = s()(c).call(c, function (t) {
+              return u()(e, t).enumerable
+            })),
+            n.push.apply(n, c)
+        }
+        return n
+      }
+      function _objectSpread(e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var n,
+            c,
+            o = null != arguments[t] ? arguments[t] : {}
+          t % 2
+            ? j()((n = ownKeys(Object(o), !0))).call(n, function (t) {
+                f()(e, t, o[t])
+              })
+            : h.a
+            ? m()(e, h()(o))
+            : j()((c = ownKeys(Object(o)))).call(c, function (t) {
+                g()(e, t, u()(o, t))
+              })
+        }
+        return e
+      }
+      t.a = function Image(e) {
+        var t = e.src,
+          n = e.round,
+          c = e.width,
+          o = e.height,
+          i = e.radius,
+          r = e.lazyLoad,
+          a = e.showMenuByLongpress,
+          s = e.fit,
+          l = e.showError,
+          u = void 0 === l || l,
+          d = e.showLoading,
+          j = void 0 === d || d,
+          b = e.className,
+          h = e.style,
+          x = e.renderError,
+          m = e.renderLoading,
+          O = _()(e, L),
+          g = Object(k.useState)(),
+          v = y()(g, 2),
+          f = v[0],
+          p = v[1],
+          N = Object(k.useState)(!1),
+          I = y()(N, 2),
+          z = I[0],
+          F = I[1]
+        Object(k.useEffect)(
+          function () {
+            void 0 === f && p(!0), F(!1)
+          },
+          [f],
+        )
+        var T,
+          E = Object(k.useCallback)(function () {
+            p(!1)
+          }, []),
+          M = Object(k.useCallback)(function () {
+            F(!0)
+          }, []),
+          B = Object(k.useMemo)(
+            function () {
+              var e = {}
+              return (
+                ('heightFix' !== s && 'widthFix' !== s) ||
+                  (e = {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }),
+                e
+              )
+            },
+            [s],
+          )
+        return Object(S.jsxs)(
+          w.n,
+          _objectSpread(
+            _objectSpread(
+              {
+                style: q.c([
+                  ((T = { width: c, height: o, radius: i }),
+                  Object(q.c)([
+                    {
+                      width: Object(D.a)(T.width),
+                      height: Object(D.a)(T.height),
+                      'border-radius': Object(D.a)(T.radius),
+                    },
+                    T.radius ? 'overflow: hidden' : null,
+                  ])),
+                  h,
+                ]),
+                className: ' ' + q.b('image', { round: n }) + ' ' + b,
+                onClick: O.onClick,
+              },
+              O,
+            ),
+            {},
+            {
+              children: [
+                !z &&
+                  Object(S.jsx)(w.f, {
+                    src: t,
+                    mode: mode(s || 'none'),
+                    lazyLoad: r,
+                    className: 'image-class van-image__img',
+                    showMenuByLongpress: a,
+                    onLoad: E,
+                    onError: M,
+                    style: B,
+                  }),
+                f &&
+                  j &&
+                  Object(S.jsx)(w.n, {
+                    className: 'loading-class van-image__loading',
+                    children:
+                      m ||
+                      Object(S.jsx)(C.b, {
+                        name: 'photo',
+                        className: 'van-image__loading-icon',
+                      }),
+                  }),
+                z &&
+                  u &&
+                  Object(S.jsx)(w.n, {
+                    className: 'error-class van-image__error',
+                    children:
+                      x ||
+                      Object(S.jsx)(C.b, {
+                        name: 'photo-fail',
+                        className: 'van-image__error-icon',
+                      }),
+                  }),
+              ],
+            },
+          ),
+        )
+      }
+    },
+    664: function (e, t, n) {},
+    694: function (e, t, n) {
+      'use strict'
+      n(574), n(782)
+    },
+    695: function (e, t, n) {
+      'use strict'
+      n(574), n(580), n(581), n(783)
+    },
+    697: function (e, t, n) {
+      'use strict'
+      var c = n(573),
+        o = n.n(c),
+        i = n(178),
+        r = n.n(i),
+        a = n(27),
+        s = n.n(a),
+        l = n(568),
+        u = n(64),
+        d = n(569),
+        j = n(579),
+        b = n(578)
+      var h = n(115),
+        x = [
+          'gutter',
+          'clickable',
+          'columnNum',
+          'center',
+          'border',
+          'direction',
+          'iconSize',
+          'square',
+          'reverse',
+          'className',
+          'style',
+        ]
+      t.a = function Grid(e) {
+        var t = e.gutter,
+          n = void 0 === t ? null : t,
+          c = e.clickable,
+          i = e.columnNum,
+          a = void 0 === i ? 4 : i,
+          m = e.center,
+          O = void 0 === m || m,
+          g = e.border,
+          v = void 0 === g || g,
+          f = e.direction,
+          p = e.iconSize,
+          y = void 0 === p ? '48' : p,
+          N = e.square,
+          _ = r()(e),
+          k = void 0 !== _ && _,
+          w = e.className,
+          q = void 0 === w ? '' : w,
+          C = e.style,
+          D = void 0 === C ? {} : C,
+          I = o()(e, x),
+          S = Object(u.useRef)([]),
+          L = Object(u.useCallback)(function () {
+            var e
+            s()((e = S.current)).call(e, function (e) {
+              e.updateStyle()
+            })
+          }, [])
+        Object(u.useEffect)(
+          function () {
+            L()
+          },
+          [L],
+        )
+        var z,
+          F = Object(u.useCallback)(function (e, t) {
+            S.current[e] = t
+          }, []),
+          T = Object(u.useMemo)(
+            function () {
+              var e,
+                t = []
+              I.children &&
+                Array.isArray(I.children) &&
+                s()((e = I.children)).call(e, function (e, o) {
+                  t.push(
+                    Object(u.cloneElement)(e, {
+                      setChildrenInstance: F,
+                      key: o,
+                      index: o,
+                      parentInstance: {
+                        columnNum: a,
+                        border: v,
+                        square: N,
+                        gutter: n,
+                        clickable: c,
+                        center: O,
+                        direction: f,
+                        reverse: k,
+                        iconSize: y,
+                      },
+                    }),
+                  )
+                })
+              return t
+            },
+            [I.children],
+          )
+        return Object(h.jsx)(l.n, {
+          className:
+            'van-grid  ' + (v && !n ? 'van-hairline--top' : '') + ' ' + q,
+          style: d.c([
+            ((z = { gutter: n }),
+            Object(j.a)({ 'padding-left': Object(b.a)(z.gutter) })),
+            D,
+          ]),
+          children: T,
+        })
+      }
+    },
+    698: function (e, t, n) {
+      'use strict'
+      var c = n(576),
+        o = n.n(c),
+        i = n(573),
+        r = n.n(i),
+        a = n(178),
+        s = n.n(a),
+        l = n(568),
+        u = n(64),
+        d = n(594),
+        j = n(569),
+        b = n(577),
+        h = n(579),
+        x = n(578)
+      function contentStyle(e) {
+        return e.square
+          ? Object(h.a)({
+              right: Object(x.a)(e.gutter),
+              bottom: Object(x.a)(e.gutter),
+              height: 'auto',
+            })
+          : ''
+      }
+      var m = n(115),
+        O = [
+          'icon',
+          'iconColor',
+          'iconPrefix',
+          'dot',
+          'info',
+          'badge',
+          'text',
+          'setChildrenInstance',
+          'parentInstance',
+          'index',
+          'url',
+          'linkType',
+          'style',
+          'className',
+        ]
+      t.a = function GridItem(e) {
+        var t = e.icon,
+          n = e.iconColor,
+          c = e.iconPrefix,
+          i = void 0 === c ? 'van-icon' : c,
+          a = e.dot,
+          g = e.info,
+          v = e.badge,
+          f = e.text,
+          p = e.setChildrenInstance,
+          y = e.parentInstance,
+          N = e.index,
+          _ = e.url,
+          k = e.linkType,
+          w = e.style,
+          q = e.className,
+          C = r()(e, O),
+          D = Object(u.useState)({}),
+          I = o()(D, 2),
+          S = I[0],
+          L = I[1]
+        Object(u.useEffect)(
+          function () {
+            p(N, { updateStyle: T })
+          },
+          [N, p],
+        ),
+          Object(u.useEffect)(function () {
+            T()
+          }, [])
+        var z,
+          F,
+          T = Object(u.useCallback)(
+            function () {
+              var e = y.columnNum,
+                t = y.border,
+                n = y.square,
+                c = y.gutter,
+                o = y.clickable,
+                i = y.center,
+                r = y.direction,
+                a = s()(y),
+                l = y.iconSize
+              L({
+                center: i,
+                border: t,
+                square: n,
+                gutter: c,
+                clickable: o,
+                direction: r,
+                reverse: a,
+                iconSize: l,
+                index: N,
+                columnNum: e,
+              })
+            },
+            [y, N],
+          )
+        return Object(m.jsx)(l.n, {
+          className:
+            ' ' +
+            j.b('grid-item', { square: null == S ? void 0 : S.square }) +
+            ' ' +
+            q,
+          style: j.c([
+            ((z = {
+              square: null == S ? void 0 : S.square,
+              gutter: null == S ? void 0 : S.gutter,
+              columnNum: null == S ? void 0 : S.columnNum,
+              index: null == S ? void 0 : S.index,
+            }),
+            (F = 100 / z.columnNum + '%'),
+            Object(h.a)({
+              width: F,
+              'padding-top': z.square ? F : null,
+              'padding-right': Object(x.a)(z.gutter),
+              'margin-top':
+                z.index >= z.columnNum && !z.square
+                  ? Object(x.a)(z.gutter)
+                  : null,
+            })),
+            w,
+          ]),
+          onClick: function onClick(e) {
+            var t
+            _ && Object(d.a)(_, k),
+              null == C ||
+                null === (t = C.onClick) ||
+                void 0 === t ||
+                t.call(C, e)
+          },
+          children: Object(m.jsx)(l.n, {
+            className:
+              'content-class ' +
+              j.b('grid-item__content', [
+                null == S ? void 0 : S.direction,
+                {
+                  center: null == S ? void 0 : S.center,
+                  square: null == S ? void 0 : S.square,
+                  reverse: null == S ? void 0 : s()(S),
+                  clickable: null == S ? void 0 : S.clickable,
+                  surround:
+                    (null == S ? void 0 : S.border) &&
+                    (null == S ? void 0 : S.gutter),
+                },
+              ]) +
+              ' ' +
+              (null != S && S.border ? 'van-hairline--surround' : ''),
+            style: contentStyle({
+              square: null == S ? void 0 : S.square,
+              gutter: null == S ? void 0 : S.gutter,
+            }),
+            children:
+              C.children ||
+              Object(m.jsxs)(m.Fragment, {
+                children: [
+                  Object(m.jsx)(l.n, {
+                    className: 'van-grid-item__icon icon-class',
+                    children: t
+                      ? Object(m.jsx)(b.b, {
+                          name: t,
+                          color: n,
+                          classPrefix: i,
+                          dot: a,
+                          info: v || g,
+                          size: null == S ? void 0 : S.iconSize,
+                        })
+                      : S.renderIcon,
+                  }),
+                  Object(m.jsx)(l.n, {
+                    className: 'van-grid-item__text text-class',
+                    children: f
+                      ? Object(m.jsx)(l.k, { children: f })
+                      : S.renderText,
+                  }),
+                ],
+              }),
+          }),
+        })
+      }
+    },
+    782: function (e, t, n) {},
+    783: function (e, t, n) {},
+    890: function (e, t, n) {
+      'use strict'
+      n.r(t),
+        n.d(t, 'default', function () {
+          return g
+        })
+      var c = n(39),
+        o = n(40),
+        i = n(175),
+        r = n(66),
+        a = n(65),
+        s = n(91),
+        l = n(64),
+        u = n(587),
+        d = n(588),
+        j = (n(694), n(697)),
+        b = (n(695), n(698)),
+        h = n(115)
+      function Demo() {
+        return Object(h.jsxs)(j.a, {
+          children: [
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+          ],
+        })
+      }
+      function demo2_Demo() {
+        return Object(h.jsx)(j.a, {
+          columnNum: '3',
+          children: Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+        })
+      }
+      n(615)
+      var x = n(616),
+        m = n(10),
+        O = n.n(m)
+      function demo3_Demo() {
+        var e
+        return Object(h.jsx)(j.a, {
+          columnNum: '3',
+          border: !1,
+          children: O()((e = [1, 2, 3])).call(e, function (e, t) {
+            return Object(h.jsx)(b.a, {
+              forItem: 'index',
+              children: Object(h.jsx)(x.a, {
+                style: 'width: 100%; height: 90px;',
+                src: 'https://img.yzcdn.cn/vant/apple-'.concat(t + 1, '.jpg'),
+              }),
+            })
+          }),
+        })
+      }
+      function demo4_Demo() {
+        return Object(h.jsxs)(j.a, {
+          square: !0,
+          iconSize: '48',
+          children: [
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+          ],
+        })
+      }
+      function demo5_Demo() {
+        return Object(h.jsxs)(j.a, {
+          gutter: 10,
+          children: [
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+          ],
+        })
+      }
+      function demo6_Demo() {
+        return Object(h.jsxs)(j.a, {
+          direction: 'horizontal',
+          columnNum: '2',
+          children: [
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+            Object(h.jsx)(b.a, { icon: 'photo-o', text: '文字' }),
+          ],
+        })
+      }
+      function demo7_Demo() {
+        return Object(h.jsxs)(j.a, {
+          clickable: !0,
+          columnNum: '2',
+          children: [
+            Object(h.jsx)(b.a, {
+              icon: 'homeO',
+              linkType: 'navigateTo',
+              url: '/pages/dashboard/index',
+              text: 'Navigate 跳转',
+            }),
+            Object(h.jsx)(b.a, {
+              icon: 'search',
+              linkType: 'reLaunch',
+              url: '/pages/dashboard/index',
+              text: 'ReLaunch 跳转',
+            }),
+          ],
+        })
+      }
+      function demo8_Demo() {
+        return Object(h.jsxs)(j.a, {
+          columnNum: '2',
+          children: [
+            Object(h.jsx)(b.a, { icon: 'home-o', text: '文字', dot: !0 }),
+            Object(h.jsx)(b.a, { icon: 'search', text: '文字', badge: '99+' }),
+          ],
+        })
+      }
+      var g = (function (e) {
+        Object(r.a)(Index, e)
+        var t = Object(a.a)(Index)
+        function Index() {
+          var e
+          return (
+            Object(c.a)(this, Index),
+            (e = t.call(this)),
+            Object(s.a)(Object(i.a)(e), 'state', {}),
+            e
+          )
+        }
+        return (
+          Object(o.a)(Index, [
+            {
+              key: 'render',
+              value: function render() {
+                return Object(h.jsxs)(u.a, {
+                  title: 'Grid 宫格',
+                  className: 'pages-grid-index',
+                  children: [
+                    Object(h.jsx)(d.a, {
+                      title: '基本用法',
+                      padding: !0,
+                      children: Object(h.jsx)(Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '自定义列数',
+                      padding: !0,
+                      children: Object(h.jsx)(demo2_Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '自定义内容',
+                      padding: !0,
+                      children: Object(h.jsx)(demo3_Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '正方形格子',
+                      padding: !0,
+                      children: Object(h.jsx)(demo4_Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '格子间距',
+                      padding: !0,
+                      children: Object(h.jsx)(demo5_Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '内容横排',
+                      padding: !0,
+                      children: Object(h.jsx)(demo6_Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '页面跳转',
+                      padding: !0,
+                      children: Object(h.jsx)(demo7_Demo, {}),
+                    }),
+                    Object(h.jsx)(d.a, {
+                      title: '提示信息',
+                      padding: !0,
+                      children: Object(h.jsx)(demo8_Demo, {}),
+                    }),
+                  ],
+                })
+              },
+            },
+          ]),
+          Index
+        )
+      })(l.Component)
+    },
+  },
+])

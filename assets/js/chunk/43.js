@@ -1,1 +1,1112 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[43],{"575":function(n,e,t){"use strict";t.d(e,"e",(function(){return isPlainObject})),t.d(e,"f",(function(){return isPromise})),t.d(e,"b",(function(){return isDef})),t.d(e,"d",(function(){return isObj})),t.d(e,"a",(function(){return isBoolean})),t.d(e,"c",(function(){return isImageUrl})),t.d(e,"g",(function(){return isVideoUrl}));var c=t(591),r=t.n(c);function isFunction(n){return"function"==typeof n}function isPlainObject(n){return null!==n&&"object"===r()(n)&&!Array.isArray(n)}function isPromise(n){return isPlainObject(n)&&isFunction(n.then)&&isFunction(n.catch)}function isDef(n){return null!=n}function isObj(n){var e=r()(n);return null!==n&&("object"===e||"function"===e)}function isBoolean(n){return"boolean"==typeof n}var i=/\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i,o=/\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i;function isImageUrl(n){return i.test(n)}function isVideoUrl(n){return o.test(n)}},"578":function(n,e,t){"use strict";(function(n){t.d(e,"a",(function(){return Page}));t(590);var c=t(574),r=t(568),i=t(90),o=t(737),a=t(77),l=t(64),s=(t(581),t(115));function Page(e){var t=e.title,u=e.className,f=void 0===u?"":u,d=e.children,b=i.a.useRouter().path;return Object(l.useEffect)((function(){"react"===n.env.LIBRARY_ENV?document.body.scrollTop=document.documentElement.scrollTop=0:Object(o.a)({"scrollTop":0})}),[b]),i.a.useShareAppMessage((function(){return{"title":"AntM 组件库演示","path":b}})),Object(s.jsxs)(r.n,{"className":"demo-page ".concat(f),"children":[Object(s.jsxs)(r.n,{"className":"demo-nav","children":[Object(s.jsx)(c.b,{"name":"arrow-left","className":"demo-nav__back","onClick":function onClick(){return Object(a.d)()}}),Object(s.jsxs)(r.n,{"className":"demo-nav__title","children":[t," "]})]}),d]})}}).call(this,t(236))},"579":function(n,e,t){"use strict";t.d(e,"a",(function(){return u}));var c=t(39),r=t(40),i=t(66),o=t(65),a=t(568),l=t(64),s=(t(582),t(115)),u=function(n){Object(i.a)(Index,n);var e=Object(o.a)(Index);function Index(){return Object(c.a)(this,Index),e.call(this)}return Object(r.a)(Index,[{"key":"render","value":function render(){var n=this.props,e=n.padding,t=n.title,c=n.card;return Object(s.jsxs)(a.n,{"className":"custom-class demo-block van-clearfix "+(e?"demo-block--padding":""),"children":[t&&Object(s.jsx)(a.n,{"className":"demo-block__title","children":t}),c?Object(s.jsx)(a.n,{"className":"demo-block__card","children":this.props.children}):this.props.children]})}}]),Index}(l.Component)},"581":function(n,e,t){},"582":function(n,e,t){},"586":function(n,e,t){"use strict";t.d(e,"a",(function(){return Loading}));var c=t(116),r=t.n(c),i=t(55),o=t.n(i),a=t(572),l=t.n(a),s=t(577),u=t.n(s),f=t(573),d=t.n(f),b=t(595),j=t.n(b),p=t(10),v=t.n(p),h=t(24),m=t.n(h),x=t(571),g=t.n(x),O=t(32),y=t.n(O),S=t(570),k=t.n(S),_=t(27),I=t.n(_),N=t(173),T=t.n(N),w=t(568),z=t(64),C=t(569),P=t(580);function textStyle(n){return Object(C.c)({"font-size":Object(P.a)(n.textSize)})}var R=t(115),E=["vertical","type","color","size","textSize","className","children","style"];function ownKeys(n,e){var t=m()(n);if(g.a){var c=g()(n);e&&(c=y()(c).call(c,(function(e){return k()(n,e).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(n){for(var e=1;e<arguments.length;e++){var t,c=null!=arguments[e]?arguments[e]:{};if(e%2)I()(t=ownKeys(Object(c),!0)).call(t,(function(e){l()(n,e,c[e])}));else if(T.a)r()(n,T()(c));else{var i;I()(i=ownKeys(Object(c))).call(i,(function(e){o()(n,e,k()(c,e))}))}}return n}function Loading(n){var e,t=n.vertical,c=n.type,r=void 0===c?"circular":c,i=n.color,o=n.size,a=n.textSize,l=n.className,s=n.children,f=n.style,b=d()(n,E),p=Object(z.useState)(j()({"length":12})),h=u()(p,1)[0];return Object(R.jsxs)(w.n,_objectSpread(_objectSpread({"className":" "+C.b("loading",{"vertical":t})+" "+l,"style":C.c([f])},b),{},{"children":[Object(R.jsx)(w.n,{"className":"van-loading__spinner van-loading__spinner--"+r,"style":(e={"color":i,"size":o},Object(C.c)({"color":e.color,"width":Object(P.a)(e.size),"height":Object(P.a)(e.size)})),"children":"spinner"===r&&Object(R.jsx)(w.a,{"children":v()(h).call(h,(function(n,e){return Object(R.jsx)(w.n,{"className":"van-loading__dot"},"van-loading__dot_".concat(e))}))})}),Object(R.jsx)(w.n,{"className":"van-loading__text","style":textStyle({"textSize":a}),"children":s})]}))}e.b=Loading},"587":function(n,e,t){},"588":function(n,e,t){"use strict";t.d(e,"a",(function(){return Button}));var c=t(116),r=t.n(c),i=t(55),o=t.n(i),a=t(24),l=t.n(a),s=t(571),u=t.n(s),f=t(32),d=t.n(f),b=t(570),j=t.n(b),p=t(27),v=t.n(p),h=t(173),m=t.n(h),x=t(572),g=t.n(x),O=t(573),y=t.n(O),S=t(90),k=t(568),_=t(569),I=t(574),N=t(586),T=t(28),w=t.n(T),z=t(583);function rootStyle(n){var e;if(!n.color)return"";var t={"color":n.plain?n.color:"#fff","background":n.plain?null:n.color};return-1!==w()(e=n.color).call(e,"gradient")?t.border=0:t["border-color"]=n.color,Object(z.a)([t])}var C=t(115),P=["type","size","block","round","plain","square","loading","disabled","hairline","color","loadingSize","loadingType","loadingText","icon","classPrefix","onClick","children","style","className"];function ownKeys(n,e){var t=l()(n);if(u.a){var c=u()(n);e&&(c=d()(c).call(c,(function(e){return j()(n,e).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(n){for(var e=1;e<arguments.length;e++){var t,c=null!=arguments[e]?arguments[e]:{};if(e%2)v()(t=ownKeys(Object(c),!0)).call(t,(function(e){g()(n,e,c[e])}));else if(m.a)r()(n,m()(c));else{var i;v()(i=ownKeys(Object(c))).call(i,(function(e){o()(n,e,j()(c,e))}))}}return n}var R=!1,E=10;if(!R)var A=setInterval((function(){if(--E>0)for(var n=document.getElementsByTagName("style")||[],e=n.length-1;e>=0;e--){var t=n[e],c=t.innerHTML;if(c&&/^taro-button-core{/.test(c)){t.remove(),R=!0,A&&clearInterval(A);break}}else A&&clearInterval(A)}),200);function Button(n){var e,t=n.type,c=void 0===t?"default":t,r=n.size,i=void 0===r?"normal":r,o=n.block,a=n.round,l=n.plain,s=n.square,u=n.loading,f=n.disabled,d=n.hairline,b=n.color,j=n.loadingSize,p=void 0===j?S.a.pxTransform(40):j,v=n.loadingType,h=void 0===v?"circular":v,m=n.loadingText,x=n.icon,g=n.classPrefix,O=void 0===g?"van-icon":g,T=n.onClick,w=n.children,z=n.style,R=n.className,E=y()(n,P);return Object(C.jsx)(k.b,_objectSpread(_objectSpread({"className":" "+_.b("button",[c,i,{"block":o,"round":a,"plain":l,"square":s,"loading":u,"disabled":f,"hairline":d,"unclickable":f||u}])+" "+(d?"van-hairline--surround":"")+" ".concat(R||""),"hoverClass":"van-button--active hover-class","style":_.c([rootStyle({"plain":l,"color":b}),z]),"onClick":f||u?void 0:T},E),{},{"children":u?Object(C.jsxs)(k.n,{"style":"display: flex","children":[Object(C.jsx)(N.a,{"className":"loading-class","size":p,"type":h,"color":(e={"type":c,"color":b,"plain":l},e.plain?e.color?e.color:"#c9c9c9":"default"===e.type?"#c9c9c9":"#fff")}),m&&Object(C.jsx)(k.n,{"className":"van-button__loading-text","children":m})]}):Object(C.jsxs)(k.a,{"children":[x&&Object(C.jsx)(I.a,{"size":"1.2em","name":x,"classPrefix":O,"className":"van-button__icon","style":"line-height: inherit;"}),Object(C.jsx)(k.n,{"className":"van-button__text","children":w})]})}))}e.b=Button},"593":function(n,e,t){"use strict";t.d(e,"g",(function(){return range})),t.d(e,"d",(function(){return getSystemInfoSync})),t.d(e,"a",(function(){return addUnit})),t.d(e,"h",(function(){return requestAnimationFrame})),t.d(e,"f",(function(){return pickExclude})),t.d(e,"c",(function(){return getRect})),t.d(e,"b",(function(){return getAllRect})),t.d(e,"i",(function(){return toPromise}));var c,r=t(148),i=t.n(r),o=t(24),a=t.n(o),l=t(21),s=t.n(l),u=t(5),f=t.n(u),d=(t(567),t(863)),b=(t(866),t(90)),j=t(790),p=(t(77),t(575));t(596);function range(n,e,t){return Math.min(Math.max(n,e),t)}function getSystemInfoSync(){return null==c&&(c=Object(d.a)()),c}function addUnit(n){if(Object(p.b)(n))return/^-?\d+(\.\d+)?$/.test(""+n)?b.a.pxTransform(n):n}function requestAnimationFrame(n){return"devtools"===getSystemInfoSync().platform?setTimeout((function(){n()}),33.333333333333336):Object(j.a)().selectViewport().boundingClientRect().exec((function(){n()}))}function pickExclude(n,e){var t;return Object(p.e)(n)?i()(t=a()(n)).call(t,(function(t,c){return s()(e).call(e,c)||(t[c]=n[c]),t}),{}):{}}function getRect(n,e){return new f.a((function(t){var c=Object(j.a)();n&&(c=c.in(n)),c.select(e).boundingClientRect().exec((function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[];return t(n[0])}))}))}function getAllRect(n,e){return new f.a((function(t){var c=Object(j.a)();n&&(c=c.in(n)),c.selectAll(e).boundingClientRect().exec((function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[];return t(n[0])}))}))}function toPromise(n){return Object(p.f)(n)?n:f.a.resolve(n)}t.d(e,"e",(function(){return p.b}))},"594":function(n,e,t){"use strict";t(576),t(587),t(584),t(585),t(598)},"596":function(n,e,t){"use strict";t.d(e,"a",(function(){return canIUseModel})),t.d(e,"b",(function(){return canIUseNextTick}));var c,r=t(117),i=t.n(r),o=t(863),a=t(864);t(865);function gte(n){return function compareVersion(n,e){n=n.split("."),e=e.split(".");for(var t=Math.max(n.length,e.length);n.length<t;)n.push("0");for(;e.length<t;)e.push("0");for(var c=0;c<t;c++){var r=i()(n[c],10),o=i()(e[c],10);if(r>o)return 1;if(r<o)return-1}return 0}(function getSystemInfoSync(){return null==c&&(c=Object(o.a)()),c}().SDKVersion,n)>=0}function canIUseModel(){return gte("2.9.3")}function canIUseNextTick(){return Object(a.a)("nextTick")}},"598":function(n,e,t){},"703":function(n,e,t){"use strict";t.d(e,"a",(function(){return usePageScroll}));var c=t(64),r=t(90);function usePageScroll(n){Object(c.useEffect)((function(){var e=document;function listener(t){if(t.target){var c={"scrollTop":e.scrollingElement.scrollTop,"scrollLeft":e.scrollingElement.scrollLeft};n(c)}}return e.addEventListener("scroll",listener),function(){e.removeEventListener("scroll",listener)}})),r.a.usePageScroll((function(n){}))}},"717":function(n,e,t){"use strict";t.d(e,"a",(function(){return Sticky}));var c=t(116),r=t.n(c),i=t(55),o=t.n(i),a=t(572),l=t.n(a),s=t(573),u=t.n(s),f=t(577),d=t.n(f),b=t(5),j=t.n(b),p=t(148),v=t.n(p),h=t(24),m=t.n(h),x=t(571),g=t.n(x),O=t(32),y=t.n(O),S=t(570),k=t.n(S),_=t(27),I=t.n(_),N=t(173),T=t.n(N),w=t(64),z=t(568),C=t(569),P=t(593),R=t(575),E=t(703),A=t(583);function wrapStyle(n){return Object(A.a)({"transform":n.transform?"translate3d(0, "+n.transform+"px, 0)":"","top":n.fixed?n.offsetTop+"px":"","z-index":n.zIndex})}var K=t(115),U=["zIndex","offsetTop","scrollTop","disabled","container","onScroll","style","className","children"];function ownKeys(n,e){var t=m()(n);if(g.a){var c=g()(n);e&&(c=y()(c).call(c,(function(e){return k()(n,e).enumerable}))),t.push.apply(t,c)}return t}function _objectSpread(n){for(var e=1;e<arguments.length;e++){var t,c=null!=arguments[e]?arguments[e]:{};if(e%2)I()(t=ownKeys(Object(c),!0)).call(t,(function(e){l()(n,e,c[e])}));else if(T.a)r()(n,T()(c));else{var i;I()(i=ownKeys(Object(c))).call(i,(function(e){o()(n,e,k()(c,e))}))}}return n}function Sticky(n){var e,t=Object(w.useRef)(+new Date),c=Object(w.useState)({"height":0,"fixed":!1,"transform":0}),r=d()(c,2),i=r[0],o=r[1],a=n.zIndex,l=n.offsetTop,s=void 0===l?0:l,f=n.scrollTop,b=n.disabled,p=n.container,h=n.onScroll,x=n.style,g=n.className,O=n.children,y=u()(n,U),S=Object(w.useRef)({}),k=Object(w.useCallback)((function(){var n=null==p?void 0:p();return new j.a((function(e){return null==n?void 0:n.boundingClientRect().exec((function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[];return e(n[0])}))}))}),[p]),_=Object(w.useCallback)((function(n){var e,t=v()(e=m()(n)).call(e,(function(e,t){return n[t]!==i[t]&&(e[t]=n[t]),e}),{});m()(t).length>0&&o((function(n){return _objectSpread(_objectSpread({},n),t)})),null==h||h({"detail":{"scrollTop":S.current.scrollTop,"isFixed":n.fixed||i.fixed}})}),[h,i]),I=Object(w.useCallback)((function(n){b?_({"fixed":!1,"transform":0}):(S.current.scrollTop=n||S.current.scrollTop,"function"!=typeof p?Object(P.c)(null,".sticky-com-index".concat(t.current)).then((function(n){Object(R.b)(n)&&(s>=n.top?_({"fixed":!0,"height":n.height}):_({"fixed":!1}))})):j.a.all([Object(P.c)(null,".sticky-com-index".concat(t.current)),k()]).then((function(n){var e=d()(n,2),t=e[0],c=e[1];t&&c&&(s+t.height>c.height+c.top?_({"fixed":!1,"transform":c.height-t.height}):s>=t.top?_({"fixed":!0,"height":t.height,"transform":0}):_({"fixed":!1,"transform":0}))})).catch((function(n){console.log(n)})))}),[p,b,k,s,_]);return Object(w.useEffect)((function(){I(f)}),[f,p,b,s]),Object(E.a)((function(n){I(n.scrollTop)})),Object(K.jsx)(z.n,_objectSpread(_objectSpread({"className":"sticky-com-index".concat(t.current," ")+" van-sticky "+(g||""),"style":C.c([(e={"fixed":i.fixed,"height":i.height,"zIndex":a},Object(A.a)({"height":e.fixed?e.height+"px":"","z-index":e.zIndex})),x])},y),{},{"children":Object(K.jsx)(z.n,{"className":C.b("sticky-wrap",{"fixed":i.fixed})+" ".concat(g||""),"style":C.c([wrapStyle({"fixed":i.fixed,"offsetTop":s,"transform":i.transform,"zIndex":a}),x]),"children":O})}))}e.b=Sticky},"721":function(n,e,t){},"925":function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return p}));var c=t(39),r=t(40),i=t(175),o=t(66),a=t(65),l=t(91),s=t(64),u=t(578),f=t(579),d=(t(576),t(721),t(717)),b=(t(594),t(588)),j=t(115);function Demo(){return Object(j.jsx)(d.b,{"children":Object(j.jsx)(b.b,{"type":"primary","style":"margin-left: 15px","children":"基础用法"})})}function demo2_Demo(){return Object(j.jsx)(d.b,{"offsetTop":50,"children":Object(j.jsx)(b.b,{"type":"primary","children":"吸顶距离"})})}var p=function(n){Object(o.a)(Index,n);var e=Object(a.a)(Index);function Index(){var n;return Object(c.a)(this,Index),n=e.call(this),Object(l.a)(Object(i.a)(n),"state",{}),n}return Object(r.a)(Index,[{"key":"render","value":function render(){return Object(j.jsxs)(u.a,{"title":"Sticky 粘性布局","className":"pages-sticky-index","children":[Object(j.jsx)(f.a,{"title":"基础用法","padding":!0,"children":Object(j.jsx)(Demo,{})}),Object(j.jsx)(f.a,{"title":"吸顶距离","padding":!0,"children":Object(j.jsx)(demo2_Demo,{})})]})}}]),Index}(s.Component)}}]);
+/*! For license information please see 43.js.LICENSE.txt */
+;(window.webpackJsonp = window.webpackJsonp || []).push([
+  [43],
+  {
+    575: function (e, n, t) {
+      'use strict'
+      t.d(n, 'e', function () {
+        return isPlainObject
+      }),
+        t.d(n, 'f', function () {
+          return isPromise
+        }),
+        t.d(n, 'b', function () {
+          return isDef
+        }),
+        t.d(n, 'd', function () {
+          return isObj
+        }),
+        t.d(n, 'a', function () {
+          return isBoolean
+        }),
+        t.d(n, 'c', function () {
+          return isImageUrl
+        }),
+        t.d(n, 'g', function () {
+          return isVideoUrl
+        })
+      var r = t(586),
+        c = t.n(r)
+      function isFunction(e) {
+        return 'function' == typeof e
+      }
+      function isPlainObject(e) {
+        return null !== e && 'object' === c()(e) && !Array.isArray(e)
+      }
+      function isPromise(e) {
+        return isPlainObject(e) && isFunction(e.then) && isFunction(e.catch)
+      }
+      function isDef(e) {
+        return null != e
+      }
+      function isObj(e) {
+        var n = c()(e)
+        return null !== e && ('object' === n || 'function' === n)
+      }
+      function isBoolean(e) {
+        return 'boolean' == typeof e
+      }
+      var o = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i,
+        i = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i
+      function isImageUrl(e) {
+        return o.test(e)
+      }
+      function isVideoUrl(e) {
+        return i.test(e)
+      }
+    },
+    590: function (e, n, t) {
+      'use strict'
+      t.d(n, 'g', function () {
+        return range
+      }),
+        t.d(n, 'd', function () {
+          return getSystemInfoSync
+        }),
+        t.d(n, 'a', function () {
+          return addUnit
+        }),
+        t.d(n, 'h', function () {
+          return requestAnimationFrame
+        }),
+        t.d(n, 'f', function () {
+          return pickExclude
+        }),
+        t.d(n, 'c', function () {
+          return getRect
+        }),
+        t.d(n, 'b', function () {
+          return getAllRect
+        }),
+        t.d(n, 'i', function () {
+          return toPromise
+        })
+      var r,
+        c = t(148),
+        o = t.n(c),
+        i = t(24),
+        a = t.n(i),
+        s = t(21),
+        u = t.n(s),
+        l = t(5),
+        f = t.n(l),
+        d = (t(567), t(863)),
+        b = (t(866), t(90)),
+        j = t(790),
+        m = (t(77), t(575))
+      t(593)
+      function range(e, n, t) {
+        return Math.min(Math.max(e, n), t)
+      }
+      function getSystemInfoSync() {
+        return null == r && (r = Object(d.a)()), r
+      }
+      function addUnit(e) {
+        if (Object(m.b)(e))
+          return /^-?\d+(\.\d+)?$/.test('' + e) ? b.a.pxTransform(e) : e
+      }
+      function requestAnimationFrame(e) {
+        return 'devtools' === getSystemInfoSync().platform
+          ? setTimeout(function () {
+              e()
+            }, 33.333333333333336)
+          : Object(j.a)()
+              .selectViewport()
+              .boundingClientRect()
+              .exec(function () {
+                e()
+              })
+      }
+      function pickExclude(e, n) {
+        var t
+        return Object(m.e)(e)
+          ? o()((t = a()(e))).call(
+              t,
+              function (t, r) {
+                return u()(n).call(n, r) || (t[r] = e[r]), t
+              },
+              {},
+            )
+          : {}
+      }
+      function getRect(e, n) {
+        return new f.a(function (t) {
+          var r = Object(j.a)()
+          e && (r = r.in(e)),
+            r
+              .select(n)
+              .boundingClientRect()
+              .exec(function () {
+                var e =
+                  arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : []
+                return t(e[0])
+              })
+        })
+      }
+      function getAllRect(e, n) {
+        return new f.a(function (t) {
+          var r = Object(j.a)()
+          e && (r = r.in(e)),
+            r
+              .selectAll(n)
+              .boundingClientRect()
+              .exec(function () {
+                var e =
+                  arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : []
+                return t(e[0])
+              })
+        })
+      }
+      function toPromise(e) {
+        return Object(m.f)(e) ? e : f.a.resolve(e)
+      }
+      t.d(n, 'e', function () {
+        return m.b
+      })
+    },
+    593: function (e, n, t) {
+      'use strict'
+      t.d(n, 'a', function () {
+        return canIUseModel
+      }),
+        t.d(n, 'b', function () {
+          return canIUseNextTick
+        })
+      var r,
+        c = t(117),
+        o = t.n(c),
+        i = t(863),
+        a = t(864)
+      t(865)
+      function gte(e) {
+        return (
+          (function compareVersion(e, n) {
+            ;(e = e.split('.')), (n = n.split('.'))
+            for (var t = Math.max(e.length, n.length); e.length < t; )
+              e.push('0')
+            for (; n.length < t; ) n.push('0')
+            for (var r = 0; r < t; r++) {
+              var c = o()(e[r], 10),
+                i = o()(n[r], 10)
+              if (c > i) return 1
+              if (c < i) return -1
+            }
+            return 0
+          })(
+            (function getSystemInfoSync() {
+              return null == r && (r = Object(i.a)()), r
+            })().SDKVersion,
+            e,
+          ) >= 0
+        )
+      }
+      function canIUseModel() {
+        return gte('2.9.3')
+      }
+      function canIUseNextTick() {
+        return Object(a.a)('nextTick')
+      }
+    },
+    615: function (e, n, t) {
+      'use strict'
+      t(574), t(580), t(581), t(664)
+    },
+    616: function (e, n, t) {
+      'use strict'
+      var r = t(24),
+        c = t.n(r),
+        o = t(571),
+        i = t.n(o),
+        a = t(32),
+        s = t.n(a),
+        u = t(570),
+        l = t.n(u),
+        f = t(27),
+        d = t.n(f),
+        b = t(173),
+        j = t.n(b),
+        m = t(116),
+        h = t.n(m),
+        p = t(55),
+        v = t.n(p),
+        g = t(572),
+        x = t.n(g),
+        y = t(576),
+        O = t.n(y),
+        _ = t(573),
+        S = t.n(_),
+        C = t(64),
+        w = t(568),
+        I = t(569),
+        $ = t(577),
+        k = t(578)
+      var F = {
+        none: 'scaleToFill',
+        fill: 'scaleToFill',
+        cover: 'aspectFill',
+        contain: 'aspectFit',
+        widthFix: 'widthFix',
+        heightFix: 'heightFix',
+        scaleDown: 'aspectFit',
+      }
+      function mode(e) {
+        return F[e]
+      }
+      var N = t(115),
+        M = [
+          'src',
+          'round',
+          'width',
+          'height',
+          'radius',
+          'lazyLoad',
+          'showMenuByLongpress',
+          'fit',
+          'showError',
+          'showLoading',
+          'className',
+          'style',
+          'renderError',
+          'renderLoading',
+        ]
+      function ownKeys(e, n) {
+        var t = c()(e)
+        if (i.a) {
+          var r = i()(e)
+          n &&
+            (r = s()(r).call(r, function (n) {
+              return l()(e, n).enumerable
+            })),
+            t.push.apply(t, r)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            r,
+            c = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? d()((t = ownKeys(Object(c), !0))).call(t, function (n) {
+                x()(e, n, c[n])
+              })
+            : j.a
+            ? h()(e, j()(c))
+            : d()((r = ownKeys(Object(c)))).call(r, function (n) {
+                v()(e, n, l()(c, n))
+              })
+        }
+        return e
+      }
+      n.a = function Image(e) {
+        var n = e.src,
+          t = e.round,
+          r = e.width,
+          c = e.height,
+          o = e.radius,
+          i = e.lazyLoad,
+          a = e.showMenuByLongpress,
+          s = e.fit,
+          u = e.showError,
+          l = void 0 === u || u,
+          f = e.showLoading,
+          d = void 0 === f || f,
+          b = e.className,
+          j = e.style,
+          m = e.renderError,
+          h = e.renderLoading,
+          p = S()(e, M),
+          v = Object(C.useState)(),
+          g = O()(v, 2),
+          x = g[0],
+          y = g[1],
+          _ = Object(C.useState)(!1),
+          F = O()(_, 2),
+          E = F[0],
+          P = F[1]
+        Object(C.useEffect)(
+          function () {
+            void 0 === x && y(!0), P(!1)
+          },
+          [x],
+        )
+        var D,
+          L = Object(C.useCallback)(function () {
+            y(!1)
+          }, []),
+          T = Object(C.useCallback)(function () {
+            P(!0)
+          }, []),
+          K = Object(C.useMemo)(
+            function () {
+              var e = {}
+              return (
+                ('heightFix' !== s && 'widthFix' !== s) ||
+                  (e = {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }),
+                e
+              )
+            },
+            [s],
+          )
+        return Object(N.jsxs)(
+          w.n,
+          _objectSpread(
+            _objectSpread(
+              {
+                style: I.c([
+                  ((D = { width: r, height: c, radius: o }),
+                  Object(I.c)([
+                    {
+                      width: Object(k.a)(D.width),
+                      height: Object(k.a)(D.height),
+                      'border-radius': Object(k.a)(D.radius),
+                    },
+                    D.radius ? 'overflow: hidden' : null,
+                  ])),
+                  j,
+                ]),
+                className: ' ' + I.b('image', { round: t }) + ' ' + b,
+                onClick: p.onClick,
+              },
+              p,
+            ),
+            {},
+            {
+              children: [
+                !E &&
+                  Object(N.jsx)(w.f, {
+                    src: n,
+                    mode: mode(s || 'none'),
+                    lazyLoad: i,
+                    className: 'image-class van-image__img',
+                    showMenuByLongpress: a,
+                    onLoad: L,
+                    onError: T,
+                    style: K,
+                  }),
+                x &&
+                  d &&
+                  Object(N.jsx)(w.n, {
+                    className: 'loading-class van-image__loading',
+                    children:
+                      h ||
+                      Object(N.jsx)($.b, {
+                        name: 'photo',
+                        className: 'van-image__loading-icon',
+                      }),
+                  }),
+                E &&
+                  l &&
+                  Object(N.jsx)(w.n, {
+                    className: 'error-class van-image__error',
+                    children:
+                      m ||
+                      Object(N.jsx)($.b, {
+                        name: 'photo-fail',
+                        className: 'van-image__error-icon',
+                      }),
+                  }),
+              ],
+            },
+          ),
+        )
+      }
+    },
+    625: function (e, n, t) {
+      'use strict'
+      var r = t(626)
+      Object.defineProperty(n, '__esModule', { value: !0 }),
+        (n.default = function toArray(e) {
+          var n =
+              arguments.length > 1 && void 0 !== arguments[1]
+                ? arguments[1]
+                : {},
+            t = []
+          return (
+            c.default.Children.forEach(e, function (e) {
+              ;(null != e || n.keepEmpty) &&
+                (Array.isArray(e)
+                  ? (t = t.concat(toArray(e)))
+                  : (0, o.isFragment)(e) && e.props
+                  ? (t = t.concat(toArray(e.props.children, n)))
+                  : t.push(e))
+            }),
+            t
+          )
+        })
+      var c = r(t(64)),
+        o = t(627)
+    },
+    626: function (e, n) {
+      ;(e.exports = function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e }
+      }),
+        (e.exports.__esModule = !0),
+        (e.exports.default = e.exports)
+    },
+    627: function (e, n, t) {
+      'use strict'
+      e.exports = t(628)
+    },
+    628: function (e, n, t) {
+      'use strict'
+      var r = 'function' == typeof Symbol && Symbol.for,
+        c = r ? Symbol.for('react.element') : 60103,
+        o = r ? Symbol.for('react.portal') : 60106,
+        i = r ? Symbol.for('react.fragment') : 60107,
+        a = r ? Symbol.for('react.strict_mode') : 60108,
+        s = r ? Symbol.for('react.profiler') : 60114,
+        u = r ? Symbol.for('react.provider') : 60109,
+        l = r ? Symbol.for('react.context') : 60110,
+        f = r ? Symbol.for('react.async_mode') : 60111,
+        d = r ? Symbol.for('react.concurrent_mode') : 60111,
+        b = r ? Symbol.for('react.forward_ref') : 60112,
+        j = r ? Symbol.for('react.suspense') : 60113,
+        m = r ? Symbol.for('react.suspense_list') : 60120,
+        h = r ? Symbol.for('react.memo') : 60115,
+        p = r ? Symbol.for('react.lazy') : 60116,
+        v = r ? Symbol.for('react.block') : 60121,
+        g = r ? Symbol.for('react.fundamental') : 60117,
+        x = r ? Symbol.for('react.responder') : 60118,
+        y = r ? Symbol.for('react.scope') : 60119
+      function z(e) {
+        if ('object' == typeof e && null !== e) {
+          var n = e.$$typeof
+          switch (n) {
+            case c:
+              switch ((e = e.type)) {
+                case f:
+                case d:
+                case i:
+                case s:
+                case a:
+                case j:
+                  return e
+                default:
+                  switch ((e = e && e.$$typeof)) {
+                    case l:
+                    case b:
+                    case p:
+                    case h:
+                    case u:
+                      return e
+                    default:
+                      return n
+                  }
+              }
+            case o:
+              return n
+          }
+        }
+      }
+      function A(e) {
+        return z(e) === d
+      }
+      ;(n.AsyncMode = f),
+        (n.ConcurrentMode = d),
+        (n.ContextConsumer = l),
+        (n.ContextProvider = u),
+        (n.Element = c),
+        (n.ForwardRef = b),
+        (n.Fragment = i),
+        (n.Lazy = p),
+        (n.Memo = h),
+        (n.Portal = o),
+        (n.Profiler = s),
+        (n.StrictMode = a),
+        (n.Suspense = j),
+        (n.isAsyncMode = function (e) {
+          return A(e) || z(e) === f
+        }),
+        (n.isConcurrentMode = A),
+        (n.isContextConsumer = function (e) {
+          return z(e) === l
+        }),
+        (n.isContextProvider = function (e) {
+          return z(e) === u
+        }),
+        (n.isElement = function (e) {
+          return 'object' == typeof e && null !== e && e.$$typeof === c
+        }),
+        (n.isForwardRef = function (e) {
+          return z(e) === b
+        }),
+        (n.isFragment = function (e) {
+          return z(e) === i
+        }),
+        (n.isLazy = function (e) {
+          return z(e) === p
+        }),
+        (n.isMemo = function (e) {
+          return z(e) === h
+        }),
+        (n.isPortal = function (e) {
+          return z(e) === o
+        }),
+        (n.isProfiler = function (e) {
+          return z(e) === s
+        }),
+        (n.isStrictMode = function (e) {
+          return z(e) === a
+        }),
+        (n.isSuspense = function (e) {
+          return z(e) === j
+        }),
+        (n.isValidElementType = function (e) {
+          return (
+            'string' == typeof e ||
+            'function' == typeof e ||
+            e === i ||
+            e === d ||
+            e === s ||
+            e === a ||
+            e === j ||
+            e === m ||
+            ('object' == typeof e &&
+              null !== e &&
+              (e.$$typeof === p ||
+                e.$$typeof === h ||
+                e.$$typeof === u ||
+                e.$$typeof === l ||
+                e.$$typeof === b ||
+                e.$$typeof === g ||
+                e.$$typeof === x ||
+                e.$$typeof === y ||
+                e.$$typeof === v))
+          )
+        }),
+        (n.typeOf = z)
+    },
+    664: function (e, n, t) {},
+    844: function (e, n, t) {},
+    845: function (e, n, t) {},
+    885: function (e, n, t) {
+      'use strict'
+      t.r(n),
+        t.d(n, 'default', function () {
+          return ee
+        })
+      var r = t(39),
+        c = t(40),
+        o = t(175),
+        i = t(66),
+        a = t(65),
+        s = t(91),
+        u = t(64),
+        l = t.n(u),
+        f = t(587),
+        d = t(588),
+        b = (t(574), t(844), t(573)),
+        j = t.n(b),
+        m = t(576),
+        h = t.n(m),
+        p = t(572),
+        v = t.n(p),
+        g = t(32),
+        x = t.n(g),
+        y = t(10),
+        O = t.n(y),
+        _ = t(24),
+        S = t.n(_),
+        C = t(571),
+        w = t.n(C),
+        I = t(570),
+        $ = t.n(I),
+        k = t(27),
+        F = t.n(k),
+        N = t(173),
+        M = t.n(N),
+        E = t(116),
+        P = t.n(E),
+        D = t(55),
+        L = t.n(D),
+        T = t(567),
+        K = t(625),
+        R = t.n(K),
+        U = t(568),
+        B = t(569),
+        V = t(590),
+        q = t(115),
+        J = [
+          'active',
+          'activeColor',
+          'inactiveColor',
+          'border',
+          'fixed',
+          'safeAreaInsetBottom',
+          'zIndex',
+          'placeholder',
+          'onChange',
+          'style',
+          'className',
+          'children',
+        ]
+      function ownKeys(e, n) {
+        var t = S()(e)
+        if (w.a) {
+          var r = w()(e)
+          n &&
+            (r = x()(r).call(r, function (n) {
+              return $()(e, n).enumerable
+            })),
+            t.push.apply(t, r)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            r,
+            c = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? F()((t = ownKeys(Object(c), !0))).call(t, function (n) {
+                v()(e, n, c[n])
+              })
+            : M.a
+            ? P()(e, M()(c))
+            : F()((r = ownKeys(Object(c)))).call(r, function (n) {
+                L()(e, n, $()(c, n))
+              })
+        }
+        return e
+      }
+      var G = function Tabbar(e) {
+          var n = Object(u.useState)({ height: 50, current: 0 }),
+            t = h()(n, 2),
+            r = t[0],
+            c = t[1],
+            o = r.height,
+            i = r.current,
+            a = e.active,
+            s = e.activeColor,
+            l = e.inactiveColor,
+            f = e.border,
+            d = void 0 === f || f,
+            b = e.fixed,
+            m = void 0 === b || b,
+            p = e.safeAreaInsetBottom,
+            v = void 0 === p || p,
+            g = e.zIndex,
+            y = e.placeholder,
+            _ = e.onChange,
+            S = e.style,
+            C = e.className,
+            w = e.children,
+            I = j()(e, J),
+            $ = Object(u.useCallback)(
+              function (e) {
+                c(function (n) {
+                  return _objectSpread(_objectSpread({}, n), {}, { current: e })
+                }),
+                  null == _ || _({ detail: e })
+              },
+              [_],
+            ),
+            k = (function parseTabList(e) {
+              var n, t
+              return x()(
+                (n = O()((t = R()(e))).call(t, function (e) {
+                  return Object(u.isValidElement)(e)
+                    ? _objectSpread(
+                        _objectSpread(
+                          { key: void 0 !== e.key ? String(e.key) : void 0 },
+                          e.props,
+                        ),
+                        {},
+                        { node: e },
+                      )
+                    : null
+                })),
+              ).call(n, function (e) {
+                return e
+              })
+            })(w),
+            F = O()(k).call(k, function (e, n) {
+              return Object(u.cloneElement)(e.node, {
+                key: n,
+                index: n,
+                active: i,
+                activeColor: s,
+                inactiveColor: l,
+                onChange: $,
+              })
+            })
+          return (
+            Object(u.useEffect)(
+              function () {
+                c(function (e) {
+                  return _objectSpread(_objectSpread({}, e), {}, { current: a })
+                })
+              },
+              [a],
+            ),
+            Object(u.useEffect)(
+              function () {
+                m &&
+                  y &&
+                  Object(T.a)(function () {
+                    Object(V.c)(null, '.van-tabbar').then(function (e) {
+                      c(function (n) {
+                        return _objectSpread(
+                          _objectSpread({}, n),
+                          {},
+                          { height: e.height },
+                        )
+                      })
+                    })
+                  })
+              },
+              [m, y],
+            ),
+            Object(q.jsxs)(U.a, {
+              children: [
+                Object(q.jsx)(
+                  U.n,
+                  _objectSpread(
+                    _objectSpread(
+                      {
+                        className:
+                          (d ? 'van-hairline--top-bottom' : '') +
+                          ' ' +
+                          B.b('tabbar', { fixed: m, safe: v }) +
+                          ' custom-class' +
+                          ' '.concat(C || ''),
+                        style: B.c([g ? 'zIndex: ' + g : '', S]),
+                      },
+                      I,
+                    ),
+                    {},
+                    { children: F },
+                  ),
+                ),
+                m && y && Object(q.jsx)(U.n, { style: 'height: ' + o + 'px;' }),
+              ],
+            })
+          )
+        },
+        H = (t(580), t(581), t(845), t(577)),
+        Q = t(657),
+        W = [
+          'icon',
+          'name',
+          'iconPrefix',
+          'dot',
+          'info',
+          'renderIconActive',
+          'renderIcon',
+          'index',
+          'active',
+          'activeColor',
+          'inactiveColor',
+          'onChange',
+          'children',
+          'style',
+          'className',
+          'onClick',
+        ]
+      function tabbar_item_ownKeys(e, n) {
+        var t = S()(e)
+        if (w.a) {
+          var r = w()(e)
+          n &&
+            (r = x()(r).call(r, function (n) {
+              return $()(e, n).enumerable
+            })),
+            t.push.apply(t, r)
+        }
+        return t
+      }
+      function tabbar_item_objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            r,
+            c = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? F()((t = tabbar_item_ownKeys(Object(c), !0))).call(
+                t,
+                function (n) {
+                  v()(e, n, c[n])
+                },
+              )
+            : M.a
+            ? P()(e, M()(c))
+            : F()((r = tabbar_item_ownKeys(Object(c)))).call(r, function (n) {
+                L()(e, n, $()(c, n))
+              })
+        }
+        return e
+      }
+      var X = function TabbarItem(e) {
+          var n = e.icon,
+            t = e.name,
+            r = e.iconPrefix,
+            c = void 0 === r ? 'van-icon' : r,
+            o = e.dot,
+            i = e.info,
+            a = e.renderIconActive,
+            s = e.renderIcon,
+            u = e.index,
+            l = e.active,
+            f = e.activeColor,
+            d = e.inactiveColor,
+            b = e.onChange,
+            m = e.children,
+            h = e.style,
+            p = e.className,
+            v = e.onClick,
+            g = j()(e, W)
+          return b
+            ? Object(q.jsxs)(
+                U.n,
+                tabbar_item_objectSpread(
+                  tabbar_item_objectSpread(
+                    {
+                      className:
+                        B.b('tabbar-item', {
+                          active: l === (null != t ? t : u),
+                        }) +
+                        ' custom-class' +
+                        ' '.concat(p || ''),
+                      style: B.c([
+                        { color: l === (null != t ? t : u) ? f : d },
+                        h,
+                      ]),
+                    },
+                    g,
+                  ),
+                  {},
+                  {
+                    onClick: function _click() {
+                      if (b) {
+                        var e = null != t ? t : u
+                        e !== l && b(e)
+                      }
+                      null == v || v(null != t ? t : u)
+                    },
+                    children: [
+                      Object(q.jsxs)(U.n, {
+                        className: 'van-tabbar-item__icon',
+                        children: [
+                          n
+                            ? Object(q.jsx)(H.a, {
+                                size: 38,
+                                name: n,
+                                classPrefix: c,
+                                className: 'van-tabbar-item__icon__inner',
+                              })
+                            : Object(q.jsx)(U.a, {
+                                children: l === (null != t ? t : u) ? a : s,
+                              }),
+                          Object(q.jsx)(Q.a, {
+                            dot: o,
+                            info: i,
+                            className: 'van-tabbar-item__info',
+                          }),
+                        ],
+                      }),
+                      Object(q.jsx)(U.n, {
+                        className: 'van-tabbar-item__text',
+                        children: m,
+                      }),
+                    ],
+                  },
+                ),
+              )
+            : Object(q.jsx)(q.Fragment, {})
+        },
+        Y = t(174)
+      function Demo() {
+        var e = l.a.useState(0),
+          n = Object(Y.a)(e, 2),
+          t = n[0]
+        n[1]
+        return Object(q.jsxs)(G, {
+          active: t,
+          onChange: function onChange(e) {
+            return e.detail
+          },
+          children: [
+            Object(q.jsx)(X, { icon: 'home-o', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'search', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'friends-o', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'setting-o', children: '标签' }),
+          ],
+        })
+      }
+      function demo2_Demo() {
+        var e = l.a.useState('home'),
+          n = Object(Y.a)(e, 2),
+          t = n[0]
+        n[1]
+        return Object(q.jsxs)(G, {
+          active: t,
+          onChange: function onChange(e) {
+            return e.detail
+          },
+          children: [
+            Object(q.jsx)(X, {
+              name: 'home',
+              icon: 'home-o',
+              children: '标签',
+            }),
+            Object(q.jsx)(X, {
+              name: 'search',
+              icon: 'search',
+              children: '标签',
+            }),
+            Object(q.jsx)(X, {
+              name: 'friends',
+              icon: 'friends-o',
+              children: '标签',
+            }),
+            Object(q.jsx)(X, {
+              name: 'setting',
+              icon: 'setting-o',
+              children: '标签',
+            }),
+          ],
+        })
+      }
+      function demo3_Demo() {
+        var e = l.a.useState('home'),
+          n = Object(Y.a)(e, 2),
+          t = n[0]
+        n[1]
+        return Object(q.jsxs)(G, {
+          active: t,
+          onChange: function onChange(e) {
+            return e.detail
+          },
+          children: [
+            Object(q.jsx)(X, { icon: 'home-o', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'search', dot: !0, children: '标签' }),
+            Object(q.jsx)(X, {
+              icon: 'friends-o',
+              info: '5',
+              children: '标签',
+            }),
+            Object(q.jsx)(X, {
+              icon: 'setting-o',
+              info: '20',
+              children: '标签',
+            }),
+          ],
+        })
+      }
+      t(615)
+      var Z = t(616)
+      function demo4_Demo() {
+        var e = l.a.useState('home'),
+          n = Object(Y.a)(e, 2),
+          t = n[0],
+          r = n[1]
+        return Object(q.jsxs)(G, {
+          active: t,
+          onChange: function onChange(e) {
+            return r(e.detail)
+          },
+          children: [
+            Object(q.jsx)(X, {
+              info: '3',
+              renderIcon: Object(q.jsx)(Z.a, {
+                src: 'https://img.yzcdn.cn/vant/user-inactive.png',
+                mode: 'aspectFit',
+                style: 'width: 30px; height: 18px;',
+              }),
+              renderIconactive: Object(q.jsx)(Z.a, {
+                src: 'https://img.yzcdn.cn/vant/user-active.png',
+                mode: 'aspectFit',
+                style: 'width: 30px; height: 18px;',
+              }),
+              children: '自定义',
+            }),
+            Object(q.jsx)(X, { icon: 'search', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'setting-o', children: '标签' }),
+          ],
+        })
+      }
+      function demo5_Demo() {
+        var e = l.a.useState(0),
+          n = Object(Y.a)(e, 2),
+          t = n[0]
+        n[1]
+        return Object(q.jsxs)(G, {
+          activeColor: '#07c160',
+          inactiveColor: '#000',
+          active: t,
+          onChange: function onChange(e) {
+            return e.detail
+          },
+          children: [
+            Object(q.jsx)(X, { icon: 'home-o', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'search', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'friends-o', children: '标签' }),
+            Object(q.jsx)(X, { icon: 'setting-o', children: '标签' }),
+          ],
+        })
+      }
+      var ee = (function (e) {
+        Object(i.a)(Index, e)
+        var n = Object(a.a)(Index)
+        function Index() {
+          var e
+          return (
+            Object(r.a)(this, Index),
+            (e = n.call(this)),
+            Object(s.a)(Object(o.a)(e), 'state', {}),
+            e
+          )
+        }
+        return (
+          Object(c.a)(Index, [
+            {
+              key: 'render',
+              value: function render() {
+                return Object(q.jsxs)(f.a, {
+                  title: 'Tabbar 标签栏',
+                  className: 'pages-tabbar-index',
+                  children: [
+                    Object(q.jsx)(d.a, {
+                      title: '基础用法',
+                      padding: !0,
+                      children: Object(q.jsx)(Demo, {}),
+                    }),
+                    Object(q.jsx)(d.a, {
+                      title: '通过名称匹配',
+                      padding: !0,
+                      children: Object(q.jsx)(demo2_Demo, {}),
+                    }),
+                    Object(q.jsx)(d.a, {
+                      title: '显示徽标',
+                      padding: !0,
+                      children: Object(q.jsx)(demo3_Demo, {}),
+                    }),
+                    Object(q.jsx)(d.a, {
+                      title: '自定义图标',
+                      padding: !0,
+                      children: Object(q.jsx)(demo4_Demo, {}),
+                    }),
+                    Object(q.jsx)(d.a, {
+                      title: '自定义颜色',
+                      padding: !0,
+                      children: Object(q.jsx)(demo5_Demo, {}),
+                    }),
+                  ],
+                })
+              },
+            },
+          ]),
+          Index
+        )
+      })(u.Component)
+    },
+  },
+])
