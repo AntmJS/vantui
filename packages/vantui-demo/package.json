@@ -128,7 +128,7 @@
     "real:alipay": "cross-env NODE_ENV=production API_ENV=real npx taro build --type alipay",
     "real:tt": "cross-env NODE_ENV=production API_ENV=real npx taro build --type tt",
     "real:h5": "cross-env NODE_ENV=production API_ENV=real PUBLIC_PATH=https://x.x.com/${API_ENV}/${pkgName}/${version}/ npx taro build --type h5",
-    "real:h5Doc": "cross-env NODE_ENV=production API_ENV=real  PUBLIC_PATH=/vantui npx taro build --type h5",
+    "real:h5Doc": "cross-env NODE_ENV=production API_ENV=real  PUBLIC_PATH=/vantui/ npx taro build --type h5",
     "build": "cross-env NODE_ENV=production npx taro build --type weapp"
   },
   "dependencies": {
