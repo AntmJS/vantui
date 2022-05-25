@@ -247,7 +247,9 @@
 
 /* stylelint-disable font-family-name-quotes */
 .antmui-site-pageLayout {
-  font-family: Open Sans, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Segoe UI, Arial, Roboto, PingFang SC, miui, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+  font-family: Open Sans, -apple-system, BlinkMacSystemFont, Helvetica Neue,
+    Helvetica, Segoe UI, Arial, Roboto, PingFang SC, miui, Hiragino Sans GB,
+    Microsoft Yahei, sans-serif;
 }
 .antmui-site-pageLayout-header {
   background: #001838;
@@ -381,4 +383,3 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
