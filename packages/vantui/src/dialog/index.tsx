@@ -174,8 +174,6 @@ export function Dialog(props: DialogProps) {
     }
   }, [])
 
-  console.info(show)
-
   return (
     <VanPopup
       show={show}
