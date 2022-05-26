@@ -148,7 +148,6 @@ export function Field(props: FieldProps) {
     onFocus?.(event)
   }
   const _blur = function (event: any) {
-    console.info('blur')
     ref.current.focused = false
     setShowClear(innerValue)
     Object.defineProperty(event, 'detail', {
