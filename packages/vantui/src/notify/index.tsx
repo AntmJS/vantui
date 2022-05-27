@@ -83,10 +83,10 @@ export function Notify(props: NotifyProps) {
         })
         show(notifyOptions)
       }
-    })
 
-    on('notify_clear', (notifyOptions) => {
-      hide(notifyOptions)
+      on('notify_clear', () => {
+        hide(notifyOptions)
+      })
     })
 
     return () => {
@@ -120,11 +120,12 @@ export function Notify(props: NotifyProps) {
       nextTick(() => {
         notifyOptions?.onOpened?.()
       })
-      if (state.duration > 0 && state.duration !== Infinity) {
+      const delay = notifyOptions.duration || state.duration
+      if (delay > 0 && delay !== Infinity) {
         timer = setTimeout(() => {
           // hide(notifyOptions)
           trigger('notify_clear', notifyOptions)
-        }, state.duration)
+        }, delay)
       }
     },
     [state.duration],

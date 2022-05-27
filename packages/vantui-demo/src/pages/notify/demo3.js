@@ -9,7 +9,7 @@ export default function Demo() {
       message: '自定义颜色',
       color: '#ad0000',
       background: '#ffe1e1',
-      duration: 1000,
+      duration: 10000,
     })
   }
 
