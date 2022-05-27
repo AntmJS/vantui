@@ -224,10 +224,20 @@ export function resizeTextarea(
   if (isObject(autosize)) {
     const { maxHeight, minHeight }: any = autosize
     if (maxHeight !== undefined) {
-      height = Math.min(height, maxHeight)
+      height = Math.min(
+        height,
+        typeof maxHeight === 'number'
+          ? maxHeight
+          : Number(maxHeight.replace('px', '')),
+      )
     }
     if (minHeight !== undefined) {
-      height = Math.max(height, minHeight)
+      height = Math.max(
+        height,
+        typeof minHeight === 'number'
+          ? minHeight
+          : Number(minHeight.replace('px', '')),
+      )
     }
   }
 
