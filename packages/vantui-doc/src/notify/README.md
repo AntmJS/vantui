@@ -65,18 +65,17 @@ function Demo() {
 
   const warningShow = () => {
     Notify.show({
-      message: '通知内容!',
+      message: '-----通知内容-----',
       type: 'warning',
     })
   }
 
   return (
     <View>
-      {/*  在页面内添加对应的节点  */}
       <Button onClick={primaryShow} type="info">
         主要通知
       </Button>
-      <Button onClick={primaryShow} type="primary">
+      <Button onClick={successShow} type="primary">
         成功通知
       </Button>
       <Button onClick={dangerShow} type="danger">
@@ -102,7 +101,7 @@ function Demo() {
       message: '自定义颜色',
       color: '#ad0000',
       background: '#ffe1e1',
-      duration: 1000,
+      duration: 10000,
     })
   }
 
