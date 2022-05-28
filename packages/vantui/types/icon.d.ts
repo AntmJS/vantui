@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, CSSProperties } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @description Icon Props
@@ -24,7 +24,7 @@ export interface IconProps extends StandardProps {
   /**
    * @description 自定义样式
    */
-  style?: string
+  style?: string | CSSProperties
   /**
    * @description 类名前缀
    * @default vant-icon
