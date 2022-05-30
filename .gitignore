@@ -40,6 +40,8 @@ packages/react-demo/src/pages
 
 packages/vantui-demo/src/pages
 packages/vantui-demo/src/pages/[!dashboard]
+packages/vantui-demo/src/app.config.js
+packages/vantui-demo/src/config.json
 
 packages/vantui-cli/lib
 packages/vantui-cli/dist
