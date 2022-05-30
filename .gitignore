@@ -38,5 +38,8 @@ packages/react-demo/build
 packages/react-demo/dist
 packages/react-demo/src/pages
 
+packages/vantui-demo/src/pages
+packages/vantui-demo/src/pages/[!dashboard]
+
 packages/vantui-cli/lib
 packages/vantui-cli/dist
