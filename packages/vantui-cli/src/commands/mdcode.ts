@@ -16,10 +16,11 @@ const pages: Record<string, { title: string; path: string }> = {}
 let DEFAULT_PAGE_PATH = join(__dirname, `../../site/simulator/src/pages`)
 let simulatorConfig: any = {}
 const fromTaroComps = ['View', 'Text', 'Input', 'Block']
+let CACHE: Record<string, any> = {}
+const CACHE_URL = join(__dirname, '../../.cache/mdcode.json')
 
 type IMdCodeParams = {
-  mode: 'create' | 'watch' | 'run-start' | 'run-build'
-  type: 'h5' | 'weapp' | 'alipay' | 'dd' | 'qq' | 'swan' | 'kwai' | 'tt'
+  mode: 'create' | 'watch'
 }
 
 export async function mdCode(params: IMdCodeParams) {
@@ -30,15 +31,17 @@ export async function mdCode(params: IMdCodeParams) {
   if (res.site?.simulator?.pagePath) {
     DEFAULT_PAGE_PATH = res.site.simulator.pagePath
   }
+  await initCache()
   createBaseFiles(res)
-  glob(`${SRC_DIR}/**/README.md`, async function (err, path) {
+  glob(`${SRC_DIR}/**/README.md`, async function (err, path: string[]) {
     if (err) {
       spinner.stop()
       consola.error(err)
       process.exit(1)
     }
-    const tasks: Promise<any>[] = []
-    path.forEach(async (pat) => {
+    for (let i = 0; i < path.length; i++) {
+      // @ts-ignore
+      const pat: string = path[i]
       const { codeArr, commonUtils } = getCode(pat)
       const pArr = pat.split('/')
       const name = pArr[pArr.length - 2]
@@ -48,25 +51,26 @@ export async function mdCode(params: IMdCodeParams) {
           `${DEFAULT_PAGE_PATH}/${name}/common.js`,
         )
       }
-      tasks.push(
-        (async function () {
-          await createPageComponent(codeArr, name, true)
-        })(),
-      )
-    })
-    Promise.all(tasks).then(() => {
-      spinner.stop()
-      spinner.succeed('Compile success')
+      await createPageComponent(codeArr, name)
+    }
 
-      if (mode === 'watch') {
-        consola.info(`
+    spinner.stop()
+    spinner.succeed('Compile success')
+    await saveCache()
+
+    if (mode === 'watch') {
+      consola.info(`
         🐒 Watching for md file changes...
         `)
-        watchMd()
-      }
-    })
+      watchMd()
+      consola.info(CACHE)
+    }
   })
 }
+
+process.on('SIGINT', () => {
+  saveCache()
+})
 
 function watchMd() {
   let readyOk = false
@@ -138,17 +142,17 @@ async function createPageCommonUtils(
   }
 }
 
-async function createPageComponent(
-  codeRes: IcodeItem[],
-  name?: string,
-  noLoading?: boolean,
-) {
-  let spinner: any
-  if (!noLoading) spinner = ora(`update...`).start()
+async function createPageComponent(codeRes: IcodeItem[], name?: string) {
+  if (!name) return
+  const spinner = ora(`update...`).start()
   let pageIndexImport = ''
   let pageIndexJsxInsert = ''
+  let updateCount = 0
 
-  codeRes.map(async (item, index) => {
+  for (let i = 0; i < codeRes.length; i++) {
+    const item = codeRes[i] as IcodeItem
+    const index = i
+
     const compName = toFirstBigStr(`demo${index + 1}`)
     pageIndexImport += `import ${compName} from './demo${index + 1}'\n`
     let padding = 'padding'
@@ -158,37 +162,46 @@ async function createPageComponent(
       simulatorConfig.withTabPages.includes(name)
     ) {
       pageIndexJsxInsert += `
-      <Tab title="${item.demoTitle}">
-        <${compName} />
-      </Tab>
-      `
+        <Tab title="${item.demoTitle}">
+          <${compName} />
+        </Tab>
+        `
     } else {
       pageIndexJsxInsert += `
-      <DemoBlock title="${item.demoTitle}" ${padding}>
-        <${compName} />
-      </DemoBlock>
-      `
+        <DemoBlock title="${item.demoTitle}" ${padding}>
+          <${compName} />
+        </DemoBlock>
+        `
     }
 
     const commonUtilsImport = item.value.includes('COMMON')
       ? 'import * as COMMON  from "./common.js" '
       : ''
 
-    await fs.writeFileSync(
-      join(DEFAULT_PAGE_PATH, `/${name}/demo${index + 1}.js`),
-      formatCode(
-        `
+    const demoPath = `/${name}/demo${index + 1}.js`
+    const demoCode = formatCode(
+      `
         /* eslint-disable */
           import react from 'react';
           ${createImportStr(item.importFromJsx)} 
           ${commonUtilsImport}
           ${item.value}
         `.replace(`function Demo`, 'export default function Demo'),
-      ),
     )
-  })
 
-  if (pageIndexJsxInsert && name) {
+    if (!CACHE[name] || CACHE[name][demoPath] !== demoCode) {
+      await fs.writeFileSync(join(DEFAULT_PAGE_PATH, demoPath), demoCode)
+      updateCount++
+      if (!CACHE[name]) CACHE[name] = {}
+      CACHE[name][demoPath] = demoCode
+    }
+  }
+
+  if (
+    pageIndexJsxInsert &&
+    name &&
+    (CACHE[name] || []).length === codeRes.length
+  ) {
     await createPageIndex({
       targetPath: name,
       pageTile: pages[name]?.title,
@@ -196,10 +209,7 @@ async function createPageComponent(
       jsxStr: pageIndexJsxInsert,
     })
   }
-
-  setTimeout(() => {
-    if (spinner) spinner.succeed('mdcode sync success')
-  }, 200)
+  spinner.succeed(`mdcode sync ${name} success ${updateCount}`)
 }
 
 type Iresult = {
@@ -460,4 +470,19 @@ function findImportFromJsx(ss: string): string[] {
   return res.filter(
     (a: string, index: number) => res.indexOf(a) === index && !a.includes('_'),
   )
+}
+
+async function saveCache() {
+  const _cacheDir = join(__dirname, '../../.cache')
+  if (!fs.existsSync(_cacheDir)) {
+    await fs.mkdirSync(_cacheDir)
+  }
+  await fs.writeFileSync(CACHE_URL, JSON.stringify(CACHE))
+}
+
+async function initCache() {
+  if (fs.existsSync(CACHE_URL)) {
+    const res = await fs.readFileSync(CACHE_URL, 'utf-8')
+    CACHE = JSON.parse(res)
+  }
 }
