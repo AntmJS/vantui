@@ -55,6 +55,11 @@ module.exports = {
             title: 'typescript同步到文档',
             hideSimulator: false,
           },
+          {
+            path: 'premium',
+            title: '高级模版功能说明',
+            hideSimulator: false,
+          },
         ],
       },
       {
