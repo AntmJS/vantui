@@ -57,16 +57,19 @@ async function getVantConfigAsync() {
   delete require.cache[VANT_CONFIG_FILE]
 
   try {
-    return (await import(VANT_CONFIG_FILE)).default
+    return require(VANT_CONFIG_FILE)
   } catch (err) {
     console.info('VANT_CONFIG_FILE err: ', err)
     return {}
   }
 }
 
-const vantConfig = await getVantConfigAsync()
+let vantConfig = await getVantConfigAsync()
 
-export function getVantConfig() {
+export async function getVantConfig(noCache?: boolean) {
+  if (noCache) {
+    vantConfig = await getVantConfigAsync()
+  }
   return vantConfig
 }
 

@@ -19,10 +19,8 @@ const devServer = {
 }
 
 export default async function run() {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   process.env.NODE_ENV === 'development'
-  const baseConfig = await getBase()
+  const baseConfig = await getBase('development')
   const devConfig = Object.assign(baseConfig, {
     mode: 'development',
     devtool: 'eval',
