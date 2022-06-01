@@ -23,6 +23,8 @@
 
 - 进入组件库目录：cd packages/vantui && yarn watch
 
+- 进入文档库目录：cd packages/vantui-doc && yarn mdcode-watch
+
 - 进入 Taro 版工程 vantui-demo： cd packages/vantui-demo && yarn watch:weapp
 
 ### 使用模版快速开发 Taro 应用
@@ -34,6 +36,12 @@
 
 - Pull 代码：[纯净版 React 模版工程](https://github.com/AntmJS/create-react-app-vantui)
 - 进入根目录：执行 yarn && TARO_ENV=h5 yarn start
+
+### 使用高级模版快速开发 Taro 应用
+
+- [高级模版功能说明](/#/premium)
+- Pull 代码：[高级版 React In Taro 模版工程](https://github.com/AntmJS/temptaro)
+- 进入根目录：执行 yarn && yarn watch:weapp
 
 ## 开始使用
 

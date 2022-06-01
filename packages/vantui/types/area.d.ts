@@ -19,7 +19,7 @@ export interface AreaProps
   }
   columnsNum?: string | number
   columnsPlaceholder?: string[]
-  onChange: (event: {
+  onChange?: (event: {
     detail: {
       values: number[] | string[]
       picker: IPickerInstance
