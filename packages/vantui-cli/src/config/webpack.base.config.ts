@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import htmlWebpackPlugin from 'html-webpack-plugin'
@@ -8,8 +9,8 @@ import CreateBase from './createBase.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const cwd = process.cwd()
 
-export default async function base() {
-  const vantuiBase = await CreateBase()
+export default async function base(mode: 'production' | 'development') {
+  const vantuiBase = await CreateBase(mode)
 
   const config = {
     entry: {

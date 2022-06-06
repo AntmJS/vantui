@@ -1,7 +1,8 @@
 import fs from 'fs'
-import { dirname } from 'path'
+import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
-import { getVantConfig } from '../common/constant.js'
+import { watch } from 'chokidar'
+import { CWD, getVantConfig } from '../common/constant.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const cwd = process.cwd()
@@ -14,7 +15,13 @@ type Item = {
   }>
 }
 
-export default async function Create() {
+let watched = false
+
+export default async function Create(mode?: 'production' | 'development') {
+  if (mode === 'development' && !watched) {
+    watched = true
+    watchConfigFile()
+  }
   let codeStr = `
     IMPORT
     (function(window) {
@@ -22,7 +29,7 @@ export default async function Create() {
       BASEADDIONAL
     })(window)
   `
-  const res = await getVantConfig()
+  const res = await getVantConfig(true)
   const config = res?.site
   let baseAddional = ''
   let import_ = ''
@@ -91,4 +98,21 @@ function resetPath(r: string, firstBig?: boolean) {
 
 function titleCase(str: string) {
   return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
+}
+
+function watchConfigFile() {
+  let readyOk = false
+  const watcher = watch(join(CWD, './vant.config.js'), {
+    persistent: true,
+  })
+  watcher.on('ready', function () {
+    console.info('watch vant.config.js success')
+
+    readyOk = true
+  })
+  watcher.on('change', function () {
+    if (readyOk) {
+      Create()
+    }
+  })
 }
