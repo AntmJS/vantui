@@ -43,7 +43,7 @@ export function Field(props: FieldProps) {
     icon,
     iconClass,
     value,
-    maxlength = -1,
+    maxlength,
     showWordLimit,
     errorMessageAlign,
     error,
