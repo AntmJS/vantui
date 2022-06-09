@@ -10609,6 +10609,11 @@ postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.2
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
+preact@^10.7.3:
+  version "10.7.3"
+  resolved "https://registry.npmmirror.com/preact/-/preact-10.7.3.tgz#f98c09a29cb8dbb22e5fc824a1edcc377fc42b5a"
+  integrity sha512-giqJXP8VbtA1tyGa3f1n9wiN7PrHtONrDyE3T+ifjr/tTkg+2N4d/6sjC9WyJKv8wM7rOYDveqy5ZoFmYlwo4w==
+
 preferred-pm@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmmirror.com/preferred-pm/-/preferred-pm-1.0.1.tgz#539df37ce944b1b765ae944a8ba34a7e68694e8d"

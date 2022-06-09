@@ -24,7 +24,7 @@ function Demo() {
     minHour: 10,
     maxHour: 20,
     minDate: new Date(2009, 10, 1).getTime(),
-    maxDate: new Date(2011, 10, 1).getTime(),
+    maxDate: new Date(2031, 10, 1).getTime(),
     currentDate: new Date().getTime(),
   })
 

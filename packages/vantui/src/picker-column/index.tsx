@@ -7,6 +7,7 @@ import {
   memo,
 } from 'react'
 import { View, CustomWrapper } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { PickerColumnProps } from '../../types/picker-column'
 import { range } from '../common/utils'
@@ -72,7 +73,11 @@ function Index(
       if (index !== currentIndex) {
         setCurrentIndex(index)
         setOffset(offset)
-        if (onChange && userAction) onChange(curColIndex)
+        if (onChange && userAction) {
+          nextTick(() => {
+            onChange(curColIndex)
+          })
+        }
         return
       }
       return setOffset(offset)
