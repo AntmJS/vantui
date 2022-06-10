@@ -8,6 +8,7 @@ import {
   useImperativeHandle,
   ForwardedRef,
 } from 'react'
+import { nextTick } from '@tarojs/taro'
 import {
   IPickerInstance,
   PickerChangeEvents,
@@ -222,14 +223,17 @@ export function DatetimePicker(
           )
         }
       }
-      setInnerValue(value)
       updateColumns(value)
 
+      nextTick(() => {
+        setInnerValue(value)
+      })
+
       return new Promise((resolve) => {
-        setTimeout(() => {
+        nextTick(() => {
           picker.setValues(values)
           resolve(`${value}`)
-        }, 16)
+        })
       })
     },
     [formatter, getPicker, type, updateColumns],

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
-  useEffect,
   useCallback,
   useRef,
   forwardRef,
   useImperativeHandle,
+  useLayoutEffect,
 } from 'react'
 import { View } from '@tarojs/components'
 import {
@@ -44,7 +44,7 @@ const Picker = forwardRef(function Index(
   const children = useRef<Array<any>>([])
   const handleIndex = useRef<number>(-1)
 
-  useEffect(
+  useLayoutEffect(
     function () {
       if (Array.isArray(children) && children.length) {
         setColumns().catch(() => {})
@@ -158,7 +158,9 @@ const Picker = forwardRef(function Index(
   }, [])
 
   const getValues = useCallback(function () {
-    return children.current.map((child) => child.getValue())
+    return children.current.map((child) => {
+      return child.getValue()
+    })
   }, [])
 
   const getIndexes = useCallback(function () {
