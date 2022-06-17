@@ -34,10 +34,10 @@
           return ce
         }),
         r.d(t, 'f', function () {
-          return ie
+          return ae
         }),
         r.d(t, 'm', function () {
-          return ae
+          return ie
         }),
         r.d(t, 'c', function () {
           return se
@@ -48,54 +48,54 @@
       var o = r(64),
         n = r.n(o),
         c = r(24),
-        i = r.n(c),
-        a = r(571),
-        s = r.n(a),
+        a = r.n(c),
+        i = r(571),
+        s = r.n(i),
         u = r(32),
         l = r.n(u),
-        f = r(570),
-        p = r.n(f),
+        p = r(570),
+        f = r.n(p),
         d = r(27),
         v = r.n(d),
-        b = r(173),
-        x = r.n(b),
-        j = r(116),
-        m = r.n(j),
-        h = r(55),
-        y = r.n(h),
-        O = r(177),
-        _ = r.n(O),
-        g = r(595),
+        x = r(173),
+        b = r.n(x),
+        y = r(116),
+        m = r.n(y),
+        j = r(55),
+        _ = r.n(j),
+        h = r(177),
+        O = r.n(h),
+        g = r(592),
         w = r.n(g),
-        P = r(28),
-        S = r.n(P),
-        I = r(6),
-        k = r.n(I),
-        D = r(26),
-        C = r.n(D),
-        T = r(120),
-        M = r.n(T),
-        E = r(35),
-        N = r.n(E),
-        R = r(70),
-        L = r.n(R),
-        A = r(71),
-        H = r.n(A),
-        z = r(659),
-        K = r.n(z),
-        W = r(661),
+        S = r(28),
+        I = r.n(S),
+        P = r(6),
+        k = r.n(P),
+        T = r(26),
+        C = r.n(T),
+        D = r(120),
+        M = r.n(D),
+        N = r(35),
+        E = r.n(N),
+        H = r(70),
+        L = r.n(H),
+        K = r(71),
+        R = r.n(K),
+        A = r(658),
+        F = r.n(A),
+        W = r(660),
         q = r.n(W),
-        B = r(663),
-        F = r.n(B),
-        U = r(54),
-        V = r.n(U)
+        U = r(662),
+        z = r.n(U),
+        B = r(54),
+        J = r.n(B)
       function ownKeys(e, t) {
-        var r = i()(e)
+        var r = a()(e)
         if (s.a) {
           var o = s()(e)
           t &&
             (o = l()(o).call(o, function (t) {
-              return p()(e, t).enumerable
+              return f()(e, t).enumerable
             })),
             r.push.apply(r, o)
         }
@@ -109,11 +109,11 @@
             v()((r = ownKeys(Object(o), !0))).call(r, function (t) {
               C()(e, t, o[t])
             })
-          else if (x.a) m()(e, x()(o))
+          else if (b.a) m()(e, b()(o))
           else {
             var n
             v()((n = ownKeys(Object(o)))).call(n, function (t) {
-              y()(e, t, p()(o, t))
+              _()(e, t, f()(o, t))
             })
           }
         }
@@ -121,12 +121,12 @@
       }
       function _createSuper(e) {
         var t = (function _isNativeReflectConstruct() {
-          if ('undefined' == typeof Reflect || !_.a) return !1
-          if (_.a.sham) return !1
+          if ('undefined' == typeof Reflect || !O.a) return !1
+          if (O.a.sham) return !1
           if ('function' == typeof Proxy) return !0
           try {
             return (
-              Boolean.prototype.valueOf.call(_()(Boolean, [], function () {})),
+              Boolean.prototype.valueOf.call(O()(Boolean, [], function () {})),
               !0
             )
           } catch (e) {
@@ -135,10 +135,10 @@
         })()
         return function _createSuperInternal() {
           var r,
-            o = F()(e)
+            o = z()(e)
           if (t) {
-            var n = F()(this).constructor
-            r = _()(o, arguments, n)
+            var n = z()(this).constructor
+            r = O()(o, arguments, n)
           } else r = o.apply(this, arguments)
           return q()(this, r)
         }
@@ -149,71 +149,71 @@
       }
       function updateProp(e, t, r, o, n) {
         var c = e.ref.current,
-          i = n[r],
-          a = o ? o[r] : void 0
+          a = n[r],
+          i = o ? o[r] : void 0
         if ('children' !== r)
           if ('classname' !== r.toLowerCase()) {
             if ('style' !== r) {
               if (
-                (/^data-.+/.test(r) && c.setAttribute(r, i),
+                (/^data-.+/.test(r) && c.setAttribute(r, a),
                 'taro-scroll-view-core' === t)
               ) {
-                if ('scrollTop' === r) return void (c.mpScrollTop = i)
-                if ('scrollLeft' === r) return void (c.mpScrollLeft = i)
-                if ('scrollIntoView' === r) return void (c.mpScrollIntoView = i)
+                if ('scrollTop' === r) return void (c.mpScrollTop = a)
+                if ('scrollLeft' === r) return void (c.mpScrollLeft = a)
+                if ('scrollIntoView' === r) return void (c.mpScrollIntoView = a)
               }
-              if ('function' == typeof i && r.match(/^on[A-Z]/)) {
+              if ('function' == typeof a && r.match(/^on[A-Z]/)) {
                 var s = r.substr(2).toLowerCase(),
-                  u = i
+                  u = a
                 return (
                   'taro-scroll-view-core' === t &&
                     'scroll' === s &&
                     (u = function fn(e) {
-                      e instanceof CustomEvent && i.apply(null, w()(arguments))
+                      e instanceof CustomEvent && a.apply(null, w()(arguments))
                     }),
                   e.eventHandlers.push([s, u]),
                   c.addEventListener(s, u)
                 )
               }
-              return 'string' == typeof i || 'number' == typeof i
-                ? (c.setAttribute(r, i), void (c[r] = i))
-                : 'boolean' == typeof i
-                ? i
-                  ? ((c[r] = !0), c.setAttribute(r, i))
+              return 'string' == typeof a || 'number' == typeof a
+                ? (c.setAttribute(r, a), void (c[r] = a))
+                : 'boolean' == typeof a
+                ? a
+                  ? ((c[r] = !0), c.setAttribute(r, a))
                   : ((c[r] = !1), c.removeAttribute(r))
-                : void (c[r] = i)
+                : void (c[r] = a)
             }
-            if ('string' == typeof i) return void c.setAttribute(r, i)
-            if (!i) return void c.removeAttribute(r)
+            if ('string' == typeof a) return void c.setAttribute(r, a)
+            if (!a) return void c.removeAttribute(r)
             if (o)
-              if ('string' == typeof a) c.style.cssText = ''
-              else for (var f in a) updateStyle(c, f, '')
-            for (var p in i) updateStyle(c, p, i[p])
+              if ('string' == typeof i) c.style.cssText = ''
+              else for (var p in i) updateStyle(c, p, '')
+            for (var f in a) updateStyle(c, f, a[f])
           } else
             c.className = o
               ? (function getClassName(e, t, r) {
                   var o,
                     n = w()(e.classList),
                     c = (t.className || t.class || '').split(' '),
-                    i = (r.className || r.class || '').split(' '),
-                    a = []
+                    a = (r.className || r.class || '').split(' '),
+                    i = []
                   return (
                     v()(n).call(n, function (e) {
-                      S()(i).call(i, e) > -1
-                        ? (a.push(e),
-                          (i = l()(i).call(i, function (t) {
+                      I()(a).call(a, e) > -1
+                        ? (i.push(e),
+                          (a = l()(a).call(a, function (t) {
                             return t !== e
                           })))
-                        : -1 === S()(c).call(c, e) && a.push(e)
+                        : -1 === I()(c).call(c, e) && i.push(e)
                     }),
-                    (a = k()((o = [])).call(o, V()(a), V()(i))).join(' ')
+                    (i = k()((o = [])).call(o, J()(i), J()(a))).join(' ')
                   )
                 })(c, o, n)
-              : i
+              : a
       }
-      var J = function reactifyWebComponent(e) {
+      var V = function reactifyWebComponent(e) {
         var t = (function (t) {
-          K()(Index, t)
+          F()(Index, t)
           var r = _createSuper(Index)
           function Index(e) {
             var t
@@ -225,7 +225,7 @@
             )
           }
           return (
-            H()(Index, [
+            R()(Index, [
               {
                 key: 'update',
                 value: function update(t) {
@@ -234,13 +234,13 @@
                     n = this
                   this.clearEventHandlers(),
                     this.ref.current &&
-                      (v()((r = i()(t || {}))).call(r, function (r) {
+                      (v()((r = a()(t || {}))).call(r, function (r) {
                         'children' === r ||
                           'key' === r ||
                           r in n.props ||
                           updateProp(n, e, r, t, n.props)
                       }),
-                      v()((o = i()(this.props))).call(o, function (r) {
+                      v()((o = a()(this.props))).call(o, function (r) {
                         updateProp(n, e, r, t, n.props)
                       }))
                 },
@@ -257,7 +257,7 @@
                   var e = this.props.forwardRef
                   'function' == typeof e
                     ? e(this.ref.current)
-                    : e && 'object' === N()(e) && e.hasOwnProperty('current')
+                    : e && 'object' === E()(e) && e.hasOwnProperty('current')
                     ? (e.current = this.ref.current)
                     : 'string' == typeof e &&
                       console.warn('内置组件不支持字符串 ref'),
@@ -309,12 +309,12 @@
         })
       }
       function input_ownKeys(e, t) {
-        var r = i()(e)
+        var r = a()(e)
         if (s.a) {
           var o = s()(e)
           t &&
             (o = l()(o).call(o, function (t) {
-              return p()(e, t).enumerable
+              return f()(e, t).enumerable
             })),
             r.push.apply(r, o)
         }
@@ -328,17 +328,17 @@
             v()((r = input_ownKeys(Object(o), !0))).call(r, function (t) {
               C()(e, t, o[t])
             })
-          else if (x.a) m()(e, x()(o))
+          else if (b.a) m()(e, b()(o))
           else {
             var n
             v()((n = input_ownKeys(Object(o)))).call(n, function (t) {
-              y()(e, t, p()(o, t))
+              _()(e, t, f()(o, t))
             })
           }
         }
         return e
       }
-      var Y = J('taro-input-core'),
+      var Y = V('taro-input-core'),
         Z =
           (n.a.createElement,
           n.a.forwardRef(function (e, t) {
@@ -352,58 +352,58 @@
               )
             )
           })),
-        $ = J('taro-view-core'),
+        $ = V('taro-view-core'),
         G =
-          (J('taro-icon-core'),
-          J('taro-progress-core'),
-          J('taro-rich-text-core')),
-        Q = J('taro-text-core'),
-        X = J('taro-button-core'),
+          (V('taro-icon-core'),
+          V('taro-progress-core'),
+          V('taro-rich-text-core')),
+        Q = V('taro-text-core'),
+        X = V('taro-button-core'),
         ee =
-          (J('taro-checkbox-core'),
-          J('taro-checkbox-group-core'),
-          J('taro-editor-core'),
-          J('taro-form-core')),
+          (V('taro-checkbox-core'),
+          V('taro-checkbox-group-core'),
+          V('taro-editor-core'),
+          V('taro-form-core')),
         te = Z,
         re =
-          (J('taro-label-core'),
-          J('taro-picker-core'),
-          J('taro-picker-view-core'),
-          J('taro-picker-view-column-core'),
-          J('taro-radio-core'),
-          J('taro-radio-group-core'),
-          J('taro-slider-core'),
-          J('taro-switch-core'),
-          J('taro-cover-image-core'),
-          J('taro-textarea-core')),
-        oe = J('taro-cover-view-core'),
+          (V('taro-label-core'),
+          V('taro-picker-core'),
+          V('taro-picker-view-core'),
+          V('taro-picker-view-column-core'),
+          V('taro-radio-core'),
+          V('taro-radio-group-core'),
+          V('taro-slider-core'),
+          V('taro-switch-core'),
+          V('taro-cover-image-core'),
+          V('taro-textarea-core')),
+        oe = V('taro-cover-view-core'),
         ne =
-          (J('taro-movable-area-core'),
-          J('taro-movable-view-core'),
-          J('taro-scroll-view-core')),
+          (V('taro-movable-area-core'),
+          V('taro-movable-view-core'),
+          V('taro-scroll-view-core')),
         ce =
-          (J('taro-swiper-core'),
-          J('taro-swiper-item-core'),
-          J('taro-functional-page-navigator-core'),
-          J('taro-navigator-core')),
-        ie =
-          (J('taro-audio-core'), J('taro-camera-core'), J('taro-image-core')),
-        ae = (J('taro-live-player-core'), J('taro-video-core')),
-        se = (J('taro-map-core'), J('taro-canvas-core')),
+          (V('taro-swiper-core'),
+          V('taro-swiper-item-core'),
+          V('taro-functional-page-navigator-core'),
+          V('taro-navigator-core')),
+        ae =
+          (V('taro-audio-core'), V('taro-camera-core'), V('taro-image-core')),
+        ie = (V('taro-live-player-core'), V('taro-video-core')),
+        se = (V('taro-map-core'), V('taro-canvas-core')),
         ue =
-          (J('taro-ad-core'),
-          J('taro-official-account-core'),
-          J('taro-open-data-core'),
-          J('taro-web-view-core'),
-          J('taro-navigation-bar-core'),
+          (V('taro-ad-core'),
+          V('taro-official-account-core'),
+          V('taro-open-data-core'),
+          V('taro-web-view-core'),
+          V('taro-navigation-bar-core'),
           o.Fragment)
-      J('taro-custom-wrapper-core')
+      V('taro-custom-wrapper-core')
     },
     570: function (e, t, r) {
-      e.exports = r(607)
+      e.exports = r(604)
     },
     571: function (e, t, r) {
-      e.exports = r(613)
+      e.exports = r(612)
     },
     572: function (e, t, r) {
       var o = r(67)
@@ -424,142 +424,28 @@
         (e.exports.default = e.exports)
     },
     573: function (e, t, r) {
-      var o = r(608),
-        n = r(609),
-        c = r(655)
+      var o = r(606),
+        n = r(607),
+        c = r(653)
       ;(e.exports = function _objectWithoutProperties(e, t) {
         if (null == e) return {}
         var r,
-          i,
-          a = c(e, t)
+          a,
+          i = c(e, t)
         if (o) {
           var s = o(e)
-          for (i = 0; i < s.length; i++)
-            (r = s[i]),
+          for (a = 0; a < s.length; a++)
+            (r = s[a]),
               n(t).call(t, r) >= 0 ||
                 (Object.prototype.propertyIsEnumerable.call(e, r) &&
-                  (a[r] = e[r]))
+                  (i[r] = e[r]))
         }
-        return a
+        return i
       }),
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    578: function (e, t, r) {
-      'use strict'
-      ;(function (e) {
-        r.d(t, 'a', function () {
-          return Page
-        })
-        r(590)
-        var o = r(574),
-          n = r(568),
-          c = r(90),
-          i = r(737),
-          a = r(77),
-          s = r(64),
-          u = (r(581), r(115))
-        function Page(t) {
-          var r = t.title,
-            l = t.className,
-            f = void 0 === l ? '' : l,
-            p = t.children,
-            d = c.a.useRouter().path
-          return (
-            Object(s.useEffect)(
-              function () {
-                'react' === e.env.LIBRARY_ENV
-                  ? (document.body.scrollTop =
-                      document.documentElement.scrollTop =
-                        0)
-                  : Object(i.a)({ scrollTop: 0 })
-              },
-              [d],
-            ),
-            c.a.useShareAppMessage(function () {
-              return { title: 'AntM 组件库演示', path: d }
-            }),
-            Object(u.jsxs)(n.n, {
-              className: 'demo-page '.concat(f),
-              children: [
-                Object(u.jsxs)(n.n, {
-                  className: 'demo-nav',
-                  children: [
-                    Object(u.jsx)(o.b, {
-                      name: 'arrow-left',
-                      className: 'demo-nav__back',
-                      onClick: function onClick() {
-                        return Object(a.d)()
-                      },
-                    }),
-                    Object(u.jsxs)(n.n, {
-                      className: 'demo-nav__title',
-                      children: [r, ' '],
-                    }),
-                  ],
-                }),
-                p,
-              ],
-            })
-          )
-        }
-      }.call(this, r(236)))
-    },
-    579: function (e, t, r) {
-      'use strict'
-      r.d(t, 'a', function () {
-        return l
-      })
-      var o = r(39),
-        n = r(40),
-        c = r(66),
-        i = r(65),
-        a = r(568),
-        s = r(64),
-        u = (r(582), r(115)),
-        l = (function (e) {
-          Object(c.a)(Index, e)
-          var t = Object(i.a)(Index)
-          function Index() {
-            return Object(o.a)(this, Index), t.call(this)
-          }
-          return (
-            Object(n.a)(Index, [
-              {
-                key: 'render',
-                value: function render() {
-                  var e = this.props,
-                    t = e.padding,
-                    r = e.title,
-                    o = e.card
-                  return Object(u.jsxs)(a.n, {
-                    className:
-                      'custom-class demo-block van-clearfix ' +
-                      (t ? 'demo-block--padding' : ''),
-                    children: [
-                      r &&
-                        Object(u.jsx)(a.n, {
-                          className: 'demo-block__title',
-                          children: r,
-                        }),
-                      o
-                        ? Object(u.jsx)(a.n, {
-                            className: 'demo-block__card',
-                            children: this.props.children,
-                          })
-                        : this.props.children,
-                    ],
-                  })
-                },
-              },
-            ]),
-            Index
-          )
-        })(s.Component)
-    },
-    581: function (e, t, r) {},
-    582: function (e, t, r) {},
-    591: function (e, t, r) {
+    586: function (e, t, r) {
       var o = r(45),
         n = r(176)
       function _typeof(t) {
@@ -586,108 +472,108 @@
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    595: function (e, t, r) {
-      e.exports = r(237)
+    592: function (e, t, r) {
+      e.exports = r(236)
+    },
+    604: function (e, t, r) {
+      var o = r(620)
+      e.exports = o
+    },
+    606: function (e, t, r) {
+      e.exports = r(647)
     },
     607: function (e, t, r) {
-      var o = r(622)
-      e.exports = o
+      e.exports = r(650)
     },
     608: function (e, t, r) {
-      e.exports = r(649)
+      e.exports = r(654)
     },
-    609: function (e, t, r) {
-      e.exports = r(652)
-    },
-    610: function (e, t, r) {
-      e.exports = r(656)
-    },
-    613: function (e, t, r) {
-      var o = r(648)
+    612: function (e, t, r) {
+      var o = r(646)
       e.exports = o
     },
-    622: function (e, t, r) {
-      r(623)
+    620: function (e, t, r) {
+      r(621)
       var o = r(11).Object,
         n = (e.exports = function getOwnPropertyDescriptor(e, t) {
           return o.getOwnPropertyDescriptor(e, t)
         })
       o.getOwnPropertyDescriptor.sham && (n.sham = !0)
     },
-    623: function (e, t, r) {
+    621: function (e, t, r) {
       var o = r(3),
         n = r(9),
         c = r(41),
-        i = r(68).f,
-        a = r(22),
+        a = r(68).f,
+        i = r(22),
         s = n(function () {
-          i(1)
+          a(1)
         })
       o(
-        { target: 'Object', stat: !0, forced: !a || s, sham: !a },
+        { target: 'Object', stat: !0, forced: !i || s, sham: !i },
         {
           getOwnPropertyDescriptor: function getOwnPropertyDescriptor(e, t) {
-            return i(c(e), t)
+            return a(c(e), t)
           },
         },
       )
     },
-    648: function (e, t, r) {
-      r(241)
+    646: function (e, t, r) {
+      r(240)
       var o = r(11)
       e.exports = o.Object.getOwnPropertySymbols
     },
-    649: function (e, t, r) {
-      e.exports = r(650)
+    647: function (e, t, r) {
+      e.exports = r(648)
     },
-    650: function (e, t, r) {
-      var o = r(651)
+    648: function (e, t, r) {
+      var o = r(649)
       e.exports = o
     },
+    649: function (e, t, r) {
+      var o = r(612)
+      e.exports = o
+    },
+    650: function (e, t, r) {
+      e.exports = r(651)
+    },
     651: function (e, t, r) {
-      var o = r(613)
+      var o = r(652)
       e.exports = o
     },
     652: function (e, t, r) {
-      e.exports = r(653)
+      var o = r(241)
+      e.exports = o
     },
     653: function (e, t, r) {
-      var o = r(654)
-      e.exports = o
-    },
-    654: function (e, t, r) {
-      var o = r(242)
-      e.exports = o
-    },
-    655: function (e, t, r) {
-      var o = r(610),
-        n = r(609)
+      var o = r(608),
+        n = r(607)
       ;(e.exports = function _objectWithoutPropertiesLoose(e, t) {
         if (null == e) return {}
         var r,
           c,
-          i = {},
-          a = o(e)
-        for (c = 0; c < a.length; c++)
-          (r = a[c]), n(t).call(t, r) >= 0 || (i[r] = e[r])
-        return i
+          a = {},
+          i = o(e)
+        for (c = 0; c < i.length; c++)
+          (r = i[c]), n(t).call(t, r) >= 0 || (a[r] = e[r])
+        return a
       }),
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    656: function (e, t, r) {
-      e.exports = r(657)
+    654: function (e, t, r) {
+      e.exports = r(655)
     },
-    657: function (e, t, r) {
-      var o = r(658)
+    655: function (e, t, r) {
+      var o = r(656)
+      e.exports = o
+    },
+    656: function (e, t, r) {
+      var o = r(242)
       e.exports = o
     },
     658: function (e, t, r) {
-      var o = r(243)
-      e.exports = o
-    },
-    659: function (e, t, r) {
-      var o = r(660)
+      var o = r(659)
       ;(e.exports = function _inherits(e, t) {
         if ('function' != typeof t && null !== t)
           throw new TypeError(
@@ -702,7 +588,7 @@
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    660: function (e, t) {
+    659: function (e, t) {
       function _setPrototypeOf(t, r) {
         return (
           (e.exports = _setPrototypeOf =
@@ -719,9 +605,9 @@
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    661: function (e, t, r) {
+    660: function (e, t, r) {
       var o = r(35).default,
-        n = r(662)
+        n = r(661)
       ;(e.exports = function _possibleConstructorReturn(e, t) {
         if (t && ('object' === o(t) || 'function' == typeof t)) return t
         if (void 0 !== t)
@@ -733,7 +619,7 @@
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    662: function (e, t) {
+    661: function (e, t) {
       ;(e.exports = function _assertThisInitialized(e) {
         if (void 0 === e)
           throw new ReferenceError(
@@ -744,7 +630,7 @@
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    663: function (e, t) {
+    662: function (e, t) {
       function _getPrototypeOf(t) {
         return (
           (e.exports = _getPrototypeOf =
@@ -770,8 +656,8 @@
       var o,
         n = r(5),
         c = r.n(n),
-        i = r(4),
-        a = r(49),
+        a = r(4),
+        i = r(49),
         s = r(16),
         u = function pageScrollTo(e) {
           var t,
@@ -779,41 +665,41 @@
             n = e.selector,
             u = void 0 === n ? '' : n,
             l = e.duration,
-            f = void 0 === l ? 300 : l,
-            p = e.success,
+            p = void 0 === l ? 300 : l,
+            f = e.success,
             d = e.fail,
             v = e.complete,
-            b = new a.a({
+            x = new i.a({
               name: 'pageScrollTo',
-              success: p,
+              success: f,
               fail: d,
               complete: v,
             })
           return new c.a(function (e, n) {
-            var c, a
+            var c, i
             try {
               if (void 0 === r && !u)
-                return b.fail(
+                return x.fail(
                   { errMsg: 'scrollTop" 或 "selector" 需要其之一' },
                   n,
                 )
               var l =
                   null ===
-                    (a =
-                      null === (c = i.a.page) || void 0 === c
+                    (i =
+                      null === (c = a.a.page) || void 0 === c
                         ? void 0
-                        : c.path) || void 0 === a
+                        : c.path) || void 0 === i
                     ? void 0
-                    : a.replace(/([^a-z0-9\u00a0-\uffff_-])/gi, '\\$1'),
-                p = l
+                    : i.replace(/([^a-z0-9\u00a0-\uffff_-])/gi, '\\$1'),
+                f = l
                   ? document.querySelector('.taro_page#'.concat(l))
                   : document.querySelector('.taro_page') ||
                     document.querySelector('.taro_router')
               t ||
-                (t = p
+                (t = f
                   ? function scrollFunc(e) {
-                      if (void 0 === e) return p.scrollTop
-                      p.scrollTop = e
+                      if (void 0 === e) return f.scrollTop
+                      f.scrollTop = e
                     }
                   : function scrollFunc(e) {
                       if (void 0 === e) return window.pageYOffset
@@ -828,89 +714,106 @@
                 v = t()
               if ('number' == typeof r) d = r
               else {
-                var x = document.querySelector(u)
-                d = (null == x ? void 0 : x.offsetTop) || 0
+                var b = document.querySelector(u)
+                d = (null == b ? void 0 : b.offsetTop) || 0
               }
-              var j = d - v,
-                m = f / 17,
-                h = Object(s.d)(s.a, m)
+              var y = d - v,
+                m = p / 17,
+                j = Object(s.d)(s.a, m)
               !(function scroll() {
                 var r =
                     arguments.length > 0 && void 0 !== arguments[0]
                       ? arguments[0]
                       : 0,
-                  n = v + j * h(r)
-                if ((t(n), !(r < m))) return b.success({}, e)
+                  n = v + y * j(r)
+                if ((t(n), !(r < m))) return x.success({}, e)
                 o && clearTimeout(o),
                   (o = setTimeout(function () {
                     scroll(r + 1)
                   }, 17))
               })()
             } catch (e) {
-              return b.fail({ errMsg: e.message }, n)
+              return x.fail({ errMsg: e.message }, n)
             }
           })
         }
     },
-    833: function (e, t, r) {},
-    882: function (e, t, r) {
+    761: function (e, t, r) {
+      'use strict'
+      r.d(t, 'a', function () {
+        return o
+      }),
+        r.d(t, 'c', function () {
+          return n
+        }),
+        r.d(t, 'b', function () {
+          return c
+        })
+      var o = '#1989fa',
+        n = '#07c160',
+        c = '#969799'
+    },
+    837: function (e, t, r) {},
+    903: function (e, t, r) {
       'use strict'
       r.r(t),
         r.d(t, 'default', function () {
-          return z
+          return B
         })
       var o = r(39),
         n = r(40),
         c = r(175),
-        i = r(66),
-        a = r(65),
+        a = r(66),
+        i = r(65),
         s = r(91),
         u = r(64),
-        l = r(578),
-        f = r(579),
-        p = (r(576), r(833), r(116)),
-        d = r.n(p),
-        v = r(55),
-        b = r.n(v),
-        x = r(24),
-        j = r.n(x),
-        m = r(571),
-        h = r.n(m),
-        y = r(32),
-        O = r.n(y),
-        _ = r(570),
-        g = r.n(_),
-        w = r(27),
-        P = r.n(w),
-        S = r(173),
-        I = r.n(S),
-        k = r(572),
-        D = r.n(k),
-        C = r(573),
-        T = r.n(C),
-        M = r(568),
-        E = r(569),
-        N = r(583),
-        R = r(580)
-      var L = r(115),
+        l = r(587),
+        p = r(588),
+        f = (r(574), r(580), r(581), r(837), r(572)),
+        d = r.n(f),
+        v = r(573),
+        x = r.n(v),
+        b = r(55),
+        y = r.n(b),
+        m = r(10),
+        j = r.n(m),
+        _ = r(24),
+        h = r.n(_),
+        O = r(571),
+        g = r.n(O),
+        w = r(32),
+        S = r.n(w),
+        I = r(570),
+        P = r.n(I),
+        k = r(27),
+        T = r.n(k),
+        C = r(173),
+        D = r.n(C),
+        M = r(116),
+        N = r.n(M),
+        E = r(568),
+        H = r(569),
+        L = r(761),
+        K = r(577),
+        R = r(115),
         A = [
-          'dashed',
-          'hairline',
-          'contentPosition',
-          'borderColor',
-          'textColor',
-          'fontSize',
-          'style',
+          'steps',
+          'active',
+          'direction',
+          'activeColor',
+          'inactiveColor',
+          'activeIcon',
+          'inactiveIcon',
           'className',
-          'children',
+          'onClickStep',
         ]
       function ownKeys(e, t) {
-        var r = j()(e)
-        if (h.a) {
-          var o = h()(e)
+        var r = h()(e)
+        if (g.a) {
+          var o = g()(e)
           t &&
-            (o = O()(o).call(o, function (t) {
-              return g()(e, t).enumerable
+            (o = S()(o).call(o, function (t) {
+              return P()(e, t).enumerable
             })),
             r.push.apply(r, o)
         }
@@ -919,118 +822,187 @@
       function _objectSpread(e) {
         for (var t = 1; t < arguments.length; t++) {
           var r,
-            o = null != arguments[t] ? arguments[t] : {}
-          if (t % 2)
-            P()((r = ownKeys(Object(o), !0))).call(r, function (t) {
-              D()(e, t, o[t])
-            })
-          else if (I.a) d()(e, I()(o))
-          else {
-            var n
-            P()((n = ownKeys(Object(o)))).call(n, function (t) {
-              b()(e, t, g()(o, t))
-            })
-          }
+            o,
+            n = null != arguments[t] ? arguments[t] : {}
+          t % 2
+            ? T()((r = ownKeys(Object(n), !0))).call(r, function (t) {
+                d()(e, t, n[t])
+              })
+            : D.a
+            ? N()(e, D()(n))
+            : T()((o = ownKeys(Object(n)))).call(o, function (t) {
+                y()(e, t, P()(n, t))
+              })
         }
         return e
       }
-      var H = function Divider(e) {
-        var t,
-          r = e.dashed,
-          o = void 0 !== r && r,
-          n = e.hairline,
-          c = void 0 !== n && n,
-          i = e.contentPosition,
-          a = e.borderColor,
-          s = e.textColor,
-          u = e.fontSize,
-          l = e.style,
-          f = e.className,
-          p = e.children,
-          d = T()(e, A)
-        return Object(L.jsx)(
-          M.n,
-          _objectSpread(
-            _objectSpread(
-              {
-                className:
-                  ' ' +
-                  E.b('divider', [{ dashed: o, hairline: c }, i]) +
-                  ' '.concat(f || ''),
-                style: E.c([
-                  ((t = { borderColor: a, textColor: s, fontSize: u }),
-                  Object(N.a)([
-                    {
-                      'border-color': t.borderColor,
-                      color: t.textColor,
-                      'font-size': Object(R.a)(t.fontSize),
-                    },
-                  ])),
-                  l,
-                ]),
+      function getStatus(e, t) {
+        return e < t ? 'finish' : e === t ? 'process' : 'inactive'
+      }
+      var F = function Steps(e) {
+          var t = e.steps,
+            r = void 0 === t ? [] : t,
+            o = e.active,
+            n = void 0 === o ? 0 : o,
+            c = e.direction,
+            a = void 0 === c ? 'horizontal' : c,
+            i = e.activeColor,
+            s = void 0 === i ? L.c : i,
+            l = e.inactiveColor,
+            p = void 0 === l ? L.b : l,
+            f = e.activeIcon,
+            d = void 0 === f ? 'checked' : f,
+            v = e.inactiveIcon,
+            b = e.className,
+            m = e.onClickStep,
+            _ = x()(e, A),
+            h = Object(u.useCallback)(
+              function (e) {
+                var t = e.currentTarget.dataset.index
+                y()(e, 'detail', { value: t }), null == m || m(e)
               },
-              d,
+              [m],
+            )
+          return Object(R.jsx)(
+            E.n,
+            _objectSpread(
+              _objectSpread(
+                { className: H.b('steps', [a]) + ' '.concat(b || '') },
+                _,
+              ),
+              {},
+              {
+                children: Object(R.jsx)(E.n, {
+                  className: 'van-step__wrapper',
+                  children: j()(r).call(r, function (e, t) {
+                    return Object(R.jsxs)(
+                      E.n,
+                      {
+                        onClick: h,
+                        'data-index': t,
+                        className:
+                          H.b('step', [a, getStatus(t, n)]) + ' van-hairline',
+                        style:
+                          'inactive' === getStatus(t, n) ? 'color: ' + p : '',
+                        children: [
+                          Object(R.jsxs)(E.n, {
+                            className: 'van-step__title',
+                            style: t === n ? 'color: ' + s : '',
+                            children: [
+                              Object(R.jsx)(E.n, { children: e.text }),
+                              Object(R.jsx)(E.n, {
+                                className: 'desc-class',
+                                children: e.desc,
+                              }),
+                            ],
+                          }),
+                          Object(R.jsx)(E.n, {
+                            className: 'van-step__circle-container',
+                            children:
+                              t !== n
+                                ? Object(R.jsx)(R.Fragment, {
+                                    children:
+                                      e.inactiveIcon || v
+                                        ? Object(R.jsx)(K.b, {
+                                            color:
+                                              'inactive' === getStatus(t, n)
+                                                ? p
+                                                : s,
+                                            name: e.inactiveIcon || v || '',
+                                            className: 'van-step__icon',
+                                          })
+                                        : Object(R.jsx)(E.n, {
+                                            className: 'van-step__circle',
+                                            style:
+                                              'background-color: ' +
+                                              (void 0 !== n && t < n ? s : p),
+                                          }),
+                                  })
+                                : Object(R.jsx)(K.b, {
+                                    name: e.activeIcon || d,
+                                    color: s,
+                                    className: 'van-step__icon',
+                                  }),
+                          }),
+                          t !== r.length - 1 &&
+                            Object(R.jsx)(E.n, {
+                              className: 'van-step__line',
+                              style:
+                                'background-color: ' +
+                                (void 0 !== n && t < n ? s : p),
+                            }),
+                        ],
+                      },
+                      t,
+                    )
+                  }),
+                }),
+              },
             ),
-            {},
-            { children: p },
-          ),
-        )
-      }
+          )
+        },
+        W = [
+          { text: '步骤一', desc: '描述信息' },
+          { text: '步骤二', desc: '描述信息' },
+          { text: '步骤三', desc: '描述信息' },
+          { text: '步骤四', desc: '描述信息' },
+        ]
       function Demo() {
-        return Object(L.jsx)(M.n, { children: Object(L.jsx)(H, {}) })
+        return Object(R.jsx)(F, { steps: W, active: 2 })
       }
+      var q = [
+        { text: '步骤一', desc: '描述信息' },
+        { text: '步骤二', desc: '描述信息' },
+        { text: '步骤三', desc: '描述信息' },
+        { text: '步骤四', desc: '描述信息' },
+      ]
       function demo2_Demo() {
-        return Object(L.jsx)(M.n, {
-          children: Object(L.jsx)(H, { hairline: !0 }),
+        return Object(R.jsx)(F, {
+          steps: q,
+          active: 1,
+          activeIcon: 'success',
+          activeColor: '#38f',
         })
       }
+      var U = [
+        {
+          text: '步骤一',
+          desc: '描述信息',
+          inactiveIcon: 'location-o',
+          activeIcon: 'success',
+        },
+        {
+          text: '步骤二',
+          desc: '描述信息',
+          inactiveIcon: 'like-o',
+          activeIcon: 'plus',
+        },
+        {
+          text: '步骤三',
+          desc: '描述信息',
+          inactiveIcon: 'star-o',
+          activeIcon: 'cross',
+        },
+      ]
       function demo3_Demo() {
-        return Object(L.jsx)(M.n, {
-          children: Object(L.jsx)(H, { dashed: !0 }),
-        })
+        return Object(R.jsx)(F, { steps: U, active: 2 })
       }
+      var z = [
+        { text: '步骤一', desc: '描述信息' },
+        { text: '步骤二', desc: '描述信息' },
+        { text: '步骤三', desc: '描述信息' },
+      ]
       function demo4_Demo() {
-        return Object(L.jsxs)(M.n, {
-          children: [
-            Object(L.jsx)(H, { contentPosition: 'center', children: '文本' }),
-            Object(L.jsx)(H, { contentPosition: 'left', children: '文本' }),
-            Object(L.jsx)(H, { contentPosition: 'right', children: '文本' }),
-          ],
+        return Object(R.jsx)(F, {
+          steps: z,
+          active: 1,
+          direction: 'vertical',
+          activeColor: '#ee0a24',
         })
       }
-      function demo5_Demo() {
-        return Object(L.jsxs)(M.n, {
-          children: [
-            Object(L.jsx)(H, {
-              contentPosition: 'center',
-              textColor: '#1989fa',
-              children: '文本颜色',
-            }),
-            Object(L.jsx)(H, {
-              contentPosition: 'center',
-              borderColor: '#1989fa',
-              children: 'border 颜色',
-            }),
-            Object(L.jsx)(H, {
-              contentPosition: 'center',
-              fontSize: '18',
-              children: '字体大小',
-            }),
-          ],
-        })
-      }
-      function demo6_Demo() {
-        return Object(L.jsx)(M.n, {
-          children: Object(L.jsx)(H, {
-            contentPosition: 'center',
-            style: 'color: #1989fa; borderColor: #1989fa; fontSize: 18px;',
-            children: '文本',
-          }),
-        })
-      }
-      var z = (function (e) {
-        Object(i.a)(Index, e)
-        var t = Object(a.a)(Index)
+      var B = (function (e) {
+        Object(a.a)(Index, e)
+        var t = Object(i.a)(Index)
         function Index() {
           var e
           return (
@@ -1045,39 +1017,29 @@
             {
               key: 'render',
               value: function render() {
-                return Object(L.jsxs)(l.a, {
-                  title: 'Divider 分割线',
-                  className: 'pages-divider-index',
+                return Object(R.jsxs)(l.a, {
+                  title: 'Steps 步骤条',
+                  className: 'pages-steps-index',
                   children: [
-                    Object(L.jsx)(f.a, {
+                    Object(R.jsx)(p.a, {
                       title: '基础用法',
                       padding: !0,
-                      children: Object(L.jsx)(Demo, {}),
+                      children: Object(R.jsx)(Demo, {}),
                     }),
-                    Object(L.jsx)(f.a, {
-                      title: '使用 hairline',
-                      padding: !0,
-                      children: Object(L.jsx)(demo2_Demo, {}),
-                    }),
-                    Object(L.jsx)(f.a, {
-                      title: '虚线',
-                      padding: !0,
-                      children: Object(L.jsx)(demo3_Demo, {}),
-                    }),
-                    Object(L.jsx)(f.a, {
-                      title: '文本位置',
-                      padding: !0,
-                      children: Object(L.jsx)(demo4_Demo, {}),
-                    }),
-                    Object(L.jsx)(f.a, {
-                      title: '自定义属性',
-                      padding: !0,
-                      children: Object(L.jsx)(demo5_Demo, {}),
-                    }),
-                    Object(L.jsx)(f.a, {
+                    Object(R.jsx)(p.a, {
                       title: '自定义样式',
                       padding: !0,
-                      children: Object(L.jsx)(demo6_Demo, {}),
+                      children: Object(R.jsx)(demo2_Demo, {}),
+                    }),
+                    Object(R.jsx)(p.a, {
+                      title: '自定义图标',
+                      padding: !0,
+                      children: Object(R.jsx)(demo3_Demo, {}),
+                    }),
+                    Object(R.jsx)(p.a, {
+                      title: '竖向步骤条',
+                      padding: !0,
+                      children: Object(R.jsx)(demo4_Demo, {}),
                     }),
                   ],
                 })

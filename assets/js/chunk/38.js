@@ -24,13 +24,13 @@
         t.d(n, 'g', function () {
           return isVideoUrl
         })
-      var r = t(591),
-        c = t.n(r)
+      var r = t(586),
+        o = t.n(r)
       function isFunction(e) {
         return 'function' == typeof e
       }
       function isPlainObject(e) {
-        return null !== e && 'object' === c()(e) && !Array.isArray(e)
+        return null !== e && 'object' === o()(e) && !Array.isArray(e)
       }
       function isPromise(e) {
         return isPlainObject(e) && isFunction(e.then) && isFunction(e.catch)
@@ -39,201 +39,77 @@
         return null != e
       }
       function isObj(e) {
-        var n = c()(e)
+        var n = o()(e)
         return null !== e && ('object' === n || 'function' === n)
       }
       function isBoolean(e) {
         return 'boolean' == typeof e
       }
       var a = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i,
-        o = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i
+        c = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i
       function isImageUrl(e) {
         return a.test(e)
       }
       function isVideoUrl(e) {
-        return o.test(e)
+        return c.test(e)
       }
     },
-    578: function (e, n, t) {
-      'use strict'
-      ;(function (e) {
-        t.d(n, 'a', function () {
-          return Page
-        })
-        t(590)
-        var r = t(574),
-          c = t(568),
-          a = t(90),
-          o = t(737),
-          l = t(77),
-          i = t(64),
-          s = (t(581), t(115))
-        function Page(n) {
-          var t = n.title,
-            u = n.className,
-            d = void 0 === u ? '' : u,
-            f = n.children,
-            v = a.a.useRouter().path
-          return (
-            Object(i.useEffect)(
-              function () {
-                'react' === e.env.LIBRARY_ENV
-                  ? (document.body.scrollTop =
-                      document.documentElement.scrollTop =
-                        0)
-                  : Object(o.a)({ scrollTop: 0 })
-              },
-              [v],
-            ),
-            a.a.useShareAppMessage(function () {
-              return { title: 'AntM 组件库演示', path: v }
-            }),
-            Object(s.jsxs)(c.n, {
-              className: 'demo-page '.concat(d),
-              children: [
-                Object(s.jsxs)(c.n, {
-                  className: 'demo-nav',
-                  children: [
-                    Object(s.jsx)(r.b, {
-                      name: 'arrow-left',
-                      className: 'demo-nav__back',
-                      onClick: function onClick() {
-                        return Object(l.d)()
-                      },
-                    }),
-                    Object(s.jsxs)(c.n, {
-                      className: 'demo-nav__title',
-                      children: [t, ' '],
-                    }),
-                  ],
-                }),
-                f,
-              ],
-            })
-          )
-        }
-      }.call(this, t(236)))
-    },
-    579: function (e, n, t) {
+    582: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
-        return u
+        return Loading
       })
-      var r = t(39),
-        c = t(40),
-        a = t(66),
-        o = t(65),
-        l = t(568),
-        i = t(64),
-        s = (t(582), t(115)),
-        u = (function (e) {
-          Object(a.a)(Index, e)
-          var n = Object(o.a)(Index)
-          function Index() {
-            return Object(r.a)(this, Index), n.call(this)
-          }
-          return (
-            Object(c.a)(Index, [
-              {
-                key: 'render',
-                value: function render() {
-                  var e = this.props,
-                    n = e.padding,
-                    t = e.title,
-                    r = e.card
-                  return Object(s.jsxs)(l.n, {
-                    className:
-                      'custom-class demo-block van-clearfix ' +
-                      (n ? 'demo-block--padding' : ''),
-                    children: [
-                      t &&
-                        Object(s.jsx)(l.n, {
-                          className: 'demo-block__title',
-                          children: t,
-                        }),
-                      r
-                        ? Object(s.jsx)(l.n, {
-                            className: 'demo-block__card',
-                            children: this.props.children,
-                          })
-                        : this.props.children,
-                    ],
-                  })
-                },
-              },
-            ]),
-            Index
-          )
-        })(i.Component)
-    },
-    581: function (e, n, t) {},
-    582: function (e, n, t) {},
-    589: function (e, n, t) {
-      'use strict'
-      t.d(n, 'a', function () {
-        return Cell
-      })
-      var r = t(116),
-        c = t.n(r),
-        a = t(55),
-        o = t.n(a),
-        l = t(24),
-        i = t.n(l),
-        s = t(571),
+      var r = t(572),
+        o = t.n(r),
+        a = t(576),
+        c = t.n(a),
+        i = t(573),
+        l = t.n(i),
+        s = t(592),
         u = t.n(s),
-        d = t(32),
-        f = t.n(d),
-        v = t(570),
+        f = t(10),
+        d = t.n(f),
+        v = t(24),
         b = t.n(v),
-        j = t(27),
-        O = t.n(j),
-        h = t(173),
-        p = t.n(h),
-        m = t(572),
-        x = t.n(m),
-        C = t(573),
-        k = t.n(C),
-        y = t(64),
-        w = t(568),
-        _ = t(569),
-        g = t(597),
-        S = t(574),
-        L = t(583),
-        A = t(580)
-      var I = t(115),
-        E = [
-          'url',
-          'linkType',
+        j = t(571),
+        p = t.n(j),
+        y = t(32),
+        m = t.n(y),
+        g = t(570),
+        h = t.n(g),
+        O = t(27),
+        x = t.n(O),
+        _ = t(173),
+        w = t.n(_),
+        S = t(116),
+        C = t.n(S),
+        k = t(55),
+        N = t.n(k),
+        T = t(568),
+        A = t(64),
+        I = t(569),
+        z = t(578)
+      function textStyle(e) {
+        return Object(I.c)({ 'font-size': Object(z.a)(e.textSize) })
+      }
+      var E = t(115),
+        B = [
+          'vertical',
+          'type',
+          'color',
           'size',
-          'center',
-          'required',
-          'border',
-          'isLink',
-          'clickable',
-          'icon',
-          'titleWidth',
-          'titleStyle',
-          'title',
-          'label',
-          'value',
-          'arrowDirection',
-          'onClick',
-          'renderIcon',
-          'renderTitle',
-          'renderLabel',
-          'renderRightIcon',
-          'renderExtra',
+          'textSize',
+          'className',
           'children',
           'style',
-          'className',
         ]
       function ownKeys(e, n) {
-        var t = i()(e)
-        if (u.a) {
-          var r = u()(e)
+        var t = b()(e)
+        if (p.a) {
+          var r = p()(e)
           n &&
-            (r = f()(r).call(r, function (n) {
-              return b()(e, n).enumerable
+            (r = m()(r).call(r, function (n) {
+              return h()(e, n).enumerable
             })),
             t.push.apply(t, r)
         }
@@ -242,168 +118,477 @@
       function _objectSpread(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t,
-            r = null != arguments[n] ? arguments[n] : {}
-          if (n % 2)
-            O()((t = ownKeys(Object(r), !0))).call(t, function (n) {
-              x()(e, n, r[n])
-            })
-          else if (p.a) c()(e, p()(r))
-          else {
-            var a
-            O()((a = ownKeys(Object(r)))).call(a, function (n) {
-              o()(e, n, b()(r, n))
-            })
-          }
+            r,
+            a = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? x()((t = ownKeys(Object(a), !0))).call(t, function (n) {
+                o()(e, n, a[n])
+              })
+            : w.a
+            ? C()(e, w()(a))
+            : x()((r = ownKeys(Object(a)))).call(r, function (n) {
+                N()(e, n, h()(a, n))
+              })
         }
         return e
       }
-      function Cell(e) {
+      function Loading(e) {
         var n,
-          t = e.url,
-          r = e.linkType,
-          c = e.size,
-          a = e.center,
-          o = e.required,
-          l = e.border,
-          i = void 0 === l || l,
-          s = e.isLink,
-          u = e.clickable,
-          d = e.icon,
-          f = e.titleWidth,
-          v = e.titleStyle,
-          b = e.title,
-          j = e.label,
-          O = e.value,
-          h = e.arrowDirection,
-          p = e.onClick,
-          m = e.renderIcon,
-          x = e.renderTitle,
-          C = e.renderLabel,
-          T = e.renderRightIcon,
-          N = e.renderExtra,
-          D = e.children,
-          B = e.style,
-          P = e.className,
-          F = k()(e, E),
-          z = Object(y.useCallback)(
-            function (e) {
-              null == p || p(e), t && Object(g.a)(t, r)
-            },
-            [r, p, t],
-          )
-        return Object(I.jsxs)(
-          w.n,
+          t = e.vertical,
+          r = e.type,
+          o = void 0 === r ? 'circular' : r,
+          a = e.color,
+          i = e.size,
+          s = e.textSize,
+          f = e.className,
+          v = e.children,
+          b = e.style,
+          j = l()(e, B),
+          p = Object(A.useState)(u()({ length: 12 })),
+          y = c()(p, 1)[0]
+        return Object(E.jsxs)(
+          T.n,
           _objectSpread(
             _objectSpread(
               {
-                className:
-                  ' ' +
-                  _.b('cell', [
-                    c,
-                    {
-                      center: a,
-                      required: o,
-                      borderless: !i,
-                      clickable: s || u,
-                    },
-                  ]) +
-                  ' '.concat(P || ''),
-                hoverClass: 'van-cell--hover hover-class',
-                hoverStayTime: 70,
-                style: _.c([B]),
-                onClick: z,
+                className: ' ' + I.b('loading', { vertical: t }) + ' ' + f,
+                style: I.c([b]),
               },
-              F,
+              j,
             ),
             {},
             {
               children: [
-                d
-                  ? Object(I.jsx)(S.a, {
-                      name: d,
-                      className: 'van-cell__left-icon-wrap van-cell__left-icon',
-                    })
-                  : m,
-                Object(I.jsxs)(w.n, {
+                Object(E.jsx)(T.n, {
+                  className: 'van-loading__spinner van-loading__spinner--' + o,
                   style:
-                    ((n = { titleWidth: f, titleStyle: v }),
-                    Object(L.a)([
-                      {
-                        'max-width': Object(A.a)(n.titleWidth),
-                        'min-width': Object(A.a)(n.titleWidth),
-                      },
-                      n.titleStyle,
-                    ])),
-                  className: 'van-cell__title title-class',
-                  children: [
-                    b || 0 === b ? Object(I.jsx)(w.a, { children: b }) : x,
-                    (j || C) &&
-                      Object(I.jsx)(w.n, {
-                        className: 'van-cell__label label-class',
-                        children:
-                          C || (j && Object(I.jsx)(w.a, { children: j })),
-                      }),
-                  ],
-                }),
-                Object(I.jsx)(w.n, {
-                  className: 'van-cell__value value-class',
+                    ((n = { color: a, size: i }),
+                    Object(I.c)({
+                      color: n.color,
+                      width: Object(z.a)(n.size),
+                      height: Object(z.a)(n.size),
+                    })),
                   children:
-                    O || 0 === O ? Object(I.jsx)(w.a, { children: O }) : D,
+                    'spinner' === o &&
+                    Object(E.jsx)(T.a, {
+                      children: d()(y).call(y, function (e, n) {
+                        return Object(E.jsx)(
+                          T.n,
+                          { className: 'van-loading__dot' },
+                          'van-loading__dot_'.concat(n),
+                        )
+                      }),
+                    }),
                 }),
-                s
-                  ? Object(I.jsx)(S.a, {
-                      name: h ? 'arrow-' + h : 'arrow',
-                      className:
-                        'van-cell__right-icon-wrap right-icon-class van-cell__right-icon',
-                    })
-                  : T,
-                N,
+                Object(E.jsx)(T.n, {
+                  className: 'van-loading__text',
+                  style: textStyle({ textSize: s }),
+                  children: v,
+                }),
               ],
             },
           ),
         )
       }
-      n.b = Cell
+      n.b = Loading
     },
-    592: function (e, n, t) {
-      'use strict'
-      t(576), t(584), t(585), t(601)
-    },
-    597: function (e, n, t) {
+    583: function (e, n, t) {},
+    584: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
-        return jumpLink
+        return Button
       })
-      var r = t(77)
-      function jumpLink(e, n) {
-        var t
-        if (((n = null !== (t = n) && void 0 !== t ? t : 'navigateTo'), e))
-          if ('navigateTo' === n && Object(r.b)().length > 9)
-            Object(r.g)({ url: e })
-          else
-            switch (n) {
-              case 'navigateTo':
-                Object(r.e)({ url: e })
+      var r = t(24),
+        o = t.n(r),
+        a = t(571),
+        c = t.n(a),
+        i = t(32),
+        l = t.n(i),
+        s = t(570),
+        u = t.n(s),
+        f = t(27),
+        d = t.n(f),
+        v = t(173),
+        b = t.n(v),
+        j = t(116),
+        p = t.n(j),
+        y = t(55),
+        m = t.n(y),
+        g = t(572),
+        h = t.n(g),
+        O = t(573),
+        x = t.n(O),
+        _ = t(90),
+        w = t(568),
+        S = t(569),
+        C = t(577),
+        k = t(582),
+        N = t(28),
+        T = t.n(N),
+        A = t(579)
+      function rootStyle(e) {
+        var n
+        if (!e.color) return ''
+        var t = {
+          color: e.plain ? e.color : '#fff',
+          background: e.plain ? null : e.color,
+        }
+        return (
+          -1 !== T()((n = e.color)).call(n, 'gradient')
+            ? (t.border = 0)
+            : (t['border-color'] = e.color),
+          Object(A.a)([t])
+        )
+      }
+      var I = t(115),
+        z = [
+          'type',
+          'size',
+          'block',
+          'round',
+          'plain',
+          'square',
+          'loading',
+          'disabled',
+          'hairline',
+          'color',
+          'loadingSize',
+          'loadingType',
+          'loadingText',
+          'icon',
+          'classPrefix',
+          'onClick',
+          'children',
+          'style',
+          'className',
+        ]
+      function ownKeys(e, n) {
+        var t = o()(e)
+        if (c.a) {
+          var r = c()(e)
+          n &&
+            (r = l()(r).call(r, function (n) {
+              return u()(e, n).enumerable
+            })),
+            t.push.apply(t, r)
+        }
+        return t
+      }
+      function _objectSpread(e) {
+        for (var n = 1; n < arguments.length; n++) {
+          var t,
+            r,
+            o = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? d()((t = ownKeys(Object(o), !0))).call(t, function (n) {
+                h()(e, n, o[n])
+              })
+            : b.a
+            ? p()(e, b()(o))
+            : d()((r = ownKeys(Object(o)))).call(r, function (n) {
+                m()(e, n, u()(o, n))
+              })
+        }
+        return e
+      }
+      var E = !1,
+        B = 10
+      if (!E)
+        var D = setInterval(function () {
+          if (--B > 0)
+            for (
+              var e = document.getElementsByTagName('style') || [],
+                n = e.length - 1;
+              n >= 0;
+              n--
+            ) {
+              var t = e[n],
+                r = t.innerHTML
+              if (r && /^taro-button-core{/.test(r)) {
+                t.remove(), (E = !0), D && clearInterval(D)
                 break
-              case 'reLaunch':
-                Object(r.f)({ url: e })
-                break
-              case 'redirectTo':
-                Object(r.g)({ url: e })
+              }
             }
+          else D && clearInterval(D)
+        }, 200)
+      function Button(e) {
+        var n,
+          t = e.type,
+          r = void 0 === t ? 'default' : t,
+          o = e.size,
+          a = void 0 === o ? 'normal' : o,
+          c = e.block,
+          i = e.round,
+          l = e.plain,
+          s = e.square,
+          u = e.loading,
+          f = e.disabled,
+          d = e.hairline,
+          v = e.color,
+          b = e.loadingSize,
+          j = void 0 === b ? _.a.pxTransform(40) : b,
+          p = e.loadingType,
+          y = void 0 === p ? 'circular' : p,
+          m = e.loadingText,
+          g = e.icon,
+          h = e.classPrefix,
+          O = void 0 === h ? 'van-icon' : h,
+          N = e.onClick,
+          T = e.children,
+          A = e.style,
+          E = e.className,
+          B = x()(e, z)
+        return Object(I.jsx)(
+          w.b,
+          _objectSpread(
+            _objectSpread(
+              {
+                className:
+                  ' ' +
+                  S.b('button', [
+                    r,
+                    a,
+                    {
+                      block: c,
+                      round: i,
+                      plain: l,
+                      square: s,
+                      loading: u,
+                      disabled: f,
+                      hairline: d,
+                      unclickable: f || u,
+                    },
+                  ]) +
+                  ' ' +
+                  (d ? 'van-hairline--surround' : '') +
+                  ' '.concat(E || ''),
+                hoverClass: 'van-button--active hover-class',
+                style: S.c([rootStyle({ plain: l, color: v }), A]),
+                onClick: f || u ? void 0 : N,
+              },
+              B,
+            ),
+            {},
+            {
+              children: u
+                ? Object(I.jsxs)(w.n, {
+                    style: 'display: flex',
+                    children: [
+                      Object(I.jsx)(k.a, {
+                        className: 'loading-class',
+                        size: j,
+                        type: y,
+                        color:
+                          ((n = { type: r, color: v, plain: l }),
+                          n.plain
+                            ? n.color
+                              ? n.color
+                              : '#c9c9c9'
+                            : 'default' === n.type
+                            ? '#c9c9c9'
+                            : '#fff'),
+                      }),
+                      m &&
+                        Object(I.jsx)(w.n, {
+                          className: 'van-button__loading-text',
+                          children: m,
+                        }),
+                    ],
+                  })
+                : Object(I.jsxs)(w.a, {
+                    children: [
+                      g &&
+                        Object(I.jsx)(C.a, {
+                          size: '1.2em',
+                          name: g,
+                          classPrefix: O,
+                          className: 'van-button__icon',
+                          style: 'line-height: inherit;',
+                        }),
+                      Object(I.jsx)(w.n, {
+                        className: 'van-button__text',
+                        children: T,
+                      }),
+                    ],
+                  }),
+            },
+          ),
+        )
+      }
+      n.b = Button
+    },
+    590: function (e, n, t) {
+      'use strict'
+      t.d(n, 'g', function () {
+        return range
+      }),
+        t.d(n, 'd', function () {
+          return getSystemInfoSync
+        }),
+        t.d(n, 'a', function () {
+          return addUnit
+        }),
+        t.d(n, 'h', function () {
+          return requestAnimationFrame
+        }),
+        t.d(n, 'f', function () {
+          return pickExclude
+        }),
+        t.d(n, 'c', function () {
+          return getRect
+        }),
+        t.d(n, 'b', function () {
+          return getAllRect
+        }),
+        t.d(n, 'i', function () {
+          return toPromise
+        })
+      var r,
+        o = t(148),
+        a = t.n(o),
+        c = t(24),
+        i = t.n(c),
+        l = t(21),
+        s = t.n(l),
+        u = t(5),
+        f = t.n(u),
+        d = (t(567), t(863)),
+        v = (t(866), t(90)),
+        b = t(790),
+        j = (t(77), t(575))
+      t(593)
+      function range(e, n, t) {
+        return Math.min(Math.max(e, n), t)
+      }
+      function getSystemInfoSync() {
+        return null == r && (r = Object(d.a)()), r
+      }
+      function addUnit(e) {
+        if (Object(j.b)(e))
+          return /^-?\d+(\.\d+)?$/.test('' + e) ? v.a.pxTransform(e) : e
+      }
+      function requestAnimationFrame(e) {
+        return 'devtools' === getSystemInfoSync().platform
+          ? setTimeout(function () {
+              e()
+            }, 33.333333333333336)
+          : Object(b.a)()
+              .selectViewport()
+              .boundingClientRect()
+              .exec(function () {
+                e()
+              })
+      }
+      function pickExclude(e, n) {
+        var t
+        return Object(j.e)(e)
+          ? a()((t = i()(e))).call(
+              t,
+              function (t, r) {
+                return s()(n).call(n, r) || (t[r] = e[r]), t
+              },
+              {},
+            )
+          : {}
+      }
+      function getRect(e, n) {
+        return new f.a(function (t) {
+          var r = Object(b.a)()
+          e && (r = r.in(e)),
+            r
+              .select(n)
+              .boundingClientRect()
+              .exec(function () {
+                var e =
+                  arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : []
+                return t(e[0])
+              })
+        })
+      }
+      function getAllRect(e, n) {
+        return new f.a(function (t) {
+          var r = Object(b.a)()
+          e && (r = r.in(e)),
+            r
+              .selectAll(n)
+              .boundingClientRect()
+              .exec(function () {
+                var e =
+                  arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : []
+                return t(e[0])
+              })
+        })
+      }
+      function toPromise(e) {
+        return Object(j.f)(e) ? e : f.a.resolve(e)
+      }
+      t.d(n, 'e', function () {
+        return j.b
+      })
+    },
+    591: function (e, n, t) {
+      'use strict'
+      t(574), t(583), t(580), t(581), t(595)
+    },
+    593: function (e, n, t) {
+      'use strict'
+      t.d(n, 'a', function () {
+        return canIUseModel
+      }),
+        t.d(n, 'b', function () {
+          return canIUseNextTick
+        })
+      var r,
+        o = t(117),
+        a = t.n(o),
+        c = t(863),
+        i = t(864)
+      t(865)
+      function gte(e) {
+        return (
+          (function compareVersion(e, n) {
+            ;(e = e.split('.')), (n = n.split('.'))
+            for (var t = Math.max(e.length, n.length); e.length < t; )
+              e.push('0')
+            for (; n.length < t; ) n.push('0')
+            for (var r = 0; r < t; r++) {
+              var o = a()(e[r], 10),
+                c = a()(n[r], 10)
+              if (o > c) return 1
+              if (o < c) return -1
+            }
+            return 0
+          })(
+            (function getSystemInfoSync() {
+              return null == r && (r = Object(c.a)()), r
+            })().SDKVersion,
+            e,
+          ) >= 0
+        )
+      }
+      function canIUseModel() {
+        return gte('2.9.3')
+      }
+      function canIUseNextTick() {
+        return Object(i.a)('nextTick')
       }
     },
-    599: function (e, n, t) {
+    595: function (e, n, t) {},
+    596: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
         return useTransition
       })
-      var r = t(577),
-        c = t.n(r),
+      var r = t(576),
+        o = t.n(r),
         a = t(6),
-        o = t.n(a),
-        l = t(21),
-        i = t.n(l),
+        c = t.n(a),
+        i = t(21),
+        l = t.n(i),
         s = t(64),
         u = t(575)
       function useTransition(e) {
@@ -411,185 +596,185 @@
           t = void 0 !== n && n,
           r = e.duration,
           a = void 0 === r ? 300 : r,
-          l = e.name,
-          d = void 0 === l ? 'fade' : l,
-          f = e.onBeforeEnter,
+          i = e.name,
+          f = void 0 === i ? 'fade' : i,
+          d = e.onBeforeEnter,
           v = e.onBeforeLeave,
           b = e.onAfterEnter,
           j = e.onAfterLeave,
-          O = e.onEnter,
-          h = e.onLeave,
-          p = e.enterClass,
-          m = e.enterActiveClass,
-          x = e.enterToClass,
-          C = e.leaveClass,
-          k = e.leaveActiveClass,
-          y = e.leaveToClass,
+          p = e.onEnter,
+          y = e.onLeave,
+          m = e.enterClass,
+          g = e.enterActiveClass,
+          h = e.enterToClass,
+          O = e.leaveClass,
+          x = e.leaveActiveClass,
+          _ = e.leaveToClass,
           w = Object(s.useRef)(!1),
-          _ = Object(s.useRef)(''),
-          g = Object(s.useState)(!1),
-          S = c()(g, 2),
-          L = S[0],
-          A = S[1],
-          I = Object(s.useState)(!1),
-          E = c()(I, 2),
-          T = E[0],
-          N = E[1],
-          D = Object(s.useState)(0),
-          B = c()(D, 2),
-          P = B[0],
-          F = B[1],
-          z = Object(s.useState)(''),
-          K = c()(z, 2),
-          q = K[0],
-          R = K[1],
-          M = Object(s.useMemo)(
+          S = Object(s.useRef)(''),
+          C = Object(s.useState)(!1),
+          k = o()(C, 2),
+          N = k[0],
+          T = k[1],
+          A = Object(s.useState)(!1),
+          I = o()(A, 2),
+          z = I[0],
+          E = I[1],
+          B = Object(s.useState)(0),
+          D = o()(B, 2),
+          L = D[0],
+          K = D[1],
+          F = Object(s.useState)(''),
+          P = o()(F, 2),
+          U = P[0],
+          q = P[1],
+          R = Object(s.useMemo)(
             function () {
               var e,
                 n,
                 t = (function getClassNames(e) {
-                  var n, t, r, c
+                  var n, t, r, o
                   return {
-                    enter: o()((n = 'van-'.concat(e, '-enter van-'))).call(
+                    enter: c()((n = 'van-'.concat(e, '-enter van-'))).call(
                       n,
                       e,
                       '-enter-active enter-class enter-active-class',
                     ),
-                    'enter-to': o()(
+                    'enter-to': c()(
                       (t = 'van-'.concat(e, '-enter-to van-')),
                     ).call(
                       t,
                       e,
                       '-enter-active enter-to-class enter-active-class',
                     ),
-                    leave: o()((r = 'van-'.concat(e, '-leave van-'))).call(
+                    leave: c()((r = 'van-'.concat(e, '-leave van-'))).call(
                       r,
                       e,
                       '-leave-active leave-class leave-active-class',
                     ),
-                    'leave-to': o()(
-                      (c = 'van-'.concat(e, '-leave-to van-')),
+                    'leave-to': c()(
+                      (o = 'van-'.concat(e, '-leave-to van-')),
                     ).call(
-                      c,
+                      o,
                       e,
                       '-leave-active leave-to-class leave-active-class',
                     ),
                   }
-                })(d)
-              d ||
-                ((t.enter += ' '.concat(null != p ? p : '')),
-                (t['enter-to'] += o()(
-                  (e = ''.concat(null != x ? x : '', ' ')),
-                ).call(e, null != m ? m : '', ' ')),
-                (t.leave += '  '.concat(null != C ? C : '')),
-                (t['leave-to'] += o()(
-                  (n = ' '.concat(null != y ? y : '', ' ')),
-                ).call(n, null != k ? k : '')))
+                })(f)
+              f ||
+                ((t.enter += ' '.concat(null != m ? m : '')),
+                (t['enter-to'] += c()(
+                  (e = ''.concat(null != h ? h : '', ' ')),
+                ).call(e, null != g ? g : '', ' ')),
+                (t.leave += '  '.concat(null != O ? O : '')),
+                (t['leave-to'] += c()(
+                  (n = ' '.concat(null != _ ? _ : '', ' ')),
+                ).call(n, null != x ? x : '')))
               return t
             },
-            [m, p, x, k, C, y, d],
+            [g, m, h, x, O, _, f],
           ),
-          W = Object(s.useCallback)(
+          M = Object(s.useCallback)(
             function () {
               w.current ||
                 ((w.current = !0),
-                'enter' === _.current ? null == b || b() : null == j || j(),
-                !t && L && A(!1))
+                'enter' === S.current ? null == b || b() : null == j || j(),
+                !t && N && T(!1))
             },
-            [L, b, j, t],
+            [N, b, j, t],
           ),
-          U = Object(s.useCallback)(
+          H = Object(s.useCallback)(
             function () {
               var e = Object(u.d)(a) ? a.enter : a
-              ;(_.current = 'enter'),
-                null == f || f(),
+              ;(S.current = 'enter'),
+                null == d || d(),
                 requestAnimationFrame(function () {
-                  'enter' === _.current &&
-                    (null == O || O(),
-                    N(!0),
-                    A(!0),
-                    R(M.enter),
-                    F(e),
+                  'enter' === S.current &&
+                    (null == p || p(),
+                    E(!0),
+                    T(!0),
+                    q(R.enter),
+                    K(e),
                     requestAnimationFrame(function () {
-                      'enter' === _.current &&
+                      'enter' === S.current &&
                         ((w.current = !1),
                         setTimeout(function () {
-                          return W()
+                          return M()
                         }, e),
-                        R(M['enter-to']))
+                        q(R['enter-to']))
                     }))
                 })
             },
-            [a, f, O, M, W],
+            [a, d, p, R, M],
           ),
           V = Object(s.useCallback)(
             function () {
-              if (L) {
+              if (N) {
                 var e = Object(u.d)(a) ? a.leave : a
-                ;(_.current = 'leave'),
+                ;(S.current = 'leave'),
                   null == v || v(),
                   requestAnimationFrame(function () {
-                    'leave' === _.current &&
-                      (null == h || h(),
-                      R(M.leave),
-                      F(e),
+                    'leave' === S.current &&
+                      (null == y || y(),
+                      q(R.leave),
+                      K(e),
                       requestAnimationFrame(function () {
-                        'leave' === _.current &&
+                        'leave' === S.current &&
                           ((w.current = !1),
                           setTimeout(function () {
-                            return W()
+                            return M()
                           }, e),
-                          R(M['leave-to']))
+                          q(R['leave-to']))
                       }))
                   })
               }
             },
-            [M, L, a, v, h, W],
+            [R, N, a, v, y, M],
           )
         return (
           Object(s.useEffect)(
             function () {
-              !t || (q && i()(q).call(q, M['enter-to'])) || U(), t || V()
+              !t || (U && l()(U).call(U, R['enter-to'])) || H(), t || V()
             },
             [t],
           ),
           {
-            display: L,
-            inited: T,
-            currentDuration: P,
-            classes: q,
-            onTransitionEnd: W,
+            display: N,
+            inited: z,
+            currentDuration: L,
+            classes: U,
+            onTransitionEnd: M,
           }
         )
       }
     },
-    600: function (e, n, t) {
+    597: function (e, n, t) {
       'use strict'
-      var r = t(116),
-        c = t.n(r),
-        a = t(55),
-        o = t.n(a),
-        l = t(24),
-        i = t.n(l),
-        s = t(571),
+      var r = t(24),
+        o = t.n(r),
+        a = t(571),
+        c = t.n(a),
+        i = t(32),
+        l = t.n(i),
+        s = t(570),
         u = t.n(s),
-        d = t(32),
-        f = t.n(d),
-        v = t(570),
+        f = t(27),
+        d = t.n(f),
+        v = t(173),
         b = t.n(v),
-        j = t(27),
-        O = t.n(j),
-        h = t(173),
-        p = t.n(h),
-        m = t(572),
-        x = t.n(m),
-        C = t(573),
-        k = t.n(C),
-        y = t(568),
+        j = t(116),
+        p = t.n(j),
+        y = t(55),
+        m = t.n(y),
+        g = t(572),
+        h = t.n(g),
+        O = t(573),
+        x = t.n(O),
+        _ = t(568),
         w = t(569)
-      var _ = t(599),
-        g = t(115),
-        S = [
+      var S = t(596),
+        C = t(115),
+        k = [
           'onBeforeEnter',
           'onBeforeLeave',
           'onAfterEnter',
@@ -610,12 +795,12 @@
           'leaveToClass',
         ]
       function ownKeys(e, n) {
-        var t = i()(e)
-        if (u.a) {
-          var r = u()(e)
+        var t = o()(e)
+        if (c.a) {
+          var r = c()(e)
           n &&
-            (r = f()(r).call(r, function (n) {
-              return b()(e, n).enumerable
+            (r = l()(r).call(r, function (n) {
+              return u()(e, n).enumerable
             })),
             t.push.apply(t, r)
         }
@@ -624,18 +809,17 @@
       function _objectSpread(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t,
-            r = null != arguments[n] ? arguments[n] : {}
-          if (n % 2)
-            O()((t = ownKeys(Object(r), !0))).call(t, function (n) {
-              x()(e, n, r[n])
-            })
-          else if (p.a) c()(e, p()(r))
-          else {
-            var a
-            O()((a = ownKeys(Object(r)))).call(a, function (n) {
-              o()(e, n, b()(r, n))
-            })
-          }
+            r,
+            o = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? d()((t = ownKeys(Object(o), !0))).call(t, function (n) {
+                h()(e, n, o[n])
+              })
+            : b.a
+            ? p()(e, b()(o))
+            : d()((r = ownKeys(Object(o)))).call(r, function (n) {
+                m()(e, n, u()(o, n))
+              })
         }
         return e
       }
@@ -643,52 +827,52 @@
         var n,
           t = e.onBeforeEnter,
           r = e.onBeforeLeave,
-          c = e.onAfterEnter,
+          o = e.onAfterEnter,
           a = e.onAfterLeave,
-          o = e.onEnter,
-          l = e.onLeave,
-          i = e.duration,
+          c = e.onEnter,
+          i = e.onLeave,
+          l = e.duration,
           s = e.name,
           u = e.show,
-          d = e.children,
-          f = e.style,
+          f = e.children,
+          d = e.style,
           v = e.className,
           b = e.enterClass,
           j = e.enterActiveClass,
-          O = e.enterToClass,
-          h = e.leaveClass,
-          p = e.leaveActiveClass,
-          m = e.leaveToClass,
-          x = k()(e, S),
-          C = Object(_.a)({
+          p = e.enterToClass,
+          y = e.leaveClass,
+          m = e.leaveActiveClass,
+          g = e.leaveToClass,
+          h = x()(e, k),
+          O = Object(S.a)({
             show: u,
-            duration: i,
+            duration: l,
             name: s,
             enterClass: b,
             enterActiveClass: j,
-            enterToClass: O,
-            leaveClass: h,
-            leaveActiveClass: p,
-            leaveToClass: m,
+            enterToClass: p,
+            leaveClass: y,
+            leaveActiveClass: m,
+            leaveToClass: g,
             onBeforeEnter: t,
             onBeforeLeave: r,
-            onAfterEnter: c,
+            onAfterEnter: o,
             onAfterLeave: a,
-            onEnter: o,
-            onLeave: l,
+            onEnter: c,
+            onLeave: i,
           }),
-          L = C.currentDuration,
-          A = C.classes,
-          I = C.display
-        return Object(g.jsx)(g.Fragment, {
-          children: Object(g.jsx)(
-            y.n,
+          N = O.currentDuration,
+          T = O.classes,
+          A = O.display
+        return Object(C.jsx)(C.Fragment, {
+          children: Object(C.jsx)(
+            _.n,
             _objectSpread(
               _objectSpread(
                 {
-                  className: 'van-transition ' + A + ' '.concat(v || ''),
+                  className: 'van-transition ' + T + ' '.concat(v || ''),
                   style: w.c([
-                    ((n = { currentDuration: L, display: I }),
+                    ((n = { currentDuration: N, display: A }),
                     w.c([
                       {
                         '-webkit-transition-duration': n.currentDuration + 'ms',
@@ -697,242 +881,93 @@
                       n.display ? null : 'display: none',
                       n.style,
                     ])),
-                    f,
+                    d,
                   ]),
                 },
-                x,
+                h,
               ),
               {},
-              { catchMove: !0, children: d },
+              { catchMove: !0, children: f },
             ),
           ),
         })
       }
     },
-    601: function (e, n, t) {},
-    602: function (e, n, t) {},
-    604: function (e, n, t) {
+    599: function (e, n, t) {},
+    739: function (e, n, t) {
       'use strict'
-      t.d(n, 'a', function () {
-        return Index
-      })
-      var r = t(116),
-        c = t.n(r),
-        a = t(55),
-        o = t.n(a),
-        l = t(24),
-        i = t.n(l),
-        s = t(571),
-        u = t.n(s),
-        d = t(32),
-        f = t.n(d),
-        v = t(570),
-        b = t.n(v),
-        j = t(27),
-        O = t.n(j),
-        h = t(173),
-        p = t.n(h),
-        m = t(577),
-        x = t.n(m),
-        C = t(572),
-        k = t.n(C),
-        y = t(573),
-        w = t.n(y),
-        _ = t(64),
-        g = t(569),
-        S = t(600),
-        L = t(115),
-        A = [
-          'show',
-          'zIndex',
-          'style',
-          'className',
-          'lockScroll',
-          'duration',
-          'setOuterShow',
-          'children',
-        ]
-      function ownKeys(e, n) {
-        var t = i()(e)
-        if (u.a) {
-          var r = u()(e)
-          n &&
-            (r = f()(r).call(r, function (n) {
-              return b()(e, n).enumerable
-            })),
-            t.push.apply(t, r)
-        }
-        return t
-      }
-      function _objectSpread(e) {
-        for (var n = 1; n < arguments.length; n++) {
-          var t,
-            r = null != arguments[n] ? arguments[n] : {}
-          if (n % 2)
-            O()((t = ownKeys(Object(r), !0))).call(t, function (n) {
-              k()(e, n, r[n])
-            })
-          else if (p.a) c()(e, p()(r))
-          else {
-            var a
-            O()((a = ownKeys(Object(r)))).call(a, function (n) {
-              o()(e, n, b()(r, n))
-            })
-          }
-        }
-        return e
-      }
-      function Overlay(e) {
-        var n = e.show,
-          t = e.zIndex,
-          r = e.style,
-          c = e.className,
-          a = e.lockScroll,
-          o = void 0 === a || a,
-          l = e.duration,
-          i = void 0 === l ? 300 : l,
-          s = e.setOuterShow,
-          u = e.children,
-          d = w()(e, A),
-          f = Object(_.useCallback)(function (e) {
-            e.stopPropagation(), e.preventDefault()
-          }, [])
-        return o
-          ? Object(L.jsx)(
-              S.a,
-              _objectSpread(
-                _objectSpread(
-                  {
-                    show: n,
-                    className: 'van-overlay' + '  '.concat(c),
-                    style: g.c([{ 'z-index': t }, r]),
-                    duration: i,
-                    onTouchMove: f,
-                    onAfterLeave: function onAfterLeave() {
-                      return s(!1)
-                    },
-                  },
-                  d,
-                ),
-                {},
-                { children: u },
-              ),
-            )
-          : Object(L.jsx)(
-              S.a,
-              _objectSpread(
-                _objectSpread(
-                  {
-                    show: n,
-                    className: 'van-overlay' + '  '.concat(c || ''),
-                    style: g.c([{ 'z-index': t }, r]),
-                    duration: i,
-                    onAfterLeave: function onAfterLeave() {
-                      return s(!1)
-                    },
-                  },
-                  d,
-                ),
-                {},
-                { children: u },
-              ),
-            )
-      }
-      function Index(e) {
-        var n = e.show,
-          t = Object(_.useState)(!1),
-          r = x()(t, 2),
-          c = r[0],
-          a = r[1]
-        return (
-          Object(_.useEffect)(
-            function () {
-              n && a(!0)
-            },
-            [n],
-          ),
-          Object(L.jsx)(L.Fragment, {
-            children: c
-              ? Object(L.jsx)(Overlay, _objectSpread({ setOuterShow: a }, e))
-              : Object(L.jsx)(L.Fragment, {}),
-          })
-        )
-      }
+      t(574), t(599), t(779)
     },
-    606: function (e, n, t) {},
-    619: function (e, n, t) {
+    742: function (e, n, t) {
       'use strict'
-      t.d(n, 'a', function () {
-        return Popup
-      }),
-        t.d(n, 'b', function () {
-          return Index
-        })
-      var r = t(116),
-        c = t.n(r),
-        a = t(55),
-        o = t.n(a),
-        l = t(24),
-        i = t.n(l),
-        s = t(571),
+      var r = t(24),
+        o = t.n(r),
+        a = t(571),
+        c = t.n(a),
+        i = t(32),
+        l = t.n(i),
+        s = t(570),
         u = t.n(s),
-        d = t(32),
-        f = t.n(d),
-        v = t(570),
+        f = t(27),
+        d = t.n(f),
+        v = t(173),
         b = t.n(v),
-        j = t(27),
-        O = t.n(j),
-        h = t(173),
-        p = t.n(h),
-        m = t(577),
-        x = t.n(m),
-        C = t(572),
-        k = t.n(C),
-        y = t(573),
-        w = t.n(y),
-        _ = t(568),
-        g = t(64),
-        S = t(569),
-        L = t(574)
-      var A = t(599),
-        I = t(604),
-        E = t(115),
-        T = [
-          'show',
-          'duration',
-          'round',
-          'closeable',
-          'overlayStyle',
-          'transition',
-          'zIndex',
-          'overlay',
-          'closeIcon',
-          'closeIconPosition',
-          'closeOnClickOverlay',
-          'position',
-          'safeAreaInsetBottom',
-          'safeAreaInsetTop',
-          'lockScroll',
-          'children',
-          'onClickOverlay',
-          'onBeforeEnter',
-          'onBeforeLeave',
-          'onAfterEnter',
-          'onAfterLeave',
-          'onEnter',
-          'onLeave',
-          'onClose',
-          'setOuterShow',
-          'style',
-          'className',
-        ]
+        j = t(116),
+        p = t.n(j),
+        y = t(55),
+        m = t.n(y),
+        g = t(572),
+        h = t.n(g),
+        O = t(573),
+        x = t.n(O),
+        _ = t(576),
+        w = t.n(_),
+        S = t(0),
+        C = t.n(S),
+        k = t(567),
+        N = t(64),
+        T = t(568),
+        A = t(569),
+        I = t(597),
+        z = t(590),
+        E = t(578)
+      function notifyStyle(e) {
+        return Object(A.c)({ background: e.background, color: e.color })
+      }
+      var B = t(6),
+        D = t.n(B),
+        L = new (t(90).a.Events)()
+      function trigger(e) {
+        for (
+          var n, t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), o = 1;
+          o < t;
+          o++
+        )
+          r[o - 1] = arguments[o]
+        return L.trigger.apply(L, D()((n = [e])).call(n, r))
+      }
+      function on(e, n) {
+        return L.on(e, n)
+      }
+      function off(e, n) {
+        return L.off(e, n)
+      }
+      var K = function Notify(e) {
+        trigger('notify_show', e)
+      }
+      K.clear = function (e) {
+        trigger('notify_clear', e)
+      }
+      var F = K,
+        P = t(115),
+        U = ['style', 'className', 'zIndex']
       function ownKeys(e, n) {
-        var t = i()(e)
-        if (u.a) {
-          var r = u()(e)
+        var t = o()(e)
+        if (c.a) {
+          var r = c()(e)
           n &&
-            (r = f()(r).call(r, function (n) {
-              return b()(e, n).enumerable
+            (r = l()(r).call(r, function (n) {
+              return u()(e, n).enumerable
             })),
             t.push.apply(t, r)
         }
@@ -941,373 +976,335 @@
       function _objectSpread(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t,
-            r = null != arguments[n] ? arguments[n] : {}
-          if (n % 2)
-            O()((t = ownKeys(Object(r), !0))).call(t, function (n) {
-              k()(e, n, r[n])
-            })
-          else if (p.a) c()(e, p()(r))
-          else {
-            var a
-            O()((a = ownKeys(Object(r)))).call(a, function (n) {
-              o()(e, n, b()(r, n))
-            })
-          }
+            r,
+            o = null != arguments[n] ? arguments[n] : {}
+          n % 2
+            ? d()((t = ownKeys(Object(o), !0))).call(t, function (n) {
+                h()(e, n, o[n])
+              })
+            : b.a
+            ? p()(e, b()(o))
+            : d()((r = ownKeys(Object(o)))).call(r, function (n) {
+                m()(e, n, u()(o, n))
+              })
         }
         return e
       }
-      function Popup(e) {
-        var n,
-          t = e.show,
-          r = e.duration,
-          c = void 0 === r ? 300 : r,
-          a = e.round,
-          o = e.closeable,
-          l = e.overlayStyle,
-          i = e.transition,
-          s = e.zIndex,
-          u = e.overlay,
-          d = void 0 === u || u,
-          f = e.closeIcon,
-          v = void 0 === f ? 'cross' : f,
-          b = e.closeIconPosition,
-          j = void 0 === b ? 'top-right' : b,
-          O = e.closeOnClickOverlay,
-          h = void 0 === O || O,
-          p = e.position,
-          m = void 0 === p ? 'center' : p,
-          x = e.safeAreaInsetBottom,
-          C = void 0 === x || x,
-          k = e.safeAreaInsetTop,
-          y = void 0 !== k && k,
-          N = e.lockScroll,
-          D = void 0 === N || N,
-          B = e.children,
-          P = e.onClickOverlay,
-          F = e.onBeforeEnter,
-          z = e.onBeforeLeave,
-          K = e.onAfterEnter,
-          q = e.onAfterLeave,
-          R = e.onEnter,
-          M = e.onLeave,
-          W = e.onClose,
-          U = e.setOuterShow,
-          V = e.style,
-          J = e.className,
-          Y = w()(e, T),
-          Z = Object(g.useCallback)(
-            function () {
-              null == q || q(), null == U || U()
-            },
-            [q, U],
-          ),
-          G = Object(g.useCallback)(
-            function () {
-              null == W || W()
-            },
-            [W],
-          ),
-          H = Object(g.useCallback)(
-            function () {
-              null == P || P(), h && (null == W || W())
-            },
-            [h, P, W],
-          ),
-          Q = Object(A.a)({
-            show: t,
-            duration: 'none' === i ? 0 : c,
-            name: i || m,
-            onBeforeEnter: F,
-            onBeforeLeave: z,
-            onAfterEnter: K,
-            onAfterLeave: Z,
-            onEnter: R,
-            onLeave: M,
+      var q = {
+          selector: '#van-notify',
+          message: '',
+          background: '',
+          type: 'danger',
+          color: '#fff',
+          duration: 3e3,
+          safeAreaInsetTop: !1,
+          top: 0,
+          id: 'van-notify',
+        },
+        R = null
+      function es_notify_Notify(e) {
+        var n = Object(N.useState)({
+            selector: '#van-notify',
+            show: !1,
+            statusBarHeight: void 0,
+            message: '',
+            background: '',
+            type: 'danger',
+            color: '#fff',
+            duration: 3e3,
+            safeAreaInsetTop: !1,
+            top: 0,
+            id: 'van-notify',
+            onClick: function onClick(e) {},
+            onOpened: function onOpened() {},
+            onClose: function onClose() {},
           }),
-          X = Q.inited,
-          $ = Q.currentDuration,
-          ee = Q.classes,
-          ne = Q.display,
-          te = Q.onTransitionEnd,
-          re = Object(g.useCallback)(function (e) {
-            return e.replace(/([A-Z])/g, function (e, n) {
-              return '-' + (null == n ? void 0 : n.toLowerCase())
+          t = w()(n, 2),
+          r = t[0],
+          o = t[1],
+          a = e.style,
+          c = e.className,
+          i = e.zIndex,
+          l = x()(e, U)
+        Object(N.useEffect)(
+          function () {
+            o(function (n) {
+              return _objectSpread(
+                _objectSpread({}, n),
+                {},
+                { id: e.id || 'van-notify' },
+              )
             })
-          }, [])
-        return Object(E.jsxs)(E.Fragment, {
-          children: [
-            d &&
-              Object(E.jsx)(I.a, {
-                show: t,
-                zIndex: s,
-                style: l,
-                duration: c,
-                onClick: H,
-                lockScroll: D,
+          },
+          [e],
+        ),
+          Object(N.useEffect)(function () {
+            var e = Object(z.d)().statusBarHeight
+            o(function (n) {
+              return _objectSpread(
+                _objectSpread({}, n),
+                {},
+                { statusBarHeight: e },
+              )
+            })
+          }, []),
+          Object(N.useEffect)(function () {
+            return (
+              on('notify_show', function (e) {
+                var n = C()(
+                  C()({}, q),
+                  (function parseOptions(e) {
+                    return null == e
+                      ? {}
+                      : 'string' == typeof e
+                      ? { message: e }
+                      : e
+                  })(e),
+                )
+                ;(n.id === r.id || (!n.id && 'van-notify' === r.id)) &&
+                  (o(function (e) {
+                    return _objectSpread(_objectSpread({}, e), n)
+                  }),
+                  f(e))
               }),
-            X &&
-              Object(E.jsxs)(
-                _.n,
-                _objectSpread(
-                  _objectSpread(
-                    {
-                      className:
-                        ee +
-                        ' ' +
-                        S.b('popup', [m, { round: a, safe: C, safeTop: y }]) +
-                        '  '.concat(J || ''),
-                      style: S.c([
-                        ((n = { zIndex: s, currentDuration: $, display: ne }),
-                        S.c([
-                          {
-                            'z-index': n.zIndex,
-                            '-webkit-transition-duration':
-                              n.currentDuration + 'ms',
-                            'transition-duration': n.currentDuration + 'ms',
-                          },
-                          n.display ? null : 'display: none',
-                        ])),
-                        V,
-                      ]),
-                      onTransitionEnd: te,
-                    },
-                    Y,
-                  ),
-                  {},
-                  {
-                    children: [
-                      B,
-                      o &&
-                        Object(E.jsx)(L.b, {
-                          name: v,
-                          className:
-                            'close-icon-class van-popup__close-icon van-popup__close-icon--' +
-                            re(j),
-                          onClick: G,
-                        }),
-                    ],
-                  },
-                ),
-              ),
-          ],
-        })
-      }
-      function Index(e) {
-        var n = e.show,
-          t = Object(g.useState)(!1),
-          r = x()(t, 2),
-          c = r[0],
-          a = r[1]
-        return (
-          Object(g.useEffect)(
-            function () {
-              n && a(!0)
+              on('notify_clear', function (e) {
+                u(e)
+              }),
+              function () {
+                off('notify_show'), off('notify_clear')
+              }
+            )
+          }, [])
+        var s,
+          u = Object(N.useCallback)(function (e) {
+            clearTimeout(R),
+              o(function (e) {
+                return _objectSpread(_objectSpread({}, e), {}, { show: !1 })
+              }),
+              Object(k.a)(function () {
+                var n
+                null == e ||
+                  null === (n = e.onClose) ||
+                  void 0 === n ||
+                  n.call(e)
+              })
+          }, []),
+          f = Object(N.useCallback)(
+            function (e) {
+              clearTimeout(R),
+                o(function (e) {
+                  return _objectSpread(_objectSpread({}, e), {}, { show: !0 })
+                }),
+                Object(k.a)(function () {
+                  var n
+                  null == e ||
+                    null === (n = e.onOpened) ||
+                    void 0 === n ||
+                    n.call(e)
+                }),
+                r.duration > 0 &&
+                  r.duration !== 1 / 0 &&
+                  (R = setTimeout(function () {
+                    trigger('notify_clear', e)
+                  }, r.duration))
             },
-            [n],
+            [r.duration],
           ),
-          Object(E.jsx)(E.Fragment, {
-            children: c
-              ? Object(E.jsx)(Popup, _objectSpread({ setOuterShow: a }, e))
-              : Object(E.jsx)(E.Fragment, {}),
-          })
+          d = Object(N.useCallback)(
+            function (e) {
+              var n
+              null === (n = r.onClick) || void 0 === n || n.call(r, e)
+            },
+            [r],
+          )
+        return Object(P.jsx)(
+          I.a,
+          _objectSpread(
+            _objectSpread(
+              {
+                name: 'slide-down',
+                show: r.show,
+                className: 'van-notify__container '.concat(c),
+                style: A.c([
+                  ((s = i ? { zIndex: i, top: r.top } : { top: r.top }),
+                  Object(A.c)({
+                    'z-index': s.zIndex,
+                    top: Object(E.a)(s.top),
+                  })),
+                  a,
+                ]),
+                onClick: d,
+              },
+              l,
+            ),
+            {},
+            {
+              children: Object(P.jsxs)(T.n, {
+                className: 'van-notify van-notify--' + r.type,
+                style: notifyStyle({
+                  background: r.background,
+                  color: r.color,
+                }),
+                children: [
+                  r.safeAreaInsetTop &&
+                    Object(P.jsx)(T.n, {
+                      style: 'height: ' + r.statusBarHeight + 'px',
+                    }),
+                  Object(P.jsx)(T.k, { children: r.message }),
+                ],
+              }),
+            },
+          ),
         )
       }
+      ;(es_notify_Notify.show = F), (es_notify_Notify.clear = F.clear)
+      n.a = es_notify_Notify
     },
-    625: function (e, n, t) {},
-    738: function (e, n, t) {
-      'use strict'
-      t(576), t(584), t(585), t(602), t(606), t(625)
-    },
-    917: function (e, n, t) {
+    779: function (e, n, t) {},
+    921: function (e, n, t) {
       'use strict'
       t.r(n),
         t.d(n, 'default', function () {
           return p
         })
       var r = t(39),
-        c = t(40),
+        o = t(40),
         a = t(175),
-        o = t(66),
-        l = t(65),
-        i = t(91),
+        c = t(66),
+        i = t(65),
+        l = t(91),
         s = t(64),
-        u = t.n(s),
-        d = t(578),
-        f = t(579),
-        v = (t(738), t(619)),
-        b = (t(592), t(589)),
-        j = t(174),
-        O = t(568),
-        h = t(115)
+        u = t(587),
+        f = t(588),
+        d = (t(591), t(584)),
+        v = (t(739), t(742)),
+        b = t(568),
+        j = t(115)
       function Demo() {
-        var e = u.a.useState(!1),
-          n = Object(j.a)(e, 2),
-          t = n[0],
-          r = n[1]
-        return Object(h.jsxs)(O.n, {
+        return Object(j.jsxs)(b.n, {
           children: [
-            Object(h.jsx)(b.b, {
-              title: '展示弹出层',
-              isLink: !0,
-              onClick: function onClick() {
-                return r(!0)
+            Object(j.jsx)(d.b, {
+              onClick: function show() {
+                return v.a.show('通知内容')
               },
+              type: 'danger',
+              children: '基础用法',
             }),
-            Object(h.jsx)(v.b, {
-              show: t,
-              onClose: function onClose() {
-                return r(!1)
-              },
-              children: '内容',
-            }),
+            Object(j.jsx)(v.a, { id: 'vanNotify' }),
           ],
         })
       }
       function demo2_Demo() {
-        var e = u.a.useState(!1),
-          n = Object(j.a)(e, 2),
-          t = n[0],
-          r = n[1],
-          c = u.a.useState('top'),
-          a = Object(j.a)(c, 2),
-          o = a[0],
-          l = a[1],
-          i = function showAction(e) {
-            l(e), r(!0)
-          }
-        return Object(h.jsxs)(O.n, {
+        var e = function primaryShow() {
+          v.a.show({ message: '-----通知内容-----', type: 'primary' })
+        }
+        return Object(j.jsxs)(b.n, {
           children: [
-            Object(h.jsx)(b.b, {
-              title: '顶部弹出',
-              isLink: !0,
-              onClick: function onClick() {
-                return i('top')
-              },
+            Object(j.jsx)(d.b, {
+              onClick: e,
+              type: 'info',
+              children: '主要通知',
             }),
-            Object(h.jsx)(b.b, {
-              title: '底部弹出',
-              isLink: !0,
-              onClick: function onClick() {
-                return i('bottom')
-              },
+            Object(j.jsx)(d.b, {
+              onClick: e,
+              type: 'primary',
+              children: '成功通知',
             }),
-            Object(h.jsx)(b.b, {
-              title: '左侧弹出',
-              isLink: !0,
-              onClick: function onClick() {
-                return i('left')
+            Object(j.jsx)(d.b, {
+              onClick: function dangerShow() {
+                v.a.show({ message: '-----通知内容-----', type: 'danger' })
               },
+              type: 'danger',
+              children: '危险通知',
             }),
-            Object(h.jsx)(b.b, {
-              title: '右侧弹出',
-              isLink: !0,
-              onClick: function onClick() {
-                return i('right')
+            Object(j.jsx)(d.b, {
+              onClick: function warningShow() {
+                v.a.show({ message: '通知内容!', type: 'warning' })
               },
+              type: 'warning',
+              children: '警告用法',
             }),
-            Object(h.jsxs)(v.b, {
-              show: t,
-              position: o,
-              onClose: function onClose() {
-                return r(!1)
-              },
-              children: ['内容', o],
-            }),
+            Object(j.jsx)(v.a, { id: 'vanNotify' }),
           ],
         })
       }
       function demo3_Demo() {
-        var e = u.a.useState(!1),
-          n = Object(j.a)(e, 2),
-          t = n[0],
-          r = n[1]
-        return Object(h.jsxs)(O.n, {
+        return Object(j.jsxs)(b.n, {
           children: [
-            Object(h.jsx)(b.b, {
-              title: '关闭图标',
-              isLink: !0,
-              onClick: function onClick() {
-                return r(!0)
+            Object(j.jsx)(d.b, {
+              onClick: function show() {
+                v.a.show({
+                  message: '自定义颜色',
+                  color: '#ad0000',
+                  background: '#ffe1e1',
+                  duration: 1e3,
+                })
               },
+              type: 'primary',
+              children: '自定义颜色和时长',
             }),
-            Object(h.jsx)(v.b, {
-              closeable: !0,
-              closeIcon: 'close',
-              show: t,
-              onClose: function onClose() {
-                return r(!1)
-              },
-              closeIconPosition: 'bottomLeft',
-              children: '内容',
-            }),
+            Object(j.jsx)(v.a, { id: 'vanNotify' }),
           ],
         })
       }
       function demo4_Demo() {
-        var e = u.a.useState(!1),
-          n = Object(j.a)(e, 2),
-          t = n[0],
-          r = n[1]
-        return Object(h.jsxs)(O.n, {
+        return Object(j.jsxs)(b.n, {
           children: [
-            Object(h.jsx)(b.b, {
-              title: '圆角弹窗',
-              isLink: !0,
-              onClick: function onClick() {
-                return r(!0)
+            Object(j.jsx)(d.b, {
+              onClick: function show() {
+                v.a.show({
+                  message: '自定义节点选择器',
+                  duration: 1e3,
+                  selector: '#customSelector',
+                })
               },
+              type: 'primary',
+              children: '自定义选择器',
             }),
-            Object(h.jsx)(v.b, {
-              round: !0,
-              show: t,
-              onClose: function onClose() {
-                return r(!1)
-              },
-              children: '内容',
-            }),
+            Object(j.jsx)(v.a, { id: 'customSelector' }),
           ],
         })
       }
       var p = (function (e) {
-        Object(o.a)(Index, e)
-        var n = Object(l.a)(Index)
+        Object(c.a)(Index, e)
+        var n = Object(i.a)(Index)
         function Index() {
           var e
           return (
             Object(r.a)(this, Index),
             (e = n.call(this)),
-            Object(i.a)(Object(a.a)(e), 'state', {}),
+            Object(l.a)(Object(a.a)(e), 'state', {}),
             e
           )
         }
         return (
-          Object(c.a)(Index, [
+          Object(o.a)(Index, [
             {
               key: 'render',
               value: function render() {
-                return Object(h.jsxs)(d.a, {
-                  title: 'Popup 弹出层',
-                  className: 'pages-popup-index',
+                return Object(j.jsxs)(u.a, {
+                  title: 'Notify 消息通知',
+                  className: 'pages-notify-index',
                   children: [
-                    Object(h.jsx)(f.a, {
+                    Object(j.jsx)(f.a, {
                       title: '基础用法',
                       padding: !0,
-                      children: Object(h.jsx)(Demo, {}),
+                      children: Object(j.jsx)(Demo, {}),
                     }),
-                    Object(h.jsx)(f.a, {
-                      title: '弹出位置',
+                    Object(j.jsx)(f.a, {
+                      title: '通知类型',
                       padding: !0,
-                      children: Object(h.jsx)(demo2_Demo, {}),
+                      children: Object(j.jsx)(demo2_Demo, {}),
                     }),
-                    Object(h.jsx)(f.a, {
-                      title: '关闭图标',
+                    Object(j.jsx)(f.a, {
+                      title: '自定义通知',
                       padding: !0,
-                      children: Object(h.jsx)(demo3_Demo, {}),
+                      children: Object(j.jsx)(demo3_Demo, {}),
                     }),
-                    Object(h.jsx)(f.a, {
-                      title: '圆角弹窗',
+                    Object(j.jsx)(f.a, {
+                      title: '自定义选择器',
                       padding: !0,
-                      children: Object(h.jsx)(demo4_Demo, {}),
+                      children: Object(j.jsx)(demo4_Demo, {}),
                     }),
                   ],
                 })
