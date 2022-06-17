@@ -384,7 +384,6 @@ async function createPageIndex(props: IpageParams) {
     targetPath = '',
     pageIndexJsxPush,
   } = props
-  consola.info(pageIndexJsxPush, 'pageIndexJsxPush')
   const target = join(DEFAULT_PAGE_PATH, `/${targetPath}`)
   let lastJsx = `
   <DemoPage title="${pageTile}" className="pages-${targetPath}-index">
