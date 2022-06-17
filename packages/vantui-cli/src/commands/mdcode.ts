@@ -63,7 +63,6 @@ export async function mdCode(params: IMdCodeParams) {
         🐒 Watching for md file changes...
         `)
       watchMd()
-      consola.info(CACHE)
     }
   })
 }
@@ -147,6 +146,7 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
   const spinner = ora(`update...`).start()
   let pageIndexImport = ''
   let pageIndexJsxInsert = ''
+  let pageIndexJsxPush = ''
   let updateCount = 0
 
   for (let i = 0; i < codeRes.length; i++) {
@@ -162,10 +162,11 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
       simulatorConfig.withTabPages.includes(name)
     ) {
       pageIndexJsxInsert += `
-        <Tab title="${item.demoTitle}">
-          <${compName} />
-        </Tab>
+        <Tab title="${item.demoTitle}" />
         `
+      pageIndexJsxPush += `
+        {this.state.active === ${index} ? <${compName} /> : ''}
+      `
     } else {
       pageIndexJsxInsert += `
         <DemoBlock title="${item.demoTitle}" ${padding}>
@@ -197,16 +198,13 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
     }
   }
 
-  if (
-    pageIndexJsxInsert &&
-    name &&
-    (CACHE[name] || []).length === codeRes.length
-  ) {
+  if (pageIndexJsxInsert && name) {
     await createPageIndex({
       targetPath: name,
       pageTile: pages[name]?.title,
       importStr: pageIndexImport,
       jsxStr: pageIndexJsxInsert,
+      pageIndexJsxPush: pageIndexJsxPush,
     })
   }
   spinner.succeed(`mdcode sync ${name} success ${updateCount}`)
@@ -374,6 +372,7 @@ type IpageParams = {
   jsxStr?: string
   pageTile?: string
   targetPath?: string
+  pageIndexJsxPush?: string
 }
 
 // 创建组件入口文件
@@ -383,7 +382,9 @@ async function createPageIndex(props: IpageParams) {
     jsxStr = '等待同步...',
     importStr = '',
     targetPath = '',
+    pageIndexJsxPush,
   } = props
+  consola.info(pageIndexJsxPush, 'pageIndexJsxPush')
   const target = join(DEFAULT_PAGE_PATH, `/${targetPath}`)
   let lastJsx = `
   <DemoPage title="${pageTile}" className="pages-${targetPath}-index">
@@ -397,9 +398,10 @@ async function createPageIndex(props: IpageParams) {
   ) {
     lastJsx = `
     <DemoPage title="${pageTile}" className="pages-${targetPath}-index">
-      <Tabs active={0} animated>
+      <Tabs active={this.state.avtive} animated onChange={e => this.setState({ active: e.detail.index })}>
       ${jsxStr}
       </Tabs>
+      ${pageIndexJsxPush}
     </DemoPage>
     `
     importStrAdd += `import { Tab, Tabs } from '@antmjs/vantui'`
@@ -415,7 +417,7 @@ async function createPageIndex(props: IpageParams) {
     constructor() {
       super()
     }
-    state = {}
+    state = { active: 0 }
   
     render() {
       return (
