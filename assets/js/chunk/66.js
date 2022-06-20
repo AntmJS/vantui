@@ -1,344 +1,379 @@
 ;(window.webpackJsonp = window.webpackJsonp || []).push([
   [66],
   {
-    645: function (e, n, c) {
+    578: function (e, t, n) {
       'use strict'
-      c.d(n, 'a', function () {
-        return Tag
+      ;(function (e) {
+        n.d(t, 'a', function () {
+          return Page
+        })
+        n(590)
+        var a = n(574),
+          c = n(568),
+          r = n(90),
+          o = n(737),
+          s = n(77),
+          i = n(64),
+          l = (n(581), n(115))
+        function Page(t) {
+          var n = t.title,
+            d = t.className,
+            u = void 0 === d ? '' : d,
+            j = t.children,
+            b = r.a.useRouter().path
+          return (
+            Object(i.useEffect)(
+              function () {
+                'react' === e.env.LIBRARY_ENV
+                  ? (document.body.scrollTop =
+                      document.documentElement.scrollTop =
+                        0)
+                  : Object(o.a)({ scrollTop: 0 })
+              },
+              [b],
+            ),
+            r.a.useShareAppMessage(function () {
+              return { title: 'AntM 组件库演示', path: b }
+            }),
+            Object(l.jsxs)(c.n, {
+              className: 'demo-page '.concat(u),
+              children: [
+                Object(l.jsxs)(c.n, {
+                  className: 'demo-nav',
+                  children: [
+                    Object(l.jsx)(a.b, {
+                      name: 'arrow-left',
+                      className: 'demo-nav__back',
+                      onClick: function onClick() {
+                        return Object(s.d)()
+                      },
+                    }),
+                    Object(l.jsxs)(c.n, {
+                      className: 'demo-nav__title',
+                      children: [n, ' '],
+                    }),
+                  ],
+                }),
+                j,
+              ],
+            })
+          )
+        }
+      }.call(this, n(236)))
+    },
+    579: function (e, t, n) {
+      'use strict'
+      n.d(t, 'a', function () {
+        return d
       })
-      var t = c(24),
-        r = c.n(t),
-        s = c(571),
-        a = c.n(s),
-        i = c(32),
-        o = c.n(i),
-        l = c(570),
-        j = c.n(l),
-        d = c(27),
-        b = c.n(d),
-        u = c(173),
-        O = c.n(u),
-        p = c(116),
-        x = c.n(p),
-        m = c(55),
-        h = c.n(m),
-        y = c(572),
-        g = c.n(y),
-        f = c(573),
-        _ = c.n(f),
-        v = c(568),
-        C = c(569),
-        D = c(577),
-        w = c(579)
-      var k = c(115),
-        N = [
-          'type',
-          'size',
-          'mark',
-          'plain',
-          'round',
-          'color',
-          'textColor',
-          'closeable',
+      var a = n(39),
+        c = n(40),
+        r = n(66),
+        o = n(65),
+        s = n(568),
+        i = n(64),
+        l = (n(582), n(115)),
+        d = (function (e) {
+          Object(r.a)(Index, e)
+          var t = Object(o.a)(Index)
+          function Index() {
+            return Object(a.a)(this, Index), t.call(this)
+          }
+          return (
+            Object(c.a)(Index, [
+              {
+                key: 'render',
+                value: function render() {
+                  var e = this.props,
+                    t = e.padding,
+                    n = e.title,
+                    a = e.card
+                  return Object(l.jsxs)(s.n, {
+                    className:
+                      'custom-class demo-block van-clearfix ' +
+                      (t ? 'demo-block--padding' : ''),
+                    children: [
+                      n &&
+                        Object(l.jsx)(s.n, {
+                          className: 'demo-block__title',
+                          children: n,
+                        }),
+                      a
+                        ? Object(l.jsx)(s.n, {
+                            className: 'demo-block__card',
+                            children: this.props.children,
+                          })
+                        : this.props.children,
+                    ],
+                  })
+                },
+              },
+            ]),
+            Index
+          )
+        })(i.Component)
+    },
+    581: function (e, t, n) {},
+    582: function (e, t, n) {},
+    836: function (e, t, n) {},
+    913: function (e, t, n) {
+      'use strict'
+      n.r(t),
+        n.d(t, 'default', function () {
+          return F
+        })
+      var a = n(39),
+        c = n(40),
+        r = n(175),
+        o = n(66),
+        s = n(65),
+        i = n(91),
+        l = n(64),
+        d = n.n(l),
+        u = n(578),
+        j = n(579),
+        b = (n(576), n(836), n(116)),
+        f = n.n(b),
+        m = n(55),
+        h = n.n(m),
+        v = n(24),
+        O = n.n(v),
+        p = n(571),
+        x = n.n(p),
+        _ = n(32),
+        w = n.n(_),
+        k = n(570),
+        y = n.n(k),
+        N = n(27),
+        g = n.n(N),
+        S = n(173),
+        I = n.n(S),
+        A = n(572),
+        D = n.n(A),
+        E = n(573),
+        T = n.n(E),
+        C = n(577),
+        W = n.n(C),
+        K = n(595),
+        R = n.n(K),
+        z = n(10),
+        J = n.n(z),
+        M = n(90),
+        P = n(568),
+        B = n(569),
+        L = n(115),
+        V = [
+          'row',
+          'animate',
+          'avatar',
+          'avatarShape',
+          'avatarSize',
+          'titleWidth',
+          'title',
+          'rowWidth',
+          'loading',
           'children',
-          'onClose',
           'style',
           'className',
         ]
-      function ownKeys(e, n) {
-        var c = r()(e)
-        if (a.a) {
-          var t = a()(e)
-          n &&
-            (t = o()(t).call(t, function (n) {
-              return j()(e, n).enumerable
+      function ownKeys(e, t) {
+        var n = O()(e)
+        if (x.a) {
+          var a = x()(e)
+          t &&
+            (a = w()(a).call(a, function (t) {
+              return y()(e, t).enumerable
             })),
-            c.push.apply(c, t)
+            n.push.apply(n, a)
         }
-        return c
+        return n
       }
       function _objectSpread(e) {
-        for (var n = 1; n < arguments.length; n++) {
-          var c,
-            t,
-            r = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? b()((c = ownKeys(Object(r), !0))).call(c, function (n) {
-                g()(e, n, r[n])
-              })
-            : O.a
-            ? x()(e, O()(r))
-            : b()((t = ownKeys(Object(r)))).call(t, function (n) {
-                h()(e, n, j()(r, n))
-              })
+        for (var t = 1; t < arguments.length; t++) {
+          var n,
+            a = null != arguments[t] ? arguments[t] : {}
+          if (t % 2)
+            g()((n = ownKeys(Object(a), !0))).call(n, function (t) {
+              D()(e, t, a[t])
+            })
+          else if (I.a) f()(e, I()(a))
+          else {
+            var c
+            g()((c = ownKeys(Object(a)))).call(c, function (t) {
+              h()(e, t, y()(a, t))
+            })
+          }
         }
         return e
       }
-      function Tag(e) {
-        var n,
-          c = e.type,
-          t = void 0 === c ? 'default' : c,
-          r = e.size,
-          s = e.mark,
-          a = e.plain,
-          i = e.round,
-          o = e.color,
-          l = e.textColor,
-          j = e.closeable,
-          d = e.children,
-          b = e.onClose,
-          u = e.style,
-          O = e.className,
-          p = _()(e, N)
-        return Object(k.jsxs)(
-          v.n,
-          _objectSpread(
-            _objectSpread(
-              {
-                className:
-                  ' ' +
-                  C.b('tag', [t, r, { mark: s, plain: a, round: i }]) +
-                  ' '.concat(O || ''),
-                style: C.c([
-                  ((n = { plain: a, color: o, textColor: l }),
-                  Object(w.a)({
-                    'background-color': n.plain ? '' : n.color,
-                    color: n.textColor || n.plain ? n.textColor || n.color : '',
-                  })),
-                  u,
-                ]),
-              },
-              p,
-            ),
-            {},
-            {
-              children: [
-                d,
-                j &&
-                  Object(k.jsx)(D.a, {
-                    name: 'cross',
-                    className: 'van-tag__close',
-                    onClick: b,
-                  }),
-              ],
+      var Y = function Skeleton(e) {
+        var t = Object(l.useState)({ isArray: !1, rowArray: [] }),
+          n = W()(t, 2),
+          a = n[0],
+          c = n[1],
+          r = a.isArray,
+          o = a.rowArray,
+          s = e.row,
+          i = void 0 === s ? 0 : s,
+          d = e.animate,
+          u = void 0 === d || d,
+          j = e.avatar,
+          b = e.avatarShape,
+          f = void 0 === b ? 'round' : b,
+          m = e.avatarSize,
+          h = void 0 === m ? M.a.pxTransform(64) : m,
+          v = e.titleWidth,
+          O = void 0 === v ? '40%' : v,
+          p = e.title,
+          x = e.rowWidth,
+          _ = void 0 === x ? '100%' : x,
+          w = e.loading,
+          k = void 0 === w || w,
+          y = e.children,
+          N = e.style,
+          g = e.className,
+          S = T()(e, V)
+        return (
+          Object(l.useEffect)(
+            function () {
+              c(function (e) {
+                return _objectSpread(
+                  _objectSpread({}, e),
+                  {},
+                  { rowArray: R()({ length: i }) },
+                )
+              })
             },
+            [i],
           ),
+          Object(l.useEffect)(
+            function () {
+              c(function (e) {
+                return _objectSpread(
+                  _objectSpread({}, e),
+                  {},
+                  { isArray: _ instanceof Array },
+                )
+              })
+            },
+            [_],
+          ),
+          k
+            ? Object(L.jsxs)(
+                P.n,
+                _objectSpread(
+                  _objectSpread(
+                    {
+                      className:
+                        ' ' +
+                        B.b('skeleton', [{ animate: u }]) +
+                        ' '.concat(g || ''),
+                      style: N,
+                    },
+                    S,
+                  ),
+                  {},
+                  {
+                    children: [
+                      j &&
+                        Object(L.jsx)(P.n, {
+                          className:
+                            'avatar-class ' + B.b('skeleton__avatar', [f]),
+                          style: 'width:' + h + ';height:' + h,
+                        }),
+                      Object(L.jsxs)(P.n, {
+                        className: B.b('skeleton__content'),
+                        children: [
+                          p &&
+                            Object(L.jsx)(P.n, {
+                              className:
+                                'title-class ' + B.b('skeleton__title'),
+                              style: 'width:' + O,
+                            }),
+                          J()(o).call(o, function (e, t) {
+                            return Object(L.jsx)(
+                              P.n,
+                              {
+                                className: 'row-class ' + B.b('skeleton__row'),
+                                style: 'width:' + (r ? _[t] : _),
+                              },
+                              t,
+                            )
+                          }),
+                        ],
+                      }),
+                    ],
+                  },
+                ),
+              )
+            : Object(L.jsx)(P.n, {
+                className: B.b('skeleton__content'),
+                children: y,
+              })
         )
       }
-      n.b = Tag
-    },
-    663: function (e, n, c) {
-      'use strict'
-      c(574), c(580), c(581), c(699)
-    },
-    699: function (e, n, c) {},
-    897: function (e, n, c) {
-      'use strict'
-      c.r(n),
-        c.d(n, 'default', function () {
-          return h
-        })
-      var t = c(39),
-        r = c(40),
-        s = c(175),
-        a = c(66),
-        i = c(65),
-        o = c(91),
-        l = c(64),
-        j = c.n(l),
-        d = c(587),
-        b = c(588),
-        u = (c(663), c(645)),
-        O = c(568),
-        p = c(115)
       function Demo() {
-        return Object(p.jsxs)(O.n, {
-          children: [
-            Object(p.jsx)(u.b, { type: 'primary', children: '标签' }),
-            Object(p.jsx)(u.b, { type: 'success', children: '标签' }),
-            Object(p.jsx)(u.b, { type: 'danger', children: '标签' }),
-            Object(p.jsx)(u.b, { type: 'warning', children: '标签' }),
-          ],
-        })
+        return Object(L.jsx)(Y, { title: !0, row: '3' })
       }
       function demo2_Demo() {
-        return Object(p.jsxs)(O.n, {
-          children: [
-            Object(p.jsx)(u.b, {
-              plain: !0,
-              type: 'primary',
-              children: '标签',
-            }),
-            Object(p.jsx)(u.b, {
-              plain: !0,
-              type: 'success',
-              children: '标签',
-            }),
-            Object(p.jsx)(u.b, { plain: !0, type: 'danger', children: '标签' }),
-            Object(p.jsx)(u.b, {
-              plain: !0,
-              type: 'warning',
-              children: '标签',
-            }),
-          ],
-        })
+        return Object(L.jsx)(Y, { title: !0, avatar: !0, row: '3' })
       }
+      var q = n(174)
       function demo3_Demo() {
-        return Object(p.jsxs)(O.n, {
-          children: [
-            Object(p.jsx)(u.b, {
-              round: !0,
-              type: 'primary',
-              children: '标签',
-            }),
-            Object(p.jsx)(u.b, {
-              round: !0,
-              type: 'success',
-              children: '标签',
-            }),
-            Object(p.jsx)(u.b, { round: !0, type: 'danger', children: '标签' }),
-            Object(p.jsx)(u.b, {
-              round: !0,
-              type: 'warning',
-              children: '标签',
-            }),
-          ],
-        })
+        var e = d.a.useState(!0),
+          t = Object(q.a)(e, 2),
+          n = t[0],
+          a = t[1]
+        return (
+          d.a.useEffect(function () {
+            setTimeout(function () {
+              a(!1)
+            }, 2e3)
+          }, []),
+          Object(L.jsx)(Y, {
+            title: !0,
+            avatar: !0,
+            row: '3',
+            loading: n,
+            children: Object(L.jsx)(P.n, { children: '实际内容' }),
+          })
+        )
       }
-      function demo4_Demo() {
-        return Object(p.jsxs)(O.n, {
-          children: [
-            Object(p.jsx)(u.b, { mark: !0, type: 'primary', children: '标签' }),
-            Object(p.jsx)(u.b, { mark: !0, type: 'success', children: '标签' }),
-            Object(p.jsx)(u.b, { mark: !0, type: 'danger', children: '标签' }),
-            Object(p.jsx)(u.b, { mark: !0, type: 'warning', children: '标签' }),
-          ],
-        })
-      }
-      function demo5_Demo() {
-        return Object(p.jsxs)(O.n, {
-          children: [
-            Object(p.jsx)(u.b, { color: '#f2826a', children: '标签' }),
-            Object(p.jsx)(u.b, { color: '#7232dd', children: '标签' }),
-            Object(p.jsx)(u.b, {
-              color: '#7232dd',
-              plain: !0,
-              children: '标签',
-            }),
-            Object(p.jsx)(u.b, {
-              color: '#ffe1e1',
-              textColor: '#ad0000',
-              children: '标签',
-            }),
-          ],
-        })
-      }
-      function demo6_Demo() {
-        return Object(p.jsxs)(O.n, {
-          children: [
-            Object(p.jsx)(u.b, { type: 'danger', children: '标签' }),
-            Object(p.jsx)(u.b, {
-              type: 'danger',
-              size: 'medium',
-              children: '标签',
-            }),
-            Object(p.jsx)(u.b, {
-              type: 'danger',
-              size: 'large',
-              children: '标签',
-            }),
-          ],
-        })
-      }
-      var x = c(611),
-        m = c(174)
-      function demo7_Demo() {
-        var e = j.a.useState({ primary: !0, success: !0 }),
-          n = Object(m.a)(e, 2),
-          c = n[0],
-          t = n[1]
-        return Object(p.jsxs)(O.n, {
-          children: [
-            c.primary &&
-              Object(p.jsx)(u.b, {
-                className: 'demo-margin-right',
-                type: 'primary',
-                size: 'medium',
-                closeable: !0,
-                onClose: function onClose() {
-                  return t(Object(x.a)(Object(x.a)({}, c), {}, { primary: !1 }))
-                },
-                children: '标签',
-              }),
-            c.success &&
-              Object(p.jsx)(u.b, {
-                className: 'demo-margin-right',
-                type: 'success',
-                size: 'medium',
-                closeable: !0,
-                onClose: function onClose() {
-                  return t(Object(x.a)(Object(x.a)({}, c), {}, { success: !1 }))
-                },
-                children: '标签',
-              }),
-          ],
-        })
-      }
-      var h = (function (e) {
-        Object(a.a)(Index, e)
-        var n = Object(i.a)(Index)
+      var F = (function (e) {
+        Object(o.a)(Index, e)
+        var t = Object(s.a)(Index)
         function Index() {
           var e
           return (
-            Object(t.a)(this, Index),
-            (e = n.call(this)),
-            Object(o.a)(Object(s.a)(e), 'state', {}),
+            Object(a.a)(this, Index),
+            (e = t.call(this)),
+            Object(i.a)(Object(r.a)(e), 'state', {}),
             e
           )
         }
         return (
-          Object(r.a)(Index, [
+          Object(c.a)(Index, [
             {
               key: 'render',
               value: function render() {
-                return Object(p.jsxs)(d.a, {
-                  title: 'Tag 标签',
-                  className: 'pages-tag-index',
+                return Object(L.jsxs)(u.a, {
+                  title: 'Skeleton 骨架屏',
+                  className: 'pages-skeleton-index',
                   children: [
-                    Object(p.jsx)(b.a, {
+                    Object(L.jsx)(j.a, {
                       title: '基础用法',
                       padding: !0,
-                      children: Object(p.jsx)(Demo, {}),
+                      children: Object(L.jsx)(Demo, {}),
                     }),
-                    Object(p.jsx)(b.a, {
-                      title: '空心样式',
+                    Object(L.jsx)(j.a, {
+                      title: '显示头像',
                       padding: !0,
-                      children: Object(p.jsx)(demo2_Demo, {}),
+                      children: Object(L.jsx)(demo2_Demo, {}),
                     }),
-                    Object(p.jsx)(b.a, {
-                      title: '圆角样式',
+                    Object(L.jsx)(j.a, {
+                      title: '展示子组件',
                       padding: !0,
-                      children: Object(p.jsx)(demo3_Demo, {}),
-                    }),
-                    Object(p.jsx)(b.a, {
-                      title: '标记样式',
-                      padding: !0,
-                      children: Object(p.jsx)(demo4_Demo, {}),
-                    }),
-                    Object(p.jsx)(b.a, {
-                      title: '自定义颜色',
-                      padding: !0,
-                      children: Object(p.jsx)(demo5_Demo, {}),
-                    }),
-                    Object(p.jsx)(b.a, {
-                      title: '标签大小',
-                      padding: !0,
-                      children: Object(p.jsx)(demo6_Demo, {}),
-                    }),
-                    Object(p.jsx)(b.a, {
-                      title: '可关闭标签',
-                      padding: !0,
-                      children: Object(p.jsx)(demo7_Demo, {}),
+                      children: Object(L.jsx)(demo3_Demo, {}),
                     }),
                   ],
                 })

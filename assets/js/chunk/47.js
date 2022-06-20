@@ -1,194 +1,55 @@
 ;(window.webpackJsonp = window.webpackJsonp || []).push([
   [47],
   {
-    582: function (e, n, c) {
+    588: function (e, t, n) {
       'use strict'
-      c.d(n, 'a', function () {
-        return Loading
-      })
-      var r = c(572),
-        t = c.n(r),
-        a = c(576),
-        l = c.n(a),
-        i = c(573),
-        o = c.n(i),
-        s = c(592),
-        d = c.n(s),
-        u = c(10),
-        b = c.n(u),
-        j = c(24),
-        f = c.n(j),
-        m = c(571),
-        v = c.n(m),
-        p = c(32),
-        h = c.n(p),
-        O = c(570),
-        g = c.n(O),
-        x = c(27),
-        _ = c.n(x),
-        y = c(173),
-        N = c.n(y),
-        S = c(116),
-        k = c.n(S),
-        z = c(55),
-        T = c.n(z),
-        w = c(568),
-        C = c(64),
-        K = c(569),
-        L = c(578)
-      function textStyle(e) {
-        return Object(K.c)({ 'font-size': Object(L.a)(e.textSize) })
-      }
-      var P = c(115),
-        I = [
-          'vertical',
-          'type',
-          'color',
-          'size',
-          'textSize',
-          'className',
-          'children',
-          'style',
-        ]
-      function ownKeys(e, n) {
-        var c = f()(e)
-        if (v.a) {
-          var r = v()(e)
-          n &&
-            (r = h()(r).call(r, function (n) {
-              return g()(e, n).enumerable
-            })),
-            c.push.apply(c, r)
-        }
-        return c
-      }
-      function _objectSpread(e) {
-        for (var n = 1; n < arguments.length; n++) {
-          var c,
-            r,
-            a = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? _()((c = ownKeys(Object(a), !0))).call(c, function (n) {
-                t()(e, n, a[n])
-              })
-            : N.a
-            ? k()(e, N()(a))
-            : _()((r = ownKeys(Object(a)))).call(r, function (n) {
-                T()(e, n, g()(a, n))
-              })
-        }
-        return e
-      }
-      function Loading(e) {
-        var n,
-          c = e.vertical,
-          r = e.type,
-          t = void 0 === r ? 'circular' : r,
-          a = e.color,
-          i = e.size,
-          s = e.textSize,
-          u = e.className,
-          j = e.children,
-          f = e.style,
-          m = o()(e, I),
-          v = Object(C.useState)(d()({ length: 12 })),
-          p = l()(v, 1)[0]
-        return Object(P.jsxs)(
-          w.n,
-          _objectSpread(
-            _objectSpread(
-              {
-                className: ' ' + K.b('loading', { vertical: c }) + ' ' + u,
-                style: K.c([f]),
-              },
-              m,
-            ),
-            {},
-            {
-              children: [
-                Object(P.jsx)(w.n, {
-                  className: 'van-loading__spinner van-loading__spinner--' + t,
-                  style:
-                    ((n = { color: a, size: i }),
-                    Object(K.c)({
-                      color: n.color,
-                      width: Object(L.a)(n.size),
-                      height: Object(L.a)(n.size),
-                    })),
-                  children:
-                    'spinner' === t &&
-                    Object(P.jsx)(w.a, {
-                      children: b()(p).call(p, function (e, n) {
-                        return Object(P.jsx)(
-                          w.n,
-                          { className: 'van-loading__dot' },
-                          'van-loading__dot_'.concat(n),
-                        )
-                      }),
-                    }),
-                }),
-                Object(P.jsx)(w.n, {
-                  className: 'van-loading__text',
-                  style: textStyle({ textSize: s }),
-                  children: j,
-                }),
-              ],
-            },
-          ),
-        )
-      }
-      n.b = Loading
-    },
-    583: function (e, n, c) {},
-    584: function (e, n, c) {
-      'use strict'
-      c.d(n, 'a', function () {
+      n.d(t, 'a', function () {
         return Button
       })
-      var r = c(24),
-        t = c.n(r),
-        a = c(571),
-        l = c.n(a),
-        i = c(32),
-        o = c.n(i),
-        s = c(570),
-        d = c.n(s),
-        u = c(27),
-        b = c.n(u),
-        j = c(173),
-        f = c.n(j),
-        m = c(116),
-        v = c.n(m),
-        p = c(55),
-        h = c.n(p),
-        O = c(572),
-        g = c.n(O),
-        x = c(573),
-        _ = c.n(x),
-        y = c(90),
-        N = c(568),
-        S = c(569),
-        k = c(577),
-        z = c(582),
-        T = c(28),
-        w = c.n(T),
-        C = c(579)
+      var r = n(116),
+        l = n.n(r),
+        o = n(55),
+        c = n.n(o),
+        i = n(24),
+        a = n.n(i),
+        s = n(571),
+        u = n.n(s),
+        d = n(32),
+        f = n.n(d),
+        b = n(570),
+        h = n.n(b),
+        j = n(27),
+        v = n.n(j),
+        p = n(173),
+        m = n.n(p),
+        g = n(572),
+        y = n.n(g),
+        _ = n(573),
+        O = n.n(_),
+        x = n(90),
+        S = n(568),
+        w = n(569),
+        C = n(574),
+        k = n(586),
+        N = n(28),
+        T = n.n(N),
+        I = n(583)
       function rootStyle(e) {
-        var n
+        var t
         if (!e.color) return ''
-        var c = {
+        var n = {
           color: e.plain ? e.color : '#fff',
           background: e.plain ? null : e.color,
         }
         return (
-          -1 !== w()((n = e.color)).call(n, 'gradient')
-            ? (c.border = 0)
-            : (c['border-color'] = e.color),
-          Object(C.a)([c])
+          -1 !== T()((t = e.color)).call(t, 'gradient')
+            ? (n.border = 0)
+            : (n['border-color'] = e.color),
+          Object(I.a)([n])
         )
       }
-      var K = c(115),
-        L = [
+      var q = n(115),
+        z = [
           'type',
           'size',
           'block',
@@ -209,152 +70,153 @@
           'style',
           'className',
         ]
-      function ownKeys(e, n) {
-        var c = t()(e)
-        if (l.a) {
-          var r = l()(e)
-          n &&
-            (r = o()(r).call(r, function (n) {
-              return d()(e, n).enumerable
+      function ownKeys(e, t) {
+        var n = a()(e)
+        if (u.a) {
+          var r = u()(e)
+          t &&
+            (r = f()(r).call(r, function (t) {
+              return h()(e, t).enumerable
             })),
-            c.push.apply(c, r)
+            n.push.apply(n, r)
         }
-        return c
+        return n
       }
       function _objectSpread(e) {
-        for (var n = 1; n < arguments.length; n++) {
-          var c,
-            r,
-            t = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? b()((c = ownKeys(Object(t), !0))).call(c, function (n) {
-                g()(e, n, t[n])
-              })
-            : f.a
-            ? v()(e, f()(t))
-            : b()((r = ownKeys(Object(t)))).call(r, function (n) {
-                h()(e, n, d()(t, n))
-              })
+        for (var t = 1; t < arguments.length; t++) {
+          var n,
+            r = null != arguments[t] ? arguments[t] : {}
+          if (t % 2)
+            v()((n = ownKeys(Object(r), !0))).call(n, function (t) {
+              y()(e, t, r[t])
+            })
+          else if (m.a) l()(e, m()(r))
+          else {
+            var o
+            v()((o = ownKeys(Object(r)))).call(o, function (t) {
+              c()(e, t, h()(r, t))
+            })
+          }
         }
         return e
       }
-      var P = !1,
-        I = 10
-      if (!P)
-        var B = setInterval(function () {
-          if (--I > 0)
+      var D = !1,
+        E = 10
+      if (!D)
+        var K = setInterval(function () {
+          if (--E > 0)
             for (
               var e = document.getElementsByTagName('style') || [],
-                n = e.length - 1;
-              n >= 0;
-              n--
+                t = e.length - 1;
+              t >= 0;
+              t--
             ) {
-              var c = e[n],
-                r = c.innerHTML
+              var n = e[t],
+                r = n.innerHTML
               if (r && /^taro-button-core{/.test(r)) {
-                c.remove(), (P = !0), B && clearInterval(B)
+                n.remove(), (D = !0), K && clearInterval(K)
                 break
               }
             }
-          else B && clearInterval(B)
+          else K && clearInterval(K)
         }, 200)
       function Button(e) {
-        var n,
-          c = e.type,
-          r = void 0 === c ? 'default' : c,
-          t = e.size,
-          a = void 0 === t ? 'normal' : t,
-          l = e.block,
+        var t,
+          n = e.type,
+          r = void 0 === n ? 'default' : n,
+          l = e.size,
+          o = void 0 === l ? 'normal' : l,
+          c = e.block,
           i = e.round,
-          o = e.plain,
+          a = e.plain,
           s = e.square,
-          d = e.loading,
-          u = e.disabled,
-          b = e.hairline,
-          j = e.color,
-          f = e.loadingSize,
-          m = void 0 === f ? y.a.pxTransform(40) : f,
+          u = e.loading,
+          d = e.disabled,
+          f = e.hairline,
+          b = e.color,
+          h = e.loadingSize,
+          j = void 0 === h ? x.a.pxTransform(40) : h,
           v = e.loadingType,
           p = void 0 === v ? 'circular' : v,
-          h = e.loadingText,
-          O = e.icon,
-          g = e.classPrefix,
-          x = void 0 === g ? 'van-icon' : g,
-          T = e.onClick,
-          w = e.children,
-          C = e.style,
-          P = e.className,
-          I = _()(e, L)
-        return Object(K.jsx)(
-          N.b,
+          m = e.loadingText,
+          g = e.icon,
+          y = e.classPrefix,
+          _ = void 0 === y ? 'van-icon' : y,
+          N = e.onClick,
+          T = e.children,
+          I = e.style,
+          D = e.className,
+          E = O()(e, z)
+        return Object(q.jsx)(
+          S.b,
           _objectSpread(
             _objectSpread(
               {
                 className:
                   ' ' +
-                  S.b('button', [
+                  w.b('button', [
                     r,
-                    a,
+                    o,
                     {
-                      block: l,
+                      block: c,
                       round: i,
-                      plain: o,
+                      plain: a,
                       square: s,
-                      loading: d,
-                      disabled: u,
-                      hairline: b,
-                      unclickable: u || d,
+                      loading: u,
+                      disabled: d,
+                      hairline: f,
+                      unclickable: d || u,
                     },
                   ]) +
                   ' ' +
-                  (b ? 'van-hairline--surround' : '') +
-                  ' '.concat(P || ''),
+                  (f ? 'van-hairline--surround' : '') +
+                  ' '.concat(D || ''),
                 hoverClass: 'van-button--active hover-class',
-                style: S.c([rootStyle({ plain: o, color: j }), C]),
-                onClick: u || d ? void 0 : T,
+                style: w.c([rootStyle({ plain: a, color: b }), I]),
+                onClick: d || u ? void 0 : N,
               },
-              I,
+              E,
             ),
             {},
             {
-              children: d
-                ? Object(K.jsxs)(N.n, {
+              children: u
+                ? Object(q.jsxs)(S.n, {
                     style: 'display: flex',
                     children: [
-                      Object(K.jsx)(z.a, {
+                      Object(q.jsx)(k.a, {
                         className: 'loading-class',
-                        size: m,
+                        size: j,
                         type: p,
                         color:
-                          ((n = { type: r, color: j, plain: o }),
-                          n.plain
-                            ? n.color
-                              ? n.color
+                          ((t = { type: r, color: b, plain: a }),
+                          t.plain
+                            ? t.color
+                              ? t.color
                               : '#c9c9c9'
-                            : 'default' === n.type
+                            : 'default' === t.type
                             ? '#c9c9c9'
                             : '#fff'),
                       }),
-                      h &&
-                        Object(K.jsx)(N.n, {
+                      m &&
+                        Object(q.jsx)(S.n, {
                           className: 'van-button__loading-text',
-                          children: h,
+                          children: m,
                         }),
                     ],
                   })
-                : Object(K.jsxs)(N.a, {
+                : Object(q.jsxs)(S.a, {
                     children: [
-                      O &&
-                        Object(K.jsx)(k.a, {
+                      g &&
+                        Object(q.jsx)(C.a, {
                           size: '1.2em',
-                          name: O,
-                          classPrefix: x,
+                          name: g,
+                          classPrefix: _,
                           className: 'van-button__icon',
                           style: 'line-height: inherit;',
                         }),
-                      Object(K.jsx)(N.n, {
+                      Object(q.jsx)(S.n, {
                         className: 'van-button__text',
-                        children: w,
+                        children: T,
                       }),
                     ],
                   }),
@@ -362,25 +224,222 @@
           ),
         )
       }
-      n.b = Button
+      t.b = Button
     },
-    591: function (e, n, c) {
+    589: function (e, t, n) {
       'use strict'
-      c(574), c(583), c(580), c(581), c(595)
+      n.d(t, 'a', function () {
+        return Cell
+      })
+      var r = n(116),
+        l = n.n(r),
+        o = n(55),
+        c = n.n(o),
+        i = n(24),
+        a = n.n(i),
+        s = n(571),
+        u = n.n(s),
+        d = n(32),
+        f = n.n(d),
+        b = n(570),
+        h = n.n(b),
+        j = n(27),
+        v = n.n(j),
+        p = n(173),
+        m = n.n(p),
+        g = n(572),
+        y = n.n(g),
+        _ = n(573),
+        O = n.n(_),
+        x = n(64),
+        S = n(568),
+        w = n(569),
+        C = n(597),
+        k = n(574),
+        N = n(583),
+        T = n(580)
+      var I = n(115),
+        q = [
+          'url',
+          'linkType',
+          'size',
+          'center',
+          'required',
+          'border',
+          'isLink',
+          'clickable',
+          'icon',
+          'titleWidth',
+          'titleStyle',
+          'title',
+          'label',
+          'value',
+          'arrowDirection',
+          'onClick',
+          'renderIcon',
+          'renderTitle',
+          'renderLabel',
+          'renderRightIcon',
+          'renderExtra',
+          'children',
+          'style',
+          'className',
+        ]
+      function ownKeys(e, t) {
+        var n = a()(e)
+        if (u.a) {
+          var r = u()(e)
+          t &&
+            (r = f()(r).call(r, function (t) {
+              return h()(e, t).enumerable
+            })),
+            n.push.apply(n, r)
+        }
+        return n
+      }
+      function _objectSpread(e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var n,
+            r = null != arguments[t] ? arguments[t] : {}
+          if (t % 2)
+            v()((n = ownKeys(Object(r), !0))).call(n, function (t) {
+              y()(e, t, r[t])
+            })
+          else if (m.a) l()(e, m()(r))
+          else {
+            var o
+            v()((o = ownKeys(Object(r)))).call(o, function (t) {
+              c()(e, t, h()(r, t))
+            })
+          }
+        }
+        return e
+      }
+      function Cell(e) {
+        var t,
+          n = e.url,
+          r = e.linkType,
+          l = e.size,
+          o = e.center,
+          c = e.required,
+          i = e.border,
+          a = void 0 === i || i,
+          s = e.isLink,
+          u = e.clickable,
+          d = e.icon,
+          f = e.titleWidth,
+          b = e.titleStyle,
+          h = e.title,
+          j = e.label,
+          v = e.value,
+          p = e.arrowDirection,
+          m = e.onClick,
+          g = e.renderIcon,
+          y = e.renderTitle,
+          _ = e.renderLabel,
+          z = e.renderRightIcon,
+          D = e.renderExtra,
+          E = e.children,
+          K = e.style,
+          L = e.className,
+          R = O()(e, q),
+          B = Object(x.useCallback)(
+            function (e) {
+              null == m || m(e), n && Object(C.a)(n, r)
+            },
+            [r, m, n],
+          )
+        return Object(I.jsxs)(
+          S.n,
+          _objectSpread(
+            _objectSpread(
+              {
+                className:
+                  ' ' +
+                  w.b('cell', [
+                    l,
+                    {
+                      center: o,
+                      required: c,
+                      borderless: !a,
+                      clickable: s || u,
+                    },
+                  ]) +
+                  ' '.concat(L || ''),
+                hoverClass: 'van-cell--hover hover-class',
+                hoverStayTime: 70,
+                style: w.c([K]),
+                onClick: B,
+              },
+              R,
+            ),
+            {},
+            {
+              children: [
+                d
+                  ? Object(I.jsx)(k.a, {
+                      name: d,
+                      className: 'van-cell__left-icon-wrap van-cell__left-icon',
+                    })
+                  : g,
+                Object(I.jsxs)(S.n, {
+                  style:
+                    ((t = { titleWidth: f, titleStyle: b }),
+                    Object(N.a)([
+                      {
+                        'max-width': Object(T.a)(t.titleWidth),
+                        'min-width': Object(T.a)(t.titleWidth),
+                      },
+                      t.titleStyle,
+                    ])),
+                  className: 'van-cell__title title-class',
+                  children: [
+                    h || 0 === h ? Object(I.jsx)(S.a, { children: h }) : y,
+                    (j || _) &&
+                      Object(I.jsx)(S.n, {
+                        className: 'van-cell__label label-class',
+                        children:
+                          _ || (j && Object(I.jsx)(S.a, { children: j })),
+                      }),
+                  ],
+                }),
+                Object(I.jsx)(S.n, {
+                  className: 'van-cell__value value-class',
+                  children:
+                    v || 0 === v ? Object(I.jsx)(S.a, { children: v }) : E,
+                }),
+                s
+                  ? Object(I.jsx)(k.a, {
+                      name: p ? 'arrow-' + p : 'arrow',
+                      className:
+                        'van-cell__right-icon-wrap right-icon-class van-cell__right-icon',
+                    })
+                  : z,
+                D,
+              ],
+            },
+          ),
+        )
+      }
+      t.b = Cell
     },
-    594: function (e, n, c) {
+    594: function (e, t, n) {
       'use strict'
-      c.d(n, 'a', function () {
+      n(576), n(587), n(584), n(585), n(598)
+    },
+    597: function (e, t, n) {
+      'use strict'
+      n.d(t, 'a', function () {
         return jumpLink
       })
-      var r = c(77)
-      function jumpLink(e, n) {
-        var c
-        if (((n = null !== (c = n) && void 0 !== c ? c : 'navigateTo'), e))
-          if ('navigateTo' === n && Object(r.b)().length > 9)
+      var r = n(77)
+      function jumpLink(e, t) {
+        var n
+        if (((t = null !== (n = t) && void 0 !== n ? n : 'navigateTo'), e))
+          if ('navigateTo' === t && Object(r.b)().length > 9)
             Object(r.g)({ url: e })
           else
-            switch (n) {
+            switch (t) {
               case 'navigateTo':
                 Object(r.e)({ url: e })
                 break
@@ -392,453 +451,1102 @@
             }
       }
     },
-    595: function (e, n, c) {},
-    645: function (e, n, c) {
+    598: function (e, t, n) {},
+    601: function (e, t, n) {},
+    615: function (e, t, n) {
       'use strict'
-      c.d(n, 'a', function () {
-        return Tag
-      })
-      var r = c(24),
-        t = c.n(r),
-        a = c(571),
-        l = c.n(a),
-        i = c(32),
-        o = c.n(i),
-        s = c(570),
-        d = c.n(s),
-        u = c(27),
-        b = c.n(u),
-        j = c(173),
-        f = c.n(j),
-        m = c(116),
-        v = c.n(m),
-        p = c(55),
-        h = c.n(p),
-        O = c(572),
-        g = c.n(O),
-        x = c(573),
-        _ = c.n(x),
-        y = c(568),
-        N = c(569),
-        S = c(577),
-        k = c(579)
-      var z = c(115),
-        T = [
-          'type',
-          'size',
-          'mark',
-          'plain',
-          'round',
-          'color',
-          'textColor',
-          'closeable',
-          'children',
-          'onClose',
-          'style',
-          'className',
-        ]
-      function ownKeys(e, n) {
-        var c = t()(e)
-        if (l.a) {
-          var r = l()(e)
-          n &&
-            (r = o()(r).call(r, function (n) {
-              return d()(e, n).enumerable
-            })),
-            c.push.apply(c, r)
-        }
-        return c
-      }
-      function _objectSpread(e) {
-        for (var n = 1; n < arguments.length; n++) {
-          var c,
-            r,
-            t = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? b()((c = ownKeys(Object(t), !0))).call(c, function (n) {
-                g()(e, n, t[n])
-              })
-            : f.a
-            ? v()(e, f()(t))
-            : b()((r = ownKeys(Object(t)))).call(r, function (n) {
-                h()(e, n, d()(t, n))
-              })
-        }
-        return e
-      }
-      function Tag(e) {
-        var n,
-          c = e.type,
-          r = void 0 === c ? 'default' : c,
-          t = e.size,
-          a = e.mark,
-          l = e.plain,
-          i = e.round,
-          o = e.color,
-          s = e.textColor,
-          d = e.closeable,
-          u = e.children,
-          b = e.onClose,
-          j = e.style,
-          f = e.className,
-          m = _()(e, T)
-        return Object(z.jsxs)(
-          y.n,
-          _objectSpread(
-            _objectSpread(
-              {
-                className:
-                  ' ' +
-                  N.b('tag', [r, t, { mark: a, plain: l, round: i }]) +
-                  ' '.concat(f || ''),
-                style: N.c([
-                  ((n = { plain: l, color: o, textColor: s }),
-                  Object(k.a)({
-                    'background-color': n.plain ? '' : n.color,
-                    color: n.textColor || n.plain ? n.textColor || n.color : '',
-                  })),
-                  j,
-                ]),
-              },
-              m,
-            ),
-            {},
-            {
-              children: [
-                u,
-                d &&
-                  Object(z.jsx)(S.a, {
-                    name: 'cross',
-                    className: 'van-tag__close',
-                    onClick: b,
-                  }),
-              ],
-            },
-          ),
-        )
-      }
-      n.b = Tag
+      n(576), n(678)
     },
-    699: function (e, n, c) {},
-    848: function (e, n, c) {},
-    923: function (e, n, c) {
+    616: function (e, t, n) {
       'use strict'
-      c.r(n),
-        c.d(n, 'default', function () {
-          return H
-        })
-      var r = c(39),
-        t = c(40),
-        a = c(175),
-        l = c(66),
-        i = c(65),
-        o = c(91),
-        s = c(64),
-        d = c(587),
-        u = c(588),
-        b = (c(574), c(580), c(581), c(699), c(848), c(24)),
-        j = c.n(b),
-        f = c(571),
-        m = c.n(f),
-        v = c(32),
-        p = c.n(v),
-        h = c(570),
-        O = c.n(h),
-        g = c(27),
-        x = c.n(g),
-        _ = c(173),
-        y = c.n(_),
-        N = c(116),
-        S = c.n(N),
-        k = c(55),
-        z = c.n(k),
-        T = c(572),
-        w = c.n(T),
-        C = c(576),
-        K = c.n(C),
-        L = c(573),
-        P = c.n(L),
-        I = c(568),
-        B = c(569),
-        D = c(594),
-        F = c(645),
-        q = c(115),
-        M = [
-          'tag',
-          'num',
-          'desc',
-          'thumb',
-          'title',
-          'price',
-          'centered',
-          'lazyLoad',
-          'thumbLink',
-          'originPrice',
-          'thumbMode',
-          'currency',
-          'renderFooter',
-          'renderBottom',
-          'renderNum',
-          'renderOriginPrice',
-          'renderPriceTop',
-          'renderThumb',
-          'renderPrice',
-          'renderDesc',
-          'renderTag',
-          'renderTitle',
-          'renderTags',
-          'style',
-          'className',
-        ]
-      function ownKeys(e, n) {
-        var c = j()(e)
-        if (m.a) {
-          var r = m()(e)
-          n &&
-            (r = p()(r).call(r, function (n) {
-              return O()(e, n).enumerable
+      var r = n(116),
+        l = n.n(r),
+        o = n(55),
+        c = n.n(o),
+        i = n(24),
+        a = n.n(i),
+        s = n(571),
+        u = n.n(s),
+        d = n(32),
+        f = n.n(d),
+        b = n(570),
+        h = n.n(b),
+        j = n(27),
+        v = n.n(j),
+        p = n(173),
+        m = n.n(p),
+        g = n(572),
+        y = n.n(g),
+        _ = n(573),
+        O = n.n(_),
+        x = n(568),
+        S = n(569),
+        w = n(115),
+        C = ['inset', 'title', 'border', 'children', 'style', 'className']
+      function ownKeys(e, t) {
+        var n = a()(e)
+        if (u.a) {
+          var r = u()(e)
+          t &&
+            (r = f()(r).call(r, function (t) {
+              return h()(e, t).enumerable
             })),
-            c.push.apply(c, r)
+            n.push.apply(n, r)
         }
-        return c
+        return n
       }
       function _objectSpread(e) {
-        for (var n = 1; n < arguments.length; n++) {
-          var c,
-            r,
-            t = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? x()((c = ownKeys(Object(t), !0))).call(c, function (n) {
-                w()(e, n, t[n])
-              })
-            : y.a
-            ? S()(e, y()(t))
-            : x()((r = ownKeys(Object(t)))).call(r, function (n) {
-                z()(e, n, O()(t, n))
-              })
+        for (var t = 1; t < arguments.length; t++) {
+          var n,
+            r = null != arguments[t] ? arguments[t] : {}
+          if (t % 2)
+            v()((n = ownKeys(Object(r), !0))).call(n, function (t) {
+              y()(e, t, r[t])
+            })
+          else if (m.a) l()(e, m()(r))
+          else {
+            var o
+            v()((o = ownKeys(Object(r)))).call(o, function (t) {
+              c()(e, t, h()(r, t))
+            })
+          }
         }
         return e
       }
-      var E = function Card(e) {
-        var n = e.tag,
-          c = e.num,
-          r = e.desc,
-          t = e.thumb,
-          a = e.title,
-          l = e.price,
-          i = e.centered,
-          o = e.lazyLoad,
-          d = e.thumbLink,
-          u = e.originPrice,
-          b = e.thumbMode,
-          j = void 0 === b ? 'aspectFit' : b,
-          f = e.currency,
-          m = void 0 === f ? '¥' : f,
-          v = e.renderFooter,
-          p = e.renderBottom,
-          h = e.renderNum,
-          O = e.renderOriginPrice,
-          g = e.renderPriceTop,
-          x = e.renderThumb,
-          _ = e.renderPrice,
-          y = e.renderDesc,
-          N = e.renderTag,
-          S = e.renderTitle,
-          k = e.renderTags,
-          z = e.style,
-          T = e.className,
-          w = P()(e, M),
-          C = Object(s.useState)({ integerStr: '', decimalStr: '' }),
-          L = K()(C, 2),
-          E = L[0],
-          J = L[1],
-          H = E.integerStr,
-          A = E.decimalStr
-        return (
-          Object(s.useEffect)(
-            function () {
-              var e = l.toString().split('.')
-              J(function (n) {
-                return _objectSpread(
-                  _objectSpread({}, n),
-                  {},
-                  {
-                    integerStr: e[0],
-                    decimalStr: e[1] ? '.'.concat(e[1]) : '',
-                  },
-                )
-              })
-            },
-            [l],
-          ),
-          Object(q.jsxs)(
-            I.n,
-            _objectSpread(
+      t.a = function CellGroup(e) {
+        var t = e.inset,
+          n = e.title,
+          r = e.border,
+          l = void 0 === r || r,
+          o = e.children,
+          c = e.style,
+          i = e.className,
+          a = O()(e, C)
+        return Object(w.jsxs)(x.a, {
+          children: [
+            n &&
+              Object(w.jsx)(x.n, {
+                className: S.b('cell-group__title', { inset: t }),
+                children: n,
+              }),
+            Object(w.jsx)(
+              x.n,
               _objectSpread(
-                { className: 'van-card  '.concat(T || ''), style: z },
-                w,
+                _objectSpread(
+                  {
+                    className:
+                      ' ' +
+                      S.b('cell-group', { inset: t }) +
+                      ' ' +
+                      (l ? 'van-hairline--top-bottom' : '') +
+                      ' '.concat(i || ''),
+                    style: c,
+                  },
+                  a,
+                ),
+                {},
+                { children: o },
               ),
+            ),
+          ],
+        })
+      }
+    },
+    626: function (e, t, n) {
+      'use strict'
+      function isString(e) {
+        return '[object String]' === toString.call(e)
+      }
+      function isArray(e) {
+        return '[object Array]' === toString.call(e)
+      }
+      function isUndefined(e) {
+        return '[object Undefined]' === toString.call(e)
+      }
+      function isObject(e) {
+        return '[object Object]' === toString.call(e)
+      }
+      function isEmptyObject(e) {
+        if (!isObject(e)) return !1
+        for (var t in e) if (!isUndefined(e[t])) return !1
+        return !0
+      }
+      n.d(t, 'd', function () {
+        return isString
+      }),
+        n.d(t, 'a', function () {
+          return isArray
+        }),
+        n.d(t, 'c', function () {
+          return isObject
+        }),
+        n.d(t, 'b', function () {
+          return isEmptyObject
+        })
+    },
+    673: function (e, t, n) {
+      'use strict'
+      n.d(t, 'a', function () {
+        return Field
+      })
+      var r = n(116),
+        l = n.n(r),
+        o = n(55),
+        c = n.n(o),
+        i = n(24),
+        a = n.n(i),
+        s = n(571),
+        u = n.n(s),
+        d = n(32),
+        f = n.n(d),
+        b = n(570),
+        h = n.n(b),
+        j = n(27),
+        v = n.n(j),
+        p = n(173),
+        m = n.n(p),
+        g = n(572),
+        y = n.n(g),
+        _ = n(577),
+        O = n.n(_),
+        x = n(6),
+        S = n.n(x),
+        w = n(567),
+        C = n(64),
+        k = n(568),
+        N = n(569),
+        T = n(589),
+        I = n(574),
+        q = (n(591), n(92), n(5), n(0), n(790), n(626))
+      function setScrollTop(e, t) {
+        'scrollTop' in e ? (e.scrollTop = t) : e.scrollTo(e.scrollX, t)
+      }
+      function resizeTextarea(e, t) {
+        var n = (function getRootScrollTop() {
+          return (
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop ||
+            0
+          )
+        })()
+        ;(e.style.height = 'auto'),
+          (e.style.lineHeight = 'inherit'),
+          (e.rows = 1)
+        var r = e.scrollHeight
+        if (Object(q.c)(t)) {
+          var l = t.maxHeight,
+            o = t.minHeight
+          void 0 !== l && (r = Math.min(r, l)),
+            void 0 !== o && (r = Math.max(r, o))
+        }
+        r &&
+          ((e.style.height = ''.concat(r, 'px')),
+          (function setRootScrollTop(e) {
+            setScrollTop(window, e), setScrollTop(document.body, e)
+          })(n))
+      }
+      var z = n(583),
+        D = n(580)
+      function inputStyle(e) {
+        return e && 'Object' === e.constructor
+          ? Object(z.a)({
+              'min-height': Object(D.a)(e.minHeight),
+              'max-height': Object(D.a)(e.maxHeight),
+            })
+          : ''
+      }
+      var E = n(115)
+      function ownKeys(e, t) {
+        var n = a()(e)
+        if (u.a) {
+          var r = u()(e)
+          t &&
+            (r = f()(r).call(r, function (t) {
+              return h()(e, t).enumerable
+            })),
+            n.push.apply(n, r)
+        }
+        return n
+      }
+      function _objectSpread(e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var n,
+            r = null != arguments[t] ? arguments[t] : {}
+          if (t % 2)
+            v()((n = ownKeys(Object(r), !0))).call(n, function (t) {
+              y()(e, t, r[t])
+            })
+          else if (m.a) l()(e, m()(r))
+          else {
+            var o
+            v()((o = ownKeys(Object(r)))).call(o, function (t) {
+              c()(e, t, h()(r, t))
+            })
+          }
+        }
+        return e
+      }
+      var K = 0
+      function Field(e) {
+        var t,
+          n = Object(C.useRef)({ focused: !1 }),
+          r = Object(C.useState)({ showClear: !1, unitag: 'van-field' }),
+          l = O()(r, 2),
+          o = l[0],
+          i = l[1],
+          a = Object(C.useState)(''),
+          s = O()(a, 2),
+          u = s[0],
+          d = s[1],
+          f = o.showClear,
+          b = e.size,
+          h = e.leftIcon,
+          j = e.center,
+          v = e.border,
+          p = void 0 === v || v,
+          m = e.isLink,
+          g = e.required,
+          y = e.clickable,
+          _ = e.titleWidth,
+          x = void 0 === _ ? '6.2em' : _,
+          q = e.style,
+          z = e.arrowDirection,
+          D = e.label,
+          L = e.disabled,
+          R = e.type,
+          B = void 0 === R ? 'text' : R,
+          H = e.inputAlign,
+          A = e.clearIcon,
+          F = void 0 === A ? 'clear' : A,
+          P = e.rightIcon,
+          Q = e.icon,
+          W = e.iconClass,
+          M = e.value,
+          U = e.maxlength,
+          V = void 0 === U ? -1 : U,
+          J = e.showWordLimit,
+          G = e.errorMessageAlign,
+          X = e.error,
+          Y = e.errorMessage,
+          $ = e.fixed,
+          Z = e.focus,
+          ee = e.cursor,
+          te = void 0 === ee ? -1 : ee,
+          ne = e.autoFocus,
+          re = e.readonly,
+          le = e.placeholder,
+          oe = e.placeholderStyle,
+          ce = e.autosize,
+          ie = e.cursorSpacing,
+          ae = void 0 === ie ? 50 : ie,
+          se = e.adjustPosition,
+          ue = void 0 === se || se,
+          de = e.showConfirmBar,
+          fe = void 0 === de || de,
+          be = e.holdKeyboard,
+          he = e.selectionEnd,
+          je = void 0 === he ? -1 : he,
+          ve = e.selectionStart,
+          pe = void 0 === ve ? -1 : ve,
+          me = e.alwaysEmbed,
+          ge = e.disableDefaultPadding,
+          ye = void 0 === ge || ge,
+          _e = e.confirmType,
+          Oe = e.confirmHold,
+          xe = e.password,
+          Se = e.clearable,
+          we = e.clearTrigger,
+          Ce = void 0 === we ? 'focus' : we,
+          ke = e.renderLeftIcon,
+          Ne = e.renderTitle,
+          Te = e.renderInput,
+          Ie = e.renderRightIcon,
+          qe = e.renderIcon,
+          ze = e.renderButton,
+          De = e.onChange,
+          Ee = e.onFocus,
+          Ke = e.onBlur,
+          Le = e.onClear,
+          Re = e.onConfirm,
+          Be = e.onInput,
+          He = e.onClickInput,
+          Ae = e.onClickIcon,
+          Fe = e.onLineChange,
+          Pe = e.onKeyboardHeightChange
+        Object(C.useEffect)(function () {
+          i(function (e) {
+            return _objectSpread(
+              _objectSpread({}, e),
               {},
-              {
+              { unitag: 'van-field_uni_'.concat(K++) },
+            )
+          })
+        }, [])
+        var Qe = function emitChange(e) {
+            ;(e = e || { detail: { value: '' } }),
+              c()(e, 'detail', { value: e.detail.value }),
+              d(e.detail),
+              Object(w.a)(function () {
+                null == Be || Be(e), null == De || De(e)
+              })
+          },
+          We = function setShowClear(e) {
+            var t = !1
+            if (Se && !re) {
+              var r = !!e,
+                l = 'always' === Ce || ('focus' === Ce && n.current.focused)
+              t = r && l
+            }
+            i(function (e) {
+              return _objectSpread(_objectSpread({}, e), {}, { showClear: t })
+            })
+          },
+          Me = function _input(e) {
+            var t = (e.detail || {}).value
+            We(void 0 === t ? '' : t), Qe(e)
+          },
+          Ue = function _focus(e) {
+            ;(n.current.focused = !0),
+              setTimeout(function () {
+                We(u)
+              }),
+              c()(e, 'detail', { value: e.detail.value }),
+              null == Ee || Ee(e)
+          },
+          Ve = function _blur(e) {
+            console.info('blur'),
+              (n.current.focused = !1),
+              We(u),
+              c()(e, 'detail', { value: e.detail.value }),
+              null == Ke || Ke(e)
+          },
+          Je = function _confirm(e) {
+            var t = (e.detail || {}).value
+            We(void 0 === t ? '' : t),
+              c()(e, 'detail', { value: e.detail.value }),
+              null == Re || Re(e)
+          }
+        return (
+          Object(C.useEffect)(
+            function () {
+              We(u)
+            },
+            [re, Se],
+          ),
+          Object(C.useEffect)(
+            function () {
+              d(M)
+            },
+            [M],
+          ),
+          Object(C.useEffect)(
+            function () {
+              ;(function adjustTextareaSize() {
+                var e,
+                  t = document.querySelector('.'.concat(o.unitag)),
+                  n =
+                    null == t || null === (e = t.children) || void 0 === e
+                      ? void 0
+                      : e[0]
+                'textarea' === B && ce && n && resizeTextarea(n, ce)
+              })()
+            },
+            [u],
+          ),
+          Object(E.jsxs)(T.a, {
+            size: b,
+            icon: h,
+            center: j,
+            border: p,
+            isLink: m,
+            required: g,
+            clickable: y,
+            titleWidth: x,
+            titleStyle: 'margin-right: 12px;',
+            style: q,
+            arrowDirection: z,
+            className: 'van-field',
+            renderIcon: Object(E.jsx)(k.a, { children: ke }),
+            renderTitle: Object(E.jsx)(k.a, {
+              children: D
+                ? Object(E.jsx)(k.n, {
+                    className:
+                      'label-class ' + N.b('field__label', { disabled: L }),
+                    children: D,
+                  })
+                : Ne,
+            }),
+            children: [
+              Object(E.jsxs)(k.n, {
+                className: N.b('field__body', [B]),
                 children: [
-                  Object(q.jsxs)(I.n, {
-                    className: B.b('card__header', { center: i }),
-                    children: [
-                      Object(q.jsxs)(I.n, {
-                        className: 'van-card__thumb',
-                        onClick: function onClick() {
-                          d && Object(D.a)(d)
-                        },
-                        children: [
-                          t
-                            ? Object(q.jsx)(I.f, {
-                                src: t,
-                                mode: j,
-                                lazyLoad: o,
-                                className: 'van-card__img thumb-class',
-                              })
-                            : x,
-                          n
-                            ? Object(q.jsx)(F.a, {
-                                mark: !0,
-                                type: 'danger',
-                                className: 'van-card__tag',
-                                children: n,
-                              })
-                            : N,
-                        ],
-                      }),
-                      Object(q.jsxs)(I.n, {
+                  Object(E.jsx)(k.n, {
+                    className: N.b('field__control', [H, 'custom']),
+                    onClick: He,
+                    children: Te,
+                  }),
+                  'textarea' === B
+                    ? Object(E.jsx)(k.l, {
                         className:
-                          'van-card__content ' +
-                          B.b('card__content', { center: i }),
-                        children: [
-                          Object(q.jsxs)(I.n, {
-                            children: [
-                              a
-                                ? Object(q.jsx)(I.n, {
-                                    className: 'van-card__title title-class',
-                                    children: a,
-                                  })
-                                : S,
-                              r
-                                ? Object(q.jsx)(I.n, {
-                                    className: 'van-card__desc desc-class',
-                                    children: r,
-                                  })
-                                : y,
-                              k,
-                            ],
-                          }),
-                          Object(q.jsxs)(I.n, {
-                            className: 'van-card__bottom',
-                            children: [
-                              g,
-                              l
-                                ? Object(q.jsxs)(I.n, {
-                                    className: 'van-card__price price-class',
-                                    children: [
-                                      Object(q.jsx)(I.k, { children: m }),
-                                      Object(q.jsx)(I.k, {
-                                        className: 'van-card__price-integer',
-                                        children: H,
-                                      }),
-                                      Object(q.jsx)(I.k, {
-                                        className: 'van-card__price-decimal',
-                                        children: A,
-                                      }),
-                                    ],
-                                  })
-                                : _,
-                              u
-                                ? Object(q.jsx)(I.n, {
-                                    className:
-                                      'van-card__origin-price origin-price-class',
-                                    children: m + ' ' + u,
-                                  })
-                                : O,
-                              c
-                                ? Object(q.jsx)(I.n, {
-                                    className: 'van-card__num num-class',
-                                    children: 'x ' + c,
-                                  })
-                                : h,
-                              p,
-                            ],
-                          }),
-                        ],
+                          N.b('field__control', [
+                            H,
+                            B,
+                            { disabled: L, error: X },
+                          ]) +
+                          S()(
+                            (t = ' input-class '.concat(
+                              ce ? 'autosize' : '',
+                              ' ',
+                            )),
+                          ).call(t, o.unitag) +
+                          ''.concat(ce ? ' autosize-height' : ''),
+                        fixed: $,
+                        focus: Z,
+                        cursor: te,
+                        value: u,
+                        autoFocus: ne,
+                        disabled: L || re,
+                        maxlength: V,
+                        placeholder: le,
+                        placeholderStyle: oe,
+                        placeholderClass: N.b('field__placeholder', {
+                          error: X,
+                          disabled: L,
+                        }),
+                        nativeProps: ce ? { rows: 1 } : {},
+                        autoHeight: !!ce,
+                        style: inputStyle(ce),
+                        cursorSpacing: ae,
+                        adjustPosition: ue,
+                        showConfirmBar: fe,
+                        holdKeyboard: be,
+                        selectionEnd: je,
+                        selectionStart: pe,
+                        disableDefaultPadding: ye,
+                        onInput: Me,
+                        onClick: He,
+                        onBlur: Ve,
+                        onFocus: Ue,
+                        onConfirm: Je,
+                        onLineChange: Fe,
+                        onKeyboardHeightChange: Pe,
+                      })
+                    : Object(E.jsx)(k.g, {
+                        className:
+                          N.b('field__control', [
+                            H,
+                            { disabled: L, error: X },
+                          ]) + ' input-class',
+                        type: B,
+                        focus: Z,
+                        cursor: te,
+                        value: u,
+                        autoFocus: ne,
+                        disabled: L || re,
+                        maxlength: V,
+                        placeholder: le,
+                        placeholderStyle: oe,
+                        placeholderClass: N.b('field__placeholder', {
+                          error: X,
+                        }),
+                        confirmType: _e,
+                        confirmHold: Oe,
+                        holdKeyboard: be,
+                        cursorSpacing: ae,
+                        adjustPosition: ue,
+                        selectionEnd: je,
+                        selectionStart: pe,
+                        alwaysEmbed: me,
+                        password: xe || 'password' === B,
+                        onInput: Me,
+                        onClick: He,
+                        onBlur: Ve,
+                        onFocus: Ue,
+                        onConfirm: Je,
+                        onKeyboardHeightChange: Pe,
                       }),
+                  f &&
+                    Object(E.jsx)(I.a, {
+                      name: F,
+                      className: 'van-field__clear-root van-field__icon-root',
+                      onTouchStart: function _clear() {
+                        d(''),
+                          We(''),
+                          Object(w.a)(function () {
+                            Qe(), null == Le || Le()
+                          })
+                      },
+                    }),
+                  Object(E.jsxs)(k.n, {
+                    className: 'van-field__icon-container',
+                    onClick: Ae,
+                    children: [
+                      (P || Q) &&
+                        Object(E.jsx)(I.a, {
+                          name: P || Q,
+                          className:
+                            'van-field__icon-root ' + W + ' right-icon-class',
+                        }),
+                      Ie,
+                      qe,
                     ],
                   }),
-                  Object(q.jsx)(I.n, {
-                    className: 'van-card__footer',
-                    children: v,
+                  Object(E.jsx)(k.n, {
+                    className: 'van-field__button',
+                    children: ze,
                   }),
                 ],
-              },
-            ),
-          )
+              }),
+              J &&
+                V &&
+                Object(E.jsxs)(k.n, {
+                  className: 'van-field__word-limit',
+                  children: [
+                    Object(E.jsx)(k.n, {
+                      className: N.b('field__word-num', {
+                        full: u.length >= V,
+                      }),
+                      children: u.length >= V ? V : u.length,
+                    }),
+                    '/' + V,
+                  ],
+                }),
+              Y &&
+                Object(E.jsx)(k.n, {
+                  className: N.b('field__error-message', [
+                    G,
+                    { disabled: L, error: X },
+                  ]),
+                  children: Y,
+                }),
+            ],
+          })
         )
       }
-      function Demo() {
-        return Object(q.jsx)(E, {
-          num: '2',
-          price: '2.00',
-          desc: '描述信息',
-          title: '商品标题',
-          thumb:
-            'https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg',
-        })
+      t.b = Field
+    },
+    678: function (e, t, n) {},
+    702: function (e, t, n) {
+      'use strict'
+      n(576), n(584), n(585), n(601), n(720)
+    },
+    720: function (e, t, n) {},
+    790: function (e, t, n) {
+      'use strict'
+      n.d(t, 'a', function () {
+        return j
+      })
+      var r = n(16),
+        l = n(39),
+        o = n(40),
+        c = n(0),
+        i = n.n(c),
+        a = n(27),
+        s = n.n(a),
+        u = n(10),
+        d = n.n(u),
+        f = n(763),
+        b = (function () {
+          function NodesRef(e, t, n) {
+            Object(l.a)(this, NodesRef),
+              (this._component = t._component),
+              (this._selector = e),
+              (this._selectorQuery = t),
+              (this._single = n)
+          }
+          return (
+            Object(o.a)(NodesRef, [
+              {
+                key: 'context',
+                value: function context(e) {
+                  var t = this._selector,
+                    n = this._component,
+                    r = this._single,
+                    l = this._selectorQuery
+                  return l._push(t, n, r, { context: !0 }, e), l
+                },
+              },
+              {
+                key: 'node',
+                value: function node(e) {
+                  var t = this._selector,
+                    n = this._component,
+                    r = this._single,
+                    l = this._selectorQuery
+                  return (
+                    l._push(t, n, r, { nodeCanvasType: !0, node: !0 }, e), l
+                  )
+                },
+              },
+              {
+                key: 'boundingClientRect',
+                value: function boundingClientRect(e) {
+                  var t = this._selector,
+                    n = this._component,
+                    r = this._single,
+                    l = this._selectorQuery
+                  return (
+                    l._push(
+                      t,
+                      n,
+                      r,
+                      { id: !0, dataset: !0, rect: !0, size: !0 },
+                      e,
+                    ),
+                    l
+                  )
+                },
+              },
+              {
+                key: 'scrollOffset',
+                value: function scrollOffset(e) {
+                  var t = this._selector,
+                    n = this._component,
+                    r = this._single,
+                    l = this._selectorQuery
+                  return (
+                    l._push(
+                      t,
+                      n,
+                      r,
+                      { id: !0, dataset: !0, scrollOffset: !0 },
+                      e,
+                    ),
+                    l
+                  )
+                },
+              },
+              {
+                key: 'fields',
+                value: function fields(e, t) {
+                  var n = this._selector,
+                    r = this._component,
+                    l = this._single,
+                    o = this._selectorQuery,
+                    c = e.id,
+                    i = e.dataset,
+                    a = e.rect,
+                    s = e.size,
+                    u = e.scrollOffset,
+                    d = e.properties,
+                    f = void 0 === d ? [] : d,
+                    b = e.computedStyle,
+                    h = void 0 === b ? [] : b
+                  return (
+                    o._push(
+                      n,
+                      r,
+                      l,
+                      {
+                        id: c,
+                        dataset: i,
+                        rect: a,
+                        size: s,
+                        scrollOffset: u,
+                        properties: f,
+                        computedStyle: h,
+                      },
+                      t,
+                    ),
+                    o
+                  )
+                },
+              },
+            ]),
+            NodesRef
+          )
+        })()
+      function filter(e, t, n) {
+        if (!t) return null
+        var r = '.taro_page' === n,
+          l = e.id,
+          o = e.dataset,
+          c = e.rect,
+          a = e.size,
+          u = e.scrollOffset,
+          d = e.properties,
+          b = void 0 === d ? [] : d,
+          h = e.computedStyle,
+          j = void 0 === h ? [] : h,
+          v = e.nodeCanvasType,
+          p = e.node,
+          m = e.context,
+          g = {}
+        if (v && p) {
+          var y = t.tagName
+          if (
+            ((g.node = { id: t.id, $taroElement: t }),
+            /^taro-canvas-core/i.test(y))
+          ) {
+            var _ = t.type || ''
+            g.nodeCanvasType = _
+            var O = t.getElementsByTagName('canvas')[0]
+            ;/^(2d|webgl)/i.test(_) && O ? (g.node = O) : (g.node = null)
+          } else (g.nodeCanvasType = ''), (g.node = t)
+          return g
+        }
+        if (!m) {
+          if (
+            (l && (g.id = t.id), o && (g.dataset = i()({}, t.dataset)), c || a)
+          ) {
+            var x = t.getBoundingClientRect(),
+              S = x.left,
+              w = x.right,
+              C = x.top,
+              k = x.bottom,
+              N = x.width,
+              T = x.height
+            c &&
+              (r
+                ? ((g.left = 0), (g.right = 0), (g.top = 0), (g.bottom = 0))
+                : ((g.left = S), (g.right = w), (g.top = C), (g.bottom = k))),
+              a &&
+                (r
+                  ? ((g.width = t.clientWidth), (g.height = t.clientHeight))
+                  : ((g.width = N), (g.height = T)))
+          }
+          if (
+            (u && ((g.scrollLeft = t.scrollLeft), (g.scrollTop = t.scrollTop)),
+            b.length &&
+              s()(b).call(b, function (e) {
+                var n = t.getAttribute(e)
+                n && (g[e] = n)
+              }),
+            j.length)
+          ) {
+            var I = window.getComputedStyle(t)
+            s()(j).call(j, function (e) {
+              var t = I.getPropertyValue(e) || I[e]
+              t && (g[e] = t)
+            })
+          }
+          return g
+        }
+        var q = t.tagName
+        if (/^taro-video-core/i.test(q)) return { context: t }
+        if (/^taro-canvas-core/i.test(q)) {
+          var z = t.type || '2d',
+            D = null == t ? void 0 : t.querySelector('canvas'),
+            E = null == D ? void 0 : D.getContext(z)
+          return { context: new f.a(D, E) }
+        }
+        ;/^taro-live-player-core/i.test(q)
+          ? console.error(
+              '暂时不支持通过 NodesRef.context 获取 LivePlayerContext',
+            )
+          : /^taro-editor-core/i.test(q)
+          ? console.error('暂时不支持通过 NodesRef.context 获取 EditorContext')
+          : /^taro-map-core/i.test(q) &&
+            console.error('暂时不支持通过 NodesRef.context 获取 MapContext')
       }
-      c(591)
-      var J = c(584)
-      function demo2_Demo() {
-        return Object(q.jsx)(E, {
-          num: '2',
-          tag: '标签',
-          price: '10.00',
-          desc: '描述信息',
-          title: '商品标题',
-          thumb:
-            'https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg',
-          renderFooter: Object(q.jsxs)(I.n, {
-            children: [
-              Object(q.jsx)(J.b, { size: 'mini', children: '按钮1' }),
-              Object(q.jsx)(J.b, { size: 'mini', children: '按钮2' }),
-            ],
+      var h = (function () {
+          function SelectorQuery() {
+            Object(l.a)(this, SelectorQuery),
+              (this._defaultWebviewId = null),
+              (this._webviewId = null),
+              (this._queue = []),
+              (this._queueCb = []),
+              this._component
+          }
+          return (
+            Object(o.a)(SelectorQuery, [
+              {
+                key: 'in',
+                value: function _in(e) {
+                  return (this._component = e), this
+                },
+              },
+              {
+                key: 'select',
+                value: function select(e) {
+                  return (
+                    'string' == typeof e && (e = e.replace('>>>', '>')),
+                    new b(e, this, !0)
+                  )
+                },
+              },
+              {
+                key: 'selectAll',
+                value: function selectAll(e) {
+                  return (
+                    'string' == typeof e && (e = e.replace('>>>', '>')),
+                    new b(e, this, !1)
+                  )
+                },
+              },
+              {
+                key: 'selectViewport',
+                value: function selectViewport() {
+                  return new b('.taro_page', this, !0)
+                },
+              },
+              {
+                key: 'exec',
+                value: function exec(e) {
+                  var t = this
+                  return (
+                    (function queryBat(e, t) {
+                      var n = []
+                      s()(e).call(e, function (e) {
+                        var t,
+                          l = e.selector,
+                          o = e.single,
+                          c = e.fields,
+                          i = e.component,
+                          a = (null !== i && Object(r.b)(i)) || document,
+                          s = !1
+                        if (a !== document) {
+                          var u =
+                            null === (t = a.parentNode) || void 0 === t
+                              ? void 0
+                              : t.querySelectorAll(l)
+                          if (u)
+                            for (var f = 0, b = u.length; f < b; ++f)
+                              if (a === u[f]) {
+                                s = !0
+                                break
+                              }
+                        }
+                        if (o) {
+                          var h = !0 === s ? a : a.querySelector(l)
+                          n.push(filter(c, h, l))
+                        } else {
+                          var j = a.querySelectorAll(l),
+                            v = []
+                          !0 === s && v.push(a)
+                          for (var p = 0, m = j.length; p < m; ++p) v.push(j[p])
+                          n.push(
+                            d()(v).call(v, function (e) {
+                              return filter(c, e)
+                            }),
+                          )
+                        }
+                      }),
+                        t(n)
+                    })(this._queue, function (n) {
+                      var r = t._queueCb
+                      s()(n).call(n, function (e, n) {
+                        var l = r[n]
+                        'function' == typeof l && l.call(t, e)
+                      }),
+                        'function' == typeof e && e.call(t, n)
+                    }),
+                    this
+                  )
+                },
+              },
+              {
+                key: '_push',
+                value: function _push(e, t, n, r) {
+                  var l =
+                    arguments.length > 4 && void 0 !== arguments[4]
+                      ? arguments[4]
+                      : null
+                  this._queue.push({
+                    component: t,
+                    selector: e,
+                    single: n,
+                    fields: r,
+                  }),
+                    this._queueCb.push(l)
+                },
+              },
+            ]),
+            SelectorQuery
+          )
+        })(),
+        j = function createSelectorQuery() {
+          return new h()
+        }
+      Object(r.j)('createIntersectionObserver')
+    },
+    893: function (e, t, n) {
+      'use strict'
+      n.r(t),
+        n.d(t, 'default', function () {
+          return g
+        })
+      var r = n(39),
+        l = n(40),
+        o = n(175),
+        c = n(66),
+        i = n(65),
+        a = n(91),
+        s = n(64),
+        u = n.n(s),
+        d = n(578),
+        f = n(579),
+        b = (n(615), n(616)),
+        h = (n(702), n(673)),
+        j = n(174),
+        v = n(115)
+      function Demo() {
+        var e = u.a.useState(),
+          t = Object(j.a)(e, 2),
+          n = t[0],
+          r = t[1]
+        return Object(v.jsx)(b.a, {
+          children: Object(v.jsx)(h.b, {
+            value: n,
+            placeholder: '请输入用户名',
+            border: !1,
+            onChange: function onChange(e) {
+              return r(e.detail)
+            },
           }),
         })
       }
-      var H = (function (e) {
-        Object(l.a)(Index, e)
-        var n = Object(i.a)(Index)
+      n(605)
+      var p = n(603)
+      function demo2_Demo() {
+        return Object(v.jsxs)(b.a, {
+          children: [
+            Object(v.jsx)(p.a, { id: 'Field-demo2' }),
+            Object(v.jsx)(h.b, {
+              required: !0,
+              clearable: !0,
+              label: '用户名',
+              icon: 'questionO',
+              placeholder: '请输入用户名',
+            }),
+            Object(v.jsx)(h.b, {
+              type: 'password',
+              label: '密码',
+              placeholder: '请输入密码',
+              required: !0,
+              border: !0,
+            }),
+          ],
+        })
+      }
+      function demo3_Demo() {
+        return Object(v.jsx)(b.a, {
+          children: Object(v.jsx)(h.b, {
+            value: '输入框已禁用',
+            label: '用户名',
+            leftIcon: 'contact',
+            disabled: !0,
+            border: !1,
+          }),
+        })
+      }
+      function demo4_Demo() {
+        var e = u.a.useState({ username: '', phone: '' }),
+          t = Object(j.a)(e, 2),
+          n = t[0]
+        t[1]
+        return Object(v.jsxs)(b.a, {
+          children: [
+            Object(v.jsx)(h.b, {
+              value: n.username,
+              label: '用户名',
+              placeholder: '请输入用户名',
+              error: !0,
+            }),
+            Object(v.jsx)(h.b, {
+              value: n.phone,
+              label: '手机号',
+              placeholder: '请输入手机号',
+              errorMessage: '手机号格式错误',
+              border: !1,
+            }),
+          ],
+        })
+      }
+      function demo5_Demo() {
+        return Object(v.jsx)(b.a, {
+          children: Object(v.jsx)(h.b, {
+            label: '用户名',
+            placeholder: '请输入用户名',
+            inputAlign: 'right',
+          }),
+        })
+      }
+      function demo6_Demo() {
+        return Object(v.jsx)(b.a, {
+          children: Object(v.jsx)(h.b, {
+            label: '留言',
+            type: 'textarea',
+            placeholder: '请输入留言',
+            autosize: !0,
+            border: !1,
+          }),
+        })
+      }
+      n(594)
+      var m = n(588)
+      function demo7_Demo() {
+        return Object(v.jsx)(b.a, {
+          children: Object(v.jsx)(h.b, {
+            center: !0,
+            clearable: !0,
+            label: '短信验证码',
+            placeholder: '请输入短信验证码',
+            border: !0,
+            renderButton: Object(v.jsx)(m.b, {
+              size: 'small',
+              type: 'primary',
+              children: '发送验证码',
+            }),
+          }),
+        })
+      }
+      var g = (function (e) {
+        Object(c.a)(Index, e)
+        var t = Object(i.a)(Index)
         function Index() {
           var e
           return (
             Object(r.a)(this, Index),
-            (e = n.call(this)),
-            Object(o.a)(Object(a.a)(e), 'state', {}),
+            (e = t.call(this)),
+            Object(a.a)(Object(o.a)(e), 'state', {}),
             e
           )
         }
         return (
-          Object(t.a)(Index, [
+          Object(l.a)(Index, [
             {
               key: 'render',
               value: function render() {
-                return Object(q.jsxs)(d.a, {
-                  title: 'Card 商品卡片',
-                  className: 'pages-card-index',
+                return Object(v.jsxs)(d.a, {
+                  title: 'Field 输入框',
+                  className: 'pages-field-index',
                   children: [
-                    Object(q.jsx)(u.a, {
+                    Object(v.jsx)(f.a, {
                       title: '基础用法',
                       padding: !0,
-                      children: Object(q.jsx)(Demo, {}),
+                      children: Object(v.jsx)(Demo, {}),
                     }),
-                    Object(q.jsx)(u.a, {
-                      title: '高级用法',
+                    Object(v.jsx)(f.a, {
+                      title: '自定义类型',
                       padding: !0,
-                      children: Object(q.jsx)(demo2_Demo, {}),
+                      children: Object(v.jsx)(demo2_Demo, {}),
+                    }),
+                    Object(v.jsx)(f.a, {
+                      title: '禁用输入框',
+                      padding: !0,
+                      children: Object(v.jsx)(demo3_Demo, {}),
+                    }),
+                    Object(v.jsx)(f.a, {
+                      title: '错误提示',
+                      padding: !0,
+                      children: Object(v.jsx)(demo4_Demo, {}),
+                    }),
+                    Object(v.jsx)(f.a, {
+                      title: '内容对齐方式',
+                      padding: !0,
+                      children: Object(v.jsx)(demo5_Demo, {}),
+                    }),
+                    Object(v.jsx)(f.a, {
+                      title: '高度自适应',
+                      padding: !0,
+                      children: Object(v.jsx)(demo6_Demo, {}),
+                    }),
+                    Object(v.jsx)(f.a, {
+                      title: '插入按钮',
+                      padding: !0,
+                      children: Object(v.jsx)(demo7_Demo, {}),
                     }),
                   ],
                 })

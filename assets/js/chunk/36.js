@@ -25,7 +25,7 @@
         t.d(n, 'g', function () {
           return isVideoUrl
         })
-      var r = t(586),
+      var r = t(591),
         c = t.n(r)
       function isFunction(e) {
         return 'function' == typeof e
@@ -55,40 +55,154 @@
         return i.test(e)
       }
     },
-    585: function (e, n, t) {
+    578: function (e, n, t) {
+      'use strict'
+      ;(function (e) {
+        t.d(n, 'a', function () {
+          return Page
+        })
+        t(590)
+        var r = t(574),
+          c = t(568),
+          o = t(90),
+          i = t(737),
+          a = t(77),
+          l = t(64),
+          u = (t(581), t(115))
+        function Page(n) {
+          var t = n.title,
+            s = n.className,
+            f = void 0 === s ? '' : s,
+            d = n.children,
+            b = o.a.useRouter().path
+          return (
+            Object(l.useEffect)(
+              function () {
+                'react' === e.env.LIBRARY_ENV
+                  ? (document.body.scrollTop =
+                      document.documentElement.scrollTop =
+                        0)
+                  : Object(i.a)({ scrollTop: 0 })
+              },
+              [b],
+            ),
+            o.a.useShareAppMessage(function () {
+              return { title: 'AntM 组件库演示', path: b }
+            }),
+            Object(u.jsxs)(c.n, {
+              className: 'demo-page '.concat(f),
+              children: [
+                Object(u.jsxs)(c.n, {
+                  className: 'demo-nav',
+                  children: [
+                    Object(u.jsx)(r.b, {
+                      name: 'arrow-left',
+                      className: 'demo-nav__back',
+                      onClick: function onClick() {
+                        return Object(a.d)()
+                      },
+                    }),
+                    Object(u.jsxs)(c.n, {
+                      className: 'demo-nav__title',
+                      children: [t, ' '],
+                    }),
+                  ],
+                }),
+                d,
+              ],
+            })
+          )
+        }
+      }.call(this, t(236)))
+    },
+    579: function (e, n, t) {
+      'use strict'
+      t.d(n, 'a', function () {
+        return s
+      })
+      var r = t(39),
+        c = t(40),
+        o = t(66),
+        i = t(65),
+        a = t(568),
+        l = t(64),
+        u = (t(582), t(115)),
+        s = (function (e) {
+          Object(o.a)(Index, e)
+          var n = Object(i.a)(Index)
+          function Index() {
+            return Object(r.a)(this, Index), n.call(this)
+          }
+          return (
+            Object(c.a)(Index, [
+              {
+                key: 'render',
+                value: function render() {
+                  var e = this.props,
+                    n = e.padding,
+                    t = e.title,
+                    r = e.card
+                  return Object(u.jsxs)(a.n, {
+                    className:
+                      'custom-class demo-block van-clearfix ' +
+                      (n ? 'demo-block--padding' : ''),
+                    children: [
+                      t &&
+                        Object(u.jsx)(a.n, {
+                          className: 'demo-block__title',
+                          children: t,
+                        }),
+                      r
+                        ? Object(u.jsx)(a.n, {
+                            className: 'demo-block__card',
+                            children: this.props.children,
+                          })
+                        : this.props.children,
+                    ],
+                  })
+                },
+              },
+            ]),
+            Index
+          )
+        })(l.Component)
+    },
+    581: function (e, n, t) {},
+    582: function (e, n, t) {},
+    589: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
         return Cell
       })
-      var r = t(24),
+      var r = t(116),
         c = t.n(r),
-        o = t(571),
+        o = t(55),
         i = t.n(o),
-        l = t(32),
-        a = t.n(l),
-        u = t(570),
+        a = t(24),
+        l = t.n(a),
+        u = t(571),
         s = t.n(u),
-        f = t(27),
+        f = t(32),
         d = t.n(f),
-        b = t(173),
+        b = t(570),
         p = t.n(b),
-        j = t(116),
-        v = t.n(j),
-        h = t(55),
-        m = t.n(h),
-        y = t(572),
-        x = t.n(y),
+        j = t(27),
+        h = t.n(j),
+        v = t(173),
+        m = t.n(v),
+        x = t(572),
+        y = t.n(x),
         O = t(573),
         g = t.n(O),
         S = t(64),
         _ = t(568),
         k = t(569),
-        C = t(594),
-        w = t(577),
-        I = t(579),
-        T = t(578)
-      var $ = t(115),
-        N = [
+        C = t(597),
+        w = t(574),
+        I = t(583),
+        N = t(580)
+      var T = t(115),
+        $ = [
           'url',
           'linkType',
           'size',
@@ -115,12 +229,12 @@
           'className',
         ]
       function ownKeys(e, n) {
-        var t = c()(e)
-        if (i.a) {
-          var r = i()(e)
+        var t = l()(e)
+        if (s.a) {
+          var r = s()(e)
           n &&
-            (r = a()(r).call(r, function (n) {
-              return s()(e, n).enumerable
+            (r = d()(r).call(r, function (n) {
+              return p()(e, n).enumerable
             })),
             t.push.apply(t, r)
         }
@@ -129,17 +243,18 @@
       function _objectSpread(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t,
-            r,
-            c = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? d()((t = ownKeys(Object(c), !0))).call(t, function (n) {
-                x()(e, n, c[n])
-              })
-            : p.a
-            ? v()(e, p()(c))
-            : d()((r = ownKeys(Object(c)))).call(r, function (n) {
-                m()(e, n, s()(c, n))
-              })
+            r = null != arguments[n] ? arguments[n] : {}
+          if (n % 2)
+            h()((t = ownKeys(Object(r), !0))).call(t, function (n) {
+              y()(e, n, r[n])
+            })
+          else if (m.a) c()(e, m()(r))
+          else {
+            var o
+            h()((o = ownKeys(Object(r)))).call(o, function (n) {
+              i()(e, n, p()(r, n))
+            })
+          }
         }
         return e
       }
@@ -150,8 +265,8 @@
           c = e.size,
           o = e.center,
           i = e.required,
-          l = e.border,
-          a = void 0 === l || l,
+          a = e.border,
+          l = void 0 === a || a,
           u = e.isLink,
           s = e.clickable,
           f = e.icon,
@@ -159,25 +274,25 @@
           b = e.titleStyle,
           p = e.title,
           j = e.label,
-          v = e.value,
-          h = e.arrowDirection,
+          h = e.value,
+          v = e.arrowDirection,
           m = e.onClick,
-          y = e.renderIcon,
-          x = e.renderTitle,
+          x = e.renderIcon,
+          y = e.renderTitle,
           O = e.renderLabel,
-          M = e.renderRightIcon,
-          E = e.renderExtra,
-          P = e.children,
-          R = e.style,
+          E = e.renderRightIcon,
+          M = e.renderExtra,
+          R = e.children,
+          P = e.style,
           L = e.className,
-          F = g()(e, N),
+          F = g()(e, $),
           K = Object(S.useCallback)(
             function (e) {
               null == m || m(e), t && Object(C.a)(t, r)
             },
             [r, m, t],
           )
-        return Object($.jsxs)(
+        return Object(T.jsxs)(
           _.n,
           _objectSpread(
             _objectSpread(
@@ -189,14 +304,14 @@
                     {
                       center: o,
                       required: i,
-                      borderless: !a,
+                      borderless: !l,
                       clickable: u || s,
                     },
                   ]) +
                   ' '.concat(L || ''),
                 hoverClass: 'van-cell--hover hover-class',
                 hoverStayTime: 70,
-                style: k.c([R]),
+                style: k.c([P]),
                 onClick: K,
               },
               F,
@@ -205,45 +320,45 @@
             {
               children: [
                 f
-                  ? Object($.jsx)(w.a, {
+                  ? Object(T.jsx)(w.a, {
                       name: f,
                       className: 'van-cell__left-icon-wrap van-cell__left-icon',
                     })
-                  : y,
-                Object($.jsxs)(_.n, {
+                  : x,
+                Object(T.jsxs)(_.n, {
                   style:
                     ((n = { titleWidth: d, titleStyle: b }),
                     Object(I.a)([
                       {
-                        'max-width': Object(T.a)(n.titleWidth),
-                        'min-width': Object(T.a)(n.titleWidth),
+                        'max-width': Object(N.a)(n.titleWidth),
+                        'min-width': Object(N.a)(n.titleWidth),
                       },
                       n.titleStyle,
                     ])),
                   className: 'van-cell__title title-class',
                   children: [
-                    p || 0 === p ? Object($.jsx)(_.a, { children: p }) : x,
+                    p || 0 === p ? Object(T.jsx)(_.a, { children: p }) : y,
                     (j || O) &&
-                      Object($.jsx)(_.n, {
+                      Object(T.jsx)(_.n, {
                         className: 'van-cell__label label-class',
                         children:
-                          O || (j && Object($.jsx)(_.a, { children: j })),
+                          O || (j && Object(T.jsx)(_.a, { children: j })),
                       }),
                   ],
                 }),
-                Object($.jsx)(_.n, {
+                Object(T.jsx)(_.n, {
                   className: 'van-cell__value value-class',
                   children:
-                    v || 0 === v ? Object($.jsx)(_.a, { children: v }) : P,
+                    h || 0 === h ? Object(T.jsx)(_.a, { children: h }) : R,
                 }),
                 u
-                  ? Object($.jsx)(w.a, {
-                      name: h ? 'arrow-' + h : 'arrow',
+                  ? Object(T.jsx)(w.a, {
+                      name: v ? 'arrow-' + v : 'arrow',
                       className:
                         'van-cell__right-icon-wrap right-icon-class van-cell__right-icon',
                     })
-                  : M,
-                E,
+                  : E,
+                M,
               ],
             },
           ),
@@ -251,11 +366,11 @@
       }
       n.b = Cell
     },
-    589: function (e, n, t) {
+    592: function (e, n, t) {
       'use strict'
-      t(574), t(580), t(581), t(598)
+      t(576), t(584), t(585), t(601)
     },
-    590: function (e, n, t) {
+    593: function (e, n, t) {
       'use strict'
       t.d(n, 'g', function () {
         return range
@@ -285,16 +400,16 @@
         c = t(148),
         o = t.n(c),
         i = t(24),
-        l = t.n(i),
-        a = t(21),
-        u = t.n(a),
+        a = t.n(i),
+        l = t(21),
+        u = t.n(l),
         s = t(5),
         f = t.n(s),
         d = (t(567), t(863)),
         b = (t(866), t(90)),
         p = t(790),
         j = (t(77), t(575))
-      t(593)
+      t(596)
       function range(e, n, t) {
         return Math.min(Math.max(e, n), t)
       }
@@ -320,7 +435,7 @@
       function pickExclude(e, n) {
         var t
         return Object(j.e)(e)
-          ? o()((t = l()(e))).call(
+          ? o()((t = a()(e))).call(
               t,
               function (t, r) {
                 return u()(n).call(n, r) || (t[r] = e[r]), t
@@ -368,7 +483,7 @@
         return j.b
       })
     },
-    593: function (e, n, t) {
+    596: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
         return canIUseModel
@@ -380,7 +495,7 @@
         c = t(117),
         o = t.n(c),
         i = t(863),
-        l = t(864)
+        a = t(864)
       t(865)
       function gte(e) {
         return (
@@ -408,10 +523,10 @@
         return gte('2.9.3')
       }
       function canIUseNextTick() {
-        return Object(l.a)('nextTick')
+        return Object(a.a)('nextTick')
       }
     },
-    594: function (e, n, t) {
+    597: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
         return jumpLink
@@ -435,10 +550,10 @@
             }
       }
     },
-    598: function (e, n, t) {},
-    625: function (e, n, t) {
+    601: function (e, n, t) {},
+    627: function (e, n, t) {
       'use strict'
-      var r = t(626)
+      var r = t(628)
       Object.defineProperty(n, '__esModule', { value: !0 }),
         (n.default = function toArray(e) {
           var n =
@@ -459,27 +574,27 @@
           )
         })
       var c = r(t(64)),
-        o = t(627)
+        o = t(629)
     },
-    626: function (e, n) {
+    628: function (e, n) {
       ;(e.exports = function _interopRequireDefault(e) {
         return e && e.__esModule ? e : { default: e }
       }),
         (e.exports.__esModule = !0),
         (e.exports.default = e.exports)
     },
-    627: function (e, n, t) {
+    629: function (e, n, t) {
       'use strict'
-      e.exports = t(628)
+      e.exports = t(630)
     },
-    628: function (e, n, t) {
+    630: function (e, n, t) {
       'use strict'
       var r = 'function' == typeof Symbol && Symbol.for,
         c = r ? Symbol.for('react.element') : 60103,
         o = r ? Symbol.for('react.portal') : 60106,
         i = r ? Symbol.for('react.fragment') : 60107,
-        l = r ? Symbol.for('react.strict_mode') : 60108,
-        a = r ? Symbol.for('react.profiler') : 60114,
+        a = r ? Symbol.for('react.strict_mode') : 60108,
+        l = r ? Symbol.for('react.profiler') : 60114,
         u = r ? Symbol.for('react.provider') : 60109,
         s = r ? Symbol.for('react.context') : 60110,
         f = r ? Symbol.for('react.async_mode') : 60111,
@@ -487,11 +602,11 @@
         b = r ? Symbol.for('react.forward_ref') : 60112,
         p = r ? Symbol.for('react.suspense') : 60113,
         j = r ? Symbol.for('react.suspense_list') : 60120,
-        v = r ? Symbol.for('react.memo') : 60115,
-        h = r ? Symbol.for('react.lazy') : 60116,
+        h = r ? Symbol.for('react.memo') : 60115,
+        v = r ? Symbol.for('react.lazy') : 60116,
         m = r ? Symbol.for('react.block') : 60121,
-        y = r ? Symbol.for('react.fundamental') : 60117,
-        x = r ? Symbol.for('react.responder') : 60118,
+        x = r ? Symbol.for('react.fundamental') : 60117,
+        y = r ? Symbol.for('react.responder') : 60118,
         O = r ? Symbol.for('react.scope') : 60119
       function z(e) {
         if ('object' == typeof e && null !== e) {
@@ -502,16 +617,16 @@
                 case f:
                 case d:
                 case i:
-                case a:
                 case l:
+                case a:
                 case p:
                   return e
                 default:
                   switch ((e = e && e.$$typeof)) {
                     case s:
                     case b:
-                    case h:
                     case v:
+                    case h:
                     case u:
                       return e
                     default:
@@ -533,11 +648,11 @@
         (n.Element = c),
         (n.ForwardRef = b),
         (n.Fragment = i),
-        (n.Lazy = h),
-        (n.Memo = v),
+        (n.Lazy = v),
+        (n.Memo = h),
         (n.Portal = o),
-        (n.Profiler = a),
-        (n.StrictMode = l),
+        (n.Profiler = l),
+        (n.StrictMode = a),
         (n.Suspense = p),
         (n.isAsyncMode = function (e) {
           return A(e) || z(e) === f
@@ -559,19 +674,19 @@
           return z(e) === i
         }),
         (n.isLazy = function (e) {
-          return z(e) === h
+          return z(e) === v
         }),
         (n.isMemo = function (e) {
-          return z(e) === v
+          return z(e) === h
         }),
         (n.isPortal = function (e) {
           return z(e) === o
         }),
         (n.isProfiler = function (e) {
-          return z(e) === a
+          return z(e) === l
         }),
         (n.isStrictMode = function (e) {
-          return z(e) === l
+          return z(e) === a
         }),
         (n.isSuspense = function (e) {
           return z(e) === p
@@ -582,26 +697,26 @@
             'function' == typeof e ||
             e === i ||
             e === d ||
-            e === a ||
             e === l ||
+            e === a ||
             e === p ||
             e === j ||
             ('object' == typeof e &&
               null !== e &&
-              (e.$$typeof === h ||
-                e.$$typeof === v ||
+              (e.$$typeof === v ||
+                e.$$typeof === h ||
                 e.$$typeof === u ||
                 e.$$typeof === s ||
                 e.$$typeof === b ||
-                e.$$typeof === y ||
                 e.$$typeof === x ||
+                e.$$typeof === y ||
                 e.$$typeof === O ||
                 e.$$typeof === m))
           )
         }),
         (n.typeOf = z)
     },
-    701: function (e, n, t) {
+    703: function (e, n, t) {
       'use strict'
       t.d(n, 'a', function () {
         return usePageScroll
@@ -651,41 +766,41 @@
       'use strict'
       t.r(n),
         t.d(n, 'default', function () {
-          return le
+          return ae
         })
       var r = t(39),
         c = t(40),
         o = t(175),
         i = t(66),
-        l = t(65),
-        a = t(91),
+        a = t(65),
+        l = t(91),
         u = t(64),
-        s = t(587),
-        f = t(588),
-        d = (t(574), t(841), t(24)),
+        s = t(578),
+        f = t(579),
+        d = (t(576), t(841), t(116)),
         b = t.n(d),
-        p = t(571),
+        p = t(55),
         j = t.n(p),
-        v = t(570),
-        h = t.n(v),
-        m = t(173),
-        y = t.n(m),
-        x = t(116),
-        O = t.n(x),
-        g = t(55),
+        h = t(24),
+        v = t.n(h),
+        m = t(571),
+        x = t.n(m),
+        y = t(570),
+        O = t.n(y),
+        g = t(173),
         S = t.n(g),
-        _ = t(576),
+        _ = t(577),
         k = t.n(_),
         C = t(572),
         w = t.n(C),
         I = t(32),
-        T = t.n(I),
-        $ = t(10),
-        N = t.n($),
-        M = t(5),
-        E = t.n(M),
-        P = t(27),
-        R = t.n(P),
+        N = t.n(I),
+        T = t(10),
+        $ = t.n(T),
+        E = t(5),
+        M = t.n(E),
+        R = t(27),
+        P = t.n(R),
         L = t(6),
         F = t.n(L),
         K = t(61),
@@ -693,20 +808,20 @@
         D = t(568),
         V = t(737),
         q = t(567),
-        W = t(625),
-        B = t.n(W),
+        B = t(627),
+        W = t.n(B),
         J = t(569),
-        Y = t(590),
+        Y = t(593),
         G = t(761),
-        H = t(701),
+        H = t(703),
         Q = t(115)
       function ownKeys(e, n) {
-        var t = b()(e)
-        if (j.a) {
-          var r = j()(e)
+        var t = v()(e)
+        if (x.a) {
+          var r = x()(e)
           n &&
-            (r = T()(r).call(r, function (n) {
-              return h()(e, n).enumerable
+            (r = N()(r).call(r, function (n) {
+              return O()(e, n).enumerable
             })),
             t.push.apply(t, r)
         }
@@ -715,17 +830,18 @@
       function _objectSpread(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t,
-            r,
-            c = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? R()((t = ownKeys(Object(c), !0))).call(t, function (n) {
-                w()(e, n, c[n])
-              })
-            : y.a
-            ? O()(e, y()(c))
-            : R()((r = ownKeys(Object(c)))).call(r, function (n) {
-                S()(e, n, h()(c, n))
-              })
+            r = null != arguments[n] ? arguments[n] : {}
+          if (n % 2)
+            P()((t = ownKeys(Object(r), !0))).call(t, function (n) {
+              w()(e, n, r[n])
+            })
+          else if (S.a) b()(e, S()(r))
+          else {
+            var c
+            P()((c = ownKeys(Object(r)))).call(c, function (n) {
+              j()(e, n, O()(r, n))
+            })
+          }
         }
         return e
       }
@@ -736,8 +852,8 @@
             c = void 0 === r ? 1 : r,
             o = e.highlightColor,
             i = void 0 === o ? G.c : o,
-            l = e.stickyOffsetTop,
-            a = void 0 === l ? 0 : l,
+            a = e.stickyOffsetTop,
+            l = void 0 === a ? 0 : a,
             s = e.indexList,
             f =
               void 0 === s
@@ -751,33 +867,33 @@
             b = e.children,
             p = e.className,
             j = e.style,
-            v = Object(u.useState)(null),
-            h = k()(v, 2),
-            m = h[0],
-            y = h[1],
-            x = Object(u.useState)(!0),
-            O = k()(x, 2),
+            h = Object(u.useState)(null),
+            v = k()(h, 2),
+            m = v[0],
+            x = v[1],
+            y = Object(u.useState)(!0),
+            O = k()(y, 2),
             g = O[0],
             S = O[1],
             _ = Object(u.useState)([]),
             C = k()(_, 2),
             w = C[0],
             I = C[1],
-            $ = Object(u.useRef)(null),
-            M = Object(u.useRef)(0),
-            P = Object(u.useRef)(null),
+            T = Object(u.useRef)(null),
+            E = Object(u.useRef)(0),
+            R = Object(u.useRef)(null),
             L = Object(u.useRef)(null),
             K = Object(u.useRef)({}),
-            W = Object(u.useRef)([]),
+            B = Object(u.useRef)([]),
             X = Object(u.useMemo)(
               function () {
                 var e,
                   n = 0
-                return N()(
+                return $()(
                   (e = (function parseIndexAnchor(e) {
                     var n, t
-                    return T()(
-                      (n = N()((t = B()(e))).call(t, function (e, n) {
+                    return N()(
+                      (n = $()((t = W()(e))).call(t, function (e, n) {
                         return Object(u.isValidElement)(e)
                           ? _objectSpread(
                               _objectSpread(
@@ -794,7 +910,7 @@
                     })
                   })(b)),
                 ).call(e, function (e, t) {
-                  var r, c, o, i, l
+                  var r, c, o, i, a
                   'IndexAnchor' ===
                     (null === (r = e.node) ||
                     void 0 === r ||
@@ -802,10 +918,10 @@
                     void 0 === c
                       ? void 0
                       : c.displayName) &&
-                    ((W.current[n] = _objectSpread(
+                    ((B.current[n] = _objectSpread(
                       _objectSpread(
                         {},
-                        null !== (o = W.current[n]) && void 0 !== o
+                        null !== (o = B.current[n]) && void 0 !== o
                           ? o
                           : { top: 0, height: 0 },
                       ),
@@ -815,16 +931,16 @@
                         index:
                           null === (i = e.node) ||
                           void 0 === i ||
-                          null === (l = i.props) ||
-                          void 0 === l
+                          null === (a = i.props) ||
+                          void 0 === a
                             ? void 0
-                            : l.index,
+                            : a.index,
                       },
                     )),
                     (n += 1))
-                  var a = w[t],
+                  var l = w[t],
                     s = { key: t },
-                    f = a ? _objectSpread(_objectSpread({}, s), a) : s
+                    f = l ? _objectSpread(_objectSpread({}, s), l) : s
                   return Object(u.cloneElement)(e.node, f)
                 })
               },
@@ -833,12 +949,12 @@
             Z = Object(u.useCallback)(function () {
               return Object(Y.b)(null, '.van-index-anchor-wrapper').then(
                 function (e) {
-                  W.current = N()(e).call(e, function (e, n) {
+                  B.current = $()(e).call(e, function (e, n) {
                     var t
                     return _objectSpread(
                       _objectSpread(
                         {},
-                        null !== (t = W.current[n]) && void 0 !== t ? t : {},
+                        null !== (t = B.current[n]) && void 0 !== t ? t : {},
                       ),
                       {},
                       { top: e.top, height: e.height },
@@ -849,27 +965,27 @@
             }, []),
             ee = Object(u.useCallback)(
               function (e) {
-                Object(V.a)({ duration: 0, scrollTop: e + a })
+                Object(V.a)({ duration: 0, scrollTop: e + l })
               },
-              [a],
+              [l],
             ),
             ne = Object(u.useCallback)(function () {
               return Object(Y.c)(null, '.van-index-bar').then(function (e) {
                 Object(Y.e)(e) &&
-                  (K.current = { height: e.height, top: e.top + M.current })
+                  (K.current = { height: e.height, top: e.top + E.current })
               })
             }, []),
             te = Object(u.useCallback)(function () {
               return Object(Y.c)(null, '.van-index-bar__sidebar').then(
                 function (e) {
                   Object(Y.e)(e) &&
-                    (P.current = { height: e.height, top: e.top })
+                    (R.current = { height: e.height, top: e.top })
                 },
               )
             }, []),
             re = Object(u.useCallback)(
               function () {
-                for (var e = W.current, n = e.length - 1; n >= 0; n--) {
+                for (var e = B.current, n = e.length - 1; n >= 0; n--) {
                   var r,
                     c = e[n]
                   if (c) {
@@ -879,40 +995,40 @@
                           ? void 0
                           : r.height
                         : 0
-                    if ((t ? o + a : 0) + M.current >= c.top) return n
+                    if ((t ? o + l : 0) + E.current >= c.top) return n
                   }
                 }
                 return -1
               },
-              [t, a],
+              [t, l],
             ),
             ce = Object(u.useCallback)(
               function () {
-                return E.a.all([Z(), ne(), te()])
+                return M.a.all([Z(), ne(), te()])
               },
               [Z, ne, te],
             ),
             oe = Object(u.useCallback)(
               function () {
                 if (null != X && X.length) {
-                  var e = W.current,
+                  var e = B.current,
                     n = re()
-                  y(n)
+                  x(n)
                   var r = []
                   if (t) {
                     var o,
-                      l,
+                      a,
                       u = !1
                     if (-1 !== n)
                       u =
-                        ((null === (l = e[n]) || void 0 === l
+                        ((null === (a = e[n]) || void 0 === a
                           ? void 0
-                          : l.top) || 0) <=
-                        a + M.current
-                    R()((o = W.current)).call(o, function (e, t) {
+                          : a.top) || 0) <=
+                        l + E.current
+                    P()((o = B.current)).call(o, function (e, t) {
                       if (t === n) {
                         var o,
-                          l,
+                          a,
                           s = '',
                           f = '\n          color: '.concat(i, ';\n        ')
                         if (u)
@@ -922,12 +1038,12 @@
                           )),
                             (f = F()(
                               (o = F()(
-                                (l =
+                                (a =
                                   '\n            position: fixed;\n            top: '.concat(
-                                    a,
+                                    l,
                                     'px;\n            z-index: ',
                                   )),
-                              ).call(l, c, ';\n            color: ')),
+                              ).call(a, c, ';\n            color: ')),
                             ).call(o, i, ';\n          '))
                         r[e.childIndex] = {
                           active: !0,
@@ -939,20 +1055,20 @@
                           b,
                           p,
                           j = e,
-                          v = (null == j ? void 0 : j.top) || 0,
-                          h =
+                          h = (null == j ? void 0 : j.top) || 0,
+                          v =
                             (t === X.length - 1
                               ? K.current.top
-                              : null === (d = W.current[t + 1]) || void 0 === d
+                              : null === (d = B.current[t + 1]) || void 0 === d
                               ? void 0
                               : d.top) -
-                            v -
+                            h -
                             ((null == j ? void 0 : j.height) || 0),
                           m = F()(
                             (b = F()(
                               (p =
                                 '\n          position: relative;\n          transform: translate3d(0, '.concat(
-                                  h,
+                                  v,
                                   'px, 0);\n          z-index: ',
                                 )),
                             ).call(p, c, ';\n          color: ')),
@@ -969,21 +1085,21 @@
                   }
                 }
               },
-              [X.length, re, i, t, a, c],
+              [X.length, re, i, t, l, c],
             ),
             ie = Object(u.useCallback)(
               function (e) {
-                ;(M.current = (null == e ? void 0 : e.scrollTop) || 0), oe()
+                ;(E.current = (null == e ? void 0 : e.scrollTop) || 0), oe()
               },
               [oe],
             )
           Object(H.a)(ie)
-          var le = Object(u.useCallback)(
+          var ae = Object(u.useCallback)(
               function (e) {
                 var n
                 if ('number' == typeof e && L.current !== e) {
                   L.current = e
-                  var t = U()((n = W.current)).call(n, function (n) {
+                  var t = U()((n = B.current)).call(n, function (n) {
                     return (null == n ? void 0 : n.index) === f[e]
                   })
                   t && (ee(t.top), null == d || d({ detail: t.index }))
@@ -991,22 +1107,22 @@
               },
               [ee, f, d],
             ),
-            ae = Object(u.useCallback)(
+            le = Object(u.useCallback)(
               function (e) {
-                le(Number(e.target.dataset.index))
+                ae(Number(e.target.dataset.index))
               },
-              [le],
+              [ae],
             ),
             ue = Object(u.useCallback)(
               function (e) {
                 e.stopPropagation(), e.preventDefault()
-                var n = W.current.length || 0,
+                var n = B.current.length || 0,
                   t = e.touches[0],
-                  r = P.current.height / n,
-                  c = Math.floor((t.clientY - P.current.top) / r)
-                c < 0 ? (c = 0) : c > n - 1 && (c = n - 1), le(c)
+                  r = R.current.height / n,
+                  c = Math.floor((t.clientY - R.current.top) / r)
+                c < 0 ? (c = 0) : c > n - 1 && (c = n - 1), ae(c)
               },
-              [le],
+              [ae],
             ),
             se = Object(u.useCallback)(function () {
               L.current = null
@@ -1014,9 +1130,9 @@
             fe = Object(u.useCallback)(
               function () {
                 Object(q.a)(function () {
-                  null !== $.current && clearTimeout($.current),
-                    ($.current = setTimeout(function () {
-                      S(!!W.current.length),
+                  null !== T.current && clearTimeout(T.current),
+                    (T.current = setTimeout(function () {
+                      S(!!B.current.length),
                         ce().then(function () {
                           oe()
                         })
@@ -1040,11 +1156,11 @@
                 g &&
                   Object(Q.jsx)(D.n, {
                     className: 'van-index-bar__sidebar',
-                    onClick: ae,
+                    onClick: le,
                     onTouchMove: ue,
                     onTouchEnd: se,
                     onTouchCancel: se,
-                    children: N()(f).call(f, function (e, n) {
+                    children: $()(f).call(f, function (e, n) {
                       return Object(Q.jsx)(
                         D.n,
                         {
@@ -1065,7 +1181,7 @@
             })
           )
         },
-        Z = (t(589), t(585)),
+        Z = (t(592), t(589)),
         ee = (t(842), t(573)),
         ne = t.n(ee),
         te = [
@@ -1078,12 +1194,12 @@
           'className',
         ]
       function index_anchor_ownKeys(e, n) {
-        var t = b()(e)
-        if (j.a) {
-          var r = j()(e)
+        var t = v()(e)
+        if (x.a) {
+          var r = x()(e)
           n &&
-            (r = T()(r).call(r, function (n) {
-              return h()(e, n).enumerable
+            (r = N()(r).call(r, function (n) {
+              return O()(e, n).enumerable
             })),
             t.push.apply(t, r)
         }
@@ -1092,20 +1208,21 @@
       function index_anchor_objectSpread(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t,
-            r,
-            c = null != arguments[n] ? arguments[n] : {}
-          n % 2
-            ? R()((t = index_anchor_ownKeys(Object(c), !0))).call(
-                t,
-                function (n) {
-                  w()(e, n, c[n])
-                },
-              )
-            : y.a
-            ? O()(e, y()(c))
-            : R()((r = index_anchor_ownKeys(Object(c)))).call(r, function (n) {
-                S()(e, n, h()(c, n))
-              })
+            r = null != arguments[n] ? arguments[n] : {}
+          if (n % 2)
+            P()((t = index_anchor_ownKeys(Object(r), !0))).call(
+              t,
+              function (n) {
+                w()(e, n, r[n])
+              },
+            )
+          else if (S.a) b()(e, S()(r))
+          else {
+            var c
+            P()((c = index_anchor_ownKeys(Object(r)))).call(c, function (n) {
+              j()(e, n, O()(r, n))
+            })
+          }
         }
         return e
       }
@@ -1116,17 +1233,17 @@
           c = e.index,
           o = e.children,
           i = e.style,
-          l = e.className,
-          a = ne()(e, te)
+          a = e.className,
+          l = ne()(e, te)
         return Object(Q.jsx)(
           D.n,
           index_anchor_objectSpread(
             index_anchor_objectSpread(
               {
-                className: 'van-index-anchor-wrapper '.concat(l || ''),
+                className: 'van-index-anchor-wrapper '.concat(a || ''),
                 style: J.c([n, i]),
               },
-              a,
+              l,
             ),
             {},
             {
@@ -1154,7 +1271,7 @@
         ce.push(String.fromCharCode(oe + ie))
       function Demo() {
         return Object(Q.jsx)(X, {
-          children: N()(ce).call(ce, function (e) {
+          children: $()(ce).call(ce, function (e) {
             return Object(Q.jsxs)(
               D.a,
               {
@@ -1170,15 +1287,15 @@
           }),
         })
       }
-      var le = (function (e) {
+      var ae = (function (e) {
         Object(i.a)(Index, e)
-        var n = Object(l.a)(Index)
+        var n = Object(a.a)(Index)
         function Index() {
           var e
           return (
             Object(r.a)(this, Index),
             (e = n.call(this)),
-            Object(a.a)(Object(o.a)(e), 'state', {}),
+            Object(l.a)(Object(o.a)(e), 'state', {}),
             e
           )
         }

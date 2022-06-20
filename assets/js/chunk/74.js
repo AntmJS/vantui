@@ -11,7 +11,7 @@
       var n = i(0),
         s = i.n(n),
         u = i(147),
-        a = i(610),
+        a = i(611),
         c = (function () {
           function t(e) {
             Object(u.g)(this, e),
@@ -70,7 +70,7 @@
         })()
       c.style = 'taro-cover-view-core{display:block}'
     },
-    610: function (e, r, i) {
+    611: function (e, r, i) {
       'use strict'
       i.d(r, 'a', function () {
         return s

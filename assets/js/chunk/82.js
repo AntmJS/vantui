@@ -9,7 +9,7 @@
           return c
         })
       var s = n(147),
-        u = n(610),
+        u = n(611),
         c = (function () {
           function e(t) {
             Object(s.g)(this, t), (this.selectable = !1)
@@ -25,7 +25,7 @@
       c.style =
         'taro-text-core{display:inline;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;white-space:pre-wrap}.taro-text__selectable{-moz-user-select:text;-webkit-user-select:text;-ms-user-select:text;user-select:text}'
     },
-    610: function (t, r, n) {
+    611: function (t, r, n) {
       'use strict'
       n.d(r, 'a', function () {
         return u

@@ -15,7 +15,7 @@
         c = r(55),
         h = r.n(c),
         l = r(147),
-        p = r(610),
+        p = r(611),
         m = (function () {
           function t(e) {
             Object(l.g)(this, e),
@@ -89,7 +89,7 @@
       m.style =
         'body,html{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none}taro-view-core{display:block}'
     },
-    610: function (e, n, r) {
+    611: function (e, n, r) {
       'use strict'
       r.d(n, 'a', function () {
         return s

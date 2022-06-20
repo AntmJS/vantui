@@ -11,7 +11,7 @@
       var n = r(0),
         a = r.n(n),
         s = r(147),
-        h = r(610)
+        h = r(611)
       r.e(72).then(r.t.bind(null, 862, 7))
       var m = (function () {
         function t(i) {
@@ -111,7 +111,7 @@
       m.style =
         'img[src=""]{opacity:0}taro-image-core{display:inline-block;overflow:hidden;position:relative;font-size:0;width:auto;height:auto}.taro-img.taro-img__widthfix{height:100%}.taro-img__mode-scaletofill{width:100%;height:100%}.taro-img__mode-aspectfit{max-width:100%;max-height:100%}.taro-img__mode-aspectfill{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.taro-img__mode-aspectfill--width{min-width:100%;height:100%}.taro-img__mode-aspectfill--height{width:100%;min-height:100%}.taro-img__mode-widthfix{width:100%}.taro-img__mode-top{width:100%}.taro-img__mode-bottom{width:100%;position:absolute;bottom:0}.taro-img__mode-left{height:100%}.taro-img__mode-right{position:absolute;height:100%;right:0}.taro-img__mode-topright{position:absolute;right:0}.taro-img__mode-bottomleft{position:absolute;bottom:0}.taro-img__mode-bottomright{position:absolute;right:0;bottom:0}'
     },
-    610: function (i, e, r) {
+    611: function (i, e, r) {
       'use strict'
       r.d(e, 'a', function () {
         return a

@@ -23,7 +23,7 @@
         _ = r(147),
         m = r(77),
         T = r(90),
-        B = r(610),
+        B = r(611),
         __spreadArray = function (t, a) {
           for (var r = 0, n = a.length, s = t.length; r < n; r++, s++)
             t[s] = a[r]
@@ -490,7 +490,7 @@
       y.style =
         'html,body{height:100%}#app{height:100%}.taro-tabbar__border-white::before{border-top-color:#fff !important}.taro-tabbar__container{display:-ms-flexbox;display:flex;height:100%;-ms-flex-direction:column;flex-direction:column;overflow:hidden}.taro-tabbar__panel{-ms-flex:1;flex:1;position:relative;overflow:auto;-webkit-overflow-scrolling:auto}.taro-tabbar__tabbar{position:relative;height:50px;width:100%;-webkit-transition:bottom 0.2s, top 0.2s;transition:bottom 0.2s, top 0.2s}.taro-tabbar__tabbar-top{top:0}.taro-tabbar__tabbar-bottom{bottom:0}.taro-tabbar__tabbar-hide{display:none}.taro-tabbar__tabbar-slideout{top:-52px;-ms-flex:0 0;flex:0 0}.taro-tabbar__panel+.taro-tabbar__tabbar-slideout{top:auto;bottom:-52px}'
     },
-    610: function (t, a, r) {
+    611: function (t, a, r) {
       'use strict'
       r.d(a, 'a', function () {
         return s

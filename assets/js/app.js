@@ -30,7 +30,7 @@
           4: 1,
           7: 1,
           8: 1,
-          10: 1,
+          9: 1,
           11: 1,
           12: 1,
           13: 1,
@@ -48,6 +48,7 @@
           25: 1,
           26: 1,
           27: 1,
+          28: 1,
           29: 1,
           30: 1,
           31: 1,
@@ -68,22 +69,22 @@
           46: 1,
           47: 1,
           48: 1,
+          49: 1,
           50: 1,
           51: 1,
+          52: 1,
           53: 1,
           54: 1,
           55: 1,
-          56: 1,
           57: 1,
           58: 1,
-          59: 1,
           60: 1,
           61: 1,
           62: 1,
+          63: 1,
+          64: 1,
           65: 1,
           66: 1,
-          67: 1,
-          68: 1,
           69: 1,
         }[o] &&
         u.push(
@@ -7505,7 +7506,7 @@
     o.exports = v(211)
   },
   function (o, u, v) {
-    o.exports = v(242)
+    o.exports = v(243)
   },
   function (o, u, v) {
     var m = v(96),
@@ -7534,10 +7535,10 @@
       (o.exports.default = o.exports)
   },
   function (o, u, v) {
-    o.exports = v(243)
+    o.exports = v(244)
   },
   function (o, u, v) {
-    o.exports = v(241)
+    o.exports = v(242)
   },
   function (o, u, v) {
     var m = v(11),
@@ -7573,7 +7574,7 @@
     }
   },
   function (o, u, v) {
-    o.exports = v(237)
+    o.exports = v(238)
   },
   function (o, u, v) {
     var m = v(2),
@@ -11429,7 +11430,7 @@
     o.exports = v(327)
   },
   function (o, u, v) {
-    o.exports = v(238)
+    o.exports = v(239)
   },
   function (o, u, v) {
     o.exports = v(456)
@@ -13495,7 +13496,7 @@
       (o.exports.default = o.exports)
   },
   function (o, u, v) {
-    o.exports = v(239)
+    o.exports = v(240)
   },
   function (o, u, v) {
     'use strict'
@@ -15038,46 +15039,6 @@
       (o.exports.__esModule = !0),
       (o.exports.default = o.exports)
   },
-  function (o, u, v) {
-    var m = v(478)
-    o.exports = m
-  },
-  function (o, u, v) {
-    var m = v(332)
-    o.exports = m
-  },
-  function (o, u, v) {
-    var m = v(454)
-    o.exports = m
-  },
-  function (o, u, v) {
-    var m = v(484)
-    o.exports = m
-  },
-  function (o, u, v) {
-    v(292), v(294), v(295), v(202), v(296)
-  },
-  function (o, u, v) {
-    var m = v(339)
-    o.exports = m
-  },
-  function (o, u, v) {
-    var m = v(409)
-    o.exports = m
-  },
-  function (o, u, v) {
-    v(47)
-    var m = v(56),
-      _ = v(19),
-      j = v(13),
-      M = v(335),
-      R = Array.prototype,
-      $ = { DOMTokenList: !0, NodeList: !0 }
-    o.exports = function (o) {
-      var u = o.forEach
-      return o === R || (j(R, o) && u === R.forEach) || _($, m(o)) ? M : u
-    }
-  },
   function (o, u) {
     var v,
       m,
@@ -15195,6 +15156,46 @@
       (_.umask = function () {
         return 0
       })
+  },
+  function (o, u, v) {
+    var m = v(478)
+    o.exports = m
+  },
+  function (o, u, v) {
+    var m = v(332)
+    o.exports = m
+  },
+  function (o, u, v) {
+    var m = v(454)
+    o.exports = m
+  },
+  function (o, u, v) {
+    var m = v(484)
+    o.exports = m
+  },
+  function (o, u, v) {
+    v(292), v(294), v(295), v(202), v(296)
+  },
+  function (o, u, v) {
+    var m = v(339)
+    o.exports = m
+  },
+  function (o, u, v) {
+    var m = v(409)
+    o.exports = m
+  },
+  function (o, u, v) {
+    v(47)
+    var m = v(56),
+      _ = v(19),
+      j = v(13),
+      M = v(335),
+      R = Array.prototype,
+      $ = { DOMTokenList: !0, NodeList: !0 }
+    o.exports = function (o) {
+      var u = o.forEach
+      return o === R || (j(R, o) && u === R.forEach) || _($, m(o)) ? M : u
+    }
   },
   function (o, u, v) {
     var m = v(285)
@@ -15626,7 +15627,7 @@
   function (o, u, v) {
     v(197),
       v(69),
-      v(240),
+      v(241),
       v(297),
       v(298),
       v(299),
@@ -19251,7 +19252,7 @@
             })(j)
         })()
       })(v || (v = {}))
-    }.call(this, v(244), v(182)))
+    }.call(this, v(236), v(182)))
   },
   function (o, u) {
     ;(o.exports = function _arrayWithHoles(o) {
@@ -19489,7 +19490,7 @@
     o.exports = m
   },
   function (o, u, v) {
-    var m = v(236)
+    var m = v(237)
     o.exports = m
   },
   function (o, u, v) {
@@ -28625,12 +28626,12 @@
       './taro-share-element-core.entry.js': [555, 113],
       './taro-slider-core.entry.js': [556, 114],
       './taro-slot-core.entry.js': [557, 115],
-      './taro-swiper-core_2.entry.js': [558, 52],
+      './taro-swiper-core_2.entry.js': [558, 59],
       './taro-switch-core.entry.js': [559, 116],
       './taro-tabbar.entry.js': [560, 81],
       './taro-text-core.entry.js': [561, 82],
       './taro-textarea-core.entry.js': [562, 117],
-      './taro-video-control_3.entry.js': [563, 49],
+      './taro-video-control_3.entry.js': [563, 56],
       './taro-view-core.entry.js': [564, 83],
       './taro-voip-room-core.entry.js': [565, 118],
       './taro-web-view-core.entry.js': [566, 119],
@@ -29629,7 +29630,7 @@
               u.Element.prototype.matches &&
               u.Element.prototype.remove &&
               u.Element.prototype.getRootNode))) ||
-          o.push(v.e(64).then(v.t.bind(null, 871, 7)))
+          o.push(v.e(68).then(v.t.bind(null, 871, 7)))
         ;('function' == typeof _.a &&
           Se.a &&
           Pe()(Array.prototype) &&
@@ -29741,7 +29742,7 @@
         {
           path: 'pages/dashboard/index',
           load: function load() {
-            return v.e(11).then(v.bind(null, 928))
+            return Promise.all([v.e(0), v.e(26)]).then(v.bind(null, 928))
           },
         },
         { navigationBarTitleText: 'antmjs-vantui', enableShareAppMessage: !0 },
@@ -29750,7 +29751,7 @@
         {
           path: 'pages/button/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(58)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(53)]).then(
               v.bind(null, 875),
             )
           },
@@ -29761,7 +29762,7 @@
         {
           path: 'pages/cell/index',
           load: function load() {
-            return Promise.all([v.e(0), v.e(12)]).then(v.bind(null, 877))
+            return Promise.all([v.e(0), v.e(11)]).then(v.bind(null, 877))
           },
         },
         { navigationBarTitleText: 'Cell 单元格', enableShareAppMessage: !0 },
@@ -29770,7 +29771,7 @@
         {
           path: 'pages/config-provider/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(26)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(23)]).then(
               v.bind(null, 916),
             )
           },
@@ -29784,7 +29785,7 @@
         {
           path: 'pages/icon/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(29)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(25)]).then(
               v.bind(null, 907),
             )
           },
@@ -29795,7 +29796,7 @@
         {
           path: 'pages/image/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(42)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(40)]).then(
               v.bind(null, 900),
             )
           },
@@ -29806,7 +29807,7 @@
         {
           path: 'pages/col/index',
           load: function load() {
-            return Promise.all([v.e(0), v.e(15)]).then(v.bind(null, 929))
+            return Promise.all([v.e(0), v.e(14)]).then(v.bind(null, 929))
           },
         },
         { navigationBarTitleText: 'Layout 布局', enableShareAppMessage: !0 },
@@ -29815,7 +29816,7 @@
         {
           path: 'pages/popup/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(39)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(38)]).then(
               v.bind(null, 917),
             )
           },
@@ -29826,7 +29827,7 @@
         {
           path: 'pages/common/index',
           load: function load() {
-            return Promise.all([v.e(0), v.e(28)]).then(v.bind(null, 930))
+            return Promise.all([v.e(0), v.e(24)]).then(v.bind(null, 930))
           },
         },
         { navigationBarTitleText: 'Style 内置样式', enableShareAppMessage: !0 },
@@ -29835,7 +29836,7 @@
         {
           path: 'pages/toast/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(67)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(69)]).then(
               v.bind(null, 918),
             )
           },
@@ -29846,7 +29847,7 @@
         {
           path: 'pages/transition/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(56)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(51)]).then(
               v.bind(null, 931),
             )
           },
@@ -29860,7 +29861,7 @@
         {
           path: 'pages/calendar/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(19)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(18)]).then(
               v.bind(null, 873),
             )
           },
@@ -29871,7 +29872,7 @@
         {
           path: 'pages/checkbox/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(13)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(12)]).then(
               v.bind(null, 892),
             )
           },
@@ -29885,7 +29886,7 @@
         {
           path: 'pages/datetime-picker/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(18)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(17)]).then(
               v.bind(null, 908),
             )
           },
@@ -29899,7 +29900,7 @@
         {
           path: 'pages/field/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(0), v.e(4), v.e(37)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(0), v.e(4), v.e(47)]).then(
               v.bind(null, 893),
             )
           },
@@ -29921,7 +29922,7 @@
         {
           path: 'pages/picker/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(30)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(28)]).then(
               v.bind(null, 894),
             )
           },
@@ -29943,7 +29944,7 @@
         {
           path: 'pages/rate/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(59)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(54)]).then(
               v.bind(null, 895),
             )
           },
@@ -29954,7 +29955,7 @@
         {
           path: 'pages/search/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(0), v.e(4), v.e(46)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(0), v.e(4), v.e(52)]).then(
               v.bind(null, 901),
             )
           },
@@ -29965,7 +29966,7 @@
         {
           path: 'pages/slider/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(60)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(55)]).then(
               v.bind(null, 886),
             )
           },
@@ -29976,7 +29977,7 @@
         {
           path: 'pages/stepper/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(57)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(64)]).then(
               v.bind(null, 879),
             )
           },
@@ -29987,7 +29988,7 @@
         {
           path: 'pages/switch/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(17)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(16)]).then(
               v.bind(null, 902),
             )
           },
@@ -29998,7 +29999,7 @@
         {
           path: 'pages/uploader/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(5), v.e(20)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(5), v.e(27)]).then(
               v.bind(null, 909),
             )
           },
@@ -30026,7 +30027,7 @@
         {
           path: 'pages/dialog/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(14)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(13)]).then(
               v.bind(null, 919),
             )
           },
@@ -30037,7 +30038,7 @@
         {
           path: 'pages/dropdown-menu/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(10)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(9)]).then(
               v.bind(null, 880),
             )
           },
@@ -30051,7 +30052,7 @@
         {
           path: 'pages/loading/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(65)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(61)]).then(
               v.bind(null, 920),
             )
           },
@@ -30062,7 +30063,7 @@
         {
           path: 'pages/notify/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(38)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(37)]).then(
               v.bind(null, 921),
             )
           },
@@ -30076,7 +30077,7 @@
         {
           path: 'pages/overlay/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(44)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(42)]).then(
               v.bind(null, 924),
             )
           },
@@ -30087,7 +30088,7 @@
         {
           path: 'pages/share-sheet/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(55)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(63)]).then(
               v.bind(null, 888),
             )
           },
@@ -30115,7 +30116,7 @@
         {
           path: 'pages/table/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(22)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(20)]).then(
               v.bind(null, 911),
             )
           },
@@ -30126,7 +30127,7 @@
         {
           path: 'pages/circle/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(0), v.e(50)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(0), v.e(46)]).then(
               v.bind(null, 922),
             )
           },
@@ -30140,7 +30141,7 @@
         {
           path: 'pages/collapse/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(31)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(29)]).then(
               v.bind(null, 881),
             )
           },
@@ -30154,7 +30155,7 @@
         {
           path: 'pages/count-down/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(27)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(31)]).then(
               v.bind(null, 889),
             )
           },
@@ -30168,7 +30169,7 @@
         {
           path: 'pages/divider/index',
           load: function load() {
-            return Promise.all([v.e(0), v.e(23)]).then(v.bind(null, 882))
+            return Promise.all([v.e(0), v.e(21)]).then(v.bind(null, 882))
           },
         },
         { navigationBarTitleText: 'Divider 分割线', enableShareAppMessage: !0 },
@@ -30177,7 +30178,7 @@
         {
           path: 'pages/empty/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(54)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(50)]).then(
               v.bind(null, 912),
             )
           },
@@ -30188,7 +30189,7 @@
         {
           path: 'pages/notice-bar/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(61)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(57)]).then(
               v.bind(null, 883),
             )
           },
@@ -30202,7 +30203,7 @@
         {
           path: 'pages/progress/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(62)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(58)]).then(
               v.bind(null, 896),
             )
           },
@@ -30216,7 +30217,7 @@
         {
           path: 'pages/skeleton/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(69)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(66)]).then(
               v.bind(null, 913),
             )
           },
@@ -30230,7 +30231,7 @@
         {
           path: 'pages/steps/index',
           load: function load() {
-            return Promise.all([v.e(0), v.e(21)]).then(v.bind(null, 903))
+            return Promise.all([v.e(0), v.e(19)]).then(v.bind(null, 903))
           },
         },
         { navigationBarTitleText: 'Steps 步骤条', enableShareAppMessage: !0 },
@@ -30239,7 +30240,7 @@
         {
           path: 'pages/sticky/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(45)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(43)]).then(
               v.bind(null, 925),
             )
           },
@@ -30253,7 +30254,7 @@
         {
           path: 'pages/tag/index',
           load: function load() {
-            return Promise.all([v.e(9), v.e(0), v.e(66)]).then(
+            return Promise.all([v.e(10), v.e(0), v.e(62)]).then(
               v.bind(null, 897),
             )
           },
@@ -30278,7 +30279,7 @@
         {
           path: 'pages/number-keyboard/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(53)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(60)]).then(
               v.bind(null, 926),
             )
           },
@@ -30292,7 +30293,7 @@
         {
           path: 'pages/pagination/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(68)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(65)]).then(
               v.bind(null, 904),
             )
           },
@@ -30306,7 +30307,7 @@
         {
           path: 'pages/grid/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(48)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(45)]).then(
               v.bind(null, 890),
             )
           },
@@ -30342,7 +30343,7 @@
         {
           path: 'pages/sidebar/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(40)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(39)]).then(
               v.bind(null, 905),
             )
           },
@@ -30356,7 +30357,7 @@
         {
           path: 'pages/tab/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(16)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(15)]).then(
               v.bind(null, 884),
             )
           },
@@ -30367,7 +30368,7 @@
         {
           path: 'pages/tabbar/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(43)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(0), v.e(41)]).then(
               v.bind(null, 885),
             )
           },
@@ -30378,7 +30379,7 @@
         {
           path: 'pages/tree-select/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(24)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(22)]).then(
               v.bind(null, 898),
             )
           },
@@ -30392,7 +30393,7 @@
         {
           path: 'pages/area/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(63), v.e(25)]).then(
+            return Promise.all([v.e(1), v.e(2), v.e(3), v.e(67), v.e(30)]).then(
               v.bind(null, 899),
             )
           },
@@ -30406,7 +30407,7 @@
         {
           path: 'pages/card/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(47)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(44)]).then(
               v.bind(null, 923),
             )
           },
@@ -30417,7 +30418,7 @@
         {
           path: 'pages/submit-bar/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(51)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(48)]).then(
               v.bind(null, 906),
             )
           },
@@ -30431,7 +30432,7 @@
         {
           path: 'pages/goods-action/index',
           load: function load() {
-            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(41)]).then(
+            return Promise.all([v.e(1), v.e(0), v.e(4), v.e(49)]).then(
               v.bind(null, 891),
             )
           },
