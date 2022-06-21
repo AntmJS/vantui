@@ -80,10 +80,15 @@ export function camelize(str: string): string {
 }
 
 export function pascalize(str: string): string {
-  return camelize(str).replace(
+  let res = camelize(str).replace(
     pascalizeRE,
     (_, c1, c2) => c1.toUpperCase() + c2,
   )
+  if (['Init', 'PxTransform'].includes(res)) {
+    res = res.substring(0, 1).toLocaleLowerCase() + res.substring(1)
+  }
+
+  return res
 }
 
 export function decamelize(str: string, sep = '-') {
