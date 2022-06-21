@@ -29,6 +29,12 @@ function Demo() {
   const [state, setState] = react.useState({
     dateTime: '',
   })
+  // 注册不能回调函数设置必填的提示文案
+  react.useLayoutEffect(() => {
+    formIt.current.registerRequiredMessageCallback((label) => {
+      return `${label}真的不能为空啊`
+    })
+  }, [])
 
   react.useEffect(() => {
     // 异步更新initialValues
@@ -66,7 +72,7 @@ function Demo() {
           slider: '50',
         }}
         ref={formIt}
-        onFinish={(e) => console.info(e)}
+        onFinish={(errs, res) => console.info(errs, res)}
       >
         <FormItem
           label="用户名"
@@ -138,8 +144,8 @@ function Demo() {
         <Button
           type="primary"
           className="van-button-submit"
-          onClick={handleClick}
-          // formType="submit"
+          // onClick={handleClick}
+          formType="submit"
         >
           提交
         </Button>
