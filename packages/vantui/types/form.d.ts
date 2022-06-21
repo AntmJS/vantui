@@ -111,12 +111,12 @@ export interface FormItemProps extends StandardProps {
     IFormInstance: IFormInstanceAPI,
   ) => any
   /**
-   * @description 正则校验值，或者自定义校验后call回掉函数返回错误信息
+   * @description 正则校验值，或者自定义校验后call回掉函数返回错误信息，支持数组或单项设置
    */
   rules?: {
     rule: ((value: any, call: (errMess: string) => void) => void) | RegExp
     message?: string
-  }
+  }[]
 }
 /**
  * @title IFormInstance
@@ -131,6 +131,10 @@ export type IFormInstanceAPI = {
     control: Record<string, any>,
     model: Record<string, any>,
   ) => void
+  /**
+   * @description 注册必填项为空时的回调函数
+   */
+  registerRequiredMessageCallback: (callback: (label: string) => string) => void
   /**
    * @description 注册校验规则
    */

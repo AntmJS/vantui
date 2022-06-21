@@ -50,7 +50,8 @@ export function FormItem(props: FormItemProps) {
 
   useEffect(() => {
     /* 注册表单 */
-    name && registerValidateFields(name, onStoreChange, { ...rules, required })
+    name &&
+      registerValidateFields(name, onStoreChange, { rules, required, label })
 
     return function () {
       name && unRegisterValidate(name)

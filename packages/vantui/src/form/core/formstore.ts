@@ -17,13 +17,13 @@ const formInstanceApi = [
   'validateFields',
   'submit',
   'unRegisterValidate',
-  // 'getTriggerConfig',
-  // 'setTriggerConfig',
+  'registerRequiredMessageCallback',
 ]
 
 const isReg = (value: any) => value instanceof RegExp
 class FormStore {
   static instance: FormStore
+  public requiredMessageCallback?: (label: string) => string
   public FormUpdate: () => any
   public model: Record<string, any>
   public control: Record<string, any>
@@ -39,6 +39,7 @@ class FormStore {
     this.callback = {}
     this.penddingValidateQueue = []
     this.defaultFormValue = defaultFormValue || {}
+    this.requiredMessageCallback = undefined
   }
 
   getForm() {
@@ -48,14 +49,19 @@ class FormStore {
     }, {})
   }
 
+  registerRequiredMessageCallback(callback: (label: string) => string) {
+    this.requiredMessageCallback = callback
+  }
+
   static createValidate(validateModal: any) {
-    const { value, rule, required, message } = validateModal
+    const { value, required, rules, label } = validateModal
+
     return {
       value,
-      rule: rule || (() => true),
+      rules: Array.isArray(rules) ? rules : [rules],
       required: required || false,
-      message: message || '',
       status: 'pendding',
+      label,
     }
   }
 
@@ -156,19 +162,33 @@ class FormStore {
     /* 记录上次状态 */
     const lastStatus = model.status
     if (!model) return null
-    const { required, rule, value } = model
+    const { required, rules, value } = model
     let status = 'resolve'
     if (required && !value && value !== 0) {
       status = 'reject'
+      if (this.requiredMessageCallback) {
+        this.model[name].message = this.requiredMessageCallback(
+          this.model[name].label,
+        )
+      } else {
+        this.model[name].message = this.model[name].label + '不能为空'
+      }
     }
-    if (value || value === 0) {
-      if (isReg(rule)) {
-        status = rule.test(value) ? 'resolve' : 'reject'
-      } else if (typeof rule === 'function') {
-        rule(value, (message: string) => {
-          this.model[name].message = message
-          status = !message ? 'resolve' : 'reject'
-        })
+
+    for (let i = 0; i < rules.length; i++) {
+      const rule = rules[i].rule
+      const message = rules[i].message
+
+      if (value || value === 0) {
+        if (isReg(rule)) {
+          status = rule.test(value) ? 'resolve' : 'reject'
+          if (status === 'reject') this.model[name].message = message
+        } else if (typeof rule === 'function') {
+          rule(value, (message: string) => {
+            this.model[name].message = message
+            status = !message ? 'resolve' : 'reject'
+          })
+        }
       }
     }
     model.status = status
@@ -197,13 +217,16 @@ class FormStore {
   validateFields(
     callback: (errs: Array<string>, values: Record<string, string>) => void,
   ) {
-    const errorsMess: Array<string> = []
-    Object.keys(this.model).forEach((modelName) => {
-      const modelStates = this.validateFieldValue(modelName, true)
-      if (modelStates === 'reject')
-        errorsMess.push(this.model[modelName].message)
+    // 暂时异步解决更新迟缓问题
+    setTimeout(() => {
+      const errorsMess: Array<string> = []
+      Object.keys(this.model).forEach((modelName) => {
+        const modelStates = this.validateFieldValue(modelName, true)
+        if (modelStates === 'reject')
+          errorsMess.push(this.model[modelName].message)
+      })
+      callback(errorsMess, this.getFieldsValue())
     })
-    callback(errorsMess, this.getFieldsValue())
   }
 
   submit(
@@ -219,7 +242,7 @@ class FormStore {
           onFinishFailed()
       onFinish &&
         typeof onFinish === 'function' &&
-        onFinish(this.getFieldsValue())
+        onFinish(errorMess, this.getFieldsValue())
     })
   }
 }

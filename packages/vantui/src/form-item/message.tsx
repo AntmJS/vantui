@@ -11,15 +11,12 @@ type Iprops = {
 }
 
 export default function Message(props: Iprops) {
-  const { status, message, required, name, value, feedback = 'failed' } = props
+  const { status, message, feedback = 'failed' } = props
   const config = useMemo(() => {
     let mess = ''
     let color = '#fff'
     let ifShow = true
-    if (required && !value && status === 'reject') {
-      mess = `${name} 不能为空`
-      color = 'red'
-    } else if (status === 'reject') {
+    if (status === 'reject') {
       mess = message || ''
       color = 'red'
     } else if (status === 'pendding') {
@@ -43,7 +40,7 @@ export default function Message(props: Iprops) {
       mess,
       ifShow,
     }
-  }, [status, message, required, name, value, feedback])
+  }, [status, message, feedback])
 
   return (
     <>
