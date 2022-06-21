@@ -72,7 +72,7 @@ function Demo() {
           slider: '50',
         }}
         ref={formIt}
-        onFinish={(e) => console.info(e)}
+        onFinish={(errs, res) => console.info(errs, res)}
       >
         <FormItem
           label="用户名"

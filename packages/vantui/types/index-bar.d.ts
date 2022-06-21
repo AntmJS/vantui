@@ -8,6 +8,11 @@ export interface IndexBarProps extends StandardProps {
   indexList?: string[] | number[]
   onSelect?: (event: { detail: string | number }) => void
   children?: ReactNode
+  widthPopup?: boolean
+  popupClassName?: string
+  popupStyle?: React.CSSProperties
+  show?: boolean
+  onClose?: () => void
 }
 declare const IndexBar: ComponentClass<IndexBarProps>
 export { IndexBar }

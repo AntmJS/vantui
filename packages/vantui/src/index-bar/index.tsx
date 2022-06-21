@@ -1,4 +1,4 @@
-import { ITouchEvent, View, ITouch } from '@tarojs/components'
+import { ITouchEvent, View, ITouch, ScrollView } from '@tarojs/components'
 import {
   useCallback,
   useState,
@@ -8,41 +8,14 @@ import {
   isValidElement,
   cloneElement,
 } from 'react'
-// import { throttle } from 'lodash'
 import { pageScrollTo, nextTick } from '@tarojs/taro'
 import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
 import { getRect, getAllRect, isDef } from '../common/utils'
 import { GREEN } from '../common/color'
+import { Popup } from '../popup'
 import { usePageScroll } from './../mixins/page-scroll'
 import { IndexBarProps } from './../../types/index-bar'
-const genIndexList = () => {
-  const indexList = []
-  const charCodeOfA = 'A'.charCodeAt(0)
-  for (let i = 0; i < 26; i++) {
-    indexList.push(String.fromCharCode(charCodeOfA + i))
-  }
-  return indexList
-}
-
-function parseIndexAnchor(children: React.ReactNode): any[] {
-  return toArray(children)
-    .map(
-      (node: React.ReactElement<{ index: number | string }>, index: number) => {
-        if (isValidElement(node)) {
-          const key = node.key !== undefined ? String(node.key) : index
-          return {
-            key,
-            ...node.props,
-            node,
-          }
-        }
-
-        return null
-      },
-    )
-    .filter((indexAnchor) => !!indexAnchor)
-}
 
 export function IndexBar(props: IndexBarProps) {
   const {
@@ -55,6 +28,11 @@ export function IndexBar(props: IndexBarProps) {
     children,
     className,
     style,
+    widthPopup = false,
+    show = false,
+    popupStyle = {},
+    popupClassName = '',
+    onClose = () => {},
   } = props
 
   const [activeAnchorIndex, setActiveAnchorIndex] = useState<any>(null)
@@ -65,6 +43,7 @@ export function IndexBar(props: IndexBarProps) {
   const sidebarRef = useRef<any>(null)
   const scrollToAnchorIndexRef = useRef<any>(null)
   const rectRef = useRef<any>({})
+  const [scrollIntoViewEle, setScrollIntoViewEle] = useState<string>('')
 
   const realAnchor = useRef<
     { top: number; height: number; childIndex: number; index: number }[]
@@ -82,9 +61,9 @@ export function IndexBar(props: IndexBarProps) {
         anchorIndex += 1
       }
       const data = changeData[index]
-      // console.log()
       const defaultProps = {
         key: index,
+        id: `index-bar-item_${anchorIndex - 1}`,
       }
       const props = data
         ? {
@@ -92,7 +71,6 @@ export function IndexBar(props: IndexBarProps) {
             ...data,
           }
         : defaultProps
-      // console.log(props, anchor.node?.props?.index)
       return cloneElement(anchor.node, props)
     })
   }, [changeData, children])
@@ -119,7 +97,7 @@ export function IndexBar(props: IndexBarProps) {
     (top) => {
       pageScrollTo({
         duration: 0,
-        scrollTop: top + stickyOffsetTop, // + scrollTopRef.current,
+        scrollTop: top + stickyOffsetTop,
       })
     },
     [stickyOffsetTop],
@@ -150,7 +128,6 @@ export function IndexBar(props: IndexBarProps) {
   }, [])
   const _getActiveAnchorIndex = useCallback(() => {
     const child = realAnchor.current
-    // console.log(child, scrollTopRef.current)
     for (let i = child.length - 1; i >= 0; i--) {
       const rect = child[i]
       if (!rect) continue
@@ -170,14 +147,11 @@ export function IndexBar(props: IndexBarProps) {
   }, [_setAnchorsRect, _setListRect, _setSiderbarRect])
 
   const _onScroll = useCallback(() => {
-    // console.log('执行', _children?.length)
     if (!_children?.length) {
       return
     }
     const child = realAnchor.current
-    // const { sticky, stickyOffsetTop, zIndex, highlightColor } = data
     const active = _getActiveAnchorIndex()
-    // console.log('active:', active)
     setActiveAnchorIndex(active)
 
     const updateStyle: any[] = []
@@ -210,14 +184,7 @@ export function IndexBar(props: IndexBarProps) {
             anchorStyle,
             wrapperStyle,
           }
-          // setChangeData({
-          //   index: item.childIndex,
-          //   active: true,
-          //   anchorStyle,
-          //   wrapperStyle,
-          // })
         } else if (index === active - 1) {
-          // const _children = _getChildren(children)
           const currentAnchor = item
           // 自己距离顶部 的位置
           const currentOffsetTop = currentAnchor?.top || 0
@@ -246,7 +213,6 @@ export function IndexBar(props: IndexBarProps) {
         }
       })
       setChangeData(updateStyle)
-      // console.log(realAnchor.current[active])
     }
   }, [
     _children.length,
@@ -257,9 +223,6 @@ export function IndexBar(props: IndexBarProps) {
     zIndex,
   ])
 
-  // const _onScroll = useCallback(throttle(_onScrollOrigin, 100), [
-  //   _onScrollOrigin,
-  // ])
   const scroller = useCallback(
     (event) => {
       scrollTopRef.current =
@@ -286,7 +249,6 @@ export function IndexBar(props: IndexBarProps) {
         (item) => item?.index === indexList[index],
       )
       if (currentItem) {
-        // 可以--
         _scrollIntoView(currentItem.top)
         onSelect?.({ detail: currentItem.index })
       }
@@ -296,9 +258,13 @@ export function IndexBar(props: IndexBarProps) {
 
   const _onClick = useCallback(
     (event) => {
-      _scrollToAnchor(Number(event.target.dataset.index))
+      if (!widthPopup) {
+        _scrollToAnchor(Number(event.target.dataset.index))
+      } else {
+        setScrollIntoViewEle(`index-bar-item_${event.target.dataset.index}`)
+      }
     },
-    [_scrollToAnchor],
+    [_scrollToAnchor, widthPopup],
   )
 
   const _onTouchMove = useCallback(
@@ -337,46 +303,98 @@ export function IndexBar(props: IndexBarProps) {
         })
       }, 100)
     })
-  }, [_onScroll, _setRect])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_onScroll, _setRect, realAnchor.current])
 
   useEffect(() => {
     _updateData()
   }, [_updateData])
 
   return (
-    <View
-      className={`van-index-bar ${className || ''}`}
-      style={utils.style([style])}
-    >
-      {_children}
-      {showSidebar && (
-        <View
-          className="van-index-bar__sidebar"
-          onClick={_onClick}
-          onTouchMove={_onTouchMove}
-          onTouchEnd={_onTouchStop}
-          onTouchCancel={_onTouchStop}
+    <View className="van-index-bar-wrapper">
+      <View
+        className={`van-index-bar ${className || ''}`}
+        style={utils.style([style])}
+      >
+        {!widthPopup && _children}
+        {showSidebar && (!widthPopup || (widthPopup && show)) ? (
+          <View
+            className="van-index-bar__sidebar"
+            onClick={_onClick}
+            onTouchMove={!widthPopup ? _onTouchMove : undefined}
+            onTouchEnd={!widthPopup ? _onTouchStop : undefined}
+            onTouchCancel={!widthPopup ? _onTouchStop : undefined}
+          >
+            {indexList.map((item, index) => {
+              return (
+                <View
+                  key={index}
+                  className="van-index-bar__index"
+                  style={
+                    'z-index: ' +
+                    (zIndex + 1) +
+                    '; color: ' +
+                    (activeAnchorIndex === index ? highlightColor : '')
+                  }
+                  data-index={index}
+                >
+                  {item}
+                </View>
+              )
+            })}
+          </View>
+        ) : (
+          ''
+        )}
+      </View>
+
+      {!!widthPopup && (
+        <Popup
+          className={`van-index-bar__popup ${popupClassName}`}
+          show={show}
+          style={popupStyle}
+          safeAreaInsetBottom
+          onClose={onClose}
+          position="right"
         >
-          {indexList.map((item, index) => {
-            return (
-              <View
-                key={index}
-                className="van-index-bar__index"
-                style={
-                  'z-index: ' +
-                  (zIndex + 1) +
-                  '; color: ' +
-                  (activeAnchorIndex === index ? highlightColor : '')
-                }
-                data-index={index}
-              >
-                {item}
-              </View>
-            )
-          })}
-        </View>
+          <ScrollView
+            scrollIntoView={scrollIntoViewEle}
+            scrollY
+            scrollWithAnimation
+          >
+            {_children}
+          </ScrollView>
+        </Popup>
       )}
     </View>
   )
 }
 export default IndexBar
+
+const genIndexList = () => {
+  const indexList = []
+  const charCodeOfA = 'A'.charCodeAt(0)
+  for (let i = 0; i < 26; i++) {
+    indexList.push(String.fromCharCode(charCodeOfA + i))
+  }
+  return indexList
+}
+
+function parseIndexAnchor(children: React.ReactNode): any[] {
+  return toArray(children)
+    .map(
+      (node: React.ReactElement<{ index: number | string }>, index: number) => {
+        if (isValidElement(node)) {
+          const key = node.key !== undefined ? String(node.key) : index
+          return {
+            key,
+            ...node.props,
+            node,
+          }
+        }
+
+        return null
+      },
+    )
+    .filter((indexAnchor) => !!indexAnchor)
+}
