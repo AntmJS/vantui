@@ -223,7 +223,7 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
           {days.map((item: any, index: number) => {
             return (
               <View
-                key={item.index}
+                key={`van-calendar__month${index}`}
                 style={computed.getDayStyle(
                   item.type,
                   index,

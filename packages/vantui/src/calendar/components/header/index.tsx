@@ -62,9 +62,12 @@ export default function Index(props: ICalenarHeaderProps) {
         </View>
       )}
       <View className="van-calendar__weekdays">
-        {weekdays.map((item: any) => {
+        {weekdays.map((item: any, index: number) => {
           return (
-            <View key={item.index} className="van-calendar__weekday">
+            <View
+              key={`van-calendar__weekdays${index}`}
+              className="van-calendar__weekday"
+            >
               {item}
             </View>
           )
