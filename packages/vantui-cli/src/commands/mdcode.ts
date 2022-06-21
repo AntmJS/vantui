@@ -63,7 +63,6 @@ export async function mdCode(params: IMdCodeParams) {
         🐒 Watching for md file changes...
         `)
       watchMd()
-      consola.info(CACHE)
     }
   })
 }
@@ -147,7 +146,6 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
   const spinner = ora(`update...`).start()
   let pageIndexImport = ''
   let pageIndexJsxInsert = ''
-  let updateCount = 0
 
   for (let i = 0; i < codeRes.length; i++) {
     const item = codeRes[i] as IcodeItem
@@ -191,17 +189,12 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
 
     if (!CACHE[name] || CACHE[name][demoPath] !== demoCode) {
       await fs.writeFileSync(join(DEFAULT_PAGE_PATH, demoPath), demoCode)
-      updateCount++
       if (!CACHE[name]) CACHE[name] = {}
       CACHE[name][demoPath] = demoCode
     }
   }
 
-  if (
-    pageIndexJsxInsert &&
-    name &&
-    (CACHE[name] || []).length === codeRes.length
-  ) {
+  if (pageIndexJsxInsert && name) {
     await createPageIndex({
       targetPath: name,
       pageTile: pages[name]?.title,
@@ -209,7 +202,7 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
       jsxStr: pageIndexJsxInsert,
     })
   }
-  spinner.succeed(`mdcode sync ${name} success ${updateCount}`)
+  spinner.succeed(`mdcode sync ${name} success`)
 }
 
 type Iresult = {
