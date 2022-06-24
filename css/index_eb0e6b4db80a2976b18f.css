@@ -355,7 +355,6 @@
   top: 84px;
   z-index: 99999;
   width: 360px;
-  max-height: 640px;
   height: calc(100% - 84px);
   border: 1px solid #eeeeee;
   outline: none;
