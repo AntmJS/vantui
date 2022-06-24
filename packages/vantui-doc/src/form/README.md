@@ -156,6 +156,65 @@ function Demo() {
 }
 ```
 
+### 支持多层级数据结构
+
+FormItem 的 name 属性支持数组的形式, 数组项为字符串的时候挂载到对象上，为数字的时候挂载到数组上
+第一层固定为对象
+
+```jsx
+function Demo() {
+  const formIt = react.useRef(null)
+
+  const multFormItems = function () {
+    let jsx = []
+    for (let i = 0; i < 2; i++) {
+      jsx.push(
+        <>
+          <FormItem
+            label={`名称(${i + 1})`}
+            name={['useInfo', i, 'name']}
+            trigger="onInput"
+            valueFormat={(e) => e.detail.value}
+          >
+            <Input placeholder="请输入用户名" />
+          </FormItem>
+          <FormItem
+            label={`年龄(${i + 1})`}
+            name={['useInfo', i, 'age']}
+            trigger="onInput"
+            valueFormat={(e) => e.detail.value}
+          >
+            <Input placeholder="请输入年龄" />
+          </FormItem>
+        </>,
+      )
+    }
+    return jsx
+  }
+
+  return (
+    <Form ref={formIt}>
+      {multFormItems()}
+      <Button
+        className="van-button-submit"
+        formType="submit"
+        onClick={() =>
+          Dialog.alert({
+            message: `result: ${JSON.stringify(
+              formIt.current.getFieldsValue(),
+            )}`,
+            selector: 'form-demo3',
+          })
+        }
+      >
+        提交
+      </Button>
+      <Dialog id="form-demo3" />
+    </Form>
+  )
+}
+```
+
 ### 异步处理和自定义校验
 
 - Uploader 的 onAfterRead 事件只返回变更的文件，展示的是多个文件的话需要重新设置

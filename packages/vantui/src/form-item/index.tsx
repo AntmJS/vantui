@@ -37,6 +37,7 @@ export function FormItem(props: FormItemProps) {
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
   const [, forceUpdate_] = useState({})
+  const _name = Array.isArray(name) ? name.join('.') : name
 
   const onStoreChange = useMemo(() => {
     const onStoreChange = {
@@ -50,29 +51,29 @@ export function FormItem(props: FormItemProps) {
 
   useEffect(() => {
     /* 注册表单 */
-    name &&
-      registerValidateFields(name, onStoreChange, { rules, required, label })
+    _name &&
+      registerValidateFields(_name, onStoreChange, { rules, required, label })
 
     return function () {
-      name && unRegisterValidate(name)
+      _name && unRegisterValidate(_name)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onStoreChange])
 
   const getControlled = (child: any) => {
     const props = { ...child.props }
-    if (!name) return props
+    if (!_name) return props
     const trigger_ = props[trigger]
 
     const handleChange = async (e: any) => {
       let value = null
 
       if (valueFormat) {
-        value = await valueFormat(e, name, formInstance)
+        value = await valueFormat(e, _name, formInstance)
       } else {
         value = e.detail
       }
-      dispatch({ type: 'setFieldsValue' }, name, value)
+      dispatch({ type: 'setFieldsValue' }, _name, value)
       if (trigger_) trigger_(e)
     }
     props[trigger] = handleChange
@@ -82,10 +83,10 @@ export function FormItem(props: FormItemProps) {
           await handleChange(e)
         }
 
-        dispatch({ type: 'validateFieldValue' }, name)
+        dispatch({ type: 'validateFieldValue' }, _name)
       }
     }
-    props[valueKey] = dispatch({ type: 'getFieldValue' }, name)
+    props[valueKey] = dispatch({ type: 'getFieldValue' }, _name)
 
     return props
   }
@@ -112,7 +113,7 @@ export function FormItem(props: FormItemProps) {
           <Message
             name={label}
             feedback={feedback}
-            {...dispatch({ type: 'getFieldModel' }, name)}
+            {...dispatch({ type: 'getFieldModel' }, _name)}
           />
         </View>
       </View>
