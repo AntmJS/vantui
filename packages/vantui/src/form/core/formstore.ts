@@ -3,6 +3,7 @@ import { unstable_batchedUpdates } from 'react-dom'
 import { IFormInstanceAPI } from '../../../types/form'
 
 type IAPI = keyof IFormInstanceAPI
+type Iname = string | Array<string | number>
 
 /* 对外接口  */
 const formInstanceApi = [
@@ -82,10 +83,11 @@ class FormStore {
   }
 
   registerValidateFields(
-    name: string,
+    name_: Iname,
     control: Record<string, any>,
     model: Record<string, any>,
   ): void {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
     if (this.defaultFormValue[name])
       model['value'] = this.defaultFormValue[name]
     const validate = FormStore.createValidate(model)
@@ -93,12 +95,14 @@ class FormStore {
     this.control[name] = control
   }
 
-  unRegisterValidate(name: string) {
+  unRegisterValidate(name_: Iname) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
     delete this.model[name]
     delete this.control[name]
   }
 
-  notifyChange(name: string) {
+  notifyChange(name_: Iname) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
     const controller = this.control[name]
     if (controller) controller?.changeValue()
   }
@@ -110,7 +114,8 @@ class FormStore {
     })
   }
 
-  setFieldsValue(name: string, modelValue: any): any {
+  setFieldsValue(name_: Iname, modelValue: any): any {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
     const model = this.model[name]
     if (!model) return false
     if (toString.call(modelValue) === '[Object, object]' && modelValue.value) {
@@ -125,10 +130,54 @@ class FormStore {
     }
   }
 
-  setValueClearStatus(model: Record<string, any>, name: string, value: any) {
+  setValueClearStatus(model: Record<string, any>, name_: Iname, value: any) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
+
     model['value'] = value
     model['status'] = 'pendding'
     this.notifyChange(name)
+  }
+
+  static transformMultilevelData(data: Record<string, any>) {
+    const keys = Object.keys(data)
+    const hasMultiLevel = keys.some((item) => item.includes('.'))
+    if (hasMultiLevel) {
+      const res: Record<string, any> = {}
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i]
+        if (key) {
+          if (!key?.includes('.')) {
+            res[key] = data[key]
+          } else {
+            const ks = key.split('.')
+            let p = res
+            for (let j = 0; j < ks.length; j++) {
+              const k = ks[j] as string | number
+              if (p[k] && j !== ks.length - 1) {
+                p = p[k]
+              } else if (!p[k] && j !== ks.length - 1) {
+                const nextK = ks[j + 1] as string | number
+                if (
+                  !isNaN(Number(nextK)) &&
+                  typeof Number(nextK) === 'number'
+                ) {
+                  p[k] = []
+                } else if (typeof nextK === 'string') {
+                  p[k] = {}
+                }
+                p = p[k]
+              } else {
+                p[k] = data[key]
+              }
+            }
+          }
+        }
+      }
+
+      return res
+    } else {
+      return data
+    }
   }
 
   getFieldsValue() {
@@ -136,7 +185,7 @@ class FormStore {
     Object.keys(this.model).forEach((modelName) => {
       formData[modelName] = this.model[modelName].value
     })
-    return formData
+    return FormStore.transformMultilevelData(formData)
   }
 
   resetFields() {
@@ -145,19 +194,25 @@ class FormStore {
     })
   }
 
-  getFieldModel(name: string) {
+  getFieldModel(name_: Iname) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
+
     const model = this.model[name]
     return model ? model : {}
   }
 
-  getFieldValue(name: string) {
+  getFieldValue(name_: Iname) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
+
     const model = this.model[name]
     if (!model && this.defaultFormValue[name])
       return this.defaultFormValue[name]
     return model ? model.value : null
   }
 
-  validateFieldValue(name: string, forceUpdate = true) {
+  validateFieldValue(name_: Iname, forceUpdate = true) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
+
     const model = this.model[name]
     /* 记录上次状态 */
     const lastStatus = model.status
