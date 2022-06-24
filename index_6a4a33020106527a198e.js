@@ -1,4 +1,4 @@
-/*! For license information please see index_ae56078e72a29fc57252.js.LICENSE.txt */
+/*! For license information please see index_6a4a33020106527a198e.js.LICENSE.txt */
 ;(self.webpackChunkvantui_doc = self.webpackChunkvantui_doc || []).push([
   [826],
   {
