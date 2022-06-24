@@ -31,6 +31,7 @@ export function Field(props: FieldProps) {
     isLink,
     required,
     clickable,
+    className,
     titleWidth = '6.2em',
     style,
     arrowDirection,
@@ -215,7 +216,7 @@ export function Field(props: FieldProps) {
       titleStyle="margin-right: 12px;"
       style={style}
       arrowDirection={arrowDirection}
-      className="van-field"
+      className={'van-field ' + `${className || ''}`}
       renderIcon={<Block>{renderLeftIcon}</Block>}
       renderTitle={
         <Block>
