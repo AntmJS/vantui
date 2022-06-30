@@ -25,7 +25,11 @@ export function Overlay(props: OverlayProps & { setOuterShow?: any }) {
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
       onTouchMove={_noop}
-      onAfterLeave={() => setOuterShow(false)}
+      onAfterLeave={() => {
+        setTimeout(() => {
+          setOuterShow(false)
+        }, 0)
+      }}
       {...others}
     >
       {children}
