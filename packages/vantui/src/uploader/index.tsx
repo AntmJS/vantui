@@ -4,14 +4,7 @@ import {
   openDocument,
 } from '@tarojs/taro'
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import {
-  View,
-  Block,
-  Text,
-  Image,
-  Video,
-  ITouchEvent,
-} from '@tarojs/components'
+import { View, Text, Image, Video, ITouchEvent } from '@tarojs/components'
 
 import { UploaderProps } from '../../types/uploader'
 import VanLoading from '../loading/index'
@@ -358,7 +351,7 @@ export function Uploader(props: UploaderProps) {
           })}
         {/*  上传样式  */}
         {state.isInCount && (
-          <Block>
+          <>
             <View className="van-uploader__slot" onClick={startUpload}>
               {children}
             </View>
@@ -385,7 +378,7 @@ export function Uploader(props: UploaderProps) {
                 )}
               </View>
             )}
-          </Block>
+          </>
         )}
       </View>
     </View>

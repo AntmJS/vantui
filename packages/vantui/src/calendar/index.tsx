@@ -1,4 +1,4 @@
-import { Block, View, ScrollView, ITouchEvent } from '@tarojs/components'
+import { View, ScrollView, ITouchEvent } from '@tarojs/components'
 import {
   useState,
   useEffect,
@@ -313,7 +313,7 @@ function Index(
   const unselect = useCallback(
     function (dateArray) {
       const date = dateArray[0]
-      if (date && unselect) {
+      if (date) {
         const e = {
           detail: {
             value: copyDates(date) as Date,
@@ -420,7 +420,7 @@ function Index(
   })
 
   return (
-    <Block>
+    <>
       {poppable ? (
         <VanPopup
           className={'van-calendar__popup--' + position}
@@ -524,7 +524,7 @@ function Index(
             showSubtitle={showSubtitle}
             firstDayOfWeek={firstDayOfWeek}
             onClickSubtitle={onClickSubtitle}
-            renderTitle={<Block>{renderTitle}</Block>}
+            renderTitle={<>{renderTitle}</>}
           ></Header>
           <ScrollView
             className={`van-calendar__body van-calendar__body${compIndex}`}
@@ -590,7 +590,7 @@ function Index(
         </View>
       )}
       <VanToast id="van-toast"></VanToast>
-    </Block>
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import { navigateBack, reLaunch, getCurrentPages } from '@tarojs/taro'
 import { useState, useEffect, useCallback } from 'react'
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
 import {
@@ -84,7 +84,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
   }, [])
 
   return (
-    <Block>
+    <>
       {fixed && placeholder && (
         <View style={{ height: `${height + fromTop}px` }}></View>
       )}
@@ -143,12 +143,12 @@ export function MiniNavBar(props: MiniNavBarProps) {
             className="van-mini-nav-bar__title title-class van-ellipsis"
             style={{ width: `${screenWidth - menuWidth * 2 - fromLeft * 4}px` }}
           >
-            {title ? <Block>{title}</Block> : renderTitle}
+            {title ? <>{title}</> : renderTitle}
           </View>
           <View className="van-mini-nav-bar__right"></View>
         </View>
       </View>
-    </Block>
+    </>
   )
 }
 export default MiniNavBar

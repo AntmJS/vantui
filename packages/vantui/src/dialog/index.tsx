@@ -1,4 +1,4 @@
-import { Block, View, Text } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { useState, useCallback, useEffect } from 'react'
 import { nextTick } from '@tarojs/taro'
 import { toPromise } from '../common/utils'
@@ -195,7 +195,7 @@ export function Dialog(props: DialogProps) {
           })}
         >
           {/* {renderTitle || } */}
-          {renderTitle ? renderTitle : title && <Block>{title}</Block>}
+          {renderTitle ? renderTitle : title && <>{title}</>}
         </View>
       )}
       {children

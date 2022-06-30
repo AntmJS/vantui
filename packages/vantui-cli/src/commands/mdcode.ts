@@ -183,7 +183,7 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
       `
         /* eslint-disable */
           import react from 'react';
-          ${createImportStr(item.importFromJsx)} 
+          ${createImportStr(item.importFromJsx)}
           ${commonUtilsImport}
           ${item.value}
         `.replace(`function Demo`, 'export default function Demo'),
@@ -395,7 +395,7 @@ async function createPageIndex(props: IpageParams) {
   ) {
     lastJsx = `
     <DemoPage title="${pageTile}" className="pages-${targetPath}-index">
-      <Tabs active={this.state.avtive} animated onChange={e => this.setState({ active: e.detail.index })}>
+      <Tabs active={this.state.avtive} onChange={e => this.setState({ active: e.detail.index })}>
       ${jsxStr}
       </Tabs>
       ${pageIndexJsxPush}
@@ -415,7 +415,7 @@ async function createPageIndex(props: IpageParams) {
       super()
     }
     state = { active: 0 }
-  
+
     render() {
       return (
         ${lastJsx}

@@ -1,6 +1,6 @@
 import { nextTick } from '@tarojs/taro'
 import { useState, useEffect, useRef } from 'react'
-import { View, Block, Textarea, Input } from '@tarojs/components'
+import { View, Textarea, Input } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { FieldProps } from '../../types/field'
 import { Cell } from '../cell/index'
@@ -217,9 +217,9 @@ export function Field(props: FieldProps) {
       style={style}
       arrowDirection={arrowDirection}
       className={'van-field ' + `${className || ''}`}
-      renderIcon={<Block>{renderLeftIcon}</Block>}
+      renderIcon={<>{renderLeftIcon}</>}
       renderTitle={
-        <Block>
+        <>
           {label ? (
             <View
               className={
@@ -234,7 +234,7 @@ export function Field(props: FieldProps) {
           ) : (
             renderTitle
           )}
-        </Block>
+        </>
       }
     >
       <View className={utils.bem('field__body', [type])}>

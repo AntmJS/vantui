@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { View, Block, ITouchEvent } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { CellProps } from '../../types/cell'
 import { jumpLink } from '../common/jumpLink'
@@ -77,15 +77,15 @@ export function Cell(props: CellProps) {
         })}
         className="van-cell__title title-class"
       >
-        {title || title === 0 ? <Block>{title}</Block> : renderTitle}
+        {title || title === 0 ? <>{title}</> : renderTitle}
         {(label || renderLabel) && (
           <View className="van-cell__label label-class">
-            {renderLabel || (label && <Block>{label}</Block>)}
+            {renderLabel || (label && <>{label}</>)}
           </View>
         )}
       </View>
       <View className="van-cell__value value-class">
-        {value || value === 0 ? <Block>{value}</Block> : children}
+        {value || value === 0 ? <>{value}</> : children}
       </View>
       {isLink ? (
         <Icon

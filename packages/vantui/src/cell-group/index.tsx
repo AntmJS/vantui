@@ -1,4 +1,4 @@
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { CellGroupProps } from '../../types/cell'
 
@@ -14,7 +14,7 @@ export function CellGroup(props: CellGroupProps) {
   } = props
 
   return (
-    <Block>
+    <>
       {title && (
         <View
           className={utils.bem('cell-group__title', {
@@ -39,7 +39,7 @@ export function CellGroup(props: CellGroupProps) {
       >
         {children}
       </View>
-    </Block>
+    </>
   )
 }
 export default CellGroup

@@ -140,11 +140,25 @@ taro-button-core + taro-button-core {
 
 .pages-popup-index {
   .van-popup {
-    width: 200px;
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #ffffff;
     text-align: center;
-    line-height: 200px;
+  }
+  .van-popup--center {
+    width: 200px;
+    height: 200px;
+  }
+  .van-popup--top,
+  .van-popup--bottom {
+    width: 100%;
+    height: 30%;
+  }
+  .van-popup--left,
+  .van-popup--right {
+    width: 30%;
+    height: 100%;
   }
 }
 

@@ -6,7 +6,7 @@ import {
   useImperativeHandle,
   useCallback,
 } from 'react'
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { CountDownProps, ICountDownRef } from '../../types/count-down'
 import { isSameSecond, parseFormat, parseTimeData } from './util'
 
@@ -157,7 +157,7 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
   }, [])
   return (
     <View className={`van-count-down ${className}`} style={style} {...others}>
-      {children ? children : <Block>{formattedTime}</Block>}
+      {children ? children : <>{formattedTime}</>}
     </View>
   )
 }

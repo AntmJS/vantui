@@ -75,7 +75,7 @@ function Demo() {
         closeIcon="close"
         show={show}
         onClose={() => setShow(false)}
-        closeIconPosition="bottomLeft"
+        closeIconPosition="topRight"
       >
         内容
       </Popup>

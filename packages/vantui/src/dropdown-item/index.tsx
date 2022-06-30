@@ -1,4 +1,4 @@
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import {
   useState,
   useEffect,
@@ -210,7 +210,7 @@ function Index(
               icon={item.icon}
               onClick={(e) => onOptionTap(e, item)}
               renderTitle={
-                <Block>
+                <>
                   <View
                     className="van-dropdown-item__title"
                     style={
@@ -221,7 +221,7 @@ function Index(
                   >
                     {item.text}
                   </View>
-                </Block>
+                </>
               }
             >
               {item.value === value_ && (
