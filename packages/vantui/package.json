@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui",
-  "version": "1.9.8",
+  "version": "1.9.9",
   "main": "lib/index.js",
   "module": "es/index.esm.js",
   "style": "lib/index.css",
@@ -62,7 +62,7 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/vantui-cli": "1.9.8",
+    "@antmjs/vantui-cli": "1.9.9",
     "@tarojs/components": "3.4.1",
     "@tarojs/taro": "3.4.1",
     "@types/lodash.flow": "^3.5.6",

@@ -1,7 +1,7 @@
 {
   "name": "vantui-doc",
   "private": true,
-  "version": "1.9.8",
+  "version": "1.9.9",
   "description": "",
   "scripts": {
     "dev": "node ./scripts/ts-to-md && npx antm-vantui-cli docs --mode development",
@@ -15,7 +15,7 @@
   "author": "sanshao",
   "license": "MIT",
   "devDependencies": {
-    "@antmjs/vantui-cli": "^1.9.8",
+    "@antmjs/vantui-cli": "1.9.9",
     "@vue/compiler-sfc": "^3.0.0",
     "ast-to-markdown": "^1.0.0",
     "cross-env": "^7.0.3",
