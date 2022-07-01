@@ -1,4 +1,4 @@
-import { ITouchEvent, View, ITouch, ScrollView } from '@tarojs/components'
+import { ITouchEvent, View, ITouch } from '@tarojs/components'
 import {
   useCallback,
   useState,
@@ -8,13 +8,11 @@ import {
   isValidElement,
   cloneElement,
 } from 'react'
-import { pageScrollTo, nextTick } from '@tarojs/taro'
+import { pageScrollTo, nextTick, usePageScroll } from '@tarojs/taro'
 import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
 import { getRect, getAllRect, isDef } from '../common/utils'
 import { GREEN } from '../common/color'
-import { Popup } from '../popup'
-import { usePageScroll } from './../mixins/page-scroll'
 import { IndexBarProps } from './../../types/index-bar'
 
 export function IndexBar(props: IndexBarProps) {
@@ -28,26 +26,20 @@ export function IndexBar(props: IndexBarProps) {
     children,
     className,
     style,
-    widthPopup = false,
-    show = false,
-    popupStyle = {},
-    popupClassName = '',
-    onClose = () => {},
   } = props
 
   const [activeAnchorIndex, setActiveAnchorIndex] = useState<any>(null)
-  const [showSidebar, setShowSidebar] = useState(true)
   const [changeData, setChangeData] = useState<any>([])
   const timerRef = useRef<any>(null)
   const scrollTopRef = useRef<number>(0)
   const sidebarRef = useRef<any>(null)
   const scrollToAnchorIndexRef = useRef<any>(null)
   const rectRef = useRef<any>({})
-  const [scrollIntoViewEle, setScrollIntoViewEle] = useState<string>('')
 
   const realAnchor = useRef<
     { top: number; height: number; childIndex: number; index: number }[]
   >([])
+
   const _children = useMemo(() => {
     let anchorIndex = 0
     return parseIndexAnchor(children).map((anchor: any, index: number) => {
@@ -223,17 +215,6 @@ export function IndexBar(props: IndexBarProps) {
     zIndex,
   ])
 
-  const scroller = useCallback(
-    (event) => {
-      scrollTopRef.current =
-        (event === null || event === void 0 ? void 0 : event.scrollTop) || 0
-      _onScroll()
-    },
-    [_onScroll],
-  )
-
-  usePageScroll(scroller)
-
   const _scrollToAnchor = useCallback(
     (index) => {
       if (
@@ -245,26 +226,14 @@ export function IndexBar(props: IndexBarProps) {
 
       scrollToAnchorIndexRef.current = index
 
-      const currentItem = realAnchor.current.find(
-        (item) => item?.index === indexList[index],
-      )
+      const currentItem = realAnchor.current[index]
+
       if (currentItem) {
         _scrollIntoView(currentItem.top)
         onSelect?.({ detail: currentItem.index })
       }
     },
-    [_scrollIntoView, indexList, onSelect],
-  )
-
-  const _onClick = useCallback(
-    (event) => {
-      if (!widthPopup) {
-        _scrollToAnchor(Number(event.target.dataset.index))
-      } else {
-        setScrollIntoViewEle(`index-bar-item_${event.target.dataset.index}`)
-      }
-    },
-    [_scrollToAnchor, widthPopup],
+    [_scrollIntoView, onSelect],
   )
 
   const _onTouchMove = useCallback(
@@ -297,14 +266,33 @@ export function IndexBar(props: IndexBarProps) {
         clearTimeout(timerRef.current)
       }
       timerRef.current = setTimeout(() => {
-        setShowSidebar(!!realAnchor.current.length)
         _setRect().then(() => {
           _onScroll()
         })
       }, 100)
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [_onScroll, _setRect, realAnchor.current])
+  }, [_onScroll, _setRect])
+
+  const _onClick = useCallback(
+    (event) => {
+      const targetIndex = Number(event.target.dataset.index)
+      _scrollToAnchor(targetIndex)
+    },
+    [_scrollToAnchor],
+  )
+
+  const scroller = useCallback(
+    (event) => {
+      scrollTopRef.current =
+        (event === null || event === void 0 ? void 0 : event.scrollTop) || 0
+      nextTick(() => {
+        _onScroll()
+      })
+    },
+    [_onScroll],
+  )
+
+  usePageScroll(scroller)
 
   useEffect(() => {
     _updateData()
@@ -316,56 +304,33 @@ export function IndexBar(props: IndexBarProps) {
         className={`van-index-bar ${className || ''}`}
         style={utils.style([style])}
       >
-        {!widthPopup && _children}
-        {showSidebar && (!widthPopup || (widthPopup && show)) ? (
-          <View
-            className="van-index-bar__sidebar"
-            onClick={_onClick}
-            onTouchMove={!widthPopup ? _onTouchMove : undefined}
-            onTouchEnd={!widthPopup ? _onTouchStop : undefined}
-            onTouchCancel={!widthPopup ? _onTouchStop : undefined}
-          >
-            {indexList.map((item, index) => {
-              return (
-                <View
-                  key={index}
-                  className="van-index-bar__index"
-                  style={
-                    'z-index: ' +
-                    (zIndex + 1) +
-                    '; color: ' +
-                    (activeAnchorIndex === index ? highlightColor : '')
-                  }
-                  data-index={index}
-                >
-                  {item}
-                </View>
-              )
-            })}
-          </View>
-        ) : (
-          ''
-        )}
-      </View>
-
-      {!!widthPopup && (
-        <Popup
-          className={`van-index-bar__popup ${popupClassName}`}
-          show={show}
-          style={popupStyle}
-          safeAreaInsetBottom
-          onClose={onClose}
-          position="right"
+        {_children}
+        <View
+          className="van-index-bar__sidebar"
+          onClick={_onClick}
+          onTouchMove={_onTouchMove}
+          onTouchEnd={_onTouchStop}
+          onTouchCancel={_onTouchStop}
         >
-          <ScrollView
-            scrollIntoView={scrollIntoViewEle}
-            scrollY
-            scrollWithAnimation
-          >
-            {_children}
-          </ScrollView>
-        </Popup>
-      )}
+          {indexList.map((item, index) => {
+            return (
+              <View
+                key={index}
+                className="van-index-bar__index"
+                style={
+                  'z-index: ' +
+                  (zIndex + 1) +
+                  '; color: ' +
+                  (activeAnchorIndex === index ? highlightColor : '')
+                }
+                data-index={index}
+              >
+                {item}
+              </View>
+            )
+          })}
+        </View>
+      </View>
     </View>
   )
 }

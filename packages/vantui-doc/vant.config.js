@@ -11,7 +11,7 @@ module.exports = {
       pagePath: path.join(__dirname, '../vantui-demo/src/pages'),
       configPath: path.join(__dirname, '../vantui-demo/src/config.json'),
       appConfigPath: path.join(__dirname, '../vantui-demo/src/app.config.js'),
-      withTabPages: ['icon', 'power-scroll-view', 'index-bar'],
+      withTabPages: ['icon', 'power-scroll-view'],
     },
     title: '@antmjs/vantui',
     logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
