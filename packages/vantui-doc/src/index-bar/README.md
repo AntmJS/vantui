@@ -41,38 +41,6 @@ function Demo() {
 }
 ```
 
-### 弹窗用法
-
-设置`widthPopup`后弹窗展示，位置固定在右侧，与非弹窗模式滚动位置稍有不同。弹窗内容宽度默认`70vw`，可以通过`popupClassName`或`popupStyle`来定义弹窗样式
-
-```jsx
-const arr = []
-const charCodeOfA = 'A'.charCodeAt(0)
-for (let i = 0; i < 26; i++) {
-  arr.push(String.fromCharCode(charCodeOfA + i))
-}
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  return (
-    <>
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出内容
-      </Button>
-      <IndexBar widthPopup show={show} onClose={() => setShow(false)}>
-        {arr.map((item) => (
-          <Block key={item.item}>
-            <IndexAnchor index={item}></IndexAnchor>
-            <Cell title="文本"></Cell>
-            <Cell title="文本"></Cell>
-            <Cell title="文本"></Cell>
-          </Block>
-        ))}
-      </IndexBar>
-    </>
-  )
-}
-```
-
 ### 自定义索引列表
 
 可以通过`indexList`属性自定义展示的索引字符列表。
