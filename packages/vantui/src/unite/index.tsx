@@ -15,7 +15,10 @@ function useContainer(config: any, props: any, options: any) {
   cfgRef.current = config
 
   // 通过ref初始化实例对象
-  const insRef = useRef({ hooks: {} }) as React.MutableRefObject<any>
+  const insRef = useRef({
+    loading: {},
+    hooks: {},
+  }) as React.MutableRefObject<any>
 
   // 初始化state
   const [state, setState]: any = useState(cfgRef.current.state)
@@ -88,8 +91,12 @@ function useContainer(config: any, props: any, options: any) {
                     resolve(result)
                   })
                   .catch(function (err: any) {
-                    insRef.current.loading[item] = false
-                    _setLoading(loadingFalse)
+                    const allLoading: any = {}
+                    Object.keys(insRef.current.loading).map((xitem) => {
+                      insRef.current.loading[xitem] = false
+                      allLoading[xitem] = false
+                    })
+                    _setLoading(allLoading)
                     if (
                       flagRef.current.__refresh &&
                       (item === 'onLoad' ||
@@ -112,6 +119,12 @@ function useContainer(config: any, props: any, options: any) {
                   })
               })
             } catch (err) {
+              const allLoading: any = {}
+              Object.keys(insRef.current.loading).map((xitem) => {
+                insRef.current.loading[xitem] = false
+                allLoading[xitem] = false
+              })
+              _setLoading(allLoading)
               if (
                 flagRef.current.__refresh &&
                 (item === 'onLoad' || item === 'onReady' || item === 'onShow')
