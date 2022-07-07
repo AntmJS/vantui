@@ -36,8 +36,6 @@ export function Slider(props: SliderProps) {
     onDragEnd,
     className = '',
     renderButton,
-    renderLeftButton,
-    renderRightButton,
     ...others
   } = props
 
@@ -76,7 +74,7 @@ export function Slider(props: SliderProps) {
       setTouchState({
         ...touchState,
         startX: touch.clientX,
-        startY: touch.startY,
+        startY: touch.clientY,
       })
     },
     [touchState, resetTouchStatus],
@@ -241,7 +239,11 @@ export function Slider(props: SliderProps) {
       const touchState = touchMove(event)
       setDragStatus('draging')
       getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
-        const diff = (touchState.deltaX / rect.width) * getRange()
+        let diff = (touchState.deltaX / rect.width) * getRange()
+        if (vertical) {
+          diff = (touchState.deltaY / rect.height) * getRange()
+        }
+
         if (isRange(startValue)) {
           newValue[buttonIndex] = startValue[buttonIndex] + diff
           setNewValue(newValue)
@@ -254,17 +256,18 @@ export function Slider(props: SliderProps) {
       })
     },
     [
-      buttonIndex,
       disabled,
       dragStatus,
-      getRange,
-      isRange,
-      newValue,
-      onDragStart,
-      startValue,
       touchMove,
-      updateValue,
       currentIndex_,
+      onDragStart,
+      getRange,
+      vertical,
+      isRange,
+      startValue,
+      updateValue,
+      newValue,
+      buttonIndex,
     ],
   )
 
@@ -283,10 +286,17 @@ export function Slider(props: SliderProps) {
     function (event: any) {
       if (disabled) return
       getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
-        const value =
+        let value =
           (((event.target.x || event.clientX) - rect.left) / rect.width) *
             getRange() +
           min
+
+        if (vertical) {
+          value =
+            (((event.target.y || event.clientY) - rect.top) / rect.height) *
+              getRange() +
+            min
+        }
 
         if (isRange(value_)) {
           const [left, right] = value_
@@ -301,7 +311,16 @@ export function Slider(props: SliderProps) {
         }
       })
     },
-    [disabled, getRange, isRange, min, updateValue, value_, currentIndex_],
+    [
+      disabled,
+      currentIndex_,
+      getRange,
+      min,
+      vertical,
+      isRange,
+      value_,
+      updateValue,
+    ],
   )
 
   return (
@@ -315,7 +334,7 @@ export function Slider(props: SliderProps) {
         ` van-slider${currentIndex_} ` +
         className
       }
-      style={utils.style([wrapperStyle, style])}
+      style={utils.style([wrapperStyle, others.style])}
       onClick={onClick}
       {...others}
     >
