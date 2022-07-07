@@ -2,18 +2,18 @@ import { ComponentClass, ReactNode } from 'react'
 import { StandardProps, ButtonProps, ITouchEvent } from '@tarojs/components'
 import { PopupProps } from './popup'
 export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
-  name?: string
-  subname?: string
+  name?: ReactNode
+  subname?: ReactNode
   color?: string
   loading?: boolean
   disabled?: boolean
 }
 export interface ActionSheetProps extends StandardProps, PopupProps {
   actions?: ActionSheetItem[]
-  title?: string
+  title?: ReactNode
   show?: boolean
-  cancelText?: string
-  description?: string
+  cancelText?: ReactNode
+  description?: ReactNode
   overlay?: boolean
   closeOnClickOverlay?: boolean
   closeOnClickAction?: boolean

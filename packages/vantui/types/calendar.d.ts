@@ -1,4 +1,4 @@
-import React, { ComponentClass } from 'react'
+import React, { ComponentClass, ReactNode } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 /**
@@ -8,7 +8,7 @@ export interface CalendarProps extends StandardProps {
   /**
    * @description 日历标题
    */
-  title?: string
+  title?: ReactNode
   /**
    * @description 主题色，对底部按钮和选中日期生效
    * @default #ee0a24
@@ -26,7 +26,7 @@ export interface CalendarProps extends StandardProps {
   /**
    * @description 确认按钮的文字
    */
-  confirmText?: string
+  confirmText?: ReactNode
   /**
    * @description 	范围选择超过最多可选天数时的提示文案
    * @default 选择天数不能超过xx天
@@ -36,7 +36,7 @@ export interface CalendarProps extends StandardProps {
    * @description 范围选择超过最多可选天数时，是否展示提示文案
    * @default true
    */
-  showRangePrompt?: boolean
+  showRangePrompt?: ReactNode
   /**
    * @description 默认选中的日期，type为multiple或range时为数组
    * @default 今天
@@ -51,7 +51,7 @@ export interface CalendarProps extends StandardProps {
    * @description 确认按钮处于禁用状态时的文字
    * @default 确定
    */
-  confirmDisabledText?: string
+  confirmDisabledText?: ReactNode
   /**
    * @description 类型
    */

@@ -2,7 +2,7 @@ import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface CircleProps extends StandardProps {
-  text?: string
+  text?: ReactNode
   lineCap?: string
   value?: number
   speed?: number

@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface NumberKeyboardProps extends StandardProps {
@@ -9,12 +9,12 @@ export interface NumberKeyboardProps extends StandardProps {
   /**
    * @description 键盘标题
    */
-  title?: string
+  title?: ReactNode
   /**
    * @description 完成按钮文案，null 不展示
    * @default null
    */
-  confirmText?: string | null
+  confirmText?: ReactNode | null
   /**
    * @description  自定义按钮
    */

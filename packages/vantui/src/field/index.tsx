@@ -213,7 +213,7 @@ export function Field(props: FieldProps) {
       required={required}
       clickable={clickable}
       titleWidth={titleWidth}
-      titleStyle="margin-right: 12px;"
+      titleStyle={{ marginRight: '12px' }}
       style={style}
       arrowDirection={arrowDirection}
       className={'van-field ' + `${className || ''}`}
