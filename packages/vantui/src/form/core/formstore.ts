@@ -290,14 +290,17 @@ class FormStore {
     this.validateFields((errorMess: Array<string>) => {
       const { onFinish, onFinishFailed } = this.callback
       const fieldValues = this.getFieldsValue()
-      cb && cb(errorMess.length ? errorMess : null, fieldValues)
-      if (!errorMess)
+      const errs = errorMess.length ? errorMess : null
+      cb && cb(errs, fieldValues)
+      if (errs) {
         onFinishFailed &&
           typeof onFinishFailed === 'function' &&
-          onFinishFailed()
+          onFinishFailed(errs)
+        return
+      }
       onFinish &&
         typeof onFinish === 'function' &&
-        onFinish(errorMess, this.getFieldsValue())
+        onFinish(errs, this.getFieldsValue())
     })
   }
 }

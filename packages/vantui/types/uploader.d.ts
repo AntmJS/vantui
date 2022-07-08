@@ -5,7 +5,7 @@ import { ImageProps } from '@tarojs/components/types/Image'
 export interface UploaderProps extends StandardProps {
   disabled?: boolean
   multiple?: boolean
-  uploadText?: string
+  uploadText?: ReactNode
   useBeforeRead?: boolean
   afterRead?: any
   beforeRead?: any

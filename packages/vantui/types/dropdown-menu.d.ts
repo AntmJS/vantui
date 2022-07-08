@@ -1,4 +1,4 @@
-import React, { ComponentClass } from 'react'
+import React, { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @title DropdownMenuProps
@@ -49,7 +49,7 @@ export interface DropdownItemProps extends StandardProps {
   /**
    * @description 未选择时候的按钮标题
    */
-  title?: string
+  title?: ReactNode
   /**
    * @description 是否禁用
    */
@@ -99,7 +99,7 @@ export type DropdownMenuOption = {
   /**
    * @description 展示的label
    */
-  text?: string
+  text?: ReactNode
   /**
    * @description 对应的数值
    */

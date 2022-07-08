@@ -38,7 +38,7 @@ export interface ToastProps extends StandardProps {
   /**
    * @description 内容
    */
-  message?: string | ReactNode
+  message?: ReactNode
   /**
    * @description 加载图标类型
    * @default spinner

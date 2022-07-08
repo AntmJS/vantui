@@ -2,11 +2,11 @@ import { ComponentClass, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface NavBarProps extends StandardProps {
-  title?: string
+  title?: ReactNode
   fixed?: boolean
   placeholder?: boolean
-  leftText?: string
-  rightText?: string
+  leftText?: ReactNode
+  rightText?: ReactNode
   style?: string
   leftArrow?: boolean
   border?: boolean

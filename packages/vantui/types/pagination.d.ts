@@ -1,5 +1,5 @@
 import { StandardProps } from '@tarojs/components'
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 
 export interface PaginationProps extends StandardProps {
   /**
@@ -21,12 +21,12 @@ export interface PaginationProps extends StandardProps {
    * @description 自定义上一页按钮内容
    * @default 上一页
    */
-  prevText?: React.ReactNode
+  prevText?: ReactNode
   /**
    * @description 自定义下一页按钮内容
    * @default 下一页
    */
-  nextText?: React.ReactNode
+  nextText?: ReactNode
   /**
    * @description 总页数
    * @default 传入或者根据数据量计算

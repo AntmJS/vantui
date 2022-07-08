@@ -24,12 +24,12 @@ export interface FormProps extends StandardProps {
   /**
    * @description 表单提交触发，配合button.formType = submit
    */
-  onFinish?: () => void
+  onFinish?: (errs: string[] | null, values: Record<string, any>) => void
 
   /**
-   * @description 表单提交失败触发
+   * @description 表单提交失败触发，会拦截onFinish
    */
-  onFinishFailed?: () => void
+  onFinishFailed?: (errs: string[] | null) => void
 }
 /**
  * @title FormItemProps
@@ -166,7 +166,10 @@ export type IFormInstanceAPI = {
    * @description 校验表单，并获取错误信息和所有表单值
    */
   validateFields: (
-    callback: (errorMess: Array<string>, values: Record<string, any>) => void,
+    callback: (
+      errorMess: Array<string> | null,
+      values: Record<string, any>,
+    ) => void,
   ) => void
   /**
    * @description 校验表单，并获取错误信息和所有表单值，触发form.onFinish和onFinishFailed

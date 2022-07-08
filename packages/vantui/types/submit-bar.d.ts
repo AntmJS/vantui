@@ -5,10 +5,10 @@ export interface SubmitBarProps extends StandardProps {
   tip?: string
   tipIcon?: string
   price?: number
-  label?: string
+  label?: ReactNode
   loading?: boolean
   disabled?: boolean
-  buttonText?: string
+  buttonText?: ReactNode
   currency?: string
   buttonType?: 'default' | 'primary' | 'info' | 'warning' | 'danger'
   decimalLength?: number

@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { ComponentClass, CSSProperties, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @title Cell Props
@@ -32,7 +32,7 @@ export interface CellProps extends StandardProps {
   /**
    * @description 标题下方的描述信息
    */
-  label?: string
+  label?: ReactNode
   /**
    * @description 是否使内容垂直居中
    */
@@ -71,7 +71,7 @@ export interface CellProps extends StandardProps {
   /**
    * @description 标题样式
    */
-  titleStyle?: string
+  titleStyle?: CSSProperties
   /**
    * @description 自定义渲染标题
    */
@@ -102,7 +102,7 @@ export interface CellGroupProps extends StandardProps {
   /**
    * @description 标题
    */
-  title?: string
+  title?: ReactNode
   /**
    * @description 是否显示外边框
    * @default true

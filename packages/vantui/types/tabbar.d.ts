@@ -15,7 +15,7 @@ export interface TabbarProps extends StandardProps {
 }
 
 export interface TabbarItemProps extends Omit<StandardProps, 'onClick'> {
-  info?: string
+  info?: ReactNode
   name?: string | number
   icon?: string
   dot?: boolean

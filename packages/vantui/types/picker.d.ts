@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 /**
  * @title  Props API
@@ -29,17 +29,17 @@ export interface PickerProps extends StandardProps {
    * @description 	顶部栏标题
    * @default ''
    */
-  title?: string
+  title?: ReactNode
   /**
    * @description 	取消按钮文字
    * @default 取消
    */
-  cancelButtonText?: string
+  cancelButtonText?: ReactNode
   /**
    * @description 	确认按钮文字
    * @default 确认
    */
-  confirmButtonText?: string
+  confirmButtonText?: ReactNode
   /**
    * @description 	加载状态
    * @default false
