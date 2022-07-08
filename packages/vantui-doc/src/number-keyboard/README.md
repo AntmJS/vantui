@@ -111,8 +111,8 @@ function Demo() {
 | 参数            | 说明                         | 类型                                                                 | 默认值 | 必填    |
 | --------------- | ---------------------------- | -------------------------------------------------------------------- | ------ | ------- |
 | visible         | 是否展示                     | _&nbsp;&nbsp;boolean<br/>_                                           | -      | `false` |
-| title           | 键盘标题                     | _&nbsp;&nbsp;string<br/>_                                            | -      | `false` |
-| confirmText     | 完成按钮文案，null 不展示    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;null<br/>_                    | null   | `false` |
+| title           | 键盘标题                     | _&nbsp;&nbsp;ReactNode<br/>_                                         | -      | `false` |
+| confirmText     | 完成按钮文案，null 不展示    | _&nbsp;&nbsp;ReactNode&nbsp;&brvbar;&nbsp;null<br/>_                 | null   | `false` |
 | customKey       | 自定义按钮                   | _&nbsp;&nbsp;"-"&nbsp;&brvbar;&nbsp;"."&nbsp;&brvbar;&nbsp;"X"<br/>_ | -      | `false` |
 | randomOrder     | 是否乱序键盘                 | _&nbsp;&nbsp;boolean<br/>_                                           | false  | `false` |
 | showCloseButton | 是否展示收起键盘箭头         | _&nbsp;&nbsp;boolean<br/>_                                           | true   | `false` |

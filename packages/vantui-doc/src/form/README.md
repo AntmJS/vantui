@@ -371,14 +371,14 @@ function DatetimePickerBox_(props) {
 
 ### FormProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)
 
-| 参数           | 说明                                          | 类型                                        | 默认值 | 必填    |
-| -------------- | --------------------------------------------- | ------------------------------------------- | ------ | ------- |
-| form           | 传入 form 实例（const formStore1 = useRef()） | _&nbsp;&nbsp;IFormInstanceAPI<br/>_         | -      | `false` |
-| initialValues  | 初始化表单仓库值                              | _&nbsp;&nbsp;Record<string,&nbsp;any><br/>_ | -      | `false` |
-| children       | 第一级必须是 FormItem 组件                    | _&nbsp;&nbsp;ReactNode<br/>_                | -      | `true`  |
-| className      | 类名                                          | _&nbsp;&nbsp;string<br/>_                   | -      | `false` |
-| onFinish       | 表单提交触发，配合 button.formType = submit   | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_     | -      | `false` |
-| onFinishFailed | 表单提交失败触发                              | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_     | -      | `false` |
+| 参数           | 说明                                          | 类型                                                                                                                                                                                                | 默认值 | 必填    |
+| -------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| form           | 传入 form 实例（const formStore1 = useRef()） | _&nbsp;&nbsp;IFormInstanceAPI<br/>_                                                                                                                                                                 | -      | `false` |
+| initialValues  | 初始化表单仓库值                              | _&nbsp;&nbsp;Record<string,&nbsp;any><br/>_                                                                                                                                                         | -      | `false` |
+| children       | 第一级必须是 FormItem 组件                    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                        | -      | `true`  |
+| className      | 类名                                          | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                           | -      | `false` |
+| onFinish       | 表单提交触发，配合 button.formType = submit   | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;errs:&nbsp;string[]&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+| onFinishFailed | 表单提交失败触发，会拦截 onFinish             | _&nbsp;&nbsp;(errs:&nbsp;string[]&nbsp;&brvbar;&nbsp;null)&nbsp;=>&nbsp;void<br/>_                                                                                                                  | -      | `false` |
 
 ### FormItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)
 
@@ -415,5 +415,5 @@ function DatetimePickerBox_(props) {
 | setFieldsValue | 设置单个表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;modelValue:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
 | getFieldsValue | 获取所有表单值 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 | getFieldValue | 获取单个表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
-| validateFields | 校验表单，并获取错误信息和所有表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMess:&nbsp;Array<string>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| validateFields | 校验表单，并获取错误信息和所有表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMess:&nbsp;Array<string>&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | submit | 校验表单，并获取错误信息和所有表单值，触发 form.onFinish 和 onFinishFailed | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback?:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errs:&nbsp;Array<string>&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;string><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |

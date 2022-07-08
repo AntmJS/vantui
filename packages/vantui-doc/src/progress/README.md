@@ -71,7 +71,7 @@ function Demo() {
 | ----------- | ---- | --------------------------------------------------- | ------ | ------- |
 | inactive    | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
 | percentage  | -    | _&nbsp;&nbsp;number<br/>_                           | -      | `true`  |
-| pivotText   | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| pivotText   | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
 | pivotColor  | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 | trackColor  | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 | showPivot   | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |

@@ -131,7 +131,7 @@ function Demo() {
 | max               | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
 | min               | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
 | step              | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
-| value             | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
+| value             | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>_                              | -      | `false` |
 | barHeight         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                | -      | `false` |
 | vertical          | -    | _&nbsp;&nbsp;boolean<br/>_                                                         | -      | `false` |
 | onDrag            | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SliderEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |

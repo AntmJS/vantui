@@ -72,8 +72,3 @@ function Demo() {
 | indexList       | -    | _&nbsp;&nbsp;string[]&nbsp;&brvbar;&nbsp;number[]<br/>_                                                                                          | -      | `false` |
 | onSelect        | -    | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
 | children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                     | -      | `false` |
-| widthPopup      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                       | -      | `false` |
-| popupClassName  | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                        | -      | `false` |
-| popupStyle      | -    | _&nbsp;&nbsp;React.CSSProperties<br/>_                                                                                                           | -      | `false` |
-| show            | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                       | -      | `false` |
-| onClose         | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                          | -      | `false` |

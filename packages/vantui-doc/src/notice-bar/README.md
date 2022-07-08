@@ -116,7 +116,7 @@ function Demo() {
 
 | 参数            | 说明 | 类型                                                          | 默认值 | 必填    |
 | --------------- | ---- | ------------------------------------------------------------- | ------ | ------- |
-| text            | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
+| text            | -    | _&nbsp;&nbsp;ReactNode<br/>_                                  | -      | `false` |
 | mode            | -    | _&nbsp;&nbsp;"closeable"&nbsp;&brvbar;&nbsp;"link"<br/>_      | -      | `false` |
 | url             | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
 | openType        | -    | _&nbsp;&nbsp;any<br/>_                                        | -      | `false` |

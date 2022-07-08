@@ -220,7 +220,7 @@ function Demo() {
 | 参数       | 说明                 | 类型                                                                                 | 默认值 | 必填    |
 | ---------- | -------------------- | ------------------------------------------------------------------------------------ | ------ | ------- |
 | value      | 对应菜单选项的值     | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                  | -      | `false` |
-| title      | 未选择时候的按钮标题 | _&nbsp;&nbsp;string<br/>_                                                            | -      | `false` |
+| title      | 未选择时候的按钮标题 | _&nbsp;&nbsp;ReactNode<br/>_                                                         | -      | `false` |
 | disabled   | 是否禁用             | _&nbsp;&nbsp;boolean<br/>_                                                           | -      | `false` |
 | titleClass | 标题元素的 class     | _&nbsp;&nbsp;string<br/>_                                                            | -      | `false` |
 | options    | 所有选项             | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_                                         | -      | `true`  |
@@ -236,7 +236,7 @@ function Demo() {
 
 | 参数  | 说明         | 类型                                                |
 | ----- | ------------ | --------------------------------------------------- |
-| text  | 展示的 label | _&nbsp;&nbsp;string<br/>_                           |
+| text  | 展示的 label | _&nbsp;&nbsp;ReactNode<br/>_                        |
 | value | 对应的数值   | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
 | icon  | 前缀图标     | _&nbsp;&nbsp;string<br/>_                           |
 
