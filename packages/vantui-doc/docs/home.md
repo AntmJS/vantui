@@ -91,6 +91,8 @@
 
 ### 快速沟通群
 
+微信群满 200 人，需手动拉群。添加好友请备注“AntmJS”，我们会尽快拉你进群交流
+
 <div style="display:inline-block;">
-<img style="width:300px" src="https://antm-js.gitee.io/resource/wechat_v37.jpeg" />
+<img style="width:300px" src="https://antm-js.gitee.io/resource/antmjs.jpeg" />
 </div>
