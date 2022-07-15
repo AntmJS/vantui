@@ -66,8 +66,13 @@ export default Unite(
   },
   // 这里返回的state loading error 和上方this一致，events除了上方定义的方法外，还有部分内置的方法比如；setHooks setError
   function ({ state, events, loading, error }, props) {
-    // 上方可以通过this.hooks取到
-    events.setHooks('key', 'value')
+    // 伪代码
+    const [menuButton, setMenuButton]: any = useRecoilState(menuButtonStore)
+    // 这里通过setHooks方法可以将全局数据及全局数据的设置方法传递过去，方法里面可以通过this.hooks['xxx']获取到
+    events.setHooks({
+      xxx: menuButton,
+      yyy: setMenuButton,
+    })
     // 这里可以写hooks
     useEffect(() => {}, [])
     return (
