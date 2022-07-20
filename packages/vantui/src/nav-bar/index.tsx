@@ -34,7 +34,7 @@ export function NavBar(props: NavBarProps) {
     setStatusBarHeight(statusBarHeight)
   }, [])
   
-  const getNavBarStyle = useCallback(()=>{
+  const getNavBarStyle = useCallback(function () {
     return utils.style([
           computed.barStyle({
             zIndex,
@@ -44,7 +44,7 @@ export function NavBar(props: NavBarProps) {
           }) +
             '; ' +
             style,
-        ])
+        ]);
   }, [zIndex, statusBarHeight, safeAreaInsetTop])
 
   return (
