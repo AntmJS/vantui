@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getSystemInfoSync } from '../common/utils'
 import { NavBarProps } from '../../types/nav-bar'
-import { Icon } from '../icon/index'
+import { Icon } from '../icon'
 import * as computed from './wxs'
 
 export function NavBar(props: NavBarProps) {
@@ -28,23 +28,23 @@ export function NavBar(props: NavBarProps) {
     ...others
   } = props
 
-  useEffect(function () {
+  useEffect(function() {
     let { statusBarHeight = 22 } = getSystemInfoSync()
     if (isNaN(statusBarHeight)) statusBarHeight = 22
     setStatusBarHeight(statusBarHeight)
   }, [])
-  
-  const getNavBarStyle = useCallback(function () {
+
+  const getNavBarStyle = useCallback(function() {
     return utils.style([
-          computed.barStyle({
-            zIndex,
-            statusBarHeight,
-            safeAreaInsetTop,
-            height: 50,
-          }) +
-            '; ' +
-            style,
-        ]);
+      computed.barStyle({
+        zIndex,
+        statusBarHeight,
+        safeAreaInsetTop,
+        height: 50,
+      }) +
+      '; ' +
+      style,
+    ]);
   }, [zIndex, statusBarHeight, safeAreaInsetTop])
 
   return (
@@ -110,4 +110,5 @@ export function NavBar(props: NavBarProps) {
     </>
   )
 }
+
 export default NavBar
