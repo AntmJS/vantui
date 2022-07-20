@@ -82,11 +82,24 @@ export function MiniNavBar(props: MiniNavBarProps) {
       })
     }
   }, [])
+  
+  const getMiniNavbarHeight = useCallback(function () {
+    return utils.style([
+          computed.barStyle({
+            zIndex,
+            fromTop,
+            height,
+            fromLeft,
+          }) +
+            '; ' +
+            style,
+        ]);
+  }, [zIndex, fromTop, height, fromLeft, style])
 
   return (
     <>
       {fixed && placeholder && (
-        <View style={{ height: `${height + fromTop}px` }}></View>
+        <View style={getMiniNavbarHeight()} ></View>
       )}
       <View
         className={
@@ -97,16 +110,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }
-        style={utils.style([
-          computed.barStyle({
-            zIndex,
-            fromTop,
-            height,
-            fromLeft,
-          }) +
-            '; ' +
-            style,
-        ])}
+        style={getMiniNavbarHeight()}
         {...others}
       >
         <View className="van-mini-nav-bar__content">
