@@ -32,7 +32,7 @@ function Demo() {
 
 ```jsx
 function Demo() {
-  return <Slider value={(10, 50)} range />
+  return <Slider value={[10, 50]} range />
 }
 ```
 
@@ -72,7 +72,7 @@ function Demo() {
 }
 ```
 
-### 自定义按钮(已修复待发布)
+### 自定义按钮
 
 ```jsx
 function Demo() {
@@ -84,24 +84,37 @@ function Demo() {
         console.info(e.detail)
         setValue(e.detail.value)
       }}
-      renderButton={function D() {
-        return <View class="customButton">{value}/100</View>
-      }}
+      renderButton={<View class="customButton">{value}/100</View>}
     />
   )
 }
 ```
 
-### 垂直方向(待修复)
+h5 注意需要需加`visibility: visible`
+
+```css
+.customButton {
+  width: 112px;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 200px;
+  background-color: #ee0a24;
+  visibility: visible;
+}
+```
+
+### 垂直方向
 
 设置 `vertical` 属性后，滑块会垂直展示，且高度为 100% 父元素高度。
 
 ```jsx
 function Demo() {
   return (
-    <View style={{ height: '100px' }}>
+    <View style={{ height: '200px' }}>
       <Slider value="40" />
-      <Slider value="20" vertical={true} />
+      <Slider value="60" vertical={true} />
     </View>
   )
 }
@@ -118,7 +131,7 @@ function Demo() {
 | max               | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
 | min               | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
 | step              | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
-| value             | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
+| value             | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>_                              | -      | `false` |
 | barHeight         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                | -      | `false` |
 | vertical          | -    | _&nbsp;&nbsp;boolean<br/>_                                                         | -      | `false` |
 | onDrag            | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SliderEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |

@@ -162,9 +162,9 @@ function Demo() {
 | toolbarPosition   | 顶部栏位置，可选值为 bottom                                        | _&nbsp;&nbsp;string<br/>_                                         | top    | `false` |
 | defaultIndex      | 单列选择器的默认选中项索引,多列选择器请参考下方的 Columns 配置     | _&nbsp;&nbsp;number<br/>_                                         | 0      | `false` |
 | columns           | 每一项数据，可为字符或者对象，对象默认展示值是 valueKey 设置的 key | _&nbsp;&nbsp;any[]<br/>_                                          | []     | `false` |
-| title             | 顶部栏标题                                                         | _&nbsp;&nbsp;string<br/>_                                         | ''     | `false` |
-| cancelButtonText  | 取消按钮文字                                                       | _&nbsp;&nbsp;string<br/>_                                         | 取消   | `false` |
-| confirmButtonText | 确认按钮文字                                                       | _&nbsp;&nbsp;string<br/>_                                         | 确认   | `false` |
+| title             | 顶部栏标题                                                         | _&nbsp;&nbsp;ReactNode<br/>_                                      | ''     | `false` |
+| cancelButtonText  | 取消按钮文字                                                       | _&nbsp;&nbsp;ReactNode<br/>_                                      | 取消   | `false` |
+| confirmButtonText | 确认按钮文字                                                       | _&nbsp;&nbsp;ReactNode<br/>_                                      | 确认   | `false` |
 | loading           | 加载状态                                                           | _&nbsp;&nbsp;boolean<br/>_                                        | false  | `false` |
 | itemHeight        | 选项高度,对应单位 PX                                               | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_               | 48     | `false` |
 | visibleItemCount  | 可见的选项个数                                                     | _&nbsp;&nbsp;number<br/>_                                         | 6      | `false` |

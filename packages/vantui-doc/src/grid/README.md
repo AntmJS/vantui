@@ -184,7 +184,7 @@ function Demo() {
 | dot        | -    | _&nbsp;&nbsp;boolean<br/>_                                                                    | -      | `false` |
 | info       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number&nbsp;&brvbar;&nbsp;undefined<br/>_              | -      | `false` |
 | badge      | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number&nbsp;&brvbar;&nbsp;undefined<br/>_              | -      | `false` |
-| text       | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
+| text       | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -      | `false` |
 | url        | -    | _&nbsp;&nbsp;string<br/>_                                                                     | -      | `false` |
 | linkType   | -    | _&nbsp;&nbsp;"navigateTo"&nbsp;&brvbar;&nbsp;"reLaunch"&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | -      | `false` |
 | children   | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                            | -      | `false` |

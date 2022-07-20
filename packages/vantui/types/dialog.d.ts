@@ -11,7 +11,7 @@ export interface DialogProps
     Omit<PopupProps, 'onClose'>,
     Omit<ButtonProps, 'children'> {
   show?: boolean
-  title?: string
+  title?: ReactNode
   width?: string | number
   zIndex?: number
   theme?: 'round-button'
@@ -24,7 +24,7 @@ export interface DialogProps
     detail: { action: string; dialog?: { dialog: any } }
   }) => void
   onClose?: (event: { detail: string }) => void
-  message?: string
+  message?: ReactNode
   overlay?: boolean
   selector?: string
   ariaLabel?: string
@@ -37,8 +37,8 @@ export interface DialogProps
   asyncClose?: boolean
   beforeClose?: (action: string) => Promise<void | boolean> | void | boolean
   messageAlign?: 'left' | 'right'
-  confirmButtonText?: string
-  cancelButtonText?: string
+  confirmButtonText?: ReactNode
+  cancelButtonText?: ReactNode
   showConfirmButton?: boolean
   showCancelButton?: boolean
   closeOnClickOverlay?: boolean

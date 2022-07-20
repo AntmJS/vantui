@@ -1,10 +1,10 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface ProgressProps extends StandardProps {
   inactive?: boolean
   percentage: number
-  pivotText?: string
+  pivotText?: ReactNode
   pivotColor?: string
   trackColor?: string
   showPivot?: boolean

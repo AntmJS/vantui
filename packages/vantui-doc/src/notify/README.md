@@ -144,7 +144,7 @@ function Demo() {
 | 参数             | 说明 | 类型                                                  | 默认值 | 必填    |
 | ---------------- | ---- | ----------------------------------------------------- | ------ | ------- |
 | selector         | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| message          | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
+| message          | -    | _&nbsp;&nbsp;ReactNode<br/>_                          | -      | `false` |
 | background       | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
 | type             | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
 | color            | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |

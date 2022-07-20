@@ -14,19 +14,14 @@ export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
     duration = 300,
     round,
     closeable,
-    overlayStyle,
     transition,
     zIndex,
-    overlay = true,
     closeIcon = 'cross',
     closeIconPosition = 'top-right',
-    closeOnClickOverlay = true,
     position = 'center',
     safeAreaInsetBottom = true,
     safeAreaInsetTop = false,
-    lockScroll = true,
     children,
-    onClickOverlay,
     onBeforeEnter,
     onBeforeLeave,
     onAfterEnter,
@@ -41,19 +36,14 @@ export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
   } = props
   const _onAfterLeave = useCallback(() => {
     onAfterLeave?.()
-    setOuterShow?.()
+    setTimeout(() => {
+      setOuterShow?.(false)
+    }, 0)
   }, [onAfterLeave, setOuterShow])
 
   const _onClickCloseIcon = useCallback(() => {
     onClose?.()
   }, [onClose])
-
-  const _onClickOverlay = useCallback(() => {
-    onClickOverlay?.()
-    if (closeOnClickOverlay) {
-      onClose?.()
-    }
-  }, [closeOnClickOverlay, onClickOverlay, onClose])
 
   const { inited, currentDuration, classes, display, onTransitionEnd } =
     useTransition({
@@ -76,16 +66,6 @@ export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
 
   return (
     <>
-      {overlay && (
-        <VanOverlay
-          show={show}
-          zIndex={zIndex}
-          style={overlayStyle}
-          duration={duration}
-          onClick={_onClickOverlay}
-          lockScroll={lockScroll}
-        />
-      )}
       {inited && (
         <View
           className={
@@ -131,14 +111,44 @@ export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
 }
 
 export default function Index(props: PopupProps) {
-  const { show } = props
+  const {
+    show,
+    duration = 300,
+    zIndex,
+    overlay = true,
+    lockScroll = true,
+    overlayStyle,
+    closeOnClickOverlay = true,
+    onClickOverlay,
+    onClose,
+  } = props
   const [innerShow, setInnerShow] = useState(false)
   useEffect(() => {
     if (show) {
       setInnerShow(true)
     }
   }, [show])
+
+  const _onClickOverlay = useCallback(() => {
+    onClickOverlay?.()
+    if (closeOnClickOverlay) {
+      onClose?.()
+    }
+  }, [closeOnClickOverlay, onClickOverlay, onClose])
+
   return (
-    <>{innerShow ? <Popup setOuterShow={setInnerShow} {...props} /> : <></>}</>
+    <>
+      {overlay && (
+        <VanOverlay
+          show={show}
+          zIndex={zIndex}
+          style={overlayStyle}
+          duration={duration}
+          onClick={_onClickOverlay}
+          lockScroll={lockScroll}
+        />
+      )}
+      {innerShow ? <Popup setOuterShow={setInnerShow} {...props} /> : <></>}
+    </>
   )
 }

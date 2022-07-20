@@ -156,7 +156,7 @@ function Demo() {
 
 | 参数             | 说明 | 类型                                                                               | 默认值 | 必填    |
 | ---------------- | ---- | ---------------------------------------------------------------------------------- | ------ | ------- |
-| info             | -    | _&nbsp;&nbsp;string<br/>_                                                          | -      | `false` |
+| info             | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                       | -      | `false` |
 | name             | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                | -      | `false` |
 | icon             | -    | _&nbsp;&nbsp;string<br/>_                                                          | -      | `false` |
 | dot              | -    | _&nbsp;&nbsp;boolean<br/>_                                                         | -      | `false` |

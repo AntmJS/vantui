@@ -7,7 +7,7 @@ import {
   useCallback,
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
 import { TabbarProps, TabbarItemProps } from '../../types/tabbar'
@@ -117,7 +117,7 @@ export function Tabbar(props: TabbarProps) {
   // )
 
   return (
-    <Block>
+    <>
       <View
         className={
           (border ? 'van-hairline--top-bottom' : '') +
@@ -137,7 +137,7 @@ export function Tabbar(props: TabbarProps) {
       {fixed && placeholder && (
         <View style={'height: ' + height + 'px;'}></View>
       )}
-    </Block>
+    </>
   )
 }
 export default Tabbar

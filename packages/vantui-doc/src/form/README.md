@@ -156,6 +156,65 @@ function Demo() {
 }
 ```
 
+### 支持多层级数据结构
+
+FormItem 的 name 属性支持数组的形式, 数组项为字符串的时候挂载到对象上，为数字的时候挂载到数组上
+第一层固定为对象
+
+```jsx
+function Demo() {
+  const formIt = react.useRef(null)
+
+  const multFormItems = function () {
+    let jsx = []
+    for (let i = 0; i < 2; i++) {
+      jsx.push(
+        <>
+          <FormItem
+            label={`名称(${i + 1})`}
+            name={['useInfo', i, 'name']}
+            trigger="onInput"
+            valueFormat={(e) => e.detail.value}
+          >
+            <Input placeholder="请输入用户名" />
+          </FormItem>
+          <FormItem
+            label={`年龄(${i + 1})`}
+            name={['useInfo', i, 'age']}
+            trigger="onInput"
+            valueFormat={(e) => e.detail.value}
+          >
+            <Input placeholder="请输入年龄" />
+          </FormItem>
+        </>,
+      )
+    }
+    return jsx
+  }
+
+  return (
+    <Form ref={formIt}>
+      {multFormItems()}
+      <Button
+        className="van-button-submit"
+        formType="submit"
+        onClick={() =>
+          Dialog.alert({
+            message: `result: ${JSON.stringify(
+              formIt.current.getFieldsValue(),
+            )}`,
+            selector: 'form-demo3',
+          })
+        }
+      >
+        提交
+      </Button>
+      <Dialog id="form-demo3" />
+    </Form>
+  )
+}
+```
+
 ### 异步处理和自定义校验
 
 - Uploader 的 onAfterRead 事件只返回变更的文件，展示的是多个文件的话需要重新设置
@@ -312,20 +371,20 @@ function DatetimePickerBox_(props) {
 
 ### FormProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)
 
-| 参数           | 说明                                          | 类型                                        | 默认值 | 必填    |
-| -------------- | --------------------------------------------- | ------------------------------------------- | ------ | ------- |
-| form           | 传入 form 实例（const formStore1 = useRef()） | _&nbsp;&nbsp;IFormInstanceAPI<br/>_         | -      | `false` |
-| initialValues  | 初始化表单仓库值                              | _&nbsp;&nbsp;Record<string,&nbsp;any><br/>_ | -      | `false` |
-| children       | 第一级必须是 FormItem 组件                    | _&nbsp;&nbsp;ReactNode<br/>_                | -      | `true`  |
-| className      | 类名                                          | _&nbsp;&nbsp;string<br/>_                   | -      | `false` |
-| onFinish       | 表单提交触发，配合 button.formType = submit   | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_     | -      | `false` |
-| onFinishFailed | 表单提交失败触发                              | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_     | -      | `false` |
+| 参数           | 说明                                          | 类型                                                                                                                                                                                                | 默认值 | 必填    |
+| -------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| form           | 传入 form 实例（const formStore1 = useRef()） | _&nbsp;&nbsp;IFormInstanceAPI<br/>_                                                                                                                                                                 | -      | `false` |
+| initialValues  | 初始化表单仓库值                              | _&nbsp;&nbsp;Record<string,&nbsp;any><br/>_                                                                                                                                                         | -      | `false` |
+| children       | 第一级必须是 FormItem 组件                    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                        | -      | `true`  |
+| className      | 类名                                          | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                           | -      | `false` |
+| onFinish       | 表单提交触发，配合 button.formType = submit   | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;errs:&nbsp;string[]&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+| onFinishFailed | 表单提交失败触发，会拦截 onFinish             | _&nbsp;&nbsp;(errs:&nbsp;string[]&nbsp;&brvbar;&nbsp;null)&nbsp;=>&nbsp;void<br/>_                                                                                                                  | -      | `false` |
 
 ### FormItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)
 
 | 参数              | 说明                                                                       | 类型                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 默认值     | 必填    |
 | ----------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------- |
-| name              | 对应表单字段名                                                             | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | -          | `true`  |
+| name              | 对应表单字段名                                                             | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number><br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                             | -          | `true`  |
 | children          | 第一级操作表单组件                                                         | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | -          | `true`  |
 | label             | 表单 label                                                                 | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | -          | `true`  |
 | layout            | 垂直 ｜ 水平                                                               | _&nbsp;&nbsp;"vertical"&nbsp;&brvbar;&nbsp;"horizontal"<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | horizontal | `false` |
@@ -340,7 +399,7 @@ function DatetimePickerBox_(props) {
 | renderRight       | 自定义渲染右边内容                                                         | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | -          | `false` |
 | trigger           | 表单交互触发方法                                                           | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | onChange   | `false` |
 | valueKey          | 表单控制展示的具体值的字段名                                               | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | value      | `false` |
-| valueFormat       | 根据表单交互回掉函数（时间）参数的重新定义                                 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;IFormInstance:&nbsp;IFormInstanceAPI<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                                                                                                                                                             | value      | `false` |
+| valueFormat       | 根据表单交互回掉函数（时间）参数的重新定义                                 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;IFormInstance:&nbsp;IFormInstanceAPI<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                                                                                                  | value      | `false` |
 | rules             | 正则校验值，或者自定义校验后 call 回掉函数返回错误信息，支持数组或单项设置 | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;rule:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;((<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call:&nbsp;(errMess:&nbsp;string)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;RegExp<br/>&nbsp;&nbsp;&nbsp;&nbsp;message?:&nbsp;string<br/>&nbsp;&nbsp;}[]<br/>_ | -          | `false` |
 
 ### IFormInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/form.d.ts)
@@ -348,13 +407,13 @@ function DatetimePickerBox_(props) {
 通过 ref 获取到的 form 的实例
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
-| registerValidateFields | 注册校验规则 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;control:&nbsp;Record<string,&nbsp;any>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| registerValidateFields | 注册校验规则 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;control:&nbsp;Record<string,&nbsp;any>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | registerRequiredMessageCallback | 注册必填项为空时的回调函数 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;(label:&nbsp;string)&nbsp;=>&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
-| unRegisterValidate | 注册校验规则 | _&nbsp;&nbsp;(name:&nbsp;string)&nbsp;=>&nbsp;void<br/>_ |
+| unRegisterValidate | 注册校验规则 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | resetFields | 重置表单 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 | setFields | 设置多个表单值 | _&nbsp;&nbsp;(object:&nbsp;Record<string,&nbsp;any>)&nbsp;=>&nbsp;void<br/>_ |
-| setFieldsValue | 设置单个表单值 | _&nbsp;&nbsp;(name:&nbsp;string,&nbsp;modelValue:&nbsp;any)&nbsp;=>&nbsp;any<br/>_ |
+| setFieldsValue | 设置单个表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;modelValue:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
 | getFieldsValue | 获取所有表单值 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
-| getFieldValue | 获取单个表单值 | _&nbsp;&nbsp;(name:&nbsp;string)&nbsp;=>&nbsp;any<br/>_ |
-| validateFields | 校验表单，并获取错误信息和所有表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMess:&nbsp;Array<string>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| getFieldValue | 获取单个表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number><br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
+| validateFields | 校验表单，并获取错误信息和所有表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMess:&nbsp;Array<string>&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;any><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | submit | 校验表单，并获取错误信息和所有表单值，触发 form.onFinish 和 onFinishFailed | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback?:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errs:&nbsp;Array<string>&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<string,&nbsp;string><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |

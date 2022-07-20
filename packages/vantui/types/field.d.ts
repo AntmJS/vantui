@@ -31,7 +31,7 @@ export interface FieldProps extends StandardProps {
   disableDefaultPadding?: boolean
   size?: 'large'
   icon?: string
-  label?: string
+  label?: ReactNode
   error?: boolean
   center?: boolean
   isLink?: boolean

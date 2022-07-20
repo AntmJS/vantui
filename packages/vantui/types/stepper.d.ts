@@ -3,7 +3,7 @@ import { StandardProps, CommonEventFunction } from '@tarojs/components'
 import { InputProps } from '@tarojs/components/types/Input'
 
 export interface StepperProps extends StandardProps {
-  name?: string
+  name?: ReactNode
   value?: string | number
   integer?: boolean
   disabled?: boolean

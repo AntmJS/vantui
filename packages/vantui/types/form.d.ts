@@ -24,12 +24,12 @@ export interface FormProps extends StandardProps {
   /**
    * @description 表单提交触发，配合button.formType = submit
    */
-  onFinish?: () => void
+  onFinish?: (errs: string[] | null, values: Record<string, any>) => void
 
   /**
-   * @description 表单提交失败触发
+   * @description 表单提交失败触发，会拦截onFinish
    */
-  onFinishFailed?: () => void
+  onFinishFailed?: (errs: string[] | null) => void
 }
 /**
  * @title FormItemProps
@@ -38,7 +38,7 @@ export interface FormItemProps extends StandardProps {
   /**
    * @description 对应表单字段名
    */
-  name: string
+  name: string | Array<string | number>
   /**
    * @description 第一级操作表单组件
    */
@@ -107,7 +107,7 @@ export interface FormItemProps extends StandardProps {
    */
   valueFormat?: (
     value: any,
-    name: string,
+    name: string | Array<string | number>,
     IFormInstance: IFormInstanceAPI,
   ) => any
   /**
@@ -127,7 +127,7 @@ export type IFormInstanceAPI = {
    * @description 注册校验规则
    */
   registerValidateFields: (
-    name: string,
+    name: string | Array<string | number>,
     control: Record<string, any>,
     model: Record<string, any>,
   ) => void
@@ -138,7 +138,7 @@ export type IFormInstanceAPI = {
   /**
    * @description 注册校验规则
    */
-  unRegisterValidate: (name: string) => void
+  unRegisterValidate: (name: string | Array<string | number>) => void
   /**
    * @description 重置表单
    */
@@ -150,7 +150,10 @@ export type IFormInstanceAPI = {
   /**
    * @description 设置单个表单值
    */
-  setFieldsValue: (name: string, modelValue: any) => any
+  setFieldsValue: (
+    name: string | Array<string | number>,
+    modelValue: any,
+  ) => any
   /**
    * @description 获取所有表单值
    */
@@ -158,12 +161,15 @@ export type IFormInstanceAPI = {
   /**
    * @description 获取单个表单值
    */
-  getFieldValue: (name: string) => any
+  getFieldValue: (name: string | Array<string | number>) => any
   /**
    * @description 校验表单，并获取错误信息和所有表单值
    */
   validateFields: (
-    callback: (errorMess: Array<string>, values: Record<string, any>) => void,
+    callback: (
+      errorMess: Array<string> | null,
+      values: Record<string, any>,
+    ) => void,
   ) => void
   /**
    * @description 校验表单，并获取错误信息和所有表单值，触发form.onFinish和onFinishFailed
@@ -175,7 +181,11 @@ export type IFormInstanceAPI = {
     ) => void,
   ) => void
 } & {
-  dispatch: (params: { type: string }, name?: string, ...arg: any[]) => any
+  dispatch: (
+    params: { type: string },
+    name?: string | Array<string | number>,
+    ...arg: any[]
+  ) => any
   setCallback: Record<
     string,
     undefined | ((values?: Record<string, any>) => void)

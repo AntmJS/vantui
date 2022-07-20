@@ -56,11 +56,11 @@ function Demo() {
 
 | 参数             | 说明 | 类型                                                       | 默认值 | 必填    |
 | ---------------- | ---- | ---------------------------------------------------------- | ------ | ------- |
-| title            | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
+| title            | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
 | fixed            | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
 | placeholder      | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| leftText         | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| rightText        | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
+| leftText         | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
+| rightText        | -    | _&nbsp;&nbsp;ReactNode<br/>_                               | -      | `false` |
 | style            | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
 | leftArrow        | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
 | border           | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |

@@ -15,8 +15,11 @@ export interface CollapseItemProps extends StandardProps {
   name?: string | number
   title?: string | number
   value?: string | number
+  /**
+   * @description 对应Icon的name
+   */
   icon?: string
-  label?: string
+  label?: ReactNode
   disabled?: boolean
   clickable?: boolean
   border?: boolean

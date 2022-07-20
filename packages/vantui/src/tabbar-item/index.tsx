@@ -1,4 +1,4 @@
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
 import { Info } from '../info'
@@ -71,9 +71,7 @@ export function TabbarItem(
             className="van-tabbar-item__icon__inner"
           ></Icon>
         ) : (
-          <Block>
-            {active === (name ?? index) ? renderIconActive : renderIcon}
-          </Block>
+          <>{active === (name ?? index) ? renderIconActive : renderIcon}</>
         )}
         <Info dot={dot} info={info} className="van-tabbar-item__info"></Info>
       </View>

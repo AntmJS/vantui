@@ -83,7 +83,7 @@ function Demo() {
 
 | 参数        | 说明 | 类型                                                                     | 默认值 | 必填    |
 | ----------- | ---- | ------------------------------------------------------------------------ | ------ | ------- |
-| text        | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
+| text        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                             | -      | `false` |
 | lineCap     | -    | _&nbsp;&nbsp;string<br/>_                                                | -      | `false` |
 | value       | -    | _&nbsp;&nbsp;number<br/>_                                                | -      | `false` |
 | speed       | -    | _&nbsp;&nbsp;number<br/>_                                                | -      | `false` |

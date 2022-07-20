@@ -1,6 +1,6 @@
 import { useReady } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { View, Block, ITouchEvent } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../types/collapse'
@@ -142,9 +142,9 @@ export function CollapseItem(
           }) + ' van-cell'
         }
         onClick={onClick}
-        renderTitle={<Block>{renderTitle}</Block>}
-        renderIcon={<Block>{renderIcon}</Block>}
-        renderRightIcon={<Block>{renderRightIcon}</Block>}
+        renderTitle={<>{renderTitle}</>}
+        renderIcon={<>{renderIcon}</>}
+        renderRightIcon={<>{renderRightIcon}</>}
       >
         {renderValue}
       </VanCell>

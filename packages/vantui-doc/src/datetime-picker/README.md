@@ -21,16 +21,14 @@ import { DatetimePicker } from '@antmjs/vantui'
 ```jsx
 function Demo() {
   const [state, setState] = react.useState({
-    minHour: 10,
-    maxHour: 20,
-    minDate: new Date(2009, 10, 1).getTime(),
-    maxDate: new Date(2031, 10, 1).getTime(),
-    currentDate: new Date().getTime(),
+    minDate: new Date(2018, 0, 1).getTime(),
+    currentDate: null,
   })
 
   const onInput = react.useCallback(
     function (event) {
       setState({
+        ...state,
         currentDate: event.detail,
       })
     },
@@ -84,7 +82,7 @@ function Demo() {
 
   return (
     <DatetimePicker
-      type="datetime"
+      type="date"
       value={state.currentDate}
       minDate={state.minDate}
       maxDate={state.maxDate}

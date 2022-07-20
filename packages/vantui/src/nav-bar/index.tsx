@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
-import { getRect, getSystemInfoSync } from '../common/utils'
+import { getSystemInfoSync } from '../common/utils'
 import { NavBarProps } from '../../types/nav-bar'
 import { Icon } from '../icon/index'
 import * as computed from './wxs'
 
 export function NavBar(props: NavBarProps) {
-  const [height, setHeight] = useState(46)
   const [statusBarHeight, setStatusBarHeight] = useState(22)
   const {
     fixed,
@@ -29,38 +28,29 @@ export function NavBar(props: NavBarProps) {
     ...others
   } = props
 
-  const setNextHeight = useCallback(
-    function () {
-      if (!fixed || !placeholder) {
-        return
-      }
-      getRect(null, '.van-nav-bar').then((res: any) => {
-        if (res && 'height' in res) {
-          setHeight(res.height || 46 + 22)
-        }
-      })
-    },
-    [fixed, placeholder],
-  )
-
   useEffect(function () {
     let { statusBarHeight = 22 } = getSystemInfoSync()
     if (isNaN(statusBarHeight)) statusBarHeight = 22
-    setHeight(46 + statusBarHeight)
     setStatusBarHeight(statusBarHeight)
   }, [])
-
-  useEffect(
-    function () {
-      setNextHeight()
-    },
-    [setNextHeight],
-  )
+  
+  const getNavBarStyle = useCallback(()=>{
+    return utils.style([
+          computed.barStyle({
+            zIndex,
+            statusBarHeight,
+            safeAreaInsetTop,
+            height: 50,
+          }) +
+            '; ' +
+            style,
+        ])
+  }, [zIndex, statusBarHeight, safeAreaInsetTop])
 
   return (
-    <Block>
+    <>
       {fixed && placeholder && (
-        <View style={'height: ' + height + 'px;'}></View>
+        <View style={getNavBarStyle()}></View>
       )}
       <View
         className={
@@ -71,23 +61,13 @@ export function NavBar(props: NavBarProps) {
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }
-        style={utils.style([
-          computed.barStyle({
-            zIndex,
-            statusBarHeight,
-            safeAreaInsetTop,
-            fromTop: 0,
-            height,
-          }) +
-            '; ' +
-            style,
-        ])}
+        style={getNavBarStyle()}
         {...others}
       >
         <View className="van-nav-bar__content">
           <View className="van-nav-bar__left" onClick={onClickLeft}>
             {leftArrow || leftText ? (
-              <Block>
+              <>
                 {leftArrow && (
                   <Icon
                     size={64}
@@ -104,13 +84,13 @@ export function NavBar(props: NavBarProps) {
                     {leftText}
                   </View>
                 )}
-              </Block>
+              </>
             ) : (
               renderLeft
             )}
           </View>
           <View className="van-nav-bar__title van-nav-bar__title-h5  title-class van-ellipsis">
-            {title ? <Block>{title}</Block> : renderTitle}
+            {title ? <>{title}</> : renderTitle}
           </View>
           <View className="van-nav-bar__right" onClick={onClickRight}>
             {rightText ? (
@@ -127,7 +107,7 @@ export function NavBar(props: NavBarProps) {
           </View>
         </View>
       </View>
-    </Block>
+    </>
   )
 }
 export default NavBar

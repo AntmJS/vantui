@@ -138,20 +138,20 @@ function Demo() {
 
 ### CollapseItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)
 
-| 参数            | 说明 | 类型                                                | 默认值 | 必填    |
-| --------------- | ---- | --------------------------------------------------- | ------ | ------- |
-| name            | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| title           | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| value           | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| icon            | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| label           | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| disabled        | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| clickable       | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| border          | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| isLink          | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderTitle     | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderIcon      | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderRightIcon | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderValue     | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| size            | -    | _&nbsp;&nbsp;"large"<br/>_                          | -      | `false` |
+| 参数            | 说明              | 类型                                                | 默认值 | 必填    |
+| --------------- | ----------------- | --------------------------------------------------- | ------ | ------- |
+| name            | -                 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| title           | -                 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| value           | -                 | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| icon            | 对应 Icon 的 name | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| label           | -                 | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| disabled        | -                 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| clickable       | -                 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| border          | -                 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| isLink          | -                 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| children        | -                 | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderTitle     | -                 | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderIcon      | -                 | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderRightIcon | -                 | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderValue     | -                 | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| size            | -                 | _&nbsp;&nbsp;"large"<br/>_                          | -      | `false` |

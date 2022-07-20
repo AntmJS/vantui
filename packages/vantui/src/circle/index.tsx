@@ -24,7 +24,7 @@ export function Circle(props: CircleProps) {
   const [state, setState] = useState({
     ready: false,
     hoverColor: '',
-    unitag: 'van-circle',
+    unitag: '',
   })
 
   const ref: any = useRef({
@@ -126,22 +126,24 @@ export function Circle(props: CircleProps) {
   const setHoverColor = function () {
     if (isObj(color)) {
       const _color = color as Record<string, string>
-      return getContext().then((context: any) => {
-        if (context) {
-          const LinearColor = context.createLinearGradient(size, 0, 0, 0)
-          Object.keys(color)
-            .sort((a, b) => parseFloat(a) - parseFloat(b))
-            .map((key: any) =>
-              LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
-            )
-          setState((state) => {
-            return {
-              ...state,
-              hoverColor: LinearColor,
-            }
-          })
-        }
-      })
+      return getContext()
+        .then((context: any) => {
+          if (context) {
+            const LinearColor = context.createLinearGradient(size, 0, 0, 0)
+            Object.keys(color)
+              .sort((a, b) => parseFloat(a) - parseFloat(b))
+              .map((key: any) =>
+                LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
+              )
+            setState((state) => {
+              return {
+                ...state,
+                hoverColor: LinearColor,
+              }
+            })
+          }
+        })
+        .catch(() => {})
     }
     setState((state: any) => {
       return {
@@ -193,17 +195,19 @@ export function Circle(props: CircleProps) {
   )
   const drawCircle = useCallback(
     (currentValue: any) => {
-      getContext().then((context: any) => {
-        if (context) {
-          context.clearRect(0, 0, size, size)
-          renderLayerCircle(context)
-          const formatValue = format(currentValue)
-          if (formatValue !== 0) {
-            renderHoverCircle(context, formatValue)
+      getContext()
+        .then((context: any) => {
+          if (context) {
+            context.clearRect(0, 0, size, size)
+            renderLayerCircle(context)
+            const formatValue = format(currentValue)
+            if (formatValue !== 0) {
+              renderHoverCircle(context, formatValue)
+            }
+            context.draw().catch(() => {})
           }
-          context.draw()
-        }
-      })
+        })
+        .catch(() => {})
     },
     [getContext, renderHoverCircle, renderLayerCircle, size],
   )
@@ -247,20 +251,22 @@ export function Circle(props: CircleProps) {
   }, [reRender, state.ready, value])
 
   useEffect(() => {
-    if (state.ready) {
+    if (state.ready && state.unitag) {
       drawCircle(ref.current.currentValue)
     }
     // eslint-disable-next-line
-  }, [state.ready, size])
+  }, [state.ready, size, state.unitag])
 
   useEffect(() => {
-    if (state.ready) {
-      setHoverColor().then(() => {
-        drawCircle(ref.current.currentValue)
-      })
+    if (state.ready && state.unitag) {
+      setHoverColor()
+        .then(() => {
+          drawCircle(ref.current.currentValue)
+        })
+        .catch(() => {})
     }
     // eslint-disable-next-line
-  }, [state.ready, color])
+  }, [state.ready, color, state.unitag])
 
   useEffect(() => {
     return () => {

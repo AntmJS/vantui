@@ -128,7 +128,7 @@ function Demo() {
 
 | 参数          | 说明 | 类型                                                                                                                                             | 默认值 | 必填    |
 | ------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
-| name          | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                        | -      | `false` |
+| name          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                     | -      | `false` |
 | value         | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                              | -      | `false` |
 | integer       | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                       | -      | `false` |
 | disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                       | -      | `false` |

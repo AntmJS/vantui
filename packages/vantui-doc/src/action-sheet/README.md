@@ -228,23 +228,23 @@ function Demo() {
 
 ### ActionSheetItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)
 
-| 参数     | 说明 | 类型                       |
-| -------- | ---- | -------------------------- |
-| name     | -    | _&nbsp;&nbsp;string<br/>_  |
-| subname  | -    | _&nbsp;&nbsp;string<br/>_  |
-| color    | -    | _&nbsp;&nbsp;string<br/>_  |
-| loading  | -    | _&nbsp;&nbsp;boolean<br/>_ |
-| disabled | -    | _&nbsp;&nbsp;boolean<br/>_ |
+| 参数     | 说明 | 类型                         |
+| -------- | ---- | ---------------------------- |
+| name     | -    | _&nbsp;&nbsp;ReactNode<br/>_ |
+| subname  | -    | _&nbsp;&nbsp;ReactNode<br/>_ |
+| color    | -    | _&nbsp;&nbsp;string<br/>_    |
+| loading  | -    | _&nbsp;&nbsp;boolean<br/>_   |
+| disabled | -    | _&nbsp;&nbsp;boolean<br/>_   |
 
 ### ActionSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)
 
 | 参数                | 说明 | 类型                                                                                                                                                                                                                          | 默认值 | 必填    |
 | ------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
 | actions             | -    | _&nbsp;&nbsp;ActionSheetItem[]<br/>_                                                                                                                                                                                          | -      | `false` |
-| title               | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                     | -      | `false` |
+| title               | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                  | -      | `false` |
 | show                | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                    | -      | `false` |
-| cancelText          | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                     | -      | `false` |
-| description         | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                     | -      | `false` |
+| cancelText          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                  | -      | `false` |
+| description         | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                  | -      | `false` |
 | overlay             | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                    | -      | `false` |
 | closeOnClickOverlay | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                    | -      | `false` |
 | closeOnClickAction  | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                    | -      | `false` |

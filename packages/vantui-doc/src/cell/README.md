@@ -184,7 +184,7 @@ function Demo() {
 | value           | 右侧内容                       | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                           | -          | `false` |
 | icon            | 标题下方的描述信息             | _&nbsp;&nbsp;string<br/>_                                                                     | -          | `false` |
 | size            | 单元格大小，可选值为 large     | _&nbsp;&nbsp;"large"<br/>_                                                                    | -          | `false` |
-| label           | 标题下方的描述信息             | _&nbsp;&nbsp;string<br/>_                                                                     | -          | `false` |
+| label           | 标题下方的描述信息             | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -          | `false` |
 | center          | 是否使内容垂直居中             | _&nbsp;&nbsp;boolean<br/>_                                                                    | -          | `false` |
 | isLink          | 是否展示右侧箭头并开启点击反馈 | _&nbsp;&nbsp;boolean<br/>_                                                                    | -          | `false` |
 | required        | 是否显示表单必填星号           | _&nbsp;&nbsp;boolean<br/>_                                                                    | false      | `false` |
@@ -193,7 +193,7 @@ function Demo() {
 | style           | -                              | _&nbsp;&nbsp;string<br/>_                                                                     | -          | `false` |
 | arrowDirection  | 箭头方向                       | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"up"&nbsp;&brvbar;&nbsp;"down"<br/>_                   | -          | `false` |
 | border          | 是否显示下边框                 | _&nbsp;&nbsp;boolean<br/>_                                                                    | -          | `false` |
-| titleStyle      | 标题样式                       | _&nbsp;&nbsp;string<br/>_                                                                     | -          | `false` |
+| titleStyle      | 标题样式                       | _&nbsp;&nbsp;CSSProperties<br/>_                                                              | -          | `false` |
 | renderTitle     | 自定义渲染标题                 | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -          | `false` |
 | renderIcon      | 自定义渲染左侧 icon            | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -          | `false` |
 | renderLabel     | 自定义 label 显示内容          | _&nbsp;&nbsp;ReactNode<br/>_                                                                  | -          | `false` |
@@ -205,7 +205,7 @@ function Demo() {
 
 | 参数     | 说明                   | 类型                         | 默认值 | 必填    |
 | -------- | ---------------------- | ---------------------------- | ------ | ------- |
-| title    | 标题                   | _&nbsp;&nbsp;string<br/>_    | -      | `false` |
+| title    | 标题                   | _&nbsp;&nbsp;ReactNode<br/>_ | -      | `false` |
 | border   | 是否显示外边框         | _&nbsp;&nbsp;boolean<br/>_   | true   | `false` |
 | inset    | 是否展示为圆角卡片风格 | _&nbsp;&nbsp;boolean<br/>_   | false  | `false` |
 | children | -                      | _&nbsp;&nbsp;ReactNode<br/>_ | -      | `false` |

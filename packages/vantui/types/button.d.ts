@@ -2,6 +2,9 @@ import { ComponentClass, ReactNode } from 'react'
 import { ButtonProps as TaroButtonProps } from '@tarojs/components'
 
 export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
+  /**
+   * @description 传入Icon的name值
+   */
   icon?: string
   classPrefix?: string
   type?: 'default' | 'primary' | 'info' | 'warning' | 'danger'
@@ -12,7 +15,7 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   loading?: boolean
   hairline?: boolean
   disabled?: boolean
-  loadingText?: string
+  loadingText?: ReactNode
   loadingSize?: string
   loadingType?: 'spinner' | 'circular'
   color?: string

@@ -2,7 +2,7 @@ import { ComponentClass, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface NoticeBarProps extends StandardProps {
-  text?: string
+  text?: ReactNode
   mode?: 'closeable' | 'link'
   url?: string
   openType?: any

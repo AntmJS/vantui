@@ -1,4 +1,4 @@
-import { View, Block } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { LoadingProps } from '../../types/loading'
@@ -40,7 +40,7 @@ export function Loading(props: LoadingProps): JSX.Element {
         })}
       >
         {type === 'spinner' && (
-          <Block>
+          <>
             {array12.map((_, index: number) => {
               return (
                 <View
@@ -49,7 +49,7 @@ export function Loading(props: LoadingProps): JSX.Element {
                 ></View>
               )
             })}
-          </Block>
+          </>
         )}
       </View>
       <View

@@ -2,7 +2,7 @@ import { ComponentClass, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface CheckboxProps extends StandardProps {
-  name?: string
+  name?: ReactNode
   value?: boolean
   disabled?: boolean
   checkedColor?: string

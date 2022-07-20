@@ -1,10 +1,10 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 import notify from '../src/notify/notify'
 
 export interface NotifyProps extends StandardProps {
   selector?: string
-  message?: string
+  message?: ReactNode
   background?: string
   type?: string
   color?: string

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+rm -rf ./site
+
 npx antm-vantui-cli mdcode --mode create
 
 npx antm-vantui-cli docs --mode production

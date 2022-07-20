@@ -1,6 +1,6 @@
 import type { ButtonProps } from '../../types/button.d'
 import { pxTransform } from '@tarojs/taro'
-import { Button as TaroButton, Block, View } from '@tarojs/components'
+import { Button as TaroButton, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon/index'
 import { Loading } from '../loading/index'
@@ -104,7 +104,7 @@ export function Button(props: ButtonProps) {
           )}
         </View>
       ) : (
-        <Block>
+        <>
           {icon && (
             <Icon
               size="1.2em"
@@ -115,7 +115,7 @@ export function Button(props: ButtonProps) {
             ></Icon>
           )}
           <View className="van-button__text">{children}</View>
-        </Block>
+        </>
       )}
     </TaroButton>
   )

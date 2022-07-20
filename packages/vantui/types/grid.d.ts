@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface GridProps extends StandardProps {
@@ -21,7 +21,7 @@ export interface GridItemProps extends StandardProps {
   dot?: boolean
   info?: string | number | undefined
   badge?: string | number | undefined
-  text?: string
+  text?: ReactNode
   url?: string
   linkType?: 'navigateTo' | 'reLaunch' | 'redirectTo'
   children?: React.ReactNode
