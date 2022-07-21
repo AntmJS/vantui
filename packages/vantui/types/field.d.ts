@@ -31,6 +31,9 @@ export interface FieldProps extends StandardProps {
   disableDefaultPadding?: boolean
   size?: 'large'
   icon?: string
+  /**
+   * @description 输入框左侧占位元素
+   */
   label?: ReactNode
   error?: boolean
   center?: boolean
