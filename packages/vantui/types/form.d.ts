@@ -157,7 +157,7 @@ export type IFormInstanceAPI = {
   /**
    * @description 获取所有表单值
    */
-  getFieldsValue: () => void
+  getFieldsValue: () => Record<string, any>
   /**
    * @description 获取单个表单值
    */
