@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import * as utils from '../wxs/utils'
 import { OverlayProps } from '../../types/overlay'
 import VanTransition from './../transition'
-export function Overlay(props: OverlayProps & { setOuterShow?: any }) {
+function OverlayInner(props: OverlayProps & { setOuterShow?: any }) {
   const {
     show,
     zIndex,
@@ -47,7 +47,7 @@ export function Overlay(props: OverlayProps & { setOuterShow?: any }) {
     </VanTransition>
   )
 }
-export default function Index(props: OverlayProps) {
+export function Overlay(props: OverlayProps) {
   const { show } = props
   const [innerShow, setInnerShow] = useState(false)
   useEffect(() => {
@@ -57,7 +57,13 @@ export default function Index(props: OverlayProps) {
   }, [show])
   return (
     <>
-      {innerShow ? <Overlay setOuterShow={setInnerShow} {...props} /> : <></>}
+      {innerShow ? (
+        <OverlayInner setOuterShow={setInnerShow} {...props} />
+      ) : (
+        <></>
+      )}
     </>
   )
 }
+
+export default Overlay

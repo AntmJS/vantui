@@ -155,7 +155,9 @@ function Index(
   const onClosed_ = useCallback(
     function () {
       if (onClosed) onClosed()
-      setShowWrapper(false)
+      setTimeout(() => {
+        setShowWrapper(false)
+      }, 10)
     },
     [onClosed],
   )

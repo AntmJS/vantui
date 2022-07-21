@@ -8,7 +8,7 @@ import * as computed from './wxs'
 import { useTransition } from './../mixins/transition'
 import VanOverlay from './../overlay'
 
-export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
+function PopupInner(this: any, props: PopupProps & { setOuterShow?: any }) {
   const {
     show,
     duration = 300,
@@ -110,7 +110,7 @@ export function Popup(this: any, props: PopupProps & { setOuterShow?: any }) {
   )
 }
 
-export default function Index(props: PopupProps) {
+export function Popup(props: PopupProps) {
   const {
     show,
     duration = 300,
@@ -148,7 +148,13 @@ export default function Index(props: PopupProps) {
           lockScroll={lockScroll}
         />
       )}
-      {innerShow ? <Popup setOuterShow={setInnerShow} {...props} /> : <></>}
+      {innerShow ? (
+        <PopupInner setOuterShow={setInnerShow} {...props} />
+      ) : (
+        <></>
+      )}
     </>
   )
 }
+
+export default Popup
