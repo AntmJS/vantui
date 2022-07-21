@@ -28,30 +28,32 @@ export function NavBar(props: NavBarProps) {
     ...others
   } = props
 
-  useEffect(function() {
+  useEffect(function () {
     let { statusBarHeight = 22 } = getSystemInfoSync()
     if (isNaN(statusBarHeight)) statusBarHeight = 22
     setStatusBarHeight(statusBarHeight)
   }, [])
 
-  const getNavBarStyle = useCallback(function() {
-    return utils.style([
-      computed.barStyle({
-        zIndex,
-        statusBarHeight,
-        safeAreaInsetTop,
-        height: 50,
-      }) +
-      '; ' +
-      style,
-    ]);
-  }, [zIndex, statusBarHeight, safeAreaInsetTop])
+  const getNavBarStyle = useCallback(
+    function () {
+      return utils.style([
+        computed.barStyle({
+          zIndex,
+          statusBarHeight,
+          safeAreaInsetTop,
+          height: 50,
+        }) +
+          '; ' +
+          style,
+      ])
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [zIndex, statusBarHeight, safeAreaInsetTop],
+  )
 
   return (
     <>
-      {fixed && placeholder && (
-        <View style={getNavBarStyle()}></View>
-      )}
+      {fixed && placeholder && <View style={getNavBarStyle()}></View>}
       <View
         className={
           utils.bem('nav-bar', {

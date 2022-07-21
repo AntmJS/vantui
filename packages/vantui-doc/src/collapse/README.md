@@ -131,7 +131,7 @@ function Demo() {
 | value     | -    | _&nbsp;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
 | accordion | -    | _&nbsp;&nbsp;boolean<br/>_                                                           | -      | `false` |
 | border    | -    | _&nbsp;&nbsp;boolean<br/>_                                                           | -      | `false` |
-| children  | -    | _&nbsp;&nbsp;Array<ReactNode><br/>_                                                  | -      | `false` |
+| children  | -    | _&nbsp;&nbsp;Array\<ReactNode\>&nbsp;&brvbar;&nbsp;ReactNode<br/>_                   | -      | `false` |
 | onChange  | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_                        | -      | `false` |
 | onOpen    | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_                        | -      | `false` |
 | onClose   | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_                        | -      | `false` |

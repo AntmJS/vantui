@@ -5,7 +5,7 @@ export interface CollapseProps extends StandardProps {
   value?: Array<string | number> | string
   accordion?: boolean
   border?: boolean
-  children?: Array<ReactNode>
+  children?: Array<ReactNode> | ReactNode
   onChange?: (event: ITouchEvent) => any
   onOpen?: (event: ITouchEvent) => any
   onClose?: (event: ITouchEvent) => any

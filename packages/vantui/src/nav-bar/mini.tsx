@@ -52,7 +52,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
   const [homeButton, setHomeButton] = useState(false)
 
   useEffect(
-    function() {
+    function () {
       const pages = getCurrentPages()
       if (pages.length >= 1) {
         const ins: any = pages[pages.length - 1]
@@ -68,7 +68,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
     [homeUrl],
   )
 
-  useEffect(function() {
+  useEffect(function () {
     const sysInfo = getSystemInfoSync()
     const menuInfo = getMenuButtonBoundingClientRect()
     if (sysInfo && menuInfo) {
@@ -83,24 +83,25 @@ export function MiniNavBar(props: MiniNavBarProps) {
     }
   }, [])
 
-  const getMiniNavbarHeight = useCallback(function() {
-    return utils.style([
-      computed.barStyle({
-        zIndex,
-        fromTop,
-        height,
-        fromLeft,
-      }) +
-      '; ' +
-      style,
-    ]);
-  }, [zIndex, fromTop, height, fromLeft, style])
+  const getMiniNavbarHeight = useCallback(
+    function () {
+      return utils.style([
+        computed.barStyle({
+          zIndex,
+          fromTop,
+          height,
+          fromLeft,
+        }) +
+          '; ' +
+          style,
+      ])
+    },
+    [zIndex, fromTop, height, fromLeft, style],
+  )
 
   return (
     <>
-      {fixed && placeholder && (
-        <View style={getMiniNavbarHeight()}></View>
-      )}
+      {fixed && placeholder && <View style={getMiniNavbarHeight()}></View>}
       <View
         className={
           utils.bem('mini-nav-bar', {
