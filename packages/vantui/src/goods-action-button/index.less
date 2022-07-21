@@ -1,22 +1,24 @@
 @import '../style/var.less';
 
 .van-goods-action-button {
-  .theme(
-    --button-warning-background-color,
-    '@goods-action-button-warning-color'
-  );
-  .theme(--button-danger-background-color, '@goods-action-button-danger-color');
-  .theme(--button-default-height, '@goods-action-button-height');
-  .theme(--button-line-height, '@goods-action-button-line-height');
-  .theme(--button-plain-background-color, '@goods-action-button-plain-color');
+  border-radius: 0;
+  .theme(height, '@goods-action-button-height');
+  .theme(line-height, '@goods-action-button-line-height');
 
-  --button-border-width: 0;
+  border-width: 0;
+
+  &--warning {
+    .theme(background,'@goods-action-button-warning-color');
+  }
+  &--danger {
+    .theme(background, '@goods-action-button-danger-color');
+  }
 
   &--first {
     margin-left: 10px;
 
     .theme(
-      --button-border-radius,
+      border-radius,
       '@goods-action-button-border-radius 0 0 @goods-action-button-border-radius'
     );
   }
@@ -24,17 +26,21 @@
   &--last {
     margin-right: 10px;
     .theme(
-      --button-border-radius,
+      border-radius,
       '0 @goods-action-button-border-radius @goods-action-button-border-radius 0'
     );
   }
 
   &--first&--last {
-    .theme(--button-border-radius, '@goods-action-button-border-radius');
+    .theme(border-radius, '@goods-action-button-border-radius');
   }
 
   &--plain {
-    --button-border-width: @button-border-width;
+    .theme(background, '@goods-action-button-plain-color');
+  }
+
+  &--plain + &--plain {
+    border-left-width: 0 !important;
   }
 
   &__inner {

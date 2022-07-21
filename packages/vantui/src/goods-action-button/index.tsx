@@ -36,6 +36,7 @@ export function GoodsActionButton(
     <VanButton
       type={type}
       plain={plain}
+      hairline={plain}
       className={
         utils.bem('goods-action-button', [
           type,

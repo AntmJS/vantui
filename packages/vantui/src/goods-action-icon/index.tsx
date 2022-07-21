@@ -31,7 +31,7 @@ export function GoodsActionIcon(props: GoodsActionIconProps) {
   return (
     <VanButton
       square
-      size="large"
+      size="mini"
       className={`van-goods-action-icon ${className}`}
       style={style}
       onClick={_click}
