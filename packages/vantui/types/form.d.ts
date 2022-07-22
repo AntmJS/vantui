@@ -150,7 +150,7 @@ export type IFormInstanceAPI = {
   /**
    * @description 设置单个表单值
    */
-  setFieldValue: (
+  setFieldsValue: (
     name: string | Array<string | number>,
     modelValue: any,
   ) => any
