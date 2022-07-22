@@ -150,14 +150,14 @@ export type IFormInstanceAPI = {
   /**
    * @description 设置单个表单值
    */
-  setFieldsValue: (
+  setFieldValue: (
     name: string | Array<string | number>,
     modelValue: any,
   ) => any
   /**
    * @description 获取所有表单值
    */
-  getFieldsValue: () => void
+  getFieldsValue: () => Record<string, any>
   /**
    * @description 获取单个表单值
    */
