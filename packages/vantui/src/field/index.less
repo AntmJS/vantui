@@ -46,6 +46,12 @@
     input {
       font-size: @field-font-size;
     }
+    
+    input {
+      .theme(height, '@cell-line-height');
+      .theme(min-height, '@cell-line-height');
+      .theme(line-height, '@cell-line-height');
+    }
 
     .theme(color, '@field-input-text-color');
     .theme(height, '@cell-line-height');
