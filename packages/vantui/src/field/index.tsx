@@ -112,7 +112,7 @@ export function Field(props: FieldProps) {
     Object.defineProperty(event, 'detail', {
       value: event.detail.value,
     })
-    setInnerValue(event.detail)
+    setInnerValue(event.detail || '')
     nextTick(() => {
       onInput?.(event)
       onChange?.(event)
@@ -191,9 +191,7 @@ export function Field(props: FieldProps) {
 
   useEffect(
     function () {
-      if (value) {
-        setInnerValue(value as string)
-      }
+      setInnerValue((value || '') as string)
     },
     [value],
   )
