@@ -191,7 +191,7 @@ export function Field(props: FieldProps) {
 
   useEffect(
     function () {
-      if(value){
+      if (value) {
         setInnerValue(value as string)
       }
     },
