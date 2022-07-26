@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from 'react'
 import { View, Textarea, Input } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { FieldProps } from '../../types/field'
-import { Cell } from '../cell/index'
-import { Icon } from '../icon/index'
+import { Cell } from '../cell'
+import { Icon } from '../icon'
 import { resizeTextarea } from '../utils'
 import * as computed from './wxs'
 
@@ -112,7 +112,7 @@ export function Field(props: FieldProps) {
     Object.defineProperty(event, 'detail', {
       value: event.detail.value,
     })
-    setInnerValue(event.detail)
+    setInnerValue(event.detail || '')
     nextTick(() => {
       onInput?.(event)
       onChange?.(event)
@@ -191,7 +191,7 @@ export function Field(props: FieldProps) {
 
   useEffect(
     function () {
-      setInnerValue(value as string)
+      setInnerValue((value || '') as string)
     },
     [value],
   )
