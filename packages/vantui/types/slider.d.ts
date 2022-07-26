@@ -21,8 +21,6 @@ export interface SliderProps extends StandardProps {
   onChange?: (e: ITouchEvent & SliderEvent) => void
   onDragStart?: () => void
   onDragEnd?: () => void
-  renderLeftButton?: (value: number) => React.ReactNode
-  renderRightButton?: (value: number) => React.ReactNode
   renderButton?: (value: number) => React.ReactNode
 }
 
