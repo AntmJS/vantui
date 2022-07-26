@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getSystemInfoSync } from '../common/utils'
@@ -28,32 +28,30 @@ export function NavBar(props: NavBarProps) {
     ...others
   } = props
 
-  useEffect(function () {
+  useEffect(() => {
     let { statusBarHeight = 22 } = getSystemInfoSync()
     if (isNaN(statusBarHeight)) statusBarHeight = 22
     setStatusBarHeight(statusBarHeight)
   }, [])
 
-  const getNavBarStyle = useCallback(
-    function () {
-      return utils.style([
-        computed.barStyle({
-          zIndex,
-          statusBarHeight,
-          safeAreaInsetTop,
-          height: 50,
-        }) +
-          '; ' +
-          style,
-      ])
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [zIndex, statusBarHeight, safeAreaInsetTop],
-  )
+  const getNavBarStyle = useMemo(() => {
+    return utils.style([
+      computed.barStyle({
+        zIndex,
+        statusBarHeight,
+        safeAreaInsetTop,
+        height: 50,
+      }) +
+      '; ' +
+      style,
+    ]);
+  }, [zIndex, statusBarHeight, safeAreaInsetTop])
 
   return (
     <>
-      {fixed && placeholder && <View style={getNavBarStyle()}></View>}
+      {fixed && placeholder && (
+        <View style={getNavBarStyle}></View>
+      )}
       <View
         className={
           utils.bem('nav-bar', {
@@ -63,7 +61,7 @@ export function NavBar(props: NavBarProps) {
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }
-        style={getNavBarStyle()}
+        style={getNavBarStyle}
         {...others}
       >
         <View className="van-nav-bar__content">
