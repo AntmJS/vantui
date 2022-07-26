@@ -98,9 +98,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
 
   return (
     <>
-      {fixed && placeholder && (
-        <View style={getMiniNavbarHeight}></View>
-      )}
+      {fixed && placeholder && (<View style={getMiniNavbarHeight}></View>)}
       <View
         className={
           utils.bem('mini-nav-bar', {
