@@ -49,9 +49,7 @@ export function NavBar(props: NavBarProps) {
 
   return (
     <>
-      {fixed && placeholder && (
-        <View style={getNavBarStyle}></View>
-      )}
+      {fixed && placeholder && (<View style={getNavBarStyle}></View>)}
       <View
         className={
           utils.bem('nav-bar', {
