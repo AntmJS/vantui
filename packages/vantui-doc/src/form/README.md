@@ -216,14 +216,14 @@ function Demo() {
       <Button
         className="van-button-submit"
         formType="submit"
-        onClick={() =>
+        onClick={() => {
           Dialog.alert({
             message: `result: ${JSON.stringify(
               formIt.current.getFieldsValue(),
             )}`,
             selector: 'form-demo3',
           })
-        }
+        }}
       >
         提交
       </Button>

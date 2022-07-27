@@ -167,6 +167,10 @@ export type IFormInstanceAPI = {
    */
   getFieldValue: (name: string | Array<string | number>) => any
   /**
+   * @description 单个表单验证
+   */
+  validateFieldValue: (name: string) => 'resolve' | 'reject'
+  /**
    * @description 校验表单，并获取错误信息和所有表单值
    */
   validateFields: (

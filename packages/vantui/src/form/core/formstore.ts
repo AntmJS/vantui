@@ -19,6 +19,7 @@ const formInstanceApi = [
   'submit',
   'unRegisterValidate',
   'registerRequiredMessageCallback',
+  'validateFieldValue',
 ]
 
 const isReg = (value: any) => value instanceof RegExp
