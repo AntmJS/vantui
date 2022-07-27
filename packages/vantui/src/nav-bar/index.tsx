@@ -45,7 +45,7 @@ export function NavBar(props: NavBarProps) {
       '; ' +
       style,
     ]);
-  }, [zIndex, statusBarHeight, safeAreaInsetTop])
+  }, [zIndex, statusBarHeight, safeAreaInsetTop, style])
 
   return (
     <>
