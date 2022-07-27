@@ -36,6 +36,10 @@ export interface FormProps extends StandardProps {
  */
 export interface FormItemProps extends StandardProps {
   /**
+   * @description 组件值默认数据类型为基本类型(string、number...), 对象数组形式的数据需要设置为true
+   */
+  mutiLevel?: boolean
+  /**
    * @description 对应表单字段名
    */
   name: string | Array<string | number>

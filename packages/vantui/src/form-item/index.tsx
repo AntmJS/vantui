@@ -32,6 +32,7 @@ export function FormItem(props: FormItemProps) {
     feedback = 'failed',
     valueKey = 'value',
     renderRight,
+    mutiLevel,
     valueFormat,
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
@@ -52,7 +53,12 @@ export function FormItem(props: FormItemProps) {
   useEffect(() => {
     /* 注册表单 */
     _name &&
-      registerValidateFields(_name, onStoreChange, { rules, required, label })
+      registerValidateFields(_name, onStoreChange, {
+        rules,
+        required,
+        label,
+        mutiLevel,
+      })
 
     return function () {
       _name && unRegisterValidate(_name)

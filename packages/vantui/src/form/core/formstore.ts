@@ -32,6 +32,7 @@ class FormStore {
   public callback: Record<string, any>
   public penddingValidateQueue: any[]
   public defaultFormValue: Record<string, any>
+  public multiLevelKeys: string[]
   constructor(forceUpdate: any, defaultFormValue: Record<string, any>) {
     this.FormUpdate = forceUpdate
     this.model = {}
@@ -41,6 +42,7 @@ class FormStore {
     this.penddingValidateQueue = []
     this.defaultFormValue = defaultFormValue || {}
     this.requiredMessageCallback = undefined
+    this.multiLevelKeys = []
   }
 
   getForm() {
@@ -93,6 +95,18 @@ class FormStore {
     const validate = FormStore.createValidate(model)
     this.model[name] = validate
     this.control[name] = control
+    if (model['mutiLevel']) {
+      if (!this.multiLevelKeys.includes(name)) {
+        this.multiLevelKeys.push(name)
+      }
+    }
+
+    if (!model['mutiLevel']) {
+      const keyIndex = this.multiLevelKeys.indexOf(name)
+      if (keyIndex > 0) {
+        this.multiLevelKeys.splice(keyIndex, 1)
+      }
+    }
   }
 
   unRegisterValidate(name_: Iname) {
@@ -109,9 +123,11 @@ class FormStore {
 
   setFields(object: Record<string, any>) {
     if (typeof object !== 'object') return
-    Object.keys(object).forEach((modelName) => {
-      this.setFieldsValue(modelName, object[modelName])
-    })
+    this.transformSingellevelData(object, this.multiLevelKeys)
+    for (const key in this.model) {
+      const item = this.model[key]
+      this.setValueClearStatus(item, key, item.value)
+    }
   }
 
   setFieldsValue(name_: Iname, modelValue: any): any {
@@ -137,7 +153,7 @@ class FormStore {
     model['status'] = 'pendding'
     this.notifyChange(name)
   }
-
+  // 扁平数据转多层数据结构
   static transformMultilevelData(data: Record<string, any>) {
     const keys = Object.keys(data)
     const hasMultiLevel = keys.some((item) => item.includes('.'))
@@ -178,6 +194,42 @@ class FormStore {
     } else {
       return data
     }
+  }
+
+  // 多层级数据结构扁平化
+  transformSingellevelData(
+    data: Record<string, any>,
+    multiLevelKeys: string[],
+  ) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const that = this
+    function unitWork(curKey: string, dd: any): void {
+      if (toString.call(dd) === '[object Object]') {
+        if (multiLevelKeys.includes(curKey)) {
+          that.model[curKey].value = dd
+        } else {
+          for (const key in dd) {
+            const value = dd[key]
+            unitWork(curKey ? `${curKey}.${key}` : key, value)
+          }
+        }
+      } else if (toString.call(dd) === '[object Array]') {
+        if (multiLevelKeys.includes(curKey)) {
+          that.model[curKey].value = dd
+        } else {
+          for (let i = 0; i < dd.length; i++) {
+            const value = dd[i]
+            unitWork(curKey ? `${curKey}.${i}` : `${i}`, value)
+          }
+        }
+      } else {
+        if (that.model[curKey]) {
+          that.model[curKey].value = dd
+        }
+      }
+    }
+
+    unitWork('', data)
   }
 
   getFieldsValue() {
