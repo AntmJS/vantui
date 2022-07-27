@@ -1,5 +1,5 @@
 import { navigateBack, reLaunch, getCurrentPages } from '@tarojs/taro'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
@@ -52,7 +52,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
   const [homeButton, setHomeButton] = useState(false)
 
   useEffect(
-    function () {
+    () => {
       const pages = getCurrentPages()
       if (pages.length >= 1) {
         const ins: any = pages[pages.length - 1]
@@ -68,7 +68,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
     [homeUrl],
   )
 
-  useEffect(function () {
+  useEffect(() => {
     const sysInfo = getSystemInfoSync()
     const menuInfo = getMenuButtonBoundingClientRect()
     if (sysInfo && menuInfo) {
@@ -83,25 +83,22 @@ export function MiniNavBar(props: MiniNavBarProps) {
     }
   }, [])
 
-  const getMiniNavbarHeight = useCallback(
-    function () {
-      return utils.style([
-        computed.barStyle({
-          zIndex,
-          fromTop,
-          height,
-          fromLeft,
-        }) +
-          '; ' +
-          style,
-      ])
-    },
-    [zIndex, fromTop, height, fromLeft, style],
-  )
+  const getMiniNavbarHeight = useMemo(() => {
+    return utils.style([
+      computed.barStyle({
+        zIndex,
+        fromTop,
+        height,
+        fromLeft,
+      }) +
+      '; ' +
+      style,
+    ]);
+  }, [zIndex, fromTop, height, fromLeft, style])
 
   return (
     <>
-      {fixed && placeholder && <View style={getMiniNavbarHeight()}></View>}
+      {fixed && placeholder && (<View style={getMiniNavbarHeight}></View>)}
       <View
         className={
           utils.bem('mini-nav-bar', {
@@ -111,7 +108,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
           (border ? 'van-hairline--bottom' : '') +
           ` ${className || ''}`
         }
-        style={getMiniNavbarHeight()}
+        style={getMiniNavbarHeight}
         {...others}
       >
         <View className="van-mini-nav-bar__content">
