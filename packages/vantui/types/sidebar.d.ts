@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 interface OnChangeEvent {
@@ -22,8 +22,8 @@ export interface SidebarProps extends StandardProps {
   children: ReactNode
 }
 
-declare const Sidebar: ComponentClass<SidebarProps>
+declare const Sidebar: FunctionComponent<SidebarProps>
 
-declare const SidebarItem: ComponentClass<SidebarItemProps>
+declare const SidebarItem: FunctionComponent<SidebarItemProps>
 
 export { Sidebar, SidebarItem }

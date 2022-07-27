@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface TabbarProps extends StandardProps {
@@ -26,8 +26,8 @@ export interface TabbarItemProps extends Omit<StandardProps, 'onClick'> {
   onClick?: (name: string | number) => void
 }
 
-declare const TabbarItem: ComponentClass<TabbarItemProps>
+declare const TabbarItem: FunctionComponent<TabbarItemProps>
 
-declare const Tabbar: ComponentClass<TabbarProps>
+declare const Tabbar: FunctionComponent<TabbarProps>
 
 export { Tabbar, TabbarItem }

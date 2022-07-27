@@ -1,4 +1,4 @@
-import React, { ComponentClass, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 /**
@@ -181,6 +181,6 @@ export interface CalendarEventsSingle extends ITouchEvent {
   }
 }
 
-declare const Calendar: ComponentClass<CalendarProps>
+declare const Calendar: FunctionComponent<CalendarProps>
 
 export { Calendar }

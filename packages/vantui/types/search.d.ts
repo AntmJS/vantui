@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface SearchProps extends StandardProps {
@@ -35,6 +35,6 @@ export interface SearchProps extends StandardProps {
   onClickInput?: () => void
 }
 
-declare const Search: ComponentClass<SearchProps>
+declare const Search: FunctionComponent<SearchProps>
 
 export { Search }

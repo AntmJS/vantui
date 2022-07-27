@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { ImageProps } from '@tarojs/components/types/Image.d'
 
@@ -28,6 +28,6 @@ export interface CardProps extends StandardProps {
   renderThumb?: ReactNode
 }
 
-declare const Card: ComponentClass<CardProps>
+declare const Card: FunctionComponent<CardProps>
 
 export { Card }

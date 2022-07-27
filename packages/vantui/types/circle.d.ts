@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface CircleProps extends StandardProps {
@@ -16,6 +16,6 @@ export interface CircleProps extends StandardProps {
   children?: ReactNode
 }
 
-declare const Circle: ComponentClass<CircleProps>
+declare const Circle: FunctionComponent<CircleProps>
 
 export { Circle }

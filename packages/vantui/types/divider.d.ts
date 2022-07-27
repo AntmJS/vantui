@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface DividerProps extends StandardProps {
@@ -11,6 +11,6 @@ export interface DividerProps extends StandardProps {
   children?: ReactNode
 }
 
-declare const Divider: ComponentClass<DividerProps>
+declare const Divider: FunctionComponent<DividerProps>
 
 export { Divider }

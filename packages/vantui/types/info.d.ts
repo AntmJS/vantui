@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface InfoProps extends StandardProps {
@@ -7,6 +7,6 @@ export interface InfoProps extends StandardProps {
   style?: string
 }
 
-declare const Info: ComponentClass<InfoProps>
+declare const Info: FunctionComponent<InfoProps>
 
 export { Info }

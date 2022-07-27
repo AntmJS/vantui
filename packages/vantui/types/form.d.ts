@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 /**
@@ -200,8 +200,8 @@ export type IFormInstanceAPI = {
   >
 }
 
-declare const Form: ComponentClass<FormProps>
+declare const Form: FunctionComponent<FormProps>
 
-declare const FormItem: ComponentClass<FormItemProps>
+declare const FormItem: FunctionComponent<FormItemProps>
 
 export { Form, FormItem }

@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { StandardProps } from '@tarojs/components'
 export interface LoadingProps extends StandardProps {
   color?: string
@@ -9,6 +9,6 @@ export interface LoadingProps extends StandardProps {
   children?: React.ReactNode
 }
 
-declare const Loading: ComponentClass<LoadingProps>
+declare const Loading: FunctionComponent<LoadingProps>
 
 export { Loading }

@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface RadioProps extends StandardProps {
@@ -23,8 +23,8 @@ export interface RadioGroupProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
-declare const RadioGroup: ComponentClass<RadioGroupProps>
+declare const RadioGroup: FunctionComponent<RadioGroupProps>
 
-declare const Radio: ComponentClass<RadioProps>
+declare const Radio: FunctionComponent<RadioProps>
 
 export { Radio, RadioGroup }

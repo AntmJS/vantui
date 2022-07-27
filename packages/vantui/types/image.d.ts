@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface ImageProps extends StandardProps {
@@ -59,6 +59,6 @@ export interface ImageProps extends StandardProps {
   renderError?: ReactNode
 }
 
-declare const Image: ComponentClass<ImageProps>
+declare const Image: FunctionComponent<ImageProps>
 
 export { Image }

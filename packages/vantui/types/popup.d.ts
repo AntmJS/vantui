@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { TransitionProps } from './mixins/transition'
 import { OverlayProps } from './overlay'
@@ -73,6 +73,6 @@ export interface PopupProps
   onClose?: () => void
 }
 
-declare const Popup: ComponentClass<PopupProps>
+declare const Popup: FunctionComponent<PopupProps>
 
 export { Popup }

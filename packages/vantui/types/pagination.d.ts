@@ -1,5 +1,5 @@
 import { StandardProps } from '@tarojs/components'
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 
 export interface PaginationProps extends StandardProps {
   /**
@@ -67,6 +67,6 @@ export interface PaginationProps extends StandardProps {
   updatecurrent?: (currPage: number) => void
 }
 
-declare const Pagination: ComponentClass<PaginationProps>
+declare const Pagination: FunctionComponent<PaginationProps>
 
 export { Pagination }

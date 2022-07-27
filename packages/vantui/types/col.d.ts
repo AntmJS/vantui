@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @title Col Props
@@ -29,7 +29,7 @@ export interface RowProps extends StandardProps {
   children: React.ReactNode
 }
 
-declare const Col: ComponentClass<ColProps>
-declare const Row: ComponentClass<RowProps>
+declare const Col: FunctionComponent<ColProps>
+declare const Row: FunctionComponent<RowProps>
 
 export { Col, Row }

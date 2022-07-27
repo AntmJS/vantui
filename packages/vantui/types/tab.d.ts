@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 type eventDetail = {
@@ -43,8 +43,8 @@ export interface TabProps extends StandardProps {
   children?: ReactNode
 }
 
-declare const Tab: ComponentClass<TabProps>
+declare const Tab: FunctionComponent<TabProps>
 
-declare const Tabs: ComponentClass<TabsProps>
+declare const Tabs: FunctionComponent<TabsProps>
 
 export { Tabs, Tab }

@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface PickerColumnProps extends StandardProps {
@@ -13,6 +13,6 @@ export interface PickerColumnProps extends StandardProps {
   refBase?: any
 }
 
-declare const PickerColumn: ComponentClass<PickerColumnProps>
+declare const PickerColumn: FunctionComponent<PickerColumnProps>
 
 export { PickerColumn }

@@ -1,4 +1,4 @@
-import { ComponentClass, CSSProperties, ReactNode } from 'react'
+import { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @title Cell Props
@@ -116,7 +116,7 @@ export interface CellGroupProps extends StandardProps {
   children?: ReactNode
 }
 
-declare const CellGroup: ComponentClass<CellGroupProps>
-declare const Cell: ComponentClass<CellProps>
+declare const CellGroup: FunctionComponent<CellGroupProps>
+declare const Cell: FunctionComponent<CellProps>
 
 export { Cell, CellGroup }

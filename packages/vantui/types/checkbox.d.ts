@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface CheckboxProps extends StandardProps {
@@ -24,8 +24,8 @@ export interface CheckboxGroupProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
-declare const CheckboxGroup: ComponentClass<CheckboxGroupProps>
+declare const CheckboxGroup: FunctionComponent<CheckboxGroupProps>
 
-declare const Checkbox: ComponentClass<CheckboxProps>
+declare const Checkbox: FunctionComponent<CheckboxProps>
 
 export { Checkbox, CheckboxGroup }

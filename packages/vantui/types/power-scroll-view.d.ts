@@ -1,4 +1,4 @@
-// import { ComponentClass } from 'react'
+// import { FunctionComponent } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { ScrollViewProps } from '@tarojs/components/types/ScrollView'
 export type PullRefreshStatus =
@@ -60,7 +60,7 @@ export interface PowerScrollViewProps<T extends number | undefined>
   ) => Promise<void>
 }
 
-// declare const PowerScrollView: ComponentClass<PowerScrollViewProps>
+// declare const PowerScrollView: FunctionComponent<PowerScrollViewProps>
 declare const PowerScrollView: <T extends number | undefined>(
   props: PowerScrollViewProps<T>,
 ) => React.ReactElement

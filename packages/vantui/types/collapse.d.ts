@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface CollapseProps extends StandardProps {
@@ -32,8 +32,8 @@ export interface CollapseItemProps extends StandardProps {
   size?: 'large'
 }
 
-declare const CollapseItem: ComponentClass<CollapseItemProps>
+declare const CollapseItem: FunctionComponent<CollapseItemProps>
 
-declare const Collapse: ComponentClass<CollapseProps>
+declare const Collapse: FunctionComponent<CollapseProps>
 
 export { Collapse, CollapseItem }

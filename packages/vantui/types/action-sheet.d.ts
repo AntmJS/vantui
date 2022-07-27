@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps, ButtonProps, ITouchEvent } from '@tarojs/components'
 import { PopupProps } from './popup'
 export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
@@ -26,5 +26,5 @@ export interface ActionSheetProps extends StandardProps, PopupProps {
   onClose?: () => void
   onClickOverlay?: () => void
 }
-declare const ActionSheet: ComponentClass<ActionSheetProps>
+declare const ActionSheet: FunctionComponent<ActionSheetProps>
 export { ActionSheet }

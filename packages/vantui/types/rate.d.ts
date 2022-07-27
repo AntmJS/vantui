@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface RateProps extends StandardProps {
@@ -19,6 +19,6 @@ export interface RateProps extends StandardProps {
   onChange?: (e: ITouchEvent) => any
 }
 
-declare const Rate: ComponentClass<RateProps>
+declare const Rate: FunctionComponent<RateProps>
 
 export { Rate }

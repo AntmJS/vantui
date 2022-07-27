@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ButtonProps as TaroButtonProps } from '@tarojs/components'
 
 export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
@@ -22,6 +22,6 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   children?: ReactNode
 }
 
-declare const Button: ComponentClass<ButtonProps>
+declare const Button: FunctionComponent<ButtonProps>
 
 export { Button }

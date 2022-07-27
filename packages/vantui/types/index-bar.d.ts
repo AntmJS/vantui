@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 export interface IndexBarProps extends StandardProps {
   sticky?: boolean
@@ -9,5 +9,5 @@ export interface IndexBarProps extends StandardProps {
   onSelect?: (event: { detail: string | number }) => void
   children?: ReactNode
 }
-declare const IndexBar: ComponentClass<IndexBarProps>
+declare const IndexBar: FunctionComponent<IndexBarProps>
 export { IndexBar }

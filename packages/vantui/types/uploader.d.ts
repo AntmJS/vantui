@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 import { ImageProps } from '@tarojs/components/types/Image'
 
@@ -35,6 +35,6 @@ export interface UploaderProps extends StandardProps {
   onClickPreview?: (data: any) => any
 }
 
-declare const Uploader: ComponentClass<UploaderProps>
+declare const Uploader: FunctionComponent<UploaderProps>
 
 export { Uploader }

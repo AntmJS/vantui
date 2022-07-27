@@ -1,5 +1,5 @@
 import { StandardProps } from '@tarojs/components'
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 export interface OverlayProps extends StandardProps {
   show?: boolean
   lockScroll?: boolean
@@ -10,6 +10,6 @@ export interface OverlayProps extends StandardProps {
     | { enter: string | number; leave: string | number }
   children?: ReactNode
 }
-declare const Overlay: ComponentClass<OverlayProps>
+declare const Overlay: FunctionComponent<OverlayProps>
 
 export { Overlay }

@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface SwitchProps extends StandardProps {
@@ -13,6 +13,6 @@ export interface SwitchProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
-declare const Switch: ComponentClass<SwitchProps>
+declare const Switch: FunctionComponent<SwitchProps>
 
 export { Switch }
