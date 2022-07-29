@@ -42,14 +42,14 @@ export function NavBar(props: NavBarProps) {
         safeAreaInsetTop,
         height: 50,
       }) +
-      '; ' +
-      style,
-    ]);
-  }, [zIndex, statusBarHeight, safeAreaInsetTop])
+        '; ' +
+        style,
+    ])
+  }, [zIndex, statusBarHeight, safeAreaInsetTop, style])
 
   return (
     <>
-      {fixed && placeholder && (<View style={getNavBarStyle}></View>)}
+      {fixed && placeholder && <View style={getNavBarStyle}></View>}
       <View
         className={
           utils.bem('nav-bar', {
