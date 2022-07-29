@@ -1,4 +1,4 @@
-import { ComponentClass, CSSProperties } from 'react'
+import { FunctionComponent, CSSProperties } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @description Icon Props
@@ -36,6 +36,6 @@ export interface IconProps extends StandardProps {
   name?: string
 }
 
-declare const Icon: ComponentClass<IconProps>
+declare const Icon: FunctionComponent<IconProps>
 
 export { Icon }

@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 /**
@@ -12,6 +12,6 @@ export interface ConfigProviderProps extends StandardProps {
   children: ReactNode
 }
 
-declare const ConfigProvider: ComponentClass<ConfigProviderProps>
+declare const ConfigProvider: FunctionComponent<ConfigProviderProps>
 
 export { ConfigProvider }

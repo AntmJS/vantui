@@ -8,11 +8,14 @@ export default function useForm(
 ): IFormInstanceAPI {
   const formRef: { current: IFormInstanceAPI | null } = useRef(null)
   const [, forceUpdate] = useState({})
+  const isInit = useRef(false)
 
   useEffect(
     function () {
-      if (formRef.current) {
+      if (formRef.current && !isInit.current && defaultFormValue) {
         formRef.current.setFields(defaultFormValue)
+        forceUpdate({})
+        isInit.current = true
       }
     },
     [defaultFormValue],

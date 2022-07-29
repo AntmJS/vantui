@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 /**
@@ -35,6 +35,10 @@ export interface FormProps extends StandardProps {
  * @title FormItemProps
  */
 export interface FormItemProps extends StandardProps {
+  /**
+   * @description 组件值默认数据类型为基本类型(string、number...), 对象数组形式的数据需要设置为true
+   */
+  mutiLevel?: boolean
   /**
    * @description 对应表单字段名
    */
@@ -163,6 +167,10 @@ export type IFormInstanceAPI = {
    */
   getFieldValue: (name: string | Array<string | number>) => any
   /**
+   * @description 单个表单验证
+   */
+  validateFieldValue: (name: string) => 'resolve' | 'reject'
+  /**
    * @description 校验表单，并获取错误信息和所有表单值
    */
   validateFields: (
@@ -192,8 +200,13 @@ export type IFormInstanceAPI = {
   >
 }
 
-declare const Form: ComponentClass<FormProps>
+type IuseForm = (
+  form?: IFormInstanceAPI,
+  initialValues?: Record<string, any>,
+) => IFormInstanceAPI
 
-declare const FormItem: ComponentClass<FormItemProps>
+declare const Form: FunctionComponent<FormProps> & { useForm: IuseForm }
+
+declare const FormItem: FunctionComponent<FormItemProps>
 
 export { Form, FormItem }

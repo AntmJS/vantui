@@ -56,5 +56,9 @@ function Index(
 }
 
 const Form = memo(forwardRef(Index))
-export { Form }
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+Form.useForm = useForm
+
+export { Form, useForm }
 export default Form

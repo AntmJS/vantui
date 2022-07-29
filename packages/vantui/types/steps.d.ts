@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 
 export interface StepsProps extends StandardProps {
@@ -19,6 +19,6 @@ export interface StepsProps extends StandardProps {
   onClickStep?: (event: ITouchEvent & { detail: number }) => void
 }
 
-declare const Steps: ComponentClass<StepsProps>
+declare const Steps: FunctionComponent<StepsProps>
 
 export { Steps }

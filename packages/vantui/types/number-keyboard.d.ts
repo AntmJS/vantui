@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface NumberKeyboardProps extends StandardProps {
@@ -57,6 +57,6 @@ export interface NumberKeyboardProps extends StandardProps {
   closeOnConfirm?: boolean
 }
 
-declare const NumberKeyboard: ComponentClass<NumberKeyboardProps>
+declare const NumberKeyboard: FunctionComponent<NumberKeyboardProps>
 
 export { NumberKeyboard }

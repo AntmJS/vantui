@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps, ITouchEvent } from '@tarojs/components'
 /**
  * @title  Props API
@@ -145,6 +145,6 @@ export type IPickerInstance = {
   confirm: () => void
 }
 
-declare const Picker: ComponentClass<PickerProps>
+declare const Picker: FunctionComponent<PickerProps>
 
 export { Picker }

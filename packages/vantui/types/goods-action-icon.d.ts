@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ButtonProps } from './button'
 
 export interface GoodsActionIconProps
@@ -13,6 +13,6 @@ export interface GoodsActionIconProps
   children?: ReactNode
 }
 
-declare const GoodsActionIcon: ComponentClass<GoodsActionIconProps>
+declare const GoodsActionIcon: FunctionComponent<GoodsActionIconProps>
 
 export { GoodsActionIcon }

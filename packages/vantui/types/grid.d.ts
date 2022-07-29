@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface GridProps extends StandardProps {
@@ -27,8 +27,8 @@ export interface GridItemProps extends StandardProps {
   children?: React.ReactNode
 }
 
-declare const GridItem: ComponentClass<GridItemProps>
+declare const GridItem: FunctionComponent<GridItemProps>
 
-declare const Grid: ComponentClass<GridProps>
+declare const Grid: FunctionComponent<GridProps>
 
 export { Grid, GridItem }

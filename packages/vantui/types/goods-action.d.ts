@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface GoodsActionProps extends StandardProps {
@@ -6,6 +6,6 @@ export interface GoodsActionProps extends StandardProps {
   children: ReactNode
 }
 
-declare const GoodsAction: ComponentClass<GoodsActionProps>
+declare const GoodsAction: FunctionComponent<GoodsActionProps>
 
 export { GoodsAction }

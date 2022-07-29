@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface NoticeBarProps extends StandardProps {
@@ -21,6 +21,6 @@ export interface NoticeBarProps extends StandardProps {
   onClose?: (event: ITouchEvent) => any
 }
 
-declare const NoticeBar: ComponentClass<NoticeBarProps>
+declare const NoticeBar: FunctionComponent<NoticeBarProps>
 
 export { NoticeBar }

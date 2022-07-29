@@ -1,4 +1,4 @@
-import React, { ComponentClass, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 /**
  * @title DropdownMenuProps
@@ -121,8 +121,8 @@ export type IDropdownItemInstance = {
   toggle: (show?: boolean, options?: { immediate: boolean }) => void
 }
 
-declare const DropdownItem: ComponentClass<DropdownItemProps>
+declare const DropdownItem: FunctionComponent<DropdownItemProps>
 
-declare const DropdownMenu: ComponentClass<DropdownMenuProps>
+declare const DropdownMenu: FunctionComponent<DropdownMenuProps>
 
 export { DropdownMenu, DropdownItem }

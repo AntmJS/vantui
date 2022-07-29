@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 import notify from '../src/notify/notify'
 
@@ -23,6 +23,6 @@ interface notifyProps {
   clear: (options?: NotifyProps) => any
 }
 
-declare const Notify: ComponentClass<NotifyProps> & notifyProps
+declare const Notify: FunctionComponent<NotifyProps> & notifyProps
 
 export { Notify, notify }

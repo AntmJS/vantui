@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { BaseEventOrig } from '@tarojs/components/types/common.d'
 import { ButtonProps as TaroButtonProps } from '@tarojs/components'
 import { ButtonProps } from './button.d'
@@ -19,7 +19,7 @@ export interface MiniUserButtonProps
   desc?: string
 }
 
-declare const MiniUserButton: ComponentClass<MiniUserButtonProps>
+declare const MiniUserButton: FunctionComponent<MiniUserButtonProps>
 
 export { MiniUserButton }
 export default MiniUserButton

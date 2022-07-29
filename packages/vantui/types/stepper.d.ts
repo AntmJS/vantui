@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps, CommonEventFunction } from '@tarojs/components'
 import { InputProps } from '@tarojs/components/types/Input'
 
@@ -32,6 +32,6 @@ export interface StepperProps extends StandardProps {
   renderPlus?: ReactNode
 }
 // Partial
-declare const Stepper: ComponentClass<StepperProps>
+declare const Stepper: FunctionComponent<StepperProps>
 
 export { Stepper }

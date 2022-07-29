@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 /**
@@ -144,6 +144,6 @@ export interface IColumns {
   expandable?: boolean
 }
 
-declare const Table: ComponentClass<ITableProps>
+declare const Table: FunctionComponent<ITableProps>
 
 export { Table }

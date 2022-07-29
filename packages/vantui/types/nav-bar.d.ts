@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, StandardProps } from '@tarojs/components'
 
 export interface NavBarProps extends StandardProps {
@@ -19,7 +19,7 @@ export interface NavBarProps extends StandardProps {
   onClickRight?: (e: ITouchEvent) => void
 }
 
-declare const NavBar: ComponentClass<NavBarProps>
+declare const NavBar: FunctionComponent<NavBarProps>
 
 export interface MiniNavBarProps extends StandardProps {
   homeUrl: string
@@ -33,6 +33,6 @@ export interface MiniNavBarProps extends StandardProps {
   renderTitle?: ReactNode
 }
 
-declare const MiniNavBar: ComponentClass<MiniNavBarProps>
+declare const MiniNavBar: FunctionComponent<MiniNavBarProps>
 
 export { NavBar, MiniNavBar }

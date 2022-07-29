@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import {
   StandardProps,
   ButtonProps as TaroButtonProps,
@@ -56,6 +56,6 @@ interface dialog {
 }
 
 // & DialogCom
-declare const Dialog: ComponentClass<DialogProps> & dialog
+declare const Dialog: FunctionComponent<DialogProps> & dialog
 
 export { Dialog, dialog }

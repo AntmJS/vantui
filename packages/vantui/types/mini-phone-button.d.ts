@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { FunctionComponent } from 'react'
 import { BaseEventOrig } from '@tarojs/components/types/common.d'
 import { ButtonProps as TaroButtonProps } from '@tarojs/components'
 import { ButtonProps } from './button.d'
@@ -12,7 +12,7 @@ export interface MiniPhoneButtonProps extends ButtonProps {
   onGetPhone: (phoneInfo: TaroButtonProps.onGetPhoneNumberEventDetail) => void
 }
 
-declare const MiniPhoneButton: ComponentClass<MiniPhoneButtonProps>
+declare const MiniPhoneButton: FunctionComponent<MiniPhoneButtonProps>
 
 export { MiniPhoneButton }
 export default MiniPhoneButton

@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface EmptyProps extends StandardProps {
@@ -9,6 +9,6 @@ export interface EmptyProps extends StandardProps {
   renderDescription?: ReactNode
 }
 
-declare const Empty: ComponentClass<EmptyProps>
+declare const Empty: FunctionComponent<EmptyProps>
 
 export { Empty }

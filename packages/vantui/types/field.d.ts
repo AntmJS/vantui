@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import {
   StandardProps,
   ITouchEvent,
@@ -75,6 +75,6 @@ export interface FieldProps extends StandardProps {
   onKeyboardHeightChange?: CommonEventFunction<TextareaProps.onKeyboardHeightChangeEventDetail>
 }
 
-declare const Field: ComponentClass<FieldProps>
+declare const Field: FunctionComponent<FieldProps>
 
 export { Field }

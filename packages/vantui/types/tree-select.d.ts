@@ -1,4 +1,4 @@
-import { ComponentClass, TouchEvent } from 'react'
+import { FunctionComponent, TouchEvent } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { ReactNode } from 'packages/vantui-demo/node_modules/@types/react'
 export interface TreeSelectProps extends StandardProps {
@@ -31,5 +31,5 @@ export interface TreeSelectProps extends StandardProps {
   onClickNav?: (event: { detail: { index: number } }) => void
   renderContent?: ReactNode
 }
-declare const TreeSelect: ComponentClass<TreeSelectProps>
+declare const TreeSelect: FunctionComponent<TreeSelectProps>
 export { TreeSelect }

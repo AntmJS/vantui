@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface ProgressProps extends StandardProps {
@@ -13,6 +13,6 @@ export interface ProgressProps extends StandardProps {
   strokeWidth?: number | string
 }
 
-declare const Progress: ComponentClass<ProgressProps>
+declare const Progress: FunctionComponent<ProgressProps>
 
 export { Progress }

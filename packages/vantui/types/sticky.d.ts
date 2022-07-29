@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 
 export interface StickyProps extends StandardProps {
@@ -13,6 +13,6 @@ export interface StickyProps extends StandardProps {
   }) => any
 }
 
-declare const Sticky: ComponentClass<StickyProps>
+declare const Sticky: FunctionComponent<StickyProps>
 
 export { Sticky }

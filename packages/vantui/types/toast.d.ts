@@ -1,4 +1,4 @@
-import { ComponentClass, ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps } from '@tarojs/components'
 import toast from '../src/toast/toast'
 /**
@@ -73,6 +73,6 @@ export interface toastProps {
   resetDefaultOptions: (options: any) => void
 }
 
-declare const Toast: ComponentClass<ToastProps> & toastProps
+declare const Toast: FunctionComponent<ToastProps> & toastProps
 
 export { Toast, toast }
