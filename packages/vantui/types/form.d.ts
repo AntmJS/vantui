@@ -200,7 +200,12 @@ export type IFormInstanceAPI = {
   >
 }
 
-declare const Form: FunctionComponent<FormProps>
+type IuseForm = (
+  form?: IFormInstanceAPI,
+  initialValues?: Record<string, any>,
+) => IFormInstanceAPI
+
+declare const Form: FunctionComponent<FormProps> & { useForm: IuseForm }
 
 declare const FormItem: FunctionComponent<FormItemProps>
 

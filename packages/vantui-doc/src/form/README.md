@@ -25,53 +25,69 @@ FormItem 需要代理下级表单组件的值和触发事件
 
 ```jsx
 function Demo() {
-  const formIt = react.useRef(null)
-  const [state, setState] = react.useState({
-    dateTime: '',
-  })
+  const formIt = Form.useForm()
+  const [state, setState] = react.useState({})
+  const [, forceUpdate] = react.useState()
   // 注册不能回调函数设置必填的提示文案
   react.useLayoutEffect(() => {
-    formIt.current.registerRequiredMessageCallback((label) => {
+    formIt.registerRequiredMessageCallback((label) => {
       return `${label}真的不能为空啊`
     })
   }, [])
 
-  react.useEffect(() => {
-    // 异步更新initialValues
-    setTimeout(() => {
-      setState({
-        dateTime: '2021-12-02 12:12',
-      })
-    }, 2000)
-  }, [])
-
   const handleClick = () => {
-    formIt.current.validateFields((errorMessage, fieldValues) => {
+    formIt.validateFields((errorMessage, fieldValues) => {
       if (errorMessage && errorMessage.length) {
         Dialog.alert({
           message: `errorMessage: ${JSON.stringify(errorMessage)}`,
-          selector: 'form-demo1',
+          selector: '#form-demo11',
         })
         return console.info('errorMessage', errorMessage)
       }
 
       Dialog.alert({
         message: `result: ${JSON.stringify(fieldValues)}`,
+        selector: '#form-demo11',
       })
     })
   }
+
+  const dynamicRule = react.useMemo(() => {
+    if (formIt.getFieldValue('singleSelect') === '1') {
+      return {
+        rule: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+        message: '输入正确的身份证',
+      }
+    }
+
+    if (formIt.getFieldValue('singleSelect') === '2') {
+      return {
+        rule: /^[0-9]{6}$/,
+        message: '请输入6位数的驾驶证',
+      }
+    }
+  }, [formIt.getFieldValue('singleSelect')])
+
+  const dynamicPlaceHolder = react.useMemo(() => {
+    if (formIt.getFieldValue('singleSelect') === '1') {
+      return '请输入身份证'
+    }
+
+    if (formIt.getFieldValue('singleSelect') === '2') {
+      return '请输入驾驶证'
+    }
+  }, [formIt.getFieldValue('singleSelect')])
 
   return (
     <>
       <Form
         initialValues={{
           userName: '我是初始值',
-          dateTime: state.dateTime,
           singleSelect: '1',
           rate: 2,
           slider: '50',
         }}
-        ref={formIt}
+        form={formIt}
         onFinish={(errs, res) => console.info(errs, res)}
       >
         <FormItem
@@ -91,29 +107,37 @@ function Demo() {
           <Input placeholder="请输入用户名（中文）" />
         </FormItem>
 
-        <FormItem
-          label="密码"
-          name="password"
-          required
-          valueFormat={(e) => e.detail.value}
-          renderRight={<Icon name="eye-o" />}
-        >
-          <Input placeholder="请输入密码" type="password" />
-        </FormItem>
-
         <FormItem label="是否打开" name="opened" valueKey="checked">
           <Switch activeColor="#07c160" inactiveColor="#07c160" />
         </FormItem>
 
-        <FormItem label="单选框" name="singleSelect">
-          <RadioGroup direction="horizontal">
+        <FormItem label="证件类型" name="singleSelect">
+          {/** 后续版本, 开发 FormItem.dependencies, 实现不需要 forceUpdate 来更新 getFieldValue('xx') */}
+          <RadioGroup
+            direction="horizontal"
+            onChange={(e) => {
+              formIt.setFieldsValue('cardId', '')
+              forceUpdate(e)
+            }}
+          >
             <Radio name="1" checkedColor="#07c160">
-              单选框 1
+              身份证
             </Radio>
             <Radio name="2" checkedColor="#07c160">
-              单选框 2
+              驾驶证
             </Radio>
           </RadioGroup>
+        </FormItem>
+
+        <FormItem
+          label="证件号"
+          name="cardId"
+          required
+          valueFormat={(e) => e.detail.value}
+          rules={dynamicRule}
+          trigger="onInput"
+        >
+          <Input placeholder={dynamicPlaceHolder} />
         </FormItem>
 
         <FormItem label="复选框" name="muiltSelect">
@@ -144,13 +168,13 @@ function Demo() {
         <Button
           type="primary"
           className="van-button-submit"
-          // onClick={handleClick}
-          formType="submit"
+          onClick={handleClick}
+          // formType="submit"
         >
           提交
         </Button>
       </Form>
-      <Dialog id="form-demo1" />
+      <Dialog id="form-demo11" />
     </>
   )
 }

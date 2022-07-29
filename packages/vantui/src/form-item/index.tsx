@@ -1,12 +1,13 @@
 import {
   useState,
   useContext,
-  useEffect,
   cloneElement,
   isValidElement,
   useMemo,
+  useEffect,
 } from 'react'
 import { View } from '@tarojs/components'
+import useDeepCompareEffect from 'use-deep-compare-effect'
 import { FormItemProps, IFormInstanceAPI } from '../../types/form'
 import FormContext from '../form/core/formContext'
 import Label from './label'
@@ -47,10 +48,9 @@ export function FormItem(props: FormItemProps) {
       },
     }
     return onStoreChange
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formInstance])
+  }, [])
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     /* 注册表单 */
     _name &&
       registerValidateFields(_name, onStoreChange, {
@@ -59,12 +59,23 @@ export function FormItem(props: FormItemProps) {
         label,
         mutiLevel,
       })
+  }, [
+    _name,
+    label,
+    mutiLevel,
+    onStoreChange,
+    registerValidateFields,
+    required,
+    rules,
+    unRegisterValidate,
+  ])
 
+  useEffect(function () {
     return function () {
       _name && unRegisterValidate(_name)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onStoreChange])
+  }, [])
 
   const getControlled = (child: any) => {
     const props = { ...child.props }

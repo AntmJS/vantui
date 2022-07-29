@@ -91,11 +91,14 @@ class FormStore {
     model: Record<string, any>,
   ): void {
     const name = Array.isArray(name_) ? name_.join('.') : name_
-    if (this.defaultFormValue[name])
-      model['value'] = this.defaultFormValue[name]
-    const validate = FormStore.createValidate(model)
-    this.model[name] = validate
-    this.control[name] = control
+
+    if (this.defaultFormValue[name]) {
+      if (!this.model[name] || this.model[name].value === undefined) {
+        model['value'] = this.defaultFormValue[name]
+      }
+    }
+    if (!model['value'] && this.model[name])
+      model['value'] = this.model[name].value
     if (model['mutiLevel']) {
       if (!this.multiLevelKeys.includes(name)) {
         this.multiLevelKeys.push(name)
@@ -108,6 +111,10 @@ class FormStore {
         this.multiLevelKeys.splice(keyIndex, 1)
       }
     }
+
+    const validate = FormStore.createValidate(model)
+    this.model[name] = validate
+    this.control[name] = control
   }
 
   unRegisterValidate(name_: Iname) {
@@ -139,7 +146,7 @@ class FormStore {
       const { message, rule, value } = modelValue
       if (message) model.message = message
       if (rule) model.rule = rule
-      if (value) model.value = value
+      if (value && model.value === undefined) model.value = value
       model.status = 'pendding'
       this.validateFieldValue(name, true)
     } else {
