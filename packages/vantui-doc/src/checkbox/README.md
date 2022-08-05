@@ -210,27 +210,27 @@ function Demo() {
 
 ### CheckboxProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/checkbox.d.ts)
 
-| 参数          | 说明 | 类型                                                          | 默认值 | 必填    |
-| ------------- | ---- | ------------------------------------------------------------- | ------ | ------- |
-| name          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                  | -      | `false` |
-| value         | -    | _&nbsp;&nbsp;boolean<br/>_                                    | -      | `false` |
-| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                    | -      | `false` |
-| checkedColor  | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
-| labelPosition | -    | _&nbsp;&nbsp;string<br/>_                                     | -      | `false` |
-| labelDisabled | -    | _&nbsp;&nbsp;boolean<br/>_                                    | -      | `false` |
-| shape         | -    | _&nbsp;&nbsp;"round"&nbsp;&brvbar;&nbsp;"square"<br/>_        | -      | `false` |
-| iconSize      | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_           | -      | `false` |
-| children      | -    | _&nbsp;&nbsp;ReactNode<br/>_                                  | -      | `false` |
-| renderIcon    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                  | -      | `false` |
-| onChange      | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
+| 参数          | 说明 | 类型                                                                                                        | 默认值 | 必填    |
+| ------------- | ---- | ----------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| name          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -      | `false` |
+| value         | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                  | -      | `false` |
+| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                  | -      | `false` |
+| checkedColor  | -    | _&nbsp;&nbsp;string<br/>_                                                                                   | -      | `false` |
+| labelPosition | -    | _&nbsp;&nbsp;string<br/>_                                                                                   | -      | `false` |
+| labelDisabled | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                  | -      | `false` |
+| shape         | -    | _&nbsp;&nbsp;"round"&nbsp;&brvbar;&nbsp;"square"<br/>_                                                      | -      | `false` |
+| iconSize      | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                         | -      | `false` |
+| children      | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -      | `false` |
+| renderIcon    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -      | `false` |
+| onChange      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
 
 ### CheckboxGroupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/checkbox.d.ts)
 
-| 参数      | 说明 | 类型                                                          | 默认值 | 必填    |
-| --------- | ---- | ------------------------------------------------------------- | ------ | ------- |
-| max       | -    | _&nbsp;&nbsp;number<br/>_                                     | -      | `false` |
-| value     | -    | _&nbsp;&nbsp;Array<any><br/>_                                 | -      | `false` |
-| disabled  | -    | _&nbsp;&nbsp;boolean<br/>_                                    | -      | `false` |
-| direction | -    | _&nbsp;&nbsp;"horizontal"&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | -      | `false` |
-| children  | -    | _&nbsp;&nbsp;Array<ReactNode><br/>_                           | -      | `false` |
-| onChange  | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
+| 参数      | 说明 | 类型                                                                                                                                 | 默认值 | 必填    |
+| --------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
+| max       | -    | _&nbsp;&nbsp;number<br/>_                                                                                                            | -      | `false` |
+| value     | -    | _&nbsp;&nbsp;Array<any><br/>_                                                                                                        | -      | `false` |
+| disabled  | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | -      | `false` |
+| direction | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"horizontal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | -      | `false` |
+| children  | -    | _&nbsp;&nbsp;Array<ReactNode><br/>_                                                                                                  | -      | `false` |
+| onChange  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                          | -      | `false` |

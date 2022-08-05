@@ -109,20 +109,20 @@ function Demo() {
 
 ### RateProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/rate.d.ts)
 
-| 参数          | 说明 | 类型                                                      | 默认值 | 必填    |
-| ------------- | ---- | --------------------------------------------------------- | ------ | ------- |
-| value         | -    | _&nbsp;&nbsp;number<br/>_                                 | -      | `false` |
-| defaultValue  | -    | _&nbsp;&nbsp;number<br/>_                                 | -      | `false` |
-| readonly      | -    | _&nbsp;&nbsp;boolean<br/>_                                | -      | `false` |
-| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                | -      | `false` |
-| allowHalf     | -    | _&nbsp;&nbsp;boolean<br/>_                                | -      | `false` |
-| size          | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_       | -      | `false` |
-| icon          | -    | _&nbsp;&nbsp;string<br/>_                                 | -      | `false` |
-| voidIcon      | -    | _&nbsp;&nbsp;string<br/>_                                 | -      | `false` |
-| color         | -    | _&nbsp;&nbsp;string<br/>_                                 | -      | `false` |
-| voidColor     | -    | _&nbsp;&nbsp;string<br/>_                                 | -      | `false` |
-| disabledColor | -    | _&nbsp;&nbsp;string<br/>_                                 | -      | `false` |
-| count         | -    | _&nbsp;&nbsp;number<br/>_                                 | -      | `false` |
-| gutter        | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_       | -      | `false` |
-| touchable     | -    | _&nbsp;&nbsp;boolean<br/>_                                | -      | `false` |
-| onChange      | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
+| 参数          | 说明 | 类型                                                                                                    | 默认值 | 必填    |
+| ------------- | ---- | ------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| value         | -    | _&nbsp;&nbsp;number<br/>_                                                                               | -      | `false` |
+| defaultValue  | -    | _&nbsp;&nbsp;number<br/>_                                                                               | -      | `false` |
+| readonly      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                              | -      | `false` |
+| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                              | -      | `false` |
+| allowHalf     | -    | _&nbsp;&nbsp;boolean<br/>_                                                                              | -      | `false` |
+| size          | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                     | -      | `false` |
+| icon          | -    | _&nbsp;&nbsp;string<br/>_                                                                               | -      | `false` |
+| voidIcon      | -    | _&nbsp;&nbsp;string<br/>_                                                                               | -      | `false` |
+| color         | -    | _&nbsp;&nbsp;string<br/>_                                                                               | -      | `false` |
+| voidColor     | -    | _&nbsp;&nbsp;string<br/>_                                                                               | -      | `false` |
+| disabledColor | -    | _&nbsp;&nbsp;string<br/>_                                                                               | -      | `false` |
+| count         | -    | _&nbsp;&nbsp;number<br/>_                                                                               | -      | `false` |
+| gutter        | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                     | -      | `false` |
+| touchable     | -    | _&nbsp;&nbsp;boolean<br/>_                                                                              | -      | `false` |
+| onChange      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |

@@ -217,20 +217,20 @@ function Demo() {
 
 ### DropdownItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)
 
-| 参数       | 说明                 | 类型                                                                                 | 默认值 | 必填    |
-| ---------- | -------------------- | ------------------------------------------------------------------------------------ | ------ | ------- |
-| value      | 对应菜单选项的值     | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                  | -      | `false` |
-| title      | 未选择时候的按钮标题 | _&nbsp;&nbsp;ReactNode<br/>_                                                         | -      | `false` |
-| disabled   | 是否禁用             | _&nbsp;&nbsp;boolean<br/>_                                                           | -      | `false` |
-| titleClass | 标题元素的 class     | _&nbsp;&nbsp;string<br/>_                                                            | -      | `false` |
-| options    | 所有选项             | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_                                         | -      | `true`  |
-| popupStyle | 弹出层的样式         | _&nbsp;&nbsp;React.CSSProperties<br/>_                                               | -      | `false` |
-| onOpen     | 展开下拉项触发       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                              | -      | `false` |
-| onOpened   | 展开下拉项完成时触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                              | -      | `false` |
-| onClose    | 关闭下拉项触发       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                              | -      | `false` |
-| onClosed   | 展开下拉项完成触发   | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                              | -      | `false` |
-| onChange   | 点击选项触发         | _&nbsp;&nbsp;(value?:&nbsp;number&nbsp;&brvbar;&nbsp;string)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| children   | 传入的子元素         | _&nbsp;&nbsp;React.ReactNode&nbsp;&brvbar;&nbsp;React.ReactNode[]<br/>_              | -      | `false` |
+| 参数       | 说明                 | 类型                                                                                                                                                                                                                   | 默认值 | 必填    |
+| ---------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| value      | 对应菜单选项的值     | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                    | -      | `false` |
+| title      | 未选择时候的按钮标题 | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                           | -      | `false` |
+| disabled   | 是否禁用             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                             | -      | `false` |
+| titleClass | 标题元素的 class     | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                              | -      | `false` |
+| options    | 所有选项             | _&nbsp;&nbsp;Array<DropdownMenuOption><br/>_                                                                                                                                                                           | -      | `true`  |
+| popupStyle | 弹出层的样式         | _&nbsp;&nbsp;React.CSSProperties<br/>_                                                                                                                                                                                 | -      | `false` |
+| onOpen     | 展开下拉项触发       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                | -      | `false` |
+| onOpened   | 展开下拉项完成时触发 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                | -      | `false` |
+| onClose    | 关闭下拉项触发       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                | -      | `false` |
+| onClosed   | 展开下拉项完成触发   | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                | -      | `false` |
+| onChange   | 点击选项触发         | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value?:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+| children   | 传入的子元素         | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;React.ReactNode<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;React.ReactNode[]<br/>_                                                                         | -      | `false` |
 
 ### 菜单下拉选项 DropdownMenuOption [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)
 
@@ -245,4 +245,4 @@ function Demo() {
 通过 ref 获取到的方法如下
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
-| toggle | 控制展开/收起菜单栏，传入参数 show 是否展开，options.immediate 是否不需要动画 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;show?:&nbsp;boolean,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;{&nbsp;immediate:&nbsp;boolean&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| toggle | 控制展开/收起菜单栏，传入参数 show 是否展开，options.immediate 是否不需要动画 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;show?:&nbsp;boolean,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;immediate:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |

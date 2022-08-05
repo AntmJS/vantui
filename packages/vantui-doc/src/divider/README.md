@@ -105,12 +105,12 @@ function Demo() {
 
 ### DividerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/divider.d.ts)
 
-| 参数            | 说明 | 类型                                                                             | 默认值 | 必填    |
-| --------------- | ---- | -------------------------------------------------------------------------------- | ------ | ------- |
-| dashed          | -    | _&nbsp;&nbsp;boolean<br/>_                                                       | -      | `false` |
-| hairline        | -    | _&nbsp;&nbsp;boolean<br/>_                                                       | -      | `false` |
-| contentPosition | -    | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"center"&nbsp;&brvbar;&nbsp;"right"<br/>_ | -      | `false` |
-| fontSize        | -    | _&nbsp;&nbsp;string<br/>_                                                        | -      | `false` |
-| borderColor     | -    | _&nbsp;&nbsp;string<br/>_                                                        | -      | `false` |
-| textColor       | -    | _&nbsp;&nbsp;string<br/>_                                                        | -      | `false` |
-| children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                     | -      | `false` |
+| 参数            | 说明 | 类型                                                                                                                                                                           | 默认值 | 必填    |
+| --------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
+| dashed          | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                     | -      | `false` |
+| hairline        | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                     | -      | `false` |
+| contentPosition | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"left"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"center"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"right"<br/>_ | -      | `false` |
+| fontSize        | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                      | -      | `false` |
+| borderColor     | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                      | -      | `false` |
+| textColor       | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                      | -      | `false` |
+| children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                   | -      | `false` |

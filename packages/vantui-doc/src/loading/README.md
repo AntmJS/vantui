@@ -62,11 +62,11 @@ function Demo() {
 
 ### LoadingProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/loading.d.ts)
 
-| 参数     | 说明 | 类型                                                       | 默认值 | 必填    |
-| -------- | ---- | ---------------------------------------------------------- | ------ | ------- |
-| color    | -    | _&nbsp;&nbsp;string<br/>_                                  | -      | `false` |
-| vertical | -    | _&nbsp;&nbsp;boolean<br/>_                                 | -      | `false` |
-| type     | -    | _&nbsp;&nbsp;"spinner"&nbsp;&brvbar;&nbsp;"circular"<br/>_ | -      | `false` |
-| size     | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_        | -      | `false` |
-| textSize | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_        | -      | `false` |
-| children | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                         | -      | `false` |
+| 参数     | 说明 | 类型                                                                                                                              | 默认值 | 必填    |
+| -------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| color    | -    | _&nbsp;&nbsp;string<br/>_                                                                                                         | -      | `false` |
+| vertical | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                        | -      | `false` |
+| type     | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"spinner"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"circular"<br/>_ | -      | `false` |
+| size     | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | -      | `false` |
+| textSize | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | -      | `false` |
+| children | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                | -      | `false` |
