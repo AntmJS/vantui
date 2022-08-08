@@ -16,7 +16,7 @@ import { DatetimePicker } from '@antmjs/vantui'
 
 ### 选择完整时间
 
-`value` 为Date对象。
+`value` 为 Date 对象。
 
 ```jsx
 function Demo() {
@@ -49,7 +49,7 @@ function Demo() {
 
 ### 选择日期（年月日）
 
-`value` 为Date对象，通过传入 `formatter` 函数对选项文字进行处理。
+`value` 为 Date 对象，通过传入 `formatter` 函数对选项文字进行处理。
 
 ```jsx
 function Demo() {
@@ -95,7 +95,7 @@ function Demo() {
 
 ### 选择日期（年月）
 
-`value` 为Date对象。
+`value` 为 Date 对象。
 
 ```jsx
 function Demo() {
@@ -201,7 +201,7 @@ function Demo() {
 
 | 参数        | 说明                                   | 类型                                                                                                                                                                                                                                                                                                                                         | 默认值   | 必填    |
 | ----------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| value       | 选项的值                               | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                                                                                                                                          | null     | `false` |
+| value       | 选项的值                               | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Date<br/>_                                                                                                                                                                    | null     | `false` |
 | filter      | 对选项数组进行过滤，实现自定义时间间隔 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;)[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;(number&nbsp;&brvbar;&nbsp;string)[]<br/>_ | -        | `false` |
 | type        | 时间类型，不建议动态修改               | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"datetime"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"date"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"year-month"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"time"<br/>_                                                                                                       | datetime | `false` |
 | showToolbar | 是否显示顶部栏                         | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                   | true     | `false` |
