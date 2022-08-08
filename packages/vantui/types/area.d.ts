@@ -1,9 +1,7 @@
 import { FunctionComponent } from 'react'
 import { PickerProps, IPickerInstance } from './picker'
 
-export interface AreaProps
-  extends Omit<PickerProps, 'columns' | 'onChange'>,
-    FunctionComponent {
+export interface AreaProps extends Omit<PickerProps, 'columns' | 'onChange'> {
   showToolbar?: boolean
   value?: string
   areaList?: {
