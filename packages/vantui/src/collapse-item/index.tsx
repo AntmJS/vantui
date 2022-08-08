@@ -69,6 +69,7 @@ export function CollapseItem(
   }, [])
 
   const refDom = useRef(null)
+  const refRandomClass = useRef(`selector-${`${Math.random()}`.slice(-8)}`)
 
   const updateExpanded = useCallback(() => {
     if (!parent) {
@@ -81,7 +82,7 @@ export function CollapseItem(
       ? value === currentName
       : (value || []).some((name: any) => name === currentName)
     if (expanded !== state.expanded) {
-      setContentAnimate(null, expanded, ref.current.mounted, setState, refDom)
+      setContentAnimate(`.${refRandomClass.current}`, expanded, ref.current.mounted, setState, refDom)
     }
     setState((state) => {
       return {
@@ -155,7 +156,7 @@ export function CollapseItem(
         }
         animation={state.animation}
       >
-        <View className="van-collapse-item__content content-class" ref={refDom}>
+        <View className={`van-collapse-item__content content-class ${refRandomClass.current}`} ref={refDom}>
           {children}
         </View>
       </View>

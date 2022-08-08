@@ -72,13 +72,13 @@ function useAnimation(expanded: any, mounted: any, height: any, setState: any) {
   }
 }
 export function setContentAnimate(
-  context: any,
+  selector: any,
   expanded: any,
   mounted: any,
   setState: any,
   ref?: any,
 ) {
-  getRect(context, '.van-collapse-item__content')
+  getRect(null, selector)
     .then((rect: any) => {
       return process.env.TARO_ENV === 'h5'
         ? ref.current.clientHeight
