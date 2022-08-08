@@ -16,7 +16,7 @@ import { DatetimePicker } from '@antmjs/vantui'
 
 ### 选择完整时间
 
-`value` 为时间戳。
+`value` 为Date对象。
 
 ```jsx
 function Demo() {
@@ -49,7 +49,7 @@ function Demo() {
 
 ### 选择日期（年月日）
 
-`value` 为时间戳，通过传入 `formatter` 函数对选项文字进行处理。
+`value` 为Date对象，通过传入 `formatter` 函数对选项文字进行处理。
 
 ```jsx
 function Demo() {
@@ -95,7 +95,7 @@ function Demo() {
 
 ### 选择日期（年月）
 
-`value` 为时间戳。
+`value` 为Date对象。
 
 ```jsx
 function Demo() {

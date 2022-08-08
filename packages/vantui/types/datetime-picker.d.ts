@@ -16,7 +16,7 @@ export interface DatetimePickerProps
    * @description 选项的值
    * @default null
    */
-  value?: string | number
+  value?: string | number | Date
   /**
    * @description 对选项数组进行过滤，实现自定义时间间隔
    */
