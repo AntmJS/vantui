@@ -126,15 +126,15 @@ function Demo() {
 
 ### CollapseProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)
 
-| 参数      | 说明 | 类型                                                                                 | 默认值 | 必填    |
-| --------- | ---- | ------------------------------------------------------------------------------------ | ------ | ------- |
-| value     | -    | _&nbsp;&nbsp;Array<string&nbsp;&brvbar;&nbsp;number>&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
-| accordion | -    | _&nbsp;&nbsp;boolean<br/>_                                                           | -      | `false` |
-| border    | -    | _&nbsp;&nbsp;boolean<br/>_                                                           | -      | `false` |
-| children  | -    | _&nbsp;&nbsp;Array<ReactNode>&nbsp;&brvbar;&nbsp;ReactNode<br/>_                     | -      | `false` |
-| onChange  | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_                        | -      | `false` |
-| onOpen    | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_                        | -      | `false` |
-| onClose   | -    | _&nbsp;&nbsp;(event:&nbsp;ITouchEvent)&nbsp;=>&nbsp;any<br/>_                        | -      | `false` |
+| 参数      | 说明 | 类型                                                                                                                                                                                                                                                      | 默认值 | 必填    |
+| --------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| value     | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Array<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;><br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
+| accordion | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                | -      | `false` |
+| border    | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                | -      | `false` |
+| children  | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Array<ReactNode><br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ReactNode<br/>_                                                                                                                   | -      | `false` |
+| onChange  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                               | -      | `false` |
+| onOpen    | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                               | -      | `false` |
+| onClose   | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                               | -      | `false` |
 
 ### CollapseItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)
 

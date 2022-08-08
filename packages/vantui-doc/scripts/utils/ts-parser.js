@@ -190,7 +190,7 @@ attr:${tsValue}
     {
       parser: 'typescript',
       semi: false,
-      printWidth: 48,
+      printWidth: 26,
     },
   )
     .replace('type temp = {\n', '')

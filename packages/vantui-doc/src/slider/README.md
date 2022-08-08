@@ -122,20 +122,20 @@ function Demo() {
 
 ### SliderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/slider.d.ts)
 
-| 参数          | 说明 | 类型                                                                               | 默认值 | 必填    |
-| ------------- | ---- | ---------------------------------------------------------------------------------- | ------ | ------- |
-| range         | -    | _&nbsp;&nbsp;boolean<br/>_                                                         | -      | `false` |
-| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                                         | -      | `false` |
-| activeColor   | -    | _&nbsp;&nbsp;string<br/>_                                                          | -      | `false` |
-| inactiveColor | -    | _&nbsp;&nbsp;string<br/>_                                                          | -      | `false` |
-| max           | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
-| min           | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
-| step          | -    | _&nbsp;&nbsp;number<br/>_                                                          | -      | `false` |
-| value         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>_                              | -      | `false` |
-| barHeight     | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                | -      | `false` |
-| vertical      | -    | _&nbsp;&nbsp;boolean<br/>_                                                         | -      | `false` |
-| onDrag        | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SliderEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onChange      | -    | _&nbsp;&nbsp;(e:&nbsp;ITouchEvent&nbsp;&&nbsp;SliderEvent)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onDragStart   | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                            | -      | `false` |
-| onDragEnd     | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                            | -      | `false` |
-| renderButton  | -    | _&nbsp;&nbsp;(value:&nbsp;number)&nbsp;=>&nbsp;React.ReactNode<br/>_               | -      | `false` |
+| 参数          | 说明 | 类型                                                                                                                                                                | 默认值 | 必填    |
+| ------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| range         | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                          | -      | `false` |
+| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                          | -      | `false` |
+| activeColor   | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                           | -      | `false` |
+| inactiveColor | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                           | -      | `false` |
+| max           | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                           | -      | `false` |
+| min           | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                           | -      | `false` |
+| step          | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                           | -      | `false` |
+| value         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>_                                                                                                               | -      | `false` |
+| barHeight     | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                 | -      | `false` |
+| vertical      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                          | -      | `false` |
+| onDrag        | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SliderEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+| onChange      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SliderEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+| onDragStart   | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                             | -      | `false` |
+| onDragEnd     | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                             | -      | `false` |
+| renderButton  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;React.ReactNode<br/>_                                                  | -      | `false` |

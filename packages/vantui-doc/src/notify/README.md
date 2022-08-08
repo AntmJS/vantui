@@ -141,18 +141,18 @@ function Demo() {
 
 ### NotifyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notify.d.ts)
 
-| 参数             | 说明 | 类型                                                  | 默认值 | 必填    |
-| ---------------- | ---- | ----------------------------------------------------- | ------ | ------- |
-| selector         | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| message          | -    | _&nbsp;&nbsp;ReactNode<br/>_                          | -      | `false` |
-| background       | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| type             | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| color            | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| duration         | -    | _&nbsp;&nbsp;number<br/>_                             | -      | `false` |
-| zIndex           | -    | _&nbsp;&nbsp;number<br/>_                             | -      | `false` |
-| safeAreaInsetTop | -    | _&nbsp;&nbsp;boolean<br/>_                            | -      | `false` |
-| top              | -    | _&nbsp;&nbsp;number<br/>_                             | -      | `false` |
-| id               | -    | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| onClick          | -    | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
-| onOpened         | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_               | -      | `false` |
-| onClose          | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_               | -      | `false` |
+| 参数             | 说明 | 类型                                                                                                | 默认值 | 必填    |
+| ---------------- | ---- | --------------------------------------------------------------------------------------------------- | ------ | ------- |
+| selector         | -    | _&nbsp;&nbsp;string<br/>_                                                                           | -      | `false` |
+| message          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                        | -      | `false` |
+| background       | -    | _&nbsp;&nbsp;string<br/>_                                                                           | -      | `false` |
+| type             | -    | _&nbsp;&nbsp;string<br/>_                                                                           | -      | `false` |
+| color            | -    | _&nbsp;&nbsp;string<br/>_                                                                           | -      | `false` |
+| duration         | -    | _&nbsp;&nbsp;number<br/>_                                                                           | -      | `false` |
+| zIndex           | -    | _&nbsp;&nbsp;number<br/>_                                                                           | -      | `false` |
+| safeAreaInsetTop | -    | _&nbsp;&nbsp;boolean<br/>_                                                                          | -      | `false` |
+| top              | -    | _&nbsp;&nbsp;number<br/>_                                                                           | -      | `false` |
+| id               | -    | _&nbsp;&nbsp;string<br/>_                                                                           | -      | `false` |
+| onClick          | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+| onOpened         | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                             | -      | `false` |
+| onClose          | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                             | -      | `false` |
