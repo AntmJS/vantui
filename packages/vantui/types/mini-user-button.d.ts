@@ -22,4 +22,3 @@ export interface MiniUserButtonProps
 declare const MiniUserButton: FunctionComponent<MiniUserButtonProps>
 
 export { MiniUserButton }
-export default MiniUserButton

@@ -21,18 +21,4 @@ export interface NavBarProps extends StandardProps {
 
 declare const NavBar: FunctionComponent<NavBarProps>
 
-export interface MiniNavBarProps extends StandardProps {
-  homeUrl: string
-  buttonColor?: 'white' | 'black'
-  title?: string
-  fixed?: boolean
-  placeholder?: boolean
-  style?: string
-  border?: boolean
-  zIndex?: number
-  renderTitle?: ReactNode
-}
-
-declare const MiniNavBar: FunctionComponent<MiniNavBarProps>
-
-export { NavBar, MiniNavBar }
+export { NavBar }

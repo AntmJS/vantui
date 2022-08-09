@@ -15,4 +15,3 @@ export interface MiniPhoneButtonProps extends ButtonProps {
 declare const MiniPhoneButton: FunctionComponent<MiniPhoneButtonProps>
 
 export { MiniPhoneButton }
-export default MiniPhoneButton

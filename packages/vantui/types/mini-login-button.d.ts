@@ -8,4 +8,3 @@ export interface MiniLoginButtonProps extends ButtonProps {
 declare const MiniLoginButton: FunctionComponent<MiniLoginButtonProps>
 
 export { MiniLoginButton }
-export default MiniLoginButton

@@ -7,7 +7,7 @@ import {
   getSystemInfoSync,
   getMenuButtonBoundingClientRect,
 } from '../common/utils'
-import { MiniNavBarProps } from '../../types/nav-bar'
+import { MiniNavBarProps } from '../../types/mini-nav-bar'
 import * as computed from './wxs'
 
 export function MiniNavBar(props: MiniNavBarProps) {
