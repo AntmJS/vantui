@@ -245,60 +245,21 @@ pxTransform(10)
 
 ### 兼容 Vant Weapp 以及 兼容项目配置的尺寸设置为非 750 导致组件库的样式偏大偏小问题
 
-Vant Weapp 要求 pxTransform 的 selectorBlackList 要设置成 [/van-/]以免组件被转换成 rpx 之后缩小一倍。而 vantui 组件默认适配的 rpx，所以尺寸都是按照 750 的设计稿比例转换过的，但是类名和 Vant Weapp 是一致的，所以设置 selectorBlackList: [/van-/] 也会影响到 vantui 使其组件视觉上看去放大了一倍。针对这个问题，以下配置可以解决这个问题。同时也能兼容项目配置的尺寸设置为非 750 导致组件库的样式偏大偏小问题
+[参考 Taro 配置](https://docs.taro.zone/docs/next/config-detail#designwidth)
 
 ```js
-// 这个不用安装，taro已经装过了，直接require就好了
-const pxtransform = require('postcss-pxtransform')
-const config = {
-  mini: {
-    webpackChain(chain) {
-      const lessRule = chain.module.rules.get('less')
-      const lessRuleCfg = {
-        test: /@antmjs[\\/]vantui(.+?)\.less$/,
-        oneOf: [
-          {
-            use: [],
-          },
-        ],
-      }
-      lessRule.toConfig().oneOf[0].use.map((use) => {
-        if (/postcss-loader/.test(use.loader)) {
-          const newUse = {
-            loader: use.loader,
-            options: {
-              sourceMap: use.options.sourceMap,
-              postcssOptions: {
-                plugins: [],
-              },
-            },
-          }
-          use.options.postcssOptions.plugins.map((xitem) => {
-            if (xitem.postcssPlugin === 'postcss-pxtransform') {
-              newUse.options.postcssOptions.plugins.push(
-                pxtransform({
-                  platform: process.env.TARO_ENV,
-                  designWidth: 750,
-                  deviceRatio: {
-                    640: 2.34 / 2,
-                    750: 1,
-                    828: 1.81 / 2,
-                  },
-                  selectorBlackList: [],
-                }),
-              )
-            } else {
-              newUse.options.postcssOptions.plugins.push(xitem)
-            }
-          })
-          lessRuleCfg.oneOf[0].use.push({ ...newUse })
-        } else {
-          lessRuleCfg.oneOf[0].use.push({ ...use })
-        }
-      })
-      chain.module.rule('vantuiLess').merge(lessRuleCfg)
-      lessRule.exclude.clear().add(/@antmjs[\\/]vantui/)
-    },
+config = {
+  designWidth(input) {
+    if (input.file.replace(/\\+/g, '/').indexOf('@antmjs/vantui') > -1) {
+      return 750
+    }
+    return 375
+  },
+  deviceRatio: {
+    640: 2.34 / 2,
+    750: 1,
+    828: 1.81 / 2,
+    375: 2 / 1,
   },
 }
 ```

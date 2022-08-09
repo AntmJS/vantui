@@ -1,5 +1,8 @@
 module.exports = {
   extends: './node_modules/@antmjs/eslint/index.js',
+  parserOptions: {
+    warnOnUnsupportedTypeScriptVersion: false,
+  },
   settings: {
     react: {
       createClass: 'createReactClass', // Regex for Component Factory to use,
