@@ -8,7 +8,7 @@ import { ButtonProps } from './button'
 import { PopupProps } from './popup'
 export interface DialogProps
   extends StandardProps,
-    Omit<PopupProps, 'onClose'>,
+    Omit<PopupProps, 'onClose' | 'children'>,
     Omit<ButtonProps, 'children'> {
   show?: boolean
   title?: ReactNode
@@ -42,7 +42,7 @@ export interface DialogProps
   showConfirmButton?: boolean
   showCancelButton?: boolean
   closeOnClickOverlay?: boolean
-  confirmButtonOpenType?: TaroButtonProps.openType
+  confirmButtonOpenType?: TaroButtonProps.OpenType
   renderTitle?: ReactNode
 }
 

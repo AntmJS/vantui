@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import MarkdownBox from '../components/markdown/index.js'
 
 export default function Docs() {
-  const [md, setMd] = React.useState('')
+  const [md, setMd] = useState('')
 
-  React.useEffect(() => {
+  useEffect(() => {
     mdAction()
     window.addEventListener('hashchange', mdAction)
   }, [])

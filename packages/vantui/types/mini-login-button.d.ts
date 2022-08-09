@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { ButtonProps } from './button.d'
 export interface MiniLoginButtonProps extends ButtonProps {
-  onFail: (error: Taro.General.CallbackResult) => void
+  onFail: (error: TaroGeneral.CallbackResult) => void
   onGetLoginCode: (loginInfo: Taro.login.SuccessCallbackResult) => void
 }
 

@@ -157,7 +157,7 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
 
   const setDays = useCallback(
     function () {
-      const days = []
+      const days: any[] = []
       const startDate = new Date(date || 0)
       const year = startDate.getFullYear()
       const month = startDate.getMonth()

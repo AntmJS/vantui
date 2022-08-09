@@ -15,7 +15,7 @@ export default function Page(props) {
 
   const { path } = useRouter()
   useEffect(() => {
-    if (process.env.LIBRARY_ENV === 'react') {
+    if (process.env.TARO_ENV === 'h5') {
       document.body.scrollTop = document.documentElement.scrollTop = 0
     } else {
       pageScrollTo({

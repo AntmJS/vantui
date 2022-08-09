@@ -13,7 +13,7 @@ export interface MiniUserButtonProps
   ) => void
   onFail: (
     error:
-      | Taro.General.CallbackResult
+      | TaroGeneral.CallbackResult
       | BaseEventOrig<TaroButtonProps.onGetUserInfoEventDetail>,
   ) => void
   desc?: string

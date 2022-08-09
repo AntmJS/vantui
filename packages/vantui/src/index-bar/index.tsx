@@ -337,7 +337,7 @@ export function IndexBar(props: IndexBarProps) {
 export default IndexBar
 
 const genIndexList = () => {
-  const indexList = []
+  const indexList: any[] = []
   const charCodeOfA = 'A'.charCodeAt(0)
   for (let i = 0; i < 26; i++) {
     indexList.push(String.fromCharCode(charCodeOfA + i))

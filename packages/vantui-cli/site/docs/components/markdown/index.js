@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useMemo } from 'react'
 import hljs from 'highlight.js'
 import MarkdownIt from 'markdown-it'
 import './index.less'
@@ -33,11 +33,11 @@ function copyAction() {
 }
 
 export default function MarkdownBox(props) {
-  React.useEffect(function () {
+  useEffect(function () {
     copyAction()
   }, [])
 
-  const mdRender = React.useMemo(
+  const mdRender = useMemo(
     function () {
       // eslint-disable-next-line react/prop-types
       return markdownCardWrapper(md.render(props.children))

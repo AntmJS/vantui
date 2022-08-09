@@ -27,7 +27,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    // "isolatedModules": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "jsx": "react-jsx",
@@ -37,6 +37,16 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["*.js", "*.d.ts", "src", "config/**/*.js", "test"],
+  "include": [
+    "src",
+    "config",
+    "types",
+    "babel.config.js",
+    "eslint.config.js",
+    "lint-staged.config.js",
+    "stylelint.config.js",
+    "_antm.config.js",
+    "antm.config.js"
+  ],
   "compileOnSave": false
 }

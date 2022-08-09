@@ -11,7 +11,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": false,
     "noImplicitReturns": true,
-    // "noImplicitAny": false,
+    "noImplicitAny": false,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     /** module */
@@ -27,7 +27,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    // "isolatedModules": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     // declaration和allowJs不能同时设为true

@@ -42,6 +42,7 @@ export function Circle(props: CircleProps) {
     fill,
     layerColor = '#ffffff',
     color = '#1989fa',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     type = '',
     strokeWidth = 4,
     clockwise = true,
@@ -96,7 +97,7 @@ export function Circle(props: CircleProps) {
       // @ts-ignore
       Current.page = { path: `page-${state.unitag}` }
     }
-    let ctx = null
+    let ctx: any = null
     try {
       ctx = createCanvasContext(state.unitag)
     } catch (error) {}

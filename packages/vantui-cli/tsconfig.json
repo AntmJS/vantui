@@ -25,13 +25,12 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     // declaration和allowJs不能同时设为true
     // "allowJs": true,
     "jsx": "react-jsx",
-    "skipLibCheck": false,
+    "skipLibCheck": true,
 
     "target": "ES2019",
     "declaration": true

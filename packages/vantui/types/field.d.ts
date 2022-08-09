@@ -40,7 +40,7 @@ export interface FieldProps extends StandardProps {
   isLink?: boolean
   leftIcon?: string
   rightIcon?: string
-  autosize?: boolean | Normal.IAnyObject
+  autosize?: boolean | Record<string, any>
   required?: boolean
   iconClass?: string
   clickable?: boolean

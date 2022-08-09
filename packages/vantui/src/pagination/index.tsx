@@ -46,7 +46,7 @@ export function Pagination(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const computedPages = (_currentPage?: number, _countRef?: number) => {
     if (mode == 'simple') return []
-    const items = []
+    const items: any[] = []
     const pageCount = _countRef || countRef // 总的页面数量
     const pageSize = Number(showPageSize) // 展示的页面个数
     const _current = _currentPage || Number(currentPage) // 当前页

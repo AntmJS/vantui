@@ -13,7 +13,7 @@ export interface CardProps extends StandardProps {
   lazyLoad?: boolean
   thumbLink?: string
   originPrice?: string
-  thumbMode?: keyof ImageProps.mode
+  thumbMode?: keyof ImageProps.Mode
   currency?: string
   renderFooter?: ReactNode
   renderBottom?: ReactNode

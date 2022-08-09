@@ -101,7 +101,7 @@ function Index(
   }, [])
 
   const limitDateRange = useCallback(
-    function (date, minDateD = null, maxDateD = null) {
+    function (date, minDateD: any = null, maxDateD: any = null) {
       minDateD = minDateD || minDate
       maxDateD = maxDateD || maxDate
       if (compareDay(date, minDateD) === -1) {
@@ -116,7 +116,7 @@ function Index(
   )
 
   const getInitialDate = useCallback(
-    function (defaultDate = null) {
+    function (defaultDate: any = null) {
       const now = getToday().getTime()
       if (type === 'range') {
         if (!Array.isArray(defaultDate)) {

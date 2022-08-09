@@ -72,7 +72,7 @@ export function getMonthEndDay(year: number, month: number) {
   return 32 - new Date(year, month - 1, 32).getDate()
 }
 export function getMonths(minDate: any, maxDate: any) {
-  const months = []
+  const months: any[] = []
   const cursor = new Date(minDate)
   cursor.setDate(1)
   do {

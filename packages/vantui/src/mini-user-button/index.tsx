@@ -27,7 +27,7 @@ export function MiniUserButton(props: MiniUserButtonProps): JSX.Element {
   const getUserProfile = function () {
     TaroGetUserProfile({
       desc: desc || '用于快速登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success(res) {
+      success(res: any) {
         onGetUserInfo(res)
       },
       fail(error) {
@@ -38,7 +38,7 @@ export function MiniUserButton(props: MiniUserButtonProps): JSX.Element {
 
   const getTTUserInfo = function () {
     TaroGetUserInfo({
-      success(res) {
+      success(res: any) {
         onGetUserInfo(res)
       },
       fail(error) {

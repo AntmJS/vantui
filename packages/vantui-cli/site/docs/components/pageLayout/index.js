@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Route, Switch, HashRouter, Redirect, Link } from 'react-router-dom'
 import classNames from 'classnames'
 import Page from '../../pages/index.js'
@@ -7,14 +7,14 @@ import './index.less'
 const preCls = 'antmui-site-pageLayout'
 
 export default function PageLayout() {
-  const [hash, setHash] = React.useState(window.location.hash)
-  const [iframeTop, setIframeTop] = React.useState(84)
+  const [hash, setHash] = useState(window.location.hash)
+  const [iframeTop, setIframeTop] = useState(84)
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('hashchange', function () {
       setHash(window.location.hash)
     })
-    window.addEventListener('scroll', function (e) {
+    window.addEventListener('scroll', function () {
       this.requestIdleCallback(() => {
         if (this.pageYOffset < 74 && this.pageYOffset > 30) {
           setIframeTop(84 - this.pageYOffset)
@@ -31,10 +31,11 @@ export default function PageLayout() {
     e.stopPropagation()
   }
 
-  const mobileUrl = React.useMemo(
+  const mobileUrl = useMemo(
     function () {
       return getMobileUrl()
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [hash],
   )
 

@@ -72,7 +72,7 @@ function Index(
   )
 
   const toggle = useCallback(
-    function (show?: any, options = {}) {
+    function (show?: any, options: any = {}) {
       if (typeof show !== 'boolean') {
         show = !showPopup
       }

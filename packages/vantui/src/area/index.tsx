@@ -179,7 +179,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
 
     const provinceList = _getList('province')
     const cityList = _getList('city', code.slice(0, 2))
-    const stack = []
+    const stack: any[] = []
     const indexes: any[] = []
 
     if (columnsNum >= 1) {

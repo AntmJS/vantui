@@ -39,7 +39,7 @@ export function TreeSelect(props: TreeSelectProps) {
   )
 
   const _onClickNav = useCallback(
-    ({ detail: index }) => {
+    ({ detail: index }: any) => {
       const item = items[index]
       if (!item?.disabled) {
         onClickNav?.({ detail: { index } })

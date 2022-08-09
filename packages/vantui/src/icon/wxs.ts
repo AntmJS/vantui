@@ -6,7 +6,7 @@ function isImage(name: any) {
 }
 
 function rootClass(data: any) {
-  const classes = []
+  const classes: any[] = []
 
   if (data.classPrefix != null) {
     classes.push(data.classPrefix)

@@ -20,7 +20,7 @@ function compareMonth(date1: any, date2: any) {
 }
 
 function getMonths(minDate: any, maxDate: any) {
-  var months = []
+  var months: any[] = []
   var cursor = new Date(minDate)
 
   cursor.setDate(1)

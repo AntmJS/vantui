@@ -14,7 +14,7 @@ function getDayStyle(
   color: any,
   firstDayOfWeek: any,
 ) {
-  const style = []
+  const style: any[] = []
   const current = new Date(date).getDay() || 7
   const offset =
     current < firstDayOfWeek

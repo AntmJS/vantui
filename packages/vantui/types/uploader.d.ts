@@ -19,7 +19,7 @@ export interface UploaderProps extends StandardProps {
   showUpload?: boolean
   previewImage?: boolean
   previewFullImage?: boolean
-  imageFit?: keyof ImageProps.mode | undefined
+  imageFit?: keyof ImageProps.Mode | undefined
   uploadIcon?: string
   sizeType?: Array<string>
   capture?: string | Array<string>

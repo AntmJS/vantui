@@ -69,7 +69,7 @@ function Demo() {
 | lazyLoad          | -    | _&nbsp;&nbsp;boolean<br/>_                    | -      | `false` |
 | thumbLink         | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
 | originPrice       | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
-| thumbMode         | -    | _&nbsp;&nbsp;keyof&nbsp;ImageProps.mode<br/>_ | -      | `false` |
+| thumbMode         | -    | _&nbsp;&nbsp;keyof&nbsp;ImageProps.Mode<br/>_ | -      | `false` |
 | currency          | -    | _&nbsp;&nbsp;string<br/>_                     | -      | `false` |
 | renderFooter      | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
 | renderBottom      | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |

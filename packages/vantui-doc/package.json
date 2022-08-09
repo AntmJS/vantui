@@ -27,5 +27,8 @@
   "browserslist": [
     "Chrome >= 51",
     "iOS >= 10"
-  ]
+  ],
+  "dependencies": {
+    "babel-loader": "^8.2.5"
+  }
 }

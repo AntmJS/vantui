@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
+const npath = require('path')
 const pkg = require('../package.json')
 const miniChain = require('./webpack/miniChain')
 const h5Chain = require('./webpack/h5Chain')
@@ -16,10 +16,11 @@ function getVersion() {
 }
 
 const version = getVersion()
+console.log(version)
 
-let config = {
+const config = {
   projectName: pkg.name,
-  date: '2021-07-15',
+  date: '2022-3-14',
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
@@ -27,21 +28,41 @@ let config = {
     828: 1.81 / 2,
   },
   sourceRoot: 'src',
-  outputRoot: path.join(
-    process.cwd() + process.env.TARO_ENV === 'h5'
-      ? 'build'
-      : process.env.TARO_ENV,
-  ),
+  outputRoot: process.env.TARO_ENV === 'h5' ? 'build' : process.env.TARO_ENV,
   env: {
     API_ENV: JSON.stringify(process.env.API_ENV),
     WATCHING: JSON.stringify(process.env.WATCHING || 'false'),
     DEPLOY_VERSION: JSON.stringify(version),
   },
   alias: {
-    '@': path.resolve(process.cwd(), 'src'),
-    react: path.resolve(process.cwd(), './node_modules/react'),
+    '@babel/runtime-corejs3/regenerator': npath.resolve(
+      process.cwd(),
+      './node_modules/regenerator-runtime',
+    ),
+    '@tarojs': npath.resolve(process.cwd(), './node_modules/@tarojs'),
+    react: npath.resolve(process.cwd(), './node_modules/react'),
+    'react-dom': npath.resolve(process.cwd(), './node_modules/react-dom'),
+    '@': npath.resolve(process.cwd(), 'src'),
+  },
+  defineConstants: {
+    // 解决Recoil报错问题
+    Window: 'function () {}',
+  },
+  copy: {
+    patterns: [],
+    options: {},
+  },
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      // 暂时不要开启，开启会报错
+      enable: false,
+    },
   },
   framework: 'react',
+  cache: {
+    enable: false, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+  },
   mini: {
     webpackChain(chain) {
       miniChain(chain)
@@ -49,18 +70,21 @@ let config = {
     lessLoaderOption: {
       lessOptions: {
         modifyVars: {
-          hack: `true; @import "${path.join(
+          hack: `true; @import "${npath.join(
             process.cwd(),
-            'src/style/index.less',
+            'src/styles/index.less',
           )}";${
             process.env.TARO_ENV === 'kwai'
-              ? `@import "${path.join(process.cwd(), 'src/style/kwai.less')}";`
+              ? `@import "${npath.join(
+                  process.cwd(),
+                  'src/styles/kwai.less',
+                )}";`
               : ''
           }`,
         },
       },
       // 适用于全局引入样式
-      // additionalData: "@import '~/src/style/index.less';",
+      // additionalData: "@import '~/src/styles/index.less';",
     },
     postcss: {
       autoprefixer: {
@@ -93,57 +117,51 @@ let config = {
         chain.mode('production')
         chain.devtool('hidden-source-map')
         chain.output
-          .path(path.resolve('./build'))
-          .filename('assets/js/[name]_[hash].js')
-          .chunkFilename('assets/js/chunk/[name]_[hash].js')
+          .path(npath.resolve('./build'))
+          .filename('assets/js/[name].js')
+          .chunkFilename('assets/js/chunk/[name].js')
           .publicPath(publicPath.replace('VERSION', version))
       } else {
         chain.mode('development')
         chain.devtool('eval-cheap-module-source-map')
         chain.output
-          .path(path.resolve('./build'))
-          .filename('assets/js/[name]_[hash].js')
-          .chunkFilename('assets/js/chunk/[name]_[hash].js')
+          .path(npath.resolve('./build'))
+          .filename('assets/js/[name].js')
+          .chunkFilename('assets/js/chunk/[name].js')
           .publicPath(publicPath.replace('VERSION', version))
       }
       if (process.env.WATCHING === 'true') {
         chain.output.publicPath(`/`)
       }
     },
+    esnextModules: [/@antmjs[\\/]vantui/],
+    lessLoaderOption: {
+      lessOptions: {
+        modifyVars: {
+          // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
+          hack: `true; @import "${npath.join(
+            process.cwd(),
+            'src/styles/index.less',
+          )}";`,
+        },
+      },
+    },
     router: {
-      mode: 'hash',
-      // 'pages/empty/index'
+      mode: 'browser',
     },
     devServer: {
       port: 10086,
       hot: true,
       host: '0.0.0.0',
       historyApiFallback: true,
-      disableHostCheck: true,
       headers: {
         'Access-Control-Allow-Origin': '*', // 表示允许跨域
       },
     },
-    esnextModules: [/@antmjs[\\/]vantui/],
-    proxy: {},
-    lessLoaderOption: {
-      lessOptions: {
-        modifyVars: {
-          hack: `true; @import "${path.join(
-            process.cwd(),
-            'src/style/index.less',
-          )}";`,
-        },
-      },
-      // 适用于全局引入样式
-      // additionalData: "@import '~/src/style/index.less';",
-    },
     postcss: {
       autoprefixer: {
         enable: true,
-        config: {
-          // autoprefixer 配置项
-        },
+        config: {},
       },
       pxtransform: {
         enable: true,
@@ -158,15 +176,15 @@ let config = {
       },
     },
     miniCssExtractPluginOption: {
-      ignoreOrder: true,
-      filename: 'assets/css/[name]_[hash].css',
-      chunkFilename: 'assets/css/chunk/[name]_[hash].css',
+      ignoreOrder: false,
+      filename: 'assets/css/[name].css',
+      chunkFilename: 'assets/css/chunk/[name].css',
     },
   },
   plugins: [
+    [npath.join(process.cwd(), 'config/webpack/configPlugin')],
     '@tarojs/plugin-platform-alipay-dd',
-    '@tarojs/plugin-platform-kwai',
-    [path.join(process.cwd(), 'config/webpack/configPlugin')],
+    ['@tarojs/plugin-platform-kwai'],
   ],
 }
 

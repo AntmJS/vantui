@@ -6,7 +6,7 @@ import { ButtonProps } from './button.d'
 export interface MiniPhoneButtonProps extends ButtonProps {
   onFail: (
     error:
-      | Taro.General.CallbackResult
+      | TaroGeneral.CallbackResult
       | BaseEventOrig<TaroButtonProps.onGetPhoneNumberEventDetail>,
   ) => void
   onGetPhone: (phoneInfo: TaroButtonProps.onGetPhoneNumberEventDetail) => void
