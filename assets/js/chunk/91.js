@@ -1,0 +1,1 @@
+"use strict";(self.webpackJsonp=self.webpackJsonp||[]).push([[91],{"36170":function(n,r,t){t.r(r),t.d(r,{"taro_root_portal_core":function(){return c}});var e=t(47109),c=function(){function o(n){(0,e.r)(this,n)}return o.prototype.componentDidLoad=function(){console.error("H5 暂不支持 RootPortal 组件！")},o.prototype.render=function(){return(0,e.h)(e.H,null)},o}()}}]);
