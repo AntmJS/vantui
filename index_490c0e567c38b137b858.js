@@ -1,4 +1,4 @@
-/*! For license information please see index_8398084bf20208f0b22d.js.LICENSE.txt */
+/*! For license information please see index_490c0e567c38b137b858.js.LICENSE.txt */
 ;(self.webpackChunkvantui_doc = self.webpackChunkvantui_doc || []).push([
   [826],
   {
@@ -54581,13 +54581,11 @@
           },
           [e.children],
         )
-        return React.createElement(
+        return r.createElement(
           'div',
           { className: 'docs-markdown-com' },
-          React.createElement(Ct, { style: { top: 220 } }),
-          React.createElement('div', {
-            dangerouslySetInnerHTML: { __html: t },
-          }),
+          r.createElement(Ct, { style: { top: 220 } }),
+          r.createElement('div', { dangerouslySetInnerHTML: { __html: t } }),
         )
       }
       function Rt() {
@@ -54605,10 +54603,10 @@
               : e.routers.find((e) => e.path === n)
           document.title = r.title
         }
-        return React.createElement(
-          React.Fragment,
+        return r.createElement(
+          r.Fragment,
           null,
-          e ? React.createElement(Nt, null, e) : '',
+          e ? r.createElement(Nt, null, e) : '',
         )
       }
       var Ot = 'antmui-site-pageLayout'
@@ -54674,36 +54672,36 @@
           },
           [a],
         )
-        return React.createElement(
+        return r.createElement(
           Z,
           null,
-          React.createElement(
+          r.createElement(
             'div',
             { className: ''.concat(Ot, '-container') },
             null !== (e = __vantui_base__) && void 0 !== e && e.simulator
-              ? React.createElement('iframe', {
+              ? r.createElement('iframe', {
                   className: ''.concat(Ot, '-example'),
                   src: l,
                   style: { top: o },
                 })
               : '',
-            React.createElement(
+            r.createElement(
               'div',
               { className: ''.concat(Ot, '-header') },
-              React.createElement(
+              r.createElement(
                 'div',
                 { className: ''.concat(Ot, '-header-left') },
-                React.createElement('img', {
+                r.createElement('img', {
                   className: ''.concat(Ot, '-logo'),
                   src: __vantui_base__.logo,
                 }),
-                React.createElement(
+                r.createElement(
                   'div',
                   { className: ''.concat(Ot, '-uiname') },
                   __vantui_base__.title,
                 ),
               ),
-              React.createElement(
+              r.createElement(
                 'div',
                 { className: ''.concat(Ot, '-links') },
                 (
@@ -54711,22 +54709,22 @@
                     ? void 0
                     : t.links) || []
                 ).map((e, t) =>
-                  React.createElement(
+                  r.createElement(
                     'div',
                     {
                       className: ''.concat(Ot, '-links-item'),
                       onClick: () => window.open(e.url),
                       key: 'link#item'.concat(t),
                     },
-                    React.createElement('img', { src: e.logo }),
+                    r.createElement('img', { src: e.logo }),
                   ),
                 ),
               ),
             ),
-            React.createElement(
+            r.createElement(
               'div',
               { className: ''.concat(Ot, '-body') },
-              React.createElement(
+              r.createElement(
                 'div',
                 {
                   className: ''.concat(Ot, '-menu'),
@@ -54742,19 +54740,19 @@
                     ? void 0
                     : n.nav) || []
                 ).map((e, t) =>
-                  React.createElement(
+                  r.createElement(
                     'div',
                     {
                       className: ''.concat(Ot, '-menu-class'),
                       key: ''.concat(t, 'menuClass'),
                     },
-                    React.createElement(
+                    r.createElement(
                       'div',
                       { className: ''.concat(Ot, '-menu-class-title') },
                       e.title,
                     ),
                     e.items.map((e, t) =>
-                      React.createElement(
+                      r.createElement(
                         re,
                         {
                           key: ''.concat(t, 'menuItem'),
@@ -54771,19 +54769,19 @@
                   ),
                 ),
               ),
-              React.createElement(
+              r.createElement(
                 'div',
                 { className: ''.concat(Ot, '-main') },
-                React.createElement(
+                r.createElement(
                   K,
                   null,
-                  React.createElement(V, { path: '/', exact: !0, to: '/home' }),
+                  r.createElement(V, { path: '/', exact: !0, to: '/home' }),
                   (__vantui_base__.routers || []).map((e, t) =>
-                    React.createElement(j, {
+                    r.createElement(j, {
                       exact: !0,
                       path: '/'.concat(e.path),
                       key: ''.concat(e.path).concat(t),
-                      component: (e) => React.createElement(Rt, e),
+                      component: (e) => r.createElement(Rt, e),
                     }),
                   ),
                 ),
