@@ -37,11 +37,8 @@ const config = {
   alias: {
     '@babel/runtime-corejs3/regenerator': npath.resolve(
       process.cwd(),
-      './node_modules/regenerator-runtime',
+      '../../node_modules/regenerator-runtime',
     ),
-    '@tarojs': npath.resolve(process.cwd(), './node_modules/@tarojs'),
-    react: npath.resolve(process.cwd(), './node_modules/react'),
-    'react-dom': npath.resolve(process.cwd(), './node_modules/react-dom'),
     '@': npath.resolve(process.cwd(), 'src'),
   },
   defineConstants: {

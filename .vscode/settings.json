@@ -17,7 +17,7 @@
     "source.fixAll.stylelint": true
   },
   "eslint.options": {
-    "configFile": "eslint.config.js"
+    "overrideConfigFile": "eslint.config.js"
   },
   "stylelint.enable": true,
   "stylelint.configFile": "stylelint.config.js"

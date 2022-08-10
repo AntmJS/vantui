@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "temptaro",
-  "description": "小程序模版",
+  "projectname": "mini-project",
+  "description": "",
   "setting": {
     "urlCheck": true,
     "es6": false,

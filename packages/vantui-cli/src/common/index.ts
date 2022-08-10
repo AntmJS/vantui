@@ -3,6 +3,7 @@ import { sep, join } from 'path'
 // eslint-disable-next-line import/default
 import fse from 'fs-extra'
 import { SRC_DIR, getVantConfig } from './constant.js'
+// eslint-disable-next-line import/no-named-as-default-member
 const { lstatSync, existsSync, readdirSync, readFileSync, outputFileSync } = fse
 
 export const EXT_REGEXP = /\.\w+$/

@@ -4,6 +4,11 @@
   "version": "1.9.18",
   "description": "",
   "scripts": {
+    "eslint": "",
+    "stylelint": "",
+    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
+    "test:watch": "",
+    "test": "",
     "dev": "node ./scripts/ts-to-md && npx antm-vantui-cli docs --mode development",
     "mdcode-create": "npx antm-vantui-cli mdcode --mode create",
     "mdcode-watch": "npx antm-vantui-cli mdcode --mode watch",
@@ -14,26 +19,29 @@
   },
   "author": "sanshao",
   "license": "MIT",
-  "devDependencies": {
-    "@antmjs/vantui-cli": "1.9.18",
-    "@vue/compiler-sfc": "^3.0.0",
-    "ast-to-markdown": "^1.0.0",
-    "cross-env": "^7.0.3",
-    "glob": "^7.2.0",
-    "markdown-to-ast": "^6.0.3",
-    "ora": "5.4.1",
-    "prettier": "^2.4.1"
-  },
   "browserslist": [
     "Chrome >= 51",
     "iOS >= 10"
   ],
-  "dependencies": {
+  "peerDependencies": {
+    "@antmjs/vantui-cli": "^1.9.18"
+  },
+  "devDependencies": {
+    "@antmjs/eslint": "^1.20.4",
+    "@antmjs/stylelint": "^1.20.4",
+    "@antmjs/vantui-cli": "^1.9.18",
+    "@vue/compiler-sfc": "^3.0.0",
+    "ast-to-markdown": "^1.0.0",
     "babel-loader": "^8.2.5",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "glob": "^7.2.0",
     "less": "^4.1.3",
     "less-loader": "^11.0.0",
+    "markdown-to-ast": "^6.0.3",
+    "ora": "5.4.1",
     "postcss-loader": "^7.0.1",
+    "prettier": "^2.7.1",
     "raw-loader": "^4.0.2"
   }
 }

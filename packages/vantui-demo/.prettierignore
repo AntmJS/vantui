@@ -16,6 +16,10 @@
 .stylelintignore
 LICENSE
 
+src/actions/rapper/*
+!src/actions/rapper/commonTypes
+!src/actions/rapper/types
+src/actions/swagger
 node_modules
 src/iconfont.less
 coverage
@@ -23,8 +27,8 @@ dist
 build
 weapp
 alipay
+kwai
 swan
 tt
 qq
 h5
-kwai

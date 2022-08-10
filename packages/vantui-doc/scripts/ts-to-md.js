@@ -51,7 +51,7 @@ function createMd(obj, compName) {
           ? item['title__']
           : Dkey
       }` +
-      ` [[详情]](${GITHUB_TYPESHS}/${compName}.d.ts)   
+      ` [[详情]](${GITHUB_TYPESHS}/${compName}.d.ts)
 `
     mdRes += `${item['description__'] || ''}
 `

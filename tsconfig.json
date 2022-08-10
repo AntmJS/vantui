@@ -44,10 +44,12 @@
     "packages/*/*.js",
     "packages/*/*.d.ts",
     "packages/**/src",
+    "packages/**/scripts",
+    "packages/**/docs",
     "packages/**/lib",
     "packages/**/types",
-    "packages/**/__test__",
-    "packages/vantui-demo/config"
+    "packages/**/config",
+    "packages/**/__test__"
   ],
   "compileOnSave": false
 }

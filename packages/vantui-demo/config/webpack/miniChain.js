@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-commonjs */
 const MiniFixPlugin = require('@antmjs/plugin-mini-fix')
-const GlobalFixPlugin = require('./globalFixPlugin')
+const GlobalFixPlugin = require('@antmjs/plugin-global-fix')
 
 module.exports = function (chain) {
   // add @antmjs/plugin-mini-fix and @antmjs/mini-fix

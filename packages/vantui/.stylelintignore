@@ -1,9 +1,9 @@
 *.log
 *.json
-*.css
-*.less
-*.scss
-*.html
+*.js
+*.jsx
+*.ts
+*.tsx
 *.md
 *.lock
 *.swp
@@ -28,6 +28,9 @@ src/actions/rapper/*
 src/actions/swagger/*
 !src/actions/swagger/utils
 node_modules
+src/iconfont.less
+lib
+es
 coverage
 dist
 build

@@ -85,9 +85,9 @@
     }
   },
   "scripts": {
-    "eslint": "npx eslint -c eslint.config.js '**/*.{js,jsx,ts,tsx}' && npx tsc -p tsconfig.json --skipLibCheck",
-    "stylelint": "npx stylelint --aei --config stylelint.config.js '**/*.{css,less}'",
-    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
+    "eslint": "npx lerna run eslint",
+    "stylelint": "npx lerna run stylelint",
+    "prettier": "npx lerna run prettier",
     "clear-all": "rimraf packages/*/node_modules",
     "bootstrap:ci": "npx lerna bootstrap --npm-client=yarn",
     "bootstrap:lerna": "npx lerna bootstrap",
@@ -100,48 +100,26 @@
     "test": "npx lerna run test",
     "prepare": "husky install"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "@antmjs/babel-preset": "^1.17.5",
-    "@antmjs/eslint": "^1.17.5",
-    "@antmjs/stylelint": "^1.17.5",
+    "@antmjs/eslint": "^1.20.4",
+    "@antmjs/stylelint": "^1.20.4",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@octokit/core": "^3.4.0",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-image": "^2.1.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "@rollup/plugin-typescript": "^8.2.5",
-    "@types/node": "^16.3.2",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
     "all-contributors-cli": "^6.20.0",
     "commitizen": "^4.2.4",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.27.0",
-    "execa": "^5.0.0",
-    "fs-extra": "^10.0.0",
-    "globby": "^11.0.3",
-    "husky": "^7.0.0",
-    "lerna": "^4.0.0",
-    "lint-staged": "^11.0.0",
+    "eslint": "^8.21.0",
+    "husky": "^7.0.1",
+    "lerna": "^5.4.0",
+    "lint-staged": "^11.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.48.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-copy-watch": "^0.0.1",
-    "rollup-plugin-styles": "^3.14.1",
-    "run-s": "^0.0.0",
     "stylelint": "^13.13.1",
-    "typescript": "^4.7.4",
-    "use-deep-compare-effect": "^1.8.1"
-  },
-  "devDependencies": {
-    "@antmjs/warning": "^1.17.7"
+    "typescript": "^4.7.4"
   }
 }

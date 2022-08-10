@@ -74,10 +74,12 @@ export function SidebarItem(
       {...others}
     >
       <View className="van-sidebar-item__text">
-        {(badge != null || info !== null || dot) && (
-          <VanInfo dot={dot} info={badge != null ? badge : info}></VanInfo>
-        )}
-        {title ? <View>{title}</View> : renderTitle}
+        <>
+          {(badge != null || info !== null || dot) && (
+            <VanInfo dot={dot} info={badge != null ? badge : info}></VanInfo>
+          )}
+          {title ? <View>{title}</View> : renderTitle}
+        </>
       </View>
     </View>
   )

@@ -11,7 +11,7 @@ npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'
 cd ./../vantui-demo
 
 pwd
-npm run real:h5Doc
+yarn real:h5Doc
 
 cd  ./../vantui-doc
 

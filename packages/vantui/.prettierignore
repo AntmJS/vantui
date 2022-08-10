@@ -1,14 +1,8 @@
 *.log
-*.json
-*.css
-*.less
-*.scss
-*.html
 *.md
 *.lock
 *.swp
 
-.github
 .cache
 .temp
 .idea
@@ -25,9 +19,11 @@ LICENSE
 src/actions/rapper/*
 !src/actions/rapper/commonTypes
 !src/actions/rapper/types
-src/actions/swagger/*
-!src/actions/swagger/utils
+src/actions/swagger
 node_modules
+src/iconfont.less
+es
+lib
 coverage
 dist
 build

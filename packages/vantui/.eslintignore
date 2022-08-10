@@ -27,6 +27,8 @@ src/actions/rapper/*
 !src/actions/rapper/types
 src/actions/swagger/*
 !src/actions/swagger/utils
+lib
+es
 node_modules
 coverage
 dist

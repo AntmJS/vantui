@@ -11,7 +11,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": false,
     "noImplicitReturns": true,
-    // "noImplicitAny": false,
+    "noImplicitAny": false,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     /** module */
@@ -38,15 +38,15 @@
     }
   },
   "include": [
-    "src",
-    "config",
-    "types",
-    "babel.config.js",
-    "eslint.config.js",
-    "lint-staged.config.js",
-    "stylelint.config.js",
-    "_antm.config.js",
-    "antm.config.js"
+    "./src",
+    "./config",
+    "./types",
+    "./babel.config.js",
+    "./eslint.config.js",
+    "./lint-staged.config.js",
+    "./stylelint.config.js",
+    "./_antm.config.js",
+    "./antm.config.js"
   ],
   "compileOnSave": false
 }

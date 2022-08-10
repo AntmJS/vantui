@@ -1,102 +1,31 @@
-## Taro 快速开发模版
+## Taro 项目模版
 
-### 选型
+目前支持微信、支付宝、抖音、快手、百度小程序；支持 H5
 
-Taro + React + Less
+### 代码规范
 
-### 特性
+- 默认集成了 prettier eslint stylelint 解决编码规范问题
+- 默认集成了 commitlint commitizen 解决 commit 规范问题
+- 默认集成了 husky lint-staged 解决了 commit 之前自动校验代码规范
 
-- 非 UI 全局缓存能力
-- UI 全局缓存能力
+### 开发效率
 
-### 规范
+- 使用 Unite 库以空间换时间的方案加快研发速度，同时保证 TS 类型安全
+- action 层使用@antmjs/rapper 实现根据 TS 类型自动生成 action 逻辑，保证类型安全
+- action 层也可以使用 yarn swagger 自动根据服务端的 swagger api 自动生成 action 逻辑，保证类型安全
+- 自动埋点
+- 自动收集异常
+- 自动处理异常
+- 自动处理 pullDownloadRefresh
+- 快速使用自定义导航
+- 快速支持事件抖动
+- 二次封装了部分频繁使用的组件
 
-Commitlint + Husky + lint-staged + Prettier + Eslint + Stylelint + TSC
+## 使用
 
-- Eslint: @typescript-eslint + import + react + react-hooks + prettier
-- Stylelint: stylelint-config-standard + stylelint-config-prettier
-
-### Vscode
-
-Prettier - Code formatter + Eslint + stylelint
-
-### 工程使用
-
-git clone git@github.com:AntmJS/temptaro.git
-
-rm -rf .git
-
-git init
-
-yarn install
-
-npx husky install
-
-git add .
-
-git commit -m 'feat: 初始化'
-
-git remote add origin ...
-
-git push origin master
-
-### 应用变更
-
-project.weapp.json - projectname description
-
-project.tt.json - projectname description
-
-package.json - name description appId(环境对应 API_ENV) Taro 版本
-
-config/index.js - projectName date h5.webpackChain.publicPath
-
-src/app.config.ts - window.navigationBarTitleText
-
-src/utils/request/innerRequest/index.ts - statusCode 为 200 的判断依据返回是否和约定一致，其他均为失败
-
-src/components/container.tsx - MiniBar 的 homeUrl
-
-### 注意事项
-
-- 路径引用可以使用 '@/xxx'
-- 主题可以放在 src/style/index.less 下面
-- API_ENV: stable real pre dev
-
-### 执行顺序 useDidShow 优先于 useEffect 执行
-
-- app show
-- app launch
-
-- index com show
-- index page show
-- index com load
-- index page load
-
-- index com hide
-- index page hide
-
-- second com show
-- second page show
-- second com load
-- second page load
-
-- index com show
-- index pageshow
-
-- second page unload
-- second com unload
-
-### 已添加
-
-- Cache
-- Store
-- Monitor
-
-### 待完善
-
-- hack Taro API
-- Boundary Error
-- request loading error 结合 React
-- theme
-- action ts
-- 分页快速模版
+1. 将\_antm.config.js 改成 antm.config.js，更新 token 参数，gitignore 去掉 antm.config.js(需要的话)
+2. 执行 yarn rapper 自动生成 action 层代码(需要的话)
+3. 执行 yarn swagger 自动根据服务端 swagger api 生成 action 层代码(需要的话)
+4. 需要引入 iconfont 可以执行 yarn iconfont 会自动生成 src/iconfont.less
+5. yarn
+6. yarn watch:weapp(package.json 里面填写对应环境的 appId)

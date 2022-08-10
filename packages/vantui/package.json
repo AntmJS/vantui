@@ -40,20 +40,16 @@
     "UCAndroid >= 4.1"
   ],
   "scripts": {
+    "eslint": "npx eslint -c eslint.config.js '**/*.{js,jsx,ts,tsx}' && npx tsc -p tsconfig.json --skipLibCheck",
+    "stylelint": "npx stylelint --aei --config stylelint.config.js '**/*.{css,less}'",
+    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
     "iconfont": "npx antm-icon --font-family antmuifont --input-path https://at.alicdn.com/t/font_2744513_7eeet2akdo.css --output-path src/style/components/iconfont.less",
     "watch": "npx antm-vantui-cli watch",
     "build": "npx antm-vantui-cli build",
     "test:watch": "",
     "test": ""
   },
-  "peerDependencies": {
-    "@tarojs/components": ">=3.3.0",
-    "@tarojs/taro": ">=3.3.0",
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
-  },
   "dependencies": {
-    "@antmjs/iconfont": "1.18.1",
     "@babel/runtime-corejs3": "^7.14.7",
     "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
@@ -62,14 +58,15 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/vantui-cli": "1.9.18",
-    "@tarojs/components": "3.5.1",
-    "@tarojs/taro": "3.5.1",
+    "@antmjs/eslint": "^1.20.4",
+    "@antmjs/iconfont": "^1.20.4",
+    "@antmjs/stylelint": "^1.20.4",
+    "@tarojs/components": "^3.5.2",
+    "@tarojs/taro": "^3.5.2",
     "@types/lodash.flow": "^3.5.6",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup-plugin-styles": "^3.14.1"
+    "eslint": "^8.21.0",
+    "prettier": "^2.7.1",
+    "stylelint": "^13.13.1",
+    "typescript": "^4.7.4"
   }
 }

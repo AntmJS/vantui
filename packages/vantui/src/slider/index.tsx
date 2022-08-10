@@ -353,9 +353,11 @@ export function Slider(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {renderButton || (
-              <View className={utils.bem('slider__button')}></View>
-            )}
+            <>
+              {renderButton || (
+                <View className={utils.bem('slider__button')}></View>
+              )}
+            </>
           </View>
         )}
         {range && (
@@ -366,9 +368,11 @@ export function Slider(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {renderButton || (
-              <View className={utils.bem('slider__button')}></View>
-            )}
+            <>
+              {renderButton || (
+                <View className={utils.bem('slider__button')}></View>
+              )}
+            </>
           </View>
         )}
         {!range && (
@@ -379,9 +383,11 @@ export function Slider(props: SliderProps) {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            {renderButton || (
-              <View className={utils.bem('slider__button')}></View>
-            )}
+            <>
+              {renderButton || (
+                <View className={utils.bem('slider__button')}></View>
+              )}
+            </>
           </View>
         )}
       </View>

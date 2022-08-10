@@ -1,6 +1,0 @@
-{
-  "compileType": "miniprogram",
-  "miniprogramRoot": "./src",
-  "component2": true,
-  "enableAppxNg": true
-}

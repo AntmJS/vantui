@@ -9,10 +9,7 @@ import {
   ForwardedRef,
 } from 'react'
 import { nextTick } from '@tarojs/taro'
-import {
-  IPickerInstance,
-  PickerChangeEvents,
-} from 'packages/vantui/types/picker'
+import { IPickerInstance, PickerChangeEvents } from '../../types/picker'
 import VanPicker from '../picker/index'
 import {
   DatetimePickerProps,
