@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import hljs from 'highlight.js'
 import MarkdownIt from 'markdown-it'
 import './index.less'

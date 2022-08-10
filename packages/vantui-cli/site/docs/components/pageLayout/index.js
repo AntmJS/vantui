@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Route, Switch, HashRouter, Redirect, Link } from 'react-router-dom'
 import classNames from 'classnames'
 import Page from '../../pages/index.js'
