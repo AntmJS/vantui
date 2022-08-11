@@ -133,8 +133,12 @@ import icons from '@vant/icons'
 function Demo() {
   return (
     <>
-      {icons.basic.map((name) => (
-        <Col span="6" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+      {icons.basic.map((name, i) => (
+        <Col
+          key={i}
+          span="6"
+          style={{ paddingTop: '20px', paddingBottom: '20px' }}
+        >
           <Icon name={name} size="32px" />
           <Text>{name}</Text>
         </Col>
@@ -151,8 +155,9 @@ import icons from '@vant/icons'
 function Demo() {
   return (
     <>
-      {icons.outline.map((name) => (
+      {icons.outline.map((name, i) => (
         <Col
+          key={i}
           span="6"
           style={{ paddingTop: '20px', paddingBottom: '20px', height: '100px' }}
         >
@@ -172,8 +177,9 @@ import icons from '@vant/icons'
 function Demo() {
   return (
     <>
-      {icons.filled.map((name) => (
+      {icons.filled.map((name, i) => (
         <Col
+          key={i}
           span="6"
           style={{ paddingTop: '20px', paddingBottom: '20px', height: '100px' }}
         >

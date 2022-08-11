@@ -71,7 +71,7 @@ export function Grid(props: GridProps) {
       return res
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [others.children],
+    [others.children, columnNum],
   )
 
   return (

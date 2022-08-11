@@ -43,10 +43,14 @@ export function GridItem(
     [index, setChildrenInstance],
   )
 
-  useEffect(function () {
-    updateStyle()
+  useEffect(
+    function () {
+      updateStyle()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    [parentInstance.columnNum],
+  )
 
   const updateStyle = useCallback(
     function () {

@@ -120,22 +120,15 @@ function getMobileUrl() {
   const routers = __vantui_base__?.routers || []
   const current = window.location.hash.replace('#/', '')
 
-  let isHideSimulator = false
-  let defaultUrl = ''
-
+  let useDashboard = false
   for (let i = 0; i < routers.length; i++) {
     const item = routers[i]
-    if (item.isHideSimulator && item.path === current) {
-      isHideSimulator = true
-    }
-    if (!defaultUrl && !item.isHideSimulator) {
-      defaultUrl = item.path
+    if (typeof item.hideSimulator === 'boolean' && item.path === current) {
+      useDashboard = true
     }
   }
 
-  console.info(domain)
-
-  return isHideSimulator
-    ? `${domain}#/pages/${defaultUrl}/index`
+  return useDashboard
+    ? `${domain}#/pages/dashboard/index`
     : `${domain}#/pages/${current}/index`
 }
