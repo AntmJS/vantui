@@ -27,7 +27,7 @@
 
 - 进入 Taro 版工程 vantui-demo： cd packages/vantui-demo && yarn watch:weapp
 
-> vantui-demo 的 src 代码是 vantui-doc 的 src 里面的 markdown 代码自动编译过来的，vantui-demo 里面的组件库是通过软链接实现的，所以 vantui-demo 的代码只要启动起来就好了，不需要改动
+> vantui-demo 的 src 代码是 vantui-doc 的 src 里面的 markdown 代码自动编译过来的，vantui-demo 里面的组件库是通过软链接实现的，所以 vantui-demo 的代码只要启动起来就好了，不需要改动。只需要改动 packages/vantui/src 或者 packages/vantui-doc/src 里面的代码就行了。
 
 ### 使用模版快速开发 Taro 应用
 
