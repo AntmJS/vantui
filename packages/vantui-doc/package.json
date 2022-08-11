@@ -1,7 +1,7 @@
 {
   "name": "vantui-doc",
   "private": true,
-  "version": "1.9.18",
+  "version": "1.9.19",
   "description": "",
   "scripts": {
     "eslint": "",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@antmjs/eslint": "^1.20.4",
     "@antmjs/stylelint": "^1.20.4",
-    "@antmjs/vantui-cli": "^1.9.18",
+    "@antmjs/vantui-cli": "1.9.19",
     "@vue/compiler-sfc": "^3.0.0",
     "ast-to-markdown": "^1.0.0",
     "babel-loader": "^8.2.5",
