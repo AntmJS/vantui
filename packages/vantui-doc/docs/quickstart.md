@@ -19,7 +19,7 @@
 
 - Fork 代码：[VantUI](https://github.com/AntmJS/vantui)
 
-- 进入根目录：执行 yarn && yarn bootstrap
+- 进入根目录：执行 yarn && yarn bootstrap && yarn build
 
 - 进入组件库目录：cd packages/vantui && yarn watch
 
