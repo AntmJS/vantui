@@ -9,7 +9,7 @@
 .DS_Store
 
 CHANGELOG.md
-package-lock.json
 
 node_modules
 coverage
+src

@@ -50,9 +50,6 @@
     "UCAndroid >= 4.1"
   ],
   "scripts": {
-    "eslint": "npx eslint -c eslint.config.js '**/*.{js,jsx,ts,tsx}' && npx tsc -p tsconfig.json --skipLibCheck",
-    "stylelint": "npx stylelint --aei --config stylelint.config.js '**/*.{css,less}'",
-    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
     "iconfont": "npx antm-icon --input-path https://at.alicdn.com/t/xxxx.css --output-path src/iconfont.less",
     "watch:kwai": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type kwai --watch",
     "watch:swan": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type swan --watch",
@@ -84,11 +81,8 @@
     "test": ""
   },
   "author": "",
-  "peerDependencies": {
-    "@antmjs/vantui": "^1.9.18"
-  },
   "dependencies": {
-    "@antmjs/mini-fix": "^1.20.4",
+    "@antmjs/mini-fix": "^1.21.0",
     "@antmjs/vantui": "1.9.20",
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.5.3",
@@ -115,11 +109,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@antmjs/eslint": "^1.20.4",
-    "@antmjs/iconfont": "^1.20.4",
-    "@antmjs/plugin-global-fix": "^1.20.4",
-    "@antmjs/plugin-mini-fix": "^1.20.4",
-    "@antmjs/stylelint": "^1.20.4",
+    "@antmjs/iconfont": "^1.21.0",
+    "@antmjs/plugin-global-fix": "^1.21.0",
+    "@antmjs/plugin-mini-fix": "^1.21.0",
     "@babel/core": "^7.8.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
@@ -134,11 +126,7 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-preset-taro": "3.5.3",
     "cross-env": "^7.0.3",
-    "eslint": "^8.21.0",
-    "prettier": "^2.7.1",
     "react-refresh": "0.11.0",
-    "stylelint": "^13.13.1",
-    "typescript": "^4.7.4",
     "webpack": "5.69.0"
   }
 }

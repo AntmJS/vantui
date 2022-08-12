@@ -28,10 +28,7 @@
     "antmjs"
   ],
   "scripts": {
-    "eslint": "",
-    "stylelint": "",
-    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
-    "dev": "tsc --watch",
+    "watch": "tsc --watch",
     "build": "tsc",
     "test:watch": "",
     "test": ""
@@ -47,7 +44,7 @@
     "@types/prettier": "^2.6.1"
   },
   "dependencies": {
-    "@antmjs/babel-preset": "1.20.4",
+    "@antmjs/babel-preset": "1.21.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/plugin-transform-typescript": "^7.16.8",
@@ -85,12 +82,10 @@
     "postcss": "^8.3.11",
     "postcss-load-config": "^3.1.0",
     "postcss-loader": "^6.2.1",
-    "prettier": "^2.7.1",
     "raw-loader": "^4.0.2",
     "react-hot-toast": "^2.2.0",
     "react-router-dom": "^5.3.0",
     "release-it": "^14.11.6",
-    "transliteration": "^2.2.0",
-    "typescript": "^4.7.4"
+    "transliteration": "^2.2.0"
   }
 }

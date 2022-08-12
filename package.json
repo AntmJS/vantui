@@ -19,8 +19,8 @@
     "url": "https://github.com/AntmJS/vantui/issues/new"
   },
   "engines": {
-    "node": ">=12",
-    "npm": ">=6.4",
+    "node": ">=16",
+    "npm": ">=8",
     "yarn": ">=1.22"
   },
   "browserslist": [
@@ -85,9 +85,9 @@
     }
   },
   "scripts": {
-    "eslint": "npx lerna run eslint",
-    "stylelint": "npx lerna run stylelint",
-    "prettier": "npx lerna run prettier",
+    "eslint": "npx eslint -c eslint.config.js '**/*.{js,jsx,ts,tsx}' && npx tsc -p tsconfig.json --skipLibCheck",
+    "stylelint": "npx stylelint --aei --config stylelint.config.js '**/*.{css,less}'",
+    "prettier": "npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'",
     "clear-all": "rimraf packages/*/node_modules",
     "bootstrap:ci": "npx lerna bootstrap --npm-client=yarn",
     "bootstrap:lerna": "npx lerna bootstrap",
@@ -104,8 +104,8 @@
     "packages/*"
   ],
   "dependencies": {
-    "@antmjs/eslint": "^1.20.4",
-    "@antmjs/stylelint": "^1.20.4",
+    "@antmjs/eslint": "^1.21.0",
+    "@antmjs/stylelint": "^1.21.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "all-contributors-cli": "^6.20.0",
