@@ -46,7 +46,6 @@
     "packages/**/src",
     "packages/**/scripts",
     "packages/**/docs",
-    "packages/**/lib",
     "packages/**/types",
     "packages/**/config",
     "packages/**/__test__"

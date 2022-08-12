@@ -20,6 +20,7 @@ LICENSE
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/**/dest
 packages/vantui/lib
 packages/vantui/es
 packages/vantui-doc/lib

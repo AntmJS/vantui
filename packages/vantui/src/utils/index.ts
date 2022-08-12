@@ -1,7 +1,7 @@
 import type ANTMUI from '../../types/normal'
 import { useCallback, useRef, useState } from 'react'
 import { nextTick, createSelectorQuery, SelectorQuery } from '@tarojs/taro'
-import { isObject, isString } from './type'
+import { isNumber, isObject, isString } from './type'
 
 export function parse(str: string, decode = true): any {
   const params: any = {}
@@ -23,6 +23,9 @@ export function parse(str: string, decode = true): any {
       if (isString(vvalue)) {
         try {
           params[kkey] = JSON.parse(vvalue)
+          if (isNumber(params[kkey]) && params[kkey] + '' !== vvalue + '') {
+            params[kkey] = vvalue
+          }
         } catch (error) {
           params[kkey] = vvalue
         }
