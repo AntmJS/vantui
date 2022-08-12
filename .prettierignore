@@ -2,6 +2,8 @@
 *.lock
 *.swp
 
+
+.vs
 .cache
 .temp
 .idea

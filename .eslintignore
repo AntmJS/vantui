@@ -8,6 +8,7 @@
 *.lock
 *.swp
 
+.vs
 .github
 .cache
 .temp
