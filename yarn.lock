@@ -133,10 +133,10 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@antmjs/babel-preset@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/-/babel-preset-1.21.0.tgz#f0ea3344e19bb4949a7a6ce29c9d82df1067fd2b"
-  integrity sha512-pWDBrYt1AB2lkSoO98gP8U5BW/4xy27JJLCxbWW0qlS8xyPGz6WSKxrEMjG9ImF/S5BL7G2EMZztuSYG4ptSwA==
+"@antmjs/babel-preset@1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/babel-preset/-/babel-preset-1.21.2.tgz#4d972d356a760c1a3d0a5314b36f07f2f4187695"
+  integrity sha512-Lun5uGWSBYw6A6uwHUGCiNTdBQI5AQSfxtzrZaM4soGxdpe4Fxp5Yc7FY9YfVxrDLsO1RfxUOvpaVJD4hQkzFA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.14.5"
     "@babel/plugin-proposal-decorators" "^7.14.5"
@@ -150,9 +150,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/eslint/-/eslint-1.21.0.tgz#b995316c6164b1c3a038493e940b022e4d4aaa79"
-  integrity sha512-7j6+d/bQu1IZrHOTHq9AZ0MTscufZce2QG84jfF2YT4yDjH+sO/RSj3MI0rspojrqpHZB7ZoDb3akAy1iS4KOw==
+"@antmjs/eslint@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/eslint/-/eslint-1.21.2.tgz#34fa43ad894eac77e40da59f05bdc9f9c7e8f6f2"
+  integrity sha512-7HhZ15AnUTfmBvjmY4WtgkSGfPcAI/hPfUu6BZho4/TRQD8SwiG0BVZc/vKT12WYMPqu3IodXqiaBVhjWztJuQ==
   dependencies:
     "@graphql-eslint/eslint-plugin" "^3.10.7"
     "@typescript-eslint/eslint-plugin" "^5.33.0"
@@ -165,44 +166,53 @@
     eslint-plugin-react "^7.30.1"
     eslint-plugin-react-hooks "^4.6.0"
 
-"@antmjs/iconfont@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/iconfont/-/iconfont-1.21.0.tgz#77a47342e4a73f7683c4ff88292f58bef335da14"
-  integrity sha512-p++/hix0EePtzuGMunt5GLyP+yqh2aCPRNVdphV3ar9lLC6HD2849mUt+ylllKqvlbtIxAx7FNUH+ew6Y+3uRQ==
+"@antmjs/iconfont@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/iconfont/-/iconfont-1.21.2.tgz#709f6ac02f1ac5a8a510b8daf591b6ccc94704d6"
+  integrity sha512-MyIIL3P8MwADvdl0muW9HHLfBV/7orNUf8XWlO6ZotIFWrxokuPukfEvUraouw9uDbZt2J8ZuCJck7/kEs5H1g==
 
-"@antmjs/mini-fix@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/mini-fix/-/mini-fix-1.21.0.tgz#5930090e96200f9272b376b4258784dbcd810f5f"
-  integrity sha512-rS+x5zs8xrfRzOL0KHWhZ1k28V0cChLINfIWregEFG1fY7QSZ+T68cdiHxMrXOS7el/JNqQKCMpFXhOMnw9IvA==
+"@antmjs/mini-fix@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/mini-fix/-/mini-fix-1.21.2.tgz#0a101f8a6cd773cb433eee4ca0b03433e9a54197"
+  integrity sha512-x1lNs/WkjjZa7XwtsHgnPhvoo/k8S4RP2OPq//16PJR4GqRvulDqmKKvB0e0zCDQP+Yicv8yUEBavPeMiJHprg==
   dependencies:
-    "@antmjs/utils" "1.21.0"
+    "@antmjs/utils" "1.21.2"
     "@babel/runtime-corejs3" "^7.14.7"
 
-"@antmjs/plugin-global-fix@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/plugin-global-fix/-/plugin-global-fix-1.21.0.tgz#c31873a7e2ea33a2f9d61e1060547c68fa68f571"
-  integrity sha512-iwTA6Y+df/M+vC1m2BZwH3Wjx/4DTXZPeCPMzJX2Jdbwn7n5VsvPJ2GsQRq5zlzksdDujjpgtFh9Qb0MSV1fAA==
+"@antmjs/plugin-global-fix@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/plugin-global-fix/-/plugin-global-fix-1.21.2.tgz#de4afb2e049f3239a4ecb8ab896e66d9324a2309"
+  integrity sha512-NjBoSx8wkSVk80OKPG5RlJEnxVs+lLNgEvOlX+b6AoJhTscHBCL92hPkgm1c+grdj7fjVa5lQBRwEn9tOwrz4w==
 
-"@antmjs/plugin-mini-fix@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/plugin-mini-fix/-/plugin-mini-fix-1.21.0.tgz#036fafd36a8e84479de0e60cd04d55570540d9ac"
-  integrity sha512-oy2HqNT9MBwkfHAUxk+QG0B/UckGn9d0myDiS5ARbfhaYSOuel6bF7cF/KRD0dTbyuN3oaLIj1y9l+ThVE2MaA==
+"@antmjs/plugin-mini-fix@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/plugin-mini-fix/-/plugin-mini-fix-1.21.2.tgz#c9df5dfcda1218347a616005bb8a416794ce4fa3"
+  integrity sha512-UHCCsQ6MP4O+9tzZ0u+rxCvgeyrRVwcjXVqe4EqO9ukK0hYbg5gMt9ryoAIcQ+bLtR711v4dRTjD1MyfXDYdKQ==
 
-"@antmjs/stylelint@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/stylelint/-/stylelint-1.21.0.tgz#1dd9a058d10b5102fb8439b51e971da71bde58e4"
-  integrity sha512-U9aQ+S2HouirxbNhex61WGnbT0uxFfzf78fgVpwrv/gO/8MtgbekzGvZY9KwudANzef1XgL3LK6WLNOpbHQtOA==
+"@antmjs/stylelint@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/stylelint/-/stylelint-1.21.2.tgz#8a74b4ced359d4f17947cf8a2be752a2b8e9379f"
+  integrity sha512-8c66IzcBAZkz0d/p8FeB7DC/Y3/R9M52G+Z+DTjwzR0ukrYa6HJ2T+IMlBQALs1k2OKMrbpol+2ztDorCuP1RQ==
   dependencies:
     stylelint-config-prettier "^8.0.2"
     stylelint-config-standard "^22.0.0"
 
-
-"@antmjs/utils@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmmirror.com/@antmjs/utils/-/utils-1.21.0.tgz#96eec51406339b1657b69247dfe4f786f0593ddc"
-  integrity sha512-GV0X04/FkePneMNQvy/YTPBCzhfXAnZUo/NeTKHSuXVOs6jo0nh8ZSc1fLV03NJkLU7Mk+eO5dfVKfVqyYO0lA=
+"@antmjs/utils@1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/utils/-/utils-1.21.2.tgz#2f7355406ea7b747e0e198d6be4f1d64d837d81f"
+  integrity sha512-VtS3upOAa7Rve61gjEOejBBS6P4x1Ro9M85EsFlBkpSEe2e1lHKV5VoS2Cqmfdmqq9GBXdLT07htLiHXMWG0Dw==
   dependencies:
     "@babel/runtime-corejs3" "^7.14.7"
+
+"@antmjs/warning@^1.21.2":
+  version "1.21.2"
+  resolved "https://registry.npmmirror.com/@antmjs/warning/-/warning-1.21.2.tgz#53207aacf6ca7484e7275477863e1a5162b46e7b"
+  integrity sha512-WJ+TGtNzcjMVuKCdvWKGXUOt9AnUNSF5jtV5WWP9CwwpnND/hQFyZxC0iaws0LVvH8KX7RSyUHi0fmPQ+HquGw==
+  dependencies:
+    chalk "^4.1.2"
+    commander "^8.1.0"
+    glob "^7.2.0"
+    nodemailer "^6.6.3"
 
 "@ardatan/sync-fetch@0.0.1":
   version "0.0.1"
@@ -6312,9 +6322,9 @@ commander@^7.2.0:
   resolved "https://registry.npmmirror.com/commander/-/commander-7.2.0.tgz"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
-commander@^8.2.0, commander@^8.3.0:
+commander@^8.1.0, commander@^8.2.0, commander@^8.3.0:
   version "8.3.0"
-  resolved "https://registry.npmmirror.com/commander/-/commander-8.3.0.tgz"
+  resolved "https://registry.npmmirror.com/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
   integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
 
 commitizen@^4.0.3, commitizen@^4.2.4:
@@ -12649,6 +12659,11 @@ node-sass-tilde-importer@^1.0.2:
   integrity sha512-Swcmr38Y7uB78itQeBm3mThjxBy9/Ah/ykPIaURY/L6Nec9AyRoL/jJ7ECfMR+oZeCTVQNxVMu/aHU+TLRVbdg==
   dependencies:
     find-parent-dir "^0.3.0"
+
+nodemailer@^6.6.3:
+  version "6.7.8"
+  resolved "https://registry.npmmirror.com/nodemailer/-/nodemailer-6.7.8.tgz#9f1af9911314960c0b889079e1754e8d9e3f740a"
+  integrity sha512-2zaTFGqZixVmTxpJRCFC+Vk5eGRd/fYtvIR+dl5u9QXLTQWGIf48x/JXvo58g9sa0bU6To04XUv554Paykum3g==
 
 nopt@^5.0.0:
   version "5.0.0"

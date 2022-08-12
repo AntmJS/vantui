@@ -20,7 +20,11 @@ import { Tabbar, TabbarItem } from '@antmjs/vantui'
 function Demo() {
   const [active, setActive] = react.useState(0)
   return (
-    <Tabbar active={active} onChange={(e) => e.detail}>
+    <Tabbar
+      active={active}
+      onChange={(e) => setActive(e.detail)}
+      safeAreaInsetBottom={false}
+    >
       <TabbarItem icon="home-o">标签</TabbarItem>
       <TabbarItem icon="search">标签</TabbarItem>
       <TabbarItem icon="friends-o">标签</TabbarItem>
@@ -38,7 +42,7 @@ function Demo() {
 function Demo() {
   const [active, setActive] = react.useState('home')
   return (
-    <Tabbar active={active} onChange={(e) => e.detail}>
+    <Tabbar active={active} onChange={(e) => setActive(e.detail)}>
       <TabbarItem name="home" icon="home-o">
         标签
       </TabbarItem>
@@ -62,7 +66,7 @@ function Demo() {
 function Demo() {
   const [active, setActive] = react.useState('home')
   return (
-    <Tabbar active={active} onChange={(e) => e.detail}>
+    <Tabbar active={active} onChange={(e) => setActive(e.detail)}>
       <TabbarItem icon="home-o">标签</TabbarItem>
       <TabbarItem icon="search" dot>
         标签
@@ -95,7 +99,7 @@ function Demo() {
             style="width: 30px; height: 18px;"
           ></Image>
         }
-        renderIconactive={
+        renderIconActive={
           <Image
             src="https://img.yzcdn.cn/vant/user-active.png"
             mode="aspectFit"
@@ -122,7 +126,7 @@ function Demo() {
       activeColor="#07c160"
       inactiveColor="#000"
       active={active}
-      onChange={(e) => e.detail}
+      onChange={(e) => setActive(e.detail)}
     >
       <TabbarItem icon="home-o">标签</TabbarItem>
       <TabbarItem icon="search">标签</TabbarItem>
