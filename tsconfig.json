@@ -51,6 +51,5 @@
     "packages/**/config",
     "packages/**/__test__"
   ],
-  "exclude": ["packages/vantui-shop/*"],
   "compileOnSave": false
 }

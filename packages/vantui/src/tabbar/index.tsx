@@ -72,7 +72,6 @@ export function Tabbar(props: TabbarProps) {
   )
 
   const newChildren = useMemo(() => {
-    console.log('re render' + active)
     const tabs = parseTabList(children)
     return tabs.map((tab, index) => {
       return cloneElement(tab.node, {
