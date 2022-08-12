@@ -1,6 +1,7 @@
 *.log
 *.swp
 
+.vs
 .cache
 .temp
 .idea

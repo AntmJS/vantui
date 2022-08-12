@@ -5,6 +5,7 @@ import {
   cloneElement,
   useEffect,
   useCallback,
+  useMemo,
 } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import { View } from '@tarojs/components'
@@ -30,11 +31,8 @@ function parseTabList(children: React.ReactNode): any[] {
 }
 
 export function Tabbar(props: TabbarProps) {
-  const [state, setState]: any = useState({
-    height: 50,
-    current: 0,
-  })
-  const { height, current } = state
+  const [height, setHeight] = useState(50)
+  // const current = props.active != null ? props.active : currentActive
 
   const {
     active,
@@ -51,40 +49,12 @@ export function Tabbar(props: TabbarProps) {
     children,
     ...others
   } = props
+
   const _change = useCallback(
     function (data) {
-      setState((pre: any) => {
-        return {
-          ...pre,
-          current: data,
-        }
-      })
       onChange?.({ detail: data })
     },
     [onChange],
-  )
-  const tabs = parseTabList(children)
-  const newChildren: any = tabs.map((tab, index) => {
-    return cloneElement(tab.node, {
-      key: index,
-      index: index,
-      active: current,
-      activeColor: activeColor,
-      inactiveColor: inactiveColor,
-      onChange: _change,
-    })
-  })
-
-  useEffect(
-    function () {
-      setState((pre: any) => {
-        return {
-          ...pre,
-          current: active,
-        }
-      })
-    },
-    [active],
   )
 
   useEffect(
@@ -94,27 +64,26 @@ export function Tabbar(props: TabbarProps) {
       }
       nextTick(() => {
         getRect(null, '.van-tabbar').then((res: any) => {
-          setState((pre: any) => {
-            return {
-              ...pre,
-              height: res.height,
-            }
-          })
+          setHeight(res.height)
         })
       })
     },
     [fixed, placeholder],
   )
-  // useEffect(
-  //   function () {
-  //     if (!Array.isArray(children) || !children.length) {
-  //       return
-  //     }
-  //     children.forEach((child) => child.updateFromParent())
-  //   },
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   [active, activeColor, inactiveColor],
-  // )
+
+  const newChildren = useMemo(() => {
+    const tabs = parseTabList(children)
+    return tabs.map((tab, index) => {
+      return cloneElement(tab.node, {
+        key: index,
+        index: index,
+        active: active,
+        activeColor: activeColor,
+        inactiveColor: inactiveColor,
+        onChange: _change,
+      })
+    })
+  }, [active, activeColor, inactiveColor])
 
   return (
     <>
