@@ -34,6 +34,8 @@ jobs:
         run: yarn
       - name: bootstrap
         run: yarn run bootstrap:lerna
+      - name: build-cli
+        run: npx lerna run build --scope=@antmjs/vantui-cli
       - name: build
         run: yarn run build
       - name: lint
