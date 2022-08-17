@@ -45,6 +45,7 @@ import {} from '@/cache'
 import {} from '@/store'
 
 // 一切都是类型安全，一切都是自动提示 ！哈哈哈哈
+// Unite外的错误逻辑Unite无法捕获，Unite回调函数内的方法的异常Unite无法捕获
 export default Unite(
   {
     // 和UI相关的当前页面变量定义在state里，和UI无关的当前页面变量定义在和state同层，比如tempData1,tempData2

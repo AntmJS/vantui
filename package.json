@@ -104,9 +104,9 @@
     "packages/*"
   ],
   "dependencies": {
-    "@antmjs/eslint": "^1.21.2",
-    "@antmjs/stylelint": "^1.21.2",
-    "@antmjs/warning": "^1.21.2",
+    "@antmjs/eslint": "^1.21.3",
+    "@antmjs/stylelint": "^1.21.3",
+    "@antmjs/warning": "^1.21.3",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "all-contributors-cli": "^6.20.0",
