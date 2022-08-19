@@ -227,10 +227,12 @@ export function DatetimePicker(
       })
 
       return new Promise((resolve) => {
-        nextTick(() => {
-          picker.setValues(values)
-          resolve(`${value}`)
-        })
+        setTimeout(() => {
+          nextTick(() => {
+            picker.setValues(values)
+            resolve(`${value}`)
+          })
+        }, 6)
       })
     },
     [formatter, getPicker, type, updateColumns],
