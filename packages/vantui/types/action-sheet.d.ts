@@ -1,7 +1,9 @@
 import { FunctionComponent, ReactNode } from 'react'
 import { StandardProps, ButtonProps, ITouchEvent } from '@tarojs/components'
 import { PopupProps } from './popup'
-export interface ActionSheetItem extends Omit<ButtonProps, 'children'> {
+export interface ActionSheetItem
+  extends Omit<ButtonProps, 'children'>,
+    Record<string, any> {
   name?: ReactNode
   subname?: ReactNode
   color?: string
