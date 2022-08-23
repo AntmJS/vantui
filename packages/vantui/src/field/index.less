@@ -116,8 +116,12 @@
     pointer-events: none;
     .theme(color, '@field-placeholder-text-color');
 
+    -webkit-text-fill-color: @field-placeholder-text-color;
+
     &--error {
       .theme(color, '@field-error-message-color');
+
+      -webkit-text-fill-color: @field-error-message-color;
     }
   }
 
