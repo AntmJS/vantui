@@ -77,6 +77,8 @@
       background-color: transparent;
       opacity: 1;
       .theme(color, '@field-input-disabled-text-color');
+
+      -webkit-text-fill-color: @field-input-disabled-text-color; // 修复input textarea 在disabled情况下文字无法展示的问题
     }
 
     &--center {
