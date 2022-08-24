@@ -191,7 +191,7 @@ export function Field(props: FieldProps) {
 
   useEffect(
     function () {
-      setInnerValue((value || '') as string)
+      setInnerValue((value ?? '') as string)
     },
     [value],
   )
