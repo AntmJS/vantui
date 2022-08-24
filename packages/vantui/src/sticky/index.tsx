@@ -45,6 +45,7 @@ export function Sticky(props: StickyProps) {
         }
         return prev
       }, {})
+
       if (Object.keys(diff).length > 0) {
         setState((pre) => {
           return { ...pre, ...diff }
@@ -128,7 +129,6 @@ export function Sticky(props: StickyProps) {
     onMyScroll(e.scrollTop)
   })
 
-  // console.log()
   return (
     <View
       className={

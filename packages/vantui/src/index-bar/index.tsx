@@ -8,11 +8,12 @@ import {
   isValidElement,
   cloneElement,
 } from 'react'
-import { pageScrollTo, nextTick, usePageScroll } from '@tarojs/taro'
+import { pageScrollTo, nextTick } from '@tarojs/taro'
 import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
 import { getRect, getAllRect, isDef } from '../common/utils'
 import { GREEN } from '../common/color'
+import { usePageScroll } from './../mixins/page-scroll'
 import { IndexBarProps } from './../../types/index-bar'
 
 export function IndexBar(props: IndexBarProps) {
