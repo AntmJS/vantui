@@ -86,7 +86,7 @@ function Demo() {
 
 ### Row Props [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/col.d.ts)
 
-| 参数     | 说明                          | 类型                                                | 默认值 | 必填    |
-| -------- | ----------------------------- | --------------------------------------------------- | ------ | ------- |
-| gutter   | 列元素之间的间距（单位为 px） | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
-| children | -                             | _&nbsp;&nbsp;React.ReactNode<br/>_                  | -      | `true`  |
+| 参数     | 说明                                                                        | 类型                                                                                                                                                                                                                                                       | 默认值 | 必填    |
+| -------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| gutter   | 列元素之间的间距（如查输入数字：单位为 px，如果输入字符串，可使用单位 rpx） | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;[number,&nbsp;number]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;[string,&nbsp;string]<br/>_ | -      | `false` |
+| children | -                                                                           | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                                                         | -      | `true`  |

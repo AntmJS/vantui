@@ -20,13 +20,28 @@ export interface CollapseItemProps extends StandardProps {
    */
   icon?: string
   label?: ReactNode
+  /**
+   * @default false
+   */
   disabled?: boolean
+  /**
+   * @default false
+   */
   clickable?: boolean
+  /**
+   * @default true
+   */
   border?: boolean
+  /**
+   * @default true
+   */
   isLink?: boolean
   children?: ReactNode
   renderTitle?: ReactNode
   renderIcon?: ReactNode
+  /**
+   * @description isLink 设置为 false
+   */
   renderRightIcon?: ReactNode
   renderValue?: ReactNode
   size?: 'large'
