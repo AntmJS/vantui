@@ -23,9 +23,9 @@ export interface ColProps extends StandardProps {
  */
 export interface RowProps extends StandardProps {
   /**
-   * @description 列元素之间的间距（单位为 px）
+   * @description 列元素之间的间距（如查输入数字：单位为 px，如果输入字符串，可使用单位rpx）
    */
-  gutter?: number | string
+  gutter?: number | string | [number, number] | [string, string]
   children: React.ReactNode
 }
 
