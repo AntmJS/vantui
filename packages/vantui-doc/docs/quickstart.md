@@ -95,7 +95,7 @@ h5: {
 
 #### 编译问题
 
-该组件在编译阶段默认已经使用了 babel/runtime 进行语法转换以及 polyfill。目前使用 taro 的默认 babel 配置在支付宝和钉钉等环境会报错，解决方案可以参考[temptaro](https://github.com/AntmJS/temptaro)的配置。
+2.0 之前的组件在编译阶段默认已经使用了 babel/runtime 进行语法转换以及 polyfill，2.0 开始不再默认注入。另外，使用 taro 的默认 babel 配置在支付宝和钉钉等环境会报错，解决方案可以参考[temptaro](https://github.com/AntmJS/temptaro)的配置。
 
 ## 引入组件
 
