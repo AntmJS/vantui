@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    /** type checking */
+    "target": "ES2017",
+    "module": "ES2022",
     "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     // 默认false,是否检测定义了但是没使用的变量
     "noUnusedLocals": true,
     // 用于检查是否有在函数体中没有使用的参数
@@ -11,29 +14,17 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": false,
     "noImplicitReturns": true,
-    // "noImplicitAny": false,
+    "noImplicitAny": false,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
-    /** module */
-    "baseUrl": "./",
-    "module": "esnext",
-    // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
     "moduleResolution": "Node",
-    "outDir": "./dest",
-    "lib": ["ESNext", "dom"],
-    /** Interop Constraints */
-    "esModuleInterop": true,
+    "removeComments": true,
+    "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    // declaration和allowJs不能同时设为true
-    // "allowJs": true,
-    "jsx": "react-jsx",
-    "skipLibCheck": true,
-
-    "target": "ES2019",
-    "declaration": true
+    "allowJs": true,
+    "jsx": "react-jsx"
   },
-  "include": ["src/**/*"]
+  "compileOnSave": false
 }

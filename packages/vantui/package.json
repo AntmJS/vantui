@@ -47,7 +47,6 @@
     "test": ""
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.14.7",
     "@vant/icons": "^1.7.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
@@ -55,7 +54,7 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/iconfont": "^1.21.3",
+    "@antmjs/iconfont": "^2.0.1",
     "@antmjs/vantui-cli": "1.9.23",
     "@tarojs/components": "^3.5.3",
     "@tarojs/taro": "^3.5.3",

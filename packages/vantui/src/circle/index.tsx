@@ -72,31 +72,21 @@ export function Circle(props: CircleProps) {
   }, [])
 
   useEffect(() => {
-    /* eslint-disable-next-line */
-    // @ts-ignore
-    if (process.env.LIBRARY_ENV === 'react') {
-      setTimeout(() => {
-        if (process.env.TARO_ENV === 'h5') {
-          setState((state) => {
-            return {
-              ...state,
-              ready: true,
-            }
-          })
-        }
-      }, 100)
-    }
+    setTimeout(() => {
+      if (process.env.TARO_ENV === 'h5') {
+        setState((state) => {
+          return {
+            ...state,
+            ready: true,
+          }
+        })
+      }
+    }, 100)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getContext = useCallback(() => {
-    /* eslint-disable-next-line */
-    // @ts-ignore
-    if (process.env.LIBRARY_ENV === 'react') {
-      /* eslint-disable-next-line */
-      // @ts-ignore
-      Current.page = { path: `page-${state.unitag}` }
-    }
+    Current.page = Current.page ?? { path: `page-${state.unitag}` }
     let ctx: any = null
     try {
       ctx = createCanvasContext(state.unitag)

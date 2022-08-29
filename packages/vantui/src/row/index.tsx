@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import React, { useMemo } from 'react'
+import { useMemo, cloneElement } from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import classNames from 'classnames'
 import * as utils from '../wxs/utils'
@@ -10,8 +10,9 @@ export function Row(props: RowProps): JSX.Element {
   const { gutter, children, className, style, ...others } = props
 
   const newChildren: React.ReactElement[] = useMemo(() => {
-    return toArray(children).map((node: React.ReactElement) =>
-      React.cloneElement(node, {
+    return toArray(children).map((node: React.ReactElement, i) =>
+      cloneElement(node, {
+        key: i,
         gutter: gutter,
       }),
     )

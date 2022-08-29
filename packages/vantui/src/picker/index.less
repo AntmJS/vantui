@@ -1,7 +1,9 @@
 @import '../style/var.less';
+
 .van-picker {
   position: relative;
   overflow: hidden;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%; /* avoid iOS text size adjust */
   user-select: none;
   .theme(background-color, '@picker-background-color');
@@ -70,10 +72,14 @@
     height: 100%;
     background-image: linear-gradient(
         180deg,
-        hsla(0, 0%, 100%, 0.9),
-        hsla(0, 0%, 100%, 0.4)
+        hsla(0deg, 0%, 100%, 0.9),
+        hsla(0deg, 0%, 100%, 0.4)
       ),
-      linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
+      linear-gradient(
+        0deg,
+        hsla(0deg, 0%, 100%, 0.9),
+        hsla(0deg, 0%, 100%, 0.4)
+      );
     background-repeat: no-repeat;
     background-position: top, bottom;
     backface-visibility: hidden;

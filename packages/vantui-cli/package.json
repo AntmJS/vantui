@@ -8,7 +8,7 @@
     "antm-vantui-cli": "./bin.js"
   },
   "engines": {
-    "node": ">=12",
+    "node": ">=14",
     "npm": ">=6.4",
     "yarn": ">=1.22"
   },
@@ -28,8 +28,8 @@
     "antmjs"
   ],
   "scripts": {
-    "watch": "tsc --watch",
-    "build": "tsc",
+    "watch": "rm -rf dest && npx tsc -p tsconfig.cjs.json --watch --sourceMap",
+    "build": "rm -rf dest && npx tsc -p tsconfig.cjs.json",
     "test:watch": "",
     "test": ""
   },
@@ -44,7 +44,7 @@
     "@types/prettier": "^2.6.1"
   },
   "dependencies": {
-    "@antmjs/babel-preset": "1.21.3",
+    "@antmjs/babel-preset": "2.0.1",
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/plugin-transform-typescript": "^7.16.8",

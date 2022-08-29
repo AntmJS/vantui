@@ -1,54 +1,21 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    /** type checking */
-    "strict": true,
-    // 默认false,是否检测定义了但是没使用的变量
-    "noUnusedLocals": true,
-    // 用于检查是否有在函数体中没有使用的参数
-    "noUnusedParameters": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": false,
-    "noImplicitReturns": true,
-    "noImplicitAny": false,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    /** module */
     "baseUrl": "./",
-    "module": "esnext",
-    // default: module === AMD or UMD or System or ES6, then Classic otherwise Node
-    "moduleResolution": "Node",
-    "target": "ES2019",
-    "lib": ["ESNext", "dom"],
-    /** emit */
     "noEmit": true,
-    /** Interop Constraints */
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    // "isolatedModules": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    // declaration和allowJs不能同时设为true
-    "allowJs": true,
-    "jsx": "react-jsx",
     "skipLibCheck": false
-    // "paths": {
-    //   // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
-    //   "@/*": ["./src/*"]
-    // }
   },
   "include": [
     "*.js",
     "packages/*/*.js",
     "packages/*/*.d.ts",
     "packages/**/src",
-    "packages/**/scripts",
-    "packages/**/docs",
-    "packages/**/types",
     "packages/**/config",
+    "packages/**/site",
+    "packages/**/utils",
+    "packages/**/ui",
+    "packages/**/types",
+    "packages/**/sample",
     "packages/**/__test__"
-  ],
-  "compileOnSave": false
+  ]
 }

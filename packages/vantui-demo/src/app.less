@@ -2,11 +2,13 @@
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
 /* stylelint-disable selector-type-no-unknown, selector-max-type */
 @import '@antmjs/vantui/es/style/base.less';
+
 page,
 body {
   background-color: #f7f8fa;
   font-size: 28px;
 }
+
 body taro-button-core {
   width: initial;
 }
@@ -37,6 +39,7 @@ taro-button-core + taro-button-core {
 
 .pages-icon-index {
   background-color: #ffffff;
+
   .van-col {
     display: flex;
     align-items: center;
@@ -102,6 +105,7 @@ taro-button-core + taro-button-core {
 
 .pages-image-index {
   background-color: #ffffff;
+
   .van-col {
     color: #7d7e80;
     display: flex;
@@ -131,6 +135,7 @@ taro-button-core + taro-button-core {
     align-items: center;
     justify-content: center;
   }
+
   .block {
     width: 200px;
     height: 200px;
@@ -146,15 +151,18 @@ taro-button-core + taro-button-core {
     background-color: #ffffff;
     text-align: center;
   }
+
   .van-popup--center {
     width: 200px;
     height: 200px;
   }
+
   .van-popup--top,
   .van-popup--bottom {
     width: 100%;
     height: 30%;
   }
+
   .van-popup--left,
   .van-popup--right {
     width: 30%;
@@ -182,6 +190,7 @@ taro-button-core + taro-button-core {
   .demo-block {
     margin-bottom: 40px;
   }
+
   .customButton {
     width: 112px;
     color: #ffffff;
@@ -209,6 +218,7 @@ taro-button-core + taro-button-core {
 
 .pages-sticky-index {
   position: relative;
+
   .demo-block:last-child {
     padding-bottom: 1800px !important;
   }
@@ -311,9 +321,11 @@ taro-button-core + taro-button-core {
   .scroll-container {
     display: flex;
     flex-direction: column;
+
     .scroll-container-content {
       flex: 1;
       overflow: scroll;
+
       & > scroll-view,
       & > taro-scroll-view-core {
         height: 100%;
@@ -336,6 +348,7 @@ taro-button-core + taro-button-core {
     padding-top: 30vh;
     text-align: center;
     color: #cccccc;
+
     .loadingWrapper {
       font-size: 24px;
       margin-bottom: 24px;
@@ -350,12 +363,20 @@ taro-button-core + taro-button-core {
     position: sticky;
     top: 0;
     left: 0;
+
     .left {
       flex: auto;
     }
+
     .right {
       flex: none;
       padding-left: 12px;
     }
+  }
+}
+
+.pages-dropdown-menu-index {
+  .demo-block--padding {
+    padding: 0 !important;
   }
 }

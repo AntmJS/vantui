@@ -24,7 +24,7 @@ module.exports = function (chain) {
         /css-loader/.test(filename) ||
         (/node_modules/.test(filename) &&
           !(
-            /(taro)|(react-spring)/.test(filename) &&
+            /(taro)|(react-spring)|(@antmjs)/.test(filename) &&
             !/tarojs[\\/](runtime|shared|plugin-platform)/.test(filename)
           )),
     )

@@ -3,12 +3,12 @@
 /* stylelint-disable selector-max-attribute */
 /* stylelint-disable selector-max-type */
 @import '../style/var.less';
+
 taro-button-core {
   position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: center;
   text-decoration: none;
@@ -16,7 +16,7 @@ taro-button-core {
   width: 100%;
   border-width: 0;
   outline: 0;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 taro-button-core:focus {
@@ -30,11 +30,8 @@ taro-button-core::after {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transform: scale(0.5);
   transform: scale(0.5);
-  -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -67,8 +64,8 @@ taro-button-core[loading] .weui-loading {
   padding: 0;
   text-align: center;
   vertical-align: middle;
-  -webkit-appearance: none;
-  -webkit-text-size-adjust: 100%;
+  appearance: none;
+  text-size-adjust: 100%;
 
   // reset weapp default border
   &::after {
@@ -210,6 +207,7 @@ taro-button-core[loading] .weui-loading {
       .theme(border, '@button-border-width solid @button-warning-background-color');
     }
   }
+
   &--active:not(&--disabled) {
     filter: brightness(0.9);
   }
@@ -218,6 +216,7 @@ taro-button-core[loading] .weui-loading {
     display: none;
   }
 }
+
 .van-button + .van-button {
   margin-top: 0;
 }

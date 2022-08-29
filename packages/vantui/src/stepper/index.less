@@ -1,5 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 @import '../style/var.less';
+
 .van-stepper {
   font-size: 0;
 
@@ -35,7 +36,7 @@
       bottom: 0;
       left: 0;
       margin: auto;
-      background-color: currentColor;
+      background-color: currentcolor;
       content: '';
     }
 
@@ -117,6 +118,7 @@
     border: 0;
     border-width: 2px 0;
     border-radius: 0;
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-appearance: none;
     .theme(font-size, '@stepper-input-font-size');
     .theme(color, '@stepper-input-text-color');

@@ -64,7 +64,7 @@ export async function compileScript(
             },
             runtime: {
               absoluteRuntime: false,
-              corejs: { version: 3, proposals: false },
+              corejs: false,
               helpers: true, // 使用到@babel/runtime
               regenerator: true, // 使用到@babel/runtime
               useESModules: false,

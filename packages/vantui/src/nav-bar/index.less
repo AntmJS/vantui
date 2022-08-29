@@ -1,5 +1,6 @@
 @import '../style/var.less';
 @import '../style/hairline.less';
+
 .van-nav-bar {
   position: relative;
   text-align: center;
@@ -51,6 +52,7 @@
     .theme(font-weight, '@font-weight-bold');
     .theme(font-size, '@nav-bar-title-font-size');
   }
+
   &__title-h5 {
     display: flex;
     height: 100%;
@@ -127,6 +129,7 @@
     align-items: center;
     .theme(font-size, '@font-size-md');
   }
+
   &__left-menu {
     display: flex;
     justify-content: center;
@@ -135,18 +138,23 @@
     border-radius: 50%;
     font-weight: bold;
     box-sizing: border-box;
+
     .van-icon-arrow-left {
       padding-right: 4px;
     }
+
     .van-icon-wap-home {
       padding-bottom: 4px;
     }
+
     &:nth-child(2) {
       margin-left: 14px;
     }
+
     &-white {
       background-color: rgba(255, 255, 255, 0.6);
       color: #000000;
+
       &::after {
         .hairline(rgba(151,151,151, 0.2));
 
@@ -156,9 +164,11 @@
         border-width: 1PX;
       }
     }
+
     &-black {
       background-color: rgba(0, 0, 0, 0.15);
       color: #ffffff;
+
       &::after {
         .hairline(rgba(255,255,255, 0.25));
 

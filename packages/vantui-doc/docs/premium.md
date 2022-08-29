@@ -32,13 +32,13 @@
 - 默认封装了 Request 请求，统一规范，通过 TS 的加持，使得响应标准一致
 - 默认添加了三种类型的页面模版(能覆盖百分之七八十的业务)，普通模版（自动下拉刷新）、分页模版（自动下拉刷新、上划分页），Tabs 分页模版（自动下拉刷新、上划分页、tab 切换及搜索）
 - 集成了开箱即用的主题变更逻辑
-- 通过@antmjs/vantui 的 Unite“组件”以空间换时间的方案加快研发速度，同时保证 TS 类型安全
+- 通过@antmjs/unite 的 Unite“组件”以空间换时间的方案加快研发速度，同时保证 TS 类型安全
 
 ### Unite 是什么
 
 ```jsx
 // 代码不多，可以自己看源码
-import { Unite } from '@antmjs/vantui'
+import { Unite } from '@antmjs/unite'
 // 和UI无关的全局数据定义在这里面，具体可以看项目模版
 import {} from '@/cache'
 // 和UI相关的全局数据定义在这里面，具体可以看项目模版

@@ -4,15 +4,18 @@
   display: flex;
   font-size: @pagination-font-size;
   color: @pagination-color;
+
   &-contain {
     display: flex;
   }
+
   &-simple {
     height: 78px;
     width: 248px;
     line-height: 78px;
     text-align: center;
   }
+
   &-prev,
   &-item,
   &-next {
@@ -28,23 +31,28 @@
     border: @pagination-item-border-width solid @pagination-item-border-color;
     cursor: pointer;
   }
+
   &-prev,
   &-item {
     border-right: none;
   }
+
   &-prev,
   &-next {
     padding: @pagination-prev-next-padding;
   }
+
   .simple-border {
     border-right: @pagination-item-border-width solid
       @pagination-item-border-color;
   }
+
   .active {
     color: @white;
     border: none;
     background: @pagination-active-background-color;
   }
+
   .disabled {
     color: @pagination-disable-color;
     background-color: @pagination-disable-background-color;

@@ -104,9 +104,9 @@
     "packages/*"
   ],
   "dependencies": {
-    "@antmjs/eslint": "^1.21.3",
-    "@antmjs/stylelint": "^1.21.3",
-    "@antmjs/warning": "^1.21.3",
+    "@antmjs/eslint": "^2.0.1",
+    "@antmjs/stylelint": "^2.0.1",
+    "@antmjs/warning": "^2.0.1",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "all-contributors-cli": "^6.20.0",
@@ -120,7 +120,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.11.0",
     "typescript": "^4.7.4"
   }
 }
