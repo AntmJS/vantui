@@ -317,10 +317,20 @@ taro-button-core + taro-button-core {
 }
 
 .pages-power-scroll-view-index {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+
+  .van-power-scroll-view {
+    flex: 1;
+  }
   // 自适应scroll布局
   .scroll-container {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    overflow: hidden;
 
     .scroll-container-content {
       flex: 1;

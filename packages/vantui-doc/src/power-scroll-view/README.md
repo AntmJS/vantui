@@ -118,7 +118,6 @@ function Demo() {
 
   return (
     <PowerScrollView
-      style={{ height: 'calc(100vh - 120px)' }}
       finishedText="没有更多了"
       successText="刷新成功"
       onScrollToUpper={basicsDoRefresh}
@@ -229,7 +228,6 @@ function Demo() {
   return (
     <PowerScrollView
       headHeight="80"
-      style={{ height: 'calc(100vh - 120px)' }}
       finishedText="没有更多了"
       successText="刷新成功"
       onScrollToUpper={basicsDoRefresh}
