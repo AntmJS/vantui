@@ -283,10 +283,14 @@ export function PowerScrollView<T extends number | undefined>(
     [touch],
   )
 
+  const isStartRef = useRef(false);
+
   const onTouchStart = useCallback(
     async (event: ITouchEvent) => {
       if (isTouchable()) {
+        isStartRef.current = false;
         const data = await getScrollTop()
+        isStartRef.current = true;
         startTop.current = data
         checkPosition(event)
       }
@@ -298,6 +302,9 @@ export function PowerScrollView<T extends number | undefined>(
   const onTouchMove = useCallback(
     (event: ITouchEvent): void => {
       if (isTouchable() && startTop.current < minTriggerTopDistance) {
+        if (!isStartRef.current) {
+          return;
+        }
         const { deltaY } = touch
         touch.move(event)
         if (reachTopRef.current && deltaY.current >= 0 && touch.isVertical()) {
