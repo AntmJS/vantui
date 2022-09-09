@@ -112,19 +112,20 @@ const config = {
       h5Chain(chain)
       if (process.env.NODE_ENV === 'production') {
         chain.mode('production')
+        chain.performance.maxEntrypointSize(1000000).maxAssetSize(512000)
         chain.devtool('hidden-source-map')
         chain.output
           .path(npath.resolve('./build'))
-          .filename('assets/js/[name]_[hash].js')
-          .chunkFilename('assets/js/chunk/[name]_[hash].js')
+          .filename('assets/js/[name]_[contenthash].js')
+          .chunkFilename('assets/js/chunk/[name]_[contenthash].js')
           .publicPath(publicPath.replace('VERSION', version))
       } else {
         chain.mode('development')
         chain.devtool('eval-cheap-module-source-map')
         chain.output
           .path(npath.resolve('./build'))
-          .filename('assets/js/[name]_[hash].js')
-          .chunkFilename('assets/js/chunk/[name]_[hash].js')
+          .filename('assets/js/[name]_[contenthash].js')
+          .chunkFilename('assets/js/chunk/[name]_[contenthash].js')
           .publicPath(publicPath.replace('VERSION', version))
       }
       if (process.env.WATCHING === 'true') {
@@ -174,8 +175,8 @@ const config = {
     },
     miniCssExtractPluginOption: {
       ignoreOrder: false,
-      filename: 'assets/css/[name]_[hash].css',
-      chunkFilename: 'assets/css/chunk/[name]_[hash].css',
+      filename: 'assets/css/[name]_[contenthash].css',
+      chunkFilename: 'assets/css/chunk/[name]_[contenthash].css',
     },
   },
   plugins: [
