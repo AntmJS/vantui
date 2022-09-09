@@ -15,7 +15,6 @@ import * as utils from '../wxs/utils'
 import * as computed from './wxs'
 
 let ARRAY: Array<any> = []
-let currentIndexInit = 0
 
 export function DropdownMenu(props: DropdownMenuProps) {
   const {
@@ -34,16 +33,14 @@ export function DropdownMenu(props: DropdownMenuProps) {
   const [itemListData, setItemListData] = useState<Array<any>>([])
   const childrenInstance = useRef<Array<any>>([])
   const TimerKey = useRef<Date>()
-  const [currentIndex, setCurrentIndex] = useState<number>()
+  const indexRef = useRef<any>(
+    `${+new Date()}${Math.ceil(Math.random() * 10000)}`,
+  )
 
   const close = useCallback(function () {
     childrenInstance.current.forEach((child) => {
       child.toggle(false, { immediate: true })
     })
-  }, [])
-
-  useLayoutEffect(function () {
-    setCurrentIndex(currentIndexInit++)
   }, [])
 
   useLayoutEffect(
@@ -122,7 +119,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
   const getChildWrapperStyle = useCallback(
     function () {
-      return getRect(null, `.van-dropdown-menu${currentIndex}`).then(
+      return getRect(null, `.van-dropdown-menu${indexRef.current}`).then(
         (rect: any) => {
           const wrapperStyle: any = {
             rect: rect,
@@ -135,7 +132,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
         },
       )
     },
-    [zIndex, currentIndex],
+    [zIndex],
   )
 
   const ResetChildren = useMemo(
@@ -148,7 +145,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
             key: index,
             setChildrenInstance,
             index,
-            currentIndex,
             parentInstance: {
               overlay,
               duration,
@@ -166,7 +162,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
     [
       activeColor,
       closeOnClickOverlay,
-      currentIndex,
       direction,
       duration,
       getChildWrapperStyle,
@@ -178,7 +173,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
   return (
     <View
-      className={`van-dropdown-menu van-dropdown-menu${currentIndex} van-dropdown-menu--top-bottom  ${className}`}
+      className={`van-dropdown-menu van-dropdown-menu${indexRef.current} van-dropdown-menu--top-bottom  ${className}`}
       style={utils.style([style, { position: 'relative' }])}
     >
       {(itemListData || []).map((item: any, index: number) => {

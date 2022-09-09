@@ -40,8 +40,29 @@ function Demo() {
 function Demo() {
   return (
     <Sticky offsetTop={50}>
-      <Button type="primary">吸顶距离</Button>
+      <Button type="primary" style="margin-left: 120px">
+        吸顶距离
+      </Button>
     </Sticky>
+  )
+}
+```
+
+### 指定容器
+
+通过`container`属性可以指定组件的容器，页面滚动时，组件会始终保持在容器范围内，当组件即将超出容器底部时，会固定在容器的底部。
+
+```jsx
+import { createSelectorQuery } from '@tarojs/taro'
+function Demo() {
+  return (
+    <View id="stick-in-view" style="height: 150px;background:#fff;">
+      <Sticky container={() => createSelectorQuery().select(`#stick-in-view`)}>
+        <Button type="primary" style="margin-left: 250px">
+          吸顶距离
+        </Button>
+      </Sticky>
+    </View>
   )
 }
 ```

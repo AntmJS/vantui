@@ -7,7 +7,7 @@ import { StickyProps } from '../../types/sticky'
 import { usePageScroll } from './../mixins/page-scroll'
 import * as computed from './wxs'
 export function Sticky(props: StickyProps) {
-  const indexRef = useRef(+new Date())
+  const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
   const [state, setState] = useState({ height: 0, fixed: false, transform: 0 })
   const {
     zIndex,
@@ -73,7 +73,7 @@ export function Sticky(props: StickyProps) {
       ref.current.scrollTop = scrollTop || ref.current.scrollTop
       if (typeof container === 'function') {
         Promise.all([
-          getRect(null, `.sticky-com-index${indexRef.current}`),
+          getRect(null, `#sticky-com-index${indexRef.current}`),
           getContainerRect(),
         ])
           .then(([root, container]: any) => {
@@ -99,7 +99,7 @@ export function Sticky(props: StickyProps) {
           })
         return
       } else {
-        getRect(null, `.sticky-com-index${indexRef.current}`).then(
+        getRect(null, `#sticky-com-index${indexRef.current}`).then(
           (root: any) => {
             if (!isDef(root)) {
               return
@@ -131,11 +131,8 @@ export function Sticky(props: StickyProps) {
 
   return (
     <View
-      className={
-        `sticky-com-index${indexRef.current} ` +
-        ' van-sticky ' +
-        (className || '')
-      }
+      id={`sticky-com-index${indexRef.current}`}
+      className={' van-sticky ' + (className || '')}
       style={utils.style([
         computed.containerStyle({
           fixed: state.fixed,

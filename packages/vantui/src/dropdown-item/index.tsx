@@ -22,7 +22,6 @@ function Index(
     setChildrenInstance?: any
     index?: number
     parentInstance?: any
-    currentIndex?: number
   },
   ref: React.Ref<IDropdownItemInstance>,
 ) {

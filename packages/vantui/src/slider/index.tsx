@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { style } from '../wxs/style'
@@ -16,7 +16,6 @@ function getDirection(x: number, y: number) {
   }
   return ''
 }
-let currentIndex = 0
 
 export function Slider(props: SliderProps) {
   const {
@@ -47,11 +46,9 @@ export function Slider(props: SliderProps) {
   const [touchState, setTouchState] = useState<any>({})
   const [newValue, setNewValue] = useState<any>({})
   const [startValue, setstartValue] = useState<any>()
-  const [currentIndex_, setCurrentIndex] = useState<number>()
-
-  useEffect(() => {
-    setCurrentIndex(currentIndex++)
-  }, [])
+  const indexRef = useRef<any>(
+    `${+new Date()}${Math.ceil(Math.random() * 10000)}`,
+  )
 
   const resetTouchStatus = useCallback(
     function () {
@@ -238,7 +235,7 @@ export function Slider(props: SliderProps) {
       }
       const touchState = touchMove(event)
       setDragStatus('draging')
-      getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
+      getRect(null, `.van-slider${indexRef.current}`).then((rect: any) => {
         let diff = (touchState.deltaX / rect.width) * getRange()
         if (vertical) {
           diff = (touchState.deltaY / rect.height) * getRange()
@@ -259,7 +256,6 @@ export function Slider(props: SliderProps) {
       disabled,
       dragStatus,
       touchMove,
-      currentIndex_,
       onDragStart,
       getRange,
       vertical,
@@ -285,7 +281,7 @@ export function Slider(props: SliderProps) {
   const onClick = useCallback(
     function (event: any) {
       if (disabled) return
-      getRect(null, `.van-slider${currentIndex_}`).then((rect: any) => {
+      getRect(null, `.van-slider${indexRef.current}`).then((rect: any) => {
         let value =
           (((event.target.x || event.clientX) - rect.left) / rect.width) *
             getRange() +
@@ -311,16 +307,7 @@ export function Slider(props: SliderProps) {
         }
       })
     },
-    [
-      disabled,
-      currentIndex_,
-      getRange,
-      min,
-      vertical,
-      isRange,
-      value_,
-      updateValue,
-    ],
+    [disabled, getRange, min, vertical, isRange, value_, updateValue],
   )
 
   return (
@@ -331,7 +318,7 @@ export function Slider(props: SliderProps) {
           disabled,
           vertical,
         }) +
-        ` van-slider${currentIndex_} ` +
+        ` van-slider${indexRef.current} ` +
         className
       }
       style={utils.style([wrapperStyle, others.style])}

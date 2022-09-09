@@ -81,7 +81,6 @@ function Demo() {
     <Slider
       value={value}
       onDrag={(e) => {
-        console.info(e.detail)
         setValue(e.detail.value)
       }}
       renderButton={<View class="customButton">{value}/100</View>}

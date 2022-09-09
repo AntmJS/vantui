@@ -14,6 +14,23 @@ import { Tab, Tabs } from '@antmjs/vantui'
 
 ## 代码演示
 
+### 粘性布局
+
+```jsx
+function Demo() {
+  return (
+    <View>
+      <Tabs sticky={true}>
+        <Tab title="标签 1">内容 1</Tab>
+        <Tab title="标签 2">内容 2</Tab>
+        <Tab title="标签 3">内容 3</Tab>
+        <Tab title="标签 4">内容 4</Tab>
+      </Tabs>
+    </View>
+  )
+}
+```
+
 ### 基础用法
 
 通过`active`设定当前激活标签对应的索引值，默认情况下启用第一个标签。
@@ -161,25 +178,6 @@ function Demo() {
 }
 ```
 
-### 粘性布局
-
-通过`sticky`属性可以开启粘性布局，粘性布局下，当 Tab 滚动到顶部时会自动吸顶。
-
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Tabs sticky={true}>
-        <Tab title="标签 1">内容 1</Tab>
-        <Tab title="标签 2">内容 2</Tab>
-        <Tab title="标签 3">内容 3</Tab>
-        <Tab title="标签 4">内容 4</Tab>
-      </Tabs>
-    </View>
-  )
-}
-```
-
 ### 切换动画
 
 可以通过`animated`来设置是否启用切换 tab 时的动画。
@@ -219,6 +217,7 @@ function Demo() {
 | 参数               | 说明 | 类型                                                                                                                                                                                                                                                                                                                                                                                                              | 默认值 | 必填    |
 | ------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
 | sticky             | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                                                                                        | -      | `false` |
+| container          | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                                                                                                                                                                                                                            | -      | `false` |
 | border             | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                                                                                        | -      | `false` |
 | swipeable          | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                                                                                        | -      | `false` |
 | titleActiveColor   | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                                                                                                                         | -      | `false` |

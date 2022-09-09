@@ -69,7 +69,9 @@ export function CollapseItem(
   }, [])
 
   const refDom = useRef(null)
-  const refRandomClass = useRef(`selector-${`${Math.random()}`.slice(-8)}`)
+  const refRandomClass = useRef(
+    `selector-${`${+new Date()}${Math.ceil(Math.random() * 10000)}`.slice(-8)}`,
+  )
 
   const updateExpanded = useCallback(() => {
     if (!parent) {

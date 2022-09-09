@@ -4,7 +4,7 @@ import * as utils from '../wxs/utils'
 import { Icon } from '../icon/index'
 import { getAllRect } from '../common/utils'
 import { RateProps } from '../../types/rate'
-let comIndex = 0
+
 export function Rate(props: RateProps) {
   const {
     count = 5,
@@ -26,16 +26,12 @@ export function Rate(props: RateProps) {
     defaultValue = 5,
     ...others
   } = props
-  const indexRef = useRef(comIndex)
+  const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
   const [countArray, setCountArray] = useState(Array.from({ length: count }))
   const noControlled = useMemo(() => typeof value === 'undefined', [value])
   const [innerValue, setInnerValue] = useState(
     noControlled ? defaultValue : (value as number),
   )
-  useEffect(() => {
-    comIndex++
-    indexRef.current = comIndex
-  }, [])
 
   const onSelect = function (event: ITouchEvent) {
     const { score } = event.currentTarget.dataset
