@@ -520,7 +520,7 @@ onLoad() {
 | animationDuration     | 动画时长                                                              | _number \| string_ | `300`                |
 | headHeight            | 顶部内容高度                                                          | _number \| string_ | `50`                 |
 | minTriggerTopDistance | 最小触发下拉距离顶部距离                                              | _number \| string_ | `150`                |
-| pullDistance `v3.0.8` | 触发下拉刷新的距离                                                    | _number \| string_ | 与 `headHeight` 一致 |
+| pullDistance          | 触发下拉刷新的距离                                                    | _number \| string_ | 与 `headHeight` 一致 |
 | finished              | 是否已加载完成，加载完成后不再触发 load 事件                          | _boolean_          | `false`              |
 | finishedText          | 加载完成后的提示文案                                                  | _string_           | -                    |
 | errorText             | 加载失败后的提示文案                                                  | _string_           | -                    |

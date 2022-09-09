@@ -108,7 +108,12 @@ export function PowerScrollView<T extends number | undefined>(
   const startTop = useRef(0)
 
   const [finished, setFinished] = useState<boolean>(_finished || false)
-  const currentCount = current ?? Array.from(children as any).length
+  const count = Array.isArray(children as any)
+    ? Array.from(children as any).length
+    : toString.call(children) === '[object Object]'
+    ? 1
+    : 0
+  const currentCount = current ?? count
   const listCount = useRef(0)
   useEffect(() => {
     const { pageSize } = paginationRef.current
@@ -283,14 +288,14 @@ export function PowerScrollView<T extends number | undefined>(
     [touch],
   )
 
-  const isStartRef = useRef(false);
+  const isStartRef = useRef(false)
 
   const onTouchStart = useCallback(
     async (event: ITouchEvent) => {
       if (isTouchable()) {
-        isStartRef.current = false;
+        isStartRef.current = false
         const data = await getScrollTop()
-        isStartRef.current = true;
+        isStartRef.current = true
         startTop.current = data
         checkPosition(event)
       }
@@ -303,7 +308,7 @@ export function PowerScrollView<T extends number | undefined>(
     (event: ITouchEvent): void => {
       if (isTouchable() && startTop.current < minTriggerTopDistance) {
         if (!isStartRef.current) {
-          return;
+          return
         }
         const { deltaY } = touch
         touch.move(event)
