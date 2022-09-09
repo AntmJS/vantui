@@ -6,6 +6,7 @@ type eventDetail = {
 }
 export interface TabsProps extends Omit<StandardProps, 'onClick'> {
   sticky?: boolean
+  container?: () => any
   border?: boolean
   swipeable?: boolean
   titleActiveColor?: string

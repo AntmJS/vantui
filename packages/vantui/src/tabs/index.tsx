@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { nextTick, createSelectorQuery } from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import {
   useState,
   isValidElement,
@@ -47,7 +47,6 @@ function parseTabList(children: React.ReactNode): any[] {
     .filter((tab) => tab)
 }
 
-let comIndex = 0
 export function Tabs(props: TabsProps) {
   const ref = useRef({
     skipInit: false,
@@ -61,7 +60,7 @@ export function Tabs(props: TabsProps) {
     swiping: false,
   })
 
-  const indexRef = useRef(comIndex)
+  const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
   const [isInited, setIsInited] = useState(false)
   const [scrollWidth, setScrollWidth] = useState('100%')
   const [state, setState]: any = useState({
@@ -69,7 +68,6 @@ export function Tabs(props: TabsProps) {
     scrollLeft: 0,
     scrollable: false,
     currentIndex: 0,
-    container: undefined,
     skipTransition: true,
     scrollWithAnimation: false,
     lineOffsetLeft: 0,
@@ -78,7 +76,6 @@ export function Tabs(props: TabsProps) {
     scrollLeft,
     scrollable,
     currentIndex,
-    container,
     skipTransition,
     scrollWithAnimation,
     lineOffsetLeft,
@@ -90,6 +87,7 @@ export function Tabs(props: TabsProps) {
     lazyRender = true,
     type = 'line',
     sticky,
+    container,
     zIndex,
     offsetTop = 0,
     border,
@@ -115,8 +113,6 @@ export function Tabs(props: TabsProps) {
   } = props
 
   useEffect(() => {
-    comIndex++
-    indexRef.current = comIndex
     setIsInited(true)
   }, [])
 
@@ -202,31 +198,34 @@ export function Tabs(props: TabsProps) {
       return
     }
     index = index ?? currentIndex
-    Promise.all([
-      getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
-      getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__line`),
-    ]).then(([rects = [], lineRect]: any) => {
-      if (rects && lineRect) {
-        const rect = rects[index!]
-        if (rect == null) {
-          return
-        }
-        let lineOffsetLeft = rects
-          .slice(0, index)
-          .reduce((prev: number, curr: any) => prev + curr.width, 0)
-        lineOffsetLeft += (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8)
-        setState((pre: any) => {
-          return { ...pre, lineOffsetLeft }
-        })
-        ref.current.swiping = true
-        if (skipTransition) {
-          nextTick(() => {
-            setState((pre: any) => {
-              return { ...pre, skipTransition: false }
-            })
+    nextTick(() => {
+      Promise.all([
+        getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
+        getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__line`),
+      ]).then(([rects = [], lineRect]: any) => {
+        if (rects && lineRect) {
+          const rect = rects[index!]
+          if (rect == null) {
+            return
+          }
+          let lineOffsetLeft = rects
+            .slice(0, index)
+            .reduce((prev: number, curr: any) => prev + curr.width, 0)
+          lineOffsetLeft +=
+            (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8)
+          setState((pre: any) => {
+            return { ...pre, lineOffsetLeft }
           })
+          ref.current.swiping = true
+          if (skipTransition) {
+            nextTick(() => {
+              setState((pre: any) => {
+                return { ...pre, skipTransition: false }
+              })
+            })
+          }
         }
-      }
+      })
     })
   }
 
@@ -348,15 +347,6 @@ export function Tabs(props: TabsProps) {
 
   useEffect(function () {
     ref.current.swiping = true
-    setState((pre: any) => {
-      return {
-        ...pre,
-        container: () =>
-          createSelectorQuery().select(
-            `.tabs-com-index${indexRef.current}.van-tabs`,
-          ),
-      }
-    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -427,7 +417,7 @@ export function Tabs(props: TabsProps) {
         const res: any = await getAllRect(
           null,
           // @ts-ignore
-          '.' + utils.bem('renderNavLeft' + comIndex),
+          '.' + utils.bem('renderNavLeft' + indexRef.current),
         )
 
         if (res.length) othersWidth += res[0].width
@@ -437,7 +427,7 @@ export function Tabs(props: TabsProps) {
         const res: any = await getAllRect(
           null,
           // @ts-ignore
-          '.' + utils.bem('renderNavRight' + comIndex),
+          '.' + utils.bem('renderNavRight' + indexRef.current),
         )
 
         if (res.length) othersWidth += res[0].width
@@ -483,7 +473,7 @@ export function Tabs(props: TabsProps) {
             (type === 'line' && border ? 'van-hairline--top-bottom' : '')
           }
         >
-          <View className={utils.bem('renderNavLeft' + comIndex)}>
+          <View className={utils.bem('renderNavLeft' + indexRef.current)}>
             {renderNavLeft}
           </View>
           <ScrollView
@@ -565,7 +555,7 @@ export function Tabs(props: TabsProps) {
               })}
             </View>
           </ScrollView>
-          <View className={utils.bem('renderNavRight' + comIndex)}>
+          <View className={utils.bem('renderNavRight' + indexRef.current)}>
             {renderNavRight}
           </View>
         </View>
