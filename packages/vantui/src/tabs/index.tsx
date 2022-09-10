@@ -395,8 +395,7 @@ export function Tabs(props: TabsProps) {
         }
       })
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [swipeThreshold],
+    [swipeThreshold, newChildren, ellipsis],
   )
 
   // 解决异步加载的时候默认的下划线不出现的问题
