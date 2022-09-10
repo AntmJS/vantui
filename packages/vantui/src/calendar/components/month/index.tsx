@@ -213,7 +213,7 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
           {computed.formatMonthTitle(date)}
         </View>
       )}
-      {visible && (
+      {visible && days.length > 0 && (
         <View className="van-calendar__days">
           {showMark && (
             <View className="van-calendar__month-mark">
