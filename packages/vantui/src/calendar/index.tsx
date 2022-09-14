@@ -184,36 +184,39 @@ function Index(
     [getInitialDate, scrollIntoViewFn, defaultDate],
   )
 
-  const initRectH5 = useCallback(function () {
-    if (contentObserver.current != null) {
-      contentObserver.current.disconnect()
-    }
-    const contentObserver_ = new IntersectionObserver(
-      function (res: any) {
-        for (let i = 0; i < res.length; i++) {
-          if (res[i].intersectionRatio > 0.6) {
-            const item = res[i].target.id
-              .replace('month', '')
-              .replace('_', '年')
-              .replace('-', '月')
-            setSubtitle(item)
-          }
-        }
-      },
-      {
-        threshold: [0.6],
-        // root: document.getElementsByClassName('van-calendar__body')[0],
-      },
-    )
-    contentObserver.current = contentObserver_
-
-    const targets = document.getElementsByClassName('month')
-    if (targets.length) {
-      for (let i = 0; i < targets.length; i++) {
-        contentObserver.current.observe(targets[i] as Element)
+  const initRectH5 = useCallback(
+    function () {
+      if (contentObserver.current != null) {
+        contentObserver.current.disconnect()
       }
-    }
-  }, [])
+      const contentObserver_ = new IntersectionObserver(
+        function (res: any) {
+          for (let i = 0; i < res.length; i++) {
+            if (res[i].intersectionRatio > 0.6) {
+              const item = res[i].target.id
+                .replace('month', '')
+                .replace('_', '年')
+                .replace('-', '月')
+              if (item && item !== subtitle) setSubtitle(item)
+            }
+          }
+        },
+        {
+          threshold: [0.6],
+          // root: document.getElementsByClassName('van-calendar__body')[0],
+        },
+      )
+      contentObserver.current = contentObserver_
+
+      const targets = document.getElementsByClassName('month')
+      if (targets.length) {
+        for (let i = 0; i < targets.length; i++) {
+          contentObserver.current.observe(targets[i] as Element)
+        }
+      }
+    },
+    [subtitle],
+  )
 
   const initRect = useCallback(
     function () {
@@ -244,11 +247,11 @@ function Index(
             .replace('month', '')
             .replace('_', '年')
             .replace('-', '月')
-          setSubtitle(item)
+          if (item && item !== subtitle) setSubtitle(item)
         }
       })
     },
-    [initRectH5, compIndex],
+    [compIndex, initRectH5, subtitle],
   )
 
   const emit = useCallback(
