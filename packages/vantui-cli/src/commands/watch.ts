@@ -110,7 +110,7 @@ function watchFile(type: 'lib' | 'es') {
 }
 
 export async function watch(params: { type?: 'es' | 'lib' }) {
-  const type = params.type || 'es'
+  const type = params.type
   setNodeEnv('development')
   setBuildTarget('package')
   if (type === 'es') {
@@ -123,5 +123,5 @@ export async function watch(params: { type?: 'es' | 'lib' }) {
   consola.log(`
   watching files update
 `)
-  watchFile(type)
+  watchFile(type || 'es')
 }
