@@ -148,6 +148,9 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
   let pageIndexJsxInsert = ''
   let pageIndexJsxPush = ''
 
+  if (!fs.existsSync(join(DEFAULT_PAGE_PATH, name)))
+    fs.mkdirSync(join(DEFAULT_PAGE_PATH, name))
+
   for (let i = 0; i < codeRes.length; i++) {
     const item = codeRes[i] as IcodeItem
     const index = i
