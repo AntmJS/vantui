@@ -1,0 +1,110 @@
+@import '../popup/index.less';
+
+.van-cascader-tab-box {
+  display: flex;
+  padding-left: 28px;
+
+  .van-tabs__titles-item.active {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 6px;
+      width: 70%;
+      border-radius: 4px;
+      position: absolute;
+      bottom: -8px;
+      background-color: @cascader-item-active-color;
+    }
+  }
+}
+
+.van-cascadar-popup {
+  height: 800px;
+
+  .van-tabs__scroll {
+    display: none;
+  }
+}
+
+.van-cascader {
+  width: 100%;
+  font-size: @cascader-font-size;
+  line-height: @cascader-line-height;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: @cascader-title-padding;
+    text-align: center;
+    font-weight: bold;
+    line-height: @cascader-title-line-height;
+    color: #1a1a1a;
+    font-size: @cascader-title-font-size;
+  }
+
+  .van-tabs__titles {
+    padding: @cascader-tabs-item-padding;
+    background: #ffffff;
+  }
+
+  .van-tabs__titles-item {
+    flex: initial;
+    min-width: auto;
+    width: auto;
+    padding: @cascader-tabs-item-padding;
+    white-space: nowrap;
+  }
+
+  .van-tab {
+    padding: 0;
+  }
+
+  &-tab {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    // padding-top: @cascader-pane-paddingTop;
+    // height: @cascader-pane-height;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: @cascader-item-padding;
+    margin: 0;
+    cursor: pointer;
+    font-size: @cascader-item-font-size;
+    color: @cascader-item-color;
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &.active {
+      &:not(.disabled) {
+        color: @cascader-item-active-color;
+      }
+
+      .van-cascader-item__icon-check {
+        visibility: visible;
+        color: @cascader-item-active-color;
+      }
+    }
+  }
+
+  &-item__title {
+    flex: 1;
+  }
+
+  .van-icon-checklist {
+    margin-left: @cascader-icon-checklist-marginLeft;
+    visibility: hidden;
+  }
+}
