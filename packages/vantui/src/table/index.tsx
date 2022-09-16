@@ -287,7 +287,13 @@ const Row = (props: {
             result = render
           }
         } else {
-          result = <Text>{text ? String(text) : placeholder}</Text>
+          result = (
+            <Text>
+              {text || text === false || text === 0
+                ? String(text)
+                : placeholder}
+            </Text>
+          )
         }
 
         return (
