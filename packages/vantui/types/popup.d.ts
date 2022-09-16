@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from 'react'
+import { FunctionComponent, ReactNode, CSSProperties } from 'react'
 import { StandardProps } from '@tarojs/components'
 import { TransitionProps } from './mixins/transition'
 import { OverlayProps } from './overlay'
@@ -21,7 +21,7 @@ export interface PopupProps
   /**
    * @description 自定义遮罩层样式
    */
-  overlayStyle?: string
+  overlayStyle?: string | CSSProperties
   /**
    * @description 执行
    */
