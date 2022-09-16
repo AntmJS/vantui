@@ -132,9 +132,9 @@ export type IPickerInstance = {
    */
   getIndexes: () => number[]
   /**
-   * @description 获取每一列展示的下标
+   * @description 设置每一列展示的下标
    */
-  setIndexes: () => void
+  setIndexes: (indexes: number[]) => void
   /**
    * @description 每一列展示的下标
    */
