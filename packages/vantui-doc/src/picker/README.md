@@ -198,6 +198,6 @@ function Demo() {
 | getColumnValue | 获取某一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ |
 | columns | 每列的数据 | _&nbsp;&nbsp;any[]<br/>_ |
 | getIndexes | 获取每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;number[]<br/>_ |
-| setIndexes | 设置每一列展示的下标 | _&nbsp;&nbsp;(indexes: number[])&nbsp;=>&nbsp;void<br/>_ |
+| setIndexes | 设置每一列展示的下标 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;indexes:&nbsp;number[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | getValues | 每一列展示的下标 | _&nbsp;&nbsp;()&nbsp;=><br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>_ |
 | confirm | 触发确认的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
