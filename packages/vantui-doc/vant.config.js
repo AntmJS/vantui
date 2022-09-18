@@ -213,6 +213,10 @@ module.exports = {
             title: 'Table 表格',
           },
           {
+            path: 'swiper',
+            title: 'Swiper 轮播',
+          },
+          {
             path: 'circle',
             title: 'Circle 环形进度条',
           },
