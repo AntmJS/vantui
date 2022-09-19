@@ -1,3 +1,3 @@
 ### 说明
 
-具体组件使用方式暂时请查看[有赞文档](https://youzan.github.io/vant-weapp/#/home)
+组件的中文描述可参考[有赞文档](https://vant-ui.github.io/vant-weapp/#/home)
