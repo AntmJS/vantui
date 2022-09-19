@@ -30,20 +30,17 @@
     bottom: 24px;
     transform: translateX(-50%);
 
-    i {
+    &-item {
       width: 16px;
       height: 6px;
       margin-right: 14px;
       border-radius: 4px;
+      background-color: #dddddd;
 
       &:last-child {
         margin-right: 0;
       }
     }
-  }
-
-  &__pagination-item {
-    background-color: #dddddd;
   }
 
   &__pagination-vertical {
@@ -55,8 +52,7 @@
     -webkit-box-direction: normal;
     transform: translateY(-50%);
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    i {
+    .van-swiper__pagination-item {
       margin-bottom: 10px;
     }
   }

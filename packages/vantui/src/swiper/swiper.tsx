@@ -11,7 +11,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View, ITouchEvent, Text } from '@tarojs/components'
 import { SwiperProps, SwiperInstance } from '../../types/swiper'
 import { DataContext } from './context'
 
@@ -529,7 +529,7 @@ const Swiper = (
           >
             {Children.map(childs, (_, index: number) => {
               return (
-                <i
+                <Text
                   style={
                     (active + childCount) % childCount === index
                       ? {
