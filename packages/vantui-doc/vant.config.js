@@ -315,6 +315,10 @@ module.exports = {
             title: 'Area 省市区选择',
           },
           {
+            path: 'sku',
+            title: 'Sku 商品规格选择',
+          },
+          {
             path: 'card',
             title: 'Card 商品卡片',
           },

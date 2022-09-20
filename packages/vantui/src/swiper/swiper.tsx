@@ -46,7 +46,7 @@ type Parent = {
 const DISTANCE = 5
 const Swiper = (
   props: SwiperProps,
-  ref: React.ForwardedRef<SwiperInstance>,
+  ref?: React.ForwardedRef<SwiperInstance>,
 ) => {
   const propSwiper = { ...defaultProps, ...props }
   const {
