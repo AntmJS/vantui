@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    /** type checking */
+    "strict": true,
+    // 默认false,是否检测定义了但是没使用的变量
+    "noUnusedLocals": true,
+    // 用于检查是否有在函数体中没有使用的参数
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": false,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": "./",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "target": "es6",
+    "lib": ["ESNext", "dom"],
+    "noEmit": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "skipLibCheck": false,
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["./src/**/*", "./global.d.ts"],
+  "exclude": ["./node_modules"],
+  "compileOnSave": false
+}
