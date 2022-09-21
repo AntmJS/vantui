@@ -224,6 +224,7 @@ export function resizeTextarea(
   input.rows = 1
 
   let height = input.scrollHeight
+  console.info(height)
   if (isObject(autosize)) {
     const { maxHeight, minHeight }: any = autosize
     if (maxHeight !== undefined) {
