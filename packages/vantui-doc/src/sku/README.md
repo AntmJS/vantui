@@ -160,15 +160,18 @@ const goodsList = [
 
 ### SkuProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sku.d.ts)
 
-| 参数             | 说明                                                                | 类型                                                                                                           | 默认值 | 必填    |
-| ---------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| className        | 样式名称                                                            | _&nbsp;&nbsp;string<br/>_                                                                                      | ''     | `false` |
-| goodsId          | 默认选中的商品名称                                                  | _&nbsp;&nbsp;number<br/>_                                                                                      | -      | `false` |
-| onChange         | 规格变化触发，回掉返回选中项商品，首次渲染没有传入`goodsId`，会触发 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;goods?:&nbsp;IGoodItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_    | -      | `false` |
-| clickAttrDisable | 点击 sku`disabled`的属性项触发                                      | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;goods?:&nbsp;IGoodItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_    | -      | `false` |
-| goodsList        | 产品包含的所有商品列表                                              | _&nbsp;&nbsp;IGoodItem[]<br/>_                                                                                 | -      | `true`  |
-| sku              | 规格列表                                                            | _&nbsp;&nbsp;ISkuItem[]<br/>_                                                                                  | -      | `true`  |
-| itemRender       | 自定义规格项的内部渲染                                              | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;attr:&nbsp;IAttrItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;ReactNode<br/>_ | -      | `false` |
+| 参数              | 说明                                                                    | 类型                                                                                                               | 默认值 | 必填    |
+| ----------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
+| className         | 样式名称                                                                | _&nbsp;&nbsp;string<br/>_                                                                                          | ''     | `false` |
+| goodsId           | 默认选中的商品名称                                                      | _&nbsp;&nbsp;number<br/>_                                                                                          | -      | `false` |
+| onChange          | 规格变化触发，回掉返回选中项商品，首次渲染没有传入`goodsId`，会触发     | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;goods?:&nbsp;IGoodItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_        | -      | `false` |
+| clickAttrDisable  | 点击 sku`disabled`的属性项触发                                          | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;goods?:&nbsp;IGoodItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_        | -      | `false` |
+| disabledClassName | 不可选 sku 项样式名称                                                   | _&nbsp;&nbsp;string<br/>_                                                                                          | -      | `false` |
+| activeClassName   | 选中 sku 项样式名称                                                     | _&nbsp;&nbsp;string<br/>_                                                                                          | -      | `false` |
+| goodsList         | 产品包含的所有商品列表                                                  | _&nbsp;&nbsp;IGoodItem[]<br/>_                                                                                     | -      | `true`  |
+| sku               | 规格列表                                                                | _&nbsp;&nbsp;ISkuItem[]<br/>_                                                                                      | -      | `true`  |
+| itemRender        | 自定义规格项的内部渲染                                                  | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;attr:&nbsp;IAttrItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;ReactNode<br/>_     | -      | `false` |
+| itemDisable       | 自定义当前规格项组合（即商品）是否可选, 回掉参数为空的时候直接返回 true | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;goodsItem?:&nbsp;IGoodItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;boolean<br/>_ | -      | `false` |
 
 ### 商品项 IGoodItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sku.d.ts)
 
@@ -181,7 +184,7 @@ const goodsList = [
 
 ### Sku 项 ISkuItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sku.d.ts)
 
-其它属性不限
+其它属性不限， 须要保证不同类别的 sku 的 id 都是唯一的
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | id | Sku ID | _&nbsp;&nbsp;number<br/>_ |
