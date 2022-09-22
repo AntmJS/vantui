@@ -202,7 +202,12 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       indexes.push(_getIndex('county', code))
     }
     return Promise.all(stack)
-      .then(() => picker.setIndexes(indexes))
+      .then(() => {
+        // 由于picker.setColumnValues初始化每一项初始值的操作为异步
+        setTimeout(() => {
+          picker.setIndexes(indexes)
+        }, 30)
+      })
       .catch(() => {})
   }, [_getDefaultCode, _getIndex, _getList, _getPicker, columnsNum])
 

@@ -213,6 +213,10 @@ module.exports = {
             title: 'Table 表格',
           },
           {
+            path: 'swiper',
+            title: 'Swiper 轮播',
+          },
+          {
             path: 'circle',
             title: 'Circle 环形进度条',
           },
@@ -309,6 +313,10 @@ module.exports = {
           {
             path: 'area',
             title: 'Area 省市区选择',
+          },
+          {
+            path: 'sku',
+            title: 'Sku 商品规格选择',
           },
           {
             path: 'card',

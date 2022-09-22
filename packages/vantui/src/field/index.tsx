@@ -98,12 +98,14 @@ export function Field(props: FieldProps) {
   }, [])
 
   const adjustTextareaSize = () => {
-    // const input = inputRef.value
     const taroTextarea: any = document.querySelector(`.${state.unitag}`)
     const textarea = taroTextarea?.children?.[0]
 
     if (type === 'textarea' && autosize && textarea) {
-      resizeTextarea(textarea, autosize)
+      // 须等待textarea渲染value才有滚动高度
+      setTimeout(() => {
+        resizeTextarea(textarea, autosize)
+      })
     }
   }
 
@@ -197,7 +199,7 @@ export function Field(props: FieldProps) {
   )
 
   useEffect(() => {
-    if (process.env.TARO_ENV === 'h5') {
+    if (process.env.TARO_ENV === 'h5' && innerValue) {
       adjustTextareaSize()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
