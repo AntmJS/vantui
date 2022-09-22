@@ -19,6 +19,14 @@ export interface SkuProps {
    */
   clickAttrDisable?: (goods?: IGoodItem) => void
   /**
+   * @description 不可选sku项样式名称
+   */
+  disabledClassName?: string
+  /**
+   * @description 选中sku项样式名称
+   */
+  activeClassName?: string
+  /**
    * @description 产品包含的所有商品列表
    */
   goodsList: IGoodItem[]
@@ -30,6 +38,10 @@ export interface SkuProps {
    * @description 自定义规格项的内部渲染
    */
   itemRender?: (attr: IAttrItem) => ReactNode
+  /**
+   * @description 自定义当前规格项组合（即商品）是否可选, 回掉参数为空的时候直接返回true
+   */
+  itemDisable?: (goodsItem?: IGoodItem) => boolean
 }
 /**
  * @title 商品项 IGoodItem
@@ -52,7 +64,7 @@ export type IGoodItem = {
 
 /**
  * @title Sku项 ISkuItem
- * @description 其它属性不限
+ * @description 其它属性不限， 须要保证不同类别的sku的id都是唯一的
  */
 export type ISkuItem = {
   /**

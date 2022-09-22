@@ -15,6 +15,9 @@ export default function Sku(props: SkuProps) {
     onChange,
     clickAttrDisable,
     itemRender,
+    disabledClassName = '',
+    activeClassName = '',
+    itemDisable,
   } = props
   const [currentGoods, setCurrentGoods] = useState<IGoodItem>()
 
@@ -73,8 +76,8 @@ export default function Sku(props: SkuProps) {
   )
 
   const attrClick = useCallback(
-    function (canBuyGoodsItem?: IGoodItem) {
-      if (canBuyGoodsItem && canBuyGoodsItem.disabled !== true) {
+    function (canBuyGoodsItem?: IGoodItem, canBuy?: boolean) {
+      if (canBuy) {
         setCurrentGoods(canBuyGoodsItem)
         if (onChange) onChange(canBuyGoodsItem)
       } else {
@@ -93,19 +96,20 @@ export default function Sku(props: SkuProps) {
             {item.items.map((it, index) => {
               const canBuyGoodsItem = currentAttrCanBuy(it.id, item.items)
               const canBuy =
-                !canBuyGoodsItem || canBuyGoodsItem.disabled === true
+                !canBuyGoodsItem ||
+                canBuyGoodsItem.disabled === true ||
+                (itemDisable && itemDisable(canBuyGoodsItem))
                   ? false
                   : true
               return (
                 <View
                   key={`attr#${index}@${it.id}`}
-                  onClick={() => attrClick(canBuyGoodsItem)}
+                  onClick={() => attrClick(canBuyGoodsItem, canBuy)}
                   className={classnames({
                     [`${preCls}-attr`]: true,
-                    [`${preCls}-attr-active`]: currentGoods?.skuIds.includes(
-                      it.id,
-                    ),
-                    [`${preCls}-attr-disable`]: !canBuy,
+                    [`${preCls}-attr-active ${activeClassName}`]:
+                      currentGoods?.skuIds.includes(it.id),
+                    [`${preCls}-attr-disable ${disabledClassName}`]: !canBuy,
                   })}
                 >
                   {itemRender ? itemRender(it) : it.name}

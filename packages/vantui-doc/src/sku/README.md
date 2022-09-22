@@ -19,16 +19,43 @@ import { Sku } from '@antmjs/vantui'
 ```jsx
 function Demo() {
   const { sku, goodsList } = COMMON
-  const [current, setCurrent] = react.useState()
+  // 选中的商品，可以获取自定义属性如：商品图片、价格、数量
+  const [currentGoods, setCurrent] = react.useState()
+
+  const itemDisable = (goodsItem) => {
+    if (!goodsItem) return true
+    // 商品表可设定count为库存数，或者通过其它条件判断
+    if (goodsItem.count === 0) return true
+  }
+
   return (
     <>
+      <Toast />
       <View>当前选择商品：</View>
-      <View style={{ paddingBottom: 10 }}>HUAWEI手机【{current || '--'}】</View>
+      <View style={{ paddingBottom: 10 }}>
+        HUAWEI手机【{currentGoods?.skuName || '--'}】
+      </View>
       <Sku
         sku={sku}
         goodsList={goodsList}
-        onChange={(e) => setCurrent(e.skuName)}
-        itemRender={(it) => (it.mark ? `${it.name}(${it.mark})` : it.name)}
+        onChange={(e) => setCurrent(e)}
+        clickAttrDisable={(e) => Toast.show(`暂无库存`)}
+        itemDisable={itemDisable}
+        itemRender={(it) => {
+          if (it.color) {
+            return (
+              <View className="sku-color-item">
+                <View
+                  className="color-item"
+                  style={{ background: it.color }}
+                ></View>
+                <View>{it.name}</View>
+              </View>
+            )
+          }
+
+          return it.name
+        }}
       />
     </>
   )
@@ -36,6 +63,8 @@ function Demo() {
 ```
 
 `sku` 数据格式如下
+
+须要保证`items[xx].id`是唯一的
 
 ```js common
 const sku = [
@@ -46,19 +75,24 @@ const sku = [
       {
         name: '亮黑色',
         id: 11,
+        color: '#131111',
+        // 自定义属性...
       },
       {
         name: '釉白色',
         id: 12,
         mark: '首发',
+        color: '#ffff',
       },
       {
         name: '秘银色',
         id: 13,
+        color: '#d2cccc',
       },
       {
         name: '夏日胡杨',
         id: 14,
+        color: '#dd5151',
       },
     ],
   },
@@ -85,19 +119,20 @@ const sku = [
 const goodsList = [
   {
     id: 1,
-    skuIds: [11, 21],
-    skuName: '亮黑色&8GB+128GB',
+    skuIds: [11, 21], // 可以无序
+    skuName: '亮黑色&8GB+128GB', // 自定义属性
+    // 自定义属性...
   },
   {
     id: 2,
     skuIds: [11, 22],
     skuName: '亮黑色&8GB+256GB',
+    count: 0, // 自定义属性
   },
   {
     id: 3,
     skuIds: [12, 21],
     skuName: '釉白色&8GB+128GB',
-    disabled: true, // 无法购买
   },
   {
     id: 4,
@@ -106,14 +141,14 @@ const goodsList = [
   },
   {
     id: 4,
-    skuIds: [21, 13], // 可以无序
+    skuIds: [21, 13],
     skuName: '秘银色&8GB+128GB',
   },
   {
     id: 6,
     skuIds: [13, 22],
     skuName: '秘银色&8GB+256GB',
-    disabled: true, // 无法购买
+    disabled: true, // 无法选择的商品
   },
   {
     id: 7,
