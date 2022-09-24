@@ -45,6 +45,11 @@ packages/vantui-demo/src/pages/[!dashboard]
 packages/vantui-demo/src/app.config.js
 packages/vantui-demo/src/config.json
 
+packages/h5-demo/src/pages
+packages/h5-demo/src/pages/[!dashboard]
+packages/h5-demo/src/app.config.js
+packages/h5-demo/src/config.json
+
 packages/vantui-cli/lib
 packages/vantui-cli/dist
 packages/vantui-cli/dest
