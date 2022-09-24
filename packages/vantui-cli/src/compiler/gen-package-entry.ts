@@ -35,8 +35,6 @@ function genImports(
         process.env['BABEL_MODULE'] === 'commonjs' ? 'lib' : 'es'
       const fullPath = join(CWD, sourceType, importPath)
 
-      console.info(fs.existsSync(fullPath))
-
       if (fs.existsSync(fullPath)) {
         return `import ${importName} from '${importPath}';`
       } else return ''

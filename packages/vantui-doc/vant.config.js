@@ -11,6 +11,10 @@ module.exports = {
       pagePath: path.join(__dirname, '../vantui-demo/src/pages'),
       configPath: path.join(__dirname, '../vantui-demo/src/config.json'),
       appConfigPath: path.join(__dirname, '../vantui-demo/src/app.config.js'),
+      // h5代码同步
+      pagePathH5: path.join(__dirname, '../h5-demo/src/pages'),
+      configPathH5: path.join(__dirname, '../h5-demo/src/config.json'),
+      appConfigPathH5: path.join(__dirname, '../h5-demo/src/app.config.js'),
       withTabPages: ['icon', 'power-scroll-view'],
     },
     title: '@antmjs/vantui',

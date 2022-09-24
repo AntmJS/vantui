@@ -149,7 +149,7 @@ export async function watch(params: {
   type?: 'es' | 'lib'
   addtionalEntries?: string
 }) {
-  const type = params.type
+  const type = params.type || 'es'
   setNodeEnv('development')
   setBuildTarget('package')
   if (type === 'es') {

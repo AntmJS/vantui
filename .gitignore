@@ -46,7 +46,7 @@ packages/vantui-demo/src/app.config.js
 packages/vantui-demo/src/config.json
 
 packages/h5-demo/src/pages
-packages/h5-demo/src/pages/[!dashboard]
+!/packages/h5-demo/src/pages/dashboard/index.js
 packages/h5-demo/src/app.config.js
 packages/h5-demo/src/config.json
 

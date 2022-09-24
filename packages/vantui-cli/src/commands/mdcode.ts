@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-template-curly-in-string */
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
 import fs from 'fs'
 // eslint-disable-next-line import/no-named-as-default
 import glob from 'glob'
@@ -10,29 +9,39 @@ import markdownToAst from 'markdown-to-ast'
 import { format } from 'prettier'
 import { SRC_DIR, getVantConfig } from '../common/constant.js'
 import { ora, consola } from '../common/logger.js'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 const pages: Record<string, { title: string; path: string }> = {}
-let DEFAULT_PAGE_PATH = join(__dirname, `../../site/simulator/src/pages`)
+let DEFAULT_PAGE_PATH = ''
 let simulatorConfig: any = {}
 const fromTaroComps = ['View', 'Text', 'Input', 'Block']
-let CACHE: Record<string, any> = {}
-const CACHE_URL = join(__dirname, '../../.cache/mdcode.json')
+let CODE_TYPE = 'taro'
 
 type IMdCodeParams = {
   mode: 'create' | 'watch'
+  codeType?: 'taro' | 'h5'
 }
 
 export async function mdCode(params: IMdCodeParams) {
-  const { mode } = params
+  const { mode, codeType } = params
+  if (codeType) CODE_TYPE = codeType
   const spinner = ora(`Compile md-code and sync to simulator...`).start()
   const res = await getVantConfig()
   simulatorConfig = res.site?.simulator
-  if (res.site?.simulator?.pagePath) {
-    DEFAULT_PAGE_PATH = res.site.simulator.pagePath
+  if (CODE_TYPE === 'taro') {
+    if (res.site?.simulator?.pagePath) {
+      DEFAULT_PAGE_PATH = res.site.simulator.pagePath
+    }
+  } else if (CODE_TYPE === 'h5') {
+    if (res.site?.simulator?.pagePathH5) {
+      DEFAULT_PAGE_PATH = res.site.simulator.pagePathH5
+    }
   }
-  await initCache()
+  if (!DEFAULT_PAGE_PATH) {
+    consola.error(`找不到${CODE_TYPE}代码同步配置`)
+    process.exit(1)
+  }
+
   createBaseFiles(res)
+
   glob(`${SRC_DIR}/**/README.md`, async function (err, path: string[]) {
     if (err) {
       spinner.stop()
@@ -56,7 +65,6 @@ export async function mdCode(params: IMdCodeParams) {
 
     spinner.stop()
     spinner.succeed('Compile success')
-    await saveCache()
 
     if (mode === 'watch') {
       consola.info(`
@@ -66,10 +74,6 @@ export async function mdCode(params: IMdCodeParams) {
     }
   })
 }
-
-process.on('SIGINT', () => {
-  saveCache()
-})
 
 function watchMd() {
   let readyOk = false
@@ -191,12 +195,10 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
           ${item.value}
         `.replace(`function Demo`, 'export default function Demo'),
     )
-
-    if (!CACHE[name] || CACHE[name][demoPath] !== demoCode) {
-      await fs.writeFileSync(join(DEFAULT_PAGE_PATH, demoPath), demoCode)
-      if (!CACHE[name]) CACHE[name] = {}
-      CACHE[name][demoPath] = demoCode
-    }
+    await fs.writeFileSync(
+      join(DEFAULT_PAGE_PATH, demoPath),
+      tranformH5Code(demoCode),
+    )
   }
 
   if (pageIndexJsxInsert && name) {
@@ -290,18 +292,16 @@ type Inav = {
 async function createBaseFiles(res: any) {
   const nav = res.site.nav
   let routers: InavItem[] = []
-  const simulatorDefaultMenuConfigPath = join(
-    __dirname,
-    '../../site/simulator/src/config.json',
-  )
-  const simulatorDefaultRouterConfigPath = join(
-    __dirname,
-    '../../site/simulator/src/app.config.js',
-  )
-  const menuConfigPath =
-    res.site.simulator?.configPath || simulatorDefaultMenuConfigPath
-  const routerConfigPath =
-    res.site.simulator?.appConfigPath || simulatorDefaultRouterConfigPath
+
+  let menuConfigPath = ''
+  let routerConfigPath = ''
+  if (CODE_TYPE === 'taro') {
+    menuConfigPath = res.site.simulator?.configPath
+    routerConfigPath = res.site.simulator?.appConfigPath
+  } else if (CODE_TYPE === 'h5') {
+    menuConfigPath = res.site.simulator?.configPathH5
+    routerConfigPath = res.site.simulator?.appConfigPathH5
+  }
 
   const navFilter = nav.filter((item: Inav) => {
     let flag = true
@@ -319,37 +319,66 @@ async function createBaseFiles(res: any) {
     routers = routers.concat(item.items)
   })
 
-  const routerTemplateStr = `export default {
-    pages: [
-      'pages/dashboard/index',ROUTER_PLACEHOLDER
-    ],
-    window: {
-      navigationBarBackgroundColor: '#f8f8f8',
-      navigationBarTitleText: 'antmjs-vantui',
-      navigationBarTextStyle: 'black',
-      backgroundTextStyle: 'dark',
-      backgroundColor: '#f8f8f8',
-      titleBarColor: 'black',
-    },
-    sitemapLocation: 'sitemap.json',
-    animation: false,
-  }
-  `
+  if (CODE_TYPE === 'taro') {
+    const routerTemplateStr = `export default {
+      pages: [
+        'pages/dashboard/index',ROUTER_PLACEHOLDER
+      ],
+      window: {
+        navigationBarBackgroundColor: '#f8f8f8',
+        navigationBarTitleText: 'antmjs-vantui',
+        navigationBarTextStyle: 'black',
+        backgroundTextStyle: 'dark',
+        backgroundColor: '#f8f8f8',
+        titleBarColor: 'black',
+      },
+      sitemapLocation: 'sitemap.json',
+      animation: false,
+    }
+    `
 
-  let insertStr = ''
-  routers.forEach((rou) => {
-    pages[rou.path] = rou
-    insertStr += `\n'pages/${rou.path}/index',`
-    createPageIndex({
-      targetPath: rou.path,
-      pageTile: rou.title,
+    let insertStr = ''
+    routers.forEach((rou) => {
+      pages[rou.path] = rou
+      insertStr += `\n'pages/${rou.path}/index',`
+      createPageIndex({
+        targetPath: rou.path,
+        pageTile: rou.title,
+      })
     })
-  })
 
-  await fs.writeFileSync(
-    routerConfigPath,
-    formatCode(routerTemplateStr.replace('ROUTER_PLACEHOLDER', insertStr)),
-  )
+    await fs.writeFileSync(
+      routerConfigPath,
+      formatCode(routerTemplateStr.replace('ROUTER_PLACEHOLDER', insertStr)),
+    )
+  } else if (CODE_TYPE === 'h5') {
+    const routerTemplateStr = `export default [
+      {
+        path: '/pages/dashboard/index',
+        component: () => import('./pages/dashboard/index'),
+      },
+      ROUTER_PLACEHOLDER
+    ]
+    `
+
+    let insertStr = ''
+    routers.forEach((rou) => {
+      pages[rou.path] = rou
+      insertStr += `\n {
+        path: '/pages/${rou.path}/index',
+        component: () => import('./pages/${rou.path}/index'),
+      },`
+      createPageIndex({
+        targetPath: rou.path,
+        pageTile: rou.title,
+      })
+    })
+
+    await fs.writeFileSync(
+      routerConfigPath,
+      formatCode(routerTemplateStr.replace('ROUTER_PLACEHOLDER', insertStr)),
+    )
+  }
 }
 
 function formatCode(codes: string) {
@@ -453,7 +482,8 @@ function createImportStr(arr: string[]) {
     }
   })
 
-  if (!!taroComps) str += `import { ${taroComps} } from '@tarojs/components'\n`
+  if (!!taroComps && CODE_TYPE === 'taro')
+    str += `import { ${taroComps} } from '@tarojs/components'\n`
   if (!!selfComps) str += `import { ${selfComps} } from '@antmjs/vantui'`
 
   return str
@@ -474,17 +504,14 @@ function findImportFromJsx(ss: string): string[] {
   )
 }
 
-async function saveCache() {
-  const _cacheDir = join(__dirname, '../../.cache')
-  if (!fs.existsSync(_cacheDir)) {
-    await fs.mkdirSync(_cacheDir)
-  }
-  await fs.writeFileSync(CACHE_URL, JSON.stringify(CACHE))
-}
-
-async function initCache() {
-  if (fs.existsSync(CACHE_URL)) {
-    const res = await fs.readFileSync(CACHE_URL, 'utf-8')
-    CACHE = JSON.parse(res)
-  }
+function tranformH5Code(code: string) {
+  return code
+    .replace(/\<View/g, '<div')
+    .replace(/\<\/View/g, '</div')
+    .replace(/\<Text/g, '<span')
+    .replace(/\<\/Text/g, '</span')
+    .replace(/\<Block/g, '<div')
+    .replace(/\<\/Block/g, '</div')
+    .replace(/\<Input/g, '<input')
+    .replace(/\<\/Input/g, '</input')
 }

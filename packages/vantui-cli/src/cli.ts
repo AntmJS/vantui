@@ -46,10 +46,7 @@ program
   .command('mdcode')
   .description('Watch md, compile it into s')
   .option('--mode <mode>', 'Docs mode create | watch')
-  .option(
-    '--type <type>',
-    'Compile simulator type h5 | weapp | alipay | kwai | swan | dd | qq',
-  )
+  .option('--code-type <codeType>', 'codeType h5 or taro, default taro')
   .action(mdCode)
 
 program.command('changelog').description('Generate changelog').action(changelog)
