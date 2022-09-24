@@ -1,4 +1,5 @@
 import { join } from 'path'
+import fs from 'fs'
 import { get } from 'lodash-es'
 import {
   pascalize,
@@ -6,7 +7,7 @@ import {
   smartOutputFile,
   normalizePath,
 } from '../common/index.js'
-import { SRC_DIR, getVantConfig } from '../common/constant.js'
+import { SRC_DIR, getVantConfig, CWD } from '../common/constant.js'
 
 type PathResolver = (path: string) => string
 
@@ -22,15 +23,25 @@ function genImports(
   names: string[],
   pathResolver?: PathResolver,
   namedExport?: boolean,
+  // @ts-ignore
+  fileName: string,
 ): string {
   return names
     .map((name) => {
       const pascalName = pascalize(name)
       const importName = namedExport ? `{ ${pascalName} }` : pascalName
-      const importPath = getPathByName(name, pathResolver)
+      const importPath = `${getPathByName(name, pathResolver)}/${fileName}`
+      const sourceType =
+        process.env['BABEL_MODULE'] === 'commonjs' ? 'lib' : 'es'
+      const fullPath = join(CWD, sourceType, importPath)
 
-      return `import ${importName} from '${importPath}';`
+      console.info(fs.existsSync(fullPath))
+
+      if (fs.existsSync(fullPath)) {
+        return `import ${importName} from '${importPath}';`
+      } else return ''
     })
+    .filter((item) => !!item)
     .join('\n')
 }
 
@@ -38,6 +49,8 @@ function genExports(
   names: string[],
   pathResolver?: PathResolver,
   namedExport?: boolean,
+  // @ts-ignore
+  fileName: string,
 ): string {
   if (namedExport) {
     const exports = names
@@ -51,7 +64,20 @@ function genExports(
 
   return `
   export {
-    ${names.map(pascalize).join(',\n  ')}
+    ${names
+      .map((name) => {
+        const importPath = `${getPathByName(name, pathResolver)}/${fileName}`
+        const sourceType =
+          process.env['BABEL_MODULE'] === 'commonjs' ? 'lib' : 'es'
+        const fullPath = join(CWD, sourceType, importPath)
+
+        if (fs.existsSync(fullPath)) {
+          return name
+        } else return ''
+      })
+      .map(pascalize)
+      .filter((item) => !!item)
+      .join(',\n  ')}
   };
   `
 }
@@ -59,9 +85,11 @@ function genExports(
 export function genPackageEntry({
   outputPath,
   pathResolver,
+  fileName,
 }: {
   outputPath: string
   pathResolver?: PathResolver
+  fileName: string
 }) {
   const names = getComponents()
   const vantConfig = getVantConfig()
@@ -69,10 +97,9 @@ export function genPackageEntry({
   const namedExport = get(vantConfig, 'build.namedExport', false)
 
   const content = `
-${genImports(names, pathResolver, namedExport)}
+${genImports(names, pathResolver, namedExport, fileName)}
 
-${genExports(names, pathResolver, namedExport)}
+${genExports(names, pathResolver, namedExport, fileName)}
 `
-
   smartOutputFile(outputPath, content)
 }

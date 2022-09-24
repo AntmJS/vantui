@@ -22,6 +22,15 @@ import {
 import { clean } from './clean.js'
 // eslint-disable-next-line import/no-named-as-default-member
 const { remove, copy, readdir } = fse
+const esEntryFile = join(ES_DIR, 'index.js')
+const libEntryFile = join(LIB_DIR, 'index.js')
+const entries = [
+  {
+    es: esEntryFile,
+    lib: libEntryFile,
+    fileName: 'index.js',
+  },
+]
 
 async function compileFile(filePath: string) {
   if (isScript(filePath)) {
@@ -46,15 +55,9 @@ async function compileDir(dir: string) {
   )
 }
 
-async function copySourceCode(type?: 'lib' | 'es') {
-  let copys: any = []
-  if (type === 'es') {
-    copys = [copy(SRC_DIR, ES_DIR)]
-  } else if (type === 'lib') {
-    copys = [copy(SRC_DIR, LIB_DIR)]
-  } else {
-    copys = [copy(SRC_DIR, ES_DIR), copy(SRC_DIR, LIB_DIR)]
-  }
+async function copySourceCode() {
+  const copys = [copy(SRC_DIR, ES_DIR), copy(SRC_DIR, LIB_DIR)]
+
   return Promise.all(copys)
 }
 
@@ -70,28 +73,24 @@ async function buildCJSOutputs() {
   await compileDir(LIB_DIR)
 }
 
-async function buildTypeDeclarations() {
-  // todo
-}
-
 async function buildStyleEntry() {
   await genStyleDepsMap()
   genComponentStyle()
 }
 
-async function buildPackageScriptEntry(types?: 'lib' | 'es') {
-  const esEntryFile = join(ES_DIR, 'index.js')
-  const libEntryFile = join(LIB_DIR, 'index.js')
+async function buildPackageScriptEntry() {
+  for (let i = 0; i < entries.length; i++) {
+    const entryItem = entries[i]
 
-  if (!types || types === 'es') {
-    genPackageEntry({
-      outputPath: esEntryFile,
-      pathResolver: (path: string) => `./${relative(SRC_DIR, path)}`,
-    })
-  }
+    if (entryItem) {
+      genPackageEntry({
+        outputPath: entryItem.es,
+        pathResolver: (path: string) => `./${relative(SRC_DIR, path)}`,
+        fileName: entryItem.fileName,
+      })
 
-  if (!types || types === 'lib') {
-    await copy(esEntryFile, libEntryFile)
+      await copy(entryItem.es, entryItem.lib)
+    }
   }
 }
 
@@ -110,20 +109,12 @@ const tasks = [
     task: copySourceCode,
   },
   {
-    text: 'Build Package Script Entry',
-    task: buildPackageScriptEntry,
-  },
-  {
     text: 'Build Component Style Entry',
     task: buildStyleEntry,
   },
   {
     text: 'Build Package Style Entry',
     task: buildPackageStyleEntry,
-  },
-  {
-    text: 'Build Type Declarations',
-    task: buildTypeDeclarations,
   },
   {
     text: 'Build ESModule Outputs',
@@ -133,21 +124,14 @@ const tasks = [
     text: 'Build CommonJS Outputs',
     task: buildCJSOutputs,
   },
+  {
+    text: 'Build Package Script Entry',
+    task: buildPackageScriptEntry,
+  },
 ]
 
-const LIB_INDEX = 6
-const ES_INDEX = 5
-const DIST_INDEX = 7
-
-async function runBuildTasks(type?: 'es' | 'lib') {
+async function runBuildTasks() {
   const _tasks = tasks
-  if (type) _tasks.splice(DIST_INDEX, 1)
-  if (type === 'es') {
-    _tasks.splice(LIB_INDEX, 1)
-  }
-  if (type === 'lib') {
-    _tasks.splice(ES_INDEX, 1)
-  }
   for (let i = 0; i < _tasks.length; i++) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -156,7 +140,7 @@ async function runBuildTasks(type?: 'es' | 'lib') {
 
     try {
       /* eslint-disable no-await-in-loop */
-      await task(type)
+      await task()
       spinner.succeed(text)
     } catch (err) {
       spinner.fail(text)
@@ -168,12 +152,23 @@ async function runBuildTasks(type?: 'es' | 'lib') {
   consola.success('Compile successfully')
 }
 
-export async function build(params: { type?: 'es' | 'lib' }) {
+export async function build(params: { addtionalEntries?: string }) {
   setNodeEnv('production')
 
   try {
     await clean()
-    await runBuildTasks(params.type)
+    if (params.addtionalEntries) {
+      params.addtionalEntries.split(',').map((item) => {
+        const esEntryFile = join(ES_DIR, `${item}-index.js`)
+        const libEntryFile = join(LIB_DIR, `${item}-index.js`)
+        entries.push({
+          es: esEntryFile,
+          lib: libEntryFile,
+          fileName: `${item}-index.js`,
+        })
+      })
+    }
+    await runBuildTasks()
   } catch (err) {
     consola.error('Build failed')
     process.exit(1)

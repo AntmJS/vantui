@@ -41,8 +41,8 @@
   ],
   "scripts": {
     "iconfont": "npx antm-icon --font-family antmuifont --input-path https://at.alicdn.com/t/font_2744513_7eeet2akdo.css --output-path src/style/components/iconfont.less",
-    "watch": "npx antm-vantui-cli watch",
-    "build": "npx antm-vantui-cli build",
+    "watch": "npx antm-vantui-cli watch --addtional-entries h5",
+    "build": "npx antm-vantui-cli build --addtional-entries h5",
     "test:watch": "",
     "test": ""
   },

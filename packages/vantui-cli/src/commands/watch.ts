@@ -1,8 +1,11 @@
 /* eslint-disable import/no-named-as-default-member */
 import { mkdirSync } from 'fs'
-import { remove } from 'fs-extra'
+import { join, relative } from 'path'
+
+import { remove, copy } from 'fs-extra'
 // eslint-disable-next-line import/default
 import chokidar from 'chokidar'
+import { genPackageEntry } from '../compiler/gen-package-entry.js'
 import { SRC_DIR, LIB_DIR, ES_DIR } from '../common/constant.js'
 import {
   setNodeEnv,
@@ -15,6 +18,16 @@ import { ora, consola } from '../common/logger.js'
 import { compileStyle } from '../compiler/compile-style.js'
 import { compileScript } from '../compiler/compile-script.js'
 import { build } from './build.js'
+
+const esEntryFile = join(ES_DIR, 'index.js')
+const libEntryFile = join(LIB_DIR, 'index.js')
+const entries = [
+  {
+    es: esEntryFile,
+    lib: libEntryFile,
+    fileName: 'index.js',
+  },
+]
 
 async function compileFile(params: {
   fileName: string
@@ -66,9 +79,16 @@ function watchFile(type: 'lib' | 'es') {
     }
   })
 
-  watcher.on('change', function (path: string) {
+  watcher.on('change', async function (path: string) {
     if (readyOk) {
-      changeOrAddAction(path, type)
+      const spinner = ora('updating...').start()
+
+      await changeOrAddAction(path, type)
+      setTimeout(async () => {
+        await buildPackageScriptEntry()
+        spinner.stop()
+        consola.success('Update successfully')
+      }, 100)
     }
   })
 
@@ -109,7 +129,26 @@ function watchFile(type: 'lib' | 'es') {
   })
 }
 
-export async function watch(params: { type?: 'es' | 'lib' }) {
+async function buildPackageScriptEntry() {
+  for (let i = 0; i < entries.length; i++) {
+    const entryItem = entries[i]
+
+    if (entryItem) {
+      genPackageEntry({
+        outputPath: entryItem.es,
+        pathResolver: (path: string) => `./${relative(SRC_DIR, path)}`,
+        fileName: entryItem.fileName,
+      })
+
+      await copy(entryItem.es, entryItem.lib)
+    }
+  }
+}
+
+export async function watch(params: {
+  type?: 'es' | 'lib'
+  addtionalEntries?: string
+}) {
   const type = params.type
   setNodeEnv('development')
   setBuildTarget('package')
@@ -118,7 +157,20 @@ export async function watch(params: { type?: 'es' | 'lib' }) {
   } else if (type === 'lib') {
     setModuleEnv('commonjs')
   }
-  await build({ type })
+
+  if (params.addtionalEntries) {
+    params.addtionalEntries.split(',').map((item) => {
+      const esEntryFile = join(ES_DIR, `${item}-index.js`)
+      const libEntryFile = join(LIB_DIR, `${item}-index.js`)
+      entries.push({
+        es: esEntryFile,
+        lib: libEntryFile,
+        fileName: `${item}-index.js`,
+      })
+    })
+  }
+
+  await build({ addtionalEntries: params.addtionalEntries })
 
   consola.log(`
   watching files update

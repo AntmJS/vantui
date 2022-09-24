@@ -20,12 +20,14 @@ program.command('clean').description('Clean all dist files').action(clean)
 program
   .command('build')
   .description('Compile components in production mode')
+  .option('--addtional-entries <addtionalEntries>', 'addtional entries')
   .action(build)
 
 program
   .command('watch')
   .description('Compile components in development mode')
   .option('--type <type>', 'Build type')
+  .option('--addtional-entries <addtionalEntries>', 'addtional entries')
   .action(watch)
 
 program
