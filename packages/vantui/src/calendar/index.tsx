@@ -405,7 +405,8 @@ function Index(
         }, 66)
       }
     },
-    [initRect, poppable, scrollIntoViewFn, show],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [poppable, show],
   )
 
   useEffect(
