@@ -1,5 +1,5 @@
 import { style } from '../wxs/style'
-import * as utils from '../wxs/utils'
+import * as utils from '../wxs/h5-utils'
 
 function tabClass(active: any, ellipsis: any) {
   const classes = ['tab-class']

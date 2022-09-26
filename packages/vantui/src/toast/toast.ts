@@ -1,6 +1,6 @@
 import { isObj } from '../common/validator'
 import { ToastProps } from '../../types/toast'
-import { trigger } from './events'
+import { trigger } from './h5-events'
 
 function parseOptions(message: ToastProps | string) {
   return isObj(message) ? message : { message: message as string }

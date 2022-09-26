@@ -152,11 +152,6 @@ export async function watch(params: {
   const type = params.type || 'es'
   setNodeEnv('development')
   setBuildTarget('package')
-  if (type === 'es') {
-    setModuleEnv('esmodule')
-  } else if (type === 'lib') {
-    setModuleEnv('commonjs')
-  }
 
   if (params.addtionalEntries) {
     params.addtionalEntries.split(',').map((item) => {
@@ -171,6 +166,12 @@ export async function watch(params: {
   }
 
   await build({ addtionalEntries: params.addtionalEntries })
+
+  if (type === 'es') {
+    setModuleEnv('esmodule')
+  } else if (type === 'lib') {
+    setModuleEnv('commonjs')
+  }
 
   consola.log(`
   watching files update
