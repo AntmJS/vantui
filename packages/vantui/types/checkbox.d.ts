@@ -20,7 +20,7 @@ export interface CheckboxGroupProps extends StandardProps {
   value?: Array<any>
   disabled?: boolean
   direction?: 'horizontal' | 'vertical'
-  children?: Array<ReactNode>
+  children?: ReactNode
   onChange?: (event: ITouchEvent) => any
 }
 
