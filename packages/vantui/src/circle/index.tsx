@@ -24,7 +24,7 @@ export function Circle(props: CircleProps) {
   const [state, setState] = useState({
     ready: false,
     hoverColor: '',
-    unitag: '',
+    unitag: `van-circle_uni_${CIRCLE_INDEX++}`,
   })
 
   const ref: any = useRef({
@@ -52,15 +52,15 @@ export function Circle(props: CircleProps) {
     ...others
   } = props
 
-  useEffect(() => {
-    setState((state) => {
-      return {
-        ...state,
-        // unitag: process.env.TARO_ENV === 'h5' ? `van-circle_uni_${CIRCLE_INDEX++}` : 'van-circle',
-        unitag: `van-circle_uni_${CIRCLE_INDEX++}`,
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   setState((state) => {
+  //     return {
+  //       ...state,
+  //       // unitag: process.env.TARO_ENV === 'h5' ? `van-circle_uni_${CIRCLE_INDEX++}` : 'van-circle',
+  //       unitag: `van-circle_uni_${CIRCLE_INDEX++}`,
+  //     }
+  //   })
+  // }, [])
 
   useEffect(() => {
     setState((state) => {
