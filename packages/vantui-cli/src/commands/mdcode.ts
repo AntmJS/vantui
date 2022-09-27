@@ -1,23 +1,21 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-template-curly-in-string */
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
 import fs from 'fs'
 // eslint-disable-next-line import/no-named-as-default
 import glob from 'glob'
 import { watch } from 'chokidar'
 import markdownToAst from 'markdown-to-ast'
 import { format } from 'prettier'
-import { SRC_DIR, getVantConfig } from '../common/constant.js'
+import { SRC_DIR, getVantConfig, CWD } from '../common/constant.js'
 import { ora, consola } from '../common/logger.js'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
 const pages: Record<string, { title: string; path: string }> = {}
-let DEFAULT_PAGE_PATH = join(__dirname, `../../site/simulator/src/pages`)
+let DEFAULT_PAGE_PATH = ''
 let simulatorConfig: any = {}
+// 所有配置项
+let res: any = {}
 const fromTaroComps = ['View', 'Text', 'Input', 'Block']
-let CACHE: Record<string, any> = {}
-const CACHE_URL = join(__dirname, '../../.cache/mdcode.json')
 
 type IMdCodeParams = {
   mode: 'create' | 'watch'
@@ -26,13 +24,19 @@ type IMdCodeParams = {
 export async function mdCode(params: IMdCodeParams) {
   const { mode } = params
   const spinner = ora(`Compile md-code and sync to simulator...`).start()
-  const res = await getVantConfig()
+  res = await getVantConfig()
   simulatorConfig = res.site?.simulator
+
   if (res.site?.simulator?.pagePath) {
     DEFAULT_PAGE_PATH = res.site.simulator.pagePath
   }
-  await initCache()
-  createBaseFiles(res)
+  if (!DEFAULT_PAGE_PATH) {
+    consola.error('antmjs.config缺少site.simulator.pagePath配置')
+    process.exit(1)
+  }
+
+  createBaseFiles()
+
   glob(`${SRC_DIR}/**/README.md`, async function (err, path: string[]) {
     if (err) {
       spinner.stop()
@@ -56,29 +60,44 @@ export async function mdCode(params: IMdCodeParams) {
 
     spinner.stop()
     spinner.succeed('Compile success')
-    await saveCache()
 
     if (mode === 'watch') {
       consola.info(`
         🐒 Watching for md file changes...
         `)
+      watchVantConfig()
       watchMd()
     }
   })
 }
 
-process.on('SIGINT', () => {
-  saveCache()
-})
+function watchVantConfig() {
+  let readyOk = false
+  const watcher = watch(`${CWD}/vant.config.js`, {
+    persistent: true,
+  })
+
+  watcher.on('ready', function () {
+    readyOk = true
+  })
+
+  watcher.on('change', function () {
+    if (readyOk) {
+      createBaseFiles()
+    }
+  })
+}
 
 function watchMd() {
   let readyOk = false
   const watcher = watch(`${SRC_DIR}/**/README.md`, {
     persistent: true,
   })
+
   watcher.on('ready', function () {
     readyOk = true
   })
+
   watcher.on('add', function (path: string) {
     if (readyOk) {
       const { codeArr, commonUtils } = getCode(path)
@@ -91,6 +110,7 @@ function watchMd() {
       createPageComponent(codeArr, name)
     }
   })
+
   watcher.on('change', function (path: string) {
     if (readyOk) {
       const { codeArr, commonUtils } = getCode(path)
@@ -192,11 +212,7 @@ async function createPageComponent(codeRes: IcodeItem[], name?: string) {
         `.replace(`function Demo`, 'export default function Demo'),
     )
 
-    if (!CACHE[name] || CACHE[name][demoPath] !== demoCode) {
-      await fs.writeFileSync(join(DEFAULT_PAGE_PATH, demoPath), demoCode)
-      if (!CACHE[name]) CACHE[name] = {}
-      CACHE[name][demoPath] = demoCode
-    }
+    await fs.writeFileSync(join(DEFAULT_PAGE_PATH, demoPath), demoCode)
   }
 
   if (pageIndexJsxInsert && name) {
@@ -287,21 +303,21 @@ type Inav = {
   items: InavItem[]
 }
 // 创建路由菜单文件
-async function createBaseFiles(res: any) {
+async function createBaseFiles() {
   const nav = res.site.nav
   let routers: InavItem[] = []
-  const simulatorDefaultMenuConfigPath = join(
-    __dirname,
-    '../../site/simulator/src/config.json',
-  )
-  const simulatorDefaultRouterConfigPath = join(
-    __dirname,
-    '../../site/simulator/src/app.config.js',
-  )
-  const menuConfigPath =
-    res.site.simulator?.configPath || simulatorDefaultMenuConfigPath
-  const routerConfigPath =
-    res.site.simulator?.appConfigPath || simulatorDefaultRouterConfigPath
+  const menuConfigPath = res.site.simulator?.configPath
+  if (!menuConfigPath) {
+    consola.error('antmjs.config缺少site.simulator.configPath菜单文件路径配置')
+    process.exit(1)
+  }
+  const routerConfigPath = res.site.simulator?.appConfigPath
+  if (!routerConfigPath) {
+    consola.error(
+      'antmjs.config缺少site.simulator.appConfigPath入口文件路径配置',
+    )
+    process.exit(1)
+  }
 
   const navFilter = nav.filter((item: Inav) => {
     let flag = true
@@ -472,19 +488,4 @@ function findImportFromJsx(ss: string): string[] {
   return res.filter(
     (a: string, index: number) => res.indexOf(a) === index && !a.includes('_'),
   )
-}
-
-async function saveCache() {
-  const _cacheDir = join(__dirname, '../../.cache')
-  if (!fs.existsSync(_cacheDir)) {
-    await fs.mkdirSync(_cacheDir)
-  }
-  await fs.writeFileSync(CACHE_URL, JSON.stringify(CACHE))
-}
-
-async function initCache() {
-  if (fs.existsSync(CACHE_URL)) {
-    const res = await fs.readFileSync(CACHE_URL, 'utf-8')
-    CACHE = JSON.parse(res)
-  }
 }
