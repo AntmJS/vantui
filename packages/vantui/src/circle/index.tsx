@@ -1,16 +1,9 @@
-import {
-  // createSelectorQuery,
-  createCanvasContext,
-  // useReady,
-} from '@tarojs/taro'
-import { useState, useRef, useEffect, useCallback } from 'react'
-import { View, Canvas, CoverView } from '@tarojs/components'
+import { createCanvasContext, createSelectorQuery } from '@tarojs/taro'
+import { useRef, useState, useEffect, useCallback } from 'react'
+import { View, Canvas } from '@tarojs/components'
 import { Current } from '@tarojs/runtime'
-
 import { CircleProps } from '../../types/circle'
-// import { getSystemInfoSync } from '../common/utils'
 import { isObj } from '../common/validator'
-// import { adaptor } from './canvas'
 
 function format(rate: number) {
   return Math.min(Math.max(rate, 0), 100)
@@ -18,19 +11,19 @@ function format(rate: number) {
 const PERIMETER = 2 * Math.PI
 const BEGIN_ANGLE = -Math.PI / 2
 const STEP = 1
-let CIRCLE_INDEX = 0
 
 export function Circle(props: CircleProps) {
-  const [state, setState] = useState({
-    ready: false,
-    hoverColor: '',
-    unitag: '',
-  })
+  const indexRef = useRef(
+    `van-circle_uni_${+new Date()}${Math.ceil(Math.random() * 10000)}`,
+  )
+  const [ready, setReady] = useState(false)
 
-  const ref: any = useRef({
+  const ref = useRef<any>({
+    ctx: undefined,
     inited: false,
     currentValue: undefined,
     interval: undefined,
+    hoverColor: '',
   })
 
   const {
@@ -42,8 +35,6 @@ export function Circle(props: CircleProps) {
     fill,
     layerColor = '#ffffff',
     color = '#1989fa',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    type = '',
     strokeWidth = 4,
     clockwise = true,
     style,
@@ -53,95 +44,63 @@ export function Circle(props: CircleProps) {
   } = props
 
   useEffect(() => {
-    setState((state) => {
-      return {
-        ...state,
-        // unitag: process.env.TARO_ENV === 'h5' ? `van-circle_uni_${CIRCLE_INDEX++}` : 'van-circle',
-        unitag: `van-circle_uni_${CIRCLE_INDEX++}`,
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    setState((state) => {
-      return {
-        ...state,
-        ready: true,
-      }
-    })
-  }, [])
-
-  useEffect(() => {
+    Current.page = Current.page ?? { path: `page-${indexRef.current}` }
     setTimeout(() => {
-      if (process.env.TARO_ENV === 'h5') {
-        setState((state) => {
-          return {
-            ...state,
-            ready: true,
-          }
-        })
+      if (
+        process.env.TARO_ENV !== 'h5' &&
+        process.env.TARO_ENV !== 'swan' &&
+        process.env.TARO_ENV !== 'kwai'
+      ) {
+        const query = createSelectorQuery()
+        query
+          .select(`#${indexRef.current}`)
+          .fields({ node: true, size: true })
+          .exec((res) => {
+            const canvas = res[0].node
+            const ctx = canvas.getContext('2d')
+            canvas.width = res[0].width * 3
+            canvas.height = res[0].height * 3
+            ctx.scale(3, 3)
+            ref.current.ctx = ctx
+            setReady(true)
+          })
+      } else {
+        const ctx = createCanvasContext(indexRef.current)
+        ref.current.ctx = ctx
+        setReady(true)
       }
     }, 100)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const getContext = useCallback(() => {
-    Current.page = Current.page ?? { path: `page-${state.unitag}` }
-    let ctx: any = null
-    try {
-      ctx = createCanvasContext(state.unitag)
-    } catch (error) {}
-
-    return Promise.resolve(ctx)
-    // const dpr = getSystemInfoSync().pixelRatio
-    // return new Promise((resolve: any) => {
-    //   createSelectorQuery()
-    //     .select(`.${state.unitag}`)
-    //     .node()
-    //     .exec((res: any) => {
-    //       const canvas = res[0].node
-    //       if (canvas) {
-    //         const ctx = canvas.getContext(type)
-    //         if (!ref.current.inited) {
-    //           ref.current.inited = true
-    //           canvas.width = size * dpr
-    //           canvas.height = size * dpr
-    //           ctx.scale(dpr, dpr)
-    //         }
-    //         resolve(adaptor(ctx))
-    //       }
-    //     })
-    // })
-  }, [state.unitag])
 
   const setHoverColor = function () {
     if (isObj(color)) {
       const _color = color as Record<string, string>
-      return getContext()
-        .then((context: any) => {
-          if (context) {
-            const LinearColor = context.createLinearGradient(size, 0, 0, 0)
-            Object.keys(color)
-              .sort((a, b) => parseFloat(a) - parseFloat(b))
-              .map((key: any) =>
-                LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
-              )
-            setState((state) => {
-              return {
-                ...state,
-                hoverColor: LinearColor,
-              }
-            })
-          }
-        })
-        .catch(() => {})
-    }
-    setState((state: any) => {
-      return {
-        ...state,
-        hoverColor: color,
+      try {
+        // 快手不支持渐变色
+        if (process.env.TARO_ENV === 'kwai') {
+          Object.keys(color)
+            .sort((a, b) => parseFloat(a) - parseFloat(b))
+            .map((key: any) => (ref.current.hoverColor = _color[key]))
+        } else {
+          const LinearColor = ref.current.ctx.createLinearGradient(
+            size,
+            0,
+            0,
+            0,
+          )
+          Object.keys(color)
+            .sort((a, b) => parseFloat(a) - parseFloat(b))
+            .map((key: any) =>
+              LinearColor.addColorStop(parseFloat(key) / 100, _color[key]),
+            )
+          ref.current.hoverColor = LinearColor
+        }
+      } catch (error) {
+        console.error(error)
       }
-    })
+    } else {
+      ref.current.hoverColor = color
+    }
     return Promise.resolve()
   }
   const presetCanvas = useCallback(
@@ -154,14 +113,24 @@ export function Circle(props: CircleProps) {
     ) => {
       const position = size / 2
       const radius = position - strokeWidth / 2
-      context.setStrokeStyle(strokeStyle)
-      context.setLineWidth(strokeWidth)
-      context.setLineCap(lineCap)
+      if (process.env.TARO_ENV === 'swan') {
+        context.setStrokeStyle(strokeStyle)
+        context.setLineWidth(strokeWidth)
+        context.setLineCap(lineCap)
+      } else {
+        context.strokeStyle = strokeStyle
+        context.lineWidth = strokeWidth
+        context.lineCap = lineCap
+      }
       context.beginPath()
       context.arc(position, position, radius, beginAngle, endAngle, !clockwise)
       context.stroke()
       if (fill) {
-        context.setFillStyle(fill)
+        if (process.env.TARO_ENV === 'swan') {
+          context.setFillStyle(fill)
+        } else {
+          context.fillStyle = fill
+        }
         context.fill()
       }
     },
@@ -180,27 +149,27 @@ export function Circle(props: CircleProps) {
       const endAngle = clockwise
         ? BEGIN_ANGLE + progress
         : 3 * Math.PI - (BEGIN_ANGLE + progress)
-      presetCanvas(context, state.hoverColor, BEGIN_ANGLE, endAngle)
+      presetCanvas(context, ref.current.hoverColor, BEGIN_ANGLE, endAngle)
     },
-    [clockwise, presetCanvas, state.hoverColor],
+    [clockwise, presetCanvas],
   )
   const drawCircle = useCallback(
     (currentValue: any) => {
-      getContext()
-        .then((context: any) => {
-          if (context) {
-            context.clearRect(0, 0, size, size)
-            renderLayerCircle(context)
-            const formatValue = format(currentValue)
-            if (formatValue !== 0) {
-              renderHoverCircle(context, formatValue)
-            }
-            context.draw().catch(() => {})
-          }
-        })
-        .catch(() => {})
+      ref.current.ctx.clearRect(0, 0, size, size)
+      renderLayerCircle(ref.current.ctx)
+      const formatValue = format(currentValue)
+      if (formatValue !== 0) {
+        renderHoverCircle(ref.current.ctx, formatValue)
+      }
+      if (
+        process.env.TARO_ENV === 'h5' ||
+        process.env.TARO_ENV === 'swan' ||
+        process.env.TARO_ENV === 'kwai'
+      ) {
+        ref.current.ctx.draw()
+      }
     },
-    [getContext, renderHoverCircle, renderLayerCircle, size],
+    [renderHoverCircle, renderLayerCircle, size],
   )
   const clearMockInterval = function () {
     if (ref.current.interval) {
@@ -236,20 +205,20 @@ export function Circle(props: CircleProps) {
   }, [drawCircle, speed, value])
 
   useEffect(() => {
-    if (state.ready) {
+    if (ready) {
       reRender()
     }
-  }, [reRender, state.ready, value])
+  }, [reRender, value, ready])
 
   useEffect(() => {
-    if (state.ready && state.unitag) {
+    if (ready) {
       drawCircle(ref.current.currentValue)
     }
     // eslint-disable-next-line
-  }, [state.ready, size, state.unitag])
+  }, [size, ready])
 
   useEffect(() => {
-    if (state.ready && state.unitag) {
+    if (ready) {
       setHoverColor()
         .then(() => {
           drawCircle(ref.current.currentValue)
@@ -257,18 +226,17 @@ export function Circle(props: CircleProps) {
         .catch(() => {})
     }
     // eslint-disable-next-line
-  }, [state.ready, color, state.unitag])
+  }, [color, ready])
 
   useEffect(() => {
     return () => {
       clearMockInterval()
     }
     /* eslint-disable-next-line */
-  }, [state.ready])
-
+  }, [])
   return (
     <View
-      id={`page-${state.unitag}`}
+      id={`page-${indexRef.current}`}
       className={`van-circle ${className}`}
       style={style}
       {...others}
@@ -279,18 +247,16 @@ export function Circle(props: CircleProps) {
         width={size}
         height={size}
         nativeProps={{ width: size, height: size }}
-        className={`van-circle__canvas ${state.unitag}`}
-        // type={type}
+        className={`van-circle__canvas ${indexRef.current}`}
         style={'width: ' + `${size}px` + ';height:' + `${size}px`}
-        id={state.unitag}
-        canvasId={state.unitag}
+        id={indexRef.current}
+        type="2d"
+        canvasId={indexRef.current}
       ></Canvas>
       {!text ? (
         <View className="van-circle__text">{children}</View>
-      ) : process.env.TARO_ENV === 'dd' ? (
-        <View className="van-circle__text">{text}</View>
       ) : (
-        <CoverView className="van-circle__text">{text}</CoverView>
+        <View className="van-circle__text">{text}</View>
       )}
     </View>
   )

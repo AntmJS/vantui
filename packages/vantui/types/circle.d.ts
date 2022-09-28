@@ -10,7 +10,6 @@ export interface CircleProps extends StandardProps {
   fill?: string
   layerColor?: string
   color?: string | Record<string, string>
-  type?: string
   strokeWidth?: number
   clockwise?: boolean
   children?: ReactNode

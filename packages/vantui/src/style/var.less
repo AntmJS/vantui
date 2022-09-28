@@ -714,8 +714,8 @@
 @skeleton-animation-duration: 1.2s;
 
 .theme(@property, @imp) {
-  @{property}: e(replace(@imp, '@([^() ]+)', '@{$1}', 'ig'));
-  @{property}: e(replace(@imp, '@([^() ]+)', 'var(--$1, @{$1})', 'ig'));
+  @{property}: e(replace(@imp, '([-]@)([^() ]+)', '$1{$2}', 'ig'));
+  @{property}: e(replace(@imp, '([-]@)([^() ]+)', 'var(--$2, $1{$2})', 'ig'));
 }
 
 // number-keyboard

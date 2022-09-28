@@ -36,7 +36,7 @@ function Demo() {
   const [value, setValue] = react.useState(50)
   return (
     <View>
-      <Circle value={value} strokeWidth="6" text="宽度定制" />
+      <Circle value={value} strokeWidth={6} text="宽度定制" />
       <Circle
         value={value}
         layerColor="#eeeeee"
@@ -44,7 +44,6 @@ function Demo() {
         text="颜色定制"
       />
       <Circle
-        type="2d"
         value={value}
         wait
         solve
@@ -54,7 +53,7 @@ function Demo() {
         }}
         text="渐变色"
       />
-      <Circle value={value} size="120" text="大小定制" />
+      <Circle value={value} size={120} text="大小定制" />
 
       <Button onClick={() => setValue(value + 10)}>增加</Button>
     </View>
@@ -91,7 +90,6 @@ function Demo() {
 | fill        | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                    | -      | `false` |
 | layerColor  | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                    | -      | `false` |
 | color       | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Record<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;><br/>_ | -      | `false` |
-| type        | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                    | -      | `false` |
 | strokeWidth | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                                                    | -      | `false` |
 | clockwise   | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                   | -      | `false` |
 | children    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                 | -      | `false` |

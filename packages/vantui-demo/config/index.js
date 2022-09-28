@@ -74,14 +74,7 @@ const config = {
           hack: `true; @import "${npath.join(
             process.cwd(),
             'src/styles/index.less',
-          )}";${
-            process.env.TARO_ENV === 'kwai'
-              ? `@import "${npath.join(
-                  process.cwd(),
-                  'src/styles/kwai.less',
-                )}";`
-              : ''
-          }`,
+          )}";`,
         },
       },
       // 适用于全局引入样式
