@@ -97,4 +97,6 @@ export interface SwiperItemProps {
 
 declare const Swiper: FunctionComponent<SwiperProps>
 
-export { Swiper }
+declare const SwiperItem: FunctionComponent<SwiperItemProps>
+
+export { Swiper, SwiperItem }

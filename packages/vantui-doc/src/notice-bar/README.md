@@ -80,6 +80,33 @@ function Demo() {
 }
 ```
 
+### 垂直用法
+
+```jsx
+function Demo() {
+  return (
+    <NoticeBar leftIcon="volume-o" scrollable={false}>
+      <Swiper
+        direction="vertical"
+        autoPlay={3000}
+        touchable={false}
+        height={30}
+      >
+        <SwiperItem>
+          <View style={{ height: 30 }}>明月直入，无心可猜1。</View>
+        </SwiperItem>
+        <SwiperItem>
+          <View style={{ height: 30 }}>明月直入，无心可猜2。</View>
+        </SwiperItem>
+        <SwiperItem>
+          <View style={{ height: 30 }}>明月直入，无心可猜3。</View>
+        </SwiperItem>
+      </Swiper>
+    </NoticeBar>
+  )
+}
+```
+
 ### 自定义样式
 
 通过 `color` 属性设置文本颜色，通过 `background` 属性设置背景色。
