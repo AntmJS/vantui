@@ -150,10 +150,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/eslint@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.npmmirror.com/@antmjs/eslint/-/eslint-2.0.7.tgz#1b886526919d453645027bfcfc1f64f2ebd21aa3"
-  integrity sha512-7nCkTY58lFHgRdA3kkoEjSVe+FezKE1ir2rvgXw5np6YGFC/GpudKzohq/tqcLwoABv00Myrdh5irrew4vnbNQ==
+"@antmjs/eslint@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmmirror.com/@antmjs/eslint/-/eslint-2.1.1.tgz#238a29172e9e3f84b05d1fb1beaf27b0d7808b25"
+  integrity sha512-QePE1Cl0VSOmPaPiKBn6/n5AilQcpZIu60aHjPf1PEFl6keZL7idCC/Xadix+8wfobJtthKR62acdTKCPl7Nlw==
   dependencies:
     "@graphql-eslint/eslint-plugin" "^3.10.7"
     "@typescript-eslint/eslint-plugin" "^5.33.0"
@@ -188,10 +188,10 @@
   resolved "https://registry.npmmirror.com/@antmjs/plugin-mini-fix/-/plugin-mini-fix-2.1.1.tgz#b4e46b9be886019dfaa0d658f8f5edef6f81fb45"
   integrity sha512-GzZLsI+Gkor/a9ntdOtVm9toy7nOtCMrxmHLZz9sU1KlHzvqaASeZxKVG8UgvP8Aly3oeegWhp4IL6IAnLQKmg==
 
-"@antmjs/stylelint@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.npmmirror.com/@antmjs/stylelint/-/stylelint-2.0.7.tgz#e25085f5ea21c6fd2fd7f38ed02aa1f2388ee854"
-  integrity sha512-taxECAlFdTHIX5CK+FHnnpPT6jFzi4eTK2m75h8kTTNHfgdBm1DSqBscdmvWObWUkFI4C/i8lZ5XWBCtIowkjQ==
+"@antmjs/stylelint@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmmirror.com/@antmjs/stylelint/-/stylelint-2.1.1.tgz#26f66fb59183ffb578d1fd93531e49e47a01385e"
+  integrity sha512-oKywIG825Tz0OWqAQW4DYCIeUuwNs2+aJW3ITcfMRliAfOdtkIAPgXBCTDRziI3/RyPFn8b46BRyVhZLrkpAQA==
   dependencies:
     postcss-less "^6.0.0"
     stylelint-config-prettier "^9.0.3"
@@ -202,10 +202,10 @@
   resolved "https://registry.npmmirror.com/@antmjs/utils/-/utils-2.1.1.tgz#1d6edb8465416fae16942425870db4fd4c1bfdd0"
   integrity sha512-6B8WRUpjTgIIi6BAuYkrcn8GSRnbfJJa7ivIgUJXaQkv6qwe3hyHymdfMunQjRbBgK8saIpnyjmZ+Myg5WimrA==
 
-"@antmjs/warning@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.npmmirror.com/@antmjs/warning/-/warning-2.0.7.tgz#4ce1fcbe1c14a3b382698c846164a5af8e55c369"
-  integrity sha512-Vf6oUsYFaamSwXLNnHfGwpOqj/2CNRt688XNssz+WWXRKQKb1r3TqRxbAH+X+5angpJMiKRCjTc6eQv3EK4eVA==
+"@antmjs/warning@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmmirror.com/@antmjs/warning/-/warning-2.1.1.tgz#cbba91a4590b47c028140dfb9e2bd2a6036253b9"
+  integrity sha512-EWJybNVFtNMoFy3t/ITW2FxKa5LnjKWb3vWU79jGM8TXaFH6s5QjPysnGwnWr05oIPEHhPfMXwbHxX5sRvFDrQ==
   dependencies:
     chalk "^4.1.2"
     commander "^8.1.0"
