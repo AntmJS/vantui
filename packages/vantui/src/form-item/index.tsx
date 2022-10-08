@@ -17,6 +17,7 @@ const prefixCls = 'vant-form-formItem'
 
 export function FormItem(props: FormItemProps) {
   const {
+    id,
     name,
     layout = 'horizontal',
     children,
@@ -113,7 +114,7 @@ export function FormItem(props: FormItemProps) {
     : children
 
   return (
-    <View className={`${prefixCls}-wrapper`}>
+    <View id={id} className={`${prefixCls}-wrapper`}>
       <View className={`${prefixCls} ${prefixCls}-${layout} ${className}`}>
         <Label
           label={label}
