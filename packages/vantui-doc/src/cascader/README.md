@@ -240,7 +240,7 @@ function Demo() {
 使用饿了么开源地区数据
 
 ```jsx
-import { regionData, CodeToText } from 'element-china-area-data'
+import { regionData, CodeToText } from 'element-china-area-data/src/app'
 
 function Demo() {
   const [isVisible, setIsVisible] = react.useState(false)
