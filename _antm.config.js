@@ -1,4 +1,4 @@
-// 将_antm.config.js 的_去掉，然后更新下方的access_token
+// 拷贝一份_antm.config.js文件，然后将文件的_去掉，然后更新下方的access_token
 module.exports = {
   warning: {
     monitorFiles: [
