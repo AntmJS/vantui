@@ -237,7 +237,7 @@ function Demo() {
 
 ### 使用完整的地区数据
 
-使用饿了么开源地区数据
+使用饿了么开源地区数据, 数据过多的时候会自动滚动到选中元素，由于 tab 的 ScrollView 和垂直的 scrollView 可能冲突，所有会存在延迟滚动
 
 ```jsx
 import { regionData, CodeToText } from 'element-china-area-data/src/app'

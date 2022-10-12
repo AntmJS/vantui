@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default */
 import { useState, useEffect } from 'react'
-import { View, Text } from '@tarojs/components'
+import { View, Text, CustomWrapper } from '@tarojs/components'
 import Tab from '../tab'
 import Tabs from '../tabs'
 import Popup from '../popup'
@@ -12,6 +12,7 @@ import {
 } from '../../types/cascader'
 import { CascaderItem } from './cascaderItem'
 import { convertListToOptions } from './helper'
+import ScrollViewTimeout from './scrollViewTimeout'
 import Tree from './tree'
 
 export interface CascaderPane {
@@ -66,7 +67,7 @@ const InternalCascader = (props: CascaderProps) => {
   const [optiosData, setOptiosData] = useState<CascaderPane[]>([])
   const [tabAnimate, settabAnimate] = useState(false)
 
-  const isLazy = () => state.configs.lazy && Boolean(state.configs.lazyLoad)
+  const isLazy = () => !!state.configs.lazy && Boolean(state.configs.lazyLoad)
 
   const [state] = useState({
     optionsData: [] as any,
@@ -248,6 +249,7 @@ const InternalCascader = (props: CascaderProps) => {
   }
 
   const close = () => {
+    settabAnimate(false)
     onClose && onClose()
   }
 
@@ -272,8 +274,8 @@ const InternalCascader = (props: CascaderProps) => {
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item.value)
-        onChange(optionParams, pathNodes)
-        onPathChange(optionParams, pathNodes)
+        onChange?.(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
       }
       setOptiosData(state.panes)
       setTimeout(() => {
@@ -300,7 +302,7 @@ const InternalCascader = (props: CascaderProps) => {
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item?.value)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
       }
       return
     }
@@ -320,7 +322,7 @@ const InternalCascader = (props: CascaderProps) => {
     setOptiosData(state.panes)
   }
 
-  return (
+  const casBody = (
     <View className={`van-cascader ${className}`} style={style}>
       <Popup
         className="van-cascadar-popup"
@@ -368,17 +370,24 @@ const InternalCascader = (props: CascaderProps) => {
           }
         >
           {!state.initLoading && state.panes.length ? (
-            optiosData.map((pane) => (
+            optiosData.map((pane, index) => (
               <Tab
                 key={pane.paneKey}
                 active={tabvalue === pane.paneKey}
                 name={pane.paneKey}
-                lazyRender={false}
+                lazyRender={true}
+                lazyTimeout={100}
                 onClick={() => {
-                  if (!tabAnimate) settabAnimate(true)
+                  if (!tabAnimate && index !== optiosData.length - 1)
+                    settabAnimate(true)
                 }}
               >
-                <View className={'van-cascader-tab'}>
+                <ScrollViewTimeout
+                  timeout={400}
+                  optiosData={optiosData}
+                  tabvalue={tabvalue}
+                  value={value}
+                >
                   {pane.nodes &&
                     pane.nodes.map((node: any, index: number) => (
                       <CascaderItem
@@ -387,9 +396,10 @@ const InternalCascader = (props: CascaderProps) => {
                         data={node}
                         checked={pane.selectedNode?.value === node.value}
                         chooseItem={(node: any) => chooseItem(node, false)}
+                        id={`vant-cascader-item${node.value}`}
                       />
                     ))}
-                </View>
+                </ScrollViewTimeout>
               </Tab>
             ))
           ) : (
@@ -401,6 +411,12 @@ const InternalCascader = (props: CascaderProps) => {
       </Popup>
     </View>
   )
+
+  if (process.env.TARO_ENV === 'h5') {
+    return casBody
+  } else {
+    return <CustomWrapper>{casBody}</CustomWrapper>
+  }
 }
 
 export const Cascader = InternalCascader
