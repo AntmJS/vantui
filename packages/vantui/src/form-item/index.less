@@ -71,6 +71,14 @@
 
 .vant-form-message {
   font-size: @form-message-font-size;
-  margin-top: @form-message-margin-top;
   color: @form-message-color;
+  height: 0;
+  transition: all 0.4s;
+  visibility: hidden;
+}
+
+.vant-form-message-show {
+  height: 30px;
+  margin-top: @form-message-margin-top;
+  visibility: visible;
 }

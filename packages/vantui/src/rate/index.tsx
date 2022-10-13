@@ -24,7 +24,7 @@ export function Rate(props: RateProps) {
     style,
     className,
     defaultValue = 5,
-    iconClassPrefix = 'vant-icon',
+    iconClassPrefix = 'van-icon',
     ...others
   } = props
   const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)

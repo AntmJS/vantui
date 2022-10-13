@@ -20,6 +20,7 @@ const formInstanceApi = [
   'unRegisterValidate',
   'registerRequiredMessageCallback',
   'validateFieldValue',
+  'setErrorMessage',
 ]
 
 const isReg = (value: any) => value instanceof RegExp
@@ -71,6 +72,17 @@ class FormStore {
 
   setCallback(callback: any) {
     if (callback) this.callback = callback
+  }
+
+  setErrorMessage(name_: Iname, message: string) {
+    const name = Array.isArray(name_) ? name_.join('.') : name_
+    if (this.model[name]) {
+      this.model[name].message = message
+      this.model[name].status = 'reject'
+      this.FormUpdate()
+    } else {
+      console.error('form warning: setErrorMessage params.name is not register')
+    }
   }
 
   dispatch(action: { type: string }, ...arg: any[]): any {
