@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ScrollView, ScrollViewProps } from '@tarojs/components'
+import { ScrollView } from '@tarojs/components'
 
 type Iprops = {
   timeout: number
@@ -7,7 +7,8 @@ type Iprops = {
   tabvalue: string
   value?: any[]
   scrollIntoView?: boolean
-} & ScrollViewProps
+  children?: React.ReactNode
+}
 
 export default function ScrollViewTimeout(props: Iprops): JSX.Element {
   const [target, setTarget] = useState('')

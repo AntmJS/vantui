@@ -60,6 +60,7 @@ const InternalCascader = (props: CascaderProps) => {
     lazyLoad,
     onClose,
     onChange,
+    scrollIntoView,
     onPathChange,
   } = { ...defaultProps, ...props }
 
@@ -387,6 +388,7 @@ const InternalCascader = (props: CascaderProps) => {
                   optiosData={optiosData}
                   tabvalue={tabvalue}
                   value={value}
+                  scrollIntoView={scrollIntoView}
                 >
                   {pane.nodes &&
                     pane.nodes.map((node: any, index: number) => (
