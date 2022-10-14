@@ -235,6 +235,50 @@ function Demo() {
 }
 ```
 
+### 使用完整的地区数据
+
+使用饿了么开源地区数据, 数据过多的时候会自动滚动到选中元素，由于 tab 的 ScrollView 和垂直的 scrollView 可能冲突，所以垂直的自动滚动存在延迟，如果不需要自动滚动，可以使用`scrollIntoView`false 关闭
+
+```jsx
+import { regionData, CodeToText } from 'element-china-area-data/src/app'
+
+function Demo() {
+  const [isVisible, setIsVisible] = react.useState(false)
+  const [value1, setValue1] = react.useState([])
+  const [title, setTitle] = react.useState([])
+  const change1 = (value, path) => {
+    setValue1(value)
+    setTitle([CodeToText[value[0]], CodeToText[value[1]], CodeToText[value[2]]])
+  }
+
+  return (
+    <>
+      <Cell
+        title="选择地址"
+        value={title.length ? title.join('-') : '请选择地址'}
+        onClick={() => {
+          setIsVisible(true)
+        }}
+      ></Cell>
+      <Cascader
+        // scrollIntoView={false}
+        childrenKey="children"
+        visible={isVisible}
+        value={value1}
+        textKey="label"
+        title="地址选择"
+        options={regionData}
+        closeable
+        onClose={() => {
+          setIsVisible(false)
+        }}
+        onChange={change1}
+      />
+    </>
+  )
+}
+```
+
 ### 动态加载
 
 使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`lazyLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`lazyLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。

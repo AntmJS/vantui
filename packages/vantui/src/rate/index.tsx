@@ -24,6 +24,7 @@ export function Rate(props: RateProps) {
     style,
     className,
     defaultValue = 5,
+    iconClassPrefix = 'van-icon',
     ...others
   } = props
   const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
@@ -117,6 +118,7 @@ export function Rate(props: RateProps) {
             })}
           >
             <Icon
+              classPrefix={iconClassPrefix}
               name={index + 1 <= rateValue ? icon : voidIcon}
               className={
                 utils.bem('rate__icon', [
@@ -142,6 +144,7 @@ export function Rate(props: RateProps) {
             ></Icon>
             {allowHalf && (
               <Icon
+                classPrefix={iconClassPrefix}
                 name={index + 0.5 <= rateValue ? icon : voidIcon}
                 className={
                   utils.bem('rate__icon', [

@@ -24,6 +24,7 @@ export interface CascaderItemProps {
   }
   checked: boolean
   chooseItem: (data: any) => void
+  id: string
 }
 
 const defaultProps = {
@@ -37,10 +38,11 @@ const defaultProps = {
   },
   checked: false,
   chooseItem: () => {},
+  id: '',
 } as CascaderItemProps
 
 const InternalCascaderItem = (props: CascaderItemProps) => {
-  const { data, checked, chooseItem } = {
+  const { data, checked, chooseItem, id } = {
     ...defaultProps,
     ...props,
   }
@@ -65,6 +67,7 @@ const InternalCascaderItem = (props: CascaderItemProps) => {
 
   return (
     <View
+      id={id}
       className={classes}
       onClick={async () => {
         setLoading(true)
