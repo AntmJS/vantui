@@ -8,6 +8,7 @@ export function Tab(
     active: boolean
     lazyRender: boolean
     animated?: boolean
+    lazyTimeout?: number
   },
 ) {
   const [inited, setInited] = useState(false)
@@ -17,6 +18,7 @@ export function Tab(
     className,
     active,
     lazyRender,
+    lazyTimeout,
     animated,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     title,
@@ -24,7 +26,13 @@ export function Tab(
   } = props
   useEffect(
     function () {
-      setInited((pre) => pre || active)
+      if (!lazyTimeout) {
+        setInited((pre) => pre || active)
+      } else {
+        setTimeout(() => {
+          setInited((pre) => pre || active)
+        }, lazyTimeout)
+      }
     },
     [active],
   )

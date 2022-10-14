@@ -71,6 +71,10 @@ export interface FormItemProps extends StandardProps {
    */
   labelClassName?: string
   /**
+   * @description 提示信息的className,某些错误情况可以自定义样式
+   */
+  messageClassName?: string
+  /**
    * @description required的外层className
    */
   requiredClassName?: string
@@ -162,6 +166,13 @@ export type IFormInstanceAPI = {
    * @description 获取所有表单值
    */
   getFieldsValue: () => Record<string, any>
+  /**
+   * @description 设置表单错误信息
+   */
+  setErrorMessage: (
+    name: string | Array<string | number>,
+    message: string,
+  ) => void
   /**
    * @description 获取单个表单值
    */

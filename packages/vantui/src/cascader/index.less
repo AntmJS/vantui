@@ -22,6 +22,7 @@
 
 .van-cascadar-popup {
   height: 800px;
+  overflow: hidden;
 
   .van-tabs__scroll {
     display: none;
@@ -107,4 +108,11 @@
     margin-left: @cascader-icon-checklist-marginLeft;
     visibility: hidden;
   }
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.van-cascader-tab {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 588px;
 }

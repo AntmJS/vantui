@@ -36,6 +36,7 @@ export function FormItem(props: FormItemProps) {
     renderRight,
     mutiLevel,
     valueFormat,
+    messageClassName = '',
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
@@ -133,6 +134,7 @@ export function FormItem(props: FormItemProps) {
           </View>
           <Message
             name={label}
+            className={messageClassName}
             feedback={feedback}
             {...dispatch({ type: 'getFieldModel' }, _name)}
           />

@@ -81,7 +81,14 @@ yarn add @vant/area-data
 ```jsx
 import { areaList } from '@vant/area-data'
 function Demo() {
-  return <Area areaList={areaList} value="110101" />
+  const [value, setValue] = react.useState('')
+  react.useEffect(() => {
+    setTimeout(() => {
+      setValue('210793')
+    }, 2000)
+  }, [])
+
+  return <Area areaList={areaList} value={value} />
 }
 ```
 

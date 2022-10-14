@@ -29,10 +29,14 @@ function Demo() {
   const [state, setState] = react.useState({})
   const [, forceUpdate] = react.useState()
   // 注册不能回调函数设置必填的提示文案
-  react.useLayoutEffect(() => {
+  react.useEffect(() => {
     formIt.registerRequiredMessageCallback((label) => {
       return `${label}真的不能为空啊`
     })
+
+    // setTimeout(() => {
+    formIt.setErrorMessage('userName', '这是自定义错误xxxxx')
+    // }, 1000)
   }, [])
 
   const handleClick = () => {

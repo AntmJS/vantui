@@ -13,47 +13,52 @@ export interface CascaderProps extends StandardProps {
   /**
    * @description 当前值
    */
-  value: string[]
+  value?: string[]
   /**
    *  @description 弹窗表单
    */
-  title: string
+  title?: string
   /**
    *  @description 级联数据对应文本的key
    */
-  textKey: string
+  textKey?: string
   /**
    *  @description 级联数据对应值的key
    */
-  valueKey: string
+  valueKey?: string
   /**
    *  @description 级联数据对应子级的key
    */
-  childrenKey: string
+  childrenKey?: string
   /**
    * @description 当options为可转换为树形结构的扁平结构时，配置转换规则
    */
-  convertConfig: Record<string, string | number | null>
+  convertConfig?: Record<string, string | number | null>
   /**
    * @description 是否可以手动关闭
    */
-  closeable: boolean
+  closeable?: boolean
   /**
    * @description 关闭图标的位置
    */
-  closeIconPosition: string
+  closeIconPosition?: string
   /**
    * @description 关闭图标
    */
-  closeIcon: string
+  closeIcon?: string
+  /**
+   * @description 数据过多时，选中元素是否滚动到中央
+   * @default true
+   */
+  scrollIntoView?: boolean
   /**
    * @description 是否开启动态加载
    */
-  lazy: boolean
+  lazy?: boolean
   /**
    * @description 动态加载方法
    */
-  lazyLoad: (node: any, resolve: any) => void
+  lazyLoad?: (node: any, resolve: any) => void
   /**
    * @description 弹窗关闭
    */
@@ -61,11 +66,11 @@ export interface CascaderProps extends StandardProps {
   /**
    * @description 选中值改变时触发
    */
-  onChange: (value: any, params: any) => void
+  onChange?: (value: any, params: any) => void
   /**
    * @description 选中项改变时触发
    */
-  onPathChange: (value: any, params: any) => void
+  onPathChange?: (value: any, params: any) => void
 }
 
 /**
