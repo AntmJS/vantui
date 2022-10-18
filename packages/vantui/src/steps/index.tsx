@@ -25,6 +25,7 @@ export function Steps(props: StepsProps) {
     inactiveIcon,
     className,
     onClickStep,
+    iconClassPrefix = 'van-icon',
     ...others
   } = props
 
@@ -72,6 +73,7 @@ export function Steps(props: StepsProps) {
                   <>
                     {item.inactiveIcon || inactiveIcon ? (
                       <VanIcon
+                        classPrefix={iconClassPrefix}
                         color={
                           getStatus(index, active) === 'inactive'
                             ? inactiveColor
@@ -97,6 +99,7 @@ export function Steps(props: StepsProps) {
                     name={item.activeIcon || activeIcon}
                     color={activeColor}
                     className="van-step__icon"
+                    classPrefix={iconClassPrefix}
                   ></VanIcon>
                 )}
               </View>
