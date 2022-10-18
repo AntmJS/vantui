@@ -5,6 +5,7 @@ import {
   isValidElement,
   useMemo,
   useEffect,
+  useCallback,
 } from 'react'
 import { View } from '@tarojs/components'
 import useDeepCompareEffect from 'use-deep-compare-effect'
@@ -79,40 +80,48 @@ export function FormItem(props: FormItemProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const getControlled = (child: any) => {
-    const props = { ...child.props }
-    if (!_name) return props
-    const trigger_ = props[trigger]
+  const getControlled = useCallback(
+    (child: any) => {
+      const props = { ...child.props }
+      if (!_name) return props
+      const trigger_ = props[trigger]
 
-    const handleChange = async (e: any) => {
-      let value = null
+      const handleChange = async (e: any) => {
+        let value = null
 
-      if (valueFormat) {
-        value = await valueFormat(e, _name, formInstance)
-      } else {
-        value = e.detail
-      }
-      dispatch({ type: 'setFieldsValue' }, _name, value)
-      if (trigger_) trigger_(e)
-    }
-    props[trigger] = handleChange
-    if (required || rules) {
-      props[validateTrigger] = async (e: any) => {
-        if (validateTrigger === trigger) {
-          await handleChange(e)
+        if (valueFormat) {
+          value = await valueFormat(e, _name, formInstance)
+        } else {
+          value = e.detail
         }
-
-        dispatch({ type: 'validateFieldValue' }, _name)
+        dispatch({ type: 'setFieldsValue' }, _name, value)
+        if (trigger_) trigger_(e)
       }
-    }
-    props[valueKey] = dispatch({ type: 'getFieldValue' }, _name)
+      props[trigger] = handleChange
+      if (required || rules) {
+        props[validateTrigger] = async (e: any) => {
+          if (validateTrigger === trigger) {
+            await handleChange(e)
+          }
 
-    return props
-  }
+          dispatch({ type: 'validateFieldValue' }, _name)
+        }
+      }
+      props[valueKey] = dispatch({ type: 'getFieldValue' }, _name)
 
-  const renderChildren = isValidElement(children)
-    ? cloneElement(children, getControlled(children))
-    : children
+      return props
+    },
+    [dispatch, _name, trigger, required, rules],
+  )
+
+  const renderChildren = useMemo(
+    function () {
+      return isValidElement(children)
+        ? cloneElement(children, getControlled(children))
+        : children
+    },
+    [children, getControlled],
+  )
 
   return (
     <View className={`${prefixCls}-wrapper`}>
