@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui-cli",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "type": "module",
   "main": "dest/index.js",
   "typings": "dest/index.d.ts",
