@@ -1,5 +1,5 @@
 import { View, Text, RichText } from '@tarojs/components'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useLayoutEffect } from 'react'
 import { ToastProps } from '../../types/toast'
 import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
@@ -40,17 +40,17 @@ export function Toast(props: ToastProps) {
     message: '',
     loadingType: 'circular' as any,
     selector: '#van-toast',
-    id: defaultId,
   })
 
   /* eslint-disable-next-line */
   const { style, className, children, zIndex, ...others } = props
 
-  useEffect(() => {
+  const _id = props.id || defaultId
+
+  useLayoutEffect(() => {
     setState((state) => {
       return {
         ...state,
-        id: props.id || defaultId,
       }
     })
   }, [props])
@@ -66,40 +66,38 @@ export function Toast(props: ToastProps) {
     toastOptions?.onClose?.()
   }, [])
 
-  const tShowListener = useCallback((toastOptions) => {
-    const options = Object.assign(
-      Object.assign({}, currentOptions),
-      parseOptions(toastOptions),
-    )
+  const tShowListener = useCallback(
+    (toastOptions) => {
+      const options = Object.assign(
+        Object.assign({}, currentOptions),
+        parseOptions(toastOptions),
+      )
 
-    if (options.id === state.id || (!options.id && state.id === defaultId)) {
-      // queue.push(toastOptions)
-      setState((state) => {
-        return {
-          ...state,
-          ...options,
+      if (
+        options.selector === _id ||
+        options.selector.replace('#', '') === _id
+      ) {
+        toast.clear()
+        setState((state) => {
+          return {
+            ...state,
+            ...options,
+          }
+        })
+
+        clearTimeout(timer)
+        if (options.duration != null && options.duration > 0) {
+          timer = setTimeout(() => {
+            trigger('toast_clear', toastOptions)
+          }, options.duration)
         }
-      })
-
-      clearTimeout(timer)
-      if (options.duration != null && options.duration > 0) {
-        timer = setTimeout(() => {
-          // clear(toastOptions)
-          trigger('toast_clear', toastOptions)
-          // queue = queue.filter((item: any) => item.sel !== toast)
-        }, options.duration)
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    },
+    [_id],
+  )
 
   const tClearListener = useCallback((toastOptions) => {
     clear(toastOptions)
-    // queue.forEach((toast: any) => {
-    //   toast.clear()
-    // })
-    // queue = []
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const tSetDftOptsListener = useCallback((options: any) => {
@@ -127,6 +125,7 @@ export function Toast(props: ToastProps) {
     }
     /* eslint-disable-next-line */
   }, [])
+
   return (
     <View>
       {(state.mask || state.forbidClick) && (
