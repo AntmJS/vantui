@@ -146,7 +146,7 @@ const config = {
     },
     devServer: {
       port: 10086,
-      hot: true,
+      hot: false,
       host: 'localhost',
       historyApiFallback: true,
       headers: {
