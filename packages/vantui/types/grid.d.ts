@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface GridProps extends StandardProps {
+export interface GridProps extends ViewProps {
   square?: boolean
   gutter?: number | string
   clickable?: boolean
@@ -14,7 +14,7 @@ export interface GridProps extends StandardProps {
   children?: React.ReactNode
 }
 
-export interface GridItemProps extends StandardProps {
+export interface GridItemProps extends ViewProps {
   icon?: string
   iconColor?: string
   iconPrefix?: string

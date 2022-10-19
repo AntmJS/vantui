@@ -1,12 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
-import {
-  StandardProps,
-  ITouchEvent,
-  CommonEventFunction,
-} from '@tarojs/components'
+import { ViewProps, ITouchEvent, CommonEventFunction } from '@tarojs/components'
 import { TextareaProps } from '@tarojs/components/types/Textarea'
 
-export interface FieldProps extends StandardProps {
+export interface FieldProps extends ViewProps {
   value?: string | number
   placeholder?: string
   placeholderStyle?: string

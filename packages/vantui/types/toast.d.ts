@@ -1,10 +1,10 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import toast from '../src/toast/toast'
 /**
  * @title Toast Props
  */
-export interface ToastProps extends StandardProps {
+export interface ToastProps extends ViewProps {
   /**
    * @description 弹出层的层级
    * @default 1000

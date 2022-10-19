@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 import { PickerProps, IPickerInstance } from './picker'
 
 /**
@@ -11,7 +11,7 @@ export interface DatetimePickerProps
       PickerProps,
       'onInput' | 'onConfirm' | 'onChange'
     >,
-    StandardProps {
+    ViewProps {
   /**
    * @description 选项的值
    * @default null

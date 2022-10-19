@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 
-export interface CollapseProps extends StandardProps {
+export interface CollapseProps extends ViewProps {
   value?: Array<string | number> | string
   accordion?: boolean
   border?: boolean
@@ -11,7 +11,7 @@ export interface CollapseProps extends StandardProps {
   onClose?: (event: ITouchEvent) => any
 }
 
-export interface CollapseItemProps extends StandardProps {
+export interface CollapseItemProps extends ViewProps {
   name?: string | number
   title?: string | number
   value?: string | number

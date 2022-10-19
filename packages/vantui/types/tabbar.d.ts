@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface TabbarProps extends StandardProps {
+export interface TabbarProps extends ViewProps {
   active?: string | number
   activeColor?: string
   inactiveColor?: string
@@ -14,7 +14,7 @@ export interface TabbarProps extends StandardProps {
   onChange?: (event: { detail: string | number }) => void
 }
 
-export interface TabbarItemProps extends Omit<StandardProps, 'onClick'> {
+export interface TabbarItemProps extends Omit<ViewProps, 'onClick'> {
   info?: ReactNode
   name?: string | number
   icon?: string

@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
-export interface LoadingProps extends StandardProps {
+import { ViewProps } from '@tarojs/components'
+export interface LoadingProps extends ViewProps {
   color?: string
   vertical?: boolean
   type?: 'spinner' | 'circular'

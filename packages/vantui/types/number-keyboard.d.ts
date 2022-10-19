@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface NumberKeyboardProps extends StandardProps {
+export interface NumberKeyboardProps extends ViewProps {
   /**
    * @description 是否展示
    */

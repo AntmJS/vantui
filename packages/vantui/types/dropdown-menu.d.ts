@@ -1,9 +1,9 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 /**
  * @title DropdownMenuProps
  */
-export interface DropdownMenuProps extends StandardProps {
+export interface DropdownMenuProps extends ViewProps {
   /**
    * @description 选中选项后颜色
    */
@@ -41,7 +41,7 @@ export interface DropdownMenuProps extends StandardProps {
 /**
  * @title DropdownItemProps
  */
-export interface DropdownItemProps extends StandardProps {
+export interface DropdownItemProps extends ViewProps {
   /**
    * @description 对应菜单选项的值
    */

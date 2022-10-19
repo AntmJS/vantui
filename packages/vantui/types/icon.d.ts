@@ -1,9 +1,9 @@
 import { FunctionComponent, CSSProperties } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 /**
  * @description Icon Props
  */
-export interface IconProps extends StandardProps {
+export interface IconProps extends ViewProps {
   /**
    * @description 是否显示图标右上角小红点
    */

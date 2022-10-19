@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 
-export interface NoticeBarProps extends StandardProps {
+export interface NoticeBarProps extends ViewProps {
   text?: ReactNode
   mode?: 'closeable' | 'link'
   url?: string

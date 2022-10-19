@@ -1,4 +1,4 @@
-import { ITouchEvent, View, ITouch } from '@tarojs/components'
+import { View, ITouch } from '@tarojs/components'
 import {
   useCallback,
   useState,
@@ -238,7 +238,7 @@ export function IndexBar(props: IndexBarProps) {
   )
 
   const _onTouchMove = useCallback(
-    (event: ITouchEvent) => {
+    (event) => {
       event.stopPropagation()
       event.preventDefault()
       const sidebarLength = realAnchor.current.length || 0

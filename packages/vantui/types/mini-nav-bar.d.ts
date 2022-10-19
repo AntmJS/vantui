@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface MiniNavBarProps extends StandardProps {
+export interface MiniNavBarProps extends ViewProps {
   homeUrl: string
   buttonColor?: 'white' | 'black'
   title?: string

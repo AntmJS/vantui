@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface CircleProps extends StandardProps {
+export interface CircleProps extends ViewProps {
   text?: ReactNode
   lineCap?: string
   value?: number

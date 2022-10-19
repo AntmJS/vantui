@@ -1,13 +1,10 @@
 import { FunctionComponent, ReactNode } from 'react'
-import {
-  StandardProps,
-  ButtonProps as TaroButtonProps,
-} from '@tarojs/components'
+import { ViewProps, ButtonProps as TaroButtonProps } from '@tarojs/components'
 
 import { ButtonProps } from './button'
 import { PopupProps } from './popup'
 export interface DialogProps
-  extends StandardProps,
+  extends ViewProps,
     Omit<PopupProps, 'onClose' | 'children'>,
     Omit<ButtonProps, 'children'> {
   show?: boolean

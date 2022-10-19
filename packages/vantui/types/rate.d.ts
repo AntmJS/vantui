@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
-export interface RateProps extends StandardProps {
+export interface RateProps extends ViewProps {
   value?: number
   /**
    * @description 默认值

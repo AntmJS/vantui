@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface InfoProps extends StandardProps {
+export interface InfoProps extends ViewProps {
   dot?: boolean
   info?: ReactNode | number
   style?: string

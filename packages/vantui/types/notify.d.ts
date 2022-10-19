@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import notify from '../src/notify/notify'
 
-export interface NotifyProps extends StandardProps {
+export interface NotifyProps extends ViewProps {
   selector?: string
   message?: ReactNode
   background?: string

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface PickerColumnProps extends StandardProps {
+export interface PickerColumnProps extends ViewProps {
   valueKey?: string
   className?: string
   itemHeight?: number | string

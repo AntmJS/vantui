@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import { TransitionProps } from './mixins/transition'
 
-export interface TransitionPropsCom extends TransitionProps, StandardProps {
+export interface TransitionPropsCom extends TransitionProps, ViewProps {
   children?: ReactNode
 }
 

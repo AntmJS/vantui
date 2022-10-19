@@ -1,6 +1,6 @@
 import type { ForwardRefRenderFunction } from 'react'
 import { ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
 export interface ICountDownRef {
   start: () => void
@@ -16,7 +16,7 @@ export interface ITimeData {
   milliseconds: number
 }
 
-export interface CountDownProps extends StandardProps {
+export interface CountDownProps extends ViewProps {
   millisecond?: boolean
   time?: number
   format?: string

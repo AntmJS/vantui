@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import { ImageProps } from '@tarojs/components/types/Image.d'
 
-export interface CardProps extends StandardProps {
+export interface CardProps extends ViewProps {
   tag?: string
   num?: string
   desc?: string

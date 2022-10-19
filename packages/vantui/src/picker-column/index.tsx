@@ -215,6 +215,7 @@ function Index(
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
       onTouchCancel={onTouchEnd}
+      // @ts-ignore
       catchMove
     >
       {options.map((option: any, index: number) => {

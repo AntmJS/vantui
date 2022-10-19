@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface ProgressProps extends StandardProps {
+export interface ProgressProps extends ViewProps {
   inactive?: boolean
   percentage: number
   pivotText?: ReactNode

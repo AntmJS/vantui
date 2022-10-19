@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 import { ImageProps } from '@tarojs/components/types/Image'
 
-export interface UploaderProps extends StandardProps {
+export interface UploaderProps extends ViewProps {
   disabled?: boolean
   multiple?: boolean
   uploadText?: ReactNode

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
-export interface SearchProps extends StandardProps {
+export interface SearchProps extends ViewProps {
   value?: string | number
   defaultValue?: string | number
   label?: string

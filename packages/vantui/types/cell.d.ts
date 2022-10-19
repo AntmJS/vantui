@@ -1,9 +1,9 @@
 import { FunctionComponent, CSSProperties, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 /**
  * @title Cell Props
  */
-export interface CellProps extends StandardProps {
+export interface CellProps extends ViewProps {
   /**
    * @description 点击后跳转的链接地址
    */
@@ -98,7 +98,7 @@ export interface CellProps extends StandardProps {
 /**
  * @title CellGroup Props
  */
-export interface CellGroupProps extends StandardProps {
+export interface CellGroupProps extends ViewProps {
   /**
    * @description 标题
    */

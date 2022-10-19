@@ -1,5 +1,4 @@
 // import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
 import { ScrollViewProps } from '@tarojs/components/types/ScrollView'
 export type PullRefreshStatus =
   | 'normal'
@@ -30,8 +29,7 @@ type eventType = {
 }
 
 export interface PowerScrollViewProps<T extends number | undefined>
-  extends StandardProps,
-    PullRefreshProps,
+  extends PullRefreshProps,
     Omit<ScrollViewProps, 'onScrollToUpper' | 'onScrollToLower'> {
   offset?: number
   total?: T

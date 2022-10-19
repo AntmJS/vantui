@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-export interface IndexBarProps extends StandardProps {
+import { ViewProps } from '@tarojs/components'
+export interface IndexBarProps extends ViewProps {
   sticky?: boolean
   zIndex?: number
   highlightColor?: string

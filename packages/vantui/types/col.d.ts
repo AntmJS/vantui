@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 /**
  * @title Col Props
  */
-export interface ColProps extends StandardProps {
+export interface ColProps extends ViewProps {
   /**
    * @description 列元素宽度
    */
@@ -21,7 +21,7 @@ export interface ColProps extends StandardProps {
 /**
  * @title Row Props
  */
-export interface RowProps extends StandardProps {
+export interface RowProps extends ViewProps {
   /**
    * @description 列元素之间的间距（如查输入数字：单位为 px，如果输入字符串，可使用单位rpx）
    */

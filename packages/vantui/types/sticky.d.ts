@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface StickyProps extends StandardProps {
+export interface StickyProps extends ViewProps {
   zIndex?: number
   offsetTop?: number
   disabled?: boolean

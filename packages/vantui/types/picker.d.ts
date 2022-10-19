@@ -1,10 +1,10 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 /**
  * @title  Props API
  * @description
  */
-export interface PickerProps extends StandardProps {
+export interface PickerProps extends ViewProps {
   /**
    * @description 选项为对象的时候，文字对应的 key
    * @default text

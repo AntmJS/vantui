@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
 export interface ShareSheetOptionItem {
   name: string
@@ -12,7 +12,7 @@ export interface ShareSheetOption {
   options: ShareSheetOptionItem[]
   onSelect?: (option: ShareSheetOptionItem, index: number) => void
 }
-export interface ShareSheetProps extends StandardProps {
+export interface ShareSheetProps extends ViewProps {
   show?: boolean
   overlayStyle?: string
   zIndex?: number

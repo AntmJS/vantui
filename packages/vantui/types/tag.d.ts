@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface TagProps extends StandardProps {
+export interface TagProps extends ViewProps {
   size?: 'large' | 'medium'
   mark?: boolean
   color?: string

@@ -245,6 +245,7 @@ export function Circle(props: CircleProps) {
         // eslint-disable-next-line
         // @ts-ignore
         width={size}
+        // @ts-ignore
         height={size}
         nativeProps={{ width: size, height: size }}
         className={`van-circle__canvas ${indexRef.current}`}

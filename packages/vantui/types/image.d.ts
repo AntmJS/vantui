@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface ImageProps extends StandardProps {
+export interface ImageProps extends ViewProps {
   /**
    * @description 	图片链接
    */

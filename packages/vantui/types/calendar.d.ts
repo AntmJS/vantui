@@ -1,10 +1,10 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
 /**
  * @title CalendarProps
  */
-export interface CalendarProps extends StandardProps {
+export interface CalendarProps extends ViewProps {
   /**
    * @description 日历标题
    */

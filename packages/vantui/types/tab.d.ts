@@ -1,10 +1,10 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
 type eventDetail = {
   detail: { index: number; name?: string; title?: string }
 }
-export interface TabsProps extends Omit<StandardProps, 'onClick'> {
+export interface TabsProps extends Omit<ViewProps, 'onClick'> {
   sticky?: boolean
   container?: () => any
   border?: boolean
@@ -34,7 +34,7 @@ export interface TabsProps extends Omit<StandardProps, 'onClick'> {
   onDisabled?: (event: eventDetail) => void
 }
 
-export interface TabProps extends StandardProps {
+export interface TabProps extends ViewProps {
   dot?: boolean
   info?: string | number
   title?: ReactNode

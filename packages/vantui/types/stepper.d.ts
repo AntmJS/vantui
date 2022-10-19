@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps, CommonEventFunction } from '@tarojs/components'
+import { ViewProps, CommonEventFunction } from '@tarojs/components'
 import { InputProps } from '@tarojs/components/types/Input'
 
-export interface StepperProps extends StandardProps {
+export interface StepperProps extends ViewProps {
   name?: ReactNode
   value?: string | number
   integer?: boolean

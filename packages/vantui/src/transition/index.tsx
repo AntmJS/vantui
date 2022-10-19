@@ -55,6 +55,7 @@ export function Transition(props: TransitionPropsCom) {
           style,
         ])}
         {...others}
+        // @ts-ignore
         catchMove
       >
         {children}

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 
-export interface RadioProps extends StandardProps {
+export interface RadioProps extends ViewProps {
   name?: string
   value?: any
   disabled?: boolean
@@ -15,7 +15,7 @@ export interface RadioProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
-export interface RadioGroupProps extends StandardProps {
+export interface RadioGroupProps extends ViewProps {
   value?: any
   direction?: 'vertical' | 'horizontal'
   disabled?: boolean

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface DividerProps extends StandardProps {
+export interface DividerProps extends ViewProps {
   dashed?: boolean
   hairline?: boolean
   contentPosition?: 'left' | 'center' | 'right'

@@ -1,10 +1,10 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
 /**
  * @title FormProps
  */
-export interface FormProps extends StandardProps {
+export interface FormProps extends ViewProps {
   /**
    * @description 传入form实例（const formStore1 = useRef()）
    */
@@ -34,7 +34,7 @@ export interface FormProps extends StandardProps {
 /**
  * @title FormItemProps
  */
-export interface FormItemProps extends StandardProps {
+export interface FormItemProps extends ViewProps {
   /**
    * @description 组件值默认数据类型为基本类型(string、number...), 对象数组形式的数据需要设置为true
    */

@@ -1,11 +1,11 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
 interface OnChangeEvent {
   detail?: number
 }
 
-export interface SidebarItemProps extends StandardProps {
+export interface SidebarItemProps extends ViewProps {
   dot?: boolean
   badge?: ReactNode | null
   info?: ReactNode
@@ -16,7 +16,7 @@ export interface SidebarItemProps extends StandardProps {
   renderTitle?: (a: any) => ReactNode
 }
 
-export interface SidebarProps extends StandardProps {
+export interface SidebarProps extends ViewProps {
   onChange?: (a: OnChangeEvent) => any
   activeKey: number
   children: ReactNode

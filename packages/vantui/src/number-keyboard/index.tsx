@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useCallback } from 'react'
-import { View, Text, ITouchEvent } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { NumberKeyboardProps } from '../../types/number-keyboard'
 import { Icon } from '../icon'
@@ -62,7 +62,7 @@ export const NumberKeyboard: React.FC<NumberKeyboardProps> = (props) => {
   }
 
   // 点击键盘按键
-  const onKeyPress = (e: ITouchEvent, key: string) => {
+  const onKeyPress = (e, key: string) => {
     e.preventDefault()
     e.stopPropagation()
 

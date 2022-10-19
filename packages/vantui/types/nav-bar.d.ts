@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 
-export interface NavBarProps extends StandardProps {
+export interface NavBarProps extends ViewProps {
   title?: ReactNode
   fixed?: boolean
   placeholder?: boolean

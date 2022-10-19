@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface CascaderProps extends StandardProps {
+export interface CascaderProps extends ViewProps {
   /**
    * @description 弹窗是否展示
    */

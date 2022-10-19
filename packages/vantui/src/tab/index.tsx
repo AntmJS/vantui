@@ -34,6 +34,7 @@ export function Tab(
         }, lazyTimeout)
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [active],
   )
 

@@ -111,6 +111,7 @@ export function FormItem(props: FormItemProps) {
 
       return props
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch, _name, trigger, required, rules],
   )
 

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
-export interface SubmitBarProps extends StandardProps {
+export interface SubmitBarProps extends ViewProps {
   tip?: string
   tipIcon?: string
   price?: number

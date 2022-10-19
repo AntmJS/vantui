@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface SwiperProps extends StandardProps {
+export interface SwiperProps extends ViewProps {
   /**
    * @description 轮播卡片的宽度
    * @default 窗口宽度

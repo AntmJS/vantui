@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps, ButtonProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ButtonProps, ITouchEvent } from '@tarojs/components'
 import { PopupProps } from './popup'
 export interface ActionSheetItem
   extends Omit<ButtonProps, 'children'>,
@@ -10,7 +10,7 @@ export interface ActionSheetItem
   loading?: boolean
   disabled?: boolean
 }
-export interface ActionSheetProps extends StandardProps, PopupProps {
+export interface ActionSheetProps extends ViewProps, PopupProps {
   actions?: ActionSheetItem[]
   title?: ReactNode
   show?: boolean

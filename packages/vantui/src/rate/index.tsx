@@ -48,7 +48,7 @@ export function Rate(props: RateProps) {
     }
   }
   // touchmove匹配到的节点找不到data-score，先注释掉
-  const onTouchMove = function (event: ITouchEvent) {
+  const onTouchMove = function (event) {
     if (!touchable) return
 
     const { clientX } = event?.touches?.[0] ?? {}

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 
-export interface CheckboxProps extends StandardProps {
+export interface CheckboxProps extends ViewProps {
   name?: ReactNode
   value?: boolean
   disabled?: boolean
@@ -15,7 +15,7 @@ export interface CheckboxProps extends StandardProps {
   onChange?: (event: ITouchEvent) => any
 }
 
-export interface CheckboxGroupProps extends StandardProps {
+export interface CheckboxGroupProps extends ViewProps {
   max?: number
   value?: Array<any>
   disabled?: boolean

@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
 /**
  * @title ITableProps
  */
-export interface ITableProps extends StandardProps {
+export interface ITableProps extends ViewProps {
   /**
    * @description 表格列配置描述
    */

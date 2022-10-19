@@ -28,6 +28,7 @@ export default function ScrollViewTimeout(props: Iprops): JSX.Element {
         }
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [tabvalue, value],
   )
 

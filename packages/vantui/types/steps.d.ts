@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
-export interface StepsProps extends StandardProps {
+export interface StepsProps extends ViewProps {
   /**
    * @description icon统一class的前缀
    */

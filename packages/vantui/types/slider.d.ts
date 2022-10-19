@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
 type SliderEvent = {
   detail: {
     value: number
   }
 }
-export interface SliderProps extends StandardProps {
+export interface SliderProps extends ViewProps {
   range?: boolean
   disabled?: boolean
   activeColor?: string

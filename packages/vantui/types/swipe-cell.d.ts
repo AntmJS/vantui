@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { StandardProps, ITouchEvent } from '@tarojs/components'
+import { ViewProps, ITouchEvent } from '@tarojs/components'
 
 type SwipeCellClick = {
   detail: {
@@ -21,7 +21,7 @@ type SwipeCellClose = {
   }
 }
 
-export interface SwipeCellProps extends StandardProps {
+export interface SwipeCellProps extends ViewProps {
   disabled?: boolean
   leftWidth?: number
   rightWidth?: number

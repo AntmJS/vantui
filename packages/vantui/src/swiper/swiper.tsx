@@ -339,7 +339,7 @@ const Swiper = (
     }`
   }
 
-  const onTouchStart = (e: ITouchEvent) => {
+  const onTouchStart = (e) => {
     if (propSwiper.isPreventDefault) e.preventDefault()
     if (propSwiper.isStopPropagation) e.stopPropagation()
     if (!propSwiper.touchable) return
@@ -349,7 +349,7 @@ const Swiper = (
     resettPosition()
   }
 
-  const onTouchMove = (e: ITouchEvent) => {
+  const onTouchMove = (e) => {
     if (propSwiper.touchable && _swiper.current.moving) {
       touchMove(e)
       if (touch.stateDirection === propSwiper.direction) {

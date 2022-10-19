@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 
-export interface SkeletonProps extends StandardProps {
+export interface SkeletonProps extends ViewProps {
   row?: number
   title?: boolean
   avatar?: boolean

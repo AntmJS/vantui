@@ -1,6 +1,6 @@
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import { FunctionComponent, ReactNode } from 'react'
-export interface OverlayProps extends StandardProps {
+export interface OverlayProps extends ViewProps {
   show?: boolean
   lockScroll?: boolean
   zIndex?: number

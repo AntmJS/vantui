@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-export interface IndexAnchorProps extends StandardProps {
+import { ViewProps } from '@tarojs/components'
+export interface IndexAnchorProps extends ViewProps {
   index: string | number
   children?: ReactNode
 }

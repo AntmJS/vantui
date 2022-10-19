@@ -1,4 +1,4 @@
-import { View, Input, ITouchEvent } from '@tarojs/components'
+import { View, Input } from '@tarojs/components'
 import { useCallback, useEffect, useState, useRef } from 'react'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
@@ -206,7 +206,7 @@ export function Stepper(props: StepperProps) {
     [longPress, asyncChange, _longPressStep, _onChange, currentValue],
   )
   const _onTouchEnd = useCallback(
-    (event: ITouchEvent) => {
+    (event) => {
       if (!longPress) {
         return
       }

@@ -1,15 +1,12 @@
 import { FunctionComponent, ReactNode, CSSProperties } from 'react'
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import { TransitionProps } from './mixins/transition'
 import { OverlayProps } from './overlay'
 
 /**
  * @title Popup Props
  */
-export interface PopupProps
-  extends TransitionProps,
-    StandardProps,
-    OverlayProps {
+export interface PopupProps extends TransitionProps, ViewProps, OverlayProps {
   /**
    * @description 是否显示圆角
    */

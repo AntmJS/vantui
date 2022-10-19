@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { ITouchEvent, StandardProps } from '@tarojs/components'
+import { ITouchEvent, ViewProps } from '@tarojs/components'
 
-export interface SwitchProps extends StandardProps {
+export interface SwitchProps extends ViewProps {
   checked?: boolean
   loading?: boolean
   disabled?: boolean

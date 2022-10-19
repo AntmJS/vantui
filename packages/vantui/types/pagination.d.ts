@@ -1,7 +1,7 @@
-import { StandardProps } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components'
 import { FunctionComponent, ReactNode } from 'react'
 
-export interface PaginationProps extends StandardProps {
+export interface PaginationProps extends ViewProps {
   /**
    * @description 默认页码
    * @default 1

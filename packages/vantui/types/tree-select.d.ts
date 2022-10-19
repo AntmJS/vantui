@@ -1,6 +1,6 @@
 import { FunctionComponent, TouchEvent, ReactNode } from 'react'
-import { StandardProps } from '@tarojs/components'
-export interface TreeSelectProps extends StandardProps {
+import { ViewProps } from '@tarojs/components'
+export interface TreeSelectProps extends ViewProps {
   items?: {
     text: number | string
     badge?: number | string
