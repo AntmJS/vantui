@@ -73,10 +73,7 @@ export function Toast(props: ToastProps) {
         parseOptions(toastOptions),
       )
 
-      if (
-        options.selector === _id ||
-        options.selector.replace('#', '') === _id
-      ) {
+      if (options.selector.replace('#', '') === _id) {
         toast.clear()
         setState((state) => {
           return {
