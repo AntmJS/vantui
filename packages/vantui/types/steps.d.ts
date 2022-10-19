@@ -47,7 +47,7 @@ export interface StepsProps extends StandardProps {
    */
   inactiveIcon?: string
   /**
-   * @description 	 点击步骤时触发的事件，event.detail:当前步骤的索引
+   * @description 	 点击步骤时触发的事件，event.detail当前步骤的索引
    */
   onClickStep?: (event: ITouchEvent & { detail: number }) => void
 }
