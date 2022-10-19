@@ -66,32 +66,32 @@ export function Toast(props: ToastProps) {
     toastOptions?.onClose?.()
   }, [])
 
-  const tShowListener = useCallback(
-    (toastOptions) => {
-      const options = Object.assign(
-        Object.assign({}, currentOptions),
-        parseOptions(toastOptions),
-      )
+  const tShowListener = (toastOptions) => {
+    const options = Object.assign(
+      Object.assign({}, currentOptions),
+      parseOptions(toastOptions),
+    )
 
-      if (options.selector.replace('#', '') === _id) {
-        toast.clear()
-        setState((state) => {
-          return {
-            ...state,
-            ...options,
-          }
-        })
-
-        clearTimeout(timer)
-        if (options.duration != null && options.duration > 0) {
-          timer = setTimeout(() => {
-            trigger('toast_clear', toastOptions)
-          }, options.duration)
+    if (
+      options.selector === '#van-toast' ||
+      options.selector.replace('#', '') === _id
+    ) {
+      toast.clear()
+      setState((state) => {
+        return {
+          ...state,
+          ...options,
         }
+      })
+
+      clearTimeout(timer)
+      if (options.duration != null && options.duration > 0) {
+        timer = setTimeout(() => {
+          trigger('toast_clear', toastOptions)
+        }, options.duration)
       }
-    },
-    [_id],
-  )
+    }
+  }
 
   const tClearListener = useCallback((toastOptions) => {
     clear(toastOptions)
