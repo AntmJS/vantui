@@ -52,6 +52,13 @@ export function Notify(props: NotifyProps) {
     setState((state) => {
       return {
         ...state,
+        message: (props.message as never) || '',
+        background: props.background || '',
+        type: props.type || 'danger',
+        color: props.color || '#fff',
+        duration: props.duration || 3000,
+        safeAreaInsetTop: props.safeAreaInsetTop || false,
+        top: props.top || 0,
         id: props.id || defaultId,
       }
     })
