@@ -33,7 +33,7 @@ function getSystemInfoSync() {
 }
 function gte(version: any) {
   const system = getSystemInfoSync()
-  return compareVersion(system.SDKVersion, version) >= 0
+  return compareVersion(system.SDKVersion || system.version, version) >= 0
 }
 export function canIUseModel() {
   return gte('2.9.3')
