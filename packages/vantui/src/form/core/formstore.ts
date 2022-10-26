@@ -309,12 +309,19 @@ class FormStore {
       if (value || value === 0) {
         if (isReg(rule)) {
           status = rule.test(value) ? 'resolve' : 'reject'
-          if (status === 'reject') this.model[name].message = message
+          if (status === 'reject') {
+            this.model[name].message = message
+            break
+          }
         } else if (typeof rule === 'function') {
           rule(value, (message: string) => {
             this.model[name].message = message
             status = !message ? 'resolve' : 'reject'
           })
+
+          if (status === 'reject') {
+            break
+          }
         }
       }
     }
