@@ -212,8 +212,12 @@ taro-button-core[loading] .weui-loading {
     filter: brightness(0.9);
   }
 
-  &--unclickable::after {
-    display: none;
+  &--unclickable {
+    pointer-events: none;
+
+    &::after {
+      display: none;
+    }
   }
 }
 
