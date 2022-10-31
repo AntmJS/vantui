@@ -291,7 +291,7 @@ class FormStore {
     if (!model) return null
     const { required, rules, value } = model
     let status = 'resolve'
-    if (required && !value && value !== 0 && value !== false) {
+    if (required && value === undefined) {
       status = 'reject'
       if (this.requiredMessageCallback) {
         this.model[name].message = this.requiredMessageCallback(

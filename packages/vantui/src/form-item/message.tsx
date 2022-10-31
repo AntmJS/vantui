@@ -17,20 +17,22 @@ export default function Message(props: Iprops) {
     let mess = ''
     let color = '#fff'
     let ifShow = true
-    if (status === 'reject') {
+    if (status === 'reject' && (feedback === 'failed' || feedback === 'all')) {
       mess = message || ''
       color = 'red'
     } else if (status === 'pendding') {
       mess = ''
-    } else if (status === 'resolve') {
+    } else if (
+      status === 'resolve' &&
+      (feedback === 'success' || feedback === 'all')
+    ) {
       mess = '校验通过'
       color = 'green'
     }
 
     if (feedback === 'success' && status === 'resolve') {
       ifShow = true
-    } else ifShow = false
-    if (feedback === 'failed' && status === 'reject') {
+    } else if (feedback === 'failed' && status === 'reject') {
       ifShow = true
     } else ifShow = false
     if (feedback === 'all') ifShow = true

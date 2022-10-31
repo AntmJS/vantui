@@ -80,6 +80,8 @@ export function FormItem(props: FormItemProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const innnerValue = dispatch({ type: 'getFieldValue' }, _name)
+
   const getControlled = useCallback(
     (child: any) => {
       const props = { ...child.props }
@@ -107,12 +109,12 @@ export function FormItem(props: FormItemProps) {
           dispatch({ type: 'validateFieldValue' }, _name)
         }
       }
-      props[valueKey] = dispatch({ type: 'getFieldValue' }, _name)
+      props[valueKey] = innnerValue
 
       return props
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dispatch, _name, trigger, required, rules],
+    [innnerValue, _name, trigger, required, rules],
   )
 
   const renderChildren = useMemo(
