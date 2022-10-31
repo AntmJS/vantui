@@ -87,15 +87,17 @@ export function Cell(props: CellProps) {
       <View className="van-cell__value value-class">
         {value || value === 0 ? <>{value}</> : children}
       </View>
-      {isLink ? (
-        <Icon
-          name={arrowDirection ? 'arrow' + '-' + arrowDirection : 'arrow'}
-          className="van-cell__right-icon-wrap right-icon-class van-cell__right-icon"
-        ></Icon>
-      ) : (
-        renderRightIcon
-      )}
-      {renderExtra}
+      <View>
+        {isLink ? (
+          <Icon
+            name={arrowDirection ? 'arrow' + '-' + arrowDirection : 'arrow'}
+            className="van-cell__right-icon-wrap right-icon-class van-cell__right-icon"
+          ></Icon>
+        ) : (
+          renderRightIcon
+        )}
+      </View>
+      <View>{renderExtra}</View>
     </View>
   )
 }
