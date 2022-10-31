@@ -21,5 +21,28 @@
 
 1. `packages/vantui-cli`下执行: `yarn build`
 2. `packages/vantui`下执行: `yarn watch`
-3. `packages/vantui-doc`下执行: `yarn mdcode-watch`(单纯修复 bug，不需要改案例代码可不执行)
-4. `packages/vantui-demo`下执行: `yarn watch: [xx平台]` (新功能的代码请在`vantui-doc`下的 readme 里面书写)
+3. `packages/vantui-doc`下执行: `yarn mdcode-watch` ，时时将文档代码同步到 demo 项目中，单纯修复 bug，不需要改案例代码可`不执行`
+4. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`， 修改代码添加新功能并且需要新增或更改文档代码，请在`vantui-doc`下的 readme 里面书写
+
+### 组件 README 代码同步规则
+
+- Demo 组件的整体书写格式必须是`*** function Demo(){...} ***`
+- `reactAPI`的引用都是用 react.xxx
+- `@tarojs/components`和`@antmjs/vantui`组件都不需要自己 import
+- 内部自定义组件的组件名称须带前缀`_`, Form 组件文档下的`DatetimePickerBox_`, 暂时不支持写在`common`标识的代码块里
+- 多个组件公用的数据或方法，给代码块设置`common`标志符号，例如单独定义一个 sku 数据：
+
+ <img src="https://raw.githubusercontent.com/AntmJS/vantui/main/packages/vantui-doc/resource/prdemo.png" alt="contributors">
+
+在 demo 代码块中使用
+
+```js
+function Demo () {
+  const { sku } = COMMON
+  ...
+}
+```
+
+### 如何编写组件的 API 描述
+
+如果需要更改或新建组件文档的 API，请阅读[ts 同步到文档说明](https://antmjs.github.io/vantui/#/comments)

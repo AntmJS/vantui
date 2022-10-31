@@ -51,6 +51,11 @@ module.exports = {
             hideSimulator: false,
           },
           {
+            path: 'contributing',
+            title: '贡献指南',
+            hideSimulator: false,
+          },
+          {
             path: 'comments',
             title: 'typescript同步到文档',
             hideSimulator: false,
