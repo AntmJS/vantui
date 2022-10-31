@@ -15,20 +15,6 @@
 - Taro 需要使用 3.0+的版本
 - 小程序参考 Taro 的最低支持程度
 
-### 如何修复/开发新的组件库
-
-- Fork 代码：[VantUI](https://github.com/AntmJS/vantui)
-
-- 进入根目录：执行 yarn && yarn bootstrap && yarn build
-
-- 进入组件库目录：cd packages/vantui && yarn watch
-
-- 进入文档库目录：cd packages/vantui-doc && yarn mdcode-watch
-
-- 进入 Taro 版工程 vantui-demo： cd packages/vantui-demo && yarn watch:weapp
-
-> vantui-demo 的 src 代码是 vantui-doc 的 src 里面的 markdown 代码自动编译过来的，vantui-demo 里面的组件库是通过软链接实现的，所以 vantui-demo 的代码只要启动起来就好了，不需要改动。只需要改动 packages/vantui/src 或者 packages/vantui-doc/src 里面的代码就行了。
-
 ### 使用模版快速开发 Taro 应用
 
 - Pull 代码：[纯净版 React In Taro 模版工程](https://github.com/AntmJS/pure-project-vantui)
