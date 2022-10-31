@@ -464,7 +464,9 @@ const Swiper = (
 
   useReady(() => {
     Taro.nextTick(() => {
-      init()
+      setTimeout(() => {
+        init()
+      }, 16)
     })
   })
 
