@@ -435,15 +435,11 @@ const Swiper = (
   }, [isVertical, width, height, offset, ready])
 
   useEffect(() => {
-    if (ready) {
-      stopAutoPlay()
-      autoplay()
-    }
     return () => {
       setReady(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready])
+  }, [])
 
   useEffect(() => {
     stopAutoPlay()
@@ -463,9 +459,11 @@ const Swiper = (
   }, [])
 
   useReady(() => {
+    init()
     Taro.nextTick(() => {
       setTimeout(() => {
-        init()
+        stopAutoPlay()
+        autoplay()
       }, 16)
     })
   })
@@ -478,6 +476,7 @@ const Swiper = (
       style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
     }
     const offset = childOffset[index]
+
     if (offset) {
       style.transform = `translate3D${
         _direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
