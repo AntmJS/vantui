@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { style } from '../wxs/style'
 import { SliderProps } from '../../types/slider'
@@ -91,7 +92,9 @@ export function Slider(props: SliderProps) {
         offsetX: Math.abs(touchState.deltaX),
         offsetY: Math.abs(touchState.deltaY),
       }
-      setTouchState(newTouchState)
+      nextTick(() => {
+        setTouchState(newTouchState)
+      })
       return newTouchState
     },
     [touchState, resetTouchStatus],
@@ -175,7 +178,9 @@ export function Slider(props: SliderProps) {
         onChange({ detail: value } as ITouchEvent)
       }
       if ((drag || end) && canIUseModel()) {
-        setValue(value)
+        nextTick(() => {
+          setValue(value)
+        })
       }
     },
     [
@@ -283,15 +288,17 @@ export function Slider(props: SliderProps) {
       if (disabled) return
       getRect(null, `.van-slider${indexRef.current}`).then((rect: any) => {
         let value =
-          (((event.target.x || event.clientX) - rect.left) / rect.width) *
+          (((event.detail.x || event.detail.clientX) - rect.left) /
+            rect.width) *
             getRange() +
-          min
+          Number(min)
 
         if (vertical) {
           value =
-            (((event.target.y || event.clientY) - rect.top) / rect.height) *
+            (((event.detail.y || event.detail.clientY) - rect.top) /
+              rect.height) *
               getRange() +
-            min
+            Number(min)
         }
 
         if (isRange(value_)) {
