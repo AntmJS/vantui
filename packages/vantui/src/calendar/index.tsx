@@ -397,12 +397,12 @@ function Index(
   useEffect(
     function () {
       if (show || !poppable) {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           initRect()
           setTimeout(() => {
             scrollIntoViewFn()
           }, 66)
-        }, 66)
+        })
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -424,7 +424,7 @@ function Index(
   })
 
   return (
-    <>
+    <View>
       {poppable ? (
         <VanPopup
           className={'van-calendar__popup--' + position}
@@ -594,7 +594,7 @@ function Index(
         </View>
       )}
       <VanToast id="van-toast"></VanToast>
-    </>
+    </View>
   )
 }
 
