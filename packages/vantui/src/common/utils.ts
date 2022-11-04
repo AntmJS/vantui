@@ -2,8 +2,10 @@ import Taro, {
   getSystemInfoSync as TaroGetSystemInfoSync,
   createSelectorQuery,
 } from '@tarojs/taro'
+import * as raf from 'raf'
 import { isDef, isPlainObject, isPromise } from './validator'
 import { canIUseNextTick } from './version'
+
 export { isDef } from './validator'
 export function range(num: any, min: any, max: any) {
   return Math.min(Math.max(num, min), max)
@@ -40,18 +42,11 @@ export function addUnit(value: any) {
   return /^-?\d+(\.\d+)?$/.test('' + value) ? Taro.pxTransform(value) : value
 }
 export function requestAnimationFrame(cb: any) {
-  const systemInfo = getSystemInfoSync()
-  if (systemInfo.platform === 'devtools') {
-    return setTimeout(() => {
-      cb()
-    }, 33.333333333333336)
+  if (window.requestAnimationFrame) {
+    return window.requestAnimationFrame(cb)
   }
-  return createSelectorQuery()
-    .selectViewport()
-    .boundingClientRect()
-    .exec(() => {
-      cb()
-    })
+
+  return raf.default(cb)
 }
 export function pickExclude(obj: any, keys: any) {
   if (!isPlainObject(obj)) {

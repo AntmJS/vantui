@@ -1,4 +1,4 @@
-import { createAnimation } from '@tarojs/taro'
+import { createAnimation, nextTick } from '@tarojs/taro'
 // import { canIUseAnimate } from '../common/version'
 import { getRect } from '../common/utils'
 // function useAnimate(context: any, expanded: any, mounted: any, height: any) {
@@ -60,14 +60,13 @@ function useAnimation(expanded: any, mounted: any, height: any, setState: any) {
       duration: 300,
     })
     const animationclass = animation.export()
-    setState?.((state: any) => {
-      return {
-        ...state,
-        animation:
-          process.env.TARO_ENV === 'h5'
-            ? `${animationclass}--1`
-            : animationclass,
-      }
+    nextTick(() => {
+      setState?.((state: any) => {
+        return {
+          ...state,
+          animation: animationclass,
+        }
+      })
     })
   }
 }

@@ -103,17 +103,19 @@ export function Steps(props: StepsProps) {
                   ></VanIcon>
                 )}
               </View>
-              {index !== steps.length - 1 && (
-                <View
-                  className="van-step__line"
-                  style={
-                    'background-color: ' +
-                    (active !== undefined && index < active
-                      ? activeColor
-                      : inactiveColor)
-                  }
-                ></View>
-              )}
+              <View>
+                {index !== steps.length - 1 && (
+                  <View
+                    className="van-step__line"
+                    style={
+                      'background-color: ' +
+                      (active !== undefined && index < active
+                        ? activeColor
+                        : inactiveColor)
+                    }
+                  ></View>
+                )}
+              </View>
             </View>
           )
         })}

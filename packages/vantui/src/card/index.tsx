@@ -75,13 +75,15 @@ export function Card(props: CardProps) {
           ) : (
             renderThumb
           )}
-          {tag ? (
-            <Tag mark type="danger" className="van-card__tag">
-              {tag}
-            </Tag>
-          ) : (
-            renderTag
-          )}
+          <View>
+            {tag ? (
+              <Tag mark type="danger" className="van-card__tag">
+                {tag}
+              </Tag>
+            ) : (
+              renderTag
+            )}
+          </View>
         </View>
         <View
           className={
@@ -92,41 +94,51 @@ export function Card(props: CardProps) {
           }
         >
           <View>
-            {title ? (
-              <View className="van-card__title title-class">{title}</View>
-            ) : (
-              renderTitle
-            )}
-            {desc ? (
-              <View className="van-card__desc desc-class">{desc}</View>
-            ) : (
-              renderDesc
-            )}
+            <View>
+              {title ? (
+                <View className="van-card__title title-class">{title}</View>
+              ) : (
+                renderTitle
+              )}
+            </View>
+            <View>
+              {desc ? (
+                <View className="van-card__desc desc-class">{desc}</View>
+              ) : (
+                renderDesc
+              )}
+            </View>
             {renderTags}
           </View>
           <View className="van-card__bottom">
             {renderPriceTop}
-            {price ? (
-              <View className="van-card__price price-class">
-                <Text>{currency}</Text>
-                <Text className="van-card__price-integer">{integerStr}</Text>
-                <Text className="van-card__price-decimal">{decimalStr}</Text>
-              </View>
-            ) : (
-              renderPrice
-            )}
-            {originPrice ? (
-              <View className="van-card__origin-price origin-price-class">
-                {currency + ' ' + originPrice}
-              </View>
-            ) : (
-              renderOriginPrice
-            )}
-            {num ? (
-              <View className="van-card__num num-class">{'x ' + num}</View>
-            ) : (
-              renderNum
-            )}
+            <View>
+              {price ? (
+                <View className="van-card__price price-class">
+                  <Text>{currency}</Text>
+                  <Text className="van-card__price-integer">{integerStr}</Text>
+                  <Text className="van-card__price-decimal">{decimalStr}</Text>
+                </View>
+              ) : (
+                renderPrice
+              )}
+            </View>
+            <View>
+              {originPrice ? (
+                <View className="van-card__origin-price origin-price-class">
+                  {currency + ' ' + originPrice}
+                </View>
+              ) : (
+                renderOriginPrice
+              )}
+            </View>
+            <View>
+              {num ? (
+                <View className="van-card__num num-class">{'x ' + num}</View>
+              ) : (
+                renderNum
+              )}
+            </View>
             {renderBottom}
           </View>
         </View>
