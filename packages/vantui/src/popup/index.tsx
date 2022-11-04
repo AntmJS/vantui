@@ -137,23 +137,27 @@ export function Popup(props: PopupProps) {
   }, [closeOnClickOverlay, onClickOverlay, onClose])
 
   return (
-    <>
-      {overlay && (
-        <VanOverlay
-          show={show}
-          zIndex={zIndex}
-          style={overlayStyle}
-          duration={duration}
-          onClick={_onClickOverlay}
-          lockScroll={lockScroll}
-        />
-      )}
-      {innerShow ? (
-        <PopupInner setOuterShow={setInnerShow} {...props} />
-      ) : (
-        <></>
-      )}
-    </>
+    <View>
+      <View>
+        {overlay && (
+          <VanOverlay
+            show={show}
+            zIndex={zIndex}
+            style={overlayStyle}
+            duration={duration}
+            onClick={_onClickOverlay}
+            lockScroll={lockScroll}
+          />
+        )}
+      </View>
+      <View>
+        {innerShow ? (
+          <PopupInner setOuterShow={setInnerShow} {...props} />
+        ) : (
+          <></>
+        )}
+      </View>
+    </View>
   )
 }
 
