@@ -219,6 +219,7 @@ function Index(
   const onDrag = useCallback(
     function (event) {
       if (disabled) return
+      event.preventDefault()
       const touchState = touchMove(event)
       ARRAY.filter((item) => item.key !== instanceKey.key).forEach((item) =>
         item.close(),
