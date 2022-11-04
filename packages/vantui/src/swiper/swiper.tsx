@@ -520,6 +520,11 @@ const Swiper = (
               </View>
             )
           })}
+          {process.env.TARO_ENV !== 'h5' && (
+            <View className={'van-swiper-item-wrapper'} style={itemStyle(0)}>
+              {childs && childs.length ? childs[0] : ''}
+            </View>
+          )}
         </View>
         {propSwiper.paginationVisible && !('pageContent' in propSwiper) ? (
           <View
