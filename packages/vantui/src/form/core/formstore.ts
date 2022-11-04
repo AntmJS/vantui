@@ -70,6 +70,14 @@ class FormStore {
     }
   }
 
+  static isFieldNull(value) {
+    return (
+      value === undefined ||
+      value === '' ||
+      (Array.isArray(value) && value.length === 0)
+    )
+  }
+
   setCallback(callback: any) {
     if (callback) this.callback = callback
   }
@@ -291,7 +299,7 @@ class FormStore {
     if (!model) return null
     const { required, rules, value } = model
     let status = 'resolve'
-    if (required && value === undefined) {
+    if (required && FormStore.isFieldNull(value)) {
       status = 'reject'
       if (this.requiredMessageCallback) {
         this.model[name].message = this.requiredMessageCallback(
