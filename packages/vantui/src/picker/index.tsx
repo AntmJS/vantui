@@ -169,8 +169,6 @@ const Picker = forwardRef(function Index(
 
   const onChange_ = emit
 
-  const onTouchMove = useCallback(function () {}, [])
-
   const setColumnIndex = useCallback(function (index, optionIndex) {
     const column = children.current[index]
     if (column == null) {
@@ -265,7 +263,9 @@ const Picker = forwardRef(function Index(
           itemHeight,
           visibleItemCount,
         })}
-        onTouchMove={onTouchMove}
+        onTouchMove={onTouchMove_}
+        // @ts-ignore
+        catchMove
       >
         {computed.columns(columns).map((item: any, index: number) => {
           return (

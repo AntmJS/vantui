@@ -4,7 +4,6 @@ import {
   useCallback,
   useImperativeHandle,
   forwardRef,
-  memo,
 } from 'react'
 import { View, CustomWrapper } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
@@ -103,15 +102,8 @@ function Index(
   const onTouchMove = useCallback(
     function (event) {
       event.preventDefault()
-      event.stopPropagation()
       const deltaY = event.touches[0].clientY - startY
-      setOffset(
-        range(
-          startOffset + deltaY,
-          -(options.length * Number(itemHeight)),
-          itemHeight,
-        ),
-      )
+      setOffset(startOffset + deltaY)
     },
     [startOffset, itemHeight, options, startY],
   )
@@ -127,17 +119,16 @@ function Index(
 
   const onTouchEnd = useCallback(
     function () {
-      if (offset !== startOffset) {
-        setDuration(DEFAULT_DURATION)
-        const index = range(
-          Math.round(-offset / Number(itemHeight)),
-          0,
-          options.length - 1,
-        )
-        setTimeout(() => {
-          setIndex(index, true)
-        }, 5.5)
-      }
+      const indexCount = offset - startOffset > 0 ? Math.floor : Math.ceil
+      setDuration(DEFAULT_DURATION)
+      const index = range(
+        indexCount(-offset / Number(itemHeight)),
+        0,
+        options.length - 1,
+      )
+      setTimeout(() => {
+        setIndex(index, true)
+      }, 5.5)
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
   )
@@ -215,8 +206,6 @@ function Index(
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
       onTouchCancel={onTouchEnd}
-      // @ts-ignore
-      catchMove
     >
       {options.map((option: any, index: number) => {
         return (
@@ -256,14 +245,18 @@ function Index(
       {...others}
     >
       {process.env.TARO_ENV === 'weapp' ? (
-        <CustomWrapper>{renderColumn}</CustomWrapper>
+        <View>
+          <CustomWrapper>
+            <View>{renderColumn}</View>
+          </CustomWrapper>
+        </View>
       ) : (
-        <>{renderColumn}</>
+        <View>{renderColumn}</View>
       )}
     </View>
   )
 }
 
-const PickerColumn = memo(forwardRef(Index))
+const PickerColumn = forwardRef(Index)
 export { PickerColumn }
 export default PickerColumn
