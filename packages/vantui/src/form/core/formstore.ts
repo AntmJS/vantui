@@ -74,6 +74,7 @@ class FormStore {
     return (
       value === undefined ||
       value === '' ||
+      value === null ||
       (Array.isArray(value) && value.length === 0)
     )
   }
