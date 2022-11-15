@@ -296,6 +296,7 @@ export function Field(props: FieldProps) {
             onConfirm={_confirm}
             onLineChange={onLineChange}
             onKeyboardHeightChange={onKeyboardHeightChange}
+            showCount=""
           ></Textarea>
         ) : (
           <Input
