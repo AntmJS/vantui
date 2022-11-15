@@ -160,7 +160,7 @@ export type Day = {
  */
 export type ICalendarInstance = {
   reset: (date?: Date | Date[]) => void
-  // scrollToDate: (date: Date) => void
+  getSelectedDate: () => Date | Date[] | null
 }
 /**
  * @title CalendarEvents

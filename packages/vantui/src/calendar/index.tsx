@@ -420,6 +420,9 @@ function Index(
   useImperativeHandle(ref, function () {
     return {
       reset,
+      getSelectedDate: () => {
+        return currentDate
+      },
     }
   })
 
