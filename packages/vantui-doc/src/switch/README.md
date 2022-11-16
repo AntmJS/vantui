@@ -108,3 +108,21 @@ function Demo() {
 | activeValue   | -    | _&nbsp;&nbsp;any<br/>_                                                                                      | -      | `false` |
 | inactiveValue | -    | _&nbsp;&nbsp;any<br/>_                                                                                      | -      | `false` |
 | onChange      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                           | 默认值                              |
+| ------------------------------ | ----------------------------------- |
+| --switch-width                 | ` 2em;`                             |
+| --switch-height                | ` 1em;`                             |
+| --switch-node-size             | ` 1em;`                             |
+| --switch-node-z-index          | ` 1;`                               |
+| --switch-node-background-color | ` @white;`                          |
+| --switch-node-box-shadow       | ` 0 6px 2px 0 rgba(0, 0, 0, 0.05),` |
+| --switch-background-color      | ` @white;`                          |
+| --switch-on-background-color   | ` @blue;`                           |
+| --switch-transition-duration   | ` 0.3s;`                            |
+| --switch-disabled-opacity      | ` 0.4;`                             |
+| --switch-border                | ` 2px solid rgba(0, 0, 0, 0.1);`    |

@@ -471,3 +471,24 @@ function DatetimePickerBox_(props) {
 | validateFieldValue | 单个表单验证 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=><br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"resolve"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"reject"<br/>_ |
 | validateFields | 校验表单，并获取错误信息和所有表单值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMess:&nbsp;Array<string>&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | submit | 校验表单，并获取错误信息和所有表单值，触发 form.onFinish 和 onFinishFailed | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;callback?:&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errs:&nbsp;Array<string>&nbsp;&brvbar;&nbsp;null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;Record<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;><br/>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                | 默认值                |
+| ----------------------------------- | --------------------- |
+| --form-background-color             | ` @white;`            |
+| --form-space-horizontal             | ` 24px;`              |
+| --form-space-vertical               | ` 24px;`              |
+| --form-border-bottom                | ` 2px solid @gray-3;` |
+| --form-line-height                  | ` 50px;`              |
+| --form-label-color                  | ` @gray-7;`           |
+| --form-label-width                  | ` 146px;`             |
+| --form-label-font-size              | ` 32px;`              |
+| --form-controll-margin-left         | ` 40px;`              |
+| --form-controll-font-size           | ` 32px;`              |
+| --form-message-font-size            | ` 24px;`              |
+| --form-message-color                | ` red;`               |
+| --form-message-margin-top           | ` 8px;`               |
+| --form-vertical-controll-margin-top | ` 20px;`              |

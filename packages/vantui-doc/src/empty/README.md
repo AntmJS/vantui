@@ -90,3 +90,18 @@ function Demo() {
 | children          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                           | -      | `false` |
 | renderImage       | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                           | -      | `false` |
 | renderDescription | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                           | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                            | 默认值            |
+| ------------------------------- | ----------------- |
+| --empty-padding                 | ` @padding-xl 0;` |
+| --empty-image-size              | ` 320px;`         |
+| --empty-description-margin-top  | ` @padding-md;`   |
+| --empty-description-padding     | ` 0 120px;`       |
+| --empty-description-color       | ` @gray-6;`       |
+| --empty-description-font-size   | ` 28px;`          |
+| --empty-description-line-height | ` 40px;`          |
+| --empty-bottom-margin-top       | ` 48px;`          |

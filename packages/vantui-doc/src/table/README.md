@@ -160,3 +160,11 @@ function Demo() {
 | sortOrder | 排序的受控属性 | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"ascend"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"descend"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>_ |
 | fixed | 固定列 | _&nbsp;&nbsp;"left"&nbsp;&brvbar;&nbsp;"right"<br/>_ |
 | expandable | 该列是否启用点击展开收起功能，默认 true | _&nbsp;&nbsp;boolean<br/>_ |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                  | 默认值     |
+| --------------------- | ---------- |
+| --table-primary-color | ` @black;` |

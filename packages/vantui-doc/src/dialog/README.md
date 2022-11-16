@@ -189,3 +189,27 @@ function Demo() {
 | closeOnClickOverlay   | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                                                         | -      | `false` |
 | confirmButtonOpenType | -    | _&nbsp;&nbsp;TaroButtonProps.OpenType<br/>_                                                                                                                                                                                                                                                                                                                                        | -      | `false` |
 | renderTitle           | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                                                       | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                   | 默认值                |
+| -------------------------------------- | --------------------- |
+| --dialog-width                         | ` 640px;`             |
+| --dialog-small-screen-width            | ` 90%;`               |
+| --dialog-font-size                     | ` @font-size-lg;`     |
+| --dialog-border-radius                 | ` 32px;`              |
+| --dialog-background-color              | ` @white;`            |
+| --dialog-header-font-weight            | ` @font-weight-bold;` |
+| --dialog-header-line-height            | ` 48px;`              |
+| --dialog-header-padding-top            | ` @padding-lg;`       |
+| --dialog-header-isolated-padding       | ` @padding-lg 0;`     |
+| --dialog-message-padding               | ` @padding-lg;`       |
+| --dialog-message-font-size             | ` @font-size-md;`     |
+| --dialog-message-line-height           | ` 40px;`              |
+| --dialog-message-max-height            | ` 60vh;`              |
+| --dialog-has-title-message-text-color  | ` @gray-7;`           |
+| --dialog-has-title-message-padding-top | ` @padding-xs;`       |
+| --dialog-cancel-button-color           | ` @gray-7;`           |
+| --dialog-confirm-button-color          | ` @text-link-color;`  |

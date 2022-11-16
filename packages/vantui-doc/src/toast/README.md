@@ -191,3 +191,22 @@ Toast.show({
 | clear | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;ToastProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | setDefaultOptions | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;ToastProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | resetDefaultOptions | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                       | 默认值                      |
+| -------------------------- | --------------------------- |
+| --toast-max-width          | ` 70%;`                     |
+| --toast-font-size          | ` 28px;`                    |
+| --toast-text-color         | ` @white;`                  |
+| --toast-line-height        | ` 40px;`                    |
+| --toast-border-radius      | ` @border-radius-lg;`       |
+| --toast-background-color   | ` fade(@black, 70%);`       |
+| --toast-icon-size          | ` 72px;`                    |
+| --toast-text-min-width     | ` 192px;`                   |
+| --toast-text-padding       | ` @padding-xs @padding-sm;` |
+| --toast-default-padding    | ` @padding-md;`             |
+| --toast-default-width      | ` 176px;`                   |
+| --toast-default-min-height | ` 176px;`                   |

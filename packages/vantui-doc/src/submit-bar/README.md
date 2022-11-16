@@ -108,3 +108,28 @@ function Demo() {
 | renderTop           | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                             | -      | `false` |
 | renderTip           | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                             | -      | `false` |
 | onSubmit            | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                             | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                 | 默认值                         |
+| ------------------------------------ | ------------------------------ |
+| --submit-bar-height                  | ` 100px;`                      |
+| --submit-bar-background-color        | ` @white;`                     |
+| --submit-bar-button-width            | ` 220px;`                      |
+| --submit-bar-price-color             | ` @red;`                       |
+| --submit-bar-price-font-size         | ` @font-size-sm;`              |
+| --submit-bar-currency-font-size      | ` @font-size-sm;`              |
+| --submit-bar-text-color              | ` @text-color;`                |
+| --submit-bar-text-font-size          | ` 28px;`                       |
+| --submit-bar-tip-padding             | ` 20px;`                       |
+| --submit-bar-tip-font-size           | ` 24px;`                       |
+| --submit-bar-tip-line-height         | ` 1.5;`                        |
+| --submit-bar-tip-color               | ` #f56723;`                    |
+| --submit-bar-tip-background-color    | ` #fff7cc;`                    |
+| --submit-bar-tip-icon-size           | ` 24px;`                       |
+| --submit-bar-button-height           | ` 80px;`                       |
+| --submit-bar-padding                 | ` 0 @padding-md;`              |
+| --submit-bar-price-integer-font-size | ` 40px;`                       |
+| --submit-bar-price-font-family       | ` @price-integer-font-family;` |

@@ -144,3 +144,11 @@ function Demo() {
 | activeIcon      | 激活图标                                          | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                 | `#checked`   | `false` |
 | inactiveIcon    | 蔚来激活图标                                      | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                 | `#checked`   | `false` |
 | onClickStep     | 点击步骤时触发的事件，event.detail 当前步骤的索引 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent&nbsp;&&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                      | -            | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                     | 默认值     |
+| ------------------------ | ---------- |
+| --steps-background-color | ` @white;` |

@@ -256,3 +256,30 @@ function Demo() {
 | onCancel            | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                       | -      | `false` |
 | onClose             | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                       | -      | `false` |
 | onClickOverlay      | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                       | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                    | 默认值                |
+| --------------------------------------- | --------------------- |
+| --action-sheet-max-height               | ` 90%;`               |
+| --action-sheet-header-height            | ` 96px;`              |
+| --action-sheet-header-font-size         | ` @font-size-lg;`     |
+| --action-sheet-description-color        | ` @gray-6;`           |
+| --action-sheet-description-font-size    | ` @font-size-md;`     |
+| --action-sheet-description-line-height  | ` 40px;`              |
+| --action-sheet-item-background          | ` @white;`            |
+| --action-sheet-item-font-size           | ` @font-size-lg;`     |
+| --action-sheet-item-line-height         | ` 44px;`              |
+| --action-sheet-item-text-color          | ` @text-color;`       |
+| --action-sheet-item-disabled-text-color | ` @gray-5;`           |
+| --action-sheet-subname-color            | ` @gray-6;`           |
+| --action-sheet-subname-font-size        | ` @font-size-sm;`     |
+| --action-sheet-subname-line-height      | ` 40px;`              |
+| --action-sheet-close-icon-size          | ` 44px;`              |
+| --action-sheet-close-icon-color         | ` @gray-5;`           |
+| --action-sheet-close-icon-padding       | ` 0 @padding-md;`     |
+| --action-sheet-cancel-text-color        | ` @gray-7;`           |
+| --action-sheet-cancel-padding-top       | ` @padding-xs;`       |
+| --action-sheet-cancel-padding-color     | ` @background-color;` |

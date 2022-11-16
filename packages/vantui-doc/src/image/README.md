@@ -206,3 +206,17 @@ function Demo() {
 | showLoading         | 是否使用 loading 状态                | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                  | true   | `false` |
 | renderLoading       | 渲染 loading 展示元素                | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                | -      | `false` |
 | renderError         | 渲染错误描述展示元素                 | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                 | 默认值                |
+| ------------------------------------ | --------------------- |
+| --image-placeholder-text-color       | ` @gray-6;`           |
+| --image-placeholder-font-size        | ` @font-size-md;`     |
+| --image-placeholder-background-color | ` @background-color;` |
+| --image-loading-icon-size            | ` 64px;`              |
+| --image-loading-icon-color           | ` @gray-4;`           |
+| --image-error-icon-size              | ` 64px;`              |
+| --image-error-icon-color             | ` @gray-4;`           |

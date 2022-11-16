@@ -78,3 +78,18 @@ function Demo() {
 | color       | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 | textColor   | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 | strokeWidth | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                              | 默认值            |
+| --------------------------------- | ----------------- |
+| --progress-height                 | ` 8px;`           |
+| --progress-background-color       | ` @gray-3;`       |
+| --progress-pivot-padding          | ` 0 10px;`        |
+| --progress-color                  | ` @blue;`         |
+| --progress-pivot-font-size        | ` @font-size-xs;` |
+| --progress-pivot-line-height      | ` 1.6;`           |
+| --progress-pivot-background-color | ` @blue;`         |
+| --progress-pivot-text-color       | ` @white;`        |

@@ -209,3 +209,28 @@ function Demo() {
 | border   | 是否显示外边框         | _&nbsp;&nbsp;boolean<br/>_   | true   | `false` |
 | inset    | 是否展示为圆角卡片风格 | _&nbsp;&nbsp;boolean<br/>_   | false  | `false` |
 | children | -                      | _&nbsp;&nbsp;ReactNode<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                          | 默认值            |
+| ----------------------------- | ----------------- |
+| --cell-font-size              | ` @font-size-md;` |
+| --cell-line-height            | ` 48px;`          |
+| --cell-vertical-padding       | ` @padding-sm;`   |
+| --cell-horizontal-padding     | ` @padding-md;`   |
+| --cell-text-color             | ` @text-color;`   |
+| --cell-background-color       | ` @white;`        |
+| --cell-border-color           | ` @border-color;` |
+| --cell-required-color         | ` @red;`          |
+| --cell-label-color            | ` @gray-6;`       |
+| --cell-label-font-size        | ` @font-size-sm;` |
+| --cell-label-margin-top       | ` 6px;`           |
+| --cell-value-color            | ` @gray-6;`       |
+| --cell-icon-size              | ` @font-size-lg;` |
+| --cell-right-icon-color       | ` @gray-6;`       |
+| --cell-large-vertical-padding | ` @padding-sm;`   |
+| --cell-large-title-font-size  | ` @font-size-lg;` |
+| --cell-large-value-font-size  | ` @font-size-lg;` |
+| --cell-large-label-font-size  | ` @font-size-md;` |

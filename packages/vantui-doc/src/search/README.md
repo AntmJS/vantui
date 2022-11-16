@@ -144,3 +144,20 @@ function Demo() {
 | onClear          | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                  | -      | `false` |
 | onCancel         | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                  | -      | `false` |
 | onClickInput     | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                  | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                       | 默认值               |
+| -------------------------- | -------------------- |
+| --search-background-color  | ` @gray-1;`          |
+| --search-padding           | ` 20px @padding-sm;` |
+| --search-input-height      | ` 68px;`             |
+| --search-label-padding     | ` 0 10px;`           |
+| --search-label-color       | ` @text-color;`      |
+| --search-label-font-size   | ` @font-size-md;`    |
+| --search-left-icon-color   | ` @gray-6;`          |
+| --search-action-padding    | ` 0 @padding-xs;`    |
+| --search-action-text-color | ` @text-color;`      |
+| --search-action-font-size  | ` @font-size-md;`    |

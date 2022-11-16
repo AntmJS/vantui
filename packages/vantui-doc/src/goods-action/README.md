@@ -99,3 +99,24 @@ function Demo() {
 | ------------------- | ---- | ---------------------------- | ------ | ------- |
 | safeAreaInsetBottom | -    | _&nbsp;&nbsp;boolean<br/>_   | -      | `false` |
 | children            | -    | _&nbsp;&nbsp;ReactNode<br/>_ | -      | `true`  |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                | 默认值                   |
+| ----------------------------------- | ------------------------ |
+| --goods-action-background-color     | ` @white;`               |
+| --goods-action-height               | ` 100px;`                |
+| --goods-action-icon-width           | ` 100px;`                |
+| --goods-action-icon-height          | ` @goods-action-height;` |
+| --goods-action-icon-color           | ` @text-color;`          |
+| --goods-action-icon-size            | ` 36px;`                 |
+| --goods-action-icon-font-size       | ` @font-size-xs;`        |
+| --goods-action-icon-text-color      | ` @gray-7;`              |
+| --goods-action-button-height        | ` 80px;`                 |
+| --goods-action-button-line-height   | ` @button-line-height;`  |
+| --goods-action-button-border-radius | ` @border-radius-max;`   |
+| --goods-action-button-warning-color | ` @gradient-orange;`     |
+| --goods-action-button-danger-color  | ` @gradient-red;`        |
+| --goods-action-button-plain-color   | ` @white;`               |

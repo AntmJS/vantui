@@ -253,3 +253,14 @@ function Demo() {
 | titleStyle | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 | name       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
 | children   | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                      | 默认值            |
+| ------------------------- | ----------------- |
+| --tab-text-color          | ` @gray-7;`       |
+| --tab-active-text-color   | ` @text-color;`   |
+| --tab-disabled-text-color | ` @gray-5;`       |
+| --tab-font-size           | ` @font-size-md;` |

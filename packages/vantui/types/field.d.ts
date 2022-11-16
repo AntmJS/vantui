@@ -88,7 +88,7 @@ export interface FieldProps extends ViewProps {
    */
   confirmHold?: boolean
   /**
-   * @description 如果 type 为 textarea 且在一个 position:fixed 的区域，需要显示指定属性 fixed 为 true
+   * @description 如果 type 为 textarea 且在一个 position fixed 的区域，需要显示指定属性 fixed 为 true
    * @default false
    */
   fixed?: boolean

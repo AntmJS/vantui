@@ -197,3 +197,26 @@ function Demo() {
 | closeable | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                  | -      | `false` |
 | children  | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                | -      | `false` |
 | onClose   | -    | _&nbsp;&nbsp;(e:&nbsp;any)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                          | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                         | 默认值                        |
+| ---------------------------- | ----------------------------- |
+| --tag-padding                | ` 0 @padding-base;`           |
+| --tag-text-color             | ` @white;`                    |
+| --tag-font-size              | ` @font-size-sm;`             |
+| --tag-border-radius          | ` 4px;`                       |
+| --tag-line-height            | ` 32px;`                      |
+| --tag-medium-padding         | ` 4px 12px;`                  |
+| --tag-large-padding          | ` @padding-base @padding-xs;` |
+| --tag-large-border-radius    | ` @border-radius-md;`         |
+| --tag-large-font-size        | ` @font-size-md;`             |
+| --tag-round-border-radius    | ` @border-radius-max;`        |
+| --tag-danger-color           | ` @red;`                      |
+| --tag-primary-color          | ` @blue;`                     |
+| --tag-success-color          | ` @green;`                    |
+| --tag-warning-color          | ` @orange;`                   |
+| --tag-default-color          | ` @gray-6;`                   |
+| --tag-plain-background-color | ` @white;`                    |

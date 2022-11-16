@@ -507,3 +507,23 @@ function Demo() {
 | idKey | 节点唯一 id | _&nbsp;&nbsp;string<br/>_ |
 | pidKey | 父节点 id 的属性名 | _&nbsp;&nbsp;string<br/>_ |
 | sortKey | 根据指定字段调用 Array.prototype.sort()进行同层排序 | _&nbsp;&nbsp;string<br/>_ |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                 | 默认值             |
+| ------------------------------------ | ------------------ |
+| --cascader-font-size                 | ` 28px;`           |
+| --cascader-line-height               | ` 44px;`           |
+| --cascader-tabs-item-padding         | ` 0 20px;`         |
+| --cascader-title-padding             | ` 48px 40px 34px;` |
+| --cascader-title-font-size           | ` 36px;`           |
+| --cascader-title-line-height         | ` 40px;`           |
+| --cascader-item-padding              | ` 20px 40px;`      |
+| --cascader-item-font-size            | ` 28px;`           |
+| --cascader-item-color                | ` #1a1a1a;`        |
+| --cascader-item-active-color         | ` #20c064;`        |
+| --cascader-pane-height               | ` 684px;`          |
+| --cascader-pane-paddingTop           | ` 20px;`           |
+| --cascader-icon-checklist-marginLeft | ` 20px;`           |

@@ -127,3 +127,19 @@ function Demo() {
 | pageNodeRender | 自定义渲染页码结构, 入参数为 number 页数、text 文本、 active 选中状态 | _&nbsp;&nbsp;(page:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;number:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;active:&nbsp;boolean<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;React.ReactNode<br/>_ | -                      | `false` |
 | onChange       | 页码改变的时候触发                                                    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;currPage:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -                      | `true`  |
 | updatecurrent  | -                                                                     | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;currPage:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -                      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                  | 默认值                        |
+| ------------------------------------- | ----------------------------- |
+| --pagination-color                    | ` @black;`                    |
+| --pagination-font-size                | ` @font-size-md;`             |
+| --pagination-item-border-color        | ` #e4e7eb;`                   |
+| --pagination-active-background-color  | ` @green;`                    |
+| --pagination-disable-color            | ` rgba(116, 116, 116, 0.31);` |
+| --pagination-disable-background-color | ` #f7f8fa;`                   |
+| --pagination-item-border-width        | ` 1px;`                       |
+| --pagination-item-border-radius       | ` 2px;`                       |
+| --pagination-prev-next-padding        | ` 0 11px;`                    |

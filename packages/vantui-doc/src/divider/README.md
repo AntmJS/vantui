@@ -114,3 +114,18 @@ function Demo() {
 | borderColor     | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                      | -      | `false` |
 | textColor       | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                      | -      | `false` |
 | children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                   | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                          | 默认值            |
+| ----------------------------- | ----------------- |
+| --divider-margin              | ` @padding-md 0;` |
+| --divider-text-color          | ` @gray-6;`       |
+| --divider-font-size           | ` @font-size-md;` |
+| --divider-line-height         | ` 48px;`          |
+| --divider-border-color        | ` @border-color;` |
+| --divider-content-padding     | ` @padding-md;`   |
+| --divider-content-left-width  | ` 10%;`           |
+| --divider-content-right-width | ` 10%;`           |

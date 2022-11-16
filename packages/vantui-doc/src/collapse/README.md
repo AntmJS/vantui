@@ -155,3 +155,17 @@ function Demo() {
 | renderRightIcon | isLink 设置为 false | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
 | renderValue     | -                   | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
 | size            | -                   | _&nbsp;&nbsp;"large"<br/>_                          | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                     | 默认值      |
+| ---------------------------------------- | ----------- |
+| --collapse-item-transition-duration      | ` 0.3s;`    |
+| --collapse-item-content-padding          | ` 30px;`    |
+| --collapse-item-content-font-size        | ` 26px;`    |
+| --collapse-item-content-line-height      | ` 1.5;`     |
+| --collapse-item-content-text-color       | ` @gray-6;` |
+| --collapse-item-content-background-color | ` @white;`  |
+| --collapse-item-title-disabled-color     | ` @gray-5;` |

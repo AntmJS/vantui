@@ -156,3 +156,17 @@ function Demo() {
 | onClick          | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
 | onOpened         | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                             | -      | `false` |
 | onClose          | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                             | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                              | 默认值        |
+| --------------------------------- | ------------- |
+| --notify-padding                  | ` 12px 30px;` |
+| --notify-font-size                | ` 28px;`      |
+| --notify-line-height              | ` 40px;`      |
+| --notify-primary-background-color | ` @blue;`     |
+| --notify-success-background-color | ` @green;`    |
+| --notify-danger-background-color  | ` @red;`      |
+| --notify-warning-background-color | ` @orange;`   |

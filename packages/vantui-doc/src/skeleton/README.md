@@ -71,3 +71,18 @@ function Demo() {
 | titleWidth  | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | -      | `false` |
 | rowWidth    | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_  | -      | `false` |
 | children    | -    | _&nbsp;&nbsp;ReactNode<br/>_                           | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                               | 默认值                                                             |
+| ---------------------------------- | ------------------------------------------------------------------ |
+| --skeleton-padding                 | ` 0 @padding-md;`                                                  |
+| --skeleton-row-height              | ` 32px;`                                                           |
+| --skeleton-row-background-color    | ` @gray-2;`                                                        |
+| --skeleton-row-margin-top          | ` @padding-sm;`                                                    |
+| --skeleton-avatar-background-color | ` @gray-2;`                                                        |
+| --skeleton-animation-duration      | ` 1.2s;`                                                           |
+| --{property}                       | ` e(replace(@imp, '(-?)@([^() ]+)', '$1@{$2}', 'ig'));`            |
+| --{property}                       | ` e(replace(@imp, '(-?)@([^() ]+)', 'var(--$2, $1@{$2})', 'ig'));` |

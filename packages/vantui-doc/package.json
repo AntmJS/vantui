@@ -4,15 +4,15 @@
   "version": "2.2.7",
   "description": "",
   "scripts": {
-    "dev": "node ./scripts/ts-to-md && npx antm-vantui-cli docs --mode development",
+    "dev": "node ./scripts/md && npx antm-vantui-cli docs --mode development",
     "mdcode-create": "npx antm-vantui-cli mdcode --mode create",
     "mdcode-watch": "npx antm-vantui-cli mdcode --mode watch",
-    "build": "node ./scripts/ts-to-md && sh ./build.sh",
+    "build": "node ./scripts/md && sh ./build.sh",
     "test:coverage": "open test/coverage/index.html",
     "test:watch": "",
     "test": "",
     "release": "npx gh-pages -d site",
-    "docs-ts": "node ./scripts/ts-to-md"
+    "sync-md": "node ./scripts/md"
   },
   "author": "sanshao",
   "license": "MIT",

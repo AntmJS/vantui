@@ -70,3 +70,16 @@ function Demo() {
 | size     | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | -      | `false` |
 | textSize | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | -      | `false` |
 | children | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                 | 默认值            |
+| ------------------------------------ | ----------------- |
+| --loading-text-color                 | ` @gray-6;`       |
+| --loading-text-font-size             | ` @font-size-md;` |
+| --loading-text-line-height           | ` 40px;`          |
+| --loading-spinner-color              | ` @gray-5;`       |
+| --loading-spinner-size               | ` 60px;`          |
+| --loading-spinner-animation-duration | ` 0.8s;`          |

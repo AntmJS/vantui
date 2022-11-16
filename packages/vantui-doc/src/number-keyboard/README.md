@@ -122,3 +122,12 @@ function Demo() {
 | onConfirm       | 点击确定按钮时触发           | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                             | -      | `false` |
 | afterClose      | 键盘完全收起回调             | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                             | -      | `false` |
 | closeOnConfirm  | 是否在点击确定按钮时自动关闭 | _&nbsp;&nbsp;boolean<br/>_                                                                          | true   | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                    | 默认值      |
+| --------------------------------------- | ----------- |
+| --number-keyboard-sign-background-color | ` #eeeeee;` |
+| --number-keyboard-week-color            | ` #999;`    |

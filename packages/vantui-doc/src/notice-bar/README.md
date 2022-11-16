@@ -160,3 +160,19 @@ function Demo() {
 | renderRightIcon | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                    | -      | `false` |
 | onClick         | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                     | -      | `false` |
 | onClose         | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                     | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                          | 默认值                      |
+| ----------------------------- | --------------------------- |
+| --notice-bar-height           | ` 80px;`                    |
+| --notice-bar-padding          | ` 0 @padding-md;`           |
+| --notice-bar-wrapable-padding | ` @padding-xs @padding-md;` |
+| --notice-bar-font-size        | ` @font-size-md;`           |
+| --notice-bar-text-color       | ` @orange-dark;`            |
+| --notice-bar-line-height      | ` 48px;`                    |
+| --notice-bar-background-color | ` @orange-light;`           |
+| --notice-bar-icon-size        | ` 32px;`                    |
+| --notice-bar-icon-min-width   | ` 44px;`                    |

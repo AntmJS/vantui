@@ -234,3 +234,19 @@ function Demo() {
 | direction | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"horizontal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | -      | `false` |
 | children  | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                         | -      | `false` |
 | onChange  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                          | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                 | 默认值            |
+| ------------------------------------ | ----------------- |
+| --checkbox-size                      | ` 40px;`          |
+| --checkbox-border-color              | ` @gray-5;`       |
+| --checkbox-transition-duration       | ` 0.2s;`          |
+| --checkbox-label-margin              | ` 20px;`          |
+| --checkbox-label-color               | ` @text-color;`   |
+| --checkbox-checked-icon-color        | ` @blue;`         |
+| --checkbox-disabled-icon-color       | ` @gray-5;`       |
+| --checkbox-disabled-label-color      | ` @gray-5;`       |
+| --checkbox-disabled-background-color | ` @border-color;` |

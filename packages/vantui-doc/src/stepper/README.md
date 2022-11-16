@@ -155,3 +155,24 @@ function Demo() {
 | onMinus       | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                              | -      | `false` |
 | renderMinus   | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                         | -      | `false` |
 | renderPlus    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                         | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                      | 默认值                |
+| ----------------------------------------- | --------------------- |
+| --stepper-active-color                    | ` #e8e8e8;`           |
+| --stepper-background-color                | ` @active-color;`     |
+| --stepper-button-icon-color               | ` @text-color;`       |
+| --stepper-button-disabled-color           | ` @background-color;` |
+| --stepper-button-disabled-icon-color      | ` @gray-5;`           |
+| --stepper-button-round-theme-color        | ` @red;`              |
+| --stepper-input-width                     | ` 64px;`              |
+| --stepper-input-height                    | ` 56px;`              |
+| --stepper-input-font-size                 | ` @font-size-md;`     |
+| --stepper-input-line-height               | ` normal;`            |
+| --stepper-input-text-color                | ` @text-color;`       |
+| --stepper-input-disabled-text-color       | ` @gray-5;`           |
+| --stepper-input-disabled-background-color | ` @active-color;`     |
+| --stepper-border-radius                   | ` @border-radius-md;` |

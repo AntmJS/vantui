@@ -82,3 +82,24 @@ function Demo() {
 | renderTitle       | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
 | renderTag         | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
 | renderThumb       | -    | _&nbsp;&nbsp;ReactNode<br/>_                  | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                           | 默认值                         |
+| ------------------------------ | ------------------------------ |
+| --card-padding                 | ` @padding-xs @padding-md;`    |
+| --card-font-size               | ` @font-size-sm;`              |
+| --card-text-color              | ` @text-color;`                |
+| --card-background-color        | ` @background-color-light;`    |
+| --card-thumb-size              | ` 176px;`                      |
+| --card-title-line-height       | ` 32px;`                       |
+| --card-desc-color              | ` @gray-7;`                    |
+| --card-desc-line-height        | ` 40px;`                       |
+| --card-price-color             | ` @red;`                       |
+| --card-origin-price-color      | ` @gray-7;`                    |
+| --card-origin-price-font-size  | ` @font-size-xs;`              |
+| --card-price-font-size         | ` @font-size-sm;`              |
+| --card-price-integer-font-size | ` @font-size-lg;`              |
+| --card-price-font-family       | ` @price-integer-font-family;` |

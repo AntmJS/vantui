@@ -539,8 +539,8 @@ function Demo() {
 使用 ref 获取到的组件实例
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
-| reset | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;date?:&nbsp;Date&nbsp;&brvbar;&nbsp;Date[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;//<br/>_ |
-| scrollToDate | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;date:&nbsp;Date<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| reset | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;date?:&nbsp;Date&nbsp;&brvbar;&nbsp;Date[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| getSelectedDate | - | _&nbsp;&nbsp;()&nbsp;=><br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Date<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;Date[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;null<br/>_ |
 
 ### CalendarEvents [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
 
@@ -555,3 +555,37 @@ onUnselect 的回调函数参数
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | detail | - | _&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;Date<br/>&nbsp;&nbsp;}<br/>_ |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                       | 默认值                                   |
+| ------------------------------------------ | ---------------------------------------- |
+| --calendar-height                          | ` 100%;`                                 |
+| --calendar-background-color                | ` @white;`                               |
+| --calendar-popup-height                    | ` 80%;`                                  |
+| --calendar-header-box-shadow               | ` 0 4px 20px rgba(125, 126, 128, 0.16);` |
+| --calendar-header-title-height             | ` 88px;`                                 |
+| --calendar-header-title-font-size          | ` @font-size-lg;`                        |
+| --calendar-header-subtitle-font-size       | ` @font-size-md;`                        |
+| --calendar-weekdays-height                 | ` 60px;`                                 |
+| --calendar-weekdays-font-size              | ` @font-size-sm;`                        |
+| --calendar-month-title-font-size           | ` @font-size-md;`                        |
+| --calendar-month-mark-color                | ` fade(@gray-2, 80%);`                   |
+| --calendar-month-mark-font-size            | ` 320px;`                                |
+| --calendar-day-height                      | ` 128px;`                                |
+| --calendar-day-font-size                   | ` @font-size-lg;`                        |
+| --calendar-range-edge-color                | ` @white;`                               |
+| --calendar-range-edge-background-color     | ` @red;`                                 |
+| --calendar-range-middle-color              | ` @red;`                                 |
+| --calendar-range-middle-background-opacity | ` 0.1;`                                  |
+| --calendar-selected-day-size               | ` 108px;`                                |
+| --calendar-selected-day-color              | ` @white;`                               |
+| --calendar-info-font-size                  | ` @font-size-xs;`                        |
+| --calendar-info-line-height                | ` 28px;`                                 |
+| --calendar-selected-day-background-color   | ` @red;`                                 |
+| --calendar-day-disabled-color              | ` @gray-5;`                              |
+| --calendar-confirm-button-height           | ` 72px;`                                 |
+| --calendar-confirm-button-margin           | ` 14px 0;`                               |
+| --calendar-confirm-button-line-height      | ` 68px;`                                 |

@@ -127,3 +127,16 @@ function Demo() {
 | gutter          | 图标间距，默认单位为 px  | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                     | -      | `false` |
 | touchable       | -                        | _&nbsp;&nbsp;boolean<br/>_                                                                              | -      | `false` |
 | onChange        | -                        | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                       | 默认值            |
+| -------------------------- | ----------------- |
+| --rate-horizontal-padding  | ` 4px;`           |
+| --rate-icon-size           | ` 40px;`          |
+| --rate-icon-void-color     | ` @gray-5;`       |
+| --rate-icon-full-color     | ` @red;`          |
+| --rate-icon-disabled-color | ` @gray-5;`       |
+| --rate-icon-gutter         | ` @padding-base;` |

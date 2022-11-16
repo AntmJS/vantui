@@ -139,3 +139,15 @@ function Demo() {
 | children            | -                                  | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                         | -      | `false` |
 | onClickOverlay      | 点击蒙层触发的方法                 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                              | -      | `false` |
 | onClose             | 蒙层关闭触发的方法                 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                              | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                        | 默认值         |
+| --------------------------- | -------------- |
+| --popup-background-color    | ` @page-back;` |
+| --popup-round-border-radius | ` 32px;`       |
+| --popup-close-icon-size     | ` 36px;`       |
+| --popup-close-icon-color    | ` @gray-6;`    |
+| --popup-close-icon-margin   | ` 16px;`       |

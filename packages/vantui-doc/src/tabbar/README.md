@@ -169,3 +169,12 @@ function Demo() {
 | renderIcon       | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                     | -      | `false` |
 | children         | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                     | -      | `false` |
 | onClick          | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                      | 默认值     |
+| ------------------------- | ---------- |
+| --tabbar-height           | ` 100px;`  |
+| --tabbar-background-color | ` @white;` |

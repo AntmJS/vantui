@@ -109,3 +109,11 @@ function Demo() {
 | onChange  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;a:&nbsp;OnChangeEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
 | activeKey | -    | _&nbsp;&nbsp;number<br/>_                                                                                 | -      | `true`  |
 | children  | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                              | -      | `true`  |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称            | 默认值    |
+| --------------- | --------- |
+| --sidebar-width | ` 160px;` |

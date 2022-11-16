@@ -72,3 +72,14 @@ function Demo() {
 | indexList       | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number[]<br/>_                                                                                                       | -      | `false` |
 | onSelect        | -    | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
 | children        | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                         | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                             | 默认值            |
+| -------------------------------- | ----------------- |
+| --index-bar-index-font-size      | ` @font-size-xs;` |
+| --index-bar-index-line-height    | ` 28px;`          |
+| --index-bar-index-popup-width    | ` 70vw;`          |
+| --index-bar-index-sidebar-zindex | ` 9999;`          |

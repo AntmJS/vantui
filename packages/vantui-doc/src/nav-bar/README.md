@@ -71,3 +71,17 @@ function Demo() {
 | renderRight      | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                             | -      | `false` |
 | onClickLeft      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
 | onClickRight     | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                       | 默认值                       |
+| -------------------------- | ---------------------------- |
+| --nav-bar-height           | ` 92px; // 对MiniNavbar无效` |
+| --nav-bar-background-color | ` @white;`                   |
+| --nav-bar-arrow-size       | ` 32px; // 对MiniNavbar无效` |
+| --nav-bar-icon-color       | ` @blue;`                    |
+| --nav-bar-text-color       | ` @blue;`                    |
+| --nav-bar-title-font-size  | ` @font-size-lg;`            |
+| --nav-bar-title-text-color | ` @text-color;`              |

@@ -138,3 +138,19 @@ function Demo() {
 | onDragStart   | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                             | -      | `false` |
 | onDragEnd     | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                             | -      | `false` |
 | renderButton  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;React.ReactNode<br/>_                                                  | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                               | 默认值                           |
+| ---------------------------------- | -------------------------------- |
+| --slider-active-background-color   | ` @blue;`                        |
+| --slider-inactive-background-color | ` @gray-3;`                      |
+| --slider-disabled-opacity          | ` @disabled-opacity;`            |
+| --slider-bar-height                | ` 4px;`                          |
+| --slider-button-width              | ` 48px;`                         |
+| --slider-button-height             | ` 48px;`                         |
+| --slider-button-border-radius      | ` 50%;`                          |
+| --slider-button-background-color   | ` @white;`                       |
+| --slider-button-box-shadow         | ` 0 2px 4px rgba(0, 0, 0, 0.5);` |

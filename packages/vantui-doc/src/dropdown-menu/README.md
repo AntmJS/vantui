@@ -246,3 +246,20 @@ function Demo() {
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
 | toggle | 控制展开/收起菜单栏，传入参数 show 是否展开，options.immediate 是否不需要动画 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;show?:&nbsp;boolean,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;immediate:&nbsp;boolean<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                      | 默认值                           |
+| ----------------------------------------- | -------------------------------- |
+| --dropdown-menu-height                    | ` 100px;`                        |
+| --dropdown-menu-background-color          | ` @white;`                       |
+| --dropdown-menu-title-font-size           | ` 30px;`                         |
+| --dropdown-menu-title-text-color          | ` @text-color;`                  |
+| --dropdown-menu-title-active-text-color   | ` @red;`                         |
+| --dropdown-menu-title-disabled-text-color | ` @gray-6;`                      |
+| --dropdown-menu-title-padding             | ` 0 @padding-xs;`                |
+| --dropdown-menu-title-line-height         | ` 36px;`                         |
+| --dropdown-menu-option-active-color       | ` @red;`                         |
+| --dropdown-menu-box-shadow                | ` 0 4px 24px fade(@gray-7, 12);` |

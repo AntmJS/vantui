@@ -226,3 +226,25 @@ function Demo() {
 | cancelText          | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
 | description         | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
 | options             | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[][]<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                       | 默认值                                    |
+| ------------------------------------------ | ----------------------------------------- |
+| --share-sheet-header-padding               | ` @padding-sm @padding-md @padding-base;` |
+| --share-sheet-title-color                  | ` @text-color;`                           |
+| --share-sheet-title-font-size              | ` @font-size-md;`                         |
+| --share-sheet-title-line-height            | ` @line-height-md;`                       |
+| --share-sheet-description-color            | ` @gray-6;`                               |
+| --share-sheet-description-font-size        | ` @font-size-sm;`                         |
+| --share-sheet-description-line-height      | ` 32px;`                                  |
+| --share-sheet-icon-size                    | ` 96px;`                                  |
+| --share-sheet-option-name-color            | ` @gray-7;`                               |
+| --share-sheet-option-name-font-size        | ` @font-size-sm;`                         |
+| --share-sheet-option-description-color     | ` @gray-5;`                               |
+| --share-sheet-option-description-font-size | ` @font-size-sm;`                         |
+| --share-sheet-cancel-button-font-size      | ` @font-size-lg;`                         |
+| --share-sheet-cancel-button-height         | ` 96px;`                                  |
+| --share-sheet-cancel-button-background     | ` @white;`                                |

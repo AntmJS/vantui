@@ -264,3 +264,11 @@ function Demo() {
 | size      | -    | _&nbsp;&nbsp;0<br/>_               | -      | `false` |
 | className | -    | _&nbsp;&nbsp;string<br/>_          | -      | `false` |
 | children  | -    | _&nbsp;&nbsp;React.ReactNode<br/>_ | -      | `true`  |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                      | 默认值   |
+| ----------------------------------------- | -------- |
+| --swiper-pagination-item-background-color | ` #ddd;` |
