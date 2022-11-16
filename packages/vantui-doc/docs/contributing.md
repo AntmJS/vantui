@@ -21,8 +21,9 @@
 
 1. `packages/vantui-cli`下执行: `yarn build`
 2. `packages/vantui`下执行: `yarn watch`
-3. `packages/vantui-doc`下执行: `yarn mdcode-watch` ，时时将文档代码同步到 demo 项目中，单纯修复 bug，不需要改案例代码可`不执行`
+3. `packages/vantui-doc`下执行: `yarn mdcode-watch` ，时时将文档代码同步到 demo 项目中，单纯修复 bug，不需要改案例代码可执行`yarn mdcode-create`
 4. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`， 修改代码添加新功能并且需要新增或更改文档代码，请在`vantui-doc`下的 readme 里面书写
+5. 代码提交前复制项目内的`_antm.config.ts`, 移除`下划线`, 向群主索要 `webhooks url`的 access_token， 或者自己本地执行`eslint`后`git commit -m xxxx -n`强制提交, xxx 须按照 commit 规范：新功能： feat: xxx 、 修复：fix: xxx、格式：style: xxx、辅助工具：chore: xxx、重构：refactor: xxx、 测试用例：test: xxx、文档：docs: xxx
 
 ### 组件 README 代码同步规则
 
