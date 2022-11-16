@@ -85,12 +85,11 @@
           development: 'http://localhost:10086',
           production: '/vantui/mobile.html',
         },
-        pagePath:
-          '/Users/apple/Desktop/Dian/vantui/packages/vantui-demo/src/pages',
+        pagePath: '/Users/sanshao/AntmJS/vantui/packages/vantui-demo/src/pages',
         configPath:
-          '/Users/apple/Desktop/Dian/vantui/packages/vantui-demo/src/config.json',
+          '/Users/sanshao/AntmJS/vantui/packages/vantui-demo/src/config.json',
         appConfigPath:
-          '/Users/apple/Desktop/Dian/vantui/packages/vantui-demo/src/app.config.js',
+          '/Users/sanshao/AntmJS/vantui/packages/vantui-demo/src/app.config.js',
         withTabPages: ['icon', 'power-scroll-view'],
       },
       links: [
