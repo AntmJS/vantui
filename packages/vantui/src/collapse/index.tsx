@@ -1,4 +1,11 @@
-import { cloneElement, useCallback, useMemo, Children } from 'react'
+import {
+  cloneElement,
+  useMemo,
+  Children,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 
 import { CollapseProps } from '../../types/collapse'
@@ -17,46 +24,66 @@ export function Collapse(props: CollapseProps) {
     ...others
   } = props
 
-  const handleSwitch = useCallback(
-    (event: ITouchEvent, name: any, expanded: any) => {
-      const changeItem = name
-      if (!accordion && Array.isArray(value)) {
-        name = expanded
-          ? (value || []).concat(name)
-          : (value || []).filter((activeName) => activeName !== name)
-      } else {
-        name = expanded ? name : ''
+  const [defaultOpenIndex, setDefaultOpenIndex] = useState<Array<string>>([])
+
+  const handleActiveName = useCallback(() => {
+    let openIndex_: any[] = []
+    if (value && !Array.isArray(value)) {
+      openIndex_.push(value.toString())
+    } else if (value && Array.isArray(value)) {
+      if (accordion && value.length > 1) {
+        console.warn('手风琴模式不支持传多个打开页签')
       }
-      Object.defineProperty(event, 'detail', {
-        value: changeItem,
-        writable: true,
+      const arr = value.map((item) => {
+        return item.toString()
       })
-      if (expanded) {
-        onOpen?.(event)
+      openIndex_ = [...arr]
+    }
+    return openIndex_
+  }, [value])
+
+  useEffect(() => {
+    const openIndex_ = handleActiveName()
+    setDefaultOpenIndex(openIndex_)
+  }, [value])
+
+  const handleToggle = (isOpen: boolean, name: string) => {
+    let newOpenIndex = [...defaultOpenIndex]
+    if (isOpen) {
+      // 当前状态为true，则变为false,闭合
+      const removeIndex = newOpenIndex.findIndex((value) => {
+        return value === name
+      })
+      newOpenIndex.splice(removeIndex, 1)
+      onClose?.({
+        detail: name,
+      } as ITouchEvent)
+    } else {
+      if (accordion) {
+        newOpenIndex = [name]
       } else {
-        onClose?.(event)
+        newOpenIndex.push(name)
       }
-      event.detail = name
-      onChange?.(event)
-    },
-    [value, accordion, onOpen, onClose, onChange],
-  )
+      onOpen?.({
+        detail: name,
+      } as ITouchEvent)
+    }
+    setDefaultOpenIndex(newOpenIndex)
+    onChange?.({
+      detail: newOpenIndex,
+    } as ITouchEvent)
+  }
 
   const newChildren: any = useMemo(() => {
     return Children.map(children, (child: any, index: number) => {
       return cloneElement(child, {
-        key: index,
-        parent: {
-          index,
-          handleSwitch,
-          data: {
-            value,
-            accordion,
-          },
-        },
+        isOpen: defaultOpenIndex.includes(child.props.name),
+        handleToggle: (isOpen: boolean, name: string) =>
+          handleToggle(isOpen, name),
+        index,
       })
     })
-  }, [children, value, accordion, handleSwitch])
+  }, [children, value, accordion, handleActiveName, defaultOpenIndex])
 
   return (
     <View
