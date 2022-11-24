@@ -15,6 +15,7 @@ function Index(
     className = '',
     onFinish,
     onFinishFailed,
+    onChange,
   } = props
   const formInstance = useForm(form, initialValues)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,6 +25,7 @@ function Index(
   setCallback({
     onFinish: onFinish,
     onFinishFailed: onFinishFailed,
+    onChange: onChange,
   })
 
   useImperativeHandle(ref, () => formInstanceAPI as IFormInstanceAPI, [
