@@ -44,6 +44,7 @@ export function Stepper(props: StepperProps) {
     onMinus,
     renderMinus,
     renderPlus,
+    adjustPosition = true,
     ...others
   } = props
   const [currentValue, setCurrentValue] = useState<any>()
@@ -272,6 +273,7 @@ export function Stepper(props: StepperProps) {
         onInput={_onInput}
         onFocus={_onFocus}
         onBlur={_onBlur}
+        adjustPosition={adjustPosition}
       ></Input>
       {showPlus && (
         <View
