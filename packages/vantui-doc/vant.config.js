@@ -266,6 +266,10 @@ module.exports = {
             title: 'Tag 标签',
           },
           {
+            path: 'water-mark',
+            title: 'WaterMark 水印',
+          },
+          {
             path: 'power-scroll-view',
             title: 'PowerScrollView 滚动列表',
           },
