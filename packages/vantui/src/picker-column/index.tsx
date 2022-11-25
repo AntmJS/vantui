@@ -138,7 +138,7 @@ function Index(
       const { index } = event.currentTarget.dataset
       setTimeout(() => {
         setIndex(Number(index), true)
-      })
+      }, 100)
     },
     [setIndex],
   )
