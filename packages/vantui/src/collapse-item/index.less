@@ -34,10 +34,16 @@
   }
 
   &__content {
-    .theme(padding, '@collapse-item-content-padding');
     .theme(color, '@collapse-item-content-text-color');
     .theme(font-size, '@collapse-item-content-font-size');
     .theme(line-height, '@collapse-item-content-line-height');
     .theme(background-color, '@collapse-item-content-background-color');
+
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+
+    &_wrapper {
+      .theme(padding, '@collapse-item-content-padding');
+    }
   }
 }

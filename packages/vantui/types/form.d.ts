@@ -30,6 +30,13 @@ export interface FormProps extends ViewProps {
    * @description 表单提交失败触发，会拦截onFinish
    */
   onFinishFailed?: (errs: string[] | null) => void
+  /**
+   * @description 字段值更新时触发的回调事件
+   */
+  onChange?: (
+    changedValues: Record<string, any>,
+    allValues: Record<string, any>,
+  ) => void
 }
 /**
  * @title FormItemProps

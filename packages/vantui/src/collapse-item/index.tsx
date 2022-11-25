@@ -1,31 +1,22 @@
-import { useReady } from '@tarojs/taro'
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { View, ITouchEvent } from '@tarojs/components'
-
+import { useState, useEffect, useCallback } from 'react'
+import { View } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../types/collapse'
+import { getRect } from '../common/utils'
 import VanCell from '../cell/index'
-import { setContentAnimate } from './animate'
+
+let compIndex = 0
 
 export function CollapseItem(
   props: CollapseItemProps & {
-    parent?: any
+    isOpen: any
+    handleToggle: any
+    index: any
   },
 ) {
-  const ref = useRef({
-    mounted: false,
-  })
-
-  const [state, setState] = useState({
-    index: undefined,
-    expanded: false,
-    animation: { actions: [] },
-    ready: false,
-  })
-
   const {
     size,
-    parent,
     name = null,
     title = '',
     value = '',
@@ -42,94 +33,59 @@ export function CollapseItem(
     style,
     className,
     children,
+    index,
+    isOpen,
+    handleToggle,
     ...others
   } = props
 
-  useReady(() => {
-    if (process.env.TARO_ENV !== 'h5') {
-      setState((state) => {
-        return {
-          ...state,
-          ready: true,
+  const [domHeight, setDomHeight] = useState(-1)
+  const [currHeight, setCurrHeight] = useState('auto')
+  const [init, setInit] = useState(false)
+  const [curCompIndex] = useState<number>(compIndex++)
+  const [update, setUpdate] = useState(false)
+
+  const contentRef = useCallback(
+    (node: any) => {
+      if (node !== null) {
+        if (process.env.TARO_ENV !== 'h5') {
+          getRect(null, `#${node.props.id}`).then((res: any) => {
+            if (res) {
+              setDomHeight(res.height)
+              nextTick(() => {
+                setInit(true)
+              })
+            }
+          })
+        } else {
+          setDomHeight(node.getBoundingClientRect().height)
+          nextTick(() => {
+            setInit(true)
+          })
         }
-      })
-    }
-  })
-  useEffect(() => {
-    // if (process.env.TARO_ENV === 'h5') {
-    setTimeout(() => {
-      setState((state) => {
-        return {
-          ...state,
-          ready: true,
-        }
-      })
-    }, 0)
-    // }
-  }, [])
-
-  const refDom = useRef(null)
-  const refRandomClass = useRef(
-    `selector-${`${+new Date()}${Math.ceil(Math.random() * 10000)}`.slice(-8)}`,
-  )
-
-  const updateExpanded = useCallback(() => {
-    if (!parent) {
-      return
-    }
-    const { value, accordion } = parent?.data
-    const index = parent?.index
-    const currentName = name == null ? index : name
-    const expanded = accordion
-      ? value === currentName
-      : (value || []).some((name: any) => name === currentName)
-    if (expanded !== state.expanded) {
-      setContentAnimate(
-        `.${refRandomClass.current}`,
-        expanded,
-        ref.current.mounted,
-        setState,
-        refDom,
-      )
-    }
-    setState((state) => {
-      return {
-        ...state,
-        index,
-        expanded,
       }
-    })
-  }, [parent, name, state.expanded])
-
-  useEffect(() => {
-    if (state.ready) {
-      updateExpanded()
-      ref.current.mounted = true
-    }
-  }, [state.ready, updateExpanded])
-
-  useEffect(() => {
-    if (state.ready) {
-      updateExpanded()
-    }
-  }, [state.ready, updateExpanded, parent.data])
-
-  const onClick = useCallback(
-    (event: ITouchEvent) => {
-      if (disabled) {
-        return
-      }
-      const currentName = name == null ? parent?.index : name
-      parent?.handleSwitch(event, currentName, !state.expanded)
     },
-    [parent, disabled, name, state.expanded],
+    [update],
   )
+
+  useEffect(() => {
+    setCurrHeight('auto')
+    setUpdate(!update)
+  }, [children])
+
+  useEffect(() => {
+    if (domHeight !== -1) {
+      nextTick(() => {
+        isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
+      })
+    }
+  }, [isOpen, domHeight])
 
   return (
     <View
       className={
         'van-collapse-item  ' +
-        (state.index !== 0 ? 'van-hairline--top' : '') +
+        (index !== 0 ? 'van-hairline--top' : '') +
         ` ${className || ''}`
       }
       style={style}
@@ -143,14 +99,17 @@ export function CollapseItem(
         isLink={isLink}
         clickable={clickable}
         size={size}
-        border={border && state.expanded}
+        border={border && isOpen}
         className={
           utils.bem('collapse-item__title', {
             disabled,
-            expanded: state.expanded,
+            expanded: isOpen,
           }) + ' van-cell'
         }
-        onClick={onClick}
+        onClick={() => {
+          if (disabled) return
+          handleToggle && handleToggle(isOpen, name)
+        }}
         renderTitle={<>{renderTitle}</>}
         renderIcon={<>{renderIcon}</>}
         renderRightIcon={<>{renderRightIcon}</>}
@@ -158,17 +117,18 @@ export function CollapseItem(
         {renderValue}
       </VanCell>
       <View
-        className={
-          utils.bem('collapse-item__wrapper', {}) +
-          ' van-collapse-item__animation-box'
-        }
-        animation={state.animation}
+        style={{
+          height: init ? 'auto' : 0,
+          overflow: 'hidden',
+        }}
       >
         <View
-          className={`van-collapse-item__content content-class ${refRandomClass.current}`}
-          ref={refDom}
+          className={`van-collapse-item__content content-class`}
+          style={{ height: currHeight }}
+          ref={contentRef}
+          id={`content-class${curCompIndex}`}
         >
-          {children}
+          <View className="van-collapse-item__content_wrapper">{children}</View>
         </View>
       </View>
     </View>
