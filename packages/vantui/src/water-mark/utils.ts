@@ -2,7 +2,7 @@ import { createSelectorQuery, getSystemInfo } from '@tarojs/taro'
 
 export function getCanvas(compIndex) {
   return new Promise((resolve) => {
-    if (process.env.TARO_ENV === 'weapp') {
+    if (process.env.TARO_ENV !== 'h5') {
       createSelectorQuery()
         .select(`#van-water-mark${compIndex}`)
         .node()
