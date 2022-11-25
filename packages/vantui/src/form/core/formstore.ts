@@ -144,18 +144,31 @@ class FormStore {
     delete this.control[name]
   }
 
-  notifyChange(name_: Iname) {
+  notifyChange(name_: Iname, hiddenFormChange?: boolean) {
     const name = Array.isArray(name_) ? name_.join('.') : name_
     const controller = this.control[name]
     if (controller) controller?.changeValue()
+    if (!hiddenFormChange) {
+      const { onChange } = this.callback
+      if (onChange) {
+        const value = this.model[name].value
+        onChange({ [name]: value }, this.getFieldsValue())
+      }
+    }
   }
 
   setFields(object: Record<string, any>) {
     if (typeof object !== 'object') return
     this.transformSingellevelData(object, this.multiLevelKeys)
+
     for (const key in this.model) {
       const item = this.model[key]
-      this.setValueClearStatus(item, key, item.value)
+      this.setValueClearStatus(item, key, item.value, true) // 批量更新hiddenFormChange
+    }
+
+    const { onChange } = this.callback
+    if (onChange) {
+      onChange(object, this.getFieldsValue())
     }
   }
 
@@ -175,12 +188,17 @@ class FormStore {
     }
   }
 
-  setValueClearStatus(model: Record<string, any>, name_: Iname, value: any) {
+  setValueClearStatus(
+    model: Record<string, any>,
+    name_: Iname,
+    value: any,
+    hiddenFormChange?: boolean,
+  ) {
     const name = Array.isArray(name_) ? name_.join('.') : name_
 
     model['value'] = value
     model['status'] = 'pendding'
-    this.notifyChange(name)
+    this.notifyChange(name, hiddenFormChange)
   }
   // 扁平数据转多层数据结构
   static transformMultilevelData(data: Record<string, any>) {
