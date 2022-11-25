@@ -44,11 +44,3 @@ function Demo() {
 | fontWeight  | 字体粗细                                             | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"normal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"light"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"weight"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>_   | `normal`          | `false` |
 | fontSize    | 字体大小                                             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                 | `14`              | `false` |
 | fullPage    | 是否沾满屏幕                                         | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                          | true              | `false` |
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
-
-| 名称                 | 默认值   |
-| -------------------- | -------- |
-| --water-mark-z-index | ` 2000;` |

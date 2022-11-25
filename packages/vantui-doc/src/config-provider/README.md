@@ -169,6 +169,7 @@ function Demo() {
 | --popup-z-index            | ` 1010;` |
 | --popup-close-icon-z-index | ` 1010;` |
 | --notify-z-index           | ` 1500;` |
+| --water-mark-z-index       | ` 2000;` |
 
 ### 公共样式变量 Gradient Colors
 
