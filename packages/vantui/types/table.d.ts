@@ -14,7 +14,7 @@ export interface ITableProps extends ViewProps {
    */
   dataSource: Record<string, any>[]
   /**
-   * @description 表哥行 key 的取值
+   * @description 表格行 key 的取值
    */
   rowKey: string // 表格行 key 的取值
   /**
