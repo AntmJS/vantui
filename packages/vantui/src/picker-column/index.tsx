@@ -4,6 +4,7 @@ import {
   useCallback,
   useImperativeHandle,
   forwardRef,
+  useRef,
 } from 'react'
 import { View, CustomWrapper } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
@@ -39,6 +40,7 @@ function Index(
   const [offset, setOffset] = useState(0)
   const [startOffset, setStartOffset] = useState(0)
   const [canInit, setCanInit] = useState(true)
+  const isMoving = useRef(false)
 
   const isDisabled = useCallback(function (option) {
     return isObj(option) && option.disabled
@@ -102,6 +104,7 @@ function Index(
   const onTouchMove = useCallback(
     function (event) {
       event.preventDefault()
+      if (!isMoving.current) isMoving.current = true
       const deltaY = event.touches[0].clientY - startY
       setOffset(startOffset + deltaY)
     },
@@ -128,6 +131,7 @@ function Index(
       )
       setTimeout(() => {
         setIndex(index, true)
+        if (isMoving.current) isMoving.current = false
       }, 5.5)
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
@@ -136,9 +140,11 @@ function Index(
   const onClickItem = useCallback(
     function (event) {
       const { index } = event.currentTarget.dataset
-      setTimeout(() => {
-        setIndex(Number(index), true)
-      }, 100)
+      if (!isMoving.current) {
+        setTimeout(() => {
+          setIndex(Number(index), true)
+        }, 100)
+      }
     },
     [setIndex],
   )
