@@ -82,7 +82,7 @@ export interface PickerEvents extends ITouchEvent {
    * @description 返回选项对应的值和选项对应的下标
    */
   detail: {
-    value: number | number[]
+    value: any
     index: number | number[]
   }
 }
@@ -96,7 +96,7 @@ export interface PickerChangeEvents extends ITouchEvent {
    * @description 返回选项对应的值、picker实例和多列返回当前第多少列、单列返回选项对应值
    */
   detail: {
-    value: number | number[]
+    value: any
     picker: IPickerInstance
     index: number
   }
@@ -114,15 +114,15 @@ export type IPickerInstance = {
    * @description 获取每一列的值
    * @default
    */
-  getColumnValues: (index: number[]) => (number | string)[]
+  getColumnValues: (index: number[]) => any[]
   /**
    * @description 设置某一列的值
    */
-  setColumnValue: (index: number, value: number | string) => any
+  setColumnValue: (index: number, value: any) => any
   /**
    * @description 获取某一列的值
    */
-  getColumnValue: (index: number) => number | string
+  getColumnValue: (index: number) => any
   /**
    * @description 每列的数据
    */
@@ -138,7 +138,7 @@ export type IPickerInstance = {
   /**
    * @description 每一列展示的下标
    */
-  getValues: () => number | string
+  getValues: () => any
   /**
    * @description 触发确认的方法
    */
