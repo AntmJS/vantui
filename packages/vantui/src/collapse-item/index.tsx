@@ -58,7 +58,7 @@ export function CollapseItem(
         setDomHeight(res.height)
       })
     })
-  }, [children, compIndex])
+  }, [children])
 
   useLayoutEffect(() => {
     if (domHeight !== -1) {
@@ -74,6 +74,8 @@ export function CollapseItem(
           setCurrHeight('0px')
         }, 10)
       }
+    } else {
+      setCurrHeight('0px')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, domHeight])
