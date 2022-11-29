@@ -1,4 +1,10 @@
-import { useState, useEffect, useCallback } from 'react'
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+} from 'react'
 import { View } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
@@ -39,47 +45,47 @@ export function CollapseItem(
     ...others
   } = props
 
-  const [domHeight, setDomHeight] = useState(-1)
   const [currHeight, setCurrHeight] = useState('auto')
   const [init, setInit] = useState(false)
   const [curCompIndex] = useState<number>(compIndex++)
-  const [update, setUpdate] = useState(false)
-
-  const contentRef = useCallback(
-    (node: any) => {
-      if (node !== null) {
-        if (process.env.TARO_ENV !== 'h5') {
-          getRect(null, `#${node.props.id}`).then((res: any) => {
-            if (res) {
-              setDomHeight(res.height)
-              nextTick(() => {
-                setInit(true)
-              })
-            }
-          })
-        } else {
-          setDomHeight(node.getBoundingClientRect().height)
-          nextTick(() => {
-            setInit(true)
-          })
-        }
-      }
-    },
-    [update],
-  )
+  const nextActionTimeout = useRef<any>(null)
+  const [domHeight, setDomHeight] = useState(-1)
 
   useEffect(() => {
-    setCurrHeight('auto')
-    setUpdate(!update)
-  }, [children])
-
-  useEffect(() => {
-    if (domHeight !== -1) {
-      nextTick(() => {
-        isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
+    nextTick(() => {
+      getRect(null, `#content-class${curCompIndex}`).then((res: any) => {
+        setInit(true)
+        setDomHeight(res.height)
       })
+    })
+  }, [children, compIndex])
+
+  useLayoutEffect(() => {
+    if (domHeight !== -1) {
+      if (nextActionTimeout.current) clearTimeout(nextActionTimeout.current)
+      if (isOpen) {
+        setCurrHeight(`${domHeight}px`)
+        nextActionTimeout.current = setTimeout(() => {
+          setCurrHeight('auto')
+        }, 300)
+      } else {
+        setCurrHeight(`${domHeight}px`)
+        nextActionTimeout.current = setTimeout(() => {
+          setCurrHeight('0px')
+        }, 10)
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, domHeight])
+
+  const handleToggle_ = useCallback(
+    // @ts-ignore
+    throttle(() => {
+      if (disabled) return
+      handleToggle && handleToggle(isOpen, name)
+    }, 299),
+    [handleToggle, disabled, isOpen, name],
+  )
 
   return (
     <View
@@ -106,10 +112,7 @@ export function CollapseItem(
             expanded: isOpen,
           }) + ' van-cell'
         }
-        onClick={() => {
-          if (disabled) return
-          handleToggle && handleToggle(isOpen, name)
-        }}
+        onClick={handleToggle_}
         renderTitle={<>{renderTitle}</>}
         renderIcon={<>{renderIcon}</>}
         renderRightIcon={<>{renderRightIcon}</>}
@@ -125,13 +128,49 @@ export function CollapseItem(
         <View
           className={`van-collapse-item__content content-class`}
           style={{ height: currHeight }}
-          ref={contentRef}
-          id={`content-class${curCompIndex}`}
         >
-          <View className="van-collapse-item__content_wrapper">{children}</View>
+          <View
+            id={`content-class${curCompIndex}`}
+            className="van-collapse-item__content_wrapper"
+          >
+            {children}
+          </View>
         </View>
       </View>
     </View>
   )
 }
+
+const throttle = (fn, interval: number) => {
+  let timer
+  let startTime: any = new Date()
+  return function (...args) {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    args.forEach((item: any) => {
+      if (item.__proto__.constructor.name === 'SyntheticEvent') {
+        item.persist()
+      }
+    })
+
+    const endTime: any = new Date()
+    const diffTime = endTime - startTime
+    const nextTime = interval - (endTime - startTime)
+    if (diffTime >= interval) {
+      // @ts-ignore
+      fn.apply(this, args)
+      startTime = new Date()
+    } else {
+      timer = setTimeout(() => {
+        // @ts-ignore
+        fn.apply(this, args)
+        startTime = new Date()
+        timer = null
+        clearTimeout(timer)
+      }, nextTime)
+    }
+  }
+}
+
 export default CollapseItem
