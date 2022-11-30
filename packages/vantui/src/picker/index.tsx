@@ -7,6 +7,7 @@ import {
   useLayoutEffect,
 } from 'react'
 import { View } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 import {
   PickerProps,
   IPickerInstance,
@@ -136,7 +137,7 @@ const Picker = forwardRef(function Index(
   )
 
   const setColumnValues = useCallback(function (index, options) {
-    if (index <= handleIndex.current) return
+    if (index <= handleIndex.current) return Promise.resolve(getValues())
     const column = children.current[index]
     if (column == null) {
       return Promise.reject(new Error('setColumnValues: 对应列不存在'))
@@ -144,24 +145,33 @@ const Picker = forwardRef(function Index(
     const isSame =
       JSON.stringify(column.props.options) === JSON.stringify(options)
     if (isSame) {
-      return Promise.resolve()
+      return Promise.resolve(getValues())
     }
     const cIndex = column.getCurrentIndex()
-    return column.set({ options }).then(() => {
-      if (cIndex > options.length) {
-        setTimeout(() => {
-          column.setIndex(0)
-          handleIndex.current = -1
+    return new Promise((resolve) => {
+      column.set({ options }).then(() => {
+        nextTick(() => {
+          if (cIndex > options.length) {
+            column.setIndex(0)
+            handleIndex.current = -1
+          }
+
+          nextTick(() => {
+            resolve(getValues())
+          })
         })
-      }
+      })
     })
   }, [])
 
-  const getValues = useCallback(function () {
-    return children.current.map((child) => {
-      return child.getValue()
-    })
-  }, [])
+  const getValues = useCallback(
+    function () {
+      return children.current.map((child) => {
+        return child.getValue()
+      })
+    },
+    [children],
+  )
 
   const getIndexes = useCallback(function () {
     return children.current.map((child) => child.getCurrentIndex())

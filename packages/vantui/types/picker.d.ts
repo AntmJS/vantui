@@ -107,7 +107,7 @@ export interface PickerChangeEvents extends ITouchEvent {
  */
 export type IPickerInstance = {
   /**
-   * @description 设置每一列的值
+   * @description 设置每一列的数据，异步获取到最新的values
    */
   setColumnValues: (index: number, options: string[]) => Promise<any>
   /**
@@ -136,7 +136,7 @@ export type IPickerInstance = {
    */
   setIndexes: (indexes: number[]) => void
   /**
-   * @description 每一列展示的下标
+   * @description 每一列展示的值
    */
   getValues: () => any
   /**
