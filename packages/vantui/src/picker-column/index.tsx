@@ -129,10 +129,8 @@ function Index(
         0,
         options.length - 1,
       )
-      setTimeout(() => {
-        setIndex(index, true)
-        if (isMoving.current) isMoving.current = false
-      }, 5.5)
+      setIndex(index, true)
+      if (isMoving.current) isMoving.current = false
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
   )
