@@ -298,8 +298,12 @@ const InternalCascader = (props: CascaderProps) => {
         selectedNode: null,
         paneKey: `c${state.tabsCursor + 1}`,
       })
-      setTabvalue(`c${state.tabsCursor + 1}`)
+
       setOptiosData(state.panes)
+      // 延时触发优化交互
+      setTimeout(() => {
+        setTabvalue(`c${state.tabsCursor + 1}`)
+      }, 600)
 
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)

@@ -406,7 +406,7 @@ export function Tabs(props: TabsProps) {
       })
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [newChildren, active],
+    [newChildren],
   )
 
   const getScrollWrapWidth = useCallback(
