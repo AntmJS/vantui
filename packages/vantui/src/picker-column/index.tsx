@@ -130,7 +130,9 @@ function Index(
         options.length - 1,
       )
       setIndex(index, true)
-      if (isMoving.current) isMoving.current = false
+      nextTick(() => {
+        if (isMoving.current) isMoving.current = false
+      })
     },
     [startOffset, offset, itemHeight, options.length, setIndex],
   )
@@ -139,9 +141,7 @@ function Index(
     function (event) {
       const { index } = event.currentTarget.dataset
       if (!isMoving.current) {
-        setTimeout(() => {
-          setIndex(Number(index), true)
-        }, 100)
+        setIndex(Number(index), true)
       }
     },
     [setIndex],
