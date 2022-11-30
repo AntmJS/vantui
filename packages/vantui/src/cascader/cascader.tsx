@@ -277,11 +277,12 @@ const InternalCascader = (props: CascaderProps) => {
         const optionParams = pathNodes.map((item: any) => item.value)
         onChange?.(optionParams, pathNodes)
         onPathChange?.(optionParams, pathNodes)
+
+        setTimeout(() => {
+          close()
+        }, 600)
       }
       setOptiosData(state.panes)
-      setTimeout(() => {
-        close()
-      }, 600)
       return
     }
     // 如果有子节点，滑到下一个
