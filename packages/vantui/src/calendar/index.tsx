@@ -164,9 +164,6 @@ function Index(
               .replace('年', '_')
               .replace('月', '-')}`
             setScrollIntoView(id)
-            if (process.env.TARO_ENV === 'h5') {
-              document.getElementById(id)?.scrollIntoView()
-            }
             return true
           }
           return false
@@ -189,6 +186,7 @@ function Index(
       if (contentObserver.current != null) {
         contentObserver.current.disconnect()
       }
+
       const contentObserver_ = new IntersectionObserver(
         function (res: any) {
           for (let i = 0; i < res.length; i++) {
@@ -397,12 +395,16 @@ function Index(
   useEffect(
     function () {
       if (show || !poppable) {
-        requestAnimationFrame(() => {
+        setTimeout(() => {
           initRect()
           setTimeout(() => {
             scrollIntoViewFn()
           }, 66)
-        })
+        }, 66)
+      }
+
+      return () => {
+        if (!show) setScrollIntoView('') // 需要重置滚动的目标id, 否则相同的前后两次id不会在此触发滚动
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
