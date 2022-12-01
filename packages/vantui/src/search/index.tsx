@@ -61,7 +61,7 @@ export function Search(props: SearchProps) {
     setTimeout(() => {
       setInnerValue('')
 
-      onCancel?.()
+      onCancel?.(e)
       Object.defineProperty(e, 'detail', {
         value: '',
       })
