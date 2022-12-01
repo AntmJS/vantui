@@ -79,7 +79,7 @@
   !(function (n) {
     ;(n.__vantui_base__ = {
       title: '@antmjs/vantui',
-      logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
+      logo: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
       simulator: {
         url: {
           development: 'http://localhost:10086',
