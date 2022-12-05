@@ -152,7 +152,10 @@ class FormStore {
       const { onChange } = this.callback
       if (onChange) {
         const value = this.model[name].value
-        onChange({ [name]: value }, this.getFieldsValue())
+        onChange(
+          FormStore.transformMultilevelData({ [name]: value }),
+          this.getFieldsValue(),
+        )
       }
     }
   }
@@ -354,7 +357,8 @@ class FormStore {
     }
     model.status = status
     if (lastStatus !== status || forceUpdate) {
-      const notify = this.notifyChange.bind(this, name)
+      // 校验的时候不触发form change
+      const notify = this.notifyChange.bind(this, name, true)
       this.penddingValidateQueue.push(notify)
     }
     this.scheduleValidate()
