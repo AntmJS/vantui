@@ -36,14 +36,16 @@ jobs:
         run: yarn run bootstrap:lerna
       - name: build-cli
         run: npx lerna run build --scope=@antmjs/vantui-cli
-      - name: build
-        run: yarn run build
+      - name: build-ui
+        run: npx lerna run build --scope=@antmjs/vantui
+      - name: build-doc
+        run: npx lerna run build --scope=vantui-doc
+      - name: build-demo
+        run: npx lerna run build --scope=vantui-demo
       - name: lint
         run: |
           yarn run eslint
           yarn run stylelint
-      - name: build
-        run: yarn run build
       - name: test
         run: yarn run test
     #以后添加发送钉钉/微信消息，进来指定reviewer
