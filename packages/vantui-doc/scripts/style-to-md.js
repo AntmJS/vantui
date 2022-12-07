@@ -64,7 +64,10 @@ ${createMdTabel(item.children)}
   const commonMdPath = path.join(READMES_PATH, '/config-provider/README.md')
   const originCommonMd = fs.readFileSync(commonMdPath, 'utf-8')
 
-  fs.writeFileSync(commonMdPath, `${originCommonMd} ${commonInsertMd}`)
+  fs.writeFileSync(
+    commonMdPath,
+    formatMd(`${originCommonMd} ${commonInsertMd}`),
+  )
 
   // 组件样式变量
   componentsVarStyle.forEach((item) => {
