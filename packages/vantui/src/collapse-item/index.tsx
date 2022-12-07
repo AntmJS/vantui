@@ -1,10 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useLayoutEffect,
-} from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { View } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
@@ -50,17 +44,22 @@ export function CollapseItem(
   const [curCompIndex] = useState<number>(compIndex++)
   const nextActionTimeout = useRef<any>(null)
   const [domHeight, setDomHeight] = useState(-1)
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
-    nextTick(() => {
+    setTimeout(() => {
       getRect(null, `#content-class${curCompIndex}`).then((res: any) => {
-        setInit(true)
-        setDomHeight(res.height)
+        if (res) {
+          setDomHeight(res.height)
+          nextTick(() => {
+            setInit(true)
+          })
+        }
       })
-    })
+    }, 33.33)
   }, [children])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (domHeight !== -1) {
       if (nextActionTimeout.current) clearTimeout(nextActionTimeout.current)
       if (isOpen) {
@@ -69,21 +68,24 @@ export function CollapseItem(
           setCurrHeight('auto')
         }, 300)
       } else {
-        setCurrHeight(`${domHeight}px`)
-        nextActionTimeout.current = setTimeout(() => {
-          setCurrHeight('0px')
-        }, 10)
+        if (!isFirstRender.current) {
+          setCurrHeight(`${domHeight}px`)
+          nextActionTimeout.current = setTimeout(() => {
+            setCurrHeight('0px')
+          })
+        }
       }
     } else {
       setCurrHeight('0px')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, domHeight])
+  }, [isOpen, domHeight, init])
 
   const handleToggle_ = useCallback(
     // @ts-ignore
     throttle(() => {
       if (disabled) return
+      isFirstRender.current = false
       handleToggle && handleToggle(isOpen, name)
     }, 299),
     [handleToggle, disabled, isOpen, name],

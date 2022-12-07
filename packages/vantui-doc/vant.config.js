@@ -14,7 +14,7 @@ module.exports = {
       withTabPages: ['icon', 'power-scroll-view'],
     },
     title: '@antmjs/vantui',
-    logo: 'https://antm-js.gitee.io/resource/antmjs-vantui.jpg',
+    logo: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
     links: [
       {
         logo: 'https://b.yzcdn.cn/vant/logo/github.svg',

@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { createRequire } from 'module'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { watch } from 'chokidar'
@@ -42,6 +43,7 @@ export default async function Create(mode?: 'production' | 'development') {
     nav: config.nav,
     routers: [],
     md: {} as Record<string, any>,
+    version: '0.0.0',
   }
 
   config.nav.map((item: Item) => {
@@ -65,6 +67,13 @@ export default async function Create(mode?: 'production' | 'development') {
     baseAddional += `
      __vantui_base__.md["${rou.path}"] = ${resetPath(rou.path, true)}
     `
+  }
+
+  const pkgPath = join(CWD, './package.json')
+
+  if (fs.existsSync(pkgPath)) {
+    const require = createRequire(import.meta.url)
+    base.version = require(pkgPath)?.version || '0.0.0'
   }
 
   codeStr = codeStr

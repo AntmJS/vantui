@@ -55,6 +55,9 @@ export default function PageLayout() {
           <div className={`${preCls}-header-left`}>
             <img className={`${preCls}-logo`} src={__vantui_base__.logo} />
             <div className={`${preCls}-uiname`}>{__vantui_base__.title}</div>
+            <div className={`${preCls}-version`}>
+              {__vantui_base__.version ? `v${__vantui_base__.version}` : ''}
+            </div>
           </div>
           <div className={`${preCls}-links`}>
             {(__vantui_base__?.links || []).map((item, index) => (
