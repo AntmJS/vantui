@@ -82,7 +82,7 @@
   },
   "author": "",
   "dependencies": {
-    "@antmjs/mini-fix": "^2.1.2",
+    "@antmjs/mini-fix": "^2.2.0",
     "@antmjs/vantui": "2.3.2",
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.5.7",
@@ -110,9 +110,10 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@antmjs/iconfont": "^2.1.2",
-    "@antmjs/plugin-global-fix": "^2.1.2",
-    "@antmjs/plugin-mini-fix": "^2.1.2",
+    "@antmjs/iconfont": "^2.2.0",
+    "@antmjs/plugin-global-fix": "^2.2.0",
+    "@antmjs/plugin-h5-fix": "^2.2.0",
+    "@antmjs/plugin-mini-fix": "^2.2.0",
     "@babel/core": "^7.8.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
