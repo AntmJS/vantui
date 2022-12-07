@@ -122,7 +122,9 @@ export function Search(props: SearchProps) {
           onFocus={onFocus}
           onChange={_change}
           onConfirm={onSearch}
+          // @ts-ignore
           onClear={onClear}
+          // @ts-ignore
           onClickInput={onClickInput}
         />
       </View>
