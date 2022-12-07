@@ -14,7 +14,7 @@ import { SwipeCell } from '@antmjs/vantui'
 
 ## 代码演示
 
-### 基础用法 (不流畅待修复)
+### 基础用法
 
 ```jsx
 function Demo() {

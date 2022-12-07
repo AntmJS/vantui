@@ -249,7 +249,7 @@ function Index(
       className={`van-swipe-cell  ${className}`}
       data-key="cell"
       style={utils.style([style])}
-      onClick={onClick_}
+      // onClick={onClick_}
       onTouchStart={startDrag}
       onTouchMove={onDrag}
       onTouchEnd={endDrag}
