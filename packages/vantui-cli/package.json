@@ -1,9 +1,8 @@
 {
   "name": "@antmjs/vantui-cli",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "type": "module",
-  "main": "dest/index.js",
-  "typings": "dest/index.d.ts",
+  "main": "dest/cli.js",
   "bin": {
     "antm-vantui-cli": "./bin.js"
   },
@@ -16,20 +15,12 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "lib",
-    "cjs",
-    "site",
-    "template",
-    "bin.js",
-    "preset.cjs"
-  ],
   "keywords": [
     "antmjs"
   ],
   "scripts": {
-    "watch": "rm -rf dest && npx tsc -p tsconfig.cjs.json --watch --sourceMap",
-    "build": "rm -rf dest && npx tsc -p tsconfig.cjs.json",
+    "watch": "rm -rf build && npx tsc -p tsconfig.cjs.json --watch --sourceMap",
+    "build": "rm -rf build && npx tsc -p tsconfig.cjs.json",
     "test:watch": "",
     "test": ""
   },
@@ -44,7 +35,7 @@
     "@types/prettier": "^2.6.1"
   },
   "dependencies": {
-    "@antmjs/babel-preset": "2.1.2",
+    "@antmjs/babel-preset": "2.2.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/plugin-transform-typescript": "^7.16.8",
