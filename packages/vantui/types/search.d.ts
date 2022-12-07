@@ -30,9 +30,9 @@ export interface SearchProps extends ViewProps {
   onSearch?: (e: ITouchEvent) => void
   onFocus?: (e: ITouchEvent) => void
   onBlur?: (e: ITouchEvent) => void
-  onClear?: () => void
-  onCancel?: () => void
-  onClickInput?: () => void
+  onClear?: (e: ITouchEvent) => void
+  onCancel?: (e: ITouchEvent) => void
+  onClickInput?: (e: ITouchEvent) => void
 }
 
 declare const Search: FunctionComponent<SearchProps>
