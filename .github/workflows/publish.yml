@@ -46,9 +46,9 @@ jobs:
       - name: build-cli
         if: startsWith( env.commitmsg , 'chore(release):' )
         run: npx lerna run build --scope=@antmjs/vantui-cli
-      - name: build
+      - name: build-ui
         if: startsWith( env.commitmsg , 'chore(release):' )
-        run: yarn run build
+        run: npx lerna run build --scope=@antmjs/vantui
       # Define ${CURRENT_VERSION}
       - name: Set Current Version
         if: startsWith( env.commitmsg , 'chore(release):' )
