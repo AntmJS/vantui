@@ -4,7 +4,7 @@ const glob = require('glob')
 const parser = require('./utils/ts-parser')
 const markdownToAst = require('markdown-to-ast')
 const astToMarkdown = require('ast-to-markdown')
-const Prettier = require('prettier')
+const formatMd = require('./utils/md-format')
 const ora = require('ora')
 
 const GITHUB_TYPESHS = `https://github.com/AntmJS/vantui/tree/main/packages/vantui/types`
@@ -108,12 +108,7 @@ function createMd(obj, compName) {
     })
     mdRes += `\n`
   }
-  return Prettier.format(mdRes, {
-    singleQuote: true,
-    trailingComma: 'all',
-    semi: false,
-    parser: 'markdown',
-  })
+  return formatMd(mdRes)
 }
 
 function removeOldTable(md) {

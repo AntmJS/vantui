@@ -1,6 +1,7 @@
 // 在ts-to-md后执行
 const fs = require('fs')
 const path = require('path')
+const formatMd = require('./utils/md-format')
 
 const FIRST_COMPONENT_NAME = 'ActionSheet' // 第一个组件样式变量
 const READMES_PATH = `${path.resolve(__dirname, '../src')}`
@@ -80,7 +81,7 @@ ${mdTable}
       `
       const mdPath = path.join(READMES_PATH, cName, '/README.md')
       const originMd = fs.readFileSync(mdPath, 'utf-8')
-      fs.writeFileSync(mdPath, `${originMd} ${insertMd}`)
+      fs.writeFileSync(mdPath, formatMd(`${originMd} ${insertMd}`))
     }
   })
 }
