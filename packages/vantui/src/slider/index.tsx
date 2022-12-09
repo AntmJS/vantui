@@ -285,18 +285,18 @@ export function Slider(props: SliderProps) {
 
   const onClick = useCallback(
     function (event: any) {
+      event.preventDefault()
       if (disabled) return
       getRect(null, `.van-slider${indexRef.current}`).then((rect: any) => {
+        const target = process.env.TARO_ENV === 'h5' ? event : event.detail
         let value =
-          (((event.detail.x || event.detail.clientX) - rect.left) /
-            rect.width) *
+          (((target.x || target.clientX) - rect.left) / rect.width) *
             getRange() +
           Number(min)
 
         if (vertical) {
           value =
-            (((event.detail.y || event.detail.clientY) - rect.top) /
-              rect.height) *
+            (((target.y || target.clientY) - rect.top) / rect.height) *
               getRange() +
             Number(min)
         }
