@@ -1,4 +1,4 @@
-/*! For license information please see index_fec6b9973e04df1662b5.js.LICENSE.txt */
+/*! For license information please see index_cc63a259f70c419dd635.js.LICENSE.txt */
 ;(self.webpackChunkvantui_doc = self.webpackChunkvantui_doc || []).push([
   [826],
   {
@@ -55646,44 +55646,71 @@ to {
         })
       function ot(e) {
         ;(0, r.useEffect)(function () {
-          !(function () {
-            var e = document.querySelectorAll('.docs-markdown-com pre code')
-            if (e && e.length)
-              for (
-                var t = function (t) {
-                    var n = e[t]
-                    n.onclick = () => {
-                      !(function (e) {
-                        var t = document.createElement('textarea')
-                        ;(t.value = e),
-                          t.setAttribute('readonly', ''),
-                          (t.style.position = 'absolute'),
-                          (t.style.left = '-9999px'),
-                          document.body.appendChild(t)
-                        var n = document.getSelection()
-                        if (n) {
-                          var r = n.rangeCount > 0 && n.getRangeAt(0)
-                          t.select(),
-                            document.execCommand('copy'),
-                            document.body.removeChild(t),
-                            r && (n.removeAllRanges(), n.addRange(r))
+          setTimeout(() => {
+            ;(function () {
+              var e = document.querySelectorAll('.docs-markdown-com pre code')
+              if (e && e.length)
+                for (
+                  var t = function (t) {
+                      var n = e[t]
+                      n.onclick = () => {
+                        !(function (e) {
+                          var t = document.createElement('textarea')
+                          ;(t.value = e),
+                            t.setAttribute('readonly', ''),
+                            (t.style.position = 'absolute'),
+                            (t.style.left = '-9999px'),
+                            document.body.appendChild(t)
+                          var n = document.getSelection()
+                          if (n) {
+                            var r = n.rangeCount > 0 && n.getRangeAt(0)
+                            t.select(),
+                              document.execCommand('copy'),
+                              document.body.removeChild(t),
+                              r && (n.removeAllRanges(), n.addRange(r))
+                          }
+                        })(n.innerText),
+                          at.success('复制成功！', {
+                            style: {
+                              position: 'relative',
+                              top: 250,
+                              duration: 1e4,
+                            },
+                          })
+                      }
+                    },
+                    n = 0;
+                  n < e.length;
+                  n++
+                )
+                  t(n)
+            })(),
+              (function () {
+                var e = document.querySelectorAll('.docs-markdown-com .card h3')
+                if (e && e.length) {
+                  console.info('_______________')
+                  for (
+                    var t = function (t) {
+                        var n = e[t]
+                        n.onclick = () => {
+                          n.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                          })
+                          var e = window.location.hash.split('?')[0]
+                          window.location.hash = ''
+                            .concat(e, '?target=')
+                            .concat(n.id)
                         }
-                      })(n.innerText),
-                        at.success('复制成功！', {
-                          style: {
-                            position: 'relative',
-                            top: 250,
-                            duration: 1e4,
-                          },
-                        })
-                    }
-                  },
-                  n = 0;
-                n < e.length;
-                n++
-              )
-                t(n)
-          })()
+                      },
+                      n = 0;
+                    n < e.length;
+                    n++
+                  )
+                    t(n)
+                }
+              })()
+          }, 33)
         }, [])
         var t = (0, r.useMemo)(
           function () {
@@ -55692,11 +55719,23 @@ to {
               .replace(/<h3/g, ':::<h3')
               .replace(/<h2/g, ':::<h2')
               .split(':::')
-              .map((e) =>
-                -1 !== e.indexOf('<h3')
-                  ? '<div class="card">'.concat(e, '</div>')
-                  : e,
-              )
+              .map((e) => {
+                if (-1 !== e.indexOf('<h3')) {
+                  var t = e.split('h3>')[1].replace('</', ''),
+                    n = e.replace(
+                      '<h3>',
+                      '<h3 id="'.concat(
+                        encodeURIComponent(t),
+                        '"><svg viewBox="0 0 1024 1024"  width="14" height="14"><path d="M491.054545 779.636364l-125.672727 125.672727c-32.581818 32.581818-76.8 51.2-123.345454 51.2s-90.763636-18.618182-123.345455-51.2c-67.490909-67.490909-67.490909-179.2 0-246.690909l223.418182-223.418182c32.581818-32.581818 76.8-51.2 123.345454-51.2s90.763636 18.618182 123.345455 51.2c13.963636 13.963636 34.909091 13.963636 46.545455 0 13.963636-13.963636 13.963636-34.909091 0-46.545455-93.090909-93.090909-246.690909-93.090909-342.109091 0L69.818182 612.072727c-46.545455 46.545455-69.818182 107.054545-69.818182 169.890909C0 847.127273 25.6 907.636364 69.818182 954.181818c46.545455 46.545455 109.381818 69.818182 169.890909 69.818182 62.836364 0 123.345455-23.272727 169.890909-69.818182l125.672727-125.672727c13.963636-13.963636 13.963636-34.909091 0-46.545455-9.309091-16.290909-30.254545-16.290909-44.218182-2.327272z" p-id="2808"></path><path d="M954.181818 69.818182c-93.090909-93.090909-246.690909-93.090909-342.109091 0l-125.672727 125.672727c-13.963636 13.963636-13.963636 34.909091 0 46.545455 13.963636 13.963636 34.909091 13.963636 46.545455 0L658.618182 116.363636c32.581818-32.581818 76.8-51.2 123.345454-51.2s90.763636 18.618182 123.345455 51.2c67.490909 67.490909 67.490909 179.2 0 246.690909l-223.418182 223.418182c-32.581818 32.581818-76.8 51.2-123.345454 51.2s-90.763636-18.618182-123.345455-51.2c-13.963636-13.963636-34.909091-13.963636-46.545455 0-13.963636 13.963636-13.963636 34.909091 0 46.545455 46.545455 46.545455 109.381818 69.818182 169.89091 69.818182 62.836364 0 123.345455-23.272727 169.890909-69.818182l223.418181-223.418182c46.545455-46.545455 69.818182-107.054545 69.818182-169.890909C1024 176.872727 998.4 116.363636 954.181818 69.818182z" p-id="2809"></path></svg>',
+                      ),
+                    )
+                  return '<div class="card">\n        '.concat(
+                    n,
+                    '\n        </div>',
+                  )
+                }
+                return e
+              })
               .join('')
           },
           [e.children],
@@ -55708,14 +55747,15 @@ to {
           r.createElement('div', { dangerouslySetInnerHTML: { __html: t } }),
         )
       }
-      function st() {
+      var st = (0, r.memo)(ot)
+      function lt() {
         var [e, t] = (0, r.useState)('')
         ;(0, r.useEffect)(() => {
           n(), window.addEventListener('hashchange', n)
         }, [])
         var n = function () {
           var e,
-            n = location.hash.replace('#/', '')
+            n = location.hash.split('?')[0].replace('#/', '')
           t(__vantui_base__.md[n])
           var r =
             null === (e = __vantui_base__) || void 0 === e
@@ -55723,22 +55763,21 @@ to {
               : e.routers.find((e) => e.path === n)
           document.title = r.title
         }
-        return r.createElement(
-          r.Fragment,
-          null,
-          e ? r.createElement(ot, null, e) : '',
-        )
+        return r.createElement(st, null, e)
       }
-      var lt = 'antmui-site-pageLayout'
-      function ct() {
+      var ct = 'antmui-site-pageLayout'
+      function dt() {
         var e,
           t,
           n,
-          [a, i] = (0, r.useState)(window.location.hash),
+          [a, i] = (0, r.useState)(
+            window.location.hash.split('?')[0].replace('#/', ''),
+          ),
           [o, s] = (0, r.useState)(84)
         ;(0, r.useEffect)(() => {
           window.addEventListener('hashchange', function () {
-            i(window.location.hash)
+            var e = window.location.hash
+            i(e.split('?')[0])
           }),
             window.addEventListener('scroll', function () {
               this.requestIdleCallback(() => {
@@ -55771,7 +55810,7 @@ to {
                     (null === (r = __vantui_base__) || void 0 === r
                       ? void 0
                       : r.routers) || [],
-                  o = window.location.hash.replace('#/', ''),
+                  o = window.location.hash.split('?')[0].replace('#/', ''),
                   s = !1,
                   l = 0;
                 l < i.length;
@@ -55787,140 +55826,150 @@ to {
           },
           [a],
         )
-        return r.createElement(
-          Z,
-          null,
+        return (
+          (0, r.useEffect)(() => {
+            var e = location.hash.split('?'),
+              t = e[1] && e[1].includes('=') ? e[1].split('=')[1] : ''
+            t &&
+              window.requestAnimationFrame(() => {
+                document.getElementById(t).scrollIntoView()
+              })
+          }, []),
           r.createElement(
-            'div',
-            { className: ''.concat(lt, '-container') },
-            null !== (e = __vantui_base__) && void 0 !== e && e.simulator
-              ? r.createElement('iframe', {
-                  className: ''.concat(lt, '-example'),
-                  src: l,
-                  style: { top: o },
-                })
-              : '',
+            Z,
+            null,
             r.createElement(
               'div',
-              { className: ''.concat(lt, '-header') },
+              { className: ''.concat(ct, '-container') },
+              null !== (e = __vantui_base__) && void 0 !== e && e.simulator
+                ? r.createElement('iframe', {
+                    className: ''.concat(ct, '-example'),
+                    src: l,
+                    style: { top: o },
+                  })
+                : '',
               r.createElement(
                 'div',
-                { className: ''.concat(lt, '-header-left') },
-                r.createElement('img', {
-                  className: ''.concat(lt, '-logo'),
-                  src: __vantui_base__.logo,
-                }),
+                { className: ''.concat(ct, '-header') },
                 r.createElement(
                   'div',
-                  { className: ''.concat(lt, '-uiname') },
-                  __vantui_base__.title,
-                ),
-                r.createElement(
-                  'div',
-                  { className: ''.concat(lt, '-version') },
-                  __vantui_base__.version
-                    ? 'v'.concat(__vantui_base__.version)
-                    : '',
-                ),
-              ),
-              r.createElement(
-                'div',
-                { className: ''.concat(lt, '-links') },
-                (
-                  (null === (t = __vantui_base__) || void 0 === t
-                    ? void 0
-                    : t.links) || []
-                ).map((e, t) =>
+                  { className: ''.concat(ct, '-header-left') },
+                  r.createElement('img', {
+                    className: ''.concat(ct, '-logo'),
+                    src: __vantui_base__.logo,
+                  }),
                   r.createElement(
                     'div',
-                    {
-                      className: ''.concat(lt, '-links-item'),
-                      onClick: () => window.open(e.url),
-                      key: 'link#item'.concat(t),
-                    },
-                    r.createElement('img', { src: e.logo }),
+                    { className: ''.concat(ct, '-uiname') },
+                    __vantui_base__.title,
+                  ),
+                  r.createElement(
+                    'div',
+                    { className: ''.concat(ct, '-version') },
+                    __vantui_base__.version
+                      ? 'v'.concat(__vantui_base__.version)
+                      : '',
+                  ),
+                ),
+                r.createElement(
+                  'div',
+                  { className: ''.concat(ct, '-links') },
+                  (
+                    (null === (t = __vantui_base__) || void 0 === t
+                      ? void 0
+                      : t.links) || []
+                  ).map((e, t) =>
+                    r.createElement(
+                      'div',
+                      {
+                        className: ''.concat(ct, '-links-item'),
+                        onClick: () => window.open(e.url),
+                        key: 'link#item'.concat(t),
+                      },
+                      r.createElement('img', { src: e.logo }),
+                    ),
                   ),
                 ),
               ),
-            ),
-            r.createElement(
-              'div',
-              { className: ''.concat(lt, '-body') },
               r.createElement(
                 'div',
-                {
-                  className: ''.concat(lt, '-menu'),
-                  onScroll: function (e) {
-                    e.stopPropagation()
-                  },
-                  style: {
-                    height: document.documentElement.clientHeight - 120,
-                  },
-                },
-                (
-                  (null === (n = __vantui_base__) || void 0 === n
-                    ? void 0
-                    : n.nav) || []
-                ).map((e, t) =>
-                  r.createElement(
-                    'div',
-                    {
-                      className: ''.concat(lt, '-menu-class'),
-                      key: ''.concat(t, 'menuClass'),
+                { className: ''.concat(ct, '-body') },
+                r.createElement(
+                  'div',
+                  {
+                    className: ''.concat(ct, '-menu'),
+                    onScroll: function (e) {
+                      e.stopPropagation()
                     },
+                    style: {
+                      height: document.documentElement.clientHeight - 120,
+                    },
+                  },
+                  (
+                    (null === (n = __vantui_base__) || void 0 === n
+                      ? void 0
+                      : n.nav) || []
+                  ).map((e, t) =>
                     r.createElement(
                       'div',
-                      { className: ''.concat(lt, '-menu-class-title') },
-                      e.title,
-                    ),
-                    e.items.map((e, t) =>
+                      {
+                        className: ''.concat(ct, '-menu-class'),
+                        key: ''.concat(t, 'menuClass'),
+                      },
                       r.createElement(
-                        re,
-                        {
-                          key: ''.concat(t, 'menuItem'),
-                          className: oe({
-                            [''.concat(lt, '-menu-item')]: !0,
-                            [''.concat(lt, '-menu-item-active')]:
-                              a.replace('#/', '') === ''.concat(e.path),
-                          }),
-                          to: '/'.concat(e.path),
-                        },
+                        'div',
+                        { className: ''.concat(ct, '-menu-class-title') },
                         e.title,
+                      ),
+                      e.items.map((e, t) =>
+                        r.createElement(
+                          re,
+                          {
+                            key: ''.concat(t, 'menuItem'),
+                            className: oe({
+                              [''.concat(ct, '-menu-item')]: !0,
+                              [''.concat(ct, '-menu-item-active')]:
+                                a.replace('#/', '') === ''.concat(e.path),
+                            }),
+                            to: '/'.concat(e.path),
+                          },
+                          e.title,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              r.createElement(
-                'div',
-                { className: ''.concat(lt, '-main') },
                 r.createElement(
-                  K,
-                  null,
-                  r.createElement(V, { path: '/', exact: !0, to: '/home' }),
-                  (__vantui_base__.routers || []).map((e, t) =>
-                    r.createElement(j, {
-                      exact: !0,
-                      path: '/'.concat(e.path),
-                      key: ''.concat(e.path).concat(t),
-                      component: (e) => r.createElement(st, e),
-                    }),
+                  'div',
+                  { className: ''.concat(ct, '-main') },
+                  r.createElement(
+                    K,
+                    null,
+                    r.createElement(V, { path: '/', exact: !0, to: '/home' }),
+                    (__vantui_base__.routers || []).map((e, t) =>
+                      r.createElement(j, {
+                        exact: !0,
+                        path: '/'.concat(e.path),
+                        key: ''.concat(e.path).concat(t),
+                        component: (e) => r.createElement(lt, e),
+                      }),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+          )
         )
       }
-      function dt() {
+      function _t() {
         return r.createElement(
           'div',
           { className: 'antmui-docs-body' },
-          r.createElement(ct, null),
+          r.createElement(dt, null),
         )
       }
       ;(0, a.s)(document.getElementById('root')).render(
-        r.createElement(dt, null),
+        r.createElement(_t, null),
       )
     },
     549: (e) => {

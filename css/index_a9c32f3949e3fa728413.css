@@ -92,6 +92,19 @@
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 8px 12px #ebedf0;
+  position: relative;
+}
+.docs-markdown-com .card h3 {
+  cursor: pointer;
+}
+.docs-markdown-com .card h3:hover svg {
+  display: block !important;
+}
+.docs-markdown-com .card svg {
+  position: absolute;
+  left: 8px;
+  top: 45px;
+  display: none;
 }
 .docs-markdown-com code {
   -webkit-font-smoothing: antialiased;
