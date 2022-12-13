@@ -407,6 +407,7 @@ taro-button-core + taro-button-core {
     .sku-color-item {
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       .color-item {
         height: 30px;
@@ -417,4 +418,26 @@ taro-button-core + taro-button-core {
       }
     }
   }
+}
+
+// 添加pc端鼠标样式
+.van-slider,
+.van-picker,
+.van-swipe-cell,
+.van-swiper {
+  cursor: grab;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.van-button,
+.van-calendar__day,
+.van-uploader,
+.van-switch,
+.van-index-bar__index,
+.van-sidebar-item,
+.van-stepper__minus,
+.van-stepper__plus,
+.van-cell,
+.van-icon {
+  cursor: pointer;
 }
