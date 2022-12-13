@@ -37,7 +37,7 @@ function MarkdownBox(props) {
     setTimeout(() => {
       copyAction()
       scrollTargetInit()
-    }, 33)
+    }, 133)
   }, [])
 
   const mdRender = useMemo(

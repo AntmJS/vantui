@@ -49,9 +49,9 @@ export default function PageLayout() {
       hashArr[1] && hashArr[1].includes('=') ? hashArr[1].split('=')[1] : ''
 
     if (h3TitleId) {
-      window.requestAnimationFrame(() => {
+      setTimeout(() => {
         document.getElementById(h3TitleId).scrollIntoView()
-      })
+      }, 133)
     }
   }, [])
 
