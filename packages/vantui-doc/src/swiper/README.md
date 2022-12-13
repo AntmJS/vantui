@@ -1,9 +1,5 @@
 # Swiper 轮播
 
-<div style="background: #fffbe6; border: 1px solid #ffe58f; padding: 8px 12px; line-height: 1.5; border-radius: 8px; margin-bottom: 18px; font-size: 13px; font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;">
-小程序端不流畅，待重构
-</div>
-
 ### 介绍
 
 常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
@@ -23,6 +19,8 @@ import { Swiper, SwiperItem } from '@antmjs/vantui'
 `paginationVisible` 是否显示分页指示器
 `paginationColor` 指示器颜色自定义
 `onChange` 当卡片发生变化
+
+组件和图片项的高度也可以通过`class`写入
 
 ```jsx
 function Demo() {

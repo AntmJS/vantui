@@ -8,9 +8,10 @@ import React, {
   forwardRef,
   useImperativeHandle,
   isValidElement,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
-import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
+import { useReady, createSelectorQuery, nextTick } from '@tarojs/taro'
 import { View, ITouchEvent, Text } from '@tarojs/components'
 import { SwiperProps, SwiperInstance } from '../../types/swiper'
 import { DataContext } from './context'
@@ -121,122 +122,30 @@ const Swiper = (
     propSwiper,
     size,
   }
-  const minOffset = (() => {
+
+  // 浏览器 帧 事件
+  const requestFrame = useCallback((fn: FrameRequestCallback) => {
+    window.requestAnimationFrame.call(window, fn)
+  }, [])
+  // 取值 方法
+  const range = useCallback((num: number, min: number, max: number) => {
+    return Math.min(Math.max(num, min), max)
+  }, [])
+
+  const getDirection = useCallback((x: number, y: number) => {
+    if (x > y && x > DISTANCE) return 'horizontal'
+    if (y > x && y > DISTANCE) return 'vertical'
+    return ''
+  }, [])
+
+  const getMinOffset = useCallback(() => {
     if (rect) {
       const base = isVertical ? rect?.height : rect?.width
       return base - Number(size) * childCount
     }
     return 0
-  })()
-  // 清除定时器
-  const stopAutoPlay = () => {
-    clearTimeout(_swiper.current.autoplayTimer)
-    _swiper.current.autoplayTimer = null
-  }
-  // 定时轮播
-  const autoplay = () => {
-    if (propSwiper.autoPlay <= 0 || childCount <= 1) return
-    stopAutoPlay()
-    _swiper.current.autoplayTimer = setTimeout(() => {
-      next()
-      autoplay()
-    }, Number(propSwiper.autoPlay))
-  }
-  // 重置首尾位置信息
-  const resettPosition = () => {
-    _swiper.current.moving = true
-    if (active <= -1) {
-      move({ pace: childCount })
-    }
-    if (active >= childCount) {
-      move({ pace: -childCount })
-    }
-  }
+  }, [childCount, isVertical, rect, size])
 
-  // 上一页
-  const prev = () => {
-    resettPosition()
-    touchReset()
-    requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        move({
-          pace: -1,
-          isEmit: true,
-        })
-      })
-    })
-  }
-  // 下一页
-  const next = () => {
-    resettPosition()
-    touchReset()
-    requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        move({
-          pace: 1,
-          isEmit: true,
-        })
-      })
-    })
-  }
-  // 前往指定页
-  const to = (index: number) => {
-    resettPosition()
-    touchReset()
-    requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        let targetIndex
-        if (propSwiper.loop && childCount === index) {
-          targetIndex = active === 0 ? 0 : index
-        } else {
-          targetIndex = index % childCount
-        }
-        move({
-          pace: targetIndex - active,
-          isEmit: true,
-        })
-      })
-    })
-  }
-
-  // 切换方法
-  const move = ({ pace = 0, offset = 0, isEmit = false }) => {
-    if (childCount <= 1) return
-    const targetActive = getActive(pace)
-    // 父级容器偏移量
-    const targetOffset = getOffset(targetActive, offset)
-    // 如果循环，调整开头结尾图片位置
-    if (propSwiper.loop) {
-      if (
-        Array.isArray(children) &&
-        children[0] &&
-        targetOffset !== minOffset
-      ) {
-        const rightBound = targetOffset < minOffset
-        childOffset[0] = rightBound ? trackSize : 0
-      }
-      if (
-        Array.isArray(children) &&
-        children[childCount - 1] &&
-        targetOffset !== 0
-      ) {
-        const leftBound = targetOffset > 0
-        childOffset[childCount - 1] = leftBound ? -trackSize : 0
-      }
-      setChildOffset(childOffset)
-    }
-    if (isEmit && active !== targetActive) {
-      propSwiper.onChange &&
-        propSwiper.onChange((targetActive + childCount) % childCount)
-    }
-    active = targetActive
-    setActive(targetActive)
-    setOffset(targetOffset)
-    getStyle(targetOffset)
-  }
   // 确定当前active 元素
   const getActive = (pace: number) => {
     if (pace) {
@@ -249,33 +158,120 @@ const Swiper = (
     return active
   }
   // 计算位移
-  const getOffset = (active: number, offset = 0) => {
-    let currentPosition = active * Number(size)
-    if (!propSwiper.loop) {
-      currentPosition = Math.min(currentPosition, -minOffset)
-    }
-    let targetOffset = offset - currentPosition
-    if (!propSwiper.loop) {
-      targetOffset = range(targetOffset, minOffset, 0)
-    }
-    return targetOffset
-  }
-  // 浏览器 帧 事件
-  const requestFrame = (fn: FrameRequestCallback) => {
-    window.requestAnimationFrame.call(window, fn)
-  }
-  // 取值 方法
-  const range = (num: number, min: number, max: number) => {
-    return Math.min(Math.max(num, min), max)
-  }
+  const getOffset = useCallback(
+    (active: number, offset = 0) => {
+      const minOffset = getMinOffset()
 
-  const getDirection = (x: number, y: number) => {
-    if (x > y && x > DISTANCE) return 'horizontal'
-    if (y > x && y > DISTANCE) return 'vertical'
-    return ''
-  }
+      let currentPosition = active * Number(size)
+      if (!propSwiper.loop) {
+        currentPosition = Math.min(currentPosition, -minOffset)
+      }
+      let targetOffset = offset - currentPosition
+      if (!propSwiper.loop) {
+        targetOffset = range(targetOffset, minOffset, 0)
+      }
+      return targetOffset
+    },
+    [getMinOffset, propSwiper.loop, range, size],
+  )
+
+  const getStyle = useCallback(
+    (moveOffset = offset) => {
+      const target = innerRef.current
+      let _offset = 0
+      if (!isCenter) {
+        _offset = moveOffset
+      } else {
+        const _size = isVertical ? height : width
+        const val = isVertical
+          ? (rect as DOMRect)?.height - _size
+          : (rect as DOMRect)?.width - _size
+        _offset =
+          moveOffset +
+          (active === childCount - 1 && !propSwiper.loop ? -val / 2 : val / 2)
+      }
+      target.style.transitionDuration = `${
+        _swiper.current.moving ? 0 : propSwiper.duration
+      }ms`
+      target.style[isVertical ? 'height' : 'width'] = `${
+        Number(size) * childCount
+      }px`
+      target.style[isVertical ? 'width' : 'height'] = `${
+        isVertical ? width : height
+      }px`
+      target.style.transform = `translate3D${
+        !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
+      }`
+    },
+    [
+      active,
+      childCount,
+      height,
+      isCenter,
+      isVertical,
+      offset,
+      propSwiper.duration,
+      propSwiper.loop,
+      rect,
+      size,
+      width,
+    ],
+  )
+
+  // 切换方法
+  const move = useCallback(
+    ({ pace = 0, offset = 0, isEmit = false }) => {
+      if (childCount <= 1) return
+      const targetActive = getActive(pace)
+      const minOffset = getMinOffset()
+      // 父级容器偏移量
+      const targetOffset = getOffset(targetActive, offset)
+      // 如果循环，调整开头结尾图片位置
+      if (propSwiper.loop) {
+        if (
+          Array.isArray(children) &&
+          children[0] &&
+          targetOffset !== minOffset
+        ) {
+          const rightBound = targetOffset < minOffset
+          childOffset[0] = rightBound ? trackSize : 0
+        }
+        if (
+          Array.isArray(children) &&
+          children[childCount - 1] &&
+          targetOffset !== 0
+        ) {
+          const leftBound = targetOffset > 0
+          childOffset[childCount - 1] = leftBound ? -trackSize : 0
+        }
+        setChildOffset(childOffset)
+      }
+      if (isEmit && active !== targetActive) {
+        propSwiper.onChange &&
+          propSwiper.onChange((targetActive + childCount) % childCount)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      active = targetActive
+      setActive(targetActive)
+      setOffset(targetOffset)
+      getStyle(targetOffset)
+    },
+    [
+      active,
+      childCount,
+      childOffset,
+      children,
+      getActive,
+      getMinOffset,
+      getOffset,
+      getStyle,
+      propSwiper,
+      trackSize,
+    ],
+  )
+
   // 重置 全部位移信息
-  const touchReset = () => {
+  const touchReset = useCallback(() => {
     touch.startX = 0
     touch.startY = 0
     touch.deltaX = 0
@@ -285,86 +281,172 @@ const Swiper = (
     touch.delta = 0
     touch.stateDirection = ''
     touch.touchTime = 0
-  }
+  }, [touch])
+
+  // 重置首尾位置信息
+  const resettPosition = useCallback(() => {
+    _swiper.current.moving = true
+    if (active <= -1) {
+      move({ pace: childCount })
+    }
+    if (active >= childCount) {
+      move({ pace: -childCount })
+    }
+  }, [active, childCount, move])
+
+  // 清除定时器
+  const stopAutoPlay = useCallback(() => {
+    clearTimeout(_swiper.current.autoplayTimer)
+    _swiper.current.autoplayTimer = null
+  }, [])
+  // 下一页
+  const next = useCallback(() => {
+    resettPosition()
+    touchReset()
+    requestFrame(() => {
+      requestFrame(() => {
+        _swiper.current.moving = false
+        move({
+          pace: 1,
+          isEmit: true,
+        })
+      })
+    })
+  }, [move, requestFrame, resettPosition, touchReset])
+
+  // 上一页
+  const prev = useCallback(() => {
+    resettPosition()
+    touchReset()
+    requestFrame(() => {
+      requestFrame(() => {
+        _swiper.current.moving = false
+        move({
+          pace: -1,
+          isEmit: true,
+        })
+      })
+    })
+  }, [move, requestFrame, resettPosition, touchReset])
+
+  // 前往指定页
+  const to = useCallback(
+    (index: number) => {
+      resettPosition()
+      touchReset()
+      requestFrame(() => {
+        requestFrame(() => {
+          _swiper.current.moving = false
+          let targetIndex
+          if (propSwiper.loop && childCount === index) {
+            targetIndex = active === 0 ? 0 : index
+          } else {
+            targetIndex = index % childCount
+          }
+          move({
+            pace: targetIndex - active,
+            isEmit: true,
+          })
+        })
+      })
+    },
+    [
+      active,
+      childCount,
+      move,
+      propSwiper.loop,
+      requestFrame,
+      resettPosition,
+      touchReset,
+    ],
+  )
+  // 定时轮播
+  const autoplay = useCallback(() => {
+    if (propSwiper.autoPlay <= 0 || childCount <= 1) return
+    stopAutoPlay()
+    _swiper.current.autoplayTimer = setTimeout(() => {
+      next()
+      autoplay()
+    }, Number(propSwiper.autoPlay))
+  }, [childCount, next, propSwiper.autoPlay, stopAutoPlay])
 
   // 触摸事件开始
-  const touchStart = (e: ITouchEvent) => {
-    touchReset()
-    touch.startX = e?.touches[0]?.clientX || 0
-    touch.startY = e?.touches[0]?.clientY || 0
-  }
+  const touchStart = useCallback(
+    (e: ITouchEvent) => {
+      touchReset()
+      touch.startX = e?.touches[0]?.clientX || 0
+      touch.startY = e?.touches[0]?.clientY || 0
+    },
+    [touch, touchReset],
+  )
 
   // 触摸事件移动
-  const touchMove = (e: ITouchEvent) => {
-    touch.deltaX = (e?.touches[0]?.clientX || 0) - touch.startX
-    touch.deltaY = (e?.touches[0]?.clientY || 0) - touch.startY
-    touch.offsetX = Math.abs(touch.deltaX)
-    touch.offsetY = Math.abs(touch.deltaY)
-    touch.delta = isVertical ? touch.deltaY : touch.deltaX
-    if (!touch.stateDirection) {
-      touch.stateDirection = getDirection(touch.offsetX, touch.offsetY)
-    }
-  }
+  const touchMove = useCallback(
+    (e: ITouchEvent) => {
+      touch.deltaX = (e?.touches[0]?.clientX || 0) - touch.startX
+      touch.deltaY = (e?.touches[0]?.clientY || 0) - touch.startY
+      touch.offsetX = Math.abs(touch.deltaX)
+      touch.offsetY = Math.abs(touch.deltaY)
+      touch.delta = isVertical ? touch.deltaY : touch.deltaX
+      if (!touch.stateDirection) {
+        touch.stateDirection = getDirection(touch.offsetX, touch.offsetY)
+      }
+    },
+    [getDirection, isVertical, touch],
+  )
 
   const contentClass = classNames({
     ['van-swiper__inner']: true,
     ['van-swiper__vertical']: isVertical,
   })
 
-  const getStyle = (moveOffset = offset) => {
-    const target = innerRef.current
-    let _offset = 0
-    if (!isCenter) {
-      _offset = moveOffset
-    } else {
-      const _size = isVertical ? height : width
-      const val = isVertical
-        ? (rect as DOMRect)?.height - _size
-        : (rect as DOMRect)?.width - _size
-      _offset =
-        moveOffset +
-        (active === childCount - 1 && !propSwiper.loop ? -val / 2 : val / 2)
-    }
-    target.style.transitionDuration = `${
-      _swiper.current.moving ? 0 : propSwiper.duration
-    }ms`
-    target.style[isVertical ? 'height' : 'width'] = `${
-      Number(size) * childCount
-    }px`
-    target.style[isVertical ? 'width' : 'height'] = `${
-      isVertical ? width : height
-    }px`
-    target.style.transform = `translate3D${
-      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
-    }`
-  }
+  const onTouchStart = useCallback(
+    (e) => {
+      if (propSwiper.isPreventDefault) e.preventDefault()
+      if (propSwiper.isStopPropagation) e.stopPropagation()
+      if (!propSwiper.touchable) return
+      touchStart(e)
+      touch.touchTime = Date.now()
+      stopAutoPlay()
+      resettPosition()
+    },
+    [
+      propSwiper.isPreventDefault,
+      propSwiper.isStopPropagation,
+      propSwiper.touchable,
+      resettPosition,
+      stopAutoPlay,
+      touch,
+      touchStart,
+    ],
+  )
 
-  const onTouchStart = (e) => {
-    if (propSwiper.isPreventDefault) e.preventDefault()
-    if (propSwiper.isStopPropagation) e.stopPropagation()
-    if (!propSwiper.touchable) return
-    touchStart(e)
-    touch.touchTime = Date.now()
-    stopAutoPlay()
-    resettPosition()
-  }
-
-  const onTouchMove = (e) => {
-    if (propSwiper.touchable && _swiper.current.moving) {
-      touchMove(e)
-      if (touch.stateDirection === propSwiper.direction) {
-        move({
-          offset: touch.delta,
-        })
+  const onTouchMove = useCallback(
+    (e) => {
+      if (propSwiper.touchable && _swiper.current.moving) {
+        touchMove(e)
+        if (touch.stateDirection === propSwiper.direction) {
+          move({
+            offset: touch.delta,
+          })
+        }
       }
-    }
-  }
+    },
+    [
+      move,
+      propSwiper.direction,
+      propSwiper.touchable,
+      touch.delta,
+      touch.stateDirection,
+      touchMove,
+    ],
+  )
 
-  const onTouchEnd = () => {
+  const onTouchEnd = useCallback(() => {
     if (!propSwiper.touchable || !_swiper.current.moving) return
     const speed = touch.delta / (Date.now() - touch.touchTime)
     const isShouldMove =
-      Math.abs(speed) > 0.3 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
+      Math.abs(speed) > 0.2 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
     let pace = 0
     _swiper.current.moving = false
     if (isShouldMove && touch.stateDirection === propSwiper.direction) {
@@ -388,14 +470,28 @@ const Swiper = (
       getStyle()
     }
     autoplay()
-  }
+  }, [
+    autoplay,
+    getStyle,
+    isVertical,
+    move,
+    propSwiper.direction,
+    propSwiper.loop,
+    propSwiper.touchable,
+    size,
+    touch.delta,
+    touch.offsetX,
+    touch.offsetY,
+    touch.stateDirection,
+    touch.touchTime,
+  ])
 
   useEffect(() => {
     _swiper.current.activePagination = (active + childCount) % childCount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
-  const queryRect = (element: any): Promise<any> => {
+  const queryRect = useCallback((element: any): Promise<any> => {
     return new Promise((resolve) => {
       const query = createSelectorQuery()
 
@@ -405,27 +501,40 @@ const Swiper = (
         resolve(res[0])
       })
     })
-  }
+  }, [])
 
-  const init = async (active: number = +propSwiper.initPage) => {
-    const rect = await queryRect(container.current)
-    const _active = Math.max(Math.min(childCount - 1, active), 0)
-    const _width = propSwiper.width ? +propSwiper.width : rect?.width
-    const _height = propSwiper.height ? +propSwiper.height : rect?.height
-    size = isVertical ? _height : _width
-    trackSize = childCount * Number(size)
-    const targetOffset = getOffset(_active)
-    _swiper.current.moving = true
-    if (ready) {
-      _swiper.current.moving = false
-    }
-    setRect(rect)
-    setActive(_active)
-    setWidth(_width)
-    setHeight(_height)
-    setOffset(targetOffset)
-    setReady(true)
-  }
+  const init = useCallback(
+    async (active: number = +propSwiper.initPage) => {
+      const rect = await queryRect(container.current)
+      const _active = Math.max(Math.min(childCount - 1, active), 0)
+      const _width = propSwiper.width ? +propSwiper.width : rect?.width
+      const _height = propSwiper.height ? +propSwiper.height : rect?.height
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      size = isVertical ? _height : _width
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      trackSize = childCount * Number(size)
+      const targetOffset = getOffset(_active)
+      _swiper.current.moving = true
+      if (ready) {
+        _swiper.current.moving = false
+      }
+      setRect(rect)
+      setActive(_active)
+      setWidth(_width)
+      setHeight(_height)
+      setOffset(targetOffset)
+      setReady(true)
+    },
+    [
+      childCount,
+      getOffset,
+      propSwiper.height,
+      propSwiper.initPage,
+      propSwiper.width,
+      queryRect,
+      ready,
+    ],
+  )
 
   useEffect(() => {
     if (ready) {
@@ -435,11 +544,15 @@ const Swiper = (
   }, [isVertical, width, height, offset, ready])
 
   useEffect(() => {
+    if (ready && rect) {
+      stopAutoPlay()
+      autoplay()
+    }
     return () => {
       setReady(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [ready, rect])
 
   useEffect(() => {
     stopAutoPlay()
@@ -448,7 +561,9 @@ const Swiper = (
   }, [children])
 
   useEffect(() => {
-    init()
+    nextTick(() => {
+      init()
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [propSwiper.initPage])
 
@@ -456,34 +571,38 @@ const Swiper = (
     return () => {
       stopAutoPlay()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useReady(() => {
-    init()
-    Taro.nextTick(() => {
+    nextTick(() => {
       setTimeout(() => {
-        stopAutoPlay()
-        autoplay()
-      }, 16)
+        init()
+      })
     })
   })
 
-  const itemStyle = (index: any) => {
-    const style: IStyle = {}
-    const _direction = propSwiper.direction || direction
-    const _size = size
-    if (_size) {
-      style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
-    }
-    const offset = childOffset[index]
+  const itemStyle = useCallback(
+    (index: any) => {
+      const style: IStyle = {}
+      const _direction = propSwiper.direction || direction
+      const _size = size
+      if (_size) {
+        style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
+      }
+      const offset = childOffset[index]
 
-    if (offset) {
-      style.transform = `translate3D${
-        _direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
-      }`
-    }
-    return style
-  }
+      if (offset) {
+        style.transform = `translate3D${
+          _direction === 'horizontal'
+            ? `(${offset}px,0,0)`
+            : `(0,${offset}px,0)`
+        }`
+      }
+      return style
+    },
+    [childOffset, direction, propSwiper.direction, size],
+  )
 
   useImperativeHandle(ref, () => ({
     to,
