@@ -10,12 +10,13 @@ export default function Docs() {
   }, [])
 
   const mdAction = function () {
-    const target = location.hash.replace('#/', '')
+    const hashArr = location.hash.split('?')
+    const target = hashArr[0].replace('#/', '')
 
     setMd(__vantui_base__.md[target])
     const t = __vantui_base__?.routers.find((item) => item.path === target)
     document.title = t.title
   }
 
-  return <>{md ? <MarkdownBox>{md}</MarkdownBox> : ''}</>
+  return <MarkdownBox>{md}</MarkdownBox>
 }

@@ -7,12 +7,16 @@ import './index.less'
 const preCls = 'antmui-site-pageLayout'
 
 export default function PageLayout() {
-  const [hash, setHash] = useState(window.location.hash)
+  const [hash, setHash] = useState(
+    window.location.hash.split('?')[0].replace('#/', ''),
+  )
   const [iframeTop, setIframeTop] = useState(84)
 
   useEffect(() => {
     window.addEventListener('hashchange', function () {
-      setHash(window.location.hash)
+      const hash_ = window.location.hash
+
+      setHash(hash_.split('?')[0])
     })
     window.addEventListener('scroll', function () {
       this.requestIdleCallback(() => {
@@ -38,6 +42,18 @@ export default function PageLayout() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [hash],
   )
+
+  useEffect(() => {
+    const hashArr = location.hash.split('?')
+    const h3TitleId =
+      hashArr[1] && hashArr[1].includes('=') ? hashArr[1].split('=')[1] : ''
+
+    if (h3TitleId) {
+      window.requestAnimationFrame(() => {
+        document.getElementById(h3TitleId).scrollIntoView()
+      })
+    }
+  }, [])
 
   return (
     <HashRouter>
@@ -121,7 +137,7 @@ function getMobileUrl() {
       ? __vantui_base__?.simulator?.url?.production
       : __vantui_base__?.simulator?.url?.development + '/'
   const routers = __vantui_base__?.routers || []
-  const current = window.location.hash.replace('#/', '')
+  const current = window.location.hash.split('?')[0].replace('#/', '')
 
   let useDashboard = false
   for (let i = 0; i < routers.length; i++) {
