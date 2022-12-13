@@ -1,4 +1,4 @@
-/*! For license information please see index_cc63a259f70c419dd635.js.LICENSE.txt */
+/*! For license information please see index_39b8174c091f3624925c.js.LICENSE.txt */
 ;(self.webpackChunkvantui_doc = self.webpackChunkvantui_doc || []).push([
   [826],
   {
@@ -55710,7 +55710,7 @@ to {
                     t(n)
                 }
               })()
-          }, 33)
+          }, 133)
         }, [])
         var t = (0, r.useMemo)(
           function () {
@@ -55831,9 +55831,9 @@ to {
             var e = location.hash.split('?'),
               t = e[1] && e[1].includes('=') ? e[1].split('=')[1] : ''
             t &&
-              window.requestAnimationFrame(() => {
+              setTimeout(() => {
                 document.getElementById(t).scrollIntoView()
-              })
+              }, 133)
           }, []),
           r.createElement(
             Z,
