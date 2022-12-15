@@ -83,6 +83,9 @@ function Demo() {
       onDrag={(e) => {
         setValue(e.detail.value)
       }}
+      onChange={(e) => {
+        setValue(e.detail)
+      }}
       renderButton={<View class="customButton">{value}/100</View>}
     />
   )
