@@ -242,6 +242,10 @@ module.exports = {
             title: 'Empty 空状态',
           },
           {
+            path: 'ellipsis',
+            title: 'Ellipsis 文本省略',
+          },
+          {
             path: 'notice-bar',
             title: 'NoticeBar 通知栏',
           },
