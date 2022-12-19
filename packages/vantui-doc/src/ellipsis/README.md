@@ -47,3 +47,26 @@ function Demo() {
   )
 }
 ```
+
+### EllipsisProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/ellipsis.d.ts)
+
+| 参数          | 说明               | 类型                         | 默认值  | 必填    |
+| ------------- | ------------------ | ---------------------------- | ------- | ------- |
+| children      | 内容               | _&nbsp;&nbsp;string<br/>_    | -       | `true`  |
+| defaultExpand | 默认是否展开       | _&nbsp;&nbsp;boolean<br/>_   | `false` | `false` |
+| rows          | 展示几行           | _&nbsp;&nbsp;number<br/>_    | 1       | `false` |
+| expandText    | 展开文案           | _&nbsp;&nbsp;string<br/>_    | `展开`  | `true`  |
+| collapseText  | 收起文案           | _&nbsp;&nbsp;string<br/>_    | `收起`  | `true`  |
+| symbol        | 省略的文案         | _&nbsp;&nbsp;ReactNode<br/>_ | `...`   | `false` |
+| hiddenAction  | 是否要隐藏操作按钮 | _&nbsp;&nbsp;boolean<br/>_   | `false` | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                        | 默认值      |
+| --------------------------- | ----------- |
+| --ellipsis-font-size        | ` 28px;`    |
+| --ellipsis-line-height      | ` 50px;`    |
+| --ellipsis-action-font-size | ` 30px;`    |
+| --ellipsis-primary-color    | ` #20c064;` |

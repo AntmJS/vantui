@@ -20,12 +20,12 @@ export interface EllipsisProps extends ViewProps {
    * @description 展开文案
    * @default `展开`
    */
-  expandText: string
+  expandText?: string
   /**
    * @description 收起文案
    * @default `收起`
    */
-  collapseText: string
+  collapseText?: string
   /**
    * @description 省略的文案
    * @default `...`
