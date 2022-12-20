@@ -56,7 +56,7 @@ export default function Ellipsis({
         }
       }
 
-      return children.slice(0, cutIndex - 2) // 截取位置减少2位防止内容溢出
+      return children.slice(0, cutIndex)
     },
     [children, rows],
   )
