@@ -42,7 +42,7 @@ export interface StepsProps extends ViewProps {
    */
   activeIcon?: string
   /**
-   * @description 	 蔚来激活图标
+   * @description 	 未激活图标
    * @default `#checked`
    */
   inactiveIcon?: string
