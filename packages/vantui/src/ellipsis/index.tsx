@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { View, Text } from '@tarojs/components'
-import { createSelectorQuery } from '@tarojs/taro'
+import { createSelectorQuery, useReady } from '@tarojs/taro'
 import { EllipsisProps } from '../../types/ellipsis'
 import { getRect } from '../common/utils'
 
@@ -81,8 +81,6 @@ export default function Ellipsis({
       `.${preCls}-hidden-action_${randomRef.current}`,
     )
 
-    console.info(actionDom)
-
     if (containerDom.width && symbolDom.width) {
       let fontSize = 14
       if (containerDomC) fontSize = containerDomC.fontSize
@@ -112,6 +110,12 @@ export default function Ellipsis({
     }, 100)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children])
+
+  useReady(() => {
+    setTimeout(() => {
+      getAllWidth()
+    }, 100)
+  })
 
   return (
     <View className={`${preCls}-wrapper`}>
