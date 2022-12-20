@@ -1,4 +1,4 @@
-# ellipsis
+# Ellipsis 文本省略
 
 ### 介绍
 
