@@ -20,8 +20,8 @@ import { SwipeCell } from '@antmjs/vantui'
 function Demo() {
   return (
     <SwipeCell
-      rightWidth={65}
-      leftWidth={65}
+      rightWidth={75}
+      leftWidth={75}
       renderLeft={<Button>选择</Button>}
       renderRight={<Button>删除</Button>}
     >
@@ -49,8 +49,8 @@ function Demo() {
   return (
     <SwipeCell
       ref={it}
-      rightWidth={65}
-      leftWidth={65}
+      rightWidth={75}
+      leftWidth={75}
       asyncClose
       onClose={closeAction}
       renderLeft={<Button>选择</Button>}
@@ -77,8 +77,8 @@ function Demo() {
   return (
     <SwipeCell
       ref={it}
-      rightWidth={65}
-      leftWidth={65}
+      rightWidth={75}
+      leftWidth={75}
       asyncClose
       renderLeft={<Button>选择</Button>}
       renderRight={<Button>删除</Button>}
