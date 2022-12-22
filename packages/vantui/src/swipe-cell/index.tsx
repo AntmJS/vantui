@@ -1,4 +1,4 @@
-import { ITouchEvent, View, CustomWrapper } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import {
   useEffect,
   useState,
@@ -6,13 +6,13 @@ import {
   forwardRef,
   useImperativeHandle,
 } from 'react'
+import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { SwipeCellProps, ISwiperCellInstance } from '../../types/swipe-cell'
 import { range } from '../common/utils'
 
-const THRESHOLD = 0.3
 let ARRAY: any[] = []
-const MIN_DISTANCE = 10
+const MIN_DISTANCE = 20
 function getDirection(x: number, y: number) {
   if (x > y && x > MIN_DISTANCE) {
     return 'horizontal'
@@ -32,6 +32,10 @@ function Index(
   const [instanceKey, setInstanceKey] = useState<any>({})
   const [touchState, setTouchState] = useState<any>({})
   const [startOffset, setStartOffset] = useState<number>(0)
+  const [THRESHOLD, setTHRESHOLD] = useState({
+    left: 0.2,
+    right: 0.2,
+  })
 
   const {
     leftWidth = 0,
@@ -54,6 +58,12 @@ function Index(
     function (offset2 = 0, dragging?: boolean) {
       const offset_ = range(offset2, -rightWidth, leftWidth)
       setOffset(offset_)
+      if (offset2 === 0) {
+        setTHRESHOLD({
+          left: 0.2,
+          right: 0.2,
+        })
+      }
       const transform = `translate3d(${offset_}px, 0, 0)`
       const transition = dragging
         ? 'none'
@@ -72,7 +82,7 @@ function Index(
 
   const close = useCallback(
     function () {
-      swipeMove(0)
+      swipeMove(0, false)
     },
     [swipeMove],
   )
@@ -110,6 +120,8 @@ function Index(
         deltaY: 0,
         offsetX: 0,
         offsetY: 0,
+        startX: 0,
+        startY: 0,
       })
     },
     [touchState],
@@ -122,7 +134,7 @@ function Index(
       setTouchState({
         ...touchState,
         startX: touch.clientX,
-        startY: touch.startY,
+        startY: touch.clientY,
       })
     },
     [touchState, resetTouchStatus],
@@ -136,7 +148,10 @@ function Index(
         ...touchState,
         direction:
           touchState.direction ||
-          getDirection(touchState.offsetX, touchState.offsetY),
+          getDirection(
+            Math.abs(touch.clientX - (touchState.startX || 0)),
+            Math.abs(touch.clientY - (touchState.startY || 0)),
+          ),
         deltaX: touch.clientX - (touchState.startX || 0),
         deltaY: touch.clientY - (touchState.startY || 0),
         offsetX: Math.abs(touchState.deltaX),
@@ -151,7 +166,18 @@ function Index(
   const open = useCallback(
     function (position) {
       const offset = position === 'left' ? leftWidth : -rightWidth
-      swipeMove(offset)
+      const THRESHOLD_ = {
+        left: 0.2,
+        right: 0.2,
+      }
+      if (position === 'left') {
+        THRESHOLD_.left = 0.8
+      }
+      if (position === 'right') {
+        THRESHOLD_.right = 0.8
+      }
+      setTHRESHOLD(THRESHOLD_)
+      swipeMove(offset, false)
       if (onOpen) {
         const e = {
           detail: {
@@ -167,15 +193,31 @@ function Index(
 
   const swipeLeaveTransition = useCallback(
     function () {
-      if (rightWidth > 0 && -offset > rightWidth * THRESHOLD) {
-        open('right')
-      } else if (leftWidth > 0 && offset > leftWidth * THRESHOLD) {
-        open('left')
-      } else {
-        swipeMove(0)
+      if (offset > 0) {
+        if (leftWidth && offset > THRESHOLD.left * leftWidth) {
+          open('left')
+        } else {
+          swipeMove(0)
+        }
+      }
+
+      if (offset < 0) {
+        if (rightWidth && -offset > THRESHOLD.right * rightWidth) {
+          open('right')
+        } else {
+          swipeMove(0)
+        }
       }
     },
-    [leftWidth, offset, open, rightWidth, swipeMove],
+    [
+      THRESHOLD.left,
+      THRESHOLD.right,
+      leftWidth,
+      offset,
+      open,
+      rightWidth,
+      swipeMove,
+    ],
   )
 
   const onClick_ = useCallback(
@@ -221,8 +263,11 @@ function Index(
       if (disabled) return
       event.preventDefault()
       const touchState = touchMove(event)
+      if (!touchState.direction || touchState.direction === 'vertical') {
+        return
+      }
       ARRAY.filter((item) => item.key !== instanceKey.key).forEach((item) =>
-        item.close(),
+        item.close(true),
       )
       swipeMove(startOffset + touchState.deltaX, true)
     },
@@ -233,8 +278,11 @@ function Index(
     function () {
       if (disabled) return
       swipeLeaveTransition()
+      nextTick(() => {
+        resetTouchStatus()
+      })
     },
-    [disabled, swipeLeaveTransition],
+    [disabled, resetTouchStatus, swipeLeaveTransition],
   )
 
   useImperativeHandle(ref, function () {
@@ -244,7 +292,7 @@ function Index(
     }
   })
 
-  const MAIN_RENDER = (
+  return (
     <View
       className={`van-swipe-cell  ${className}`}
       data-key="cell"
@@ -285,10 +333,6 @@ function Index(
       </View>
     </View>
   )
-
-  if (process.env.TARO_ENV === 'weapp') {
-    return <CustomWrapper>{MAIN_RENDER}</CustomWrapper>
-  } else return <>{MAIN_RENDER}</>
 }
 
 const SwipeCell = forwardRef(Index)
