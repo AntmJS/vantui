@@ -7,7 +7,8 @@ import {
   forwardRef,
   memo,
 } from 'react'
-import { nextTick } from '@tarojs/taro'
+import { nextTick, usePageScroll } from '@tarojs/taro'
+import { getSystemInfoSync, requestAnimationFrame } from '../common/utils'
 import {
   DropdownItemProps,
   IDropdownItemInstance,
@@ -70,6 +71,34 @@ function Index(
     [parentInstance],
   )
 
+  const updateStyle = useCallback(() => {
+    parentInstance?.getChildWrapperStyle().then((wrapperStyle: any) => {
+      const rect = wrapperStyle.rect
+      delete wrapperStyle.rect
+      if (wrapperStyle) {
+        wrapperStyle.width = '100vw'
+        wrapperStyle.position = 'fixed'
+      }
+
+      if (parentInstance.direction === 'down') {
+        const winHeight = getSystemInfoSync().windowHeight
+        const bottom = winHeight - rect.top
+        wrapperStyle.bottom = -rect.height + 'PX'
+        wrapperStyle.height = bottom + 'PX'
+        setWrapperStyle(wrapperStyle)
+        setShowWrapper(true)
+        rerender()
+      }
+
+      if (parentInstance.direction === 'up') {
+        wrapperStyle.height = rect.top + 'PX'
+        setWrapperStyle(wrapperStyle)
+        setShowWrapper(true)
+        rerender()
+      }
+    })
+  }, [parentInstance, rerender])
+
   const toggle = useCallback(
     function (show?: any, options: any = {}) {
       if (typeof show !== 'boolean') {
@@ -82,42 +111,21 @@ function Index(
       setTransition(!options.immediate)
       setShowPopup(show)
       if (show) {
-        !parentInstance
-          ? void 0
-          : parentInstance.getChildWrapperStyle().then((wrapperStyle: any) => {
-              const rect = wrapperStyle.rect
-              delete wrapperStyle.rect
-              if (wrapperStyle) {
-                wrapperStyle.width = '100vw'
-                wrapperStyle.position = 'absolute'
-              }
-
-              if (parentInstance.direction === 'down') {
-                wrapperStyle.top = rect.height + 'PX'
-                wrapperStyle.height = '100vh'
-                setWrapperStyle(wrapperStyle)
-                setShowWrapper(true)
-                rerender()
-              }
-
-              if (parentInstance.direction === 'up') {
-                wrapperStyle.height = '100vh'
-                wrapperStyle.top = 0
-                wrapperStyle.transform = 'translateY(-100%)'
-                wrapperStyle.WebkitTransform = 'translateY(-100%)'
-                wrapperStyle.MozTransform = 'translateY(-100%)'
-                wrapperStyle.OTransform = 'translateY(-100%)'
-                setWrapperStyle(wrapperStyle)
-                setShowWrapper(true)
-                rerender()
-              }
-            })
+        updateStyle()
       } else {
         rerender()
       }
     },
-    [showPopup, parentInstance, rerender],
+    [showPopup, updateStyle, rerender],
   )
+
+  usePageScroll(() => {
+    if (showPopup) {
+      requestAnimationFrame(() => {
+        updateStyle()
+      })
+    }
+  })
 
   useEffect(
     function () {
