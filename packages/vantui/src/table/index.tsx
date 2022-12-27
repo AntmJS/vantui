@@ -38,6 +38,7 @@ export const Table = (props: ITableProps): JSX.Element | null => {
     sortChange = (): void => {},
     scroll = {},
     placeholder = '--',
+    scrollViewProps = {},
   } = props
 
   const [error, setError] = useState<boolean>(false)
@@ -164,6 +165,7 @@ export const Table = (props: ITableProps): JSX.Element | null => {
           maxWidth: getSize(scroll.x as number | string),
           maxHeight: getSize(scroll.y as number | string),
         }}
+        {...scrollViewProps}
       >
         <View
           className={classnames({
