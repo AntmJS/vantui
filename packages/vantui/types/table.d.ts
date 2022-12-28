@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { ViewProps } from '@tarojs/components'
+import { ScrollViewProps, ViewProps } from '@tarojs/components'
 
 /**
  * @title ITableProps
@@ -72,6 +72,10 @@ export interface ITableProps extends ViewProps {
     x?: number | string | boolean
     y?: number | string | boolean
   }
+  /**
+   * @description 传递给ScrollView的属性值
+   */
+  scrollViewProps?: ScrollViewProps
 }
 
 /**
