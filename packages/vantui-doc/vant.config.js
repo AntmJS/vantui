@@ -208,6 +208,10 @@ module.exports = {
             path: 'swipe-cell',
             title: 'SwipeCell 滑动单元格',
           },
+          {
+            path: 'signature',
+            title: 'Signature 签名',
+          },
         ],
       },
       {
