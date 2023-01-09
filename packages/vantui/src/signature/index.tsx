@@ -65,7 +65,6 @@ const Signature = forwardRef(function Signature(
   const endEventHandler = () => {}
 
   const handleClear = () => {
-    console.info('clear')
     if (ctx.current) {
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
@@ -73,7 +72,7 @@ const Signature = forwardRef(function Signature(
   }
 
   const getImage = (): Promise<string> => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       Taro.createSelectorQuery()
         .select(`#${canvasId}${compIndex}`)
         .fields({
@@ -88,8 +87,9 @@ const Signature = forwardRef(function Signature(
             success: (res) => {
               resolve(res.tempFilePath)
             },
-            fail: (res) => {
-              console.error(`@anmjs/vantui: signature 转换图片失败:`, res)
+            fail: (err) => {
+              console.error(`@anmjs/vantui: signature 转换图片失败:`, err)
+              reject(err)
             },
           })
         })
@@ -116,7 +116,7 @@ const Signature = forwardRef(function Signature(
   const initCanvas = () => {
     Taro.nextTick(() => {
       setTimeout(() => {
-        if (Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD') {
+        if (process.env.TARO_ENV !== 'h5') {
           Taro.createSelectorQuery()
             .select(`#${canvasId}${compIndex}`)
             .fields(

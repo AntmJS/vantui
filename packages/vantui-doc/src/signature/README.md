@@ -32,7 +32,7 @@ function Demo() {
   }
 
   return (
-    <>
+    <View>
       <Signature ref={instance} />
       <Dialog id="signature-dialog1" />
       <View style={{ marginTop: 20, display: 'flex' }}>
@@ -43,7 +43,7 @@ function Demo() {
           重绘
         </Button>
       </View>
-    </>
+    </View>
   )
 }
 ```
@@ -56,6 +56,7 @@ function Demo() {
 
   const getImageAction = async () => {
     const re = await instance.current.getImage()
+    console.info(res)
     Dialog.alert({
       title: '签名图片',
       message: <Image src={re} />,
@@ -68,9 +69,9 @@ function Demo() {
   }
 
   return (
-    <>
+    <View>
+      <Dialog id="signature-dialog2" style={{ zIndex: 9999 }} />
       <Signature ref={instance} lineWidth={4} strokeStyle="green" />
-      <Dialog id="signature-dialog2" />
       <View style={{ marginTop: 20, display: 'flex' }}>
         <Button onClick={getImageAction} type="primary">
           确定
@@ -79,7 +80,7 @@ function Demo() {
           重绘
         </Button>
       </View>
-    </>
+    </View>
   )
 }
 ```
