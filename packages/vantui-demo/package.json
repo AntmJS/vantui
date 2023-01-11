@@ -1,6 +1,6 @@
 {
   "name": "vantui-demo",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "private": true,
   "description": "Taro应用模版",
   "templateInfo": {
@@ -83,7 +83,7 @@
   "author": "",
   "dependencies": {
     "@antmjs/mini-fix": "^2.2.0",
-    "@antmjs/vantui": "2.4.0",
+    "@antmjs/vantui": "2.5.0",
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.5.7",
     "@tarojs/helper": "3.5.7",

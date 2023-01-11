@@ -1,7 +1,7 @@
 {
   "name": "vantui-doc",
   "private": true,
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "",
   "scripts": {
     "dev": "node ./scripts/md && npx antm-vantui-cli docs --mode development",
@@ -21,7 +21,7 @@
     "iOS >= 10"
   ],
   "devDependencies": {
-    "@antmjs/vantui-cli": "2.4.0",
+    "@antmjs/vantui-cli": "2.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "ast-to-markdown": "^1.0.0",
     "babel-loader": "^8.2.5",
