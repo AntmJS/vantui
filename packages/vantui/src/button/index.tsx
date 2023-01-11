@@ -5,30 +5,6 @@ import * as utils from '../wxs/utils'
 import { Icon } from '../icon/index'
 import { Loading } from '../loading/index'
 import * as computed from './wxs'
-let removed = false
-// 次输是为了在开发环境有一个中止状态
-let time = 10
-// 动态删除taro-button-core的style
-if (process.env.TARO_ENV === 'h5' && !removed) {
-  const _timer = setInterval(() => {
-    time--
-    if (time > 0) {
-      const allStyle = document.getElementsByTagName('style') || []
-      for (let i = allStyle.length - 1; i >= 0; i--) {
-        const sty: any = allStyle[i]
-        const htm = sty.innerHTML
-        if (htm && /^taro-button-core{/.test(htm)) {
-          sty.remove()
-          removed = true
-          _timer && clearInterval(_timer)
-          break
-        }
-      }
-    } else {
-      _timer && clearInterval(_timer)
-    }
-  }, 200)
-}
 
 export function Button(props: ButtonProps) {
   const {
@@ -55,7 +31,7 @@ export function Button(props: ButtonProps) {
   } = props
 
   return (
-    <TaroButton
+    <View
       className={
         ' ' +
         utils.bem('button', [
@@ -76,7 +52,6 @@ export function Button(props: ButtonProps) {
         (hairline ? 'van-hairline--surround' : '') +
         ` ${className || ''}`
       }
-      hoverClass="van-button--active hover-class"
       style={utils.style([
         computed.rootStyle({
           plain,
@@ -84,9 +59,13 @@ export function Button(props: ButtonProps) {
         }),
         style,
       ])}
-      onClick={disabled || loading ? undefined : onClick}
-      {...others}
     >
+      <TaroButton
+        className="van-native-button"
+        disabled={disabled}
+        onClick={disabled || loading ? undefined : onClick}
+        {...others}
+      ></TaroButton>
       {loading ? (
         <View style="display: flex">
           <Loading
@@ -117,7 +96,7 @@ export function Button(props: ButtonProps) {
           <View className="van-button__text">{children}</View>
         </>
       )}
-    </TaroButton>
+    </View>
   )
 }
 export default Button

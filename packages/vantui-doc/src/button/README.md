@@ -263,4 +263,5 @@ function Demo() {
 | --button-border-width             | ` 2px;`                |
 | --button-round-border-radius      | ` @border-radius-max;` |
 | --button-plain-background-color   | ` @white;`             |
+| --button-active-opacity           | ` @active-opacity;`    |
 | --button-disabled-opacity         | ` @disabled-opacity;`  |

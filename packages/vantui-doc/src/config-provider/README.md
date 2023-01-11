@@ -184,7 +184,7 @@ function Demo() {
 | ------------------------ | ----------- |
 | --text-color             | ` @gray-8;` |
 | --active-color           | ` @gray-2;` |
-| --active-opacity         | ` 0.7;`     |
+| --active-opacity         | ` 0.85;`    |
 | --disabled-opacity       | ` 0.5;`     |
 | --background-color       | ` @gray-1;` |
 | --background-color-light | ` #fafafa;` |
