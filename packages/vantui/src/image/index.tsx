@@ -1,4 +1,10 @@
-import { useEffect, useState, useCallback, useMemo } from 'react'
+import {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  useLayoutEffect,
+} from 'react'
 import { View, Image as TaroImage } from '@tarojs/components'
 import { ImageProps } from '../../types/image'
 import * as utils from '../wxs/utils'
@@ -35,6 +41,14 @@ export function Image(props: ImageProps) {
 
   const [loading, setLoading] = useState<boolean>()
   const [error, setError] = useState(false)
+
+  useLayoutEffect(
+    function () {
+      if (error) setError(false)
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [src],
+  )
 
   useEffect(
     function () {

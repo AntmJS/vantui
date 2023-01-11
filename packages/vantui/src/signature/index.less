@@ -1,0 +1,29 @@
+@import '../style/var.less';
+
+/* stylelint-disable-next-line no-descending-specificity */
+.van-signature {
+  .spcanvas_WEAPP {
+    width: 100%;
+    height: 100%;
+
+    .van-signature-canvas {
+      width: 100%;
+      /* stylelint-disable-next-line selector-max-type */
+      canvas {
+        background-color: #ffffff;
+        width: 100%;
+        border: @signature-border-width solid @signature-border-color;
+        height: @signature-height;
+      }
+    }
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  &__inner {
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
