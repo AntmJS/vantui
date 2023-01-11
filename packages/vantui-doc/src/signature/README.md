@@ -17,32 +17,40 @@ import { Signature } from '@antmjs/vantui'
 ```jsx
 function Demo() {
   const instance = react.useRef()
+  const [img, setImage] = react.useState()
 
   const getImageAction = async () => {
-    const re = await instance.current.getImage()
-    Dialog.alert({
-      title: '签名图片',
-      message: <Image src={re} />,
-      selector: 'signature-dialog2',
-    })
+    const res = await instance.current.getImage()
+    console.info(res)
+    setImage(res.tempFilePath)
   }
 
   const clear = () => {
     instance.current?.clear()
+    setImage('')
   }
 
   return (
     <View>
       <Signature ref={instance} />
-      <Dialog id="signature-dialog1" />
       <View style={{ marginTop: 20, display: 'flex' }}>
         <Button onClick={getImageAction} type="primary">
-          确定
+          截图
         </Button>
         <Button onClick={clear} type="danger">
           重绘
         </Button>
       </View>
+      <Image
+        src={img}
+        style={{
+          backgroundColor: '#fff',
+          border: '1px solid #ddd',
+          marginTop: '20px',
+        }}
+        width="100%"
+        height="150px"
+      />
     </View>
   )
 }
@@ -53,33 +61,40 @@ function Demo() {
 ```jsx
 function Demo() {
   const instance = react.useRef()
+  const [img, setImage] = react.useState()
 
   const getImageAction = async () => {
-    const re = await instance.current.getImage()
-    console.info(res)
-    Dialog.alert({
-      title: '签名图片',
-      message: <Image src={re} />,
-      selector: 'signature-dialog2',
-    })
+    const res = await instance.current.getImage()
+    setImage(res.tempFilePath)
   }
 
   const clear = () => {
     instance.current?.clear()
+    setImage('')
   }
 
   return (
     <View>
-      <Dialog id="signature-dialog2" style={{ zIndex: 9999 }} />
       <Signature ref={instance} lineWidth={4} strokeStyle="green" />
       <View style={{ marginTop: 20, display: 'flex' }}>
         <Button onClick={getImageAction} type="primary">
-          确定
+          截图
         </Button>
         <Button onClick={clear} type="danger">
           重绘
         </Button>
       </View>
+      <Image
+        src={img}
+        style={{
+          backgroundColor: '#fff',
+          border: '1px solid #ddd',
+          marginTop: '20px',
+        }}
+        width="100%"
+        height="150px"
+        fit="widthFix"
+      />
     </View>
   )
 }

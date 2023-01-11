@@ -32,9 +32,13 @@ export interface ISignatureProps extends ViewProps {
  */
 export type ISignatureInstance = {
   /**
-   * @description 获取绘制生成的图片，h5为base64，小程序为临时图片
+   * @description 获取绘制生成的图片相关数据，tempFilePath在h5为base64，小程序为临时图片，由于canvasToTempFilePath在部分小程序IDE无法调试
    */
-  getImage: () => Promise<string>
+  getImage: () => Promise<{
+    base64: string
+    tempFilePath: string
+    canvas: HTMLCanvasElement
+  }>
   /**
    * @description 清除画布方法
    */

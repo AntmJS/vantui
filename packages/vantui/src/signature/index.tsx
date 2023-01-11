@@ -7,9 +7,10 @@ import {
   ForwardedRef,
   useImperativeHandle,
 } from 'react'
-import Taro, { CanvasContext } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { View, Canvas } from '@tarojs/components'
 import { ISignatureProps, ISignatureInstance } from '../../types/signature'
+import { requestAnimationFrame } from '../common/utils'
 
 const defaultProps = {
   canvasId: 'spcanvas',
@@ -33,7 +34,7 @@ const Signature = forwardRef(function Signature(
   const wrapRef = useRef<HTMLDivElement>(null)
   const [canvasHeight, setCanvasHeight] = useState(0)
   const [canvasWidth, setCanvasWidth] = useState(0)
-  const ctx = useRef<CanvasContext | null>(null)
+  const ctx = useRef<any>(null)
   const [compIndex] = useState(componentIndex++)
 
   const startEventHandler = () => {
@@ -46,16 +47,16 @@ const Signature = forwardRef(function Signature(
 
   const moveEventHandler = (event: any) => {
     if (ctx.current) {
-      const evt = event.changedTouches[0]
-      let mouseX = evt.x || evt.clientX
-      let mouseY = evt.y || evt.clientY
+      requestAnimationFrame(() => {
+        const evt = event.changedTouches[0]
+        let mouseX = evt.x || evt.clientX
+        let mouseY = evt.y || evt.clientY
 
-      if (Taro.getEnv() === 'WEB' && canvasRef.current) {
-        const coverPos = canvasRef.current.getBoundingClientRect()
-        mouseX = evt.clientX - coverPos.left
-        mouseY = evt.clientY - coverPos.top
-      }
-      Taro.nextTick(() => {
+        if (Taro.getEnv() === 'WEB' && canvasRef.current) {
+          const coverPos = canvasRef.current.getBoundingClientRect()
+          mouseX = evt.clientX - coverPos.left
+          mouseY = evt.clientY - coverPos.top
+        }
         ctx.current?.lineTo(mouseX, mouseY)
         ctx.current?.stroke()
       })
@@ -71,8 +72,14 @@ const Signature = forwardRef(function Signature(
     }
   }
 
-  const getImage = (): Promise<string> => {
+  const getImage = (): Promise<{
+    base64: string
+    tempFilePath: string
+    canvas: HTMLCanvasElement
+  }> => {
     return new Promise((resolve, reject) => {
+      const base64 = ctx.current?.canvas?.toDataURL(`image/${props.type}`, 0.8)
+
       Taro.createSelectorQuery()
         .select(`#${canvasId}${compIndex}`)
         .fields({
@@ -80,12 +87,26 @@ const Signature = forwardRef(function Signature(
           size: true,
         })
         .exec((res) => {
+          if (
+            process.env.NODE_ENV === 'development' &&
+            ['alipay', 'tt', 'swan', 'kwai', 'dd'].includes(
+              process.env.TARO_ENV,
+            )
+          ) {
+            console.warn(
+              `@anmjs/vantui: signature组件调用了canvasToTempFilePath， 当前IDE不支持调试，须在真机上调试`,
+            )
+          }
           Taro.canvasToTempFilePath({
             canvas: res[0].node,
             fileType: props.type,
             canvasId: `${canvasId}${compIndex}`,
             success: (res) => {
-              resolve(res.tempFilePath)
+              resolve({
+                tempFilePath: res.tempFilePath,
+                base64: base64,
+                canvas: ctx.current?.canvas,
+              })
             },
             fail: (err) => {
               console.error(`@anmjs/vantui: signature 转换图片失败:`, err)
@@ -97,19 +118,21 @@ const Signature = forwardRef(function Signature(
   }
 
   const canvasSetting = (canvasDom: any, width: number, height: number) => {
-    const canvas = canvasDom
-    canvas.current = canvas
+    if (canvasDom) {
+      const canvas = canvasDom
+      canvas.current = canvas
 
-    ctx.current = canvas.getContext('2d')
-    setCanvasWidth(width)
-    setCanvasHeight(height)
-    canvas.width = width
-    canvas.height = height
-    if (ctx.current) {
-      ctx.current.clearRect(0, 0, width, height)
-      ctx.current.beginPath()
-      ctx.current.lineWidth = lineWidth as number
-      ctx.current.strokeStyle = strokeStyle as string
+      ctx.current = canvas.getContext('2d')
+      setCanvasWidth(width)
+      setCanvasHeight(height)
+      canvas.width = width
+      canvas.height = height
+      if (ctx.current) {
+        ctx.current.clearRect(0, 0, width, height)
+        ctx.current.beginPath()
+        ctx.current.lineWidth = lineWidth as number
+        ctx.current.strokeStyle = strokeStyle as string
+      }
     }
   }
 
