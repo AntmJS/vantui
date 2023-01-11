@@ -112,10 +112,10 @@ function Demo() {
 
 ### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/signature.d.ts)
 
-| 方法     | 说明                                               | 类型                                               |
-| -------- | -------------------------------------------------- | -------------------------------------------------- |
-| getImage | 获取绘制生成的图片，h5 为 base64，小程序为临时图片 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;Promise<string><br/>_ |
-| clear    | 清除画布方法                                       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_            |
+| 方法     | 说明                                                                                                                            | 类型                                                                                                                                                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| getImage | 获取绘制生成的图片相关数据，tempFilePath 在 h5 为 base64，小程序为临时图片，由于 canvasToTempFilePath 在部分小程序 IDE 无法调试 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;Promise<{<br/>&nbsp;&nbsp;&nbsp;&nbsp;base64:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;tempFilePath:&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;canvas:&nbsp;HTMLCanvasElement<br/>&nbsp;&nbsp;}><br/>_ |
+| clear    | 清除画布方法                                                                                                                    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                          |
 
 ### 样式变量
 
