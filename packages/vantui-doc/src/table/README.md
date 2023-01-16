@@ -116,6 +116,7 @@ function Demo() {
       dataSource={state.dataSource}
       sortChange={sortAction}
       loading={state.loading}
+      scroll={{ x: 500 }}
     />
   )
 }
