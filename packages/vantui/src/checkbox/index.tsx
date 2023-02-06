@@ -22,7 +22,7 @@ export function Checkbox(
   const {
     name,
     disabled,
-    checkedColor = '#1989fa',
+    checkedColor = '',
     labelPosition = 'right',
     labelDisabled,
     shape = 'round',
