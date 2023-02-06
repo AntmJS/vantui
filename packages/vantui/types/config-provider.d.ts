@@ -11,8 +11,10 @@ export interface ConfigProviderProps extends ViewProps {
   themeVars: IThemeVars
   children: ReactNode
 }
-
-type IThemeVars = {
+/**
+ * @forbidToMd true
+ */
+export type IThemeVars = {
   actionSheetMaxHeight: string
   actionSheetHeaderHeight: string
   actionSheetHeaderFontSize: string

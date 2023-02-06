@@ -51,6 +51,7 @@ function createMd(obj, compName) {
   for (const Dkey in obj) {
     const item = obj[Dkey]
     if (!Object.keys(item).length) continue
+    if (item.forbidToMd__) continue
     mdRes +=
       `### ${
         item['title__'] && typeof item['title__'] === 'string'
