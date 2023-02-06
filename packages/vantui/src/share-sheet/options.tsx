@@ -17,10 +17,14 @@ export default function Index(props: ShareSheetOption) {
             className="van-share-sheet__button"
             open-type={item.openType || ''}
           >
-            <Image
-              src={computed.getIconURL(item.icon)}
-              className="van-share-sheet__icon"
-            />
+            {item.renderIcon ? (
+              item.renderIcon
+            ) : (
+              <Image
+                src={computed.getIconURL(item.icon)}
+                className="van-share-sheet__icon"
+              />
+            )}
             {item.name && (
               <View className="van-share-sheet__name">{item.name}</View>
             )}

@@ -188,14 +188,37 @@ function Demo() {
 | description | - | _&nbsp;&nbsp;string<br/>_ |
 | openType | - | _&nbsp;&nbsp;string<br/>_ |
 
+### ShareSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)
+
+| 参数                | 说明                   | 类型                                                                                                                                                         | 默认值 | 必填    |
+| ------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
+| show                | 是否展示               | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
+| overlayStyle        | 蒙层样式               | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
+| zIndex              | 蒙层样式               | _&nbsp;&nbsp;number<br/>_                                                                                                                                    | 2      | `false` |
+| title               | 标题                   | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
+| overlay             | 是否展示蒙层           | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
+| safeAreaInsetBottom | 是否开启底部安全区适配 | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
+| closeOnClickOverlay | 是否点击关闭蒙层       | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
+| duration            | 动画时间（ms）         | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                          | 300    | `false` |
+| onClickOverlay      | -                      | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -      | `false` |
+| onCancel            | -                      | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -      | `false` |
+| onSelect            | -                      | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ShareSheetOptionItem<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_                         | -      | `false` |
+| onClose             | -                      | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -      | `false` |
+| renderTitle         | 自定义渲染标题         | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                 | -      | `false` |
+| renderDescription   | 自定义渲染内容         | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                 | -      | `false` |
+| cancelText          | 取消按钮名称           | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
+| description         | 描述                   | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
+| options             | 选项                   | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[][]<br/>_ | -      | `false` |
+
 ### ShareSheetOptionItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)
 
-| 参数        | 说明 | 类型                      |
-| ----------- | ---- | ------------------------- |
-| name        | -    | _&nbsp;&nbsp;string<br/>_ |
-| icon        | -    | _&nbsp;&nbsp;string<br/>_ |
-| description | -    | _&nbsp;&nbsp;string<br/>_ |
-| openType    | -    | _&nbsp;&nbsp;string<br/>_ |
+| 参数        | 说明                                                   | 类型                         |
+| ----------- | ------------------------------------------------------ | ---------------------------- |
+| name        | 名称                                                   | _&nbsp;&nbsp;string<br/>_    |
+| icon        | 图标，可以是`url`                                      | _&nbsp;&nbsp;string<br/>_    |
+| renderIcon  | 自定义 icon 位置渲染，可以覆盖 icon 属性               | _&nbsp;&nbsp;ReactNode<br/>_ |
+| description | 秒速                                                   | _&nbsp;&nbsp;string<br/>_    |
+| openType    | 按钮 `open-type`，可用于实现分享功能，可选值为 `share` | _&nbsp;&nbsp;string<br/>_    |
 
 ### ShareSheetOption [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)
 
@@ -204,28 +227,6 @@ function Demo() {
 | showBorder | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                             |
 | options    | -    | _&nbsp;&nbsp;ShareSheetOptionItem[]<br/>_                                                                                                                              |
 | onSelect   | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;option:&nbsp;ShareSheetOptionItem,<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
-
-### ShareSheetProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/share-sheet.d.ts)
-
-| 参数                | 说明 | 类型                                                                                                                                                         | 默认值 | 必填    |
-| ------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
-| show                | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
-| overlayStyle        | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
-| zIndex              | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                    | -      | `false` |
-| title               | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
-| overlay             | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
-| safeAreaInsetBottom | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
-| closeOnClickOverlay | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                   | -      | `false` |
-| duration            | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                          | -      | `false` |
-| onClickOverlay      | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -      | `false` |
-| onCancel            | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -      | `false` |
-| onSelect            | -    | _&nbsp;&nbsp;(event:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ShareSheetOptionItem<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_                         | -      | `false` |
-| onClose             | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                      | -      | `false` |
-| renderTitle         | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                 | -      | `false` |
-| renderDescription   | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                 | -      | `false` |
-| cancelText          | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
-| description         | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                    | -      | `false` |
-| options             | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ShareSheetOptionItem[][]<br/>_ | -      | `false` |
 
 ### 样式变量
 
