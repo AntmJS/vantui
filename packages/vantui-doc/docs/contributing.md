@@ -21,9 +21,48 @@
 
 1. `packages/vantui-cli`下执行: `yarn build`
 2. `packages/vantui`下执行: `yarn watch`
-3. `packages/vantui-doc`下执行: `yarn mdcode-watch` ，时时将文档代码同步到 demo 项目中，单纯修复 bug，不需要改案例代码可执行`yarn mdcode-create`
-4. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`， 修改代码添加新功能并且需要新增或更改文档代码，请在`vantui-doc`下的 readme 里面书写
-5. 代码提交前复制项目内的`_antm.config.ts`, 移除`下划线`, 向群主索要 `webhooks url`的 access_token， 或者自己本地执行`eslint`后`git commit -m xxxx -n`强制提交, xxx 须按照 commit 规范：新功能： feat: xxx 、 修复：fix: xxx、格式：style: xxx、辅助工具：chore: xxx、重构：refactor: xxx、 测试用例：test: xxx、文档：docs: xxx
+3. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`, 如果要修改文档代码请在`packages/vantui-doc`下修改，文档代码会自动同步到`vantui-demo`项目
+
+---
+
+- 代码提交:
+
+---
+
+- 内部开发成员提交：复制`_antm.config.js`文件，重命名移除`_`, 然后按`message`规范提交
+
+- fork 的项目的提交: 本地执行`eslint`后`git commit -m xxxxmessage -n`强制提交
+
+`message` 须按照下面规范, 如新功能`git commit -m "feat:xxxx" -n`
+
+```json
+{
+  "feat": {
+    "description": "新功能（feature）"
+  },
+  "fix": {
+    "description": "修补bug"
+  },
+  "style": {
+    "description": "格式（不影响代码运行的变动）"
+  },
+  "chore": {
+    "description": "构建过程或辅助工具的变动"
+  },
+  "typings": {
+    "description": "Typescript 类型错误"
+  },
+  "docs": {
+    "description": "文档（documentation）"
+  },
+  "refactor": {
+    "description": "重构（既不是新增功能，也不是修改bug的代码变动）"
+  },
+  "test": {
+    "description": "增加或修改测试用例"
+  }
+}
+```
 
 ### 组件 README 代码同步规则
 

@@ -2,8 +2,6 @@
 
 rm -rf ./site
 
-npx antm-vantui-cli mdcode --mode create
-
 npx antm-vantui-cli docs --mode production
 
 npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'
