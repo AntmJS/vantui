@@ -112,10 +112,17 @@ class FormStore {
     model: Record<string, any>,
   ): void {
     const name = Array.isArray(name_) ? name_.join('.') : name_
+    let defaultFormValue_ = this.defaultFormValue
+    if (name.includes('.') && !model['mutiLevel']) {
+      defaultFormValue_ = this.transformToMultiLevelData(
+        this.defaultFormValue,
+        name.split('.')[0],
+      )
+    }
 
-    if (this.defaultFormValue[name]) {
+    if (defaultFormValue_[name]) {
       if (!this.model[name] || this.model[name].value === undefined) {
-        model['value'] = this.defaultFormValue[name]
+        model['value'] = defaultFormValue_[name]
       }
     }
     if (!model['value'] && this.model[name])
@@ -133,9 +140,16 @@ class FormStore {
       }
     }
 
+    const shouldUpdate =
+      !this.model[name] || this.model[name].value === undefined
+
     const validate = FormStore.createValidate(model)
     this.model[name] = validate
     this.control[name] = control
+
+    if (shouldUpdate) {
+      control?.['changeValue']()
+    }
   }
 
   unRegisterValidate(name_: Iname) {
@@ -162,7 +176,7 @@ class FormStore {
 
   setFields(object: Record<string, any>) {
     if (typeof object !== 'object') return
-    this.transformSingellevelData(object, this.multiLevelKeys)
+    this.transformModelToSingelLevelData(object, this.multiLevelKeys)
 
     for (const key in this.model) {
       const item = this.model[key]
@@ -246,8 +260,8 @@ class FormStore {
     }
   }
 
-  // 多层级数据结构扁平化
-  transformSingellevelData(
+  // model数据结构扁平化
+  transformModelToSingelLevelData(
     data: Record<string, any>,
     multiLevelKeys: string[],
   ) {
@@ -280,6 +294,31 @@ class FormStore {
     }
 
     unitWork('', data)
+  }
+  // 目标数据的多层数据扁平化
+  transformToMultiLevelData(data, targetKey) {
+    const res = {}
+    const work = function (prevKey, dd) {
+      if (toString.call(dd) === '[object Object]') {
+        for (const k in dd) {
+          work(prevKey ? `${prevKey}.${k}` : k, dd[k])
+        }
+      } else if (toString.call(dd) === '[object Array]') {
+        for (let i = 0; i < dd.length; i++) {
+          work(prevKey ? `${prevKey}.${i}` : i, dd[i])
+        }
+      } else {
+        res[prevKey] = dd
+      }
+    }
+
+    for (const kk in data) {
+      if (targetKey === kk) {
+        work(kk, data[kk])
+      }
+    }
+
+    return res
   }
 
   getFieldsValue() {
