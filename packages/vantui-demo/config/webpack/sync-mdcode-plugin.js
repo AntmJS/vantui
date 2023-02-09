@@ -12,13 +12,14 @@ const { format } = require('prettier')
 const pages = {}
 const vantuiDemoDir = path.resolve(__dirname, '../../..')
 const pagePath = path.join(__dirname, '../../src/pages')
-const configPath = path.join(__dirname, '../../config.json')
-const appConfigPath = path.join(__dirname, '../../app.config.js')
+const configPath = path.join(__dirname, '../../src/config.json')
+const appConfigPath = path.join(__dirname, '../../src/app.config.js')
 const withTabPages = ['icon', 'power-scroll-view']
 const markdownCodeSrc = path.join(vantuiDemoDir, '/vantui-doc/src')
 const vantConfigPath = path.join(vantuiDemoDir, '/vant.config.js')
 const fromTaroComps = ['View', 'Text', 'Input', 'Block']
 let pluginOptions = {}
+const vantConfig = require('../../../vantui-doc/vant.config')
 
 module.exports = function (ctx, options) {
   pluginOptions = options
@@ -28,9 +29,11 @@ module.exports = function (ctx, options) {
   })
 }
 
-function beginWork() {
+async function beginWork() {
   const { watch } = pluginOptions
   const spinner = ora(`文档代码同步到vantui-demo`).start()
+
+  await createBaseFiles()
 
   return new Promise((resolve) => {
     glob(`${markdownCodeSrc}/**/README.md`, async function (err, path) {
@@ -138,7 +141,7 @@ function getCode(targetPath) {
 
 // 创建路由菜单文件和路由文件
 async function createBaseFiles() {
-  const nav = res.site.nav
+  const nav = vantConfig.site.nav
   let routers = []
 
   const navFilter = nav.filter((item) => {
