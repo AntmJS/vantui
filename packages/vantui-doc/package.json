@@ -5,8 +5,6 @@
   "description": "",
   "scripts": {
     "dev": "node ./scripts/md && npx antm-vantui-cli docs --mode development",
-    "mdcode-create": "npx antm-vantui-cli mdcode --mode create",
-    "mdcode-watch": "npx antm-vantui-cli mdcode --mode watch",
     "build": "node ./scripts/md && sh ./build.sh",
     "test:coverage": "open test/coverage/index.html",
     "test:watch": "",
