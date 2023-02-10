@@ -129,7 +129,7 @@ const config = {
       },
     },
     router: {
-      mode: 'browser',
+      mode: 'hash',
     },
     devServer: {
       port: 10086,
@@ -170,6 +170,12 @@ const config = {
     [npath.join(process.cwd(), 'config/webpack/configPlugin')],
     '@tarojs/plugin-platform-alipay-dd',
     ['@tarojs/plugin-platform-kwai'],
+    [
+      npath.join(process.cwd(), 'config/webpack/sync-mdcode-plugin'),
+      {
+        watch: process.env.NODE_ENV === 'development',
+      },
+    ],
   ],
 }
 
