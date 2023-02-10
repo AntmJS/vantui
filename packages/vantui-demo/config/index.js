@@ -35,6 +35,10 @@ const config = {
     DEPLOY_VERSION: JSON.stringify(version),
   },
   alias: {
+    '@babel/runtime': npath.resolve(
+      process.cwd(),
+      '../../node_modules/@babel/runtime',
+    ),
     '@': npath.resolve(process.cwd(), 'src'),
   },
   defineConstants: {},
