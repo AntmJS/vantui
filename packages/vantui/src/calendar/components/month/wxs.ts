@@ -1,4 +1,5 @@
 import * as utils from '../../utils'
+import { style as wxsStyle } from '../../../wxs/style'
 
 function getMark(date: any) {
   return new Date(date).getMonth() + 1
@@ -45,11 +46,13 @@ function getDayStyle(
     }
   }
 
-  return style
-    .map(function (item) {
-      return item.join(':')
-    })
-    .join(';')
+  return wxsStyle(
+    style
+      .map(function (item) {
+        return item.join(':')
+      })
+      .join(';'),
+  )
 }
 
 function formatMonthTitle(date: any) {
@@ -57,7 +60,7 @@ function formatMonthTitle(date: any) {
   return date.getFullYear() + '年' + (date.getMonth() + 1) + '月'
 }
 
-function getMonthStyle(visible: boolean, date: any, rowHeight: number): string {
+function getMonthStyle(visible: boolean, date: any, rowHeight: number): any {
   if (!visible) {
     date = new Date(date)
 
@@ -68,10 +71,10 @@ function getMonthStyle(visible: boolean, date: any, rowHeight: number): string {
     const offset = new Date(date).getDay()
     const padding = Math.ceil((totalDay + offset) / 7) * rowHeight
 
-    return 'padding-bottom:' + padding + 'px'
+    return { paddingBottom: `${padding}px` }
   }
 
-  return ''
+  return {}
 }
 
 export { getMark, getDayStyle, formatMonthTitle, getMonthStyle }

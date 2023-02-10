@@ -57,13 +57,13 @@ export function Steps(props: StepsProps) {
               }
               style={
                 getStatus(index, active) === 'inactive'
-                  ? 'color: ' + inactiveColor
-                  : ''
+                  ? { color: inactiveColor }
+                  : {}
               }
             >
               <View
                 className="van-step__title"
-                style={index === active ? 'color: ' + activeColor : ''}
+                style={index === active ? { color: activeColor } : {}}
               >
                 <View>{item.text}</View>
                 <View className="desc-class">{item.desc}</View>
@@ -85,12 +85,12 @@ export function Steps(props: StepsProps) {
                     ) : (
                       <View
                         className="van-step__circle"
-                        style={
-                          'background-color: ' +
-                          (active !== undefined && index < active
-                            ? activeColor
-                            : inactiveColor)
-                        }
+                        style={{
+                          backgroundColor:
+                            active !== undefined && index < active
+                              ? activeColor
+                              : inactiveColor,
+                        }}
                       ></View>
                     )}
                   </>
@@ -107,12 +107,12 @@ export function Steps(props: StepsProps) {
                 {index !== steps.length - 1 && (
                   <View
                     className="van-step__line"
-                    style={
-                      'background-color: ' +
-                      (active !== undefined && index < active
-                        ? activeColor
-                        : inactiveColor)
-                    }
+                    style={{
+                      backgroundColor:
+                        active !== undefined && index < active
+                          ? activeColor
+                          : inactiveColor,
+                    }}
                   ></View>
                 )}
               </View>

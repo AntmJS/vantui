@@ -137,9 +137,7 @@ export function Tabbar(props: TabbarProps) {
       >
         {newChildren}
       </View>
-      {fixed && placeholder && (
-        <View style={'height: ' + height + 'px;'}></View>
-      )}
+      {fixed && placeholder && <View style={{ height: height + 'px;' }}></View>}
     </>
   )
 }

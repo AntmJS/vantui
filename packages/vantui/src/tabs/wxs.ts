@@ -46,7 +46,7 @@ function navStyle(color: any, type: any) {
 
 function trackStyle(data: any) {
   if (!data.animated) {
-    return ''
+    return {}
   }
 
   return style({

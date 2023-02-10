@@ -63,14 +63,17 @@ export function Skeleton(props: SkeletonProps) {
           className={
             'avatar-class ' + utils.bem('skeleton__avatar', [avatarShape])
           }
-          style={'width:' + avatarSize + ';height:' + avatarSize}
+          style={{
+            width: avatarSize,
+            height: avatarSize,
+          }}
         ></View>
       )}
       <View className={utils.bem('skeleton__content')}>
         {title && (
           <View
             className={'title-class ' + utils.bem('skeleton__title')}
-            style={'width:' + titleWidth}
+            style={{ width: titleWidth }}
           ></View>
         )}
         {rowArray.map((_item, index) => {
@@ -78,7 +81,7 @@ export function Skeleton(props: SkeletonProps) {
             <View
               key={index}
               className={'row-class ' + utils.bem('skeleton__row')}
-              style={'width:' + (isArray ? rowWidth[index] : rowWidth)}
+              style={{ width: isArray ? (rowWidth[index] as any) : rowWidth }}
             ></View>
           )
         })}

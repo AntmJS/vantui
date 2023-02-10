@@ -110,14 +110,14 @@ function Demo() {
           renderRightIcon={
             <Switch
               size="24px"
-              style="height: 26px"
+              style={{ height: '26px' }}
               checked={state.switch}
               activeColor="#ee0a24"
               onChange={() => changeState('switch', !state.switch)}
             />
           }
         ></Cell>
-        <View style="padding: 5px 16px;">
+        <View style={{ padding: '5px 16px' }}>
           <Button type="danger" block round onClick={onConfirm}>
             确认
           </Button>

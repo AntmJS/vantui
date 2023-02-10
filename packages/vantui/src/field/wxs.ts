@@ -9,7 +9,7 @@ function inputStyle(autosize: any) {
     })
   }
 
-  return ''
+  return {}
 }
 
 export { inputStyle }

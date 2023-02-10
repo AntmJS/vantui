@@ -106,7 +106,7 @@ export function ActionSheet(props: ActionSheetProps) {
                 <Button
                   key={index}
                   openType={disabled || loading ? undefined : openType}
-                  style={color ? 'color: ' + color : ''}
+                  style={{ color: color }}
                   className={
                     utils.bem('action-sheet__item', {
                       disabled: disabled || loading,

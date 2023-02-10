@@ -54,10 +54,7 @@ export function TreeSelect(props: TreeSelectProps) {
   }, [items, mainActiveIndex, setSubItems])
 
   return (
-    <View
-      className="van-tree-select"
-      style={'height: ' + utils.addUnit(height)}
-    >
+    <View className="van-tree-select" style={{ height: utils.addUnit(height) }}>
       <ScrollView scrollY className="van-tree-select__nav">
         <VanSidebar
           activeKey={mainActiveIndex}

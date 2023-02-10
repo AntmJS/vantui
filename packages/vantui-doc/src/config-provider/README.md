@@ -79,7 +79,7 @@ function Demo() {
             label="滑块"
             border={false}
             renderInput={
-              <View style="width: 100%">
+              <View style={{ width: '100%' }}>
                 <Slider
                   value={slider}
                   onChange={(e) => setSlider(e.detail)}
@@ -88,7 +88,7 @@ function Demo() {
             }
           ></Field>
         </CellGroup>
-        <View style="margin: 16px">
+        <View style={{ margin: '16px' }}>
           <Button round block type="primary">
             提交
           </Button>
@@ -106,7 +106,7 @@ function Demo() {
             label="滑块"
             border={false}
             renderInput={
-              <View style="width: 100%">
+              <View style={{ width: '100%' }}>
                 <Slider
                   value={slider}
                   onChange={(e) => setSlider(e.detail)}
@@ -115,7 +115,7 @@ function Demo() {
             }
           ></Field>
         </CellGroup>
-        <View style="margin: 16px">
+        <View style={{ margin: '16px' }}>
           <Button round block type="primary">
             提交
           </Button>

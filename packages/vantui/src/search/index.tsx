@@ -114,10 +114,13 @@ export function Search(props: SearchProps) {
           maxlength={maxlength}
           inputAlign={inputAlign}
           placeholder={placeholder}
-          placeholder-style={placeholderStyle}
+          placeholderStyle={placeholderStyle}
           renderLeftIcon={renderLeftIcon}
           renderRightIcon={renderRightIcon}
-          style="padding: 5px 10px 5px 0; background-color: transparent;"
+          style={{
+            padding: '5px 10px 5px 0',
+            backgroundColor: 'transparent',
+          }}
           onBlur={onBlur}
           onFocus={onFocus}
           onChange={_change}

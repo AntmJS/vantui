@@ -660,7 +660,7 @@ const Swiper = (
                       ? {
                           backgroundColor: propSwiper.paginationColor,
                         }
-                      : undefined
+                      : {}
                   }
                   className={classNames({
                     ['van-swiper__pagination-item']: true,

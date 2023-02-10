@@ -67,7 +67,7 @@ export function Button(props: ButtonProps) {
         {...others}
       ></TaroButton>
       {loading ? (
-        <View style="display: flex">
+        <View style={{ display: 'flex' }}>
           <Loading
             className="loading-class"
             size={loadingSize}
@@ -90,7 +90,7 @@ export function Button(props: ButtonProps) {
               name={icon}
               classPrefix={classPrefix}
               className="van-button__icon"
-              style="line-height: inherit;"
+              style={{ lineHeight: 'inherit' }}
             ></Icon>
           )}
           <View className="van-button__text">{children}</View>

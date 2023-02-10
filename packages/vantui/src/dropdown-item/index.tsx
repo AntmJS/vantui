@@ -196,7 +196,7 @@ function Index(
       <VanPopup
         show={showPopup}
         style={utils.style([{ position: 'absolute' }, popupStyle])}
-        overlayStyle="position: absolute;"
+        overlayStyle={{ position: 'absolute' }}
         overlay={!!parentInstance.overlay}
         position={parentInstance.direction === 'down' ? 'top' : 'bottom'}
         duration={transition ? parentInstance.duration : 0}
@@ -224,8 +224,8 @@ function Index(
                     className="van-dropdown-item__title"
                     style={
                       item.value === value_
-                        ? 'color:' + parentInstance.activeColor
-                        : ''
+                        ? { color: parentInstance.activeColor }
+                        : {}
                     }
                   >
                     {item.text}

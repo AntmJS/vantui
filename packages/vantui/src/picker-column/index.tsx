@@ -108,6 +108,7 @@ function Index(
       const deltaY = event.touches[0].clientY - startY
       setOffset(startOffset + deltaY)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [startOffset, itemHeight, options, startY],
   )
 

@@ -155,13 +155,13 @@ export function PowerScrollView<T extends number | undefined>(
   const [distance, setDistance] = useState(0)
   const [duration, setDuration] = useState(0)
   const touch = useTouch()
-  const headStyle = useMemo((): { height: string } | string => {
+  const headStyle = useMemo((): { height: string } | any => {
     if (headHeight !== DEFAULT_HEAD_HEIGHT) {
       return {
         height: `${headHeight}px`,
       }
     }
-    return ''
+    return {}
   }, [headHeight])
 
   const getScrollTop = useCallback(async () => {

@@ -418,7 +418,7 @@ function Demo() {
                     style={
                       status === 'pulling'
                         ? { transform: `scale(${distance / 80})` }
-                        : ''
+                        : {}
                     }
                   />
                 )

@@ -318,12 +318,10 @@ export function IndexBar(props: IndexBarProps) {
               <View
                 key={index}
                 className="van-index-bar__index"
-                style={
-                  'z-index: ' +
-                  (zIndex + 1) +
-                  '; color: ' +
-                  (activeAnchorIndex === index ? highlightColor : '')
-                }
+                style={{
+                  zIndex: zIndex + 1,
+                  color: activeAnchorIndex === index ? highlightColor : '',
+                }}
                 data-index={index}
               >
                 {item}

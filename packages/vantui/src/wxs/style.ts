@@ -36,7 +36,7 @@ function cssStyle(styles: any): Record<string, any> {
   return styles
 }
 
-function style(styles: any): string {
+function _style(styles: any): string {
   if (array.isArray(styles)) {
     return (
       styles
@@ -65,6 +65,10 @@ function style(styles: any): string {
   }
 
   return styles || ''
+}
+
+function style(styles: any): Record<string, any> {
+  return cssStyle(_style(styles))
 }
 
 export { style, cssStyle }

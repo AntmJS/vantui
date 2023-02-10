@@ -58,7 +58,7 @@ export interface CellProps extends ViewProps {
   /**
    * @description
    */
-  style?: string
+  style?: React.CSSProperties
   /**
    * @description 箭头方向
    *

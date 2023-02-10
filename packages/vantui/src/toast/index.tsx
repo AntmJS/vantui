@@ -95,6 +95,7 @@ export function Toast(props: ToastProps) {
 
   const tClearListener = useCallback((toastOptions) => {
     clear(toastOptions)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const tSetDftOptsListener = useCallback((options: any) => {
@@ -129,7 +130,7 @@ export function Toast(props: ToastProps) {
         <VanOverlay
           show={state.show}
           zIndex={zIndex}
-          style={state.mask ? '' : 'background-color: transparent;'}
+          style={state.mask ? {} : { backgroundColor: 'transparent' }}
         ></VanOverlay>
       )}
       <VanTransition

@@ -70,8 +70,8 @@ function Index(
         : 'transform .6s cubic-bezier(0.18, 0.89, 0.32, 1)'
       const wrapperStyle_ = {
         ...wrapperStyle,
-        '-webkit-transform': transform,
-        '-webkit-transition': transition,
+        WebkitTransform: transform,
+        WebkitTransition: transition,
         transform: transform,
         transition: transition,
       }

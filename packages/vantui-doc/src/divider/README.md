@@ -94,7 +94,7 @@ function Demo() {
     <View>
       <Divider
         contentPosition="center"
-        style="color: #1989fa; borderColor: #1989fa; fontSize: 18px;"
+        style={{ color: '#1989fa', borderColor: '#1989fa', fontSize: '18px' }}
       >
         文本
       </Divider>

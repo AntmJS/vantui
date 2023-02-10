@@ -125,7 +125,7 @@ function Demo() {
 | leftIcon         | -    | _&nbsp;&nbsp;string<br/>_                                                                                | -      | `false` |
 | rightIcon        | -    | _&nbsp;&nbsp;string<br/>_                                                                                | -      | `false` |
 | placeholder      | -    | _&nbsp;&nbsp;string<br/>_                                                                                | -      | `false` |
-| placeholderStyle | -    | _&nbsp;&nbsp;string<br/>_                                                                                | -      | `false` |
+| placeholderStyle | -    | _&nbsp;&nbsp;React.CSSProperties<br/>_                                                                   | -      | `false` |
 | actionText       | -    | _&nbsp;&nbsp;string<br/>_                                                                                | -      | `false` |
 | background       | -    | _&nbsp;&nbsp;string<br/>_                                                                                | -      | `false` |
 | maxlength        | -    | _&nbsp;&nbsp;number<br/>_                                                                                | -      | `false` |

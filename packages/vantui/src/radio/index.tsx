@@ -129,7 +129,7 @@ export function Radio(props: RadioProps) {
       )}
       <View
         className="van-radio__icon-wrap"
-        style={'font-size: ' + utils.addUnit(iconSize)}
+        style={{ fontSize: +utils.addUnit(iconSize) }}
         onClick={onClick}
       >
         {renderIcon || (

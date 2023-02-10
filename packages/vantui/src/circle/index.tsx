@@ -249,7 +249,10 @@ export function Circle(props: CircleProps) {
         height={size}
         nativeProps={{ width: size, height: size }}
         className={`van-circle__canvas ${indexRef.current}`}
-        style={'width: ' + `${size}px` + ';height:' + `${size}px`}
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+        }}
         id={indexRef.current}
         type="2d"
         canvasId={indexRef.current}

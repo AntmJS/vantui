@@ -181,15 +181,15 @@ export function Checkbox(
                 },
               ]) + ' icon-class'
             }
-            style={
+            style={utils.style(
               computed.iconStyle({
                 checkedColor,
                 value: state.value,
                 disabled,
                 parentDisabled: state.parentDisabled,
                 iconSize,
-              }) + ';line-height:1.25em;'
-            }
+              }) + ';line-height:1.25em;',
+            )}
           ></VanIcon>
         )}
       </View>

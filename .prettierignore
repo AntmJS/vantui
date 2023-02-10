@@ -28,6 +28,7 @@ packages/vantui-doc/es
 packages/vantui-doc/dist
 packages/vantui-doc/site
 packages/vantui/src/style/components/iconfont.less
+packages/vantui-demo/.swc
 packages/vantui-demo/weapp
 packages/vantui-demo/alipay
 packages/vantui-demo/swan

@@ -96,14 +96,14 @@ function Demo() {
           <Image
             src="https://img.yzcdn.cn/vant/user-inactive.png"
             mode="aspectFit"
-            style="width: 30px; height: 18px;"
+            style={{ width: '30px', height: '18px' }}
           ></Image>
         }
         renderIconActive={
           <Image
             src="https://img.yzcdn.cn/vant/user-active.png"
             mode="aspectFit"
-            style="width: 30px; height: 18px;"
+            style={{ width: '30px', height: '18px' }}
           ></Image>
         }
       >

@@ -14,7 +14,7 @@ export interface FieldProps extends ViewProps {
   /**
    * @description placeholder样式
    */
-  placeholderStyle?: string
+  placeholderStyle?: React.CSSProperties
   /**
    * @description placeholder的样式名
    */
@@ -156,7 +156,7 @@ export interface FieldProps extends ViewProps {
    * left
    */
   inputAlign?: string
-  style?: string
+  style?: React.CSSProperties
   /**
    * @description 错误信息
    */

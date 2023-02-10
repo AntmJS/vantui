@@ -164,7 +164,7 @@ export function Notify(props: NotifyProps) {
         })}
       >
         {state.safeAreaInsetTop && (
-          <View style={'height: ' + state.statusBarHeight + 'px'}></View>
+          <View style={{ height: state.statusBarHeight + 'px' }}></View>
         )}
         <Text>{state.message}</Text>
       </View>

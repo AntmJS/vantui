@@ -22,7 +22,7 @@ function contentStyle(data: any) {
         bottom: addUnit(data.gutter),
         height: 'auto',
       })
-    : ''
+    : {}
 }
 
 export { wrapperStyle, contentStyle }

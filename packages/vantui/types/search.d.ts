@@ -14,7 +14,7 @@ export interface SearchProps extends ViewProps {
   leftIcon?: string
   rightIcon?: string
   placeholder?: string
-  placeholderStyle?: string
+  placeholderStyle?: React.CSSProperties
   actionText?: string
   background?: string
   maxlength?: number

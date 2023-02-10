@@ -58,7 +58,7 @@ function Demo() {
       {[1, 2, 3].map((item, index) => (
         <GridItem key={index} forItem="index">
           <Image
-            style="width: 100%; height: 90px;"
+            style={{ width: '100%', height: '90px' }}
             src={`https://img.yzcdn.cn/vant/apple-${index + 1}.jpg`}
           />
         </GridItem>

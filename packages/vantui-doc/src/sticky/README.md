@@ -24,7 +24,7 @@ import { Sticky } from '@antmjs/vantui'
 function Demo() {
   return (
     <Sticky>
-      <Button type="primary" style="margin-left: 15px">
+      <Button type="primary" style={{ marginLeft: '15px' }}>
         基础用法
       </Button>
     </Sticky>
@@ -40,7 +40,7 @@ function Demo() {
 function Demo() {
   return (
     <Sticky offsetTop={50}>
-      <Button type="primary" style="margin-left: 120px">
+      <Button type="primary" style={{ marginLeft: '120px' }}>
         吸顶距离
       </Button>
     </Sticky>
@@ -56,9 +56,9 @@ function Demo() {
 import { createSelectorQuery } from '@tarojs/taro'
 function Demo() {
   return (
-    <View id="stick-in-view" style="height: 150px;background:#fff;">
+    <View id="stick-in-view" style={{ height: '150px', background: '#fff' }}>
       <Sticky container={() => createSelectorQuery().select(`#stick-in-view`)}>
-        <Button type="primary" style="margin-left: 250px">
+        <Button type="primary" style={{ marginLeft: '250px' }}>
           吸顶距离
         </Button>
       </Sticky>

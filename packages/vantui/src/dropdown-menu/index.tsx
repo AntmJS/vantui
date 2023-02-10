@@ -195,7 +195,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
                   down: item.showPopup === (direction === 'down'),
                 })
               }
-              style={item.showPopup ? 'color:' + activeColor : ''}
+              style={item.showPopup ? { color: activeColor } : {}}
             >
               <View className={`van-ellipsis ${item.titleClass || ''}`}>
                 {computed.displayTitle(item)}
