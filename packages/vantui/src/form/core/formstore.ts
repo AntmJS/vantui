@@ -114,7 +114,7 @@ class FormStore {
     const name = Array.isArray(name_) ? name_.join('.') : name_
     let defaultFormValue_ = this.defaultFormValue
     if (name.includes('.') && !model['mutiLevel']) {
-      defaultFormValue_ = this.transformToMultiLevelData(
+      defaultFormValue_ = this.transformToSingleLevelData(
         this.defaultFormValue,
         name.split('.')[0],
       )
@@ -296,7 +296,7 @@ class FormStore {
     unitWork('', data)
   }
   // 目标数据的多层数据扁平化
-  transformToMultiLevelData(data, targetKey) {
+  transformToSingleLevelData(data, targetKey) {
     const res = {}
     const work = function (prevKey, dd) {
       if (toString.call(dd) === '[object Object]') {
