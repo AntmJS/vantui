@@ -4,12 +4,12 @@ import { get } from 'lodash-es'
 import { getVantConfig } from '../common/index.js'
 import { STYLE_DIR, SRC_DIR } from './constant.js'
 
-type CSS_LANG = 'css' | 'less' | 'scss'
+type CSS_LANG = 'css' | 'less' | 'scss' | 'sass'
 
 function getCssLang(): CSS_LANG {
   const vantConfig = getVantConfig()
   const preprocessor = get(vantConfig, 'build.css.preprocessor', 'less')
-
+  // @ts-ignore
   if (preprocessor === 'sass') {
     return 'scss'
   }
