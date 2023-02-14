@@ -240,7 +240,7 @@ function Demo() {
 使用饿了么开源地区数据, 数据过多的时候会自动滚动到选中元素，由于 tab 的 ScrollView 和垂直的 scrollView 可能冲突，所以垂直的自动滚动存在延迟，如果不需要自动滚动，可以使用`scrollIntoView`false 关闭
 
 ```jsx
-import { regionData, CodeToText } from 'element-china-area-data/src/app'
+import { regionData, CodeToText } from 'element-china-area-data'
 
 function Demo() {
   const [isVisible, setIsVisible] = react.useState(false)
