@@ -82,22 +82,51 @@ export function FormItem(props: FormItemProps) {
 
   const innnerValue = dispatch({ type: 'getFieldValue' }, _name)
 
+  const nextHandle = useCallback(
+    (value, e, trigger_) => {
+      dispatch({ type: 'setFieldsValue' }, _name, value)
+      if (trigger_) trigger_(e)
+    },
+    [_name, dispatch],
+  )
+
+  const defaultValueFormat = useCallback((e, _name, _formInstance) => {
+    return e.detail
+  }, [])
+
   const getControlled = useCallback(
     (child: any) => {
       const props = { ...child.props }
       if (!_name) return props
       const trigger_ = props[trigger]
 
-      const handleChange = async (e: any) => {
-        let value = null
+      const isWeappInput =
+        isValidElement(children) &&
+        children?.type === 'input' &&
+        process.env.TARO_ENV === 'weapp'
 
-        if (valueFormat) {
-          value = await valueFormat(e, _name, formInstance)
+      const valueFormat_ = valueFormat || defaultValueFormat
+
+      const handleChange = (e: any) => {
+        const result = valueFormat_(e, _name, formInstance)
+        // 兼容注入的Promise
+        if (result?.then && result?.catch) {
+          if (isWeappInput) {
+            console.warn(
+              `微信端Input组件请尽量不要异步函数处理，由于FormItem代理的Input会基于微信端做性能优化，
+              请查阅https://developers.weixin.qq.com/miniprogram/dev/component/input.html`,
+            )
+          }
+          result.then((v) => {
+            nextHandle(v, e, trigger_)
+          })
         } else {
-          value = e.detail
+          nextHandle(result, e, trigger_)
+          if (isWeappInput) {
+            // 微信端Input输入存在性能问题，微信2.1版本后基于bindInput返回值做优化
+            return result
+          }
         }
-        dispatch({ type: 'setFieldsValue' }, _name, value)
-        if (trigger_) trigger_(e)
       }
       props[trigger] = handleChange
       if (required || rules) {
