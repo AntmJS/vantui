@@ -44,6 +44,7 @@ export async function compileScript(
             runtime: 'automatic',
           },
         },
+        externalHelpers: true,
       },
       module: {
         type: process.env['BABEL_MODULE'] === 'commonjs' ? 'commonjs' : 'es6',
