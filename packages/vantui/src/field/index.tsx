@@ -139,6 +139,8 @@ export function Field(props: FieldProps) {
     const { value = '' } = event.detail || {}
     setShowClear(value)
     emitChange(event)
+
+    if (process.env.TARO_ENV === 'weapp') return value // 微信2.1优化输入性能
   }
   const _focus = function (event: any) {
     ref.current.focused = true
