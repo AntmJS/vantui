@@ -58,8 +58,8 @@
   "devDependencies": {
     "@antmjs/iconfont": "^2.2.1",
     "@antmjs/vantui-cli": "2.5.3",
-    "@tarojs/components": "^3.5.7",
-    "@tarojs/taro": "^3.5.7",
+    "@tarojs/components": "3.6.2",
+    "@tarojs/taro": "3.6.2",
     "@types/lodash.flow": "^3.5.6"
   }
 }
