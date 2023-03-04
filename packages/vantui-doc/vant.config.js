@@ -281,6 +281,10 @@ module.exports = {
             path: 'number-keyboard',
             title: 'NumberKeyboard 数字键盘',
           },
+          {
+            path: 'infinite-scroll',
+            title: 'InfiniteScroll 无限滚动',
+          },
         ],
       },
       {

@@ -14,7 +14,7 @@ const vantuiDemoDir = path.resolve(__dirname, '../../..')
 const pagePath = path.join(__dirname, '../../src/pages')
 const configPath = path.join(__dirname, '../../src/config.json')
 const appConfigPath = path.join(__dirname, '../../src/app.config.js')
-const withTabPages = ['icon', 'power-scroll-view']
+const withTabPages = ['icon', 'power-scroll-view', 'infinite-scroll'] // 需要tab切换展示的组件
 const markdownCodeSrc = path.join(vantuiDemoDir, '/vantui-doc/src')
 const vantConfigPath = path.join(vantuiDemoDir, '/vant.config.js')
 const fromTaroComps = ['View', 'Text', 'Input', 'Block']
@@ -212,7 +212,7 @@ async function createPageIndex(props) {
   if (withTabPages && withTabPages.includes(targetPath)) {
     lastJsx = `
     <DemoPage title="${pageTile}" className="pages-${targetPath}-index">
-      <Tabs active={this.state.avtive} onChange={e => this.setState({ active: e.detail.index })}>
+      <Tabs active={this.state.avtive} onChange={e => this.setState({ active: e.detail.index })} sticky={true}>
       ${jsxStr}
       </Tabs>
       ${pageIndexJsxPush}
