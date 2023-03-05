@@ -69,4 +69,8 @@ export { Cascader } from './cascader'
 export { Sku } from './sku'
 export { WaterMark } from './water-mark'
 export { Ellipsis } from './ellipsis'
-export { InfiniteScroll, InfiniteScrollProps } from './infinite-scroll'
+export {
+  InfiniteScroll,
+  InfiniteScrollProps,
+  InfiniteScrollInstance,
+} from './infinite-scroll'

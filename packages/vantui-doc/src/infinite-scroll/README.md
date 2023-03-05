@@ -20,6 +20,7 @@ import { InfiniteScroll } from '@antmjs/vantui'
 function Demo() {
   const [data, setdata] = react.useState([])
   const mockRequest = COMMON.mockRequest
+  const InfiniteScrollInstance = react.useRef()
 
   const loadMore = async () => {
     return new Promise(async (resolve) => {
@@ -31,19 +32,30 @@ function Demo() {
     })
   }
 
+  const onRefresh = () => {
+    return new Promise(async (resolve) => {
+      const reslult = await mockRequest()
+      setdata(reslult)
+      InfiniteScrollInstance.current.reset()
+      resolve()
+    })
+  }
+
   return (
-    <View style={{ padding: '4px 6px' }} onClick={loadMore}>
-      {data.map((item, index) => (
-        <View
-          style={{ padding: '12px 6px', borderBottom: '1px solid #eee' }}
-          key={item}
-        >
-          <Text className="dataIndex">Index{index + 1}</Text>
-          {item}
-        </View>
-      ))}
-      <InfiniteScroll loadMore={loadMore} />
-    </View>
+    <PullToRefresh onRefresh={onRefresh}>
+      <View style={{ padding: '4px 6px' }}>
+        {data.map((item, index) => (
+          <View
+            style={{ padding: '12px 6px', borderBottom: '1px solid #eee' }}
+            key={item}
+          >
+            <Text className="dataIndex">Index{index + 1}</Text>
+            {item}
+          </View>
+        ))}
+        <InfiniteScroll loadMore={loadMore} ref={InfiniteScrollInstance} />
+      </View>
+    </PullToRefresh>
   )
 }
 ```

@@ -285,6 +285,10 @@ module.exports = {
             path: 'infinite-scroll',
             title: 'InfiniteScroll 无限滚动',
           },
+          {
+            path: 'pull-to-refresh',
+            title: 'PullToRefresh 下拉刷新',
+          },
         ],
       },
       {

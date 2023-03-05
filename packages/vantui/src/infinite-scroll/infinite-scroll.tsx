@@ -1,14 +1,28 @@
-import { getCurrentPages, createIntersectionObserver } from '@tarojs/taro'
+import {
+  getCurrentPages,
+  createIntersectionObserver,
+  nextTick,
+} from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { useState, useCallback, useRef, useEffect } from 'react'
+import {
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+} from 'react'
 import { Loading } from '../loading'
-import { InfiniteScrollProps } from '../../types/index'
+import { InfiniteScrollProps, InfiniteScrollInstance } from '../../types/index'
 
 const clsPrefix = `van-infinite-scroll`
 type IStatus = 'loading' | 'complete' | 'error'
 let compInitIndex = 0
 
-export function InfiniteScroll(props: InfiniteScrollProps) {
+function InfiniteScroll_(
+  props: InfiniteScrollProps,
+  ref: React.ForwardedRef<InfiniteScrollInstance>,
+) {
   const {
     renderLoading,
     renderComplete,
@@ -40,7 +54,9 @@ export function InfiniteScroll(props: InfiniteScrollProps) {
         setOnRequest(true)
         const status = await loadMore()
         setStatus(status)
-        setOnRequest(false)
+        nextTick(() => {
+          setOnRequest(false)
+        })
       }
     },
     [loadMore, onRequest, status],
@@ -109,7 +125,7 @@ export function InfiniteScroll(props: InfiniteScrollProps) {
   useEffect(() => {
     setTimeout(() => {
       initObserve()
-    }, 33)
+    }, 66)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -117,6 +133,12 @@ export function InfiniteScroll(props: InfiniteScrollProps) {
     reset()
     _loadMore(true)
   }, [_loadMore, reset])
+
+  useImperativeHandle(ref, () => {
+    return {
+      reset,
+    }
+  })
 
   return (
     <View
@@ -154,5 +176,7 @@ export function InfiniteScroll(props: InfiniteScrollProps) {
     </View>
   )
 }
+
+export const InfiniteScroll = forwardRef(InfiniteScroll_)
 
 export default InfiniteScroll

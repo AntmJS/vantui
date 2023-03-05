@@ -48,6 +48,13 @@ export interface InfiniteScrollProps extends ViewProps {
   renderError?: React.ReactNode
 }
 
+export interface InfiniteScrollInstance {
+  /**
+   * @description 重置加载状态
+   */
+  reset: () => void
+}
+
 declare const InfiniteScroll: FunctionComponent<InfiniteScrollProps>
 
 export { InfiniteScroll }
