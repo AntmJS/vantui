@@ -40,13 +40,15 @@ export function Collapse(props: CollapseProps) {
       openIndex_ = [...arr]
     }
     return openIndex_
-  }, [value])
+  }, [accordion, value])
 
   useEffect(() => {
     const openIndex_ = handleActiveName()
     setDefaultOpenIndex(openIndex_)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleToggle = (isOpen: boolean, name: string) => {
     let newOpenIndex = [...defaultOpenIndex]
     if (isOpen) {
@@ -83,7 +85,7 @@ export function Collapse(props: CollapseProps) {
         index,
       })
     })
-  }, [children, value, accordion, handleActiveName, defaultOpenIndex])
+  }, [children, defaultOpenIndex, handleToggle])
 
   return (
     <View

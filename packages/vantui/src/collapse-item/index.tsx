@@ -57,6 +57,7 @@ export function CollapseItem(
         }
       })
     }, 33.33)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children])
 
   useEffect(() => {
@@ -64,15 +65,16 @@ export function CollapseItem(
       if (nextActionTimeout.current) clearTimeout(nextActionTimeout.current)
       if (isOpen) {
         setCurrHeight(`${domHeight}px`)
+        isFirstRender.current = false
         nextActionTimeout.current = setTimeout(() => {
           setCurrHeight('auto')
-        }, 300)
+        }, 400)
       } else {
         if (!isFirstRender.current) {
           setCurrHeight(`${domHeight}px`)
           nextActionTimeout.current = setTimeout(() => {
             setCurrHeight('0px')
-          })
+          }, 300)
         }
       }
     } else {
@@ -81,15 +83,11 @@ export function CollapseItem(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, domHeight, init])
 
-  const handleToggle_ = useCallback(
-    // @ts-ignore
-    throttle(() => {
-      if (disabled) return
-      isFirstRender.current = false
-      handleToggle && handleToggle(isOpen, name)
-    }, 299),
-    [handleToggle, disabled, isOpen, name],
-  )
+  const handleToggle_ = useCallback(() => {
+    if (disabled) return
+    isFirstRender.current = false
+    handleToggle && handleToggle(isOpen, name)
+  }, [handleToggle, disabled, isOpen, name])
 
   return (
     <View
@@ -143,38 +141,6 @@ export function CollapseItem(
       </View>
     </View>
   )
-}
-
-const throttle = (fn, interval: number) => {
-  let timer
-  let startTime: any = new Date()
-  return function (...args) {
-    if (timer) {
-      clearTimeout(timer)
-    }
-    args.forEach((item: any) => {
-      if (item.__proto__.constructor.name === 'SyntheticEvent') {
-        item.persist()
-      }
-    })
-
-    const endTime: any = new Date()
-    const diffTime = endTime - startTime
-    const nextTime = interval - (endTime - startTime)
-    if (diffTime >= interval) {
-      // @ts-ignore
-      fn.apply(this, args)
-      startTime = new Date()
-    } else {
-      timer = setTimeout(() => {
-        // @ts-ignore
-        fn.apply(this, args)
-        startTime = new Date()
-        timer = null
-        clearTimeout(timer)
-      }, nextTime)
-    }
-  }
 }
 
 export default CollapseItem
