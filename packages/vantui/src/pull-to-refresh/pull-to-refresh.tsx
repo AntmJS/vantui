@@ -2,25 +2,13 @@ import { useState, useCallback, useEffect, useMemo } from 'react'
 import { View } from '@tarojs/components'
 import { Loading } from '../loading'
 import { getRect } from '../common/utils'
+import { IPullToRefreshProps } from '../../types/index'
 
-const clsPrefix = 'van-pull-to-refresh'
-
-type IPullToFreshProps = {
-  children?: React.ReactNode
-  pullText?: React.ReactNode
-  releaseText?: React.ReactNode
-  loadingText?: React.ReactNode
-  renderLoading?: React.ReactNode
-  successText?: React.ReactNode
-  onRefresh: () => Promise<undefined>
-  touchMaxStart: number
-  headHeight?: number
-}
-
-type IStatus = 'pull' | 'release' | 'loading' | 'success'
 let initIndex = 0
+const clsPrefix = 'van-pull-to-refresh'
+type IStatus = 'pull' | 'release' | 'loading' | 'success'
 
-export default function PullToRefresh(props: IPullToFreshProps) {
+export default function PullToRefresh(props: IPullToRefreshProps) {
   const {
     children,
     loadingText = '加载中...',
@@ -74,16 +62,14 @@ export default function PullToRefresh(props: IPullToFreshProps) {
   )
 
   const onTouchEnd = useCallback(async () => {
-    if (statusHeight > headHeight) {
+    if (statusHeight > headHeight && status === 'release') {
       setStatus('loading')
       setStatusHeight(headHeight)
-      if (status === 'release') {
-        await onRefresh()
-        setStatus('success')
-        setTimeout(() => {
-          reset()
-        }, 1000)
-      }
+      await onRefresh()
+      setStatus('success')
+      setTimeout(() => {
+        reset()
+      }, 1000)
     } else {
       setStatusHeight(0)
     }

@@ -74,3 +74,4 @@ export {
   InfiniteScrollProps,
   InfiniteScrollInstance,
 } from './infinite-scroll'
+export { IPullToRefreshProps, PullToRefresh } from './pull-to-refresh'
