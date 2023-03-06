@@ -1,4 +1,4 @@
-/*! For license information please see index_950be32869c5982153fb.js.LICENSE.txt */
+/*! For license information please see index_3aac48b48e6db7c12185.js.LICENSE.txt */
 ;(self.webpackChunkvantui_doc = self.webpackChunkvantui_doc || []).push([
   [826],
   {
@@ -56018,9 +56018,7 @@ to {
                   r.createElement(
                     'div',
                     { className: ''.concat(gt, '-version') },
-                    __vantui_base__.version
-                      ? 'v'.concat(__vantui_base__.version)
-                      : '',
+                    __vantui_base__.version ? 'v3-预览' : '',
                   ),
                 ),
                 r.createElement(
