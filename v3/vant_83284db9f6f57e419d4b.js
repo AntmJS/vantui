@@ -83,7 +83,7 @@
       simulator: {
         url: {
           development: 'http://localhost:10086',
-          production: '/v3/vantui/mobile.html',
+          production: '/vantui/v3/mobile.html',
         },
       },
       links: [
