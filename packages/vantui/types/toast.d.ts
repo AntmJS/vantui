@@ -71,6 +71,10 @@ export interface toastProps {
   clear: (options?: ToastProps) => void
   setDefaultOptions: (options: ToastProps) => void
   resetDefaultOptions: (options: any) => void
+  /**
+   * @description 获取唯一的toast组件，不需要手动设置id和selector
+   */
+  createOnlyToast: () => FunctionComponent<ToastProps> & toastProps
 }
 
 declare const Toast: FunctionComponent<ToastProps> & toastProps
