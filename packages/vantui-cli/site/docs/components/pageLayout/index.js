@@ -72,7 +72,7 @@ export default function PageLayout() {
             <img className={`${preCls}-logo`} src={__vantui_base__.logo} />
             <div className={`${preCls}-uiname`}>{__vantui_base__.title}</div>
             <div className={`${preCls}-version`}>
-              {__vantui_base__.version ? `v${__vantui_base__.version}` : ''}
+              {__vantui_base__.version ? `v3-预览` : ''}
             </div>
           </div>
           <div className={`${preCls}-links`}>
