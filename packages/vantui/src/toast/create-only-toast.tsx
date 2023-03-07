@@ -29,7 +29,12 @@ export function createOnlyToast() {
             message: props,
             selector: `#${id}`,
           }
-        } else params = props
+        } else {
+          params = {
+            ...props,
+            selector: `#${id}`,
+          }
+        }
         Toast[actName](params)
       }
     }
