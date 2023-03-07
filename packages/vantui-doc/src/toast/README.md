@@ -59,14 +59,12 @@ function Demo() {
   const show = () => {
     Toast_.success({
       message: '成功文案',
-      selector: '#vanToast-demo2',
     })
   }
 
   const showLong = () => {
     Toast_.fail({
       message: '失败文案',
-      selector: '#vanToast-demo2',
     })
   }
 
