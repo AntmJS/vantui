@@ -10,6 +10,7 @@
     "test:watch": "",
     "test": "",
     "release": "npx gh-pages -d site",
+    "release:v3": "npx gh-pages -d site -e ./v3",
     "sync-md": "node ./scripts/md"
   },
   "author": "sanshao",

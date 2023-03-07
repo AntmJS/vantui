@@ -6,7 +6,7 @@ module.exports = {
     simulator: {
       url: {
         development: 'http://localhost:10086',
-        production: '/vantui/mobile.html',
+        production: '/vantui/v3/mobile.html',
       },
     },
     title: '@antmjs/vantui',
