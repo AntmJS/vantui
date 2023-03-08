@@ -27,7 +27,7 @@ export interface IconProps extends ViewProps {
   style?: string | CSSProperties
   /**
    * @description 类名前缀
-   * @default vant-icon
+   * @default vant-icon 传空字符串可去除前缀
    */
   classPrefix?: string
   /**
