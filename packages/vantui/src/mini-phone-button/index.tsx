@@ -13,6 +13,7 @@ export function MiniPhoneButton(props: MiniPhoneButtonProps): JSX.Element {
         my.getPhoneNumber({
           success: (res: any) => {
             if (res.response) {
+              // @ts-ignore
               onGetPhone({
                 encryptedData: res.response,
                 iv: '',
