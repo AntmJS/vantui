@@ -8,14 +8,17 @@ function isImage(name: any) {
 function rootClass(data: any) {
   const classes: any[] = []
 
-  if (data.classPrefix != null) {
+  if (data.classPrefix) {
     classes.push(data.classPrefix)
   }
 
   if (isImage(data.name)) {
     classes.push('van-icon--image')
-  } else if (data.classPrefix != null) {
-    classes.push(data.classPrefix + '-' + data.name)
+  } else {
+    const prefixName = data.classPrefix
+      ? `${data.classPrefix}-${data.name}`
+      : data.name
+    classes.push(prefixName)
   }
 
   return classes.join(' ')
