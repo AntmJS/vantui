@@ -52,6 +52,11 @@ module.exports = {
             hideSimulator: false,
           },
           {
+            path: 'v2-to-v3',
+            title: 'v2升级到v3',
+            hideSimulator: false,
+          },
+          {
             path: 'comments',
             title: 'typescript同步到文档',
             hideSimulator: false,
