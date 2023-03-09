@@ -68,13 +68,13 @@ export function CollapseItem(
         isFirstRender.current = false
         nextActionTimeout.current = setTimeout(() => {
           setCurrHeight('auto')
-        }, 400)
+        }, 200)
       } else {
         if (!isFirstRender.current) {
           setCurrHeight(`${domHeight}px`)
           nextActionTimeout.current = setTimeout(() => {
             setCurrHeight('0px')
-          }, 300)
+          }, 200)
         }
       }
     } else {
