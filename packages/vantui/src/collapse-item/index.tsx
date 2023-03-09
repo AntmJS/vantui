@@ -48,7 +48,12 @@ export function CollapseItem(
 
   useEffect(() => {
     setTimeout(() => {
-      getRect(null, `#content-class${curCompIndex}`).then((res: any) => {
+      // 微信端层级太深找不到元素信息 （https://taro-docs.jd.com/docs/optimized#1-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E9%A1%B9-baselevel）
+      const targetId =
+        process.env.TARO_ENV === 'weapp'
+          ? `.van-collapse >>> #content-class${curCompIndex}`
+          : `#content-class${curCompIndex}`
+      getRect(null, `${targetId}`).then((res: any) => {
         if (res) {
           setDomHeight(res.height)
           nextTick(() => {
