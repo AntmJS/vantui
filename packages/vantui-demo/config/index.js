@@ -4,6 +4,9 @@ const pkg = require('../package.json')
 const miniChain = require('./webpack/miniChain')
 const h5Chain = require('./webpack/h5Chain')
 
+process.env.TARO_ENV = process.env.TARO_ENV ?? 'weapp'
+process.env.NODE_ENV = process.env.NODE_ENV ?? 'production'
+
 function getVersion() {
   function fillZero(value) {
     return value < 10 ? `0${value}` : `${value}`
@@ -35,10 +38,6 @@ const config = {
     DEPLOY_VERSION: JSON.stringify(version),
   },
   alias: {
-    '@babel/runtime': npath.resolve(
-      process.cwd(),
-      '../../node_modules/@babel/runtime',
-    ),
     '@': npath.resolve(process.cwd(), 'src'),
   },
   defineConstants: {},

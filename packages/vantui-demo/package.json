@@ -40,15 +40,14 @@
       "dev": ""
     }
   },
-  "browserslist": [
-    "Chrome >= 35",
-    "ChromeAndroid >= 35",
-    "iOS >= 8",
-    "Safari >= 8",
-    "Android >= 4.1",
-    "QQAndroid >= 4.1",
-    "UCAndroid >= 4.1"
-  ],
+  "browserslist": {
+    "production": [
+      "ios >= 9"
+    ],
+    "development": [
+      "last 1 version"
+    ]
+  },
   "scripts": {
     "iconfont": "npx antm-icon --input-path https://at.alicdn.com/t/xxxx.css --output-path src/iconfont.less",
     "watch:kwai": "cross-env NODE_ENV=development API_ENV=dev WATCHING=true npx taro build --type kwai --watch",
