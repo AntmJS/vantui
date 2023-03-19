@@ -19,8 +19,8 @@
     "antmjs"
   ],
   "scripts": {
-    "watch": "rm -rf build && npx tsc -p tsconfig.cjs.json --watch --sourceMap",
-    "build": "rm -rf build && npx tsc -p tsconfig.cjs.json",
+    "watch": "rimraf build && npx tsc -p tsconfig.cjs.json --watch --sourceMap",
+    "build": "rimraf build && npx tsc -p tsconfig.cjs.json",
     "test:watch": "",
     "test": ""
   },
