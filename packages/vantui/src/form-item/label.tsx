@@ -31,7 +31,7 @@ export default function Label(props: Iprops) {
           </>
         ) : null}
       </View>
-      <Text>{label}</Text>
+      <View>{label}</View>
     </View>
   )
 }
