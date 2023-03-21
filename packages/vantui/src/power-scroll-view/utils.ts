@@ -27,7 +27,7 @@ export function scrollOffset(nodesRef: TaroElement) {
     return selectorQuery(nodesRef)
       .scrollOffset()
       .exec((res) => {
-        resolve(res[0])
+        resolve(res[0] || res)
       })
   })
 }
