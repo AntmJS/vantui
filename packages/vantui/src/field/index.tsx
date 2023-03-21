@@ -56,6 +56,7 @@ export function Field(props: FieldProps) {
     readonly,
     placeholder,
     placeholderStyle,
+    placeholderClass,
     autosize,
     cursorSpacing = 50,
     adjustPosition = true,
@@ -275,10 +276,10 @@ export function Field(props: FieldProps) {
             maxlength={maxlength}
             placeholder={placeholder}
             placeholderStyle={placeholderStyle}
-            placeholderClass={utils.bem('field__placeholder', {
+            placeholderClass={`${utils.bem('field__placeholder', {
               error,
               disabled,
-            })}
+            })} ${placeholderClass || ''}`}
             // eslint-disable-next-line
             // @ts-ignore
             nativeProps={autosize ? { rows: 1 } : {}}
@@ -322,9 +323,10 @@ export function Field(props: FieldProps) {
             maxlength={maxlength}
             placeholder={placeholder}
             placeholderStyle={placeholderStyle}
-            placeholderClass={utils.bem('field__placeholder', {
+            placeholderClass={`${utils.bem('field__placeholder', {
               error,
-            })}
+              disabled,
+            })} ${placeholderClass || ''}`}
             confirmType={confirmType}
             confirmHold={confirmHold}
             holdKeyboard={holdKeyboard}
