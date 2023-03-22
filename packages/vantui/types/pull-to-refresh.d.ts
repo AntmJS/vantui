@@ -41,6 +41,11 @@ export interface IPullToRefreshProps extends ViewProps {
    * @default `40`
    */
   headHeight?: number
+  /**
+   * @description 是否禁用
+   * @default `false`
+   */
+  disable?: boolean
 }
 
 declare const PullToRefresh: FunctionComponent<IPullToRefreshProps>

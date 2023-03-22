@@ -9,7 +9,7 @@ InfiniteScroll 组件在可见区域时自动加载更多数据。
 在 Taro 文件中引入组件
 
 ```js
-import { InfiniteScroll } from '@antmjs/vantui'
+import { InfiniteScroll, VirtualList } from '@antmjs/vantui'
 ```
 
 ### 基本使用
@@ -19,12 +19,12 @@ import { InfiniteScroll } from '@antmjs/vantui'
 ```jsx
 function Demo() {
   const [data, setdata] = react.useState([])
-  const mockRequest = COMMON.mockRequest
+  const mockGoods = COMMON.mockGoods
   const InfiniteScrollInstance = react.useRef()
 
   const loadMore = async () => {
     return new Promise(async (resolve) => {
-      const reslult = await mockRequest()
+      const reslult = await mockGoods()
       const newData = [].concat(data, reslult)
       setdata(newData)
       // 以下是简单的模拟请求，正常请求请按条件执行`resolve('complete')`
@@ -34,7 +34,7 @@ function Demo() {
 
   const onRefresh = () => {
     return new Promise(async (resolve) => {
-      const reslult = await mockRequest()
+      const reslult = await mockGoods()
       setdata(reslult)
       InfiniteScrollInstance.current.reset()
       resolve()
@@ -46,11 +46,15 @@ function Demo() {
       <View style={{ padding: '4px 6px' }}>
         {data.map((item, index) => (
           <View
-            style={{ padding: '12px 6px', borderBottom: '1px solid #eee' }}
-            key={item}
+            className={`van-demo-goods-item-wrapper`}
+            key={`van-demo-goods-item-wrapper-infinite${index}`}
           >
-            <Text className="dataIndex">Index{index + 1}</Text>
-            {item}
+            <View className="van-demo-goods-item">
+              <TaroImage src={item.image} className="img" />
+              <View className="title">{item.title}</View>
+              {item.isCutPrice && <Text className="cutPrice">最近大降价</Text>}
+              <View className="price">{item.price}</View>
+            </View>
           </View>
         ))}
         <InfiniteScroll loadMore={loadMore} ref={InfiniteScrollInstance} />
@@ -60,14 +64,110 @@ function Demo() {
 }
 ```
 
-模拟获取数据
+### 瀑布流
+
+```jsx
+function Demo() {
+  const [data, setdata] = react.useState([])
+  const mockGoods = COMMON.mockGoods
+  const InfiniteScrollInstance = react.useRef()
+  const virtualListInstance = react.useRef()
+
+  const loadMore = async () => {
+    return new Promise(async (resolve) => {
+      const reslult = await mockGoods()
+      const newData = [].concat(data, reslult)
+      setdata(newData)
+      // 以下是简单的模拟请求，正常请求请按条件执行`resolve('complete')`
+      resolve(newData.length > 110 ? 'complete' : 'loading')
+    })
+  }
+
+  const onRefresh = () => {
+    return new Promise(async (resolve) => {
+      InfiniteScrollInstance.current.reset()
+      const reslult = await mockGoods()
+      setdata(reslult)
+      resolve()
+    })
+  }
+  return (
+    <>
+      <VirtualList.VirtualWaterfallList
+        style={{ padding: 10, boxSizing: 'border-box' }}
+        height="calc(100vh - 125px)"
+        dataSource={data}
+        showCount={8}
+        gap={10}
+        ref={virtualListInstance}
+        footer={
+          <InfiniteScroll
+            parentClassName="van-virtual-list"
+            loadMore={loadMore}
+            ref={InfiniteScrollInstance}
+          />
+        }
+        ItemRender={({ index, item, className, ...props }) => {
+          return (
+            <View
+              className={`van-demo-goods-item-wrapper ${className}`}
+              {...props}
+            >
+              <View className="van-demo-goods-item">
+                <TaroImage src={item.image} className="img" />
+                <View className="title">{item.title}</View>
+                {item.isCutPrice && (
+                  <Text className="cutPrice">最近大降价</Text>
+                )}
+                <View className="price">{item.price}</View>
+              </View>
+            </View>
+          )
+        }}
+      />
+    </>
+  )
+}
+```
 
 ```js common
-const mockRequest = () => {
+const mockGoods = () => {
+  const initData = [
+    {
+      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
+      title:
+        '中老年羽绒服男冬季爸爸装薄短款白鸭绒中年人男士保暖外套男装 夜空黑 L【建议115斤以内】',
+      price: '¥165.00',
+    },
+    {
+      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
+      title: 'HLA海澜之家马丁靴男士高帮男靴复古工装鞋',
+      price: '¥361.00',
+    },
+    {
+      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
+      title:
+        '洁丽雅拖鞋男夏浴室洗澡防滑家居室内EVA大码男士凉拖鞋居家用夏季防臭 灰色 41-42【标准码】',
+      price: '¥22.50',
+    },
+    {
+      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
+      title: '夏季新款男士T恤宽松气质高端百搭时尚短袖体恤潮牌',
+      price: '¥212.00',
+    },
+  ]
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(new Array(20).fill('').map((item) => `数据：${Math.random()}`))
-    }, 1500)
+      resolve(
+        new Array(8).fill('').map((item, index) => {
+          return {
+            index,
+            ...initData[index % 4],
+            isCutPrice: index % 2 === 0 ? true : false,
+          }
+        }),
+      )
+    }, 1400)
   })
 }
 ```
@@ -77,15 +177,16 @@ const mockRequest = () => {
 ```jsx
 function Demo() {
   const [data, setdata] = react.useState([])
-  const mockRequest = COMMON.mockRequest
+  const mockGoods = COMMON.mockGoods
+  const InfiniteScrollInstance = react.useRef()
 
   const loadMore = async () => {
     return new Promise(async (resolve) => {
-      const reslult = await mockRequest()
+      const reslult = await mockGoods()
       const newData = [].concat(data, reslult)
       setdata(newData)
-      // 以下是简单的模拟请求，正常请求请按条件执行`resolve('error')`
-      resolve(Math.random() > 0.3 ? 'error' : 'loading')
+      // 以下是简单的模拟请求，正常请求请按条件执行`resolve('complete')`
+      resolve(Math.random() > 0.6 ? 'loading' : 'error')
     })
   }
 
@@ -93,11 +194,15 @@ function Demo() {
     <View style={{ padding: '4px 6px' }}>
       {data.map((item, index) => (
         <View
-          style={{ padding: '12px 6px', borderBottom: '1px solid #eee' }}
-          key={item}
+          className={`van-demo-goods-item-wrapper`}
+          key={`van-demo-goods-item-wrapper-infinite${index}`}
         >
-          <Text className="dataIndex">Index{index + 1}</Text>
-          {item}
+          <View className="van-demo-goods-item">
+            <TaroImage src={item.image} className="img" />
+            <View className="title">{item.title}</View>
+            {item.isCutPrice && <Text className="cutPrice">最近大降价</Text>}
+            <View className="price">{item.price}</View>
+          </View>
         </View>
       ))}
       <InfiniteScroll loadMore={loadMore} />

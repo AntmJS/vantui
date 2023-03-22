@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { Loading } from '../loading'
 import { getRect } from '../common/utils'
 import { IPullToRefreshProps } from '../../types/index'
@@ -19,9 +19,10 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     renderLoading,
     onRefresh,
     touchMaxStart = 300,
+    disable = false,
   } = props
   const [statusHeight, setStatusHeight] = useState(0)
-  const [status, setStatus] = useState<IStatus>('pull')
+  const [status, setStatus] = useState<IStatus>('pull') // 待拖拽
   const [componentIndex] = useState(initIndex++)
   const [touch] = useState({
     start: 0,
@@ -37,28 +38,34 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
 
   const onTouchStart = useCallback(
     function (event) {
-      if (status !== 'pull') setStatus('pull')
-      const start = event.touches[0].clientY
-      if (start < touch.maxStart) {
-        touch.start = event.touches[0].clientY
-        touch.time = Date.now()
-      } else {
-        touch.time = Date.now() + 9999 * 1000
+      if (!disable) {
+        if (status !== 'pull') setStatus('pull')
+        const start = event.touches[0].clientY
+        if (start < touch.maxStart) {
+          touch.start = event.touches[0].clientY
+          touch.time = Date.now()
+        } else {
+          touch.time = Date.now() + 9999 * 1000
+        }
       }
     },
-    [status, touch],
+    [disable, status, touch],
   )
 
   const onTouchMove = useCallback(
     function (event) {
-      if (status === 'pull' && Date.now() - touch.time > 500) {
-        event.preventDefault()
-        event.stopPropagation()
-        const y = event.touches[0].clientY - touch.start
-        setStatusHeight(y)
+      if (!disable) {
+        if (status === 'pull' && Date.now() - touch.time > 400) {
+          event.preventDefault()
+          event.stopPropagation()
+          const y = event.touches[0].clientY - touch.start
+          setStatusHeight(y)
+        }
+      } else {
+        setStatus('pull')
       }
     },
-    [status, touch.start, touch.time],
+    [disable, status, touch.start, touch.time],
   )
 
   const onTouchEnd = useCallback(async () => {
@@ -69,7 +76,7 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
       setStatus('success')
       setTimeout(() => {
         reset()
-      }, 1000)
+      }, 1100)
     } else {
       setStatusHeight(0)
     }
@@ -100,8 +107,8 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
   const renderMarginBottom = useMemo(() => {
     let marginBottom = 0
     const ly = statusHeight - headHeight
-    if (ly > 20) {
-      marginBottom = 20
+    if (ly > 10) {
+      marginBottom = 10
     }
 
     return marginBottom
@@ -122,7 +129,14 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
         }}
       >
         {status === 'loading' && (
-          <>{renderLoading || <Loading size={24}>{loadingText}</Loading>}</>
+          <>
+            {renderLoading || (
+              <>
+                <Loading size={30}></Loading>
+                <Text style={{ paddingLeft: 8 }}>{loadingText}</Text>
+              </>
+            )}
+          </>
         )}
         {status === 'release' && releaseText}
         {status === 'pull' && pullText}

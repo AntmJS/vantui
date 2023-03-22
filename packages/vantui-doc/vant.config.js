@@ -294,6 +294,10 @@ module.exports = {
             path: 'pull-to-refresh',
             title: 'PullToRefresh 下拉刷新',
           },
+          {
+            path: 'virtual-list',
+            title: 'VirtualList 虚拟列表',
+          },
         ],
       },
       {

@@ -75,3 +75,8 @@ export {
   InfiniteScrollInstance,
 } from './infinite-scroll'
 export { IPullToRefreshProps, PullToRefresh } from './pull-to-refresh'
+export {
+  VirtualList,
+  IVirtualListProps,
+  IVirtualListInstance,
+} from './virtual-list'

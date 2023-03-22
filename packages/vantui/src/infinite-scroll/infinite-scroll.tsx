@@ -82,7 +82,7 @@ function InfiniteScroll_(
       options.root = document.getElementsByClassName(parentClassName)[0]
     const contentObserver_ = new IntersectionObserver(function (res: any) {
       const target = res[0]
-      if (target && target.intersectionRatio > 0.6) {
+      if (target && target.intersectionRatio >= 0.6) {
         setForceKey(Math.random() + Math.random())
       }
     }, options)
@@ -107,11 +107,11 @@ function InfiniteScroll_(
       }
 
       const contentObserver_ = _createIntersectionObserver({
-        thresholds: [1],
+        thresholds: [0.6],
       })
       contentObserver.current = contentObserver_
       if (parentClassName) {
-        contentObserver.current.relativeTo(parentClassName)
+        contentObserver.current.relativeTo(`.${parentClassName}`)
       } else {
         contentObserver.current.relativeToViewport({ bottom: 0 })
       }
@@ -126,6 +126,12 @@ function InfiniteScroll_(
     setTimeout(() => {
       initObserve()
     }, 66)
+
+    return () => {
+      if (contentObserver.current != null) {
+        contentObserver.current.disconnect()
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

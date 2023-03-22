@@ -39,6 +39,23 @@ function Demo() {
 }
 ```
 
+解决和滚动操作冲突问题
+
+```jsx
+function Index() {
+  const [scrollTop, setTop] = useState(0)
+  const onscroll = (e) => setTop(e.detail.scrollTop)
+  // ....
+  return (
+    <PullToRefresh disable={scrollTop > 0} onRefresh={onRefresh}>
+      <ScrollView onScroll={onscroll}>
+        <View>xxxx</View>
+      </ScrollView>
+    </PullToRefresh>
+  )
+}
+```
+
 ### IPullToRefreshProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/pull-to-refresh.d.ts)
 
 | 参数          | 说明                                             | 类型                                                  | 默认值      | 必填    |
