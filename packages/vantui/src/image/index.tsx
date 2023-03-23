@@ -104,44 +104,35 @@ export function Image(props: ImageProps) {
       onClick={others.onClick}
       {...others}
     >
-      <View>
-        {!error && (
-          <TaroImage
-            src={src}
-            mode={computed.mode(fit || ('none' as FitType)) as TaroImageMode}
-            lazyLoad={lazyLoad}
-            className="image-class van-image__img"
-            showMenuByLongpress={showMenuByLongpress}
-            onLoad={onLoad}
-            onError={onError}
-            style={styleH5}
-          ></TaroImage>
-        )}
-      </View>
-      <View>
-        {loading && showLoading && (
-          <View className="loading-class van-image__loading">
-            {renderLoading || (
-              <VanIcon
-                name="photo"
-                className="van-image__loading-icon"
-              ></VanIcon>
-            )}
-          </View>
-        )}
-      </View>
-      <View>
-        {error && showError && (
-          <View className="error-class van-image__error">
-            {renderError || (
-              <VanIcon
-                name="photo-fail"
-                className="van-image__error-icon"
-              ></VanIcon>
-            )}
-          </View>
-        )}
-      </View>
+      {!error && (
+        <TaroImage
+          src={src}
+          mode={computed.mode(fit || ('none' as FitType)) as TaroImageMode}
+          lazyLoad={lazyLoad}
+          className="image-class van-image__img"
+          showMenuByLongpress={showMenuByLongpress}
+          onLoad={onLoad}
+          onError={onError}
+          style={styleH5}
+        ></TaroImage>
+      )}
+      {loading && showLoading && (
+        <View className="loading-class van-image__loading">
+          {renderLoading || (
+            <VanIcon name="photo" className="van-image__loading-icon"></VanIcon>
+          )}
+        </View>
+      )}
+      {error && showError && (
+        <View className="error-class van-image__error">
+          {renderError || (
+            <VanIcon
+              name="photo-fail"
+              className="van-image__error-icon"
+            ></VanIcon>
+          )}
+        </View>
+      )}
     </View>
   )
 }
