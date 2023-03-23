@@ -191,22 +191,20 @@ function VirtualWaterfallList_(
         const startIndex = getClosestIndex_(leftRects, scrollTop) as number
         const startIndexR = getClosestIndex_(rightRects, scrollTop) as number
 
-        if (leftRects[startIndex]) {
-          if (startIndex !== leftShowConfig.head) {
-            setLeftShowConfig({
-              head: startIndex,
-              tail: startIndex + step,
-              transformY: `translateY(${leftRects[startIndex].top}px)`,
-            })
-          }
+        if (leftRects[startIndex] && startIndex !== leftShowConfig.head) {
+          setLeftShowConfig({
+            head: startIndex,
+            tail: startIndex + step,
+            transformY: `translateY(${leftRects[startIndex].top}px)`,
+          })
+        }
 
-          if (startIndexR !== rightShowConfig.head) {
-            setRightShowConfig({
-              head: startIndexR,
-              tail: startIndexR + step,
-              transformY: `translateY(${rightRects[startIndexR].top}px)`,
-            })
-          }
+        if (rightRects[startIndexR] && startIndexR !== rightShowConfig.head) {
+          setRightShowConfig({
+            head: startIndexR,
+            tail: startIndexR + step,
+            transformY: `translateY(${rightRects[startIndexR].top}px)`,
+          })
         }
       }
     },
