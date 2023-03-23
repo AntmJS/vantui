@@ -381,7 +381,7 @@ function VirtualWaterfallList_(
       </View>
       <View
         className={`van-virtual-backto-top-${
-          leftShowConfig.head > (backToTopCritical || showCount * 2)
+          leftShowConfig.head > (backToTopCritical || showCount)
             ? 'show'
             : 'hidden'
         }`}
