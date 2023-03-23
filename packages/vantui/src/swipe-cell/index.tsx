@@ -261,7 +261,6 @@ function Index(
   const onDrag = useCallback(
     function (event) {
       if (disabled) return
-      event.preventDefault()
       const touchState = touchMove(event)
       if (!touchState.direction || touchState.direction === 'vertical') {
         return

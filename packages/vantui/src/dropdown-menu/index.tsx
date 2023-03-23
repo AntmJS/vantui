@@ -8,6 +8,7 @@ import {
   useState,
   useLayoutEffect,
   Children,
+  isValidElement,
 } from 'react'
 import { DropdownMenuProps } from '../../types/dropdown-menu'
 import { getRect } from '../common/utils'
@@ -139,23 +140,25 @@ export function DropdownMenu(props: DropdownMenuProps) {
     function () {
       const res: Array<JSX.Element> = []
       Children.map(others.children, (children, index) => {
-        res.push(
-          cloneElement(children as JSX.Element, {
-            direction,
-            key: index,
-            setChildrenInstance,
-            index,
-            parentInstance: {
-              overlay,
-              duration,
-              activeColor,
-              closeOnClickOverlay,
+        if (isValidElement(children)) {
+          res.push(
+            cloneElement(children as JSX.Element, {
               direction,
-              getChildWrapperStyle,
-              updateItemListData,
-            },
-          }),
-        )
+              key: index,
+              setChildrenInstance,
+              index,
+              parentInstance: {
+                overlay,
+                duration,
+                activeColor,
+                closeOnClickOverlay,
+                direction,
+                getChildWrapperStyle,
+                updateItemListData,
+              },
+            }),
+          )
+        }
       })
       return res
     },

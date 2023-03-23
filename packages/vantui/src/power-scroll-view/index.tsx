@@ -165,8 +165,12 @@ export function PowerScrollView<T extends number | undefined>(
   }, [headHeight])
 
   const getScrollTop = useCallback(async () => {
-    const { scrollTop } = await scrollOffset(scrollRef.current!)
-    return scrollTop
+    try {
+      const { scrollTop } = await scrollOffset(scrollRef.current!)
+      return scrollTop
+    } catch (error) {
+      return 0
+    }
   }, [])
 
   const isTouchable = useCallback(() => {
