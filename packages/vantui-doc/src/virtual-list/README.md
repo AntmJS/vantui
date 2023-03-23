@@ -57,7 +57,7 @@ function Demo() {
 - `gap`设置中间的间距
 - 微信开发工具会卡，不建议在微信端使用
 - 暂时不支持和`PullRefresh`使用
-- 暂时不支持动态高度图片
+- 暂时不支持不等高图片
 
 ```jsx
 const data = COMMON.mockGoods()
