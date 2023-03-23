@@ -37,11 +37,13 @@ function VirtualHalfList_(
     ItemRender,
     listStyle = {},
     renderBackToTop,
-    backToTopCritical = 800,
+    backToTopCritical,
     backToTopSuccess,
   } = props
 
   const prevDataLength = useRef(0)
+  const [scrollIntoView, setScrollIntoView] = useState('')
+
   const [rects, setRects] = useState({})
   const [showConfig, setShowConfig] = useState({
     head: 0,
@@ -50,7 +52,6 @@ function VirtualHalfList_(
     NextTail: showCount * 2,
     transformY: `translateY(0px)`,
   })
-  const [currentScrollTop, setCurrentScrollTop] = useState(0)
 
   const updateRects = useCallback(async () => {
     const head = showConfig.head
@@ -97,7 +98,6 @@ function VirtualHalfList_(
   const handleScroll = useCallback(
     (e: BaseEventOrig<ScrollViewProps.onScrollDetail>) => {
       const scrollTop = Math.floor(e.detail.scrollTop)
-      setCurrentScrollTop(scrollTop)
       updateRects()
       if (Object.keys(rects).length) {
         const startIndex = getClosestIndex(rects, scrollTop)
@@ -126,11 +126,20 @@ function VirtualHalfList_(
   }, [showCount])
 
   const scrollToTop = useCallback(() => {
-    setCurrentScrollTop(0)
+    setShowConfig({
+      head: 0,
+      tail: showCount,
+      nextHead: showCount,
+      NextTail: showCount * 2,
+      transformY: `translateY(0px)`,
+    })
+    setScrollIntoView('van-virtual-box-item0')
     nextTick(() => {
+      setScrollIntoView('')
+
       backToTopSuccess?.()
     })
-  }, [backToTopSuccess])
+  }, [backToTopSuccess, showCount])
 
   useImperativeHandle(ref, () => {
     return {
@@ -155,11 +164,11 @@ function VirtualHalfList_(
 
   const onTouchStart = useCallback(
     (e) => {
-      if (currentScrollTop > 0) {
+      if (showConfig.head > 0) {
         e.stopPropagation()
       }
     },
-    [currentScrollTop],
+    [showConfig.head],
   )
 
   const wrapperHeight = useMemo(() => {
@@ -176,9 +185,10 @@ function VirtualHalfList_(
     <ScrollView
       className={`van-virtual-list ${clsPrefix} ${className}`}
       scrollY
-      scrollTop={currentScrollTop}
+      scrollTop={0}
       style={{ height: addUnit(height), ...(style as React.CSSProperties) }}
       onScroll={handleScroll}
+      scrollIntoView={scrollIntoView}
     >
       <View
         onTouchStart={onTouchStart}
@@ -194,6 +204,7 @@ function VirtualHalfList_(
               .map((item, i) => (
                 <ItemRender
                   key={`van-virtual-box-item${i + showConfig.head}`}
+                  id={`van-virtual-box-item${i + showConfig.head}`}
                   item={item}
                   index={showConfig.head + i}
                 />
@@ -218,7 +229,9 @@ function VirtualHalfList_(
       </View>
       <View
         className={`van-virtual-backto-top-${
-          currentScrollTop > backToTopCritical ? 'show' : 'hidden'
+          showConfig.head > (backToTopCritical || showCount * 2)
+            ? 'show'
+            : 'hidden'
         }`}
       >
         {renderBackToTop || (

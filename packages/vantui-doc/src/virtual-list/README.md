@@ -9,7 +9,7 @@
 ```js
 import { VirtualList } from '@antmjs/vantui'
 
-const { VirtualEqualList, VirtualHalfList, VirtualWaterfallList } = VirtualList
+const { VirtualHalfList, VirtualWaterfallList } = VirtualList
 ```
 
 ### 半虚拟列表
@@ -57,6 +57,7 @@ function Demo() {
 - `gap`设置中间的间距
 - 微信开发工具会卡，不建议在微信端使用
 - 暂时不支持和`PullRefresh`使用
+- 暂时不支持动态高度图片
 
 ```jsx
 const data = COMMON.mockGoods()
@@ -117,7 +118,7 @@ const mockGoods = () => {
       price: '¥212.00',
     },
   ]
-  return new Array(27).fill('').map((item, index) => {
+  return new Array(33).fill('').map((item, index) => {
     return {
       index,
       ...initData[index % 4],

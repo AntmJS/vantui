@@ -48,8 +48,8 @@ export interface IVirtualListProps<T> extends ViewProps {
    */
   backToTopSuccess?: () => void
   /**
-   * @description 返回顶端按钮的scrollTop临界值
-   * @default 300
+   * @description 展示返回顶端按钮的临界值，上方隐藏了多少个ItemRender
+   * @default `VirtualHalfList`的为`showCount`乘2,`VirtualWaterfallList`的为`showCount`
    */
   backToTopCritical?: number
 }

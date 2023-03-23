@@ -37,7 +37,7 @@ function VirtualWaterfallList_(
     gap = 10,
     ItemRender,
     renderBackToTop,
-    backToTopCritical = 800,
+    backToTopCritical,
     backToTopSuccess,
   } = props
   const step = useMemo(() => {
@@ -46,7 +46,7 @@ function VirtualWaterfallList_(
   const prevTransformIndex = useRef(0)
   const prevDataLength = useRef(0)
   const compareHistory = useRef({})
-  const [currentScrollTop, setCurrentScrollTop] = useState(0)
+  const [scrollIntoView, setScrollIntoView] = useState('')
 
   const [leftData, setLeftData] = useState<any>([])
   const [rightData, setRightData] = useState<any>([])
@@ -55,12 +55,12 @@ function VirtualWaterfallList_(
   const [leftShowConfig, setLeftShowConfig] = useState({
     head: 0,
     tail: step,
-    transformY: `translateY(0px)`,
+    transformY: 0,
   })
   const [rightShowConfig, setRightShowConfig] = useState({
     head: 0,
     tail: step,
-    transformY: `translateY(0px)`,
+    transformY: 0,
   })
 
   const updateItemRect = useCallback(async (i, rectTarget, tn) => {
@@ -179,7 +179,6 @@ function VirtualWaterfallList_(
   const handleScroll = useCallback(
     (e: BaseEventOrig<ScrollViewProps.onScrollDetail>) => {
       const scrollTop = Math.floor(e.detail.scrollTop)
-      setCurrentScrollTop(scrollTop)
 
       const compareKey = `${leftShowConfig.head}&${rightShowConfig.head}`
       if (!compareHistory.current[compareKey] || leftRects.length === 0) {
@@ -195,7 +194,7 @@ function VirtualWaterfallList_(
           setLeftShowConfig({
             head: startIndex,
             tail: startIndex + step,
-            transformY: `translateY(${leftRects[startIndex].top}px)`,
+            transformY: leftRects[startIndex].top,
           })
         }
 
@@ -203,7 +202,7 @@ function VirtualWaterfallList_(
           setRightShowConfig({
             head: startIndexR,
             tail: startIndexR + step,
-            transformY: `translateY(${rightRects[startIndexR].top}px)`,
+            transformY: rightRects[startIndexR].top,
           })
         }
       }
@@ -259,12 +258,12 @@ function VirtualWaterfallList_(
     setLeftShowConfig({
       head: 0,
       tail: step,
-      transformY: `translateY(0px)`,
+      transformY: 0,
     })
     setRightShowConfig({
       head: 0,
       tail: step,
-      transformY: `translateY(0px)`,
+      transformY: 0,
     })
   }, [step])
 
@@ -284,26 +283,27 @@ function VirtualWaterfallList_(
 
   const onTouchMove = useCallback(
     (e) => {
-      if (currentScrollTop > 0) {
+      if (leftShowConfig.head > 0) {
         e.stopPropagation()
       }
     },
-    [currentScrollTop],
+    [leftShowConfig.head],
   )
 
   const scrollToTop = useCallback(() => {
-    setCurrentScrollTop(0)
+    setScrollIntoView(`van-virtual-left-item0`)
     setLeftShowConfig({
       head: 0,
       tail: step,
-      transformY: `translateY(0px)`,
+      transformY: 0,
     })
     setRightShowConfig({
       head: 0,
       tail: step,
-      transformY: `translateY(0px)`,
+      transformY: 0,
     })
     nextTick(() => {
+      setScrollIntoView('')
       backToTopSuccess?.()
     })
   }, [backToTopSuccess, step])
@@ -312,9 +312,11 @@ function VirtualWaterfallList_(
     <ScrollView
       className={`van-virtual-list ${clsPrefix} ${className}`}
       scrollY
-      scrollTop={currentScrollTop}
+      scrollTop={0}
       style={{ height: addUnit(height), ...(style as React.CSSProperties) }}
       onScroll={handleScroll}
+      scrollIntoView={scrollIntoView}
+      scrollWithAnimation={false}
     >
       <View onTouchMove={onTouchMove}>
         <View style={{ display: 'flex', flexDirection: 'row' }}>
@@ -327,7 +329,9 @@ function VirtualWaterfallList_(
           >
             <View
               className={`${clsPrefix}-left ${listClssName}`}
-              style={{ transform: leftShowConfig.transformY }}
+              style={{
+                transform: `translateY(${leftShowConfig.transformY}px)`,
+              }}
             >
               {leftData
                 .slice(leftShowConfig.head, leftShowConfig.tail)
@@ -338,6 +342,7 @@ function VirtualWaterfallList_(
                     className={`van-virtual-left-item${
                       i + leftShowConfig.head
                     }`}
+                    id={`van-virtual-left-item${i + leftShowConfig.head}`}
                   >
                     <ItemRender item={item} index={leftShowConfig.head + i} />
                   </View>
@@ -352,7 +357,9 @@ function VirtualWaterfallList_(
           >
             <View
               className={`${clsPrefix}-right ${listClssName}`}
-              style={{ transform: rightShowConfig.transformY }}
+              style={{
+                transform: `translateY(${rightShowConfig.transformY}px)`,
+              }}
             >
               {rightData
                 .slice(rightShowConfig.head, rightShowConfig.tail)
@@ -374,7 +381,9 @@ function VirtualWaterfallList_(
       </View>
       <View
         className={`van-virtual-backto-top-${
-          currentScrollTop > backToTopCritical ? 'show' : 'hidden'
+          leftShowConfig.head > (backToTopCritical || showCount * 2)
+            ? 'show'
+            : 'hidden'
         }`}
       >
         {renderBackToTop || (
