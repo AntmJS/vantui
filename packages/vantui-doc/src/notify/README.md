@@ -161,12 +161,12 @@ function Demo() {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                              | 默认值        |
-| --------------------------------- | ------------- |
-| --notify-padding                  | ` 12px 30px;` |
-| --notify-font-size                | ` 28px;`      |
-| --notify-line-height              | ` 40px;`      |
-| --notify-primary-background-color | ` @blue;`     |
-| --notify-success-background-color | ` @green;`    |
-| --notify-danger-background-color  | ` @red;`      |
-| --notify-warning-background-color | ` @orange;`   |
+| 名称                              | 默认值             |
+| --------------------------------- | ------------------ |
+| --notify-padding                  | ` 12px 30px;`      |
+| --notify-font-size                | ` 28px;`           |
+| --notify-line-height              | ` 40px;`           |
+| --notify-primary-background-color | ` @blue;`          |
+| --notify-success-background-color | ` @primary-color;` |
+| --notify-danger-background-color  | ` @red;`           |
+| --notify-warning-background-color | ` @orange;`        |

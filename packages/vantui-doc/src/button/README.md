@@ -253,7 +253,7 @@ function Demo() {
 | --button-default-color            | ` @text-color;`        |
 | --button-default-background-color | ` @white;`             |
 | --button-primary-color            | ` @white;`             |
-| --button-primary-background-color | ` @green;`             |
+| --button-primary-background-color | ` @primary-color;`     |
 | --button-info-color               | ` @white;`             |
 | --button-info-background-color    | ` @blue;`              |
 | --button-danger-color             | ` @white;`             |

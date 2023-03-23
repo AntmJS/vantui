@@ -69,3 +69,4 @@ function Index() {
 | onRefresh     | 触发刷新方法，返回 Promise 成功                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;Promise<undefined><br/>_ | -           | `true`  |
 | touchMaxStart | 可触发下拉的 y 轴间距，相对于 PullToRefresh 组件 | _&nbsp;&nbsp;number<br/>_                             | `300`       | `true`  |
 | headHeight    | 高度                                             | _&nbsp;&nbsp;number<br/>_                             | `40`        | `false` |
+| disable       | 是否禁用                                         | _&nbsp;&nbsp;boolean<br/>_                            | `false`     | `false` |
