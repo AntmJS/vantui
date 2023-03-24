@@ -1,9 +1,8 @@
 import { ToastProps, toastProps } from '../../types/toast'
-import { Toast } from './index'
 
 let idIndex = 1
 
-export function createOnlyToast() {
+export function createOnlyToast(Toast) {
   const id = `van-create-toast${idIndex++}`
   const Toast_ = function Modal(props: ToastProps) {
     return <Toast {...props} id={id} />

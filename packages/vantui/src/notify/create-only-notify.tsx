@@ -1,8 +1,6 @@
-import { Notify } from './index'
-
 let idIndex = 1
 
-export function createOnlyNotify() {
+export function createOnlyNotify(Notify) {
   const id = `van-create-notify${idIndex++}`
   const Notify_ = function Modal(props) {
     return <Notify {...props} id={id} />

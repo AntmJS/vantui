@@ -1,8 +1,6 @@
-import { Dialog } from './index'
-
 let idIndex = 1
 
-export function createOnlyDialog() {
+export function createOnlyDialog(Dialog) {
   const id = `van-create-dialog${idIndex++}`
   const Dialog_ = function Modal(props = {}) {
     return <Dialog {...props} id={id} />

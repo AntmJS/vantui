@@ -175,6 +175,6 @@ export function Notify(props: NotifyProps) {
 
 Notify.show = notify
 Notify.clear = notify.clear
-Notify.createOnlyNotify = createOnlyNotify
+Notify.createOnlyNotify = () => createOnlyNotify(Notify)
 
 export default Notify

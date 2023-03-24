@@ -304,6 +304,6 @@ Dialog.resetDefaultOptions = function () {
   dialog.resetDefaultOptions()
 }
 
-Dialog.createOnlyDialog = createOnlyDialog
+Dialog.createOnlyDialog = () => createOnlyDialog(Dialog)
 
 export default Dialog

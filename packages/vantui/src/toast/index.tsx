@@ -188,6 +188,6 @@ Toast.fail = toast.fail
 Toast.clear = toast.clear
 Toast.setDefaultOptions = toast.setDefaultOptions
 Toast.resetDefaultOptions = toast.resetDefaultOptions
-Toast.createOnlyToast = createOnlyToast
+Toast.createOnlyToast = () => createOnlyToast(Toast)
 
 export default Toast
