@@ -59,12 +59,10 @@ export function FormItem(props: FormItemProps) {
       registerValidateFields(_name, onStoreChange, {
         rules,
         required,
-        label,
         mutiLevel,
       })
   }, [
     _name,
-    label,
     mutiLevel,
     onStoreChange,
     registerValidateFields,
