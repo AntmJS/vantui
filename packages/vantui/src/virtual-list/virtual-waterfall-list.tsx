@@ -241,10 +241,12 @@ function VirtualWaterfallList_(
   useEffect(() => {
     if (dataSource.length > prevDataLength.current) {
       prevDataLength.current = dataSource.length
-      setTimeout(() => {
-        updateLeftRects(leftRects)
-        updateRightRects(rightRects)
-      }, 66.66)
+      nextTick(() => {
+        setTimeout(() => {
+          updateLeftRects(leftRects)
+          updateRightRects(rightRects)
+        }, 16.6)
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataSource.length])
@@ -291,7 +293,6 @@ function VirtualWaterfallList_(
   )
 
   const scrollToTop = useCallback(() => {
-    setScrollIntoView(`van-virtual-left-item0`)
     setLeftShowConfig({
       head: 0,
       tail: step,
@@ -302,6 +303,8 @@ function VirtualWaterfallList_(
       tail: step,
       transformY: 0,
     })
+    setScrollIntoView(`van-virtual-left-item0`)
+
     nextTick(() => {
       setScrollIntoView('')
       backToTopSuccess?.()
@@ -318,7 +321,7 @@ function VirtualWaterfallList_(
       scrollWithAnimation={false}
     >
       <View onTouchMove={onTouchMove}>
-        <View style={{ display: 'flex', flexDirection: 'row' }}>
+        <View style={{ display: 'flex', flexDirection: 'row', height: 'auto' }}>
           <View
             style={{
               height: wrapperHeightLeft || 'auto',
