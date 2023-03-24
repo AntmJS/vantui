@@ -312,7 +312,6 @@ function VirtualWaterfallList_(
     <ScrollView
       className={`van-virtual-list ${clsPrefix} ${className}`}
       scrollY
-      scrollTop={0}
       style={{ height: addUnit(height), ...(style as React.CSSProperties) }}
       onScroll={handleScroll}
       scrollIntoView={scrollIntoView}
