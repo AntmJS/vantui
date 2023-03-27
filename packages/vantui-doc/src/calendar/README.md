@@ -38,6 +38,7 @@ function Demo() {
         onClick={() => setShow(true)}
       />
       <Calendar
+        longspan
         show={show}
         onClose={() => setShow(false)}
         onConfirm={(e) => {
