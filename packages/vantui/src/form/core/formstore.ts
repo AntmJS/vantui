@@ -26,7 +26,7 @@ const formInstanceApi = [
 const isReg = (value: any) => value instanceof RegExp
 class FormStore {
   static instance: FormStore
-  public requiredMessageCallback?: (label: string) => string
+  public requiredMessageCallback?: (fieldName: string) => string
   public FormUpdate: () => any
   public model: Record<string, any>
   public control: Record<string, any>
@@ -54,19 +54,18 @@ class FormStore {
     }, {})
   }
 
-  registerRequiredMessageCallback(callback: (label: string) => string) {
+  registerRequiredMessageCallback(callback: (fieldName: string) => string) {
     this.requiredMessageCallback = callback
   }
 
   static createValidate(validateModal: any) {
-    const { value, required, rules, label } = validateModal
+    const { value, required, rules } = validateModal
 
     return {
       value,
       rules: Array.isArray(rules) ? rules : [rules],
       required: required || false,
       status: 'pendding',
-      label,
     }
   }
 
@@ -144,7 +143,10 @@ class FormStore {
       !this.model[name] || this.model[name].value === undefined
 
     const validate = FormStore.createValidate(model)
-    this.model[name] = validate
+    this.model[name] = {
+      ...validate,
+      name,
+    }
     this.control[name] = control
 
     if (shouldUpdate) {
@@ -364,10 +366,10 @@ class FormStore {
       status = 'reject'
       if (this.requiredMessageCallback) {
         this.model[name].message = this.requiredMessageCallback(
-          this.model[name].label,
+          this.model[name].name,
         )
       } else {
-        this.model[name].message = this.model[name].label + '不能为空'
+        this.model[name].message = '字段不能为空'
       }
     }
 
