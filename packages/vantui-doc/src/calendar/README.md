@@ -523,6 +523,7 @@ function Demo() {
 | onClickSubtitle     | -                                                  | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                                                                          | -                      | `false` |
 | renderTitle         | 自定义标题                                         | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                                                                                                                                           | -                      | `false` |
 | renderFooter        | 自定义底部区域内容                                 | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                                                                                                                                           | -                      | `false` |
+| longspan            | 是否支持年月大跨度的快速切换                       | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                   | `true`                 | `false` |
 
 ### formatter 回调参数 Day [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
 
@@ -578,14 +579,14 @@ onUnselect 的回调函数参数
 | --calendar-day-height                      | ` 128px;`                                |
 | --calendar-day-font-size                   | ` @font-size-lg;`                        |
 | --calendar-range-edge-color                | ` @white;`                               |
-| --calendar-range-edge-background-color     | ` @red;`                                 |
-| --calendar-range-middle-color              | ` @red;`                                 |
+| --calendar-range-edge-background-color     | ` @primary-color;`                       |
+| --calendar-range-middle-color              | ` @primary-color;`                       |
 | --calendar-range-middle-background-opacity | ` 0.1;`                                  |
 | --calendar-selected-day-size               | ` 108px;`                                |
 | --calendar-selected-day-color              | ` @white;`                               |
 | --calendar-info-font-size                  | ` @font-size-xs;`                        |
 | --calendar-info-line-height                | ` 28px;`                                 |
-| --calendar-selected-day-background-color   | ` @red;`                                 |
+| --calendar-selected-day-background-color   | ` @primary-color;`                       |
 | --calendar-day-disabled-color              | ` @gray-5;`                              |
 | --calendar-confirm-button-height           | ` 72px;`                                 |
 | --calendar-confirm-button-margin           | ` 14px 0;`                               |

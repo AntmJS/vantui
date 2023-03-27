@@ -168,7 +168,7 @@ function Demo() {
 | --stepper-button-icon-color               | ` @text-color;`       |
 | --stepper-button-disabled-color           | ` @background-color;` |
 | --stepper-button-disabled-icon-color      | ` @gray-5;`           |
-| --stepper-button-round-theme-color        | ` @red;`              |
+| --stepper-button-round-theme-color        | ` @primary-color;`    |
 | --stepper-input-width                     | ` 64px;`              |
 | --stepper-input-height                    | ` 56px;`              |
 | --stepper-input-font-size                 | ` @font-size-md;`     |
