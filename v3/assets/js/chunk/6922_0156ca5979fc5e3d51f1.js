@@ -1,0 +1,1 @@
+"use strict";(self.webpackJsonp=self.webpackJsonp||[]).push([[6922],{"6922":function(o,t,n){n.r(t),n.d(t,{"n":function(){return notSupport}});var r=n(1448);function notSupport(o,t){void 0===o&&(o=""),void 0===t&&(t={}),console.error("H5 暂不支持 ".concat(o," 组件！")),r.td.trigger("__taroNotSupport",{"name":o,"instance":t,"type":"component","category":"temporarily"})}}}]);
