@@ -284,6 +284,7 @@ function Index(
           Toast({
             // duration: 0,
             message: rangePrompt || `选择天数不能超过 ${maxRange} 天`,
+            selector: 'van-carlendar-toast',
           })
         }
         if (overRange) overRange()
@@ -445,7 +446,7 @@ function Index(
         style={utils.style([style])}
         {...others}
       >
-        {longspan && longSpanShow && (
+        {longspan && longSpanShow && poppable && (
           <LongSpan
             data={monthsData}
             current={currentMonthDate}
@@ -544,7 +545,10 @@ function Index(
           closeable={showTitle || showSubtitle}
           closeOnClickOverlay={closeOnClickOverlay}
           onEnter={onOpen}
-          onClose={onClose}
+          onClose={() => {
+            onClose?.()
+            setLongSpanShow(false)
+          }}
           onAfterEnter={onOpened}
           onAfterLeave={onClosed}
         >
@@ -553,7 +557,7 @@ function Index(
       ) : (
         bodyRender()
       )}
-      <VanToast id="van-toast"></VanToast>
+      <VanToast id="van-carlendar-toast"></VanToast>
     </View>
   )
 }
