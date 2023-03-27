@@ -23,6 +23,7 @@ export function FormItem(props: FormItemProps) {
     layout = 'horizontal',
     children,
     label,
+    labelName,
     required = false,
     rules = {},
     trigger = 'onChange',
@@ -44,6 +45,17 @@ export function FormItem(props: FormItemProps) {
   const [, forceUpdate_] = useState({})
   const _name = Array.isArray(name) ? name.join('.') : name
 
+  const _label = useMemo(() => {
+    let l = ''
+    if (typeof label === 'string') {
+      l = label
+    } else if (labelName) {
+      l = labelName
+    }
+
+    return l
+  }, [label, labelName])
+
   const onStoreChange = useMemo(() => {
     const onStoreChange = {
       changeValue() {
@@ -60,6 +72,7 @@ export function FormItem(props: FormItemProps) {
         rules,
         required,
         mutiLevel,
+        label: _label,
       })
   }, [
     _name,
@@ -69,6 +82,7 @@ export function FormItem(props: FormItemProps) {
     required,
     rules,
     unRegisterValidate,
+    _label,
   ])
 
   useEffect(function () {
