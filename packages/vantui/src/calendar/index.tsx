@@ -87,6 +87,7 @@ function Index(
     renderFooter,
     className,
     style,
+    zIndex,
     ...others
   } = props
 
@@ -442,6 +443,7 @@ function Index(
           onClose={onClose}
           onAfterEnter={onOpened}
           onAfterLeave={onClosed}
+          zIndex={zIndex}
         >
           <View
             className={`van-calendar ${className || ''}`}
