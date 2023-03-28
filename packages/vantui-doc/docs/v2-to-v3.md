@@ -8,7 +8,7 @@
 - 新增 `VirtualList` 虚拟列表组件 （**完成**）
 - `Form`组件样式和`Cell`组件保持一致
 - 主题色调统一, 采用 less 变量`@primary-color`或 css 变量`--primary-color`统一设置
-  部分组件：`Calendar`、`DropdownMenu`、`Stepper`、`TreeSelect`的色调修改为和主题色统一 （**完成**）
+  部分组件：`Calendar`、`DropdownMenu`、`Stepper`、`TreeSelect`、`Switch`、`checkbox`、`radio`的色调修改为和主题色统一 （**完成**）
 
 仓库地址：[3.0.0](https://github.com/antmjs/vantui/tree/3.0.0)
 【** 欢迎 PR **】

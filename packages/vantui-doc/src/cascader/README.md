@@ -523,7 +523,7 @@ function Demo() {
 | --cascader-item-padding              | ` 20px 40px;`      |
 | --cascader-item-font-size            | ` 28px;`           |
 | --cascader-item-color                | ` #1a1a1a;`        |
-| --cascader-item-active-color         | ` #20c064;`        |
+| --cascader-item-active-color         | ` @primary-color;` |
 | --cascader-pane-height               | ` 684px;`          |
 | --cascader-pane-paddingTop           | ` 20px;`           |
 | --cascader-icon-checklist-marginLeft | ` 20px;`           |
