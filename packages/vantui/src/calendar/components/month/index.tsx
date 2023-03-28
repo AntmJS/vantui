@@ -27,6 +27,7 @@ type ICalenarMonthProps = {
   formatter?: (a: any) => any
   id?: string
   className?: string
+  ifRender?: boolean
 }
 
 function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
@@ -198,15 +199,27 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
     }
   })
 
+  if (!props.ifRender)
+    return (
+      <View
+        style={{ minHeight: 428 }}
+        id={id}
+        className={`van-calendar__month ${className}`}
+      ></View>
+    )
+
   return (
     <View
       id={id}
       className={`van-calendar__month ${className}`}
-      style={computed.getMonthStyle(
-        visible,
-        date,
-        rowHeight ? Number(rowHeight) : 0,
-      )}
+      style={{
+        ...computed.getMonthStyle(
+          visible,
+          date,
+          rowHeight ? Number(rowHeight) : 0,
+        ),
+        minHeight: 428,
+      }}
     >
       {showMonthTitle && (
         <View className="van-calendar__month-title">
@@ -242,7 +255,11 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
                 currentDate === item.date.getTime() ? (
                   <View
                     className="van-calendar__selected-day"
-                    style={`width: ${rowHeight}px; height: ${rowHeight}px;background:${color}`}
+                    style={{
+                      width: rowHeight,
+                      height: rowHeight,
+                      background: color,
+                    }}
                   >
                     {item.topInfo && (
                       <View className="van-calendar__top-info">

@@ -17,6 +17,7 @@ import { Calendar } from '@antmjs/vantui'
 ### 选择单个日期
 
 下面演示了结合单元格来使用日历组件的用法，日期选择完成后会触发`confirm`事件。
+`longspan`开启年月快速切换，年份跨度建议不要超过 5 年，5 年以上建议使用`DatetimePicker`封装
 
 ```jsx
 function Demo() {
@@ -40,6 +41,8 @@ function Demo() {
       <Calendar
         longspan
         show={show}
+        maxDate={new Date('2018-12-12')}
+        minDate={new Date('2015-12-12')}
         onClose={() => setShow(false)}
         onConfirm={(e) => {
           setDate(e.detail.value.valueOf())

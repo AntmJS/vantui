@@ -49,6 +49,7 @@ const initialMaxDate = (() => {
     now.getDate(),
   ).getTime()
 })()
+const fourMonth = 4 * 30 * 24 * 60 * 60 * 1000
 
 function Index(
   props: CalendarProps,
@@ -157,6 +158,14 @@ function Index(
     [limitDateRange, maxDate, minDate, type],
   )
 
+  const scrollIntoViewCompatible = useCallback((t) => {
+    if (process.env.TARO_ENV === 'h5') {
+      document.querySelector(`#${t}`)?.scrollIntoView(false)
+    } else {
+      setScrollIntoView(t)
+    }
+  }, [])
+
   const scrollIntoViewFn = useCallback(
     function () {
       requestAnimationFrame(() => {
@@ -170,14 +179,22 @@ function Index(
         months.some((month) => {
           if (compareMonth(month, targetDate) === 0) {
             const id = `month_${month}`
-            setScrollIntoView(id)
+            scrollIntoViewCompatible(id)
             return true
           }
           return false
         })
       })
     },
-    [currentDate, maxDate, minDate, poppable, show, type],
+    [
+      currentDate,
+      maxDate,
+      minDate,
+      poppable,
+      scrollIntoViewCompatible,
+      show,
+      type,
+    ],
   )
 
   const reset = useCallback(
@@ -241,7 +258,7 @@ function Index(
       }
 
       const contentObserver_ = _createIntersectionObserver({
-        thresholds: [0.5, 0.8, 1],
+        thresholds: [0.6, 1],
         observeAll: true,
         selectAll: true,
       })
@@ -439,23 +456,43 @@ function Index(
     }
   })
 
+  const quickSwitchMonth = useCallback(
+    (t, mIndex) => {
+      if (process.env.TARO_ENV === 'h5') {
+        scrollIntoViewCompatible(t)
+        nextTick(() => {
+          setTimeout(() => {
+            setLongSpanShow(false)
+            const monthDate = monthsData[mIndex]
+            setSubtitle(formatMonthTitle(monthDate))
+            setCurrentMonthDate(monthDate)
+          }, 66.66)
+        })
+      } else {
+        setLongSpanShow(false)
+        nextTick(() => {
+          setTimeout(() => {
+            scrollIntoViewCompatible(t)
+          }, 16.66)
+        })
+      }
+    },
+    [monthsData, scrollIntoViewCompatible],
+  )
+
   const bodyRender = () => {
     return (
       <View
         className={`van-calendar ${className || ''}`}
         style={utils.style([style])}
+        catchMove
         {...others}
       >
         {longspan && longSpanShow && poppable && (
           <LongSpan
             data={monthsData}
             current={currentMonthDate}
-            setScrollIntoView={(t) => {
-              setScrollIntoView(t)
-              nextTick(() => {
-                setLongSpanShow(false)
-              })
-            }}
+            setScrollIntoView={quickSwitchMonth}
           />
         )}
         <Header
@@ -481,6 +518,10 @@ function Index(
           {monthsData.map((item: any, index) => {
             return (
               <Month
+                ifRender={
+                  item >= currentMonthDate - fourMonth &&
+                  item <= currentMonthDate + fourMonth
+                }
                 key={`van-calendar-month___${index}`}
                 id={`month_${item}`}
                 className="month"

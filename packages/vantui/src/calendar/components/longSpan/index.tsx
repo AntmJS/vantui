@@ -5,7 +5,7 @@ import { Button } from '../../../button'
 type IProps = {
   data: number[]
   current: number
-  setScrollIntoView: (monthId: string) => void
+  setScrollIntoView: (monthId: string, mIndex: number) => void
 }
 
 export function LongSpan(props: IProps) {
@@ -63,7 +63,7 @@ export function LongSpan(props: IProps) {
 
   const switchAction_ = () => {
     if (currentIndex !== undefined) {
-      setScrollIntoView(`month_${props.data[currentIndex]}`)
+      setScrollIntoView(`month_${props.data[currentIndex]}`, currentIndex)
     }
   }
 
