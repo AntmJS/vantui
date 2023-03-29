@@ -148,7 +148,7 @@ function Demo() {
 
 | 名称                               | 默认值                           |
 | ---------------------------------- | -------------------------------- |
-| --slider-active-background-color   | ` @blue;`                        |
+| --slider-active-background-color   | ` @primary-color;`               |
 | --slider-inactive-background-color | ` @gray-3;`                      |
 | --slider-disabled-opacity          | ` @disabled-opacity;`            |
 | --slider-bar-height                | ` 4px;`                          |

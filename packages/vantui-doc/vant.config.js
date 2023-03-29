@@ -3,6 +3,14 @@ const path = require('path')
 module.exports = {
   name: '@antmjs/vantui',
   site: {
+    version: {
+      history: [
+        {
+          name: 'v2',
+          url: 'https://antmjs.github.io/vantui/v2/',
+        },
+      ],
+    },
     simulator: {
       url: {
         development: 'http://localhost:10086',
@@ -281,6 +289,7 @@ module.exports = {
           {
             path: 'power-scroll-view',
             title: 'PowerScrollView 滚动列表',
+            willDiscard: true,
           },
           {
             path: 'number-keyboard',

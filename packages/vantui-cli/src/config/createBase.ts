@@ -44,6 +44,7 @@ export default async function Create(mode?: 'production' | 'development') {
     routers: [],
     md: {} as Record<string, any>,
     version: '0.0.0',
+    versionHistory: config.version.history,
   }
 
   config.nav.map((item: Item) => {

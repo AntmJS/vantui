@@ -216,7 +216,7 @@ function Demo() {
 | --tag-round-border-radius    | ` @border-radius-max;`        |
 | --tag-danger-color           | ` @red;`                      |
 | --tag-primary-color          | ` @blue;`                     |
-| --tag-success-color          | ` @primary-color;`            |
+| --tag-success-color          | ` @green;`                    |
 | --tag-warning-color          | ` @orange;`                   |
 | --tag-default-color          | ` @gray-6;`                   |
 | --tag-plain-background-color | ` @white;`                    |

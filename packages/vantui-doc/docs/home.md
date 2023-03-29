@@ -82,7 +82,7 @@
 感谢以下小伙伴们为 @antmjs/vantui 发展做出的贡献：
 
 <a href="https://github.com/AntmJS/vantui/graphs/contributors">
-  <img src="https://opencollective.com/vantuiantmjs/contributors.svg?width=890&button=false" alt="contributors">
+  <img style="width:600px;" src="https://opencollective.com/vantuiantmjs/contributors.svg?width=890&button=false" alt="contributors">
 </a>
 
 ### 快速沟通群

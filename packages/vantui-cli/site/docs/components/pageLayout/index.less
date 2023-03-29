@@ -1,14 +1,57 @@
+/* stylelint-disable color-hex-length */
 /* stylelint-disable font-family-name-quotes */
 .antmui-site-pageLayout {
   font-family: Open Sans, -apple-system, BlinkMacSystemFont, Helvetica Neue,
     Helvetica, Segoe UI, Arial, Roboto, PingFang SC, miui, Hiragino Sans GB,
     Microsoft Yahei, sans-serif;
 
-  &-version {
-    font-size: 12px;
-    transform: scale(0.9);
-    color: #ebedf0;
-    margin-left: 8px;
+  &-version-box {
+    position: relative;
+    display: block;
+    padding: 0 12px;
+    color: #555a60;
+    background: #f7f8fa;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-left: 16px;
+
+    .version-list {
+      position: absolute;
+      z-index: 9999;
+      top: 34px;
+      left: 0;
+      width: 65px;
+      color: #333;
+      line-height: 36px;
+      text-align: left;
+      overflow: hidden;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px #ebedf0;
+      transform-origin: top;
+      transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .version-list-item {
+      padding-left: 12px;
+      transition: 0.2s;
+    }
+
+    .version-list-item:hover {
+      color: #4fc08d;
+      background-color: rgb(183, 187, 192);
+    }
+
+    .version-icon {
+      position: relative;
+      top: 2px;
+      left: 2px;
+    }
   }
 
   &-header {
@@ -29,6 +72,7 @@
       width: 30px;
       height: 30px;
       cursor: pointer;
+      margin-left: 16px;
 
       /* stylelint-disable-next-line selector-max-type */
       img {
@@ -50,7 +94,7 @@
   }
 
   &-uiname {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: 10px;
     font-weight: 300;
   }
@@ -115,6 +159,19 @@
     line-height: 20px;
     transition: color 0.2s;
     font-size: 13px;
+    position: relative;
+
+    .willDiscard {
+      border-radius: 10px;
+      padding: 6px 8px;
+      background-color: rgb(247, 6, 6);
+      color: #ffffff;
+      position: absolute;
+      font-size: 12px;
+      top: 2px;
+      right: -18px;
+      transform: scale(0.6);
+    }
 
     &-active {
       font-weight: 600;
@@ -128,7 +185,7 @@
     position: fixed;
     right: 14px;
     top: 84px;
-    z-index: 99999;
+    z-index: 999;
     width: 360px;
     max-height: 640px;
     height: calc(100% - 84px);

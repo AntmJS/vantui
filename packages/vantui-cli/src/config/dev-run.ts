@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const devServer = {
   port: 7777,
-  host: 'localhost',
+  // host: 'localhost',
   historyApiFallback: true,
   open: true,
   hot: true,

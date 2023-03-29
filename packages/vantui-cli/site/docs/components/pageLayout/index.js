@@ -11,6 +11,7 @@ export default function PageLayout() {
     window.location.hash.split('?')[0].replace('#/', ''),
   )
   const [iframeTop, setIframeTop] = useState(84)
+  const [showVersion, setShowVersion] = useState(false)
 
   useEffect(() => {
     window.addEventListener('hashchange', function () {
@@ -67,15 +68,52 @@ export default function PageLayout() {
         ) : (
           ''
         )}
-        <div className={`${preCls}-header`}>
+        <div
+          className={`${preCls}-header`}
+          onClick={() => setShowVersion(false)}
+        >
           <div className={`${preCls}-header-left`}>
             <img className={`${preCls}-logo`} src={__vantui_base__.logo} />
             <div className={`${preCls}-uiname`}>{__vantui_base__.title}</div>
-            <div className={`${preCls}-version`}>
-              {__vantui_base__.version ? `v3-预览` : ''}
-            </div>
           </div>
           <div className={`${preCls}-links`}>
+            <div
+              className={`${preCls}-version-box`}
+              onClick={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                setShowVersion(true)
+              }}
+            >
+              <span>{__vantui_base__.version}</span>
+              <svg
+                className="version-icon"
+                viewBox="0 0 1024 1024"
+                width="12"
+                height="12"
+              >
+                <path d="M535.12 711.6L870.528 355.2a29.376 29.376 0 0 0 0-42.352 31.376 31.376 0 0 0-43.52 0l-315.2 334.912-315.2-334.912a31.376 31.376 0 0 0-43.52 0 29.376 29.376 0 0 0 0 42.352l335.408 356.4a36.272 36.272 0 0 0 46.624 0z"></path>
+              </svg>
+              <div
+                className="version-list"
+                style={showVersion ? {} : { display: 'none' }}
+              >
+                {(__vantui_base__?.versionHistory || []).map((item) => (
+                  <div
+                    className="version-list-item"
+                    key={`version-list-item${item.name}`}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      e.preventDefault()
+                      setShowVersion(false)
+                      window.open(item.url)
+                    }}
+                  >
+                    {item.name}
+                  </div>
+                ))}
+              </div>
+            </div>
             {(__vantui_base__?.links || []).map((item, index) => (
               <div
                 className={`${preCls}-links-item`}
@@ -107,12 +145,18 @@ export default function PageLayout() {
                     to={`/${aa.path}`}
                   >
                     {aa.title}
+                    {aa.willDiscard && (
+                      <div className="willDiscard">即将废弃</div>
+                    )}
                   </Link>
                 ))}
               </div>
             ))}
           </div>
-          <div className={`${preCls}-main`}>
+          <div
+            className={`${preCls}-main`}
+            onClick={() => setShowVersion(false)}
+          >
             <Switch>
               <Redirect path="/" exact to="/home" />
               {(__vantui_base__.routers || []).map((item, index) => (
