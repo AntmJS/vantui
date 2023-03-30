@@ -1,0 +1,1 @@
+"use strict";(self.webpackJsonp=self.webpackJsonp||[]).push([[1949],{"1949":function(n,t,e){e.r(t),e.d(t,{"taro_label_core":function(){return u}});var o=e(7109),u=function(){function r(n){(0,o.r)(this,n)}return r.prototype.render=function(){return(0,o.h)("label",{"htmlFor":this.for},(0,o.h)("slot",null))},r}()}}]);
