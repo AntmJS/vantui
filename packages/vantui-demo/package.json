@@ -89,7 +89,6 @@
     "@tarojs/plugin-framework-react": "3.5.7",
     "@tarojs/plugin-platform-alipay": "3.5.7",
     "@tarojs/plugin-platform-alipay-dd": "^0.1.3",
-    "@tarojs/plugin-platform-h5": "3.5.7",
     "@tarojs/plugin-platform-jd": "3.5.7",
     "@tarojs/plugin-platform-kwai": "^2.0.0",
     "@tarojs/plugin-platform-qq": "3.5.7",
