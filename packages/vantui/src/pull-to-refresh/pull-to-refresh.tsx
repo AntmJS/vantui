@@ -7,6 +7,8 @@ import { IPullToRefreshProps } from '../../types/index'
 let initIndex = 0
 const clsPrefix = 'van-pull-to-refresh'
 type IStatus = 'pull' | 'release' | 'loading' | 'success'
+const SUCESS_DURATION = 1000
+const TOUCH_MIN_TIME = 400
 
 export default function PullToRefresh(props: IPullToRefreshProps) {
   const {
@@ -15,7 +17,7 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     successText = '刷新成功',
     pullText = '下拉刷新',
     releaseText = '松开刷新',
-    headHeight = 40,
+    headHeight = 60,
     renderLoading,
     onRefresh,
     touchMaxStart = 300,
@@ -30,16 +32,30 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     maxStart: 0,
   })
 
+  const renderHeight = useMemo(() => {
+    return statusHeight > headHeight ? headHeight : statusHeight
+  }, [headHeight, statusHeight])
+
+  const rendermarginTop = useMemo(() => {
+    let marginTop = 0
+    const ly = statusHeight - headHeight
+    if (ly > 30) {
+      marginTop = 30
+    }
+
+    return marginTop
+  }, [headHeight, statusHeight])
+
   const reset = useCallback(() => {
     touch.start = 0
     touch.time = 0
     setStatusHeight(0)
+    setStatus('pull')
   }, [touch])
 
   const onTouchStart = useCallback(
     function (event) {
-      if (!disable) {
-        if (status !== 'pull') setStatus('pull')
+      if (!disable && status === 'pull') {
         const start = event.touches[0].clientY
         if (start < touch.maxStart) {
           touch.start = event.touches[0].clientY
@@ -54,40 +70,33 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
 
   const onTouchMove = useCallback(
     function (event) {
-      if (!disable) {
-        if (status === 'pull' && Date.now() - touch.time > 400) {
-          event.preventDefault()
-          event.stopPropagation()
-          const y = event.touches[0].clientY - touch.start
-          setStatusHeight(y)
-        }
-      } else {
-        setStatus('pull')
+      if (
+        !disable &&
+        Date.now() - touch.time > TOUCH_MIN_TIME &&
+        (status === 'pull' || status === 'release')
+      ) {
+        event.preventDefault()
+        event.stopPropagation()
+        let y = event.touches[0].clientY - touch.start
+        if (y < 0) y = 0
+
+        setStatusHeight(y)
       }
     },
     [disable, status, touch.start, touch.time],
   )
 
   const onTouchEnd = useCallback(async () => {
-    if (statusHeight > headHeight && status === 'release') {
+    if (status === 'release' && rendermarginTop === 30) {
       setStatus('loading')
       setStatusHeight(headHeight)
       await onRefresh()
       setStatus('success')
       setTimeout(() => {
         reset()
-      }, 1100)
-    } else {
-      setStatusHeight(0)
+      }, SUCESS_DURATION)
     }
-  }, [headHeight, onRefresh, reset, status, statusHeight])
-
-  useEffect(() => {
-    if (status === 'pull' && statusHeight - headHeight >= 50) {
-      setStatus('release')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statusHeight])
+  }, [headHeight, onRefresh, rendermarginTop, reset, status])
 
   useEffect(() => {
     setTimeout(() => {
@@ -100,19 +109,12 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const renderHeight = useMemo(() => {
-    return statusHeight > headHeight ? headHeight : statusHeight
-  }, [headHeight, statusHeight])
-
-  const renderMarginBottom = useMemo(() => {
-    let marginBottom = 0
-    const ly = statusHeight - headHeight
-    if (ly > 10) {
-      marginBottom = 10
+  useEffect(() => {
+    if (rendermarginTop === 30) {
+      setStatus('release')
     }
-
-    return marginBottom
-  }, [headHeight, statusHeight])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rendermarginTop])
 
   return (
     <View
@@ -125,7 +127,8 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
         className={`${clsPrefix}-status ${clsPrefix}-status${componentIndex}`}
         style={{
           height: renderHeight,
-          marginBottom: renderMarginBottom,
+          lineHeight: renderHeight,
+          marginTop: rendermarginTop,
         }}
       >
         {status === 'loading' && (
