@@ -267,6 +267,8 @@ function VirtualWaterfallList_(
       tail: step,
       transformY: 0,
     })
+    setRightRects([])
+    setLeftRects([])
   }, [step])
 
   useImperativeHandle(ref, () => {

@@ -52,7 +52,7 @@ export interface InfiniteScrollInstance {
   /**
    * @description 重置加载状态
    */
-  reset: () => void
+  reset: () => Promise<null>
 }
 
 declare const InfiniteScroll: FunctionComponent<InfiniteScrollProps>

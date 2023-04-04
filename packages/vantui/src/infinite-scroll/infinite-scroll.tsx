@@ -42,10 +42,15 @@ function InfiniteScroll_(
   const thisDom = useRef()
   const [forceKey, setForceKey] = useState(0) // 解决IntersectionObserver中执行loadmore时无法拿到最新的俩是state
 
-  const reset = useCallback(() => {
-    setForceKey(0)
-    setStatus('loading')
-    setOnRequest(false)
+  const reset = useCallback((): Promise<null> => {
+    return new Promise((resolve) => {
+      nextTick(() => {
+        setForceKey(0)
+        setStatus('loading')
+        setOnRequest(false)
+        resolve(null)
+      })
+    })
   }, [])
 
   const _loadMore = useCallback(

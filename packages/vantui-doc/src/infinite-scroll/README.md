@@ -71,7 +71,7 @@ function Demo() {
   const [data, setdata] = react.useState([])
   const mockGoods = COMMON.mockGoods
   const InfiniteScrollInstance = react.useRef()
-  const virtualListInstance = react.useRef()
+  const VirtualListInstance = react.useRef()
 
   const loadMore = async () => {
     return new Promise(async (resolve) => {
@@ -87,19 +87,20 @@ function Demo() {
     return new Promise(async (resolve) => {
       InfiniteScrollInstance.current.reset()
       const reslult = await mockGoods()
+      await VirtualListInstance.current.reset()
       setdata(reslult)
       resolve()
     })
   }
   return (
-    <>
+    <PullToRefresh onRefresh={onRefresh}>
       <VirtualList.VirtualWaterfallList
         style={{ padding: 10, boxSizing: 'border-box' }}
         height="calc(100vh - 125px)"
         dataSource={data}
         showCount={8}
         gap={10}
-        ref={virtualListInstance}
+        ref={VirtualListInstance}
         footer={
           <InfiniteScroll
             parentClassName="van-virtual-list"
@@ -125,7 +126,7 @@ function Demo() {
           )
         }}
       />
-    </>
+    </PullToRefresh>
   )
 }
 ```

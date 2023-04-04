@@ -56,7 +56,6 @@ function Demo() {
 - `showCount`必须大于可视区域可展示的最大数量
 - `gap`设置中间的间距
 - 微信开发工具会卡，不建议在微信端使用
-- 暂时不支持和`PullRefresh`使用
 - 暂时不支持不等高图片
 
 ```jsx
@@ -68,7 +67,7 @@ function Demo() {
       style={{ padding: 10, boxSizing: 'border-box' }}
       height="calc(100vh - 125px)"
       dataSource={data}
-      showCount={6}
+      showCount={12}
       gap={10}
       ItemRender={react.memo(({ index, item, className, ...props }) => {
         return (
