@@ -95,6 +95,7 @@ function Index(
     className,
     style,
     longspan = true,
+    zIndex,
     ...others
   } = props
 
@@ -592,6 +593,7 @@ function Index(
           }}
           onAfterEnter={onOpened}
           onAfterLeave={onClosed}
+          zIndex={zIndex}
         >
           {bodyRender()}
         </VanPopup>

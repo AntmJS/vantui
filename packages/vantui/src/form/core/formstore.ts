@@ -367,7 +367,11 @@ class FormStore {
           this.model[name].label,
         )
       } else {
-        this.model[name].message = this.model[name].label + '不能为空'
+        if (this.model[name].label) {
+          this.model[name].message = this.model[name].label + '不能为空'
+        } else {
+          this.model[name].message = '此处不能为空'
+        }
       }
     }
 

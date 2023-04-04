@@ -59,6 +59,10 @@ export interface FormItemProps extends ViewProps {
    */
   label: ReactNode
   /**
+   * @description 表单label字符串, 当label不为字符串的时候，传入labelName
+   */
+  labelName?: string
+  /**
    * @description 垂直 ｜ 水平
    * @default horizontal
    */

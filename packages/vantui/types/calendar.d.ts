@@ -125,6 +125,10 @@ export interface CalendarProps extends ViewProps {
    * @default 0
    */
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  /**
+   * @description 弹出层zIndex
+   */
+  zIndex?: number
   onOpen?: () => void
   onClose?: () => void
   onOpened?: () => void
