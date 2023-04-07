@@ -131,6 +131,7 @@ export function FormItem(props: FormItemProps) {
           }
           result.then((v) => {
             nextHandle(v, e, trigger_)
+            dispatch({ type: 'validateFieldValue' }, _name)
           })
         } else {
           nextHandle(result, e, trigger_)
@@ -138,6 +139,7 @@ export function FormItem(props: FormItemProps) {
             // 微信端Input输入存在性能问题，微信2.1版本后基于bindInput返回值做优化
             return result
           }
+          dispatch({ type: 'validateFieldValue' }, _name)
         }
       }
       props[trigger] = handleChange
@@ -146,8 +148,6 @@ export function FormItem(props: FormItemProps) {
           if (validateTrigger === trigger) {
             handleChange(e)
           }
-
-          dispatch({ type: 'validateFieldValue' }, _name)
         }
       }
       props[valueKey] = innnerValue
