@@ -142,9 +142,9 @@ export function FormItem(props: FormItemProps) {
       }
       props[trigger] = handleChange
       if (required || rules) {
-        props[validateTrigger] = async (e: any) => {
+        props[validateTrigger] = (e: any) => {
           if (validateTrigger === trigger) {
-            await handleChange(e)
+            handleChange(e)
           }
 
           dispatch({ type: 'validateFieldValue' }, _name)
