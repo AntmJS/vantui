@@ -22,7 +22,7 @@ import { getClosestIndex } from './utils'
 
 const clsPrefix = 'van-virtual-half-list'
 
-function VirtualHalfList_(
+function VirtualList_(
   props: IVirtualListProps<any>,
   ref: React.ForwardedRef<IVirtualListInstance>,
 ) {
@@ -203,7 +203,6 @@ function VirtualHalfList_(
               .map((item, i) => (
                 <ItemRender
                   key={`van-virtual-box-item${i + showConfig.head}`}
-                  id={`van-virtual-box-item${i + showConfig.head}`}
                   item={item}
                   index={showConfig.head + i}
                 />
@@ -224,8 +223,8 @@ function VirtualHalfList_(
               ))}
           </View>
         </View>
-        {footer}
       </View>
+      {footer}
       <View
         className={`van-virtual-backto-top-${
           showConfig.head > (backToTopCritical || showCount * 2)
@@ -243,6 +242,6 @@ function VirtualHalfList_(
   )
 }
 
-export const VirtualHalfList = forwardRef(VirtualHalfList_)
+export const VirtualList = forwardRef(VirtualList_)
 
-export default VirtualHalfList
+export default VirtualList

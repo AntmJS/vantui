@@ -1,7 +1,5 @@
-import { VirtualHalfList } from './virtual-half-list'
-import { VirtualWaterfallList } from './virtual-waterfall-list'
+import { VirtualList } from './virtual-half-list'
 
-export default {
-  VirtualHalfList,
-  VirtualWaterfallList,
-}
+export default VirtualList
+
+export { VirtualList }

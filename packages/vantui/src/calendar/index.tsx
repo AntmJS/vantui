@@ -486,6 +486,7 @@ function Index(
       <View
         className={`van-calendar ${className || ''}`}
         style={utils.style([style])}
+        // @ts-ignore
         catchMove
         {...others}
       >
@@ -577,6 +578,7 @@ function Index(
   }
 
   return (
+    // @ts-ignore
     <View catchMove>
       {poppable ? (
         <VanPopup

@@ -58,8 +58,7 @@ function Demo() {
 
 ### 新增 VirtualList 组件
 
-- `VirtualList.VirtualHalfList`: `半虚拟列表`是否区域最多渲染 N 个元素，组件内永远只渲染 2N 个元素
-- `VirtualList.VirtualWaterfallList`: 瀑布流虚拟列表，暂时不支持动态高度（未知高度的图片）
+由于小程序是异步获取 dom 的 rect 信息，当前实现方式为区域最多渲染 N 个元素，组件内永远只渲染 2N 个元素
 
 ### Calendar 功能修复+升级
 

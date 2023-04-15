@@ -64,7 +64,7 @@ function Demo() {
 }
 ```
 
-### 瀑布流
+### 虚拟列表
 
 ```jsx
 function Demo() {
@@ -94,12 +94,11 @@ function Demo() {
   }
   return (
     <PullToRefresh onRefresh={onRefresh}>
-      <VirtualList.VirtualWaterfallList
+      <VirtualList
         style={{ padding: 10, boxSizing: 'border-box' }}
-        height="calc(100vh - 125px)"
+        height="calc(100vh - 135px)"
         dataSource={data}
-        showCount={8}
-        gap={10}
+        showCount={3}
         ref={VirtualListInstance}
         footer={
           <InfiniteScroll

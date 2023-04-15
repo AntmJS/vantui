@@ -8,11 +8,9 @@
 
 ```js
 import { VirtualList } from '@antmjs/vantui'
-
-const { VirtualHalfList, VirtualWaterfallList } = VirtualList
 ```
 
-### 半虚拟列表
+### 基本使用
 
 - `showCount`必须大于可视区域可展示的最大数量
 - 半虚拟：是否区域最多渲染`N`个元素，组件内永远只渲染`2N`个元素
@@ -26,49 +24,11 @@ const data = COMMON.mockGoods()
 
 function Demo() {
   return (
-    <VirtualList.VirtualHalfList
+    <VirtualList
       style={{ padding: 10, boxSizing: 'border-box' }}
       height="calc(100vh - 125px)"
       dataSource={data}
       showCount={3}
-      ItemRender={react.memo(({ index, item, className, ...props }) => {
-        return (
-          <View
-            className={`van-demo-goods-item-wrapper ${className}`}
-            {...props}
-          >
-            <View className="van-demo-goods-item">
-              <TaroImage src={item.image} className="img" />
-              <View className="title">{item.title}</View>
-              {item.isCutPrice && <Text className="cutPrice">最近大降价</Text>}
-              <View className="price">{item.price}</View>
-            </View>
-          </View>
-        )
-      })}
-    />
-  )
-}
-```
-
-### 瀑布流
-
-- `showCount`必须大于可视区域可展示的最大数量
-- `gap`设置中间的间距
-- 微信开发工具会卡，不建议在微信端使用
-- 暂时不支持不等高图片
-
-```jsx
-const data = COMMON.mockGoods()
-
-function Demo() {
-  return (
-    <VirtualList.VirtualWaterfallList
-      style={{ padding: 10, boxSizing: 'border-box' }}
-      height="calc(100vh - 125px)"
-      dataSource={data}
-      showCount={12}
-      gap={10}
       ItemRender={react.memo(({ index, item, className, ...props }) => {
         return (
           <View
@@ -129,19 +89,19 @@ const mockGoods = () => {
 
 ### IVirtualListProps<T> [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/virtual-list.d.ts)
 
-| 参数              | 说明                                                           | 类型                                                                                                                                                                                                                                                       | 默认值                                                                     | 必填    |
-| ----------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------- |
-| listStyle         | 列容器的样式                                                   | _&nbsp;&nbsp;CSSProperties<br/>_                                                                                                                                                                                                                           | -                                                                          | `false` |
-| listClssName      | 列容器的样式名                                                 | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                  | -                                                                          | `false` |
-| height            | 滚动外层容器高度                                               | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                        | -                                                                          | `true`  |
-| footer            | 底部额外渲染                                                   | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                               | -                                                                          | `false` |
-| showCount         | 可视区域展示的最大数量, 高度不一的时候按全部最小高度展示去计算 | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                  | -                                                                          | `true`  |
-| gap               | 可视区域展示的最大数量                                         | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                  | -                                                                          | `false` |
-| dataSource        | 数据源，数组                                                   | _&nbsp;&nbsp;Array<T><br/>_                                                                                                                                                                                                                                | -                                                                          | `true`  |
-| ItemRender        | 自定义渲染每一项                                               | _&nbsp;&nbsp;FunctionComponent<<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item:&nbsp;T<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index?:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&&nbsp;ViewProps<br/>&nbsp;&nbsp;><br/>_ | -                                                                          | `true`  |
-| renderBackToTop   | 自定义回到顶部按钮渲染                                         | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                               | -                                                                          | `false` |
-| backToTopSuccess  | 成功返回顶部后执行                                             | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                    | -                                                                          | `false` |
-| backToTopCritical | 展示返回顶端按钮的临界值，上方隐藏了多少个 ItemRender          | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                  | `VirtualHalfList`的为`showCount`乘 2,`VirtualWaterfallList`的为`showCount` | `false` |
+| 参数              | 说明                                                           | 类型                                                                                                                                                                                                                                                       | 默认值                                                                 | 必填    |
+| ----------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
+| listStyle         | 列容器的样式                                                   | _&nbsp;&nbsp;CSSProperties<br/>_                                                                                                                                                                                                                           | -                                                                      | `false` |
+| listClssName      | 列容器的样式名                                                 | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                                                                                  | -                                                                      | `false` |
+| height            | 滚动外层容器高度                                               | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                        | -                                                                      | `true`  |
+| footer            | 底部额外渲染                                                   | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                               | -                                                                      | `false` |
+| showCount         | 可视区域展示的最大数量, 高度不一的时候按全部最小高度展示去计算 | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                  | -                                                                      | `true`  |
+| gap               | 可视区域展示的最大数量                                         | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                  | -                                                                      | `false` |
+| dataSource        | 数据源，数组                                                   | _&nbsp;&nbsp;Array<T><br/>_                                                                                                                                                                                                                                | -                                                                      | `true`  |
+| ItemRender        | 自定义渲染每一项                                               | _&nbsp;&nbsp;FunctionComponent<<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item:&nbsp;T<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index?:&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&&nbsp;ViewProps<br/>&nbsp;&nbsp;><br/>_ | -                                                                      | `true`  |
+| renderBackToTop   | 自定义回到顶部按钮渲染                                         | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                               | -                                                                      | `false` |
+| backToTopSuccess  | 成功返回顶部后执行                                             | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                    | -                                                                      | `false` |
+| backToTopCritical | 展示返回顶端按钮的临界值，上方隐藏了多少个 ItemRender          | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                                                                                  | `VirtualList`的为`showCount`乘 2,`VirtualWaterfallList`的为`showCount` | `false` |
 
 ### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/virtual-list.d.ts)
 

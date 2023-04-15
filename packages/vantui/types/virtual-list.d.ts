@@ -23,10 +23,6 @@ export interface IVirtualListProps<T> extends ViewProps {
    */
   showCount: number
   /**
-   * @description 可视区域展示的最大数量
-   */
-  gap?: number
-  /**
    * @description 数据源，数组
    */
   dataSource: Array<T>
@@ -49,7 +45,7 @@ export interface IVirtualListProps<T> extends ViewProps {
   backToTopSuccess?: () => void
   /**
    * @description 展示返回顶端按钮的临界值，上方隐藏了多少个ItemRender
-   * @default `VirtualHalfList`的为`showCount`乘2,`VirtualWaterfallList`的为`showCount`
+   * @default `showCount`
    */
   backToTopCritical?: number
 }
@@ -68,9 +64,8 @@ export type IVirtualListInstance = {
   backToTop: () => void
 }
 
-declare const VirtualList: {
-  VirtualHalfList: <T>(p: IVirtualListProps<T>) => JSX.Element | null
-  VirtualWaterfallList: <T>(p: IVirtualListProps<T>) => JSX.Element | null
-}
+declare const VirtualList: <T>(
+  props: IVirtualListProps<T>,
+) => JSX.Element | null
 
 export { VirtualList }
