@@ -2,6 +2,7 @@
 const path = require('path')
 const { join } = path
 const fs = require('fs')
+const { spawn } = require('child_process')
 const ora = require('ora')
 const consola = require('consola')
 const glob = require('glob')
@@ -15,17 +16,34 @@ const pagePath = path.join(__dirname, '../../src/pages')
 const configPath = path.join(__dirname, '../../src/config.json')
 const appConfigPath = path.join(__dirname, '../../src/app.config.js')
 const withTabPages = ['icon', 'power-scroll-view', 'infinite-scroll'] // 需要tab切换展示的组件
-const markdownCodeSrc = path.join(vantuiDemoDir, '/vantui-doc/src')
-const vantConfigPath = path.join(vantuiDemoDir, '/vant.config.js')
+const markdownCodeSrc = path.join(vantuiDemoDir, '/vantui/src')
+
+const vantConfigPathTs = path.join(vantuiDemoDir, './vantui/antm.config.ts')
+const vantConfigPath = path.join(vantuiDemoDir, './vantui/antm.config.js')
 const fromTaroComps = ['View', 'Text', 'Input', 'Block', 'TaroImage']
 let pluginOptions = {}
-const vantConfig = require('../../../vantui-doc/vant.config')
 
 module.exports = function (ctx, options) {
   pluginOptions = options
 
   ctx.onBuildStart(async () => {
+    await transformConfig()
     await beginWork()
+  })
+}
+
+async function transformConfig() {
+  const cp = spawn(`npx`, [
+    'tsc',
+    vantConfigPathTs,
+    '--resolveJsonModule',
+    '--esModuleInterop',
+  ])
+
+  return new Promise((resolve) => {
+    cp.on('close', () => {
+      resolve()
+    })
   })
 }
 
@@ -141,7 +159,8 @@ function getCode(targetPath) {
 
 // 创建路由菜单文件和路由文件
 async function createBaseFiles() {
-  const nav = vantConfig.site.nav
+  const vantConfig = require(vantConfigPath)
+  const nav = vantConfig.default.docs.menu
   let routers = []
 
   const navFilter = nav.filter((item) => {

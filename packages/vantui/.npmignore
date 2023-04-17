@@ -13,3 +13,7 @@ CHANGELOG.md
 src
 node_modules
 coverage
+docs
+scripts
+build.sh
+.antm.config.*
