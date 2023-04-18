@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -rf ./docs_build
+rm -rf ./doc_build
 
-npx antm-doc-start
+npx antm-doc-build
 
 npx prettier --write '**/*.{js,jsx,ts,tsx,md,html,css,less}'
 
@@ -11,9 +11,9 @@ cd ./../vantui-demo
 pwd
 yarn real:h5Doc
 
-cd  ./../vantui-doc
+cd  ./../vantui
 
-mv  ./../vantui-demo/build/js  ./docs_build/js
-mv  ./../vantui-demo/build/assets  ./docs_build/assets
+mv  ./../vantui-demo/build/js  ./doc_build/js
+mv  ./../vantui-demo/build/assets  ./doc_build/assets
 
-mv  ./../vantui-demo/build/index.html  ./docs_build/mobile.html
+mv  ./../vantui-demo/build/index.html  ./doc_build/mobile.html

@@ -161,17 +161,15 @@ function getCode(targetPath) {
 async function createBaseFiles() {
   const vantConfig = require(vantConfigPath)
   const nav = vantConfig.default.docs.menu
+  const noMateUrls = vantConfig.default.docs.simulator.noMate.urls
   let routers = []
 
-  const navFilter = nav.filter((item) => {
-    let flag = true
+  const navFilter = nav.map((item) => {
     item.items.forEach((item) => {
-      if (item.hideSimulator !== undefined) {
-        flag = false
-      }
+      return !noMateUrls.includes(item.path)
     })
 
-    return flag
+    return item
   })
   // 菜单写入
   fs.writeFileSync(configPath, JSON.stringify(navFilter))

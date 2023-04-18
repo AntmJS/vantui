@@ -49,3 +49,5 @@ packages/vantui-demo/src/config.json
 packages/vantui-cli/lib
 packages/vantui-cli/dist
 packages/vantui-cli/dest
+
+doc_build

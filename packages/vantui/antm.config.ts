@@ -16,8 +16,23 @@ export default {
     menu: getMenus(),
     simulator: {
       url: {
-        development: 'http://localhost:10086',
-        production: '/vantui/mobile.html',
+        development: 'http://10.254.9.214:10086',
+        production: '/vantui/main/mobile.html',
+      },
+      transform: (url) => `#/pages/${url}/index`,
+      noMate: {
+        urls: [
+          'quickstart',
+          'custom-style',
+          'home',
+          'theme',
+          'use-in-react',
+          'contributing',
+          'v2-to-v3',
+          'comments',
+          'premium',
+        ],
+        redirect: '#/pages/dashboard/index',
       },
     },
     headerLinks: [
