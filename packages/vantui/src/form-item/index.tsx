@@ -119,7 +119,7 @@ export function FormItem(props: FormItemProps) {
 
       const valueFormat_ = valueFormat || defaultValueFormat
 
-      const handleChange = (e: any) => {
+      const handleChange = (e: any, isValidateField?: boolean) => {
         const result = valueFormat_(e, _name, formInstance)
         // 兼容注入的Promise
         if (result?.then && result?.catch) {
@@ -131,6 +131,7 @@ export function FormItem(props: FormItemProps) {
           }
           result.then((v) => {
             nextHandle(v, e, trigger_)
+            isValidateField && dispatch({ type: 'validateFieldValue' }, _name)
           })
         } else {
           nextHandle(result, e, trigger_)
@@ -138,16 +139,18 @@ export function FormItem(props: FormItemProps) {
             // 微信端Input输入存在性能问题，微信2.1版本后基于bindInput返回值做优化
             return result
           }
+          isValidateField && dispatch({ type: 'validateFieldValue' }, _name)
         }
       }
       props[trigger] = handleChange
       if (required || rules) {
-        props[validateTrigger] = async (e: any) => {
+        // 这里不可以使用异步，否则会导致微信小程序输入框显示异常，详见：https://github.com/AntmJS/vantui/issues/459
+        props[validateTrigger] = (e: any) => {
           if (validateTrigger === trigger) {
-            await handleChange(e)
+            handleChange(e, true)
+          } else {
+            dispatch({ type: 'validateFieldValue' }, _name)
           }
-
-          dispatch({ type: 'validateFieldValue' }, _name)
         }
       }
       props[valueKey] = innnerValue
