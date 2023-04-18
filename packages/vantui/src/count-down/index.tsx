@@ -148,10 +148,10 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
     [time],
   )
 
-  const tid = _ref.current.tid
   useEffect(function () {
+    const _refCurrent = _ref.current
     return function () {
-      tid && clearTimeout(tid)
+      _refCurrent.tid && clearTimeout(_refCurrent.tid)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
