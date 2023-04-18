@@ -135,9 +135,11 @@ function VirtualList_(
     })
     setScrollIntoView('van-virtual-box-item0')
     nextTick(() => {
-      setScrollIntoView('')
+      setTimeout(() => {
+        setScrollIntoView('')
 
-      backToTopSuccess?.()
+        backToTopSuccess?.()
+      }, 33.33)
     })
   }, [backToTopSuccess, showCount])
 
@@ -205,6 +207,7 @@ function VirtualList_(
                   key={`van-virtual-box-item${i + showConfig.head}`}
                   item={item}
                   index={showConfig.head + i}
+                  id={`van-virtual-box-item${i + showConfig.head}`}
                 />
               ))}
           </View>
@@ -219,6 +222,7 @@ function VirtualList_(
                   key={`van-virtual-box-next-item${i + showConfig.nextHead}`}
                   item={item}
                   index={showConfig.nextHead + i}
+                  id={`van-virtual-box-item${i + showConfig.nextHead}`}
                 />
               ))}
           </View>
