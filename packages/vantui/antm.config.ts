@@ -12,6 +12,7 @@ export default {
     route: {
       level: 1,
     },
+    buildPort: 7778,
     menu: getMenus(),
     simulator: {
       url: {
@@ -46,6 +47,10 @@ export default {
           {
             title: 'antmjs Doc',
             url: 'https://antmjs.github.io/antm/antm-doc/',
+          },
+          {
+            title: 'temptaro',
+            url: 'https://github.com/AntmJS/temptaro',
           },
         ],
       },
@@ -307,10 +312,6 @@ function getMenus() {
           title: 'WaterMark 水印',
         },
         {
-          path: 'power-scroll-view',
-          title: 'PowerScrollView 滚动列表',
-        },
-        {
           path: 'number-keyboard',
           title: 'NumberKeyboard 数字键盘',
         },
@@ -387,15 +388,6 @@ function getMenus() {
         {
           path: 'goods-action',
           title: 'GoodsAction 商品导航',
-        },
-      ],
-    },
-    {
-      title: '有赞Vant-Weapp小程序文档',
-      items: [
-        {
-          path: 'index',
-          title: '参考',
         },
       ],
     },

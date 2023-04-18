@@ -44,8 +44,9 @@
     "watch": "npx antm-vantui-cli watch",
     "build": "npx antm-vantui-cli build",
     "test:watch": "",
-    "doc": "node ./scripts/md && npx antm-doc-start",
-    "buildDoc": "node ./scripts/md && sh ./build.sh"
+    "docs": "node ./scripts/md && npx antm-doc-start",
+    "docsBuild": "node ./scripts/md && sh ./build.sh",
+    "release": "npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
     "@swc/helpers": "^0.4.14",
@@ -59,7 +60,6 @@
     "prettier": "^2.8.7",
     "raf": "^3.4.1",
     "rc-util": "^5.14.0",
-    "ts-require": "^1.0.11",
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
