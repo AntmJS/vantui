@@ -135,11 +135,11 @@ export function FormItem(props: FormItemProps) {
           })
         } else {
           nextHandle(result, e, trigger_)
+          isValidateField && dispatch({ type: 'validateFieldValue' }, _name)
           if (isWeappInput) {
             // 微信端Input输入存在性能问题，微信2.1版本后基于bindInput返回值做优化
             return result
           }
-          isValidateField && dispatch({ type: 'validateFieldValue' }, _name)
         }
       }
       props[trigger] = handleChange
