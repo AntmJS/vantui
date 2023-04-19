@@ -44,14 +44,15 @@
     "watch": "npx antm-vantui-cli watch",
     "build": "npx antm-vantui-cli build",
     "test:watch": "",
-    "docs": "node ./scripts/md && npx antm-doc-start",
-    "docsBuild": "node ./scripts/md && sh ./build.sh",
+    "docs": "node ./scripts/md.js && npx antm-doc-start",
+    "docsBuild": "node ./scripts/md.js && sh ./build.sh",
     "release": "npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
+    "@antmjs/doc": "^2.3.0",
+    "@antmjs/types": "^2.3.0",
     "@swc/helpers": "^0.4.14",
     "@vant/icons": "^1.7.1",
-    "antmjs-doc": "^0.0.1",
     "ast-to-markdown": "^1.0.0",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.6",
