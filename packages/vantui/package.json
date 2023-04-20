@@ -49,7 +49,7 @@
     "release": "npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
-    "@antmjs/doc": "^2.3.0",
+    "@antmjs/doc": "^2.3.2",
     "@antmjs/types": "^2.3.0",
     "@swc/helpers": "^0.4.14",
     "@vant/icons": "^1.7.1",

@@ -150,6 +150,33 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
+"@antmjs/doc@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.2.tgz#e883710f847971010f6aedd66c55b24fb71861ce"
+  integrity sha512-B3/EpBBUvTFfYzufIPjW/iuzAfWWxUo2m+u8svC1TxxPxf+eBNsO5zYHfImYEcLGBU8cYqiWTnhmOCJv2akbMQ==
+  dependencies:
+    "@babel/plugin-transform-react-jsx" "^7.21.0"
+    "@babel/preset-typescript" "^7.21.4"
+    "@types/react-dom" "^18.0.11"
+    autoprefixer "^10.4.14"
+    babel-loader "^9.1.2"
+    chokidar "^3.5.3"
+    classnames "^2.3.2"
+    css-loader "^6.7.3"
+    glob "^9.3.4"
+    highlight.js "^11.7.0"
+    html-webpack-plugin "^5.5.0"
+    less "^4.1.3"
+    less-loader "^11.1.0"
+    markdown-it "^13.0.1"
+    mini-css-extract-plugin "^2.7.5"
+    postcss-loader "^7.2.4"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+    react-hot-toast "^2.4.0"
+    webpack "^5.78.0"
+    webpack-dev-server "^4.13.2"
+
 "@antmjs/eslint@^2.2.0":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@antmjs/eslint/-/eslint-2.2.1.tgz"
@@ -201,6 +228,11 @@
     postcss-less "^6.0.0"
     stylelint-config-prettier "^9.0.3"
     stylelint-config-standard "^28.0.0"
+
+"@antmjs/types@^2.3.0":
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/@antmjs/types/-/types-2.3.1.tgz#66e42bb65ee31a639dc48a02fceca8f9e71ad6b5"
+  integrity sha512-e+SSdcu9YsMhOVtYJ1LqkMosr2xHGR/pEgBYgtUlEweWLlZwIh2sYHux15Adxh3/zjPEQsJp/pvhbtjW3FF6fA==
 
 "@antmjs/utils@2.2.1":
   version "2.2.1"
@@ -4851,33 +4883,6 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   integrity sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==
   dependencies:
     color-convert "^2.0.1"
-
-antmjs-doc@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/antmjs-doc/-/antmjs-doc-0.0.1.tgz"
-  integrity sha512-Ou+mOFF7sk6tpJVcbohlNHunBIZHDSmVxBuL58ivwqVPfM3L/vaxoaFO2JdUFP6zosHbglDNM3ikMKh0l7rmWA==
-  dependencies:
-    "@babel/plugin-transform-react-jsx" "^7.21.0"
-    "@babel/preset-typescript" "^7.21.4"
-    "@types/react-dom" "^18.0.11"
-    autoprefixer "^10.4.14"
-    babel-loader "^9.1.2"
-    chokidar "^3.5.3"
-    classnames "^2.3.2"
-    css-loader "^6.7.3"
-    glob "^9.3.4"
-    highlight.js "^11.7.0"
-    html-webpack-plugin "^5.5.0"
-    less "^4.1.3"
-    less-loader "^11.1.0"
-    markdown-it "^13.0.1"
-    mini-css-extract-plugin "^2.7.5"
-    postcss-loader "^7.2.4"
-    react "^18.2.0"
-    react-dom "^18.2.0"
-    react-hot-toast "^2.4.0"
-    webpack "^5.78.0"
-    webpack-dev-server "^4.13.2"
 
 any-promise@^1.0.0:
   version "1.3.0"
