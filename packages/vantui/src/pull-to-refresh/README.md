@@ -78,4 +78,4 @@ function Index() {
 | 名称                                 | 默认值            |
 | ------------------------------------ | ----------------- |
 | --pull-to-refresh-font-size          | ` @font-size-md;` |
-| --pull-to-refresh-animation-duration | ` 0.3s;`          |
+| --pull-to-refresh-animation-duration | ` 0.4s;`          |
