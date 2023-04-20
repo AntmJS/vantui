@@ -42,7 +42,6 @@ async function transformConfig() {
     'commonjs',
     '--target',
     'es5',
-    '--w',
   ])
 
   return new Promise((resolve) => {

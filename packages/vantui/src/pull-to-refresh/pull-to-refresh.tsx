@@ -95,6 +95,8 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
       setTimeout(() => {
         reset()
       }, SUCESS_DURATION)
+    } else {
+      reset()
     }
   }, [headHeight, onRefresh, rendermarginTop, reset, status])
 

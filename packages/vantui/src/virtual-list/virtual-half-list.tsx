@@ -164,7 +164,7 @@ function VirtualList_(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const onTouchStart = useCallback(
+  const onTouch = useCallback(
     (e) => {
       if (showConfig.head > 0) {
         e.stopPropagation()
@@ -190,11 +190,10 @@ function VirtualList_(
       style={{ height: addUnit(height), ...(style as React.CSSProperties) }}
       onScroll={handleScroll}
       scrollIntoView={scrollIntoView}
+      onTouchStart={onTouch}
+      onTouchMove={onTouch}
     >
-      <View
-        onTouchStart={onTouchStart}
-        style={{ minHeight: wrapperHeight || 'auto' }}
-      >
+      <View style={{ minHeight: wrapperHeight || 'auto' }}>
         <View style={{ transform: showConfig.transformY }}>
           <View
             className={`${clsPrefix}-box${showConfig.head} ${listClssName}`}
