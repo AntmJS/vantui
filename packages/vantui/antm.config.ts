@@ -3,6 +3,8 @@ import pkg from './package.json'
 
 const CWD = process.cwd()
 
+// 被vantui-demo中的js引用，暂时不支持import外部ts文件
+
 export default {
   docs: {
     title: 'antmjs Vantui',

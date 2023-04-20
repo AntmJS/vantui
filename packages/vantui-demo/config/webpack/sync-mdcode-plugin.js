@@ -38,6 +38,11 @@ async function transformConfig() {
     vantConfigPathTs,
     '--resolveJsonModule',
     '--esModuleInterop',
+    '--module',
+    'commonjs',
+    '--target',
+    'es5',
+    '--w',
   ])
 
   return new Promise((resolve) => {
