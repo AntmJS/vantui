@@ -35,7 +35,7 @@
     "@types/prettier": "^2.6.1"
   },
   "dependencies": {
-    "@antmjs/babel-preset": "2.2.0",
+    "@antmjs/babel-preset": "2.3.3",
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/plugin-transform-typescript": "^7.16.8",
