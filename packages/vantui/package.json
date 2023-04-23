@@ -43,10 +43,10 @@
     "iconfont": "npx antm-icon --font-family antmuifont --input-path https://at.alicdn.com/t/font_2744513_7eeet2akdo.css --output-path src/style/components/iconfont.less",
     "watch": "npx antm-vantui-cli watch",
     "build": "npx antm-vantui-cli build",
+    "test": "",
     "test:watch": "",
-    "docs": "node ./scripts/md.js && npx antm-doc-start",
-    "docsBuild": "node ./scripts/md.js && sh ./build.sh",
-    "release": "npx gh-pages -d doc_build -e ./main"
+    "docs:watch": "node ./scripts/md.js && npx antm-doc-start",
+    "docs:release": "node ./scripts/md.js && sh ./build.sh && npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
     "@antmjs/doc": "^2.3.2",
