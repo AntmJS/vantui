@@ -19,7 +19,7 @@ export default {
     simulator: {
       url: {
         development: 'http://10.254.9.214:10086',
-        production: '/vantui/main/mobile.html',
+        production: '/vantui/v2/mobile.html',
       },
       transform: (url) => `#/pages/${url}/index`,
       noMate: {
@@ -48,8 +48,8 @@ export default {
         type: 'select',
         options: [
           {
-            title: 'v2',
-            url: 'https://github.com/AntmJS/vantui/v2',
+            title: 'v3',
+            url: 'https://github.com/AntmJS/vantui/main',
           },
         ],
       },

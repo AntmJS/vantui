@@ -20,7 +20,7 @@ https://github.com/NervJS/taro/blob/master/CONTRIBUTING.md
 
 **这个 PR 满足以下需求:**
 
-- [ ] 提交到 main 分支
+- [ ] 提交到 v2 分支
 - [ ] Commit 信息遵循 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
 - [ ] 代码遵循相关包中的 .eslintrc, .tslintrc, .stylelintrc 所规定的规范
 - [ ] 在本地测试可用，不会影响到其它功能
