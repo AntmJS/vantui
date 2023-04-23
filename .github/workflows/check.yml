@@ -3,7 +3,7 @@ name: Check
 on:
   pull_request:
     branches:
-      - main
+      - v2
     types: [opened, edited, reopened]
 env:
   CI: true
@@ -34,12 +34,8 @@ jobs:
         run: yarn
       - name: bootstrap
         run: yarn run bootstrap:lerna
-      - name: build-cli
-        run: npx lerna run build --scope=@antmjs/vantui-cli
       - name: build-ui
         run: npx lerna run build --scope=@antmjs/vantui
-      - name: build-doc
-        run: npx lerna run build --scope=vantui-doc
       - name: build-demo
         run: npx lerna run build --scope=vantui-demo
       - name: lint

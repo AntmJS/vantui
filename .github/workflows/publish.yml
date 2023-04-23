@@ -3,7 +3,7 @@ on:
   # When Release Pull Request is merged
   pull_request:
     branches:
-      - main
+      - v2
     types: [closed]
 
 env:
@@ -43,9 +43,6 @@ jobs:
       - name: bootstrap
         if: startsWith( env.commitmsg , 'chore(release):' )
         run: yarn run bootstrap:lerna
-      - name: build-cli
-        if: startsWith( env.commitmsg , 'chore(release):' )
-        run: npx lerna run build --scope=@antmjs/vantui-cli
       - name: build-ui
         if: startsWith( env.commitmsg , 'chore(release):' )
         run: npx lerna run build --scope=@antmjs/vantui
