@@ -23,10 +23,6 @@ packages/**/dist
 packages/**/dest
 packages/vantui/lib
 packages/vantui/es
-packages/vantui-doc/lib
-packages/vantui-doc/es
-packages/vantui-doc/dist
-packages/vantui-doc/site
 packages/vantui/src/style/components/iconfont.less
 packages/vantui-demo/.swc
 packages/vantui-demo/weapp

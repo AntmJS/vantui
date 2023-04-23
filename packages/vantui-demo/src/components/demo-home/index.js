@@ -5,7 +5,6 @@ import list from '../../config.json'
 /* eslint-disable react/prop-types */
 import DemoHomeNav from '../demo-home-nav/index'
 import './index.less'
-import { items } from '../../pages/tree-select/common'
 
 export default class Index extends Component {
   state = {

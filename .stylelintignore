@@ -29,9 +29,6 @@ packages/**/coverage
 packages/**/dist
 packages/vantui/lib
 packages/vantui/es
-packages/vantui-doc/lib
-packages/vantui-doc/es
-packages/vantui-doc/dist
 packages/vantui/src/style/components/iconfont.less
 packages/vantui-demo/.swc
 packages/vantui-demo/weapp

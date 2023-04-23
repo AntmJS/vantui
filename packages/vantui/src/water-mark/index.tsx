@@ -53,6 +53,7 @@ export const WaterMark: FC<WaterMarkProps> = (props) => {
       setCanvasRect,
     })
     setBase64Url(base64Url_)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     gapX,
     gapY,
