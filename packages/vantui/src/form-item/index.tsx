@@ -39,6 +39,7 @@ export function FormItem(props: FormItemProps) {
     mutiLevel,
     valueFormat,
     messageClassName = '',
+    borderBottom = false,
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
@@ -174,7 +175,9 @@ export function FormItem(props: FormItemProps) {
     <View className={`${prefixCls}-wrapper`}>
       <View
         id={id}
-        className={`${prefixCls} ${prefixCls}-${layout} ${className}`}
+        className={`${prefixCls} ${prefixCls}-${layout} ${className} ${
+          borderBottom ? `vant-form-formItem-bottom` : ''
+        }`}
       >
         <Label
           label={label}

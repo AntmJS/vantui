@@ -104,6 +104,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@antmjs/doc": "^2.3.3",
     "@antmjs/eslint": "^2.3.3",
     "@antmjs/stylelint": "^2.3.3",
     "@antmjs/warning": "^2.3.3",

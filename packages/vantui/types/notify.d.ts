@@ -21,6 +21,10 @@ export interface NotifyProps extends ViewProps {
 interface notifyProps {
   show: (options: NotifyProps | string) => any
   clear: (options?: NotifyProps) => any
+  /**
+   * @description 创建唯一的Notify， 命令方式调用不需要设置id和selector
+   */
+  createOnlyNotify: () => FunctionComponent<NotifyProps> & notifyProps
 }
 
 declare const Notify: FunctionComponent<NotifyProps> & notifyProps

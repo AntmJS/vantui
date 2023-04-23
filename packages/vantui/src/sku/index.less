@@ -1,3 +1,5 @@
+@import '../style/var.less';
+
 .van-sku {
   width: auto;
 
@@ -30,9 +32,9 @@
     border: 2px solid rgb(242, 242, 242);
 
     &-active {
-      background: rgba(250, 44, 25, 0.15);
-      border: 2px solid #fa2c19;
-      color: #fa2c19;
+      background: fade(@primary-color, 10%);
+      border: 2px solid @primary-color;
+      color: @primary-color;
     }
 
     &-disable {

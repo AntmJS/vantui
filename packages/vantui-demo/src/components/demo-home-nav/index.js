@@ -22,7 +22,7 @@ export default class Index extends Component {
     return (
       <View className="demo-home-nav">
         <View className="demo-home-nav__title">
-          {group.groupName || group.title}
+          {group.name || group.title}
         </View>
         <View className="demo-home-nav__group">
           {group.items.map((item) => {

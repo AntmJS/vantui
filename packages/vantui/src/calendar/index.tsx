@@ -7,8 +7,13 @@ import {
   useLayoutEffect,
   forwardRef,
   useImperativeHandle,
+  useMemo,
 } from 'react'
-import { getCurrentPages, createIntersectionObserver } from '@tarojs/taro'
+import {
+  getCurrentPages,
+  createIntersectionObserver,
+  nextTick,
+} from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import Toast from '../toast/toast'
 import { requestAnimationFrame } from '../common/utils'
@@ -32,6 +37,7 @@ import {
 import * as computed from './wxs'
 import Month from './components/month/index'
 import Header from './components/header/index'
+import { LongSpan } from './components/longSpan'
 
 const initialMinDate = getToday().getTime()
 let init = 0
@@ -43,6 +49,7 @@ const initialMaxDate = (() => {
     now.getDate(),
   ).getTime()
 })()
+const fourMonth = 4 * 30 * 24 * 60 * 60 * 1000
 
 function Index(
   props: CalendarProps,
@@ -87,6 +94,7 @@ function Index(
     renderFooter,
     className,
     style,
+    longspan = true,
     zIndex,
     ...others
   } = props
@@ -95,11 +103,13 @@ function Index(
   const [currentDate, setCurrentDate] = useState<any>()
   const [scrollIntoView, setScrollIntoView] = useState('')
   const contentObserver = useRef<any>()
-  const [compIndex, setComindex] = useState(0)
+  const [compIndex] = useState(init++)
+  const [currentMonthDate, setCurrentMonthDate] = useState(0)
+  const [longSpanShow, setLongSpanShow] = useState(false)
 
-  useEffect(function () {
-    setComindex(init++)
-  }, [])
+  const monthsData = useMemo(() => {
+    return computed.getMonths(minDate, maxDate)
+  }, [maxDate, minDate])
 
   const limitDateRange = useCallback(
     function (date, minDateD: any = null, maxDateD: any = null) {
@@ -149,6 +159,14 @@ function Index(
     [limitDateRange, maxDate, minDate, type],
   )
 
+  const scrollIntoViewCompatible = useCallback((t) => {
+    if (process.env.TARO_ENV === 'h5') {
+      document.querySelector(`#${t}`)?.scrollIntoView(false)
+    } else {
+      setScrollIntoView(t)
+    }
+  }, [])
+
   const scrollIntoViewFn = useCallback(
     function () {
       requestAnimationFrame(() => {
@@ -161,17 +179,23 @@ function Index(
         const months = getMonths(minDate, maxDate)
         months.some((month) => {
           if (compareMonth(month, targetDate) === 0) {
-            const id = `month${formatMonthTitle(month)
-              .replace('年', '_')
-              .replace('月', '-')}`
-            setScrollIntoView(id)
+            const id = `month_${month}`
+            scrollIntoViewCompatible(id)
             return true
           }
           return false
         })
       })
     },
-    [currentDate, maxDate, minDate, poppable, show, type],
+    [
+      currentDate,
+      maxDate,
+      minDate,
+      poppable,
+      scrollIntoViewCompatible,
+      show,
+      type,
+    ],
   )
 
   const reset = useCallback(
@@ -192,11 +216,12 @@ function Index(
         function (res: any) {
           for (let i = 0; i < res.length; i++) {
             if (res[i].intersectionRatio > 0.6) {
-              const item = res[i].target.id
-                .replace('month', '')
-                .replace('_', '年')
-                .replace('-', '月')
-              if (item && item !== subtitle) setSubtitle(item)
+              const item = res[i].target.id.replace('month_', '')
+              if (item && item !== subtitle) {
+                const monthDate = Number(item)
+                setSubtitle(formatMonthTitle(monthDate))
+                setCurrentMonthDate(monthDate)
+              }
             }
           }
         },
@@ -234,7 +259,7 @@ function Index(
       }
 
       const contentObserver_ = _createIntersectionObserver({
-        thresholds: [0.5, 0.8, 1],
+        thresholds: [0.6, 1],
         observeAll: true,
         selectAll: true,
       })
@@ -242,11 +267,13 @@ function Index(
       contentObserver.current.relativeTo(`.van-calendar__body${compIndex}`)
       contentObserver.current.observe('.month', (res: any) => {
         if (res.intersectionRatio) {
-          const item = res.id
-            .replace('month', '')
-            .replace('_', '年')
-            .replace('-', '月')
-          if (item && item !== subtitle) setSubtitle(item)
+          const item = res.id.replace('month_', '')
+
+          if (item && item !== subtitle) {
+            const monthDate = Number(item)
+            setSubtitle(formatMonthTitle(monthDate))
+            setCurrentMonthDate(monthDate)
+          }
         }
       })
     },
@@ -275,6 +302,7 @@ function Index(
           Toast({
             // duration: 0,
             message: rangePrompt || `选择天数不能超过 ${maxRange} 天`,
+            selector: 'van-carlendar-toast',
           })
         }
         if (overRange) overRange()
@@ -429,8 +457,129 @@ function Index(
     }
   })
 
+  const quickSwitchMonth = useCallback(
+    (t, mIndex) => {
+      if (process.env.TARO_ENV === 'h5') {
+        scrollIntoViewCompatible(t)
+        nextTick(() => {
+          setTimeout(() => {
+            setLongSpanShow(false)
+            const monthDate = monthsData[mIndex]
+            setSubtitle(formatMonthTitle(monthDate))
+            setCurrentMonthDate(monthDate)
+          }, 66.66)
+        })
+      } else {
+        setLongSpanShow(false)
+        nextTick(() => {
+          setTimeout(() => {
+            scrollIntoViewCompatible(t)
+          }, 16.66)
+        })
+      }
+    },
+    [monthsData, scrollIntoViewCompatible],
+  )
+
+  const bodyRender = () => {
+    return (
+      <View
+        className={`van-calendar ${className || ''}`}
+        style={utils.style([style])}
+        // @ts-ignore
+        catchMove
+        {...others}
+      >
+        {longspan && longSpanShow && poppable && (
+          <LongSpan
+            data={monthsData}
+            current={currentMonthDate}
+            setScrollIntoView={quickSwitchMonth}
+          />
+        )}
+        <Header
+          title={title}
+          showTitle={showTitle}
+          subtitle={subtitle}
+          showSubtitle={showSubtitle}
+          firstDayOfWeek={firstDayOfWeek}
+          onClickSubtitle={() => {
+            if (onClickSubtitle) onClickSubtitle()
+            setLongSpanShow(true)
+          }}
+          renderTitle={renderTitle}
+          subtitleStyle={longspan ? { textDecoration: 'underline' } : {}}
+        ></Header>
+        <ScrollView
+          className={`van-calendar__body  van-calendar__body${compIndex}`}
+          scrollY
+          scrollIntoView={scrollIntoView}
+          scrollWithAnimation={false}
+          scrollAnimationDuration="0ms"
+        >
+          {monthsData.map((item: any, index) => {
+            return (
+              <Month
+                ifRender={
+                  item >= currentMonthDate - fourMonth &&
+                  item <= currentMonthDate + fourMonth
+                }
+                key={`van-calendar-month___${index}`}
+                id={`month_${item}`}
+                className="month"
+                date={item}
+                type={type}
+                color={color}
+                minDate={minDate}
+                maxDate={maxDate}
+                showMark={showMark}
+                formatter={formatter}
+                rowHeight={rowHeight}
+                currentDate={currentDate}
+                showSubtitle={showSubtitle}
+                allowSameDay={allowSameDay}
+                showMonthTitle={index !== 0 || !showSubtitle}
+                firstDayOfWeek={firstDayOfWeek}
+                onClick={onClickDay}
+              ></Month>
+            )
+          })}
+        </ScrollView>
+        <View
+          className={utils.bem('calendar__footer', {
+            safeAreaInsetBottom,
+          })}
+        >
+          {renderFooter}
+        </View>
+        <View
+          className={utils.bem('calendar__footer', {
+            safeAreaInsetBottom,
+          })}
+        >
+          {showConfirm && (
+            <VanButton
+              block
+              type="primary"
+              color={color}
+              className="van-calendar__confirm"
+              disabled={computed.getButtonDisabled(type, currentDate)}
+              // nativeType="text"
+              onClick={onConfirm_}
+            >
+              {computed.getButtonDisabled(type, currentDate)
+                ? confirmDisabledText
+                : confirmText}
+            </VanButton>
+          )}
+        </View>
+      </View>
+    )
+  }
+
   return (
-    <View>
+    // @ts-ignore
+    <View catchMove>
       {poppable ? (
         <VanPopup
           className={'van-calendar__popup--' + position}
@@ -440,167 +589,20 @@ function Index(
           closeable={showTitle || showSubtitle}
           closeOnClickOverlay={closeOnClickOverlay}
           onEnter={onOpen}
-          onClose={onClose}
+          onClose={() => {
+            onClose?.()
+            setLongSpanShow(false)
+          }}
           onAfterEnter={onOpened}
           onAfterLeave={onClosed}
           zIndex={zIndex}
         >
-          <View
-            className={`van-calendar ${className || ''}`}
-            style={utils.style([style])}
-            {...others}
-          >
-            <Header
-              title={title}
-              showTitle={showTitle}
-              subtitle={subtitle}
-              showSubtitle={showSubtitle}
-              firstDayOfWeek={firstDayOfWeek}
-              onClickSubtitle={() => {
-                if (onClickSubtitle) onClickSubtitle
-              }}
-              renderTitle={renderTitle}
-            ></Header>
-            <ScrollView
-              className={`van-calendar__body  van-calendar__body${compIndex}`}
-              scrollY
-              scrollIntoView={scrollIntoView}
-            >
-              {computed.getMonths(minDate, maxDate).map((item: any, index) => {
-                return (
-                  <Month
-                    key={`van-calendar-month___${index}`}
-                    id={`month${formatMonthTitle(item)
-                      .replace('年', '_')
-                      .replace('月', '-')}`}
-                    className="month"
-                    date={item}
-                    type={type}
-                    color={color}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    showMark={showMark}
-                    formatter={formatter}
-                    rowHeight={rowHeight}
-                    currentDate={currentDate}
-                    showSubtitle={showSubtitle}
-                    allowSameDay={allowSameDay}
-                    showMonthTitle={index !== 0 || !showSubtitle}
-                    firstDayOfWeek={firstDayOfWeek}
-                    onClick={onClickDay}
-                  ></Month>
-                )
-              })}
-            </ScrollView>
-            <View
-              className={utils.bem('calendar__footer', {
-                safeAreaInsetBottom,
-              })}
-            >
-              {renderFooter}
-            </View>
-            <View
-              className={utils.bem('calendar__footer', {
-                safeAreaInsetBottom,
-              })}
-            >
-              {showConfirm && (
-                <VanButton
-                  block
-                  type="danger"
-                  color={color}
-                  className="van-calendar__confirm"
-                  disabled={computed.getButtonDisabled(type, currentDate)}
-                  // nativeType="text"
-                  onClick={onConfirm_}
-                >
-                  {computed.getButtonDisabled(type, currentDate)
-                    ? confirmDisabledText
-                    : confirmText}
-                </VanButton>
-              )}
-            </View>
-          </View>
+          {bodyRender()}
         </VanPopup>
       ) : (
-        <View
-          className={`van-calendar ${className || ''}`}
-          style={utils.style([style])}
-          {...others}
-        >
-          <Header
-            title={title}
-            showTitle={showTitle}
-            subtitle={subtitle}
-            showSubtitle={showSubtitle}
-            firstDayOfWeek={firstDayOfWeek}
-            onClickSubtitle={onClickSubtitle}
-            renderTitle={<>{renderTitle}</>}
-          ></Header>
-          <ScrollView
-            className={`van-calendar__body van-calendar__body${compIndex}`}
-            scrollY
-            scrollIntoView={scrollIntoView}
-          >
-            {computed
-              .getMonths(minDate, maxDate)
-              .map((item: any, index: number) => {
-                return (
-                  <Month
-                    key={`van-calendar-month___${index}`}
-                    id={`month${formatMonthTitle(item)
-                      .replace('年', '_')
-                      .replace('月', '-')}`}
-                    className="month"
-                    date={item}
-                    type={type}
-                    color={color}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    showMark={showMark}
-                    formatter={formatter}
-                    rowHeight={rowHeight}
-                    currentDate={currentDate}
-                    showSubtitle={showSubtitle}
-                    allowSameDay={allowSameDay}
-                    showMonthTitle={index !== 0 || !showSubtitle}
-                    firstDayOfWeek={firstDayOfWeek}
-                    onClick={onClickDay}
-                  ></Month>
-                )
-              })}
-          </ScrollView>
-          <View
-            className={utils.bem('calendar__footer', {
-              safeAreaInsetBottom,
-            })}
-          >
-            {renderFooter}
-          </View>
-          <View
-            className={utils.bem('calendar__footer', {
-              safeAreaInsetBottom,
-            })}
-          >
-            {showConfirm && (
-              <VanButton
-                block
-                type="danger"
-                color={color}
-                className="van-calendar__confirm"
-                disabled={computed.getButtonDisabled(type, currentDate)}
-                // nativeType="text"
-                onClick={onConfirm_}
-              >
-                {computed.getButtonDisabled(type, currentDate)
-                  ? confirmDisabledText
-                  : confirmText}
-              </VanButton>
-            )}
-          </View>
-        </View>
+        bodyRender()
       )}
-      <VanToast id="van-toast"></VanToast>
+      <VanToast id="van-carlendar-toast"></VanToast>
     </View>
   )
 }

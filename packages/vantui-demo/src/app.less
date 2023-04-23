@@ -424,6 +424,19 @@ taro-button-core + taro-button-core {
   background-color: #ffffff;
 }
 
+.pages-infinite-scroll-index,
+.pages-virtual-list-index {
+  background-color: #f8f8f8;
+
+  .dataIndex {
+    background-color: #07c160;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-right: 12px;
+  }
+}
+
 // 添加pc端鼠标样式
 .van-slider,
 .van-picker,
@@ -444,4 +457,48 @@ taro-button-core + taro-button-core {
 .van-cell,
 .van-icon {
   cursor: pointer;
+}
+
+.van-demo-goods-item-wrapper {
+  background: #ffffff;
+  height: fit-content;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.van-demo-goods-item {
+  width: 100%;
+
+  .img {
+    height: 306px;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .title {
+    text-align: left;
+    font-size: 24px;
+    line-height: 34px;
+    color: #434343;
+    padding: 12px;
+  }
+
+  .price {
+    padding: 12px;
+    text-align: left;
+    color: #ff4142;
+    font-size: 24px;
+  }
+
+  .cutPrice {
+    background-color: #fff0f6;
+    color: #ff2078;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-left: 18px;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
 }

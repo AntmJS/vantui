@@ -2,6 +2,7 @@
 const path = require('path')
 const { join } = path
 const fs = require('fs')
+const { spawn } = require('child_process')
 const ora = require('ora')
 const consola = require('consola')
 const glob = require('glob')
@@ -14,18 +15,39 @@ const vantuiDemoDir = path.resolve(__dirname, '../../..')
 const pagePath = path.join(__dirname, '../../src/pages')
 const configPath = path.join(__dirname, '../../src/config.json')
 const appConfigPath = path.join(__dirname, '../../src/app.config.js')
-const withTabPages = ['icon', 'power-scroll-view']
-const markdownCodeSrc = path.join(vantuiDemoDir, '/vantui-doc/src')
-const vantConfigPath = path.join(vantuiDemoDir, '/vant.config.js')
-const fromTaroComps = ['View', 'Text', 'Input', 'Block']
+const withTabPages = ['icon', 'power-scroll-view', 'infinite-scroll'] // 需要tab切换展示的组件
+const markdownCodeSrc = path.join(vantuiDemoDir, '/vantui/src')
+
+const vantConfigPathTs = path.join(vantuiDemoDir, './vantui/antm.config.ts')
+const vantConfigPath = path.join(vantuiDemoDir, './vantui/antm.config.js')
+const fromTaroComps = ['View', 'Text', 'Input', 'Block', 'TaroImage']
 let pluginOptions = {}
-const vantConfig = require('../../../vantui-doc/vant.config')
 
 module.exports = function (ctx, options) {
   pluginOptions = options
 
   ctx.onBuildStart(async () => {
+    await transformConfig()
     await beginWork()
+  })
+}
+
+async function transformConfig() {
+  const cp = spawn(`npx`, [
+    'tsc',
+    vantConfigPathTs,
+    '--resolveJsonModule',
+    '--esModuleInterop',
+    '--module',
+    'commonjs',
+    '--target',
+    'es5',
+  ])
+
+  return new Promise((resolve) => {
+    cp.on('close', () => {
+      resolve()
+    })
   })
 }
 
@@ -141,18 +163,17 @@ function getCode(targetPath) {
 
 // 创建路由菜单文件和路由文件
 async function createBaseFiles() {
-  const nav = vantConfig.site.nav
+  const vantConfig = require(vantConfigPath)
+  const nav = vantConfig.default.docs.menu
+  const noMateUrls = vantConfig.default.docs.simulator.noMate.urls
   let routers = []
 
-  const navFilter = nav.filter((item) => {
-    let flag = true
+  const navFilter = nav.map((item) => {
     item.items.forEach((item) => {
-      if (item.hideSimulator !== undefined) {
-        flag = false
-      }
+      return !noMateUrls.includes(item.path)
     })
 
-    return flag
+    return item
   })
   // 菜单写入
   fs.writeFileSync(configPath, JSON.stringify(navFilter))
@@ -212,7 +233,7 @@ async function createPageIndex(props) {
   if (withTabPages && withTabPages.includes(targetPath)) {
     lastJsx = `
     <DemoPage title="${pageTile}" className="pages-${targetPath}-index">
-      <Tabs active={this.state.avtive} onChange={e => this.setState({ active: e.detail.index })}>
+      <Tabs active={this.state.avtive} onChange={e => this.setState({ active: e.detail.index })} sticky={true}>
       ${jsxStr}
       </Tabs>
       ${pageIndexJsxPush}
@@ -391,6 +412,9 @@ function watchVantConfig() {
 }
 
 function toFirstBigStr(str) {
+  if (str.includes('.')) {
+    str = str.split('.')[0]
+  }
   return str.substring(0, 1).toLocaleUpperCase() + str.substring(1)
 }
 
@@ -410,7 +434,9 @@ function createImportStr(arr) {
 
   arr.forEach((item) => {
     if (fromTaroComps.includes(item)) {
-      taroComps += `${item},`
+      if (item === 'TaroImage') {
+        taroComps += `Image as ${item},`
+      } else taroComps += `${item},`
     } else {
       selfComps += `${item},`
     }

@@ -1,0 +1,71 @@
+@import '../style/var.less';
+
+.van-virtual-backto-top {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: @primary-color;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 60px;
+  right: 24px;
+  z-index: 999;
+  opacity: 0;
+  animation-name: van-virtual-backto-top-show;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.van-virtual-backto-top-hidden {
+  .van-virtual-backto-top {
+    animation-name: van-virtual-backto-top-hidden;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes van-virtual-backto-top-show {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  75% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes van-virtual-backto-top-hidden {
+  0% {
+    opacity: 0.7;
+  }
+
+  25% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

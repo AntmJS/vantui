@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { ProgressProps } from '../../types/progress'
-import { BLUE } from '../common/color'
 import { getRect } from '../common/utils'
 import * as computed from './wxs'
 
@@ -29,7 +28,7 @@ export function Progress(props: ProgressProps) {
     trackColor,
     percentage,
     inactive,
-    color = BLUE,
+    color = '',
     textColor = '#ffffff',
     pivotColor,
     pivotText,

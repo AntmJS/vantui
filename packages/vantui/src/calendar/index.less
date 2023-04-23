@@ -1,8 +1,11 @@
+/* stylelint-disable color-hex-length */
 @import '../style/var.less';
 
 .van-calendar {
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 100%;
   .theme(height, '@calendar-height');
   .theme(background-color, '@calendar-background-color');
 
@@ -206,5 +209,42 @@
     .theme(color, '@calendar-selected-day-color');
     .theme(background-color, '@calendar-selected-day-background-color');
     .theme(border-radius, '@border-radius-md');
+  }
+}
+
+.van-calendar-longspan {
+  padding: 30px;
+  background: #fff;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  box-sizing: border-box;
+  width: 100%;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .van-calendar-longspan-title {
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .van-calendar-longspan-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+    flex-wrap: wrap;
+  }
+
+  .van-calendar-longspan-item {
+    /* stylelint-disable-next-line length-zero-no-unit */
+    margin: 0px 20px 20px 0px;
+  }
+
+  .van-calendar__switch {
+    position: absolute;
+    z-index: 999;
+    bottom: 30px;
+    left: 30px;
+    width: calc(100% - 60px);
   }
 }

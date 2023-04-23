@@ -3,10 +3,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "noEmit": true,
-    "skipLibCheck": false
+    "skipLibCheck": false,
+    "resolveJsonModule": true
   },
   "include": [
     "*.js",
+    "antm.config.ts",
     "packages/*/*.js",
     "packages/*/*.d.ts",
     "packages/**/src",
@@ -16,6 +18,8 @@
     "packages/**/ui",
     "packages/**/types",
     "packages/**/sample",
-    "packages/**/__test__"
+    "packages/**/__test__",
+    "packages/**/scripts/**/*.js",
+    "packages/**/antm.config.ts"
   ]
 }

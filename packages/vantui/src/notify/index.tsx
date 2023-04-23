@@ -8,6 +8,7 @@ import { getSystemInfoSync } from '../common/utils'
 import * as computed from './wxs'
 import { on, off, trigger } from './events'
 import notify from './notify'
+import { createOnlyNotify } from './create-only-notify'
 
 const defaultId = 'van-notify'
 const defaultOptions = {
@@ -174,5 +175,6 @@ export function Notify(props: NotifyProps) {
 
 Notify.show = notify
 Notify.clear = notify.clear
+Notify.createOnlyNotify = () => createOnlyNotify(Notify)
 
 export default Notify

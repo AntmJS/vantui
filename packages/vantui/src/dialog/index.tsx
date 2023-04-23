@@ -9,6 +9,7 @@ import VanPopup from '../popup/index'
 import { DialogProps } from '../../types/dialog'
 import { on, off, trigger } from './events'
 import * as utils from './../wxs/utils'
+import { createOnlyDialog } from './create-only-dialog'
 import dialog from './dialog'
 export function Dialog(props: DialogProps) {
   const [options, setOptions] = useState<DialogProps>({})
@@ -302,5 +303,7 @@ Dialog.setDefaultOptions = function (options: DialogProps) {
 Dialog.resetDefaultOptions = function () {
   dialog.resetDefaultOptions()
 }
+
+Dialog.createOnlyDialog = () => createOnlyDialog(Dialog)
 
 export default Dialog

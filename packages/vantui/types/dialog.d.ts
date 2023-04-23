@@ -3,6 +3,8 @@ import { ViewProps, ButtonProps as TaroButtonProps } from '@tarojs/components'
 
 import { ButtonProps } from './button'
 import { PopupProps } from './popup'
+
+// @ts-ignore
 export interface DialogProps
   extends ViewProps,
     Omit<PopupProps, 'onClose' | 'children'>,
@@ -43,16 +45,20 @@ export interface DialogProps
   renderTitle?: ReactNode
 }
 
-interface dialog {
-  alert(options: DialogProps): Promise<'confirm' | 'cancel'>
-  confirm(options: DialogProps): Promise<'confirm' | 'cancel'>
-  setDefaultOptions(options: DialogProps): void
-  resetDefaultOptions(): void
-  close(): void
-  stopLoading(): void
+export interface dialogProps {
+  alert: (options: DialogProps) => Promise<'confirm' | 'cancel'>
+  confirm: (options: DialogProps) => Promise<'confirm' | 'cancel'>
+  setDefaultOptions: (options: DialogProps) => void
+  resetDefaultOptions: () => void
+  close: () => void
+  stopLoading: () => void
+  /**
+   * @description 创建唯一的Dialog， 命令式调用不需要设置selector和id
+   */
+  createOnlyDialog: () => FunctionComponent<DialogProps> & dialogProps
 }
 
 // & DialogCom
-declare const Dialog: FunctionComponent<DialogProps> & dialog
+declare const Dialog: FunctionComponent<DialogProps> & dialogProps
 
-export { Dialog, dialog }
+export { Dialog }

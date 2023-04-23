@@ -24,7 +24,7 @@
     /** emit */
     "noEmit": true,
     /** Interop Constraints */
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     // "isolatedModules": true,
@@ -32,6 +32,7 @@
     "experimentalDecorators": true,
     "jsx": "react-jsx",
     "skipLibCheck": false,
+    "resolveJsonModule": true,
     "paths": {
       // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
       "@/*": ["./src/*"]
@@ -47,7 +48,7 @@
     "./stylelint.config.js",
     "./vant.config.js",
     "./_antm.config.js",
-    "./antm.config.js"
+    "./antm.config.ts"
   ],
   "compileOnSave": false
 }
