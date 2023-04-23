@@ -39,7 +39,7 @@ export default {
     headerLinks: [
       {
         title: 'https://b.yzcdn.cn/vant/logo/github.svg',
-        url: 'https://github.com/AntmJS/vantui/main',
+        url: '/vantui/main',
         type: 'img',
       },
       {
@@ -48,7 +48,7 @@ export default {
         options: [
           {
             title: 'v3',
-            url: 'https://github.com/AntmJS/vantui/main',
+            url: '/vantui/main',
           },
         ],
       },
