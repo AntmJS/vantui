@@ -257,9 +257,9 @@ function Demo() {
 | --dropdown-menu-background-color          | ` @white;`                       |
 | --dropdown-menu-title-font-size           | ` 30px;`                         |
 | --dropdown-menu-title-text-color          | ` @text-color;`                  |
-| --dropdown-menu-title-active-text-color   | ` @primary-color;`               |
+| --dropdown-menu-title-active-text-color   | ` @red;`                         |
 | --dropdown-menu-title-disabled-text-color | ` @gray-6;`                      |
 | --dropdown-menu-title-padding             | ` 0 @padding-xs;`                |
 | --dropdown-menu-title-line-height         | ` 36px;`                         |
-| --dropdown-menu-option-active-color       | ` @primary-color;`               |
+| --dropdown-menu-option-active-color       | ` @red;`                         |
 | --dropdown-menu-box-shadow                | ` 0 4px 24px fade(@gray-7, 12);` |

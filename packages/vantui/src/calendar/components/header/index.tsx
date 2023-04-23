@@ -9,7 +9,6 @@ type ICalenarHeaderProps = {
   firstDayOfWeek?: number
   renderTitle?: React.ReactNode
   onClickSubtitle?: (a: any) => void
-  subtitleStyle?: React.CSSProperties
 }
 
 export default function Index(props: ICalenarHeaderProps) {
@@ -21,7 +20,6 @@ export default function Index(props: ICalenarHeaderProps) {
     firstDayOfWeek,
     renderTitle,
     onClickSubtitle,
-    subtitleStyle,
   } = props
 
   const [weekdays, setWeekDays] = useState<Array<any>>([])
@@ -59,7 +57,6 @@ export default function Index(props: ICalenarHeaderProps) {
         <View
           className="van-calendar__header-subtitle"
           onClick={onClickSubtitle}
-          style={subtitleStyle}
         >
           {subtitle}
         </View>

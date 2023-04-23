@@ -146,11 +146,6 @@ export interface CalendarProps extends ViewProps {
    * @description 自定义底部区域内容
    */
   renderFooter?: React.ReactNode
-  /**
-   * @description 是否支持年月大跨度的快速切换
-   * @default `true`
-   */
-  longspan?: boolean
 }
 /**
  * @title formatter回调参数Day

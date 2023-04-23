@@ -122,7 +122,7 @@ function Demo() {
 | --switch-node-background-color | ` @white;`                          |
 | --switch-node-box-shadow       | ` 0 6px 2px 0 rgba(0, 0, 0, 0.05),` |
 | --switch-background-color      | ` @white;`                          |
-| --switch-on-background-color   | ` @primary-color;`                  |
+| --switch-on-background-color   | ` @blue;`                           |
 | --switch-transition-duration   | ` 0.3s;`                            |
 | --switch-disabled-opacity      | ` 0.4;`                             |
 | --switch-border                | ` 2px solid rgba(0, 0, 0, 0.1);`    |

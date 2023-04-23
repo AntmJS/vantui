@@ -17,7 +17,6 @@ import { Calendar } from '@antmjs/vantui'
 ### 选择单个日期
 
 下面演示了结合单元格来使用日历组件的用法，日期选择完成后会触发`confirm`事件。
-`longspan`开启年月快速切换，年份跨度建议不要超过 5 年，5 年以上建议使用`DatetimePicker`封装
 
 ```jsx
 function Demo() {
@@ -39,10 +38,7 @@ function Demo() {
         onClick={() => setShow(true)}
       />
       <Calendar
-        longspan
         show={show}
-        maxDate={new Date('2018-12-12')}
-        minDate={new Date('2015-12-12')}
         onClose={() => setShow(false)}
         onConfirm={(e) => {
           setDate(e.detail.value.valueOf())
@@ -527,7 +523,6 @@ function Demo() {
 | onClickSubtitle     | -                                                  | _&nbsp;&nbsp;(a?:&nbsp;any)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                                                                          | -                      | `false` |
 | renderTitle         | 自定义标题                                         | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                                                                                                                                           | -                      | `false` |
 | renderFooter        | 自定义底部区域内容                                 | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                                                                                                                                                                           | -                      | `false` |
-| longspan            | 是否支持年月大跨度的快速切换                       | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                   | `true`                 | `false` |
 
 ### formatter 回调参数 Day [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/calendar.d.ts)
 
@@ -583,14 +578,14 @@ onUnselect 的回调函数参数
 | --calendar-day-height                      | ` 128px;`                                |
 | --calendar-day-font-size                   | ` @font-size-lg;`                        |
 | --calendar-range-edge-color                | ` @white;`                               |
-| --calendar-range-edge-background-color     | ` @primary-color;`                       |
-| --calendar-range-middle-color              | ` @primary-color;`                       |
+| --calendar-range-edge-background-color     | ` @red;`                                 |
+| --calendar-range-middle-color              | ` @red;`                                 |
 | --calendar-range-middle-background-opacity | ` 0.1;`                                  |
 | --calendar-selected-day-size               | ` 108px;`                                |
 | --calendar-selected-day-color              | ` @white;`                               |
 | --calendar-info-font-size                  | ` @font-size-xs;`                        |
 | --calendar-info-line-height                | ` 28px;`                                 |
-| --calendar-selected-day-background-color   | ` @primary-color;`                       |
+| --calendar-selected-day-background-color   | ` @red;`                                 |
 | --calendar-day-disabled-color              | ` @gray-5;`                              |
 | --calendar-confirm-button-height           | ` 72px;`                                 |
 | --calendar-confirm-button-margin           | ` 14px 0;`                               |

@@ -234,18 +234,3 @@ function Demo() {
 | --cell-large-title-font-size  | ` @font-size-lg;` |
 | --cell-large-value-font-size  | ` @font-size-lg;` |
 | --cell-large-label-font-size  | ` @font-size-md;` |
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
-
-| 名称                             | 默认值                                              |
-| -------------------------------- | --------------------------------------------------- |
-| --cell-group-background-color    | ` @white;`                                          |
-| --cell-group-title-color         | ` @gray-6;`                                         |
-| --cell-group-title-padding       | ` @padding-md @padding-md @padding-xs;`             |
-| --cell-group-title-font-size     | ` @font-size-md;`                                   |
-| --cell-group-title-line-height   | ` 32px;`                                            |
-| --cell-group-inset-padding       | ` 0 @padding-md;`                                   |
-| --cell-group-inset-border-radius | ` @border-radius-lg;`                               |
-| --cell-group-inset-title-padding | ` @padding-md @padding-md @padding-xs @padding-xl;` |

@@ -252,14 +252,14 @@ function Demo() {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                              | 默认值             |
-| --------------------------------- | ------------------ |
-| --radio-size                      | ` 40px;`           |
-| --radio-border-color              | ` @gray-5;`        |
-| --radio-transition-duration       | ` 0.2s;`           |
-| --radio-label-margin              | ` 20px;`           |
-| --radio-label-color               | ` @text-color;`    |
-| --radio-checked-icon-color        | ` @primary-color;` |
-| --radio-disabled-icon-color       | ` @gray-5;`        |
-| --radio-disabled-label-color      | ` @gray-5;`        |
-| --radio-disabled-background-color | ` @border-color;`  |
+| 名称                              | 默认值            |
+| --------------------------------- | ----------------- |
+| --radio-size                      | ` 40px;`          |
+| --radio-border-color              | ` @gray-5;`       |
+| --radio-transition-duration       | ` 0.2s;`          |
+| --radio-label-margin              | ` 20px;`          |
+| --radio-label-color               | ` @text-color;`   |
+| --radio-checked-icon-color        | ` @blue;`         |
+| --radio-disabled-icon-color       | ` @gray-5;`       |
+| --radio-disabled-label-color      | ` @gray-5;`       |
+| --radio-disabled-background-color | ` @border-color;` |

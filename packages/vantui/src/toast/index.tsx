@@ -7,7 +7,6 @@ import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
 import { isObj } from '../common/validator'
 import { on, off, trigger } from './events'
-import { createOnlyToast } from './create-only-toast'
 import toast from './toast'
 
 const defaultId = 'van-toast'
@@ -188,6 +187,4 @@ Toast.fail = toast.fail
 Toast.clear = toast.clear
 Toast.setDefaultOptions = toast.setDefaultOptions
 Toast.resetDefaultOptions = toast.resetDefaultOptions
-Toast.createOnlyToast = () => createOnlyToast(Toast)
-
 export default Toast

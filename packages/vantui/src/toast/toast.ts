@@ -1,6 +1,5 @@
 import { isObj } from '../common/validator'
 import { ToastProps } from '../../types/toast'
-import { createOnlyToast } from './create-only-toast'
 import { trigger } from './events'
 
 function parseOptions(message: ToastProps | string) {
@@ -26,7 +25,5 @@ Toast.setDefaultOptions = (options: ToastProps) => {
 Toast.resetDefaultOptions = () => {
   trigger('toast_resetDefaultOptions')
 }
-
-Toast.createOnlyToast = createOnlyToast
 
 export default Toast

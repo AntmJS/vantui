@@ -57,7 +57,7 @@ function formatMonthTitle(date: any) {
   return date.getFullYear() + '年' + (date.getMonth() + 1) + '月'
 }
 
-function getMonthStyle(visible: boolean, date: any, rowHeight: number) {
+function getMonthStyle(visible: boolean, date: any, rowHeight: number): string {
   if (!visible) {
     date = new Date(date)
 
@@ -68,12 +68,10 @@ function getMonthStyle(visible: boolean, date: any, rowHeight: number) {
     const offset = new Date(date).getDay()
     const padding = Math.ceil((totalDay + offset) / 7) * rowHeight
 
-    return {
-      paddingBottom: `${padding}px`,
-    }
+    return 'padding-bottom:' + padding + 'px'
   }
 
-  return {}
+  return ''
 }
 
 export { getMark, getDayStyle, formatMonthTitle, getMonthStyle }

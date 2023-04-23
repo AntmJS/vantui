@@ -24,14 +24,13 @@ import { Toast } from 'vantui'
 ```
 
 ```jsx
-const Toast_ = Toast.createOnlyToast()
 function Demo() {
   const show = () => {
-    Toast_.show('我是提示文案')
+    Toast.show('我是提示文案')
   }
 
   const showLong = () => {
-    Toast_.show('我是提示文案, 超过了十五就会换行额～～～')
+    Toast.show('我是提示文案, 超过了十五就会换行额～～～')
   }
 
   return (
@@ -42,7 +41,7 @@ function Demo() {
       <Button type="primary" onClick={showLong}>
         长文字提示
       </Button>
-      <Toast_ />
+      <Toast id="vanToast-demo1" />
     </View>
   )
 }
@@ -53,18 +52,18 @@ function Demo() {
 使用 `Toast.loading` 方法展示加载提示，通过 `forbidClick` 属性可以禁用背景点击，通过 `loadingType` 属性可以自定义加载图标类型。
 
 ```jsx
-const Toast_ = Toast.createOnlyToast()
-
 function Demo() {
   const show = () => {
-    Toast_.success({
+    Toast.success({
       message: '成功文案',
+      selector: '#vanToast-demo2',
     })
   }
 
   const showLong = () => {
-    Toast_.fail({
+    Toast.fail({
       message: '失败文案',
+      selector: '#vanToast-demo2',
     })
   }
 
@@ -76,7 +75,7 @@ function Demo() {
       <Button type="primary" onClick={showLong}>
         自定义加载图标
       </Button>
-      <Toast_ />
+      <Toast id="vanToast-demo2" />
     </View>
   )
 }
@@ -192,7 +191,6 @@ Toast.show({
 | clear | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;ToastProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | setDefaultOptions | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;ToastProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | resetDefaultOptions | - | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
-| createOnlyToast | 获取唯一的 toast 组件，不需要手动设置 id 和 selector | _&nbsp;&nbsp;()&nbsp;=>&nbsp;FunctionComponent<ToastProps>&nbsp;&<br/>&nbsp;&nbsp;&nbsp;&nbsp;toastProps<br/>_ | - | `true` |
 
 ### 样式变量
 

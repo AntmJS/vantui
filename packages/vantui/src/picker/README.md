@@ -223,7 +223,7 @@ function Demo() {
 | --picker-cancel-action-color        | ` @gray-6;`                  |
 | --picker-option-font-size           | ` @font-size-lg;`            |
 | --picker-option-text-color          | ` @black;`                   |
-| --picker-loading-icon-color         | ` @primary-color;`           |
+| --picker-loading-icon-color         | ` @blue;`                    |
 | --picker-loading-mask-color         | ` rgba(255, 255, 255, 0.9);` |
 | --picker-option-disabled-opacity    | ` 0.3;`                      |
 | --picker-option-selected-text-color | ` @text-color;`              |

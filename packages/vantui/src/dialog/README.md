@@ -22,20 +22,20 @@ import { Dialog } from '@antmjs/vantui'
 - confirm 用于确认消息，包含取消和确认按钮。
 
 ```jsx
-const Dialog_ = Dialog.createOnlyDialog()
 function Demo() {
   const [value, setValue] = react.useState('')
   const alert = react.useCallback((title) => {
-    Dialog_.alert({
+    Dialog.alert({
       title: title || '',
       message: '弹窗内容',
+      selector: 'vanDialog0',
     }).then((value) => {
       console.log('dialog result', value)
     })
   })
 
   const confirm = react.useCallback(() => {
-    Dialog_.confirm({
+    Dialog.confirm({
       title: '标题',
       message: (
         <Input
@@ -44,6 +44,7 @@ function Demo() {
           onChange={(e) => setValue(e.detail.value)}
         />
       ),
+      selector: 'vanDialog0',
     }).then((value) => {
       console.log('dialog result', value)
     })
@@ -51,7 +52,7 @@ function Demo() {
 
   return (
     <View>
-      <Dialog_ />
+      <Dialog id="vanDialog0" />
       <Cell title="提示弹窗" onClick={() => alert('提示一下')} />
       <Cell title="提示弹窗（无标题）" onClick={() => alert()} />
       <Cell title="确认弹窗" onClick={confirm} />
@@ -65,14 +66,13 @@ function Demo() {
 将 theme 选项设置为 `roundButton` 可以展示圆角按钮风格的弹窗。
 
 ```jsx
-const Dialog_ = Dialog.createOnlyDialog()
-
 function Demo() {
   const alert = react.useCallback((title) => {
-    Dialog_.alert({
+    Dialog.alert({
       title: title || '',
       message: '弹窗内容',
       theme: 'roundButton',
+      selector: '#vanDialog1',
     }).then((value) => {
       console.log('dialog result', value)
     })
@@ -80,7 +80,7 @@ function Demo() {
 
   return (
     <View>
-      <Dialog_ />
+      <Dialog id="vanDialog1" />
       <Cell title="提示弹窗" onClick={() => alert('提示一下')} />
       <Cell title="提示弹窗（无标题）" onClick={() => alert()} />
     </View>
@@ -189,18 +189,6 @@ function Demo() {
 | closeOnClickOverlay   | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                                                                                                                                                                                                         | -      | `false` |
 | confirmButtonOpenType | -    | _&nbsp;&nbsp;TaroButtonProps.OpenType<br/>_                                                                                                                                                                                                                                                                                                                                        | -      | `false` |
 | renderTitle           | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                                                                                                                                                                       | -      | `false` |
-
-### dialogProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dialog.d.ts)
-
-| 参数                | 说明                                                    | 类型                                                                                                                                                                                                   | 默认值 | 必填   |
-| ------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------ |
-| alert               | -                                                       | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;DialogProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<<br/>&nbsp;&nbsp;&nbsp;&nbsp;"confirm"&nbsp;&brvbar;&nbsp;"cancel"<br/>&nbsp;&nbsp;><br/>_ | -      | `true` |
-| confirm             | -                                                       | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;DialogProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<<br/>&nbsp;&nbsp;&nbsp;&nbsp;"confirm"&nbsp;&brvbar;&nbsp;"cancel"<br/>&nbsp;&nbsp;><br/>_ | -      | `true` |
-| setDefaultOptions   | -                                                       | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;DialogProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                         | -      | `true` |
-| resetDefaultOptions | -                                                       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                | -      | `true` |
-| close               | -                                                       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                | -      | `true` |
-| stopLoading         | -                                                       | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                | -      | `true` |
-| createOnlyDialog    | 创建唯一的 Dialog， 命令式调用不需要设置 selector 和 id | _&nbsp;&nbsp;()&nbsp;=>&nbsp;FunctionComponent<DialogProps>&nbsp;&<br/>&nbsp;&nbsp;&nbsp;&nbsp;dialogProps<br/>_                                                                                       | -      | `true` |
 
 ### 样式变量
 

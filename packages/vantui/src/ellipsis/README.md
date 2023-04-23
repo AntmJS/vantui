@@ -64,9 +64,9 @@ function Demo() {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                        | 默认值             |
-| --------------------------- | ------------------ |
-| --ellipsis-font-size        | ` 28px;`           |
-| --ellipsis-line-height      | ` 50px;`           |
-| --ellipsis-action-font-size | ` 30px;`           |
-| --ellipsis-primary-color    | ` @primary-color;` |
+| 名称                        | 默认值      |
+| --------------------------- | ----------- |
+| --ellipsis-font-size        | ` 28px;`    |
+| --ellipsis-line-height      | ` 50px;`    |
+| --ellipsis-action-font-size | ` 30px;`    |
+| --ellipsis-primary-color    | ` #20c064;` |

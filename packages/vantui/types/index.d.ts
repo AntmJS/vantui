@@ -60,6 +60,7 @@ export { ConfigProvider } from './config-provider'
 export { SubmitBar } from './submit-bar'
 export { Card } from './card'
 export { Form, FormItem } from './form'
+export { PowerScrollView } from './power-scroll-view'
 export { NumberKeyboard } from './number-keyboard'
 export { Table, IColumns } from './table'
 export { Pagination, PaginationProps } from './pagination'
@@ -68,14 +69,3 @@ export { Cascader } from './cascader'
 export { Sku } from './sku'
 export { WaterMark } from './water-mark'
 export { Ellipsis } from './ellipsis'
-export {
-  InfiniteScroll,
-  InfiniteScrollProps,
-  InfiniteScrollInstance,
-} from './infinite-scroll'
-export { IPullToRefreshProps, PullToRefresh } from './pull-to-refresh'
-export {
-  VirtualList,
-  IVirtualListProps,
-  IVirtualListInstance,
-} from './virtual-list'

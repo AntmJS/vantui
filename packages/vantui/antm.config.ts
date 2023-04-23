@@ -30,7 +30,6 @@ export default {
           'theme',
           'use-in-react',
           'contributing',
-          'v2-to-v3',
           'comments',
           'premium',
         ],
@@ -40,7 +39,7 @@ export default {
     headerLinks: [
       {
         title: 'https://b.yzcdn.cn/vant/logo/github.svg',
-        url: 'https://github.com/AntmJS/vantui/',
+        url: 'https://github.com/AntmJS/vantui/main',
         type: 'img',
       },
       {
@@ -103,10 +102,6 @@ function getMenus() {
         {
           path: 'contributing',
           title: '贡献指南',
-        },
-        {
-          path: 'v2-to-v3',
-          title: 'v2升级到v3',
         },
         {
           path: 'comments',
@@ -333,16 +328,8 @@ function getMenus() {
           title: 'NumberKeyboard 数字键盘',
         },
         {
-          path: 'infinite-scroll',
-          title: 'InfiniteScroll 无限滚动',
-        },
-        {
-          path: 'pull-to-refresh',
-          title: 'PullToRefresh 下拉刷新',
-        },
-        {
-          path: 'virtual-list',
-          title: 'VirtualList 虚拟列表',
+          path: 'power-scroll-view',
+          title: '滚动&下拉刷新',
         },
       ],
     },
