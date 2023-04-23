@@ -5,7 +5,7 @@ const fs = require('fs')
 const { spawn } = require('child_process')
 const ora = require('ora')
 const consola = require('consola')
-const glob = require('glob')
+const { glob } = require('glob')
 const { watch } = require('chokidar')
 const markdownToAst = require('markdown-to-ast')
 const { format } = require('prettier')
@@ -57,15 +57,11 @@ async function beginWork() {
 
   await createBaseFiles()
 
-  return new Promise((resolve) => {
-    glob(`${markdownCodeSrc}/**/README.md`, async function (err, path) {
-      if (err) {
-        spinner.stop()
-        consola.error(err)
-        process.exit(1)
-      }
-      for (let i = 0; i < path.length; i++) {
-        const pat = path[i]
+  return new Promise(async (resolve) => {
+    try {
+      const jsfiles = await glob(`${markdownCodeSrc}/**/README.md`)
+      for (let i = 0; i < jsfiles.length; i++) {
+        const pat = jsfiles[i]
         const { codeArr, commonUtils } = getCode(pat)
         const pArr = pat.split('/')
         const name = pArr[pArr.length - 2]
@@ -95,7 +91,11 @@ async function beginWork() {
       }
 
       resolve()
-    })
+    } catch (error) {
+      spinner.stop()
+      consola.error(error)
+      process.exit(1)
+    }
   })
 }
 
