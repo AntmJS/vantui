@@ -29,7 +29,11 @@
 
 ---
 
-- 内部开发成员提交：复制`_antm.config.js`文件，重命名移除`_`, 然后按`message`规范提交
+- 内部开发成员提交: 根目录创建.webhook.js 文件，向 git 管理者获取 webhooks 的 token，然后设置
+
+```js
+module.exports = 'xxxxxtoken'
+```
 
 - fork 的项目的提交: 本地执行`eslint`后`git commit -m xxxxmessage -n`强制提交
 
