@@ -19,11 +19,11 @@ export interface GridProps extends ViewProps {
    */
   columnNum?: number
   /**
-   * @description 是否垂直居中
+   * @description 是否居中排列
    */
   center?: boolean
   /**
-   * @description 是否显示外边框
+   * @description 是否显示边框
    */
   border?: boolean
   /**
@@ -35,7 +35,7 @@ export interface GridProps extends ViewProps {
    */
   iconSize?: string | number
   /**
-   * 内容顺序反转
+   * @description 内容顺序反转
    */
   reverse?: boolean
   /**
