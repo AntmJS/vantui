@@ -9740,6 +9740,17 @@ glob@^10.1.0:
     minipass "^5.0.0"
     path-scurry "^1.7.0"
 
+glob@^10.2.2:
+  version "10.2.2"
+  resolved "https://registry.npmjs.org/glob/-/glob-10.2.2.tgz#ce2468727de7e035e8ecf684669dc74d0526ab75"
+  integrity sha512-Xsa0BcxIC6th9UwNjZkhrMtNo/MnyRL8jGCP+uEwhA5oFOCY1f2s1/oNKY47xQ0Bg5nkjsfAEIej1VeH62bDDQ==
+  dependencies:
+    foreground-child "^3.1.0"
+    jackspeak "^2.0.3"
+    minimatch "^9.0.0"
+    minipass "^5.0.0"
+    path-scurry "^1.7.0"
+
 glob@^6.0.1:
   version "6.0.4"
   resolved "https://registry.npmmirror.com/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
