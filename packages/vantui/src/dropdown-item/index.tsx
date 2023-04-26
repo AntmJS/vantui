@@ -203,7 +203,7 @@ function Index(
         closeOnClickOverlay={parentInstance.closeOnClickOverlay}
         onEnter={onOpen}
         onLeave={onClose}
-        onClose={toggle}
+        onClose={() => toggle(false)}
         onAfterEnter={onOpened}
         onAfterLeave={onClosed_}
       >
