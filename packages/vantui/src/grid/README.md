@@ -161,30 +161,30 @@ function Demo() {
 
 ### GridProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/grid.d.ts)
 
-| 参数      | 说明 | 类型                                                | 默认值 | 必填    |
-| --------- | ---- | --------------------------------------------------- | ------ | ------- |
-| square    | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| gutter    | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
-| clickable | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| columnNum | -    | _&nbsp;&nbsp;number<br/>_                           | -      | `false` |
-| center    | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| border    | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| direction | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| iconSize  | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| reverse   | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| children  | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                  | -      | `false` |
+| 参数      | 说明             | 类型                                                | 默认值 | 必填    |
+| --------- | ---------------- | --------------------------------------------------- | ------ | ------- |
+| square    | 是否为正方形格子 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| gutter    | 格子间隔         | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
+| clickable | 是否开启点击反馈 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| columnNum | 列数             | _&nbsp;&nbsp;number<br/>_                           | -      | `false` |
+| center    | 是否居中排列     | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| border    | 是否显示边框     | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| direction | 内容对齐方式     | _&nbsp;&nbsp;"horizontal"<br/>_                     | -      | `false` |
+| iconSize  | 图标大小         | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| reverse   | 内容顺序反转     | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| children  | 自定义内容       | _&nbsp;&nbsp;React.ReactNode<br/>_                  | -      | `false` |
 
 ### GridItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/grid.d.ts)
 
-| 参数       | 说明 | 类型                                                                                                                                                                                        | 默认值 | 必填    |
-| ---------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| icon       | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | -      | `false` |
-| iconColor  | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | -      | `false` |
-| iconPrefix | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | -      | `false` |
-| dot        | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                  | -      | `false` |
-| info       | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>_              | -      | `false` |
-| badge      | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>_              | -      | `false` |
-| text       | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                | -      | `false` |
-| url        | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | -      | `false` |
-| linkType   | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"navigateTo"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"reLaunch"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | -      | `false` |
-| children   | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                          | -      | `false` |
+| 参数       | 说明                                          | 类型                                                                                                                                                                                        | 默认值 | 必填    |
+| ---------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| icon       | 图标名称或图片链接                            | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | ''     | `false` |
+| iconColor  | 图标颜色                                      | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | ''     | `false` |
+| iconPrefix | 图标类名前缀，同 Icon 组件的 classPrefix 属性 | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | ''     | `false` |
+| dot        | 是否显示图标右上角小红点                      | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                                                  | ''     | `false` |
+| info       | 图标右上角提示信息                            | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>_              | ''     | `false` |
+| badge      | 图标右上角徽标的内容                          | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>_              | ''     | `false` |
+| text       | 文字描述                                      | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                | ''     | `false` |
+| url        | 点击后跳转的链接地址                          | _&nbsp;&nbsp;string<br/>_                                                                                                                                                                   | ''     | `false` |
+| linkType   | 跳转类型                                      | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"navigateTo"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"reLaunch"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"redirectTo"<br/>_ | ''     | `false` |
+| children   | 自定义内容                                    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                                          | ''     | `false` |

@@ -76,7 +76,7 @@ module.exports = 'xxxxxtoken'
 - 内部自定义组件的组件名称须带前缀`_`, Form 组件文档下的`DatetimePickerBox_`, 暂时不支持写在`common`标识的代码块里
 - 多个组件公用的数据或方法，给代码块设置`common`标志符号，例如单独定义一个 sku 数据：
 
- <img src="https://github.com/AntmJS/vantui/blob/main/resource/%20code-demo.png" alt="contributors">
+ <img src="https://raw.githubusercontent.com/AntmJS/vantui/main/resource/%20code-demo.png" alt="contributors">
 
 在 demo 代码块中使用
 
