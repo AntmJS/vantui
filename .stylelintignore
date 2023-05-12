@@ -25,6 +25,7 @@
 LICENSE
 
 node_modules
+packages/vantui-form-render
 packages/**/coverage
 packages/**/dist
 packages/vantui/lib
