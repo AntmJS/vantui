@@ -147,7 +147,7 @@ export default (props: any) => {
     dependencies,
     name: path,
     initialValue: defaultValue,
-    rules: readOnly ? [] : ruleList,
+    // rules: readOnly ? [] : ruleList,
     className: classnames('fr-field', { 'fr-field-visibility': !visible }),
   }
 
@@ -160,9 +160,17 @@ export default (props: any) => {
   }
   const { name, ...rest } = itemProps
 
+  // 过滤掉用户传入的 name和 label
+  const {
+    name: customName,
+    label: customLabel,
+    rules = {},
+    ...filteredItemProps
+  } = schema?.itemProps || {}
+
   // 合并 FormItem 的 props
   const itemConfig = schema?.itemProps
-    ? { ...schema.itemProps, ...rest }
+    ? { ...rest, ...filteredItemProps }
     : { ...rest }
 
   // 自动修复样式
@@ -173,7 +181,7 @@ export default (props: any) => {
   }
 
   return (
-    <FormItem name={name[0]} {...itemConfig}>
+    <FormItem name={name[0]} {...itemConfig} rules={rules}>
       <FieldWrapper
         Field={Widget}
         fieldProps={fieldProps}

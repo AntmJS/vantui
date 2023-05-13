@@ -192,6 +192,7 @@ const useForm = () => {
 
   // 设置一组字段错误
   xform.setErrorFields = (fieldsError: any[]) => {
+    console.log('setErrorFields', fieldsError)
     const fieldsData = transformFieldsData(fieldsError, getFieldName)
     if (!fieldsData) {
       return
@@ -289,12 +290,8 @@ const useForm = () => {
   }
 
   // 触发表单验证
-  xform.validateFields = (pathList?: string[]) => {
-    const nameList = (pathList || []).map((path) => getFieldName(path))
-    if (nameList.length > 0) {
-      return validateFields(nameList)
-    }
-    return resetFields()
+  xform.validateFields = (callback) => {
+    validateFields(callback)
   }
 
   xform.__initStore = (store: any) => {
