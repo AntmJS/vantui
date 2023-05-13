@@ -1,6 +1,4 @@
 import React, { useContext } from 'react'
-// import { FormItem } from '@antmjs/vantui'
-// import { View } from '@tarojs/components'
 
 import { _get } from '../../utils'
 import { FRContext } from '../../models/context'

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useRef, useState } from 'react'
-import { DatetimePicker, FormItem, Popup, Form, Icon } from '@antmjs/vantui'
+import { FormItem } from '@antmjs/vantui'
 import { useStore } from 'zustand'
 import classnames from 'classnames'
 import { View } from '@tarojs/components'
@@ -23,82 +23,14 @@ const valuePropNameMap = {
   switch: 'checked',
 }
 
-function DatetimePickerBox_(props) {
-  const [state, changeState] = React.useState({
-    show: false,
-    innerValue: null,
-  })
-
-  const setState = React.useCallback(
-    (key, value) => {
-      changeState({
-        ...state,
-        [key]: value,
-      })
-    },
-    [state],
-  )
-
-  const toggleShow = React.useCallback((show) => {
-    setState('show', show)
-  }, [])
-
-  const onConfirm = React.useCallback((e) => {
-    if (props.onConfirm) props.onConfirm(e)
-    toggleShow(false)
-  }, [])
-
-  const onCancel = React.useCallback(() => {
-    if (props.onCancel) props.onCancel()
-    toggleShow(false)
-  }, [])
-
-  const preFixZero = React.useCallback((n) => {
-    return n > 9 ? `${n}` : `0${n}`
-  }, [])
-
-  const formatDate = React.useCallback((date) => {
-    const d = new Date(date)
-    return `${d.getFullYear()}-${preFixZero(
-      Number(d.getMonth() + 1),
-    )}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
-  }, [])
-
-  const onChange = React.useCallback((e) => {
-    setState(innerValue, e.detail.datetimePicker.innerValue)
-  }, [])
-
-  const { value } = props
-
-  return (
-    <>
-      <View onClick={() => toggleShow(true)} style={{ minWidth: '200px' }}>
-        {value ? formatDate(value) : '请选择日期'}
-      </View>
-      <Popup
-        position="bottom"
-        show={state.show}
-        onClose={() => toggleShow(false)}
-      >
-        <DatetimePicker
-          type="datetime"
-          value={state.innerValue || value}
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-        />
-      </Popup>
-    </>
-  )
-}
-
 export default (props: any) => {
   const { store, schema, path, children, dependValues, rootPath, renderCore } =
     props
-
   if (schema?.hidden) {
     return null
   }
 
+  // 字段ref
   const fieldRef: any = useRef()
   const formCtx: any = useStore(store, (state: any) => state.context)
   const upperCtx: any = useContext(UpperContext)
@@ -142,9 +74,9 @@ export default (props: any) => {
   const displayType = getValueFromKey('displayType')
   const labelWidth = getValueFromKey('labelWidth')
 
-  if (widgetName === 'Collapse') {
-    return <Widget {...fieldProps} renderCore={renderCore} />
-  }
+  // if (widgetName === 'Collapse') {
+  //   return <Widget {...fieldProps} renderCore={renderCore} />
+  // }
 
   if (children) {
     fieldProps.children = <View>{children}</View>
@@ -174,7 +106,6 @@ export default (props: any) => {
   // Render field components
   let label = getLabel(schema, displayType, widgets)
   let noStyle = getValueFromKey('noStyle')
-
   const extra = getExtraView('extra', schema, widgets)
   const help = getExtraView('help', schema, widgets)
   const ruleList = getRuleList(schema, form, methods)
@@ -186,6 +117,7 @@ export default (props: any) => {
     fieldProps.readOnly = readOnly
   }
 
+  // 给字段添加点击功能
   fieldProps.setFieldRef = (ref: any) => {
     if (ref) {
       setNeedOnClick(true)
@@ -201,8 +133,10 @@ export default (props: any) => {
     Widget = widgets[schema.readOnlyWidget] || widgets['Html']
   }
 
+  // 默认值
   const defaultValue = schema.default ?? schema.defaultValue
 
+  // 配置FormItem
   const itemProps: any = {
     label,
     valuePropName,
@@ -217,15 +151,19 @@ export default (props: any) => {
     className: classnames('fr-field', { 'fr-field-visibility': !visible }),
   }
 
+  //setFieldRef 手动设置 onClick
   if (needOnClick && fieldRef.current && !readOnly) {
     itemProps.onClick = () => {
+      // 调用实例open
       fieldRef.current.open()
     }
   }
   const { name, ...rest } = itemProps
 
-  // 设置 FormItem 的props
-  const itemConfig = schema?.itemProps || {}
+  // 合并 FormItem 的 props
+  const itemConfig = schema?.itemProps
+    ? { ...schema.itemProps, ...rest }
+    : { ...rest }
 
   // 自动修复样式
   if (widgetName === 'Radio' || widgetName === 'Checkboxes') {
@@ -234,16 +172,8 @@ export default (props: any) => {
       : 'label-bottom'
   }
 
-  // if (widgetName === 'DatetimePickerBox') {
-  //   return (
-  //     <FormItem label="日期选择" name="dateTime">
-  //       <DatetimePickerBox_ />
-  //     </FormItem>
-  //   )
-  // }
-
   return (
-    <FormItem name={name[0]} {...rest} {...itemConfig}>
+    <FormItem name={name[0]} {...itemConfig}>
       <FieldWrapper
         Field={Widget}
         fieldProps={fieldProps}

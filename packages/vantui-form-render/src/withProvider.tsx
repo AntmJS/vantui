@@ -74,22 +74,11 @@ export default function withProvider<T>(
 
     // Element = formCord
     return (
-      <ConfigProvider
-        {...configProvider}
-        locale={langPack}
-        form={{
-          validateMessages: {
-            ...formValidateMessages,
-            ...validateMessages,
-          },
-        }}
-      >
-        <ConfigContext.Provider value={configContext}>
-          <FRContext.Provider value={store}>
-            <Element form={form} {...otherProps} />
-          </FRContext.Provider>
-        </ConfigContext.Provider>
-      </ConfigProvider>
+      <ConfigContext.Provider value={configContext}>
+        <FRContext.Provider value={store}>
+          <Element form={form} {...otherProps} />
+        </FRContext.Provider>
+      </ConfigContext.Provider>
     )
   }
 }

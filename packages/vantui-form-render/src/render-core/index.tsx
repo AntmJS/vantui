@@ -1,6 +1,7 @@
 import React from 'react'
 import FieldItem from './FieldItem'
 // import FieldList from './FieldList'
+
 interface RenderCoreProps {
   schema: any
   rootPath?: any[] | undefined
@@ -67,7 +68,6 @@ const RenderCore = (props: RenderCoreProps): any => {
   return Object.keys(schema?.properties || {}).map((key) => {
     const item = schema.properties[key]
     const path = [...parentPath, key]
-
     return renderItem({ schema: item, path, key, rootPath })
   })
 }

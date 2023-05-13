@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { DatetimePicker, Popup } from '@antmjs/vantui'
 import { View } from '@tarojs/components'
 
-function DatetimePickerBox_(props) {
-  const dateTimeRef = React.useRef(null)
-
+export default function DatetimePickerBox_(props) {
   const [state, changeState] = React.useState({
     show: false,
     innerValue: null,
@@ -25,10 +23,7 @@ function DatetimePickerBox_(props) {
   }, [])
 
   const onConfirm = React.useCallback((e) => {
-    if (props.onConfirm) {
-      props.onConfirm(e)
-      props.onChange(e.detail.value)
-    }
+    if (props.onConfirm) props.onConfirm(e)
     toggleShow(false)
   }, [])
 
@@ -49,21 +44,13 @@ function DatetimePickerBox_(props) {
   }, [])
 
   const onChange = React.useCallback((e) => {
-    // setState(innerValue, e.detail.datetimePicker.innerValue)
-    console.log(e)
+    setState(innerValue, e.detail.datetimePicker.innerValue)
   }, [])
 
-  useEffect(() => {
-    if (dateTimeRef.current) {
-      //columns
-      dateTimeRef.current.setColumns(dateTimeRef.current.columns)
-    }
-  }, [dateTimeRef, state])
-
-  const { value, ...rest } = props
+  const { value } = props
 
   return (
-    <View ref={(ref) => props.setFieldRef(ref)} {...rest}>
+    <>
       <View onClick={() => toggleShow(true)} style={{ minWidth: '200px' }}>
         {value ? formatDate(value) : '请选择日期'}
       </View>
@@ -73,15 +60,12 @@ function DatetimePickerBox_(props) {
         onClose={() => toggleShow(false)}
       >
         <DatetimePicker
-          ref={dateTimeRef}
           type="datetime"
           value={state.innerValue || value}
           onConfirm={onConfirm}
           onCancel={onCancel}
         />
       </Popup>
-    </View>
+    </>
   )
 }
-
-export default DatetimePickerBox_
