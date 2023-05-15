@@ -90,3 +90,4 @@ function getSrcDir() {
 
 export const SRC_DIR = getSrcDir()
 export const STYLE_DIR = join(SRC_DIR, 'style')
+export const IGNORE_FILE_REG = [/example/].concat(vantConfig.build.ignore)
