@@ -43,9 +43,9 @@ export default function DatetimePickerBox_(props) {
     )}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
   }, [])
 
-  const onChange = React.useCallback((e) => {
-    setState(innerValue, e.detail.datetimePicker.innerValue)
-  }, [])
+  // const onChange = React.useCallback((e) => {
+  //   setState(innerValue, e.detail.datetimePicker.innerValue)
+  // }, [])
 
   const { value } = props
 

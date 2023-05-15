@@ -6,7 +6,7 @@ import { default as VantuiDatetimePickerBox } from './DatetimePickerBox'
 
 import { filterWidgetProps } from '../utils'
 
-import './index.less'
+// import './index.less'
 
 const widgetHoc = (Widget: any) => (props: any) => {
   const { setFieldRef, ...widgetProps } = filterWidgetProps(props)

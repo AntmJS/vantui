@@ -7,14 +7,14 @@
 单独使用不要忘记同时安装 @antmjs/vantui@3.0.0
 
 ```shell
-yarn add @antmjs/vantui-form-render
+yarn add @suwujs/vantui-form-render
 ```
 
 ## 🚀 快速上手
 
 ```jsx
 import { Button, Icon, Dialog } from '@antmjs/vantui'
-import FormRender, { useForm } from '@antmjs/vantui-form-render'
+import FormRender, { useForm } from '@suwujs/vantui-form-render'
 import { View } from '@tarojs/components'
 
 const schema = {
@@ -25,15 +25,18 @@ const schema = {
       title: '昵称',
       type: 'string',
       widget: 'input',
+      props: {},
       itemProps: {
         trigger: 'onInput',
         validateTrigger: 'onBlur',
-        required: true,
-        rules: {
+      },
+      rules: [
+        {
           rule: /[\u4e00-\u9fa5]/,
           message: '昵称仅支持中文!',
         },
-      },
+      ],
+      required: true,
     },
     sex: {
       title: '性别',
@@ -45,9 +48,7 @@ const schema = {
           { label: '女', value: 'female' },
         ],
       },
-      itemProps: {
-        required: true,
-      },
+      required: true,
     },
     skills: {
       title: '特长',
@@ -60,23 +61,22 @@ const schema = {
           { label: '游戏', value: 'game' },
           { label: '画画', value: 'painting' },
           { label: '钓鱼', value: 'fishing' },
+          { label: '化妆', value: 'makeup' },
         ],
       },
-      itemProps: {
-        required: true,
-      },
+      required: true,
     },
     date: {
-      title: '恋爱日期',
+      title: '日期',
       type: 'string',
       widget: 'datetimePickerBox',
       props: {},
+      required: true,
       itemProps: {
         valueFormat: (e) => e.detail.value,
         valueKey: 'value',
         trigger: 'onConfirm',
         renderRight: <Icon name="arrow" />,
-        required: true,
       },
     },
   },

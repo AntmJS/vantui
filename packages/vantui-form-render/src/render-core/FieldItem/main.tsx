@@ -3,7 +3,6 @@ import { FormItem } from '@antmjs/vantui'
 import { useStore } from 'zustand'
 import classnames from 'classnames'
 import { View } from '@tarojs/components'
-
 import { warn, _get } from '../../utils'
 import { ConfigContext } from '../../models/context'
 import { getWidgetName } from '../../models/mapping'
@@ -16,7 +15,6 @@ import {
   getLabel,
   getExtraView,
 } from './module'
-
 const UpperContext: any = createContext(() => {})
 const valuePropNameMap = {
   checkbox: 'checked',
@@ -74,9 +72,9 @@ export default (props: any) => {
   const displayType = getValueFromKey('displayType')
   const labelWidth = getValueFromKey('labelWidth')
 
-  // if (widgetName === 'Collapse') {
-  //   return <Widget {...fieldProps} renderCore={renderCore} />
-  // }
+  if (widgetName === 'Collapse') {
+    return <Widget {...fieldProps} renderCore={renderCore} />
+  }
 
   if (children) {
     fieldProps.children = <View>{children}</View>
@@ -136,6 +134,9 @@ export default (props: any) => {
   // 默认值
   const defaultValue = schema.default ?? schema.defaultValue
 
+  // 必填项
+  const required = schema.required || false
+
   // 配置FormItem
   const itemProps: any = {
     label,
@@ -145,43 +146,31 @@ export default (props: any) => {
     help,
     noStyle,
     dependencies,
-    name: path,
+    name: path[0],
     initialValue: defaultValue,
-    // rules: readOnly ? [] : ruleList,
+    rules: readOnly ? [] : ruleList,
     className: classnames('fr-field', { 'fr-field-visibility': !visible }),
+    required,
+    // 用户自定义的itemProps
+    ...schema.itemProps,
   }
 
-  //setFieldRef 手动设置 onClick
   if (needOnClick && fieldRef.current && !readOnly) {
     itemProps.onClick = () => {
       // 调用实例open
       fieldRef.current.open()
     }
   }
-  const { name, ...rest } = itemProps
-
-  // 过滤掉用户传入的 name和 label
-  const {
-    name: customName,
-    label: customLabel,
-    rules = {},
-    ...filteredItemProps
-  } = schema?.itemProps || {}
-
-  // 合并 FormItem 的 props
-  const itemConfig = schema?.itemProps
-    ? { ...rest, ...filteredItemProps }
-    : { ...rest }
 
   // 自动修复样式
   if (widgetName === 'Radio' || widgetName === 'Checkboxes') {
-    itemConfig['className'] = itemConfig?.className
-      ? itemConfig?.className + ' label-bottom'
+    itemProps['className'] = itemProps?.className
+      ? itemProps?.className + ' label-bottom'
       : 'label-bottom'
   }
 
   return (
-    <FormItem name={name[0]} {...itemConfig} rules={rules}>
+    <FormItem {...itemProps}>
       <FieldWrapper
         Field={Widget}
         fieldProps={fieldProps}

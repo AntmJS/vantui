@@ -1,13 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import {
-  Cell,
-  DatetimePicker,
-  Form,
-  FormItem,
-  Icon,
-  Picker,
-  Popup,
-} from '@antmjs/vantui'
+import { Form } from '@antmjs/vantui'
 import { useStore } from 'zustand'
 import cx from 'classnames'
 
@@ -29,7 +21,6 @@ import RenderCore from '../render-core'
 import './index.less'
 
 const FormCore = (props: any) => {
-  const formIt = React.useRef(null)
   const store: any = useContext(FRContext)
   const schema = useStore(store, (state: any) => state.schema)
   const flattenSchema = useStore(store, (state: any) => state.flattenSchema)

@@ -1,6 +1,6 @@
 {
-  "name": "@antmjs/vantui-form-render",
-  "version": "0.1.0",
+  "name": "@suwujs/vantui-form-render",
+  "version": "0.1.2",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "src/type.ts",
