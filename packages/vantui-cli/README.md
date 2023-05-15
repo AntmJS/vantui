@@ -36,6 +36,7 @@ export default {
     namedExport: true,
     skipInstall: ['lazyload'],
     packageManager: 'yarn',
+    ignore: [/types.d.ts/],
   },
 }
 ```

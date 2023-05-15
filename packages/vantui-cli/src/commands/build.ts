@@ -7,7 +7,12 @@ import { compileScript } from '../compiler/compile-script.js'
 import { genPackageEntry } from '../compiler/gen-package-entry.js'
 import { genStyleDepsMap } from '../compiler/gen-style-deps-map.js'
 import { genComponentStyle } from '../compiler/gen-component-style.js'
-import { SRC_DIR, LIB_DIR, ES_DIR } from '../common/constant.js'
+import {
+  SRC_DIR,
+  LIB_DIR,
+  ES_DIR,
+  IGNORE_FILE_REG,
+} from '../common/constant.js'
 import { genPackageStyle } from '../compiler/gen-package-style.js'
 import {
   isDir,
@@ -46,7 +51,19 @@ async function compileDir(dir: string) {
 }
 
 async function copySourceCode() {
-  const copys: any = [copy(SRC_DIR, ES_DIR), copy(SRC_DIR, LIB_DIR)]
+  const opt = {
+    filter: (sFile) => {
+      for (let i = 0; i < IGNORE_FILE_REG.length; i++) {
+        const reg = IGNORE_FILE_REG[i]
+        if (reg?.test(sFile)) {
+          return false
+        }
+      }
+
+      return true
+    },
+  }
+  const copys: any = [copy(SRC_DIR, ES_DIR, opt), copy(SRC_DIR, LIB_DIR, opt)]
   return Promise.all(copys)
 }
 
