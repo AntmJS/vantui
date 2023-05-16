@@ -176,14 +176,28 @@ async function createBaseFiles() {
     return item
   })
   // 菜单写入
-  fs.writeFileSync(configPath, JSON.stringify(navFilter))
+  fs.writeFileSync(
+    configPath,
+    JSON.stringify([
+      {
+        name: '表单渲染',
+        items: [
+          {
+            path: 'form-render',
+            title: 'FormRender 动态渲染表单',
+          },
+        ],
+      },
+      ...navFilter,
+    ]),
+  )
   navFilter.map((item) => {
     routers = routers.concat(item.items)
   })
 
   const routerTemplateStr = `export default {
     pages: [
-      'pages/dashboard/index',ROUTER_PLACEHOLDER
+      'pages/dashboard/index','pages/form-render/index',ROUTER_PLACEHOLDER
     ],
     window: {
       navigationBarBackgroundColor: '#f8f8f8',

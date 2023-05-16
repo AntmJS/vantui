@@ -1,0 +1,85 @@
+{
+  "name": "@antmjs/vantui-form-render",
+  "version": "0.1.3",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "src/type.ts",
+  "author": "suk.bear <suk.bear.suwu@gmail.com>",
+  "description": "一套适用于vantui组件库的form-render",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "weui",
+    "vant-weapp",
+    "Taro",
+    "React",
+    "form-render"
+  ],
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/AntmJS/vantui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AntmJS/vantui/issues/new"
+  },
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6.4",
+    "yarn": ">=1.22"
+  },
+  "browserslist": [
+    "Chrome >= 35",
+    "ChromeAndroid >= 35",
+    "iOS >= 8",
+    "Safari >= 8",
+    "Android >= 4.1",
+    "QQAndroid >= 4.1",
+    "UCAndroid >= 4.1"
+  ],
+  "scripts": {
+    "iconfont": "npx antm-icon --font-family antmuifont --input-path https://at.alicdn.com/t/font_2744513_7eeet2akdo.css --output-path src/style/components/iconfont.less",
+    "watch": "npx antm-vantui-cli watch",
+    "build": "npx antm-vantui-cli build",
+    "test": "",
+    "test:watch": "",
+    "docs:watch": "node ./scripts/md.js && npx antm-doc-start",
+    "docs:release": "node ./scripts/md.js && sh ./build.sh && npx gh-pages -d doc_build -e ./main"
+  },
+  "dependencies": {
+    "antd-mobile-icons": "^0.3.0",
+    "async-validator": "^3.5.1",
+    "color": "^3.1.2",
+    "lodash-es": "^4.17.21",
+    "rc-color-picker": "^1.2.6",
+    "virtualizedtableforantd4": "^1.1.2",
+    "zustand": "4.1.5",
+    "ahooks": "3.7.5",
+    "@antmjs/types": "^2.3.6",
+    "@swc/helpers": "^0.5.0",
+    "@vant/icons": "^1.7.1",
+    "ast-to-markdown": "^1.0.0",
+    "classnames": "^2.3.1",
+    "dayjs": "^1.10.6",
+    "glob": "^10.1.0",
+    "markdown-to-ast": "^6.0.3",
+    "prettier": "^2.8.7",
+    "raf": "^3.4.1",
+    "rc-util": "^5.14.0",
+    "use-deep-compare-effect": "^1.8.1"
+  },
+  "peerDependencies": {
+    "@antmjs/vantui": "3.x",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@antmjs/iconfont": "^2.3.3",
+    "@antmjs/vantui-cli": "3.0.0",
+    "@tarojs/components": "3.5.7",
+    "@tarojs/taro": "3.5.7",
+    "@types/lodash.flow": "^3.5.6"
+  }
+}

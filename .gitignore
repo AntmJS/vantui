@@ -16,6 +16,8 @@ package-lock.json
 node_modules
 packages/**/coverage
 packages/**/dist
+packages/vantui-form-render/lib
+packages/vantui-form-render/es
 packages/vantui/lib
 packages/vantui/es
 

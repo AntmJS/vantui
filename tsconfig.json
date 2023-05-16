@@ -6,6 +6,7 @@
     "skipLibCheck": false,
     "resolveJsonModule": true
   },
+  "exclude": ["packages/vantui-form-render"],
   "include": [
     "*.js",
     "antm.config.ts",
