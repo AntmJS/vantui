@@ -34,7 +34,7 @@ export function createOnlyToast(Toast) {
             selector: `#${id}`,
           }
         }
-        Toast[actName](params)
+        return Toast[actName](params)
       }
     }
   }

@@ -12,7 +12,7 @@ export function createOnlyNotify(Notify) {
     const name = actionNames[i]
     if (name && Notify_[name]) {
       Notify_[name] = function (props) {
-        Notify[name]({
+        return Notify[name]({
           ...props,
           selector: `#${id}`,
         })

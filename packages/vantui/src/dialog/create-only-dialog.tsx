@@ -20,7 +20,7 @@ export function createOnlyDialog(Dialog) {
     const name = actionNames[i]
     if (name && Dialog[name])
       Dialog_[name] = function (props) {
-        Dialog[name]({
+        return Dialog[name]({
           ...props,
           selector: `#${id}`,
         })
