@@ -49,7 +49,8 @@
     "docs:release": "node ./scripts/md.js && sh ./build.sh && npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
-    "@antmjs/types": "^2.3.6",
+    "@antmjs/doc": "^2.3.8",
+    "@antmjs/types": "^2.3.8",
     "@swc/helpers": "^0.5.0",
     "@vant/icons": "^1.7.1",
     "ast-to-markdown": "^1.0.0",
@@ -67,6 +68,8 @@
     "@antmjs/vantui-cli": "3.0.0",
     "@tarojs/components": "3.5.7",
     "@tarojs/taro": "3.5.7",
-    "@types/lodash.flow": "^3.5.6"
+    "@types/lodash.flow": "^3.5.6",
+    "style-resources-loader": "^1.5.0",
+    "swc-loader": "^0.2.3"
   }
 }
