@@ -150,7 +150,37 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/doc@^2.3.6", "@antmjs/doc@^2.3.8":
+"@antmjs/doc@^2.3.11":
+  version "2.3.11"
+  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.11.tgz#8f0a2085c9ed13edf56e87f63beeffb543de6925"
+  integrity sha512-cnvbBH1Zgy8OFN6aJ1r0BXq9L8Wd+t41LfPv76XNdRELchdK364PP0HOS7KxhJxRRPPfNkWvGvO2t8h5gLTFjw==
+  dependencies:
+    "@swc/core" "^1.3.60"
+    "@swc/wasm" "^1.3.60"
+    "@types/react-dom" "^18.0.11"
+    ast-to-markdown "^1.0.0"
+    chokidar "^3.5.3"
+    classnames "^2.3.2"
+    css-loader "^6.7.3"
+    flexsearch "^0.7.31"
+    glob "10.2.6"
+    highlight.js "^11.7.0"
+    html-webpack-plugin "^5.5.0"
+    less "^4.1.3"
+    less-loader "^11.1.0"
+    markdown-it "^13.0.1"
+    markdown-to-ast "^6.0.3"
+    mini-css-extract-plugin "^2.7.5"
+    postcss-loader "^7.2.4"
+    react-hot-toast "^2.4.0"
+    style-loader "^3.3.2"
+    style-resources-loader "^1.5.0"
+    swc-loader "^0.2.3"
+    vue-loader "^17.1.0"
+    webpack "^5.78.0"
+    webpack-dev-server "^4.13.2"
+
+"@antmjs/doc@^2.3.6":
   version "2.3.8"
   resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.8.tgz#e1386001c1161bf6aca4b9ffc5773b4a1a9225b7"
   integrity sha512-UHOTwnH7dXZBIyaFNqINbo5hRZS8NKq6thoS9WjVyUBlv6OU+dzuRcUfvfm+Zir+SfjsUpTB9DOlWSGbwidQjg==
@@ -233,10 +263,10 @@
     stylelint-config-prettier "^9.0.4"
     stylelint-config-standard "^29.0.0"
 
-"@antmjs/types@^2.3.8":
-  version "2.3.8"
-  resolved "https://registry.npmjs.org/@antmjs/types/-/types-2.3.8.tgz#ec96aa86f72d7ba389b874d64668261f7508cd18"
-  integrity sha512-YnI5zLg0SUseDyiZ87TZdTE2VBvHKbTIoxd4Ok337QTyK7UCCtf6EQmqq1RRfmXMUZOLkv9a2UtSzI8LX4IvLQ==
+"@antmjs/types@^2.3.11":
+  version "2.3.11"
+  resolved "https://registry.npmjs.org/@antmjs/types/-/types-2.3.11.tgz#d6935caa9586ce93cba0f87d1195c290ae8a9475"
+  integrity sha512-imXUcdNf/IiQNYzGsNB1fjv4GNtMrQ6yRb4n7kyeZpVaKayLCe65cpa88YqWcnVu4Idn2lakQQ7Nhh397IFjxg==
 
 "@antmjs/utils@2.3.3":
   version "2.3.3"
