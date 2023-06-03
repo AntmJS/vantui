@@ -145,11 +145,15 @@ export function FormItem(props: FormItemProps) {
       }
       props[trigger] = handleChange
       if (required || rules) {
+        const originValidateTrigger = props[validateTrigger]
+          ? props[validateTrigger].bind({})
+          : undefined
         // 这里不可以使用异步，否则会导致微信小程序输入框显示异常，详见：https://github.com/AntmJS/vantui/issues/459
         props[validateTrigger] = (e: any) => {
           if (validateTrigger === trigger) {
             handleChange(e, true)
           } else {
+            originValidateTrigger?.(e)
             dispatch({ type: 'validateFieldValue' }, _name)
           }
         }
