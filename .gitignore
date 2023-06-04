@@ -9,7 +9,6 @@
 .DS_Store
 
 antm.config.js
-pullRequest.js
 pullRequestV2.js
 package-lock.json
 
@@ -47,4 +46,4 @@ packages/vantui-cli/dist
 packages/vantui-cli/dest
 
 doc_build
-.webhooks.js
+temp.js
