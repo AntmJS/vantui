@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-const { join } = path
+const { join, sep } = path
 const fs = require('fs')
 const { spawn } = require('child_process')
 const ora = require('ora')
@@ -23,6 +23,17 @@ const vantConfigPath = path.join(vantuiDemoDir, './vantui/antm.config.js')
 const fromTaroComps = ['View', 'Text', 'Input', 'Block', 'TaroImage']
 let pluginOptions = {}
 
+const resolveWindowsPath = (path) => {
+  if (typeof path !== 'string') {
+    return path
+  }
+  if (sep === '\\') {
+    // 如果当前操作系统为Windows，则将双反斜杠转换为单反斜杠
+    return path.replace(/\\/g, '/')
+  }
+  return path
+}
+
 module.exports = function (ctx, options) {
   pluginOptions = options
 
@@ -33,8 +44,10 @@ module.exports = function (ctx, options) {
 }
 
 async function transformConfig() {
-  const cp = spawn(`npx`, [
-    'tsc',
+  const command = process.platform === 'win32' ? 'cmd.exe' : 'npx'
+  const args = process.platform === 'win32' ? ['/c', 'npx', 'tsc'] : ['tsc']
+  const cp = spawn(command, [
+    ...args,
     vantConfigPathTs,
     '--resolveJsonModule',
     '--esModuleInterop',
@@ -59,9 +72,11 @@ async function beginWork() {
 
   return new Promise(async (resolve) => {
     try {
-      const jsfiles = await glob(`${markdownCodeSrc}/**/README.md`)
+      const jsfiles = await glob(
+        `${resolveWindowsPath(markdownCodeSrc)}/**/README.md`,
+      )
       for (let i = 0; i < jsfiles.length; i++) {
-        const pat = jsfiles[i]
+        const pat = resolveWindowsPath(jsfiles[i])
         const { codeArr, commonUtils } = getCode(pat)
         const pArr = pat.split('/')
         const name = pArr[pArr.length - 2]
