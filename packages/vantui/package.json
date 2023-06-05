@@ -49,8 +49,6 @@
     "docs:release": "node ./scripts/md.js && sh ./build.sh && npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
-    "@antmjs/doc": "^2.3.11",
-    "@antmjs/types": "^2.3.11",
     "@swc/helpers": "^0.5.0",
     "@vant/icons": "^1.7.1",
     "ast-to-markdown": "^1.0.0",
@@ -64,6 +62,8 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
+    "@antmjs/doc": "^2.3.11",
+    "@antmjs/types": "^2.3.11",
     "@antmjs/iconfont": "^2.3.3",
     "@antmjs/vantui-cli": "3.0.1",
     "@tarojs/components": "3.5.7",
