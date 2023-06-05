@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "main": "lib/index.js",
   "module": "es/index.esm.js",
   "style": "lib/index.css",
@@ -63,9 +63,9 @@
   },
   "devDependencies": {
     "@antmjs/doc": "^2.3.11",
-    "@antmjs/types": "^2.3.11",
     "@antmjs/iconfont": "^2.3.3",
-    "@antmjs/vantui-cli": "3.0.1",
+    "@antmjs/types": "^2.3.11",
+    "@antmjs/vantui-cli": "3.0.2",
     "@tarojs/components": "3.5.7",
     "@tarojs/taro": "3.5.7",
     "@types/lodash.flow": "^3.5.6",

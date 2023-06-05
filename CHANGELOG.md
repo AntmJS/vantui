@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.0.0...v) (2023-06-04)
+# [](https://github.com/AntmJS/vantui/compare/v3.0.1...v) (2023-06-05)
+
+
+### Bug Fixes
+
+* 开发依赖包导致的jsx的ts类型报错 ([5fea5b1](https://github.com/AntmJS/vantui/commit/5fea5b108a91a9decb6d3e7ec55f7844e3a68ad9))
+
+
+
+## [3.0.1](https://github.com/AntmJS/vantui/compare/v3.0.0...v3.0.1) (2023-06-03)
 
 
 ### Bug Fixes
