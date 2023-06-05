@@ -12,11 +12,7 @@
 import { WaterfallFlow } from '@antmjs/vantui'
 ```
 
-### 基本使用
-
-- dataSource 类型： TRecord extends BaseRecord，必须包含 key 属性
-- renderItem 渲染每一项，第一个参数为列表项的数据源，必须返回 ReactNode，第二个参数为强制更新元素尺寸的方法
-- gutter 元素之间的间距，类型：number | [number, number]，当为 number 时，表示水平和垂直间距相同，当为[number, number]时，第一个值表示水平间距，第二个值表示垂直间距
+数据：
 
 ```js common
 const genTextData = (keyPrefix) => {
@@ -24,20 +20,27 @@ const genTextData = (keyPrefix) => {
     'This is an text.',
     'This is a looooooooooooooooooong text.',
     '基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库',
-    <>
-      多行文本
-      <div>多行文本</div>
-    </>,
     '短文本',
     '数据源必须包含key字段，.',
     'This is a loooooooooooooooooooooooooooooooong text.',
     'This is a loooooooooooooooooooooooooooooooong text.',
-  ].map((content, index) => ({
-    key: `${keyPrefix}${index}`,
+  ].map((content, index) => {
+    return {
+    key: keyPrefix + index,
     content,
-  }))
+    }
+  })
 }
+
 ```
+
+### 基本使用
+
+- dataSource 类型： TRecord extends BaseRecord，必须包含 key 属性
+- renderItem 渲染每一项，第一个参数为列表项的数据源，必须返回 ReactNode，第二个参数为强制更新元素尺寸的方法
+- gutter 元素之间的间距，类型：number | [number, number]，当为 number 时，表示水平和垂直间距相同，当为[number, number]时，第一个值表示水平间距，第二个值表示垂直间距
+
+### 基本案例
 
 ```jsx
 function Demo() {
@@ -65,7 +68,7 @@ function Demo() {
 
 ### 动态修改列数
 
-- columnNum 瀑布流列数，默认两列
+columnNum 瀑布流列数，默认两列
 
 ```jsx
 function Demo() {

@@ -18,7 +18,7 @@ export default {
     menu: getMenus(),
     simulator: {
       url: {
-        development: 'http://192.168.3.11:10086',
+        development: 'http://localhost:10086',
         production: '/vantui/main/mobile.html',
       },
       transform: (url) => `#/pages/${url}/index`,

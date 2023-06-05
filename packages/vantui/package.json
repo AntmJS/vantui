@@ -59,7 +59,8 @@
     "prettier": "^2.8.7",
     "raf": "^3.4.1",
     "rc-util": "^5.14.0",
-    "use-deep-compare-effect": "^1.8.1"
+    "use-deep-compare-effect": "^1.8.1",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@antmjs/doc": "^2.3.11",
