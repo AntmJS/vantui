@@ -1,4 +1,4 @@
-# WaterMark 水印
+# WaterfallFlow 瀑布流
 
 ### 介绍
 
@@ -10,28 +10,6 @@
 
 ```js
 import { WaterfallFlow } from '@antmjs/vantui'
-```
-
-数据：
-
-```js common
-const genTextData = (keyPrefix) => {
-  return [
-    'This is an text.',
-    'This is a looooooooooooooooooong text.',
-    '基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库',
-    '短文本',
-    '数据源必须包含key字段，.',
-    'This is a loooooooooooooooooooooooooooooooong text.',
-    'This is a loooooooooooooooooooooooooooooooong text.',
-  ].map((content, index) => {
-    return {
-    key: keyPrefix + index,
-    content,
-    }
-  })
-}
-
 ```
 
 ### 基本使用
@@ -64,6 +42,28 @@ function Demo() {
     />
   )
 }
+```
+
+数据：
+
+```js common
+const genTextData = (keyPrefix) => {
+  return [
+    'This is an text.',
+    'This is a looooooooooooooooooong text.',
+    '基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库',
+    '短文本',
+    '数据源必须包含key字段，.',
+    'This is a loooooooooooooooooooooooooooooooong text.',
+    'This is a loooooooooooooooooooooooooooooooong text.',
+  ].map((content, index) => {
+    return {
+    key: keyPrefix + index,
+    content,
+    }
+  })
+}
+
 ```
 
 ### 动态修改列数
