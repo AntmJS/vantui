@@ -46,7 +46,7 @@ function Demo() {
 
 数据：
 
-```js common
+```js
 const genTextData = (keyPrefix) => {
   return [
     'This is an text.',
@@ -122,7 +122,7 @@ function Demo() {
 - 延迟加载的场景主要用于渲染项中包含图片等元素渲染时无法及时加载完成的元素时，设置一个延迟时间，尽可能的避免元素渲染在列表中后因图片加载而出现的尺寸跳动以及某一列过长的情况
 - 主动触发 Resize 可以在在组件内部需要主动触发元素刷新元素尺寸时调用 renderItem 地第二个参数，会触发元素及瀑布流的受影响元素的重新排版
 
-```js common
+```js
 const mockGoods = () => {
   const initData = [
     {
