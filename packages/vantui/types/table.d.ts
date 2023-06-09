@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
 import { ScrollViewProps, ViewProps } from '@tarojs/components'
+import { StickyProps } from './sticky'
 
 /**
  * @title ITableProps
@@ -76,6 +77,10 @@ export interface ITableProps extends ViewProps {
    * @description 传递给ScrollView的属性值
    */
   scrollViewProps?: ScrollViewProps
+  /**
+   * @description sticky模式，参考https://github.com/AntmJS/vantui/blob/main/packages/vantui/types/sticky.d.ts
+   */
+  sticky?: boolean | StickyProps
 }
 
 /**

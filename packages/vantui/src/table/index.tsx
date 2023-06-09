@@ -7,6 +7,7 @@ import React, { memo, useCallback, useEffect, useState, useMemo } from 'react'
 import { IColumns, ITableProps } from '../../types/table'
 import { Loading } from '../loading'
 import { Empty } from '../empty'
+import { Sticky } from '../sticky'
 
 const DEFAULT_COL_WIDTH = 100
 const UNIFY_PADDING = {
@@ -39,6 +40,7 @@ export const Table = (props: ITableProps): JSX.Element | null => {
     scroll = {},
     placeholder = '--',
     scrollViewProps = {},
+    sticky = false,
   } = props
 
   const [error, setError] = useState<boolean>(false)
@@ -144,6 +146,50 @@ export const Table = (props: ITableProps): JSX.Element | null => {
     }, 0)
   }, [columns])
 
+  const renderSticky = useMemo(() => {
+    const main = (
+      <View
+        className={classnames({
+          ['van-table_head']: true,
+          ['van-table_scroll']: scroll.y,
+        })}
+      >
+        {columns.length === 0 ? (
+          <Empty description={loading ? '加载中...' : '暂无数据'} />
+        ) : (
+          columns.map((item: IColumns, index: number): JSX.Element => {
+            return (
+              <Title
+                key={item.key || item.dataIndex}
+                column={item}
+                index={index}
+                handleClickTitle={handleClickTitle}
+                titleClassName={titleClassName}
+                getFixedDistance={getFixedDistance}
+                titleStyle={titleStyle}
+              />
+            )
+          })
+        )}
+      </View>
+    )
+    if (sticky) {
+      const stickyProps = typeof sticky === 'boolean' ? {} : sticky
+      return <Sticky {...stickyProps}>{main}</Sticky>
+    } else {
+      return main
+    }
+  }, [
+    columns,
+    getFixedDistance,
+    handleClickTitle,
+    loading,
+    scroll.y,
+    sticky,
+    titleClassName,
+    titleStyle,
+  ])
+
   if (error) {
     return null
   }
@@ -167,30 +213,7 @@ export const Table = (props: ITableProps): JSX.Element | null => {
         }}
         {...scrollViewProps}
       >
-        <View
-          className={classnames({
-            ['van-table_head']: true,
-            ['van-table_scroll']: scroll.y,
-          })}
-        >
-          {columns.length === 0 ? (
-            <Empty description={loading ? '加载中...' : '暂无数据'} />
-          ) : (
-            columns.map((item: IColumns, index: number): JSX.Element => {
-              return (
-                <Title
-                  key={item.key || item.dataIndex}
-                  column={item}
-                  index={index}
-                  handleClickTitle={handleClickTitle}
-                  titleClassName={titleClassName}
-                  getFixedDistance={getFixedDistance}
-                  titleStyle={titleStyle}
-                />
-              )
-            })
-          )}
-        </View>
+        {renderSticky}
         <View className="van-table_body">
           {dataSource.length > 0 ? (
             dataSource.map(
