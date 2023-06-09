@@ -98,7 +98,7 @@
     "release:beta": "lerna publish --force-publish=* --exact --skip-temp-tag  --preid=beta --npm-tag=beta",
     "release": "npm run release:lerna && npm run changelog && node ./pullRequest.js",
     "test": "npx lerna run test",
-    "prepare": "rm -rf ./node_modules/vue  & husky install"
+    "prepare": "rm -rf ./node_modules/vue/jsx.d.ts  & husky install"
   },
   "workspaces": [
     "packages/*"

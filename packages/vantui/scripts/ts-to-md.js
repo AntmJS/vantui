@@ -8,9 +8,12 @@ const markdownToAst = require('markdown-to-ast')
 const astToMarkdown = require('ast-to-markdown')
 const formatMd = require('./utils/md-format')
 const ora = require('ora')
+const crossPlatformPath = require('./utils/cross-platform-path.js')
 
 const GITHUB_TYPESHS = `https://github.com/AntmJS/vantui/tree/main/packages/vantui/types`
-const READMES_PATH = `${path.resolve(process.cwd(), './src/**/README.md')}`
+const READMES_PATH = crossPlatformPath(
+  `${path.resolve(process.cwd(), './src/**/README.md')}`,
+)
 const spinner = ora(`文档 API 同步开始`)
 
 module.exports = function main() {
@@ -18,7 +21,7 @@ module.exports = function main() {
     const path_ = await glob(READMES_PATH, {})
 
     path_.map((item) => {
-      const componentName = item.split('/').reverse()[1]
+      const componentName = crossPlatformPath(item).split('/').reverse()[1]
       let content = fs.readFileSync(item, 'utf-8')
       spinner.start(`${componentName}文档 API 同步中...`)
 

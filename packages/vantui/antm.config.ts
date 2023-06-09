@@ -18,7 +18,7 @@ export default {
     menu: getMenus(),
     simulator: {
       url: {
-        development: 'http://10.254.9.214:10086',
+        development: 'http://localhost:10086',
         production: '/vantui/main/mobile.html',
       },
       transform: (url) => `#/pages/${url}/index`,
@@ -343,6 +343,10 @@ function getMenus() {
         {
           path: 'virtual-list',
           title: 'VirtualList 虚拟列表',
+        },
+        {
+          path: 'waterfall-flow',
+          title: 'WaterfallFlow 瀑布流',
         },
       ],
     },
