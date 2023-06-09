@@ -22,6 +22,8 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     onRefresh,
     touchMaxStart = 300,
     disable = false,
+    successDuration = SUCESS_DURATION,
+    touchMinTime = TOUCH_MIN_TIME,
   } = props
   const [statusHeight, setStatusHeight] = useState(0)
   const [status, setStatus] = useState<IStatus>('pull') // 待拖拽
@@ -72,7 +74,7 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     function (event) {
       if (
         !disable &&
-        Date.now() - touch.time > TOUCH_MIN_TIME &&
+        Date.now() - touch.time > touchMinTime &&
         (status === 'pull' || status === 'release')
       ) {
         event.preventDefault()
@@ -83,7 +85,7 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
         setStatusHeight(y)
       }
     },
-    [disable, status, touch.start, touch.time],
+    [disable, status, touch.start, touch.time, touchMinTime],
   )
 
   const onTouchEnd = useCallback(async () => {
@@ -94,11 +96,11 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
       setStatus('success')
       setTimeout(() => {
         reset()
-      }, SUCESS_DURATION)
+      }, successDuration)
     } else {
       reset()
     }
-  }, [headHeight, onRefresh, rendermarginTop, reset, status])
+  }, [headHeight, onRefresh, rendermarginTop, reset, status, successDuration])
 
   useEffect(() => {
     setTimeout(() => {

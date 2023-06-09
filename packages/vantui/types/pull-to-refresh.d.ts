@@ -46,6 +46,16 @@ export interface IPullToRefreshProps extends ViewProps {
    * @default `false`
    */
   disable?: boolean
+  /**
+   * @description 成功状态展示时长
+   * @default `1000`
+   */
+  successDuration?: number
+  /**
+   * @description 触摸触发拖拽的最小停留时间
+   * @default `400`
+   */
+  touchMinTime?: number
 }
 
 declare const PullToRefresh: FunctionComponent<IPullToRefreshProps>
