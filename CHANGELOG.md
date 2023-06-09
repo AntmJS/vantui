@@ -1,4 +1,15 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.0.1...v) (2023-06-05)
+# [](https://github.com/AntmJS/vantui/compare/v3.0.2...v) (2023-06-09)
+
+
+### Features
+
+* 新增瀑布流组件 feat: [#502](https://github.com/AntmJS/vantui/issues/502) ([#516](https://github.com/AntmJS/vantui/issues/516)) ([051274b](https://github.com/AntmJS/vantui/commit/051274bbe9a9a6fd3b3b2cfdf137257cfa098c77))
+* pull-to-refresh新增交互时间参数（[#509](https://github.com/AntmJS/vantui/issues/509)） ([b3f3275](https://github.com/AntmJS/vantui/commit/b3f3275b6f04f714b1dcdfbde85cb7e520b04581))
+* table的头部支持sticky模式（[#470](https://github.com/AntmJS/vantui/issues/470)） ([0306489](https://github.com/AntmJS/vantui/commit/030648982cf37b25011300b201a78f6a37395002))
+
+
+
+## [3.0.2](https://github.com/AntmJS/vantui/compare/v3.0.1...v3.0.2) (2023-06-05)
 
 
 ### Bug Fixes
