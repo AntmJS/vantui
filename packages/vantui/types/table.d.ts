@@ -78,7 +78,7 @@ export interface ITableProps extends ViewProps {
    */
   scrollViewProps?: ScrollViewProps
   /**
-   * @description sticky模式，参考https://github.com/AntmJS/vantui/blob/main/packages/vantui/types/sticky.d.ts
+   * @description sticky模式
    */
   sticky?: boolean | StickyProps
 }

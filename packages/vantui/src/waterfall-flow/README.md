@@ -58,12 +58,11 @@ const genTextData = (keyPrefix) => {
     'This is a loooooooooooooooooooooooooooooooong text.',
   ].map((content, index) => {
     return {
-    key: keyPrefix + index,
-    content,
+      key: keyPrefix + index,
+      content,
     }
   })
 }
-
 ```
 
 ### 动态修改列数
@@ -196,18 +195,12 @@ function Demo() {
 }
 ```
 
-### BaseRecord [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/waterfall-flow.d.ts)
+### WaterfallFlowProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/waterfall-flow.d.ts)
 
-| 参数 | 说明                                          | 类型                      |
-| ---- | --------------------------------------------- | ------------------------- |
-| key  | 列表项的唯一标识，同 React 中的 key，必须唯一 | _&nbsp;&nbsp;string<br/>_ |
-
-### WaterfallFlowProps<TRecord [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/waterfall-flow.d.ts)
-
-| 参数             | 说明                            | 类型                                                                                                                                                                                   | 默认值    | 必填    |
-| ---------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
-| columnNum        | 瀑布流的列数                    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                              | 2         | `false` |
-| dataSource       | 数据源                          | _&nbsp;&nbsp;TRecord[]<br/>_                                                                                                                                                           | undefined | `true`  |
-| renderItem       | 渲染列表项的方法                | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;item:&nbsp;TRecord,<br/>&nbsp;&nbsp;&nbsp;&nbsp;forceResize:&nbsp;()&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;React.ReactNode<br/>_ | -         | `true`  |
-| gutter           | 元素间距                        | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;[number,&nbsp;number]<br/>_                                              | 0         | `false` |
-| calculationDelay | 延迟计算元素尺寸的时间，单位 ms | _&nbsp;&nbsp;number<br/>_                                                                                                                                                              | 0         | `false` |
+| 参数             | 说明                            | 类型                                                                                                                                                                                      | 默认值    | 必填    |
+| ---------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| columnNum        | 瀑布流的列数                    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                 | 2         | `false` |
+| dataSource       | 数据源                          | _&nbsp;&nbsp;BaseRecord[]<br/>_                                                                                                                                                           | undefined | `true`  |
+| renderItem       | 渲染列表项的方法                | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;item:&nbsp;BaseRecord,<br/>&nbsp;&nbsp;&nbsp;&nbsp;forceResize:&nbsp;()&nbsp;=>&nbsp;void<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;React.ReactNode<br/>_ | -         | `true`  |
+| gutter           | 元素间距                        | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;number[]<br/>_                                                                                                                                     | 0         | `false` |
+| calculationDelay | 延迟计算元素尺寸的时间，单位 ms | _&nbsp;&nbsp;number<br/>_                                                                                                                                                                 | 0         | `false` |
