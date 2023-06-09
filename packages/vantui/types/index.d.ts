@@ -79,3 +79,4 @@ export {
   IVirtualListProps,
   IVirtualListInstance,
 } from './virtual-list'
+export { WaterfallFlow, WaterfallFlowProps } from './waterfall-flow'
