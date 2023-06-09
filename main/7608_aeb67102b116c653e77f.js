@@ -173,7 +173,7 @@
                   type: 'img',
                 },
                 {
-                  title: '3.0.2',
+                  title: '3.0.3',
                   type: 'select',
                   options: [{ title: 'v2', url: '/vantui/v2' }],
                 },
