@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.0.2...v) (2023-06-09)
+# [](https://github.com/AntmJS/vantui/compare/v3.0.3...v) (2023-06-09)
+
+
+### Bug Fixes
+
+* 瀑布流组件ts修复 ([12b06aa](https://github.com/AntmJS/vantui/commit/12b06aadf8ed1f0a29c0e2dc82a5d2cb4d2960a4))
+
+
+
+## [3.0.3](https://github.com/AntmJS/vantui/compare/v3.0.2...v3.0.3) (2023-06-09)
 
 
 ### Features
