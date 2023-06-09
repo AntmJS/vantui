@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-interface BaseRecord {
+export interface BaseRecord {
   /**
    * @default undefined
    * @description 列表项的唯一标识，同React中的key，必须唯一
@@ -26,7 +26,7 @@ export interface WaterfallFlowProps<TRecord extends BaseRecord = any> {
    * @default 0
    * @description 元素间距
    */
-  gutter?: number | number[]
+  gutter?: number | [number, number]
   /**
    * @default 0
    * @description 延迟计算元素尺寸的时间，单位ms

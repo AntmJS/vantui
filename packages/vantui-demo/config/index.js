@@ -131,9 +131,9 @@ const config = {
       mode: 'hash',
     },
     devServer: {
-      port: 10086,
+      port: 10068,
       hot: false,
-      host: 'localhost',
+      host: '0.0.0.0',
       historyApiFallback: true,
       headers: {
         'Access-Control-Allow-Origin': '*', // 表示允许跨域

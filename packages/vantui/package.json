@@ -63,9 +63,9 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@antmjs/doc": "^2.3.9-beta.1",
-    "@antmjs/iconfont": "^2.3.3",
-    "@antmjs/types": "^2.3.11",
+    "@antmjs/doc": "^2.3.14",
+    "@antmjs/iconfont": "^2.3.14",
+    "@antmjs/types": "^2.3.14",
     "@antmjs/vantui-cli": "3.0.3",
     "@tarojs/components": "3.5.7",
     "@tarojs/taro": "3.5.7",
