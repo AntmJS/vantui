@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "main": "lib/index.js",
   "module": "es/index.esm.js",
   "style": "lib/index.css",
@@ -61,15 +61,15 @@
     "@antmjs/doc": "^2.3.14",
     "@antmjs/iconfont": "^2.3.14",
     "@antmjs/types": "^2.3.14",
-    "@antmjs/vantui-cli": "3.0.4",
+    "@antmjs/vantui-cli": "3.0.5",
     "@tarojs/components": "3.5.7",
     "@tarojs/taro": "3.5.7",
     "@types/lodash.flow": "^3.5.6",
-    "style-resources-loader": "^1.5.0",
-    "swc-loader": "^0.2.3",
     "ast-to-markdown": "^1.0.0",
     "glob": "^10.1.0",
     "markdown-to-ast": "^6.0.3",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.7",
+    "style-resources-loader": "^1.5.0",
+    "swc-loader": "^0.2.3"
   }
 }
