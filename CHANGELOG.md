@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.0.3...v) (2023-06-09)
+# [](https://github.com/AntmJS/vantui/compare/v3.0.4...v) (2023-06-14)
+
+
+### Bug Fixes
+
+* vue依赖问题 （[#526](https://github.com/AntmJS/vantui/issues/526)） ([fbec524](https://github.com/AntmJS/vantui/commit/fbec524c625e590926f72e5c5a5a6fc08b244ec2))
+
+
+
+## [3.0.4](https://github.com/AntmJS/vantui/compare/v3.0.3...v3.0.4) (2023-06-09)
 
 
 ### Bug Fixes
