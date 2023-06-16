@@ -110,7 +110,7 @@ export function WaterfallFlowItem<TRecord extends BaseRecord>({
     onRemove(item)
   })
 
-  const forceResize = useForceResize(`#${id}`, onItemResize)
+  const forceResize = useForceResize(`#${contentId}`, onItemResize)
 
   const child = useMemo(() => {
     if (typeof renderItem !== 'function') {
