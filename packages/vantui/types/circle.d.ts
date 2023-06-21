@@ -12,6 +12,7 @@ export interface CircleProps extends ViewProps {
   color?: string | Record<string, string>
   strokeWidth?: number
   clockwise?: boolean
+  beginAngle?: number
   children?: ReactNode
 }
 
