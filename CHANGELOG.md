@@ -1,4 +1,18 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.0.4...v) (2023-06-14)
+# [](https://github.com/AntmJS/vantui/compare/v3.0.5...v) (2023-06-21)
+
+
+### Bug Fixes
+
+* 修复强制刷新组件时刷新组件size元素id传错问题 ([#529](https://github.com/AntmJS/vantui/issues/529)) ([ea2dc74](https://github.com/AntmJS/vantui/commit/ea2dc74f87775817425be396cc2e2f1d5c87531b))
+
+
+### Features
+
+* circle组件增加beginAngle ([#530](https://github.com/AntmJS/vantui/issues/530)) ([3fb0854](https://github.com/AntmJS/vantui/commit/3fb08543a51a299bf2eba68ea5c7d010fbcdaabe))
+
+
+
+## [3.0.5](https://github.com/AntmJS/vantui/compare/v3.0.4...v3.0.5) (2023-06-14)
 
 
 ### Bug Fixes
