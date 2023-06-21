@@ -37,6 +37,7 @@ export function Circle(props: CircleProps) {
     color = '#1989fa',
     strokeWidth = 4,
     clockwise = true,
+    beginAngle = BEGIN_ANGLE,
     style,
     className,
     children,
@@ -147,9 +148,9 @@ export function Circle(props: CircleProps) {
       // 结束角度
       const progress = PERIMETER * (formatValue / 100)
       const endAngle = clockwise
-        ? BEGIN_ANGLE + progress
-        : 3 * Math.PI - (BEGIN_ANGLE + progress)
-      presetCanvas(context, ref.current.hoverColor, BEGIN_ANGLE, endAngle)
+        ? beginAngle + progress
+        : 3 * Math.PI - (beginAngle + progress)
+      presetCanvas(context, ref.current.hoverColor, beginAngle, endAngle)
     },
     [clockwise, presetCanvas],
   )
