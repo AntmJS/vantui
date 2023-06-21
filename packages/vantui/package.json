@@ -58,9 +58,9 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/doc": "^2.3.15",
-    "@antmjs/iconfont": "^2.3.15",
-    "@antmjs/types": "^2.3.15",
+    "@antmjs/doc": "^2.3.16",
+    "@antmjs/iconfont": "^2.3.16",
+    "@antmjs/types": "^2.3.16",
     "@antmjs/vantui-cli": "3.0.4",
     "@tarojs/components": "3.5.7",
     "@tarojs/taro": "3.5.7",
