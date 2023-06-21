@@ -18,90 +18,27 @@ import { Divider } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Divider />
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 使用 hairline
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Divider hairline={true} />
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 虚线
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Divider dashed={true} />
-    </View>
-  )
-}
-```
+::: $demo3 :::
 
 ### 文本位置
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Divider contentPosition="center">文本</Divider>
-      <Divider contentPosition="left">文本</Divider>
-      <Divider contentPosition="right">文本</Divider>
-    </View>
-  )
-}
-```
+::: $demo4 :::
 
 ### 自定义属性
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Divider contentPosition="center" textColor="#1989fa">
-        文本颜色
-      </Divider>
-      <Divider contentPosition="center" borderColor="#1989fa">
-        border 颜色
-      </Divider>
-      <Divider contentPosition="center" fontSize="18">
-        字体大小
-      </Divider>
-    </View>
-  )
-}
-```
+::: $demo5 :::
 
 ### 自定义样式
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Divider
-        contentPosition="center"
-        style="color: #1989fa; borderColor: #1989fa; fontSize: 18px;"
-      >
-        文本
-      </Divider>
-    </View>
-  )
-}
-```
+::: $demo6 :::
 
 ### DividerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/divider.d.ts)
 

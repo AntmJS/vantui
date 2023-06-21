@@ -20,124 +20,23 @@ import { Notify } from '@antmjs/vantui'
 import { Notify } from 'vantui'
 ```
 
-```jsx
-function Demo() {
-  const show = () => Notify.show('通知内容')
-
-  return (
-    <View>
-      {/*  在页面内添加对应的节点  */}
-      <Button onClick={show} type="danger">
-        基础用法
-      </Button>
-      <Notify id="vanNotify" />
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 通知类型
 
 支持`primary`、`success`、`warning`、`danger`四种通知类型，默认为`danger`。
 
-```jsx
-function Demo() {
-  const primaryShow = () => {
-    Notify.show({
-      message: '-----通知内容-----',
-      type: 'primary',
-    })
-  }
-
-  const successShow = () => {
-    Notify.show({
-      message: '-----通知内容-----',
-      type: 'success',
-    })
-  }
-
-  const dangerShow = () => {
-    Notify.show({
-      message: '-----通知内容-----',
-      type: 'danger',
-    })
-  }
-
-  const warningShow = () => {
-    Notify.show({
-      message: '-----通知内容-----',
-      type: 'warning',
-    })
-  }
-
-  return (
-    <View>
-      <Button onClick={primaryShow} type="info">
-        主要通知
-      </Button>
-      <Button onClick={successShow} type="primary">
-        成功通知
-      </Button>
-      <Button onClick={dangerShow} type="danger">
-        危险通知
-      </Button>
-      <Button onClick={warningShow} type="warning">
-        警告用法
-      </Button>
-      <Notify id="vanNotify" />
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 自定义通知
 
 自定义消息通知的颜色和展示时长。
 
-```jsx
-function Demo() {
-  const show = () => {
-    Notify.show({
-      message: '自定义颜色',
-      color: '#ad0000',
-      background: '#ffe1e1',
-      duration: 10000,
-    })
-  }
-
-  return (
-    <View>
-      <Button onClick={show} type="primary">
-        自定义颜色和时长
-      </Button>
-      <Notify id="vanNotify" />
-    </View>
-  )
-}
-```
+::: $demo3 :::
 
 ### 自定义选择器
 
-```jsx
-function Demo() {
-  const show = () => {
-    Notify.show({
-      message: '自定义节点选择器',
-      duration: 1000,
-      selector: '#customSelector',
-    })
-  }
-
-  return (
-    <View>
-      <Button onClick={show} type="primary">
-        自定义选择器
-      </Button>
-      <Notify id="customSelector" />
-    </View>
-  )
-}
-```
+::: $demo4 :::
 
 ### NotifyProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notify.d.ts)
 

@@ -61,7 +61,7 @@ function Demo() {
 
 | 参数        | 说明 | 类型                                                   | 默认值 | 必填    |
 | ----------- | ---- | ------------------------------------------------------ | ------ | ------- |
-| row         | -    | _&nbsp;&nbsp;number<br/>_                              | -      | `false` |
+| row         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_    | -      | `false` |
 | title       | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
 | avatar      | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
 | loading     | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |

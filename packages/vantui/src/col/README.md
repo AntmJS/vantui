@@ -18,62 +18,13 @@ import { Row, Col } from '@antmjs/vantui'
 
 Layout 组件提供了`24列栅格`，通过在`Col`上添加`span`属性设置列所占的宽度百分比。此外，添加`offset`属性可以设置列的偏移宽度，计算方式与 span 相同。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Row>
-        <Col span="8" className="dark">
-          span: 8
-        </Col>
-        <Col span="8" className="light">
-          span: 8
-        </Col>
-        <Col span="8" className="dark">
-          span: 8
-        </Col>
-      </Row>
-      <Row>
-        <Col span="4" className="dark">
-          span: 4
-        </Col>
-        <Col span="10" className="light" offset="4">
-          offset: 4, span: 10
-        </Col>
-      </Row>
-      <Row>
-        <Col offset="12" span="12" className="dark">
-          offset: 12, span: 12
-        </Col>
-      </Row>
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 设置列元素间距
 
 通过`gutter`属性可以设置列元素之间的间距，默认间距为 0。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Row gutter="20">
-        <Col span="8" className="dark">
-          span: 8
-        </Col>
-        <Col span="8" className="dark">
-          span: 8
-        </Col>
-        <Col span="8" className="dark">
-          span: 8
-        </Col>
-      </Row>
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### ColProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/col.d.ts)
 

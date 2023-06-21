@@ -1,11 +1,10 @@
 import { join } from 'path'
+import { defineConfig } from '@antmjs/types'
 import pkg from './package.json'
 
 const CWD = process.cwd()
 
-// 被vantui-demo中的js引用，暂时不支持import外部ts文件
-
-export default {
+export default defineConfig({
   docs: {
     title: 'antmjs Vantui',
     src: [join(CWD, './src'), join(CWD, './docs')],
@@ -16,9 +15,12 @@ export default {
     },
     buildPort: 7778,
     menu: getMenus(),
+    demoCode: {
+      dir: 'demo',
+    },
     simulator: {
       url: {
-        development: 'http://localhost:10086',
+        development: 'http://10.254.9.214:10068/',
         production: '/vantui/main/mobile.html',
       },
       transform: (url) => `#/pages/${url}/index`,
@@ -73,7 +75,7 @@ export default {
       },
     ],
   },
-}
+})
 
 function getMenus() {
   return [

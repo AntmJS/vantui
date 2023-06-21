@@ -18,11 +18,7 @@ import { Circle } from '@antmjs/vantui'
 
 `value`属性表示进度条的目标进度。
 
-```jsx
-function Demo() {
-  return <Circle value={30} text="text" />
-}
-```
+::: $demo1 :::
 
 ### 样式定制
 
@@ -31,52 +27,15 @@ function Demo() {
 - `color`属性支持传入对象格式来定义渐变色。
 - 通过`size`属性设置圆环直径。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(50)
-  return (
-    <View>
-      <Circle value={value} strokeWidth={6} text="宽度定制" />
-      <Circle
-        value={value}
-        layerColor="#eeeeee"
-        color="#ee0a24"
-        text="颜色定制"
-      />
-      <Circle
-        value={value}
-        wait
-        solve
-        color={{
-          '0%': '#ffd01e',
-          '100%': '#ee0a24',
-        }}
-        text="渐变色"
-      />
-      <Circle value={value} size={120} text="大小定制" />
+案例
 
-      <Button onClick={() => setValue(value + 10)}>增加</Button>
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 逆时针方向
 
 将`clockwise`设置为`false`，进度会从逆时针方向开始。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(50)
-
-  return (
-    <>
-      <Circle value={value} color="#07c160" clockwise={false} text="逆时针" />
-      <Button onClick={() => setValue(value + 10)}>增加</Button>
-    </>
-  )
-}
-```
+::: $demo3 :::
 
 ### CircleProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/circle.d.ts)
 

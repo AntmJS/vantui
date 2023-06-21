@@ -16,80 +16,17 @@ import { SwipeCell } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  return (
-    <SwipeCell
-      rightWidth={75}
-      leftWidth={75}
-      renderLeft={<Button>选择</Button>}
-      renderRight={<Button>删除</Button>}
-    >
-      <CellGroup>
-        <Cell title="单元格" value="内容" />
-      </CellGroup>
-    </SwipeCell>
-  )
-}
-```
+::: $demo1 :::
 
 ### 异步关闭
 
 当开启`asyncClose`时， 通过绑定`close`事件，可以自定义两侧滑动内容点击时的关闭行为。
 
-```jsx
-function Demo() {
-  const it = react.useRef()
-  const closeAction = () => {
-    setTimeout(() => {
-      it.current.close()
-    }, 2000)
-  }
-
-  return (
-    <SwipeCell
-      ref={it}
-      rightWidth={75}
-      leftWidth={75}
-      asyncClose
-      onClose={closeAction}
-      renderLeft={<Button>选择</Button>}
-      renderRight={<Button>删除</Button>}
-    >
-      <CellGroup>
-        <Cell title="单元格" value="内容" />
-      </CellGroup>
-    </SwipeCell>
-  )
-}
-```
+::: $demo2 :::
 
 ### 主动打开
 
-```jsx
-function Demo() {
-  const it = react.useRef()
-
-  react.useEffect(() => {
-    it.current.open()
-  }, [])
-
-  return (
-    <SwipeCell
-      ref={it}
-      rightWidth={75}
-      leftWidth={75}
-      asyncClose
-      renderLeft={<Button>选择</Button>}
-      renderRight={<Button>删除</Button>}
-    >
-      <CellGroup>
-        <Cell title="单元格" value="内容" />
-      </CellGroup>
-    </SwipeCell>
-  )
-}
-```
+::: $demo3 :::
 
 ### SwipeCellProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swipe-cell.d.ts)
 

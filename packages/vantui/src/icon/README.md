@@ -22,80 +22,9 @@ import { Icon } from '@antmjs/vantui'
 - 设置`size`属性来控制图标大小。
 - 如果需要在现有 Icon 的基础上使用更多图标，可以引入第三方 iconfont 对应的字体文件和 CSS 文件，之后就可以在 Icon 组件中直接使用。例如，可以在 `app.less` 文件中引入。
 
-```jsx
-function Demo() {
-  return (
-    <>
-      <Row>
-        <View className="demo-block__title">基本用法</View>
-        <Col className="col" span="6">
-          <Icon name="chat-o" size="32px" className="icon"></Icon>
-        </Col>
-        <Col className="col" span="6">
-          <Icon
-            name="https://b.yzcdn.cn/vant/icon-demo-1126.png"
-            size="32px"
-            className="icon"
-          ></Icon>
-        </Col>
-      </Row>
-      <Row>
-        <View className="demo-block__title">提示信息</View>
-        <Col className="col" span="6">
-          <Icon name="chat-o" size="32px" className="icon" dot></Icon>
-        </Col>
-        <Col className="col" span="6">
-          <Icon name="chat-o" size="32px" className="icon" info="9"></Icon>
-        </Col>
-        <Col className="col" span="6">
-          <Icon name="chat-o" size="32px" className="icon" info="99+"></Icon>
-        </Col>
-      </Row>
-      <Row>
-        <View className="demo-block__title">图标颜色</View>
-        <Col className="col" span="6">
-          <Icon
-            color="#1989fa"
-            name="chat-o"
-            size="32px"
-            className="icon"
-          ></Icon>
-        </Col>
-        <Col className="col" span="6">
-          <Icon
-            color="#07c160"
-            name="chat-o"
-            size="32px"
-            className="icon"
-          ></Icon>
-        </Col>
-      </Row>
-      <Row>
-        <View className="demo-block__title">图标大小</View>
-        <Col className="col" span="6">
-          <Icon name="chat-o" size="40" className="icon"></Icon>
-        </Col>
-        <Col className="col" span="6">
-          <Icon name="chat-o" size="3rem" className="icon"></Icon>
-        </Col>
-      </Row>
+案例
 
-      <Row>
-        <View className="demo-block__title">自定义图标</View>
-        <Col className="col" span="6">
-          <Icon name="demo1" classPrefix="page-icon" size="40px" />
-        </Col>
-        <Col className="col" span="6">
-          <Icon name="demo2" classPrefix="page-icon" size="40px" />
-        </Col>
-        <Col className="col" span="6">
-          <Icon name="demo3" classPrefix="page-icon" size="40px" />
-        </Col>
-      </Row>
-    </>
-  )
-}
-```
+::: $demo1 :::
 
 引入第三方或自定义的字体图标样式
 
@@ -128,69 +57,15 @@ function Demo() {
 
 ### 基础图标
 
-```jsx
-import icons from '@vant/icons'
-function Demo() {
-  return (
-    <>
-      {icons.basic.map((name, i) => (
-        <Col
-          key={i}
-          span="6"
-          style={{ paddingTop: '20px', paddingBottom: '20px' }}
-        >
-          <Icon name={name} size="32px" />
-          <Text>{name}</Text>
-        </Col>
-      ))}
-    </>
-  )
-}
-```
+::: $demo2 :::
 
 ### 线框图标
 
-```jsx
-import icons from '@vant/icons'
-function Demo() {
-  return (
-    <>
-      {icons.outline.map((name, i) => (
-        <Col
-          key={i}
-          span="6"
-          style={{ paddingTop: '20px', paddingBottom: '20px', height: '100px' }}
-        >
-          <Icon name={name} size="32px" />
-          <Text style={{ textAlign: 'center' }}>{name}</Text>
-        </Col>
-      ))}
-    </>
-  )
-}
-```
+::: $demo3 :::
 
 ### 实心图标
 
-```jsx
-import icons from '@vant/icons'
-function Demo() {
-  return (
-    <>
-      {icons.filled.map((name, i) => (
-        <Col
-          key={i}
-          span="6"
-          style={{ paddingTop: '20px', paddingBottom: '20px', height: '100px' }}
-        >
-          <Icon name={name} size="32px" />
-          <Text style={{ textAlign: 'center' }}>{name}</Text>
-        </Col>
-      ))}
-    </>
-  )
-}
-```
+::: $demo4 :::
 
 ### IconProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/icon.d.ts)
 

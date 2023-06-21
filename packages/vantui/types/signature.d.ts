@@ -6,26 +6,26 @@ export interface ISignatureProps extends ViewProps {
    * @description 画布元素id
    * @default spcanvas
    */
-  canvasId: string
+  canvasId?: string
   /**
    * @description 获取图片的类型
    * @default `png`
    */
-  type: 'jpg' | 'png'
+  type?: 'jpg' | 'png'
   /**
    * @description 线条的宽度
    * @default `3`
    */
-  lineWidth: number
+  lineWidth?: number
   /**
    * @description 绘图颜色
    * @default `#000`
    */
-  strokeStyle: string
+  strokeStyle?: string
   /**
    * @description 样式名
    */
-  className: string
+  className?: string
 }
 /**
  * @title 组件实例

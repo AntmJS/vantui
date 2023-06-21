@@ -35,7 +35,7 @@ export interface IPullToRefreshProps extends ViewProps {
    * @description 可触发下拉的y轴间距，相对于PullToRefresh组件
    * @default `300`
    */
-  touchMaxStart: number
+  touchMaxStart?: number
   /**
    * @description 高度
    * @default `40`

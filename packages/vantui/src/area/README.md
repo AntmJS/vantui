@@ -18,29 +18,7 @@ import { Area } from '@antmjs/vantui'
 
 初始化省市区组件时，需要通过 `areaList` 属性传入省市区数据。
 
-```jsx
-function Demo() {
-  const areaList = {
-    province_list: {
-      110000: '北京市',
-      120000: '天津市',
-    },
-    city_list: {
-      110100: '北京市',
-      120100: '天津市',
-    },
-    county_list: {
-      110101: '东城区',
-      110102: '西城区',
-    },
-  }
-  return (
-    <View>
-      <Area areaList={areaList} />
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### areaList 格式
 
@@ -78,48 +56,19 @@ yarn add @vant/area-data
 
 如果想选中某个省市区，需要传入一个`value`属性，绑定对应的省市区`code`。
 
-```jsx
-import { areaList } from '@vant/area-data'
-function Demo() {
-  const [value, setValue] = react.useState('')
-  react.useEffect(() => {
-    setTimeout(() => {
-      setValue('210793')
-    }, 2000)
-  }, [])
-
-  return <Area areaList={areaList} value={value} />
-}
-```
+::: $demo2 :::
 
 ### 配置显示列
 
 可以通过`columnsNum`属性配置省市区显示的列数，默认情况下会显示省市区，当你设置为`2`，则只会显示省市选择。
 
-```jsx
-import { areaList } from '@vant/area-data'
-function Demo() {
-  return <Area areaList={areaList} columnsNum={2} title="标题" />
-}
-```
+::: $demo3 :::
 
 ### 配置列占位提示文字
 
 可以通过`columnsPlaceholder`属性配置每一列的占位提示文字。
 
-```jsx
-import { areaList } from '@vant/area-data'
-
-function Demo() {
-  return (
-    <Area
-      areaList={areaList}
-      columnsPlaceholder={['请选择', '请选择', '请选择']}
-      title="标题"
-    />
-  )
-}
-```
+::: $demo4 :::
 
 ### AreaProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/area.d.ts)
 

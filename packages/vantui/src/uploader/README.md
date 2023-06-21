@@ -18,177 +18,31 @@ import { Uploader } from '@antmjs/vantui'
 
 文件上传完毕后会触发`afterRead`回调函数，获取到对应的文件的临时地址，然后再使用`wx.uploadFile`将图片上传到远程服务器上。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState([
-    {
-      url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-      name: '图片1',
-    },
-    {
-      url: 'https://img.yzcdn.cn/vant/tree.jpg',
-    },
-  ])
-
-  const afterRead = (event) => {
-    const { file, name } = event.detail
-    // 可在此处新增云上传图片操作
-    setValue(value.concat(file))
-  }
-
-  const deleteAction = (event) => {
-    const { index } = event.detail
-    const valueNew = JSON.parse(JSON.stringify(value))
-    valueNew.splice(index, 1)
-    setValue(valueNew)
-  }
-
-  return (
-    <Uploader
-      fileList={value}
-      onAfterRead={afterRead}
-      onDelete={deleteAction}
-      deletable
-    />
-  )
-}
-```
+::: $demo1 :::
 
 ### 上传状态
 
 通过`status`属性可以标识上传状态，`uploading`表示上传中，`failed`表示上传失败，`done`表示上传完成。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState([
-    {
-      url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-      status: 'uploading',
-      message: '上传中',
-    },
-    {
-      url: 'https://img.yzcdn.cn/vant/tree.jpg',
-      status: 'failed',
-      message: '上传失败',
-    },
-  ])
-
-  const afterRead = (event) => {
-    const { file, name } = event.detail
-    setValue(value.concat(file))
-  }
-
-  const deleteAction = (event) => {
-    const { index } = event.detail
-    const valueNew = JSON.parse(JSON.stringify(value))
-    valueNew.splice(index, 1)
-    setValue(valueNew)
-  }
-
-  return (
-    <Uploader
-      fileList={value}
-      onAfterRead={afterRead}
-      onDelete={deleteAction}
-      deletable
-    />
-  )
-}
-```
+::: $demo2 :::
 
 ### 限制上传数量
 
 通过`maxCount`属性可以限制上传文件的数量，上传数量达到限制后，会自动隐藏上传区域。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState([
-    { url: 'https://img.yzcdn.cn/vant/sand.jpg' },
-  ])
-
-  const afterRead = (event) => {
-    const { file, name } = event.detail
-    setValue(value.concat(file))
-  }
-
-  const deleteAction = (event) => {
-    const { index } = event.detail
-    const valueNew = JSON.parse(JSON.stringify(value))
-    valueNew.splice(index, 1)
-    setValue(valueNew)
-  }
-
-  return (
-    <Uploader
-      fileList={value}
-      onAfterRead={afterRead}
-      onDelete={deleteAction}
-      maxCount={2}
-    />
-  )
-}
-```
+::: $demo3 :::
 
 ### 自定义上传样式
 
 通过插槽可以自定义上传区域的样式。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState([])
-
-  const afterRead = (event) => {
-    const { file, name } = event.detail
-    setValue(value.concat(file))
-  }
-
-  const deleteAction = (event) => {
-    const { index } = event.detail
-    const valueNew = JSON.parse(JSON.stringify(value))
-    valueNew.splice(index, 1)
-    setValue(valueNew)
-  }
-
-  return (
-    <Uploader fileList={value} onAfterRead={afterRead} onDelete={deleteAction}>
-      <Button icon="photo" type="primary">
-        上传图片
-      </Button>
-    </Uploader>
-  )
-}
-```
+::: $demo4 :::
 
 ### 上传前校验
 
 将`useBeforeRead`属性设置为`true`，然后绑定 `beforeRead` 事件可以在上传前进行校验，调用 `callback` 方法传入 `true` 表示校验通过，传入 `false` 表示校验失败。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState([])
-
-  const afterRead = (event) => {
-    const { file, name } = event.detail
-    setValue(value.concat(file))
-  }
-
-  const deleteAction = (event) => {
-    const { index } = event.detail
-    const valueNew = JSON.parse(JSON.stringify(value))
-    valueNew.splice(index, 1)
-    setValue(valueNew)
-  }
-
-  return (
-    <Uploader
-      accept="png"
-      fileList={value}
-      onAfterRead={afterRead}
-      onDelete={deleteAction}
-    />
-  )
-}
-```
+::: $demo5 :::
 
 ### UploaderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/uploader.d.ts)
 

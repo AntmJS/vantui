@@ -16,126 +16,25 @@ import { Tabbar, TabbarItem } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  const [active, setActive] = react.useState(0)
-  return (
-    <Tabbar
-      active={active}
-      onChange={(e) => setActive(e.detail)}
-      safeAreaInsetBottom={false}
-    >
-      <TabbarItem icon="home-o">标签</TabbarItem>
-      <TabbarItem icon="search">标签</TabbarItem>
-      <TabbarItem icon="friends-o">标签</TabbarItem>
-      <TabbarItem icon="setting-o">标签</TabbarItem>
-    </Tabbar>
-  )
-}
-```
+::: $demo1 :::
 
 ### 通过名称匹配
 
 在标签指定`name`属性的情况下，`vModel`的值为当前标签的`name`。
 
-```jsx
-function Demo() {
-  const [active, setActive] = react.useState('home')
-  return (
-    <Tabbar active={active} onChange={(e) => setActive(e.detail)}>
-      <TabbarItem name="home" icon="home-o">
-        标签
-      </TabbarItem>
-      <TabbarItem name="search" icon="search">
-        标签
-      </TabbarItem>
-      <TabbarItem name="friends" icon="friends-o">
-        标签
-      </TabbarItem>
-      <TabbarItem name="setting" icon="setting-o">
-        标签
-      </TabbarItem>
-    </Tabbar>
-  )
-}
-```
+::: $demo2 :::
 
 ### 显示徽标
 
-```jsx
-function Demo() {
-  const [active, setActive] = react.useState('home')
-  return (
-    <Tabbar active={active} onChange={(e) => setActive(e.detail)}>
-      <TabbarItem icon="home-o">标签</TabbarItem>
-      <TabbarItem icon="search" dot>
-        标签
-      </TabbarItem>
-      <TabbarItem icon="friends-o" info="5">
-        标签
-      </TabbarItem>
-      <TabbarItem icon="setting-o" info="20">
-        标签
-      </TabbarItem>
-    </Tabbar>
-  )
-}
-```
+::: $demo3 :::
 
 ### 自定义图标
 
-```jsx
-function Demo() {
-  const [active, setActive] = react.useState('home')
-
-  return (
-    <Tabbar active={active} onChange={(e) => setActive(e.detail)}>
-      <TabbarItem
-        info="3"
-        renderIcon={
-          <Image
-            src="https://img.yzcdn.cn/vant/user-inactive.png"
-            mode="aspectFit"
-            style="width: 30px; height: 18px;"
-          ></Image>
-        }
-        renderIconActive={
-          <Image
-            src="https://img.yzcdn.cn/vant/user-active.png"
-            mode="aspectFit"
-            style="width: 30px; height: 18px;"
-          ></Image>
-        }
-      >
-        自定义
-      </TabbarItem>
-      <TabbarItem icon="search">标签</TabbarItem>
-      <TabbarItem icon="setting-o">标签</TabbarItem>
-    </Tabbar>
-  )
-}
-```
+::: $demo4 :::
 
 ### 自定义颜色
 
-```jsx
-function Demo() {
-  const [active, setActive] = react.useState(0)
-  return (
-    <Tabbar
-      activeColor="#07c160"
-      inactiveColor="#000"
-      active={active}
-      onChange={(e) => setActive(e.detail)}
-    >
-      <TabbarItem icon="home-o">标签</TabbarItem>
-      <TabbarItem icon="search">标签</TabbarItem>
-      <TabbarItem icon="friends-o">标签</TabbarItem>
-      <TabbarItem icon="setting-o">标签</TabbarItem>
-    </Tabbar>
-  )
-}
-```
+::: $demo5 :::
 
 ### 结合自定义 tabBar
 

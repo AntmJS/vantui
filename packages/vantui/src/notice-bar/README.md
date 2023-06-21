@@ -16,128 +16,41 @@ import { NoticeBar } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  return (
-    <NoticeBar
-      leftIcon="volume-o"
-      text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-    />
-  )
-}
-```
+::: $demo1 :::
 
 ### 滚动播放
 
 通知栏的内容长度溢出时会自动开启滚动播放，通过 `scrollable` 属性可以控制该行为。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      {/*  文字较短时，通过设置 scrollable 属性开启滚动播放  */}
-      <NoticeBar scrollable text="技术是开发它的人的共同灵魂。" />
-      {/*  文字较长时，通过禁用 scrollable 属性关闭滚动播放  */}
-      <NoticeBar
-        scrollable={false}
-        text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-      />
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 多行展示
 
 文字较长时，可以通过设置 `wrapable` 属性来开启多行展示。
 
-```jsx
-function Demo() {
-  return (
-    <NoticeBar
-      wrapable={true}
-      scrollable={false}
-      text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-    />
-  )
-}
-```
+::: $demo3 :::
 
 ### 通知栏模式
 
 通知栏支持 `closeable` 和 `link` 两种模式。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      {/*  closeable 模式，在右侧显示关闭按钮  */}
-      <NoticeBar mode="closeable" text="技术是开发它的人的共同灵魂。" />
-      {/*  link 模式，在右侧显示链接箭头  */}
-      <NoticeBar mode="link" text="技术是开发它的人的共同灵魂。" />
-    </View>
-  )
-}
-```
+::: $demo4 :::
 
 ### 垂直用法
 
-```jsx
-function Demo() {
-  return (
-    <NoticeBar leftIcon="volume-o" scrollable={false}>
-      <Swiper
-        direction="vertical"
-        autoPlay={3000}
-        touchable={false}
-        height={30}
-      >
-        <SwiperItem>
-          <View style={{ height: 30 }}>明月直入，无心可猜1。</View>
-        </SwiperItem>
-        <SwiperItem>
-          <View style={{ height: 30 }}>明月直入，无心可猜2。</View>
-        </SwiperItem>
-        <SwiperItem>
-          <View style={{ height: 30 }}>明月直入，无心可猜3。</View>
-        </SwiperItem>
-      </Swiper>
-    </NoticeBar>
-  )
-}
-```
+::: $demo5 :::
 
 ### 自定义样式
 
 通过 `color` 属性设置文本颜色，通过 `background` 属性设置背景色。
 
-```jsx
-function Demo() {
-  return (
-    <NoticeBar
-      color="#1989fa"
-      background="#ecf9ff"
-      leftIcon="info-o"
-      text="技术是开发它的人的共同灵魂。"
-    />
-  )
-}
-```
+::: $demo6 :::
 
 ### 自定义滚动速率
 
 使用`speed`属性控制滚动速率。
 
-```jsx
-function Demo() {
-  return (
-    <NoticeBar
-      text={'技术是开发它的人的共同灵魂。技术是开发它的人的共同灵魂。'}
-      speed={20}
-    />
-  )
-}
-```
+::: $demo7 :::
 
 ### NoticeBarProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/notice-bar.d.ts)
 

@@ -166,7 +166,7 @@ function Demo() {
 | square    | 是否为正方形格子 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
 | gutter    | 格子间隔         | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
 | clickable | 是否开启点击反馈 | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| columnNum | 列数             | _&nbsp;&nbsp;number<br/>_                           | -      | `false` |
+| columnNum | 列数             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
 | center    | 是否居中排列     | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
 | border    | 是否显示边框     | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
 | direction | 内容对齐方式     | _&nbsp;&nbsp;"horizontal"<br/>_                     | -      | `false` |

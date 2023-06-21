@@ -60,12 +60,12 @@ export interface CalendarProps extends ViewProps {
    * @description 可选择的最小日期
    * @default 当前日期
    */
-  minDate?: number
+  minDate?: number | Date
   /**
    * @description 可选择的最大日期
    * @default 当前日期六个月后
    */
-  maxDate?: number
+  maxDate?: number | Date
   /**
    * @description 弹窗弹出的位置
    * @default bottom
@@ -156,12 +156,12 @@ export interface CalendarProps extends ViewProps {
  * @title formatter回调参数Day
  */
 export type Day = {
-  date: 'selected' | 'start' | 'middle' | 'end' | 'disabled'
+  date: Date
   type?: string
   text?: string | number
   bottomInfo?: string
   className?: string
-  topInfo?: string
+  topInfo?: string | ReactNode
 }
 /**
  * @title ICalendarInstance

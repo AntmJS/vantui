@@ -18,41 +18,14 @@ import { Checkbox, CheckboxGroup } from '@antmjs/vantui'
 
 通过`value`绑定复选框的勾选状态。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(true)
-  return (
-    <Checkbox value={value} onChange={(e) => setValue(e.detail)}>
-      复选框
-    </Checkbox>
-  )
-}
-```
+::: $demo1 :::
 
 ### 禁用状态
 
 - 通过设置`disabled`属性可以禁用复选框。
 - 通过设置`labelDisabled`属性可以禁用复选框文本点击。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(true)
-  return (
-    <View style={{ display: 'flex' }}>
-      <Checkbox desabled style={{ marginRight: '20px' }}>
-        禁用1
-      </Checkbox>
-      <Checkbox
-        labelDisabled
-        value={value}
-        onChange={(e) => setValue(e.detail)}
-      >
-        禁用2
-      </Checkbox>
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 自定义形状、颜色、大小
 
@@ -60,147 +33,29 @@ function Demo() {
 - 通过`checkedColor`属性可以自定义选中状态下的图标颜色。
 - 通过`iconSize`属性可以自定义图标的大小。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(true)
-  const props = {
-    value: value,
-    onChange: (e) => setValue(e.detail),
-  }
-
-  return (
-    <View>
-      <Cell span={6}>
-        <Checkbox {...props} shape="square">
-          形状
-        </Checkbox>
-      </Cell>
-      <Cell span={6}>
-        <Checkbox {...props} checkedColor="#07c160">
-          颜色
-        </Checkbox>
-      </Cell>
-      <Cell span={6}>
-        <Checkbox {...props} iconSize="25px">
-          颜色
-        </Checkbox>
-      </Cell>
-    </View>
-  )
-}
-```
+::: $demo3 :::
 
 ### 自定义图标
 
 通过 icon 插槽自定义图标。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(true)
-
-  return (
-    <Checkbox
-      value={value}
-      onChange={(e) => setValue(e.detail)}
-      renderIcon={
-        <Image
-          style={{ width: '30px', height: '30px' }}
-          src={
-            value
-              ? 'https://img.yzcdn.cn/vant/user-active.png'
-              : 'https://img.yzcdn.cn/vant/user-inactive.png'
-          }
-        />
-      }
-    >
-      自定义图标
-    </Checkbox>
-  )
-}
-```
+::: $demo4 :::
 
 ### 复选框组
 
 需要与`vanCheckboxGroup`一起使用，选中值是一个数组，通过`value`绑定在`vanCheckboxGroup`上，数组中的项即为选中的`Checkbox`的`name`属性设置的值。
 
-```jsx
-function Demo() {
-  const [values, setValues] = react.useState(['a', 'b'])
-  return (
-    <CheckboxGroup
-      value={values}
-      onChange={(e) => {
-        console.info(e)
-        setValues([...e.detail])
-      }}
-    >
-      <Checkbox name="a">复选框 a</Checkbox>
-      <Checkbox name="b">复选框 b</Checkbox>
-      <Checkbox name="c">复选框 c</Checkbox>
-    </CheckboxGroup>
-  )
-}
-```
+::: $demo5 :::
 
 ### 水平排列、限制最大可选数
 
-```jsx
-function Demo() {
-  const [values, setValues] = react.useState(['a'])
-  return (
-    <CheckboxGroup
-      direction="horizontal"
-      value={values}
-      max={2}
-      onChange={(e) => {
-        setValues([...e.detail])
-      }}
-    >
-      <Checkbox name="a">复选框 a</Checkbox>
-      <Checkbox name="b">复选框 b</Checkbox>
-      <Checkbox name="c">复选框 c</Checkbox>
-    </CheckboxGroup>
-  )
-}
-```
+::: $demo6 :::
 
 ### 搭配单元格组件使用
 
 此时你需要再引入`Cell`和`CellGroup`组件，并通过 checkbox 的 toggle 方法手动触发切换。
 
-```jsx
-const list = ['aa', 'bb', 'cc']
-function Demo() {
-  const [values, setValues] = react.useState(['bb'])
-
-  const cellClick = (item) => {
-    if (values.includes(item)) {
-      values.splice(values.indexOf(item), 1)
-    } else values.push(item)
-    setValues([...values])
-  }
-
-  return (
-    <CheckboxGroup value={values}>
-      <CellGroup>
-        {list.map((item, index) => {
-          return (
-            <Cell
-              key={item}
-              title={'复选框 ' + item}
-              valueClass="value-class"
-              clickable
-              onClick={() => cellClick(item)}
-            >
-              <Checkbox style={{ justifyContent: 'flex-end' }} name={item} />
-            </Cell>
-          )
-        })}
-      </CellGroup>
-    </CheckboxGroup>
-  )
-}
-```
+::: $demo7 :::
 
 ```css
 .valueClass {

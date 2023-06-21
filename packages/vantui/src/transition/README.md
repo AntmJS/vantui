@@ -19,53 +19,9 @@ import { Transition } from '@antmjs/vantui'
 - 将元素包裹在 transition 组件内，在元素展示/隐藏时，会有相应的过渡动画。
 - transition 组件内置了多种动画，可以通过`name`字段指定动画类型。
 
-```jsx
-const animations = [
-  'fade',
-  'fade-up',
-  'fade-down',
-  'fade-left',
-  'fade-right',
-  'slide-up',
-  'slide-down',
-  'slide-left',
-  'slide-right',
-]
-function Demo() {
-  const [show, setShow] = react.useState()
-  const animationAction = (ss) => {
-    setShow(ss)
-    setTimeout(() => {
-      setShow(false)
-    }, 1000)
-  }
+案例如下
 
-  return (
-    <View>
-      {animations.map((item) => (
-        <Cell
-          title={item}
-          key={item}
-          onClick={() => animationAction(item)}
-        ></Cell>
-      ))}
-      {animations.map((item) => (
-        <Transition
-          duration={{ enter: 300, leave: 1000 }}
-          className="center-x"
-          enterClass="vanEnterClass"
-          enterActiveClass="vanEnterActiveClass"
-          leaveActiveClass="vanLeaveActiveClass"
-          leaveToClass="vanLeaveToClass"
-          key={`${item}tran`}
-          show={show === item}
-          name={item}
-        />
-      ))}
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ```css
 .vanEnterActiveClass,

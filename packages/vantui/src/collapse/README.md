@@ -18,121 +18,23 @@ import { Collapse, CollapseItem } from '@antmjs/vantui'
 
 通过`value`控制展开的面板列表，`activeNames`为数组格式。
 
-```jsx
-function Demo() {
-  const [values, setValues] = react.useState(['1'])
-  const [dynamic, setdynamic] = react.useState('')
-
-  react.useEffect(() => {
-    setTimeout(() => {
-      setdynamic('【动态内容动态内容动态内容动态内容动态内容动态内容动态内容】')
-    }, 1000)
-  }, [])
-
-  return (
-    <Collapse value={values} onChange={(e) => setValues(e.detail)}>
-      <CollapseItem title="有赞微商城" name="1">
-        提供多样店铺模板，快速搭建网上商城
-        {dynamic}
-      </CollapseItem>
-      <CollapseItem title="有赞零售" name="2">
-        网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
-        {dynamic}
-      </CollapseItem>
-      <CollapseItem title="有赞美业" name="3" disabled>
-        线上拓客，随时预约，贴心顺手的开单收银
-        {dynamic}
-      </CollapseItem>
-    </Collapse>
-  )
-}
-```
+::: $demo1 :::
 
 ### 手风琴
 
 通过`accordion`可以设置为手风琴模式，最多展开一个面板，此时`activeName`为字符串格式。
 
-```jsx
-function Demo() {
-  const [values, setValues] = react.useState(['1'])
-
-  return (
-    <Collapse accordion value={values} onChange={(e) => setValues(e.detail)}>
-      <CollapseItem title="有赞微商城" name="1">
-        提供多样店铺模板，快速搭建网上商城
-      </CollapseItem>
-      <CollapseItem title="有赞零售" name="2">
-        网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
-      </CollapseItem>
-      <CollapseItem title="有赞美业" name="3">
-        线上拓客，随时预约，贴心顺手的开单收银
-      </CollapseItem>
-    </Collapse>
-  )
-}
-```
+::: $demo2 :::
 
 ### 事件监听
 
 `vanCollapse` 提供了 `change`, `open` 和 `close` 事件。`change` 事件在面板切换时触发，`open` 事件在面板展开时触发，`close` 事件在面板关闭时触发。
 
-```jsx
-function Demo() {
-  const [values, setValues] = react.useState(['1'])
-
-  return (
-    <>
-      <Collapse
-        value={values}
-        onChange={(e) => setValues(e.detail)}
-        onOpen={(e) => Toast.show(`打开${e.detail}`)}
-        onClose={(e) => Toast.show(`关闭${e.detail}`)}
-      >
-        <CollapseItem title="有赞微商城" name="1">
-          提供多样店铺模板，快速搭建网上商城
-        </CollapseItem>
-        <CollapseItem title="有赞零售" name="2">
-          网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
-        </CollapseItem>
-        <CollapseItem title="有赞美业" name="3">
-          线上拓客，随时预约，贴心顺手的开单收银
-        </CollapseItem>
-      </Collapse>
-      <Toast id="collapse-mess" />
-    </>
-  )
-}
-```
+::: $demo2 :::
 
 ### 自定义标题内容
 
-```jsx
-function Demo() {
-  const [values, setValues] = react.useState(['1'])
-
-  return (
-    <Collapse value={values} onChange={(e) => setValues(e.detail)}>
-      <CollapseItem
-        renderTitle={
-          <View>
-            有赞微商城
-            <Icon name="question-o" />
-          </View>
-        }
-        name="1"
-      >
-        提供多样店铺模板，快速搭建网上商城
-      </CollapseItem>
-      <CollapseItem title="有赞零售" name="2">
-        网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
-      </CollapseItem>
-      <CollapseItem title="有赞美业" name="3">
-        线上拓客，随时预约，贴心顺手的开单收银
-      </CollapseItem>
-    </Collapse>
-  )
-}
-```
+::: $demo3 :::
 
 ### CollapseProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)
 

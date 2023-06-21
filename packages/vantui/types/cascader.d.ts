@@ -9,7 +9,7 @@ export interface CascaderProps extends ViewProps {
   /**
    * @description 选择数据
    */
-  options: CascaderOption[]
+  options?: CascaderOption[]
   /**
    * @description 当前值
    */
@@ -96,7 +96,7 @@ export interface CascaderConfig {
  * @title CascaderOption
  * @description 异步操作时的`options`格式
  */
-export interface CascaderOption {
+export interface CascaderOption extends Record<string, any> {
   /**
    *  @description 当前数据文本
    */

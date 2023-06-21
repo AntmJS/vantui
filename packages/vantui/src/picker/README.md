@@ -16,149 +16,33 @@ import { Picker } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-const columns = ['杭州', '宁波', '温州', '嘉兴', '湖州']
-function Demo() {
-  const onChange = (event) => {
-    const { picker, value, index } = event.detail
-    Toast.show(`当前值：${value}, 当前索引：${index}`)
-  }
-  return (
-    <>
-      <Toast />
-      <Picker columns={columns} onChange={onChange} />
-    </>
-  )
-}
-```
+::: $demo1 :::
 
 ### 默认选中项
 
 单列选择器可以直接通过`defaultIndex`属性设置初始选中项的索引值。
 
-```jsx
-const columns = ['杭州', '宁波', '温州', '嘉兴', '湖州']
-function Demo() {
-  const onChange = (event) => {
-    const { picker, value, index } = event.detail
-    Toast.show(`当前值：${value}, 当前索引：${index}`)
-  }
-  return (
-    <>
-      <Toast />
-      <Picker defaultIndex={2} columns={columns} onChange={onChange} />
-    </>
-  )
-}
-```
+::: $demo2 :::
 
 ### 展示顶部栏
 
-```jsx
-const columns = ['杭州', '宁波', '温州', '嘉兴', '湖州']
-function Demo() {
-  const onChange = (event) => {
-    const { picker, value, index } = event.detail
-    Toast.show(`当前值：${value}, 当前索引：${index}`)
-  }
-  return (
-    <>
-      <Toast />
-      <Picker
-        showToolbar
-        title="标题"
-        defaultIndex={2}
-        columns={columns}
-        onChange={onChange}
-        onCancel={() => Toast.show('onCancel')}
-        onConfirm={() => Toast.show('onConfirm')}
-      />
-    </>
-  )
-}
-```
+::: $demo3 :::
 
 ### 多列联动
 
-```jsx
-const citys = {
-  浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-  福建: ['福州', '厦门'],
-}
-function Demo() {
-  const pickerRef = react.useRef()
-
-  react.useEffect(() => {
-    // 模拟异步数据获取
-    setTimeout(async () => {
-      const res = ['浙江', '福建'] // 数组项可以是基础类型或对象类型
-      await pickerRef.current.setColumnValues(0, res)
-      await pickerRef.current.setColumnValues(1, citys[res[0]])
-    }, 1000)
-  }, [])
-
-  const onChange = (event) => {
-    const { picker, value, index } = event.detail
-    picker.setColumnValues(1, citys[value[0]]).then((newValue) => {
-      console.info(newValue)
-      console.info(pickerRef.current.getIndexes()) // 异步更新列数据的时候不要使用回调函数里面旧的 picker实例
-    })
-  }
-  return (
-    <>
-      <Toast />
-      <Picker
-        ref={pickerRef}
-        columns={[{ values: [] }, { values: [] }]}
-        onChange={onChange}
-      />
-    </>
-  )
-}
-```
+::: $demo4 :::
 
 ### 禁用选项
 
 选项可以为对象结构，通过设置 disabled 来禁用该选项。
 
-```jsx
-const columns = [
-  {
-    text: '杭州',
-    disabled: true,
-  },
-  {
-    text: '宁波',
-  },
-  {
-    text: '温州',
-  },
-]
-function Demo() {
-  return <Picker columns={columns} />
-}
-```
+::: $demo5 :::
 
 ### 加载状态
 
 当 Picker 数据是通过异步获取时，可以通过 `loading` 属性显示加载提示。
 
-```jsx
-const columns = [
-  {
-    text: '宁波',
-  },
-  {
-    text: '温州',
-  },
-  {
-    text: '长沙',
-  },
-]
-function Demo() {
-  return <Picker columns={columns} loading />
-}
-```
+::: $demo6 :::
 
 ### PickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)
 

@@ -18,89 +18,25 @@ import { Popup } from '@antmjs/vantui'
 
 通过`show`属性控制弹出层是否展示。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  return (
-    <View>
-      <Cell title="展示弹出层" isLink onClick={() => setShow(true)} />
-      <Popup show={show} onClose={() => setShow(false)}>
-        内容
-      </Popup>
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 弹出位置
 
 通过`position`属性设置弹出位置，默认居中弹出，可以设置为`top`、`bottom`、`left`、`right`。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [position, setPosition] = react.useState('top')
-
-  const showAction = function (position) {
-    setPosition(position)
-    setShow(true)
-  }
-
-  return (
-    <View>
-      <Cell title="顶部弹出" isLink onClick={() => showAction('top')} />
-      <Cell title="底部弹出" isLink onClick={() => showAction('bottom')} />
-      <Cell title="左侧弹出" isLink onClick={() => showAction('left')} />
-      <Cell title="右侧弹出" isLink onClick={() => showAction('right')} />
-      <Popup show={show} position={position} onClose={() => setShow(false)}>
-        内容{position}
-      </Popup>
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 关闭图标
 
 设置`closeable`属性后，会在弹出层的右上角显示关闭图标，并且可以通过`closeIcon`属性自定义图标，使用`closeIconPosition`属性可以自定义图标位置。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  return (
-    <View>
-      <Cell title="关闭图标" isLink onClick={() => setShow(true)} />
-      <Popup
-        closeable
-        closeIcon="close"
-        show={show}
-        onClose={() => setShow(false)}
-        closeIconPosition="topRight"
-      >
-        内容
-      </Popup>
-    </View>
-  )
-}
-```
+::: $demo3 :::
 
 ### 圆角弹窗
 
 设置`round`属性后，弹窗会根据弹出位置添加不同的圆角样式。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  return (
-    <View>
-      <Cell title="圆角弹窗" isLink onClick={() => setShow(true)} />
-      <Popup round show={show} onClose={() => setShow(false)}>
-        内容
-      </Popup>
-    </View>
-  )
-}
-```
+::: $demo4 :::
 
 ### 禁止滚动穿透
 

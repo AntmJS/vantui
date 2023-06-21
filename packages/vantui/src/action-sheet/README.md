@@ -18,213 +18,37 @@ import { ActionSheet } from '@antmjs/vantui'
 
 需要传入一个`actions`的数组，数组的每一项是一个对象，对象属性见文档下方表格。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [actions, setActions] = react.useState([
-    {
-      name: '选项1',
-    },
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-      subname: '描述信息',
-      openType: 'share',
-    },
-  ])
-
-  return (
-    <>
-      <ActionSheet
-        show={show}
-        actions={actions}
-        onClose={() => setShow(false)}
-        onSelect={(e) => console.info(e.detail)}
-      />
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出菜单
-      </Button>
-    </>
-  )
-}
-```
+::: $demo1 :::
 
 ### 选项状态
 
 选项可以设置为加载状态或禁用状态。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [actions, setActions] = react.useState([
-    {
-      name: '着色选项',
-      color: '#ee0a24',
-    },
-    {
-      loading: true,
-    },
-    {
-      name: '禁用选项',
-      disabled: true,
-    },
-  ])
-
-  return (
-    <>
-      <ActionSheet
-        show={show}
-        actions={actions}
-        onClose={() => setShow(false)}
-      />
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出菜单
-      </Button>
-    </>
-  )
-}
-```
+::: $demo2 :::
 
 ### 展示取消按钮
 
 设置`cancelText`属性后，会在底部展示取消按钮，点击后关闭当前菜单。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [actions, setActions] = react.useState([
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-      subname: '描述信息',
-      openType: 'share',
-    },
-  ])
-
-  return (
-    <>
-      <ActionSheet
-        show={show}
-        actions={actions}
-        cancelText="取消"
-        onClose={() => setShow(false)}
-      />
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出菜单
-      </Button>
-    </>
-  )
-}
-```
+::: $demo3 :::
 
 ### 展示描述信息
 
 设置`description`属性后，会在选项上方显示描述信息。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [actions, setActions] = react.useState([
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-      subname: '描述信息',
-      openType: 'share',
-    },
-  ])
-
-  return (
-    <>
-      <ActionSheet
-        show={show}
-        actions={actions}
-        description="这是一段描述信息"
-        onClose={() => setShow(false)}
-      />
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出菜单
-      </Button>
-    </>
-  )
-}
-```
+::: $demo4 :::
 
 ### 展示标题栏
 
 通过设置`title`属性展示标题栏，同时可以使用插槽自定义菜单内容。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [actions, setActions] = react.useState([
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-    },
-    {
-      name: '选项',
-      subname: '描述信息',
-      openType: 'share',
-    },
-  ])
-
-  return (
-    <>
-      <ActionSheet show={show} title="标题" onClose={() => setShow(false)}>
-        <View>内容</View>
-      </ActionSheet>
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出菜单
-      </Button>
-    </>
-  )
-}
-```
+::: $demo5 :::
 
 ### 微信开放能力
 
 需要传入一个`actions`的数组，数组的每一项是一个对象，对象属性见文档下方表格。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  const [actions, setActions] = react.useState([
-    {
-      name: '获取用户信息',
-      color: '#07c160',
-      openType: 'getUserInfo',
-    },
-  ])
-
-  return (
-    <>
-      <ActionSheet
-        show={show}
-        actions={actions}
-        onClose={() => setShow(false)}
-        onGetuserinfo={(e) => console.info(e.detail)}
-      />
-      <Button type="primary" onClick={() => setShow(true)}>
-        弹出菜单
-      </Button>
-    </>
-  )
-}
-```
+::: $demo6 :::
 
 ### ActionSheetItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/action-sheet.d.ts)
 

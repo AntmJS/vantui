@@ -16,84 +16,27 @@ import { Switch } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(false)
-  return <Switch checked={value} onChange={(e) => setValue(e.detail)} />
-}
-```
+::: $demo1 :::
 
 ### 禁用状态
 
-```jsx
-function Demo() {
-  return <Switch disbled />
-}
-```
+::: $demo2 :::
 
 ### 加载状态
 
-```jsx
-function Demo() {
-  return <Switch loading checked={true} />
-}
-```
+::: $demo3 :::
 
 ### 自定义大小
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(false)
-  return (
-    <Switch size="32px" checked={value} onChange={(e) => setValue(e.detail)} />
-  )
-}
-```
+::: $demo4 :::
 
 ### 自定义颜色
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(false)
-  return (
-    <Switch
-      activeColor="#07c160"
-      inactiveColor="#ee0a24"
-      checked={value}
-      onChange={(e) => setValue(e.detail)}
-    />
-  )
-}
-```
+::: $demo5 :::
 
 ### 异步控制
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(false)
-
-  const action = (e) => {
-    Dialog.confirm({
-      selector: '#switch-demo',
-      title: '提示',
-      message: '是否切换开关？',
-    })
-      .then(() => {
-        setValue(e.detail)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
-
-  return (
-    <>
-      <Dialog id="switch-demo" />
-      <Switch checked={value} onChange={action} />
-    </>
-  )
-}
-```
+::: $demo6 :::
 
 ### SwitchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/switch.d.ts)
 

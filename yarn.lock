@@ -150,10 +150,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/doc@^2.3.14":
-  version "2.3.14"
-  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.14.tgz#47ec83412cfe7bbf51b8a4143dceb802b3e0538e"
-  integrity sha512-04jptTzFGxnmzbcqW/RHZ/8C5+JJNiOEetnQfCCho/KWV8HQ3Qm0+aK2WNIDccvXiutKt5aXuw4H4dV4luqI7A==
+"@antmjs/doc@^2.3.15":
+  version "2.3.15"
+  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.15.tgz#5023c8ee1c54d7c827afe83340a5b3601e08ea90"
+  integrity sha512-ubsMyRkS3z7uB5tGUVHfi7jdPDgUdqcFJNM2hfCji0M35ge0e+Ym88QAZFf59R2Qxu4/eGD6l6m73XBpxmh5QA==
   dependencies:
     "@swc/core" "^1.3.60"
     "@swc/wasm" "^1.3.60"
@@ -181,10 +181,10 @@
     webpack "^5.78.0"
     webpack-dev-server "^4.13.2"
 
-"@antmjs/eslint@^2.3.14":
-  version "2.3.14"
-  resolved "https://registry.npmjs.org/@antmjs/eslint/-/eslint-2.3.14.tgz#d5cd448002e56075087d1bf196536b14fdc5fc97"
-  integrity sha512-nB0oRp1JDXDG4yPqcM4/BZLO86vKsqA6C0EYvWv02wBmWoWqTm3htZNuPkN6F1WDjSs9BTs04nELr/wRmh1G3w==
+"@antmjs/eslint@^2.3.15":
+  version "2.3.15"
+  resolved "https://registry.npmjs.org/@antmjs/eslint/-/eslint-2.3.15.tgz#6aa365f9cf31c0671bd3c799d48aad863b123710"
+  integrity sha512-hRW6RZl09ZNb5REk+68HPBdasU439YjNZ6Csiq6+80AreE8sktVMVSYtYRcxXIy2K0q0IiN1on23Ga21z0MCrQ==
   dependencies:
     "@graphql-eslint/eslint-plugin" "^3.10.7"
     "@typescript-eslint/eslint-plugin" "^5.33.0"
@@ -197,10 +197,10 @@
     eslint-plugin-react "^7.30.1"
     eslint-plugin-react-hooks "^4.6.0"
 
-"@antmjs/iconfont@^2.3.14":
-  version "2.3.14"
-  resolved "https://registry.npmjs.org/@antmjs/iconfont/-/iconfont-2.3.14.tgz#fc6a77705fbe0fb90f2c0f3f867d3f8024032798"
-  integrity sha512-SHQhbMRO72gOWNQZ40v3uC80vRY0Q61okU5IbwLY+SYCFrqtvk0YAH4RMgyXsbCo49UCUSIW8UrNBKpxVOhLHg==
+"@antmjs/iconfont@^2.3.15":
+  version "2.3.15"
+  resolved "https://registry.npmjs.org/@antmjs/iconfont/-/iconfont-2.3.15.tgz#49f527a53447484f8ce13fcf69c8b1089dfc8ee5"
+  integrity sha512-i5bgDs1nfbFd4Ba0Lh2kk/mM+X7lOmPiW46dhFAOox1tY+SMSZwr4dG2tqGyxW4Dkb/Tfbbpja6eprMTmYbLNg==
 
 "@antmjs/iconfont@^2.3.3":
   version "2.3.3"
@@ -229,29 +229,29 @@
   resolved "https://registry.npmmirror.com/@antmjs/plugin-mini-fix/-/plugin-mini-fix-2.3.3.tgz"
   integrity sha512-OSbDD6oF6lnqvThQSAXoVMsR6dj6MFH6obJQE1hqzTeidpK3Uvcgq1xLKlXLm0fMHPpoPwaIqUhzLR0C8xmmrw==
 
-"@antmjs/stylelint@^2.3.14":
-  version "2.3.14"
-  resolved "https://registry.npmjs.org/@antmjs/stylelint/-/stylelint-2.3.14.tgz#b9e8fddd54b3ef752934db80784b737e7ba6132f"
-  integrity sha512-jpM1kV/bBhYQqixH742kc1azvTTf29DCcnyn32lze4UWnE+eaGwHvqFN/B9A2EYKVIbsqkKiNDbNZ4Vzu6l47g==
+"@antmjs/stylelint@^2.3.15":
+  version "2.3.15"
+  resolved "https://registry.npmjs.org/@antmjs/stylelint/-/stylelint-2.3.15.tgz#d98aeba761137181ed9ba67768709a1f3307a743"
+  integrity sha512-7k5qUsCGfYKLKhly82g003eWYrl3JwizcywzpUCee64xniaKkYq/GVpCvDVUUDh/Mqxc/TB0g5BpnlYgTQBzbw==
   dependencies:
     postcss-less "^6.0.0"
     stylelint-config-prettier "^9.0.4"
     stylelint-config-standard "^29.0.0"
 
-"@antmjs/types@^2.3.14":
-  version "2.3.14"
-  resolved "https://registry.npmjs.org/@antmjs/types/-/types-2.3.14.tgz#c84396492de589cde6ac37367f1259f4a9e6bcb9"
-  integrity sha512-hO5ECFhei5/S+DVL5jWujGTH+bG2bWam5j+tP/EKu0kNIt5n7IbVOOF7vuSSxqV4XKK9rkxp3haA12L5b4kJJg==
+"@antmjs/types@^2.3.15":
+  version "2.3.15"
+  resolved "https://registry.npmjs.org/@antmjs/types/-/types-2.3.15.tgz#a7c7f16b5175b6f14b15dda9c0ca228078a0bcd1"
+  integrity sha512-gC97RD/T7w5XjfM6KCdmns/ihj0KBnE13Sjj4xQPLL/5MMGOXbgyxSSveg74r0HJUH1UmiEmSNUJHEMcUMgJ9g==
 
 "@antmjs/utils@2.3.3":
   version "2.3.3"
   resolved "https://registry.npmmirror.com/@antmjs/utils/-/utils-2.3.3.tgz"
   integrity sha512-rZTwWPZan6RmVqcKoufuawxbcPb0GYo5DOzn+HFxVDu0+VxLtGS6AsYRhGg/nsgOup7qozllI2I/lBv315Zz+A==
 
-"@antmjs/warning@^2.3.14":
-  version "2.3.14"
-  resolved "https://registry.npmjs.org/@antmjs/warning/-/warning-2.3.14.tgz#3e3ade8b9f8b573e366603987787933c041a6a5e"
-  integrity sha512-OY937ea91njJH4VYTdmARO9iC6SRbp9OsJ6IB6AO8Td4lqRx8HSeDXgw9H4/TelvnsejRw9Ie+DnOXiqF+W+7A==
+"@antmjs/warning@^2.3.15":
+  version "2.3.15"
+  resolved "https://registry.npmjs.org/@antmjs/warning/-/warning-2.3.15.tgz#d4370cda7e4f9c0e44337160730ca0a4e6380d11"
+  integrity sha512-AuQUAY6CLxJe9KWTFNM3+J/wW9DjkMWYLeM49vEpOc4AFnYNJjo5/OJvWFzLE2UJPW0DX7+lFGWzqmT1L1yihw==
   dependencies:
     "@swc/core" "^1.3.60"
     "@swc/wasm" "^1.3.60"

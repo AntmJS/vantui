@@ -23,191 +23,57 @@ import {
 
 支持`default`、`primary`、`info`、`warning`、`danger`五种类型，默认为`default`。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button type="default">默认按钮</Button>
-      <Button type="primary">主要按钮</Button>
-      <Button type="info">信息按钮</Button>
-      <Button type="warning">警告按钮</Button>
-      <Button type="danger">危险按钮</Button>
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 朴素按钮
 
 通过`plain`属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button plain type="primary">
-        朴素按钮
-      </Button>
-      <Button plain type="info">
-        朴素按钮
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 细边框
 
 设置`hairline`属性可以开启 0.5px 边框，基于伪类实现。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button plain hairline type="primary">
-        细边框按钮
-      </Button>
-      <Button plain hairline type="info">
-        细边框按钮
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo3 :::
 
 ### 禁用状态
 
 通过`disabled`属性来禁用按钮，此时按钮的`onClick`事件不会触发。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button disabled type="primary">
-        禁用状态
-      </Button>
-      <Button disabled type="info">
-        禁用状态
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo4 :::
 
 ### 加载状态
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button loading type="primary" />
-      <Button loading type="primary" loadingType="spinner" />
-      <Button loading type="info" loadingText="加载中..." />
-    </View>
-  )
-}
-```
+::: $demo5 :::
 
 ### 按钮形状
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button square type="primary">
-        方形按钮
-      </Button>
-      <Button round type="info">
-        圆形按钮
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo6 :::
 
 ### 图标按钮
 
 通过`icon`属性设置按钮图标，支持 Icon 组件里的所有图标，也可以传入图标 URL。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button icon="starO" type="primary" />
-      <Button icon="starO" type="primary">
-        按钮
-      </Button>
-      <Button
-        icon="https://antm-js.gitee.io/resource/antmjs-vantui.jpg"
-        type="info"
-      >
-        按钮
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo7 :::
 
 ### 按钮尺寸
 
 支持`large`、`normal`、`small`、`mini`四种尺寸，默认为`normal`。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button type="primary" size="large">
-        大号按钮
-      </Button>
-      <Button type="primary" size="normal">
-        普通按钮
-      </Button>
-      <Button type="primary" size="small">
-        小型按钮
-      </Button>
-      <Button type="primary" size="mini">
-        迷你按钮
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo8 :::
 
 ### 块级元素
 
 通过`block`属性可以将按钮的元素类型设置为块级元素。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button type="primary" block>
-        块级元素
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo9 :::
 
 ### 自定义颜色
 
 通过`color`属性可以自定义按钮的颜色。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Button color="#7232dd">单色按钮</Button>
-      <Button color="#7232dd" plain>
-        单色按钮
-      </Button>
-      <Button color="linear-gradient(to right, #4bb0ff, #6149f6)">
-        渐变色按钮
-      </Button>
-    </View>
-  )
-}
-```
+::: $demo10 :::
 
 ### ButtonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/button.d.ts)
 

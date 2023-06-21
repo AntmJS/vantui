@@ -14,101 +14,21 @@ import { Signature } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  const instance = react.useRef()
-  const [img, setImage] = react.useState()
-
-  const getImageAction = async () => {
-    const res = await instance.current.getImage()
-    console.info(res)
-    setImage(res.tempFilePath)
-  }
-
-  const clear = () => {
-    instance.current?.clear()
-    setImage('')
-  }
-
-  return (
-    <View>
-      <Signature ref={instance} />
-      <View style={{ marginTop: 20, display: 'flex' }}>
-        <Button onClick={getImageAction} type="primary">
-          截图
-        </Button>
-        <Button onClick={clear} type="danger">
-          重绘
-        </Button>
-      </View>
-      <Image
-        src={img}
-        style={{
-          backgroundColor: '#fff',
-          border: '1px solid #ddd',
-          marginTop: '20px',
-        }}
-        width="100%"
-        height="150px"
-      />
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 修改颜色和签字粗细
 
-```jsx
-function Demo() {
-  const instance = react.useRef()
-  const [img, setImage] = react.useState()
-
-  const getImageAction = async () => {
-    const res = await instance.current.getImage()
-    setImage(res.tempFilePath)
-  }
-
-  const clear = () => {
-    instance.current?.clear()
-    setImage('')
-  }
-
-  return (
-    <View>
-      <Signature ref={instance} lineWidth={4} strokeStyle="green" />
-      <View style={{ marginTop: 20, display: 'flex' }}>
-        <Button onClick={getImageAction} type="primary">
-          截图
-        </Button>
-        <Button onClick={clear} type="danger">
-          重绘
-        </Button>
-      </View>
-      <Image
-        src={img}
-        style={{
-          backgroundColor: '#fff',
-          border: '1px solid #ddd',
-          marginTop: '20px',
-        }}
-        width="100%"
-        height="150px"
-        fit="widthFix"
-      />
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### ISignatureProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/signature.d.ts)
 
-| 参数        | 说明           | 类型                                              | 默认值   | 必填   |
-| ----------- | -------------- | ------------------------------------------------- | -------- | ------ |
-| canvasId    | 画布元素 id    | _&nbsp;&nbsp;string<br/>_                         | spcanvas | `true` |
-| type        | 获取图片的类型 | _&nbsp;&nbsp;"jpg"&nbsp;&brvbar;&nbsp;"png"<br/>_ | `png`    | `true` |
-| lineWidth   | 线条的宽度     | _&nbsp;&nbsp;number<br/>_                         | `3`      | `true` |
-| strokeStyle | 绘图颜色       | _&nbsp;&nbsp;string<br/>_                         | `#000`   | `true` |
-| className   | 样式名         | _&nbsp;&nbsp;string<br/>_                         | -        | `true` |
+| 参数        | 说明           | 类型                                              | 默认值   | 必填    |
+| ----------- | -------------- | ------------------------------------------------- | -------- | ------- |
+| canvasId    | 画布元素 id    | _&nbsp;&nbsp;string<br/>_                         | spcanvas | `false` |
+| type        | 获取图片的类型 | _&nbsp;&nbsp;"jpg"&nbsp;&brvbar;&nbsp;"png"<br/>_ | `png`    | `false` |
+| lineWidth   | 线条的宽度     | _&nbsp;&nbsp;number<br/>_                         | `3`      | `false` |
+| strokeStyle | 绘图颜色       | _&nbsp;&nbsp;string<br/>_                         | `#000`   | `false` |
+| className   | 样式名         | _&nbsp;&nbsp;string<br/>_                         | -        | `false` |
 
 ### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/signature.d.ts)
 

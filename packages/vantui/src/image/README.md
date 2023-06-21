@@ -16,179 +16,37 @@ import { Image } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  return (
-    <Image
-      width="100px"
-      height="100px"
-      src="https://img.yzcdn.cn/vant/cat.jpeg"
-    />
-  )
-}
-```
+::: $demo1 :::
 
 ### 填充模式
 
 通过`fit`属性可以设置图片填充模式，可选值见下方表格。
 
-```jsx
-function Demo() {
-  return (
-    <Row gutter="20">
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="contain"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>contain</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="cover"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>cover</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="fill"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>fill</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="none"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>none</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="scaleDown"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>scaleDown</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="widthFix"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>widthFix</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="100px"
-          fit="heightFix"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-        <View>heightFix</View>
-      </Col>
-    </Row>
-  )
-}
-```
+::: $demo2 :::
 
 ### 圆形图片
 
 通过`round`属性可以设置图片变圆，注意当图片宽高不相等且`fit`为`contain`或`scaleDown`时，将无法填充一个完整的圆形。
 
-```jsx
-function Demo() {
-  return (
-    <Image
-      round
-      width="100px"
-      height="100px"
-      src="https://img.yzcdn.cn/vant/cat.jpeg"
-    />
-  )
-}
-```
+::: $demo3 :::
 
 ### 图片懒加载
 
 图片懒加载，在即将进入一定范围（上下三屏）时才开始加载。
 
-```jsx
-function Demo() {
-  return (
-    <Row gutter="20">
-      <Col span="8">
-        <Image
-          width="100%"
-          height="27vw"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        ></Image>
-        <View className="text">默认提示</View>
-      </Col>
-      <Col span="8">
-        <Image
-          width="100%"
-          height="27vw"
-          renderLoading={<Loading type="spinner" size="20" vertical></Loading>}
-        ></Image>
-        <View className="text">自定义提示</View>
-      </Col>
-    </Row>
-  )
-}
-```
+::: $demo4 :::
 
 ### 加载中提示
 
 `Image`组件提供了默认的加载中提示，支持通过`loading`插槽自定义内容。
 
-```jsx
-function Demo() {
-  return (
-    <Row gutter="20">
-      <Col span="8">
-        <Image width="100%" height="27vw" src="x"></Image>
-        <View className="text">默认提示</View>
-      </Col>
-      <Col span="8">
-        <Image width="100%" height="27vw" renderLoading={<Loading />}></Image>
-        <View className="text">自定义加载中</View>
-      </Col>
-    </Row>
-  )
-}
-```
+::: $demo5 :::
 
 ### 加载失败提示
 
 `Image`组件提供了默认的加载失败提示，支持通过`renderError`来自定义内容。
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Image
-        width="100px"
-        height="100px"
-        src="xxxx"
-        renderError={<Text>加载失败</Text>}
-      />
-    </View>
-  )
-}
-```
+::: $demo6 :::
 
 ### ImageProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/image.d.ts)
 

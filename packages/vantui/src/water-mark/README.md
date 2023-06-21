@@ -14,15 +14,7 @@ import { WaterMark } from '@antmjs/vantui'
 
 ## 基本使用
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(1)
-
-  return (
-    <WaterMark content="@antmjs/vantui" fontSize={18} width={120} height={90} />
-  )
-}
-```
+::: $demo1 :::
 
 ### WaterMarkProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/water-mark.d.ts)
 

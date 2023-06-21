@@ -20,102 +20,31 @@ import { CountDown } from '@antmjs/vantui'
 
 `time`属性表示倒计时总时长，单位为毫秒。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
-
-  return <CountDown time={value} />
-}
-```
+::: $demo1 :::
 
 ### 自定义格式
 
 通过`format`属性设置倒计时文本的内容。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
-
-  return <CountDown time={value} format="DD 天 HH 时 mm 分 ss 秒" />
-}
-```
+::: $demo2 :::
 
 ### 毫秒级渲染
 
 倒计时默认每秒渲染一次，设置`millisecond`属性可以开启毫秒级渲染。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
-
-  return <CountDown millisecond time={value} format="HH:mm:ss:SSS" />
-}
-```
+::: $demo3 :::
 
 ### 自定义样式
 
 通过`onChange`事件获取`timeData`对象并自行渲染，格式见下方表格。
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(30 * 60 * 60 * 1000)
-  const [timeData, setTimeData] = react.useState({})
-
-  return (
-    <CountDown time={value} onChange={(e) => setTimeData({ ...e.detail })}>
-      <Text style={{ color: 'blue' }}>{timeData.hours}</Text>时
-      <Text style={{ color: 'green' }}>{timeData.minutes}</Text>分
-      <Text style={{ color: 'red' }}>{timeData.seconds}</Text>秒
-    </CountDown>
-  )
-}
-```
+::: $demo4 :::
 
 ### 手动控制
 
 通过 `ref` 选择器获取到组件实例后，可以调用`start`、`pause`、`reset`方法。
 
-```jsx
-function Demo() {
-  const it = react.useRef()
-
-  return (
-    <View>
-      <Toast id="controlCountDown-mess" />
-      <CountDown
-        onChange={(e) => console.info(e)}
-        ref={(el) => (it.current = el)}
-        class="controlCountDown"
-        millisecond
-        time={4000}
-        autoStart={false}
-        format="ss:SSS"
-        onFinish={() => Toast.show('end')}
-      />
-      <Grid clickable columnNum="3">
-        <GridItem
-          text="开始"
-          icon="play-circle-o"
-          onClick={() => it.current.start()}
-        />
-        <GridItem
-          text="暂停"
-          icon="pause-circle-o"
-          onClick={() => it.current.pause()}
-        />
-        <GridItem
-          text="重置"
-          icon="replay"
-          onClick={() => {
-            console.info(it)
-            it.current.reset()
-          }}
-        />
-      </Grid>
-    </View>
-  )
-}
-```
+::: $demo5 :::
 
 ### ICountDownRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)
 

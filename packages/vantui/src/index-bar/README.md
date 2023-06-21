@@ -19,27 +19,7 @@ import { IndexBar, IndexAnchor } from '@antmjs/vantui'
 点击索引栏时，会自动跳转到对应的`IndexAnchor`锚点位置。
 不要将 IndexBar 放置在含有 css 动画元素里面，会导致 IndexAnchor 定位失效
 
-```jsx
-const arr = []
-const charCodeOfA = 'A'.charCodeAt(0)
-for (let i = 0; i < 26; i++) {
-  arr.push(String.fromCharCode(charCodeOfA + i))
-}
-function Demo() {
-  return (
-    <IndexBar>
-      {arr.map((item) => (
-        <Block key={item.item}>
-          <IndexAnchor index={item}></IndexAnchor>
-          <Cell title="文本"></Cell>
-          <Cell title="文本"></Cell>
-          <Cell title="文本"></Cell>
-        </Block>
-      ))}
-    </IndexBar>
-  )
-}
-```
+::: $demo1 :::
 
 ### 自定义索引列表
 

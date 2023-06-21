@@ -16,7 +16,7 @@ export function Progress(props: ProgressProps) {
           getRect(null, '.van-progress__pivot'),
         ]).then(([portion, pivot]: any) => {
           if (portion && pivot) {
-            setRight((pivot.width * (props.percentage - 100)) / 100)
+            setRight((pivot.width * (Number(props.percentage) - 100)) / 100)
           }
         })
       })

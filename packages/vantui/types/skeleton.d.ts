@@ -2,7 +2,7 @@ import { FunctionComponent, ReactNode } from 'react'
 import { ViewProps } from '@tarojs/components'
 
 export interface SkeletonProps extends ViewProps {
-  row?: number
+  row?: number | string
   title?: boolean
   avatar?: boolean
   loading?: boolean

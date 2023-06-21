@@ -8,7 +8,7 @@ export interface ConfigProviderProps extends ViewProps {
   /**
    * @description 	自定义主题变量, 具体请查看详情
    */
-  themeVars: IThemeVars
+  themeVars?: IThemeVars
   children: ReactNode
 }
 /**

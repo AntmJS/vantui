@@ -31,7 +31,7 @@ export interface PaginationProps extends ViewProps {
    * @description 总页数
    * @default 传入或者根据数据量计算
    */
-  pageCount: string | number
+  pageCount?: string | number
   /**
    * @description 总记录数
    * @default 0

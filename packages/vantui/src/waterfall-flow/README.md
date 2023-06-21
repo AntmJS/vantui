@@ -20,97 +20,13 @@ import { WaterfallFlow } from '@antmjs/vantui'
 
 ### 基本案例
 
-```jsx
-function Demo() {
-  const { genTextData } = COMMON
-  const [list, setList] = react.useState(genTextData('text_'))
-
-  const renderItem = (item) => {
-    return (
-      <View style={{ background: '#EEE' }}>
-        <Text>{item.content}</Text>
-      </View>
-    )
-  }
-
-  return (
-    <WaterfallFlow
-      dataSource={list}
-      columnNum={3}
-      gutter={4}
-      renderItem={renderItem}
-    />
-  )
-}
-```
-
-数据：
-
-```js common
-const genTextData = (keyPrefix) => {
-  return [
-    'This is an text.',
-    'This is a looooooooooooooooooong text.',
-    '基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库',
-    '短文本',
-    '数据源必须包含key字段，.',
-    'This is a loooooooooooooooooooooooooooooooong text.',
-    'This is a loooooooooooooooooooooooooooooooong text.',
-  ].map((content, index) => {
-    return {
-      key: keyPrefix + index,
-      content,
-    }
-  })
-}
-```
+::: $demo1 :::
 
 ### 动态修改列数
 
 columnNum 瀑布流列数，默认两列
 
-```jsx
-function Demo() {
-  const { genTextData } = COMMON
-  const [columnNum, setColumnNum] = react.useState(3)
-  const [list, setList] = react.useState(genTextData('daymic_'))
-
-  const renderItem = (item) => {
-    return (
-      <View style={{ background: '#EEE' }}>
-        <Text>{item.content}</Text>
-      </View>
-    )
-  }
-
-  const handleAddColumn = react.useCallback(() => {
-    if (columnNum < 5) {
-      setColumnNum(columnNum + 1)
-    }
-  }, [columnNum])
-
-  const handleMinusColumn = react.useCallback(() => {
-    if (columnNum > 2) {
-      setColumnNum(columnNum - 1)
-    }
-  }, [columnNum])
-
-  return (
-    <>
-      <WaterfallFlow
-        dataSource={list}
-        columnNum={columnNum}
-        gutter={4}
-        renderItem={renderItem}
-      />
-      <View style={{ display: 'flex', marginTop: '16px' }}>
-        <Button onClick={handleAddColumn}>加一列</Button>
-        <Button onClick={handleMinusColumn}>减一列</Button>
-      </View>
-    </>
-  )
-}
-```
+::: $demo2 :::
 
 ### 延迟加载 & 主动触发 Resize
 
@@ -122,78 +38,9 @@ function Demo() {
 - 延迟加载的场景主要用于渲染项中包含图片等元素渲染时无法及时加载完成的元素时，设置一个延迟时间，尽可能的避免元素渲染在列表中后因图片加载而出现的尺寸跳动以及某一列过长的情况
 - 主动触发 Resize 可以在在组件内部需要主动触发元素刷新元素尺寸时调用 renderItem 地第二个参数，会触发元素及瀑布流的受影响元素的重新排版
 
-```js common
-const mockGoods = () => {
-  const initData = [
-    {
-      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
-      title:
-        '中老年羽绒服男冬季爸爸装薄短款白鸭绒中年人男士保暖外套男装 夜空黑 L【建议115斤以内】',
-      price: '¥165.00',
-    },
-    {
-      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
-      title: 'HLA海澜之家马丁靴男士高帮男靴复古工装鞋',
-      price: '¥361.00',
-    },
-    {
-      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
-      title:
-        '洁丽雅拖鞋男夏浴室洗澡防滑家居室内EVA大码男士凉拖鞋居家用夏季防臭 灰色 41-42【标准码】',
-      price: '¥22.50',
-    },
-    {
-      image: 'https://img.yzcdn.cn/vant/cat.jpeg',
-      title: '夏季新款男士T恤宽松气质高端百搭时尚短袖体恤潮牌',
-      price: '¥212.00',
-    },
-  ]
-  return new Array(10).fill('').map((item, index) => {
-    return {
-      key: index,
-      ...initData[index % 4],
-      isCutPrice: index % 2 === 0 ? true : false,
-    }
-  })
-}
-```
+案例
 
-```jsx
-function Demo() {
-  const { mockGoods } = COMMON
-  const [columnNum, setColumnNum] = react.useState(3)
-  const [list, setList] = react.useState(mockGoods())
-
-  const renderItem = (item, forceResize) => {
-    return (
-      <View className="van-demo-goods-item-wrapper">
-        <View className="van-demo-goods-item">
-          <TaroImage
-            src={item.image}
-            className="img"
-            onLoad={forceResize} // 当图片加载完成时触发forceResize
-          />
-          <View className="title">{item.title}</View>
-          {item.isCutPrice && <Text className="cutPrice">最近大降价</Text>}
-          <View className="price">{item.price}</View>
-        </View>
-      </View>
-    )
-  }
-
-  return (
-    <>
-      <WaterfallFlow
-        dataSource={list}
-        columnNum={2}
-        gutter={8}
-        renderItem={renderItem}
-        calculationDelay={1000}
-      />
-    </>
-  )
-}
-```
+::: $demo3 :::
 
 ### BaseRecord [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/waterfall-flow.d.ts)
 

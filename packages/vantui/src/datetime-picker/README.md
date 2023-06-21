@@ -18,184 +18,31 @@ import { DatetimePicker } from '@antmjs/vantui'
 
 `value` 为 Date 对象。
 
-```jsx
-function Demo() {
-  const [state, setState] = react.useState({
-    minDate: new Date(2018, 0, 1).getTime(),
-    currentDate: null,
-  })
-
-  const onInput = react.useCallback(
-    function (event) {
-      setState({
-        ...state,
-        currentDate: event.detail,
-      })
-    },
-    [state],
-  )
-
-  return (
-    <DatetimePicker
-      type="datetime"
-      value={state.currentDate}
-      minDate={state.minDate}
-      maxDate={state.maxDate}
-      onInput={onInput}
-    />
-  )
-}
-```
+::: $demo1 :::
 
 ### 选择日期（年月日）
 
 `value` 为 Date 对象，通过传入 `formatter` 函数对选项文字进行处理。
 
-```jsx
-function Demo() {
-  const [state, setState] = react.useState({
-    minDate: new Date(2018, 0, 1).getTime(),
-    currentDate: null,
-  })
-
-  const onInput = react.useCallback(
-    function (event) {
-      setState({
-        ...state,
-        currentDate: event.detail,
-      })
-    },
-    [state],
-  )
-
-  const formatter = react.useCallback(function (type, value) {
-    if (type === 'year') {
-      return `${value}年`
-    }
-
-    if (type === 'month') {
-      return `${value}月`
-    }
-
-    return value
-  })
-
-  return (
-    <DatetimePicker
-      type="date"
-      value={state.currentDate}
-      minDate={state.minDate}
-      maxDate={state.maxDate}
-      onInput={onInput}
-      formatter={formatter}
-    />
-  )
-}
-```
+::: $demo2 :::
 
 ### 选择日期（年月）
 
 `value` 为 Date 对象。
 
-```jsx
-function Demo() {
-  const [state, setState] = react.useState({
-    currentDate: new Date(2018, 0, 1),
-    minDate: new Date(2018, 0, 1).getTime(),
-  })
-
-  const onInput = react.useCallback(
-    function (event) {
-      setState({
-        currentDate: event.detail,
-      })
-    },
-    [state],
-  )
-
-  return (
-    <DatetimePicker
-      type="year-month"
-      value={state.currentDate}
-      minDate={state.minDate}
-      onInput={onInput}
-    />
-  )
-}
-```
+::: $demo3 :::
 
 ### 选择时间
 
 `value` 为字符串。
 
-```jsx
-function Demo() {
-  const [state, setState] = react.useState({
-    currentDate: '12:00',
-    minHour: 10,
-    maxHour: 20,
-  })
-
-  const onInput = react.useCallback(
-    function (event) {
-      setState({
-        currentDate: event.detail,
-      })
-    },
-    [state],
-  )
-
-  return (
-    <DatetimePicker
-      type="time"
-      value={state.currentDate}
-      minHour={state.minHour}
-      maxHour={state.maxHour}
-      onInput={onInput}
-    />
-  )
-}
-```
+::: $demo4 :::
 
 ### 选项过滤器
 
 通过传入 `filter` 函数，可以对选项数组进行过滤，实现自定义时间间隔。
 
-```jsx
-function Demo() {
-  const [state, setState] = react.useState({
-    currentDate: '12:00',
-    minHour: 10,
-    maxHour: 20,
-  })
-
-  const onInput = react.useCallback(
-    function (event) {
-      setState({
-        currentDate: event.detail,
-      })
-    },
-    [state],
-  )
-
-  return (
-    <DatetimePicker
-      type="time"
-      value={state.currentDate}
-      minHour={state.minHour}
-      maxHour={state.maxHour}
-      onInput={onInput}
-      filter={(type, options) => {
-        if (type === 'minute') {
-          return options.filter((option) => option % 5 === 0)
-        }
-
-        return options
-      }}
-    />
-  )
-}
-```
+::: $demo5 :::
 
 ### DatetimePickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)
 

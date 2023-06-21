@@ -50,88 +50,14 @@ page {
 
 `ConfigProvider` 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 `ConfigProvider` 组件，并通过 `themeVars` 属性来配置一些主题变量。
 
-```jsx
-const themeVars = {
-  rateIconFullColor: '#e19a9a',
-  sliderBarHeight: '4px',
-  sliderButtonWidth: '20px',
-  sliderButtonHeight: '20px',
-  sliderActiveBackgroundColor: '#e19a9a',
-  buttonPrimaryBorderColor: '#e19a9a',
-  buttonPrimaryBackgroundColor: '#e19a9a',
-}
-
-function Demo() {
-  const [rate, setRate] = react.useState(4)
-  const [slider, setSlider] = react.useState(50)
-
-  return (
-    <>
-      <ConfigProvider themeVars={themeVars}>
-        <CellGroup>
-          <Field
-            label="评分"
-            renderInput={
-              <Rate value={rate} onChange={(e) => setRate(e.detail)}></Rate>
-            }
-          ></Field>
-          <Field
-            label="滑块"
-            border={false}
-            renderInput={
-              <View style="width: 100%">
-                <Slider
-                  value={slider}
-                  onChange={(e) => setSlider(e.detail)}
-                ></Slider>
-              </View>
-            }
-          ></Field>
-        </CellGroup>
-        <View style="margin: 16px">
-          <Button round block type="primary">
-            提交
-          </Button>
-        </View>
-      </ConfigProvider>
-      <ConfigProvider>
-        <CellGroup>
-          <Field
-            label="评分"
-            renderInput={
-              <Rate value={rate} onChange={(e) => setRate(e.detail)}></Rate>
-            }
-          ></Field>
-          <Field
-            label="滑块"
-            border={false}
-            renderInput={
-              <View style="width: 100%">
-                <Slider
-                  value={slider}
-                  onChange={(e) => setSlider(e.detail)}
-                ></Slider>
-              </View>
-            }
-          ></Field>
-        </CellGroup>
-        <View style="margin: 16px">
-          <Button round block type="primary">
-            提交
-          </Button>
-        </View>
-      </ConfigProvider>
-    </>
-  )
-}
-```
+::: $demo1 :::
 
 ### ConfigProviderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/config-provider.d.ts)
 
-| 参数      | 说明                           | 类型                          | 默认值 | 必填   |
-| --------- | ------------------------------ | ----------------------------- | ------ | ------ |
-| themeVars | 自定义主题变量, 具体请查看详情 | _&nbsp;&nbsp;IThemeVars<br/>_ | -      | `true` |
-| children  | -                              | _&nbsp;&nbsp;ReactNode<br/>_  | -      | `true` |
+| 参数      | 说明                           | 类型                          | 默认值 | 必填    |
+| --------- | ------------------------------ | ----------------------------- | ------ | ------- |
+| themeVars | 自定义主题变量, 具体请查看详情 | _&nbsp;&nbsp;IThemeVars<br/>_ | -      | `false` |
+| children  | -                              | _&nbsp;&nbsp;ReactNode<br/>_  | -      | `true`  |
 
 ### 公共样式变量 Color Palette
 

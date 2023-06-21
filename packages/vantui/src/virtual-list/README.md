@@ -19,35 +19,9 @@ import { VirtualList } from '@antmjs/vantui'
 - 高度的设置尽量通过 className 去设置
 - 虚拟列表里面的图片请使用`Taro`自带的
 
-```jsx
-const data = COMMON.mockGoods()
+案例如下
 
-function Demo() {
-  return (
-    <VirtualList
-      style={{ padding: 10, boxSizing: 'border-box' }}
-      height="calc(100vh - 125px)"
-      dataSource={data}
-      showCount={3}
-      ItemRender={react.memo(({ index, item, className, ...props }) => {
-        return (
-          <View
-            className={`van-demo-goods-item-wrapper ${className}`}
-            {...props}
-          >
-            <View className="van-demo-goods-item">
-              <TaroImage src={item.image} className="img" />
-              <View className="title">{item.title}</View>
-              {item.isCutPrice && <Text className="cutPrice">最近大降价</Text>}
-              <View className="price">{item.price}</View>
-            </View>
-          </View>
-        )
-      })}
-    />
-  )
-}
-```
+::: $demo1 :::
 
 模拟商品数据
 

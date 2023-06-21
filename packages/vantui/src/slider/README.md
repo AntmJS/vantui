@@ -16,81 +16,33 @@ import { Slider } from '@antmjs/vantui'
 
 ### 基本用法
 
-```jsx
-function Demo() {
-  return <Slider value="50" />
-}
-```
-
-```js
-
-```
+::: $demo1 :::
 
 ### 双滑块
 
 添加 `range` 属性就可以开启双滑块模式，确保 `value` 的值是一个数组。
 
-```jsx
-function Demo() {
-  return <Slider value={[10, 50]} range />
-}
-```
-
-```js
-
-```
+::: $demo2 :::
 
 ### 指定选择范围
 
-```jsx
-function Demo() {
-  return <Slider min="-50" max="50" />
-}
-```
+::: $demo3 :::
 
 ### 禁用
 
-```jsx
-function Demo() {
-  return <Slider value="50" disabled />
-}
-```
+::: $demo4 :::
 
 ### 指定步长
 
-```jsx
-function Demo() {
-  return <Slider value="50" step="10" />
-}
-```
+::: $demo5 :::
 
 ### 自定义样式
 
-```jsx
-function Demo() {
-  return <Slider value="50" barHeight="4px" activeColor="#ee0a24" />
-}
-```
+::: $demo6 :::
 
 ### 自定义按钮
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState(50)
-  return (
-    <Slider
-      value={value}
-      onDrag={(e) => {
-        setValue(e.detail.value)
-      }}
-      onChange={(e) => {
-        setValue(e.detail)
-      }}
-      renderButton={<View class="customButton">{value}/100</View>}
-    />
-  )
-}
-```
+::: $demo7 :::
 
 h5 注意需要需加`visibility: visible`
 
@@ -111,16 +63,7 @@ h5 注意需要需加`visibility: visible`
 
 设置 `vertical` 属性后，滑块会垂直展示，且高度为 100% 父元素高度。
 
-```jsx
-function Demo() {
-  return (
-    <View style={{ height: '200px' }}>
-      <Slider value="40" />
-      <Slider value="60" vertical={true} />
-    </View>
-  )
-}
-```
+::: $demo8 :::
 
 ### SliderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/slider.d.ts)
 
@@ -140,7 +83,7 @@ function Demo() {
 | onChange      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;ITouchEvent&nbsp;&<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SliderEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |
 | onDragStart   | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                             | -      | `false` |
 | onDragEnd     | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                             | -      | `false` |
-| renderButton  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;React.ReactNode<br/>_                                                  | -      | `false` |
+| renderButton  | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                                                  | -      | `false` |
 
 ### 样式变量
 

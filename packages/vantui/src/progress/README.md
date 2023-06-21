@@ -70,7 +70,7 @@ function Demo() {
 | 参数        | 说明 | 类型                                                | 默认值 | 必填    |
 | ----------- | ---- | --------------------------------------------------- | ------ | ------- |
 | inactive    | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| percentage  | -    | _&nbsp;&nbsp;number<br/>_                           | -      | `true`  |
+| percentage  | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `true`  |
 | pivotText   | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
 | pivotColor  | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 | trackColor  | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |

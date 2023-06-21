@@ -17,7 +17,7 @@ export interface GridProps extends ViewProps {
   /**
    * @description 列数
    */
-  columnNum?: number
+  columnNum?: number | string
   /**
    * @description 是否居中排列
    */

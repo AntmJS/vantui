@@ -12,32 +12,7 @@ import { PullToRefresh } from '@antmjs/vantui'
 
 ### 基本使用
 
-```jsx
-function Demo() {
-  const onRefresh = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve()
-      }, 1000)
-    })
-  }
-
-  return (
-    <PullToRefresh onRefresh={onRefresh}>
-      <View style={{ padding: '0 12px' }}>
-        {new Array(10).fill(1).map((item, index) => (
-          <View
-            style={{ padding: 12, background: '#fff', marginBottom: 12 }}
-            key={`PullToRefresh${index}`}
-          >
-            {index}
-          </View>
-        ))}
-      </View>
-    </PullToRefresh>
-  )
-}
-```
+::: $demo1 :::
 
 解决和滚动操作冲突问题
 
@@ -67,7 +42,7 @@ function Index() {
 | renderLoading   | 自定义加载                                       | _&nbsp;&nbsp;React.ReactNode<br/>_                    | -           | `false` |
 | successText     | 加载成功文案                                     | _&nbsp;&nbsp;React.ReactNode<br/>_                    | `刷新成功`  | `false` |
 | onRefresh       | 触发刷新方法，返回 Promise 成功                  | _&nbsp;&nbsp;()&nbsp;=>&nbsp;Promise<undefined><br/>_ | -           | `true`  |
-| touchMaxStart   | 可触发下拉的 y 轴间距，相对于 PullToRefresh 组件 | _&nbsp;&nbsp;number<br/>_                             | `300`       | `true`  |
+| touchMaxStart   | 可触发下拉的 y 轴间距，相对于 PullToRefresh 组件 | _&nbsp;&nbsp;number<br/>_                             | `300`       | `false` |
 | headHeight      | 高度                                             | _&nbsp;&nbsp;number<br/>_                             | `40`        | `false` |
 | disable         | 是否禁用                                         | _&nbsp;&nbsp;boolean<br/>_                            | `false`     | `false` |
 | successDuration | 成功状态展示时长                                 | _&nbsp;&nbsp;number<br/>_                             | `1000`      | `false` |

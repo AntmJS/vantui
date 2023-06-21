@@ -3,7 +3,7 @@ import { ViewProps } from '@tarojs/components'
 
 export interface ProgressProps extends ViewProps {
   inactive?: boolean
-  percentage: number
+  percentage: number | string
   pivotText?: ReactNode
   pivotColor?: string
   trackColor?: string

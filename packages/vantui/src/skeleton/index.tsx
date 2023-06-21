@@ -29,6 +29,7 @@ export function Skeleton(props: SkeletonProps) {
   useEffect(
     function () {
       setState((pre: any) => {
+        // @ts-ignore
         return { ...pre, rowArray: Array.from({ length: row }) }
       })
     },

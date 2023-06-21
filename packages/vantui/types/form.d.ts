@@ -137,10 +137,15 @@ export interface FormItemProps extends ViewProps {
   /**
    * @description 正则校验值，或者自定义校验后call回掉函数返回错误信息，支持数组或单项设置
    */
-  rules?: {
-    rule: ((value: any, call: (errMess: string) => void) => void) | RegExp
-    message?: string
-  }[]
+  rules?:
+    | {
+        rule: ((value: any, call: (errMess: string) => void) => void) | RegExp
+        message?: string
+      }[]
+    | {
+        rule: ((value: any, call: (errMess: string) => void) => void) | RegExp
+        message?: string
+      }
 }
 /**
  * @title IFormInstance
@@ -227,7 +232,7 @@ export type IFormInstanceAPI = {
   >
 }
 
-type IuseForm = (
+export type IuseForm = (
   form?: IFormInstanceAPI,
   initialValues?: Record<string, any>,
 ) => IFormInstanceAPI

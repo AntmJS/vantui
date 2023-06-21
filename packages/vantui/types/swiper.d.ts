@@ -19,7 +19,7 @@ export interface SwiperProps extends ViewProps {
   /**
    * @description 初始化索引值
    */
-  initPage: number | string
+  initPage?: number | string
   /**
    * @description 自动轮播时长，0表示不会自动轮播
    */

@@ -14,8 +14,8 @@ type ICalenarMonthProps = {
   date?: string
   type?: string
   color?: string
-  minDate?: number
-  maxDate?: number
+  minDate?: number | Date
+  maxDate?: number | Date
   showMark?: boolean
   rowHeight?: number | string
   currentDate?: string

@@ -21,7 +21,7 @@ export interface SliderProps extends ViewProps {
   onChange?: (e: ITouchEvent & SliderEvent) => void
   onDragStart?: () => void
   onDragEnd?: () => void
-  renderButton?: (value: number) => React.ReactNode
+  renderButton?: React.ReactNode
 }
 
 declare const Slider: FunctionComponent<SliderProps>

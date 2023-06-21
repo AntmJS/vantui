@@ -18,96 +18,35 @@ import { Search } from '@antmjs/vantui'
 
 `vanSearch` 中，value 用于控制搜索框中的文字。background 可以自定义搜索框外部背景色。
 
-```jsx
-function Demo() {
-  return <Search placeholder="请输入搜索关键词" />
-}
-```
+::: $demo1 :::
 
 ### 事件监听
 
 `vanSearch` 提供了 search 和 cancel 事件。search 事件在用户点击键盘上的搜索按钮触发。cancel 事件在用户点击搜索框右侧取消按钮时触发。
 
-```jsx
-function Demo() {
-  const onSearch = (e) => {
-    Toast.show(`search: ${e.detail}`)
-  }
-  const onCancel = (e) => {
-    Toast.show(`onCancel`)
-  }
-  return (
-    <>
-      <Search
-        placeholder="请输入搜索关键词"
-        showAction
-        onSearch={onSearch}
-        onCancel={onCancel}
-      />
-      <Toast />
-    </>
-  )
-}
-```
+::: $demo2 :::
 
 ### 搜索框内容对齐
 
 通过 `inputAlign` 属性可以设置搜索框内容的对齐方式。
 
-```jsx
-function Demo() {
-  return <Search placeholder="请输入搜索关键词" inputAlign="center" />
-}
-```
+::: $demo3 :::
 
 ### 禁用搜索框
 
 通过 `disabled` 属性可以将组件设置为禁用状态。
 
-```jsx
-function Demo() {
-  return <Search disabled placeholder="请输入搜索关键词" />
-}
-```
+::: $demo4 :::
 
 ### 自定义背景色
 
 通过`background`属性可以设置搜索框外部的背景色，通过`shape`属性设置搜索框的形状，可选值为`round`。
 
-```jsx
-function Demo() {
-  return (
-    <Search shape="round" background="#4fc08d" placeholder="请输入搜索关键词" />
-  )
-}
-```
+::: $demo5 :::
 
 ### 自定义按钮
 
-```jsx
-function Demo() {
-  const [value, setValue] = react.useState('')
-  const onSearch = (e) => {
-    Toast.show(`search: ${e.detail}`)
-  }
-
-  const searchAction = () => {
-    Toast.show(`search: ${value}`)
-  }
-
-  return (
-    <>
-      <Search
-        onChange={(e) => setValue(e.detail)}
-        placeholder="请输入搜索关键词"
-        onSearch={onSearch}
-        renderAction={<View onClick={searchAction}>搜索</View>}
-      />
-      <Toast />
-    </>
-  )
-}
-```
+::: $demo6 :::
 
 ### SearchProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/search.d.ts)
 

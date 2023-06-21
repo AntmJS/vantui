@@ -362,7 +362,7 @@ const Swiper = (
   )
   // 定时轮播
   const autoplay = useCallback(() => {
-    if (propSwiper.autoPlay <= 0 || childCount <= 1) return
+    if (Number(propSwiper.autoPlay) <= 0 || childCount <= 1) return
     stopAutoPlay()
     _swiper.current.autoplayTimer = setTimeout(() => {
       next()
@@ -504,7 +504,7 @@ const Swiper = (
   }, [])
 
   const init = useCallback(
-    async (active: number = +propSwiper.initPage) => {
+    async (active = +Number(propSwiper.initPage)) => {
       const rect = await queryRect(container.current)
       const _active = Math.max(Math.min(childCount - 1, active), 0)
       const _width = propSwiper.width ? +propSwiper.width : rect?.width

@@ -61,7 +61,7 @@ export interface DropdownItemProps extends ViewProps {
   /**
    * @description 所有选项
    */
-  options: Array<DropdownMenuOption>
+  options?: Array<DropdownMenuOption>
   /**
    * @description 弹出层的样式
    */

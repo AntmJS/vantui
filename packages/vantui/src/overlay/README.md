@@ -16,41 +16,13 @@ import { Overlay } from '@antmjs/vantui'
 
 ### 基础用法
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  return (
-    <View>
-      <Button type="primary" onClick={() => setShow(true)}>
-        显示遮罩层
-      </Button>
-      <Overlay show={show} onClick={() => setShow(false)} />
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 嵌入内容
 
 通过默认插槽可以在遮罩层上嵌入任意内容。
 
-```jsx
-function Demo() {
-  const [show, setShow] = react.useState(false)
-  return (
-    <View>
-      <Button type="primary" onClick={() => setShow(true)}>
-        嵌入内容
-      </Button>
-      <Overlay show={show} onClick={() => setShow(false)}>
-        <View class="wrapper">
-          <View class="block" />
-        </View>
-      </Overlay>
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### OverlayProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/overlay.d.ts)
 
