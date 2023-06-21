@@ -21,7 +21,7 @@
 
 1. `packages/vantui-cli`下执行: `yarn build`
 2. `packages/vantui`下执行: `yarn watch`
-3. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`, 如果要修改文档代码请在`packages/vantui-doc`下修改，文档代码会自动同步到`vantui-demo`项目
+3. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`
 
 ---
 
