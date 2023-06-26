@@ -1,4 +1,4 @@
-/*! For license information please see 8789_5fb7d2c01cfffabd9e68.js.LICENSE.txt */
+/*! For license information please see 8789_b2c9302a31d08ef13425.js.LICENSE.txt */
 'use strict'
 ;(self.webpackChunk_antmjs_vantui = self.webpackChunk_antmjs_vantui || []).push(
   [
