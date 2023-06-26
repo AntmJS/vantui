@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="intro" style="text-align: center; padding: 20px;">
+  <div class="intro" style="width:160px; text-align: center; padding: 20px;">
     <img class="intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://antm-js.gitee.io/resource/antmjs-vantui.jpg">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">@antmjs/vantui</h2>
     <p>基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</p>
@@ -95,6 +95,6 @@
 
 ### 赞助
 
- <img src="https://raw.githubusercontent.com/AntmJS/vantui/main/resource/abcd.png" alt="contributors">
+ <img style="width:300px" src="https://raw.githubusercontent.com/AntmJS/vantui/main/resource/abcd.png" alt="contributors">
 
 募捐款项将全部用于项目维护，对于社区提出优质 PR 的成员给予奖励，可以是一杯奶茶、一个小红包等
