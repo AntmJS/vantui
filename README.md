@@ -95,6 +95,6 @@
 
 ### 赞助
 
- <img src="https://raw.githubusercontent.com/AntmJS/vantui/main/resource/%20code-demo.png" alt="contributors">
+ <img src="https://raw.githubusercontent.com/AntmJS/vantui/main/resource/abcd.png" alt="contributors">
 
 募捐款项将全部用于项目维护，对于社区提出优质 PR 的成员给予奖励，可以是一杯奶茶、一个小红包等
