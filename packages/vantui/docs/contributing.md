@@ -29,13 +29,20 @@
 
 ---
 
-- 内部开发成员提交: 根目录创建.webhook.js 文件，向 git 管理者获取 webhooks 的 token，然后设置
+- 内部开发成员提交: 根目录创建 temp.js
 
 ```js
-module.exports = 'xxxxxtoken'
+module.exports = {
+  // `@octokit/core`的auth参数，用于release，需要有主干main分支权限
+  gitAuth: 'xxxxx',
+  // 钉钉webhooks的token, 需要向管理者索要 , 提交代码时通知群内成员package.json等文件的更改
+  webhooksToken: 'xxxxx',
+}
 ```
 
-- fork 的项目的提交: 本地执行`eslint`后`git commit -m xxxxmessage -n`强制提交
+##### 跳过 git Hooks 的校验
+
+- 本地执行`eslint`后`git commit -m xxxxmessage -n`强制提交
 
 `message` 须按照下面规范, 如新功能`git commit -m "feat:xxxx" -n`
 
@@ -65,25 +72,6 @@ module.exports = 'xxxxxtoken'
   "test": {
     "description": "增加或修改测试用例"
   }
-}
-```
-
-### 组件 README 代码同步规则
-
-- Demo 组件的整体书写格式必须是`*** function Demo(){...} ***`
-- `reactAPI`的引用都是用 react.xxx
-- `@tarojs/components`和`@antmjs/vantui`组件都不需要自己 import
-- 内部自定义组件的组件名称须带前缀`_`, Form 组件文档下的`DatetimePickerBox_`, 暂时不支持写在`common`标识的代码块里
-- 多个组件公用的数据或方法，给代码块设置`common`标志符号，例如单独定义一个 sku 数据：
-
- <img src="https://raw.githubusercontent.com/AntmJS/vantui/main/resource/%20code-demo.png" alt="contributors">
-
-在 demo 代码块中使用
-
-```js
-function Demo () {
-  const { sku } = COMMON
-  ...
 }
 ```
 
