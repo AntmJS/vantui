@@ -58,10 +58,12 @@ function InfiniteScroll_(
       if ((!onRequest && status === 'loading') || immediately) {
         setOnRequest(true)
         const status = await loadMore()
-        setStatus(status)
-        nextTick(() => {
-          setOnRequest(false)
-        })
+        setTimeout(() => {
+          nextTick(() => {
+            setStatus(status)
+            setOnRequest(false)
+          })
+        }, 500)
       }
     },
     [loadMore, onRequest, status],
