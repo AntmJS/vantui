@@ -15,6 +15,8 @@ const defaultCompItems: IRegisterFormParams[] = [
   {
     type: 'input',
     component: Input,
+    trigger: 'onInput',
+    valueFormat: (e) => e.detail.value,
     transformProps: (props, formItemProps) => {
       return {
         type: 'text',
@@ -26,6 +28,8 @@ const defaultCompItems: IRegisterFormParams[] = [
   {
     type: 'inputNumber',
     component: Input,
+    trigger: 'onInput',
+    valueFormat: (e) => e.detail.value,
     transformProps: (props, formItemProps) => {
       return {
         type: 'number',
@@ -36,6 +40,8 @@ const defaultCompItems: IRegisterFormParams[] = [
   },
   {
     type: 'inputPrice',
+    trigger: 'onInput',
+    valueFormat: (e) => e.detail.value,
     component: Input,
     transformProps: (props, formItemProps) => {
       return {

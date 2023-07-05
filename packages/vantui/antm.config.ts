@@ -193,6 +193,10 @@ function getMenus() {
           title: 'Form 表单',
         },
         {
+          path: 'form-render',
+          title: 'FormRender 表单渲染器',
+        },
+        {
           path: 'picker',
           title: 'Picker 选择器',
         },

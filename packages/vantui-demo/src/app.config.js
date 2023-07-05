@@ -17,6 +17,7 @@ export default {
     'pages/datetime-picker/index',
     'pages/field/index',
     'pages/form/index',
+    'pages/form-render/index',
     'pages/picker/index',
     'pages/radio/index',
     'pages/rate/index',
