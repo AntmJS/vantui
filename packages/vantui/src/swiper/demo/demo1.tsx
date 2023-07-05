@@ -8,10 +8,18 @@ const { images } = COMMON
 
 export default function Demo() {
   const [initPage1] = react.useState(0)
+  const [height, setHeight] = react.useState(200)
+
+  react.useEffect(() => {
+    setTimeout(() => {
+      setHeight(220)
+    }, 2000)
+  })
+
   return (
     <View className="demo-box">
       <Swiper
-        height={200}
+        height={height}
         paginationColor="#426543"
         autoPlay="3000"
         initPage={initPage1}
@@ -19,7 +27,7 @@ export default function Demo() {
       >
         {images.map((item, index) => (
           <SwiperItem key={`swiper#demo1${index}`}>
-            <Image src={item} fit="cover" width="100%" height="200px" />
+            <Image src={item} fit="cover" width="100%" height={`${height}px`} />
           </SwiperItem>
         ))}
       </Swiper>

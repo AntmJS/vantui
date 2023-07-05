@@ -505,25 +505,27 @@ const Swiper = (
 
   const init = useCallback(
     async (active = +Number(propSwiper.initPage)) => {
-      const rect = await queryRect(container.current)
-      const _active = Math.max(Math.min(childCount - 1, active), 0)
-      const _width = propSwiper.width ? +propSwiper.width : rect?.width
-      const _height = propSwiper.height ? +propSwiper.height : rect?.height
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      size = isVertical ? _height : _width
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      trackSize = childCount * Number(size)
-      const targetOffset = getOffset(_active)
-      _swiper.current.moving = true
-      if (ready) {
-        _swiper.current.moving = false
+      const rect = await queryRect(container.current || {})
+      if (rect) {
+        const _active = Math.max(Math.min(childCount - 1, active), 0)
+        const _width = propSwiper.width ? +propSwiper.width : rect?.width
+        const _height = propSwiper.height ? +propSwiper.height : rect?.height
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        size = isVertical ? _height : _width
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        trackSize = childCount * Number(size)
+        const targetOffset = getOffset(_active)
+        _swiper.current.moving = true
+        if (ready) {
+          _swiper.current.moving = false
+        }
+        setRect(rect)
+        setActive(_active)
+        setWidth(_width)
+        setHeight(_height)
+        setOffset(targetOffset)
+        setReady(true)
       }
-      setRect(rect)
-      setActive(_active)
-      setWidth(_width)
-      setHeight(_height)
-      setOffset(targetOffset)
-      setReady(true)
     },
     [
       childCount,
@@ -565,7 +567,7 @@ const Swiper = (
       init()
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [propSwiper.initPage])
+  }, [propSwiper.initPage, propSwiper.height, propSwiper.width])
 
   useEffect(() => {
     return () => {
