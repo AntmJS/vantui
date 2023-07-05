@@ -1,4 +1,19 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.0.5...v) (2023-06-21)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.0...v) (2023-07-05)
+
+
+### Bug Fixes
+
+* 修复swiper组件渲染更新问题（[#532](https://github.com/AntmJS/vantui/issues/532)） ([13f1024](https://github.com/AntmJS/vantui/commit/13f1024ba1fd50a5c9aa33c6c562e331c0a94130))
+* infinite-scroll组件loadMore执行两次 ([#533](https://github.com/AntmJS/vantui/issues/533)) ([cdd44ba](https://github.com/AntmJS/vantui/commit/cdd44bad853fb49a1ab1d7225cc77eafd6f18357))
+
+
+### Features
+
+* 新增form-render表单渲染器 ([efe8f6e](https://github.com/AntmJS/vantui/commit/efe8f6e65824295399182f3d1e714553a77a3b91))
+
+
+
+# [3.1.0](https://github.com/AntmJS/vantui/compare/v3.0.5...v3.1.0) (2023-06-21)
 
 
 ### Bug Fixes
