@@ -1,4 +1,4 @@
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useState, useCallback, useEffect } from 'react'
 import { nextTick } from '@tarojs/taro'
 import { toPromise } from '../common/utils'
@@ -211,7 +211,7 @@ export function Dialog(props: DialogProps) {
                 },
               ])}
             >
-              <Text className="van-dialog__message-text">{message}</Text>
+              <View className="van-dialog__message-text">{message}</View>
             </View>
           )}
 
