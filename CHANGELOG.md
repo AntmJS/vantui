@@ -1,4 +1,15 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.0...v) (2023-07-05)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.1...v) (2023-07-07)
+
+
+### Bug Fixes
+
+* 小程序dialog使用input显示示异常 ([#538](https://github.com/AntmJS/vantui/issues/538)) ([6a7cef0](https://github.com/AntmJS/vantui/commit/6a7cef0dbd335a77cd73dca989d8122aa0116157))
+* grid的children非grid-item出现异常（[#539](https://github.com/AntmJS/vantui/issues/539)） ([ea274bc](https://github.com/AntmJS/vantui/commit/ea274bc52c5eaff3480b445b06f8afe78bbb89ad))
+* infinite-scroll组件loadmore执行两次 （[#533](https://github.com/AntmJS/vantui/issues/533)） ([d719546](https://github.com/AntmJS/vantui/commit/d71954623fe08d9ccb3611cce8c31cb729109057))
+
+
+
+## [3.1.1](https://github.com/AntmJS/vantui/compare/v3.1.0...v3.1.1) (2023-07-05)
 
 
 ### Bug Fixes
