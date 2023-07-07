@@ -1,5 +1,12 @@
 import { View } from '@tarojs/components'
-import { cloneElement, useCallback, useMemo, useRef, useEffect } from 'react'
+import {
+  cloneElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useEffect,
+  isValidElement,
+} from 'react'
 import { GridProps } from '../../types/grid'
 import * as utils from '../wxs/utils'
 import * as computed from './wxs'
@@ -48,24 +55,33 @@ export function Grid(props: GridProps) {
       const res: Array<JSX.Element> = []
       if (others.children && Array.isArray(others.children)) {
         others.children.forEach((child, index) => {
-          res.push(
-            cloneElement(child as JSX.Element, {
-              setChildrenInstance,
-              key: index,
-              index,
-              parentInstance: {
-                columnNum,
-                border,
-                square,
-                gutter,
-                clickable,
-                center,
-                direction,
-                reverse,
-                iconSize,
-              },
-            }),
-          )
+          if (
+            child &&
+            isValidElement(child) &&
+            // @ts-ignore
+            child?.type?.name === 'GridItem'
+          ) {
+            res.push(
+              cloneElement(child as JSX.Element, {
+                setChildrenInstance,
+                key: index,
+                index,
+                parentInstance: {
+                  columnNum,
+                  border,
+                  square,
+                  gutter,
+                  clickable,
+                  center,
+                  direction,
+                  reverse,
+                  iconSize,
+                },
+              }),
+            )
+          } else {
+            res.push(child)
+          }
         })
       }
       return res
