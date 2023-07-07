@@ -59,11 +59,9 @@ function InfiniteScroll_(
         setOnRequest(true)
         const status = await loadMore()
         setTimeout(() => {
-          nextTick(() => {
-            setStatus(status)
-            setOnRequest(false)
-          })
-        }, 500)
+          setStatus(status)
+          setOnRequest(false)
+        })
       }
     },
     [loadMore, onRequest, status],
@@ -90,7 +88,7 @@ function InfiniteScroll_(
     const contentObserver_ = new IntersectionObserver(function (res: any) {
       const target = res[0]
       if (target && target.intersectionRatio >= 0.6) {
-        setForceKey(Math.random() + Math.random())
+        setForceKey(Math.random() + target.time)
       }
     }, options)
     contentObserver.current = contentObserver_
@@ -122,8 +120,10 @@ function InfiniteScroll_(
       } else {
         contentObserver.current.relativeToViewport({ bottom: 0 })
       }
-      contentObserver.current.observe(`.${clsPrefix}${compIndex}`, () => {
-        setForceKey(Math.random() + Math.random())
+      contentObserver.current.observe(`.${clsPrefix}${compIndex}`, (res) => {
+        if (res.intersectionRatio > 0) {
+          setForceKey(Math.random() + res.time)
+        }
       })
     },
     [compIndex, initObserveH5, parentClassName],
