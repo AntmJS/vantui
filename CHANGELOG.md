@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.1...v) (2023-07-07)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.2...v) (2023-07-10)
+
+
+### Bug Fixes
+
+* grid组件支付宝报错 （[#542](https://github.com/AntmJS/vantui/issues/542)） ([c3352ad](https://github.com/AntmJS/vantui/commit/c3352ad5e4da99acfce951f02bb27758a145e378))
+
+
+
+## [3.1.2](https://github.com/AntmJS/vantui/compare/v3.1.1...v3.1.2) (2023-07-07)
 
 
 ### Bug Fixes
