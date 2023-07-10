@@ -90,7 +90,7 @@ export function IndexBar(props: IndexBarProps) {
     (top) => {
       pageScrollTo({
         duration: 0,
-        scrollTop: top + stickyOffsetTop,
+        scrollTop: top - stickyOffsetTop,
       })
     },
     [stickyOffsetTop],
