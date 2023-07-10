@@ -55,12 +55,7 @@ export function Grid(props: GridProps) {
       const res: Array<JSX.Element> = []
       if (others.children && Array.isArray(others.children)) {
         others.children.forEach((child, index) => {
-          if (
-            child &&
-            isValidElement(child) &&
-            // @ts-ignore
-            child?.type?.name === 'GridItem'
-          ) {
+          if (child && isValidElement(child)) {
             res.push(
               cloneElement(child as JSX.Element, {
                 setChildrenInstance,
