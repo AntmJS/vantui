@@ -11,7 +11,7 @@
   "editor.tabSize": 2,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
@@ -20,5 +20,8 @@
     "overrideConfigFile": "eslint.config.js"
   },
   "stylelint.enable": true,
-  "stylelint.configFile": "stylelint.config.js"
+  "stylelint.configFile": "stylelint.config.js",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
 }
