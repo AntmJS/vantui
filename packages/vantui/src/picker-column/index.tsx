@@ -6,7 +6,7 @@ import {
   forwardRef,
   useRef,
 } from 'react'
-import { View, CustomWrapper } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { PickerColumnProps } from '../../types/picker-column'
@@ -139,8 +139,7 @@ function Index(
   )
 
   const onClickItem = useCallback(
-    function (event) {
-      const { index } = event.currentTarget.dataset
+    function (index) {
       if (!isMoving.current) {
         setIndex(Number(index), true)
       }
@@ -199,44 +198,6 @@ function Index(
     }
   })
 
-  const renderColumn = (
-    <View
-      style={computed.wrapperStyle({
-        offset,
-        itemHeight,
-        visibleItemCount,
-        duration,
-      })}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-      onTouchCancel={onTouchEnd}
-    >
-      {options.map((option: any, index: number) => {
-        return (
-          <View
-            disable-scroll
-            key={`picker-column__item${index}`}
-            data-index={index}
-            style={{ height: itemHeight + 'px' }}
-            className={
-              'van-ellipsis ' +
-              utils.bem('picker-column__item', {
-                disabled: option && option.disabled,
-                selected: index === currentIndex,
-              }) +
-              ' ' +
-              (index === currentIndex ? 'active-class' : '')
-            }
-            onClick={onClickItem}
-          >
-            {computed.optionText(option, valueKey)}
-          </View>
-        )
-      })}
-    </View>
-  )
-
   return (
     <View
       className={`van-picker-column  ${className}`}
@@ -249,15 +210,41 @@ function Index(
       ])}
       {...others}
     >
-      {process.env.TARO_ENV === 'weapp' ? (
-        <View>
-          <CustomWrapper>
-            <View>{renderColumn}</View>
-          </CustomWrapper>
+      <View
+        style={computed.wrapperStyle({
+          offset,
+          itemHeight,
+          visibleItemCount,
+          duration,
+        })}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
+      >
+        <View disable-scroll>
+          {options.map((option: any, index: number) => {
+            return (
+              <View
+                key={`picker-column__item${index}`}
+                style={{ height: itemHeight + 'px' }}
+                className={
+                  'van-ellipsis ' +
+                  utils.bem('picker-column__item', {
+                    disabled: option && option.disabled,
+                    selected: index === currentIndex,
+                  }) +
+                  ' ' +
+                  (index === currentIndex ? 'active-class' : '')
+                }
+                onClick={() => onClickItem(index)}
+              >
+                {computed.optionText(option, valueKey)}
+              </View>
+            )
+          })}
         </View>
-      ) : (
-        <View>{renderColumn}</View>
-      )}
+      </View>
     </View>
   )
 }

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default */
 import { useState, useEffect } from 'react'
-import { View, Text, CustomWrapper } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import Tab from '../tab'
 import Tabs from '../tabs'
 import Popup from '../popup'
@@ -328,7 +328,7 @@ const InternalCascader = (props: CascaderProps) => {
     setOptiosData(state.panes)
   }
 
-  const casBody = (
+  return (
     <View className={`van-cascader ${className}`} style={style}>
       <Popup
         className="van-cascadar-popup"
@@ -418,12 +418,6 @@ const InternalCascader = (props: CascaderProps) => {
       </Popup>
     </View>
   )
-
-  if (process.env.TARO_ENV === 'h5') {
-    return casBody
-  } else {
-    return <CustomWrapper>{casBody}</CustomWrapper>
-  }
 }
 
 export const Cascader = InternalCascader

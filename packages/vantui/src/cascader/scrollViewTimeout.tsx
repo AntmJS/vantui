@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ScrollView } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 
 type Iprops = {
   timeout: number
@@ -20,9 +21,11 @@ export default function ScrollViewTimeout(props: Iprops): JSX.Element {
         const index = getIndexByValue(optiosData, tabvalue)
         const val = value[index]
         if (val !== undefined) {
-          setTimeout(() => {
-            setTarget(`vant-cascader-item${val}`)
-          }, timeout)
+          nextTick(() => {
+            setTimeout(() => {
+              setTarget(`vant-cascader-item${val}`)
+            }, timeout)
+          })
         } else {
           setTarget('')
         }
