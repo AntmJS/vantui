@@ -1,4 +1,20 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.2...v) (2023-07-10)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.3...v) (2023-07-25)
+
+
+### Bug Fixes
+
+* form组件form-item下边框展示 ([e2b197c](https://github.com/AntmJS/vantui/commit/e2b197cbe93878c6eee3d2eef63b0c12038ebe00))
+* IndexBar scroll into view with offset ([#545](https://github.com/AntmJS/vantui/issues/545)) ([54f09ce](https://github.com/AntmJS/vantui/commit/54f09ceab3180afb56d0bd750dc4588bc86eee53))
+
+
+### Features
+
+* config-provider支持primary-color ([#549](https://github.com/AntmJS/vantui/issues/549)) ([cbbd281](https://github.com/AntmJS/vantui/commit/cbbd281a51868df24ca79034edfe76ea94b7417b))
+* picker、cascader组件移除custom-wrapper([#547](https://github.com/AntmJS/vantui/issues/547)) ([46a7511](https://github.com/AntmJS/vantui/commit/46a75110759926d8ecf002cd91ce4b2603c01cb9))
+
+
+
+## [3.1.3](https://github.com/AntmJS/vantui/compare/v3.1.2...v3.1.3) (2023-07-10)
 
 
 ### Bug Fixes
