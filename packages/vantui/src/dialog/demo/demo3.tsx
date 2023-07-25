@@ -5,8 +5,8 @@ import { Dialog, Cell } from '@antmjs/vantui'
 
 export default function Demo() {
   const alert = react.useCallback((title) => {
-    const beforeClose = (action) => {
-      new Promise((resolve) => {
+    const beforeClose = (action: string): Promise<boolean> => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           if (action === 'confirm') {
             resolve(true)
@@ -23,8 +23,9 @@ export default function Demo() {
       theme: 'round-button',
       selector: 'vanDialog2',
       beforeClose,
+      asyncClose: true,
     }).then((value) => {
-      console.log('dialog result', value)
+      console.log('dialog result11', value)
     })
   }, [])
 
