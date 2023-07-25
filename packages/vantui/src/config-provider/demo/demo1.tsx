@@ -11,13 +11,11 @@ import {
 } from '@antmjs/vantui'
 
 const themeVars = {
+  primaryColor: '#e19a9a',
   rateIconFullColor: '#e19a9a',
   sliderBarHeight: '4px',
   sliderButtonWidth: '20px',
   sliderButtonHeight: '20px',
-  sliderActiveBackgroundColor: '#e19a9a',
-  buttonPrimaryBorderColor: '#e19a9a',
-  buttonPrimaryBackgroundColor: '#e19a9a',
 }
 
 export default function Demo() {

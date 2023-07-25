@@ -1,3 +1,4 @@
+/* stylelint-disable selector-type-no-unknown */
 // Color Palette
 @black: #1a1a1a;
 @white: #fff;
@@ -17,6 +18,12 @@
 @green: #07c160;
 @page-back: @white;
 @primary-color: @green;
+
+/* stylelint-disable-next-line selector-max-type */
+:root,
+page {
+  --primary-color: @primary-color;
+}
 
 // z-index
 @sticky-z-index: 800;
@@ -127,7 +134,7 @@
 @button-default-background-color: @white;
 
 @button-primary-color: @white;
-@button-primary-background-color: @primary-color;
+@button-primary-background-color: var(--primary-color);
 
 @button-info-color: @white;
 @button-info-background-color: @blue;
@@ -160,14 +167,14 @@
 @calendar-day-height: 128px;
 @calendar-day-font-size: @font-size-lg;
 @calendar-range-edge-color: @white;
-@calendar-range-edge-background-color: @primary-color;
-@calendar-range-middle-color: @primary-color;
+@calendar-range-edge-background-color: var(--primary-color);
+@calendar-range-middle-color: var(--primary-color);
 @calendar-range-middle-background-opacity: 0.1;
 @calendar-selected-day-size: 108px;
 @calendar-selected-day-color: @white;
 @calendar-info-font-size: @font-size-xs;
 @calendar-info-line-height: 28px;
-@calendar-selected-day-background-color: @primary-color;
+@calendar-selected-day-background-color: var(--primary-color);
 @calendar-day-disabled-color: @gray-5;
 @calendar-confirm-button-height: 72px;
 @calendar-confirm-button-margin: 14px 0;
@@ -225,7 +232,7 @@
 @checkbox-transition-duration: 0.2s;
 @checkbox-label-margin: 20px;
 @checkbox-label-color: @text-color;
-@checkbox-checked-icon-color: @primary-color;
+@checkbox-checked-icon-color: var(--primary-color);
 @checkbox-disabled-icon-color: @gray-5;
 @checkbox-disabled-label-color: @gray-5;
 @checkbox-disabled-background-color: @border-color;
@@ -354,8 +361,8 @@
 @nav-bar-height: 92px; // 对MiniNavbar无效
 @nav-bar-background-color: @white;
 @nav-bar-arrow-size: 32px; // 对MiniNavbar无效
-@nav-bar-icon-color: @primary-color;
-@nav-bar-text-color: @primary-color;
+@nav-bar-icon-color: var(--primary-color);
+@nav-bar-text-color: var(--primary-color);
 @nav-bar-title-font-size: @font-size-lg;
 @nav-bar-title-text-color: @text-color;
 
@@ -397,7 +404,7 @@
 @picker-cancel-action-color: @gray-6;
 @picker-option-font-size: @font-size-lg;
 @picker-option-text-color: @black;
-@picker-loading-icon-color: @primary-color;
+@picker-loading-icon-color: var(--primary-color);
 @picker-loading-mask-color: rgba(255, 255, 255, 0.9);
 @picker-option-disabled-opacity: 0.3;
 @picker-option-selected-text-color: @text-color;
@@ -413,10 +420,10 @@
 @progress-height: 8px;
 @progress-background-color: @gray-3;
 @progress-pivot-padding: 0 10px;
-@progress-color: @primary-color;
+@progress-color: var(--primary-color);
 @progress-pivot-font-size: @font-size-xs;
 @progress-pivot-line-height: 1.6;
-@progress-pivot-background-color: @primary-color;
+@progress-pivot-background-color: var(--primary-color);
 @progress-pivot-text-color: @white;
 
 // Radio
@@ -425,7 +432,7 @@
 @radio-transition-duration: 0.2s;
 @radio-label-margin: 20px;
 @radio-label-color: @text-color;
-@radio-checked-icon-color: @primary-color;
+@radio-checked-icon-color: var(--primary-color);
 @radio-disabled-icon-color: @gray-5;
 @radio-disabled-label-color: @gray-5;
 @radio-disabled-background-color: @border-color;
@@ -447,7 +454,7 @@
 @switch-node-box-shadow: 0 6px 2px 0 rgba(0, 0, 0, 0.05),
   0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 6px 0 rgba(0, 0, 0, 0.05);
 @switch-background-color: @white;
-@switch-on-background-color: @primary-color;
+@switch-on-background-color: var(--primary-color);
 @switch-transition-duration: 0.3s;
 @switch-disabled-opacity: 0.4;
 @switch-border: 2px solid rgba(0, 0, 0, 0.1);
@@ -494,11 +501,11 @@
 @sidebar-background-color: @background-color;
 @sidebar-selected-font-weight: @font-weight-bold;
 @sidebar-selected-text-color: @text-color;
-@sidebar-selected-border-color: @primary-color;
+@sidebar-selected-border-color: var(--primary-color);
 @sidebar-selected-background-color: @white;
 
 // Slider
-@slider-active-background-color: @primary-color;
+@slider-active-background-color: var(--primary-color);
 @slider-inactive-background-color: @gray-3;
 @slider-disabled-opacity: @disabled-opacity;
 @slider-bar-height: 4px;
@@ -513,7 +520,7 @@
 @step-process-text-color: @text-color;
 @step-font-size: @font-size-md;
 @step-line-color: @border-color;
-@step-finish-line-color: @primary-color;
+@step-finish-line-color: var(--primary-color);
 @step-finish-text-color: @text-color;
 @step-icon-size: 24px;
 @step-circle-size: 10px;
@@ -529,7 +536,7 @@
 @stepper-button-icon-color: @text-color;
 @stepper-button-disabled-color: @background-color;
 @stepper-button-disabled-icon-color: @gray-5;
-@stepper-button-round-theme-color: @primary-color;
+@stepper-button-round-theme-color: var(--primary-color);
 @stepper-input-width: 64px;
 @stepper-input-height: 56px;
 @stepper-input-font-size: @font-size-md;
@@ -567,7 +574,7 @@
 // TabbarItem
 @tabbar-item-font-size: @font-size-sm;
 @tabbar-item-text-color: @gray-7;
-@tabbar-item-active-color: @primary-color;
+@tabbar-item-active-color: var(--primary-color);
 @tabbar-item-line-height: 1;
 @tabbar-item-icon-size: 44px;
 @tabbar-item-margin-bottom: 8px;
@@ -579,7 +586,7 @@
 @tab-font-size: @font-size-md;
 
 // Tabs
-@tabs-default-color: @primary-color;
+@tabs-default-color: var(--primary-color);
 @tabs-line-height: 88px;
 @tabs-card-height: 60px;
 @tabs-nav-background-color: @white;
@@ -652,7 +659,7 @@
 @tree-select-content-background-color: @white;
 @tree-select-nav-item-padding: @padding-sm @padding-xs @padding-sm @padding-sm;
 @tree-select-item-height: 88px;
-@tree-select-item-active-color: @primary-color;
+@tree-select-item-active-color: var(--primary-color);
 @tree-select-item-disabled-color: @gray-5;
 
 // Uploader
@@ -686,11 +693,11 @@
 @dropdown-menu-background-color: @white;
 @dropdown-menu-title-font-size: 30px;
 @dropdown-menu-title-text-color: @text-color;
-@dropdown-menu-title-active-text-color: @primary-color;
+@dropdown-menu-title-active-text-color: var(--primary-color);
 @dropdown-menu-title-disabled-text-color: @gray-6;
 @dropdown-menu-title-padding: 0 @padding-xs;
 @dropdown-menu-title-line-height: 36px;
-@dropdown-menu-option-active-color: @primary-color;
+@dropdown-menu-option-active-color: var(--primary-color);
 @dropdown-menu-box-shadow: 0 4px 24px fade(@gray-7, 12);
 
 // IndexAnchor
@@ -701,7 +708,7 @@
 @index-anchor-line-height: 64px;
 @index-anchor-background-color: transparent;
 @index-anchor-active-background-color: @white;
-@index-anchor-active-text-color: @primary-color;
+@index-anchor-active-text-color: var(--primary-color);
 
 // IndexBar
 @index-bar-index-font-size: @font-size-xs;
@@ -733,7 +740,7 @@
 @pagination-color: @black;
 @pagination-font-size: @font-size-md;
 @pagination-item-border-color: #e4e7eb;
-@pagination-active-background-color: @primary-color;
+@pagination-active-background-color: var(--primary-color);
 @pagination-disable-color: rgba(116, 116, 116, 0.31);
 @pagination-disable-background-color: #f7f8fa;
 @pagination-item-border-width: 1px;
@@ -750,7 +757,7 @@
 @cascader-item-padding: 20px 40px;
 @cascader-item-font-size: 28px;
 @cascader-item-color: #1a1a1a;
-@cascader-item-active-color: @primary-color;
+@cascader-item-active-color: var(--primary-color);
 @cascader-pane-height: 684px;
 @cascader-pane-paddingTop: 20px;
 @cascader-icon-checklist-marginLeft: 20px;
@@ -762,7 +769,7 @@
 @ellipsis-font-size: 28px;
 @ellipsis-line-height: 50px;
 @ellipsis-action-font-size: 30px;
-@ellipsis-primary-color: @primary-color;
+@ellipsis-primary-color: var(--primary-color);
 
 // signature
 @signature-border-color: #dadada;
@@ -771,7 +778,7 @@
 @signature-margin-bottom: 20px;
 
 // infinite-scroll
-@infinite-scroll-primary-color: @primary-color;
+@infinite-scroll-primary-color: var(--primary-color);
 @infinite-scroll-color: @gray-6;
 @infinite-scroll-font-size: @font-size-md;
 

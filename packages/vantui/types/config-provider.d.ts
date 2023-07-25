@@ -15,6 +15,7 @@ export interface ConfigProviderProps extends ViewProps {
  * @forbidToMd true
  */
 export type IThemeVars = {
+  primaryColor?: string
   actionSheetMaxHeight?: string
   actionSheetHeaderHeight?: string
   actionSheetHeaderFontSize?: string
