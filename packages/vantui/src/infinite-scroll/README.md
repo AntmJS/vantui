@@ -53,8 +53,8 @@ import { InfiniteScroll, VirtualList } from '@antmjs/vantui'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                            | 默认值             |
-| ------------------------------- | ------------------ |
-| --infinite-scroll-primary-color | ` @primary-color;` |
-| --infinite-scroll-color         | ` @gray-6;`        |
-| --infinite-scroll-font-size     | ` @font-size-md;`  |
+| 名称                            | 默认值                   |
+| ------------------------------- | ------------------------ |
+| --infinite-scroll-primary-color | ` var(--primary-color);` |
+| --infinite-scroll-color         | ` @gray-6;`              |
+| --infinite-scroll-font-size     | ` @font-size-md;`        |

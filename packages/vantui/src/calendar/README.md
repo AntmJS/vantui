@@ -191,14 +191,14 @@ onUnselect 的回调函数参数
 | --calendar-day-height                      | ` 128px;`                                |
 | --calendar-day-font-size                   | ` @font-size-lg;`                        |
 | --calendar-range-edge-color                | ` @white;`                               |
-| --calendar-range-edge-background-color     | ` @primary-color;`                       |
-| --calendar-range-middle-color              | ` @primary-color;`                       |
+| --calendar-range-edge-background-color     | ` var(--primary-color);`                 |
+| --calendar-range-middle-color              | ` var(--primary-color);`                 |
 | --calendar-range-middle-background-opacity | ` 0.1;`                                  |
 | --calendar-selected-day-size               | ` 108px;`                                |
 | --calendar-selected-day-color              | ` @white;`                               |
 | --calendar-info-font-size                  | ` @font-size-xs;`                        |
 | --calendar-info-line-height                | ` 28px;`                                 |
-| --calendar-selected-day-background-color   | ` @primary-color;`                       |
+| --calendar-selected-day-background-color   | ` var(--primary-color);`                 |
 | --calendar-day-disabled-color              | ` @gray-5;`                              |
 | --calendar-confirm-button-height           | ` 72px;`                                 |
 | --calendar-confirm-button-margin           | ` 14px 0;`                               |

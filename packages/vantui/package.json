@@ -58,9 +58,9 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/doc": "^2.3.16",
-    "@antmjs/iconfont": "^2.3.16",
-    "@antmjs/types": "^2.3.16",
+    "@antmjs/doc": "^2.3.20",
+    "@antmjs/iconfont": "^2.3.20",
+    "@antmjs/types": "^2.3.20",
     "@antmjs/vantui-cli": "3.0.4",
     "@tarojs/components": "3.5.7",
     "@tarojs/taro": "3.5.7",
@@ -70,6 +70,7 @@
     "markdown-to-ast": "^6.0.3",
     "prettier": "^2.8.7",
     "style-resources-loader": "^1.5.0",
-    "swc-loader": "^0.2.3"
+    "swc-loader": "^0.2.3",
+    "ora": "^5.4.1"
   }
 }

@@ -211,5 +211,5 @@ function Demo() {
 | --tree-select-content-background-color | ` @white;`                                          |
 | --tree-select-nav-item-padding         | ` @padding-sm @padding-xs @padding-sm @padding-sm;` |
 | --tree-select-item-height              | ` 88px;`                                            |
-| --tree-select-item-active-color        | ` @primary-color;`                                  |
+| --tree-select-item-active-color        | ` var(--primary-color);`                            |
 | --tree-select-item-disabled-color      | ` @gray-5;`                                         |

@@ -62,7 +62,7 @@ import { Pagination } from '@antmjs/vantui'
 | --pagination-color                    | ` @black;`                    |
 | --pagination-font-size                | ` @font-size-md;`             |
 | --pagination-item-border-color        | ` #e4e7eb;`                   |
-| --pagination-active-background-color  | ` @primary-color;`            |
+| --pagination-active-background-color  | ` var(--primary-color);`      |
 | --pagination-disable-color            | ` rgba(116, 116, 116, 0.31);` |
 | --pagination-disable-background-color | ` #f7f8fa;`                   |
 | --pagination-item-border-width        | ` 1px;`                       |

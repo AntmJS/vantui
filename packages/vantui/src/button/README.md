@@ -99,35 +99,35 @@ import {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                              | 默认值                 |
-| --------------------------------- | ---------------------- |
-| --button-line-height              | ` 40px;`               |
-| --button-normal-height            | ` 80px;`               |
-| --button-normal-font-size         | ` @font-size-md;`      |
-| --button-normal-border-radius     | ` @border-radius-lg;`  |
-| --button-mini-height              | ` 44px;`               |
-| --button-mini-font-size           | ` @font-size-xs;`      |
-| --button-mini-border-radius       | ` @border-radius-sm;`  |
-| --button-mini-min-width           | ` 100px;`              |
-| --button-small-height             | ` 60px;`               |
-| --button-small-font-size          | ` @font-size-sm;`      |
-| --button-small-border-radius      | ` @border-radius-md;`  |
-| --button-small-min-width          | ` 120px;`              |
-| --button-large-height             | ` 100px;`              |
-| --button-large-font-size          | ` @font-size-lg;`      |
-| --button-large-border-radius      | ` @border-radius-lg;`  |
-| --button-default-color            | ` @text-color;`        |
-| --button-default-background-color | ` @white;`             |
-| --button-primary-color            | ` @white;`             |
-| --button-primary-background-color | ` @primary-color;`     |
-| --button-info-color               | ` @white;`             |
-| --button-info-background-color    | ` @blue;`              |
-| --button-danger-color             | ` @white;`             |
-| --button-danger-background-color  | ` @red;`               |
-| --button-warning-color            | ` @white;`             |
-| --button-warning-background-color | ` @orange;`            |
-| --button-border-width             | ` 2px;`                |
-| --button-round-border-radius      | ` @border-radius-max;` |
-| --button-plain-background-color   | ` @white;`             |
-| --button-active-opacity           | ` @active-opacity;`    |
-| --button-disabled-opacity         | ` @disabled-opacity;`  |
+| 名称                              | 默认值                   |
+| --------------------------------- | ------------------------ |
+| --button-line-height              | ` 40px;`                 |
+| --button-normal-height            | ` 80px;`                 |
+| --button-normal-font-size         | ` @font-size-md;`        |
+| --button-normal-border-radius     | ` @border-radius-lg;`    |
+| --button-mini-height              | ` 44px;`                 |
+| --button-mini-font-size           | ` @font-size-xs;`        |
+| --button-mini-border-radius       | ` @border-radius-sm;`    |
+| --button-mini-min-width           | ` 100px;`                |
+| --button-small-height             | ` 60px;`                 |
+| --button-small-font-size          | ` @font-size-sm;`        |
+| --button-small-border-radius      | ` @border-radius-md;`    |
+| --button-small-min-width          | ` 120px;`                |
+| --button-large-height             | ` 100px;`                |
+| --button-large-font-size          | ` @font-size-lg;`        |
+| --button-large-border-radius      | ` @border-radius-lg;`    |
+| --button-default-color            | ` @text-color;`          |
+| --button-default-background-color | ` @white;`               |
+| --button-primary-color            | ` @white;`               |
+| --button-primary-background-color | ` var(--primary-color);` |
+| --button-info-color               | ` @white;`               |
+| --button-info-background-color    | ` @blue;`                |
+| --button-danger-color             | ` @white;`               |
+| --button-danger-background-color  | ` @red;`                 |
+| --button-warning-color            | ` @white;`               |
+| --button-warning-background-color | ` @orange;`              |
+| --button-border-width             | ` 2px;`                  |
+| --button-round-border-radius      | ` @border-radius-max;`   |
+| --button-plain-background-color   | ` @white;`               |
+| --button-active-opacity           | ` @active-opacity;`      |
+| --button-disabled-opacity         | ` @disabled-opacity;`    |

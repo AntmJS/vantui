@@ -81,7 +81,7 @@ function Demo() {
 | --nav-bar-height           | ` 92px; // 对MiniNavbar无效` |
 | --nav-bar-background-color | ` @white;`                   |
 | --nav-bar-arrow-size       | ` 32px; // 对MiniNavbar无效` |
-| --nav-bar-icon-color       | ` @primary-color;`           |
-| --nav-bar-text-color       | ` @primary-color;`           |
+| --nav-bar-icon-color       | ` var(--primary-color);`     |
+| --nav-bar-text-color       | ` var(--primary-color);`     |
 | --nav-bar-title-font-size  | ` @font-size-lg;`            |
 | --nav-bar-title-text-color | ` @text-color;`              |

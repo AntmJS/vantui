@@ -94,14 +94,14 @@ import { Checkbox, CheckboxGroup } from '@antmjs/vantui'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                                 | 默认值             |
-| ------------------------------------ | ------------------ |
-| --checkbox-size                      | ` 40px;`           |
-| --checkbox-border-color              | ` @gray-5;`        |
-| --checkbox-transition-duration       | ` 0.2s;`           |
-| --checkbox-label-margin              | ` 20px;`           |
-| --checkbox-label-color               | ` @text-color;`    |
-| --checkbox-checked-icon-color        | ` @primary-color;` |
-| --checkbox-disabled-icon-color       | ` @gray-5;`        |
-| --checkbox-disabled-label-color      | ` @gray-5;`        |
-| --checkbox-disabled-background-color | ` @border-color;`  |
+| 名称                                 | 默认值                   |
+| ------------------------------------ | ------------------------ |
+| --checkbox-size                      | ` 40px;`                 |
+| --checkbox-border-color              | ` @gray-5;`              |
+| --checkbox-transition-duration       | ` 0.2s;`                 |
+| --checkbox-label-margin              | ` 20px;`                 |
+| --checkbox-label-color               | ` @text-color;`          |
+| --checkbox-checked-icon-color        | ` var(--primary-color);` |
+| --checkbox-disabled-icon-color       | ` @gray-5;`              |
+| --checkbox-disabled-label-color      | ` @gray-5;`              |
+| --checkbox-disabled-background-color | ` @border-color;`        |
