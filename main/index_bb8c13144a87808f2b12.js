@@ -1,4 +1,4 @@
-/*! For license information please see index_1b7ae16a83525dcc6e3b.js.LICENSE.txt */
+/*! For license information please see index_bb8c13144a87808f2b12.js.LICENSE.txt */
 !(function () {
   var e,
     t,
@@ -55019,7 +55019,7 @@
     }),
     (o.miniCssF = function (e) {}),
     (o.h = function () {
-      return '1b7ae16a83525dcc6e3b'
+      return 'bb8c13144a87808f2b12'
     }),
     (o.g = (function () {
       if ('object' == typeof globalThis) return globalThis
@@ -55977,7 +55977,10 @@ to {
                           r = null
                         n.onclick = () => {
                           r ||
-                            (le(n.innerText),
+                            (le(
+                              n.parentNode.querySelectorAll('pre code')[0]
+                                .innerText,
+                            ),
                             ae.success('复制成功！', {
                               style: { position: 'relative', top: 250 },
                             }))
