@@ -150,10 +150,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/doc@^2.3.20":
-  version "2.3.20"
-  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.20.tgz#72c4b332ced46a4e664c24bc6584c79d81b4bd6a"
-  integrity sha512-M99+HttyARhIhiCrsF4rdG4MJ2ailSZe0eD0fJpr/bdlWtRohsvhyA8V/vCyhhcUKknqy0ofUJQOwLzDNDQNCw==
+"@antmjs/doc@^2.3.21":
+  version "2.3.21"
+  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.21.tgz#44f663cc401a986c15158054f6d77eaf22a8fae4"
+  integrity sha512-K0HBZjqQj6VqTey46+jXvf/3SduCI03MkUAdme8dK30bkhNNbkrklFuV+qpaV+sspBYB7p5IhjsefxPiSz31LQ==
   dependencies:
     "@swc/core" "^1.3.60"
     "@swc/wasm" "^1.3.60"
