@@ -25,6 +25,7 @@ export default function Demo() {
         HUAWEI手机【{currentGoods?.skuName || '--'}】
       </View>
       <Sku
+        autoChoice={true}
         sku={sku}
         goodsList={goodsList}
         onChange={(e) => setCurrent(e)}

@@ -42,6 +42,11 @@ export interface SkuProps {
    * @description 自定义当前规格项组合（即商品）是否可选, 回掉参数为空的时候直接返回true
    */
   itemDisable?: (goodsItem?: IGoodItem) => boolean
+  /**
+   * @description 初始化的时候是否自动选择商品
+   * @default true
+   */
+  autoChoice?: boolean
 }
 /**
  * @title 商品项 IGoodItem

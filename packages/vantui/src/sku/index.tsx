@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { View } from '@tarojs/components'
 import classnames from 'classnames'
-import { SkuProps, IGoodItem } from '../../types/sku'
+import { SkuProps } from '../../types/sku'
 import { everyItemEqual } from './utils'
 
 const preCls = `van-sku`
@@ -18,16 +18,17 @@ export default function Sku(props: SkuProps) {
     disabledClassName = '',
     activeClassName = '',
     itemDisable,
+    autoChoice = true,
   } = props
-  const [currentGoods, setCurrentGoods] = useState<IGoodItem>()
+  const [currentSkuIds, setCurrentSkuIds] = useState<number[]>([])
 
   useEffect(
     function () {
-      if (!goodsId && goodsList) {
+      if (!goodsId && goodsList && autoChoice) {
         for (let i = 0; i < goodsList.length; i++) {
           const goodsItem = goodsList[i]
           if (goodsItem?.disabled !== true) {
-            setCurrentGoods(goodsItem)
+            if (goodsItem?.skuIds) setCurrentSkuIds(goodsItem.skuIds)
             if (onChange) onChange(goodsItem)
             break
           }
@@ -38,7 +39,7 @@ export default function Sku(props: SkuProps) {
         for (let i = 0; i < goodsList.length; i++) {
           const goodsItem = goodsList[i]
           if (goodsItem?.id === goodsId) {
-            setCurrentGoods(goodsItem)
+            if (goodsItem?.skuIds) setCurrentSkuIds(goodsItem.skuIds)
             break
           }
         }
@@ -50,41 +51,66 @@ export default function Sku(props: SkuProps) {
 
   const currentAttrCanBuy = useCallback(
     function (attrId: number, attrs: any[]) {
-      let skuIds = [...(currentGoods?.skuIds || [])]
-      if (!skuIds.length) return undefined
-      const usedAttrId = attrs.filter((it) => skuIds.includes(it.id))[0].id
-
-      skuIds.splice(skuIds.indexOf(usedAttrId), 1)
+      let skuIds = [...(currentSkuIds || [])]
+      attrs.map((it) => {
+        if (skuIds.includes(it)) skuIds.splice(skuIds.indexOf(it), 1)
+      })
 
       skuIds = skuIds.concat(attrId)
 
-      let canBuyGoodsItem: IGoodItem | undefined = undefined
+      let canBuy = false
 
       for (let i = 0; i < goodsList.length; i++) {
         if (
           goodsList[i]?.skuIds &&
-          everyItemEqual(goodsList[i]?.skuIds || [], skuIds)
+          everyItemEqual(goodsList[i]?.skuIds || [], skuIds) &&
+          !goodsList[i]?.disabled &&
+          (itemDisable?.(goodsList[i]) === false || !itemDisable)
         ) {
-          canBuyGoodsItem = goodsList[i]
+          canBuy = true
           break
         }
       }
 
-      return canBuyGoodsItem
+      return canBuy
     },
-    [currentGoods?.skuIds, goodsList],
+    [currentSkuIds, goodsList, itemDisable],
   )
 
   const attrClick = useCallback(
-    function (canBuyGoodsItem?: IGoodItem, canBuy?: boolean) {
+    function (attrId: number, attrs: number[], canBuy: boolean) {
       if (canBuy) {
-        setCurrentGoods(canBuyGoodsItem)
-        if (onChange) onChange(canBuyGoodsItem)
+        let skuIds = [...(currentSkuIds || [])]
+        attrs.map((it) => {
+          if (skuIds.includes(it)) skuIds.splice(skuIds.indexOf(it), 1)
+        })
+
+        skuIds = skuIds.concat(attrId)
+
+        let choiceGoods
+
+        for (let i = 0; i < goodsList.length; i++) {
+          if (
+            (goodsList[i]?.skuIds && !goodsList[i]) ||
+            goodsList[i]?.disabled === true ||
+            (itemDisable && itemDisable(goodsList[i]))
+          ) {
+            if (everyItemEqual(skuIds, goodsList[i]?.skuIds || [])) {
+              choiceGoods = goodsList[i]
+            }
+          }
+        }
+
+        setCurrentSkuIds(skuIds)
+
+        if (choiceGoods) {
+          onChange?.(choiceGoods)
+        }
       } else {
-        if (clickAttrDisable) clickAttrDisable(canBuyGoodsItem)
+        if (clickAttrDisable) clickAttrDisable()
       }
     },
-    [clickAttrDisable, onChange],
+    [clickAttrDisable, currentSkuIds, goodsList, itemDisable, onChange],
   )
 
   return (
@@ -94,21 +120,16 @@ export default function Sku(props: SkuProps) {
           <View className={`${preCls}-name`}>{item.name}</View>
           <View className={`${preCls}-attrs`}>
             {item.items.map((it, index) => {
-              const canBuyGoodsItem = currentAttrCanBuy(it.id, item.items)
-              const canBuy =
-                !canBuyGoodsItem ||
-                canBuyGoodsItem.disabled === true ||
-                (itemDisable && itemDisable(canBuyGoodsItem))
-                  ? false
-                  : true
+              const othersId = item.items.map((it) => it.id)
+              const canBuy = currentAttrCanBuy(it.id, othersId)
               return (
                 <View
                   key={`attr#${index}@${it.id}`}
-                  onClick={() => attrClick(canBuyGoodsItem, canBuy)}
+                  onClick={() => attrClick(it.id, othersId, canBuy)}
                   className={classnames({
                     [`${preCls}-attr`]: true,
                     [`${preCls}-attr-active ${activeClassName}`]:
-                      currentGoods?.skuIds.includes(it.id),
+                      currentSkuIds?.includes(it.id),
                     [`${preCls}-attr-disable ${disabledClassName}`]: !canBuy,
                   })}
                 >
