@@ -1,4 +1,18 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.3...v) (2023-07-25)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.4...v) (2023-08-14)
+
+
+### Bug Fixes
+
+* 文档复制功能 ([1bdd88f](https://github.com/AntmJS/vantui/commit/1bdd88feb8be1aa185944a51b73f64a957f809b9))
+
+
+### Features
+
+* sku组件支持初始化是否选择商品 ([f5a2699](https://github.com/AntmJS/vantui/commit/f5a269937001d27ff3c254fae4a7f6636bf7427c))
+
+
+
+## [3.1.4](https://github.com/AntmJS/vantui/compare/v3.1.3...v3.1.4) (2023-07-25)
 
 
 ### Bug Fixes
