@@ -99,16 +99,18 @@ function VirtualList_(
     (e: BaseEventOrig<ScrollViewProps.onScrollDetail>) => {
       const scrollTop = Math.floor(e.detail.scrollTop)
       updateRects()
-      if (Object.keys(rects).length) {
-        const startIndex = getClosestIndex(rects, scrollTop)
-        setShowConfig({
-          head: startIndex,
-          tail: startIndex + showCount,
-          nextHead: startIndex + showCount,
-          NextTail: startIndex + showCount * 2,
-          transformY: `translateY(${rects[`${startIndex}`].top}px)`,
-        })
-      }
+      requestIdleCallback(() => {
+        if (Object.keys(rects).length) {
+          const startIndex = getClosestIndex(rects, scrollTop)
+          setShowConfig({
+            head: startIndex,
+            tail: startIndex + showCount,
+            nextHead: startIndex + showCount,
+            NextTail: startIndex + showCount * 2,
+            transformY: `translateY(${rects[`${startIndex}`].top}px)`,
+          })
+        }
+      })
     },
     [showCount, rects, updateRects],
   )
