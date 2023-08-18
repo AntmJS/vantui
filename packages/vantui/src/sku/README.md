@@ -128,6 +128,7 @@ const goodsList = [
 | sku               | 规格列表                                                                | _&nbsp;&nbsp;ISkuItem[]<br/>_                                                                                      | -      | `true`  |
 | itemRender        | 自定义规格项的内部渲染                                                  | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;attr:&nbsp;IAttrItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;ReactNode<br/>_     | -      | `false` |
 | itemDisable       | 自定义当前规格项组合（即商品）是否可选, 回掉参数为空的时候直接返回 true | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;goodsItem?:&nbsp;IGoodItem<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;boolean<br/>_ | -      | `false` |
+| autoChoice        | 初始化的时候是否自动选择商品                                            | _&nbsp;&nbsp;boolean<br/>_                                                                                         | true   | `false` |
 
 ### 商品项 IGoodItem [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/sku.d.ts)
 
