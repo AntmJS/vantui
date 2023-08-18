@@ -40,6 +40,7 @@ export function FormItem(props: FormItemProps) {
     valueFormat,
     messageClassName = '',
     borderBottom = false,
+    ...others
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
@@ -176,7 +177,7 @@ export function FormItem(props: FormItemProps) {
   )
 
   return (
-    <View className={`${prefixCls}-wrapper`}>
+    <View className={`${prefixCls}-wrapper`} {...others}>
       <View
         id={id}
         className={`${prefixCls} ${prefixCls}-${layout} ${className}
