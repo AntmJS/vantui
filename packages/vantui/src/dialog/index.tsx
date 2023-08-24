@@ -207,7 +207,7 @@ export function Dialog(props: DialogProps) {
                 theme,
                 messageAlign,
                 {
-                  hasTitle: title,
+                  hasTitle: !!title,
                 },
               ])}
             >
