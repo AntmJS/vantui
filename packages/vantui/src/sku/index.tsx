@@ -91,9 +91,11 @@ export default function Sku(props: SkuProps) {
 
         for (let i = 0; i < goodsList.length; i++) {
           if (
-            (goodsList[i]?.skuIds && !goodsList[i]) ||
-            goodsList[i]?.disabled === true ||
-            (itemDisable && itemDisable(goodsList[i]))
+            !(
+              (goodsList[i]?.skuIds && !goodsList[i]) ||
+              goodsList[i]?.disabled === true ||
+              (itemDisable && itemDisable(goodsList[i]))
+            )
           ) {
             if (everyItemEqual(skuIds, goodsList[i]?.skuIds || [])) {
               choiceGoods = goodsList[i]
