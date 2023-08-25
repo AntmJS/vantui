@@ -1,4 +1,15 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.4...v) (2023-08-14)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.5...v) (2023-08-25)
+
+
+### Bug Fixes
+
+* **dialog:** 修复 title 为 ReactNode 时 h5 端报错问题 ([#558](https://github.com/AntmJS/vantui/issues/558)) ([15fb800](https://github.com/AntmJS/vantui/commit/15fb8001568bbbc4ce4c4325fb22ef2bfc7e3a4e))
+* formItem组件上绑定ViewProps ([10a609e](https://github.com/AntmJS/vantui/commit/10a609e3e35720f86c22997528ac22c0160e8053))
+* sku组件onchange方法 ([b4fde1e](https://github.com/AntmJS/vantui/commit/b4fde1e60506623677d7f123a8a6a9fbd7534704))
+
+
+
+## [3.1.5](https://github.com/AntmJS/vantui/compare/v3.1.4...v3.1.5) (2023-08-14)
 
 
 ### Bug Fixes

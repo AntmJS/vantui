@@ -52,6 +52,9 @@ async function exec() {
     head: `release/${version}`,
     base: 'main',
     body: body,
+    request: {
+      timeout: 150 * 1000,
+    },
   })
   if (cRes.status === 201) {
     const mRes = await octokit.request(
