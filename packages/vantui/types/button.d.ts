@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ButtonProps as TaroButtonProps } from '@tarojs/components'
+import { ButtonProps as TaroButtonProps, ITouchEvent } from '@tarojs/components'
 
 export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   /**
@@ -15,11 +15,21 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   loading?: boolean
   hairline?: boolean
   disabled?: boolean
+  /**
+   * @description loading的文案
+   * @default 加载中
+   */
   loadingText?: ReactNode
   loadingSize?: string
   loadingType?: 'spinner' | 'circular'
+  /**
+   * @description loading的模式，按钮内loading 或 Toast.loading
+   * @default normal
+   */
+  loadingMode?: 'normal' | 'toast'
   color?: string
   children?: ReactNode
+  onClick?: (event: ITouchEvent) => void | Promise<any>
 }
 
 declare const Button: FunctionComponent<ButtonProps>
