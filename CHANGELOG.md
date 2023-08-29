@@ -1,4 +1,18 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.5...v) (2023-08-25)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.6...v) (2023-08-29)
+
+
+### Bug Fixes
+
+* virtualList组件使用了requestidlecallback（[#562](https://github.com/AntmJS/vantui/issues/562)） ([cd37209](https://github.com/AntmJS/vantui/commit/cd37209e4a745add2049f6631efaa17ca399cac2))
+
+
+### Features
+
+* button组件异步点击事件自带loading状态 ([a30f64d](https://github.com/AntmJS/vantui/commit/a30f64df82dbec4140fe4df4018d5e95ad35afc0))
+
+
+
+## [3.1.6](https://github.com/AntmJS/vantui/compare/v3.1.5...v3.1.6) (2023-08-25)
 
 
 ### Bug Fixes
