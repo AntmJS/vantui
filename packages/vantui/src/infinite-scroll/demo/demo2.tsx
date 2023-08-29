@@ -54,12 +54,9 @@ export default function Demo() {
         }
         ItemRender={react.memo(({ item }) => {
           return (
-            <View
-              className={`van-demo-goods-item-wrapper`}
-              key={item.image}
-            >
+            <View className={`van-demo-goods-item-wrapper`} key={item.image}>
               <View className="van-demo-goods-item">
-                <TaroImage             key={item.image} src={item.image} className="img" />
+                <TaroImage key={item.image} src={item.image} className="img" />
                 <View className="title">{item.title}</View>
                 {item.isCutPrice && (
                   <Text className="cutPrice">最近大降价</Text>
