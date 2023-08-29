@@ -99,7 +99,7 @@ function VirtualList_(
     (e: BaseEventOrig<ScrollViewProps.onScrollDetail>) => {
       const scrollTop = Math.floor(e.detail.scrollTop)
       updateRects()
-      requestIdleCallback(() => {
+      nextTick(() => {
         if (Object.keys(rects).length) {
           const startIndex = getClosestIndex(rects, scrollTop)
           setShowConfig({
