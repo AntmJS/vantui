@@ -96,6 +96,7 @@ function Index(
   const [scrollIntoView, setScrollIntoView] = useState('')
   const contentObserver = useRef<any>()
   const [compIndex, setComindex] = useState(0)
+  const [isInitial, setIsInitial] = useState(true)
 
   useEffect(function () {
     setComindex(init++)
@@ -177,7 +178,9 @@ function Index(
   const reset = useCallback(
     function () {
       setCurrentDate(getInitialDate(defaultDate))
-      scrollIntoViewFn()
+      setTimeout(() => {
+        scrollIntoViewFn()
+      }, 66)
     },
     [getInitialDate, scrollIntoViewFn, defaultDate],
   )
@@ -387,6 +390,7 @@ function Index(
     function () {
       if (defaultDate) {
         setCurrentDate(getInitialDate(defaultDate || new Date().getTime()))
+        setIsInitial(false)
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -409,7 +413,7 @@ function Index(
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [poppable, show],
+    [poppable, show, isInitial],
   )
 
   useEffect(
