@@ -47,7 +47,7 @@ import { InfiniteScroll, VirtualList } from '@antmjs/vantui'
 
 | 方法  | 说明         | 类型                                             |
 | ----- | ------------ | ------------------------------------------------ |
-| reset | 重置加载状态 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;Promise<null><br/>_ |
+| reset | 重置加载状态 | _&nbsp;&nbsp;(loadMore?: boolean)&nbsp;=>&nbsp;Promise<null><br/>_ |
 
 ### 样式变量
 
