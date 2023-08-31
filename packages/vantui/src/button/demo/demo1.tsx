@@ -16,11 +16,17 @@ export default function Demo() {
       <Button type="warning">警告按钮</Button>
       <Button type="danger">危险按钮</Button>
       <View></View>
-      <Button type="primary" onClick={handle}>
-        异步操作触发normal模式的loading
+      <Button type="info" onClick={handle} loadingText="提交中...">
+        确认提交
       </Button>
-      <Button type="primary" onClick={handle} loadingMode="toast">
-        异步操作触发toast模式的loading
+      <Button
+        type="primary"
+        onClick={handle}
+        loadingMode="toast"
+        loadingText="提交中..."
+        loadingType="spinner"
+      >
+        确认提交
       </Button>
     </View>
   )

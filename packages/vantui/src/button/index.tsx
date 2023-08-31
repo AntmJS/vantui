@@ -32,6 +32,7 @@ export function Button(props: ButtonProps) {
     style,
     className,
     loadingMode = 'normal',
+    loadingMask = true,
     ...others
   } = props
 
@@ -51,6 +52,7 @@ export function Button(props: ButtonProps) {
         duration: 60 * 60,
         message: loadingText,
         loadingType: loadingType,
+        mask: loadingMask,
       })
     } else {
       Toast.clear()

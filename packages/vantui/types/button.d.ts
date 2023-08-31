@@ -27,6 +27,11 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
    * @default normal
    */
   loadingMode?: 'normal' | 'toast'
+  /**
+   * @description loading的蒙层,默认开启
+   * @default true
+   */
+  loadingMask?: boolean
   color?: string
   children?: ReactNode
   onClick?: (event: ITouchEvent) => void | Promise<any>
