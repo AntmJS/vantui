@@ -45,7 +45,7 @@ function InfiniteScroll_(
   const reset = useCallback((needLoad?: boolean): Promise<null> => {
     return new Promise((resolve) => {
       nextTick(() => {
-        if( needLoad ) setForceKey(Date.now())
+        if (needLoad) setForceKey(Date.now())
         else setForceKey(0)
         setStatus('loading')
         setOnRequest(false)
@@ -59,10 +59,13 @@ function InfiniteScroll_(
       if ((!onRequest && status === 'loading') || immediately) {
         setOnRequest(true)
         const status = await loadMore()
+        // 确保等待渲染任务执行完成
         setTimeout(() => {
-          setStatus(status)
-          setOnRequest(false)
-        })
+          nextTick(() => {
+            setStatus(status)
+            setOnRequest(false)
+          })
+        }, 60)
       }
     },
     [loadMore, onRequest, status],
