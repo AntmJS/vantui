@@ -45,9 +45,9 @@ import { InfiniteScroll, VirtualList } from '@antmjs/vantui'
 
 ### InfiniteScrollInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/infinite-scroll.d.ts)
 
-| 方法  | 说明         | 类型                                             |
-| ----- | ------------ | ------------------------------------------------ |
-| reset | 重置加载状态 | _&nbsp;&nbsp;(loadMore?: boolean)&nbsp;=>&nbsp;Promise<null><br/>_ |
+| 方法  | 说明         | 类型                                                                                                                  |
+| ----- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| reset | 重置加载状态 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;loadMore?:&nbsp;boolean<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<null><br/>_ |
 
 ### 样式变量
 
