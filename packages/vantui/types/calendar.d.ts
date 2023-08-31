@@ -41,7 +41,7 @@ export interface CalendarProps extends ViewProps {
    * @description 默认选中的日期，type为multiple或range时为数组
    * @default 今天
    */
-  defaultDate?: string | string[]
+  defaultDate?: number | number[]
   /**
    * @description 是否允许日期范围的起止时间为同一天
    * @default false

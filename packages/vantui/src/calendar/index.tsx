@@ -106,6 +106,7 @@ function Index(
   const [compIndex] = useState(init++)
   const [currentMonthDate, setCurrentMonthDate] = useState(0)
   const [longSpanShow, setLongSpanShow] = useState(false)
+  const [isInitial, setIsInitial] = useState(true)
 
   const monthsData = useMemo(() => {
     return computed.getMonths(minDate, maxDate)
@@ -201,7 +202,9 @@ function Index(
   const reset = useCallback(
     function () {
       setCurrentDate(getInitialDate(defaultDate))
-      scrollIntoViewFn()
+      setTimeout(() => {
+        scrollIntoViewFn()
+      }, 66)
     },
     [getInitialDate, scrollIntoViewFn, defaultDate],
   )
@@ -415,6 +418,7 @@ function Index(
     function () {
       if (defaultDate) {
         setCurrentDate(getInitialDate(defaultDate || new Date().getTime()))
+        setIsInitial(false)
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -425,10 +429,13 @@ function Index(
     function () {
       if (show || !poppable) {
         setTimeout(() => {
-          initRect()
-          setTimeout(() => {
-            scrollIntoViewFn()
-          }, 66)
+          nextTick(() => {
+            initRect()
+
+            setTimeout(() => {
+              scrollIntoViewFn()
+            }, 66)
+          })
         }, 66)
       }
 
@@ -437,7 +444,7 @@ function Index(
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [poppable, show],
+    [poppable, show, isInitial],
   )
 
   useEffect(
