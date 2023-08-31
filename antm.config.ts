@@ -3,7 +3,10 @@ import { defineConfig, IDocMenuNavs } from '@antmjs/types'
 
 const CWD = process.cwd()
 
-// 在根目录创建".webhooks.js", 向Git管理者获取webhooks的token, 设置 module.exports = 'xxxxxxxxxxxxxxxxxxx'
+// eslint-disable-next-line prettier/prettier, @typescript-eslint/no-var-requires
+const webhooksToken = require('./temp.js').webhooksToken
+
+// 在根目录创建"temp.js", 向Git管理者获取webhooks的token, 设置 module.exports = { webhooksToken: 'xxxxxxxxxxxxxxxxxxx' }
 
 export default defineConfig({
   warning: {
@@ -12,7 +15,7 @@ export default defineConfig({
       './package.json',
     ],
     webhooks: {
-      url: `https://oapi.dingtalk.com/robot/send?access_token=${require('./.webhooks.js')}`,
+      url: `https://oapi.dingtalk.com/robot/send?access_token=${webhooksToken}`,
     },
   },
   docs: {
