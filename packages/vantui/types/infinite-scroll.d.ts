@@ -51,8 +51,9 @@ export interface InfiniteScrollProps extends ViewProps {
 export interface InfiniteScrollInstance {
   /**
    * @description 重置加载状态
+   * @param loadMore 是否触发加载方法
    */
-  reset: () => Promise<null>
+  reset: (loadMore?:boolean) => Promise<null>
 }
 
 declare const InfiniteScroll: FunctionComponent<InfiniteScrollProps>
