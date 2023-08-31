@@ -1,4 +1,20 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.6...v) (2023-08-29)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.7...v) (2023-08-31)
+
+
+### Bug Fixes
+
+* 修改calendar组件滚动bug ([c7d7d3d](https://github.com/AntmJS/vantui/commit/c7d7d3d9765c0dbc6367b86f525b11805546196e))
+* InfiniteScroll组件complete后reset支持触发loadMore ([#567](https://github.com/AntmJS/vantui/issues/567)) ([5048fee](https://github.com/AntmJS/vantui/commit/5048fee58da730b15e25f7f3640a9b2f04dcee2a))
+* infinitescroll组件loadMore执行时机修复 ([496f527](https://github.com/AntmJS/vantui/commit/496f527cb73f4597b1ada0f258e823fdfb08a5e5))
+
+
+### Features
+
+* button组件内部的toast蒙层设置 ([38a44ba](https://github.com/AntmJS/vantui/commit/38a44ba0fccde843b84dfaf72296f801df6caa82))
+
+
+
+## [3.1.7](https://github.com/AntmJS/vantui/compare/v3.1.6...v3.1.7) (2023-08-29)
 
 
 ### Bug Fixes
