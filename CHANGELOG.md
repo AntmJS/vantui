@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.7...v) (2023-08-31)
+# [](https://github.com/AntmJS/vantui/compare/v3.1.8...v) (2023-09-05)
+
+
+### Features
+
+* 新组件result ([164508e](https://github.com/AntmJS/vantui/commit/164508e7ab91943c378b8c2eaa5d6cd59d8752e3))
+
+
+
+## [3.1.8](https://github.com/AntmJS/vantui/compare/v3.1.7...v3.1.8) (2023-08-31)
 
 
 ### Bug Fixes
