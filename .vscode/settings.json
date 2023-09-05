@@ -22,6 +22,9 @@
   "stylelint.enable": true,
   "stylelint.configFile": "stylelint.config.js",
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
   }
 }

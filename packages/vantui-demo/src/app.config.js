@@ -68,6 +68,7 @@ export default {
     'pages/card/index',
     'pages/submit-bar/index',
     'pages/goods-action/index',
+    'pages/result/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

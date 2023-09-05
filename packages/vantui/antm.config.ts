@@ -20,7 +20,7 @@ export default defineConfig({
     },
     simulator: {
       url: {
-        development: 'http://10.254.9.214:10068/',
+        development: 'http://0.0.0.0:10068/',
         production: '/vantui/main/mobile.html',
       },
       transform: (url) => `#/pages/${url}/index`,
@@ -301,6 +301,10 @@ function getMenus() {
         {
           path: 'empty',
           title: 'Empty 空状态',
+        },
+        {
+          path: 'result',
+          title: 'Result 操作结果',
         },
         {
           path: 'ellipsis',
