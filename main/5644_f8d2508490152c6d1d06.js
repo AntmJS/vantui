@@ -40,6 +40,7 @@
             sidebar: t.e(1783).then(t.bind(t, 1783)),
             'share-sheet': t.e(5472).then(t.bind(t, 5472)),
             search: t.e(3910).then(t.bind(t, 3910)),
+            result: t.e(662).then(t.bind(t, 662)),
             rate: t.e(3368).then(t.bind(t, 3368)),
             radio: t.e(4255).then(t.bind(t, 4255)),
             'pull-to-refresh': t.e(2051).then(t.bind(t, 2051)),

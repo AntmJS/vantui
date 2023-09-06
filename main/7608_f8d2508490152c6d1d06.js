@@ -98,6 +98,7 @@
                     { path: 'count-down', title: 'CountDown 倒计时' },
                     { path: 'divider', title: 'Divider 分割线' },
                     { path: 'empty', title: 'Empty 空状态' },
+                    { path: 'result', title: 'Result 操作结果' },
                     { path: 'ellipsis', title: 'Ellipsis 文本省略' },
                     { path: 'notice-bar', title: 'NoticeBar 通知栏' },
                     { path: 'progress', title: 'Progress 进度条' },
@@ -149,7 +150,7 @@
               demoCode: { dir: 'demo' },
               simulator: {
                 url: {
-                  development: 'http://10.254.9.214:10068/',
+                  development: 'http://0.0.0.0:10068/',
                   production: '/vantui/main/mobile.html',
                 },
                 transform: '(url)=>`#/pages/${url}/index`',

@@ -1,4 +1,4 @@
-/*! For license information please see index_b8ec793eeb482eec811c.js.LICENSE.txt */
+/*! For license information please see index_f8d2508490152c6d1d06.js.LICENSE.txt */
 !(function () {
   var e,
     t,
@@ -55019,7 +55019,7 @@
     }),
     (o.miniCssF = function (e) {}),
     (o.h = function () {
-      return 'b8ec793eeb482eec811c'
+      return 'f8d2508490152c6d1d06'
     }),
     (o.g = (function () {
       if ('object' == typeof globalThis) return globalThis
@@ -55976,14 +55976,13 @@ to {
                         const n = e[t],
                           r = null
                         n.onclick = () => {
-                          r ||
-                            (le(
-                              n.parentNode.querySelectorAll('pre code')[0]
-                                .innerText,
-                            ),
+                          if (r) return
+                          let e = n.parentNode
+                          'code-box' !== e.className && (e = e.parentNode),
+                            le(e.querySelectorAll('pre code')[0].innerText),
                             ae.success('复制成功！', {
                               style: { position: 'relative', top: 250 },
-                            }))
+                            })
                         }
                       }
                   })()
