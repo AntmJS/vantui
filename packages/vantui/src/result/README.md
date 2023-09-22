@@ -42,6 +42,6 @@
 | --result-padding       | ` 64px 24px;` |
 | --result-success-color | ` #07c160;`   |
 | --result-wait-color    | ` #4dd3b5;`   |
-| --result-info-color    | ` #1677FF;`   |
+| --result-info-color    | ` #1677ff;`   |
 | --result-warning-color | ` #ff8f1f;`   |
 | --result-error-color   | ` #fc3e39;`   |

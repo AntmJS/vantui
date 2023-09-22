@@ -58,7 +58,7 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
-    "@antmjs/doc": "^2.3.21",
+    "@antmjs/doc": "^2.3.22",
     "@antmjs/iconfont": "^2.3.20",
     "@antmjs/types": "^2.3.20",
     "@antmjs/vantui-cli": "3.0.4",

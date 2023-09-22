@@ -133,7 +133,7 @@ const config = {
     devServer: {
       port: 10068,
       hot: false,
-      host: 'localhost',
+      // host: 'localhost',
       historyApiFallback: true,
       headers: {
         'Access-Control-Allow-Origin': '*', // 表示允许跨域
