@@ -2,6 +2,10 @@
 import { View } from '@tarojs/components'
 import { Button } from '@antmjs/vantui'
 
+Button.config({
+  asyncLoading: true, // click异步事件触发loading状态手动开启
+})
+
 export default function Demo() {
   // 点击事件返回Promise，即可让按钮自带loading状态
   const handle = async () => {

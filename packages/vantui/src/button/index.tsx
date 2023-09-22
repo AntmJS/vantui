@@ -8,9 +8,13 @@ import { Loading } from '../loading/index'
 import { Toast } from '../toast/index'
 import * as computed from './wxs'
 
+let defaultConfig = {
+  asyncLoading: false,
+}
+
 let index = 0
 
-export function Button(props: ButtonProps) {
+function Button(props: ButtonProps) {
   const {
     type = 'default',
     size = 'normal',
@@ -65,7 +69,7 @@ export function Button(props: ButtonProps) {
       if (onClick && !loading) {
         const res = onClick(e)
         // @ts-ignore
-        if (res?.then && res?.catch) {
+        if (res?.then && res?.catch && defaultConfig.asyncLoading) {
           setInnerLoading(true)
           res.finally(() => {
             setInnerLoading(false)
@@ -146,4 +150,11 @@ export function Button(props: ButtonProps) {
     </View>
   )
 }
+
+Button['config'] = (config) => {
+  defaultConfig = config
+}
+
 export default Button
+
+export { Button }

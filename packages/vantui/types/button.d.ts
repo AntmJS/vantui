@@ -37,6 +37,11 @@ export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {
   onClick?: (event: ITouchEvent) => void | Promise<any>
 }
 
-declare const Button: FunctionComponent<ButtonProps>
+declare interface IButton {
+  (props: ButtonProps): JSX.Element
+  config: (config: { asyncLoading?: boolean }) => void
+}
+
+declare const Button: IButton
 
 export { Button }
