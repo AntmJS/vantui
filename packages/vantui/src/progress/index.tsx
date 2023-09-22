@@ -8,21 +8,6 @@ import * as computed from './wxs'
 
 export function Progress(props: ProgressProps) {
   const [right, setRight] = useState(0)
-  useEffect(
-    function () {
-      nextTick(() => {
-        Promise.all([
-          getRect(null, '.van-progress'),
-          getRect(null, '.van-progress__pivot'),
-        ]).then(([portion, pivot]: any) => {
-          if (portion && pivot) {
-            setRight((pivot.width * (Number(props.percentage) - 100)) / 100)
-          }
-        })
-      })
-    },
-    [props.percentage],
-  )
   const {
     strokeWidth = 4,
     trackColor,
@@ -35,8 +20,25 @@ export function Progress(props: ProgressProps) {
     showPivot = true,
     style,
     className,
+    rectWrapper,
     ...others
   } = props
+
+  useEffect(
+    function () {
+      nextTick(() => {
+        Promise.all([
+          getRect(null, '.van-progress', rectWrapper),
+          getRect(null, '.van-progress__pivot', rectWrapper),
+        ]).then(([portion, pivot]: any) => {
+          if (portion && pivot) {
+            setRight((pivot.width * (Number(props.percentage) - 100)) / 100)
+          }
+        })
+      })
+    },
+    [props.percentage, rectWrapper],
+  )
 
   return (
     <View

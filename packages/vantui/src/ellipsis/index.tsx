@@ -20,6 +20,7 @@ export default function Ellipsis({
   className = '',
   defaultExpand = false,
   hiddenAction = false,
+  rectWrapper = '',
 }: EllipsisProps): React.ReactNode {
   const [content, setContent] = useState('')
   const [expand, setExpand] = useState(defaultExpand)
@@ -65,6 +66,7 @@ export default function Ellipsis({
     const containerDom: any = await getRect(
       null,
       `.${preCls}-hidden_${randomRef.current}`,
+      rectWrapper,
     )
 
     const containerDomC: any = await getComputeStyle(
@@ -74,11 +76,13 @@ export default function Ellipsis({
     const symbolDom: any = await getRect(
       null,
       `.${preCls}-hidden-symbol_${randomRef.current}`,
+      rectWrapper,
     )
 
     const actionDom: any = await getRect(
       null,
       `.${preCls}-hidden-action_${randomRef.current}`,
+      rectWrapper,
     )
 
     if (containerDom.width && symbolDom.width) {

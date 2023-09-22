@@ -24,6 +24,7 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     disable = false,
     successDuration = SUCESS_DURATION,
     touchMinTime = TOUCH_MIN_TIME,
+    rectWrapper,
   } = props
   const [statusHeight, setStatusHeight] = useState(0)
   const [status, setStatus] = useState<IStatus>('pull') // 待拖拽
@@ -104,7 +105,7 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
 
   useEffect(() => {
     setTimeout(() => {
-      getRect(null, `.${clsPrefix}-status${componentIndex}`).then(
+      getRect(null, `.${clsPrefix}-status${componentIndex}`, rectWrapper).then(
         (res: any) => {
           touch.maxStart = res.top + touchMaxStart
         },

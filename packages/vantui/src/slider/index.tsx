@@ -36,6 +36,7 @@ export function Slider(props: SliderProps) {
     onDragEnd,
     className = '',
     renderButton,
+    rectWrapper = '',
     ...others
   } = props
 
@@ -240,22 +241,24 @@ export function Slider(props: SliderProps) {
       }
       const touchState = touchMove(event)
       setDragStatus('draging')
-      getRect(null, `.van-slider${indexRef.current}`).then((rect: any) => {
-        let diff = (touchState.deltaX / rect.width) * getRange()
-        if (vertical) {
-          diff = (touchState.deltaY / rect.height) * getRange()
-        }
+      getRect(null, `.van-slider${indexRef.current}`, rectWrapper).then(
+        (rect: any) => {
+          let diff = (touchState.deltaX / rect.width) * getRange()
+          if (vertical) {
+            diff = (touchState.deltaY / rect.height) * getRange()
+          }
 
-        if (isRange(startValue)) {
-          newValue[buttonIndex] = startValue[buttonIndex] + diff
-          setNewValue(newValue)
-        } else {
-          let newValue_ = newValue
-          newValue_ = (startValue || 0) + diff
-          setNewValue(newValue_)
-        }
-        updateValue(newValue, false, true)
-      })
+          if (isRange(startValue)) {
+            newValue[buttonIndex] = startValue[buttonIndex] + diff
+            setNewValue(newValue)
+          } else {
+            let newValue_ = newValue
+            newValue_ = (startValue || 0) + diff
+            setNewValue(newValue_)
+          }
+          updateValue(newValue, false, true)
+        },
+      )
     },
     [
       disabled,
@@ -269,6 +272,7 @@ export function Slider(props: SliderProps) {
       updateValue,
       newValue,
       buttonIndex,
+      rectWrapper,
     ],
   )
 

@@ -50,6 +50,7 @@ export function Tabbar(props: TabbarProps) {
     style,
     className,
     children,
+    rectWrapper = '',
     ...others
   } = props
   const _change = useCallback(
@@ -96,7 +97,7 @@ export function Tabbar(props: TabbarProps) {
         return
       }
       nextTick(() => {
-        getRect(null, '.van-tabbar').then((res: any) => {
+        getRect(null, '.van-tabbar', rectWrapper).then((res: any) => {
           setState((pre: any) => {
             return {
               ...pre,

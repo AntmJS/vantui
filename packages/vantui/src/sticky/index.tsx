@@ -19,6 +19,7 @@ export function Sticky(props: StickyProps) {
     style,
     className,
     children,
+    rectWrapper = '',
     ...others
   } = props
   const ref: React.MutableRefObject<{
@@ -73,7 +74,7 @@ export function Sticky(props: StickyProps) {
       ref.current.scrollTop = scrollTop || ref.current.scrollTop
       if (typeof container === 'function') {
         Promise.all([
-          getRect(null, `#sticky-com-index${indexRef.current}`),
+          getRect(null, `#sticky-com-index${indexRef.current}`, rectWrapper),
           getContainerRect(),
         ])
           .then(([root, container]: any) => {
@@ -99,7 +100,7 @@ export function Sticky(props: StickyProps) {
           })
         return
       } else {
-        getRect(null, `#sticky-com-index${indexRef.current}`).then(
+        getRect(null, `#sticky-com-index${indexRef.current}`, rectWrapper).then(
           (root: any) => {
             if (!isDef(root)) {
               return
@@ -114,7 +115,14 @@ export function Sticky(props: StickyProps) {
         )
       }
     },
-    [container, disabled, getContainerRect, offsetTop, setDataAfterDiff],
+    [
+      container,
+      disabled,
+      getContainerRect,
+      offsetTop,
+      rectWrapper,
+      setDataAfterDiff,
+    ],
   )
 
   useEffect(
