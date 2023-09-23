@@ -50,23 +50,24 @@ import { Collapse, CollapseItem } from '@antmjs/vantui'
 
 ### CollapseItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/collapse.d.ts)
 
-| 参数            | 说明                | 类型                                                | 默认值 | 必填    |
-| --------------- | ------------------- | --------------------------------------------------- | ------ | ------- |
-| name            | -                   | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| title           | -                   | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| value           | -                   | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
-| icon            | 对应 Icon 的 name   | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| label           | -                   | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| disabled        | -                   | _&nbsp;&nbsp;boolean<br/>_                          | false  | `false` |
-| clickable       | -                   | _&nbsp;&nbsp;boolean<br/>_                          | false  | `false` |
-| border          | -                   | _&nbsp;&nbsp;boolean<br/>_                          | true   | `false` |
-| isLink          | -                   | _&nbsp;&nbsp;boolean<br/>_                          | true   | `false` |
-| children        | -                   | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderTitle     | -                   | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderIcon      | -                   | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderRightIcon | isLink 设置为 false | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| renderValue     | -                   | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| size            | -                   | _&nbsp;&nbsp;"large"<br/>_                          | -      | `false` |
+| 参数            | 说明                                                                                                                      | 类型                                                | 默认值 | 必填    |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------ | ------- |
+| name            | -                                                                                                                         | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| title           | -                                                                                                                         | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| value           | -                                                                                                                         | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_ | -      | `false` |
+| icon            | 对应 Icon 的 name                                                                                                         | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| label           | -                                                                                                                         | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| disabled        | -                                                                                                                         | _&nbsp;&nbsp;boolean<br/>_                          | false  | `false` |
+| clickable       | -                                                                                                                         | _&nbsp;&nbsp;boolean<br/>_                          | false  | `false` |
+| border          | -                                                                                                                         | _&nbsp;&nbsp;boolean<br/>_                          | true   | `false` |
+| isLink          | -                                                                                                                         | _&nbsp;&nbsp;boolean<br/>_                          | true   | `false` |
+| children        | -                                                                                                                         | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderTitle     | -                                                                                                                         | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderIcon      | -                                                                                                                         | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderRightIcon | isLink 设置为 false                                                                                                       | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| renderValue     | -                                                                                                                         | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| size            | -                                                                                                                         | _&nbsp;&nbsp;"large"<br/>_                          | -      | `false` |
+| rectWrapper     | 微信端使用时, 所在元素层级太深，需要设置元素层级不是很深的父元素的 className(‘.xx’)或 id(#xx), 支持当前组件获取 rect 信息 | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 
 ### 样式变量
 
