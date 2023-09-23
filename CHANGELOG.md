@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.1.8...v) (2023-09-05)
+# [](https://github.com/AntmJS/vantui/compare/v3.2.0...v) (2023-09-23)
+
+
+### Bug Fixes
+
+* 配置化开启按钮异步点击loading（[#575](https://github.com/AntmJS/vantui/issues/575)） ([c86a33f](https://github.com/AntmJS/vantui/commit/c86a33f1093891e0d73291424b776dc5aceae1f4))
+* 深层级元素selectorQuery.select无法获取元素信息 （[#570](https://github.com/AntmJS/vantui/issues/570)） ([673a054](https://github.com/AntmJS/vantui/commit/673a054c00fbf82f458a52ed55b5288c9d013866))
+
+
+
+# [3.2.0](https://github.com/AntmJS/vantui/compare/v3.1.8...v3.2.0) (2023-09-05)
 
 
 ### Features
