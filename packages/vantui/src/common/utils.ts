@@ -59,28 +59,39 @@ export function pickExclude(obj: any, keys: any) {
     return prev
   }, {})
 }
-export function getRect(context: any, selector: any) {
+export function getRect(context: any, selector: any, parent?: string) {
+  // 微信端层级太深找不到元素信息 （https://taro-docs.jd.com/docs/optimized#1-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E9%A1%B9-baselevel）
+  const target =
+    process.env.TARO_ENV === 'weapp' && parent
+      ? `${parent} >>> ${selector}`
+      : selector
   return new Promise((resolve) => {
     let query = createSelectorQuery()
     if (context) {
       query = query.in(context)
     }
     query
-      .select(selector)
+      .select(target)
       .boundingClientRect()
       .exec((rect: any = []) => {
         return resolve(rect[0])
       })
   })
 }
-export function getAllRect(context: any, selector: any) {
+export function getAllRect(context: any, selector: any, parent?: string) {
+  // 微信端层级太深找不到元素信息 （https://taro-docs.jd.com/docs/optimized#1-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E9%A1%B9-baselevel）
+  const target =
+    process.env.TARO_ENV === 'weapp' && parent
+      ? `${parent} >>> ${selector}`
+      : selector
+
   return new Promise((resolve) => {
     let query = createSelectorQuery()
     if (context) {
       query = query.in(context)
     }
     query
-      .selectAll(selector)
+      .selectAll(target)
       .boundingClientRect()
       .exec((rect = []) => resolve(rect[0]))
   })

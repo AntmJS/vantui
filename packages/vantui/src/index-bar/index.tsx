@@ -27,6 +27,7 @@ export function IndexBar(props: IndexBarProps) {
     children,
     className,
     style,
+    rectWrapper,
   } = props
 
   const [activeAnchorIndex, setActiveAnchorIndex] = useState<any>(null)
@@ -97,7 +98,7 @@ export function IndexBar(props: IndexBarProps) {
   )
 
   const _setListRect = useCallback(() => {
-    return getRect(null, '.van-index-bar').then((rect: any) => {
+    return getRect(null, '.van-index-bar', rectWrapper).then((rect: any) => {
       if (!isDef(rect)) {
         return
       }
@@ -109,15 +110,17 @@ export function IndexBar(props: IndexBarProps) {
   }, [])
 
   const _setSiderbarRect = useCallback(() => {
-    return getRect(null, '.van-index-bar__sidebar').then((res: any) => {
-      if (!isDef(res)) {
-        return
-      }
-      sidebarRef.current = {
-        height: res.height,
-        top: res.top,
-      }
-    })
+    return getRect(null, '.van-index-bar__sidebar', rectWrapper).then(
+      (res: any) => {
+        if (!isDef(res)) {
+          return
+        }
+        sidebarRef.current = {
+          height: res.height,
+          top: res.top,
+        }
+      },
+    )
   }, [])
   const _getActiveAnchorIndex = useCallback(() => {
     const child = realAnchor.current

@@ -28,6 +28,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
     closeOnClickOutside = true,
     className,
     style,
+    rectWrapper,
     ...others
   } = props
 
@@ -120,20 +121,22 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
   const getChildWrapperStyle = useCallback(
     function () {
-      return getRect(null, `.van-dropdown-menu${indexRef.current}`).then(
-        (rect: any) => {
-          const wrapperStyle: any = {
-            rect: rect,
-          }
-          if (typeof zIndex === 'number') {
-            wrapperStyle.zIndex = zIndex
-          }
+      return getRect(
+        null,
+        `.van-dropdown-menu${indexRef.current}`,
+        rectWrapper,
+      ).then((rect: any) => {
+        const wrapperStyle: any = {
+          rect: rect,
+        }
+        if (typeof zIndex === 'number') {
+          wrapperStyle.zIndex = zIndex
+        }
 
-          return wrapperStyle
-        },
-      )
+        return wrapperStyle
+      })
     },
-    [zIndex],
+    [rectWrapper, zIndex],
   )
 
   const ResetChildren = useMemo(

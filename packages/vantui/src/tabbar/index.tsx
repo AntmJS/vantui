@@ -96,7 +96,7 @@ export function Tabbar(props: TabbarProps) {
         return
       }
       nextTick(() => {
-        getRect(null, '.van-tabbar').then((res: any) => {
+        getRect(null, '.van-tabbar', props.rectWrapper).then((res: any) => {
           setState((pre: any) => {
             return {
               ...pre,

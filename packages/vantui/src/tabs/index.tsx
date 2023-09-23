@@ -109,6 +109,7 @@ export function Tabs(props: TabsProps) {
     style,
     className,
     children,
+    rectWrapper,
     ...others
   } = props
 
@@ -200,8 +201,16 @@ export function Tabs(props: TabsProps) {
     index = index ?? currentIndex
     nextTick(() => {
       Promise.all([
-        getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
-        getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__line`),
+        getAllRect(
+          null,
+          `.tabs-com-index${indexRef.current} .van-tab`,
+          rectWrapper,
+        ),
+        getRect(
+          null,
+          `.tabs-com-index${indexRef.current} .van-tabs__line`,
+          rectWrapper,
+        ),
       ]).then(([rects = [], lineRect]: any) => {
         if (rects && lineRect) {
           const rect = rects[index!]

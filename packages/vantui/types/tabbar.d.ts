@@ -12,6 +12,10 @@ export interface TabbarProps extends ViewProps {
   safeAreaInsetBottom?: boolean
   children?: ReactNode
   onChange?: (event: { detail: string | number }) => void
+  /**
+   * @description 微信端使用时, 所在元素层级太深，需要设置元素层级不是很深的父元素的className(‘.xx’)或id(#xx), 支持当前组件获取rect信息
+   */
+  rectWrapper?: string
 }
 
 export interface TabbarItemProps extends Omit<ViewProps, 'onClick'> {

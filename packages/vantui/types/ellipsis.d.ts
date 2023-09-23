@@ -36,6 +36,10 @@ export interface EllipsisProps extends ViewProps {
    * @default `false`
    */
   hiddenAction?: boolean
+  /**
+   * @description 微信端使用时, 所在元素层级太深，需要设置元素层级不是很深的父元素的className(‘.xx’)或id(#xx), 支持当前组件获取rect信息
+   */
+  rectWrapper?: string
 }
 
 declare const Ellipsis: FunctionComponent<EllipsisProps>

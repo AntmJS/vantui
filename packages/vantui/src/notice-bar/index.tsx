@@ -49,6 +49,7 @@ export function NoticeBar(props: NoticeBarProps) {
     style,
     className,
     children,
+    rectWrapper,
     ...others
   } = props
 
@@ -135,8 +136,8 @@ export function NoticeBar(props: NoticeBarProps) {
   const init = useCallback(() => {
     requestAnimationFrame(() => {
       Promise.all([
-        getRect(null, `.van-notice-bar__content_${state.unitag}`),
-        getRect(null, `.van-notice-bar__wrap_${state.unitag}`),
+        getRect(null, `.van-notice-bar__content_${state.unitag}`, rectWrapper),
+        getRect(null, `.van-notice-bar__wrap_${state.unitag}`, rectWrapper),
       ]).then((rects) => {
         const contentRect: any = rects[0]
         const wrapRect: any = rects[1]
