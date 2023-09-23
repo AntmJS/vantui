@@ -50,15 +50,16 @@ function Demo() {
 
 ### EllipsisProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/ellipsis.d.ts)
 
-| 参数          | 说明               | 类型                         | 默认值  | 必填    |
-| ------------- | ------------------ | ---------------------------- | ------- | ------- |
-| children      | 内容               | _&nbsp;&nbsp;string<br/>_    | -       | `true`  |
-| defaultExpand | 默认是否展开       | _&nbsp;&nbsp;boolean<br/>_   | `false` | `false` |
-| rows          | 展示几行           | _&nbsp;&nbsp;number<br/>_    | 1       | `false` |
-| expandText    | 展开文案           | _&nbsp;&nbsp;string<br/>_    | `展开`  | `false` |
-| collapseText  | 收起文案           | _&nbsp;&nbsp;string<br/>_    | `收起`  | `false` |
-| symbol        | 省略的文案         | _&nbsp;&nbsp;ReactNode<br/>_ | `...`   | `false` |
-| hiddenAction  | 是否要隐藏操作按钮 | _&nbsp;&nbsp;boolean<br/>_   | `false` | `false` |
+| 参数          | 说明                                                                                                                      | 类型                         | 默认值  | 必填    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------- | ------- |
+| children      | 内容                                                                                                                      | _&nbsp;&nbsp;string<br/>_    | -       | `true`  |
+| defaultExpand | 默认是否展开                                                                                                              | _&nbsp;&nbsp;boolean<br/>_   | `false` | `false` |
+| rows          | 展示几行                                                                                                                  | _&nbsp;&nbsp;number<br/>_    | 1       | `false` |
+| expandText    | 展开文案                                                                                                                  | _&nbsp;&nbsp;string<br/>_    | `展开`  | `false` |
+| collapseText  | 收起文案                                                                                                                  | _&nbsp;&nbsp;string<br/>_    | `收起`  | `false` |
+| symbol        | 省略的文案                                                                                                                | _&nbsp;&nbsp;ReactNode<br/>_ | `...`   | `false` |
+| hiddenAction  | 是否要隐藏操作按钮                                                                                                        | _&nbsp;&nbsp;boolean<br/>_   | `false` | `false` |
+| rectWrapper   | 微信端使用时, 所在元素层级太深，需要设置元素层级不是很深的父元素的 className(‘.xx’)或 id(#xx), 支持当前组件获取 rect 信息 | _&nbsp;&nbsp;string<br/>_    | -       | `false` |
 
 ### 样式变量
 

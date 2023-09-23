@@ -67,17 +67,18 @@ function Demo() {
 
 ### ProgressProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/progress.d.ts)
 
-| 参数        | 说明 | 类型                                                | 默认值 | 必填    |
-| ----------- | ---- | --------------------------------------------------- | ------ | ------- |
-| inactive    | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| percentage  | -    | _&nbsp;&nbsp;number<br/>_                           | -      | `true`  |
-| pivotText   | -    | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
-| pivotColor  | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| trackColor  | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| showPivot   | -    | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
-| color       | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| textColor   | -    | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
-| strokeWidth | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
+| 参数        | 说明                                                                                                                      | 类型                                                | 默认值 | 必填    |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------ | ------- |
+| inactive    | -                                                                                                                         | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| percentage  | -                                                                                                                         | _&nbsp;&nbsp;number<br/>_                           | -      | `true`  |
+| pivotText   | -                                                                                                                         | _&nbsp;&nbsp;ReactNode<br/>_                        | -      | `false` |
+| pivotColor  | -                                                                                                                         | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| trackColor  | -                                                                                                                         | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| showPivot   | -                                                                                                                         | _&nbsp;&nbsp;boolean<br/>_                          | -      | `false` |
+| color       | -                                                                                                                         | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| textColor   | -                                                                                                                         | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
+| strokeWidth | -                                                                                                                         | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_ | -      | `false` |
+| rectWrapper | 微信端使用时, 所在元素层级太深，需要设置元素层级不是很深的父元素的 className(‘.xx’)或 id(#xx), 支持当前组件获取 rect 信息 | _&nbsp;&nbsp;string<br/>_                           | -      | `false` |
 
 ### 样式变量
 

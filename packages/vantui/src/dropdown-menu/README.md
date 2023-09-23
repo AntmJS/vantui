@@ -204,16 +204,17 @@ function Demo() {
 
 ### DropdownMenuProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)
 
-| 参数                | 说明                           | 类型                                              | 默认值 | 必填    |
-| ------------------- | ------------------------------ | ------------------------------------------------- | ------ | ------- |
-| activeColor         | 选中选项后颜色                 | _&nbsp;&nbsp;string<br/>_                         | -      | `false` |
-| overlay             | 是否展示蒙层                   | _&nbsp;&nbsp;boolean<br/>_                        | -      | `false` |
-| zIndex              | 弹出层 zIndex                  | _&nbsp;&nbsp;number<br/>_                         | -      | `false` |
-| duration            | 弹出层执行时间                 | _&nbsp;&nbsp;number<br/>_                         | -      | `false` |
-| direction           | 弹出层执行方向                 | _&nbsp;&nbsp;"down"&nbsp;&brvbar;&nbsp;"up"<br/>_ | -      | `false` |
-| closeOnClickOverlay | 点击蒙层是否关闭弹出层         | _&nbsp;&nbsp;boolean<br/>_                        | -      | `false` |
-| closeOnClickOutside | 是否在点击外部 menu 后关闭菜单 | _&nbsp;&nbsp;boolean<br/>_                        | -      | `false` |
-| children            | 子元素,须为 DropdownMenuItem   | _&nbsp;&nbsp;React.ReactNode<br/>_                | -      | `true`  |
+| 参数                | 说明                                                                                                                      | 类型                                              | 默认值 | 必填    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------ | ------- |
+| activeColor         | 选中选项后颜色                                                                                                            | _&nbsp;&nbsp;string<br/>_                         | -      | `false` |
+| overlay             | 是否展示蒙层                                                                                                              | _&nbsp;&nbsp;boolean<br/>_                        | -      | `false` |
+| zIndex              | 弹出层 zIndex                                                                                                             | _&nbsp;&nbsp;number<br/>_                         | -      | `false` |
+| duration            | 弹出层执行时间                                                                                                            | _&nbsp;&nbsp;number<br/>_                         | -      | `false` |
+| direction           | 弹出层执行方向                                                                                                            | _&nbsp;&nbsp;"down"&nbsp;&brvbar;&nbsp;"up"<br/>_ | -      | `false` |
+| closeOnClickOverlay | 点击蒙层是否关闭弹出层                                                                                                    | _&nbsp;&nbsp;boolean<br/>_                        | -      | `false` |
+| closeOnClickOutside | 是否在点击外部 menu 后关闭菜单                                                                                            | _&nbsp;&nbsp;boolean<br/>_                        | -      | `false` |
+| children            | 子元素,须为 DropdownMenuItem                                                                                              | _&nbsp;&nbsp;React.ReactNode<br/>_                | -      | `true`  |
+| rectWrapper         | 微信端使用时, 所在元素层级太深，需要设置元素层级不是很深的父元素的 className(‘.xx’)或 id(#xx), 支持当前组件获取 rect 信息 | _&nbsp;&nbsp;string<br/>_                         | -      | `false` |
 
 ### DropdownItemProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dropdown-menu.d.ts)
 
