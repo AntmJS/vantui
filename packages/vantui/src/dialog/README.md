@@ -35,13 +35,13 @@ import { Dialog } from '@antmjs/vantui'
 
 通过 `beforeClose` 属性可以传入一个回调函数，在弹窗关闭前进行特定操作。
 
-::: $demo2 :::
+::: $demo3 :::
 
 ### 组件调用
 
 如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
 
-::: $demo3 :::
+::: $demo4 :::
 
 ### DialogProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dialog.d.ts)
 
