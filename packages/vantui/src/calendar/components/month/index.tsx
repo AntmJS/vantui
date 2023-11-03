@@ -52,14 +52,12 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
   const [days, setDays_] = useState<Array<any>>([])
 
   const onClick_ = useCallback(
-    function (event: any) {
-      const { index } = event.currentTarget.dataset
-      const item = days[index]
+    function (item) {
       if (item.type !== 'disabled') {
         if (onClick) onClick(item)
       }
     },
-    [days, onClick],
+    [onClick],
   )
 
   const getMultipleDayType = useCallback(
@@ -236,7 +234,7 @@ function Index(props: ICalenarMonthProps, ref: React.ForwardedRef<any>) {
                   utils.bem('calendar__day', [item.type]) + ' ' + item.className
                 }
                 data-index={index}
-                onClick={onClick_}
+                onClick={() => onClick_(item)}
               >
                 {item.type === 'selected' ||
                 currentDate === item.date.getTime() ? (
