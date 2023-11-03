@@ -1,4 +1,19 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.2.0...v) (2023-09-23)
+# [](https://github.com/AntmJS/vantui/compare/v3.2.1...v) (2023-11-03)
+
+
+### Bug Fixes
+
+* calendar日历组件支付宝偶现月份选择问题 ([e2b63fb](https://github.com/AntmJS/vantui/commit/e2b63fbfef4add956a06bc10bd41e255ae017db1))
+* switch组件全局样式问题，默认颜色不再是蓝色而是主题色（[#580](https://github.com/AntmJS/vantui/issues/580)） ([b55259c](https://github.com/AntmJS/vantui/commit/b55259c2257a7bd113e411e18742065d0b3c498c))
+
+
+### Features
+
+* docs update ([470cd32](https://github.com/AntmJS/vantui/commit/470cd32f49d4be27b7e983d59eef3b4fcc4030d4))
+
+
+
+## [3.2.1](https://github.com/AntmJS/vantui/compare/v3.2.0...v3.2.1) (2023-09-23)
 
 
 ### Bug Fixes
