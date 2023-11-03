@@ -20,7 +20,8 @@ export default function Demo() {
       const newData = data.concat(reslult)
       setdata(newData)
       // 以下是简单的模拟请求，正常请求请按条件执行`resolve('complete')`
-      resolve(newData.length > 60 ? 'complete' : 'loading')
+      // 设定一页10条数据,小于10则没有更多数据
+      resolve(reslult.length < 10 ? 'complete' : 'loading')
     })
   }
 
@@ -28,7 +29,7 @@ export default function Demo() {
     return new Promise(async (resolve) => {
       const reslult = await mockGoods()
       setdata(reslult)
-      InfiniteScrollInstance.current?.reset()
+      if (data.length > 8) InfiniteScrollInstance.current?.reset()
       resolve(undefined)
     })
   }

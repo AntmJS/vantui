@@ -27,7 +27,7 @@ export const mockGoods = (): Promise<any[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        new Array(8).fill('').map((_, index) => {
+        new Array(Math.random() > 0.3 ? 10 : 8).fill('').map((_, index) => {
           return {
             index,
             ...initData[index % 4],
