@@ -9,11 +9,11 @@
             config: {
               title: 'antmjs Vantui',
               src: [
-                '/Users/apple/Desktop/vantui/packages/vantui/src',
-                '/Users/apple/Desktop/vantui/packages/vantui/docs',
+                '/Users/sanshao/AntmJS/vantui/packages/vantui/src',
+                '/Users/sanshao/AntmJS/vantui/packages/vantui/docs',
               ],
               globalStyles: [
-                '/Users/apple/Desktop/vantui/packages/vantui/docs/theme.less',
+                '/Users/sanshao/AntmJS/vantui/packages/vantui/docs/theme.less',
               ],
               logo: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
               route: { level: 1 },
