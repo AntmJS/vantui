@@ -58,9 +58,9 @@ import { Switch } from '@antmjs/vantui'
 
 | 名称                           | 默认值                              |
 | ------------------------------ | ----------------------------------- |
-| --switch-width                 | ` 2em;`                             |
-| --switch-height                | ` 1em;`                             |
-| --switch-node-size             | ` 1em;`                             |
+| --switch-width                 | ` 124px;`                           |
+| --switch-height                | ` 64px;`                            |
+| --switch-node-size             | ` 64px;`                            |
 | --switch-node-z-index          | ` 1;`                               |
 | --switch-node-background-color | ` @white;`                          |
 | --switch-node-box-shadow       | ` 0 6px 2px 0 rgba(0, 0, 0, 0.05),` |
