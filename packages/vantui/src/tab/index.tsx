@@ -18,7 +18,7 @@ export function Tab(
     className,
     active,
     lazyRender,
-    lazyTimeout,
+    lazyTimeout = 0,
     animated,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     title,
@@ -26,13 +26,9 @@ export function Tab(
   } = props
   useEffect(
     function () {
-      if (!lazyTimeout) {
-        setInited((pre) => pre || active)
-      } else {
-        setTimeout(() => {
-          setInited((pre) => pre || active)
-        }, lazyTimeout)
-      }
+      setTimeout(() => {
+        setInited(active)
+      }, lazyTimeout)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active],

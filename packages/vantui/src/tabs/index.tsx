@@ -441,7 +441,7 @@ export function Tabs(props: TabsProps) {
     function () {
       setTimeout(() => {
         getScrollWrapWidth()
-      })
+      }, 66)
     },
     [getScrollWrapWidth, isInited],
   )
