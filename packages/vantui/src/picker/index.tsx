@@ -121,7 +121,7 @@ const Picker = forwardRef(function Index(
   }, [])
 
   const getColumnIndex = useCallback(function (columnIndex: number) {
-    return (children.current[columnIndex] || {}).getCurrentIndex()
+    return (children.current[columnIndex] || {})?.getCurrentIndex()
   }, [])
 
   const setColumns = useCallback(
