@@ -125,13 +125,55 @@
   position: relative;
   flex: 1;
   box-sizing: border-box;
-  min-width: 0; /* hack for flex ellipsis */
+  min-width: 0;
+  /* hack for flex ellipsis */
   padding: 0 10px;
   text-align: center;
   cursor: pointer;
+  position: relative;
   .theme(color, '@tab-text-color');
   .theme(font-size, '@tab-font-size');
   .theme(line-height, '@tabs-line-height');
+
+  &--active-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: @tabs-bottom-bar-height;
+    background-color: @primary-color;
+  }
+
+  &--active-line-show {
+    animation: TabLineShow @tabs-bottom-bar-duration;
+    animation-fill-mode: forwards;
+  }
+
+  &--active-line-hidden {
+    animation: TabLineHidden @tabs-bottom-bar-duration;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes TabLineShow {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: @tabs-bottom-bar-width;
+    }
+  }
+
+  @keyframes TabLineHidden {
+    from {
+      width: @tabs-bottom-bar-width;
+    }
+
+    to {
+      width: 0%;
+    }
+  }
 
   &--active {
     .theme(font-weight, '@font-weight-bold');

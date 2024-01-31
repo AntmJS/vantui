@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { TabProps } from '../../types/tab'
@@ -24,13 +24,14 @@ export function Tab(
     title,
     ...others
   } = props
-  useEffect(
+
+  useLayoutEffect(
     function () {
       if (!lazyTimeout) {
-        setInited((pre) => pre || active)
+        setInited(active)
       } else {
         setTimeout(() => {
-          setInited((pre) => pre || active)
+          setInited(active)
         }, lazyTimeout)
       }
     },
