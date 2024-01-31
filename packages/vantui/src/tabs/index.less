@@ -122,10 +122,10 @@
 }
 
 .van-tab {
-  position: relative;
   flex: 1;
   box-sizing: border-box;
   min-width: 0;
+
   /* hack for flex ellipsis */
   padding: 0 10px;
   text-align: center;
@@ -146,16 +146,16 @@
   }
 
   &--active-line-show {
-    animation: TabLineShow @tabs-bottom-bar-duration;
+    animation: tab-line-show @tabs-bottom-bar-duration;
     animation-fill-mode: forwards;
   }
 
   &--active-line-hidden {
-    animation: TabLineHidden @tabs-bottom-bar-duration;
+    animation: tab-line-hidden @tabs-bottom-bar-duration;
     animation-fill-mode: forwards;
   }
 
-  @keyframes TabLineShow {
+  @keyframes tab-line-show {
     from {
       width: 0%;
     }
@@ -165,7 +165,7 @@
     }
   }
 
-  @keyframes TabLineHidden {
+  @keyframes tab-line-hidden {
     from {
       width: @tabs-bottom-bar-width;
     }
