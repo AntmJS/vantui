@@ -37,6 +37,7 @@ export default function Demo() {
       <Form ref={formIt}>
         <FormItem
           name="file"
+          mutiLevel
           required
           layout="vertical"
           label="上传图片(图片大小不得大于 0.1M)"
