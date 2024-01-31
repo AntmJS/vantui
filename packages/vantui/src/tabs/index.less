@@ -122,16 +122,59 @@
 }
 
 .van-tab {
-  position: relative;
   flex: 1;
   box-sizing: border-box;
-  min-width: 0; /* hack for flex ellipsis */
+  min-width: 0;
+
+  /* hack for flex ellipsis */
   padding: 0 10px;
   text-align: center;
   cursor: pointer;
+  position: relative;
   .theme(color, '@tab-text-color');
   .theme(font-size, '@tab-font-size');
   .theme(line-height, '@tabs-line-height');
+
+  &--active-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: @tabs-bottom-bar-height;
+    background-color: @tabs-default-color;
+    border-radius: 4px;
+  }
+
+  &--active-line-show {
+    animation: tab-line-show @tabs-bottom-bar-duration;
+    animation-fill-mode: forwards;
+  }
+
+  &--active-line-hidden {
+    animation: tab-line-hidden @tabs-bottom-bar-duration;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes tab-line-show {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: @tabs-bottom-bar-width;
+    }
+  }
+
+  @keyframes tab-line-hidden {
+    from {
+      width: @tabs-bottom-bar-width;
+    }
+
+    to {
+      width: 0%;
+    }
+  }
 
   &--active {
     .theme(font-weight, '@font-weight-bold');
