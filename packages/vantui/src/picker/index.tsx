@@ -121,7 +121,7 @@ const Picker = forwardRef(function Index(
   }, [])
 
   const getColumnIndex = useCallback(function (columnIndex: number) {
-    return (children.current[columnIndex] || {}).getCurrentIndex()
+    return (children.current[columnIndex] || {})?.getCurrentIndex()
   }, [])
 
   const setColumns = useCallback(
@@ -174,7 +174,7 @@ const Picker = forwardRef(function Index(
   )
 
   const getIndexes = useCallback(function () {
-    return children.current.map((child) => child.getCurrentIndex())
+    return children.current.map((child) => child?.getCurrentIndex())
   }, [])
 
   const onChange_ = emit
