@@ -382,7 +382,7 @@ const InternalCascader = (props: CascaderProps) => {
                 active={tabvalue === pane.paneKey}
                 name={pane.paneKey}
                 lazyRender={true}
-                lazyTimeout={100}
+                lazyTimeout={200}
                 onClick={() => {
                   if (!tabAnimate && index !== optiosData.length - 1)
                     settabAnimate(true)

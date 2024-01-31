@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Form } from '../form'
 import { FormItem } from '../form-item'
 import {
@@ -45,7 +45,7 @@ function FormRender<T>(props: IFormRenderProps<T>) {
     [componentIndex],
   )
 
-  const _defaultValues = useCallback(() => {
+  const _defaultValues = useMemo(() => {
     return transformValueByType(defaultValues || {}, config, formComponents)
   }, [config, defaultValues])
 

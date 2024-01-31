@@ -3,34 +3,27 @@ import { View } from '@tarojs/components'
 import { Tabs, Tab } from '@antmjs/vantui'
 
 export default function Demo() {
-  const [active, setActive] = useState('a')
+  const [tab, setTab] = useState('1')
 
   useEffect(() => {
     setTimeout(() => {
-      setActive('c')
-    }, 3000)
+      setTab('3')
+    }, 1000)
   }, [])
 
   return (
     <View>
-      <Tabs
-        sticky={true}
-        active={active}
-        onChange={(e) => {
-          console.info(e, '~~~~~~~')
-          setActive(e.detail.name || '')
-        }}
-      >
-        <Tab title="标签 a" name="a">
+      <Tabs sticky={true} active={tab} ellipsis={false}>
+        <Tab title="标签 1" name="1">
           内容 1
         </Tab>
-        <Tab title="标签 b" name="b">
+        <Tab title="标签 ～～ 2" name="2">
           内容 2
         </Tab>
-        <Tab title="标签 b" name="c">
+        <Tab title="标签 3" name="3">
           内容 3
         </Tab>
-        <Tab title="标签 d" name="d">
+        <Tab title="标签 4" name="4">
           内容 4
         </Tab>
       </Tabs>

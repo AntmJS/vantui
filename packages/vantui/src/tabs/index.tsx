@@ -63,22 +63,20 @@ export function Tabs(props: TabsProps) {
   const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
   const [isInited, setIsInited] = useState(false)
   const [scrollWidth, setScrollWidth] = useState('100%')
-  const [state, setState]: any = useState({
+  const [state, setState] = useState({
     tabs: [],
     scrollLeft: 0,
     scrollable: false,
     currentIndex: 0,
-    skipTransition: true,
+    prevIndex: -1,
     scrollWithAnimation: false,
-    lineOffsetLeft: 0,
   })
   const {
     scrollLeft,
     scrollable,
     currentIndex,
-    skipTransition,
+    prevIndex,
     scrollWithAnimation,
-    lineOffsetLeft,
   } = state
 
   const {
@@ -93,9 +91,7 @@ export function Tabs(props: TabsProps) {
     border,
     color,
     ellipsis = true,
-    lineHeight = -1,
     duration = 0.3,
-    lineWidth = 40,
     titleActiveColor,
     titleInactiveColor,
     swipeThreshold = 5,
@@ -117,6 +113,7 @@ export function Tabs(props: TabsProps) {
   }, [])
 
   const tabs = useMemo(() => {
+    console.info(parseTabList(children))
     return parseTabList(children)
   }, [children])
 
@@ -171,10 +168,9 @@ export function Tabs(props: TabsProps) {
     }
     const shouldEmitChange = currentIndex !== null
     setState((pre: any) => {
-      return { ...pre, currentIndex: cIndex }
+      return { ...pre, currentIndex: cIndex, prevIndex: pre.currentIndex }
     })
     requestAnimationFrame(() => {
-      resize(cIndex)
       scrollIntoView(cIndex)
     })
     nextTick(() => {
@@ -191,42 +187,6 @@ export function Tabs(props: TabsProps) {
     if (matched.length) {
       setCurrentIndex(matched[0]!.props.index)
     }
-  }
-
-  const resize = function (index?: number) {
-    if (type !== 'line') {
-      return
-    }
-    index = index ?? currentIndex
-    nextTick(() => {
-      Promise.all([
-        getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
-        getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__line`),
-      ]).then(([rects = [], lineRect]: any) => {
-        if (rects && lineRect) {
-          const rect = rects[index!]
-          if (rect == null) {
-            return
-          }
-          let lineOffsetLeft = rects
-            .slice(0, index)
-            .reduce((prev: number, curr: any) => prev + curr.width, 0)
-          lineOffsetLeft +=
-            (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8)
-          setState((pre: any) => {
-            return { ...pre, lineOffsetLeft }
-          })
-          ref.current.swiping = true
-          if (skipTransition) {
-            nextTick(() => {
-              setState((pre: any) => {
-                return { ...pre, skipTransition: false }
-              })
-            })
-          }
-        }
-      })
-    })
   }
 
   const onTap = function (event: any) {
@@ -353,29 +313,16 @@ export function Tabs(props: TabsProps) {
   useEffect(
     function () {
       nextTick(() => {
-        resize()
         scrollIntoView()
-        if (
-          active !== getCurrentName() &&
-          !ref.current?.swiping &&
-          !swipeable
-        ) {
-          setCurrentIndexByName(active)
-        }
       })
+      if (active !== getCurrentName() && !ref.current?.swiping && !swipeable) {
+        setCurrentIndexByName(active)
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [getCurrentName()],
   )
 
-  useEffect(
-    function () {
-      resize()
-      scrollIntoView()
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [lineWidth],
-  )
   useEffect(
     function () {
       if (active !== getCurrentName()) {
@@ -396,17 +343,6 @@ export function Tabs(props: TabsProps) {
       })
     },
     [swipeThreshold, newChildren, ellipsis],
-  )
-
-  // 解决异步加载的时候默认的下划线不出现的问题
-  useEffect(
-    function () {
-      nextTick(() => {
-        resize()
-      })
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [newChildren],
   )
 
   const getScrollWrapWidth = useCallback(
@@ -445,6 +381,8 @@ export function Tabs(props: TabsProps) {
     },
     [getScrollWrapWidth, isInited],
   )
+
+  console.info(state)
 
   return (
     <View
@@ -496,19 +434,6 @@ export function Tabs(props: TabsProps) {
               }
               style={computed.navStyle(color, type)}
             >
-              {type === 'line' && (
-                <View
-                  className="van-tabs__line"
-                  style={computed.lineStyle({
-                    color,
-                    lineOffsetLeft,
-                    lineHeight,
-                    skipTransition,
-                    duration,
-                    lineWidth,
-                  })}
-                ></View>
-              )}
               {tabs.map((item: any, index: any) => {
                 return (
                   <View
@@ -536,6 +461,20 @@ export function Tabs(props: TabsProps) {
                     })}
                     onClick={onTap}
                   >
+                    {/** tab bar */}
+                    {type === 'line' && (
+                      <View
+                        className={`van-tab--active-line ${
+                          index === currentIndex
+                            ? 'van-tab--active-line-show'
+                            : ''
+                        } ${
+                          index === prevIndex && index !== currentIndex
+                            ? 'van-tab--active-line-hidden'
+                            : ''
+                        }`}
+                      />
+                    )}
                     <View
                       className={ellipsis ? 'van-ellipsis' : ''}
                       style={item.titleStyle}

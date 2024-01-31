@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { TabProps } from '../../types/tab'
@@ -24,11 +24,16 @@ export function Tab(
     title,
     ...others
   } = props
-  useEffect(
+
+  useLayoutEffect(
     function () {
-      setTimeout(() => {
+      if (!lazyTimeout) {
         setInited(active)
-      }, lazyTimeout)
+      } else {
+        setTimeout(() => {
+          setInited(active)
+        }, lazyTimeout)
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active],
