@@ -18,7 +18,7 @@ export function Tab(
     className,
     active,
     lazyRender,
-    lazyTimeout,
+    lazyTimeout = 0,
     animated,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     title,

@@ -3,7 +3,7 @@ import react from 'react'
 import { Rate } from '@antmjs/vantui'
 
 export default function Demo() {
-  const [value, setValue] = react.useState(4)
+  const [value, setValue] = react.useState(4.5)
 
   return (
     <Rate

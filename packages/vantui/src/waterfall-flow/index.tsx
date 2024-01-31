@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { View } from '@tarojs/components'
 import { BaseRecord, WaterfallFlowProps } from '../../types/waterfall-flow'
-import { pxTransform } from '../px-transform'
 import { useWaterfallAttributes } from './useWaterfallAttributes'
 import { WaterfallFlowItem } from './WaterfallFlowItem'
 
@@ -25,9 +24,7 @@ export function WaterfallFlow<TRecord extends BaseRecord = any>({
     useWaterfallAttributes(columnNum, gutter)
 
   const itemWidth = useMemo(() => {
-    return `calc((100% - ${pxTransform(
-      widthGutter * (columnNum - 1),
-    )}) / ${columnNum})`
+    return `calc((100% - ${widthGutter * (columnNum - 1)}px) / ${columnNum})`
   }, [columnNum, widthGutter])
 
   const style = useMemo(() => {
