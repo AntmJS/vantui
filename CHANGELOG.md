@@ -1,4 +1,20 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.2.1...v) (2023-11-03)
+# [](https://github.com/AntmJS/vantui/compare/v3.2.2...v) (2024-01-31)
+
+
+### Bug Fixes
+
+* 修复瀑布流组件宽度超出问题 ([#603](https://github.com/AntmJS/vantui/issues/603)) ([e259404](https://github.com/AntmJS/vantui/commit/e259404e42033602aa2f18d877845ff68407d05f))
+* form-render组件initialvalues修复 ([c043e5c](https://github.com/AntmJS/vantui/commit/c043e5c6feacc393a9613dec93eaebbbe76cf0c0))
+* tab组件异步模式交互不稳定，type=line的交互调整（[#601](https://github.com/AntmJS/vantui/issues/601)） ([8b133e7](https://github.com/AntmJS/vantui/commit/8b133e7fbfbf570955bfaa80041d28acc88b5eb4))
+
+
+### Features
+
+* cascader组件样式交互优化 ([d2c9448](https://github.com/AntmJS/vantui/commit/d2c94487ebda11f53980b1ea21ee8436c6d66d2a))
+
+
+
+## [3.2.2](https://github.com/AntmJS/vantui/compare/v3.2.1...v3.2.2) (2023-11-03)
 
 
 ### Bug Fixes
