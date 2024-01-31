@@ -14,7 +14,7 @@ import { StepperProps } from './stepper'
 
 export type IFormRenderItemProps<T> =
   | IMakeFormCompProps<'input' | 'inputNumber' | 'inputPrice', InputProps, T>
-  | IMakeFormCompProps<'swtch', SwitchProps, T>
+  | IMakeFormCompProps<'switch', SwitchProps, T>
   | IMakeFormCompProps<'radio', RadioGroupProps, T>
   | IMakeFormCompProps<'checkbox', CheckboxGroupProps, T>
   | IMakeFormCompProps<'slider', SliderProps, T>
