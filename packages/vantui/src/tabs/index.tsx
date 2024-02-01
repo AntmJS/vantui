@@ -382,8 +382,6 @@ export function Tabs(props: TabsProps) {
     [getScrollWrapWidth, isInited],
   )
 
-  console.info(state)
-
   return (
     <View
       className={

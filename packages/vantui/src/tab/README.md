@@ -16,201 +16,55 @@ import { Tab, Tabs } from '@antmjs/vantui'
 
 ### 粘性布局
 
-```jsx
-function Demo() {
-  return (
-    <View>
-      <Tabs sticky={true}>
-        <Tab title="标签 1">内容 1</Tab>
-        <Tab title="标签 2">内容 2</Tab>
-        <Tab title="标签 3">内容 3</Tab>
-        <Tab title="标签 4">内容 4</Tab>
-      </Tabs>
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 基础用法
 
 通过`active`设定当前激活标签对应的索引值，默认情况下启用第一个标签。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs
-      active={1}
-      onChange={(e) =>
-        Toast.show({
-          message: e.detail.name,
-          selector: '#tabs-demo1',
-        })
-      }
-    >
-      <Tab title="标签 1">内容 1</Tab>
-      <Tab title="标签 2">内容 2</Tab>
-      <Tab title="标签 3">内容 3</Tab>
-      <Tab title="标签 4">内容 4</Tab>
-      <Toast id="tabs-demo1" />
-    </Tabs>
-  )
-}
-```
+::: $demo2 :::
 
 ### 通过名称匹配
 
 在标签指定`name`属性的情况下，`active`的值为当前标签的`name`（此时无法通过索引值来匹配标签）。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs
-      active={'a'}
-      onChange={(e) =>
-        Toast.show({
-          message: e.detail.name,
-          selector: '#tabs-demo2',
-        })
-      }
-    >
-      <Tab title="标签 a" name="a">
-        内容 a
-      </Tab>
-      <Tab title="标签 b" name="b">
-        内容 b
-      </Tab>
-      <Tab title="标签 c" name="c">
-        内容 c
-      </Tab>
-      <Toast id="tabs-demo2" />
-    </Tabs>
-  )
-}
-```
+::: $demo3 :::
 
 ### 横向滚动
 
 多于 5 个标签时，Tab 可以横向滚动。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs active={1}>
-      <Tab title="标签 1">内容 1</Tab>
-      <Tab title="标签 2">内容 2</Tab>
-      <Tab title="标签 3">内容 3</Tab>
-      <Tab title="标签 4">内容 4</Tab>
-      <Tab title="标签 5">内容 5</Tab>
-      <Tab title="标签 6">内容 6</Tab>
-    </Tabs>
-  )
-}
-```
+::: $demo4 :::
 
 ### 禁用标签
 
 设置`disabled`属性即可禁用标签。如果需要监听禁用标签的点击事件，可以在`vanTabs`上监听`disabled`事件。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs
-      onDisabled={(e) =>
-        Toast.show({
-          message: e.detail.title + '已被禁',
-          selector: '#tabs-demo4',
-        })
-      }
-    >
-      <Tab title="标签 1">内容 1</Tab>
-      <Tab title="标签 2" disabled={true}>
-        内容 2
-      </Tab>
-      <Tab title="标签 3">内容 3</Tab>
-      <Toast id="tabs-demo4" />
-    </Tabs>
-  )
-}
-```
-
-```js
-
-```
+::: $demo5 :::
 
 ### 样式风格
 
 `Tab`支持两种样式风格：`line`和`card`，默认为`line`样式，可以通过`type`属性修改样式风格。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs type="card">
-      <Tab title="标签 1">内容 1</Tab>
-      <Tab title="标签 2">内容 2</Tab>
-      <Tab title="标签 3">内容 3</Tab>
-    </Tabs>
-  )
-}
-```
+::: $demo6 :::
 
 ### 点击事件
 
 可以在`vanTabs`上绑定`click`事件，在回调参数的`event.detail`中可以取得被点击标签的标题和标识符。
 
-```jsx
-function Demo() {
-  const onClick = (e) => {
-    Toast.show({
-      message: e.detail.title,
-      selector: '#tab-demo6',
-    })
-  }
-
-  return (
-    <View>
-      <Tabs onClick={onClick}>
-        <Tab title="标签 1">内容 1</Tab>
-        <Tab title="标签 2">内容 2</Tab>
-      </Tabs>
-      <Toast id="tab-demo6" />
-    </View>
-  )
-}
-```
+::: $demo7 :::
 
 ### 切换动画
 
 可以通过`animated`来设置是否启用切换 tab 时的动画。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs animated>
-      <Tab title="标签 1">内容 1</Tab>
-      <Tab title="标签 2">内容 2</Tab>
-      <Tab title="标签 3">内容 3</Tab>
-      <Tab title="标签 4">内容 4</Tab>
-    </Tabs>
-  )
-}
-```
+::: $demo8 :::
 
 ### 滑动切换
 
 通过`swipeable`属性可以开启滑动切换标签页。
 
-```jsx
-function Demo() {
-  return (
-    <Tabs swipeable>
-      <Tab title="标签 1">内容 1</Tab>
-      <Tab title="标签 2">内容 2</Tab>
-      <Tab title="标签 3">内容 3</Tab>
-      <Tab title="标签 4">内容 4</Tab>
-    </Tabs>
-  )
-}
-```
+::: $demo9 :::
 
 ### TabsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/tab.d.ts)
 
