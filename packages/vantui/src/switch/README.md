@@ -19,7 +19,7 @@ import { Switch } from '@antmjs/vantui'
 ```jsx
 function Demo() {
   const [value, setValue] = react.useState(false)
-  return <Switch checked={value} onChange={(e) => setValue(e.detail)} />
+  return <Switch checked={value} onChange={e => setValue(e.detail)} />
 }
 ```
 
@@ -45,7 +45,7 @@ function Demo() {
 function Demo() {
   const [value, setValue] = react.useState(false)
   return (
-    <Switch size="32px" checked={value} onChange={(e) => setValue(e.detail)} />
+    <Switch size="32px" checked={value} onChange={e => setValue(e.detail)} />
   )
 }
 ```
@@ -60,7 +60,7 @@ function Demo() {
       activeColor="#07c160"
       inactiveColor="#ee0a24"
       checked={value}
-      onChange={(e) => setValue(e.detail)}
+      onChange={e => setValue(e.detail)}
     />
   )
 }
@@ -72,7 +72,7 @@ function Demo() {
 function Demo() {
   const [value, setValue] = react.useState(false)
 
-  const action = (e) => {
+  const action = e => {
     Dialog.confirm({
       selector: '#switch-demo',
       title: '提示',
@@ -81,7 +81,7 @@ function Demo() {
       .then(() => {
         setValue(e.detail)
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e)
       })
   }
@@ -113,16 +113,16 @@ function Demo() {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                           | 默认值                              |
-| ------------------------------ | ----------------------------------- |
-| --switch-width                 | ` 2em;`                             |
-| --switch-height                | ` 1em;`                             |
-| --switch-node-size             | ` 1em;`                             |
-| --switch-node-z-index          | ` 1;`                               |
-| --switch-node-background-color | ` @white;`                          |
-| --switch-node-box-shadow       | ` 0 6px 2px 0 rgba(0, 0, 0, 0.05),` |
-| --switch-background-color      | ` @white;`                          |
-| --switch-on-background-color   | ` @blue;`                           |
-| --switch-transition-duration   | ` 0.3s;`                            |
-| --switch-disabled-opacity      | ` 0.4;`                             |
-| --switch-border                | ` 2px solid rgba(0, 0, 0, 0.1);`    |
+| 名称                           | 默认值                             |
+| ------------------------------ | ---------------------------------- |
+| --switch-width                 | `126px;`                           |
+| --switch-height                | `64px;`                            |
+| --switch-node-size             | `64px;`                            |
+| --switch-node-z-index          | `1;`                               |
+| --switch-node-background-color | `@white;`                          |
+| --switch-node-box-shadow       | `0 6px 2px 0 rgba(0, 0, 0, 0.05),` |
+| --switch-background-color      | `@white;`                          |
+| --switch-on-background-color   | `@blue;`                           |
+| --switch-transition-duration   | `0.3s;`                            |
+| --switch-disabled-opacity      | `0.4;`                             |
+| --switch-border                | `2px solid rgba(0, 0, 0, 0.1);`    |

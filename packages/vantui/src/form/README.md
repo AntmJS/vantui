@@ -30,7 +30,7 @@ function Demo() {
   const [, forceUpdate] = react.useState()
   // 注册不能回调函数设置必填的提示文案
   react.useEffect(() => {
-    formIt.registerRequiredMessageCallback((label) => {
+    formIt.registerRequiredMessageCallback(label => {
       return `${label}真的不能为空啊`
     })
 
@@ -105,7 +105,7 @@ function Demo() {
           trigger="onInput"
           validateTrigger="onBlur"
           // taro的input的onInput事件返回对应表单的最终值为e.detail.value
-          valueFormat={(e) => e.detail.value}
+          valueFormat={e => e.detail.value}
           renderRight={<Icon name="user-o" />}
         >
           <Input placeholder="请输入用户名（中文）" />
@@ -119,7 +119,7 @@ function Demo() {
           {/** 后续版本, 开发 FormItem.dependencies, 实现不需要 forceUpdate 来更新 getFieldValue('xx') */}
           <RadioGroup
             direction="horizontal"
-            onChange={(e) => {
+            onChange={e => {
               formIt.setFieldsValue('cardId', '')
               forceUpdate(e)
             }}
@@ -137,7 +137,7 @@ function Demo() {
           label="证件号"
           name="cardId"
           required
-          valueFormat={(e) => e.detail.value}
+          valueFormat={e => e.detail.value}
           rules={dynamicRule}
           trigger="onInput"
         >
@@ -208,7 +208,7 @@ const initialValues = {
 function Demo() {
   const formIt = react.useRef(null)
 
-  const multFormItems = function () {
+  const multFormItems = function() {
     let jsx = []
     for (let i = 0; i < 2; i++) {
       jsx.push(
@@ -217,7 +217,7 @@ function Demo() {
             label={`名称(${i + 1})`}
             name={['useInfo', i, 'name']}
             trigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={e => e.detail.value}
           >
             <Input placeholder="请输入用户名" />
           </FormItem>
@@ -225,7 +225,7 @@ function Demo() {
             label={`年龄(${i + 1})`}
             name={['useInfo', i, 'age']}
             trigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={e => e.detail.value}
           >
             <Input placeholder="请输入年龄" />
           </FormItem>
@@ -269,6 +269,7 @@ function _MutiData(value) {
 
 - Uploader 的 onAfterRead 事件只返回变更的文件，展示的是多个文件的话需要重新设置
 - 异步操作的时候返回 Promise
+- 上传组件需要开启 mutiLevel
 
 ```jsx
 function Demo() {
@@ -280,7 +281,7 @@ function Demo() {
     let fileList = instance.getFieldValue(formName) || []
     fileList = fileList.concat(file)
     // 异步更新
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         Toast.clear()
         resolve(fileList)
@@ -288,7 +289,7 @@ function Demo() {
     })
   }
 
-  const deleteFile = (event) => {
+  const deleteFile = event => {
     const { index, fileList } = event.detail
     fileList.splice(index, 1)
 
@@ -299,6 +300,7 @@ function Demo() {
       <Toast id="form-demo2-loading" />
       <Form ref={formIt}>
         <FormItem
+          mutiLevel
           name="file"
           required
           layout="vertical"
@@ -339,7 +341,7 @@ function Demo() {
       <FormItem
         label="日期选择"
         name="dateTime"
-        valueFormat={(e) => e.detail.value}
+        valueFormat={e => e.detail.value}
         valueKey="value"
         trigger="onConfirm"
         renderRight={<Icon name="arrow" />}
@@ -366,11 +368,11 @@ function DatetimePickerBox_(props) {
     [state],
   )
 
-  const toggleShow = react.useCallback((show) => {
+  const toggleShow = react.useCallback(show => {
     setState('show', show)
   }, [])
 
-  const onConfirm = react.useCallback((e) => {
+  const onConfirm = react.useCallback(e => {
     if (props.onConfirm) props.onConfirm(e)
     toggleShow(false)
   }, [])
@@ -380,18 +382,18 @@ function DatetimePickerBox_(props) {
     toggleShow(false)
   }, [])
 
-  const preFixZero = react.useCallback((n) => {
+  const preFixZero = react.useCallback(n => {
     return n > 9 ? `${n}` : `0${n}`
   }, [])
 
-  const formatDate = react.useCallback((date) => {
+  const formatDate = react.useCallback(date => {
     const d = new Date(date)
     return `${d.getFullYear()}-${preFixZero(
       Number(d.getMonth() + 1),
     )}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
   }, [])
 
-  const onChange = react.useCallback((e) => {
+  const onChange = react.useCallback(e => {
     setState(innerValue, e.detail.datetimePicker.innerValue)
   }, [])
 
@@ -478,19 +480,19 @@ function DatetimePickerBox_(props) {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                                | 默认值                |
-| ----------------------------------- | --------------------- |
-| --form-background-color             | ` @white;`            |
-| --form-space-horizontal             | ` 24px;`              |
-| --form-space-vertical               | ` 24px;`              |
-| --form-border-bottom                | ` 2px solid @gray-3;` |
-| --form-line-height                  | ` 50px;`              |
-| --form-label-color                  | ` @gray-7;`           |
-| --form-label-width                  | ` 146px;`             |
-| --form-label-font-size              | ` 32px;`              |
-| --form-controll-margin-left         | ` 40px;`              |
-| --form-controll-font-size           | ` 32px;`              |
-| --form-message-font-size            | ` 24px;`              |
-| --form-message-color                | ` red;`               |
-| --form-message-margin-top           | ` 8px;`               |
-| --form-vertical-controll-margin-top | ` 20px;`              |
+| 名称                                | 默认值               |
+| ----------------------------------- | -------------------- |
+| --form-background-color             | `@white;`            |
+| --form-space-horizontal             | `24px;`              |
+| --form-space-vertical               | `24px;`              |
+| --form-border-bottom                | `2px solid @gray-3;` |
+| --form-line-height                  | `50px;`              |
+| --form-label-color                  | `@gray-7;`           |
+| --form-label-width                  | `146px;`             |
+| --form-label-font-size              | `32px;`              |
+| --form-controll-margin-left         | `40px;`              |
+| --form-controll-font-size           | `32px;`              |
+| --form-message-font-size            | `24px;`              |
+| --form-message-color                | `red;`               |
+| --form-message-margin-top           | `8px;`               |
+| --form-vertical-controll-margin-top | `20px;`              |

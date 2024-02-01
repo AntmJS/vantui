@@ -51,6 +51,7 @@
   "dependencies": {
     "@antmjs/doc": "^2.3.11",
     "@antmjs/types": "^2.3.11",
+    "@antmjs/vantui-cli": "^3.3.0",
     "@swc/helpers": "^0.5.0",
     "@vant/icons": "^1.7.1",
     "ast-to-markdown": "^1.0.0",
