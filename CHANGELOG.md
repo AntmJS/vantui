@@ -1,4 +1,15 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.2.2...v) (2024-01-31)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.0...v) (2024-02-01)
+
+
+### Bug Fixes
+
+* form-render组件switchTS错误（[#582](https://github.com/AntmJS/vantui/issues/582)） ([4268fea](https://github.com/AntmJS/vantui/commit/4268fea78e6ce458a3599d1ea1421ff74a7edd76))
+* picker 组件可能存在初始化错误log信息 （[#451](https://github.com/AntmJS/vantui/issues/451)） ([24dc892](https://github.com/AntmJS/vantui/commit/24dc8921d21e079b29865b30525deae88274e985))
+* tab移除log信息，下划线添加圆角 ([0fdc50b](https://github.com/AntmJS/vantui/commit/0fdc50b1bd69c0253b57a2e98abc0655280e0f98))
+
+
+
+# [3.3.0](https://github.com/AntmJS/vantui/compare/v3.2.2...v3.3.0) (2024-01-31)
 
 
 ### Bug Fixes
