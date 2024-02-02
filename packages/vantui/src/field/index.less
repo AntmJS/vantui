@@ -110,23 +110,6 @@
     }
   }
 
-  &__placeholder {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    pointer-events: none;
-    .theme(color, '@field-placeholder-text-color');
-
-    -webkit-text-fill-color: @field-placeholder-text-color;
-
-    &--error {
-      .theme(color, '@field-error-message-color');
-
-      -webkit-text-fill-color: @field-error-message-color;
-    }
-  }
-
   &__icon-root {
     display: flex;
     align-items: center;
@@ -197,5 +180,14 @@
     &--full {
       .theme(color, '@field-word-num-full-color');
     }
+  }
+}
+
+.van-field__placeholder {
+  pointer-events: none;
+  color: @field-placeholder-text-color;
+
+  &--error {
+    color: @field-error-message-color;
   }
 }
