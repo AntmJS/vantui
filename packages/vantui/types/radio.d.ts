@@ -2,7 +2,7 @@ import { FunctionComponent, ReactNode } from 'react'
 import { ITouchEvent, ViewProps } from '@tarojs/components'
 
 export interface RadioProps extends ViewProps {
-  name?: string
+  name?: string | number
   value?: any
   disabled?: boolean
   checkedColor?: string
