@@ -4,16 +4,21 @@
 
 .van-share-sheet {
   &__header {
-    padding: @share-sheet-header-padding;
+    .theme(padding, '@share-sheet-header-padding');
+
     text-align: center;
   }
 
   &__title {
-    margin-top: @padding-xs;
-    color: @share-sheet-title-color;
+    .theme(margin-top, '@padding-xs');
+
+    .theme(color, '@share-sheet-title-color');
+
     font-weight: normal;
-    font-size: @share-sheet-title-font-size;
-    line-height: @share-sheet-title-line-height;
+
+    .theme(font-size, '@share-sheet-title-font-size');
+
+    .theme(line-height, '@share-sheet-title-line-height');
 
     &:empty {
       display: none;
@@ -26,10 +31,14 @@
 
   &__description {
     display: block;
-    margin-top: @padding-xs;
-    color: @share-sheet-description-color;
-    font-size: @share-sheet-description-font-size;
-    line-height: @share-sheet-description-line-height;
+
+    .theme(margin-top, '@padding-xs');
+
+    .theme(color, '@share-sheet-description-color');
+
+    .theme(font-size, '@share-sheet-description-font-size');
+
+    .theme(line-height, '@share-sheet-description-line-height');
 
     &:empty {
       display: none;
@@ -46,16 +55,24 @@
     width: 100%;
     height: auto;
     padding: 0;
-    font-size: @share-sheet-cancel-button-font-size;
-    line-height: @share-sheet-cancel-button-height;
+
+    .theme(font-size, '@share-sheet-cancel-button-font-size');
+
+    .theme(line-height, '@share-sheet-cancel-button-height');
+
     text-align: center;
-    background: @share-sheet-cancel-button-background;
+
+    .theme(background, '@share-sheet-cancel-button-background');
+
     border: none;
 
     &::before {
       display: block;
-      height: @padding-xs;
-      background-color: @background-color;
+
+      .theme(height, '@padding-xs');
+
+      .theme(background-color, '@background-color');
+
       content: ' ';
     }
 
@@ -64,7 +81,7 @@
     }
 
     &:active {
-      background-color: @active-color;
+      .theme(background-color, '@active-color');
     }
   }
 }

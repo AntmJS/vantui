@@ -12,7 +12,8 @@
     text-align: center;
     transform: translateY(-50%);
     user-select: none;
-    z-index: @index-bar-index-sidebar-zindex;
+
+    .theme(z-index, '@index-bar-index-sidebar-zindex');
   }
 
   &__index {
@@ -23,6 +24,6 @@
   }
 
   &__popup {
-    width: @index-bar-index-popup-width;
+    .theme(width, '@index-bar-index-popup-width');
   }
 }

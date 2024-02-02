@@ -2,20 +2,23 @@
 
 /* stylelint-disable-next-line no-descending-specificity */
 .vant-form-formItem {
-  line-height: @form-line-height;
+  .theme(line-height, '@form-line-height');
+
   height: auto;
   display: flex;
   overflow: hidden;
   margin: 0 @form-space-horizontal;
   padding: @form-space-vertical 0;
-  background-color: @form-background-color;
+
+  .theme(background-color, '@form-background-color');
 
   &-bottom-border {
-    border-bottom: @form-border-bottom;
+    .theme(border-bottom, '@form-border-bottom');
   }
 
   &-wrapper {
-    background-color: @form-background-color;
+    .theme(background-color, '@form-background-color');
+
     box-sizing: border-box;
   }
 
@@ -28,7 +31,7 @@
     flex-direction: column;
 
     .vant-form-formItem-controll-item {
-      margin-top: @form-vertical-controll-margin-top;
+      .theme(margin-top, '@form-vertical-controll-margin-top');
     }
 
     .vant-form-label {
@@ -37,9 +40,12 @@
   }
 
   &-controll {
-    color: @form-controll-color;
-    margin-left: @form-controll-margin-left;
-    font-size: @form-controll-font-size;
+    .theme(color, '@form-controll-color');
+
+    .theme(margin-left, '@form-controll-margin-left');
+
+    .theme(font-size, '@form-controll-font-size');
+
     flex: 1;
     /* stylelint-disable-next-line no-descending-specificity */
     &-item {
@@ -53,11 +59,15 @@
 
 /* stylelint-disable-next-line no-descending-specificity */
 .vant-form-label {
-  width: @form-label-width;
-  font-size: @form-label-font-size;
+  .theme(width, '@form-label-width');
+
+  .theme(font-size, '@form-label-font-size');
+
   flex: none;
   box-sizing: border-box;
-  color: @form-label-color;
+
+  .theme(color, '@form-label-color');
+
   text-align: left;
   word-wrap: break-word;
   display: flex;
@@ -70,8 +80,10 @@
 }
 
 .vant-form-message {
-  font-size: @form-message-font-size;
-  color: @form-message-color;
+  .theme(font-size, '@form-message-font-size');
+
+  .theme(color, '@form-message-color');
+
   height: 0;
   transition: all 0.4s;
   visibility: hidden;
@@ -79,6 +91,8 @@
 
 .vant-form-message-show {
   height: 30px;
-  margin-top: @form-message-margin-top;
+
+  .theme(margin-top, '@form-message-margin-top');
+
   visibility: visible;
 }

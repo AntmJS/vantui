@@ -65,8 +65,9 @@
     .theme(font-size, '@submit-bar-price-font-size');
 
     &-integer {
-      font-size: @submit-bar-price-integer-font-size;
-      font-family: @submit-bar-price-font-family;
+      .theme(font-size, '@submit-bar-price-integer-font-size');
+
+      .theme(font-family, '@submit-bar-price-font-family');
     }
   }
 

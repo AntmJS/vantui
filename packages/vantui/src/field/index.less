@@ -42,13 +42,14 @@
     background-color: transparent;
     border: 0;
     resize: none;
-    font-size: @field-font-size;
+
+    .theme(font-size, '@field-font-size');
 
     textarea,
     .taro-textarea,
     input,
     .weui-input {
-      font-size: @field-font-size;
+      .theme(font-size, '@field-font-size');
     }
 
     input,
@@ -80,7 +81,8 @@
       opacity: 1;
       .theme(color, '@field-input-disabled-text-color');
 
-      -webkit-text-fill-color: @field-input-disabled-text-color; // 修复input textarea 在disabled情况下文字无法展示的问题
+      .theme(-webkit-text-fill-color, '@field-input-disabled-text-color');
+      // 修复input textarea 在disabled情况下文字无法展示的问题
     }
 
     &--center {
@@ -185,9 +187,10 @@
 
 .van-field__placeholder {
   pointer-events: none;
-  color: @field-placeholder-text-color;
+
+  .theme(color, '@field-placeholder-text-color');
 
   &--error {
-    color: @field-error-message-color;
+    .theme(color, '@field-error-message-color');
   }
 }

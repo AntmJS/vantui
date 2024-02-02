@@ -34,7 +34,7 @@
   vertical-align: bottom;
 
   &:active:not(&--disabled) {
-    opacity: @button-active-opacity;
+    .theme(opacity, '@button-active-opacity');
   }
 
   .theme(line-height, '@button-line-height');
@@ -145,7 +145,7 @@
 
   &__loading-text,
   &__icon + &__text:not(:empty) {
-    margin-left: @padding-base;
+    .theme(margin-left, '@padding-base');
   }
 
   &__icon {

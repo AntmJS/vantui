@@ -5,7 +5,9 @@
   position: relative;
   text-align: center;
   user-select: none;
-  z-index: @navbar-z-index;
+
+  .theme(z-index, '@navbar-z-index');
+
   .theme(height, '@nav-bar-height');
   .theme(line-height, '@nav-bar-height');
   .theme(background-color, '@nav-bar-background-color');
@@ -83,7 +85,9 @@
   position: relative;
   text-align: center;
   user-select: none;
-  z-index: @navbar-z-index;
+
+  .theme(z-index, '@navbar-z-index');
+
   .theme(background-color, '@nav-bar-background-color');
 
   &__content {

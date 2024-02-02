@@ -8,8 +8,10 @@
     overflow: auto;
     white-space: unset;
     text-overflow: unset;
-    font-size: @ellipsis-font-size;
-    line-height: @ellipsis-line-height;
+
+    .theme(font-size, '@ellipsis-font-size');
+
+    .theme(line-height, '@ellipsis-line-height');
   }
 
   .van-ellipsis-hidden {
@@ -20,7 +22,9 @@
 
   .van-ellipsis-action {
     padding-left: 10px;
-    color: @ellipsis-primary-color;
-    font-size: @ellipsis-action-font-size;
+
+    .theme(color, '@ellipsis-primary-color');
+
+    .theme(font-size, '@ellipsis-action-font-size');
   }
 }

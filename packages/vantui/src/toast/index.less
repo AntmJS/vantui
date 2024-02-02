@@ -23,7 +23,9 @@
     // hack for avoid max-width when use left & fixed
     width: fit-content;
     transform: translate(-50%, -50%);
-    z-index: @overlay-z-index;
+
+    .theme(z-index, '@overlay-z-index');
+
     .theme(max-width, '@toast-max-width');
   }
 
@@ -42,7 +44,7 @@
     }
 
     .van-toast__text {
-      padding-top: @padding-xs;
+      .theme(padding-top, '@padding-xs');
     }
   }
 

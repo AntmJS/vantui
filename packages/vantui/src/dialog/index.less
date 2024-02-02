@@ -52,8 +52,9 @@
     }
 
     &--round-button {
-      padding-bottom: @padding-md;
-      color: @text-color;
+      .theme(padding-bottom, '@padding-md');
+
+      .theme(color, '@text-color');
     }
 
     &--left {
@@ -80,12 +81,14 @@
 
   &__confirm {
     border: 0 !important;
-    color: @dialog-confirm-button-color;
+
+    .theme(color, '@dialog-confirm-button-color');
   }
 
   &__cancel {
     border: 0 !important;
-    color: @dialog-cancel-button-color;
+
+    .theme(color, '@dialog-cancel-button-color');
   }
 
   &-bounce-enter {

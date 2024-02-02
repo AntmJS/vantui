@@ -15,7 +15,8 @@
       border-radius: 4px;
       position: absolute;
       bottom: -10px;
-      background-color: @cascader-item-active-color;
+
+      .theme(background-color, '@cascader-item-active-color');
     }
   }
 }
@@ -31,23 +32,31 @@
 
 .van-cascader {
   width: 100%;
-  font-size: @cascader-font-size;
-  line-height: @cascader-line-height;
+
+  .theme(font-size, '@cascader-font-size');
+
+  .theme(line-height, '@cascader-line-height');
 
   &__title {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: @cascader-title-padding;
+
+    .theme(padding, '@cascader-title-padding');
+
     text-align: center;
     font-weight: bold;
-    line-height: @cascader-title-line-height;
+
+    .theme(line-height, '@cascader-title-line-height');
+
     color: #1a1a1a;
-    font-size: @cascader-title-font-size;
+
+    .theme(font-size, '@cascader-title-font-size');
   }
 
   .van-tabs__titles {
-    padding: @cascader-tabs-item-padding;
+    .theme(padding, '@cascader-tabs-item-padding');
+
     background: #ffffff;
   }
 
@@ -55,7 +64,9 @@
     flex: initial;
     min-width: auto;
     width: auto;
-    padding: @cascader-tabs-item-padding;
+
+    .theme(padding, '@cascader-tabs-item-padding');
+
     white-space: nowrap;
   }
 
@@ -69,7 +80,9 @@
     margin: 0;
     width: 100%;
     // padding-top: @cascader-pane-paddingTop;
-    // height: @cascader-pane-height;
+    //
+    .theme(height, '@cascader-pane-height');
+
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -77,11 +90,15 @@
   &-item {
     display: flex;
     align-items: center;
-    padding: @cascader-item-padding;
+
+    .theme(padding, '@cascader-item-padding');
+
     margin: 0;
     cursor: pointer;
-    font-size: @cascader-item-font-size;
-    color: @cascader-item-color;
+
+    .theme(font-size, '@cascader-item-font-size');
+
+    .theme(color, '@cascader-item-color');
 
     &.disabled {
       opacity: 0.6;
@@ -90,12 +107,13 @@
 
     &.active {
       &:not(.disabled) {
-        color: @cascader-item-active-color;
+        .theme(color, '@cascader-item-active-color');
       }
 
       .van-cascader-item__icon-check {
         visibility: visible;
-        color: @cascader-item-active-color;
+
+        .theme(color, '@cascader-item-active-color');
       }
     }
   }

@@ -141,8 +141,11 @@
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: @tabs-bottom-bar-height;
-    background-color: @primary-color;
+
+    .theme(height, '@tabs-bottom-bar-height');
+
+    .theme(background-color, '@primary-color');
+
     border-radius: 4px;
   }
 
@@ -162,13 +165,13 @@
     }
 
     to {
-      width: @tabs-bottom-bar-width;
+      .theme(width, '@tabs-bottom-bar-width');
     }
   }
 
   @keyframes tab-line-hidden {
     from {
-      width: @tabs-bottom-bar-width;
+      .theme(width, '@tabs-bottom-bar-width');
     }
 
     to {

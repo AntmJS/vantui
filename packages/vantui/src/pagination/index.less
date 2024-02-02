@@ -2,8 +2,10 @@
 
 .van-pagination {
   display: flex;
-  font-size: @pagination-font-size;
-  color: @pagination-color;
+
+  .theme(font-size, '@pagination-font-size');
+
+  .theme(color, '@pagination-color');
 
   &-contain {
     display: flex;
@@ -26,8 +28,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: @white;
-    border-radius: @pagination-item-border-radius;
+
+    .theme(background, '@white');
+
+    .theme(border-radius, '@pagination-item-border-radius');
+
     border: @pagination-item-border-width solid @pagination-item-border-color;
     cursor: pointer;
   }
@@ -39,7 +44,7 @@
 
   &-prev,
   &-next {
-    padding: @pagination-prev-next-padding;
+    .theme(padding, '@pagination-prev-next-padding');
   }
 
   .simple-border {
@@ -48,14 +53,18 @@
   }
 
   .active {
-    color: @white;
+    .theme(color, '@white');
+
     border: none;
-    background: @pagination-active-background-color;
+
+    .theme(background, '@pagination-active-background-color');
   }
 
   .disabled {
-    color: @pagination-disable-color;
-    background-color: @pagination-disable-background-color;
+    .theme(color, '@pagination-disable-color');
+
+    .theme(background-color, '@pagination-disable-background-color');
+
     cursor: not-allowed;
   }
 }

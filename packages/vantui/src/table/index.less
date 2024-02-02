@@ -89,7 +89,7 @@
               margin-bottom: 4px;
 
               &.van-table_active {
-                border-bottom-color: @active-color;
+                .theme(border-bottom-color, '@active-color');
               }
             }
 
@@ -100,7 +100,7 @@
               border-bottom: @size solid transparent;
 
               &.van-table_active {
-                border-top-color: @active-color;
+                .theme(border-top-color, '@active-color');
               }
             }
           }
@@ -111,10 +111,11 @@
     .van-table_body {
       @min-height: 120px;
 
-      min-height: @min-height;
+      .theme(min-height, '@min-height');
 
       > .van-table_row {
-        min-height: @min-height;
+        .theme(min-height, '@min-height');
+
         position: relative;
         display: flex;
         align-items: center;
@@ -131,7 +132,8 @@
         }
 
         > .van-table_col {
-          min-height: @min-height;
+          .theme(min-height, '@min-height');
+
           background-color: #ffffff;
           display: flex;
           align-items: center;
@@ -140,7 +142,9 @@
           taro-text-core {
             font-size: 24px;
             line-height: 36px;
-            color: @table-primary-color;
+
+            .theme(color, '@table-primary-color');
+
             min-width: 100%;
 
             // 收起

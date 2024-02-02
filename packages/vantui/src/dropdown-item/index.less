@@ -20,12 +20,14 @@
 
   &--up {
     top: 0;
-    z-index: @dropdown-z-index;
+
+    .theme(z-index, '@dropdown-z-index');
   }
 
   &--down {
     bottom: 0;
-    z-index: @dropdown-z-index;
+
+    .theme(z-index, '@dropdown-z-index');
   }
 
   &__icon {

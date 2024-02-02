@@ -9,7 +9,7 @@
     flex: 1;
 
     &.confirmed-style .sign-key {
-      background-color: @number-keyboard-sign-background-color;
+      .theme(background-color, '@number-keyboard-sign-background-color');
     }
   }
 
@@ -25,7 +25,9 @@
     justify-content: center;
     align-items: center;
     padding: 0 24px;
-    color: @number-keyboard-week-color;
+
+    .theme(color, '@number-keyboard-week-color');
+
     background-color: #ffffff;
 
     &-close-button {
@@ -112,8 +114,10 @@
     }
 
     &.ok-key {
-      background-color: @blue;
-      color: @white;
+      .theme(background-color, '@blue');
+
+      .theme(color, '@white');
+
       height: 288px;
       font-size: 32px;
       border: none;

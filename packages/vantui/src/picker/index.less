@@ -21,7 +21,7 @@
     .theme(font-size, '@picker-action-font-size');
 
     &--hover {
-      opacity: @active-opacity;
+      .theme(opacity, '@active-opacity');
     }
   }
 
@@ -90,8 +90,11 @@
 .van-picker .van-picker__frame {
   position: absolute;
   top: 50%;
-  right: @padding-md;
-  left: @padding-md;
+
+  .theme(right, '@padding-md');
+
+  .theme(left, '@padding-md');
+
   z-index: 1;
   transform: translateY(-50%);
   pointer-events: none;

@@ -26,7 +26,7 @@
     user-select: none;
 
     &:active {
-      opacity: @active-opacity;
+      .theme(opacity, '@active-opacity');
     }
   }
 
@@ -43,21 +43,28 @@
   }
 
   &__icon {
-    width: @share-sheet-icon-size;
-    height: @share-sheet-icon-size;
+    .theme(width, '@share-sheet-icon-size');
+
+    .theme(height, '@share-sheet-icon-size');
+
     margin: 0 @padding-md;
   }
 
   &__name {
-    margin-top: @padding-xs;
+    .theme(margin-top, '@padding-xs');
+
     padding: 0 @padding-base;
-    color: @share-sheet-option-name-color;
-    font-size: @share-sheet-option-name-font-size;
+
+    .theme(color, '@share-sheet-option-name-color');
+
+    .theme(font-size, '@share-sheet-option-name-font-size');
   }
 
   &__option-description {
     padding: 0 @padding-base;
-    color: @share-sheet-option-description-color;
-    font-size: @share-sheet-option-description-font-size;
+
+    .theme(color, '@share-sheet-option-description-color');
+
+    .theme(font-size, '@share-sheet-option-description-font-size');
   }
 }

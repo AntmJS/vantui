@@ -82,7 +82,7 @@
       border-radius: 100%;
 
       &:active {
-        opacity: @active-opacity;
+        .theme(opacity, '@active-opacity');
       }
 
       &--disabled {
@@ -94,13 +94,16 @@
     }
 
     .van-stepper__plus {
-      color: @white;
-      background-color: @stepper-button-round-theme-color;
+      .theme(color, '@white');
+
+      .theme(background-color, '@stepper-button-round-theme-color');
     }
 
     .van-stepper__minus {
-      color: @stepper-button-round-theme-color;
-      background-color: @white;
+      .theme(color, '@stepper-button-round-theme-color');
+
+      .theme(background-color, '@white');
+
       border: 2px solid @stepper-button-round-theme-color;
     }
   }
