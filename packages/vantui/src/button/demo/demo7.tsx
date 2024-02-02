@@ -5,8 +5,8 @@ import { Button } from '@antmjs/vantui'
 export default function Demo() {
   return (
     <View>
-      <Button icon="starO" type="primary" />
-      <Button icon="starO" type="primary">
+      <Button icon="wechat-pay" type="primary" />
+      <Button icon="weibo" type="primary">
         按钮
       </Button>
       <Button
