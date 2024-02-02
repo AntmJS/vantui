@@ -21,9 +21,7 @@ export function nextTick(cb: any) {
 }
 let systemInfo: any
 export function getSystemInfoSync() {
-  if (systemInfo == null) {
-    systemInfo = TaroGetSystemInfoSync()
-  }
+  systemInfo = TaroGetSystemInfoSync()
   return systemInfo
 }
 
