@@ -33,7 +33,7 @@ async function exec() {
     await execa('git', ['commit', '-m', `chore(release): publish ${version}`], {
       stdio: 'inherit',
     })
-    await execa('git', ['push', 'github', `release/${version}`], {
+    await execa('git', ['push', '-u', 'origin', `release/${version}`], {
       stdio: 'inherit',
     })
   } catch (error) {
