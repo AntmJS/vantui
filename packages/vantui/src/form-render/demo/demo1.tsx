@@ -4,6 +4,7 @@ type IParams = {
   account: number
   name: string
   price: string
+  radio: string
 }
 const Dialog_ = Dialog.createOnlyDialog()
 
@@ -26,6 +27,21 @@ export default function Index() {
             fields: 'name',
             type: 'input',
             label: '名称',
+          },
+          {
+            fields: 'radio',
+            type: 'radio',
+            label: '价格',
+            options: [
+              {
+                name: '选项1',
+                value: '1',
+              },
+              {
+                name: '选项2',
+                value: '2',
+              },
+            ],
           },
           {
             fields: 'price',

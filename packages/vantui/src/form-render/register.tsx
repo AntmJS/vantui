@@ -74,10 +74,10 @@ const defaultCompItems: IRegisterFormParams[] = [
   {
     type: 'radio',
     component: RadioGroup,
-    valueKey: 'checked',
+    valueKey: 'value',
     transformProps: (props, formItemProps) => {
       return {
-        children: formItemProps['options'].map((item, index) => (
+        children: formItemProps['options']?.map((item, index) => (
           <Radio
             key={`RadioGroup_${formItemProps['key']}_${index}`}
             name={item.value}
