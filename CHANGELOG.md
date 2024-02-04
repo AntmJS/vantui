@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.1...v) (2024-02-04)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.2...v) (2024-02-04)
+
+
+### Bug Fixes
+
+* field组件placeholder样式 ([fbff810](https://github.com/AntmJS/vantui/commit/fbff81038e574ddf5cf5b54e1cfa1ce45bfc3135))
+* field组件placeholder样式([#607](https://github.com/AntmJS/vantui/issues/607)) ([5cd437f](https://github.com/AntmJS/vantui/commit/5cd437f1c50d46c44a55c2909de854fb8f08bd2d))
+
+
+
+## [3.3.2](https://github.com/AntmJS/vantui/compare/v3.3.1...v3.3.2) (2024-02-04)
 
 
 ### Bug Fixes
