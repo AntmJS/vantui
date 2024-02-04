@@ -9,8 +9,6 @@
 .DS_Store
 
 antm.config.js
-pullRequest.js
-pullRequestV2.js
 package-lock.json
 
 node_modules
