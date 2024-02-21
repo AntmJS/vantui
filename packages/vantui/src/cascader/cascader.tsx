@@ -152,7 +152,11 @@ const InternalCascader = (props: CascaderProps) => {
   // 处理有默认值时的数据
   const syncValue = async () => {
     const currentValue = state.innerValue
-    if (currentValue === undefined || !state.tree.nodes.length) {
+    if (
+      currentValue === undefined ||
+      currentValue === null ||
+      !state.tree?.nodes?.length
+    ) {
       return
     }
 
