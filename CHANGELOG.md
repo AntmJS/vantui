@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.2...v) (2024-02-04)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.3...v) (2024-02-21)
+
+
+### Bug Fixes
+
+* cascader在动态初始问题（[#619](https://github.com/AntmJS/vantui/issues/619)） ([cb83015](https://github.com/AntmJS/vantui/commit/cb83015a8e5066b64462a048f8c07580231c9f4e))
+* tab组件在支付宝小程序的问题（[#618](https://github.com/AntmJS/vantui/issues/618)） ([aa55120](https://github.com/AntmJS/vantui/commit/aa55120a6ee8eebb5d96d9d4601c23415a240b7c))
+
+
+
+## [3.3.3](https://github.com/AntmJS/vantui/compare/v3.3.2...v3.3.3) (2024-02-04)
 
 
 ### Bug Fixes
