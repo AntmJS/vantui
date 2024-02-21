@@ -113,7 +113,6 @@ export function Tabs(props: TabsProps) {
   }, [])
 
   const tabs = useMemo(() => {
-    console.info(parseTabList(children))
     return parseTabList(children)
   }, [children])
 
