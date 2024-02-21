@@ -188,9 +188,8 @@ export function Tabs(props: TabsProps) {
     }
   }
 
-  const onTap = function (event: any) {
-    let { index } = event.currentTarget.dataset
-    index = parseInt(index)
+  const onTap = function (index_) {
+    const index = parseInt(index_)
     const child = newChildren[index]
     if (child.props.disabled) {
       trigger('onDisabled', child)
@@ -456,7 +455,7 @@ export function Tabs(props: TabsProps) {
                       swipeThreshold,
                       scrollable,
                     })}
-                    onClick={onTap}
+                    onClick={() => onTap(index)}
                   >
                     {/** tab bar */}
                     {type === 'line' && (
