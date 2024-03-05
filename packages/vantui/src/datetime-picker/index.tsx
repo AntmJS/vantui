@@ -263,7 +263,6 @@ export function DatetimePicker(
   )
 
   const updateCurrentValue = (current) => {
-    console.info('current', current)
     const val = correctValue(current)
     const isEqual = val === innerValue
     if (!isEqual) {

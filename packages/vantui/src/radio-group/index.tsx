@@ -16,8 +16,6 @@ export function RadioGroup(props: RadioGroupProps) {
     ...others
   } = props
 
-  console.info(value, '~~~~~~~~~~')
-
   return (
     <RadioGroupContext.Provider
       value={{
