@@ -13,7 +13,7 @@ export interface DatetimePickerProps
     >,
     ViewProps {
   /**
-   * @description 选项的值
+   * @description 选项的值，注意：DatetimePicker为非受控组件，动态改变请使用组件实例方法`updateCurrentValue`
    * @default null
    */
   value?: string | number | Date
@@ -120,6 +120,7 @@ export type IDatetimePickerInstance = {
   innerValue: Date
   updateColumnValue: (value: string) => Promise<string>
   pickerInstance: IPickerInstance
+  updateCurrentValue: (currentValue: string | number | Date) => void
 }
 
 type DefinedExculdeNoMatch<TObject, T> = {

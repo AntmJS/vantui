@@ -262,33 +262,29 @@ export function DatetimePicker(
     [maxDate, maxHour, maxMinute, minDate, minHour, minMinute, type],
   )
 
-  // useLayoutEffect(
-  //   function () {
-  //     const val = correctValue(value)
-  //     updateColumnValue(val)
-  //   },
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   [correctValue],
-  // )
+  const updateCurrentValue = (current) => {
+    console.info('current', current)
+    const val = correctValue(current)
+    const isEqual = val === innerValue
+    if (!isEqual) {
+      updateColumnValue(val).then(() => {
+        if (onInput) {
+          onInput({
+            detail: val,
+            currentTarget: {
+              dataset: {
+                type: type,
+              },
+            },
+          } as any)
+        }
+      })
+    }
+  }
 
   useLayoutEffect(
     function () {
-      const val = correctValue(value)
-      const isEqual = val === innerValue
-      if (!isEqual) {
-        updateColumnValue(val).then(() => {
-          if (onInput) {
-            onInput({
-              detail: val,
-              currentTarget: {
-                dataset: {
-                  type: type,
-                },
-              },
-            } as any)
-          }
-        })
-      }
+      updateCurrentValue(value)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute],
@@ -373,6 +369,7 @@ export function DatetimePicker(
       setColumns,
       innerValue,
       updateColumnValue,
+      updateCurrentValue,
     }
   })
 

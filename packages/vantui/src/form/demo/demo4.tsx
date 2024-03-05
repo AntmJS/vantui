@@ -1,10 +1,32 @@
 /* eslint-disable */
-import react from 'react'
+import react, { useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
-import { Form, FormItem, Icon, Popup, DatetimePicker } from '@antmjs/vantui'
+import {
+  Form,
+  FormItem,
+  Icon,
+  Popup,
+  DatetimePicker,
+  IFormInstanceAPI,
+  IDatetimePickerInstance,
+} from '@antmjs/vantui'
 
 export default function Demo() {
-  const formIt = react.useRef(null)
+  const formIt = react.useRef<IFormInstanceAPI>(null)
+  const DatePickerIt = react.useRef<IDatetimePickerInstance>(null)
+  const [, forceUpdate] = useState({})
+
+  useEffect(() => {
+    setTimeout(() => {
+      formIt.current?.setFieldsValue(
+        'dateTime',
+        new Date(2022, 11, 1).getTime(),
+      )
+      forceUpdate({})
+      // 弹窗后动态改变DatePicker的展示
+      DatePickerIt?.current?.updateCurrentValue(new Date(2022, 11, 1).getTime())
+    }, 6000)
+  }, [])
 
   return (
     <Form ref={formIt}>
@@ -16,13 +38,14 @@ export default function Demo() {
         trigger="onConfirm"
         renderRight={<Icon name="arrow" />}
       >
-        <DatetimePickerBox_ />
+        <DatetimePickerBox_ refD={DatePickerIt} />
       </FormItem>
     </Form>
   )
 }
 
 function DatetimePickerBox_(props) {
+  const { refD } = props
   const [state, changeState] = react.useState({
     show: false,
     innerValue: null,
@@ -76,6 +99,7 @@ function DatetimePickerBox_(props) {
         onClose={() => toggleShow(false)}
       >
         <DatetimePicker
+          ref={refD}
           type="datetime"
           value={state.innerValue || value}
           onConfirm={onConfirm}
