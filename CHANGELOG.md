@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.3...v) (2024-02-21)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.4...v) (2024-03-05)
+
+
+### Features
+
+* datetime-picker支持动态改变状态 ([6c0c375](https://github.com/AntmJS/vantui/commit/6c0c3755db9717944979106fd0cbaadb0871df82))
+
+
+
+## [3.3.4](https://github.com/AntmJS/vantui/compare/v3.3.3...v3.3.4) (2024-02-21)
 
 
 ### Bug Fixes
