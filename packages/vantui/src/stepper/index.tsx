@@ -1,8 +1,14 @@
 import { View, Input } from '@tarojs/components'
-import { useCallback, useEffect, useState, useRef } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useImperativeHandle,
+} from 'react'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
-import { StepperProps } from './../../types/stepper'
+import { IStepperInstance, StepperProps } from './../../types/stepper'
 import * as computed from './wxs'
 const LONG_PRESS_START_TIME = 600
 const LONG_PRESS_INTERVAL = 200
@@ -15,7 +21,10 @@ function equal(value1: any, value2: any) {
   return String(value1) === String(value2)
 }
 
-export function Stepper(props: StepperProps) {
+export function Stepper(
+  props: StepperProps,
+  ref: React.ForwardedRef<IStepperInstance>,
+) {
   const {
     theme,
     value,
@@ -51,6 +60,7 @@ export function Stepper(props: StepperProps) {
   const eventTypeRef = useRef('')
   const longPressTimerRef = useRef<any>(0)
   const isLongPressRef = useRef(false)
+  const InputRef = useRef<React.InputHTMLAttributes<HTMLInputElement>>(null)
   // filter illegal characters
   const _filter = useCallback(
     (value) => {
@@ -229,6 +239,18 @@ export function Stepper(props: StepperProps) {
     }
     // eslint-disable-next-line
   }, [_format, value])
+
+  const setAutoFocus = useCallback(() => {
+    if (InputRef.current) InputRef.current.autoFocus = true
+  }, [])
+
+  useImperativeHandle(ref, () => {
+    return {
+      setValue: setCurrentValue,
+      setAutoFocus: setAutoFocus,
+    }
+  })
+
   return (
     <View
       className={utils.bem('stepper', [theme]) + ` ${className || ''}`}
@@ -256,6 +278,7 @@ export function Stepper(props: StepperProps) {
         </View>
       )}
       <Input
+        ref={InputRef}
         type={integer ? 'number' : 'digit'}
         className={
           'input-class ' +

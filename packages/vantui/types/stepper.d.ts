@@ -133,6 +133,21 @@ export interface StepperProps extends ViewProps {
    */
   renderPlus?: ReactNode
 }
+
+/**
+ * @title 组件实例
+ */
+export type IStepperInstance = {
+  /**
+   * @description 由于当前组件为非受控，可以通过此方法来设置内部的值
+   */
+  setValue: (v: string | number) => void
+  /**
+   * @description 设置聚焦
+   */
+  setAutoFocus: () => void
+}
+
 // Partial
 declare const Stepper: FunctionComponent<StepperProps>
 
