@@ -1,5 +1,6 @@
 import { View, Text, RichText } from '@tarojs/components'
-import { useState, useEffect, useCallback, useLayoutEffect } from 'react'
+import { useState, useCallback, useLayoutEffect } from 'react'
+import { useDidHide, useDidShow } from '@tarojs/taro'
 import { ToastProps } from '../../types/toast'
 import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
@@ -107,7 +108,7 @@ export function Toast(props: ToastProps) {
     currentOptions = Object.assign({}, defaultOptions)
   }, [])
 
-  useEffect(() => {
+  useDidShow(() => {
     on('toast_show', tShowListener)
 
     on('toast_clear', tClearListener)
@@ -115,15 +116,14 @@ export function Toast(props: ToastProps) {
     on('toast_setDefaultOptions', tSetDftOptsListener)
 
     on('toast_resetDefaultOptions', tResetDftOptsListener)
+  })
 
-    return () => {
-      off('toast_show', tShowListener)
-      off('toast_clear', tClearListener)
-      off('toast_setDefaultOptions', tSetDftOptsListener)
-      off('toast_resetDefaultOptions', tResetDftOptsListener)
-    }
-    /* eslint-disable-next-line */
-  }, [])
+  useDidHide(() => {
+    off('toast_show', tShowListener)
+    off('toast_clear', tClearListener)
+    off('toast_setDefaultOptions', tSetDftOptsListener)
+    off('toast_resetDefaultOptions', tResetDftOptsListener)
+  })
 
   return (
     <View>

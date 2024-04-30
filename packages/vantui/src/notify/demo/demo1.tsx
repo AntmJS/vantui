@@ -1,4 +1,5 @@
 import { View } from '@tarojs/components'
+import { navigateTo } from '@tarojs/taro'
 import { Button, Notify } from '@antmjs/vantui'
 
 export default function Demo() {
@@ -11,6 +12,12 @@ export default function Demo() {
         基础用法
       </Button>
       <Notify id="vanNotify" />
+      <Button
+        onClick={() => navigateTo({ url: '/pages/nav-bar/index' })}
+        type="danger"
+      >
+        跳转也有Notify的页面
+      </Button>
     </View>
   )
 }

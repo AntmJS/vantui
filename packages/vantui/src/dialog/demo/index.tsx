@@ -7,6 +7,8 @@ import Demo1 from './demo1'
 import Demo2 from './demo2'
 import Demo3 from './demo3'
 import Demo4 from './demo4'
+import { Button } from '@antmjs/vantui'
+import { navigateTo } from '@tarojs/taro'
 
 export default class Index extends Component {
   constructor(props) {
@@ -31,6 +33,13 @@ export default class Index extends Component {
         <DemoBlock title="组件调用" padding>
           <Demo4 />
         </DemoBlock>
+
+        <Button
+          style={{ margin: 12 }}
+          onClick={() => navigateTo({ url: '/pages/nav-bar/index' })}
+        >
+          跳转有Dialog的其他页面
+        </Button>
       </DemoPage>
     )
   }

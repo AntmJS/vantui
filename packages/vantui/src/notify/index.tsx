@@ -1,4 +1,4 @@
-import { nextTick } from '@tarojs/taro'
+import { nextTick, useDidHide, useDidShow } from '@tarojs/taro'
 import { useState, useEffect, useCallback } from 'react'
 import { View, Text, ITouchEvent } from '@tarojs/components'
 import * as utils from '../wxs/utils'
@@ -68,7 +68,7 @@ export function Notify(props: NotifyProps) {
     })
   }, [])
 
-  useEffect(() => {
+  useDidShow(() => {
     on('notify_show', (notifyOptions) => {
       const options = Object.assign(
         Object.assign({}, defaultOptions),
@@ -89,13 +89,12 @@ export function Notify(props: NotifyProps) {
         hide(notifyOptions)
       })
     })
+  })
 
-    return () => {
-      off('notify_show')
-      off('notify_clear')
-    }
-    /* eslint-disable-next-line */
-  }, [])
+  useDidHide(() => {
+    off('notify_show')
+    off('notify_clear')
+  })
 
   const hide = useCallback((notifyOptions: any) => {
     clearTimeout(timer)

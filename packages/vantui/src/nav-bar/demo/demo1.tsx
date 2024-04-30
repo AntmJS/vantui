@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import { NavBar, Toast } from '@antmjs/vantui'
+import { NavBar, Toast, Notify, Dialog } from '@antmjs/vantui'
 
 export default function Demo() {
   return (
@@ -13,6 +13,8 @@ export default function Demo() {
         onClickRight={() => Toast.show({ message: '点击按钮 right' })}
       />
       <Toast />
+      <Notify id="其他页面test" />
+      <Dialog id="其他页面test" />
     </View>
   )
 }
