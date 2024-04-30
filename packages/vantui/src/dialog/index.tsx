@@ -1,6 +1,6 @@
 import { View, Text } from '@tarojs/components'
 import { useState, useCallback, useEffect } from 'react'
-import { nextTick } from '@tarojs/taro'
+import { nextTick, useDidHide, useDidShow } from '@tarojs/taro'
 import { toPromise } from '../common/utils'
 import VanGoodsActionButton from '../goods-action-button/index'
 import VanGoodsAction from '../goods-action/index'
@@ -135,47 +135,55 @@ export function Dialog(props: DialogProps) {
     setShow(options.show)
   }, [options.show])
 
-  useEffect(() => {
-    if (!props.id) {
-      return
-    }
-
-    const alertFn = (params: DialogProps = {}) => {
+  const alertFn = useCallback(
+    (params: DialogProps = {}) => {
       if (!params?.selector || props.id === params.selector.replace(/^#/, '')) {
         setOptions({
           ...params,
         })
         setShow(!!params.show)
       }
-    }
-    const stopLoadingFn = () => {
-      _stopLoading()
-    }
-    const closeFn = () => {
-      _close('close')
-    }
+    },
+    [props.id],
+  )
 
+  const stopLoadingFn = () => {
+    _stopLoading()
+  }
+  const closeFn = () => {
+    _close('close')
+  }
+
+  useDidShow(() => {
+    if (!props.id) {
+      return
+    }
     on('alert', alertFn)
     on('close', closeFn)
     on('stopLoading', stopLoadingFn)
+  })
 
-    return () => {
-      off('alert', alertFn)
-      off('close', closeFn)
-      off('stopLoading', stopLoadingFn)
-    }
-  }, [_close, _stopLoading, options, props.id])
+  useDidHide(() => {
+    off('alert', alertFn)
+    off('close', closeFn)
+    off('stopLoading', stopLoadingFn)
+  })
 
   useEffect(() => {
-    return () => {
-      off('confirm')
-      off('cancel')
-      // 设计 咏于
-      off('alert')
-      off('close')
-      off('stopLoading')
+    if (!props.id) {
+      return
     }
-  }, [])
+    on('alert', alertFn)
+  }, [alertFn, props.id])
+
+  useDidHide(() => {
+    off('confirm')
+    off('cancel')
+    // 设计 咏于
+    off('alert')
+    off('close')
+    off('stopLoading')
+  })
 
   return (
     <VanPopup
