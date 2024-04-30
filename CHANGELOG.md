@@ -1,4 +1,18 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.4...v) (2024-03-05)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.5...v) (2024-04-30)
+
+
+### Bug Fixes
+
+* notify、dialog、toast组件，小程序端在页面跳转后返回，存在事件注册被覆盖的问题([#635](https://github.com/AntmJS/vantui/issues/635)) ([f16e438](https://github.com/AntmJS/vantui/commit/f16e4383aa06972a15ce981f6b83bff2b266258d))
+
+
+### Features
+
+* stepper组件新增实例方法 ([72cbb0c](https://github.com/AntmJS/vantui/commit/72cbb0c8e47efd2de8b0f5db7a0e85ebacb30141))
+
+
+
+## [3.3.5](https://github.com/AntmJS/vantui/compare/v3.3.4...v3.3.5) (2024-03-05)
 
 
 ### Features
