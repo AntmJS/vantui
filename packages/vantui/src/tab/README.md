@@ -40,7 +40,7 @@ function Demo() {
   return (
     <Tabs
       active={1}
-      onChange={e =>
+      onChange={(e) =>
         Toast.show({
           message: e.detail.name,
           selector: '#tabs-demo1',
@@ -66,7 +66,7 @@ function Demo() {
   return (
     <Tabs
       active={'a'}
-      onChange={e =>
+      onChange={(e) =>
         Toast.show({
           message: e.detail.name,
           selector: '#tabs-demo2',
@@ -115,7 +115,7 @@ function Demo() {
 function Demo() {
   return (
     <Tabs
-      onDisabled={e =>
+      onDisabled={(e) =>
         Toast.show({
           message: e.detail.title + '已被禁',
           selector: '#tabs-demo4',
@@ -134,6 +134,7 @@ function Demo() {
 ```
 
 ```js
+
 ```
 
 ### 样式风格
@@ -158,7 +159,7 @@ function Demo() {
 
 ```jsx
 function Demo() {
-  const onClick = e => {
+  const onClick = (e) => {
     Toast.show({
       message: e.detail.title,
       selector: '#tab-demo6',
@@ -261,9 +262,9 @@ function Demo() {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                      | 默认值           |
-| ------------------------- | ---------------- |
-| --tab-text-color          | `@gray-7;`       |
-| --tab-active-text-color   | `@text-color;`   |
-| --tab-disabled-text-color | `@gray-5;`       |
-| --tab-font-size           | `@font-size-md;` |
+| 名称                      | 默认值            |
+| ------------------------- | ----------------- |
+| --tab-text-color          | ` @gray-7;`       |
+| --tab-active-text-color   | ` @text-color;`   |
+| --tab-disabled-text-color | ` @gray-5;`       |
+| --tab-font-size           | ` @font-size-md;` |
