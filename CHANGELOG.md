@@ -1,9 +1,10 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.5...v) (2024-04-30)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.5...v) (2024-05-11)
 
 
 ### Bug Fixes
 
 * notify、dialog、toast组件，小程序端在页面跳转后返回，存在事件注册被覆盖的问题([#635](https://github.com/AntmJS/vantui/issues/635)) ([f16e438](https://github.com/AntmJS/vantui/commit/f16e4383aa06972a15ce981f6b83bff2b266258d))
+* table组件错误 ([58c20eb](https://github.com/AntmJS/vantui/commit/58c20ebc86090fe6731f833cd4a7c56608ea512f))
 
 
 ### Features

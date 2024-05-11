@@ -1,6 +1,6 @@
 {
   "name": "@antmjs/vantui-cli",
-  "version": "3.3.6",
+  "version": "3.3.7",
   "type": "module",
   "main": "dest/cli.js",
   "bin": {
