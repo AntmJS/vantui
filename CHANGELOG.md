@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.5...v) (2024-04-30)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.6...v) (2024-05-11)
+
+
+### Bug Fixes
+
+* table组件错误 ([d82aff3](https://github.com/AntmJS/vantui/commit/d82aff3f09324f5339d0bb50ca40e84b89f8d9ae))
+
+
+
+## [3.3.6](https://github.com/AntmJS/vantui/compare/v3.3.5...v3.3.6) (2024-04-30)
 
 
 ### Bug Fixes
