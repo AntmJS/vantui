@@ -105,6 +105,13 @@ function Demo() {
 | renderMinus    | 自定义渲染新增按钮                                                              | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                         | -       | `false` |
 | renderPlus     | 自定义渲染减少按钮                                                              | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                                                                                         | -       | `false` |
 
+### 组件实例 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/stepper.d.ts)
+
+| 方法         | 说明                                               | 类型                                                                                                                          |
+| ------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| setValue     | 由于当前组件为非受控，可以通过此方法来设置内部的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;v:&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
+| setAutoFocus | 设置聚焦                                           | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                       |
+
 ### 样式变量
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)

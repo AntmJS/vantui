@@ -5,6 +5,7 @@ import {
   useState,
   useRef,
   useImperativeHandle,
+  forwardRef,
 } from 'react'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
@@ -246,7 +247,7 @@ export function Stepper(
 
   useImperativeHandle(ref, () => {
     return {
-      setValue: setCurrentValue,
+      setValue: (v) => setCurrentValue(v),
       setAutoFocus: setAutoFocus,
     }
   })
@@ -322,4 +323,4 @@ export function Stepper(
     </View>
   )
 }
-export default Stepper
+export default forwardRef(Stepper)
