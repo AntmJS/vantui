@@ -323,7 +323,9 @@ const Row = (props: {
 
         return (
           <View
-            onClick={expandable && setExpansion.bind(this, !expansion)}
+            onClick={() => {
+              if (expandable) setExpansion.bind(this, !expansion)
+            }}
             key={columnItem.key || columnItem.dataIndex}
             className={classnames({
               [colClassName]: true,
