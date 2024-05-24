@@ -15,7 +15,7 @@ const clsPrefix = 'van'
 let initIndex = 0
 
 function FormRender<T>(props: IFormRenderProps<T>) {
-  const { config, defaultValues, form } = props
+  const { config, defaultValues, form, onChange } = props
   const [componentIndex] = useState(initIndex++)
 
   const renderItem = useCallback(
@@ -54,6 +54,7 @@ function FormRender<T>(props: IFormRenderProps<T>) {
       initialValues={_defaultValues || {}}
       className={`${clsPrefix}-form-render`}
       form={form}
+      onChange={onChange}
     >
       {config.map((it, index) => {
         return renderItem(it as any, index)
