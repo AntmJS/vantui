@@ -26,7 +26,7 @@ const formInstanceApi = [
 const isReg = (value: any) => value instanceof RegExp
 class FormStore {
   static instance: FormStore
-  public requiredMessageCallback?: (label: string) => string
+  public requiredMessageCallback?: (label: string, name: string) => string
   public FormUpdate: () => any
   public model: Record<string, any>
   public control: Record<string, any>
@@ -365,6 +365,7 @@ class FormStore {
       if (this.requiredMessageCallback) {
         this.model[name].message = this.requiredMessageCallback(
           this.model[name].label,
+          name,
         )
       } else {
         if (this.model[name].label) {
