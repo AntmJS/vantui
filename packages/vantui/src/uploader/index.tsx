@@ -104,8 +104,9 @@ export function Uploader(props: UploaderProps) {
   const _onBeforeRead = useCallback(
     (event: ITouchEvent) => {
       const { file } = event.detail
+      let res: any = true
       if (useBeforeRead) {
-        new Promise((resolve: any, reject: any) => {
+        res = new Promise((resolve: any, reject: any) => {
           const params = Object.assign(Object.assign({ file }, getDetail()), {
             callback: (ok: boolean) => {
               ok ? resolve() : reject()
@@ -113,13 +114,19 @@ export function Uploader(props: UploaderProps) {
           })
           event.detail = params
           onBeforeRead?.(event)
-        }).then((data: any) => {
+        }).catch((err) => {
+          console.log('err: ', err)
+        })
+      }
+      if (!res) {
+        return
+      }
+      if (isPromise(res)) {
+        res.then((data: any) => {
           event.detail = {
             file: data || file,
           }
           return _onAfterRead(event)
-        }).catch((err) => {
-          console.log('err: ', err)
         })
       } else {
         event.detail = {
