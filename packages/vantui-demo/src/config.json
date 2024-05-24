@@ -191,6 +191,10 @@
     "name": "展示组件",
     "items": [
       {
+        "path": "space",
+        "title": "Space 间距"
+      },
+      {
         "path": "table",
         "title": "Table 表格"
       },
