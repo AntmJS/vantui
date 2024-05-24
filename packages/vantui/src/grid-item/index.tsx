@@ -28,6 +28,7 @@ export function GridItem(
     linkType,
     style,
     className,
+    renderIcon,
     ...others
   } = props
 
@@ -140,7 +141,7 @@ export function GridItem(
                   size={parentState?.iconSize}
                 ></VanIcon>
               ) : (
-                parentState.renderIcon
+                renderIcon
               )}
             </View>
             <View className="van-grid-item__text text-class">

@@ -95,6 +95,11 @@ export interface GridItemProps extends ViewProps {
    * @default ''
    */
   children?: React.ReactNode
+  /**
+   * @description 自定义图标内容
+   * @default ''
+   */
+  renderIcon?: React.ReactNode
 }
 
 declare const GridItem: FunctionComponent<GridItemProps>
