@@ -1,4 +1,16 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.6...v) (2024-05-11)
+# [](https://github.com/AntmJS/vantui/compare/v3.3.7...v) (2024-05-24)
+
+
+### Features
+
+* 新增组件Space ([#586](https://github.com/AntmJS/vantui/issues/586)) ([0a00b5d](https://github.com/AntmJS/vantui/commit/0a00b5d042850949f80bf9a3a8c29ed4a5e833f9))
+* form-render组件新增onchange方法 ([#592](https://github.com/AntmJS/vantui/issues/592)) ([0e1c7e4](https://github.com/AntmJS/vantui/commit/0e1c7e4a5a375d22554e1b119d69dcdd307f8a0f))
+* form组件requiredMessageCallback新增name字段名参数 ([490fe04](https://github.com/AntmJS/vantui/commit/490fe0420fbb27a321e86a7b901526b7e3b62876))
+* grid组件支持renderIcon ([ac9dfb1](https://github.com/AntmJS/vantui/commit/ac9dfb143711be7eb0c020743be0966aeed5d674))
+
+
+
+## [3.3.7](https://github.com/AntmJS/vantui/compare/v3.3.6...v3.3.7) (2024-05-11)
 
 
 ### Bug Fixes
