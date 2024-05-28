@@ -950,6 +950,109 @@
   background-color: #ffffff;
 }
 
+:root {
+  --public-font-family: open sans, -apple-system, blinkmacsystemfont,
+    helvetica neue, helvetica, segoe ui, arial, roboto, pingfang sc, miui,
+    hiragino sans gb, microsoft yahei, sans-serif;
+  --primary-color: #4fc08d;
+  --primary-back-color: #ebfff0;
+  --header-back-color: #4fc08d;
+  --simulator-zindex: 99;
+  --right-navs-zindex: 100;
+  --header-select-zindex: 101;
+  --search-mask-zindex: 102;
+  --search-zindex: 103;
+  --back-top-zindex: 200;
+  --codebox-background: #f1f5f6;
+  --code-demo-background: #f1f5f6;
+  --code-box-background: #10202a;
+  --code-box-max-height: 550px;
+  --code-tabs-background: #263237;
+}
+@keyframes advertisement-show {
+  0% {
+    transform: translateY(calc(100% - 20px));
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes advertisement-hidden {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(calc(100% - 20px));
+  }
+}
+.antm-docs-advertisement-wrapper .ad-box {
+  position: fixed;
+  right: 6px;
+  bottom: 2px;
+  width: 260px;
+  min-height: 150px;
+  background-color: var(--primary-color);
+  box-shadow: 0 8px 12px #dfe3ea;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+  z-index: 99999;
+  transform: translateY(calc(100% - 20px));
+}
+.antm-docs-advertisement-wrapper .ad-box .icon {
+  cursor: pointer;
+}
+.antm-docs-advertisement-wrapper .ad-box .ad-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 14px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #ffffff;
+}
+.antm-docs-advertisement-wrapper .ad-box .ad-img-box {
+  width: 100%;
+  padding: 4px 14px 0;
+}
+.antm-docs-advertisement-wrapper .ad-box .ad-img {
+  display: block;
+  width: 100%;
+}
+.antm-docs-advertisement-wrapper .ad-box .ad-content {
+  padding: 14px;
+  color: #ffffff;
+  font-size: 12px;
+}
+.antm-docs-advertisement-wrapper .ad-box-show {
+  animation-name: advertisement-show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.antm-docs-advertisement-wrapper .ad-box-hidden {
+  animation-name: advertisement-hidden;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  width: 30px;
+}
+.antm-docs-advertisement-wrapper .ad-box-hidden .ad-title {
+  padding: 2px 8px;
+}
+.antm-docs-advertisement-wrapper .ad-box-none {
+  overflow: hidden;
+  width: 30px;
+}
+.antm-docs-advertisement-wrapper .ad-box-none .ad-title {
+  padding: 2px 8px;
+}
+:root {
+  --header-back-color: #4fc08d;
+}
+.antm-docs-header-nav .nav-text,
+.antm-docs-header-nav .nav-select {
+  background-color: #ffffff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -966,4 +1069,3 @@ a {
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
 }
-
