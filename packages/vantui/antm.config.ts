@@ -13,6 +13,12 @@ export default defineConfig({
     route: {
       level: 1,
     },
+    advertisement: {
+      title: '募捐',
+      content: '扫码赞助，感谢大家支持～',
+      img: 'https://raw.githubusercontent.com/AntmJS/vantui/main/resource/abcd.png',
+      termType: 'month',
+    },
     buildPort: 7778,
     menu: getMenus(),
     demoCode: {
@@ -274,6 +280,10 @@ function getMenus() {
     {
       name: '展示组件',
       items: [
+        {
+          path: 'space',
+          title: 'Space 间距',
+        },
         {
           path: 'table',
           title: 'Table 表格',

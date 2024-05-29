@@ -150,10 +150,10 @@
     core-js "^3.15.2"
     react-refresh "^0.10.0"
 
-"@antmjs/doc@^2.3.22":
-  version "2.3.22"
-  resolved "https://registry.npmjs.org/@antmjs/doc/-/doc-2.3.22.tgz#78db61707a76317a1be425fcdf685d20a2e8f6a2"
-  integrity sha512-p72iItKWhO70URHw9/O4kAx8LIwbC7HmRnxXbaMOBVqUzztwIQf7YbyOaL+QdTdvCLiuHDrG0GBF5l9VdJF5yQ==
+"@antmjs/doc@^2.3.28":
+  version "2.3.28"
+  resolved "https://registry.npmmirror.com/@antmjs/doc/-/doc-2.3.28.tgz#39da2f2e1190e999622d181bca4d580b8c33f3da"
+  integrity sha512-uAjC5hZkovsWHA1GEBIikxjmMt6Wp6eJPOhXXWlbdk2BaPbDGLfujX+vA3JIyZEr9SkmeMaZYVcUoGAMBFkzYg==
   dependencies:
     "@swc/core" "^1.3.60"
     "@swc/wasm" "^1.3.60"
@@ -161,6 +161,7 @@
     ast-to-markdown "^1.0.0"
     chokidar "^3.5.3"
     classnames "^2.3.2"
+    cookiejs "^2.1.3"
     css-loader "^6.7.3"
     flexsearch "^0.7.31"
     glob "10.2.6"
@@ -238,10 +239,10 @@
     stylelint-config-prettier "^9.0.4"
     stylelint-config-standard "^29.0.0"
 
-"@antmjs/types@^2.3.20":
-  version "2.3.20"
-  resolved "https://registry.npmjs.org/@antmjs/types/-/types-2.3.20.tgz#c98d669545bcbd831261744b58d98ff265b25c72"
-  integrity sha512-PiJsxTK20ehqGdrJvXTp9uJna0SDwkGkt2zvq4yspzTN+4NfiAE1z5pNElAOflxS7voRrUxkqXTVcVQ9vCZfSQ==
+"@antmjs/types@^2.3.28":
+  version "2.3.28"
+  resolved "https://registry.npmmirror.com/@antmjs/types/-/types-2.3.28.tgz#d374a947898e68b4399e82a27ed824755a0fcba4"
+  integrity sha512-npnfrWkPqEWrT+NtSTjyYRZ6JQh78VPPObD+VbAxuAoEyWqV3EPXuVNvCPD4QjWXnbM2cHSd1PwHV2RRR1QFmQ==
 
 "@antmjs/utils@2.3.3":
   version "2.3.3"
@@ -7157,6 +7158,11 @@ cookie@0.5.0:
   version "0.5.0"
   resolved "https://registry.npmmirror.com/cookie/-/cookie-0.5.0.tgz"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
+
+cookiejs@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.npmmirror.com/cookiejs/-/cookiejs-2.1.3.tgz#92d34e879d57eee6d814a837b40e57eb1e6b67fb"
+  integrity sha512-pA/nRQVka2eTXm1/Dq8pNt1PN+e1PJNItah0vL15qwpet81/tUfrAp8e0iiVM8WEAzDcTGK5/1hDyR6BdBZMVg==
 
 copy-anything@^2.0.1:
   version "2.0.6"
