@@ -70,6 +70,7 @@ export default {
     'pages/goods-action/index',
     'pages/result/index',
     'pages/space/index',
+    'pages/image-viewer/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

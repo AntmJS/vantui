@@ -150,6 +150,10 @@ function getMenus() {
           title: 'Image 图片',
         },
         {
+          path: 'image-viewer',
+          title: 'ImageViewer 图片查看',
+        },
+        {
           path: 'col',
           title: 'Layout 布局',
         },
