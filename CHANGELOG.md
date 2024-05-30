@@ -1,4 +1,15 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.3.7...v) (2024-05-24)
+# [](https://github.com/AntmJS/vantui/compare/v3.4.0...v) (2024-05-30)
+
+
+### Features
+
+* 新增组件image-viewer图片查看 ([d003e31](https://github.com/AntmJS/vantui/commit/d003e31a25b225bca8664275d8bf9a39e12c0642))
+* skeleton组件动画样式更新 ([fb37e6b](https://github.com/AntmJS/vantui/commit/fb37e6b497d3a38a469fcd9ff3b7fd8427c3dae3))
+* uploader组件高度非比填 ([c2c7791](https://github.com/AntmJS/vantui/commit/c2c77918662dc3ff749b6a41846cb4f2d3f16673))
+
+
+
+# [3.4.0](https://github.com/AntmJS/vantui/compare/v3.3.7...v3.4.0) (2024-05-24)
 
 
 ### Features
