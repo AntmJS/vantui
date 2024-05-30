@@ -10,7 +10,7 @@ export interface SwiperProps extends ViewProps {
   /**
    * @description 轮播卡片的高度
    */
-  height: number | string
+  height?: number | string
   /**
    * @description 动画时长（单位是ms）
    * @default 500

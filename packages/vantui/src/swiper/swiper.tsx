@@ -612,6 +612,15 @@ const Swiper = (
     prev,
   }))
 
+  const wrapperStyle = useMemo(() => {
+    const style_: React.CSSProperties = { ...style }
+    if (height) {
+      style_.height = height
+    }
+
+    return style_
+  }, [height, style])
+
   return (
     <DataContext.Provider value={parent}>
       <View
@@ -624,10 +633,7 @@ const Swiper = (
         onTouchEnd={onTouchEnd}
         // @ts-ignore
         catchMove={isVertical}
-        style={{
-          ...style,
-          height: height,
-        }}
+        style={wrapperStyle}
       >
         <View className={contentClass} ref={innerRef}>
           {Children.map(childs, (child: any, index: number) => {
