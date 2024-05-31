@@ -50,6 +50,7 @@
                     },
                     { path: 'icon', title: 'Icon 图标' },
                     { path: 'image', title: 'Image 图片' },
+                    { path: 'image-viewer', title: 'ImageViewer 图片查看' },
                     { path: 'col', title: 'Layout 布局' },
                     { path: 'popup', title: 'Popup 弹出层' },
                     { path: 'common', title: 'Style 内置样式' },

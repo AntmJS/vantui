@@ -57,6 +57,7 @@
             loading: t.e(1449).then(t.bind(t, 1449)),
             'infinite-scroll': t.e(7864).then(t.bind(t, 7864)),
             'index-bar': t.e(199).then(t.bind(t, 199)),
+            'image-viewer': t.e(2121).then(t.bind(t, 2121)),
             image: t.e(5213).then(t.bind(t, 5213)),
             icon: t.e(4896).then(t.bind(t, 4896)),
             grid: t.e(904).then(t.bind(t, 904)),
