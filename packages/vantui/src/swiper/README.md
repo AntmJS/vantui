@@ -70,7 +70,7 @@ const images = [
 | 参数              | 说明                                       | 类型                                                                                                                                 | 默认值   | 必填    |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
 | width             | 轮播卡片的宽度                             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | 窗口宽度 | `false` |
-| height            | 轮播卡片的高度                             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `true`  |
+| height            | 轮播卡片的高度                             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `false` |
 | duration          | 动画时长（单位是 ms）                      | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | 500      | `false` |
 | initPage          | 初始化索引值                               | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `false` |
 | autoPlay          | 自动轮播时长，0 表示不会自动轮播           | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `true`  |
