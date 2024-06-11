@@ -1,4 +1,15 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.4.0...v) (2024-05-30)
+# [](https://github.com/AntmJS/vantui/compare/v3.4.1...v) (2024-06-11)
+
+
+### Bug Fixes
+
+* imageViewer组件动画优化 ([5fcf3cc](https://github.com/AntmJS/vantui/commit/5fcf3ccc158856b9ead18bd229d4e30b4b1fb61c))
+* swiper组件重构，修复交互问题，移除iscenter属性 ([4e960cd](https://github.com/AntmJS/vantui/commit/4e960cddc6b307d7be878fd923c17360ec28efea))
+* tabs组件card模式下边框样式（[#629](https://github.com/AntmJS/vantui/issues/629)） ([#651](https://github.com/AntmJS/vantui/issues/651)) ([e5c8552](https://github.com/AntmJS/vantui/commit/e5c8552986656ab6b97fd7554f6a7229319e9f14))
+
+
+
+## [3.4.1](https://github.com/AntmJS/vantui/compare/v3.4.0...v3.4.1) (2024-05-30)
 
 
 ### Features
