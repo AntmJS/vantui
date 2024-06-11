@@ -6,6 +6,21 @@
     width: 100vw;
     height: 100vh;
     z-index: 2000;
+    opacity: 0;
+    animation-name: van-image-viewer-show;
+    animation-duration: 0.3s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+
+    @keyframes van-image-viewer-show {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
 
     .van-swiper {
       height: 100vh;

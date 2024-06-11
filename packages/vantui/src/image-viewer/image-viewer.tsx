@@ -19,6 +19,7 @@ export function ImageViewer(props: ImageViewerProps): JSX.Element {
       <Overlay show />
       <View className={`${preCls}-main`}>
         <Swiper
+          width={375}
           initPage={current}
           autoPlay={0}
           onChange={(v) => setCurrent(v)}
