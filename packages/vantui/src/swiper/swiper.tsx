@@ -11,19 +11,18 @@ import React, {
   useCallback,
 } from 'react'
 import classNames from 'classnames'
-import { useReady, createSelectorQuery, nextTick } from '@tarojs/taro'
-import { View, ITouchEvent, Text } from '@tarojs/components'
+import {
+  createSelectorQuery,
+  nextTick,
+  useDidShow,
+  useDidHide,
+} from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
 import { SwiperProps, SwiperInstance } from '../../types/swiper'
-import { DataContext } from './context'
-
-interface IStyle {
-  width?: string
-  height?: string
-  transform?: string
-}
+import { getDirection } from './utils'
 
 const defaultProps = {
-  width: typeof window === 'object' ? window.innerWidth : 375,
+  width: 0,
   height: 0,
   duration: 500,
   initPage: 0,
@@ -37,14 +36,19 @@ const defaultProps = {
   isStopPropagation: true,
   isCenter: false,
   className: '',
+  // infinite: true,
 } as SwiperProps
 
-type Parent = {
-  propSwiper: SwiperProps
-  size?: number | string
+const getValidNumber = (num) => {
+  if (typeof num === 'number') {
+    return num
+  } else if (typeof num === 'string') {
+    return isNaN(Number(num.replace('px', '')))
+      ? 0
+      : Number(num.replace('px', ''))
+  } else return 0
 }
 
-const DISTANCE = 5
 const Swiper = (
   props: SwiperProps,
   ref?: React.ForwardedRef<SwiperInstance>,
@@ -56,7 +60,7 @@ const Swiper = (
     className,
     pageContent,
     onChange,
-    initPage,
+    initPage = 0,
     paginationColor,
     paginationVisible,
     touchable,
@@ -65,32 +69,30 @@ const Swiper = (
     autoPlay,
     isCenter,
     style,
+    height,
+    width,
+    loop,
+    duration,
+    containerSize,
     ...rest
   } = propSwiper
-  const container = useRef<any>(null)
-  const innerRef = useRef<any>(null)
-  const _swiper = useRef<any>({
-    moving: false,
-    autoplayTimer: null,
-    width: 0,
-    height: 0,
-    offset: 0,
-    size: 0,
-  })
-  const [refRandomId] = useState(Math.random().toString(36).slice(-8))
-
   const isVertical = direction === 'vertical'
-
-  const [rect, setRect] = useState(null as DOMRect | null)
+  const timer = useRef<any>(null)
+  const containerRef = useRef<any>(null)
+  const innerRef = useRef<any>(null)
+  const [refRandomId] = useState(Math.random().toString(36).slice(-8))
+  const [moving, setmoving] = useState(false)
   // eslint-disable-next-line prefer-const
-  let [active, setActive] = useState(0)
-  const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(0)
-  const [offset, setOffset] = useState(0)
-  const [childOffset, setChildOffset] = useState<any[]>([])
-  const [ready, setReady] = useState(false)
-
-  let size = isVertical ? height : width
+  let [active, setActive_] = useState(
+    typeof initPage === 'number' ? initPage : 0,
+  )
+  const setActive = (a) => {
+    active = a
+    setActive_(a)
+  }
+  const [W, setW] = useState(getValidNumber(width))
+  const [H, setH] = useState(getValidNumber(height))
+  const [showToDo, setShowToDo] = useState(false)
   const [touch] = useState({
     startX: 0,
     startY: 0,
@@ -100,12 +102,15 @@ const Swiper = (
     offsetY: 0,
     stateDirection: '',
     delta: 0,
-    touchTime: 0,
   })
+
+  const size = useMemo(() => {
+    return isVertical ? H : W
+  }, [H, W, isVertical])
 
   const { childs, childCount } = useMemo(() => {
     let childCount = 0
-    const childs = Children.map(propSwiper.children, (child) => {
+    const childs = Children.map(children, (child) => {
       if (!isValidElement(child)) return null
       childCount++
       return child
@@ -114,161 +119,7 @@ const Swiper = (
       childs,
       childCount,
     }
-  }, [propSwiper.children])
-  let trackSize = childCount * Number(size)
-
-  // 父组件参数传入子组件item
-  const parent: Parent = {
-    propSwiper,
-    size,
-  }
-
-  // 浏览器 帧 事件
-  const requestFrame = useCallback((fn: FrameRequestCallback) => {
-    window.requestAnimationFrame.call(window, fn)
-  }, [])
-  // 取值 方法
-  const range = useCallback((num: number, min: number, max: number) => {
-    return Math.min(Math.max(num, min), max)
-  }, [])
-
-  const getDirection = useCallback((x: number, y: number) => {
-    if (x > y && x > DISTANCE) return 'horizontal'
-    if (y > x && y > DISTANCE) return 'vertical'
-    return ''
-  }, [])
-
-  const getMinOffset = useCallback(() => {
-    if (rect) {
-      const base = isVertical ? rect?.height : rect?.width
-      return base - Number(size) * childCount
-    }
-    return 0
-  }, [childCount, isVertical, rect, size])
-
-  // 确定当前active 元素
-  const getActive = (pace: number) => {
-    if (pace) {
-      const _active = active + pace
-      if (propSwiper.loop) {
-        return range(_active, -1, childCount)
-      }
-      return range(_active, 0, childCount - 1)
-    }
-    return active
-  }
-  // 计算位移
-  const getOffset = useCallback(
-    (active: number, offset = 0) => {
-      const minOffset = getMinOffset()
-
-      let currentPosition = active * Number(size)
-      if (!propSwiper.loop) {
-        currentPosition = Math.min(currentPosition, -minOffset)
-      }
-      let targetOffset = offset - currentPosition
-      if (!propSwiper.loop) {
-        targetOffset = range(targetOffset, minOffset, 0)
-      }
-      return targetOffset
-    },
-    [getMinOffset, propSwiper.loop, range, size],
-  )
-
-  const getStyle = useCallback(
-    (moveOffset = offset) => {
-      const target = innerRef.current
-      let _offset = 0
-      if (!isCenter) {
-        _offset = moveOffset
-      } else {
-        const _size = isVertical ? height : width
-        const val = isVertical
-          ? (rect as DOMRect)?.height - _size
-          : (rect as DOMRect)?.width - _size
-        _offset =
-          moveOffset +
-          (active === childCount - 1 && !propSwiper.loop ? -val / 2 : val / 2)
-      }
-      target.style.transitionDuration = `${
-        _swiper.current.moving ? 0 : propSwiper.duration
-      }ms`
-      target.style[isVertical ? 'height' : 'width'] = `${
-        Number(size) * childCount
-      }px`
-      target.style[isVertical ? 'width' : 'height'] = `${
-        isVertical ? width : height
-      }px`
-      target.style.transform = `translate3D${
-        !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
-      }`
-    },
-    [
-      active,
-      childCount,
-      height,
-      isCenter,
-      isVertical,
-      offset,
-      propSwiper.duration,
-      propSwiper.loop,
-      rect,
-      size,
-      width,
-    ],
-  )
-
-  // 切换方法
-  const move = useCallback(
-    ({ pace = 0, offset = 0, isEmit = false }) => {
-      if (childCount <= 1) return
-      const targetActive = getActive(pace)
-      const minOffset = getMinOffset()
-      // 父级容器偏移量
-      const targetOffset = getOffset(targetActive, offset)
-      // 如果循环，调整开头结尾图片位置
-      if (propSwiper.loop) {
-        if (
-          Array.isArray(children) &&
-          children[0] &&
-          targetOffset !== minOffset
-        ) {
-          const rightBound = targetOffset < minOffset
-          childOffset[0] = rightBound ? trackSize : 0
-        }
-        if (
-          Array.isArray(children) &&
-          children[childCount - 1] &&
-          targetOffset !== 0
-        ) {
-          const leftBound = targetOffset > 0
-          childOffset[childCount - 1] = leftBound ? -trackSize : 0
-        }
-        setChildOffset(childOffset)
-      }
-      if (isEmit && active !== targetActive) {
-        propSwiper.onChange &&
-          propSwiper.onChange((targetActive + childCount) % childCount)
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      active = targetActive
-      setActive(targetActive)
-      setOffset(targetOffset)
-      getStyle(targetOffset)
-    },
-    [
-      active,
-      childCount,
-      childOffset,
-      children,
-      getActive,
-      getMinOffset,
-      getOffset,
-      getStyle,
-      propSwiper,
-      trackSize,
-    ],
-  )
+  }, [children])
 
   // 重置 全部位移信息
   const touchReset = useCallback(() => {
@@ -280,109 +131,69 @@ const Swiper = (
     touch.offsetY = 0
     touch.delta = 0
     touch.stateDirection = ''
-    touch.touchTime = 0
   }, [touch])
 
-  // 重置首尾位置信息
-  const resettPosition = useCallback(() => {
-    _swiper.current.moving = true
-    if (active <= -1) {
-      move({ pace: childCount })
-    }
-    if (active >= childCount) {
-      move({ pace: -childCount })
-    }
-  }, [active, childCount, move])
-
-  // 清除定时器
-  const stopAutoPlay = useCallback(() => {
-    clearTimeout(_swiper.current.autoplayTimer)
-    _swiper.current.autoplayTimer = null
+  // 取值 方法
+  const range = useCallback((num: number, min: number, max: number) => {
+    return Math.min(Math.max(num, min), max)
   }, [])
-  // 下一页
-  const next = useCallback(() => {
-    resettPosition()
-    touchReset()
-    requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        move({
-          pace: 1,
-          isEmit: true,
-        })
-      })
-    })
-  }, [move, requestFrame, resettPosition, touchReset])
 
-  // 上一页
-  const prev = useCallback(() => {
-    resettPosition()
-    touchReset()
-    requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        move({
-          pace: -1,
-          isEmit: true,
-        })
-      })
-    })
-  }, [move, requestFrame, resettPosition, touchReset])
+  const getMinOffset = useCallback(() => {
+    return size - Number(size) * childCount
+  }, [childCount, size])
 
-  // 前往指定页
-  const to = useCallback(
-    (index: number) => {
-      resettPosition()
-      touchReset()
-      requestFrame(() => {
-        requestFrame(() => {
-          _swiper.current.moving = false
-          let targetIndex
-          if (propSwiper.loop && childCount === index) {
-            targetIndex = active === 0 ? 0 : index
-          } else {
-            targetIndex = index % childCount
-          }
-          move({
-            pace: targetIndex - active,
-            isEmit: true,
-          })
-        })
-      })
+  // 计算位移
+  const getOffset = useCallback(
+    (active: number, offset = 0) => {
+      const minOffset = getMinOffset()
+
+      let currentPosition = active * Number(size)
+      if (!loop) {
+        currentPosition = Math.min(currentPosition, -minOffset)
+      }
+      let targetOffset = offset - currentPosition
+      if (!loop) {
+        targetOffset = range(targetOffset, minOffset, 0)
+      }
+      return targetOffset
     },
-    [
-      active,
-      childCount,
-      move,
-      propSwiper.loop,
-      requestFrame,
-      resettPosition,
-      touchReset,
-    ],
+    [getMinOffset, loop, range, size],
   )
-  // 定时轮播
-  const autoplay = useCallback(() => {
-    if (Number(propSwiper.autoPlay) <= 0 || childCount <= 1) return
-    stopAutoPlay()
-    _swiper.current.autoplayTimer = setTimeout(() => {
-      next()
-      autoplay()
-    }, Number(propSwiper.autoPlay))
-  }, [childCount, next, propSwiper.autoPlay, stopAutoPlay])
 
-  // 触摸事件开始
+  const wrapperStyle = useMemo(() => {
+    const style: React.CSSProperties = {}
+    if (isVertical) {
+      style.height = size * childCount ? `${size * childCount}px` : 'auto'
+    } else {
+      style.width = size * childCount ? `${size * childCount}px` : 'auto'
+    }
+
+    return style
+  }, [childCount, isVertical, size])
+
+  const contentClass = classNames({
+    ['van-swiper__inner']: true,
+    ['van-swiper__vertical']: isVertical,
+  })
+
   const touchStart = useCallback(
-    (e: ITouchEvent) => {
+    (e) => {
+      if (moving) return
       touchReset()
       touch.startX = e?.touches[0]?.clientX || 0
       touch.startY = e?.touches[0]?.clientY || 0
     },
-    [touch, touchReset],
+    [moving, touch, touchReset],
   )
 
   // 触摸事件移动
   const touchMove = useCallback(
-    (e: ITouchEvent) => {
+    (e) => {
+      if (timer.current) {
+        clearInterval(timer.current)
+        timer.current = null
+      }
+      if (moving) return
       touch.deltaX = (e?.touches[0]?.clientX || 0) - touch.startX
       touch.deltaY = (e?.touches[0]?.clientY || 0) - touch.startY
       touch.offsetX = Math.abs(touch.deltaX)
@@ -391,299 +202,241 @@ const Swiper = (
       if (!touch.stateDirection) {
         touch.stateDirection = getDirection(touch.offsetX, touch.offsetY)
       }
-    },
-    [getDirection, isVertical, touch],
-  )
-
-  const contentClass = classNames({
-    ['van-swiper__inner']: true,
-    ['van-swiper__vertical']: isVertical,
-  })
-
-  const onTouchStart = useCallback(
-    (e) => {
-      if (propSwiper.isPreventDefault) e.preventDefault()
-      if (propSwiper.isStopPropagation) e.stopPropagation()
-      if (!propSwiper.touchable) return
-      touchStart(e)
-      touch.touchTime = Date.now()
-      stopAutoPlay()
-      resettPosition()
-    },
-    [
-      propSwiper.isPreventDefault,
-      propSwiper.isStopPropagation,
-      propSwiper.touchable,
-      resettPosition,
-      stopAutoPlay,
-      touch,
-      touchStart,
-    ],
-  )
-
-  const onTouchMove = useCallback(
-    (e) => {
-      if (propSwiper.touchable && _swiper.current.moving) {
-        touchMove(e)
-        if (touch.stateDirection === propSwiper.direction) {
-          move({
-            offset: touch.delta,
-          })
-        }
+      const offset = getOffset(active) + touch.delta
+      innerRef.current.style.transitionDuration = `0ms`
+      if (isVertical) {
+        innerRef.current.style.transform = `translate3d(0, ${offset}px, 0)`
+      } else {
+        innerRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
       }
     },
-    [
-      move,
-      propSwiper.direction,
-      propSwiper.touchable,
-      touch.delta,
-      touch.stateDirection,
-      touchMove,
-    ],
+    [moving, touch, isVertical, getOffset, active],
   )
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const setInnertStyle = (active, _duration, delta = 0) => {
+    const offset = delta || getOffset(active)
+    innerRef.current.style.transitionDuration = `${_duration}ms`
+    if (isVertical) {
+      innerRef.current.style.transform = `translate3d(0, ${offset}px, 0)`
+    } else {
+      innerRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
+    }
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const moveTo = (activeNew, touchEnd?: boolean, callback?) => {
+    setmoving(true)
+    if (activeNew === active && !touchEnd) return
+    // 手动滑动的变更
+    if (touchEnd) {
+      const step = Math.ceil(Math.abs(touch.delta / size))
+      if (touch.delta > 0) {
+        activeNew = active - step
+        activeNew = activeNew < 0 ? childCount - 1 : activeNew
+      } else if (touch.delta < 0) {
+        activeNew = active + step
+        activeNew = activeNew > childCount - 1 ? 0 : activeNew
+      }
+    }
+    let _duration = duration
+    let timeout = 0
+    // 第一张和最后一样的特殊情况
+    if (active === 0 && activeNew === childCount - 1) {
+      _duration = 0
+      timeout = duration || 0 + 16.66
+      setInnertStyle(active, duration, size)
+    } else if (active === childCount - 1 && activeNew === 0) {
+      _duration = 0
+      timeout = duration || 0 + 16.66
+      setInnertStyle(active, duration, -childCount * size)
+    }
+    setTimeout(() => {
+      setmoving(false)
+      setActive(activeNew)
+      setInnertStyle(activeNew, _duration)
+      callback?.()
+    }, timeout)
+  }
+
+  const startPlay = useCallback(() => {
+    if (autoPlay && autoPlay !== '0') {
+      timer.current = setInterval(() => {
+        moveTo(active + 1 > childCount - 1 ? 0 : active + 1)
+      }, Number(autoPlay))
+    }
+  }, [active, autoPlay, childCount, moveTo])
 
   const onTouchEnd = useCallback(() => {
-    if (!propSwiper.touchable || !_swiper.current.moving) return
-    const speed = touch.delta / (Date.now() - touch.touchTime)
-    const isShouldMove =
-      Math.abs(speed) > 0.2 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
-    let pace = 0
-    _swiper.current.moving = false
-    if (isShouldMove && touch.stateDirection === propSwiper.direction) {
-      const offset = isVertical ? touch.offsetY : touch.offsetX
-      if (propSwiper.loop) {
-        if (offset > 0) {
-          pace = touch.delta > 0 ? -1 : 1
-        } else {
-          pace = 0
-        }
-      } else {
-        pace = -Math[touch.delta > 0 ? 'ceil' : 'floor'](touch.delta / size)
-      }
-      move({
-        pace,
-        isEmit: true,
+    if (!touchable) return
+    if (touch.stateDirection === direction) {
+      moveTo(active, true, () => {
+        startPlay()
       })
-    } else if (touch.delta) {
-      move({ pace: 0 })
-    } else {
-      getStyle()
     }
-    autoplay()
-  }, [
-    autoplay,
-    getStyle,
-    isVertical,
-    move,
-    propSwiper.direction,
-    propSwiper.loop,
-    propSwiper.touchable,
-    size,
-    touch.delta,
-    touch.offsetX,
-    touch.offsetY,
-    touch.stateDirection,
-    touch.touchTime,
-  ])
-
-  useEffect(() => {
-    _swiper.current.activePagination = (active + childCount) % childCount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active])
-
-  const queryRect = useCallback((element: any): Promise<any> => {
-    return new Promise((resolve) => {
-      const query = createSelectorQuery()
-
-      query.select(`#${(element as any).id}`) &&
-        query.select(`#${(element as any).id}`).boundingClientRect()
-      query.exec(function (res: any) {
-        resolve(res[0])
-      })
-    })
-  }, [])
-
-  const init = useCallback(
-    async (active = +Number(propSwiper.initPage)) => {
-      const rect = await queryRect(container.current || {})
-      if (rect) {
-        const _active = Math.max(Math.min(childCount - 1, active), 0)
-        const _width = propSwiper.width ? +propSwiper.width : rect?.width
-        const _height = propSwiper.height ? +propSwiper.height : rect?.height
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        size = isVertical ? _height : _width
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        trackSize = childCount * Number(size)
-        const targetOffset = getOffset(_active)
-        _swiper.current.moving = true
-        if (ready) {
-          _swiper.current.moving = false
-        }
-        setRect(rect)
-        setActive(_active)
-        setWidth(_width)
-        setHeight(_height)
-        setOffset(targetOffset)
-        setReady(true)
-      }
-    },
-    [
-      childCount,
-      getOffset,
-      propSwiper.height,
-      propSwiper.initPage,
-      propSwiper.width,
-      queryRect,
-      ready,
-    ],
-  )
-
-  useEffect(() => {
-    if (ready) {
-      getStyle()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isVertical, width, height, offset, ready])
-
-  useEffect(() => {
-    if (ready && rect) {
-      stopAutoPlay()
-      autoplay()
-    }
-    return () => {
-      setReady(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready, rect])
-
-  useEffect(() => {
-    stopAutoPlay()
-    autoplay()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [children])
-
-  useEffect(() => {
-    nextTick(() => {
-      init()
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [propSwiper.initPage, propSwiper.height, propSwiper.width])
-
-  useEffect(() => {
-    return () => {
-      stopAutoPlay()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useReady(() => {
-    nextTick(() => {
-      setTimeout(() => {
-        init()
-      })
-    })
-  })
+  }, [touchable, touch.stateDirection, direction, moveTo, active, startPlay])
 
   const itemStyle = useCallback(
-    (index: any) => {
-      const style: IStyle = {}
-      const _direction = propSwiper.direction || direction
-      const _size = size
-      if (_size) {
-        style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
+    (index) => {
+      if (index === 0 && active === childCount - 1) {
+        if (isVertical) {
+          return {
+            transform: `translate3d(0, ${size * childCount}px, 0)`,
+            transitionDuration: `0ms`,
+          }
+        } else {
+          return {
+            transform: `translate3d(${size * childCount}px, 0, 0)`,
+            transitionDuration: `0ms`,
+          }
+        }
+      } else if (index === childCount - 1 && active === 0) {
+        if (isVertical) {
+          return {
+            transform: `translate3d(0, ${-size * childCount}px, 0)`,
+            transitionDuration: `0ms`,
+          }
+        } else {
+          return {
+            transform: `translate3d(${-size * childCount}px, 0, 0)`,
+            transitionDuration: `0ms`,
+          }
+        }
       }
-      const offset = childOffset[index]
 
-      if (offset) {
-        style.transform = `translate3D${
-          _direction === 'horizontal'
-            ? `(${offset}px,0,0)`
-            : `(0,${offset}px,0)`
-        }`
-      }
-      return style
+      return {}
     },
-    [childOffset, direction, propSwiper.direction, size],
+    [active, childCount, isVertical, size],
   )
 
   useImperativeHandle(ref, () => ({
-    to,
-    next,
-    prev,
+    to: (n) => moveTo(n),
+    prev: () => moveTo(active - 1 < 0 ? childCount - 1 : active - 1),
+    next: () => moveTo(active + 1 > childCount - 1 ? 0 : active + 1),
   }))
 
-  const wrapperStyle = useMemo(() => {
-    const style_: React.CSSProperties = { ...style }
-    if (height) {
-      style_.height = height
+  useEffect(() => {
+    onChange?.(active)
+  }, [active, onChange])
+
+  useDidShow(() => {
+    setShowToDo(true)
+  })
+
+  useEffect(() => {
+    setShowToDo(true)
+
+    return () => {
+      setShowToDo(false)
+      clearInterval(timer.current)
+    }
+  }, [])
+
+  useDidHide(() => {
+    setShowToDo(false)
+    clearInterval(timer.current)
+  })
+
+  useEffect(() => {
+    if (showToDo) {
+      nextTick(() => {
+        createSelectorQuery()
+          .select('#container-' + refRandomId)
+          .boundingClientRect()
+          .exec((ret) => {
+            if (ret && ret[0]) {
+              if (!W) setW(ret[0].width)
+              if (!H) setH(ret[0].height)
+            }
+          })
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showToDo])
+
+  useEffect(() => {
+    if (size) {
+      if (active) {
+        setInnertStyle(active, 0)
+      }
+      clearInterval(timer.current)
+      startPlay()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size, children])
+
+  const containerStyle = useMemo(() => {
+    const style = {
+      width: W || '100%',
+      height: H || '100%',
+    }
+    if (containerSize) {
+      style[isVertical ? 'height' : 'width'] = containerSize
     }
 
-    return style_
-  }, [height, style])
+    return style
+  }, [H, W, containerSize, isVertical])
 
   return (
-    <DataContext.Provider value={parent}>
-      <View
-        className={`van-swiper ${className}`}
-        ref={container}
-        {...rest}
-        id={'container-' + refRandomId}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-        // @ts-ignore
-        catchMove={isVertical}
-        style={wrapperStyle}
-      >
-        <View className={contentClass} ref={innerRef}>
-          {Children.map(childs, (child: any, index: number) => {
+    <View
+      className={`van-swiper ${className}`}
+      ref={containerRef}
+      {...rest}
+      id={'container-' + refRandomId}
+      onTouchStart={touchStart}
+      onTouchMove={touchMove}
+      onTouchEnd={onTouchEnd}
+      // @ts-ignore
+      catchMove={isVertical}
+      style={containerStyle}
+    >
+      <View className={contentClass} style={wrapperStyle} ref={innerRef}>
+        {Children.map(childs, (child: any, index: number) => {
+          return (
+            <View
+              className={'van-swiper-item-wrapper'}
+              key={index}
+              style={{
+                width: W || '100%',
+                height: H || '100%',
+                ...itemStyle(index),
+              }}
+            >
+              {child}
+            </View>
+          )
+        })}
+      </View>
+      {paginationVisible && !('pageContent' in propSwiper) ? (
+        <View
+          className={classNames({
+            ['van-swiper__pagination']: true,
+            ['van-swiper__pagination-vertical']: isVertical,
+          })}
+        >
+          {Children.map(childs, (_, index: number) => {
             return (
-              <View
-                className={'van-swiper-item-wrapper'}
-                style={itemStyle(index)}
+              <Text
+                style={
+                  (active + childCount) % childCount === index
+                    ? {
+                        backgroundColor: paginationColor,
+                      }
+                    : undefined
+                }
+                className={classNames({
+                  ['van-swiper__pagination-item']: true,
+                  active: (active + childCount) % childCount === index,
+                })}
                 key={index}
-              >
-                {child}
-              </View>
+              />
             )
           })}
-          {process.env.TARO_ENV !== 'h5' && (
-            <View className={'van-swiper-item-wrapper'} style={itemStyle(0)}>
-              {childs && childs.length ? childs[0] : ''}
-            </View>
-          )}
         </View>
-        {propSwiper.paginationVisible && !('pageContent' in propSwiper) ? (
-          <View
-            className={classNames({
-              ['van-swiper__pagination']: true,
-              ['van-swiper__pagination-vertical']: isVertical,
-            })}
-          >
-            {Children.map(childs, (_, index: number) => {
-              return (
-                <Text
-                  style={
-                    (active + childCount) % childCount === index
-                      ? {
-                          backgroundColor: propSwiper.paginationColor,
-                        }
-                      : undefined
-                  }
-                  className={classNames({
-                    ['van-swiper__pagination-item']: true,
-                    active: (active + childCount) % childCount === index,
-                  })}
-                  key={index}
-                />
-              )
-            })}
-          </View>
-        ) : (
-          <View>{pageContent}</View>
-        )}
-      </View>
-    </DataContext.Provider>
+      ) : (
+        <View>{pageContent}</View>
+      )}
+    </View>
   )
 }
 export const Swiper_ = forwardRef(Swiper)

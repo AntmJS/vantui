@@ -32,6 +32,8 @@ const images = [
   'https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg',
   'https://fastly.jsdelivr.net/npm/@vant/assets/apple-3.jpeg',
   'https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg',
+  'https://fastly.jsdelivr.net/npm/@vant/assets/apple-5.jpeg',
+  'https://fastly.jsdelivr.net/npm/@vant/assets/apple-6.jpeg',
 ]
 ```
 
@@ -58,12 +60,6 @@ const images = [
 `direction` 自定义轮播方向
 
 ::: $demo5 :::
-
-### 水平居中展示
-
-`isCenter` 代表可居中，同时必须传 `width`
-
-::: $demo6 :::
 
 ### SwiperProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swiper.d.ts)
 

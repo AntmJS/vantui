@@ -15,7 +15,7 @@ export interface SwiperProps extends ViewProps {
    * @description 动画时长（单位是ms）
    * @default 500
    */
-  duration?: number | string
+  duration?: number
   /**
    * @description 初始化索引值
    */
@@ -57,7 +57,11 @@ export interface SwiperProps extends ViewProps {
    */
   isStopPropagation?: boolean
   /**
-   * @description 是否居中展示，必须传对应的width 和 height
+   * @description 容器宽度，不传的时候以`width`或者`height`属性作为容器宽度
+   */
+  containerSize?: number
+  /**
+   * @description 暂无该功能
    * @default false
    */
   isCenter?: boolean
@@ -88,9 +92,7 @@ export interface SwiperInstance {
   prev: () => void
 }
 
-export interface SwiperItemProps {
-  direction?: string
-  size?: 0
+export interface SwiperItemProps extends ViewProps {
   className?: string
   children: React.ReactNode
 }

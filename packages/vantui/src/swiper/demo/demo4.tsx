@@ -30,7 +30,7 @@ export default function Demo() {
         autoPlay="3000"
         initPage={current}
         onChange={(e) => setCurrent(e + 1)}
-        pageContent={<div style={style}> {current}/4 </div>}
+        pageContent={<View style={style}> {current}/4 </View>}
       >
         {images.map((item, index) => (
           <SwiperItem key={`swiper#demo4${index}`}>
