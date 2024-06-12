@@ -163,9 +163,9 @@ const Swiper = (
   const wrapperStyle = useMemo(() => {
     const style: React.CSSProperties = {}
     if (isVertical) {
-      style.height = size * childCount ? `${size * childCount}px` : 'auto'
+      style.height = size * childCount ? `${size * childCount}px` : '100%'
     } else {
-      style.width = size * childCount ? `${size * childCount}px` : 'auto'
+      style.width = size * childCount ? `${size * childCount}px` : '100%'
     }
 
     return style
@@ -340,15 +340,18 @@ const Swiper = (
   useEffect(() => {
     if (showToDo) {
       nextTick(() => {
-        createSelectorQuery()
-          .select('#container-' + refRandomId)
-          .boundingClientRect()
-          .exec((ret) => {
-            if (ret && ret[0]) {
-              if (!W) setW(ret[0].width)
-              if (!H) setH(ret[0].height)
-            }
-          })
+        // h5环境容器宽度100%渲染延迟
+        setTimeout(() => {
+          createSelectorQuery()
+            .select('#container-' + refRandomId)
+            .boundingClientRect()
+            .exec((ret) => {
+              if (ret && ret[0]) {
+                if (!W) setW(ret[0].width)
+                if (!H) setH(ret[0].height)
+              }
+            })
+        }, 100)
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -363,7 +366,7 @@ const Swiper = (
       startPlay()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [size, children])
+  }, [size, childCount])
 
   const containerStyle = useMemo(() => {
     const style = {

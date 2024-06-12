@@ -10,11 +10,11 @@ export default function Demo() {
   const [initPage1] = react.useState(0)
   const [height, setHeight] = react.useState(200)
 
-  react.useEffect(() => {
-    setTimeout(() => {
-      setHeight(220)
-    }, 2000)
-  })
+  // react.useEffect(() => {
+  //   setTimeout(() => {
+  //     setHeight(220)
+  //   }, 2000)
+  // })
 
   return (
     <View className="demo-box">

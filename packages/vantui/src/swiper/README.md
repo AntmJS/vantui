@@ -63,25 +63,26 @@ const images = [
 
 ### SwiperProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swiper.d.ts)
 
-| 参数              | 说明                                       | 类型                                                                                                                                 | 默认值   | 必填    |
-| ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
-| width             | 轮播卡片的宽度                             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | 窗口宽度 | `false` |
-| height            | 轮播卡片的高度                             | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `false` |
-| duration          | 动画时长（单位是 ms）                      | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | 500      | `false` |
-| initPage          | 初始化索引值                               | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `false` |
-| autoPlay          | 自动轮播时长，0 表示不会自动轮播           | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `true`  |
-| direction         | 轮播方向,可选值 horizontal,vertical        | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"horizontal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | -        | `false` |
-| paginationColor   | 分页指示器选中的颜色                       | _&nbsp;&nbsp;string<br/>_                                                                                                            | #fff     | `false` |
-| paginationVisible | 分页指示器是否展示                         | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | true     | `false` |
-| loop              | 是否循环轮播                               | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | true     | `false` |
-| touchable         | 是否可以手动滑动                           | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | true     | `false` |
-| isPreventDefault  | 滑动过程中是否禁用默认事件                 | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | -        | `false` |
-| isStopPropagation | 滑动过程中是否禁止冒泡                     | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | -        | `false` |
-| isCenter          | 是否居中展示，必须传对应的 width 和 height | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | false    | `false` |
-| className         | -                                          | _&nbsp;&nbsp;string<br/>_                                                                                                            | -        | `false` |
-| style             | -                                          | _&nbsp;&nbsp;React.CSSProperties<br/>_                                                                                               | -        | `false` |
-| pageContent       | 自定义指示器                               | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                   | -        | `false` |
-| onChange          | 卡片切换后的回调                           | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;currPage:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                           | -        | `false` |
+| 参数              | 说明                                                      | 类型                                                                                                                                 | 默认值   | 必填    |
+| ----------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
+| width             | 轮播卡片的宽度                                            | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | 窗口宽度 | `false` |
+| height            | 轮播卡片的高度                                            | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `false` |
+| duration          | 动画时长（单位是 ms）                                     | _&nbsp;&nbsp;number<br/>_                                                                                                            | 500      | `false` |
+| initPage          | 初始化索引值                                              | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `false` |
+| autoPlay          | 自动轮播时长，0 表示不会自动轮播                          | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                  | -        | `true`  |
+| direction         | 轮播方向,可选值 horizontal,vertical                       | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"horizontal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | -        | `false` |
+| paginationColor   | 分页指示器选中的颜色                                      | _&nbsp;&nbsp;string<br/>_                                                                                                            | #fff     | `false` |
+| paginationVisible | 分页指示器是否展示                                        | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | true     | `false` |
+| loop              | 是否循环轮播                                              | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | true     | `false` |
+| touchable         | 是否可以手动滑动                                          | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | true     | `false` |
+| isPreventDefault  | 滑动过程中是否禁用默认事件                                | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | -        | `false` |
+| isStopPropagation | 滑动过程中是否禁止冒泡                                    | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | -        | `false` |
+| containerSize     | 容器宽度，不传的时候以`width`或者`height`属性作为容器宽度 | _&nbsp;&nbsp;number<br/>_                                                                                                            | -        | `false` |
+| isCenter          | 暂无该功能                                                | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | false    | `false` |
+| className         | -                                                         | _&nbsp;&nbsp;string<br/>_                                                                                                            | -        | `false` |
+| style             | -                                                         | _&nbsp;&nbsp;React.CSSProperties<br/>_                                                                                               | -        | `false` |
+| pageContent       | 自定义指示器                                              | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                   | -        | `false` |
+| onChange          | 卡片切换后的回调                                          | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;currPage:&nbsp;number<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                           | -        | `false` |
 
 ### SwiperInstance [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/swiper.d.ts)
 
@@ -95,8 +96,6 @@ const images = [
 
 | 参数      | 说明 | 类型                               | 默认值 | 必填    |
 | --------- | ---- | ---------------------------------- | ------ | ------- |
-| direction | -    | _&nbsp;&nbsp;string<br/>_          | -      | `false` |
-| size      | -    | _&nbsp;&nbsp;0<br/>_               | -      | `false` |
 | className | -    | _&nbsp;&nbsp;string<br/>_          | -      | `false` |
 | children  | -    | _&nbsp;&nbsp;React.ReactNode<br/>_ | -      | `true`  |
 
