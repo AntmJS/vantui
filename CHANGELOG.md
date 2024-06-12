@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.4.1...v) (2024-06-11)
+# [](https://github.com/AntmJS/vantui/compare/v3.4.2...v) (2024-06-12)
+
+
+### Bug Fixes
+
+* image-viewer组件页脚样式问题 ([0a682f0](https://github.com/AntmJS/vantui/commit/0a682f0a3e5e1b74ea53eeb7223129260929ed62))
+* swiper组件h5宽度问题 ([ea40b70](https://github.com/AntmJS/vantui/commit/ea40b7026acf7aeb5c65ccd6a7ef89ad1a612cfd))
+
+
+
+## [3.4.2](https://github.com/AntmJS/vantui/compare/v3.4.1...v3.4.2) (2024-06-11)
 
 
 ### Bug Fixes
