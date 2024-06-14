@@ -1,11 +1,13 @@
 import { ImageViewerProps } from '../../types/index'
-import { removeNode, renderNode } from './node'
+import extraNode from './node'
 import { ImageViewer } from './image-viewer'
 
+const { removeNode, renderNode } = extraNode
+
 export function show(props: ImageViewerProps) {
-  renderNode(<ImageViewer {...props} />)
+  renderNode?.(<ImageViewer {...props} />)
 }
 
 export function close() {
-  removeNode()
+  removeNode?.()
 }
