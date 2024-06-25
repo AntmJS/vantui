@@ -12,6 +12,8 @@
 import { Notify } from '@antmjs/vantui'
 ```
 
+> `3.4.4`版本后不需要写 JSX, 可以直接命令式调用，且原 JSX 传入的`属性`将不再生效
+
 ## 代码演示
 
 ### 基础用法

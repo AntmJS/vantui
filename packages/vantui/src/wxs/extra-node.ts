@@ -7,18 +7,15 @@ export type ExtraNode = {
   removeNode?: () => void
 }
 
-/** @example */
-// let extraNode: IExtraNode  = {}
-// if (Object.key(extraNode).length) {
-//   extraNode = createExtraNode()
-// }
-// export default extraNode
 export function createExtraNode(): ExtraNode {
   let view = null
 
   const renderNode = (node: JSX.Element | React.ReactNode) => {
+    if (view) removeNode()
     const currentPages = Taro.getCurrentPages()
-    const currentPage = currentPages[currentPages.length - 1]
+    const currentPage = currentPages.length
+      ? currentPages[currentPages.length - 1]
+      : null
     if (currentPage) {
       view = document.createElement('view')
       const path = currentPage['$taroPath']
@@ -30,7 +27,9 @@ export function createExtraNode(): ExtraNode {
 
   const removeNode = () => {
     const currentPages = Taro.getCurrentPages()
-    const currentPage = currentPages[currentPages.length - 1]
+    const currentPage = currentPages.length
+      ? currentPages[currentPages.length - 1]
+      : null
     if (currentPage && view) {
       const path = currentPage['$taroPath']
       const pageElement = document.getElementById(path)
