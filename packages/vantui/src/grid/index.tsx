@@ -6,6 +6,7 @@ import {
   useRef,
   useEffect,
   isValidElement,
+  Children,
 } from 'react'
 import { GridProps } from '../../types/grid'
 import * as utils from '../wxs/utils'
@@ -54,7 +55,7 @@ export function Grid(props: GridProps) {
     function () {
       const res: Array<JSX.Element> = []
       if (others.children && Array.isArray(others.children)) {
-        others.children.forEach((child, index) => {
+        Children.map(others.children, (child, index) => {
           if (child && isValidElement(child)) {
             res.push(
               cloneElement(child as JSX.Element, {
@@ -79,6 +80,7 @@ export function Grid(props: GridProps) {
           }
         })
       }
+      console.info(res)
       return res
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
