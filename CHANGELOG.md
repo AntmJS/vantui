@@ -1,4 +1,21 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.4.2...v) (2024-06-12)
+# [](https://github.com/AntmJS/vantui/compare/v3.4.3...v) (2024-06-27)
+
+
+### Bug Fixes
+
+* 修复calendar异步同步defaultValue ([#646](https://github.com/AntmJS/vantui/issues/646)) ([db65abd](https://github.com/AntmJS/vantui/commit/db65abd57f98a4eb9d02a21bf2b46374fd16f5be))
+* gid组件修复数据map渲染的错误([#657](https://github.com/AntmJS/vantui/issues/657)) ([478e0bd](https://github.com/AntmJS/vantui/commit/478e0bd1545dade5fd4e842db5d0a513a204b17f))
+
+
+### Features
+
+* notify组件支持纯命令式调用 ([2f3daf3](https://github.com/AntmJS/vantui/commit/2f3daf3142bacad2a496b02f186ad3a265ee6682))
+* overlay组件的颜色调整 ([c873c6f](https://github.com/AntmJS/vantui/commit/c873c6f3f4cbc9a27641063c16c2dce3c87e9c7b))
+* toast组件支持纯命令式调用 ([786d66c](https://github.com/AntmJS/vantui/commit/786d66cd82344f71dba0b1da8438ba9e69700f4b))
+
+
+
+## [3.4.3](https://github.com/AntmJS/vantui/compare/v3.4.2...v3.4.3) (2024-06-12)
 
 
 ### Bug Fixes
