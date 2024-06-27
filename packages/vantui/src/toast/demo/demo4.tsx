@@ -19,7 +19,7 @@ export default function Demo() {
         })
       } else {
         clearInterval(timer)
-        Toast.clear()
+        // Toast.clear()
       }
     }, 1000)
   }

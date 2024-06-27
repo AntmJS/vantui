@@ -8,20 +8,25 @@ export type ExtraNode = {
 }
 
 export function createExtraNode(): ExtraNode {
-  let view = null
+  const view: any[] = [] // 支持单个内容的更新，如toast插入后，新元素覆盖，旧元素延时移除
 
   const renderNode = (node: JSX.Element | React.ReactNode) => {
-    if (view) removeNode()
+    if (view[0]) {
+      setTimeout(() => {
+        removeNode()
+      }, 10 * 16.66)
+    }
     const currentPages = Taro.getCurrentPages()
     const currentPage = currentPages.length
       ? currentPages[currentPages.length - 1]
       : null
     if (currentPage) {
-      view = document.createElement('view')
+      const currentView = document.createElement('view')
       const path = currentPage['$taroPath']
       const pageElement = document.getElementById(path)
-      render(node, view)
-      pageElement?.appendChild(view)
+      render(node, currentView)
+      view.push(currentView)
+      pageElement?.appendChild(currentView)
     }
   }
 
@@ -30,12 +35,19 @@ export function createExtraNode(): ExtraNode {
     const currentPage = currentPages.length
       ? currentPages[currentPages.length - 1]
       : null
-    if (currentPage && view) {
+    const rView = view[0]
+    if (currentPage && rView) {
+      const rView = view[0]
+      view.splice(0, 1)
       const path = currentPage['$taroPath']
       const pageElement = document.getElementById(path)
-      pageElement?.removeChild(view)
-      unmountComponentAtNode(view)
-      view = null
+      try {
+        pageElement?.removeChild?.(rView)
+      } catch (err) {
+        console.info(`@antmjs/vantui: 
+        Does not support the execution of a purely imperative component cleanup method when the component is destroyed`)
+      }
+      unmountComponentAtNode(rView)
     }
   }
 

@@ -6,6 +6,7 @@ export default function Demo() {
     Toast.success({
       message: '成功文案',
       selector: '#vanToast-demo2',
+      mask: true,
     })
   }
 
@@ -13,6 +14,7 @@ export default function Demo() {
     Toast.loading({
       message: '失败文案',
       selector: '#vanToast-demo2',
+      mask: true,
     })
   }
 

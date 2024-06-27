@@ -15,9 +15,8 @@ import {
   nextTick,
 } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
-import Toast from '../toast/toast'
+import Toast from '../toast/index'
 import { requestAnimationFrame } from '../common/utils'
-import VanToast from '../toast/index'
 import VanPopup from '../popup/index'
 import VanButton from '../button/index'
 import { CalendarProps, ICalendarInstance } from '../../types/calendar'
@@ -609,7 +608,6 @@ function Index(
       ) : (
         bodyRender()
       )}
-      <VanToast id="van-carlendar-toast"></VanToast>
     </View>
   )
 }

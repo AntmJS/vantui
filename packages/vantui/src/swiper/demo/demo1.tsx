@@ -8,13 +8,7 @@ const { images } = COMMON
 
 export default function Demo() {
   const [initPage1] = react.useState(0)
-  const [height, setHeight] = react.useState(200)
-
-  // react.useEffect(() => {
-  //   setTimeout(() => {
-  //     setHeight(220)
-  //   }, 2000)
-  // })
+  const [height] = react.useState(200)
 
   return (
     <View className="demo-box">

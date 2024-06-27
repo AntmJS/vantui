@@ -5,6 +5,8 @@
 在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。
 (一个 toast 弹出的时候会先关闭其它 Toast, 后续支持多 Toast)
 
+> `v3.4.4`版本后可以不再写`JSX`, 直接命令式调用
+
 ### 引入
 
 在 Taro 文件中引入组件
@@ -17,139 +19,23 @@ import { Toast } from '@antmjs/vantui'
 
 ### 文字提示
 
-须要在 JSX 里面申明后，才能用命令式调用
+`v3.4.4`版本前，须要在 JSX 里面申明后，才能用命令式调用
 
-```javascript
-import { Toast } from 'vantui'
-```
-
-```jsx
-const Toast_ = Toast.createOnlyToast()
-function Demo() {
-  const show = () => {
-    Toast_.show('我是提示文案')
-  }
-
-  const showLong = () => {
-    Toast_.show('我是提示文案, 超过了十五就会换行额～～～')
-  }
-
-  return (
-    <View>
-      <Button type="primary" onClick={show}>
-        文字提示
-      </Button>
-      <Button type="primary" onClick={showLong}>
-        长文字提示
-      </Button>
-      <Toast_ />
-    </View>
-  )
-}
-```
+::: $demo1 :::
 
 ### 加载提示
 
 使用 `Toast.loading` 方法展示加载提示，通过 `forbidClick` 属性可以禁用背景点击，通过 `loadingType` 属性可以自定义加载图标类型。
 
-```jsx
-const Toast_ = Toast.createOnlyToast()
-
-function Demo() {
-  const show = () => {
-    Toast_.success({
-      message: '成功文案',
-    })
-  }
-
-  const showLong = () => {
-    Toast_.fail({
-      message: '失败文案',
-    })
-  }
-
-  return (
-    <View>
-      <Button type="primary" onClick={show}>
-        加载提示
-      </Button>
-      <Button type="primary" onClick={showLong}>
-        自定义加载图标
-      </Button>
-      <Toast_ />
-    </View>
-  )
-}
-```
+::: $demo2 :::
 
 ### 成功/失败提示
 
-```jsx
-function Demo() {
-  const show = () => {
-    Toast.success({
-      message: '成功文案',
-      selector: '#vanToast-demo2',
-    })
-  }
-
-  const showLong = () => {
-    Toast.loading({
-      message: '失败文案',
-      selector: '#vanToast-demo2',
-    })
-  }
-
-  return (
-    <View>
-      <Button type="info" onClick={show}>
-        成功
-      </Button>
-      <Button type="danger" onClick={showLong}>
-        失败
-      </Button>
-      <Toast id="vanToast-demo2" />
-    </View>
-  )
-}
-```
+::: $demo3 :::
 
 ### 动态更新提示
 
-```jsx
-function Demo() {
-  const show = () => {
-    Toast.loading({
-      duration: 0, // 持续展示 toast
-      forbidClick: true,
-      message: '倒计时 3 秒',
-      selector: '#customSelector',
-    })
-
-    let second = 3
-    const timer = setInterval(() => {
-      second--
-      if (second) {
-        Toast.loading({
-          message: `倒计时 ${second} 秒`,
-        })
-      } else {
-        clearInterval(timer)
-        Toast.clear()
-      }
-    }, 1000)
-  }
-
-  return (
-    <View>
-      <Button type="info" onClick={show}>
-        动态提示
-      </Button>
-      <Toast id="customSelector" />
-    </View>
-  )
-}
-```
+::: $demo4 :::
 
 ### OnClose 回调函数
 
