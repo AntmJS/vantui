@@ -415,13 +415,13 @@ function Index(
 
   useLayoutEffect(
     function () {
-      if (defaultDate) {
+      if (defaultDate && show) {
         setCurrentDate(getInitialDate(defaultDate || new Date().getTime()))
         setIsInitial(false)
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [show],
   )
 
   useEffect(
