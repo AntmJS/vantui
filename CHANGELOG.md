@@ -1,4 +1,4 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.4.3...v) (2024-06-27)
+# [3.4.4](https://github.com/AntmJS/vantui/compare/v3.4.3...v3.4.4) (2024-06-27)
 
 
 ### Bug Fixes

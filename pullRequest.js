@@ -25,7 +25,16 @@ async function exec() {
   }
 
   const log = fs.readFileSync('./CHANGELOG.md', 'utf8')
-  const body = log.split('\n\n')[0]
+  let body = log.split('\n\n\n')[0]
+  if (body.includes('# [](')) {
+    body = body.replace('# [](', `# [${version}](`)
+  }
+  if (body.includes('# [](')) {
+    body = body.replace('# [](', `# [${version}](`)
+  }
+  if (body.includes('..v)')) {
+    body = body.replace('...v)', `...v${version})`)
+  }
 
   try {
     await execa('git', ['add', '.'], { stdio: 'inherit' })
