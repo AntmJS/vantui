@@ -25,7 +25,7 @@ async function exec() {
   }
 
   const log = fs.readFileSync('./CHANGELOG.md', 'utf8')
-  const body = log.replace(/#\s* \(([0-9]*)-([0-9]*)-([0-9]*)\)\s*\n*/, '')
+  const body = log.split('\n\n')[0]
 
   try {
     await execa('git', ['add', '.'], { stdio: 'inherit' })
