@@ -80,7 +80,6 @@ export function Grid(props: GridProps) {
           }
         })
       }
-      console.info(res)
       return res
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
