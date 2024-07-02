@@ -33,6 +33,7 @@ export interface UploaderProps extends ViewProps {
   onAfterRead?: (event: ITouchEvent) => any
   onOversize?: (event: ITouchEvent) => any
   onClickPreview?: (data: any) => any
+  onClickUpload?: (event: ITouchEvent) => any
 }
 
 declare const Uploader: FunctionComponent<UploaderProps>

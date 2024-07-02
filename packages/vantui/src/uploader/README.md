@@ -78,6 +78,7 @@ import { Uploader } from '@antmjs/vantui'
 | onAfterRead      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                     | -      | `false` |
 | onOversize       | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                     | -      | `false` |
 | onClickPreview   | -    | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                                                                            | -      | `false` |
+| onClickUpload    | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                     | -      | `false` |
 
 ### 样式变量
 
