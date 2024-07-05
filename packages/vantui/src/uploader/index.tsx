@@ -47,6 +47,7 @@ export function Uploader(props: UploaderProps) {
     onAfterRead,
     onOversize,
     onClickPreview,
+    onClickUpload,
     style,
     className,
     children,
@@ -140,6 +141,7 @@ export function Uploader(props: UploaderProps) {
   const startUpload = useCallback(
     (event: ITouchEvent) => {
       if (disabled) return
+      onClickUpload?.(event)
       chooseFile({
         accept,
         multiple,
@@ -169,6 +171,7 @@ export function Uploader(props: UploaderProps) {
       maxCount,
       multiple,
       onError,
+      onClickUpload,
       state.lists.length,
       accept,
       camera,
