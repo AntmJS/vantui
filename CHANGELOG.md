@@ -1,4 +1,18 @@
-# [3.4.4](https://github.com/AntmJS/vantui/compare/v3.4.3...v3.4.4) (2024-06-27)
+# [](https://github.com/AntmJS/vantui/compare/v3.4.4...v) (2024-07-08)
+
+
+### Bug Fixes
+
+* swiper组件单个数据渲染错误（[#660](https://github.com/AntmJS/vantui/issues/660)） ([835ad84](https://github.com/AntmJS/vantui/commit/835ad8404c1e2102c0b83546635e39328e43e1c5))
+
+
+### Features
+
+* 新增badge组件（[#588](https://github.com/AntmJS/vantui/issues/588)） ([83b6520](https://github.com/AntmJS/vantui/commit/83b6520cf4f49cbbf30ae0aee519a3d4d52ff85b))
+
+
+
+## [3.4.4](https://github.com/AntmJS/vantui/compare/v3.4.3...v3.4.4) (2024-06-27)
 
 
 ### Bug Fixes
