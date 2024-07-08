@@ -2,6 +2,7 @@ export default {
   pages: [
     'pages/dashboard/index',
     'pages/button/index',
+    'pages/badge/index',
     'pages/cell/index',
     'pages/config-provider/index',
     'pages/icon/index',

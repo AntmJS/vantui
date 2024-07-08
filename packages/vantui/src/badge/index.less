@@ -1,0 +1,49 @@
+@import '../style/var.less';
+@class-prefix-badge: ~'van-badge';
+
+.@{class-prefix-badge}-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.@{class-prefix-badge} {
+  display: inline-flex;
+  vertical-align: middle;
+  box-sizing: content-box;
+  border-radius: 100px;
+  .theme(background-color, '@badge-primary-color');
+
+  right: 0;
+  top: 0;
+
+  &-content {
+    .theme(color, '@badge-color-text-light-solid');
+    .theme(font-size, '@badge-font-size');
+
+    box-sizing: border-box;
+    min-width: 16px;
+    padding: 2px 8px;
+    line-height: 24px;
+    white-space: nowrap;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &-fixed {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+  }
+
+  &-dot {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  &-bordered {
+    .theme(border, '@badge-light-borded');
+  }
+}
