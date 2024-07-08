@@ -278,6 +278,12 @@ const Swiper = (
 
   const itemStyle = useCallback(
     (index) => {
+      if (childCount === 1) {
+        return {
+          transform: `translate3d(0, 0, 0)`,
+          transitionDuration: `0ms`,
+        }
+      }
       if (index === 0 && active === childCount - 1) {
         if (isVertical) {
           return {
@@ -363,7 +369,7 @@ const Swiper = (
         setInnertStyle(active, 0)
       }
       clearInterval(timer.current)
-      startPlay()
+      if (childCount > 1) startPlay()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size, childCount])
