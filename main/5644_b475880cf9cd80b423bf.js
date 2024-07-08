@@ -83,6 +83,7 @@
             card: t.e(1871).then(t.bind(t, 1871)),
             calendar: t.e(1680).then(t.bind(t, 1680)),
             button: t.e(899).then(t.bind(t, 899)),
+            badge: t.e(7).then(t.bind(t, 7)),
             area: t.e(8395).then(t.bind(t, 8395)),
             'action-sheet': t.e(8261).then(t.bind(t, 8261)),
           })
