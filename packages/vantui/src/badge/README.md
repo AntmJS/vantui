@@ -13,3 +13,26 @@ content 传空字符串即开启 dot 模式
 ### 带边框
 
 ::: $demo2 :::
+
+### BadgeProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/badge.d.ts)
+
+| 参数             | 说明 | 类型                                   | 默认值 | 必填    |
+| ---------------- | ---- | -------------------------------------- | ------ | ------- |
+| content          | -    | _&nbsp;&nbsp;ReactNode<br/>_           | -      | `false` |
+| color            | -    | _&nbsp;&nbsp;string<br/>_              | -      | `false` |
+| bordered         | -    | _&nbsp;&nbsp;boolean<br/>_             | -      | `false` |
+| children         | -    | _&nbsp;&nbsp;ReactNode<br/>_           | -      | `false` |
+| wrapperClassName | -    | _&nbsp;&nbsp;string<br/>_              | -      | `false` |
+| wrapperStyle     | -    | _&nbsp;&nbsp;React.CSSProperties<br/>_ | -      | `false` |
+| style            | -    | _&nbsp;&nbsp;React.CSSProperties<br/>_ | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                           | 默认值             |
+| ------------------------------ | ------------------ |
+| --badge-primary-color          | ` #ff3141;`        |
+| --badge-font-size              | ` 24px;`           |
+| --badge-color-text-light-solid | ` #fff;`           |
+| --badge-light-borded           | ` 2px solid #eee;` |

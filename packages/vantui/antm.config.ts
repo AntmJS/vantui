@@ -285,6 +285,10 @@ function getMenus() {
       name: '展示组件',
       items: [
         {
+          path: 'badge',
+          title: 'Badge 徽标',
+        },
+        {
           path: 'space',
           title: 'Space 间距',
         },
