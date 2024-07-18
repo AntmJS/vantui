@@ -202,10 +202,10 @@ export function Tabs(props: TabsProps) {
   }
 
   const scrollIntoView = function (index?: number) {
-    if (!scrollable) {
+    index = index ?? currentIndex
+    if (!scrollable || index === undefined) {
       return
     }
-    index = index ?? currentIndex
     Promise.all([
       getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
       getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__nav`),
