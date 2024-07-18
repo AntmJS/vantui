@@ -137,11 +137,11 @@ function Index(
         const start = limitDateRange(
           startDay || now,
           minDate,
-          getPrevDay(new Date(maxDate)).getTime(),
+          allowSameDay ? maxDate : getPrevDay(maxDate).getTime(),
         )
         const end = limitDateRange(
           endDay || now,
-          getNextDay(new Date(minDate)).getTime(),
+          allowSameDay ? minDate : getNextDay(minDate).getTime(),
         )
         return [start, end]
       }
@@ -156,7 +156,7 @@ function Index(
       }
       return limitDateRange(defaultDate)
     },
-    [limitDateRange, maxDate, minDate, type],
+    [limitDateRange, allowSameDay, maxDate, minDate, type],
   )
 
   const scrollIntoViewCompatible = useCallback((t) => {
