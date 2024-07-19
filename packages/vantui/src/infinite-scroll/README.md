@@ -22,6 +22,8 @@ import { InfiniteScroll, VirtualList } from '@antmjs/vantui'
 
 ### 虚拟列表
 
+⚠️ 注意需要给每项添加`id`
+
 ::: $demo2 :::
 
 ### 请求异常

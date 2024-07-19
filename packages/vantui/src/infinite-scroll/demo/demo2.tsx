@@ -52,9 +52,13 @@ export default function Demo() {
             ref={InfiniteScrollInstance}
           />
         }
-        ItemRender={react.memo(({ item }) => {
+        ItemRender={react.memo(({ item, id }) => {
           return (
-            <View className={`van-demo-goods-item-wrapper`} key={item.image}>
+            <View
+              className={`van-demo-goods-item-wrapper`}
+              key={item.image}
+              id={id}
+            >
               <View className="van-demo-goods-item">
                 <TaroImage key={item.image} src={item.image} className="img" />
                 <View className="title">{item.title}</View>
