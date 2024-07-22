@@ -115,8 +115,6 @@ export function Uploader(props: UploaderProps) {
           })
           event.detail = params
           onBeforeRead?.(event)
-        }).catch((err) => {
-          console.log('err: ', err)
         })
       }
       if (!res) {
@@ -128,6 +126,8 @@ export function Uploader(props: UploaderProps) {
             file: data || file,
           }
           return _onAfterRead(event)
+        }).catch((err) => {
+          console.log('err: ', err)
         })
       } else {
         event.detail = {
