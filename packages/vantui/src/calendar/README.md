@@ -33,7 +33,9 @@ import { Calendar } from '@antmjs/vantui'
 
 ::: $demo3 :::
 
-> Tips: 默认情况下，日期区间的起止时间不能为同一天，可以通过设置 allowSameDay 属性来允许选择同一天。
+> Tips1: 默认情况下，日期区间的起止时间不能为同一天，可以通过设置 allowSameDay 属性来允许选择同一天。
+
+> Tips2: 区间太大的情况下会导致无法渲染，后续将采用虚拟列表修复
 
 ### 快捷选择
 

@@ -27,12 +27,12 @@ async function exec() {
   const log = fs.readFileSync('./CHANGELOG.md', 'utf8')
   let body = log.split('\n\n\n')[0]
   if (body.includes('# [](')) {
-    body = body.replace('# [](', `# [${version}](`)
+    body = body.replace('# [](', `## [${version}](`)
   }
   if (body.includes('# [](')) {
-    body = body.replace('# [](', `# [${version}](`)
+    body = body.replace('# [](', `## [${version}](`)
   }
-  if (body.includes('..v)')) {
+  if (body.includes('...v)')) {
     body = body.replace('...v)', `...v${version})`)
   }
 
