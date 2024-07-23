@@ -185,7 +185,7 @@
                   type: 'img',
                 },
                 {
-                  title: '3.4.5',
+                  title: '3.4.6',
                   type: 'select',
                   options: [{ title: 'v2', url: '/vantui/v2' }],
                 },
