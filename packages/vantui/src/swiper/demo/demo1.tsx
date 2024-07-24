@@ -18,6 +18,7 @@ export default function Demo() {
         autoPlay="3000"
         initPage={initPage1}
         paginationVisible
+        style={{ borderRadius: 12 }}
       >
         {images.map((item, index) => (
           <SwiperItem key={`swiper#demo1${index}`}>

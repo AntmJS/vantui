@@ -375,15 +375,16 @@ const Swiper = (
   }, [size, childCount])
 
   const containerStyle = useMemo(() => {
-    const style = {
+    const _style = {
       width: W || '100%',
       height: H || '100%',
+      ...style,
     }
     if (containerSize) {
-      style[isVertical ? 'height' : 'width'] = containerSize
+      _style[isVertical ? 'height' : 'width'] = containerSize
     }
 
-    return style
+    return _style
   }, [H, W, containerSize, isVertical])
 
   return (
