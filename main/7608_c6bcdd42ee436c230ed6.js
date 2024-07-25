@@ -21,7 +21,7 @@
                 title: '募捐',
                 content: '扫码赞助，感谢大家支持～',
                 img: 'https://raw.githubusercontent.com/AntmJS/vantui/main/resource/abcd.png',
-                termType: 'month',
+                termType: 'week',
               },
               buildPort: 7778,
               menu: [
@@ -185,7 +185,7 @@
                   type: 'img',
                 },
                 {
-                  title: '3.4.6',
+                  title: '3.4.7',
                   type: 'select',
                   options: [{ title: 'v2', url: '/vantui/v2' }],
                 },
