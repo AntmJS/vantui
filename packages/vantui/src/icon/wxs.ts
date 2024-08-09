@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import { style } from '../wxs/style'
 import { addUnit } from '../wxs/add-unit'
 
@@ -33,4 +34,17 @@ function rootStyle(data: any) {
   ])
 }
 
-export { isImage, rootClass, rootStyle }
+//复制icon
+function copyIcon(name: string) {
+  Taro.setClipboardData({
+    data: `<Icon name='${name}' size="32px" />`,
+    success: () => {
+      Taro.showToast({
+        title: '复制成功',
+        icon: 'none',
+      })
+    },
+  })
+}
+
+export { isImage, rootClass, rootStyle, copyIcon }
