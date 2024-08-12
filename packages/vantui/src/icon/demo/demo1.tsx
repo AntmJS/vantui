@@ -3,7 +3,7 @@ import { Row, Col, Icon } from '@antmjs/vantui'
 
 export default function Demo() {
   return (
-    <>
+    <View style={{ overflow: 'hidden' }}>
       <Row>
         <View className="demo-block__title">基本用法</View>
         <Col className="col" span="6">
@@ -70,6 +70,6 @@ export default function Demo() {
           <Icon name="demo3" classPrefix="page-icon" size="40px" />
         </Col>
       </Row>
-    </>
+    </View>
   )
 }
