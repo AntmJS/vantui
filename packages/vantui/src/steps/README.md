@@ -131,6 +131,46 @@ function Demo() {
 }
 ```
 
+### 自定义渲染 Step 内容
+
+可以通过设置 `renderStep` 属性来自定义每个步骤的渲染内容。
+
+```jsx
+const steps = [
+  {
+    text: '步骤一',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤二',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤三',
+    desc: '描述信息',
+  },
+]
+
+const renderStep = (step) => (
+  <>
+    <View>{step.text}</View>
+    <View>自定义 Step 内容</View>
+  </>
+)
+
+function Demo() {
+  return (
+    <Steps
+      steps={steps}
+      active={1}
+      direction="vertical"
+      activeColor="#ee0a24"
+      renderStep={renderStep}
+    />
+  )
+}
+```
+
 ### StepsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/steps.d.ts)
 
 | 参数            | 说明                                              | 类型                                                                                                                                                                                                                                                                                                      | 默认值       | 必填    |
