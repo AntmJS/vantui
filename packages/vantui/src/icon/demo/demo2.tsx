@@ -1,11 +1,11 @@
-import { Text } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import icons from '@vant/icons'
 import { Col, Icon } from '@antmjs/vantui'
 import * as computed from '../wxs'
 
 export default function Demo() {
   return (
-    <>
+    <View style={{ overflow: 'hidden' }}>
       {icons.basic.map((name, i) => (
         <Col
           key={i}
@@ -17,6 +17,6 @@ export default function Demo() {
           <Text>{name}</Text>
         </Col>
       ))}
-    </>
+    </View>
   )
 }
