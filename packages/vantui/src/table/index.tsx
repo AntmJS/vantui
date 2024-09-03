@@ -391,7 +391,7 @@ const Title = (props: {
       }}
       key={column.key || column.dataIndex}
     >
-      <Text>{column.title}</Text>
+      <>{column.title}</>
       {column.sort && (
         <View className="van-table_sortBtn">
           <View
