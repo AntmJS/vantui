@@ -54,7 +54,9 @@ class FormStore {
     }, {})
   }
 
-  registerRequiredMessageCallback(callback: (label: string) => string) {
+  registerRequiredMessageCallback(
+    callback: (label: string, name: string) => string,
+  ) {
     this.requiredMessageCallback = callback
   }
 
