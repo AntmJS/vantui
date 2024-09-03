@@ -1,4 +1,4 @@
-# VirtualList 虚拟列表
+# <div style="display: flex;"><div>VirtualList 虚拟列表</div> <div style="background: red; color: #fff; font-size: 12px; padding: 4px 6px; border-radius: 8px; height: fit-content; transform: scale(.8); margin-top: 8px">不推荐、待重构</div></div>
 
 ### 介绍
 
