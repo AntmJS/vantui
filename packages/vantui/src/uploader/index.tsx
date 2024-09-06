@@ -121,14 +121,16 @@ export function Uploader(props: UploaderProps) {
         return
       }
       if (isPromise(res)) {
-        res.then((data: any) => {
-          event.detail = {
-            file: data || file,
-          }
-          return _onAfterRead(event)
-        }).catch((err) => {
-          console.log('err: ', err)
-        })
+        res
+          .then((data: any) => {
+            event.detail = {
+              file: data || file,
+            }
+            return _onAfterRead(event)
+          })
+          .catch((err) => {
+            console.log('err: ', err)
+          })
       } else {
         event.detail = {
           file,
