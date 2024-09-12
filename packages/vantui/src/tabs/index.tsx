@@ -210,7 +210,7 @@ export function Tabs(props: TabsProps) {
       getAllRect(null, `.tabs-com-index${indexRef.current} .van-tab`),
       getRect(null, `.tabs-com-index${indexRef.current} .van-tabs__nav`),
     ]).then(([tabRects, navRect]: any) => {
-      if (tabRects && navRect) {
+      if (tabRects && tabRects.length && navRect) {
         const tabRect = tabRects[index!]
         const offsetLeft = tabRects
           .slice(0, index)
@@ -311,7 +311,9 @@ export function Tabs(props: TabsProps) {
   useEffect(
     function () {
       nextTick(() => {
-        scrollIntoView()
+        setTimeout(() => {
+          scrollIntoView()
+        }, 33)
       })
       if (active !== getCurrentName() && !ref.current?.swiping && !swipeable) {
         setCurrentIndexByName(active)
