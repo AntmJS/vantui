@@ -4,6 +4,7 @@ export default {
     'pages/button/index',
     'pages/badge/index',
     'pages/cell/index',
+    'pages/check-list/index',
     'pages/config-provider/index',
     'pages/icon/index',
     'pages/image/index',

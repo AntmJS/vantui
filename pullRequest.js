@@ -29,8 +29,8 @@ async function exec() {
   if (body.includes('# [](')) {
     body = body.replace('# [](', `## [${version}](`)
   }
-  if (body.includes('# [](')) {
-    body = body.replace('# [](', `## [${version}](`)
+  if (body.includes('# []')) {
+    body = body.replace('# []', `## [${version}]`)
   }
   if (body.includes('...v)')) {
     body = body.replace('...v)', `...v${version})`)

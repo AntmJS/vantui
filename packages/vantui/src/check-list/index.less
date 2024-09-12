@@ -1,0 +1,92 @@
+@import '../style/var.less';
+
+.check-list-wrapper {
+  .theme(font-size, '@check-list-font-size');
+
+  display: flex;
+
+  .check-list-arrow-down {
+    margin-left: 6px;
+    position: relative;
+    top: 6px;
+  }
+
+  .check-list-title {
+    text-align: center;
+    .theme(font-size, '@check-list-title-font-size');
+
+    font-weight: 500;
+    padding: 18px 0;
+    color: #333333;
+    border-bottom: 1px solid #f0e8e8;
+  }
+
+  .van-search__content {
+    background-color: #ffffff;
+  }
+
+  .check-list-body {
+    overflow-y: scroll;
+    padding: 0 18px;
+    position: relative;
+  }
+
+  .check-list-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check-list-item {
+    display: flex;
+    .theme(padding, '@check-list-item-padding');
+    .theme(border-bottom, '@check-list-item-border');
+  }
+
+  .check-label-name {
+    margin-left: 12px;
+    width: calc(100vw - 180px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .check-list-cancel-btn {
+    .theme(background-color, '@check-list-cancel-background');
+  }
+
+  .check-list-loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .check-list-empty {
+    display: flex;
+    justify-content: center;
+  }
+
+  .check-list-content {
+    color: inherit;
+    display: flex;
+  }
+
+  .check-list-nocontent {
+    .theme(color, '@check-list-placeholder-color');
+  }
+
+  .clear-box {
+    padding: 4px;
+    margin-left: 6px;
+    position: relative;
+    top: -4px;
+  }
+
+  .van-icon-clear {
+    color: #c8c9cc;
+  }
+}

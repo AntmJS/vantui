@@ -191,6 +191,10 @@ function getMenus() {
           title: 'Checkbox 复选框',
         },
         {
+          path: 'check-list',
+          title: 'CheckList 勾选列表',
+        },
+        {
           path: 'datetime-picker',
           title: 'DatetimePicker 时间选择',
         },
