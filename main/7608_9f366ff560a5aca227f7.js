@@ -64,6 +64,7 @@
                     { path: 'calendar', title: 'Calendar 日历' },
                     { path: 'cascader', title: 'Cascader 级联选择' },
                     { path: 'checkbox', title: 'Checkbox 复选框' },
+                    { path: 'check-list', title: 'CheckList 勾选列表' },
                     {
                       path: 'datetime-picker',
                       title: 'DatetimePicker 时间选择',
@@ -185,7 +186,7 @@
                   type: 'img',
                 },
                 {
-                  title: '3.4.8',
+                  title: '3.4.9',
                   type: 'select',
                   options: [{ title: 'v2', url: '/vantui/v2' }],
                 },

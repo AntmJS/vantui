@@ -253,7 +253,8 @@
   margin-bottom: 20px;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -467,7 +468,8 @@
   pointer-events: auto;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -498,7 +500,8 @@
   background-color: #f7f8fa;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -695,7 +698,8 @@
   padding-right: 1px;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -836,7 +840,8 @@
   display: flex;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -900,7 +905,8 @@
   border-radius: 999px;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -943,7 +949,8 @@
   box-shadow: 0 8px 12px #ebedf0;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -1046,7 +1053,8 @@
   padding: 2px 8px;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
@@ -1063,7 +1071,8 @@ a {
   text-decoration: none;
 }
 :root {
-  --header-back-color: #4fc08d;
+  --header-back-color: #06021e;
+  --code-box-max-height: max-content;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
