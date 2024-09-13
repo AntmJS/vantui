@@ -255,10 +255,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 /* stylelint-disable selector-max-type */
@@ -470,10 +481,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 :root {
@@ -502,10 +524,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 /* stylelint-disable keyframes-name-pattern */
@@ -700,10 +733,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 /* stylelint-disable selector-max-type */
@@ -842,10 +886,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 :root {
@@ -907,10 +962,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 :root {
@@ -951,10 +1017,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 :root {
@@ -1055,10 +1132,21 @@
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
 
 * {
@@ -1073,8 +1161,19 @@ a {
 :root {
   --header-back-color: #06021e;
   --code-box-max-height: max-content;
+  --code-box-background: #fafafa;
+  --code-tabs-background: #f1f1f1;
 }
 .antm-docs-header-nav .nav-text,
 .antm-docs-header-nav .nav-select {
   background-color: #ffffff;
+}
+.demo-code-tabs .code-tab-name {
+  color: #333;
+  font-weight: 500;
+}
+.demo-code-tabs .code-tab-name-active {
+  color: #333;
+  border-color: #333;
+  border-width: 2px;
 }
