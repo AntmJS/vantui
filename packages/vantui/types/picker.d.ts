@@ -6,10 +6,52 @@ import { ViewProps, ITouchEvent } from '@tarojs/components'
  */
 export interface PickerProps extends ViewProps {
   /**
+   * @description normal为普通选择模式，content是展示选择的内容，点击展示选择项
+   * @default normal
+   */
+  mode?: 'normal' | 'content'
+  /**
+   * @description 选择提示和弹窗标题
+   * @default 请选择
+   */
+  placeholder?: string
+  /**
+   * @description 选择提示的样式
+   * @default 请选择
+   */
+  placeholderColor?: string
+  /**
+   * @description 自定义渲染
+   */
+  renderContent?: (
+    data: Record<string, any> | null,
+    setShow: () => void,
+  ) => React.ReactNode
+  /**
+   * @description 是否展示下拉尖头
+   * @default false
+   */
+  showArrowDown?: boolean
+  /**
+   * @description 是否展示右尖头
+   * @default false
+   */
+  showArrowRight?: boolean
+  /**
+   * @description 有值的时候，是否展示清除按钮
+   * @default true
+   */
+  allowClear?: boolean
+  /**
    * @description 选项为对象的时候，文字对应的 key
    * @default text
    */
   valueKey?: string
+  /**
+   * @description 选项为对象的时候，键值对应的 key
+   * @default id
+   */
+  idKey?: string
   /**
    * @description 顶部栏位置，可选值为bottom
    * @default top
@@ -21,10 +63,24 @@ export interface PickerProps extends ViewProps {
    */
   defaultIndex?: number
   /**
+   * @description 	单列选择器的默认选中项索引,多列选择器请参考下方的 Columns 配置
+   * @default 0
+   */
+  value?: Array<string | number | Date> | string | number
+  /**
    * @description 	每一项数据，可为字符或者对象，对象默认展示值是valueKey设置的key
    * @default []
    */
   columns?: any[]
+  /**
+   * @description 实时异步获取columns, 返回改变的数据和值
+   * @default []
+   */
+  syncColumns?: (params: {
+    values: Array<string | number | undefined>
+    changeIndex?: number
+    columns: any[]
+  }) => Promise<any[]>
   /**
    * @description 	顶部栏标题
    * @default ''
@@ -55,6 +111,10 @@ export interface PickerProps extends ViewProps {
    * @default 6
    */
   visibleItemCount?: number
+  /**
+   * @description 变化触发方法
+   */
+  onInput?: (e: { detail: Array<string | number> | string | number }) => void
   /**
    * @description 变化触发方法
    */

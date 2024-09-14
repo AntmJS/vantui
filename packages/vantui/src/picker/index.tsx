@@ -5,6 +5,9 @@ import {
   forwardRef,
   useImperativeHandle,
   useLayoutEffect,
+  useState,
+  useEffect,
+  useMemo,
 } from 'react'
 import { View } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
@@ -16,7 +19,9 @@ import {
 import { PickerColumn } from '../picker-column/index'
 import * as utils from '../wxs/utils'
 import { Loading } from '../loading/index'
+import { Popup } from '../popup'
 import * as computed from './wxs'
+import { Icon } from '../icon/index'
 
 const Picker = forwardRef(function Index(
   props: PickerProps,
@@ -24,9 +29,12 @@ const Picker = forwardRef(function Index(
 ): JSX.Element {
   const {
     valueKey = 'text',
+    idKey = 'text',
     toolbarPosition = 'top',
     defaultIndex,
+    value,
     columns,
+    syncColumns,
     title,
     cancelButtonText,
     confirmButtonText,
@@ -37,13 +45,45 @@ const Picker = forwardRef(function Index(
     className,
     style,
     onCancel,
+    onInput,
     onConfirm,
     showToolbar = true,
+    mode = 'normal',
+    placeholder = '请选择',
+    renderContent,
+    placeholderColor,
+    showArrowDown,
+    showArrowRight,
+    allowClear = true,
     ...others
   } = props
 
   const children = useRef<Array<any>>([])
   const handleIndex = useRef<number>(-1)
+  const [show, setShow] = useState<boolean | number>(0)
+  const [valuesInner, setValuesInner] = useState<Array<number | string | Date>>(
+    [],
+  )
+  const [columnsInner, setColumnsInner] = useState<any[]>([])
+  const [currentData, setcurrentData] = useState<any[] | null>(null)
+
+  const asyncColumns = async function (v, i?) {
+    const cc = await syncColumns?.({
+      columns: columnsInner ? [...columnsInner] : [],
+      changeIndex: i,
+      values: v || [],
+    })
+    if (cc) {
+      setColumnsInner([...cc])
+    }
+  }
+
+  useLayoutEffect(() => {
+    // 取消关闭的时候请求新的列数据，防止请求不符合value的列数据
+    if (mode === 'content' && syncColumns && show === 0) {
+      asyncColumns(valuesInner)
+    }
+  }, [show, valuesInner])
 
   useLayoutEffect(
     function () {
@@ -58,9 +98,24 @@ const Picker = forwardRef(function Index(
     const type = event?.currentTarget?.dataset['type']
     const simple = columns && columns.length && !columns[0].values
     if (typeof event === 'number' || !type) {
+      const event_ = {}
+      handleIndex.current = event
+      const v = simple ? getColumnValue(0) : getValues()
+      const i = simple ? getColumnIndex(0) : event
+      // 异步请求的情况下需要更新
+      if (syncColumns) {
+        const colunmsInnerNew = [...columnsInner]
+        for (let a = i + 1; a < v?.length; a++) {
+          children.current[a].setIndex(0, true)
+          v[a] = undefined
+        }
+        for (let a = i + 1; a < colunmsInnerNew?.length; a++) {
+          colunmsInnerNew[a] = []
+        }
+        setColumnsInner(colunmsInnerNew)
+        asyncColumns(v, i)
+      }
       if (onChange) {
-        const event_ = {}
-        handleIndex.current = event
         Object.defineProperties(event_, {
           detail: {
             value: {
@@ -85,7 +140,7 @@ const Picker = forwardRef(function Index(
                 setValues,
                 columns,
               },
-              value: simple ? getColumnValue(0) : getValues(),
+              value: v,
               index: simple ? getColumnIndex(0) : event,
             },
           },
@@ -93,6 +148,7 @@ const Picker = forwardRef(function Index(
         onChange(event_ as PickerChangeEvents)
       }
     } else if (type === 'cancel') {
+      setShow(0)
       if (onCancel) {
         Object.defineProperty(event, 'detail', {
           value: {
@@ -103,13 +159,22 @@ const Picker = forwardRef(function Index(
         onCancel(event)
       }
     } else if (type === 'confirm') {
+      const vv = simple ? getColumnValue(0) : getValues()
+      const originIsArray = Array.isArray(vv)
+      Object.defineProperty(event, 'detail', {
+        value: {
+          value: vv,
+          index: simple ? getColumnIndex(0) : getIndexes(),
+        },
+      })
+      if (mode === 'content') {
+        let vs = Array.isArray(vv) ? vv : [vv]
+        vs = vs.map((it) => (typeof it === 'string' ? it : it[idKey]))
+        setValuesInner(vs)
+        onInput?.({ detail: originIsArray ? vs : vs[0] })
+        setShow(false)
+      }
       if (onConfirm) {
-        Object.defineProperty(event, 'detail', {
-          value: {
-            value: simple ? getColumnValue(0) : getValues(),
-            index: simple ? getColumnIndex(0) : getIndexes(),
-          },
-        })
         onConfirm(event)
       }
     }
@@ -143,7 +208,8 @@ const Picker = forwardRef(function Index(
       return Promise.reject(new Error('setColumnValues: 对应列不存在'))
     }
     const isSame =
-      JSON.stringify(column.props.options) === JSON.stringify(options)
+      JSON.stringify(column.props.options || {}) ===
+      JSON.stringify(options || {})
     if (isSame) {
       return Promise.resolve(getValues())
     }
@@ -211,14 +277,20 @@ const Picker = forwardRef(function Index(
   })
 
   const setValues = function (values: any) {
-    const stack = values.map((value: any, index: number) =>
+    const stack = values?.map((value: any, index: number) =>
       setColumnValue(index, value),
     )
     return Promise.all(stack)
   }
 
+  useEffect(() => {
+    if (value && mode === 'content') {
+      setValuesInner(Array.isArray(value) ? value : [value])
+    }
+  }, [value])
+
   const setColumnValue = function (index: any, value: any) {
-    const column = children.current[index] || {}
+    const column = children.current[index]
     if (column == null) {
       return Promise.reject(new Error('setColumnValue: 对应列不存在'))
     }
@@ -230,7 +302,21 @@ const Picker = forwardRef(function Index(
     event.stopPropagation()
   }, [])
 
-  return (
+  const columnsUsed = useMemo(() => {
+    return computed.columns(columns || columnsInner) || []
+  }, [columns, columnsInner])
+
+  useEffect(() => {
+    if (valuesInner && mode === 'content' && show) {
+      setTimeout(() => {
+        setValues(valuesInner)
+      }, 200)
+    }
+  }, [valuesInner, show])
+
+  console.info(columns, 'columns', value, defaultIndex)
+
+  const mainRender = (
     <View
       className={`van-picker  ${className}`}
       style={utils.style([style])}
@@ -277,7 +363,7 @@ const Picker = forwardRef(function Index(
         // @ts-ignore
         catchMove
       >
-        {computed.columns(columns).map((item: any, index: number) => {
+        {columnsUsed?.map((item: any, index: number) => {
           return (
             <PickerColumn
               className="van-picker__column column-class"
@@ -285,12 +371,13 @@ const Picker = forwardRef(function Index(
               data-index={index}
               index={index}
               valueKey={valueKey}
-              initialOptions={item.values}
-              defaultIndex={item.defaultIndex || defaultIndex}
+              initialOptions={item}
+              defaultIndex={item?.defaultIndex || defaultIndex}
               itemHeight={itemHeight}
               visibleItemCount={visibleItemCount}
               activeClass="active-class"
               onChange={onChange_}
+              idKey={idKey}
               ref={(el) => (children.current[index] = el)}
             ></PickerColumn>
           )
@@ -336,6 +423,90 @@ const Picker = forwardRef(function Index(
       )}
     </View>
   )
+
+  useEffect(() => {
+    const vs = valuesInner
+    let dd: any[] | null = []
+    if (vs?.length && columnsUsed?.length) {
+      dd = vs.map((it, i) => {
+        let filter = columnsUsed[i]?.filter((c) => {
+          return c[idKey] === it || c === it
+        })
+        return filter?.[0]
+      })
+    } else dd = null
+    if (!dd || dd.every((it) => it !== undefined)) {
+      setcurrentData(dd)
+    }
+  }, [valuesInner, columnsUsed])
+
+  const renderContentInner = useMemo(() => {
+    if (currentData) {
+      return currentData
+        .map((it) => {
+          return typeof it === 'string' ? it : it?.[valueKey]
+        })
+        .join(',')
+    } else {
+      return placeholder
+    }
+  }, [currentData, placeholder])
+
+  const clear = function () {
+    setValuesInner([])
+    onInput?.({
+      detail: [],
+    })
+  }
+
+  if (mode === 'normal') {
+    return mainRender
+  } else {
+    return (
+      <View className="van-picker-content-Wrapper">
+        <View
+          className={`van-picker-content ${
+            !currentData ? 'van-picker-nocontent' : ''
+          }`}
+          style={
+            placeholderColor && !currentData ? { color: placeholderColor } : {}
+          }
+          onClick={() => setShow(true)}
+        >
+          {renderContent
+            ? renderContent(currentData, () => setShow(0))
+            : renderContentInner}
+        </View>
+        {currentData && allowClear && (
+          <Icon
+            onClick={clear}
+            className="van-icon-clear"
+            name="clear"
+            size="18px"
+          />
+        )}
+        {showArrowDown && (
+          <Icon
+            className="check-list-arrow"
+            onClick={() => setShow(true)}
+            name="arrow-down"
+            size="14px"
+          />
+        )}
+        {showArrowRight && (
+          <Icon
+            className="check-list-arrow"
+            onClick={() => setShow(true)}
+            name="arrow"
+            size="14px"
+          />
+        )}
+        <Popup show={!!show} position="bottom" onClose={() => setShow(0)}>
+          {mainRender}
+        </Popup>
+      </View>
+    )
+  }
 })
 export { Picker }
 export default Picker

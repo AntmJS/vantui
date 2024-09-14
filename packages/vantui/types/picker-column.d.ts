@@ -11,6 +11,7 @@ export interface PickerColumnProps extends ViewProps {
   onChange?: (a: any) => void
   activeClass?: string
   refBase?: any
+  idKey?: string
 }
 
 declare const PickerColumn: FunctionComponent<PickerColumnProps>

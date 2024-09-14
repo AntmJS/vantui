@@ -22,7 +22,7 @@ export default class Index extends Component {
           <Demo1 />
         </DemoBlock>
 
-        <DemoBlock title="默认选中项" padding>
+        <DemoBlock title="复杂数据" padding>
           <Demo2 />
         </DemoBlock>
 
@@ -30,7 +30,7 @@ export default class Index extends Component {
           <Demo3 />
         </DemoBlock>
 
-        <DemoBlock title="多列联动" padding>
+        <DemoBlock title="多列联动和异步" padding>
           <Demo4 />
         </DemoBlock>
 
@@ -38,7 +38,7 @@ export default class Index extends Component {
           <Demo5 />
         </DemoBlock>
 
-        <DemoBlock title="加载状态" padding>
+        <DemoBlock title="表单使用" padding>
           <Demo6 />
         </DemoBlock>
       </DemoPage>

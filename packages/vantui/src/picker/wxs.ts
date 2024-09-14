@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { style } from '../wxs/utils'
-import { isArray } from '../wxs/array'
 
 function columnsStyle(data: any) {
   return style({
@@ -22,15 +21,22 @@ function frameStyle(data: any) {
 }
 
 function columns(columns: any) {
-  if (!isArray(columns)) {
-    return []
+  let cc: any[] = []
+  if (columns.every((it) => Array.isArray(it.values))) {
+    cc = columns.map((it) => it.values)
+  } else if (columns.every((it) => !Array.isArray(it))) {
+    cc = [columns]
+  } else {
+    columns.forEach((it) => {
+      if (Array.isArray(it)) {
+        cc.push(it)
+      } else {
+        cc.push([it])
+      }
+    })
   }
 
-  if (columns.length && !columns[0].values) {
-    return [{ values: columns }]
-  }
-
-  return columns
+  return cc
 }
 
 export { columnsStyle, frameStyle, maskStyle, columns }

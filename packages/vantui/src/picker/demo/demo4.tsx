@@ -1,38 +1,53 @@
 /* eslint-disable */
-import react from 'react'
-import { Toast, Picker, IPickerInstance } from '@antmjs/vantui'
+import { Picker, PickerProps } from '@antmjs/vantui'
+import { citiesWithDistricts } from './options'
+import { useState } from 'react'
 
-const citys = {
-  浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-  福建: ['福州', '厦门'],
-}
 export default function Demo() {
-  const pickerRef = react.useRef<IPickerInstance>()
+  const [value, setValue] = useState<PickerProps['value']>([
+    '福建',
+    '莆田',
+    '城厢区',
+  ])
 
-  react.useEffect(() => {
-    // 模拟异步数据获取
-    setTimeout(async () => {
-      const res = ['浙江', '福建'] // 数组项可以是基础类型或对象类型
-      await pickerRef.current?.setColumnValues(0, res)
-      await pickerRef.current?.setColumnValues(1, citys[res[0] as any])
-    }, 1000)
-  }, [])
+  const syncColumns: PickerProps['syncColumns'] = ({
+    values,
+    columns,
+    changeIndex,
+  }) => {
+    let dataNew: any[] = [...columns]
+    const provinces = Object.keys(citiesWithDistricts) || columns[0] || []
+    const provincesValue = values[0] || provinces[0]
 
-  const onChange = (event) => {
-    const { picker, value } = event.detail
-    picker.setColumnValues(1, citys[value[0]]).then((newValue) => {
-      console.info(newValue)
-      console.info(pickerRef.current?.getIndexes()) // 异步更新列数据的时候不要使用回调函数里面旧的 picker实例
+    return new Promise((resolve) => {
+      // 实际场景根据changeIndex请求
+      console.info(changeIndex, values)
+      setTimeout(() => {
+        dataNew[0] = provinces
+        dataNew[1] = Object.keys(
+          citiesWithDistricts[provincesValue || ''] || {},
+        )
+
+        dataNew[2] =
+          citiesWithDistricts[provincesValue || '']?.[
+            values[1] || dataNew[1][0]
+          ] || []
+        console.info(dataNew, 'dataNew')
+        resolve(dataNew)
+      }, 500)
     })
   }
+
   return (
-    <>
-      <Toast />
-      <Picker
-        ref={pickerRef}
-        columns={[{ values: [] }, { values: [] }]}
-        onChange={onChange}
-      />
-    </>
+    <Picker
+      showToolbar
+      title="请选择"
+      mode="content"
+      syncColumns={syncColumns}
+      value={value}
+      onInput={(e) => {
+        setValue(e.detail)
+      }}
+    />
   )
 }

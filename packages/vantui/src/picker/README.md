@@ -18,9 +18,13 @@ import { Picker } from '@antmjs/vantui'
 
 ::: $demo1 :::
 
-### 默认选中项
+> `v3.5.0`, 新增`mode`和`onInput`等属性, 不影响之前版本`mode`===`normal`的平铺展示和使用
 
-单列选择器可以直接通过`defaultIndex`属性设置初始选中项的索引值。
+### 复杂数据
+
+`valuekey`为展示的文本字段，`idKey`为实际的表单值
+
+> 后续将支持`children`结构来展示下一列
 
 ::: $demo2 :::
 
@@ -30,6 +34,8 @@ import { Picker } from '@antmjs/vantui'
 
 ### 多列联动
 
+多级联动并且支持新的异步写法，设置`syncColumns`, 仅支持`mode===content`
+
 ::: $demo4 :::
 
 ### 禁用选项
@@ -38,9 +44,7 @@ import { Picker } from '@antmjs/vantui'
 
 ::: $demo5 :::
 
-### 加载状态
-
-当 Picker 数据是通过异步获取时，可以通过 `loading` 属性显示加载提示。
+### 表单使用
 
 ::: $demo6 :::
 
