@@ -7,6 +7,7 @@ import {
   forwardRef,
   useImperativeHandle,
   ForwardedRef,
+  useMemo,
 } from 'react'
 import { nextTick } from '@tarojs/taro'
 import { IPickerInstance, PickerChangeEvents } from '../../types/picker'
@@ -25,11 +26,12 @@ import {
   range,
   isValidDate,
   currentYear,
+  getCurrentValueArr,
 } from './wxs'
 
 export function DatetimePicker(
   props: DatetimePickerProps,
-  ref: ForwardedRef<IDatetimePickerInstance>,
+  ref_: ForwardedRef<IDatetimePickerInstance>,
 ) {
   const {
     value = null,
@@ -52,6 +54,11 @@ export function DatetimePicker(
     onChange,
     onCancel,
     onConfirm,
+    style,
+    className,
+    formatValue,
+    // @ts-ignore
+    ref,
     ...others
   } = props
 
@@ -197,7 +204,7 @@ export function DatetimePicker(
   )
 
   const updateColumnValue = useCallback(
-    function (value: string): Promise<string> {
+    function (value: string, isChange?: boolean): Promise<string> {
       let values: Array<any> = []
       const picker = getPicker()
       if (type === 'time') {
@@ -222,14 +229,12 @@ export function DatetimePicker(
       }
       updateColumns(value)
 
-      nextTick(() => {
-        setInnerValue(value)
-      })
-
       return new Promise((resolve) => {
         setTimeout(() => {
           nextTick(() => {
-            picker.setValues(values)
+            if (others.mode !== 'content' || isChange) {
+              picker.setValues(values)
+            }
             resolve(`${value}`)
           })
         }, 6)
@@ -267,7 +272,7 @@ export function DatetimePicker(
     const isEqual = val === innerValue
     if (!isEqual) {
       updateColumnValue(val).then(() => {
-        if (onInput) {
+        if (onInput && others.mode !== 'content') {
           onInput({
             detail: val,
             currentTarget: {
@@ -284,9 +289,12 @@ export function DatetimePicker(
   useLayoutEffect(
     function () {
       updateCurrentValue(value)
+      setTimeout(() => {
+        setInnerValue(value)
+      }, 120)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute],
+    [type, minDate, maxDate, minHour, maxHour, minMinute, maxMinute, value],
   )
 
   const onChange_ = function (e: PickerChangeEvents) {
@@ -335,8 +343,8 @@ export function DatetimePicker(
     }
     value = correctValue(value)
 
-    updateColumnValue(value).then(() => {
-      if (onInput)
+    updateColumnValue(value, true).then(() => {
+      if (onInput && others.mode !== 'content')
         onInput({
           detail: value,
           currentTarget: {
@@ -361,7 +369,7 @@ export function DatetimePicker(
     })
   }
 
-  useImperativeHandle(ref, () => {
+  useImperativeHandle(ref_, () => {
     return {
       pickerInstance: PickRef.current,
       columns,
@@ -372,11 +380,54 @@ export function DatetimePicker(
     }
   })
 
+  const _renderContent = (data) => {
+    if (others.renderContent) return others.renderContent(data, () => {})
+    if (data?.length) {
+      if (type === 'datetime') {
+        return `${data[0]}-${data[1]}-${data[2]} ${data[3]}:${data[4]}`
+      } else if (type === 'date') {
+        return `${data[0]}-${data[1]}-${data[2]}`
+      } else if (type === 'year-month') {
+        return `${data[0]}-${data[1]}`
+      } else if (type === 'time') {
+        return `${data[0]}:${data[1]}`
+      } else return ''
+    } else return '请选择'
+  }
+  // @ts-ignore
+  const _formatValue = (v) => {
+    if (formatValue) {
+      return formatValue(v)
+    } else {
+      if (type === 'datetime') {
+        return `${v[0]}-${v[1]}-${v[2]} ${v[3]}:${v[4]}`
+      } else if (type === 'date') {
+        return `${v[0]}-${v[1]}-${v[2]}`
+      } else if (type === 'year-month') {
+        return `${v[0]}-${v[1]}`
+      } else if (type === 'time') {
+        return `${v[0]}:${v[1]}`
+      }
+    }
+  }
+
+  const valueArr = useMemo(() => {
+    const res = getCurrentValueArr(innerValue)
+    let index = 4
+    if (type === 'year-month') index = 1
+    if (type === 'time') index = 1
+    if (type === 'date') index = 2
+    return res.slice(0, index + 1)
+  }, [innerValue, type])
+
+  console.info(value, '传入的value', valueArr)
+
   return (
     <VanPicker
+      renderContent={_renderContent}
       ref={PickRef}
-      className={`van-datetime-picker column-class ${others.className || ''}`}
-      style={utils.style([others.style])}
+      className={`van-datetime-picker column-class ${className || ''}`}
+      style={utils.style([style])}
       title={title}
       columns={columns}
       itemHeight={itemHeight}
@@ -386,6 +437,15 @@ export function DatetimePicker(
       cancelButtonText={cancelButtonText}
       onChange={onChange_}
       onConfirm={function (event) {
+        if (others.mode === 'content') {
+          onInput?.({
+            detail: {
+              ...event.detail,
+              value: _formatValue(event.detail.value),
+            },
+          } as any)
+          return
+        }
         if (onConfirm)
           onConfirm({
             detail: {
@@ -395,6 +455,8 @@ export function DatetimePicker(
           } as any)
       }}
       onCancel={onCancel}
+      value={valueArr}
+      {...others}
     ></VanPicker>
   )
 }

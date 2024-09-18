@@ -5,7 +5,7 @@ import { DatetimePicker } from '@antmjs/vantui'
 export default function Demo() {
   const [state, setState] = react.useState({
     minDate: new Date(2018, 0, 1).getTime(),
-    currentDate: undefined,
+    currentDate: '2020-12-12 09:09:12',
   })
 
   const onInput = react.useCallback(
@@ -20,6 +20,7 @@ export default function Demo() {
 
   return (
     <DatetimePicker
+      mode="content"
       type="datetime"
       value={state.currentDate}
       minDate={state.minDate}

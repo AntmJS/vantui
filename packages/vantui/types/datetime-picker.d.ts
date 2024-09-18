@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import { ITouchEvent, ViewProps } from '@tarojs/components'
-import { PickerProps, IPickerInstance } from './picker'
+import { PickerProps, IPickerInstance, PickerEvents } from './picker'
 
 /**
  * @title DatetimePickerProps
@@ -9,7 +9,7 @@ import { PickerProps, IPickerInstance } from './picker'
 export interface DatetimePickerProps
   extends DefinedExculdeNoMatch<
       PickerProps,
-      'onInput' | 'onConfirm' | 'onChange'
+      'onInput' | 'onConfirm' | 'onChange' | 'value'
     >,
     ViewProps {
   /**
@@ -66,7 +66,7 @@ export interface DatetimePickerProps
    */
   maxMinute?: number | string
   /**
-   * @description 当值变化时触发的事件
+   * @description `mode!==content`当值变化时触发的事件,`mode===content`时确认按钮触发
    */
   onInput?: (e: DatetimePickerEventsByValue) => void
   /**
@@ -81,6 +81,14 @@ export interface DatetimePickerProps
    * @description 点击取消按钮时触发的事件
    */
   onCancel?: () => void
+  /**
+   * @description 弹窗修改外面的值
+   */
+  onTrigger?: (e: DatetimePickerEventsByValue) => void
+  /**
+   * @description 格式化确认按钮返回的数组数据
+   */
+  formatValue?: (e: string[]) => string | number
 }
 /**
  * @title onInput、onConfirm的回掉参数

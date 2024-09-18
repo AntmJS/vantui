@@ -21,6 +21,7 @@ export default function Demo() {
 
   return (
     <DatetimePicker
+      mode="content"
       type="time"
       value={state.currentDate}
       minHour={state.minHour}

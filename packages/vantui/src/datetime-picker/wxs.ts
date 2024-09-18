@@ -74,6 +74,31 @@ function diff(obj1: any, obj2: any) {
   return true
 }
 
+function getCurrentValueArr(date) {
+  if (typeof date === 'number') {
+    const d = new Date(date)
+    const res = [
+      d.getFullYear(),
+      d.getMonth() + 1,
+      d.getDate(),
+      d.getHours(),
+      d.getMinutes(),
+    ].map((it) => {
+      let res = `${it}`
+      if (res.length > 2) return res
+      if (res.length === 1) {
+        return `0${res}`
+      } else {
+        return res
+      }
+    })
+    return res
+  } else if (typeof date === 'string') {
+    date = date.replace(/\:|\年|\月|\日|\s/g, '-')
+    return date.split('-')
+  } else return []
+}
+
 export {
   defaultFormatter,
   getMonthEndDay,
@@ -84,4 +109,5 @@ export {
   isValidDate,
   currentYear,
   diff,
+  getCurrentValueArr,
 }

@@ -23,10 +23,7 @@ export interface PickerProps extends ViewProps {
   /**
    * @description 自定义渲染
    */
-  renderContent?: (
-    data: Record<string, any> | null,
-    setShow: () => void,
-  ) => React.ReactNode
+  renderContent?: (data: any[] | null, setShow?: () => void) => React.ReactNode
   /**
    * @description 是否展示下拉尖头
    * @default false

@@ -4,6 +4,8 @@
 
 用于选择时间，支持日期、时分等时间维度，通常与 [弹出层](#/popup) 组件配合使用。
 
+> `v3.5`由于`picker`新增`mode=content`模式，当前 DatetimePicker 版本做了相应适配，这个模式下面 onInput 再确认的时候触发，value 支持字符串格式
+
 ### 引入
 
 在 Taro 文件中引入组件

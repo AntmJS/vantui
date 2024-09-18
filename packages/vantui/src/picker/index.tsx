@@ -292,7 +292,9 @@ const Picker = forwardRef(function Index(
   const setColumnValue = function (index: any, value: any) {
     const column = children.current[index]
     if (column == null) {
-      return Promise.reject(new Error('setColumnValue: 对应列不存在'))
+      return Promise.reject(
+        new Error(`setColumnValue[${index}]: 对应列不存在${value}`),
+      )
     }
     return column.setValue(value)
   }
@@ -313,8 +315,6 @@ const Picker = forwardRef(function Index(
       }, 200)
     }
   }, [valuesInner, show])
-
-  console.info(columns, 'columns', value, defaultIndex)
 
   const mainRender = (
     <View
@@ -435,9 +435,8 @@ const Picker = forwardRef(function Index(
         return filter?.[0]
       })
     } else dd = null
-    if (!dd || dd.every((it) => it !== undefined)) {
-      setcurrentData(dd)
-    }
+
+    setcurrentData(dd?.filter((it) => it !== undefined) || null)
   }, [valuesInner, columnsUsed])
 
   const renderContentInner = useMemo(() => {
