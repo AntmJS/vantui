@@ -99,6 +99,10 @@ export interface FormItemProps extends ViewProps {
    */
   controllClassName?: string
   /**
+   * @description 表单组件的靠右布局
+   */
+  controllFlexEnd?: boolean
+  /**
    * @description formItem最外层className
    */
   className?: string

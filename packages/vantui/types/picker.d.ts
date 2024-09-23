@@ -23,7 +23,7 @@ export interface PickerProps extends ViewProps {
   /**
    * @description 自定义渲染
    */
-  renderContent?: (data: any[] | null, setShow?: () => void) => React.ReactNode
+  renderContent?: (data: any[] | null) => React.ReactNode
   /**
    * @description 是否展示下拉尖头
    * @default false
@@ -34,6 +34,10 @@ export interface PickerProps extends ViewProps {
    * @default false
    */
   showArrowRight?: boolean
+  /**
+   * @description 	自定义渲染右侧内容
+   */
+  renderContentRight?: ReactNode
   /**
    * @description 有值的时候，是否展示清除按钮
    * @default true
@@ -49,6 +53,11 @@ export interface PickerProps extends ViewProps {
    * @default id
    */
   idKey?: string
+  /**
+   * @description 选中内容文本的className
+   * @default ‘’
+   */
+  contentClassName?: string
   /**
    * @description 顶部栏位置，可选值为bottom
    * @default top
@@ -140,6 +149,7 @@ export interface PickerEvents extends ITouchEvent {
    */
   detail: {
     value: any
+    values: number[]
     index: number | number[]
   }
 }

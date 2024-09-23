@@ -40,6 +40,7 @@ export function FormItem(props: FormItemProps) {
     valueFormat,
     messageClassName = '',
     borderBottom = false,
+    controllFlexEnd = false,
     ...others
   } = props
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
@@ -191,7 +192,11 @@ export function FormItem(props: FormItemProps) {
           requiredIcon={requiredIcon}
         />
         <View className={`${prefixCls}-controll ${controllClassName}`}>
-          <View className={`${prefixCls}-controll-item`}>
+          <View
+            className={`${prefixCls}-controll-item ${
+              controllFlexEnd ? `${prefixCls}-controll-item-flex-end` : ''
+            }`}
+          >
             {renderChildren}
             {renderRight}
           </View>

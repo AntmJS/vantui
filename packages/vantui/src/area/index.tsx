@@ -6,12 +6,14 @@ import {
   useImperativeHandle,
   forwardRef,
   memo,
+  useState,
 } from 'react'
-// import { requestAnimationFrame } from '../common/utils'
+import lodash from 'lodash'
 import * as computed from './wxs'
 import VanPicker from './../picker'
 import { AreaProps } from './../../types/area'
 import { PickerEvents } from './../../types/picker'
+
 const EMPTY_CODE = '000000'
 function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   const {
@@ -23,6 +25,8 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     onCancel,
     onChange,
     onConfirm,
+    className,
+    onInput,
     title,
     loading,
     itemHeight,
@@ -33,19 +37,19 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   } = props
   const pickerRef = useRef<any>(null)
   const codeRef = useRef<any>('')
-  // const [columns, setColumns] = useState<any[]>([
-  //   { values: [] },
-  //   { values: [] },
-  //   { values: [] },
-  // ])
   const columns = useMemo(
     () => [{ values: [] }, { values: [] }, { values: [] }],
     [],
   )
+  const [valueInner, setValueInner] = useState<any>()
   const typeToColumnsPlaceholderRef = useRef<any>({})
-  // const [typeToColumnsPlaceholder, setTypeToColumnsPlaceholder] = useState<any>(
-  //   {},
-  // )
+
+  useEffect(() => {
+    if (!lodash.isEqual(value, valueInner)) {
+      setValueInner(value)
+    }
+  }, [value])
+
   const _parseValues = useCallback(
     (values: any[]) => {
       return values.map((value: any, index: number) => {
@@ -91,7 +95,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
           (item) => item.code.indexOf(code as string) === 0,
         )
       }
-      if (typeToColumnsPlaceholderRef.current?.[type] && result.length) {
+      if (typeToColumnsPlaceholderRef.current?.[type]) {
         // set columns placeholder
         const codeFill =
           type === 'province'
@@ -145,9 +149,18 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       const { index } = event.detail
       let { value } = event.detail
       value = _parseValues(value)
+      const val = value?.map((it) => it.code).filter((it) => !!it)
+      setValueInner(val)
+      if (onInput) {
+        onInput({
+          detail: {
+            value: val,
+          },
+        })
+      }
       onConfirm?.({
         detail: {
-          value,
+          value: value.filter((it) => !!it.code),
           index,
         },
       } as PickerEvents)
@@ -190,8 +203,6 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       stack.push(picker.setColumnValues(1, cityList, false))
       indexes.push(_getIndex('city', code))
       if (cityList.length && code.slice(2, 4) === '00') {
-        // ;[{ code }] = cityList
-
         code = cityList?.[0]?.code
       }
     }
@@ -206,10 +217,10 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
         // 由于picker.setColumnValues初始化每一项初始值的操作为异步
         setTimeout(() => {
           picker.setIndexes(indexes)
-        }, 30)
+        }, 120)
       })
       .catch(() => {})
-  }, [_getDefaultCode, _getIndex, _getList, _getPicker, columnsNum])
+  }, [_getDefaultCode, _getIndex, _getList, _getPicker, columnsNum, codeRef])
 
   const _onChange = useCallback(
     (event) => {
@@ -283,10 +294,6 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
   }, [columnsPlaceholder])
 
   useEffect(() => {
-    codeRef.current = value
-  }, [value])
-
-  useEffect(() => {
     _setValues()
   }, [_setValues, areaList, value])
 
@@ -296,16 +303,97 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       getDetail,
     }
   })
-  // useEffect(() => {
-  //   requestAnimationFrame(() => {
-  //     _setValues()
-  //     // console.log('我应当就跑一次')
-  //   })
-  // }, [])
+
+  function getPreviousCodes(currentCode, level) {
+    let provinceCode, cityCode
+
+    switch (level) {
+      case 1: // 如果选择了省份，则返回空对象
+        return {}
+      case 2: // 如果选择了城市，则返回省份编码
+        provinceCode = currentCode.substring(0, 2) + '0000'
+        return { provinceCode }
+      case 3: // 如果选择了区县，则返回省份和城市编码
+        cityCode = currentCode.substring(0, 4) + '00'
+        provinceCode = currentCode.substring(0, 2) + '0000'
+        return { provinceCode, cityCode }
+      default:
+        throw new Error('Invalid level')
+    }
+  }
+
+  const valueArr = useMemo(() => {
+    if (valueInner) {
+      if (Array.isArray(valueInner)) {
+        return valueInner
+      } else {
+        if (columnsNum === 3) {
+          const { provinceCode, cityCode } = getPreviousCodes(valueInner, 3)
+          return [provinceCode, cityCode, valueInner]
+        } else if (columnsNum === 2) {
+          const { provinceCode } = getPreviousCodes(valueInner, 2)
+          return [provinceCode, valueInner]
+        } else {
+          return [valueInner]
+        }
+      }
+    } else {
+      return []
+    }
+  }, [valueInner])
+
+  useEffect(() => {
+    codeRef.current = valueArr[valueArr.length - 1] || ''
+  }, [valueArr])
+
+  const _renderContent = useCallback(() => {
+    if (valueArr.length && areaList) {
+      let str = ''
+      if (valueArr[0] && areaList.province_list[valueArr[0]]) {
+        str += `${areaList.province_list[valueArr[0]]}`
+      }
+      if (valueArr[1] && areaList.city_list[valueArr[1]])
+        str += `,${areaList.city_list[valueArr[1]]}`
+      if (valueArr[2] && areaList.county_list[valueArr[2]])
+        str += `,${areaList.county_list[valueArr[2]]}`
+      return str || '请选择'
+    } else {
+      return '请选择'
+    }
+  }, [valueArr, areaList])
+
+  const onClear = useCallback(() => {
+    setTimeout(() => {
+      if (others.mode === 'content') {
+        onInput?.({
+          detail: {
+            value: [],
+          },
+        })
+      }
+      onConfirm?.({
+        detail: {
+          value: [],
+        },
+      } as PickerEvents)
+      setValueInner([])
+    }, 33)
+  }, [])
+
+  const onShow = () => {
+    codeRef.current = valueArr[valueArr.length - 1] || ''
+    _setValues()
+  }
+
   return (
     <VanPicker
+      onClear={onClear}
+      allowClear={!!valueArr.length}
+      onShow={onShow}
       ref={pickerRef as any}
-      className="van-area__picker"
+      className={`van-area__picker ${className} ${
+        columnsPlaceholder?.length ? 'van-area__picker__has-placeholder' : ''
+      }`}
       showToolbar={showToolbar}
       valueKey="name"
       title={title}
@@ -318,6 +406,9 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       onChange={_onChange}
       onConfirm={_onConfirm}
       onCancel={_onCancel}
+      value={valueArr}
+      renderContent={_renderContent as any}
+      idKey="code"
       {...others}
     />
   )

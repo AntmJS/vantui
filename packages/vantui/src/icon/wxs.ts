@@ -30,6 +30,7 @@ function rootStyle(data: any) {
     {
       color: data.color,
       'font-size': addUnit(data.size),
+      height: addUnit(data.size),
     },
   ])
 }

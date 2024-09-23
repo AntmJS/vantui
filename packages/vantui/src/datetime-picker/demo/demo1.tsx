@@ -12,7 +12,7 @@ export default function Demo() {
     function (event) {
       setState({
         ...state,
-        currentDate: event.detail,
+        currentDate: event.detail.value,
       })
     },
     [state],

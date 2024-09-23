@@ -1,5 +1,5 @@
-import { Picker, Button, Form, FormItem } from '@antmjs/vantui'
 import { View } from '@tarojs/components'
+import { Picker, Button, Form, FormItem } from '@antmjs/vantui'
 
 const columns = [
   {
@@ -34,6 +34,7 @@ export default function Demo() {
           label="地区"
           name="code"
           valueKey="value"
+          controllFlexEnd
         >
           <Picker
             idKey="id"

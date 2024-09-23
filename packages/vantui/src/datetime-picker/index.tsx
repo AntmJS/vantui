@@ -63,7 +63,7 @@ export function DatetimePicker(
   } = props
 
   const PickRef = useRef<IPickerInstance & any>({})
-  const [innerValue, setInnerValue] = useState<any>(Date.now())
+  const [innerValue, setInnerValue] = useState<any>(Date.now()) // 真正的选中的值还是在picker里面
   const [columns, setColumns] = useState<(string | number)[]>([])
   const minHour_ = minHour
   const maxHour_ = maxHour
@@ -212,6 +212,7 @@ export function DatetimePicker(
         values = [formatter('hour', pair[0]), formatter('minute', pair[1])]
       } else {
         const date = new Date(value)
+
         values = [
           formatter('year', `${date.getFullYear()}`),
           formatter('month', padZero(date.getMonth() + 1)),
@@ -262,6 +263,7 @@ export function DatetimePicker(
       // date type
       value = Math.max(value, minDate as number)
       value = Math.min(value, maxDate as number)
+
       return value
     },
     [maxDate, maxHour, maxMinute, minDate, minHour, minMinute, type],
@@ -288,9 +290,13 @@ export function DatetimePicker(
 
   useLayoutEffect(
     function () {
-      updateCurrentValue(value)
+      let v = value
+      if (type !== 'time' && typeof value === 'string') {
+        v = new Date(value).getTime()
+      }
+      updateCurrentValue(v)
       setTimeout(() => {
-        setInnerValue(value)
+        setInnerValue(v)
       }, 120)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -381,7 +387,7 @@ export function DatetimePicker(
   })
 
   const _renderContent = (data) => {
-    if (others.renderContent) return others.renderContent(data, () => {})
+    if (others.renderContent) return others.renderContent(data)
     if (data?.length) {
       if (type === 'datetime') {
         return `${data[0]}-${data[1]}-${data[2]} ${data[3]}:${data[4]}`
@@ -420,8 +426,6 @@ export function DatetimePicker(
     return res.slice(0, index + 1)
   }, [innerValue, type])
 
-  console.info(value, '传入的value', valueArr)
-
   return (
     <VanPicker
       renderContent={_renderContent}
@@ -450,7 +454,7 @@ export function DatetimePicker(
           onConfirm({
             detail: {
               ...event.detail,
-              value: innerValue,
+              value: _formatValue(event.detail.value),
             },
           } as any)
       }}

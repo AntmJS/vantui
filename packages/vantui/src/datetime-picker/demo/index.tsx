@@ -6,8 +6,6 @@ import DemoBlock from '../../../../vantui-demo/src/components/demo-block/index'
 import Demo1 from './demo1'
 import Demo2 from './demo2'
 import Demo3 from './demo3'
-import Demo4 from './demo4'
-import Demo5 from './demo5'
 
 export default class Index extends Component {
   constructor(props) {
@@ -24,20 +22,12 @@ export default class Index extends Component {
           <Demo1 />
         </DemoBlock>
 
-        <DemoBlock title="选择日期（年月日）" padding>
+        <DemoBlock title="不同类型" padding>
           <Demo2 />
         </DemoBlock>
 
-        <DemoBlock title="选择日期（年月）" padding>
-          <Demo3 />
-        </DemoBlock>
-
-        <DemoBlock title="选择时间" padding>
-          <Demo4 />
-        </DemoBlock>
-
         <DemoBlock title="选项过滤器" padding>
-          <Demo5 />
+          <Demo3 />
         </DemoBlock>
       </DemoPage>
     )

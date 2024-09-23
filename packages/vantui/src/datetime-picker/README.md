@@ -4,7 +4,7 @@
 
 用于选择时间，支持日期、时分等时间维度，通常与 [弹出层](#/popup) 组件配合使用。
 
-> `v3.5`由于`picker`新增`mode=content`模式，当前 DatetimePicker 版本做了相应适配，这个模式下面 onInput 再确认的时候触发，value 支持字符串格式
+> `v3.5`由于`picker`新增`mode=content`模式，当前 DatetimePicker 版本做了相应适配，这个模式下面 onInput 再确认的时候触发，value 支持字符串格式. 对之前版本平铺模式存在的影响，`onConfirm`输出的具体值为`YYYY-MM-DD HH:mm:ss`的时间格式，可以通过`formtValue`修改，如改成时间戳返回
 
 ### 引入
 
@@ -22,29 +22,17 @@ import { DatetimePicker } from '@antmjs/vantui'
 
 ::: $demo1 :::
 
-### 选择日期（年月日）
+### 不同类型
 
-`value` 为 Date 对象，通过传入 `formatter` 函数对选项文字进行处理。
+`value` 为 时间戳，`mode=content`的时候可以传入字符串如`2012年12月12日`，此时不支持传入 `formatter` 函数对选项文字进行处理。
 
 ::: $demo2 :::
-
-### 选择日期（年月）
-
-`value` 为 Date 对象。
-
-::: $demo3 :::
-
-### 选择时间
-
-`value` 为字符串。
-
-::: $demo4 :::
 
 ### 选项过滤器
 
 通过传入 `filter` 函数，可以对选项数组进行过滤，实现自定义时间间隔。
 
-::: $demo5 :::
+::: $demo3 :::
 
 ### DatetimePickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)
 
@@ -61,10 +49,12 @@ import { DatetimePicker } from '@antmjs/vantui'
 | maxHour     | 可选的最大小时，针对 type=time                                                              | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                          | 23       | `false` |
 | minMinute   | 可选的最小分钟，针对 type=time                                                              | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                          | 0        | `false` |
 | maxMinute   | 可选的最大分钟，针对 type=time                                                              | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_                                                                                                                                                                                                                                                                                          | 59       | `false` |
-| onInput     | 当值变化时触发的事件                                                                        | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;DatetimePickerEventsByValue<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                     | -        | `false` |
+| onInput     | `mode!==content`当值变化时触发的事件,`mode===content`时确认按钮触发                         | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;DatetimePickerEventsByValue<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                     | -        | `false` |
 | onChange    | 当值变化时触发的事件                                                                        | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;DatetimePickerEventsByInstance<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                  | -        | `false` |
 | onConfirm   | 点击完成按钮时触发的事件                                                                    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;DatetimePickerEventsByValue<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                     | -        | `false` |
 | onCancel    | 点击取消按钮时触发的事件                                                                    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                                                                                                      | -        | `false` |
+| onTrigger   | 弹窗修改外面的值                                                                            | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;DatetimePickerEventsByValue<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                                                                                                                                                                                                                     | -        | `false` |
+| formatValue | 格式化确认按钮返回的数组数据                                                                | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;e:&nbsp;string[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                                                                                                                                                            | -        | `false` |
 
 ### onInput、onConfirm 的回掉参数 [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/datetime-picker.d.ts)
 

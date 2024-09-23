@@ -1,4 +1,3 @@
-import { View } from '@tarojs/components'
 import { Area } from '@antmjs/vantui'
 
 export default function Demo() {
@@ -17,8 +16,10 @@ export default function Demo() {
     },
   }
   return (
-    <View>
-      <Area areaList={areaList} />
-    </View>
+    <Area
+      mode="content"
+      value={['110000', '110100', '110102']}
+      areaList={areaList}
+    />
   )
 }

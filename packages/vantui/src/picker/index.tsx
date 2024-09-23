@@ -9,6 +9,7 @@ import {
   useEffect,
   useMemo,
 } from 'react'
+import useDeepCompareEffect from 'use-deep-compare-effect'
 import { View } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
 import {
@@ -20,11 +21,14 @@ import { PickerColumn } from '../picker-column/index'
 import * as utils from '../wxs/utils'
 import { Loading } from '../loading/index'
 import { Popup } from '../popup'
-import * as computed from './wxs'
 import { Icon } from '../icon/index'
+import * as computed from './wxs'
 
 const Picker = forwardRef(function Index(
-  props: PickerProps,
+  props: PickerProps & {
+    onShow?: () => void
+    onClear?: () => void
+  },
   ref: React.ForwardedRef<IPickerInstance>,
 ): JSX.Element {
   const {
@@ -33,7 +37,7 @@ const Picker = forwardRef(function Index(
     toolbarPosition = 'top',
     defaultIndex,
     value,
-    columns,
+    columns = [],
     syncColumns,
     title,
     cancelButtonText,
@@ -55,6 +59,10 @@ const Picker = forwardRef(function Index(
     showArrowDown,
     showArrowRight,
     allowClear = true,
+    onShow,
+    onClear,
+    renderContentRight,
+    contentClassName = '',
     ...others
   } = props
 
@@ -169,7 +177,7 @@ const Picker = forwardRef(function Index(
       })
       if (mode === 'content') {
         let vs = Array.isArray(vv) ? vv : [vv]
-        vs = vs.map((it) => (typeof it === 'string' ? it : it[idKey]))
+        vs = vs.map((it) => (typeof it === 'string' ? it : it?.[idKey]))
         setValuesInner(vs)
         onInput?.({ detail: originIsArray ? vs : vs[0] })
         setShow(false)
@@ -223,6 +231,8 @@ const Picker = forwardRef(function Index(
           }
 
           nextTick(() => {
+            columnsInner[index] = options
+            setColumnsInner([...columnsInner])
             resolve(getValues())
           })
         })
@@ -232,9 +242,11 @@ const Picker = forwardRef(function Index(
 
   const getValues = useCallback(
     function () {
-      return children.current.map((child) => {
-        return child.getValue()
-      })
+      return (
+        children.current?.map((child) => {
+          return child?.getValue()
+        }) || []
+      )
     },
     [children],
   )
@@ -305,12 +317,17 @@ const Picker = forwardRef(function Index(
   }, [])
 
   const columnsUsed = useMemo(() => {
-    return computed.columns(columns || columnsInner) || []
+    return (
+      computed.columns(
+        columnsInner && columnsInner.length ? columnsInner : columns,
+      ) || []
+    )
   }, [columns, columnsInner])
 
   useEffect(() => {
     if (valuesInner && mode === 'content' && show) {
       setTimeout(() => {
+        onShow?.()
         setValues(valuesInner)
       }, 200)
     }
@@ -424,12 +441,12 @@ const Picker = forwardRef(function Index(
     </View>
   )
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     const vs = valuesInner
     let dd: any[] | null = []
     if (vs?.length && columnsUsed?.length) {
       dd = vs.map((it, i) => {
-        let filter = columnsUsed[i]?.filter((c) => {
+        const filter = columnsUsed[i]?.filter((c) => {
           return c[idKey] === it || c === it
         })
         return filter?.[0]
@@ -456,6 +473,7 @@ const Picker = forwardRef(function Index(
     onInput?.({
       detail: [],
     })
+    onClear?.()
   }
 
   if (mode === 'normal') {
@@ -464,7 +482,7 @@ const Picker = forwardRef(function Index(
     return (
       <View className="van-picker-content-Wrapper">
         <View
-          className={`van-picker-content ${
+          className={`van-picker-content ${contentClassName} ${
             !currentData ? 'van-picker-nocontent' : ''
           }`}
           style={
@@ -472,17 +490,20 @@ const Picker = forwardRef(function Index(
           }
           onClick={() => setShow(true)}
         >
-          {renderContent
-            ? renderContent(currentData, () => setShow(0))
-            : renderContentInner}
+          {renderContent ? renderContent(currentData) : renderContentInner}
         </View>
-        {currentData && allowClear && (
-          <Icon
-            onClick={clear}
-            className="van-icon-clear"
-            name="clear"
-            size="18px"
-          />
+        <View>
+          {currentData && allowClear && (
+            <Icon
+              onClick={clear}
+              className="van-icon-clear"
+              name="clear"
+              size="18px"
+            />
+          )}
+        </View>
+        {renderContentRight && (
+          <View onClick={() => setShow(true)}>{renderContentRight}</View>
         )}
         {showArrowDown && (
           <Icon

@@ -210,7 +210,10 @@ function Index(
       setIndex,
       set: (opt: any) =>
         new Promise<void>((resolve) => {
-          setOptions(opt.options)
+          if (
+            JSON.stringify(opt.options || {}) !== JSON.stringify(options || {})
+          )
+            setOptions(opt.options)
           setCanInit(false)
           resolve()
         }),
@@ -230,6 +233,7 @@ function Index(
       {...others}
     >
       <View
+        className="van-picker-column-touch"
         style={computed.wrapperStyle({
           offset,
           itemHeight,
@@ -241,7 +245,7 @@ function Index(
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
       >
-        <View disable-scroll>
+        <View disable-scroll className="van-picker-column-scroll">
           {options.map((option: any, index: number) => {
             return (
               <View

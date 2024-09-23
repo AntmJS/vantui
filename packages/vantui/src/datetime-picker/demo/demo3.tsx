@@ -1,28 +1,38 @@
-import { DatetimePicker, Form, FormItem } from '@antmjs/vantui'
+/* eslint-disable */
+import react from 'react'
+import { DatetimePicker } from '@antmjs/vantui'
 
 export default function Demo() {
-  const formIt = Form.useForm()
+  const [state, setState] = react.useState({
+    currentDate: '12:00',
+    minHour: 10,
+    maxHour: 20,
+  })
+
+  const onInput = react.useCallback(
+    function (event) {
+      setState({
+        ...state,
+        currentDate: event.detail,
+      })
+    },
+    [state],
+  )
 
   return (
-    <Form initialValues={{ date: '2020-12-12 00:00:00' }} form={formIt}>
-      <FormItem
-        valueFormat={(e) => e.detail}
-        trigger="onInput"
-        label="地区"
-        name="date"
-      >
-        <DatetimePicker
-          showArrowRight
-          mode="content"
-          type="year-month"
-          minDate={new Date(2018, 0, 1).getTime()}
-          renderContent={(d) => {
-            if (d) {
-              return `${d[0]}年${d[1]}月`
-            } else return '请选择'
-          }}
-        />
-      </FormItem>
-    </Form>
+    <DatetimePicker
+      type="time"
+      value={state.currentDate}
+      minHour={state.minHour}
+      maxHour={state.maxHour}
+      onInput={onInput}
+      filter={(type, options) => {
+        if (type === 'minute') {
+          return options.filter((option) => Number(option) % 5 === 0)
+        }
+
+        return options
+      }}
+    />
   )
 }

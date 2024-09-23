@@ -22,7 +22,7 @@ function frameStyle(data: any) {
 
 function columns(columns: any) {
   let cc: any[] = []
-  if (columns.every((it) => Array.isArray(it.values))) {
+  if (columns?.every((it) => Array.isArray(it.values))) {
     cc = columns.map((it) => it.values)
   } else if (columns.every((it) => !Array.isArray(it))) {
     cc = [columns]
