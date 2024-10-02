@@ -45,7 +45,7 @@ export interface ToastProps extends ViewProps {
    */
   loadingType?: 'circular' | 'spinner' | undefined
   /**
-   * @description 自定义选择器, 对应元素id
+   * @description 自定义选择器,对应元素id
    * @default van-toast
    */
   selector?: string
