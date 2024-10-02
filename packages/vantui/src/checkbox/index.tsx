@@ -21,10 +21,10 @@ export function Checkbox(
 
   const {
     name,
-    disabled,
+    disabled = false,
     checkedColor = '',
     labelPosition = 'right',
-    labelDisabled,
+    labelDisabled = false,
     shape = 'round',
     iconSize = '20px',
     renderIcon,
@@ -83,7 +83,7 @@ export function Checkbox(
   const setParentValue = useCallback(
     (parent: any, event: ITouchEvent) => {
       const value = event.detail
-      const { max, value: parentValue_ } = parent
+      const { max = 0, value: parentValue_ } = parent
       const parentValue = parentValue_ ? [].concat(parentValue_) : parentValue_
       if (value) {
         if (max && parentValue.length >= max) {
