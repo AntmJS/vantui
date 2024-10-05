@@ -255,10 +255,10 @@ export function Circle(props: CircleProps) {
         type="2d"
         canvasId={indexRef.current}
       ></Canvas>
-      {!text ? (
-        <View className="van-circle__text">{children}</View>
-      ) : (
+      {!!text ? (
         <View className="van-circle__text">{text}</View>
+      ) : (
+        <View className="van-circle__text">{children}</View>
       )}
     </View>
   )
