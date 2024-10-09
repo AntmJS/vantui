@@ -5,14 +5,8 @@ const Toast_ = Toast.createOnlyToast()
 
 export default function Demo() {
   const show = () => {
-    Toast_.success({
-      message: '成功文案',
-    })
-  }
-
-  const showLong = () => {
-    Toast_.fail({
-      message: '失败文案',
+    Toast_.loading({
+      message: '加载中...',
     })
   }
 
@@ -20,9 +14,6 @@ export default function Demo() {
     <View>
       <Button type="primary" onClick={show}>
         加载提示
-      </Button>
-      <Button type="primary" onClick={showLong}>
-        自定义加载图标
       </Button>
       <Toast_ />
     </View>

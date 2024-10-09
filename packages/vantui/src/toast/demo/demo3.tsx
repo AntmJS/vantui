@@ -11,7 +11,7 @@ export default function Demo() {
   }
 
   const showLong = () => {
-    Toast.loading({
+    Toast.fail({
       message: '失败文案',
       selector: '#vanToast-demo2',
       mask: true,
