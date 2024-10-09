@@ -1,5 +1,5 @@
 import { View, Text, RichText } from '@tarojs/components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ToastProps } from '../../types/toast'
 import VanTransition from '../transition/index'
 import VanOverlay from '../overlay/index'
@@ -24,6 +24,21 @@ export function Toast(props: ToastProps) {
     id: '',
     ...props,
   })
+  const [visible, setVisible] = useState(state.show)
+
+  useEffect(() => {
+    let timer: any = null
+
+    if (state.duration !== 0) {
+      timer = setTimeout(() => {
+        setVisible(false)
+      }, state.duration)
+    }
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [state.duration])
 
   const noop = function () {}
 
@@ -31,13 +46,13 @@ export function Toast(props: ToastProps) {
     <View>
       {(state.mask || state.forbidClick) && (
         <VanOverlay
-          show={state.show}
+          show={visible}
           zIndex={state.zIndex}
           style={state.mask ? '' : 'background-color: transparent;'}
         ></VanOverlay>
       )}
       <VanTransition
-        show={state.show}
+        show={visible}
         style={state.zIndex ? { zIndex: state.zIndex } : {}}
         className="van-toast__container"
       >
