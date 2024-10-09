@@ -45,7 +45,7 @@ export interface ToastProps extends ViewProps {
    */
   loadingType?: 'circular' | 'spinner' | undefined
   /**
-   * @description 自定义选择器, 对应元素id
+   * @description 自定义选择器,对应元素id
    * @default van-toast
    */
   selector?: string
@@ -64,12 +64,33 @@ export interface ToastProps extends ViewProps {
  * @description 调用方式传入ToastProps或者ToastProps.message执行
  */
 export interface toastProps {
+  /**
+   * @description 展示提示
+   */
   show: (options: ToastProps | string) => any
+  /**
+   * @description 展示加载提示
+   */
   loading: (options: ToastProps | string) => any
+  /**
+   * @description 展示成功提示
+   */
   success: (options: ToastProps | string) => any
+  /**
+   * @description 展示失败提示
+   */
   fail: (options: ToastProps | string) => any
+  /**
+   * @description 关闭提示
+   */
   clear: (options?: ToastProps) => void
+  /**
+   * @description 修改默认配置，对所有 Toast 生效。传入 type 可以修改指定类型的默认配置
+   */
   setDefaultOptions: (options: ToastProps) => void
+  /**
+   * @description 重置默认配置，对所有 Toast 生效。传入 type 可以重置指定类型的默认配置
+   */
   resetDefaultOptions: (options: any) => void
   /**
    * @description 获取唯一的toast组件，不需要手动设置id和selector
