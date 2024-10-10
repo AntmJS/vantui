@@ -14,7 +14,7 @@ export function Search(props: SearchProps) {
     disabled,
     readonly,
     inputAlign,
-    showAction,
+    showAction = false,
     leftIcon = 'search',
     rightIcon,
     placeholder,
