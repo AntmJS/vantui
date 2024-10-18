@@ -6,6 +6,11 @@ import { ViewProps, ITouchEvent } from '@tarojs/components'
  */
 export interface PickerProps extends ViewProps {
   /**
+   * @description 是否禁用
+   * @default false
+   */
+  disabled?: boolean
+  /**
    * @description normal为普通选择模式，content是展示选择的内容，点击展示选择项
    * @default normal
    */

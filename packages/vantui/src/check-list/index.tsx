@@ -233,14 +233,12 @@ export function CheckList(props: CheckListProps) {
             : {}
         }
       >
-        {renderShow
-          ? renderShow(checkedData, () => setShow(true))
-          : renderShowInner()}
+        {renderShow ? renderShow(checkedData, set_Show) : renderShowInner()}
       </View>
       {showArrowDown && (
         <Icon
           className="check-list-arrow-down"
-          onClick={() => setShow(true)}
+          onClick={set_Show}
           name="arrow-down"
           size="14px"
         />
@@ -248,7 +246,7 @@ export function CheckList(props: CheckListProps) {
       {showArrowRight && (
         <Icon
           className="check-list-arrow-down"
-          onClick={() => setShow(true)}
+          onClick={set_Show}
           name="arrow"
           size="14px"
         />
