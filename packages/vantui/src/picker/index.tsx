@@ -12,6 +12,7 @@ import {
 import useDeepCompareEffect from 'use-deep-compare-effect'
 import { View } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
+import classNames from 'classnames'
 import {
   PickerProps,
   IPickerInstance,
@@ -32,6 +33,7 @@ const Picker = forwardRef(function Index(
   ref: React.ForwardedRef<IPickerInstance>,
 ): JSX.Element {
   const {
+    disabled = false,
     valueKey = 'text',
     idKey = 'text',
     toolbarPosition = 'top',
@@ -476,19 +478,26 @@ const Picker = forwardRef(function Index(
     onClear?.()
   }
 
+  const setShow_ = () => {
+    if (!disabled) setShow(true)
+  }
+
   if (mode === 'normal') {
     return mainRender
   } else {
     return (
       <View className="van-picker-content-Wrapper">
         <View
-          className={`van-picker-content ${contentClassName} ${
-            !currentData ? 'van-picker-nocontent' : ''
-          }`}
+          className={classNames({
+            'van-picker-content': true,
+            [contentClassName]: !!contentClassName,
+            'van-picker-nocontent': !currentData,
+            'van-picker-disabled': !!disabled,
+          })}
           style={
             placeholderColor && !currentData ? { color: placeholderColor } : {}
           }
-          onClick={() => setShow(true)}
+          onClick={setShow_}
         >
           {renderContent ? renderContent(currentData) : renderContentInner}
         </View>
@@ -503,12 +512,12 @@ const Picker = forwardRef(function Index(
           )}
         </View>
         {renderContentRight && (
-          <View onClick={() => setShow(true)}>{renderContentRight}</View>
+          <View onClick={setShow_}>{renderContentRight}</View>
         )}
         {showArrowDown && (
           <Icon
             className="check-list-arrow"
-            onClick={() => setShow(true)}
+            onClick={setShow_}
             name="arrow-down"
             size="14px"
           />
@@ -516,7 +525,7 @@ const Picker = forwardRef(function Index(
         {showArrowRight && (
           <Icon
             className="check-list-arrow"
-            onClick={() => setShow(true)}
+            onClick={setShow_}
             name="arrow"
             size="14px"
           />

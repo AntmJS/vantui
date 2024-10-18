@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react'
 import { View } from '@tarojs/components'
+import classNames from 'classnames'
 import Popup from '../popup/index'
 import Search from '../search/index'
 import Checkbox from '../checkbox/index'
@@ -224,9 +225,11 @@ export function CheckList(props: CheckListProps) {
   return (
     <View className="van-check-list-wrapper" {...others}>
       <View
-        className={`check-list-content ${
-          checkedData.length === 0 ? 'check-list-nocontent' : ''
-        }`}
+        className={classNames({
+          'check-list-content': true,
+          'check-list-nocontent': checkedData.length === 0,
+          'check-list-disabled': !!disabled,
+        })}
         style={
           placeholderColor && checkedData.length === 0
             ? { color: placeholderColor }
