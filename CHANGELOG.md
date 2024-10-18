@@ -1,4 +1,8 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.0...v) (2024-10-18)
+# [](https://github.com/AntmJS/vantui/compare/v3.5.1...v) (2024-10-18)
+
+
+
+## [3.5.1](https://github.com/AntmJS/vantui/compare/v3.5.0...v3.5.1) (2024-10-18)
 
 
 ### Features
