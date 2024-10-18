@@ -3,9 +3,21 @@ import { ViewProps, ITouchEvent } from '@tarojs/components'
 
 export interface Step {
   index?: number
+  /**
+   * @description 描述信息
+   */
   desc: React.ReactNode
+  /**
+   * @description 步骤名称
+   */
   text: string
+  /**
+   * @description 激活图标
+   */
   activeIcon?: string
+  /**
+   * @description 未激活图标
+   */
   inactiveIcon?: string
 }
 
