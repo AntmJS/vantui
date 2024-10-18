@@ -15,6 +15,13 @@ const octokit = new Octokit({
 })
 
 async function exec() {
+  const log = fs.readFileSync('./CHANGELOG.md', 'utf8')
+
+  let body = log.split('\n## [')[0]
+  body = body
+    .replace('# [](', `## [${version}](`)
+    .replace(`...v)`, `...v${version})`)
+
   try {
     await execa('git', ['checkout', '-b', `release/${version}`], {
       stdio: 'inherit',
@@ -22,18 +29,6 @@ async function exec() {
   } catch (error) {
     console.error(error)
     process.exit(1)
-  }
-
-  const log = fs.readFileSync('./CHANGELOG.md', 'utf8')
-  let body = log.split('\n\n\n')[0]
-  if (body.includes('# [](')) {
-    body = body.replace('# [](', `## [${version}](`)
-  }
-  if (body.includes('# []')) {
-    body = body.replace('# []', `## [${version}]`)
-  }
-  if (body.includes('...v)')) {
-    body = body.replace('...v)', `...v${version})`)
   }
 
   try {
