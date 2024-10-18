@@ -30,7 +30,7 @@ export default function Demo() {
         labelName="label"
         data={statusArr}
         placeholderColor="#333"
-        showArrowDown
+        showArrowRight
         searchShow={false}
         allowClear={false}
       />

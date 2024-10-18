@@ -17,6 +17,7 @@ import Icon from '../icon/index'
 
 export function CheckList(props: CheckListProps) {
   const {
+    disabled = false,
     data = [],
     labelName = 'name',
     bodyHeight,
@@ -34,6 +35,7 @@ export function CheckList(props: CheckListProps) {
     placeholderColor,
     searchShow = true,
     showArrowDown = false,
+    showArrowRight = false,
     ...others
   } = props
   const [show, setShow] = useState<boolean>(false)
@@ -71,16 +73,20 @@ export function CheckList(props: CheckListProps) {
     [checked, loading],
   )
 
+  const set_Show = () => {
+    if (!disabled) {
+      setShow(true)
+    }
+  }
+
   const renderShowInner = useCallback(() => {
     if (!checkedData?.length) {
-      return <View onClick={() => setShow(true)}>{placeholder}</View>
+      return <View onClick={set_Show}>{placeholder}</View>
     } else if (checkedData.length === 1) {
       return (
         <>
-          <View onClick={() => setShow(true)}>
-            {checkedData[0]?.[labelName] || '--'}
-          </View>
-          {allowClear && (
+          <View onClick={set_Show}>{checkedData[0]?.[labelName] || '--'}</View>
+          {allowClear && !disabled && (
             <View className="clear-box" onClick={clear}>
               <Icon name="clear" size="18px" />
             </View>
@@ -90,9 +96,7 @@ export function CheckList(props: CheckListProps) {
     } else {
       return (
         <>
-          <View
-            onClick={() => setShow(true)}
-          >{`已选${checkedData.length}项`}</View>
+          <View onClick={set_Show}>{`已选${checkedData.length}项`}</View>
           {allowClear && (
             <View className="clear-box" onClick={clear}>
               <Icon name="clear" size="18px" />
@@ -218,7 +222,7 @@ export function CheckList(props: CheckListProps) {
   )
 
   return (
-    <View className="check-list-wrapper" {...others}>
+    <View className="van-check-list-wrapper" {...others}>
       <View
         className={`check-list-content ${
           checkedData.length === 0 ? 'check-list-nocontent' : ''
@@ -238,6 +242,14 @@ export function CheckList(props: CheckListProps) {
           className="check-list-arrow-down"
           onClick={() => setShow(true)}
           name="arrow-down"
+          size="14px"
+        />
+      )}
+      {showArrowRight && (
+        <Icon
+          className="check-list-arrow-down"
+          onClick={() => setShow(true)}
+          name="arrow"
           size="14px"
         />
       )}

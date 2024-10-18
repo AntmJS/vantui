@@ -16,7 +16,7 @@ export default function Demo() {
   const renderShow: CheckListProps['renderShow'] = useCallback(
     (data, setShow) => {
       return (
-        <Button type="primary" block onClick={setShow}>
+        <Button type="primary" block onClick={setShow} disabled>
           {data.length ? `已经选择了${data.length}家公司` : '请选择'}
         </Button>
       )
@@ -26,6 +26,7 @@ export default function Demo() {
 
   return (
     <CheckList
+      disabled
       value={value}
       onChange={onChange}
       limit={5}

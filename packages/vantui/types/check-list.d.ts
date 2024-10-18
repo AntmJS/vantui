@@ -3,6 +3,11 @@ import { ViewProps } from '@tarojs/components'
 
 export interface CheckListProps extends ViewProps {
   /**
+   * @description 是否禁用
+   * @default false
+   */
+  disabled?: boolean
+  /**
    * @description 选择提示和弹窗标题
    * @default 请选择
    */
@@ -70,6 +75,11 @@ export interface CheckListProps extends ViewProps {
    * @default false
    */
   showArrowDown?: boolean
+  /**
+   * @description 是否展示右尖头
+   * @default false
+   */
+  showArrowRight?: boolean
   /**
    * @description 是否展示搜索框
    * @default true
