@@ -282,9 +282,7 @@ const InternalCascader = (props: CascaderProps) => {
         onChange?.(optionParams, pathNodes)
         onPathChange?.(optionParams, pathNodes)
 
-        setTimeout(() => {
-          close()
-        }, 600)
+        close()
       }
       setOptiosData(state.panes)
       return
@@ -305,9 +303,7 @@ const InternalCascader = (props: CascaderProps) => {
 
       setOptiosData(state.panes)
       // 延时触发优化交互
-      setTimeout(() => {
-        setTabvalue(`c${state.tabsCursor + 1}`)
-      }, 600)
+      setTabvalue(`c${state.tabsCursor + 1}`)
 
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)

@@ -286,6 +286,19 @@
     release-it "^14.11.6"
     transliteration "^2.2.0"
 
+"@antmjs/vantui@3.4.9":
+  version "3.4.9"
+  resolved "https://registry.npmjs.org/@antmjs/vantui/-/vantui-3.4.9.tgz#a47407b4adc948993701741f4e8afc9096463228"
+  integrity sha512-AqHLf2Eqfd/okkvOWj/DoK8X5hEzUIPjWHDdDtU7f2ndhzojXLr5wD9bAZ4g5txKBgFo+x9btUgVP5tuxdq7wg==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+    "@vant/icons" "^1.7.1"
+    classnames "^2.3.1"
+    dayjs "^1.10.6"
+    raf "^3.4.1"
+    rc-util "^5.14.0"
+    use-deep-compare-effect "^1.8.1"
+
 "@antmjs/warning@^2.3.20":
   version "2.3.20"
   resolved "https://registry.npmjs.org/@antmjs/warning/-/warning-2.3.20.tgz#399117ca52c4427e0049df3919ab98a3a96cce41"
