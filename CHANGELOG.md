@@ -1,4 +1,18 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.0...v) (2024-10-18)
+# [](https://github.com/AntmJS/vantui/compare/v3.5.1...v) (2024-11-08)
+
+
+### Bug Fixes
+
+* 优化/修复cascader组件的选择交互 ([629a669](https://github.com/AntmJS/vantui/commit/629a6690624d9327dac27294b9aeab6bb77b6a93))
+
+
+### Features
+
+* mini button 没有定义line-height，导致文字不垂直居中 ([#716](https://github.com/AntmJS/vantui/issues/716)) ([1ccdcb1](https://github.com/AntmJS/vantui/commit/1ccdcb1c0282a52483a7f9850a6d8ba6b6a49648))
+
+
+
+## [3.5.1](https://github.com/AntmJS/vantui/compare/v3.5.0...v3.5.1) (2024-10-18)
 
 
 ### Features
