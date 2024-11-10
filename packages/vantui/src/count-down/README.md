@@ -48,34 +48,34 @@ import { CountDown } from '@antmjs/vantui'
 
 ### ICountDownRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)
 
-| 参数  | 说明 | 类型                                    |
-| ----- | ---- | --------------------------------------- |
-| start | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
-| pause | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
-| reset | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| 参数  | 说明                                                     | 类型                                    |
+| ----- | -------------------------------------------------------- | --------------------------------------- |
+| start | 开始倒计时                                               | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| pause | 暂停倒计时                                               | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| reset | 重设倒计时，若 autoStart 为 true，重设后会自动开始倒计时 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 
 ### ITimeData [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)
 
-| 参数         | 说明 | 类型                      |
-| ------------ | ---- | ------------------------- |
-| days         | -    | _&nbsp;&nbsp;number<br/>_ |
-| hours        | -    | _&nbsp;&nbsp;number<br/>_ |
-| minutes      | -    | _&nbsp;&nbsp;number<br/>_ |
-| seconds      | -    | _&nbsp;&nbsp;number<br/>_ |
-| milliseconds | -    | _&nbsp;&nbsp;number<br/>_ |
+| 参数         | 说明     | 类型                      |
+| ------------ | -------- | ------------------------- |
+| days         | 剩余天数 | _&nbsp;&nbsp;number<br/>_ |
+| hours        | 剩余小时 | _&nbsp;&nbsp;number<br/>_ |
+| minutes      | 剩余分钟 | _&nbsp;&nbsp;number<br/>_ |
+| seconds      | 剩余秒数 | _&nbsp;&nbsp;number<br/>_ |
+| milliseconds | 剩余毫秒 | _&nbsp;&nbsp;number<br/>_ |
 
 ### CountDownProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-down.d.ts)
 
-| 参数        | 说明 | 类型                                                                                                                                                                     | 默认值 | 必填    |
-| ----------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
-| millisecond | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                               | -      | `false` |
-| time        | -    | _&nbsp;&nbsp;number<br/>_                                                                                                                                                | -      | `false` |
-| format      | -    | _&nbsp;&nbsp;string<br/>_                                                                                                                                                | -      | `false` |
-| autoStart   | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                               | -      | `false` |
-| children    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                             | -      | `false` |
-| onChange    | -    | _&nbsp;&nbsp;(timeData:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ITimeData<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_                                             | -      | `false` |
-| onFinish    | -    | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                  | -      | `false` |
-| ref         | -    | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ICountDownRef<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | -      | `false` |
+| 参数        | 说明                                           | 类型                                                                                                                                                                     | 默认值     | 必填    |
+| ----------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------- |
+| millisecond | 是否开启毫秒级渲染                             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                               | false      | `false` |
+| time        | 倒计时时长，单位毫秒                           | _&nbsp;&nbsp;number<br/>_                                                                                                                                                | -          | `false` |
+| format      | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | _&nbsp;&nbsp;string<br/>_                                                                                                                                                | HH：mm：ss | `false` |
+| autoStart   | 是否自动开始倒计时                             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                               | true       | `false` |
+| children    | 倒计时的内容                                   | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                                                             | -          | `false` |
+| onChange    | -                                              | _&nbsp;&nbsp;(timeData:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;ITimeData<br/>&nbsp;&nbsp;})&nbsp;=>&nbsp;void<br/>_                                             | -          | `false` |
+| onFinish    | 倒计时结束时触发                               | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                  | -          | `false` |
+| ref         | 倒计时实例                                     | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ICountDownRef<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | -          | `false` |
 
 ### 样式变量
 

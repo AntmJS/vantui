@@ -59,18 +59,18 @@ function Demo() {
 
 ### SkeletonProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/skeleton.d.ts)
 
-| 参数        | 说明 | 类型                                                   | 默认值 | 必填    |
-| ----------- | ---- | ------------------------------------------------------ | ------ | ------- |
-| row         | -    | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_    | -      | `false` |
-| title       | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
-| avatar      | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
-| loading     | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
-| animate     | -    | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
-| avatarSize  | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | -      | `false` |
-| avatarShape | -    | _&nbsp;&nbsp;"square"&nbsp;&brvbar;&nbsp;"round"<br/>_ | -      | `false` |
-| titleWidth  | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | -      | `false` |
-| rowWidth    | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_  | -      | `false` |
-| children    | -    | _&nbsp;&nbsp;ReactNode<br/>_                           | -      | `false` |
+| 参数        | 说明                                        | 类型                                                   | 默认值 | 必填    |
+| ----------- | ------------------------------------------- | ------------------------------------------------------ | ------ | ------- |
+| row         | 段落占位图行数                              | _&nbsp;&nbsp;number&nbsp;&brvbar;&nbsp;string<br/>_    | 0      | `false` |
+| title       | 是否显示标题占位图                          | _&nbsp;&nbsp;boolean<br/>_                             | -      | `false` |
+| avatar      | 是否显示头像占位图                          | _&nbsp;&nbsp;boolean<br/>_                             | false  | `false` |
+| loading     | 是否显示占位图，传 false 时会展示子组件内容 | _&nbsp;&nbsp;boolean<br/>_                             | true   | `false` |
+| animate     | 是否开启动画                                | _&nbsp;&nbsp;boolean<br/>_                             | true   | `false` |
+| avatarSize  | 头像占位图大小                              | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | 32px   | `false` |
+| avatarShape | 头像占位图形状，可选值为 square             | _&nbsp;&nbsp;"square"&nbsp;&brvbar;&nbsp;"round"<br/>_ | round  | `false` |
+| titleWidth  | 标题占位图宽度                              | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    | 40%    | `false` |
+| rowWidth    | 段落占位图宽度，可传数组来设置每一行的宽度  | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_  | 100%   | `false` |
+| children    | -                                           | _&nbsp;&nbsp;ReactNode<br/>_                           | -      | `false` |
 
 ### 样式变量
 

@@ -16,15 +16,15 @@ content 传空字符串即开启 dot 模式
 
 ### BadgeProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/badge.d.ts)
 
-| 参数             | 说明 | 类型                                   | 默认值 | 必填    |
-| ---------------- | ---- | -------------------------------------- | ------ | ------- |
-| content          | -    | _&nbsp;&nbsp;ReactNode<br/>_           | -      | `false` |
-| color            | -    | _&nbsp;&nbsp;string<br/>_              | -      | `false` |
-| bordered         | -    | _&nbsp;&nbsp;boolean<br/>_             | -      | `false` |
-| children         | -    | _&nbsp;&nbsp;ReactNode<br/>_           | -      | `false` |
-| wrapperClassName | -    | _&nbsp;&nbsp;string<br/>_              | -      | `false` |
-| wrapperStyle     | -    | _&nbsp;&nbsp;React.CSSProperties<br/>_ | -      | `false` |
-| style            | -    | _&nbsp;&nbsp;React.CSSProperties<br/>_ | -      | `false` |
+| 参数             | 说明                   | 类型                                   | 默认值  | 必填    |
+| ---------------- | ---------------------- | -------------------------------------- | ------- | ------- |
+| content          | 徽标内容               | _&nbsp;&nbsp;ReactNode<br/>_           | -       | `false` |
+| color            | 颜色                   | _&nbsp;&nbsp;string<br/>_              | #ff3141 | `false` |
+| bordered         | 是否显示边框           | _&nbsp;&nbsp;boolean<br/>_             | false   | `false` |
+| children         | -                      | _&nbsp;&nbsp;ReactNode<br/>_           | -       | `false` |
+| wrapperClassName | 徽标根节点的 className | _&nbsp;&nbsp;string<br/>_              | -       | `false` |
+| wrapperStyle     | 徽标根节点的 style     | _&nbsp;&nbsp;React.CSSProperties<br/>_ | -       | `false` |
+| style            | 徽标内容的 style       | _&nbsp;&nbsp;React.CSSProperties<br/>_ | -       | `false` |
 
 ### 样式变量
 

@@ -65,30 +65,30 @@ import { Checkbox, CheckboxGroup } from '@antmjs/vantui'
 
 ### CheckboxProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/checkbox.d.ts)
 
-| 参数          | 说明 | 类型                                                                                                        | 默认值 | 必填    |
-| ------------- | ---- | ----------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| name          | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -      | `false` |
-| value         | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                  | -      | `false` |
-| disabled      | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                  | -      | `false` |
-| checkedColor  | -    | _&nbsp;&nbsp;string<br/>_                                                                                   | -      | `false` |
-| labelPosition | -    | _&nbsp;&nbsp;string<br/>_                                                                                   | -      | `false` |
-| labelDisabled | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                  | -      | `false` |
-| shape         | -    | _&nbsp;&nbsp;"round"&nbsp;&brvbar;&nbsp;"square"<br/>_                                                      | -      | `false` |
-| iconSize      | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                         | -      | `false` |
-| children      | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -      | `false` |
-| renderIcon    | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -      | `false` |
-| onChange      | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -      | `false` |
+| 参数          | 说明                     | 类型                                                                                                        | 默认值  | 必填    |
+| ------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- | ------- | ------- |
+| name          | 标识符                   | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -       | `false` |
+| value         | 是否为选中状态           | _&nbsp;&nbsp;boolean<br/>_                                                                                  | false   | `false` |
+| disabled      | 是否禁用复选框           | _&nbsp;&nbsp;boolean<br/>_                                                                                  | false   | `false` |
+| checkedColor  | 选中状态颜色             | _&nbsp;&nbsp;string<br/>_                                                                                   | #07c160 | `false` |
+| labelPosition | 文本位置                 | _&nbsp;&nbsp;string<br/>_                                                                                   | right   | `false` |
+| labelDisabled | 是否禁用复选框文本点击   | _&nbsp;&nbsp;boolean<br/>_                                                                                  | false   | `false` |
+| shape         | 形状，可选值为 square    | _&nbsp;&nbsp;"round"&nbsp;&brvbar;&nbsp;"square"<br/>_                                                      | round   | `false` |
+| iconSize      | 图标大小，默认单位为 px  | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                         | 20px    | `false` |
+| children      | -                        | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -       | `false` |
+| renderIcon    | 自定义图标               | _&nbsp;&nbsp;ReactNode<br/>_                                                                                | -       | `false` |
+| onChange      | 当绑定值变化时触发的事件 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | -       | `false` |
 
 ### CheckboxGroupProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/checkbox.d.ts)
 
-| 参数      | 说明 | 类型                                                                                                                                 | 默认值 | 必填    |
-| --------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------- |
-| max       | -    | _&nbsp;&nbsp;number<br/>_                                                                                                            | -      | `false` |
-| value     | -    | _&nbsp;&nbsp;Array<any><br/>_                                                                                                        | -      | `false` |
-| disabled  | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | -      | `false` |
-| direction | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"horizontal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | -      | `false` |
-| children  | -    | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                         | -      | `false` |
-| onChange  | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                          | -      | `false` |
+| 参数      | 说明                     | 类型                                                                                                                                 | 默认值   | 必填    |
+| --------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
+| max       | 最大可选数，0 为无限制   | _&nbsp;&nbsp;number<br/>_                                                                                                            | 0        | `false` |
+| value     | 所有选中项的标识符       | _&nbsp;&nbsp;Array<any><br/>_                                                                                                        | -        | `false` |
+| disabled  | 是否禁用所有复选框       | _&nbsp;&nbsp;boolean<br/>_                                                                                                           | false    | `false` |
+| direction | 复选框排列方向           | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"horizontal"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"vertical"<br/>_ | vertical | `false` |
+| children  | -                        | _&nbsp;&nbsp;ReactNode<br/>_                                                                                                         | -        | `false` |
+| onChange  | 当绑定值变化时触发的事件 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                          | -        | `false` |
 
 ### 样式变量
 

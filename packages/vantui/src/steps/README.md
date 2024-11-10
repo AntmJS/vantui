@@ -173,13 +173,13 @@ function Demo() {
 
 ### Step [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/steps.d.ts)
 
-| 参数         | 说明 | 类型                               |
-| ------------ | ---- | ---------------------------------- |
-| index        | -    | _&nbsp;&nbsp;number<br/>_          |
-| desc         | -    | _&nbsp;&nbsp;React.ReactNode<br/>_ |
-| text         | -    | _&nbsp;&nbsp;string<br/>_          |
-| activeIcon   | -    | _&nbsp;&nbsp;string<br/>_          |
-| inactiveIcon | -    | _&nbsp;&nbsp;string<br/>_          |
+| 参数         | 说明       | 类型                               |
+| ------------ | ---------- | ---------------------------------- |
+| index        | -          | _&nbsp;&nbsp;number<br/>_          |
+| desc         | 描述信息   | _&nbsp;&nbsp;React.ReactNode<br/>_ |
+| text         | 步骤名称   | _&nbsp;&nbsp;string<br/>_          |
+| activeIcon   | 激活图标   | _&nbsp;&nbsp;string<br/>_          |
+| inactiveIcon | 未激活图标 | _&nbsp;&nbsp;string<br/>_          |
 
 ### StepsProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/steps.d.ts)
 
