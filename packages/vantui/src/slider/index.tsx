@@ -52,6 +52,19 @@ export function Slider(props: SliderProps) {
     `${+new Date()}${Math.ceil(Math.random() * 10000)}`,
   )
 
+  const [rect, setRect] = useState<any>()
+
+  useEffect(() => {
+    setTimeout(() => {
+      getRect(null, `.van-slider${indexRef.current}`, rectWrapper).then(
+        (rect: any) => {
+          setRect(rect)
+        },
+      )
+    }, 600)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const resetTouchStatus = useCallback(
     function () {
       setTouchState({
@@ -241,26 +254,23 @@ export function Slider(props: SliderProps) {
       }
       const touchState = touchMove(event)
       setDragStatus('draging')
-      getRect(null, `.van-slider${indexRef.current}`, rectWrapper).then(
-        (rect: any) => {
-          let diff = (touchState.deltaX / rect.width) * getRange()
-          if (vertical) {
-            diff = (touchState.deltaY / rect.height) * getRange()
-          }
+      let diff = (touchState.deltaX / rect.width) * getRange()
+      if (vertical) {
+        diff = (touchState.deltaY / rect.height) * getRange()
+      }
 
-          if (isRange(startValue)) {
-            newValue[buttonIndex] = startValue[buttonIndex] + diff
-            setNewValue(newValue)
-          } else {
-            let newValue_ = newValue
-            newValue_ = (startValue || 0) + diff
-            setNewValue(newValue_)
-          }
-          updateValue(newValue, false, true)
-        },
-      )
+      if (isRange(startValue)) {
+        newValue[buttonIndex] = startValue[buttonIndex] + diff
+        setNewValue(newValue)
+      } else {
+        let newValue_ = newValue
+        newValue_ = (startValue || 0) + diff
+        setNewValue(newValue_)
+      }
+      updateValue(newValue, false, true)
     },
     [
+      rect,
       disabled,
       dragStatus,
       touchMove,
@@ -272,7 +282,6 @@ export function Slider(props: SliderProps) {
       updateValue,
       newValue,
       buttonIndex,
-      rectWrapper,
     ],
   )
 
@@ -291,34 +300,31 @@ export function Slider(props: SliderProps) {
     function (event: any) {
       event.preventDefault()
       if (disabled) return
-      getRect(null, `.van-slider${indexRef.current}`).then((rect: any) => {
-        const target = process.env.TARO_ENV === 'h5' ? event : event.detail
-        let value =
-          (((target.x || target.clientX) - rect.left) / rect.width) *
+      const target = process.env.TARO_ENV === 'h5' ? event : event.detail
+      let value =
+        (((target.x || target.clientX) - rect.left) / rect.width) * getRange() +
+        Number(min)
+
+      if (vertical) {
+        value =
+          (((target.y || target.clientY) - rect.top) / rect.height) *
             getRange() +
           Number(min)
+      }
 
-        if (vertical) {
-          value =
-            (((target.y || target.clientY) - rect.top) / rect.height) *
-              getRange() +
-            Number(min)
-        }
-
-        if (isRange(value_)) {
-          const [left, right] = value_
-          const middle = (left + right) / 2
-          if (value <= middle) {
-            updateValue([value, right], true)
-          } else {
-            updateValue([left, value], true)
-          }
+      if (isRange(value_)) {
+        const [left, right] = value_
+        const middle = (left + right) / 2
+        if (value <= middle) {
+          updateValue([value, right], true)
         } else {
-          updateValue(value, true)
+          updateValue([left, value], true)
         }
-      })
+      } else {
+        updateValue(value, true)
+      }
     },
-    [disabled, getRange, min, vertical, isRange, value_, updateValue],
+    [rect, disabled, getRange, min, vertical, isRange, value_, updateValue],
   )
 
   return (
