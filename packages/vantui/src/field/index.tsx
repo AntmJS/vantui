@@ -116,10 +116,8 @@ export function Field(props: FieldProps) {
       value: event.detail.value,
     })
     setInnerValue(event.detail || '')
-    nextTick(() => {
-      onInput?.(event)
-      onChange?.(event)
-    })
+    onInput?.(event)
+    onChange?.(event)
   }
 
   const setShowClear = function (value: any) {

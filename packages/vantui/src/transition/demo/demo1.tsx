@@ -1,5 +1,5 @@
 /* eslint-disable */
-import react from 'react'
+import react, { useEffect } from 'react'
 import { View } from '@tarojs/components'
 import { Cell, Transition } from '@antmjs/vantui'
 
@@ -15,7 +15,14 @@ const animations = [
   'slide-right',
 ]
 export default function Demo() {
-  const [show, setShow] = react.useState('')
+  const [show, setShow] = react.useState('fade-right')
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShow('')
+    }, 4000)
+  }, [])
+
   const animationAction = (ss) => {
     setShow(ss)
     setTimeout(() => {
