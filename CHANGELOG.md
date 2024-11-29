@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.1...v) (2024-11-08)
+# [](https://github.com/AntmJS/vantui/compare/v3.5.2...v) (2024-11-22)
+
+
+### Bug Fixes
+
+* field组件修复连续输入卡顿问题（[#724](https://github.com/AntmJS/vantui/issues/724)） ([e5585d0](https://github.com/AntmJS/vantui/commit/e5585d034002616c3be7f805dd4b51013a997e9e))
+* slider组件卡顿问题修复 ([1a17e74](https://github.com/AntmJS/vantui/commit/1a17e74b6abfbe5928fab4e83be9bcd7bafff335))
+
+
+
+## [3.5.2](https://github.com/AntmJS/vantui/compare/v3.5.1...v3.5.2) (2024-11-08)
 
 
 ### Bug Fixes
