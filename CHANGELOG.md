@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.2...v) (2024-11-22)
+# [](https://github.com/AntmJS/vantui/compare/v3.5.3...v) (2024-11-29)
+
+
+### Bug Fixes
+
+* 构建工具修复外部配置项获取 ([e12c9c9](https://github.com/AntmJS/vantui/commit/e12c9c9df7b9dfbcbf02c828ee21cd006c21af86))
+* toast组件loading蒙层问题（[#721](https://github.com/AntmJS/vantui/issues/721)） ([ba5817f](https://github.com/AntmJS/vantui/commit/ba5817f45eed90eb7d93b7f465ea17787463d7ad))
+
+
+
+## [3.5.3](https://github.com/AntmJS/vantui/compare/v3.5.2...v3.5.3) (2024-11-22)
 
 
 ### Bug Fixes
