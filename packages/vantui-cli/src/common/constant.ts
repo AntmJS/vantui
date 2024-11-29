@@ -52,7 +52,7 @@ export function getPackageJson() {
   return JSON.parse(rawJson)
 }
 
-async function getVantConfigAsync() {
+function getVantConfigAsync() {
   const require = createRequire(import.meta.url)
   delete require.cache[VANT_CONFIG_FILE]
 
@@ -64,11 +64,11 @@ async function getVantConfigAsync() {
   }
 }
 
-let vantConfig = await getVantConfigAsync()
+let vantConfig = getVantConfigAsync()
 
-export async function getVantConfig(noCache?: boolean) {
+export function getVantConfig(noCache?: boolean) {
   if (noCache) {
-    vantConfig = await getVantConfigAsync()
+    vantConfig = getVantConfigAsync()
   }
   return vantConfig
 }
