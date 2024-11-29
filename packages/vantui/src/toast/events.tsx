@@ -1,19 +1,30 @@
 import { ToastProps } from '../../types/toast'
+import VanOverlay from '../overlay/index'
 import { createExtraNode, ExtraNode } from '../wxs/extra-node'
 import { Toast } from './toast'
 
 const extraNode: ExtraNode = createExtraNode()
+const overlayNode: ExtraNode = createExtraNode()
 const defaultDuration = 2500
 let timer: NodeJS.Timeout | null = null
+let hasMask = false
 
 export function show_(options: ToastProps) {
   if (timer) {
     clearTimeout(timer)
     timer = null
   }
-
+  if (!hasMask) {
+    hasMask = true
+    overlayNode.renderNode?.(
+      <VanOverlay
+        show
+        zIndex={options.zIndex}
+        style={options.mask ? '' : 'background-color: transparent;'}
+      ></VanOverlay>,
+    )
+  }
   extraNode.renderNode?.(<Toast {...options} />)
-
   if (options.duration !== 0) {
     timer = setTimeout(() => {
       clear()
@@ -43,5 +54,7 @@ export const fail = createAction({ type: 'fail' })
 export const loading = createAction({ type: 'loading', duration: 0 })
 
 export function clear() {
+  hasMask = false
   extraNode.removeNode?.()
+  overlayNode.removeNode?.()
 }

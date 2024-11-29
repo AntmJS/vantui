@@ -5,9 +5,9 @@ export default function Demo() {
   const show = () => {
     Toast.loading({
       duration: 0, // 持续展示 toast
-      forbidClick: true,
       message: '倒计时 3 秒',
       selector: '#customSelector',
+      mask: true,
     })
 
     let second = 3
@@ -16,10 +16,11 @@ export default function Demo() {
       if (second) {
         Toast.loading({
           message: `倒计时 ${second} 秒`,
+          mask: true,
         })
       } else {
         clearInterval(timer)
-        // Toast.clear()
+        Toast.clear()
       }
     }, 1000)
   }

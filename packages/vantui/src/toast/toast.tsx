@@ -2,7 +2,7 @@ import { View, Text, RichText } from '@tarojs/components'
 import { useState } from 'react'
 import { ToastProps } from '../../types/toast'
 import VanTransition from '../transition/index'
-import VanOverlay from '../overlay/index'
+// import VanOverlay from '../overlay/index'
 import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
 
@@ -29,13 +29,13 @@ export function Toast(props: ToastProps) {
 
   return (
     <View>
-      {(state.mask || state.forbidClick) && (
+      {/* {(state.mask || state.forbidClick) && (
         <VanOverlay
           show={state.show}
           zIndex={state.zIndex}
           style={state.mask ? '' : 'background-color: transparent;'}
         ></VanOverlay>
-      )}
+      )} */}
       <VanTransition
         show={state.show}
         style={state.zIndex ? { zIndex: state.zIndex } : {}}
