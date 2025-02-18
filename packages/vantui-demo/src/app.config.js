@@ -73,6 +73,7 @@ export default {
     'pages/result/index',
     'pages/space/index',
     'pages/image-viewer/index',
+    'pages/image-cropper/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

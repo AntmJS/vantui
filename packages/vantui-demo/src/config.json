@@ -64,6 +64,10 @@
         "title": "Image 图片"
       },
       {
+        "path": "image-cropper",
+        "title": "Image-cropper 图片裁剪"
+      },
+      {
         "path": "image-viewer",
         "title": "ImageViewer 图片查看"
       },

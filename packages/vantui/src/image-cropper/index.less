@@ -1,0 +1,85 @@
+/* stylelint-disable comment-empty-line-before */
+.components-cropper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1f1e1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+
+  .image {
+    position: relative;
+    z-index: 1;
+  }
+
+  .border-box {
+    border: 6px solid rgb(238, 10, 246);
+    position: absolute;
+    top: 0;
+    left: 0%;
+    box-sizing: border-box;
+    z-index: 110;
+
+    .scale-btn {
+      opacity: 0.6;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 120;
+      font-size: 24px;
+      color: #ffffff;
+      background-color: rgb(238, 10, 246);
+      padding: 10px;
+      transform: rotate(270deg);
+    }
+  }
+
+  .cropper-btns {
+    z-index: 110;
+    position: fixed;
+    bottom: 24px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+    box-sizing: border-box;
+  }
+
+  .current-scale {
+    color: #c1baba;
+  }
+
+  .rotate-btns {
+    z-index: 120;
+    position: fixed;
+    bottom: 164px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 70px;
+    box-sizing: border-box;
+
+    .van-icon {
+      color: rgb(238, 10, 246);
+      font-size: 34px;
+      background-color: #101010;
+      opacity: 0.8;
+      border-radius: 50%;
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+
+      &:nth-child(2) {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
