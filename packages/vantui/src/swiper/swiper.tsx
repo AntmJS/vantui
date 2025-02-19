@@ -327,6 +327,7 @@ const Swiper = (
 
   useDidShow(() => {
     setShowToDo(true)
+    startPlay()
   })
 
   useEffect(() => {
