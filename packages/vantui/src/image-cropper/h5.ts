@@ -8,18 +8,16 @@ function drawCropperImage(params: {
   const { x, y, w, h, src } = params
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
-  document.body.append(canvas)
+  // document.body.append(canvas)
   return new Promise((resolve) => {
     if (ctx) {
       const img = new Image()
       img.onload = () => {
         canvas.width = w
         canvas.height = h
-        console.info(x, y, w, h, 0, 0, w, h)
         ctx.drawImage(img, x, y, w, h, 0, 0, w, h)
 
         const croppedImageUrl = canvas.toDataURL('image/png')
-        console.info('croppedImageUrl', croppedImageUrl)
         resolve(croppedImageUrl)
       }
 
@@ -32,7 +30,7 @@ function drawImageWithRotation(params: { src: string; angle: number }) {
   const { src, angle } = params
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
-  document.body.append(canvas)
+  // document.body.append(canvas)
 
   return new Promise((resolve) => {
     if (ctx) {

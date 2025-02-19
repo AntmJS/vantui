@@ -31,7 +31,8 @@ export default function ImageCropper(props: ImageCropperProps) {
   const { allowScale = true, image, scale = 2, fixScale = false } = props
 
   const [imageRotate, setimageRotate] = useState(0)
-  const [imageRect, setimageRect] = useState({
+  // eslint-disable-next-line prefer-const
+  let [imageRect, setimageRect] = useState({
     left: 0,
     top: 0,
     width: 0,
@@ -79,20 +80,18 @@ export default function ImageCropper(props: ImageCropperProps) {
       },
       success(res: any) {
         setTimeout(() => {
-          getRect(null, '#cropper-image', '#components-cropper').then(
-            (aa: any) => {
-              const rect = {
-                ...aa,
-                $width: res.width,
-                $height: res.height,
-                realScale: res.width / pageRects.windowWidth,
-              }
-              setimageRect(rect)
-              getBorderRects(rect).then(() => {
-                hideLoading()
-              })
-            },
-          )
+          getRect(null, '#cropper-image', '#van-cropper').then((aa: any) => {
+            const rect = {
+              ...aa,
+              $width: res.width,
+              $height: res.height,
+              realScale: res.width / aa.width,
+            }
+            setimageRect(rect)
+            getBorderRects(rect).then(() => {
+              hideLoading()
+            })
+          })
         }, 200)
       },
     })
@@ -109,35 +108,40 @@ export default function ImageCropper(props: ImageCropperProps) {
 
   const getBorderRects = (imgRects?) => {
     return new Promise((resolve) => {
-      getRect(null, '#cropper-border-box', '#components-cropper').then(
-        (res: any) => {
-          setborderBoxRect(res)
-          if (imgRects) {
-            const dd = imgRects.top + (imgRects.height - res.height) / 2
-            rects.current.deltaY = (imgRects.height - res.height) / 2
-            borderBoxStyle.base = dd
-            borderBoxStyle.nextBase = dd
+      getRect(null, '#cropper-border-box', '#van-cropper').then((res: any) => {
+        setborderBoxRect(res)
+        if (imgRects) {
+          const dd = imgRects.top + (imgRects.height - res.height) / 2
+          rects.current.deltaY = (imgRects.height - res.height) / 2
+          borderBoxStyle.base = dd
+          borderBoxStyle.nextBase = dd
 
-            const xx = imgRects.left + (imgRects.width - res.width) / 2
-            rects.current.deltaX = (imgRects.width - res.width) / 2
-            borderBoxStyle.baseX = xx
-            borderBoxStyle.nextBaseX = xx
+          const xx = imgRects.left + (imgRects.width - res.width) / 2
+          rects.current.deltaX = (imgRects.width - res.width) / 2
+          borderBoxStyle.baseX = xx
+          borderBoxStyle.nextBaseX = xx
 
-            borderBoxStyle.transform = `translate(${xx}px, ${dd}px)`
-          }
+          borderBoxStyle.transform = `translate(${xx}px, ${dd}px)`
+        }
 
-          resolve(true)
-        },
-      )
+        resolve(true)
+      })
     })
   }
 
   const updateImageRect = async () => {
     return new Promise((resolve) => {
-      getRect(null, '#cropper-image', '#components-cropper').then((aa: any) => {
-        setimageRect({
+      getRect(null, '#cropper-image', '#van-cropper').then((aa: any) => {
+        imageRect = {
           ...imageRect,
           ...aa,
+          realScale:
+            imageRotate % 180 === 0
+              ? imageRect.$width / aa.width
+              : imageRect.$height / aa.width,
+        }
+        setimageRect({
+          ...imageRect,
         })
 
         resolve(true)
@@ -363,14 +367,12 @@ export default function ImageCropper(props: ImageCropperProps) {
 
     if (newRotate % 180 !== 0 && !imageRectY?.dl) {
       setTimeout(() => {
-        getRect(null, '#components-cropper >>> #cropper-image').then(
-          (res: any) => {
-            setimageRectY({
-              ...res,
-              dl: pageRects.windowWidth / res.width,
-            })
-          },
-        )
+        getRect(null, '#van-cropper >>> #cropper-image').then((res: any) => {
+          setimageRectY({
+            ...res,
+            dl: pageRects.windowWidth / res.width,
+          })
+        })
       }, 500)
     }
   }
@@ -378,8 +380,8 @@ export default function ImageCropper(props: ImageCropperProps) {
   return (
     <>
       <View
-        id="components-cropper"
-        className="components-cropper"
+        id="van-cropper"
+        className="van-cropper"
         onClick={(e) => {
           e.stopPropagation()
         }}

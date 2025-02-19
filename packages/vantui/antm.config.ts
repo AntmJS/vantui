@@ -154,6 +154,10 @@ function getMenus() {
           title: 'ImageViewer 图片查看',
         },
         {
+          path: 'image-cropper',
+          title: 'ImageCropper 图片截图',
+        },
+        {
           path: 'col',
           title: 'Layout 布局',
         },
