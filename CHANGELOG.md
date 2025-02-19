@@ -1,4 +1,13 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.4...v) (2025-02-19)
+# [](https://github.com/AntmJS/vantui/compare/v3.5.5...v) (2025-02-19)
+
+
+### Bug Fixes
+
+* imageCropper组件h5旋转截图修复 ([dabef58](https://github.com/AntmJS/vantui/commit/dabef58e3ff44e81c32457ec39b11aef0939e5d5))
+
+
+
+## [3.5.5](https://github.com/AntmJS/vantui/compare/v3.5.4...v3.5.5) (2025-02-19)
 
 
 ### Bug Fixes
