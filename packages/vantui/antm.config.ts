@@ -155,7 +155,7 @@ function getMenus() {
         },
         {
           path: 'image-cropper',
-          title: 'ImageCropper 图片截图',
+          title: 'ImageCropper 图片裁剪',
         },
         {
           path: 'col',

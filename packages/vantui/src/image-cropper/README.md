@@ -1,4 +1,4 @@
-# ImageCropper 头像剪切
+# ImageCropper 图片裁剪
 
 ### 介绍
 
