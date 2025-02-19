@@ -49,7 +49,6 @@ export async function compileScript(
     }
 
     const { compiler } = await getVantConfig()
-
     if (compiler === 'babel') {
       transformAsync(code, {
         filename: filePath,
