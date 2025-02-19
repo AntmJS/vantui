@@ -337,6 +337,8 @@ const Picker = forwardRef(function Index(
 
   const mainRender = (
     <View
+      // @ts-ignore
+      catchMove
       className={`van-picker  ${className}`}
       style={utils.style([style])}
       {...others}

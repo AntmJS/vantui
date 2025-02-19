@@ -50,6 +50,8 @@ export function Rate(props: RateProps) {
   // touchmove匹配到的节点找不到data-score，先注释掉
   const onTouchMove = function (event) {
     if (!touchable) return
+    event.preventDefault()
+    event.stopPropagation()
 
     const { clientX } = event?.touches?.[0] ?? {}
     if (clientX) {
@@ -98,6 +100,8 @@ export function Rate(props: RateProps) {
 
   return (
     <View
+      // @ts-ignore
+      catchMove
       className={
         `rate-com-index${indexRef.current} ` +
         utils.bem('rate') +

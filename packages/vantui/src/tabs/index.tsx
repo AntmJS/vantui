@@ -249,6 +249,8 @@ export function Tabs(props: TabsProps) {
     ref.current.startY = touch.clientY
   }
   const touchMove = function (event: any) {
+    event.preventDefault()
+    event.stopPropagation()
     const touch = event.touches[0]
     ref.current.deltaX = touch.clientX - ref.current.startX
     ref.current.deltaY = touch.clientY - ref.current.startY
@@ -497,6 +499,8 @@ export function Tabs(props: TabsProps) {
         </View>
       </Sticky>
       <View
+        // @ts-ignore
+        catchMove
         className="van-tabs__content"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}

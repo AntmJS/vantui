@@ -142,6 +142,8 @@ function Index(
 
   const touchMove = useCallback(
     function (event) {
+      event.preventDefault()
+      event.stopPropagation()
       resetTouchStatus()
       const touch = event.touches[0]
       const newTouchState = {
@@ -293,6 +295,8 @@ function Index(
 
   return (
     <View
+      // @ts-ignore
+      catchMove
       className={`van-swipe-cell  ${className}`}
       data-key="cell"
       style={utils.style([style])}

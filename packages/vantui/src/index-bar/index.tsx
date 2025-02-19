@@ -310,6 +310,8 @@ export function IndexBar(props: IndexBarProps) {
       >
         {_children}
         <View
+          // @ts-ignore
+          catchMove
           className="van-index-bar__sidebar"
           onClick={_onClick}
           onTouchMove={_onTouchMove}

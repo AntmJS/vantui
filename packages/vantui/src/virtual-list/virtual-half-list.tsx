@@ -169,6 +169,7 @@ function VirtualList_(
   const onTouch = useCallback(
     (e) => {
       if (showConfig.head > 0) {
+        e.preventDefault()
         e.stopPropagation()
       }
     },
@@ -187,6 +188,8 @@ function VirtualList_(
 
   return (
     <ScrollView
+      // @ts-ignore
+      catchMove
       className={`van-virtual-list ${clsPrefix} ${className}`}
       scrollY
       style={{ height: addUnit(height), ...(style as React.CSSProperties) }}

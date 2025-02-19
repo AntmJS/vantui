@@ -46,6 +46,8 @@ const Signature = forwardRef(function Signature(
   }
 
   const moveEventHandler = (event: any) => {
+    event.preventDefault()
+    event.stopPropagation()
     if (ctx.current) {
       requestAnimationFrame(() => {
         const evt = event.changedTouches[0]

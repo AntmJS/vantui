@@ -112,6 +112,7 @@ function Index(
   const onTouchMove = useCallback(
     function (event) {
       event.preventDefault()
+      event.stopPropagation()
       if (!isMoving.current) isMoving.current = true
       const deltaY = event.touches[0].clientY - startY
       setOffset(startOffset + deltaY)
@@ -233,6 +234,8 @@ function Index(
       {...others}
     >
       <View
+        // @ts-ignore
+        catchMove
         className="van-picker-column-touch"
         style={computed.wrapperStyle({
           offset,

@@ -94,6 +94,8 @@ export function Slider(props: SliderProps) {
 
   const touchMove = useCallback(
     function (event) {
+      event.preventDefault()
+      event.stopPropagation()
       resetTouchStatus()
       const touch = event.touches[0]
       const newTouchState = {
@@ -248,6 +250,7 @@ export function Slider(props: SliderProps) {
   const onTouchMove = useCallback(
     function (event) {
       event.preventDefault()
+      event.stopPropagation()
       if (disabled) return
       if (dragStatus === 'start') {
         if (onDragStart) onDragStart()
@@ -351,6 +354,8 @@ export function Slider(props: SliderProps) {
       >
         {range && (
           <View
+            // @ts-ignore
+            catchMove
             className={utils.bem('slider__button-wrapper-left')}
             onTouchStart={(e) => onTouchStart(e, 0)}
             onTouchMove={onTouchMove}
@@ -366,32 +371,36 @@ export function Slider(props: SliderProps) {
         )}
         {range && (
           <View
+            // @ts-ignore
+            catchMove
             className={utils.bem('slider__button-wrapper-right')}
             onTouchStart={(e) => onTouchStart(e, 1)}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            <>
+            <View>
               {renderButton || (
                 <View className={utils.bem('slider__button')}></View>
               )}
-            </>
+            </View>
           </View>
         )}
         {!range && (
           <View
+            // @ts-ignore
+            catchMove
             className={utils.bem('slider__button-wrapper')}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            <>
+            <View>
               {renderButton || (
                 <View className={utils.bem('slider__button')}></View>
               )}
-            </>
+            </View>
           </View>
         )}
       </View>

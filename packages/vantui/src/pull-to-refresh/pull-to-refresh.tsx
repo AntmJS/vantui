@@ -123,6 +123,8 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
 
   return (
     <View
+      // @ts-ignore
+      catchMove
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
