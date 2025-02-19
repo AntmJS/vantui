@@ -48,6 +48,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     if (!lodash.isEqual(value, valueInner)) {
       setValueInner(value)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
   const _parseValues = useCallback(
@@ -165,7 +166,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
         },
       } as PickerEvents)
     },
-    [_parseValues, onConfirm],
+    [_parseValues, onConfirm, onInput],
   )
   const _getDefaultCode = useCallback(() => {
     if (columnsPlaceholder.length) {
@@ -340,7 +341,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     } else {
       return []
     }
-  }, [valueInner])
+  }, [columnsNum, valueInner])
 
   useEffect(() => {
     codeRef.current = valueArr[valueArr.length - 1] || ''
@@ -378,7 +379,7 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
       } as PickerEvents)
       setValueInner([])
     }, 33)
-  }, [])
+  }, [onConfirm, onInput, others.mode])
 
   const onShow = () => {
     codeRef.current = valueArr[valueArr.length - 1] || ''
