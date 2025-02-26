@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react'
 import { Icon } from '../icon'
 import { Button } from '../button'
 import { SubmitBarProps } from '../../types/submit-bar'
+import { get } from '../default-props'
 
 export function SubmitBar(props: SubmitBarProps) {
+  const [d] = useState(get().SubmitBar)
   const {
     tipIcon,
     tip,
@@ -25,7 +27,10 @@ export function SubmitBar(props: SubmitBarProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [state, setState] = useState({
     hasTip: false,
     integerStr: '',

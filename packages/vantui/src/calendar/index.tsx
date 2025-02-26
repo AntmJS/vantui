@@ -20,6 +20,7 @@ import { requestAnimationFrame } from '../common/utils'
 import VanPopup from '../popup/index'
 import VanButton from '../button/index'
 import { CalendarProps, ICalendarInstance } from '../../types/calendar'
+import { get } from '../default-props'
 import {
   ROW_HEIGHT,
   getPrevDay,
@@ -37,6 +38,8 @@ import * as computed from './wxs'
 import Month from './components/month/index'
 import Header from './components/header/index'
 import { LongSpan } from './components/longSpan'
+
+const d = get().Calendar || {}
 
 const initialMinDate = getToday().getTime()
 let init = 0
@@ -96,7 +99,10 @@ function Index(
     longspan = true,
     zIndex,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [subtitle, setSubtitle] = useState('')
   const [currentDate, setCurrentDate] = useState<any>()

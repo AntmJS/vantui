@@ -7,13 +7,15 @@ import VanGoodsAction from '../goods-action/index'
 import VanButton from '../button/index'
 import VanPopup from '../popup/index'
 import { DialogProps } from '../../types/dialog'
+import { get } from '../default-props'
 import { on, off, trigger } from './events'
 import * as utils from './../wxs/utils'
 import { createOnlyDialog } from './create-only-dialog'
 import dialog from './dialog'
+
 export function Dialog(props: DialogProps) {
   const [options, setOptions] = useState<DialogProps>({})
-
+  const [d] = useState(get().Dialog)
   const {
     show: _show,
     overlay = true,
@@ -48,7 +50,10 @@ export function Dialog(props: DialogProps) {
     style,
     className,
     ...others
-  } = options
+  } = {
+    ...d,
+    ...options,
+  }
 
   const [confirmLoading, setConfirmLoading] = useState(false)
   const [cancelLoading, setCancelLoading] = useState(false)

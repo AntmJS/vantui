@@ -3,6 +3,7 @@ import { useCallback, useState, useEffect } from 'react'
 import * as utils from '../wxs/utils'
 import { SidebarItemProps } from '../../types/sidebar'
 import VanInfo from '../info/index'
+import { get } from '../default-props'
 
 export function SidebarItem(
   props: SidebarItemProps & {
@@ -11,6 +12,7 @@ export function SidebarItem(
     setAction?: any
   },
 ) {
+  const [d] = useState(get().SidebarItem)
   const {
     dot,
     badge,
@@ -26,7 +28,10 @@ export function SidebarItem(
     className,
     style,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [selected, setselected] = useState<any>()
 

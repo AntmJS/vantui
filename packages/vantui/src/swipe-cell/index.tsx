@@ -11,6 +11,8 @@ import * as utils from '../wxs/utils'
 import { SwipeCellProps, ISwiperCellInstance } from '../../types/swipe-cell'
 import { range } from '../common/utils'
 
+import { get } from '../default-props'
+
 let ARRAY: any[] = []
 const MIN_DISTANCE = 20
 function getDirection(x: number, y: number) {
@@ -27,6 +29,7 @@ function Index(
   props: SwipeCellProps,
   ref: React.ForwardedRef<ISwiperCellInstance>,
 ) {
+  const [d] = useState(get().SwipeCell)
   const [wrapperStyle, setWrapperStyle] = useState<React.CSSProperties>({})
   const [offset, setOffset] = useState<number>(0)
   const [instanceKey, setInstanceKey] = useState<any>({})
@@ -52,7 +55,10 @@ function Index(
     renderRight,
     renderLeft,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const swipeMove = useCallback(
     function (offset2 = 0, dragging?: boolean) {

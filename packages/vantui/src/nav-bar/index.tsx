@@ -1,12 +1,14 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getSystemInfoSync } from '../common/utils'
 import { NavBarProps } from '../../types/nav-bar'
 import { Icon } from '../icon'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function NavBar(props: NavBarProps) {
+  const [d] = useState(get().NavBar)
   const {
     fixed,
     placeholder,
@@ -25,7 +27,10 @@ export function NavBar(props: NavBarProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const statusBarHeight = useMemo(() => {
     const { statusBarHeight: _statusBarHeight } = getSystemInfoSync()

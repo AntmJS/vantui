@@ -3,6 +3,7 @@ import { View, Text } from '@tarojs/components'
 import { Loading } from '../loading'
 import { getRect } from '../common/utils'
 import { IPullToRefreshProps } from '../../types/index'
+import { get } from '../default-props'
 
 let initIndex = 0
 const clsPrefix = 'van-pull-to-refresh'
@@ -11,6 +12,7 @@ const SUCESS_DURATION = 1000
 const TOUCH_MIN_TIME = 400
 
 export default function PullToRefresh(props: IPullToRefreshProps) {
+  const [d] = useState(get().PullToRefresh)
   const {
     children,
     loadingText = '加载中...',
@@ -25,7 +27,10 @@ export default function PullToRefresh(props: IPullToRefreshProps) {
     successDuration = SUCESS_DURATION,
     touchMinTime = TOUCH_MIN_TIME,
     rectWrapper,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [statusHeight, setStatusHeight] = useState(0)
   const [status, setStatus] = useState<IStatus>('pull') // 待拖拽
   const [componentIndex] = useState(initIndex++)

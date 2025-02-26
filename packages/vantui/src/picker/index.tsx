@@ -23,6 +23,7 @@ import * as utils from '../wxs/utils'
 import { Loading } from '../loading/index'
 import { Popup } from '../popup'
 import { Icon } from '../icon/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 const Picker = forwardRef(function Index(
@@ -32,6 +33,7 @@ const Picker = forwardRef(function Index(
   },
   ref: React.ForwardedRef<IPickerInstance>,
 ): JSX.Element {
+  const [d] = useState(get().Picker)
   const {
     disabled = false,
     valueKey = 'text',
@@ -66,7 +68,10 @@ const Picker = forwardRef(function Index(
     renderContentRight,
     contentClassName = '',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const children = useRef<Array<any>>([])
   const handleIndex = useRef<number>(-1)

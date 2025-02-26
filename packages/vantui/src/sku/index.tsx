@@ -2,11 +2,13 @@ import { useEffect, useState, useCallback } from 'react'
 import { View } from '@tarojs/components'
 import classnames from 'classnames'
 import { SkuProps } from '../../types/sku'
+import { get } from '../default-props'
 import { everyItemEqual } from './utils'
 
 const preCls = `van-sku`
 
 export default function Sku(props: SkuProps) {
+  const [d] = useState(get().Sku)
   const {
     sku = [],
     className = '',
@@ -19,7 +21,10 @@ export default function Sku(props: SkuProps) {
     activeClassName = '',
     itemDisable,
     autoChoice = true,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [currentSkuIds, setCurrentSkuIds] = useState<number[]>([])
 
   useEffect(

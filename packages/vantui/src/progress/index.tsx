@@ -4,9 +4,11 @@ import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { ProgressProps } from '../../types/progress'
 import { getRect } from '../common/utils'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Progress(props: ProgressProps) {
+  const [d] = useState(get().Progress)
   const [right, setRight] = useState(0)
   const {
     strokeWidth = 4,
@@ -22,7 +24,10 @@ export function Progress(props: ProgressProps) {
     className,
     rectWrapper,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   useEffect(
     function () {

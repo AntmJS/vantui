@@ -8,7 +8,10 @@ import {
 } from 'react'
 import { View } from '@tarojs/components'
 import { CountDownProps, ICountDownRef } from '../../types/count-down'
+import { get } from '../default-props'
 import { isSameSecond, parseFormat, parseTimeData } from './util'
+
+const d = get().CountDown
 
 function simpleTick(fn: any) {
   return setTimeout(fn, 30)
@@ -35,7 +38,10 @@ function Index(props: CountDownProps, ref: React.ForwardedRef<ICountDownRef>) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   // 暂停
   const pause = useCallback(function () {

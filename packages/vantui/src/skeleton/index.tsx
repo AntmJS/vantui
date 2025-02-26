@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { SkeletonProps } from '../../types/skeleton'
+import { get } from '../default-props'
 
 export function Skeleton(props: SkeletonProps) {
   const [state, setState] = useState({
     isArray: false,
     rowArray: [],
   })
+  const [d] = useState(get().Skeleton)
   const { isArray, rowArray } = state
   const {
     row = 0,
@@ -24,7 +26,10 @@ export function Skeleton(props: SkeletonProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   useEffect(
     function () {

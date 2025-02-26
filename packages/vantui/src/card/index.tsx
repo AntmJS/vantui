@@ -4,6 +4,9 @@ import * as utils from '../wxs/utils'
 import { jumpLink } from '../common/jumpLink'
 import { Tag } from '../tag'
 import { CardProps } from '../../types/card'
+import { get } from '../default-props'
+
+const d = get().Card || {}
 
 export function Card(props: CardProps) {
   const {
@@ -33,7 +36,10 @@ export function Card(props: CardProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [state, setState] = useState({
     integerStr: '',
     decimalStr: '',

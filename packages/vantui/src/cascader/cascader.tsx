@@ -10,10 +10,13 @@ import {
   convertConfig,
   CascaderProps,
 } from '../../types/cascader'
+import { get } from '../default-props'
 import { CascaderItem } from './cascaderItem'
 import { convertListToOptions } from './helper'
 import ScrollViewTimeout from './scrollViewTimeout'
 import Tree from './tree'
+
+const d = get().Cascader || {}
 
 export interface CascaderPane {
   nodes: []
@@ -62,7 +65,7 @@ const InternalCascader = (props: CascaderProps) => {
     onChange,
     scrollIntoView,
     onPathChange,
-  } = { ...defaultProps, ...props }
+  } = { ...defaultProps, ...d, ...props }
 
   const [tabvalue, setTabvalue] = useState('c1')
   const [optiosData, setOptiosData] = useState<CascaderPane[]>([])

@@ -4,7 +4,10 @@ import * as utils from '../wxs/utils'
 import { CellProps } from '../../types/cell'
 import { jumpLink } from '../common/jumpLink'
 import { Icon } from '../icon'
+import { get } from '../default-props'
 import * as computed from './wxs'
+
+const d = get().Cell || {}
 
 export function Cell(props: CellProps) {
   const {
@@ -33,7 +36,10 @@ export function Cell(props: CellProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const _click: (event: ITouchEvent) => void = useCallback(
     function (event) {
       onClick?.(event)

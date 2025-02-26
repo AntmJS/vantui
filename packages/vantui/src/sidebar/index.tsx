@@ -1,10 +1,22 @@
 import { View } from '@tarojs/components'
-import { useCallback, useRef, useEffect, useMemo, cloneElement } from 'react'
+import {
+  useCallback,
+  useRef,
+  useEffect,
+  useMemo,
+  cloneElement,
+  useState,
+} from 'react'
 import * as utils from '../wxs/utils'
 import { SidebarProps } from '../../types/sidebar'
+import { get } from '../default-props'
 
 export function Sidebar(props: SidebarProps) {
-  const { activeKey, onChange, className, children, style, ...others } = props
+  const [d] = useState(get().Sidebar)
+  const { activeKey, onChange, className, children, style, ...others } = {
+    ...d,
+    ...props,
+  }
 
   const childrenInstance = useRef<Array<any>>([])
 

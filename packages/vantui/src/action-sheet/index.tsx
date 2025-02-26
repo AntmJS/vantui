@@ -1,12 +1,15 @@
 import { View, Button, ITouchEvent } from '@tarojs/components'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import * as utils from '../wxs/utils'
 import { ActionSheetProps, ActionSheetItem } from '../../types/action-sheet'
 import VanLoading from '../loading/index'
 import VanPopup from '../popup/index'
 import VanIcon from '../icon/index'
 // import Button from './../button'
+import { get } from '../default-props'
+
 export function ActionSheet(props: ActionSheetProps) {
+  const [d] = useState(get().ActionSheet || {})
   const {
     round = true,
     zIndex,
@@ -26,7 +29,10 @@ export function ActionSheet(props: ActionSheetProps) {
     onClickOverlay,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const _onCancel = useCallback(() => {
     onCancel?.()

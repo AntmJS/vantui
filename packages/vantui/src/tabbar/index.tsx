@@ -12,6 +12,7 @@ import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
 import { TabbarProps, TabbarItemProps } from '../../types/tabbar'
+import { get } from '../default-props'
 
 function parseTabList(children: React.ReactNode): any[] {
   return toArray(children)
@@ -31,6 +32,7 @@ function parseTabList(children: React.ReactNode): any[] {
 }
 
 export function Tabbar(props: TabbarProps) {
+  const [d] = useState(get().Tabbar)
   const [state, setState]: any = useState({
     height: 50,
     current: 0,
@@ -52,7 +54,10 @@ export function Tabbar(props: TabbarProps) {
     children,
     rectWrapper = '',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const _change = useCallback(
     function (data) {
       setState((pre: any) => {

@@ -6,9 +6,11 @@ import VanIcon from '../icon/index'
 // import { canIUseModel } from '../common/version'
 import RadioGroupContext from '../radio-group/context'
 import { isEmptyObject } from '../utils/type'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Radio(props: RadioProps) {
+  const [d] = useState(get().Radio)
   const [state, setState] = useState({
     value: '',
     direction: '',
@@ -28,7 +30,10 @@ export function Radio(props: RadioProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const parentData = useContext(RadioGroupContext)
 

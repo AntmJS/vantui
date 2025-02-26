@@ -1,9 +1,11 @@
 import { View, ITouchEvent } from '@tarojs/components'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import * as utils from '../wxs/utils'
 import { GREEN, GRAY_DARK } from '../common/color'
 import VanIcon from '../icon/index'
+import { get } from '../default-props'
 import { StepsProps } from './../../types/steps'
+
 export function getStatus(index: number, active: any) {
   if (index < active) {
     return 'finish'
@@ -15,6 +17,7 @@ export function getStatus(index: number, active: any) {
 }
 
 export function Steps(props: StepsProps) {
+  const [d] = useState(get().Steps)
   const {
     steps = [],
     renderStep,
@@ -28,7 +31,10 @@ export function Steps(props: StepsProps) {
     onClickStep,
     iconClassPrefix = 'van-icon',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const _onClick = useCallback(
     (event: ITouchEvent) => {

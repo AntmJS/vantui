@@ -1,8 +1,11 @@
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { CellGroupProps } from '../../types/cell'
+import { get } from '../default-props'
 
-export function CellGroup(props: CellGroupProps) {
+const d = get().CellGroup || {}
+
+function CellGroup(props: CellGroupProps) {
   const {
     inset,
     title,
@@ -11,7 +14,10 @@ export function CellGroup(props: CellGroupProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <>
@@ -42,4 +48,5 @@ export function CellGroup(props: CellGroupProps) {
     </>
   )
 }
+
 export default CellGroup

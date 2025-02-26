@@ -4,6 +4,7 @@ import { GridItemProps } from '../../types/grid'
 import { jumpLink } from '../common/jumpLink'
 import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function GridItem(
@@ -13,6 +14,8 @@ export function GridItem(
     parentInstance: any
   },
 ) {
+  const [d] = useState(get().GridItem)
+
   const {
     icon,
     iconColor,
@@ -30,7 +33,10 @@ export function GridItem(
     className,
     renderIcon,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [parentState, setParentState] = useState<any>({})
 

@@ -2,9 +2,11 @@ import { View } from '@tarojs/components'
 import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { LoadingProps } from '../../types/loading'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Loading(props: LoadingProps): JSX.Element {
+  const [d] = useState(get().Loading)
   const {
     vertical,
     type = 'circular',
@@ -15,7 +17,10 @@ export function Loading(props: LoadingProps): JSX.Element {
     children,
     style,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [array12] = useState(Array.from({ length: 12 }))
 

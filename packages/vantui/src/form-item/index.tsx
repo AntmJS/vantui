@@ -11,12 +11,15 @@ import { View } from '@tarojs/components'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 import { FormItemProps, IFormInstanceAPI } from '../../types/form'
 import FormContext from '../form/core/formContext'
+import { get } from '../default-props'
 import Label from './label'
 import Message from './message'
 
 const prefixCls = 'vant-form-formItem'
 
 export function FormItem(props: FormItemProps) {
+  const [d] = useState(get().FormItem)
+
   const {
     id,
     name,
@@ -42,7 +45,10 @@ export function FormItem(props: FormItemProps) {
     borderBottom = false,
     controllFlexEnd = false,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const formInstance = useContext<IFormInstanceAPI>(FormContext)
   const { registerValidateFields, dispatch, unRegisterValidate } = formInstance
   const [, forceUpdate_] = useState({})

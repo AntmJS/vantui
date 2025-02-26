@@ -1,10 +1,14 @@
 import { View, Image } from '@tarojs/components'
+import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { IconProps } from '../../types/icon'
 import { Info } from '../info/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Icon(props: IconProps) {
+  const [d] = useState(get().Icon)
+
   const {
     classPrefix = 'van-icon',
     name,
@@ -15,7 +19,10 @@ export function Icon(props: IconProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   return (
     <View
       className={

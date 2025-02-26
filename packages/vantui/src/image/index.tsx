@@ -9,6 +9,7 @@ import { View, Image as TaroImage } from '@tarojs/components'
 import { ImageProps } from '../../types/image'
 import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 import { FitType } from './wxs'
 
@@ -21,6 +22,7 @@ type TaroImageMode =
   | 'heightFix'
 
 export function Image(props: ImageProps) {
+  const [d] = useState(get().Image || {})
   const {
     src,
     round,
@@ -37,7 +39,10 @@ export function Image(props: ImageProps) {
     renderError,
     renderLoading,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [loading, setLoading] = useState<boolean>()
   const [error, setError] = useState(false)
@@ -63,6 +68,7 @@ export function Image(props: ImageProps) {
   }, [])
 
   const onError = useCallback(function () {
+    setLoading(false)
     setError(true)
   }, [])
   //样式挂在给img外层的webCompoent

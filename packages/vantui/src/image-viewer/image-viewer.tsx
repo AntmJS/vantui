@@ -6,12 +6,18 @@ import SwiperItem from '../swiper-item'
 import Overlay from '../overlay'
 import Image from '../image'
 import { ImageViewerProps } from '../../types/index'
+import { get } from '../default-props'
 import { close } from './trigger'
 
 const preCls = 'van-image-viewer'
 
 export function ImageViewer(props: ImageViewerProps): JSX.Element {
-  const { list = [], currentIndex = 0 } = props
+  const [d] = useState(get().ImageViewer)
+
+  const { list = [], currentIndex = 0 } = {
+    ...d,
+    ...props,
+  }
   const [current, setCurrent] = useState(currentIndex)
 
   return (

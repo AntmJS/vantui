@@ -8,7 +8,12 @@ import { getCanvas, getWaterData } from './utils'
 const classPrefix = `van-water-mark`
 let cIndex = 0
 
+// eslint-disable-next-line import/order
+import { get } from '../default-props'
+
 export const WaterMark: FC<WaterMarkProps> = (props) => {
+  const [d] = useState(get().WaterMark)
+
   const {
     zIndex = 2000,
     gapX = 24,
@@ -26,7 +31,10 @@ export const WaterMark: FC<WaterMarkProps> = (props) => {
     fontSize = 14,
     fontFamily = 'sans-serif',
     fullPage = true,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [base64Url, setBase64Url] = useState('')
   const [canvasRect, setCanvasRect] = useState<React.CSSProperties>()

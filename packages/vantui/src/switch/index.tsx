@@ -1,12 +1,14 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { SwitchProps } from '../../types/switch'
 import VanLoading from '../loading/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Switch(props: SwitchProps) {
+  const [d] = useState(get().Switch)
   const {
     checked = false,
     loading = false,
@@ -20,7 +22,10 @@ export function Switch(props: SwitchProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const onClick = useCallback(
     (event: ITouchEvent) => {

@@ -6,7 +6,11 @@ import VanTransition from '../transition/index'
 import VanIcon from '../icon/index'
 import VanLoading from '../loading/index'
 
+import { get } from '../default-props'
+
 export function Toast(props: ToastProps) {
+  const [d] = useState(get().Toast)
+
   const [state] = useState<any>({
     show: true,
     duration: 2000,
@@ -22,6 +26,7 @@ export function Toast(props: ToastProps) {
     children: '',
     zIndex: 0,
     id: '',
+    ...d,
     ...props,
   })
 

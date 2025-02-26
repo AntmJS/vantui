@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { ButtonProps as TaroButtonProps, ITouchEvent } from '@tarojs/components'
 
 export interface ButtonProps extends Omit<TaroButtonProps, 'size' | 'type'> {

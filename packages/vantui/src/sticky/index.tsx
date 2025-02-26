@@ -4,11 +4,14 @@ import * as utils from '../wxs/utils'
 import { getRect } from '../common/utils'
 import { isDef } from '../common/validator'
 import { StickyProps } from '../../types/sticky'
+import { get } from '../default-props'
 import { usePageScroll } from './../mixins/page-scroll'
 import * as computed from './wxs'
+
 export function Sticky(props: StickyProps) {
   const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
   const [state, setState] = useState({ height: 0, fixed: false, transform: 0 })
+  const [d] = useState(get().Sticky)
   const {
     zIndex,
     offsetTop = 0,
@@ -21,7 +24,10 @@ export function Sticky(props: StickyProps) {
     children,
     rectWrapper = '',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const ref: React.MutableRefObject<{
     scrollTop?: number
   }> = useRef({})

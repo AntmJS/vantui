@@ -1,9 +1,11 @@
-import { cloneElement, isValidElement } from 'react'
+import { cloneElement, isValidElement, useState } from 'react'
 import { View } from '@tarojs/components'
 import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
 import { GoodsActionProps } from '../../types/goods-action'
 import { GoodsActionButtonProps } from '../../types/goods-action-button'
+
+import { get } from '../default-props'
 
 function parseTabList(children: React.ReactNode): any[] {
   return toArray(children)
@@ -23,13 +25,18 @@ function parseTabList(children: React.ReactNode): any[] {
 }
 
 export function GoodsAction(props: GoodsActionProps) {
+  const [d] = useState(get().GoodsAction)
+
   const {
     safeAreaInsetBottom = true,
     style,
     children,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const tabs = parseTabList(children)
   const newChildren: any = tabs.map((tab, index) => {

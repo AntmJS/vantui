@@ -18,6 +18,7 @@ import { nextTick } from '@tarojs/taro'
 import { getRect, addUnit } from '../common/utils'
 import { IVirtualListProps, IVirtualListInstance } from '../../types/index'
 import { Icon } from '../icon'
+import { get } from '../default-props'
 import { getClosestIndex } from './utils'
 
 const clsPrefix = 'van-virtual-half-list'
@@ -26,6 +27,8 @@ function VirtualList_(
   props: IVirtualListProps<any>,
   ref: React.ForwardedRef<IVirtualListInstance>,
 ) {
+  const [d] = useState(get().VirtualList)
+
   const {
     className,
     height,
@@ -39,7 +42,10 @@ function VirtualList_(
     renderBackToTop,
     backToTopCritical,
     backToTopSuccess,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const prevDataLength = useRef(0)
   const [scrollIntoView, setScrollIntoView] = useState('')

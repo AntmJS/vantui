@@ -3,6 +3,7 @@ import { View, Text } from '@tarojs/components'
 import { createSelectorQuery, useReady } from '@tarojs/taro'
 import { EllipsisProps } from '../../types/ellipsis'
 import { getRect } from '../common/utils'
+import { get } from '../default-props'
 
 const preCls = 'van-ellipsis'
 const chineseReg = /^[\u4e00-\u9fa5]+$/
@@ -11,17 +12,24 @@ const letterUpperReg = /^[A-Z]+$/
 const letterLowerReg = /^[a-z]+$/
 const defaultWidthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
 
-export default function Ellipsis({
-  children,
-  symbol = '...',
-  expandText = '展开',
-  collapseText = '收起',
-  rows = 2,
-  className = '',
-  defaultExpand = false,
-  hiddenAction = false,
-  rectWrapper = '',
-}: EllipsisProps): React.ReactNode {
+export default function Ellipsis(props: EllipsisProps): React.ReactNode {
+  const [d] = useState(get().Ellipsis)
+
+  const {
+    children,
+    symbol = '...',
+    expandText = '展开',
+    collapseText = '收起',
+    rows = 2,
+    className = '',
+    defaultExpand = false,
+    hiddenAction = false,
+    rectWrapper = '',
+  } = {
+    ...d,
+    ...props,
+  }
+
   const [content, setContent] = useState('')
   const [expand, setExpand] = useState(defaultExpand)
   const randomRef = useRef(Math.random().toString(36).slice(-8))

@@ -1,10 +1,12 @@
 import { View } from '@tarojs/components'
-
+import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { RadioGroupProps } from '../../types/radio'
+import { get } from '../default-props'
 import RadioGroupContext from './context'
 
 export function RadioGroup(props: RadioGroupProps) {
+  const [d] = useState(get().RadioGroup)
   const {
     value = null,
     direction = 'vertical',
@@ -14,7 +16,10 @@ export function RadioGroup(props: RadioGroupProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <RadioGroupContext.Provider

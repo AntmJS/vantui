@@ -7,6 +7,8 @@ import { SliderProps } from '../../types/slider'
 import { canIUseModel } from '../common/version'
 import { getRect, addUnit } from '../common/utils'
 
+import { get } from '../default-props'
+
 const MIN_DISTANCE = 10
 function getDirection(x: number, y: number) {
   if (x > y && x > MIN_DISTANCE) {
@@ -19,6 +21,7 @@ function getDirection(x: number, y: number) {
 }
 
 export function Slider(props: SliderProps) {
+  const [d] = useState(get().Slider)
   const {
     range,
     disabled,
@@ -38,7 +41,10 @@ export function Slider(props: SliderProps) {
     renderButton,
     rectWrapper = '',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [barStyle, setBarStyle] = useState<React.CSSProperties>()
   const [wrapperStyle, setWrapperStyle] = useState<React.CSSProperties>()

@@ -1,6 +1,7 @@
-import React, { useImperativeHandle, forwardRef, memo } from 'react'
+import React, { useImperativeHandle, forwardRef, memo, useState } from 'react'
 import { Form as TaroForm } from '@tarojs/components'
 import { FormProps, IFormInstanceAPI } from '../../types/form'
+import { get } from '../default-props'
 import FormContext from './core/formContext'
 import useForm from './core/useForm'
 
@@ -8,6 +9,8 @@ function Index(
   props: FormProps,
   ref: React.ForwardedRef<IFormInstanceAPI>,
 ): JSX.Element {
+  const [d] = useState(get().Form)
+
   const {
     form,
     initialValues = {},
@@ -16,7 +19,10 @@ function Index(
     onFinish,
     onFinishFailed,
     onChange,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const formInstance = useForm(form, initialValues)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { setCallback, dispatch, ...formInstanceAPI } = formInstance

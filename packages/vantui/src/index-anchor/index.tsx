@@ -1,7 +1,9 @@
 import { Text, View } from '@tarojs/components'
-import React from 'react'
+import React, { useState } from 'react'
 import * as utils from '../wxs/utils'
+import { get } from '../default-props'
 import { IndexAnchorProps } from './../../types/index-anchor'
+
 export function IndexAnchor(
   props: IndexAnchorProps & {
     anchorStyle: React.CSSProperties
@@ -9,6 +11,8 @@ export function IndexAnchor(
     active: boolean
   },
 ) {
+  const [d] = useState(get().IndexAnchor)
+
   const {
     wrapperStyle,
     active,
@@ -18,7 +22,10 @@ export function IndexAnchor(
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   return (
     <View
       className={`van-index-anchor-wrapper ${className || ''}`}
