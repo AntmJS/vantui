@@ -85,40 +85,42 @@ const Signature = forwardRef(function Signature(
     return new Promise((resolve, reject) => {
       const base64 = ctx.current?.canvas?.toDataURL(`image/${props.type}`, 0.8)
 
-      Taro.createSelectorQuery()
-        .select(`#${canvasId}${compIndex}`)
-        .fields({
-          node: true,
-          size: true,
-        })
-        .exec((res) => {
-          if (
-            process.env.NODE_ENV === 'development' &&
-            ['alipay', 'tt', 'swan', 'kwai', 'dd'].includes(
-              process.env.TARO_ENV,
-            )
-          ) {
-            console.warn(
-              `@anmjs/vantui: signature组件调用了canvasToTempFilePath， 当前IDE不支持调试，须在真机上调试`,
-            )
-          }
-          Taro.canvasToTempFilePath({
-            canvas: res[0].node,
-            fileType: props.type,
-            canvasId: `${canvasId}${compIndex}`,
-            success: (res) => {
-              resolve({
-                tempFilePath: res.tempFilePath,
-                base64: base64,
-                canvas: ctx.current?.canvas,
-              })
-            },
-            fail: (err) => {
-              console.error(`@anmjs/vantui: signature 转换图片失败:`, err)
-              reject(err)
-            },
+      base64ToFile(base64 as string)
+        .then((filePath) => {
+          resolve({
+            tempFilePath: filePath,
+            base64: base64,
+            canvas: ctx.current?.canvas,
           })
         })
+        .catch((err) => {
+          console.error(`@anmjs/vantui: signature 转换图片失败:`, err)
+          reject(err)
+        })
+    })
+  }
+
+  const base64ToFile = (base64: string) : Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const data = base64.replace(/^data:image\/\w+;base64,/, '')
+      const buffer = Taro.base64ToArrayBuffer(data)
+      const randomFileName = `${Date.now()}-${Math.random()
+        .toString(36)
+        .slice(2)}.png`
+      const filePath = `${Taro.env.USER_DATA_PATH}/${randomFileName}`
+
+      Taro.getFileSystemManager().writeFile({
+        filePath,
+        data: buffer,
+        encoding: 'binary',
+        success: () => {
+          resolve(filePath)
+        },
+        fail: (err) => {
+          console.error('@anmjs/vantui: signature failed to save file: ', err);
+          reject(err)
+        },
+      })
     })
   }
 
