@@ -7,12 +7,16 @@ import {
   useEffect,
   isValidElement,
   Children,
+  useState,
 } from 'react'
 import { GridProps } from '../../types/grid'
 import * as utils from '../wxs/utils'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Grid(props: GridProps) {
+  const [d] = useState(get().Grid)
+
   const {
     gutter = null,
     clickable,
@@ -26,7 +30,10 @@ export function Grid(props: GridProps) {
     className = '',
     style = {},
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const childrenInstance = useRef<Array<any>>([])
 

@@ -3,12 +3,14 @@ import { View } from '@tarojs/components'
 import { useState, useEffect, useCallback } from 'react'
 import * as utils from '../wxs/utils'
 import { PopupProps } from '../../types/popup'
+import { get } from '../default-props'
 import VanIcon from './../icon'
 import * as computed from './wxs'
 import { useTransition } from './../mixins/transition'
 import VanOverlay from './../overlay'
 
 function PopupInner(this: any, props: PopupProps & { setOuterShow?: any }) {
+  const [d] = useState(get().Popup)
   const {
     show,
     duration = 300,
@@ -33,7 +35,10 @@ function PopupInner(this: any, props: PopupProps & { setOuterShow?: any }) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const _onAfterLeave = useCallback(() => {
     onAfterLeave?.()
     setTimeout(() => {

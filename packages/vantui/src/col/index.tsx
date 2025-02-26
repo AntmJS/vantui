@@ -2,7 +2,10 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import * as utils from '../wxs/utils'
 import { ColProps } from '../../types/col'
+import { get } from '../default-props'
 import * as computed from './wxs'
+
+const d = get().Col
 
 export function Col(props: ColProps): JSX.Element {
   const {
@@ -13,7 +16,10 @@ export function Col(props: ColProps): JSX.Element {
     className,
     style,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <View

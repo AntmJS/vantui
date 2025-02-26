@@ -14,6 +14,7 @@ import {
 } from 'react'
 import { Loading } from '../loading'
 import { InfiniteScrollProps, InfiniteScrollInstance } from '../../types/index'
+import { get } from '../default-props'
 
 const clsPrefix = `van-infinite-scroll`
 type IStatus = 'loading' | 'complete' | 'error'
@@ -23,6 +24,8 @@ function InfiniteScroll_(
   props: InfiniteScrollProps,
   ref: React.ForwardedRef<InfiniteScrollInstance>,
 ) {
+  const [d] = useState(get().InfiniteScroll)
+
   const {
     renderLoading,
     renderComplete,
@@ -34,7 +37,10 @@ function InfiniteScroll_(
     loadingText = '加载中...',
     errorText = '加载失败',
     reloadText = '重新加载',
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [status, setStatus] = useState<IStatus>('loading')
   const [onRequest, setOnRequest] = useState(false)
   const contentObserver = useRef<any>()

@@ -19,6 +19,7 @@ import {
 } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { SwiperProps, SwiperInstance } from '../../types/swiper'
+import { get } from '../default-props'
 import { getDirection } from './utils'
 
 const defaultProps = {
@@ -53,7 +54,8 @@ const Swiper = (
   props: SwiperProps,
   ref?: React.ForwardedRef<SwiperInstance>,
 ) => {
-  const propSwiper = { ...defaultProps, ...props }
+  const [d] = useState(get().Swiper)
+  const propSwiper = { ...defaultProps, ...d, ...props }
   const {
     children,
     direction,
@@ -240,7 +242,7 @@ const Swiper = (
       }
     }
     let _duration = duration
-    let timeout = 0
+    let timeout: any = 0
     // 第一张和最后一样的特殊情况
     if (active === 0 && activeNew === childCount - 1) {
       _duration = 0
@@ -378,14 +380,14 @@ const Swiper = (
     const _style = {
       width: W || '100%',
       height: H || '100%',
-      ...style,
+      ...(style as any),
     }
     if (containerSize) {
       _style[isVertical ? 'height' : 'width'] = containerSize
     }
 
     return _style
-  }, [H, W, containerSize, isVertical])
+  }, [H, W, containerSize, isVertical, style])
 
   return (
     <View

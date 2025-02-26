@@ -1,8 +1,12 @@
 import { View, Image } from '@tarojs/components'
+import { useState } from 'react'
 import { EmptyProps } from '../../types/empty'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Empty(props: EmptyProps) {
+  const [d] = useState(get().Empty)
+
   const {
     image = 'default',
     description,
@@ -12,7 +16,10 @@ export function Empty(props: EmptyProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <View className={` van-empty ${className}`} style={style} {...others}>

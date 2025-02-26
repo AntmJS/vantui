@@ -11,10 +11,13 @@ import VanLoading from '../loading/index'
 import VanIcon from '../icon/index'
 import { isBoolean, isPromise } from '../common/validator'
 import { isArray } from '../utils/type'
+import { get } from '../default-props'
 import * as computed from './wxs'
 import { isImageFile, chooseFile, isVideoFile } from './utils'
 
 export function Uploader(props: UploaderProps) {
+  const [d] = useState(get().Uploader)
+
   const [state, setState] = useState({
     lists: [] as Array<any>,
     isInCount: true,
@@ -52,7 +55,10 @@ export function Uploader(props: UploaderProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const fileList = useMemo(() => {
     return isArray(props.fileList) ? props.fileList : []

@@ -1,8 +1,11 @@
 import { View, Text } from '@tarojs/components'
+import { useState } from 'react'
 import { Icon } from '../icon'
 import { IResultProps } from '../../types/result'
+import { get } from '../default-props'
 
 export default function Index(props: IResultProps): JSX.Element {
+  const [d] = useState(get().Result)
   const {
     className,
     title,
@@ -12,7 +15,10 @@ export default function Index(props: IResultProps): JSX.Element {
     extra,
     iconSize,
     renderIcon,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <View className={`van-result ${className}`} style={style}>

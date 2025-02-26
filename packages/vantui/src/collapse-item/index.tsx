@@ -5,6 +5,9 @@ import * as utils from '../wxs/utils'
 import { CollapseItemProps } from '../../types/collapse'
 import { getRect } from '../common/utils'
 import VanCell from '../cell/index'
+import { get } from '../default-props'
+
+const d = get().CollapseItem
 
 let compIndex = 0
 
@@ -38,7 +41,10 @@ export function CollapseItem(
     handleToggle,
     rectWrapper = '.van-collapse',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [currHeight, setCurrHeight] = useState('auto')
   const [init, setInit] = useState(false)

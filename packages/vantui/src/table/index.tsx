@@ -8,6 +8,7 @@ import { IColumns, ITableProps } from '../../types/table'
 import { Loading } from '../loading'
 import { Empty } from '../empty'
 import { Sticky } from '../sticky'
+import { get } from '../default-props'
 
 const DEFAULT_COL_WIDTH = 100
 const UNIFY_PADDING = {
@@ -23,6 +24,8 @@ type FixedType = 'left' | 'right'
 type SortOrder = 'ascend' | 'descend' | undefined
 
 export const Table = (props: ITableProps): JSX.Element | null => {
+  const [d] = useState(get().Table)
+
   const {
     columns: pColumns = [],
     dataSource: pDataSource = [],
@@ -41,7 +44,10 @@ export const Table = (props: ITableProps): JSX.Element | null => {
     placeholder = '--',
     scrollViewProps = {},
     sticky = false,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [error, setError] = useState<boolean>(false)
   const [dataSource, setDataSource] =

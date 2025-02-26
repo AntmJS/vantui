@@ -17,6 +17,7 @@ import * as utils from '../wxs/utils'
 import VanIcon from '../icon/index'
 import VanCell from '../cell'
 import VanPopup from '../popup'
+import { get } from '../default-props'
 
 function Index(
   props: DropdownItemProps & {
@@ -26,6 +27,7 @@ function Index(
   },
   ref: React.Ref<IDropdownItemInstance>,
 ) {
+  const [d] = useState(get().DropdownItem)
   const {
     title,
     titleClass,
@@ -44,7 +46,10 @@ function Index(
     className = '',
     style,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [wrapperStyle, setWrapperStyle] = useState<any>({})
   const [transition, setTransition] = useState(true)

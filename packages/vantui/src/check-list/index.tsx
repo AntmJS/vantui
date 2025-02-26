@@ -15,6 +15,9 @@ import { CheckListProps } from '../../types/check-list'
 import Loading from '../loading/index'
 import Empty from '../empty/index'
 import Icon from '../icon/index'
+import { get } from '../default-props'
+
+const d = get().CheckList
 
 export function CheckList(props: CheckListProps) {
   const {
@@ -38,7 +41,10 @@ export function CheckList(props: CheckListProps) {
     showArrowDown = false,
     showArrowRight = false,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [show, setShow] = useState<boolean>(false)
   const [checked, setChecked] = useState<Array<number | string>>([])
   const [checkedData, setCheckedData] = useState<Array<Record<string, any>>>([])

@@ -17,6 +17,7 @@ import { Sticky } from '../sticky/index'
 import { getRect, getAllRect, requestAnimationFrame } from '../common/utils'
 import { Info } from '../info/index'
 import { TabsProps, TabProps } from '../../types/tab'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 const MIN_DISTANCE = 10
@@ -48,6 +49,8 @@ function parseTabList(children: React.ReactNode): any[] {
 }
 
 export function Tabs(props: TabsProps) {
+  const [d] = useState(get().Tabs)
+
   const ref = useRef({
     skipInit: false,
     direction: '',
@@ -106,7 +109,10 @@ export function Tabs(props: TabsProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   useEffect(() => {
     setIsInited(true)

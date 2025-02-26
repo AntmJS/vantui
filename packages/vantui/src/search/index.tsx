@@ -4,7 +4,10 @@ import * as utils from '../wxs/utils'
 import { Field } from '../field'
 import { SearchProps } from '../../types/search'
 
+import { get } from '../default-props'
+
 export function Search(props: SearchProps) {
+  const [d] = useState(get().Search)
   const {
     value,
     defaultValue = '',
@@ -40,7 +43,10 @@ export function Search(props: SearchProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const noControlled = useMemo(() => typeof value === 'undefined', [value])
   const [innerValue, setInnerValue] = useState(

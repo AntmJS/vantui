@@ -6,7 +6,10 @@ import VanIcon from '../icon/index'
 import { CheckboxProps } from '../../types/checkbox'
 import CheckboxGroupContext from '../checkbox-group/context'
 import { isEmptyObject } from '../utils/type'
+import { get } from '../default-props'
 import * as computed from './wxs'
+
+const d = get().Checkbox
 
 export function Checkbox(
   props: CheckboxProps & {
@@ -32,7 +35,10 @@ export function Checkbox(
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const parentData = useContext(CheckboxGroupContext)
 

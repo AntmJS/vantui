@@ -1,8 +1,10 @@
 import { View } from '@tarojs/components'
+import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
 import { Info } from '../info'
 import { TabbarItemProps } from '../../types/tabbar'
+import { get } from '../default-props'
 
 export function TabbarItem(
   props: TabbarItemProps & {
@@ -13,6 +15,7 @@ export function TabbarItem(
     onChange?: (data?: string | number) => void
   },
 ) {
+  const [d] = useState(get().TabbarItem)
   const {
     icon,
     name,
@@ -31,7 +34,10 @@ export function TabbarItem(
     className,
     onClick,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const _click = function () {
     if (onChange) {

@@ -11,6 +11,7 @@ import Taro from '@tarojs/taro'
 import { View, Canvas } from '@tarojs/components'
 import { ISignatureProps, ISignatureInstance } from '../../types/signature'
 import { requestAnimationFrame } from '../common/utils'
+import { get } from '../default-props'
 
 const defaultProps = {
   canvasId: 'spcanvas',
@@ -26,8 +27,10 @@ const Signature = forwardRef(function Signature(
   props: ISignatureProps,
   ref: ForwardedRef<ISignatureInstance>,
 ): JSX.Element {
+  const [d] = useState(get().Signature)
   const { canvasId, lineWidth, strokeStyle, className, ...rest } = {
     ...defaultProps,
+    ...d,
     ...props,
   }
   const canvasRef = useRef<HTMLCanvasElement>(null)

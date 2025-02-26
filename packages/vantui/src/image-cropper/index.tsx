@@ -12,6 +12,7 @@ import { ImageCropperProps } from '../../types/image-cropper'
 import { getRect } from '../common/utils'
 import { Button } from '../button'
 import { Icon } from '../icon'
+import { get } from '../default-props'
 import { rotateImage } from './utils'
 import { drawCropperImage, drawImageWithRotation } from './h5'
 
@@ -28,7 +29,17 @@ pageRects.windowHeight = windowHeight
 pageRects.pixelRatio = pixelRatio
 
 export default function ImageCropper(props: ImageCropperProps) {
-  const { allowScale = true, image, scale = 2, fixScale = false } = props
+  const [d] = useState(get().ImageCropper)
+
+  const {
+    allowScale = true,
+    image,
+    scale = 2,
+    fixScale = false,
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [imageRotate, setimageRotate] = useState(0)
   // eslint-disable-next-line prefer-const

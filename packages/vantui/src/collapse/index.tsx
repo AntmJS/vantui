@@ -9,6 +9,9 @@ import {
 import { ITouchEvent, View } from '@tarojs/components'
 
 import { CollapseProps } from '../../types/collapse'
+import { get } from '../default-props'
+
+const d = get().Collapse
 
 export function Collapse(props: CollapseProps) {
   const {
@@ -22,7 +25,10 @@ export function Collapse(props: CollapseProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [defaultOpenIndex, setDefaultOpenIndex] = useState<Array<string>>([])
 

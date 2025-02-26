@@ -7,6 +7,7 @@ import {
   IFormRenderItemProps,
   IRegisterFormParams,
 } from '../../types/form-render'
+import { get } from '../default-props'
 import { formComponents, resiterComponent, showComponents } from './register'
 import { transformValueByType } from './utils'
 
@@ -15,7 +16,12 @@ const clsPrefix = 'van'
 let initIndex = 0
 
 function FormRender<T>(props: IFormRenderProps<T>) {
-  const { config, defaultValues, form, onChange } = props
+  const [d] = useState(get().FormRender)
+
+  const { config, defaultValues, form, onChange } = {
+    ...d,
+    ...props,
+  }
   const [componentIndex] = useState(initIndex++)
 
   const renderItem = useCallback(

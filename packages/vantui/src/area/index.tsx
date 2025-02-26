@@ -9,10 +9,13 @@ import {
   useState,
 } from 'react'
 import lodash from 'lodash'
+import { get } from '../default-props'
 import * as computed from './wxs'
 import VanPicker from './../picker'
 import { AreaProps } from './../../types/area'
 import { PickerEvents } from './../../types/picker'
+
+const d = get().Area || {}
 
 const EMPTY_CODE = '000000'
 function Index(props: AreaProps, ref?: React.Ref<unknown>) {
@@ -34,7 +37,10 @@ function Index(props: AreaProps, ref?: React.Ref<unknown>) {
     cancelButtonText = '取消',
     confirmButtonText = '确认',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const pickerRef = useRef<any>(null)
   const codeRef = useRef<any>('')
   const columns = useMemo(

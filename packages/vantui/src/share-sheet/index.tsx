@@ -1,5 +1,6 @@
 import { View, Button } from '@tarojs/components'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { get } from '../default-props'
 import * as computed from './wxs'
 import Options from './options'
 import VanPopup from './../popup'
@@ -7,7 +8,9 @@ import {
   ShareSheetProps,
   ShareSheetOptionItem,
 } from './../../types/share-sheet'
+
 export function ShareSheet(props: ShareSheetProps) {
+  const [d] = useState(get().ShareSheet)
   const {
     show,
     duration = 300,
@@ -27,7 +30,10 @@ export function ShareSheet(props: ShareSheetProps) {
     onClose,
     onCancel,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const _onClickOverlay = useCallback(() => {
     onClickOverlay?.()

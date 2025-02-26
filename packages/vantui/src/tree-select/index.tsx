@@ -4,9 +4,13 @@ import * as utils from '../wxs/utils'
 import VanSidebarItem from '../sidebar-item/index'
 import VanSidebar from '../sidebar/index'
 import VanIcon from '../icon/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 import { TreeSelectProps } from './../../types/tree-select'
+
 export function TreeSelect(props: TreeSelectProps) {
+  const [d] = useState(get().TreeSelect)
+
   const {
     items = [],
     selectedIcon = 'success',
@@ -17,7 +21,10 @@ export function TreeSelect(props: TreeSelectProps) {
     onClickItem,
     onClickNav,
     renderContent,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [subItems, setSubItems] = useState<any[]>([])
   const _onSelectItem = useCallback(
     (event, item) => {

@@ -1,16 +1,17 @@
 import { createAnimation, useReady, nextTick } from '@tarojs/taro'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Navigator, ITouchEvent } from '@tarojs/components'
-
 import * as utils from '../wxs/utils'
 import { NoticeBarProps } from '../../types/notice-bar'
 import { getRect, requestAnimationFrame } from '../common/utils'
 import VanIcon from '../icon/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 let NOTICE_BAR_INDEX = 0
 
 export function NoticeBar(props: NoticeBarProps) {
+  const [d] = useState(get().NoticeBar)
   const [state, setState] = useState({
     ready: false,
     show: true,
@@ -51,7 +52,10 @@ export function NoticeBar(props: NoticeBarProps) {
     children,
     rectWrapper = '',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   useEffect(() => {
     setState((state) => {

@@ -1,10 +1,14 @@
 import { View } from '@tarojs/components'
+import { useState } from 'react'
 import * as utils from '../wxs/utils'
 import { TagProps } from '../../types/tag'
 import { Icon } from '../icon'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 export function Tag(props: TagProps) {
+  const [d] = useState(get().Tag)
+
   const {
     type = 'default',
     size,
@@ -19,7 +23,10 @@ export function Tag(props: TagProps) {
     style,
     className,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <View

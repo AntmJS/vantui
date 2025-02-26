@@ -101,6 +101,10 @@ function getMenus() {
           title: '样式覆盖',
         },
         {
+          path: 'default-props',
+          title: '默认参数配置',
+        },
+        {
           path: 'theme',
           title: '定制主题',
         },

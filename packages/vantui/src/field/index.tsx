@@ -6,11 +6,14 @@ import { FieldProps } from '../../types/field'
 import { Cell } from '../cell'
 import { Icon } from '../icon'
 import { resizeTextarea } from '../utils'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 let FIELD_INDEX = 0
 
 export function Field(props: FieldProps) {
+  const [d] = useState(get().Field)
+
   const ref: React.MutableRefObject<{
     focused: boolean
   }> = useRef({
@@ -87,7 +90,10 @@ export function Field(props: FieldProps) {
     onClickIcon,
     onLineChange,
     onKeyboardHeightChange,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   useEffect(() => {
     setState((state) => {

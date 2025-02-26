@@ -1,6 +1,7 @@
 import { View } from '@tarojs/components'
 import React, { useCallback, useEffect, useState } from 'react'
 import { PaginationProps } from '../../types/pagination'
+import { get } from '../default-props'
 
 const clsPrefix = 'van-pagination'
 
@@ -8,6 +9,7 @@ export function Pagination(
   props: Partial<PaginationProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
 ) {
+  const [d] = useState(get().Pagination)
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     modelValue,
@@ -29,7 +31,10 @@ export function Pagination(
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ...rest
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [currentPage, setCurrent] = useState(1)
   const [pages, setPages] = useState<any>([])

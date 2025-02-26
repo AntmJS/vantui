@@ -2,7 +2,10 @@ import { View } from '@tarojs/components'
 
 import * as utils from '../wxs/utils'
 import { CheckboxGroupProps } from '../../types/checkbox'
+import { get } from '../default-props'
 import CheckboxGroupContext from './context'
+
+const d = get().CheckboxGroup
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
   const {
@@ -15,7 +18,10 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   return (
     <CheckboxGroupContext.Provider

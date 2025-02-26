@@ -13,10 +13,13 @@ import toArray from 'rc-util/lib/Children/toArray'
 import * as utils from '../wxs/utils'
 import { getRect, getAllRect, isDef } from '../common/utils'
 import { GREEN } from '../common/color'
+import { get } from '../default-props'
 import { usePageScroll } from './../mixins/page-scroll'
 import { IndexBarProps } from './../../types/index-bar'
 
 export function IndexBar(props: IndexBarProps) {
+  const [d] = useState(get().IndexBar)
+
   const {
     sticky = true,
     zIndex = 1,
@@ -28,7 +31,10 @@ export function IndexBar(props: IndexBarProps) {
     className,
     style,
     rectWrapper = '',
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [activeAnchorIndex, setActiveAnchorIndex] = useState<any>(null)
   const [changeData, setChangeData] = useState<any>([])

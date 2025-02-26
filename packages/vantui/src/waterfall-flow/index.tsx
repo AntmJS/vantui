@@ -1,16 +1,26 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { View } from '@tarojs/components'
 import { BaseRecord, WaterfallFlowProps } from '../../types/waterfall-flow'
+import { get } from '../default-props'
 import { useWaterfallAttributes } from './useWaterfallAttributes'
 import { WaterfallFlowItem } from './WaterfallFlowItem'
 
-export function WaterfallFlow<TRecord extends BaseRecord = any>({
-  columnNum = 2,
-  dataSource,
-  renderItem,
-  gutter = 0,
-  calculationDelay = 0,
-}: WaterfallFlowProps<TRecord>) {
+export function WaterfallFlow<TRecord extends BaseRecord = any>(
+  props: WaterfallFlowProps<TRecord>,
+) {
+  const [d] = useState(get().WaterfallFlow)
+
+  const {
+    columnNum = 2,
+    dataSource,
+    renderItem,
+    gutter = 0,
+    calculationDelay = 0,
+  } = {
+    ...d,
+    ...props,
+  }
+
   const widthGutter = useMemo(() => {
     if (Array.isArray(gutter)) {
       return gutter[0] ?? 0

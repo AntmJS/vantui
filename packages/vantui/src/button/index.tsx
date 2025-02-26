@@ -6,7 +6,10 @@ import * as utils from '../wxs/utils'
 import { Icon } from '../icon/index'
 import { Loading } from '../loading/index'
 import { Toast } from '../toast/index'
+import { get } from '../default-props'
 import * as computed from './wxs'
+
+const d = get().Button || {}
 
 let defaultConfig = {
   asyncLoading: false,
@@ -38,7 +41,10 @@ function Button(props: ButtonProps) {
     loadingMode = 'normal',
     loadingMask = true,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [innerLoading, setInnerLoading] = useState<boolean | undefined>(false)
   const [compIndex] = useState<number>(++index)

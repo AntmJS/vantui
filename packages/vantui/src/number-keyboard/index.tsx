@@ -1,13 +1,15 @@
-import React, { useRef, useMemo, useCallback } from 'react'
+import React, { useRef, useMemo, useCallback, useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { NumberKeyboardProps } from '../../types/number-keyboard'
 import { Icon } from '../icon'
 import { Popup } from '../popup'
+import { get } from '../default-props'
 
 const classPrefix = 'vantui-number-keyboard'
 
 export const NumberKeyboard: React.FC<NumberKeyboardProps> = (props) => {
+  const [d] = useState(get().NumberKeyboard)
   const {
     visible,
     title,
@@ -17,7 +19,10 @@ export const NumberKeyboard: React.FC<NumberKeyboardProps> = (props) => {
     showCloseButton = true,
     confirmText = null,
     closeOnConfirm = true,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const shuffle = useCallback(function (array) {
     const len = array.length

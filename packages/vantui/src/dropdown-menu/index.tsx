@@ -13,11 +13,14 @@ import {
 import { DropdownMenuProps } from '../../types/dropdown-menu'
 import { getRect } from '../common/utils'
 import * as utils from '../wxs/utils'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 let ARRAY: Array<any> = []
 
 export function DropdownMenu(props: DropdownMenuProps) {
+  const [d] = useState(get().DropdownMenu)
+
   const {
     activeColor,
     overlay = true,
@@ -30,7 +33,10 @@ export function DropdownMenu(props: DropdownMenuProps) {
     style,
     rectWrapper = '',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const [itemListData, setItemListData] = useState<Array<any>>([])
   const childrenInstance = useRef<Array<any>>([])

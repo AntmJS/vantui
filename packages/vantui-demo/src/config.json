@@ -56,6 +56,10 @@
         "title": "ConfigProvider 全局配置"
       },
       {
+        "path": "default-props",
+        "title": "defaultProps 默认参数配置"
+      },
+      {
         "path": "icon",
         "title": "Icon 图标"
       },

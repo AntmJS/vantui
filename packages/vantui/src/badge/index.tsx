@@ -4,6 +4,10 @@ import { BadgeProps } from '../../types/badge'
 
 const classPrefix = `van-badge`
 
+import { get } from '../default-props'
+
+const d = get().Badge || {}
+
 export function Badge(props: BadgeProps) {
   const {
     content = '',
@@ -11,7 +15,10 @@ export function Badge(props: BadgeProps) {
     style,
     wrapperClassName = '',
     wrapperStyle,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const isDot = content === undefined || content === null || content === ''
 

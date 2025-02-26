@@ -5,6 +5,7 @@ import * as utils from '../wxs/utils'
 import { NotifyProps } from '../../types/notify'
 import VanTransition from '../transition/index'
 import { getSystemInfoSync } from '../common/utils'
+import { get } from '../default-props'
 import * as computed from './wxs'
 
 const defaultId = 'van-notify'
@@ -20,6 +21,7 @@ const defaultOptions = {
   id: defaultId,
 }
 export function Notify(props: NotifyProps) {
+  const [d] = useState(get().Notify)
   const [state, setState] = useState({
     selector: '#van-notify',
     show: false,
@@ -51,6 +53,7 @@ export function Notify(props: NotifyProps) {
     ...others
   } = {
     ...defaultOptions,
+    ...d,
     ...props,
   }
 
@@ -89,6 +92,7 @@ export function Notify(props: NotifyProps) {
         show: true,
       })
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

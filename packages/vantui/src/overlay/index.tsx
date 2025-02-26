@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import * as utils from '../wxs/utils'
 import { OverlayProps } from '../../types/overlay'
+import { get } from '../default-props'
 import VanTransition from './../transition'
+
 function OverlayInner(props: OverlayProps & { setOuterShow?: any }) {
+  const [d] = useState(get().Overlay)
   const {
     show,
     zIndex,
@@ -13,7 +16,10 @@ function OverlayInner(props: OverlayProps & { setOuterShow?: any }) {
     setOuterShow,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const _noop = useCallback((event) => {
     event.stopPropagation()
     event.preventDefault()

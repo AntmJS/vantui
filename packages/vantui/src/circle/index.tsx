@@ -4,6 +4,9 @@ import { View, Canvas } from '@tarojs/components'
 import { Current } from '@tarojs/runtime'
 import { CircleProps } from '../../types/circle'
 import { isObj } from '../common/validator'
+import { get } from '../default-props'
+
+const d = get().Circle
 
 function format(rate: number) {
   return Math.min(Math.max(rate, 0), 100)
@@ -42,7 +45,10 @@ export function Circle(props: CircleProps) {
     className,
     children,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   useEffect(() => {
     Current.page = Current.page ?? { path: `page-${indexRef.current}` }

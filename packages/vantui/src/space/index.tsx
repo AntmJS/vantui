@@ -1,11 +1,14 @@
-import { Children, useMemo } from 'react'
+import { Children, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { SpaceProps } from '../../types/space'
 
+import { get } from '../default-props'
+
 const classPrefix = `van-space`
 
 export function Space(props: SpaceProps) {
+  const [d] = useState(get().Space)
   const {
     direction = 'horizontal',
     align,
@@ -19,11 +22,14 @@ export function Space(props: SpaceProps) {
     gapHorizontal,
     gapVertical,
     ...others
-  } = props || {}
+  } = {
+    ...d,
+    ...props,
+  }
 
   const _style = useMemo(() => {
     let s: React.CSSProperties | any = {
-      ...style,
+      ...(style as any),
     }
     if (gap) {
       s = {

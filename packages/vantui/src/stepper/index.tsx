@@ -9,8 +9,10 @@ import {
 } from 'react'
 import * as utils from '../wxs/utils'
 import { isDef } from '../common/validator'
+import { get } from '../default-props'
 import { IStepperInstance, StepperProps } from './../../types/stepper'
 import * as computed from './wxs'
+
 const LONG_PRESS_START_TIME = 600
 const LONG_PRESS_INTERVAL = 200
 // add num and avoid float number
@@ -26,6 +28,7 @@ export function Stepper(
   props: StepperProps,
   ref: React.ForwardedRef<IStepperInstance>,
 ) {
+  const [d] = useState(get().Stepper)
   const {
     theme,
     value,
@@ -56,7 +59,10 @@ export function Stepper(
     renderPlus,
     adjustPosition = true,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const [currentValue, setCurrentValue] = useState<any>()
   const eventTypeRef = useRef('')
   const longPressTimerRef = useRef<any>(0)

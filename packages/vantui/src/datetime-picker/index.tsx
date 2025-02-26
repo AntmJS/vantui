@@ -17,6 +17,7 @@ import {
   IDatetimePickerInstance,
 } from '../../types/datetime-picker'
 import * as utils from '../wxs/utils'
+import { get } from '../default-props'
 import {
   defaultFormatter,
   getMonthEndDay,
@@ -28,6 +29,8 @@ import {
   currentYear,
   getCurrentValueArr,
 } from './wxs'
+
+const d = get().DatetimePicker
 
 export function DatetimePicker(
   props: DatetimePickerProps,
@@ -60,7 +63,10 @@ export function DatetimePicker(
     // @ts-ignore
     ref,
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
 
   const PickRef = useRef<IPickerInstance & any>({})
   const [innerValue, setInnerValue] = useState<any>(Date.now()) // 真正的选中的值还是在picker里面

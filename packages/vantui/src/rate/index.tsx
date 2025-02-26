@@ -5,7 +5,10 @@ import { Icon } from '../icon/index'
 import { getAllRect } from '../common/utils'
 import { RateProps } from '../../types/rate'
 
+import { get } from '../default-props'
+
 export function Rate(props: RateProps) {
+  const [d] = useState(get().Rate)
   const {
     count = 5,
     gutter,
@@ -26,7 +29,10 @@ export function Rate(props: RateProps) {
     defaultValue = 5,
     iconClassPrefix = 'van-icon',
     ...others
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
   const indexRef = useRef(`${+new Date()}${Math.ceil(Math.random() * 10000)}`)
   const [countArray, setCountArray] = useState(Array.from({ length: count }))
   const noControlled = useMemo(() => typeof value === 'undefined', [value])
