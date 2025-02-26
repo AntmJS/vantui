@@ -100,7 +100,7 @@ const Signature = forwardRef(function Signature(
     })
   }
 
-  const base64ToFile = (base64: string) : Promise<string> => {
+  const base64ToFile = (base64: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       const data = base64.replace(/^data:image\/\w+;base64,/, '')
       const buffer = Taro.base64ToArrayBuffer(data)
@@ -117,7 +117,7 @@ const Signature = forwardRef(function Signature(
           resolve(filePath)
         },
         fail: (err) => {
-          console.error('@anmjs/vantui: signature failed to save file: ', err);
+          console.error('@anmjs/vantui: signature failed to save file: ', err)
           reject(err)
         },
       })
