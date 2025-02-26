@@ -1,4 +1,19 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.5...v) (2025-02-19)
+# [](https://github.com/AntmJS/vantui/compare/v3.5.6...v) (2025-02-26)
+
+
+### Bug Fixes
+
+* 修复image组件加载报错，依旧展示loading图片问题 ([adfe471](https://github.com/AntmJS/vantui/commit/adfe471cdda0c4faaabc7faac2fbbb33d684afd9))
+* 修复签名组件在微信基础库3.7.8的兼容性问题 ([#739](https://github.com/AntmJS/vantui/issues/739)) ([b43ab7f](https://github.com/AntmJS/vantui/commit/b43ab7f0a7c6db65372cc05bd92ab82585efbcb3))
+
+
+### Features
+
+* 新增default-props方法 ([afef560](https://github.com/AntmJS/vantui/commit/afef560e9a258db2b3eb57476e4df4b5147a5067))
+
+
+
+## [3.5.6](https://github.com/AntmJS/vantui/compare/v3.5.5...v3.5.6) (2025-02-19)
 
 
 ### Bug Fixes
