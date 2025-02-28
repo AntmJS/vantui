@@ -1,5 +1,5 @@
 import { View, Text } from '@tarojs/components'
-import { useDidHide } from '@tarojs/taro'
+import { useEffect } from 'react'
 import { DefaultProps, Empty, Icon, Image } from '@antmjs/vantui'
 
 // 建议在入口文件使用, 如果在单独页面使用个性化处理，在离开页面时还原defaultProps
@@ -18,8 +18,11 @@ const originProps = DefaultProps.set({
 })
 
 export default function Demo() {
-  useDidHide(() => {
-    DefaultProps.set(originProps)
+  // 小程序使用useHide
+  useEffect(() => {
+    return () => {
+      DefaultProps.set(originProps)
+    }
   })
 
   return (

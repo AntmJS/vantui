@@ -21,10 +21,6 @@ import { DefaultProps } from '@antmjs/vantui'
 
 ::: $demo1 :::
 
-### 部分页面个性化设置
-
-::: $demo2 :::
-
 ### IDefaultProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/default-props.d.ts)
 
 | 参数              | 说明 | 类型                                                                                                                                                                                                                   | 默认值 | 必填    |
