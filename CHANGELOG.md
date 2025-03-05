@@ -1,15 +1,25 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.5.6...v) (2025-02-26)
+# [](https://github.com/AntmJS/vantui/compare/v3.6.0...v) (2025-03-05)
 
 
 ### Bug Fixes
 
 * 修复image组件加载报错，依旧展示loading图片问题 ([adfe471](https://github.com/AntmJS/vantui/commit/adfe471cdda0c4faaabc7faac2fbbb33d684afd9))
-* 修复签名组件在微信基础库3.7.8的兼容性问题 ([#739](https://github.com/AntmJS/vantui/issues/739)) ([b43ab7f](https://github.com/AntmJS/vantui/commit/b43ab7f0a7c6db65372cc05bd92ab82585efbcb3))
+* 修复pull-to-refresh组件3.5.5版本阻碍滚动问题 ([fe6c277](https://github.com/AntmJS/vantui/commit/fe6c2774756a06c73a7bb907401db3e8c123b0fa))
+* 修复离开swiper页面返回不滚动 ([#733](https://github.com/AntmJS/vantui/issues/733)) ([9f9d96d](https://github.com/AntmJS/vantui/commit/9f9d96dbab118d0651ab58fadafb5d35bcb4f084))
 
 
 ### Features
 
 * 新增default-props方法 ([afef560](https://github.com/AntmJS/vantui/commit/afef560e9a258db2b3eb57476e4df4b5147a5067))
+
+
+
+# [3.6.0](https://github.com/AntmJS/vantui/compare/v3.5.6...v3.6.0) (2025-02-26)
+
+
+### Bug Fixes
+
+* 修复签名组件在微信基础库3.7.8的兼容性问题 ([#739](https://github.com/AntmJS/vantui/issues/739)) ([b43ab7f](https://github.com/AntmJS/vantui/commit/b43ab7f0a7c6db65372cc05bd92ab82585efbcb3))
 
 
 
