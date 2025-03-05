@@ -13,7 +13,7 @@ export default function Demo() {
   return (
     <PullToRefresh onRefresh={onRefresh}>
       <View style={{ padding: '0 12px' }}>
-        {new Array(10).fill(1).map((_, index) => (
+        {new Array(80).fill(1).map((_, index) => (
           <View
             style={{ padding: 12, background: '#fff', marginBottom: 12 }}
             key={`PullToRefresh${index}`}
