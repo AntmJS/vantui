@@ -106,8 +106,6 @@ export function Rate(props: RateProps) {
 
   return (
     <View
-      // @ts-ignore
-      catchMove
       className={
         `rate-com-index${indexRef.current} ` +
         utils.bem('rate') +

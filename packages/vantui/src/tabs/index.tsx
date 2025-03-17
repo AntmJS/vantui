@@ -505,8 +505,6 @@ export function Tabs(props: TabsProps) {
         </View>
       </Sticky>
       <View
-        // @ts-ignore
-        catchMove
         className="van-tabs__content"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}

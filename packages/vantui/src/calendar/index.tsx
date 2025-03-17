@@ -528,6 +528,7 @@ function Index(
           scrollIntoView={scrollIntoView}
           scrollWithAnimation={false}
           scrollAnimationDuration="0ms"
+          onScroll={(e) => e.stopPropagation()}
         >
           {monthsData.map((item: any, index) => {
             return (

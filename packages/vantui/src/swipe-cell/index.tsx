@@ -301,8 +301,6 @@ function Index(
 
   return (
     <View
-      // @ts-ignore
-      catchMove
       className={`van-swipe-cell  ${className}`}
       data-key="cell"
       style={utils.style([style])}
