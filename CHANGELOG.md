@@ -1,4 +1,14 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.6.0...v) (2025-03-05)
+# [](https://github.com/AntmJS/vantui/compare/v3.6.1...v) (2025-03-18)
+
+
+### Bug Fixes
+
+* 3.5.3优化导致的部分组件阻塞页面滚动问题 ([c7ae43f](https://github.com/AntmJS/vantui/commit/c7ae43f987328b2e803f70a20358222cc6bf8c37))
+* swiper轮播组件在2张图片时的异常问题（[#744](https://github.com/AntmJS/vantui/issues/744)） ([1a5e34c](https://github.com/AntmJS/vantui/commit/1a5e34c82a9de23d1acca32befa0c649f2b1d1df))
+
+
+
+## [3.6.1](https://github.com/AntmJS/vantui/compare/v3.6.0...v3.6.1) (2025-03-05)
 
 
 ### Bug Fixes
