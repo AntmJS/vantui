@@ -9,7 +9,6 @@ const originProps = DefaultProps.set({
     style: {
       minHeight: '80px',
       minWidth: '80px',
-      border: '1px solid red',
     },
   },
   Empty: {

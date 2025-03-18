@@ -110,16 +110,35 @@ const Swiper = (
     return isVertical ? H : W
   }, [H, W, isVertical])
 
-  const { childs, childCount } = useMemo(() => {
+  const { childs, childCount, resetChilds } = useMemo(() => {
     let childCount = 0
-    const childs = Children.map(children, (child) => {
-      if (!isValidElement(child)) return null
-      childCount++
-      return child
-    })
+    const childFirst = children?.[0]
+    const childs =
+      Children.map(children, (child) => {
+        if (!isValidElement(child)) return null
+        childCount++
+        return child
+      }) || []
+
+    const resetChilds = [...childs]
+
+    const childLast = children?.[childCount - 1]
+    if (childCount === 2) {
+      if (childFirst) {
+        resetChilds.push(childFirst)
+      }
+
+      childCount += 1
+
+      if (childLast) {
+        resetChilds.unshift(childLast)
+      }
+      childCount += 1
+    }
     return {
       childs,
       childCount,
+      resetChilds,
     }
   }, [children])
 
@@ -241,6 +260,7 @@ const Swiper = (
         activeNew = activeNew > childCount - 1 ? 0 : activeNew
       }
     }
+
     let _duration = duration
     let timeout: any = 0
     // 第一张和最后一样的特殊情况
@@ -404,7 +424,7 @@ const Swiper = (
       style={containerStyle}
     >
       <View className={contentClass} style={wrapperStyle} ref={innerRef}>
-        {Children.map(childs, (child: any, index: number) => {
+        {Children.map(resetChilds, (child: any, index: number) => {
           return (
             <View
               className={'van-swiper-item-wrapper'}
