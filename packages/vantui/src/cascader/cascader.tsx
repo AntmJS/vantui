@@ -285,6 +285,20 @@ const InternalCascader = (props: CascaderProps) => {
     if ((!type && node.disabled) || !state.panes[state.tabsCursor]) {
       return
     }
+
+    // 如果开启了 checkStrictly，则可能需要取消节点的选中状态
+    if (checkStrictly) {
+      const pathNodes = state.panes.map((item) => item.selectedNode)
+      if (pathNodes.includes(node)) {
+        // 取消选中状态
+        state.panes = state.panes.slice(0, (node.level as number) + 1)
+        // @ts-ignore
+        state.panes[node.level].selectedNode = null
+        setOptiosData(state.panes)
+        return
+      }
+    }
+
     // 如果没有子节点
     if (state.tree.isLeaf(node, isLazy())) {
       node.leaf = true

@@ -30,7 +30,7 @@ export default function Demo() {
         title="地址选择"
         options={options}
         checkStrictly
-        closeable
+        okText="确定"
         onClose={() => {
           setIsVisible(false)
         }}
