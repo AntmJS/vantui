@@ -50,6 +50,12 @@ import { Cascader } from '@antmjs/vantui'
 
 ::: $demo6 :::
 
+### 可选择任意节点
+
+在某些场景下，你可能需要选择任意层级的节点，而不是必需选择至叶子节点。通过设置`checkStrictly`属性为 true，可以实现父子节点选中状态不再关联的效果，即每个节点都可以独立被选中或取消。
+
+::: $demo7 :::
+
 ### CascaderProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/cascader.d.ts)
 
 | 参数              | 说明                                                    | 类型                                                                                                                                                                  | 默认值 | 必填    |
@@ -67,6 +73,8 @@ import { Cascader } from '@antmjs/vantui'
 | closeIcon         | 关闭图标                                                | _&nbsp;&nbsp;string<br/>_                                                                                                                                             | -      | `false` |
 | scrollIntoView    | 数据过多时，选中元素是否滚动到中央                      | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                            | true   | `false` |
 | lazy              | 是否开启动态加载                                        | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                            | -      | `false` |
+| checkStrictly     | 是否开启父子节点选中状态不再关联，可各自选中或取消      | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                            | false  | `false` |
+| okText            | 开启 checkStrictly 时，确定按钮文案                     | _&nbsp;&nbsp;string<br/>_                                                                                                                                             | 确定   | `false` |
 | lazyLoad          | 动态加载方法                                            | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;node:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;resolve:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                    | -      | `false` |
 | onClose           | 弹窗关闭                                                | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                               | -      | `false` |
 | onChange          | 选中值改变时触发                                        | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;params:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_                    | -      | `false` |

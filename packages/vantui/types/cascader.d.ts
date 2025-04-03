@@ -62,6 +62,7 @@ export interface CascaderProps extends ViewProps {
   checkStrictly?: boolean
   /**
    * @description 开启checkStrictly时，确定按钮文案
+   * @default 确定
    */
   okText?: string
   /**
