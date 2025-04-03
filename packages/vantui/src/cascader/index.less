@@ -38,6 +38,7 @@
   .theme(line-height, '@cascader-line-height');
 
   &__title {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,6 +53,13 @@
     color: #1a1a1a;
 
     .theme(font-size, '@cascader-title-font-size');
+
+    .van-cascader__ok-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   .van-tabs__titles {

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { View, Text } from '@tarojs/components'
 import Tab from '../tab'
 import Tabs from '../tabs'
+import Button from '../button'
 import Popup from '../popup'
 import {
   CascaderOption,
@@ -38,6 +39,8 @@ const defaultProps = {
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
+  checkStrictly: false,
+  okText: '确定',
   lazy: false,
   lazyLoad: () => {},
   onClose: () => {},
@@ -60,6 +63,8 @@ const InternalCascader = (props: CascaderProps) => {
     closeIconPosition,
     closeIcon,
     lazy,
+    checkStrictly,
+    okText,
     lazyLoad,
     onClose,
     onChange,
@@ -97,11 +102,6 @@ const InternalCascader = (props: CascaderProps) => {
     },
     lazyLoadMap: new Map(),
   })
-
-  useEffect(() => {
-    initData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     if (value !== state.innerValue) {
@@ -266,6 +266,18 @@ const InternalCascader = (props: CascaderProps) => {
     settabAnimate(false)
   }
 
+  const onOk = () => {
+    const pathNodes = state.panes.map((item) => item.selectedNode)
+    const optionParams = pathNodes.reduce((pre: any, cur: any) => {
+      if (cur) {
+        pre.push(cur.value)
+      }
+      return pre
+    }, [])
+    onChange?.(optionParams, pathNodes)
+    closePopup()
+  }
+
   /* type: 是否是静默模式，是的话不触发事件
   tabsCursor: tab的索引 */
   const chooseItem = async (node: CascaderOption, type: boolean) => {
@@ -338,13 +350,25 @@ const InternalCascader = (props: CascaderProps) => {
         show={visible}
         position="bottom"
         round
-        closeable={closeable}
+        closeable={closeable && !checkStrictly}
         closeIconPosition={closeIconPosition as any}
         closeIcon={closeIcon}
         onClickOverlay={closePopup}
         onClose={closePopup}
       >
-        <View className={'van-cascader__title'}>{title}</View>
+        <View className={'van-cascader__title'}>
+          {title}
+          {checkStrictly && (
+            <Button
+              onClick={onOk}
+              plain
+              type="default"
+              className="van-cascader__ok-btn"
+            >
+              {okText}
+            </Button>
+          )}
+        </View>
         <Tabs
           active={tabvalue}
           animated={tabAnimate}

@@ -56,6 +56,15 @@ export interface CascaderProps extends ViewProps {
    */
   lazy?: boolean
   /**
+   * @description 是否开启父子节点选中状态不再关联，可各自选中或取消
+   * @default false
+   */
+  checkStrictly?: boolean
+  /**
+   * @description 开启checkStrictly时，确定按钮文案
+   */
+  okText?: string
+  /**
    * @description 动态加载方法
    */
   lazyLoad?: (node: any, resolve: any) => void
