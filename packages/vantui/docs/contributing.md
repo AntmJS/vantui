@@ -77,4 +77,4 @@ module.exports = {
 
 ### 如何编写组件的 API 描述
 
-如果需要更改或新建组件文档的 API，请阅读[ts 同步到文档说明](https://antmjs.github.io/vantui/#/comments)
+如果需要更改或新建组件文档的 API，请阅读[ts 同步到文档说明](https://antmjs.github.io/vantui/main/#/comments)
