@@ -146,7 +146,7 @@ import { Calendar } from '@antmjs/vantui'
 | date       | -    | _&nbsp;&nbsp;Date<br/>_                                |
 | type       | -    | _&nbsp;&nbsp;string<br/>_                              |
 | text       | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_    |
-| bottomInfo | -    | _&nbsp;&nbsp;string<br/>_                              |
+| bottomInfo | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_ |
 | className  | -    | _&nbsp;&nbsp;string<br/>_                              |
 | topInfo    | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;ReactNode<br/>_ |
 
