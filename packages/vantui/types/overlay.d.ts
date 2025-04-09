@@ -4,6 +4,11 @@ export interface OverlayProps extends ViewProps {
   show?: boolean
   lockScroll?: boolean
   zIndex?: number
+  /**
+   * @description 是否挂载到页面根节点，用于解决各种 fixed 失效问题
+   * @default false
+   */
+  rootPortal?: boolean
   duration?:
     | string
     | number
