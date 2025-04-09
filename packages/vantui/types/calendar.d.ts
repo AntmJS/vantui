@@ -159,7 +159,7 @@ export type Day = {
   date: Date
   type?: string
   text?: string | number
-  bottomInfo?: string
+  bottomInfo?: string | ReactNode
   className?: string
   topInfo?: string | ReactNode
 }
