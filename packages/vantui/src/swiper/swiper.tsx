@@ -110,7 +110,7 @@ const Swiper = (
     return isVertical ? H : W
   }, [H, W, isVertical])
 
-  const { childs, childCount, resetChilds } = useMemo(() => {
+  const { childs, childCount, pageCount, resetChilds } = useMemo(() => {
     let childCount = 0
     const childFirst = children?.[0]
     const childs =
@@ -123,6 +123,7 @@ const Swiper = (
     const resetChilds = [...childs]
 
     const childLast = children?.[childCount - 1]
+    const pageCount = childCount === 2 ? 2 : childCount
     if (childCount === 2) {
       if (childFirst) {
         resetChilds.push(childFirst)
@@ -135,9 +136,11 @@ const Swiper = (
       }
       childCount += 1
     }
+
     return {
       childs,
       childCount,
+      pageCount,
       resetChilds,
     }
   }, [children])
@@ -344,8 +347,8 @@ const Swiper = (
   }))
 
   useEffect(() => {
-    onChange?.(active)
-  }, [active, onChange])
+    onChange?.((active + pageCount) % pageCount)
+  }, [active, pageCount, onChange])
 
   useDidShow(() => {
     setShowToDo(true)
@@ -451,7 +454,7 @@ const Swiper = (
             return (
               <Text
                 style={
-                  (active + childCount) % childCount === index
+                  (active + pageCount) % pageCount === index
                     ? {
                         backgroundColor: paginationColor,
                       }
@@ -459,7 +462,7 @@ const Swiper = (
                 }
                 className={classNames({
                   ['van-swiper__pagination-item']: true,
-                  active: (active + childCount) % childCount === index,
+                  active: (active + pageCount) % pageCount === index,
                 })}
                 key={index}
               />
