@@ -178,6 +178,6 @@ const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
   )
 }
 
-const UCountTo = forwardRef(Index)
-export { UCountTo }
-export default UCountTo
+const CountTo = forwardRef(Index)
+export { CountTo }
+export default CountTo
