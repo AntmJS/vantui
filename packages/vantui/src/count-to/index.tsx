@@ -9,12 +9,15 @@ import {
   forwardRef,
   useImperativeHandle,
 } from 'react'
+import { get } from '../default-props'
 import { requestAnimationFrame, cancelAnimationFrame } from '../common/utils'
 import './index.less'
 const ensureNumber = (val) => {
   // eslint-disable-next-line no-restricted-globals
   return typeof val === 'number' && !isNaN(val)
 }
+
+const d = get().CountTo
 
 const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
   const {
@@ -30,7 +33,11 @@ const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
     prefix,
     suffix,
     onFinish,
-  } = props
+  } = {
+    ...d,
+    ...props,
+  }
+
   const formatNumber = (num) => {
     num = Number(num)
     num = num.toFixed(Number(decimals))
