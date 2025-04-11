@@ -325,6 +325,10 @@ function getMenus() {
           title: 'CountDown 倒计时',
         },
         {
+          path: 'count-to',
+          title: 'CountTo 数字滚动',
+        },
+        {
           path: 'divider',
           title: 'Divider 分割线',
         },

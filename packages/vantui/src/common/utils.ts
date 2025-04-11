@@ -46,6 +46,15 @@ export function requestAnimationFrame(cb: any) {
 
   return raf.default(cb)
 }
+
+export function cancelAnimationFrame(id: any) {
+  if (window.cancelAnimationFrame) {
+    return window.cancelAnimationFrame(id)
+  }
+
+  return raf.cancel(id)
+}
+
 export function pickExclude(obj: any, keys: any) {
   if (!isPlainObject(obj)) {
     return {}
