@@ -66,6 +66,10 @@ export function DropdownMenu(props: DropdownMenuProps) {
   useLayoutEffect(
     function () {
       updateItemListData()
+
+      return () => {
+        childrenInstance.current = []
+      }
     },
     [others.children],
   )
