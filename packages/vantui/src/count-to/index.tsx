@@ -85,6 +85,7 @@ const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
   }
 
   const start = () => {
+    if (!paused.current) return
     localRef.current = {
       localStartVal: startVal,
       localDuration: duration,
@@ -95,11 +96,13 @@ const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
   }
 
   const pause = () => {
+    if (paused.current) return
     paused.current = true
     cancelAnimationFrame(rAF.current)
   }
 
   const resume = () => {
+    if (!paused.current) return
     paused.current = false
     startTime.current = null
     localRef.current = {
