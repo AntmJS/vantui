@@ -16,7 +16,7 @@ export default class Index extends Component {
   state = { active: 0 }
   render() {
     return (
-      <DemoPage title="CountTo 数字滚动" className="pages-count-to-index">
+      <DemoPage title="CountUp 数字滚动" className="pages-count-up-index">
         <DemoBlock title="基本用法" padding>
           <Demo1 />
         </DemoBlock>

@@ -1,4 +1,3 @@
-import { CountToProps } from './count-to'
 import {
   ActionSheetProps,
   AreaProps,
@@ -17,6 +16,7 @@ import {
   CollapseProps,
   CollapseItemProps,
   CountDownProps,
+  CountUpProps,
   DatetimePickerProps,
   DialogProps,
   DividerProps,
@@ -105,7 +105,7 @@ export type IDefaultProps = {
   Collapse?: Partial<CollapseProps>
   CollapseItem?: Partial<CollapseItemProps>
   CountDown?: Partial<CountDownProps>
-  CountTo?: Partial<CountToProps>
+  CountUp?: Partial<CountUpProps>
   DatetimePicker?: Partial<DatetimePickerProps>
   Dialog?: Partial<DialogProps>
   Divider?: Partial<DividerProps>

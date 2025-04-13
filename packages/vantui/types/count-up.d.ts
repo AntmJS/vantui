@@ -2,7 +2,7 @@ import type { ForwardRefRenderFunction } from 'react'
 import { ReactNode } from 'react'
 import { ViewProps } from '@tarojs/components'
 
-export interface ICountToRef {
+export interface ICountUpRef {
   /**
    * @description autoplay为false时，通过此方法启动滚动
    */
@@ -21,7 +21,7 @@ export interface ICountToRef {
   reset: () => void
 }
 
-export interface CountToProps extends ViewProps {
+export interface CountUpProps extends ViewProps {
   /**
    * @description 滚动开始值
    * @default 0
@@ -76,9 +76,9 @@ export interface CountToProps extends ViewProps {
   /**
    * @description 数字滚动实例
    */
-  ref?: React.MutableRefObject<ICountToRef | undefined>
+  ref?: React.MutableRefObject<ICountUpRef | undefined>
 }
 
-declare const CountTo: ForwardRefRenderFunction<ICountToRef, CountToProps>
+declare const CountUp: ForwardRefRenderFunction<ICountUpRef, CountUpProps>
 
-export { CountTo }
+export { CountUp }

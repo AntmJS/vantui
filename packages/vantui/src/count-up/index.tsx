@@ -1,4 +1,4 @@
-import type { CountToProps, ICountToRef } from '../../types/count-to'
+import type { CountUpProps, ICountUpRef } from '../../types/count-up'
 import { useDidHide, useDidShow } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import {
@@ -17,9 +17,9 @@ const ensureNumber = (val) => {
   return typeof val === 'number' && !isNaN(val)
 }
 
-const d = get().CountTo
+const d = get().CountUp
 
-const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
+const Index = (props: CountUpProps, ref: React.ForwardedRef<ICountUpRef>) => {
   const {
     startVal = 0,
     endVal = 0,
@@ -180,14 +180,14 @@ const Index = (props: CountToProps, ref: React.ForwardedRef<ICountToRef>) => {
   })
 
   return (
-    <View className={'vant-count-to ' + className || ''}>
-      {prefix && <Text className="vant-count-to__prefix">{prefix}</Text>}
-      <Text className="vant-count-to__content">{displayValue}</Text>
-      {suffix && <Text className="vant-count-to__suffix">{suffix}</Text>}
+    <View className={'vant-count-up ' + className || ''}>
+      {prefix && <Text className="vant-count-up__prefix">{prefix}</Text>}
+      <Text className="vant-count-up">{displayValue}</Text>
+      {suffix && <Text className="vant-count-up__suffix">{suffix}</Text>}
     </View>
   )
 }
 
-const CountTo = forwardRef(Index)
-export { CountTo }
-export default CountTo
+const CountUp = forwardRef(Index)
+export { CountUp }
+export default CountUp

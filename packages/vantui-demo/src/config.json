@@ -231,8 +231,8 @@
         "title": "CountDown 倒计时"
       },
       {
-        "path": "count-to",
-        "title": "CountTo 数字滚动"
+        "path": "count-up",
+        "title": "CountUp 数字滚动"
       },
       {
         "path": "divider",

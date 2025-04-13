@@ -1,4 +1,4 @@
-# CountTo 数字滚动
+# CountUp 数字滚动
 
 ### 介绍
 
@@ -9,7 +9,7 @@
 在 Taro 文件中引入组件
 
 ```js
-import { CountTo } from '@antmjs/vantui'
+import { CountUp } from '@antmjs/vantui'
 ```
 
 ## 代码演示
@@ -45,7 +45,7 @@ import { CountTo } from '@antmjs/vantui'
 
 ::: $demo5 :::
 
-### ICountToRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-to.d.ts)
+### ICountUpRef [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-up.d.ts)
 
 | 参数   | 说明                                     | 类型                                    |
 | ------ | ---------------------------------------- | --------------------------------------- |
@@ -54,7 +54,7 @@ import { CountTo } from '@antmjs/vantui'
 | resume | 暂停后重新开始滚动(从暂停前的值开始滚动) | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 | reset  | 重设至初始值                             | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 
-### CountToProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-to.d.ts)
+### CountUpProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/count-up.d.ts)
 
 | 参数      | 说明                         | 类型                                                                                                                                                                   | 默认值 | 必填    |
 | --------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
@@ -69,7 +69,7 @@ import { CountTo } from '@antmjs/vantui'
 | useEasing | 是否缓动结束滚动             | _&nbsp;&nbsp;boolean<br/>_                                                                                                                                             | true   | `false` |
 | separator | 千分位分隔符                 | _&nbsp;&nbsp;string<br/>_                                                                                                                                              | -      | `false` |
 | onFinish  | 滚动结束时触发               | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_                                                                                                                                | -      | `false` |
-| ref       | 数字滚动实例                 | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ICountToRef<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | -      | `false` |
+| ref       | 数字滚动实例                 | _&nbsp;&nbsp;React.MutableRefObject<<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ICountUpRef<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;undefined<br/>&nbsp;&nbsp;><br/>_ | -      | `false` |
 
 ### 样式变量
 
@@ -77,6 +77,6 @@ import { CountTo } from '@antmjs/vantui'
 
 | 名称                   | 默认值            |
 | ---------------------- | ----------------- |
-| --count-to-text-color  | ` @text-color;`   |
-| --count-to-font-size   | ` @font-size-md;` |
-| --count-to-line-height | ` 40px;`          |
+| --count-up-text-color  | ` @text-color;`   |
+| --count-up-font-size   | ` @font-size-md;` |
+| --count-up-line-height | ` 40px;`          |
