@@ -11,7 +11,7 @@ export const SwiperItem = (props: SwiperItemProps) => {
   }
 
   return (
-    <View className={`van-swiper-item ${className}`} {...others}>
+    <View className={`van-swiper-item ${className || ''}`} {...others}>
       {children}
     </View>
   )
