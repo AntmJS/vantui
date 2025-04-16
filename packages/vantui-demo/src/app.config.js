@@ -75,6 +75,7 @@ export default {
     'pages/image-viewer/index',
     'pages/image-cropper/index',
     'pages/default-props/index',
+    'pages/count-up/index',
   ],
   window: {
     navigationBarBackgroundColor: '#f8f8f8',

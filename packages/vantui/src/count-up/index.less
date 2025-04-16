@@ -1,0 +1,16 @@
+@import '../style/var.less';
+
+.vant-count-up {
+  display: inline-flex;
+  text-align: center;
+  .theme(color, '@count-up-text-color');
+  .theme(font-size, '@count-up-font-size');
+  .theme(line-height, '@count-up-line-height');
+
+  &__prefix,
+  &__suffix,
+  &__content {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

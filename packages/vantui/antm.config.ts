@@ -26,7 +26,7 @@ export default defineConfig({
     },
     simulator: {
       url: {
-        development: 'http://0.0.0.0:10068/',
+        development: 'http://0.0.0.0:10086/',
         production: '/vantui/main/mobile.html',
       },
       transform: (url) => `#/pages/${url}/index`,
@@ -323,6 +323,10 @@ function getMenus() {
         {
           path: 'count-down',
           title: 'CountDown 倒计时',
+        },
+        {
+          path: 'count-up',
+          title: 'CountUp 数字滚动',
         },
         {
           path: 'divider',
