@@ -8,6 +8,7 @@ import VanIcon from './../icon'
 import * as computed from './wxs'
 import { useTransition } from './../mixins/transition'
 import VanOverlay from './../overlay'
+import VanRootPortal from './../root-portal'
 
 function PopupInner(this: any, props: PopupProps & { setOuterShow?: any }) {
   const [d] = useState(get().Popup)
@@ -120,6 +121,7 @@ export function Popup(props: PopupProps) {
     show,
     duration = 300,
     zIndex,
+    rootPortal = false,
     overlay = true,
     lockScroll = true,
     overlayStyle,
@@ -127,6 +129,7 @@ export function Popup(props: PopupProps) {
     onClickOverlay,
     onClose,
   } = props
+
   const [innerShow, setInnerShow] = useState(false)
   useEffect(() => {
     if (show) {
@@ -142,7 +145,7 @@ export function Popup(props: PopupProps) {
   }, [closeOnClickOverlay, onClickOverlay, onClose])
 
   return (
-    <View>
+    <VanRootPortal enable={rootPortal}>
       <View>
         {overlay && (
           <VanOverlay
@@ -162,7 +165,7 @@ export function Popup(props: PopupProps) {
           <></>
         )}
       </View>
-    </View>
+    </VanRootPortal>
   )
 }
 

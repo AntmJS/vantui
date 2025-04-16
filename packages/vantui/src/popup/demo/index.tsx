@@ -7,6 +7,7 @@ import Demo1 from './demo1'
 import Demo2 from './demo2'
 import Demo3 from './demo3'
 import Demo4 from './demo4'
+import Demo5 from './demo5'
 
 export default class Index extends Component {
   constructor(props) {
@@ -30,6 +31,10 @@ export default class Index extends Component {
 
         <DemoBlock title="圆角弹窗" padding>
           <Demo4 />
+        </DemoBlock>
+
+        <DemoBlock title="挂载到页面根节点" padding>
+          <Demo5 />
         </DemoBlock>
       </DemoPage>
     )

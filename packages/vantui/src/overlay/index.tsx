@@ -3,6 +3,7 @@ import * as utils from '../wxs/utils'
 import { OverlayProps } from '../../types/overlay'
 import { get } from '../default-props'
 import VanTransition from './../transition'
+import VanRootPortal from './../root-portal'
 
 function OverlayInner(props: OverlayProps & { setOuterShow?: any }) {
   const [d] = useState(get().Overlay)
@@ -27,7 +28,7 @@ function OverlayInner(props: OverlayProps & { setOuterShow?: any }) {
   return lockScroll ? (
     <VanTransition
       show={show}
-      className={'van-overlay' + `  ${className}`}
+      className={'van-overlay' + `  ${className || ''}`}
       style={utils.style([{ 'z-index': zIndex }, style])}
       duration={duration}
       onTouchMove={_noop}
@@ -54,21 +55,22 @@ function OverlayInner(props: OverlayProps & { setOuterShow?: any }) {
   )
 }
 export function Overlay(props: OverlayProps) {
-  const { show } = props
+  const { show, rootPortal } = props
   const [innerShow, setInnerShow] = useState(false)
   useEffect(() => {
     if (show) {
       setInnerShow(true)
     }
   }, [show])
+
   return (
-    <>
+    <VanRootPortal enable={rootPortal}>
       {innerShow ? (
         <OverlayInner setOuterShow={setInnerShow} {...props} />
       ) : (
         <></>
       )}
-    </>
+    </VanRootPortal>
   )
 }
 

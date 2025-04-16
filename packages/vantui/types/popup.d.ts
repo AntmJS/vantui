@@ -61,6 +61,11 @@ export interface PopupProps extends TransitionProps, ViewProps, OverlayProps {
   safeAreaInsetTop?: boolean
   children?: ReactNode
   /**
+   * @description 是否挂载到页面根节点，用于解决各种 fixed 失效问题
+   * @default false
+   */
+  rootPortal?: boolean
+  /**
    * @description 点击蒙层触发的方法
    */
   onClickOverlay?: () => void
