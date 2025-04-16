@@ -1,4 +1,23 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.6.1...v) (2025-03-18)
+# [](https://github.com/AntmJS/vantui/compare/v3.6.2...v) (2025-04-16)
+
+
+### Bug Fixes
+
+* **calendar:** 修复日历组件的 catchMove 属性处理 ([#751](https://github.com/AntmJS/vantui/issues/751)) ([10e2e2d](https://github.com/AntmJS/vantui/commit/10e2e2ddf7eb651ed4547b253c536f48b8e879be))
+* **swiper:** 修复轮播图滚动和分页逻辑 ([#754](https://github.com/AntmJS/vantui/issues/754)) ([21305af](https://github.com/AntmJS/vantui/commit/21305af030a073ba414ae3457f343b223246c512))
+
+
+### Features
+
+* **calendar:** 扩展日历组件的 bottomInfo 类型支持 ([#752](https://github.com/AntmJS/vantui/issues/752)) ([f34311b](https://github.com/AntmJS/vantui/commit/f34311bff4b25fd80bfef8f4ae564ed623950263))
+* **Cascader:** Cascader组件支持可选任意值 ([#747](https://github.com/AntmJS/vantui/issues/747)) ([d4f75b7](https://github.com/AntmJS/vantui/commit/d4f75b7f378e6aa363bf5e859f64cc9cef367420))
+* **count-up:** 添加 CountUp 数字滚动组件 ([#756](https://github.com/AntmJS/vantui/issues/756)) ([13dab7e](https://github.com/AntmJS/vantui/commit/13dab7e5df0df2f51892c8547313c60ca6a7b66f))
+* **dropdown-menu:** 优化 DropdownMenu 组件的子组件更新 ([#755](https://github.com/AntmJS/vantui/issues/755)) ([3962c39](https://github.com/AntmJS/vantui/commit/3962c393a667851bf2dc1f18b96907226f0571b0))
+* **overlay, popup:** 添加挂载到页面根节点的功能 ([#753](https://github.com/AntmJS/vantui/issues/753)) ([584c82a](https://github.com/AntmJS/vantui/commit/584c82a4091f4f6e0149d32f13c590305c237da2))
+
+
+
+## [3.6.2](https://github.com/AntmJS/vantui/compare/v3.6.1...v3.6.2) (2025-03-18)
 
 
 ### Bug Fixes
