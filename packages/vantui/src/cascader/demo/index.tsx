@@ -9,6 +9,7 @@ import Demo3 from './demo3'
 import Demo4 from './demo4'
 import Demo5 from './demo5'
 import Demo6 from './demo6'
+import Demo7 from './demo7'
 
 export default class Index extends Component {
   constructor(props) {
@@ -40,6 +41,10 @@ export default class Index extends Component {
 
         <DemoBlock title="自动转换" padding>
           <Demo6 />
+        </DemoBlock>
+
+        <DemoBlock title="可选择任意节点" padding>
+          <Demo7 />
         </DemoBlock>
       </DemoPage>
     )

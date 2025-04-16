@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { View, Text } from '@tarojs/components'
 import Tab from '../tab'
 import Tabs from '../tabs'
+import Button from '../button'
 import Popup from '../popup'
 import {
   CascaderOption,
@@ -38,6 +39,8 @@ const defaultProps = {
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
+  checkStrictly: false,
+  okText: '确定',
   lazy: false,
   lazyLoad: () => {},
   onClose: () => {},
@@ -60,6 +63,8 @@ const InternalCascader = (props: CascaderProps) => {
     closeIconPosition,
     closeIcon,
     lazy,
+    checkStrictly,
+    okText,
     lazyLoad,
     onClose,
     onChange,
@@ -97,11 +102,6 @@ const InternalCascader = (props: CascaderProps) => {
     },
     lazyLoadMap: new Map(),
   })
-
-  useEffect(() => {
-    initData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     if (value !== state.innerValue) {
@@ -266,6 +266,18 @@ const InternalCascader = (props: CascaderProps) => {
     settabAnimate(false)
   }
 
+  const onOk = () => {
+    const pathNodes = state.panes.map((item) => item.selectedNode)
+    const optionParams = pathNodes.reduce((pre: any, cur: any) => {
+      if (cur) {
+        pre.push(cur.value)
+      }
+      return pre
+    }, [])
+    onChange?.(optionParams, pathNodes)
+    closePopup()
+  }
+
   /* type: 是否是静默模式，是的话不触发事件
   tabsCursor: tab的索引 */
   const chooseItem = async (node: CascaderOption, type: boolean) => {
@@ -273,6 +285,20 @@ const InternalCascader = (props: CascaderProps) => {
     if ((!type && node.disabled) || !state.panes[state.tabsCursor]) {
       return
     }
+
+    // 如果开启了 checkStrictly，则可能需要取消节点的选中状态
+    if (checkStrictly) {
+      const pathNodes = state.panes.map((item) => item.selectedNode)
+      if (pathNodes.includes(node)) {
+        // 取消选中状态
+        state.panes = state.panes.slice(0, (node.level as number) + 1)
+        // @ts-ignore
+        state.panes[node.level].selectedNode = null
+        setOptiosData(state.panes)
+        return
+      }
+    }
+
     // 如果没有子节点
     if (state.tree.isLeaf(node, isLazy())) {
       node.leaf = true
@@ -338,13 +364,25 @@ const InternalCascader = (props: CascaderProps) => {
         show={visible}
         position="bottom"
         round
-        closeable={closeable}
+        closeable={closeable && !checkStrictly}
         closeIconPosition={closeIconPosition as any}
         closeIcon={closeIcon}
         onClickOverlay={closePopup}
         onClose={closePopup}
       >
-        <View className={'van-cascader__title'}>{title}</View>
+        <View className={'van-cascader__title'}>
+          {title}
+          {checkStrictly && (
+            <Button
+              onClick={onOk}
+              plain
+              type="default"
+              className="van-cascader__ok-btn"
+            >
+              {okText}
+            </Button>
+          )}
+        </View>
         <Tabs
           active={tabvalue}
           animated={tabAnimate}

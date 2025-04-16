@@ -62,14 +62,14 @@ function Demo() {
 
 ### LoadingProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/loading.d.ts)
 
-| 参数     | 说明 | 类型                                                                                                                              | 默认值 | 必填    |
-| -------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| color    | -    | _&nbsp;&nbsp;string<br/>_                                                                                                         | -      | `false` |
-| vertical | -    | _&nbsp;&nbsp;boolean<br/>_                                                                                                        | -      | `false` |
-| type     | -    | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"spinner"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"circular"<br/>_ | -      | `false` |
-| size     | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | -      | `false` |
-| textSize | -    | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | -      | `false` |
-| children | -    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                | -      | `false` |
+| 参数     | 说明                        | 类型                                                                                                                              | 默认值   | 必填    |
+| -------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
+| color    | 颜色                        | _&nbsp;&nbsp;string<br/>_                                                                                                         | #c8c9cc  | `false` |
+| vertical | 是否垂直排列图标和文字内容  | _&nbsp;&nbsp;boolean<br/>_                                                                                                        | false    | `false` |
+| type     | 类型，可选值为 spinner      | _&nbsp;&nbsp;attr:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"spinner"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;"circular"<br/>_ | circular | `false` |
+| size     | 加载图标大小，默认单位为 px | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | 30px     | `false` |
+| textSize | 文字大小，默认单位为 px     | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;number<br/>_                                                                               | 14px     | `false` |
+| children | 加载文案                    | _&nbsp;&nbsp;React.ReactNode<br/>_                                                                                                | -        | `false` |
 
 ### 样式变量
 

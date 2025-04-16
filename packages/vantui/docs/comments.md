@@ -1,11 +1,11 @@
 # ts 同步到文档说明
 
-### vantui-doc 下执行同步命令
+### vantui 下执行同步命令
 
 将 `vantui/types` 中 `d.ts` 的类型描述转换为文档`vantui-docs`中的 API props 描述
 
 ```bash
-yarn docs-ts
+node ./scripts/md.js
 ```
 
 ### ts 中注释
