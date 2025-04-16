@@ -499,7 +499,7 @@ function Index(
         className={`van-calendar ${className || ''}`}
         style={utils.style([style])}
         // @ts-ignore
-        catchMove
+        catchMove={poppable}
         {...others}
       >
         {longspan && longSpanShow && poppable && (
@@ -592,7 +592,7 @@ function Index(
 
   return (
     // @ts-ignore
-    <View catchMove>
+    <View catchMove={poppable}>
       {poppable ? (
         <VanPopup
           className={'van-calendar__popup--' + position}
