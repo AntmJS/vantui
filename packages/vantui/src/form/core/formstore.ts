@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { unstable_batchedUpdates } from 'react-dom'
+import { isPromise } from '../../common/validator'
 import { IFormInstanceAPI } from '../../../types/form'
 
 type IAPI = keyof IFormInstanceAPI
@@ -353,55 +354,91 @@ class FormStore {
     return model ? model.value : null
   }
 
-  validateFieldValue(name_: Iname, forceUpdate = true) {
+  async validateFieldValue(name_: Iname, forceUpdate = true) {
     const name = Array.isArray(name_) ? name_.join('.') : name_
 
     const model = this.model[name]
     /* 记录上次状态 */
-    const lastStatus = model.status
+    const lastStatus = model?.status
     if (!model) return null
     const { required, rules, value } = model
     let status = 'resolve'
-    if (required && FormStore.isFieldNull(value)) {
-      status = 'reject'
-      if (this.requiredMessageCallback) {
-        this.model[name].message = this.requiredMessageCallback(
-          this.model[name].label,
-          name,
-        )
-      } else {
-        if (this.model[name].label) {
-          this.model[name].message = this.model[name].label + '不能为空'
+
+    try {
+      if (required && FormStore.isFieldNull(value)) {
+        status = 'reject'
+        if (this.requiredMessageCallback) {
+          this.model[name].message = this.requiredMessageCallback(
+            this.model[name].label,
+            name,
+          )
         } else {
-          this.model[name].message = '此处不能为空'
-        }
-      }
-    }
-
-    for (let i = 0; i < rules.length; i++) {
-      const rule = rules[i].rule
-      const message = rules[i].message
-
-      if (value || value === 0) {
-        if (isReg(rule)) {
-          status = rule.test(value) ? 'resolve' : 'reject'
-          if (status === 'reject') {
-            this.model[name].message = message
-            break
-          }
-        } else if (typeof rule === 'function') {
-          rule(value, (message: string) => {
-            this.model[name].message = message
-            status = !message ? 'resolve' : 'reject'
-          })
-
-          if (status === 'reject') {
-            break
+          if (this.model[name].label) {
+            this.model[name].message = this.model[name].label + '不能为空'
+          } else {
+            this.model[name].message = '此处不能为空'
           }
         }
       }
+
+      for (let i = 0; i < rules.length; i++) {
+        const rule = rules[i].rule
+        const message = rules[i].message
+
+        if (value || value === 0) {
+          if (isReg(rule)) {
+            status = rule.test(value) ? 'resolve' : 'reject'
+            if (status === 'reject') {
+              this.model[name].message = message
+              break
+            }
+          } else if (typeof rule === 'function') {
+            // 检查函数是否返回Promise
+            const result = rule(value)
+            if (isPromise(result)) {
+              try {
+                // 规则函数返回Promise的情况
+                model.status = 'validating' // 添加校验中的状态
+                const validationMessage = await result
+                status = !validationMessage ? 'resolve' : 'reject'
+                if (status === 'reject') {
+                  this.model[name].message = validationMessage || message
+                  break
+                }
+              } catch (error) {
+                // 处理异步校验过程中的错误
+                status = 'reject'
+                this.model[name].message =
+                  (error as Error)?.message || message || '校验失败'
+                break
+              }
+            } else {
+              // 传统的回调函数形式
+              const validateCallback = (callbackMessage: string) => {
+                this.model[name].message = callbackMessage
+                status = !callbackMessage ? 'resolve' : 'reject'
+              }
+
+              // 执行规则函数
+              rule(value, validateCallback)
+
+              // 如果回调没有被立即调用，可能是异步回调
+              // 但我们不能在这里等待它，因为可能永远不会被调用
+              if (status === 'reject') {
+                break
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      // 捕获整个校验过程中的任何错误
+      status = 'reject'
+      this.model[name].message = (error as Error)?.message || '校验过程发生错误'
     }
+
     model.status = status
+
     if (lastStatus !== status || forceUpdate) {
       // 校验的时候不触发form change
       const notify = this.notifyChange.bind(this, name, true)
@@ -428,15 +465,33 @@ class FormStore {
   validateFields(
     callback: (errs: Array<string>, values: Record<string, string>) => void,
   ) {
-    // 暂时异步解决更新迟缓问题
-    setTimeout(() => {
-      const errorsMess: Array<string> = []
-      Object.keys(this.model).forEach((modelName) => {
-        const modelStates = this.validateFieldValue(modelName, true)
-        if (modelStates === 'reject')
-          errorsMess.push(this.model[modelName].message)
-      })
-      callback(errorsMess, this.getFieldsValue())
+    // 使用Promise处理异步校验
+    setTimeout(async () => {
+      try {
+        const errorsMess: Array<string> = []
+        const modelNames = Object.keys(this.model)
+
+        // 等待所有字段的异步校验完成
+        const validationPromises = modelNames.map(async (modelName) => {
+          const status = await this.validateFieldValue(modelName, true)
+          if (status === 'reject') {
+            return this.model[modelName].message
+          }
+          return null
+        })
+
+        // 收集所有错误信息
+        const results = await Promise.all(validationPromises)
+        results.forEach((message) => {
+          if (message) errorsMess.push(message)
+        })
+
+        // 调用回调函数
+        callback(errorsMess, this.getFieldsValue())
+      } catch (error) {
+        console.error('表单校验过程发生错误:', error)
+        callback(['表单校验过程发生错误'], this.getFieldsValue())
+      }
     })
   }
 
