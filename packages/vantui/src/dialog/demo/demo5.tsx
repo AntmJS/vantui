@@ -2,13 +2,19 @@
 import react from 'react'
 import { View } from '@tarojs/components'
 import { Dialog, Cell } from '@antmjs/vantui'
+import Taro from '@tarojs/taro'
 
 export default function Demo() {
   const beforeCloseResolve = react.useRef<(result: boolean) => void>()
   const alert = react.useCallback((title) => {
     const beforeClose = (): Promise<boolean> => {
       return new Promise((resolve) => {
-        beforeCloseResolve.current = resolve
+        // 微信小程序
+        if (Taro.getEnv() === Taro.ENV_TYPE.WEAPP) {
+          beforeCloseResolve.current = resolve
+        } else {
+          resolve(true)
+        }
       })
     }
     Dialog.alert({
