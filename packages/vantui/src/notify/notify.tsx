@@ -4,7 +4,7 @@ import { nextTick } from '@tarojs/taro'
 import * as utils from '../wxs/utils'
 import { NotifyProps } from '../../types/notify'
 import VanTransition from '../transition/index'
-import { getSystemInfoSync } from '../common/utils'
+import { getWindowInfo } from '../common/utils'
 import { get } from '../default-props'
 import * as computed from './wxs'
 
@@ -68,7 +68,7 @@ export function Notify(props: NotifyProps) {
 
   useEffect(() => {
     nextTick(() => {
-      const { statusBarHeight } = getSystemInfoSync()
+      const { statusBarHeight } = getWindowInfo()
       setState((state) => {
         return {
           ...state,

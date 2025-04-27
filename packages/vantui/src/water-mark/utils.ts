@@ -1,4 +1,5 @@
-import { createSelectorQuery, getSystemInfo } from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
+import { getWindowInfo } from '../common/utils'
 
 export function getCanvas(compIndex) {
   return new Promise((resolve) => {
@@ -35,7 +36,7 @@ export function getWaterData({
 }): Promise<string> {
   return new Promise(async (resolve) => {
     const ctx = canvas.getContext('2d')
-    const ratio = (await getSystemInfo()).pixelRatio
+    const ratio = getWindowInfo().pixelRatio
     const canvasWidth = `${(gapX + width) * ratio}px`
     const canvasHeight = `${(gapY + height) * ratio}px`
 

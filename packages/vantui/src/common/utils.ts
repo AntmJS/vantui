@@ -1,5 +1,6 @@
 import Taro, {
   getSystemInfoSync as TaroGetSystemInfoSync,
+  getWindowInfo as TaroGetWindowInfo,
   createSelectorQuery,
 } from '@tarojs/taro'
 import * as raf from 'raf'
@@ -23,6 +24,13 @@ let systemInfo: any
 export function getSystemInfoSync() {
   systemInfo = TaroGetSystemInfoSync()
   return systemInfo
+}
+
+let windowInfo: any
+export function getWindowInfo() {
+  windowInfo =
+    process.env.TARO_ENV === 'weapp' ? TaroGetWindowInfo() : getSystemInfoSync()
+  return windowInfo
 }
 
 let menuInfo: any
