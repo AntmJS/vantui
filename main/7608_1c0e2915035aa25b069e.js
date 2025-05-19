@@ -9,11 +9,11 @@
             config: {
               title: 'antmjs Vantui',
               src: [
-                '/Users/apple/Desktop/vantui/packages/vantui/src',
-                '/Users/apple/Desktop/vantui/packages/vantui/docs',
+                '/Users/apple/Desktop/project/vantui/packages/vantui/src',
+                '/Users/apple/Desktop/project/vantui/packages/vantui/docs',
               ],
               globalStyles: [
-                '/Users/apple/Desktop/vantui/packages/vantui/docs/theme.less',
+                '/Users/apple/Desktop/project/vantui/packages/vantui/docs/theme.less',
               ],
               logo: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
               route: { level: 1 },
@@ -189,7 +189,7 @@
                   type: 'img',
                 },
                 {
-                  title: '3.6.3',
+                  title: '3.6.4',
                   type: 'select',
                   options: [{ title: 'v2', url: '/vantui/v2' }],
                 },
