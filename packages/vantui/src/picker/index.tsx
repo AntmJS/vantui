@@ -27,10 +27,7 @@ import { get } from '../default-props'
 import * as computed from './wxs'
 
 const Picker = forwardRef(function Index(
-  props: PickerProps & {
-    onShow?: () => void
-    onClear?: () => void
-  },
+  props: PickerProps,
   ref: React.ForwardedRef<IPickerInstance>,
 ): JSX.Element {
   const [d] = useState(get().Picker)

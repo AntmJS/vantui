@@ -139,6 +139,14 @@ export interface PickerProps extends ViewProps {
    */
   onConfirm?: (e: PickerEvents) => void
   /**
+   * @description 点击清除触发的事件
+   */
+  onClear?: () => void
+  /**
+   * @description content模式弹窗打开触发方法
+   */
+  onShow?: () => void
+  /**
    * @description 	是否显示顶部栏
    * @default       false
    */
