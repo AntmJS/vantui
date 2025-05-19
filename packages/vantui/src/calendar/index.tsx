@@ -591,8 +591,7 @@ function Index(
   }
 
   return (
-    // @ts-ignore
-    <View catchMove={poppable}>
+    <View>
       {poppable ? (
         <VanPopup
           className={'van-calendar__popup--' + position}
