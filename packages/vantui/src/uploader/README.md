@@ -79,3 +79,34 @@ import { Uploader } from '@antmjs/vantui'
 | onOversize       | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                     | -      | `false` |
 | onClickPreview   | -    | _&nbsp;&nbsp;(data:&nbsp;any)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                                                                            | -      | `false` |
 | onClickUpload    | -    | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;event:&nbsp;ITouchEvent<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_                                                                                                                                                                     | -      | `false` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                | 默认值                 |
+| ----------------------------------- | ---------------------- |
+| --uploader-size                     | ` 160px;`              |
+| --uploader-icon-size                | ` 48px;`               |
+| --uploader-icon-color               | ` @gray-4;`            |
+| --uploader-text-color               | ` @gray-6;`            |
+| --uploader-text-font-size           | ` @font-size-sm;`      |
+| --uploader-upload-background-color  | ` @gray-1;`            |
+| --uploader-upload-active-color      | ` @active-color;`      |
+| --uploader-delete-color             | ` @white;`             |
+| --uploader-delete-icon-size         | ` 28px;`               |
+| --uploader-delete-background-color  | ` rgba(0, 0, 0, 0.7);` |
+| --uploader-file-background-color    | ` @background-color;`  |
+| --uploader-file-icon-size           | ` 40px;`               |
+| --uploader-file-icon-color          | ` @gray-7;`            |
+| --uploader-file-name-padding        | ` 0 @padding-base;`    |
+| --uploader-file-name-margin-top     | ` @padding-xs;`        |
+| --uploader-file-name-font-size      | ` @font-size-sm;`      |
+| --uploader-file-name-text-color     | ` @gray-7;`            |
+| --uploader-mask-background-color    | ` fade(@gray-8, 88%);` |
+| --uploader-mask-icon-size           | ` 44px;`               |
+| --uploader-mask-message-font-size   | ` @font-size-sm;`      |
+| --uploader-mask-message-line-height | ` 28px;`               |
+| --uploader-loading-icon-size        | ` 44px;`               |
+| --uploader-loading-icon-color       | ` @white;`             |
+| --uploader-disabled-opacity         | ` @disabled-opacity;`  |
