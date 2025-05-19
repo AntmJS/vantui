@@ -56,7 +56,9 @@ function Button(props: ButtonProps) {
   }, [loading])
 
   useEffect(() => {
-    if (innerLoading && loadingMode === 'toast') {
+    if (loadingMode !== 'toast') return
+
+    if (innerLoading) {
       Toast.loading({
         selector: `#${toastId}`,
         duration: 60 * 60,
@@ -68,7 +70,7 @@ function Button(props: ButtonProps) {
       Toast.clear()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [innerLoading])
+  }, [innerLoading, loadingMode])
 
   const _click = useCallback(
     (e) => {
