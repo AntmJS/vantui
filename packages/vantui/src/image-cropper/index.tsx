@@ -1,7 +1,7 @@
 import { Canvas, Image, View } from '@tarojs/components'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  getSystemInfoSync,
+  getWindowInfo,
   showLoading,
   hideLoading,
   getImageInfo,
@@ -22,7 +22,7 @@ const pageRects = {
   windowHeight: 0,
   pixelRatio: 1,
 }
-const res = getSystemInfoSync()
+const res = getWindowInfo()
 const { windowWidth, windowHeight, pixelRatio } = res
 pageRects.windowWidth = windowWidth
 pageRects.windowHeight = windowHeight

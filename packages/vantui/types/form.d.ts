@@ -150,6 +150,10 @@ export interface FormItemProps extends ViewProps {
         rule: ((value: any, call: (errMess: string) => void) => void) | RegExp
         message?: string
       }
+    | {
+        rule: (value: any) => Promise<string | undefined | null>
+        message?: string
+      }
 }
 /**
  * @title IFormInstance

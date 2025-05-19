@@ -89,9 +89,9 @@ export interface toastProps {
    */
   setDefaultOptions: (options: ToastProps) => void
   /**
-   * @description 重置默认配置，对所有 Toast 生效。传入 type 可以重置指定类型的默认配置
+   * @description 重置默认配置，对所有 Toast 生效。
    */
-  resetDefaultOptions: (options: any) => void
+  resetDefaultOptions: () => void
   /**
    * @description 获取唯一的toast组件，不需要手动设置id和selector
    */

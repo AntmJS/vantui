@@ -8,7 +8,7 @@ import {
   memo,
 } from 'react'
 import { nextTick, usePageScroll } from '@tarojs/taro'
-import { getSystemInfoSync, requestAnimationFrame } from '../common/utils'
+import { getWindowInfo, requestAnimationFrame } from '../common/utils'
 import {
   DropdownItemProps,
   IDropdownItemInstance,
@@ -86,7 +86,7 @@ function Index(
       }
 
       if (parentInstance.direction === 'down') {
-        const winHeight = getSystemInfoSync().windowHeight
+        const winHeight = getWindowInfo().windowHeight
         const bottom = winHeight - rect.top
         wrapperStyle.bottom = -rect.height + 'PX'
         wrapperStyle.height = bottom + 'PX'

@@ -43,6 +43,12 @@ import { Dialog } from '@antmjs/vantui'
 
 ::: $demo4 :::
 
+### 开放能力
+
+如需使用开放能力，需要使用组件的异步关闭能力（PS：以微信为例，如果在点击后`弹窗关闭/按钮消失`则会获取不到微信小程序提供的信息,所以需要使用`beforeClose`，获取到开放信息后再关闭弹窗）。
+
+::: $demo5 :::
+
 ### DialogProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/dialog.d.ts)
 
 | 参数                  | 说明 | 类型                                                                                                                                                                                                                                                                                                                                                                               | 默认值 | 必填    |
@@ -91,22 +97,22 @@ import { Dialog } from '@antmjs/vantui'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
 
-| 名称                                   | 默认值                |
-| -------------------------------------- | --------------------- |
-| --dialog-width                         | ` 640px;`             |
-| --dialog-small-screen-width            | ` 90%;`               |
-| --dialog-font-size                     | ` @font-size-lg;`     |
-| --dialog-border-radius                 | ` 32px;`              |
-| --dialog-background-color              | ` @white;`            |
-| --dialog-header-font-weight            | ` @font-weight-bold;` |
-| --dialog-header-line-height            | ` 48px;`              |
-| --dialog-header-padding-top            | ` @padding-lg;`       |
-| --dialog-header-isolated-padding       | ` @padding-lg 0;`     |
-| --dialog-message-padding               | ` @padding-lg;`       |
-| --dialog-message-font-size             | ` @font-size-md;`     |
-| --dialog-message-line-height           | ` 40px;`              |
-| --dialog-message-max-height            | ` 60vh;`              |
-| --dialog-has-title-message-text-color  | ` @gray-7;`           |
-| --dialog-has-title-message-padding-top | ` @padding-xs;`       |
-| --dialog-cancel-button-color           | ` @gray-7;`           |
-| --dialog-confirm-button-color          | ` @text-link-color;`  |
+| 名称                                   | 默认值               |
+| -------------------------------------- | -------------------- |
+| --dialog-width                         | `640px;`             |
+| --dialog-small-screen-width            | `90%;`               |
+| --dialog-font-size                     | `@font-size-lg;`     |
+| --dialog-border-radius                 | `32px;`              |
+| --dialog-background-color              | `@white;`            |
+| --dialog-header-font-weight            | `@font-weight-bold;` |
+| --dialog-header-line-height            | `48px;`              |
+| --dialog-header-padding-top            | `@padding-lg;`       |
+| --dialog-header-isolated-padding       | `@padding-lg 0;`     |
+| --dialog-message-padding               | `@padding-lg;`       |
+| --dialog-message-font-size             | `@font-size-md;`     |
+| --dialog-message-line-height           | `40px;`              |
+| --dialog-message-max-height            | `60vh;`              |
+| --dialog-has-title-message-text-color  | `@gray-7;`           |
+| --dialog-has-title-message-padding-top | `@padding-xs;`       |
+| --dialog-cancel-button-color           | `@gray-7;`           |
+| --dialog-confirm-button-color          | `@text-link-color;`  |

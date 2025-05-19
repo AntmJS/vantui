@@ -77,7 +77,7 @@ Toast.show({
 | fail | 展示失败提示 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;ToastProps<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&brvbar;&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ | - | `true` |
 | clear | 关闭提示 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options?:&nbsp;ToastProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | setDefaultOptions | 修改默认配置，对所有 Toast 生效。传入 type 可以修改指定类型的默认配置 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;ToastProps<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
-| resetDefaultOptions | 重置默认配置，对所有 Toast 生效。传入 type 可以重置指定类型的默认配置 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | - | `true` |
+| resetDefaultOptions | 重置默认配置，对所有 Toast 生效。 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ | - | `true` |
 | createOnlyToast | 获取唯一的 toast 组件，不需要手动设置 id 和 selector | _&nbsp;&nbsp;()&nbsp;=>&nbsp;FunctionComponent<ToastProps>&nbsp;&<br/>&nbsp;&nbsp;&nbsp;&nbsp;toastProps<br/>_ | - | `true` |
 
 ### 样式变量

@@ -162,6 +162,29 @@ export default function Demo() {
         <FormItem label="步进器" name="stepper">
           <Stepper />
         </FormItem>
+
+        <FormItem
+          label="异步校验"
+          name="asyncValidate"
+          // required
+          valueFormat={(e) => e.detail.value}
+          validateTrigger="onBlur"
+          rules={[
+            {
+              rule: (value) =>
+                new Promise((resolve) => {
+                  console.log('value', value)
+                  setTimeout(() => {
+                    resolve('异步校验')
+                  }, 1000)
+                }),
+            },
+          ]}
+          trigger="onInput"
+        >
+          <Input placeholder="请输入" />
+        </FormItem>
+
         <Button
           type="primary"
           className="van-button-submit"
