@@ -1,4 +1,22 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.6.2...v) (2025-04-16)
+# [](https://github.com/AntmJS/vantui/compare/v3.6.3...v) (2025-05-19)
+
+
+### Bug Fixes
+
+* **button:** 修复 Button 组件在 loadingMode 不是 toast 的情况下，loading 属性更新时会清理 Toast 实例的问题 ([#762](https://github.com/AntmJS/vantui/issues/762)) ([a60dc5b](https://github.com/AntmJS/vantui/commit/a60dc5bf6e71be956330e860ae4f0dfe5db18408))
+* **calendar:** 优化长跨度选择组件并添加滚动支持 ([#767](https://github.com/AntmJS/vantui/issues/767)) ([f11bb34](https://github.com/AntmJS/vantui/commit/f11bb34da700b9f967000c6a72d68ba919174000))
+* **form-item:** 修复 messageClassName 属性无效的问题 ([#759](https://github.com/AntmJS/vantui/issues/759)) ([5663015](https://github.com/AntmJS/vantui/commit/5663015c63847b35eda6735dfa104546f6a31f57))
+* **toast:** 补全 Toast 的默认配置相关功能 ([#764](https://github.com/AntmJS/vantui/issues/764)) ([f38dca2](https://github.com/AntmJS/vantui/commit/f38dca20f4c593b790474202bea2af999cfa7001))
+
+
+### Features
+
+* **formItem:** 添加异步表单校验支持并优化类型定义并添加文档使用示例 ([#760](https://github.com/AntmJS/vantui/issues/760)) ([4f8c99b](https://github.com/AntmJS/vantui/commit/4f8c99b248d7bdec38d81d0ce3d54e1191ed2f93))
+* **picker:** 添加 onClear 和 onShow 事件 ([#765](https://github.com/AntmJS/vantui/issues/765)) ([1c60944](https://github.com/AntmJS/vantui/commit/1c60944a3102a8c3f6d18e0296c881d2f95a8c99))
+
+
+
+## [3.6.3](https://github.com/AntmJS/vantui/compare/v3.6.2...v3.6.3) (2025-04-16)
 
 
 ### Bug Fixes
