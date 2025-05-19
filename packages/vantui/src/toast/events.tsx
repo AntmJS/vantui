@@ -1,3 +1,4 @@
+import _assign from 'lodash/assign'
 import { ToastProps } from '../../types/toast'
 import VanOverlay from '../overlay/index'
 import { createExtraNode, ExtraNode } from '../wxs/extra-node'
@@ -8,6 +9,20 @@ const overlayNode: ExtraNode = createExtraNode()
 const defaultDuration = 2500
 let timer: NodeJS.Timeout | null = null
 let hasMask = false
+
+const defaultToastOptions: ToastProps = {
+  duration: 2500,
+}
+
+let _defaultOptions = { ...defaultToastOptions }
+
+export function setDefaultOptions(options: ToastProps) {
+  _assign(_defaultOptions, options)
+}
+
+export function resetDefaultOptions() {
+  _defaultOptions = { ...defaultToastOptions }
+}
 
 export function show_(options: ToastProps) {
   if (timer) {
@@ -24,12 +39,12 @@ export function show_(options: ToastProps) {
       ></VanOverlay>,
     )
   }
-  extraNode.renderNode?.(<Toast {...options} />)
+  extraNode.renderNode?.(<Toast {...{ ..._defaultOptions, ...options }} />)
   if (options.duration !== 0) {
     timer = setTimeout(() => {
       clear()
       options?.onClose?.()
-    }, options.duration || defaultDuration)
+    }, options.duration || _defaultOptions?.duration || defaultDuration)
   }
 }
 
