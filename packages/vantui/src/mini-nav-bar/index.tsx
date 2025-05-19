@@ -3,10 +3,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import { View } from '@tarojs/components'
 import * as utils from '../wxs/utils'
 import { Icon } from '../icon'
-import {
-  getSystemInfoSync,
-  getMenuButtonBoundingClientRect,
-} from '../common/utils'
+import { getWindowInfo, getMenuButtonBoundingClientRect } from '../common/utils'
 import { MiniNavBarProps } from '../../types/mini-nav-bar'
 import * as computed from './wxs'
 
@@ -66,7 +63,7 @@ export function MiniNavBar(props: MiniNavBarProps) {
   }, [homeUrl])
 
   useEffect(() => {
-    const sysInfo = getSystemInfoSync()
+    const sysInfo = getWindowInfo()
     const menuInfo = getMenuButtonBoundingClientRect()
     if (sysInfo && menuInfo) {
       setState({
