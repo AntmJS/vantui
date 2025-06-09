@@ -48,6 +48,10 @@ import { Picker } from '@antmjs/vantui'
 
 ::: $demo6 :::
 
+### 手动控制
+
+::: $demo7 :::
+
 ### PickerProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/picker.d.ts)
 
 | 参数               | 说明                                                               | 类型                                                                                                                                                                                                                                                                                                                                                                                                                                                            | 默认值 | 必填    |
@@ -102,6 +106,8 @@ import { Picker } from '@antmjs/vantui'
 通过 ref 获取到的方法如下
 | 方法 | 说明 | 类型 |
 | --- | --- | --- |
+| open | 手动打开 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+| close | 手动关闭 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
 | setColumnValues | 设置每一列的数据，异步获取到最新的 values | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;string[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;Promise<any><br/>_ |
 | getColumnValues | 获取每一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any[]<br/>_ |
 | setColumnValue | 设置某一列的值 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;index:&nbsp;number,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;any<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;any<br/>_ |
@@ -111,23 +117,3 @@ import { Picker } from '@antmjs/vantui'
 | setIndexes | 设置每一列展示的下标 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;indexes:&nbsp;number[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | getValues | 每一列展示的值 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ |
 | confirm | 触发确认的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
-
-| 名称                                | 默认值                       |
-| ----------------------------------- | ---------------------------- |
-| --picker-background-color           | ` @white;`                   |
-| --picker-toolbar-height             | ` 88px;`                     |
-| --picker-title-font-size            | ` @font-size-lg;`            |
-| --picker-action-padding             | ` 0 @padding-md;`            |
-| --picker-action-font-size           | ` @font-size-md;`            |
-| --picker-confirm-action-color       | ` @text-link-color;`         |
-| --picker-cancel-action-color        | ` @gray-6;`                  |
-| --picker-option-font-size           | ` @font-size-lg;`            |
-| --picker-option-text-color          | ` @black;`                   |
-| --picker-loading-icon-color         | ` var(--primary-color);`     |
-| --picker-loading-mask-color         | ` rgba(255, 255, 255, 0.9);` |
-| --picker-option-disabled-opacity    | ` 0.3;`                      |
-| --picker-option-selected-text-color | ` @text-color;`              |

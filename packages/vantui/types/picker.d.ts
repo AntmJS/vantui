@@ -187,6 +187,14 @@ export interface PickerChangeEvents extends ITouchEvent {
  */
 export type IPickerInstance = {
   /**
+   * @description 手动打开
+   */
+  open: () => void
+  /**
+   * @description 手动关闭
+   */
+  close: () => void
+  /**
    * @description 设置每一列的数据，异步获取到最新的values
    */
   setColumnValues: (index: number, options: string[]) => Promise<any>
