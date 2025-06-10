@@ -271,6 +271,12 @@ const Picker = forwardRef(function Index(
 
   useImperativeHandle(ref, () => {
     return {
+      open: () => {
+        if (mode === 'content' && !disabled) {
+          setShow(true)
+        }
+      },
+      close: () => setShow(0),
       setColumnValue,
       getColumnValue,
       setColumnValues,
@@ -329,10 +335,10 @@ const Picker = forwardRef(function Index(
   }, [columns, columnsInner])
 
   useEffect(() => {
-    if (valuesInner && mode === 'content' && show) {
+    if (mode === 'content' && show) {
       setTimeout(() => {
         onShow?.()
-        setValues(valuesInner)
+        valuesInner && setValues(valuesInner)
       }, 200)
     }
   }, [valuesInner, show])
