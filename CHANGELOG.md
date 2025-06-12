@@ -1,4 +1,18 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.6.3...v) (2025-05-19)
+# [](https://github.com/AntmJS/vantui/compare/v3.6.4...v) (2025-06-12)
+
+
+### Bug Fixes
+
+* **createObserver:** createObserver 兼容钉钉应用  ([#773](https://github.com/AntmJS/vantui/issues/773)) ([#774](https://github.com/AntmJS/vantui/issues/774)) ([092de4a](https://github.com/AntmJS/vantui/commit/092de4af0720135361dcc723d027e14f9a9a03bd))
+
+
+### Features
+
+* **picker:** `Picker`组件添加手动控制功能 ([#771](https://github.com/AntmJS/vantui/issues/771)) ([#772](https://github.com/AntmJS/vantui/issues/772)) ([15ae49d](https://github.com/AntmJS/vantui/commit/15ae49def7276a6b93570b0ac6b3d0eb70db7081))
+
+
+
+## [3.6.4](https://github.com/AntmJS/vantui/compare/v3.6.3...v3.6.4) (2025-05-19)
 
 
 ### Bug Fixes
