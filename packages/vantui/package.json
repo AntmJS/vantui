@@ -46,7 +46,8 @@
     "test": "",
     "test:watch": "",
     "docs:watch": "node ./scripts/md.js && npx antm-doc-start",
-    "docs:release": "node ./scripts/md.js && sh ./build.sh && npx gh-pages -d doc_build -e ./main"
+    "docs": "node ./scripts/md.js && sh ./build.sh && npx gh-pages -d doc_build -e ./main",
+    "gh": " npx gh-pages -d doc_build -e ./main"
   },
   "dependencies": {
     "@swc/helpers": "^0.5.0",
