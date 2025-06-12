@@ -23,6 +23,11 @@
 2. `packages/vantui`下执行: `yarn watch`
 3. `packages/vantui-demo`下执行: `yarn watch: [xx平台]`
 
+### 发布组件文档
+
+1. `packages/vantui`下执行: `yarn docs`
+1. `packages/vantui`下执行: `yarn gh`
+
 ---
 
 - 代码提交:
