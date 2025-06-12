@@ -117,7 +117,7 @@ function InfiniteScroll_(
       const curePage = pages[pages.length - 1]
       let _createIntersectionObserver = curePage.createIntersectionObserver
 
-      if (process.env.TARO_ENV === 'alipay') {
+      if (process.env.TARO_ENV === 'alipay' || process.env.TARO_ENV === 'dd') {
         _createIntersectionObserver = createIntersectionObserver
       }
 

@@ -78,7 +78,7 @@ export const useSubscribeElementSize = (
     // eslint-disable-next-line no-underscore-dangle
     let createObserver = Taro.createIntersectionObserver!
 
-    if (process.env.TARO_ENV === 'alipay') {
+    if (process.env.TARO_ENV === 'alipay' || process.env.TARO_ENV === 'dd') {
       createObserver = createIntersectionObserver!
     }
     observerRef.current = createObserver(Taro.getCurrentInstance().page!, {
