@@ -94,11 +94,14 @@ export function chooseFile({
   return new Promise((resolve, reject) => {
     switch (accept) {
       case 'image':
-        chooseImage({
+        chooseMedia({
           count: multiple ? Math.min(maxCount, 9) : 1,
+          mediaType: ['image'],
           sourceType: capture || ['album', 'camera'],
+          maxDuration,
           sizeType: sizeType || ['original', 'compressed'],
-          success: (res) => resolve(formatImage(res)),
+          camera: camera || 'back',
+          success: (res) => resolve(formatMedia(res)),
           fail: reject,
         })
         break
@@ -114,12 +117,16 @@ export function chooseFile({
         })
         break
       case 'video':
-        chooseVideo({
+        chooseMedia({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          mediaType: ['video'],
           sourceType: capture || ['album', 'camera'],
-          compressed,
-          maxDuration: maxDuration || 60,
+          maxDuration,
+          sizeType: compressed
+            ? ['compressed']
+            : sizeType || ['original', 'compressed'],
           camera: camera || 'back',
-          success: (res) => resolve(formatVideo(res)),
+          success: (res) => resolve(formatMedia(res)),
           fail: reject,
         })
         break
