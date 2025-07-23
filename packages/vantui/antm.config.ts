@@ -337,6 +337,10 @@ function getMenus() {
           title: 'Empty 空状态',
         },
         {
+          path: 'highlight',
+          title: 'Highlight 高亮文本',
+        },
+        {
           path: 'result',
           title: 'Result 操作结果',
         },

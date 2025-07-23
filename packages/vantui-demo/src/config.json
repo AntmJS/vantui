@@ -247,6 +247,10 @@
         "title": "Empty 空状态"
       },
       {
+        "path": "highlight",
+        "title": "Highlight 高亮文本"
+      },
+      {
         "path": "ellipsis",
         "title": "Ellipsis 文本省略"
       },
