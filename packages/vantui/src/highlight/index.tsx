@@ -3,7 +3,6 @@ import { useMemo } from 'react'
 import classNames from 'classnames'
 import { HighlightProps } from '../../types/highlight'
 import * as utils from '../wxs/utils'
-import './index.less'
 
 interface Chunk {
   start: number
