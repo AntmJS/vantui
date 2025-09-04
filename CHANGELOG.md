@@ -1,4 +1,20 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.6.4...v) (2025-06-12)
+# [](https://github.com/AntmJS/vantui/compare/v3.6.5...v) (2025-09-04)
+
+
+### Bug Fixes
+
+* Form判断异步rule方法时,传callback以兼容同步rule的调用 ([#779](https://github.com/AntmJS/vantui/issues/779)) ([8800858](https://github.com/AntmJS/vantui/commit/88008586f3f65cc911a9bd36a0e10ad7d95343d0))
+* **uploader:** 不再使用过时的chooseImage和chooseVideo方法 ([#780](https://github.com/AntmJS/vantui/issues/780)) ([bc7f438](https://github.com/AntmJS/vantui/commit/bc7f438aec9c5113145a4a296b300a79522ab0fb))
+* 轮播组件禁用手动滑动功能 ([015f265](https://github.com/AntmJS/vantui/commit/015f26513d9c5baf6a137036fdaff11be507a53e))
+
+
+### Features
+
+* **highlight:** 新增 Highlight 高亮文本组件 ([#782](https://github.com/AntmJS/vantui/issues/782)) ([95b9ba9](https://github.com/AntmJS/vantui/commit/95b9ba9f5b67b7a2b85bb843425099ad8d5e600a))
+
+
+
+## [3.6.5](https://github.com/AntmJS/vantui/compare/v3.6.4...v3.6.5) (2025-06-12)
 
 
 ### Bug Fixes

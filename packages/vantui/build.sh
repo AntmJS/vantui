@@ -13,6 +13,8 @@ yarn real:h5Doc
 
 cd  ./../vantui
 
+pwd
+
 mv  ./../vantui-demo/build/js  ./doc_build/js
 mv  ./../vantui-demo/build/assets  ./doc_build/assets
 
