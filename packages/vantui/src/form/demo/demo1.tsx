@@ -83,6 +83,7 @@ export default function Demo() {
           singleSelect: '1',
           rate: 2,
           slider: '50',
+          muiltSelect: ['1', '2'],
         }}
         form={formIt}
         onFinish={(errs, res) => console.info(errs, res)}
@@ -137,7 +138,7 @@ export default function Demo() {
           <Input placeholder={dynamicPlaceHolder} />
         </FormItem>
 
-        <FormItem label="复选框" name="muiltSelect">
+        <FormItem mutiLevel label="复选框" name="muiltSelect">
           <CheckboxGroup direction="horizontal">
             <Checkbox name="1" shape="square" checkedColor="#07c160">
               复选框 1

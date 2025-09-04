@@ -19,6 +19,7 @@ export default function Demo() {
         initPage={initPage1}
         paginationVisible
         style={{ borderRadius: 12 }}
+        touchable={false}
       >
         {images.map((item, index) => (
           <SwiperItem key={`swiper#demo1${index}`}>

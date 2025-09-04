@@ -202,17 +202,19 @@ const Swiper = (
 
   const touchStart = useCallback(
     (e) => {
+      if (!touchable) return
       if (moving) return
       touchReset()
       touch.startX = e?.touches[0]?.clientX || 0
       touch.startY = e?.touches[0]?.clientY || 0
     },
-    [moving, touch, touchReset],
+    [moving, touch, touchReset, touchable],
   )
 
   // 触摸事件移动
   const touchMove = useCallback(
     (e) => {
+      if (!touchable) return
       if (timer.current) {
         clearInterval(timer.current)
         timer.current = null
@@ -234,7 +236,7 @@ const Swiper = (
         innerRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
       }
     },
-    [moving, touch, isVertical, getOffset, active],
+    [moving, touch, isVertical, getOffset, active, touchable],
   )
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
