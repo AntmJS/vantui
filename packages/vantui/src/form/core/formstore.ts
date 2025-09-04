@@ -393,8 +393,13 @@ class FormStore {
               break
             }
           } else if (typeof rule === 'function') {
-            // 检查函数是否返回Promise
-            const result = rule(value)
+            // 传统的回调函数形式
+            const validateCallback = (callbackMessage: string) => {
+              this.model[name].message = callbackMessage
+              status = !callbackMessage ? 'resolve' : 'reject'
+            }
+            // 检查函数是否返回Promise,传入callback兼容同步回调
+            const result = rule(value, validateCallback)
             if (isPromise(result)) {
               try {
                 // 规则函数返回Promise的情况
@@ -413,12 +418,6 @@ class FormStore {
                 break
               }
             } else {
-              // 传统的回调函数形式
-              const validateCallback = (callbackMessage: string) => {
-                this.model[name].message = callbackMessage
-                status = !callbackMessage ? 'resolve' : 'reject'
-              }
-
               // 执行规则函数
               rule(value, validateCallback)
 

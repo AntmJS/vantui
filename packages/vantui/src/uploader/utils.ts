@@ -94,13 +94,24 @@ export function chooseFile({
   return new Promise((resolve, reject) => {
     switch (accept) {
       case 'image':
-        chooseImage({
-          count: multiple ? Math.min(maxCount, 9) : 1,
-          sourceType: capture || ['album', 'camera'],
-          sizeType: sizeType || ['original', 'compressed'],
-          success: (res) => resolve(formatImage(res)),
-          fail: reject,
-        })
+        process.env.TARO_ENV === 'weapp' ?
+          chooseMedia({
+            count: multiple ? Math.min(maxCount, 9) : 1,
+            mediaType: ['image'],
+            sourceType: capture || ['album', 'camera'],
+            maxDuration,
+            sizeType: sizeType || ['original', 'compressed'],
+            camera: camera || 'back',
+            success: (res) => resolve(formatMedia(res)),
+            fail: reject,
+          }) :
+          chooseImage({
+            count: multiple ? Math.min(maxCount, 9) : 1,
+            sourceType: capture || ['album', 'camera'],
+            sizeType: sizeType || ['original', 'compressed'],
+            success: (res) => resolve(formatImage(res)),
+            fail: reject,
+          })
         break
       case 'media':
         chooseMedia({
@@ -114,14 +125,27 @@ export function chooseFile({
         })
         break
       case 'video':
-        chooseVideo({
-          sourceType: capture || ['album', 'camera'],
-          compressed,
-          maxDuration: maxDuration || 60,
-          camera: camera || 'back',
-          success: (res) => resolve(formatVideo(res)),
-          fail: reject,
-        })
+        process.env.TARO_ENV === 'weapp' ?
+          chooseMedia({
+            count: multiple ? Math.min(maxCount, 9) : 1,
+            mediaType: ['video'],
+            sourceType: capture || ['album', 'camera'],
+            maxDuration,
+            sizeType: compressed
+              ? ['compressed']
+              : sizeType || ['original', 'compressed'],
+            camera: camera || 'back',
+            success: (res) => resolve(formatMedia(res)),
+            fail: reject,
+          }) :
+          chooseVideo({
+            sourceType: capture || ['album', 'camera'],
+            compressed,
+            maxDuration: maxDuration || 60,
+            camera: camera || 'back',
+            success: (res) => resolve(formatVideo(res)),
+            fail: reject,
+          })
         break
       default:
         chooseMessageFile({
