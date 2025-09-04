@@ -40,9 +40,9 @@ jobs:
       - name: install
         if: startsWith( env.commitmsg , 'chore(release):' )
         run: yarn
-      - name: bootstrap
-        if: startsWith( env.commitmsg , 'chore(release):' )
-        run: yarn run bootstrap:lerna
+      # - name: bootstrap
+      #   if: startsWith( env.commitmsg , 'chore(release):' )
+      #   run: yarn run bootstrap:lerna
       - name: build-cli
         if: startsWith( env.commitmsg , 'chore(release):' )
         run: npx lerna run build --scope=@antmjs/vantui-cli
