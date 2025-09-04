@@ -117,3 +117,23 @@ import { Picker } from '@antmjs/vantui'
 | setIndexes | 设置每一列展示的下标 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;indexes:&nbsp;number[]<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ |
 | getValues | 每一列展示的值 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;any<br/>_ |
 | confirm | 触发确认的方法 | _&nbsp;&nbsp;()&nbsp;=>&nbsp;void<br/>_ |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
+
+| 名称                                | 默认值                       |
+| ----------------------------------- | ---------------------------- |
+| --picker-background-color           | ` @white;`                   |
+| --picker-toolbar-height             | ` 88px;`                     |
+| --picker-title-font-size            | ` @font-size-lg;`            |
+| --picker-action-padding             | ` 0 @padding-md;`            |
+| --picker-action-font-size           | ` @font-size-md;`            |
+| --picker-confirm-action-color       | ` @text-link-color;`         |
+| --picker-cancel-action-color        | ` @gray-6;`                  |
+| --picker-option-font-size           | ` @font-size-lg;`            |
+| --picker-option-text-color          | ` @black;`                   |
+| --picker-loading-icon-color         | ` var(--primary-color);`     |
+| --picker-loading-mask-color         | ` rgba(255, 255, 255, 0.9);` |
+| --picker-option-disabled-opacity    | ` 0.3;`                      |
+| --picker-option-selected-text-color | ` @text-color;`              |
