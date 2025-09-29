@@ -20,6 +20,10 @@ export interface PopupProps extends TransitionProps, ViewProps, OverlayProps {
    */
   overlayStyle?: string | CSSProperties
   /**
+   * @description 自定义遮罩层样式类
+   */
+  overlayClassName?: string
+  /**
    * @description 执行
    */
   transition?: string
