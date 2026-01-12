@@ -32,21 +32,20 @@ import { Highlight } from '@antmjs/vantui'
 
 ::: $demo3 :::
 
+### 高亮文本点击事件
+
+通过 `onHighlightClick` 可以监听高亮文本的点击事件。
+
+::: $demo4 :::
+
 ### HighlightProps [[详情]](https://github.com/AntmJS/vantui/tree/main/packages/vantui/types/highlight.d.ts)
 
-| 参数             | 说明             | 类型                                                  | 默认值 | 必填    |
-| ---------------- | ---------------- | ----------------------------------------------------- | ------ | ------- |
-| autoEscape       | 是否自动转义     | _&nbsp;&nbsp;boolean<br/>_                            | true   | `false` |
-| caseSensitive    | 是否区分大小写   | _&nbsp;&nbsp;boolean<br/>_                            | false  | `false` |
-| highlightClass   | 高亮元素的类名   | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-| keywords         | 期望高亮的文本   | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_ | -      | `true`  |
-| sourceString     | 源文本           | _&nbsp;&nbsp;string<br/>_                             | -      | `true`  |
-| unhighlightClass | 非高亮元素的类名 | _&nbsp;&nbsp;string<br/>_                             | -      | `false` |
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[ConfigProvider 组件](https://antmjs.github.io/vantui/#/config-provider)
-
-| 名称                   | 默认值                   |
-| ---------------------- | ------------------------ |
-| --highlight-text-color | ` var(--primary-color);` |
+| 参数             | 说明             | 类型                                                                                                   | 默认值 | 必填    |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------ | ------ | ------- |
+| autoEscape       | 是否自动转义     | _&nbsp;&nbsp;boolean<br/>_                                                                             | true   | `false` |
+| caseSensitive    | 是否区分大小写   | _&nbsp;&nbsp;boolean<br/>_                                                                             | false  | `false` |
+| highlightClass   | 高亮元素的类名   | _&nbsp;&nbsp;string<br/>_                                                                              | -      | `false` |
+| keywords         | 期望高亮的文本   | _&nbsp;&nbsp;string&nbsp;&brvbar;&nbsp;string[]<br/>_                                                  | -      | `true`  |
+| sourceString     | 源文本           | _&nbsp;&nbsp;string<br/>_                                                                              | -      | `true`  |
+| unhighlightClass | 非高亮元素的类名 | _&nbsp;&nbsp;string<br/>_                                                                              | -      | `false` |
+| onHighlightClick | 高亮文本点击事件 | _&nbsp;&nbsp;(<br/>&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br/>&nbsp;&nbsp;)&nbsp;=>&nbsp;void<br/>_ | -      | `false` |

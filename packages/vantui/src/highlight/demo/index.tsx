@@ -6,6 +6,7 @@ import DemoBlock from '../../../../vantui-demo/src/components/demo-block/index'
 import Demo1 from './demo1'
 import Demo2 from './demo2'
 import Demo3 from './demo3'
+import Demo4 from './demo4'
 
 export default class Index extends Component {
   render() {
@@ -21,6 +22,10 @@ export default class Index extends Component {
 
         <DemoBlock title="设置高亮标签类名" padding>
           <Demo3 />
+        </DemoBlock>
+
+        <DemoBlock title="高亮文本点击事件" padding>
+          <Demo4 />
         </DemoBlock>
       </DemoPage>
     )
