@@ -78,6 +78,44 @@ const Swiper = (
     containerSize,
     ...rest
   } = propSwiper
+
+  const { childs, childCount, pageCount, resetChilds } = useMemo(() => {
+    let childCount = 0
+    const childFirst = children?.[0]
+    const childs =
+      Children.map(children, (child) => {
+        if (!isValidElement(child)) return null
+        childCount++
+        return child
+      }) || []
+
+    const resetChilds = [...childs]
+
+    const childLast = children?.[childCount - 1]
+    const pageCount = childCount === 2 ? 2 : childCount
+    // 2 items loop, duplicate to 4 items: [2, 1, 2, 1]
+    // Indices: 0(2), 1(1), 2(2), 3(1)
+    if (childCount === 2 && loop) {
+      if (childFirst) {
+        resetChilds.push(childFirst)
+      }
+
+      childCount += 1
+
+      if (childLast) {
+        resetChilds.unshift(childLast)
+      }
+      childCount += 1
+    }
+
+    return {
+      childs,
+      childCount,
+      pageCount,
+      resetChilds,
+    }
+  }, [children, loop])
+
   const isVertical = direction === 'vertical'
   const timer = useRef<any>(null)
   const containerRef = useRef<any>(null)
@@ -85,9 +123,14 @@ const Swiper = (
   const [refRandomId] = useState(Math.random().toString(36).slice(-8))
   const [moving, setmoving] = useState(false)
   // eslint-disable-next-line prefer-const
-  let [active, setActive_] = useState(
-    typeof initPage === 'number' ? initPage : 0,
-  )
+  let [active, setActive_] = useState(() => {
+    let init = typeof initPage === 'number' ? initPage : 0
+    if (resetChilds.length === 4 && pageCount === 2) {
+      init += 1
+    }
+    return init
+  })
+
   const setActive = (a) => {
     active = a
     setActive_(a)
@@ -109,41 +152,6 @@ const Swiper = (
   const size = useMemo(() => {
     return isVertical ? H : W
   }, [H, W, isVertical])
-
-  const { childs, childCount, pageCount, resetChilds } = useMemo(() => {
-    let childCount = 0
-    const childFirst = children?.[0]
-    const childs =
-      Children.map(children, (child) => {
-        if (!isValidElement(child)) return null
-        childCount++
-        return child
-      }) || []
-
-    const resetChilds = [...childs]
-
-    const childLast = children?.[childCount - 1]
-    const pageCount = childCount === 2 ? 2 : childCount
-    if (childCount === 2) {
-      if (childFirst) {
-        resetChilds.push(childFirst)
-      }
-
-      childCount += 1
-
-      if (childLast) {
-        resetChilds.unshift(childLast)
-      }
-      childCount += 1
-    }
-
-    return {
-      childs,
-      childCount,
-      pageCount,
-      resetChilds,
-    }
-  }, [children])
 
   // 重置 全部位移信息
   const touchReset = useCallback(() => {
@@ -269,19 +277,42 @@ const Swiper = (
     let _duration = duration
     let timeout: any = 0
     // 第一张和最后一样的特殊情况
-    if (active === 0 && activeNew === childCount - 1) {
-      _duration = 0
-      timeout = duration || 0 + 16.66
-      setInnertStyle(active, duration, size)
-    } else if (active === childCount - 1 && activeNew === 0) {
-      _duration = 0
-      timeout = duration || 0 + 16.66
-      setInnertStyle(active, duration, -childCount * size)
+    const is2ItemLoop = resetChilds.length === 4 && pageCount === 2
+    let needReset = false
+    if (is2ItemLoop) {
+      if (active === 2 && activeNew === 3) {
+        needReset = true
+        timeout = duration
+        setInnertStyle(activeNew, duration)
+      } else if (active === 1 && activeNew === 0) {
+        needReset = true
+        timeout = duration
+        setInnertStyle(activeNew, duration)
+      }
+    }
+
+    if (!needReset) {
+      if (active === 0 && activeNew === childCount - 1) {
+        _duration = 0
+        timeout = duration || 0 + 16.66
+        setInnertStyle(active, duration, size)
+      } else if (active === childCount - 1 && activeNew === 0) {
+        _duration = 0
+        timeout = duration || 0 + 16.66
+        setInnertStyle(active, duration, -childCount * size)
+      }
     }
     setTimeout(() => {
       setmoving(false)
-      setActive(activeNew)
-      setInnertStyle(activeNew, _duration)
+      let finalActive = activeNew
+      // For 2 items loop, we expanded to 4 items [2, 1, 2, 1]
+      // Indices 1 and 2 are the stable ones. 0 and 3 are clones.
+      if (resetChilds.length === 4 && pageCount === 2) {
+        if (activeNew === 0) finalActive = 2
+        if (activeNew === 3) finalActive = 1
+      }
+      setActive(finalActive)
+      setInnertStyle(finalActive, activeNew !== finalActive ? 0 : _duration)
       callback?.()
     }, timeout)
   }
@@ -343,14 +374,28 @@ const Swiper = (
   )
 
   useImperativeHandle(ref, () => ({
-    to: (n) => moveTo(n),
+    to: (n) => {
+      let target = n
+      if (resetChilds.length === 4 && pageCount === 2) {
+        target = n + 1
+      }
+      moveTo(target)
+    },
     prev: () => moveTo(active - 1 < 0 ? childCount - 1 : active - 1),
     next: () => moveTo(active + 1 > childCount - 1 ? 0 : active + 1),
   }))
 
+  const getCurrentPage = useCallback(() => {
+    let reportIndex = (active + pageCount) % pageCount
+    if (resetChilds.length === 4 && pageCount === 2) {
+      reportIndex = (active - 1 + pageCount) % pageCount
+    }
+    return reportIndex
+  }, [active, pageCount, resetChilds.length])
+
   useEffect(() => {
-    onChange?.((active + pageCount) % pageCount)
-  }, [active, pageCount, onChange])
+    onChange?.(getCurrentPage())
+  }, [getCurrentPage, onChange])
 
   useDidShow(() => {
     setShowToDo(true)
@@ -456,7 +501,7 @@ const Swiper = (
             return (
               <Text
                 style={
-                  (active + pageCount) % pageCount === index
+                  getCurrentPage() === index
                     ? {
                         backgroundColor: paginationColor,
                       }
@@ -464,7 +509,7 @@ const Swiper = (
                 }
                 className={classNames({
                   ['van-swiper__pagination-item']: true,
-                  active: (active + pageCount) % pageCount === index,
+                  active: getCurrentPage() === index,
                 })}
                 key={index}
               />
