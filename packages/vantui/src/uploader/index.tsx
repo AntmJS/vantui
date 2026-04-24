@@ -1,4 +1,5 @@
 import {
+  downloadFile,
   previewImage as TaroPreviewImage,
   showToast,
   openDocument,
@@ -244,10 +245,18 @@ export function Uploader(props: UploaderProps) {
     }
   }, [previewFullImage, state.lists])
   const onPreviewFile = useCallback(
-    (event: ITouchEvent) => {
+    async (event: ITouchEvent) => {
       const { index } = event.currentTarget.dataset
+      let filePath = state.lists[index].url
+      if (filePath.startsWith('http')) {
+        const temp = await downloadFile({
+          url: state.lists[index].url,
+        })
+        filePath = temp.tempFilePath
+      }
+
       openDocument({
-        filePath: state.lists[index].url,
+        filePath: filePath,
         showMenu: true,
       })
     },
