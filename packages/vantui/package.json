@@ -2,7 +2,7 @@
   "name": "@antmjs/vantui",
   "version": "3.7.0",
   "main": "lib/index.js",
-  "module": "es/index.esm.js",
+  "module": "es/index.js",
   "style": "lib/index.css",
   "typings": "types/index.d.ts",
   "author": "三少 <hi_sanshao@outlook.com>",

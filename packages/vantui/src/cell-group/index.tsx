@@ -5,7 +5,7 @@ import { get } from '../default-props'
 
 const d = get().CellGroup || {}
 
-function CellGroup(props: CellGroupProps) {
+export function CellGroup(props: CellGroupProps) {
   const {
     inset,
     title,
