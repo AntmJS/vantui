@@ -1,4 +1,21 @@
-# [](https://github.com/AntmJS/vantui/compare/v3.6.5...v) (2025-09-04)
+# [](https://github.com/AntmJS/vantui/compare/v3.7.0...v) (2026-04-24)
+
+
+### Bug Fixes
+
+* **swiper:** 修复双项目循环模式下的分页和切换问题 ([#797](https://github.com/AntmJS/vantui/issues/797)) ([#799](https://github.com/AntmJS/vantui/issues/799)) ([57b8093](https://github.com/AntmJS/vantui/commit/57b8093c2a6bf82d4c5f8f17446a50bfc6523c11))
+* 修复 onPreviewFile 无法预览线上文件的 bug ([#795](https://github.com/AntmJS/vantui/issues/795)) ([f763a9d](https://github.com/AntmJS/vantui/commit/f763a9d7e8154f44116d52ab25ed4e75c15605ce))
+* 我发现在taro 3.6.20版本中，h5环境下config.animation = false时，触发navigateBack方法返回上一页，同时触发dispatch更改redux state状态，此处el为null，导致js报错，建议增加容错处理。 ([#790](https://github.com/AntmJS/vantui/issues/790)) ([a20039d](https://github.com/AntmJS/vantui/commit/a20039d39c44f41c78f08d3c42c0e978f2cdd330))
+
+
+### Features
+
+* **highlight:** 添加高亮文本点击事件功能 ([#796](https://github.com/AntmJS/vantui/issues/796)) ([#798](https://github.com/AntmJS/vantui/issues/798)) ([a91dbc7](https://github.com/AntmJS/vantui/commit/a91dbc7e739493b27adfebaf12af9142924870c9))
+* popup组件新增overlayClassName ([#792](https://github.com/AntmJS/vantui/issues/792)) ([99b545e](https://github.com/AntmJS/vantui/commit/99b545e2a1597cc14822502c83b7a255066786b0))
+
+
+
+# [3.7.0](https://github.com/AntmJS/vantui/compare/v3.6.5...v3.7.0) (2025-09-04)
 
 
 ### Bug Fixes
