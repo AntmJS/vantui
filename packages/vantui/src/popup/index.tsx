@@ -125,6 +125,7 @@ export function Popup(props: PopupProps) {
     overlay = true,
     lockScroll = true,
     overlayStyle,
+    overlayClassName,
     closeOnClickOverlay = true,
     onClickOverlay,
     onClose,
@@ -152,6 +153,7 @@ export function Popup(props: PopupProps) {
             show={show}
             zIndex={zIndex}
             style={overlayStyle}
+            className={overlayClassName}
             duration={duration}
             onClick={_onClickOverlay}
             lockScroll={lockScroll}
