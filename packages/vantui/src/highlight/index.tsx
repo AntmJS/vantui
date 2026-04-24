@@ -106,6 +106,7 @@ export function Highlight(props: HighlightProps) {
       // 高亮和非高亮样式名和标签名
       highlightClass,
       unhighlightClass,
+      onHighlightClick,
     } = props
 
     return highlightChunks.map((chunk, index) => {
@@ -117,6 +118,7 @@ export function Highlight(props: HighlightProps) {
         return (
           <Text
             className={classNames(utils.bem('highlight'), highlightClass)}
+            onClick={() => onHighlightClick && onHighlightClick(text)}
             key={index}
           >
             {text}

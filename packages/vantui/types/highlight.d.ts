@@ -30,6 +30,10 @@ export interface HighlightProps extends ViewProps {
    * @description 非高亮元素的类名
    */
   unhighlightClass?: string
+  /**
+   * @description 高亮文本点击事件
+   */
+  onHighlightClick?: (text: string) => void
 }
 
 declare const Highlight: FunctionComponent<HighlightProps>
