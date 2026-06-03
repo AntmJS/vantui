@@ -105,7 +105,7 @@ jobs:
           yarn lerna publish from-package --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.X_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: actions/github-script@0.8.0
         if: startsWith( env.commitmsg , 'chore(release):' )
         with:

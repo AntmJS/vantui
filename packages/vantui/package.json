@@ -74,5 +74,6 @@
     "prettier": "^2.8.7",
     "style-resources-loader": "^1.5.0",
     "swc-loader": "^0.2.3"
-  }
+  },
+  "gitHead": "dbf7d47dbad85713a7d8bbb02edc082f2a98e92c"
 }

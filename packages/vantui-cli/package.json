@@ -66,5 +66,6 @@
     "prettier": "^2.7.1",
     "release-it": "^14.11.6",
     "transliteration": "^2.2.0"
-  }
+  },
+  "gitHead": "dbf7d47dbad85713a7d8bbb02edc082f2a98e92c"
 }
